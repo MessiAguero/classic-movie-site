@@ -16,6 +16,14 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SRC="${DAILY_SRC:-/Users/admin/WorkBuddy/automation-20260423112820}"
 cd "$ROOT"
 
+# 加载 Supabase 凭据（可选，用于同步新电影到云端）
+if [ -f "$ROOT/supabase/.env.local" ]; then
+  set -a
+  # shellcheck disable=SC1091
+  source "$ROOT/supabase/.env.local"
+  set +a
+fi
+
 mkdir -p source-html
 
 # 1) 复制新 HTML
@@ -39,7 +47,12 @@ if [ "$count" -gt 0 ]; then
   npm run data:gallery
 fi
 
-# 4) 提交并推送
+# 4) 同步新电影到 Supabase 云端（前端直接读云端数据）
+if [ -n "${SUPABASE_URL:-}" ] && [ -n "${SUPABASE_SERVICE_ROLE_KEY:-}" ]; then
+  npm run data:sync
+fi
+
+# 5) 提交并推送
 if [ "${DRY_RUN:-0}" = "1" ]; then
   echo "== DRY_RUN：跳过 git 提交与推送"
   git diff --stat
