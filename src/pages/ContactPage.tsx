@@ -51,7 +51,7 @@ export default function ContactPage() {
           </p>
           <div className="c-item">
             <span className="c-k">合作邮箱</span>
-            <a href="mailto:business@classicmovie.example">business@classicmovie.example</a>
+            <a href="mailto:499147375@qq.com">499147375@qq.com</a>
           </div>
           <div className="c-item">
             <span className="c-k">响应时间</span>
@@ -64,7 +64,7 @@ export default function ContactPage() {
           <h3>联系方式</h3>
           <div className="c-item">
             <span className="c-k">合作邮箱</span>
-            <a href="mailto:business@classicmovie.example">business@classicmovie.example</a>
+            <a href="mailto:499147375@qq.com">499147375@qq.com</a>
           </div>
           <div className="c-item">
             <span className="c-k">客服邮箱</span>
@@ -76,11 +76,11 @@ export default function ContactPage() {
           </div>
           <div className="c-item">
             <span className="c-k">商务微信</span>
-            <span>classicmovie-biz</span>
+            <span>499147375</span>
           </div>
           <div className="c-item">
             <span className="c-k">办公地址</span>
-            <span>上海市 · 静安区 · 经典电影工作室（示例）</span>
+            <span>浙江省宁波市北仑区小港街道田洋乐党群服务中心</span>
           </div>
         </div>
       </div>
