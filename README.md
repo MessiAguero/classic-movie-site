@@ -126,11 +126,34 @@ GitHub Actions（deploy.yml）自动构建部署到 Pages
 1. 在 GitHub 创建仓库，然后：
 
    ```bash
+   gh auth login                    # 浏览器授权（仅需一次）
+   ./tools/deploy-github.sh          # 自动建仓、推送、启用 Pages、输出公网地址
+   ```
+
+   或手动方式：
+
+   ```bash
    git remote add origin <你的仓库地址>
    git push -u origin main
    ```
 
 2. 启用 GitHub Pages：仓库 Settings → Pages → Source 选 **GitHub Actions**。
+
+### Supabase 云端存储（可选增强）
+
+1. 在 [supabase.com](https://supabase.com) 免费创建项目；
+2. SQL Editor 依次执行 `supabase/migrations/0001_init.sql` 与 `0002_auth.sql`；
+3. 配置环境变量后同步 76 部历史数据：
+
+   ```bash
+   export SUPABASE_URL=你的项目URL
+   export SUPABASE_SERVICE_ROLE_KEY=你的service_role密钥
+   npm run data:sync
+   ```
+
+4. `0001_init.sql` 内含 pg_cron，每天零点自动把当日电影置为已发布；
+5. 前端如需直连 Supabase，把 `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY`
+   配置到 GitHub Actions 环境变量（Settings → Secrets and variables → Actions）。
 
 ### 安装定时任务（macOS）
 

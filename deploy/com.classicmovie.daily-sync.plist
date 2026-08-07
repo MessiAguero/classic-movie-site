@@ -2,30 +2,45 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>Label</key>
-  <string>com.classicmovie.daily-sync</string>
-
-  <key>ProgramArguments</key>
-  <array>
-    <string>/bin/bash</string>
-    <string>/Users/admin/codex/0806/classic-movie-site/tools/daily-sync.sh</string>
-  </array>
-
-  <!-- 每天多个时间点检查，确保 WorkBuddy 生成新页面后尽快同步 -->
-  <key>StartCalendarInterval</key>
-  <array>
-    <dict><key>Hour</key><integer>0</integer><key>Minute</key><integer>10</integer></dict>
-    <dict><key>Hour</key><integer>6</key><key>Minute</key><integer>0</integer></dict>
-    <dict><key>Hour</key><integer>12</key><key>Minute</key><integer>0</integer></dict>
-    <dict><key>Hour</key><integer>18</key><key>Minute</key><integer>0</integer></dict>
-  </array>
-
-  <key>RunAtLoad</key>
-  <false/>
-
-  <key>StandardOutPath</key>
-  <string>/tmp/classicmovie-sync.log</string>
-  <key>StandardErrorPath</key>
-  <string>/tmp/classicmovie-sync.err.log</string>
+	<key>Label</key>
+	<string>com.classicmovie.daily-sync</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>/Users/admin/codex/0806/classic-movie-site/tools/daily-sync.sh</string>
+	</array>
+	<key>RunAtLoad</key>
+	<false/>
+	<key>StandardErrorPath</key>
+	<string>/tmp/classicmovie-sync.err.log</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/classicmovie-sync.log</string>
+	<key>StartCalendarInterval</key>
+	<array>
+		<dict>
+			<key>Hour</key>
+			<integer>0</integer>
+			<key>Minute</key>
+			<integer>10</integer>
+		</dict>
+		<dict>
+			<key>Hour</key>
+			<integer>6</integer>
+			<key>Minute</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Hour</key>
+			<integer>12</integer>
+			<key>Minute</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Hour</key>
+			<integer>18</integer>
+			<key>Minute</key>
+			<integer>0</integer>
+		</dict>
+	</array>
 </dict>
 </plist>
