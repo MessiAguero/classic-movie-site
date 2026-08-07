@@ -19,18 +19,72 @@ export function subscribeStore(fn: () => void): () => void {
 }
 
 function load(): Movie[] {
-  if (cache) return cache;
-  try {
-    const saved = localStorage.getItem(LS_KEY);
-    if (saved) {
-      cache = JSON.parse(saved) as Movie[];
-      return cache;
+  if (!cache) {
+    try {
+      const saved = localStorage.getItem(LS_KEY);
+      if (saved) {
+        cache = JSON.parse(saved) as Movie[];
+      }
+    } catch {
+      /* 忽略损坏的本地数据 */
     }
-  } catch {
-    /* 忽略损坏的本地数据 */
+    if (!cache) {
+      cache = (rawMovies as Movie[]).map((m) => ({ ...m, status: m.status || 'published' }));
+    }
+    // 云端模式：启动后异步拉取 Supabase 已发布数据，加载完成自动刷新
+    if (SUPABASE_URL && SUPABASE_ANON) {
+      fetchFromSupabase();
+    }
   }
-  cache = (rawMovies as Movie[]).map((m) => ({ ...m, status: m.status || 'published' }));
   return cache;
+}
+
+function mapRow(row: Record<string, unknown>): Movie {
+  return {
+    id: String(row.id ?? ''),
+    date: String(row.date ?? ''),
+    zhTitle: String(row.zh_title ?? ''),
+    enTitle: (row.en_title as string) || undefined,
+    year: (row.year as string) || undefined,
+    tagline: (row.tagline as string) || undefined,
+    meta: (row.meta as string) || undefined,
+    ratings: (row.ratings as Movie['ratings']) || [],
+    plot: (row.plot as Movie['plot']) || [],
+    spoilerNote: (row.spoiler_note as string) || undefined,
+    highlights: (row.highlights as Movie['highlights']) || [],
+    quotes: (row.quotes as Movie['quotes']) || [],
+    why: (row.why as Movie['why']) || [],
+    honors: (row.honors as Movie['honors']) || [],
+    archive: (row.archive as Movie['archive']) || [],
+    review: (row.review as string) || undefined,
+    reviewBy: (row.review_by as string) || undefined,
+    reviewStars: (row.review_stars as number) || 5,
+    posterSvg: (row.poster_svg as string) || undefined,
+    posterCaption: (row.poster_caption as string) || undefined,
+    status: (row.status as Movie['status']) || 'published',
+  };
+}
+
+async function fetchFromSupabase() {
+  try {
+    const base = (SUPABASE_URL || '').replace(/\/rest\/v1\/?$/, '').replace(/\/$/, '');
+    const res = await fetch(
+      `${base}/rest/v1/movies?select=*&status=eq.published&order=date.desc`,
+      {
+        headers: {
+          apikey: SUPABASE_ANON || '',
+          Authorization: `Bearer ${SUPABASE_ANON || ''}`,
+        },
+      },
+    );
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const rows = (await res.json()) as Record<string, unknown>[];
+    if (!Array.isArray(rows) || rows.length === 0) return;
+    cache = rows.map(mapRow);
+    notify();
+  } catch (e) {
+    console.warn('Supabase 数据加载失败，使用本地数据:', e);
+  }
 }
 
 function persist() {

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import rawGallery from '../data/gallery.json';
 import { cleanQuoteText } from '../lib/cleanQuote';
-import { formatDate, getMovieById } from '../lib/store';
+import { formatDate, getMovieById, useMovies } from '../lib/store';
 
 interface GalleryItem {
   id: string;
@@ -18,6 +18,7 @@ const gallery = rawGallery as GalleryItem[];
 export default function PosterPage() {
   const { id } = useParams();
   const [imgFailed, setImgFailed] = useState(false);
+  useMovies();
   if (!id) return <Navigate to="/gallery" replace />;
 
   const item = gallery.find((g) => g.id === id);

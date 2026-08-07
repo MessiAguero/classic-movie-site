@@ -1,9 +1,10 @@
 import { Link, Navigate, useParams } from 'react-router-dom';
 import MovieView from '../components/MovieView';
-import { formatDate, getMovieById, getNeighbors } from '../lib/store';
+import { formatDate, getMovieById, getNeighbors, useMovies } from '../lib/store';
 
 export default function MoviePage() {
   const { id } = useParams();
+  useMovies();
   if (!id) return <Navigate to="/" replace />;
   const movie = getMovieById(id);
   if (!movie) return <Navigate to="/" replace />;

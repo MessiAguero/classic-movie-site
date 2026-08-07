@@ -1,8 +1,9 @@
 import MovieView from '../components/MovieView';
-import { formatDate, getTodayMovie, todayStr } from '../lib/store';
+import { formatDate, getTodayMovie, todayStr, useMovies } from '../lib/store';
 import { Link } from 'react-router-dom';
 
 export default function HomePage() {
+  useMovies(); // 订阅数据更新（云端加载完成时自动刷新）
   const movie = getTodayMovie();
   const isToday = movie.date === todayStr();
 
