@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>黑客帝国 — 今日经典电影推荐</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Share+Tech+Mono&family=Noto+Serif+SC:wght@300;400;500;700&display=swap');
+
+    :root {
+      --matrix-green: #00FF41;
+      --matrix-mid:   #00C832;
+      --matrix-dark:  #003B00;
+      --matrix-dim:   #007A00;
+      --void:         #010B01;
+      --near-black:   #050F05;
+      --deep:         #0A1A0A;
+      --panel:        #0D1F0D;
+      --text-bright:  #CCFFCC;
+      --text-main:    #A8E6A8;
+      --text-muted:   #5B9B5B;
+      --silver:       #C0D8C0;
+      --gold:         #B8FF7A;
+      --shadow:       rgba(0,255,65,0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--void);
+      color: var(--text-main);
+      font-family: 'Noto Serif SC', serif;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ── MATRIX RAIN CANVAS ── */
+    #rain-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.18;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px 80px;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0,255,65,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--matrix-green);
+      border: 1px solid rgba(0,255,65,0.4);
+      padding: 6px 20px;
+      border-radius: 2px;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      text-shadow: 0 0 8px var(--matrix-green);
+    }
+
+    .hero-year {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: clamp(80px, 16vw, 180px);
+      font-weight: 400;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(0,255,65,0.2);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -4px;
+    }
+
+    .hero-title-en {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: clamp(11px, 1.8vw, 16px);
+      letter-spacing: 8px;
+      color: var(--matrix-dim);
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .hero-title-zh {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(48px, 9vw, 96px);
+      font-weight: 700;
+      color: var(--matrix-green);
+      text-shadow: 0 0 40px rgba(0,255,65,0.5), 0 0 80px rgba(0,255,65,0.2);
+      letter-spacing: 8px;
+      line-height: 1.1;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-tagline {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: clamp(13px, 2vw, 17px);
+      color: var(--text-muted);
+      letter-spacing: 2px;
+      max-width: 600px;
+      margin: 0 auto 48px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-tagline span {
+      color: var(--matrix-green);
+    }
+
+    .hero-meta-row {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-meta-item {
+      text-align: center;
+    }
+
+    .hero-meta-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--matrix-dim);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .hero-meta-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-bright);
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--matrix-dim);
+      animation: blink 2s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+
+    /* ── SECTION COMMON ── */
+    .section {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 5px;
+      color: var(--matrix-green);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      text-shadow: 0 0 6px var(--matrix-green);
+    }
+
+    .section-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 40px;
+      line-height: 1.3;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--matrix-green), transparent);
+      margin-bottom: 40px;
+      box-shadow: 0 0 8px var(--matrix-green);
+    }
+
+    /* ── SCORES ── */
+    .scores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-bottom: 0;
+    }
+
+    .score-card {
+      background: var(--panel);
+      border: 1px solid rgba(0,255,65,0.12);
+      border-radius: 4px;
+      padding: 28px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .score-card:hover {
+      border-color: rgba(0,255,65,0.4);
+      box-shadow: 0 0 20px rgba(0,255,65,0.1);
+    }
+
+    .score-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--matrix-green), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .score-card:hover::before { opacity: 1; }
+
+    .score-platform {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .score-number {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 48px;
+      font-weight: 400;
+      color: var(--matrix-green);
+      text-shadow: 0 0 20px rgba(0,255,65,0.6);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .score-suffix {
+      font-size: 20px;
+      color: var(--matrix-mid);
+    }
+
+    .score-bar-wrap {
+      background: rgba(0,255,65,0.08);
+      border-radius: 2px;
+      height: 3px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .score-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--matrix-green), var(--gold));
+      border-radius: 2px;
+      width: 0;
+      transition: width 1.2s cubic-bezier(.25,.46,.45,.94) 0.3s;
+      box-shadow: 0 0 6px var(--matrix-green);
+    }
+
+    /* ── SYNOPSIS ── */
+    .synopsis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media(max-width: 680px) {
+      .synopsis-grid { grid-template-columns: 1fr; }
+    }
+
+    .synopsis-text {
+      font-size: clamp(15px, 1.8vw, 17px);
+      color: var(--text-main);
+      line-height: 1.9;
+    }
+
+    .synopsis-text p { margin-bottom: 18px; }
+    .synopsis-text p:last-child { margin-bottom: 0; }
+
+    .poster-frame {
+      background: var(--panel);
+      border: 1px solid rgba(0,255,65,0.15);
+      border-radius: 4px;
+      padding: 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    .poster-ascii {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 9px;
+      line-height: 1.2;
+      color: var(--matrix-dim);
+      letter-spacing: 0;
+      white-space: pre;
+      overflow: hidden;
+    }
+
+    .poster-info {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(0,255,65,0.1);
+    }
+
+    .poster-info-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+
+    .poster-info-key {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--matrix-dim);
+      letter-spacing: 1px;
+    }
+
+    .poster-info-val {
+      color: var(--text-bright);
+      text-align: right;
+      max-width: 55%;
+    }
+
+    /* ── HIGHLIGHTS ── */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .highlight-card {
+      background: var(--panel);
+      border: 1px solid rgba(0,255,65,0.1);
+      border-radius: 4px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0,255,65,0.35);
+      box-shadow: 0 8px 32px rgba(0,255,65,0.08);
+    }
+
+    .highlight-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 36px;
+      color: rgba(0,255,65,0.12);
+      position: absolute;
+      top: 16px; right: 20px;
+      line-height: 1;
+    }
+
+    .highlight-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .highlight-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 10px;
+    }
+
+    .highlight-body {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* ── QUOTE ── */
+    .quote-block {
+      background: var(--near-black);
+      border-left: 3px solid var(--matrix-green);
+      padding: 48px 56px;
+      position: relative;
+      margin: 0;
+      box-shadow: inset 0 0 60px rgba(0,255,65,0.03), 0 0 40px rgba(0,255,65,0.04);
+    }
+
+    .quote-mark {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 80px;
+      color: rgba(0,255,65,0.12);
+      position: absolute;
+      top: 12px;
+      left: 24px;
+      line-height: 1;
+    }
+
+    .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(18px, 2.8vw, 26px);
+      font-style: italic;
+      color: var(--text-bright);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      text-shadow: 0 0 20px rgba(0,255,65,0.1);
+    }
+
+    .quote-attr {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: var(--matrix-dim);
+      text-transform: uppercase;
+    }
+
+    /* ── WHY WATCH ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media(max-width: 600px) {
+      .why-grid { grid-template-columns: 1fr; }
+    }
+
+    .why-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      background: var(--panel);
+      border: 1px solid rgba(0,255,65,0.08);
+      border-radius: 4px;
+      padding: 24px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .why-item:hover {
+      border-color: rgba(0,255,65,0.25);
+      box-shadow: 0 4px 20px rgba(0,255,65,0.06);
+    }
+
+    .why-dot {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--matrix-green);
+      box-shadow: 0 0 8px var(--matrix-green);
+      margin-top: 6px;
+    }
+
+    .why-content-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 6px;
+    }
+
+    .why-content-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ── AWARDS ── */
+    .awards-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .award-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 1px;
+      padding: 8px 16px;
+      border: 1px solid rgba(0,255,65,0.25);
+      border-radius: 2px;
+      color: var(--matrix-green);
+      background: rgba(0,255,65,0.04);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .award-tag:hover {
+      background: rgba(0,255,65,0.1);
+      border-color: rgba(0,255,65,0.5);
+    }
+
+    /* ── CREDITS TABLE ── */
+    .credits-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    .credits-table tr {
+      border-bottom: 1px solid rgba(0,255,65,0.07);
+      transition: background 0.2s;
+    }
+
+    .credits-table tr:hover {
+      background: rgba(0,255,65,0.03);
+    }
+
+    .credits-table td {
+      padding: 14px 16px;
+    }
+
+    .credits-table td:first-child {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--matrix-dim);
+      text-transform: uppercase;
+      width: 140px;
+    }
+
+    .credits-table td:last-child {
+      color: var(--text-bright);
+    }
+
+    /* ── FOOTER QUOTE ── */
+    .footer-verdict {
+      text-align: center;
+      padding: 80px 24px 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .verdict-line {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--matrix-dim);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .verdict-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 3.5vw, 32px);
+      font-style: italic;
+      color: var(--matrix-green);
+      text-shadow: 0 0 30px rgba(0,255,65,0.3);
+      max-width: 700px;
+      margin: 0 auto 32px;
+      line-height: 1.5;
+    }
+
+    .verdict-credit {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: var(--text-muted);
+    }
+
+    /* ── SCAN LINE ── */
+    .scanline-sep {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .scanline-sep::before,
+    .scanline-sep::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,255,65,0.2), transparent);
+    }
+
+    .scanline-sep span {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      color: rgba(0,255,65,0.2);
+      white-space: nowrap;
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--void); }
+    ::-webkit-scrollbar-thumb { background: var(--matrix-dark); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--matrix-dim); }
+
+  </style>
+</head>
+<body>
+
+<canvas id="rain-canvas"></canvas>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-year">1999</div>
+  <div class="hero-badge">今日经典推荐 · 2026.05.08</div>
+  <div class="hero-title-en">T H E &nbsp; M A T R I X</div>
+  <h1 class="hero-title-zh">黑客帝国</h1>
+  <p class="hero-tagline">你所经历的一切，<span>或许只是一场梦境。</span></p>
+  <div class="hero-meta-row">
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">导演</div>
+      <div class="hero-meta-value">沃卓斯基姐妹</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">年份</div>
+      <div class="hero-meta-value">1999</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">IMDb</div>
+      <div class="hero-meta-value">8.7 / 10</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">豆瓣</div>
+      <div class="hero-meta-value">9.1 / 10</div>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">▼ SCROLL ▼</div>
+</section>
+
+<!-- SCORES -->
+<div class="section" id="s-scores">
+  <div class="section-label">// ratings</div>
+  <div class="section-title">各平台评分</div>
+  <div class="section-divider"></div>
+  <div class="scores-grid">
+    <div class="score-card">
+      <div class="score-platform">IMDb</div>
+      <div class="score-number"><span class="score-val" data-target="8.7">0</span><span class="score-suffix">/10</span></div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="87"></div></div>
+    </div>
+    <div class="score-card">
+      <div class="score-platform">豆瓣</div>
+      <div class="score-number"><span class="score-val" data-target="9.1">0</span><span class="score-suffix">/10</span></div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="91"></div></div>
+    </div>
+    <div class="score-card">
+      <div class="score-platform">烂番茄 · 观众</div>
+      <div class="score-number"><span class="score-val" data-target="85">0</span><span class="score-suffix">%</span></div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="85"></div></div>
+    </div>
+    <div class="score-card">
+      <div class="score-platform">Metacritic</div>
+      <div class="score-number"><span class="score-val" data-target="73">0</span><span class="score-suffix">/100</span></div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="73"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="scanline-sep"><span>// synopsis</span></div>
+
+<!-- SYNOPSIS -->
+<div class="section" id="s-synopsis">
+  <div class="section-label">// plot overview</div>
+  <div class="section-title">剧情梗概</div>
+  <div class="section-divider"></div>
+  <div class="synopsis-grid">
+    <div class="synopsis-text">
+      <p>托马斯·安德森，白天是一名普通的程序员，夜晚则化身为神秘黑客"尼奥"，在深夜的网络世界里寻找着某个答案——那个名为"矩阵"的词语，始终像一根刺埋在他的脑海中。</p>
+      <p>直到某一天，他接触到了传说中的黑客领袖莫菲斯，以及神秘女子崔妮蒂。一个让人无从选择的时刻悄然降临：两粒药丸摆在面前，一粒让他回到熟悉的世界，一粒让他看见从未直视过的真相。</p>
+      <p>尼奥选择了后者。而他所见到的，将彻底颠覆他对现实、存在、以及人类命运的全部认知……</p>
+    </div>
+    <div class="poster-frame">
+      <div class="poster-ascii">
+░░░░░░░░░░░░░░░░░░░░░░░░░
+░ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ░
+░ ▓  01001000  01001  ▓ ░
+░ ▓  00000101  00010  ▓ ░
+░ ▓                   ▓ ░
+░ ▓   ┌─────────┐     ▓ ░
+░ ▓   │  (o) (o)│     ▓ ░
+░ ▓   │   ───   │     ▓ ░
+░ ▓   └────▲────┘     ▓ ░
+░ ▓        │          ▓ ░
+░ ▓  ┌─────┴──────┐   ▓ ░
+░ ▓  │ THE MATRIX │   ▓ ░
+░ ▓  └────────────┘   ▓ ░
+░ ▓                   ▓ ░
+░ ▓  11001010 10010   ▓ ░
+░ ▓  00101010 01101   ▓ ░
+░ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ░
+░░░░░░░░░░░░░░░░░░░░░░░░░</div>
+      <div class="poster-info">
+        <div class="poster-info-row">
+          <span class="poster-info-key">Director</span>
+          <span class="poster-info-val">The Wachowskis</span>
+        </div>
+        <div class="poster-info-row">
+          <span class="poster-info-key">Genre</span>
+          <span class="poster-info-val">科幻 / 动作 / 哲学</span>
+        </div>
+        <div class="poster-info-row">
+          <span class="poster-info-key">Runtime</span>
+          <span class="poster-info-val">136 min</span>
+        </div>
+        <div class="poster-info-row">
+          <span class="poster-info-key">Language</span>
+          <span class="poster-info-val">English</span>
+        </div>
+        <div class="poster-info-row">
+          <span class="poster-info-key">Country</span>
+          <span class="poster-info-val">USA / Australia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="scanline-sep"><span>// highlights</span></div>
+
+<!-- HIGHLIGHTS -->
+<div class="section" id="s-highlights">
+  <div class="section-label">// key highlights</div>
+  <div class="section-title">六大亮点</div>
+  <div class="section-divider"></div>
+  <div class="highlights-grid">
+    <div class="highlight-card">
+      <div class="highlight-num">01</div>
+      <span class="highlight-icon">🎬</span>
+      <div class="highlight-title">子弹时间——视觉革命</div>
+      <div class="highlight-body">那一幕三百六十度的"Bullet Time"慢镜，让全球观众的下巴集体落地。这一拍摄技术此后被无数影片致敬模仿，彻底改写了动作电影的视觉语言。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">02</div>
+      <span class="highlight-icon">🧠</span>
+      <div class="highlight-title">哲学深度——不止动作片</div>
+      <div class="highlight-body">柏拉图洞穴、笛卡尔缸中之脑、鲍德里亚的拟像理论……影片将西方哲学经典命题包裹在爆米花外壳之下，既可纯粹享受视听，也可深度思考。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">03</div>
+      <span class="highlight-icon">🎭</span>
+      <div class="highlight-title">基努·里维斯——最完美的"救世主"</div>
+      <div class="highlight-body">基努那种天然的游离感与茫然，让尼奥的觉醒弧线极具说服力。他不是天生英雄，而是一个被命运选中、在迷惑中一步步确认自身的普通人。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">04</div>
+      <span class="highlight-icon">🎶</span>
+      <div class="highlight-title">配乐与音效——催眠级沉浸</div>
+      <div class="highlight-body">Don Davis 的管弦配乐与电子工业音效的融合，创造出独一无二的听觉体验。每一场战斗都像一首交响曲，张弛有序，把观众牢牢锁在座椅上。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">05</div>
+      <span class="highlight-icon">🤖</span>
+      <div class="highlight-title">反派设计——Smith 探员的压迫感</div>
+      <div class="highlight-body">雨果·维文饰演的史密斯探员，西装笔挺、面无表情，却散发出比任何怪兽都更令人窒息的恐惧。他代表的是系统本身，无处不在、无法根除。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">06</div>
+      <span class="highlight-icon">🌐</span>
+      <div class="highlight-title">文化影响力——跨越四分之一个世纪</div>
+      <div class="highlight-body">"红蓝药丸"已成为流行文化中选择与觉醒的永恒隐喻；"绿色数字雨"视觉符号无处不在。二十五年后再看，依然毫不过时。</div>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="section" id="s-quote" style="padding: 40px 24px;">
+  <blockquote class="quote-block">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">不幸的是，没有人能被告知矩阵是什么——你必须自己亲眼去看。</p>
+    <cite class="quote-attr">— 莫菲斯 · The Matrix, 1999</cite>
+  </blockquote>
+</div>
+
+<div class="scanline-sep"><span>// why watch</span></div>
+
+<!-- WHY WATCH -->
+<div class="section" id="s-why">
+  <div class="section-label">// editor's pick</div>
+  <div class="section-title">为何值得一看</div>
+  <div class="section-divider"></div>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <div>
+        <div class="why-content-title">视觉语言的分水岭</div>
+        <div class="why-content-body">1999年之前，没有人见过"子弹时间"。这部影片重新定义了动作电影的可能性，其视觉创新程度在整个电影史上屈指可数。</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <div>
+        <div class="why-content-title">思想实验穿上了科幻外衣</div>
+        <div class="why-content-body">它让你在享受视听震撼之余，忍不住问自己：我们所感知的现实，究竟是真实的吗？这种余震在影片结束后还会持续很久。</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <div>
+        <div class="why-content-title">叙事节奏的教科书</div>
+        <div class="why-content-body">信息投放精准克制，悬念设置环环相扣。整部影片几乎没有一帧废戏，从头到尾将观众牢牢握在手心。</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <div>
+        <div class="why-content-title">理解当代文化的必修课</div>
+        <div class="why-content-body">"红蓝药丸""矩阵""尼奥"——这些词汇已渗透进日常语言与各种讨论。不看这部电影，你会错过太多文化语境。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="scanline-sep"><span>// awards</span></div>
+
+<!-- AWARDS -->
+<div class="section" id="s-awards">
+  <div class="section-label">// recognition</div>
+  <div class="section-title">荣誉与认可</div>
+  <div class="section-divider"></div>
+  <div class="awards-row">
+    <span class="award-tag">奥斯卡最佳剪辑</span>
+    <span class="award-tag">奥斯卡最佳音效剪辑</span>
+    <span class="award-tag">奥斯卡最佳视觉效果</span>
+    <span class="award-tag">奥斯卡最佳音响</span>
+    <span class="award-tag">BAFTA最佳特效</span>
+    <span class="award-tag">土星奖最佳科幻电影</span>
+    <span class="award-tag">MTV最佳电影</span>
+    <span class="award-tag">全球票房4.67亿美元</span>
+    <span class="award-tag">IMDb Top 250</span>
+    <span class="award-tag">豆瓣Top 250</span>
+  </div>
+</div>
+
+<div class="scanline-sep"><span>// credits</span></div>
+
+<!-- CREDITS -->
+<div class="section" id="s-credits">
+  <div class="section-label">// file info</div>
+  <div class="section-title">影片档案</div>
+  <div class="section-divider"></div>
+  <table class="credits-table">
+    <tr><td>Title</td><td>The Matrix（黑客帝国）</td></tr>
+    <tr><td>Year</td><td>1999</td></tr>
+    <tr><td>Directors</td><td>拉娜·沃卓斯基 / 莉莉·沃卓斯基</td></tr>
+    <tr><td>Cast</td><td>基努·里维斯 / 劳伦斯·菲什伯恩 / 凯莉·安·莫斯 / 雨果·维文</td></tr>
+    <tr><td>Studio</td><td>华纳兄弟 / 银色图片</td></tr>
+    <tr><td>Runtime</td><td>136 分钟</td></tr>
+    <tr><td>Language</td><td>英语</td></tr>
+    <tr><td>Budget</td><td>$63,000,000</td></tr>
+    <tr><td>Box Office</td><td>$467,200,000</td></tr>
+    <tr><td>Category</td><td>科幻 / 动作 / 哲学惊悚</td></tr>
+  </table>
+</div>
+
+<!-- FOOTER VERDICT -->
+<div class="footer-verdict">
+  <div class="verdict-line">// editor final verdict</div>
+  <p class="verdict-text">选择红药丸，还是蓝药丸——<br>这不只是一个问题，这是人类面对真相的永恒困境。</p>
+  <div class="verdict-credit">今日推荐 · 经典电影频道 · 2026.05.08</div>
+</div>
+
+<script>
+  // ── MATRIX RAIN ──
+  (function() {
+    const canvas = document.getElementById('rain-canvas');
+    const ctx = canvas.getContext('2d');
+    let cols, drops;
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+
+    function init() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      const fontSize = 14;
+      cols = Math.floor(canvas.width / fontSize);
+      drops = Array(cols).fill(1);
+    }
+
+    function draw() {
+      ctx.fillStyle = 'rgba(1,11,1,0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00FF41';
+      ctx.font = '14px Share Tech Mono, monospace';
+      drops.forEach((y, i) => {
+        const ch = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(ch, i * 14, y * 14);
+        if (y * 14 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      });
+    }
+
+    init();
+    window.addEventListener('resize', init);
+    setInterval(draw, 50);
+  })();
+
+  // ── SCROLL REVEAL ──
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+
+        // Score bars
+        e.target.querySelectorAll('.score-bar[data-width]').forEach(bar => {
+          setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 200);
+        });
+
+        // Score numbers
+        e.target.querySelectorAll('.score-val[data-target]').forEach(el => {
+          const target = parseFloat(el.dataset.target);
+          const isFloat = el.dataset.target.includes('.');
+          const duration = 1200;
+          const start = performance.now();
+          function step(now) {
+            const p = Math.min((now - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - p, 3);
+            const val = target * ease;
+            el.textContent = isFloat ? val.toFixed(1) : Math.round(val);
+            if (p < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.section').forEach(s => io.observe(s));
+</script>
+</body>
+</html>

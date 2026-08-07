@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>你的名字。— 经典电影推荐</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --sky-light: #87CEEB;
+  --sky: #5BA3D9;
+  --sky-deep: #2C6FB0;
+  --sky-night: #0B1A3B;
+  --sky-dark: #0A1128;
+  --star-white: #F0F8FF;
+  --warm-glow: #F5E6CC;
+  --gold: #D4A84B;
+  --gold-light: #F0D68A;
+  --text-primary: #F0F4FF;
+  --text-secondary: #B8CCE8;
+  --text-muted: #7A8FAA;
+  --card-bg: rgba(11, 26, 59, 0.7);
+  --card-border: rgba(91, 163, 217, 0.25);
+  --comet-blue: #6BB8F0;
+  --gradient-hero: linear-gradient(180deg, #0A1128 0%, #0B1A3B 30%, #1A3D6B 60%, #2C6FB0 85%, #87CEEB 100%);
+  --gradient-card: linear-gradient(135deg, rgba(11,26,59,0.85) 0%, rgba(26,61,107,0.7) 100%);
+}
+body{
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', -apple-system, sans-serif;
+  background: var(--sky-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* === CANVAS === */
+#starCanvas{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* === HERO === */
+.hero{
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background: var(--gradient-hero);
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:200px;
+  background:linear-gradient(transparent, var(--sky-dark));
+  pointer-events:none;
+}
+.hero-year{
+  font-size: clamp(6rem, 20vw, 16rem);
+  font-weight: 900;
+  color: rgba(135, 206, 235, 0.08);
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  letter-spacing: 0.1em;
+  user-select: none;
+  pointer-events: none;
+}
+.hero-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  border: 1px solid var(--card-border);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--sky);
+  margin-bottom: 2rem;
+  backdrop-filter: blur(8px);
+  background: rgba(11,26,59,0.4);
+}
+.hero-badge .dot{
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--comet-blue);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:0.4;transform:scale(0.7)}
+}
+.hero-title{
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #F0F8FF 0%, #87CEEB 50%, #F0D68A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  position: relative;
+  letter-spacing: 0.05em;
+}
+.hero-title-jp{
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  color: var(--text-muted);
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  margin-bottom: 0.3rem;
+}
+.hero-title-en{
+  font-size: clamp(0.9rem, 2vw, 1.3rem);
+  color: var(--text-secondary);
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  margin-bottom: 2rem;
+}
+.hero-tagline{
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  color: var(--warm-glow);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 30px rgba(245, 230, 204, 0.3);
+}
+.hero-meta{
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+.hero-meta span{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hero-meta .sep{
+  color: var(--text-muted);
+}
+.scroll-hint{
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  animation: bounce 2s ease-in-out infinite;
+  z-index: 3;
+}
+.scroll-hint .arrow{
+  width: 20px; height: 20px;
+  border-right: 1.5px solid var(--text-muted);
+  border-bottom: 1.5px solid var(--text-muted);
+  transform: rotate(45deg);
+  opacity: 0.6;
+}
+@keyframes bounce{
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(10px)}
+}
+
+/* === CONTAINER === */
+.container{
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* === SECTION === */
+.section{
+  padding: 5rem 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.section.visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+.section-title{
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-title .line{
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--sky), transparent);
+  max-width: 200px;
+}
+.section-title .num{
+  font-size: 0.85rem;
+  color: var(--sky);
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+/* === SCORE CARDS === */
+.score-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+.score-card{
+  background: var(--gradient-card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.score-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(91, 163, 217, 0.15);
+}
+.score-card .label{
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+}
+.score-card .number{
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: var(--star-white);
+}
+.score-card .number .small{
+  font-size: 0.7em;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+.score-bar{
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  margin-top: 0.8rem;
+  overflow: hidden;
+}
+.score-bar-fill{
+  height: 100%;
+  border-radius: 2px;
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background: linear-gradient(90deg, var(--sky), var(--comet-blue));
+}
+.score-bar-fill.gold{
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+}
+
+/* === PLOT CARD === */
+.plot-card{
+  background: var(--gradient-card);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  backdrop-filter: blur(12px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+.plot-content .spoiler-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: rgba(91,163,217,0.15);
+  border: 1px solid rgba(91,163,217,0.3);
+  border-radius: 100px;
+  font-size: 0.7rem;
+  color: var(--sky);
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+.plot-content p{
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+.plot-content p:last-child{
+  margin-bottom: 0;
+}
+.plot-visual{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.plot-visual svg{
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+}
+
+/* === GENRE TAGS === */
+.genre-tags{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1.2rem;
+}
+.genre-tag{
+  padding: 4px 14px;
+  border: 1px solid rgba(91,163,217,0.3);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  color: var(--sky);
+  letter-spacing: 0.05em;
+}
+
+/* === HIGHLIGHTS === */
+.highlights-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.highlight-card{
+  background: var(--gradient-card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.8rem 1.5rem;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.highlight-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(91, 163, 217, 0.12);
+}
+.highlight-card .icon{
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.highlight-card h4{
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+.highlight-card p{
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* === QUOTES === */
+.quote-block{
+  background: var(--gradient-card);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  position: relative;
+}
+.quote-block .mark{
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--sky);
+  opacity: 0.3;
+  font-family: Georgia, serif;
+}
+.quote-block blockquote{
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.8;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--warm-glow);
+  margin: 1rem 0;
+}
+.quote-block cite{
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: normal;
+}
+
+/* === WHY WATCH === */
+.why-list{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.why-item{
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+  background: var(--gradient-card);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s;
+}
+.why-item:hover{
+  transform: translateX(6px);
+}
+.why-item .num-circle{
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--sky);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--sky);
+}
+.why-item .text h4{
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--text-primary);
+}
+.why-item .text p{
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* === HONORS === */
+.honor-grid{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.honor-tag{
+  padding: 6px 16px;
+  background: rgba(212, 168, 75, 0.1);
+  border: 1px solid rgba(212, 168, 75, 0.3);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  color: var(--gold-light);
+  letter-spacing: 0.03em;
+}
+
+/* === INFO TABLE === */
+.info-table{
+  background: var(--gradient-card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  backdrop-filter: blur(12px);
+}
+.info-row{
+  display: flex;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.info-row:last-child{
+  border-bottom: none;
+}
+.info-row .key{
+  width: 120px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+.info-row .val{
+  flex: 1;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+/* === EDITORIAL === */
+.editorial{
+  background: linear-gradient(135deg, rgba(11,26,59,0.9) 0%, rgba(26,61,107,0.8) 100%);
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+}
+.editorial .stars{
+  font-size: 1.8rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.editorial p{
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--text-secondary);
+  max-width: 700px;
+  margin: 0 auto;
+}
+.editorial .sign{
+  margin-top: 1.2rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* === FOOTER === */
+.footer{
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.footer p{
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){
+  .plot-card{grid-template-columns:1fr;}
+  .plot-visual{order:-1;}
+  .highlights-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  .score-grid{grid-template-columns:1fr 1fr;}
+  .highlights-grid{grid-template-columns:1fr;}
+  .plot-card{padding:1.5rem;}
+  .quote-block{padding:1.5rem;}
+  .editorial{padding:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="starCanvas"></canvas>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-year">2016</div>
+  <div class="hero-badge"><span class="dot"></span> 今日推荐 · 现代经典</div>
+  <div class="hero-title-jp">君の名は。</div>
+  <h1 class="hero-title">你的名字。</h1>
+  <div class="hero-title-en">Your Name.</div>
+  <p class="hero-tagline">「 穿越时空的羁绊，只为与你相遇 」</p>
+  <div class="hero-meta">
+    <span>新海诚 执导</span>
+    <span class="sep">·</span>
+    <span>2016</span>
+    <span class="sep">·</span>
+    <span>动画 / 剧情 / 奇幻</span>
+    <span class="sep">·</span>
+    <span>106 分钟</span>
+  </div>
+  <div class="scroll-hint">
+    <span>向下探索</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- SCORES -->
+<div class="container">
+  <section class="section" id="scores">
+    <div class="section-title">
+      <span class="num">01</span>
+      评分一览
+      <span class="line"></span>
+    </div>
+    <div class="score-grid">
+      <div class="score-card">
+        <div class="label">IMDb</div>
+        <div class="number" data-target="8.4">8.4</div>
+        <div class="score-bar"><div class="score-bar-fill" data-pct="84"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="label">豆瓣</div>
+        <div class="number" data-target="8.4">8.4</div>
+        <div class="score-bar"><div class="score-bar-fill gold" data-pct="84"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="label">烂番茄</div>
+        <div class="number" data-target="97"><span class="small">🍅</span> 97%</div>
+        <div class="score-bar"><div class="score-bar-fill" data-pct="97"></div></div>
+      </div>
+      <div class="score-card">
+        <div class="label">爆米花</div>
+        <div class="number" data-target="94"><span class="small">🍿</span> 94%</div>
+        <div class="score-bar"><div class="score-bar-fill gold" data-pct="94"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLOT -->
+  <section class="section" id="plot">
+    <div class="section-title">
+      <span class="num">02</span>
+      剧情梗概
+      <span class="line"></span>
+    </div>
+    <div class="plot-card">
+      <div class="plot-content">
+        <div class="spoiler-badge">🔒 无剧透保证</div>
+        <p>生活在乡下小镇的女高中生三叶，厌倦了日复一日的神社传统与小镇的闭塞，渴望来世能成为东京的帅哥。而东京的高中生�的�，则在一成不变的打工与上课生活中，隐隐感到某种缺失。</p>
+        <p>某天清晨，两人惊讶地发现——他们在梦中交换了身体！起初的慌乱与尴尬逐渐演变成默契的合作，他们通过手机留言互相指导对方的生活，一种奇妙的联系在两人之间悄然生长。</p>
+        <p>然而，当泷决定亲自去见三叶时，却发现了一个令人震惊的真相，将两人的命运推向时空的交错点……</p>
+        <div class="genre-tags">
+          <span class="genre-tag"># 身体交换</span>
+          <span class="genre-tag"># 时空穿越</span>
+          <span class="genre-tag"># 青春物语</span>
+          <span class="genre-tag"># 唯美画风</span>
+        </div>
+      </div>
+      <div class="plot-visual">
+        <svg viewBox="0 0 380 340" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0A1128"/>
+              <stop offset="40%" stop-color="#2C6FB0"/>
+              <stop offset="100%" stop-color="#87CEEB"/>
+            </linearGradient>
+            <linearGradient id="cometGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#F0D68A" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#F0D68A" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- Sky -->
+          <rect width="380" height="340" fill="url(#skyGrad)" rx="12"/>
+          <!-- Stars -->
+          <circle cx="40" cy="30" r="1.2" fill="#fff" opacity="0.8"/>
+          <circle cx="120" cy="50" r="1" fill="#fff" opacity="0.6"/>
+          <circle cx="200" cy="25" r="1.5" fill="#fff" opacity="0.9"/>
+          <circle cx="300" cy="45" r="0.8" fill="#fff" opacity="0.5"/>
+          <circle cx="350" cy="20" r="1.2" fill="#fff" opacity="0.7"/>
+          <circle cx="80" cy="80" r="0.8" fill="#fff" opacity="0.4"/>
+          <circle cx="280" cy="70" r="1" fill="#fff" opacity="0.6"/>
+          <circle cx="340" cy="90" r="0.7" fill="#fff" opacity="0.5"/>
+          <circle cx="50" cy="120" r="0.9" fill="#fff" opacity="0.5"/>
+          <circle cx="330" cy="130" r="1.1" fill="#fff" opacity="0.6"/>
+          <circle cx="170" cy="40" r="0.7" fill="#fff" opacity="0.5"/>
+          <circle cx="250" cy="35" r="0.9" fill="#fff" opacity="0.7"/>
+          <!-- Comet / Shooting star -->
+          <line x1="280" y1="30" x2="340" y2="10" stroke="url(#cometGrad)" stroke-width="2" filter="url(#glow)"/>
+          <circle cx="280" cy="30" r="2" fill="#F0D68A" filter="url(#glow)"/>
+          <!-- Mountain silhouette -->
+          <path d="M0 280 Q60 200 120 250 Q160 210 200 240 Q250 190 300 230 Q340 200 380 220 L380 340 L0 340 Z" fill="#0B1A3B" opacity="0.7"/>
+          <path d="M0 300 Q80 240 140 270 Q190 230 240 260 Q290 220 340 250 Q360 240 380 250 L380 340 L0 340 Z" fill="#0A1128" opacity="0.8"/>
+          <!-- City silhouette -->
+          <rect x="80" y="226" width="12" height="40" fill="#1A3D6B" opacity="0.6" rx="2"/>
+          <rect x="98" y="210" width="8" height="56" fill="#1A3D6B" opacity="0.5" rx="2"/>
+          <rect x="112" y="230" width="10" height="36" fill="#1A3D6B" opacity="0.6" rx="2"/>
+          <rect x="140" y="218" width="14" height="48" fill="#1A3D6B" opacity="0.5" rx="2"/>
+          <rect x="160" y="235" width="8" height="31" fill="#1A3D6B" opacity="0.6" rx="2"/>
+          <rect x="250" y="215" width="12" height="51" fill="#1A3D6B" opacity="0.5" rx="2"/>
+          <rect x="270" y="228" width="10" height="38" fill="#1A3D6B" opacity="0.6" rx="2"/>
+          <rect x="300" y="222" width="14" height="44" fill="#1A3D6B" opacity="0.5" rx="2"/>
+          <rect x="320" y="238" width="8" height="28" fill="#1A3D6B" opacity="0.6" rx="2"/>
+          <!-- Twin silhouette (time/connection) -->
+          <circle cx="145" cy="268" r="18" fill="none" stroke="#87CEEB" stroke-width="1" opacity="0.3"/>
+          <circle cx="245" cy="252" r="18" fill="none" stroke="#87CEEB" stroke-width="1" opacity="0.3"/>
+          <line x1="163" y1="268" x2="227" y2="252" stroke="#87CEEB" stroke-width="1" opacity="0.3" stroke-dasharray="4,4"/>
+          <!-- Red thread of fate -->
+          <path d="M145 268 Q180 290 210 275 Q230 265 245 252" stroke="#E86A6A" stroke-width="1.5" fill="none" opacity="0.5" filter="url(#glow)"/>
+          <circle cx="145" cy="268" r="2.5" fill="#E86A6A" filter="url(#glow)"/>
+          <circle cx="245" cy="252" r="2.5" fill="#E86A6A" filter="url(#glow)"/>
+          <!-- Falling star trail -->
+          <path d="M310 350 Q320 320 330 310" stroke="url(#cometGrad)" stroke-width="1" fill="none" opacity="0.3"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="section" id="highlights">
+    <div class="section-title">
+      <span class="num">03</span>
+      六大亮点
+      <span class="line"></span>
+    </div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <span class="icon">🎨</span>
+        <h4>视觉盛宴</h4>
+        <p>新海诚每一帧皆壁纸的绝美画风，东京夜景与系守镇乡野在光影变幻中如梦如幻，每一幕都值得截图珍藏。</p>
+      </div>
+      <div class="highlight-card">
+        <span class="icon">🎵</span>
+        <h4>RADWIMPS 神级配乐</h4>
+        <p>前前前世、没什么大不了等四首主题曲与剧情完美共振，音乐一响即泪水决堤，原声带至今仍为现象级热销。</p>
+      </div>
+      <div class="highlight-card">
+        <span class="icon">⏳</span>
+        <h4>时空叙事巧思</h4>
+        <p>身体交换 × 时间错位 × 宿命追寻，三线交织的叙事结构环环相扣，层层揭开悬念，令人欲罢不能。</p>
+      </div>
+      <div class="highlight-card">
+        <span class="icon">💞</span>
+        <h4>纯粹的情感共鸣</h4>
+        <p>不是轰轰烈烈，而是细密绵长、跨越时空的思念与寻找，那种"无论你在哪里，我一定要找到你"的执念直击人心。</p>
+      </div>
+      <div class="highlight-card">
+        <span class="icon">🌏</span>
+        <h4>文化内核</h4>
+        <p>糸守镇的神社、口嚼酒、組紐（编绳）等日本传统文化元素融入现代故事，象征时间流转与命运交织，富有深意。</p>
+      </div>
+      <div class="highlight-card">
+        <span class="icon">🏆</span>
+        <h4>全球现象级成功</h4>
+        <p>全球票房超3.8亿美元，打破多项纪录，成为日本电影史上最卖座的动画电影之一，获日本电影学院奖最佳动画片。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTES -->
+  <section class="section" id="quotes">
+    <div class="section-title">
+      <span class="num">04</span>
+      经典台词
+      <span class="line"></span>
+    </div>
+    <div class="quote-block">
+      <div class="mark">"</div>
+      <blockquote>
+        再等一下，不要走。我们还没有相遇呢。<br>
+        —— 只要记住你的名字，无论你在世界的哪个角落，我一定会去见你。
+      </blockquote>
+      <cite>—— 泷</cite>
+    </div>
+  </section>
+
+  <!-- WHY WATCH -->
+  <section class="section" id="why">
+    <div class="section-title">
+      <span class="num">05</span>
+      为什么值得看
+      <span class="line"></span>
+    </div>
+    <div class="why-list">
+      <div class="why-item">
+        <div class="num-circle">1</div>
+        <div class="text">
+          <h4>不仅是动画，更是电影艺术的巅峰</h4>
+          <p>新海诚以超精细的作画与光影渲染，将东京的霓虹与乡野的静谧推至极致，每一帧都承载着饱满的情绪表达，让人沉浸其中无法自拔。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="num-circle">2</div>
+        <div class="text">
+          <h4>故事与音乐的天作之合</h4>
+          <p>RADWIMPS 创作的配乐并非简单的背景音，而是与剧情节奏深度咬合——当《前前前世》在关键时刻响起，情绪瞬间被推至顶点，堪称近年最佳影视配乐之一。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="num-circle">3</div>
+        <div class="text">
+          <h4>看完会让你重新相信"缘分"</h4>
+          <p>影片关于"命中注定"的诠释不落俗套，它让你思考：这世上是不是真的有那么一个人，你们之间有一根看不见的红线，穿越时空也扯不断。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="num-circle">4</div>
+        <div class="text">
+          <h4>多层解读，后劲极大</h4>
+          <p>表面看是青春恋爱物语，实则蕴含对时间、记忆、灾难与联结的深层思考。看完正片后你会忍不住反复回味细节，每一遍都发现新的感动。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONORS -->
+  <section class="section" id="honors">
+    <div class="section-title">
+      <span class="num">06</span>
+      荣誉成就
+      <span class="line"></span>
+    </div>
+    <div class="honor-grid">
+      <span class="honor-tag">🏆 日本电影学院奖 · 最佳动画片</span>
+      <span class="honor-tag">🏆 全球票房 $3.8 亿美元</span>
+      <span class="honor-tag">🏆 洛杉矶影评人协会奖 · 最佳动画</span>
+      <span class="honor-tag">🏆 日本票房冠军 · 年度第一</span>
+      <span class="honor-tag">🏆 西班牙圣塞巴斯蒂安电影节 · 最佳剧本</span>
+      <span class="honor-tag">🏆 东京动画奖 · 年度最佳动画</span>
+      <span class="honor-tag">🏆 亚洲电影大奖 · 最佳编剧提名</span>
+      <span class="honor-tag">🏆 安妮奖 · 最佳独立动画长片提名</span>
+      <span class="honor-tag">🏆 香港电影金像奖 · 最佳亚洲电影</span>
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section class="section" id="info">
+    <div class="section-title">
+      <span class="num">07</span>
+      影片档案
+      <span class="line"></span>
+    </div>
+    <div class="info-table">
+      <div class="info-row"><span class="key">片名</span><span class="val">你的名字。（君の名は。）</span></div>
+      <div class="info-row"><span class="key">英文名</span><span class="val">Your Name.</span></div>
+      <div class="info-row"><span class="key">导演</span><span class="val">新海诚</span></div>
+      <div class="info-row"><span class="key">编剧</span><span class="val">新海诚</span></div>
+      <div class="info-row"><span class="key">配乐</span><span class="val">RADWIMPS</span></div>
+      <div class="info-row"><span class="key">角色设计</span><span class="val">田中将贺</span></div>
+      <div class="info-row"><span class="key">作画监督</span><span class="val">安藤雅司</span></div>
+      <div class="info-row"><span class="key">制片</span><span class="val">CoMix Wave Films</span></div>
+      <div class="info-row"><span class="key">上映日期</span><span class="val">2016 年 8 月 26 日（日本）</span></div>
+      <div class="info-row"><span class="key">片长</span><span class="val">106 分钟</span></div>
+    </div>
+  </section>
+
+  <!-- EDITORIAL -->
+  <section class="section" id="editorial">
+    <div class="editorial">
+      <div class="stars">★★★★★</div>
+      <p>
+        《你的名字。》是 21 世纪最动人的动画电影之一。新海诚用极致的视觉美学与环环相扣的叙事，讲述了一个关于命运、记忆与联结的故事——它让你相信，在这个宇宙的某个角落，有一根看不见的红线，牵引着你与那个人相遇。<br><br>
+        无论你看过多少遍，总有一帧画面、一段旋律或一句台词，能让你再次热泪盈眶。
+      </p>
+      <div class="sign">— 编辑推荐语</div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  <p>经典电影推荐 · 2026年6月28日</p>
+</footer>
+
+<script>
+// === Canvas Star & Comet System ===
+const canvas = document.getElementById('starCanvas');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const stars = [];
+const NUM_STARS = 180;
+
+for(let i = 0; i < NUM_STARS; i++){
+  stars.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height * 0.85,
+    r: Math.random() * 1.8 + 0.3,
+    alpha: Math.random() * 0.8 + 0.2,
+    speed: Math.random() * 0.008 + 0.003,
+    phase: Math.random() * Math.PI * 2
+  });
+}
+
+// Comets
+const comets = [];
+for(let i = 0; i < 3; i++){
+  comets.push({
+    active: false,
+    x: 0, y: 0,
+    vx: 0, vy: 0,
+    life: 0,
+    maxLife: 80 + Math.random() * 60,
+    wait: Math.random() * 400 + 200
+  });
+}
+
+let frame = 0;
+
+function drawStars(){
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  frame++;
+  
+  // Draw stars
+  for(const star of stars){
+    const twinkle = Math.sin(frame * star.speed + star.phase) * 0.3 + 0.7;
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(240, 248, 255, ${star.alpha * twinkle})`;
+    ctx.fill();
+    
+    // Glow for brighter stars
+    if(star.r > 1.2){
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.r * 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(107, 184, 240, ${star.alpha * twinkle * 0.12})`;
+      ctx.fill();
+    }
+  }
+  
+  // Draw comets
+  for(const comet of comets){
+    if(comet.wait > 0){
+      comet.wait--;
+      continue;
+    }
+    if(!comet.active){
+      // Activate
+      comet.active = true;
+      comet.x = Math.random() * canvas.width * 0.7 + canvas.width * 0.2;
+      comet.y = Math.random() * canvas.height * 0.15;
+      const angle = Math.PI / 4 + Math.random() * Math.PI / 6;
+      const speed = 3 + Math.random() * 2;
+      comet.vx = Math.cos(angle) * speed;
+      comet.vy = Math.sin(angle) * speed;
+      comet.life = 0;
+      comet.maxLife = 80 + Math.random() * 60;
+    }
+    
+    comet.x += comet.vx;
+    comet.y += comet.vy;
+    comet.life++;
+    
+    const progress = comet.life / comet.maxLife;
+    const tailLen = 40 + progress * 30;
+    
+    // Tail
+    const grad = ctx.createLinearGradient(comet.x, comet.y, comet.x - comet.vx * 3, comet.y - comet.vy * 3);
+    const alpha = 1 - progress;
+    grad.addColorStop(0, `rgba(107, 184, 240, ${alpha * 0.9})`);
+    grad.addColorStop(0.3, `rgba(240, 214, 138, ${alpha * 0.5})`);
+    grad.addColorStop(1, `rgba(240, 214, 138, 0)`);
+    
+    ctx.beginPath();
+    ctx.moveTo(comet.x, comet.y);
+    ctx.lineTo(comet.x - comet.vx * tailLen * 0.5, comet.y - comet.vy * tailLen * 0.5);
+    ctx.lineTo(comet.x - comet.vx * tailLen, comet.y - comet.vy * tailLen);
+    ctx.closePath();
+    ctx.fillStyle = grad;
+    ctx.fill();
+    
+    // Head
+    ctx.beginPath();
+    ctx.arc(comet.x, comet.y, 2.5 * (1 - progress * 0.3), 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(240, 248, 255, ${alpha})`;
+    ctx.fill();
+    
+    // Head glow
+    ctx.beginPath();
+    ctx.arc(comet.x, comet.y, 6 * (1 - progress * 0.3), 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(107, 184, 240, ${alpha * 0.15})`;
+    ctx.fill();
+    
+    if(comet.life > comet.maxLife){
+      comet.active = false;
+      comet.wait = Math.random() * 500 + 300;
+    }
+  }
+  
+  requestAnimationFrame(drawStars);
+}
+drawStars();
+
+// === Scroll Reveal (IntersectionObserver) ===
+const sections = document.querySelectorAll('.section');
+const observer = new IntersectionObserver((entries) => {
+  for(const entry of entries){
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+      
+      // Animate score bars inside this section
+      const bars = entry.target.querySelectorAll('.score-bar-fill');
+      for(const bar of bars){
+        const pct = bar.dataset.pct;
+        if(pct) setTimeout(() => { bar.style.width = pct + '%'; }, 200);
+      }
+    }
+  }
+}, { threshold: 0.15 });
+
+for(const section of sections) observer.observe(section);
+
+// Also trigger scores immediately if visible
+setTimeout(() => {
+  const scoreSection = document.querySelector('#scores');
+  if(scoreSection && scoreSection.classList.contains('visible')){
+    const bars = scoreSection.querySelectorAll('.score-bar-fill');
+    for(const bar of bars){
+      const pct = bar.dataset.pct;
+      if(pct) bar.style.width = pct + '%';
+    }
+  }
+}, 500);
+</script>
+</body>
+</html>

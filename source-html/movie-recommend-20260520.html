@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电影推荐 | 卡萨布兰卡</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #111114;
+            --bg-card: #151518;
+            --accent-gold: #c9a962;
+            --accent-amber: #d4a853;
+            --accent-copper: #b87333;
+            --text-primary: #e8e4dc;
+            --text-secondary: #9a958a;
+            --text-muted: #6b6560;
+            --border-subtle: rgba(201, 169, 98, 0.15);
+            --glow-gold: rgba(201, 169, 98, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', 'Cormorant Garamond', serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+            padding-top: 40px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            border: 1px solid var(--border-subtle);
+            padding: 8px 24px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header-badge::before,
+        .header-badge::after {
+            content: '◆';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 6px;
+            color: var(--accent-gold);
+        }
+
+        .header-badge::before { left: 10px; }
+        .header-badge::after { right: 10px; }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .poster-container {
+            position: relative;
+        }
+
+        .poster-frame {
+            position: relative;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-copper) 50%, var(--accent-gold) 100%);
+            box-shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.6),
+                0 0 60px var(--glow-gold),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .poster-frame::before {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            background: var(--bg-primary);
+            z-index: 0;
+        }
+
+        .poster-inner {
+            position: relative;
+            z-index: 1;
+            aspect-ratio: 2/3;
+            background: linear-gradient(180deg, #1a1814 0%, #0d0b08 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .poster-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-shadow: 0 0 40px var(--glow-gold);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .poster-title-cn {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 12px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .poster-title-en {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .poster-director {
+            margin-top: 30px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        .poster-decorative {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
+        .hero-content {
+            padding: 20px 0;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .hero-rating {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            padding: 24px 0;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .rating-item {
+            text-align: center;
+        }
+
+        .rating-label {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .rating-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        .rating-max {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .rating-count {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .hero-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .meta-item {
+            padding: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .meta-label {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .meta-value {
+            font-size: 15px;
+            color: var(--text-primary);
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .section-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 60px;
+            height: 2px;
+            background: var(--accent-gold);
+        }
+
+        /* Synopsis */
+        .synopsis {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 50px;
+            position: relative;
+        }
+
+        .synopsis::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 120px;
+            color: var(--accent-gold);
+            opacity: 0.15;
+            line-height: 1;
+        }
+
+        .synopsis-text {
+            font-size: 18px;
+            line-height: 2;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .synopsis-text p {
+            margin-bottom: 24px;
+        }
+
+        .synopsis-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Highlights */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .highlight-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 40px;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .highlight-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .highlight-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--accent-gold);
+            margin-bottom: 24px;
+            color: var(--accent-gold);
+            font-size: 20px;
+        }
+
+        .highlight-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .highlight-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Why Watch */
+        .why-watch {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+            border: 1px solid var(--border-subtle);
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-watch::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--glow-gold) 0%, transparent 70%);
+            opacity: 0.1;
+        }
+
+        .why-watch-list {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-watch-item {
+            display: flex;
+            gap: 24px;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .why-watch-item:last-child {
+            border-bottom: none;
+        }
+
+        .why-watch-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            opacity: 0.5;
+            min-width: 50px;
+        }
+
+        .why-watch-content h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .why-watch-content p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Quote */
+        .quote-section {
+            text-align: center;
+            padding: 80px 40px;
+            position: relative;
+        }
+
+        .quote-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 300px;
+            background: radial-gradient(ellipse, var(--glow-gold) 0%, transparent 70%);
+            opacity: 0.08;
+        }
+
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--text-primary);
+            max-width: 800px;
+            margin: 0 auto 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-author {
+            font-size: 14px;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 40px;
+        }
+
+        .footer-text {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        .footer-decoration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-line {
+            width: 60px;
+            height: 1px;
+            background: var(--border-subtle);
+        }
+
+        .footer-diamond {
+            color: var(--accent-gold);
+            font-size: 8px;
+        }
+
+        /* Rain Effect */
+        .rain-drop {
+            position: fixed;
+            width: 1px;
+            background: linear-gradient(transparent, rgba(201, 169, 98, 0.3));
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .poster-container {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .hero-title {
+                font-size: 42px;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 24px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .hero-rating {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .synopsis,
+            .why-watch {
+                padding: 30px;
+            }
+
+            .quote-text {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-badge">经典电影推荐</div>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="poster-container">
+                <div class="poster-frame">
+                    <div class="poster-inner">
+                        <div class="poster-year">1942</div>
+                        <div class="poster-title-cn">卡萨布兰卡</div>
+                        <div class="poster-title-en">Casablanca</div>
+                        <div class="poster-director">导演 / Michael Curtiz</div>
+                    </div>
+                </div>
+                <div class="poster-decorative"></div>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="hero-title">卡萨布兰卡</h1>
+                <p class="hero-subtitle">Here's looking at you, kid.</p>
+                
+                <div class="hero-rating">
+                    <div class="rating-item">
+                        <div class="rating-label">豆瓣评分</div>
+                        <div class="rating-value">9.3<span class="rating-max">/10</span></div>
+                        <div class="rating-count">42万人评价</div>
+                    </div>
+                    <div class="rating-item">
+                        <div class="rating-label">IMDb评分</div>
+                        <div class="rating-value">8.5<span class="rating-max">/10</span></div>
+                        <div class="rating-count">62万人评价</div>
+                    </div>
+                    <div class="rating-item">
+                        <div class="rating-label">AFI百年百部</div>
+                        <div class="rating-value">#2<span class="rating-max">/100</span></div>
+                        <div class="rating-count">爱情片第一名</div>
+                    </div>
+                </div>
+
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">导演</div>
+                        <div class="meta-value">迈克尔·柯蒂兹</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">主演</div>
+                        <div class="meta-value">亨弗莱·鲍嘉 / 英格丽·褒曼</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">时长</div>
+                        <div class="meta-value">102分钟</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Synopsis -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">剧情梗概</h2>
+            </div>
+            <div class="synopsis">
+                <p class="synopsis-text">
+                    二战期间的摩洛哥城市卡萨布兰卡，成为了欧洲难民逃往美国的必经之地。在这里，所有的命运都交织在里克咖啡馆（Rick's Café Américain）——一个各方势力汇聚、地下交易盛行、签证与通行证可以决定生死的地方。
+                </p>
+                <p class="synopsis-text">
+                    里克（亨弗莱·鲍嘉 饰）是这家咖啡馆的美籍老板，一个声称"不为任何人出头"的冷漠男人。然而当他的旧情人伊尔莎（英格丽·褒曼 饰）突然出现，一切开始改变。伊尔莎与丈夫维克多——一名捷克抵抗运动领袖——正试图获得出境通行证，逃离纳粹的追捕。
+                </p>
+                <p class="synopsis-text">
+                    在卡萨布兰卡这个充满阴谋、爱情与牺牲的舞台上，每个人都要做出选择：是追逐个人的幸福，还是为了更大的正义而放手？里克的沉默背后，藏着怎样的过去？当钢琴声响起，当《时光流转》（As Time Goes By）的旋律再次飘荡，一切都将走向那个注定的结局。
+                </p>
+            </div>
+        </section>
+
+        <!-- Highlights -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">影片亮点</h2>
+            </div>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon">♪</div>
+                    <h3 class="highlight-title">影史最经典的台词与旋律</h3>
+                    <p class="highlight-desc">
+                        "Here's looking at you, kid." "We'll always have Paris." "Of all the gin joints in all the towns in all the world, she walks into mine." 这些台词已经成为电影史的DNA。而《As Time Goes By》的旋律，更是永恒的浪漫符号。
+                    </p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">◆</div>
+                    <h3 class="highlight-title">黑白影像的诗意</h3>
+                    <p class="highlight-desc">
+                        在黑白胶片上，摄影师Arthur Edeson创造了一种独特的视觉质感：烟雾缭绕的咖啡馆、阴影交错的街道、特写镜头中鲍嘉深邃的眼神——每一帧都像是一幅精心构图的摄影作品。
+                    </p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">◇</div>
+                    <h3 class="highlight-title">亨弗莱·鲍嘉的巅峰形象</h3>
+                    <p class="highlight-desc">
+                        里克这个角色，奠定了鲍嘉在影史上"硬汉柔情"的经典形象。他冷峻、愤世、却又在最关键时刻展现出惊人的道德勇气——这种复杂性格的刻画，在1942年是极具突破性的。
+                    </p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">○</div>
+                    <h3 class="highlight-title">乱世中的人性光芒</h3>
+                    <p class="highlight-desc">
+                        影片将个人情感与历史洪流完美融合。在纳粹阴影下，每个人都在做选择：退缩、妥协、反抗，或是牺牲。卡萨布兰卡不仅是一座城市，更是一个关于人性考验的微型宇宙。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Watch -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">为何值得一看</h2>
+            </div>
+            <div class="why-watch">
+                <ul class="why-watch-list">
+                    <li class="why-watch-item">
+                        <span class="why-watch-number">I</span>
+                        <div class="why-watch-content">
+                            <h4>爱情片的终极范本</h4>
+                            <p>《卡萨布兰卡》定义了一个永恒的主题：真正的爱，有时意味着放手。里克最后的选择——让伊尔莎和丈夫离开——不是失败的退让，而是最高形式的成全。这种"不占有"的爱情观，至今仍让人动容。</p>
+                        </div>
+                    </li>
+                    <li class="why-watch-item">
+                        <span class="why-watch-number">II</span>
+                        <div class="why-watch-content">
+                            <h4>完美的剧本结构</h4>
+                            <p>这部电影诞生于一个几乎所有人都没预料到会成功的拍摄过程——剧本边拍边写，结局一度未定。但最终呈现出的故事，却有着教科书般完美的起承转合，每一场戏都推动着情感和剧情双重递进。</p>
+                        </div>
+                    </li>
+                    <li class="why-watch-item">
+                        <span class="why-watch-number">III</span>
+                        <div class="why-watch-content">
+                            <h4>历史与虚构的完美交融</h4>
+                            <p>1942年的观众正在经历真实的二战，银幕上的卡萨布兰卡对他们而言不是遥远的传奇，而是正在发生的现实。这种"当下性"让影片的情感力量倍增，也让今天的我们得以窥见那个时代的集体焦虑与希望。</p>
+                        </div>
+                    </li>
+                    <li class="why-watch-item">
+                        <span class="why-watch-number">IV</span>
+                        <div class="why-watch-content">
+                            <h4>每次重看都有新发现</h4>
+                            <p>第一次看可能被里克的魅力吸引，第二次看会注意到配角的精彩表演（悉尼·格林街饰演的警官Renault堪称配角教科书），第三次看则会读懂那些沉默的眼神和未说出口的话。这是一部经得起反复品味的电影。</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Quote -->
+        <section class="quote-section">
+            <p class="quote-text">
+                We'll always have Paris.<br>
+                巴黎的那些日子，我们会永远拥有。
+            </p>
+            <p class="quote-author">—— 电影《卡萨布兰卡》</p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-decoration">
+                <span class="footer-line"></span>
+                <span class="footer-diamond">◆</span>
+                <span class="footer-line"></span>
+            </div>
+            <p class="footer-text">CLASSIC CINEMA RECOMMENDATION · 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Particle Animation
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.life = Math.random() * 200 + 100;
+                this.maxLife = this.life;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.life--;
+
+                if (this.life <= 0 || this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                const lifeRatio = this.life / this.maxLife;
+                const currentOpacity = this.opacity * lifeRatio;
+                
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(201, 169, 98, ${currentOpacity})`;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.min(80, Math.floor(canvas.width * canvas.height / 15000));
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function connectParticles() {
+            const maxDistance = 120;
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < maxDistance) {
+                        const opacity = (1 - distance / maxDistance) * 0.15;
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(201, 169, 98, ${opacity})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            connectParticles();
+            animationId = requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+
+        resizeCanvas();
+        initParticles();
+        animate();
+    </script>
+</body>
+</html>

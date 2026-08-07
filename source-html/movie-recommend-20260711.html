@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>终结者2：审判日 — 每日经典电影推荐</title>
+<style>
+  :root{
+    --bg:#0a0c10;
+    --bg-2:#14171d;
+    --panel:#171b22;
+    --panel-2:#1d222b;
+    --steel:#2a3340;
+    --steel-2:#3d4a5c;
+    --chrome:#c8d2dc;
+    --ember:#ff7a18;
+    --ember-2:#ffb347;
+    --amber:#ffd27a;
+    --danger:#e63946;
+    --text:#e7ecf2;
+    --text-dim:#9aa6b4;
+    --text-faint:#5f6b78;
+    --gold:#d9b15a;
+    --line:rgba(200,210,220,0.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.8;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:"Georgia","Songti SC","STSong",serif}
+  ::selection{background:var(--ember);color:#000}
+
+  /* ===== background canvas ===== */
+  #bg-canvas{position:fixed;inset:0;z-index:0;opacity:.9}
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(ellipse at 50% 30%,transparent 35%,rgba(5,6,9,.55) 80%,rgba(5,6,9,.92) 100%);
+  }
+  .scanlines{
+    position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.35;
+    background:repeating-linear-gradient(to bottom,rgba(255,255,255,.025) 0 1px,transparent 1px 3px);
+  }
+  .wrap{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;position:relative;padding:80px 24px;
+  }
+  .hero .kicker{
+    font-size:13px;letter-spacing:.55em;color:var(--ember-2);text-transform:uppercase;
+    margin-bottom:26px;opacity:0;transform:translateY(20px);animation:rise .9s .1s forwards;
+  }
+  .year{
+    font-size:clamp(90px,22vw,240px);font-weight:900;line-height:.85;
+    letter-spacing:-.04em;color:transparent;
+    background:linear-gradient(180deg,#eef3f8 0%,#aeb9c6 42%,#4a5663 70%,#1b2128 100%);
+    -webkit-background-clip:text;background-clip:text;
+    filter:drop-shadow(0 0 32px rgba(255,122,24,.18));
+    opacity:0;transform:scale(.92);animation:pop 1s .25s forwards;
+  }
+  .title-cn{
+    font-size:clamp(34px,8vw,82px);font-weight:800;letter-spacing:.04em;margin-top:8px;
+    background:linear-gradient(90deg,var(--chrome),#fff 30%,var(--ember-2) 55%,var(--ember) 75%,var(--danger));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 4px 24px rgba(255,122,24,.25));
+    opacity:0;transform:translateY(22px);animation:rise 1s .5s forwards;
+  }
+  .title-en{
+    margin-top:14px;font-size:clamp(13px,2.4vw,19px);letter-spacing:.42em;color:var(--text-dim);
+    text-transform:uppercase;opacity:0;animation:rise 1s .7s forwards;
+  }
+  .tagline{
+    margin-top:34px;max-width:640px;font-size:clamp(15px,2.6vw,20px);color:var(--amber);
+    font-style:italic;opacity:0;animation:rise 1s .9s forwards;
+  }
+  .tagline .src{display:block;margin-top:10px;font-style:normal;font-size:12px;letter-spacing:.3em;color:var(--text-faint);text-transform:uppercase}
+  .meta-row{
+    margin-top:38px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;
+    opacity:0;animation:rise 1s 1.05s forwards;
+  }
+  .meta-chip{
+    border:1px solid var(--line);background:rgba(20,23,29,.6);backdrop-filter:blur(6px);
+    padding:9px 18px;border-radius:999px;font-size:13px;color:var(--text-dim);letter-spacing:.05em;
+  }
+  .meta-chip b{color:var(--chrome);font-weight:600}
+  .scroll-cue{
+    position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+    color:var(--text-faint);font-size:11px;letter-spacing:.4em;text-transform:uppercase;
+    opacity:0;animation:rise 1s 1.3s forwards;
+  }
+  .scroll-cue::after{content:"";display:block;width:1px;height:34px;margin:12px auto 0;
+    background:linear-gradient(var(--ember),transparent);animation:cue 2s ease-in-out infinite}
+
+  /* ===== SECTION ===== */
+  section{padding:96px 0;position:relative}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:54px}
+  .sec-idx{
+    font-size:14px;letter-spacing:.3em;color:var(--ember);font-weight:700;
+    border:1px solid rgba(255,122,24,.4);border-radius:6px;padding:4px 12px;flex:none;
+  }
+  .sec-title{font-size:clamp(24px,4.4vw,38px);font-weight:800;letter-spacing:.02em;color:var(--text)}
+  .sec-sub{color:var(--text-faint);font-size:13px;letter-spacing:.2em;margin-left:auto;text-transform:uppercase}
+
+  /* ===== ratings ===== */
+  .ratings{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .rate-card{
+    background:linear-gradient(160deg,var(--panel),var(--bg-2));
+    border:1px solid var(--line);border-radius:16px;padding:28px 22px;text-align:center;
+    position:relative;overflow:hidden;transition:transform .5s,border-color .5s;
+  }
+  .rate-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--ember),transparent);opacity:.6}
+  .rate-card:hover{transform:translateY(-6px);border-color:rgba(255,122,24,.35)}
+  .rate-src{font-size:12px;letter-spacing:.25em;color:var(--text-faint);text-transform:uppercase;margin-bottom:14px}
+  .rate-num{font-size:46px;font-weight:900;color:var(--chrome);line-height:1;
+    font-family:"Georgia",serif;letter-spacing:-.02em}
+  .rate-num .pct{font-size:22px;color:var(--ember-2);vertical-align:super;margin-left:2px}
+  .rate-bar{height:5px;border-radius:3px;background:rgba(255,255,255,.07);margin-top:18px;overflow:hidden}
+  .rate-fill{height:100%;width:0;border-radius:3px;
+    background:linear-gradient(90deg,var(--ember),var(--ember-2));transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+  .rate-note{margin-top:12px;font-size:12px;color:var(--text-dim)}
+
+  /* ===== plot ===== */
+  .plot-grid{display:grid;grid-template-columns:1fr 320px;gap:48px;align-items:start}
+  .plot-text p{color:var(--text-dim);font-size:16.5px;margin-bottom:20px}
+  .plot-text p .hl{color:var(--amber);font-weight:600}
+  .spoiler-badge{
+    display:inline-flex;align-items:center;gap:9px;margin-top:8px;
+    background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.4);
+    color:var(--danger);font-size:13px;letter-spacing:.08em;border-radius:999px;padding:8px 16px;
+  }
+  .spoiler-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--danger);box-shadow:0 0 10px var(--danger)}
+  .poster-card{
+    position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);
+    background:linear-gradient(160deg,#1a1f27,#0c0e12);aspect-ratio:2/3;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .poster-card svg{width:100%;height:100%}
+  .poster-tag{position:absolute;bottom:14px;left:14px;right:14px;text-align:center;
+    font-size:11px;letter-spacing:.25em;color:var(--text-faint);text-transform:uppercase}
+
+  /* ===== highlights ===== */
+  .hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .hl-card{
+    background:linear-gradient(160deg,var(--panel),var(--bg-2));
+    border:1px solid var(--line);border-radius:16px;padding:30px 26px;
+    transition:transform .5s,border-color .5s,box-shadow .5s;position:relative;overflow:hidden;
+  }
+  .hl-card:hover{transform:translateY(-7px);border-color:rgba(255,122,24,.4);
+    box-shadow:0 18px 50px -22px rgba(255,122,24,.5)}
+  .hl-num{font-size:54px;font-weight:900;color:transparent;
+    background:linear-gradient(160deg,rgba(255,122,24,.35),rgba(200,210,220,.08));
+    -webkit-background-clip:text;background-clip:text;font-family:"Georgia",serif;line-height:1;margin-bottom:16px}
+  .hl-title{font-size:19px;font-weight:700;color:var(--chrome);margin-bottom:12px;letter-spacing:.02em}
+  .hl-desc{font-size:14.5px;color:var(--text-dim)}
+
+  /* ===== quotes ===== */
+  .quote-band{
+    background:linear-gradient(110deg,rgba(255,122,24,.06),rgba(20,23,29,.4) 40%,rgba(230,57,70,.05));
+    border:1px solid var(--line);border-radius:18px;padding:54px 48px;position:relative;
+  }
+  .quote-band .mark{position:absolute;top:18px;left:30px;font-size:120px;font-family:"Georgia",serif;
+    color:rgba(255,122,24,.16);line-height:1;pointer-events:none}
+  .quote-line{font-size:clamp(20px,3.4vw,30px);font-style:italic;color:var(--text);font-family:"Georgia","Songti SC",serif;position:relative;z-index:1}
+  .quote-line .en{display:block;margin-top:14px;font-size:15px;color:var(--text-faint);font-style:normal;letter-spacing:.04em}
+  .quote-by{margin-top:22px;font-size:13px;letter-spacing:.3em;color:var(--ember-2);text-transform:uppercase;position:relative;z-index:1}
+
+  /* ===== why ===== */
+  .why-list{display:flex;flex-direction:column;gap:18px}
+  .why-item{
+    display:flex;gap:22px;align-items:flex-start;padding:24px 28px;
+    background:linear-gradient(160deg,var(--panel),var(--bg-2));
+    border:1px solid var(--line);border-radius:14px;transition:border-color .4s,transform .4s;
+  }
+  .why-item:hover{border-color:rgba(200,210,220,.22);transform:translateX(6px)}
+  .why-ic{flex:none;width:42px;height:42px;border-radius:11px;
+    background:linear-gradient(150deg,var(--ember),var(--danger));
+    display:flex;align-items:center;justify-content:center;font-weight:800;color:#0a0c10;font-size:18px;
+    box-shadow:0 6px 18px -6px rgba(255,122,24,.7)}
+  .why-bd h4{font-size:17px;color:var(--chrome);font-weight:700;margin-bottom:6px}
+  .why-bd p{font-size:14.5px;color:var(--text-dim)}
+
+  /* ===== honors ===== */
+  .honor-grid{display:flex;flex-wrap:wrap;gap:12px}
+  .honor{
+    border:1px solid var(--line);background:rgba(20,23,29,.6);border-radius:10px;
+    padding:11px 18px;font-size:13.5px;color:var(--text-dim);letter-spacing:.03em;
+    transition:all .4s;opacity:0;transform:translateY(14px);
+  }
+  .honor.in{opacity:1;transform:translateY(0)}
+  .honor b{color:var(--gold);font-weight:600}
+  .honor.top{border-color:rgba(217,177,90,.5);background:rgba(217,177,90,.08);color:var(--amber)}
+
+  /* ===== archive ===== */
+  .archive{display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px}
+  .arc-row{display:flex;justify-content:space-between;gap:18px;padding:15px 0;
+    border-bottom:1px solid var(--line);font-size:15px}
+  .arc-row .k{color:var(--text-faint);letter-spacing:.05em}
+  .arc-row .v{color:var(--text);font-weight:600;text-align:right}
+
+  /* ===== editor note ===== */
+  .editor{
+    background:linear-gradient(160deg,var(--panel-2),var(--bg-2));
+    border:1px solid var(--line);border-left:3px solid var(--ember);border-radius:16px;
+    padding:40px 42px;position:relative;
+  }
+  .editor .stars{color:var(--ember-2);letter-spacing:.3em;font-size:22px;margin-bottom:18px}
+  .editor p{font-size:16px;color:var(--text-dim)}
+  .editor .sign{margin-top:20px;font-size:13px;color:var(--text-faint);letter-spacing:.2em}
+
+  footer{padding:60px 0 80px;text-align:center;color:var(--text-faint);font-size:12.5px;letter-spacing:.15em}
+  footer .fdot{color:var(--ember)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s,transform .9s}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  @keyframes rise{to{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes pop{to{opacity:1;transform:scale(1)}}
+  @keyframes cue{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+  @media(max-width:860px){
+    .ratings{grid-template-columns:repeat(2,1fr)}
+    .hl-grid{grid-template-columns:1fr 1fr}
+    .plot-grid{grid-template-columns:1fr}
+    .poster-card{max-width:280px;margin:0 auto}
+    .archive{grid-template-columns:1fr}
+  }
+  @media(max-width:560px){
+    .hl-grid{grid-template-columns:1fr}
+    .ratings{grid-template-columns:1fr 1fr}
+    section{padding:64px 0}
+  }
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="vignette"></div>
+<div class="scanlines"></div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="kicker">每日经典电影 · Daily Classic</div>
+  <div class="year">1991</div>
+  <h1 class="title-cn">终结者2：审判日</h1>
+  <div class="title-en">Terminator 2: Judgment Day</div>
+  <p class="tagline serif">「我来是为了保护你。」<span class="src">— 这句台词，定义了一个时代的动作片温度</span></p>
+  <div class="meta-row">
+    <span class="meta-chip"><b>导演</b> 詹姆斯·卡梅隆</span>
+    <span class="meta-chip"><b>主演</b> 阿诺·施瓦辛格 / 琳达·汉密尔顿 / 爱德华·福隆</span>
+    <span class="meta-chip"><b>类型</b> 科幻 · 动作</span>
+    <span class="meta-chip"><b>片长</b> 137 分钟</span>
+  </div>
+  <div class="scroll-cue">向下滚动</div>
+</header>
+
+<div class="wrap">
+
+  <!-- ===== RATINGS ===== -->
+  <section class="reveal">
+    <div class="sec-head">
+      <span class="sec-idx">01</span>
+      <span class="sec-title">口碑与评分</span>
+      <span class="sec-sub">Ratings</span>
+    </div>
+    <div class="ratings">
+      <div class="rate-card">
+        <div class="rate-src">IMDb</div>
+        <div class="rate-num" data-target="8.6" data-dec="1">0.0</div>
+        <div class="rate-bar"><div class="rate-fill" data-w="86"></div></div>
+        <div class="rate-note">Top 250 常驻经典</div>
+      </div>
+      <div class="rate-card">
+        <div class="rate-src">豆瓣</div>
+        <div class="rate-num" data-target="8.8" data-dec="1">0.0</div>
+        <div class="rate-bar"><div class="rate-fill" data-w="88"></div></div>
+        <div class="rate-note">华语影迷心中的神作</div>
+      </div>
+      <div class="rate-card">
+        <div class="rate-src">烂番茄</div>
+        <div class="rate-num" data-target="93" data-dec="0">0<span class="pct">%</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-w="93"></div></div>
+        <div class="rate-note">影评人新鲜度</div>
+      </div>
+      <div class="rate-card">
+        <div class="rate-src">Metacritic</div>
+        <div class="rate-num" data-target="75" data-dec="0">0</div>
+        <div class="rate-bar"><div class="rate-fill" data-w="75"></div></div>
+        <div class="rate-note">普遍赞誉</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLOT ===== -->
+  <section class="reveal">
+    <div class="sec-head">
+      <span class="sec-idx">02</span>
+      <span class="sec-title">剧情梗概</span>
+      <span class="sec-sub">Synopsis · 无剧透</span>
+    </div>
+    <div class="plot-grid">
+      <div class="plot-text">
+        <p>十年前那场危机之后，世界暂归平静。当年那个被派来灭口的机器杀手，如今以<span class="hl">液态金属</span>的形态重生——它能化作任何形状，几乎无法被常规手段摧毁。</p>
+        <p>与此同时，另一具终结者被送回现在，但它的任务截然不同：<span class="hl">守护</span>。它要保护的人，是当年险些丧命、如今已长大成人的少年约翰·康纳。</p>
+        <p>约翰与母亲莎拉生活在一个被"末日预言"缠绕的家庭里。当一台几乎无敌的杀机锁定他们，一段横跨追逃、信任与反杀的旅程就此展开。影片真正的核心，是一位少年、一位母亲，与一台学会理解"生命价值"的机器之间，逐渐建立起来的羁绊。</p>
+        <p>这是一个关于<span class="hl">命运能否被改写</span>的故事——当人类把自己推向毁灭边缘，拯救是否仍有可能？</p>
+        <div class="spoiler-badge"><span class="dot"></span>本页严格无剧透：不揭示关键情节走向与结局</div>
+      </div>
+      <div class="poster-card">
+        <svg viewBox="0 0 320 480" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1b222c"/>
+              <stop offset="0.55" stop-color="#2a3340"/>
+              <stop offset="1" stop-color="#0c0e12"/>
+            </linearGradient>
+            <radialGradient id="glow" cx="50%" cy="38%" r="55%">
+              <stop offset="0" stop-color="#ff7a18" stop-opacity="0.5"/>
+              <stop offset="1" stop-color="#ff7a18" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#eef3f8"/>
+              <stop offset="0.5" stop-color="#aeb9c6"/>
+              <stop offset="1" stop-color="#3d4a5c"/>
+            </linearGradient>
+          </defs>
+          <rect width="320" height="480" fill="url(#skyg)"/>
+          <ellipse cx="160" cy="180" rx="150" ry="150" fill="url(#glow)"/>
+          <!-- city skyline -->
+          <g fill="#0c0e12" opacity="0.85">
+            <rect x="20" y="340" width="34" height="140"/>
+            <rect x="58" y="300" width="40" height="180"/>
+            <rect x="102" y="360" width="28" height="120"/>
+            <rect x="190" y="320" width="36" height="160"/>
+            <rect x="230" y="358" width="30" height="122"/>
+            <rect x="264" y="296" width="40" height="184"/>
+          </g>
+          <!-- skull / endo silhouette -->
+          <g opacity="0.9">
+            <path d="M160 110c-34 0-58 26-58 60 0 22 11 38 26 50l-8 24h80l-8-24c15-12 26-28 26-50 0-34-24-60-58-60z" fill="url(#chrome)"/>
+            <circle cx="142" cy="172" r="11" fill="#0c0e12"/>
+            <circle cx="178" cy="172" r="11" fill="#0c0e12"/>
+            <rect x="150" y="200" width="20" height="9" fill="#0c0e12"/>
+            <path d="M150 214h20l-3 10h-14z" fill="#0c0e12"/>
+          </g>
+          <!-- red eye -->
+          <circle cx="142" cy="172" r="4" fill="#e63946"/>
+          <circle cx="178" cy="172" r="4" fill="#e63946"/>
+          <!-- T-1000 liquid streak -->
+          <path d="M40 250 q60 -30 120 0 t120 0" fill="none" stroke="#c8d2dc" stroke-width="2" opacity="0.5"/>
+        </svg>
+        <div class="poster-tag">Machine · Fate · Humanity</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HIGHLIGHTS ===== -->
+  <section class="reveal">
+    <div class="sec-head">
+      <span class="sec-idx">03</span>
+      <span class="sec-title">六大亮点</span>
+      <span class="sec-sub">Highlights</span>
+    </div>
+    <div class="hl-grid">
+      <div class="hl-card">
+        <div class="hl-num">01</div>
+        <div class="hl-title">CGI 革命的里程碑</div>
+        <div class="hl-desc">液态金属杀手的变形特效，是影史首次大规模使用数字影像合成，直接定义了此后三十年的视觉语言。</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-num">02</div>
+        <div class="hl-title">反套路的角色反转</div>
+        <div class="hl-desc">上一集的冷血屠夫，这一集成了沉默的守护者。阿诺用极简台词与肢体，演出了"机器学会温柔"的惊人反差。</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-num">03</div>
+        <div class="hl-title">卡梅隆的精准调度</div>
+        <div class="hl-desc">追车、爆炸、近身格斗一气呵成，节奏如精密齿轮咬合，却始终让人物情感走在动作之前。</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-num">04</div>
+        <div class="hl-title">动作片里的温情内核</div>
+        <div class="hl-desc">它表面是硬核科幻，内核却关于母子、关于成长、关于"人为何值得被保护"，让人落泪的不只是场面。</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-num">05</div>
+        <div class="hl-title">主题超越时代</div>
+        <div class="hl-desc">对人工智能、核武器与人类文明自毁倾向的省思，在今天比上映时更具现实重量。</div>
+      </div>
+      <div class="hl-card">
+        <div class="hl-num">06</div>
+        <div class="hl-title">永不褪色的经典地位</div>
+        <div class="hl-desc">常年位居各类"最伟大科幻/动作片"榜单前列，是影迷心中难以逾越的标杆之作。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE ===== -->
+  <section class="reveal">
+    <div class="quote-band">
+      <span class="mark serif">"</span>
+      <p class="quote-line serif">没有命运，除了我们亲手创造的。
+        <span class="en">"There is no fate but what we make for ourselves."</span>
+      </p>
+      <div class="quote-by">— 莎拉·康纳的录音</div>
+    </div>
+  </section>
+
+  <!-- ===== WHY ===== -->
+  <section class="reveal">
+    <div class="sec-head">
+      <span class="sec-idx">04</span>
+      <span class="sec-title">为什么值得一看</span>
+      <span class="sec-sub">Why Watch</span>
+    </div>
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-ic">视</div>
+        <div class="why-bd">
+          <h4>视觉特效的"原点"体验</h4>
+          <p>哪怕你看过无数后来者，仍能在它身上看到一切数字特效的源头。那种开创性的震撼，只有原作能给。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-ic">情</div>
+        <div class="why-bd">
+          <h4>硬核外壳下的柔软心脏</h4>
+          <p>它证明了爆米花电影也可以认真谈论爱、责任与牺牲。看完你会记得的，不是爆炸，而是那句告别。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-ic">思</div>
+        <div class="why-bd">
+          <h4>关于科技与人类的永恒诘问</h4>
+          <p>当 AI 走进日常，这部 1991 年的电影提出的问题反而更尖锐：我们究竟在创造拯救者，还是毁灭者？</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-ic">典</div>
+        <div class="why-bd">
+          <h4>影史公认的必看之作</h4>
+          <p>高评分、好口碑、长盛不衰——它不属于"粉丝向"，而属于任何想了解现代电影的人。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HONORS ===== -->
+  <section class="reveal">
+    <div class="sec-head">
+      <span class="sec-idx">05</span>
+      <span class="sec-title">荣誉与里程碑</span>
+      <span class="sec-sub">Honors</span>
+    </div>
+    <div class="honor-grid">
+      <span class="honor top"><b>奥斯卡最佳视觉效果</b></span>
+      <span class="honor top"><b>奥斯卡最佳化妆</b></span>
+      <span class="honor top"><b>奥斯卡最佳音响</b></span>
+      <span class="honor top"><b>奥斯卡最佳音效剪辑</b></span>
+      <span class="honor">土星奖最佳科幻电影</span>
+      <span class="honor">MTV 电影奖最佳男演员（阿诺）</span>
+      <span class="honor">AFI 百年百大惊悚片入选</span>
+      <span class="honor">美国国会图书馆国家影片登记表</span>
+      <span class="honor">IMDb Top 250 常驻</span>
+      <span class="honor">全球票房逾 5 亿美元</span>
+    </div>
+  </section>
+
+  <!-- ===== ARCHIVE ===== -->
+  <section class="reveal">
+    <div class="sec-head">
+      <span class="sec-idx">06</span>
+      <span class="sec-title">影片档案</span>
+      <span class="sec-sub">Profile</span>
+    </div>
+    <div class="archive">
+      <div class="arc-row"><span class="k">中文片名</span><span class="v">终结者2：审判日</span></div>
+      <div class="arc-row"><span class="k">英文片名</span><span class="v">Terminator 2: Judgment Day</span></div>
+      <div class="arc-row"><span class="k">上映年份</span><span class="v">1991</span></div>
+      <div class="arc-row"><span class="k">导演</span><span class="v">詹姆斯·卡梅隆</span></div>
+      <div class="arc-row"><span class="k">主演</span><span class="v">阿诺·施瓦辛格</span></div>
+      <div class="arc-row"><span class="k">联合主演</span><span class="v">琳达·汉密尔顿 / 爱德华·福隆</span></div>
+      <div class="arc-row"><span class="k">类型</span><span class="v">科幻 / 动作</span></div>
+      <div class="arc-row"><span class="k">片长</span><span class="v">137 分钟</span></div>
+      <div class="arc-row"><span class="k">制片国家</span><span class="v">美国</span></div>
+      <div class="arc-row"><span class="k">奥斯卡奖项</span><span class="v">4 项</span></div>
+      <div class="arc-row"><span class="k">配乐</span><span class="v">布拉德·费德尔</span></div>
+      <div class="arc-row"><span class="k">系列位置</span><span class="v">终结者系列第二部</span></div>
+    </div>
+  </section>
+
+  <!-- ===== EDITOR ===== -->
+  <section class="reveal">
+    <div class="editor">
+      <div class="stars serif">★★★★★</div>
+      <p>《终结者2》最了不起的地方，是它把一个"续集"拍成了超越前作的教科书。它用当时最前沿的技术，讲了一个最古老的故事——人为什么值得被拯救。三十多年过去，特效会老，但那台学会温柔的机器，依然让人心头一热。如果你想找一部"既好看又有分量"的电影，它永远不会让你失望。</p>
+      <div class="sign">— 每日经典电影 · 编辑评语</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  每日经典电影推荐 <span class="fdot">·</span> 终结者2：审判日 <span class="fdot">·</span> 本页内容无剧透
+</footer>
+
+<script>
+/* ===== Background Canvas: embers + liquid-metal droplets ===== */
+(function(){
+  const cv = document.getElementById('bg-canvas');
+  const ctx = cv.getContext('2d');
+  let W, H, DPR;
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth = window.innerWidth;
+    H = cv.clientHeight = window.innerHeight;
+    cv.width = W * DPR; cv.height = H * DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const embers = [];
+  const drops = [];
+  const COUNT_E = 46, COUNT_D = 16;
+  for(let i=0;i<COUNT_E;i++){
+    embers.push(newEmber(true));
+  }
+  for(let i=0;i<COUNT_D;i++){
+    drops.push(newDrop(true));
+  }
+  function newEmber(init){
+    return {
+      x: Math.random()*W,
+      y: init ? Math.random()*H : H + 10,
+      r: Math.random()*2.2 + 0.6,
+      vy: -(Math.random()*0.5 + 0.25),
+      vx: (Math.random()-0.5)*0.4,
+      life: Math.random()*0.5 + 0.4,
+      a: Math.random()*0.5 + 0.3,
+      tw: Math.random()*Math.PI*2
+    };
+  }
+  function newDrop(init){
+    return {
+      x: Math.random()*W,
+      y: init ? Math.random()*H : -20,
+      r: Math.random()*9 + 4,
+      vy: Math.random()*0.35 + 0.2,
+      vx: (Math.random()-0.5)*0.3,
+      sway: Math.random()*Math.PI*2,
+      a: Math.random()*0.18 + 0.06
+    };
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // liquid-metal droplets (silver, slow fall)
+    for(let d of drops){
+      d.y += d.vy; d.sway += 0.01;
+      d.x += Math.sin(d.sway)*0.3 + d.vx;
+      if(d.y > H + 20){ Object.assign(d, newDrop(false)); }
+      const g = ctx.createRadialGradient(d.x,d.y,0,d.x,d.y,d.r);
+      g.addColorStop(0, `rgba(200,210,220,${d.a+0.12})`);
+      g.addColorStop(0.5, `rgba(160,175,190,${d.a})`);
+      g.addColorStop(1, 'rgba(60,74,92,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(d.x,d.y,d.r,0,Math.PI*2); ctx.fill();
+    }
+    // embers (orange, rise)
+    for(let e of embers){
+      e.tw += 0.05;
+      e.y += e.vy; e.x += e.vx;
+      e.a = (Math.sin(e.tw)*0.25 + 0.55) * e.life;
+      if(e.y < -10 || e.a <= 0.02){ Object.assign(e, newEmber(false)); }
+      const g = ctx.createRadialGradient(e.x,e.y,0,e.x,e.y,e.r*4);
+      g.addColorStop(0, `rgba(255,179,71,${e.a})`);
+      g.addColorStop(0.4, `rgba(255,122,24,${e.a*0.6})`);
+      g.addColorStop(1, 'rgba(255,122,24,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(e.x,e.y,e.r*4,0,Math.PI*2); ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ===== Reveal on scroll ===== */
+(function(){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+/* ===== Rating counters + bars ===== */
+(function(){
+  function animateRatings(){
+    document.querySelectorAll('.rate-num').forEach(el=>{
+      const target = parseFloat(el.dataset.target);
+      const dec = parseInt(el.dataset.dec);
+      const hasPct = el.querySelector('.pct');
+      let cur = 0;
+      const step = target/48;
+      const t = setInterval(()=>{
+        cur += step;
+        if(cur >= target){
+          cur = target; clearInterval(t);
+        }
+        el.firstChild.nodeValue = cur.toFixed(dec);
+      },22);
+    });
+    document.querySelectorAll('.rate-fill').forEach(el=>{
+      setTimeout(()=>{ el.style.width = el.dataset.w + '%'; }, 200);
+    });
+  }
+  const sec = document.querySelector('section');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){ animateRatings(); io.disconnect(); }
+    });
+  },{threshold:0.3});
+  io.observe(sec);
+})();
+
+/* ===== Honor stagger ===== */
+(function(){
+  const honors = document.querySelectorAll('.honor');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        honors.forEach((h,i)=>{
+          setTimeout(()=>h.classList.add('in'), i*70);
+        });
+        io.disconnect();
+      }
+    });
+  },{threshold:0.2});
+  io.observe(document.querySelector('.honor-grid'));
+})();
+</script>
+</body>
+</html>

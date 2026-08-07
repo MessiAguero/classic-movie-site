@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>死亡诗社 · Dead Poets Society (1989)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:wght@500;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink-0:#0a0b10;
+    --ink-1:#0f1019;
+    --ink-2:#15131c;
+    --panel:#161420;
+    --panel-2:#100f17;
+    --ember:#e6a85a;
+    --ember-deep:#c5823a;
+    --ember-soft:#f2c98c;
+    --cream:#f1e7d3;
+    --cream-dim:#cbc1ac;
+    --sage:#9fb89a;
+    --line:rgba(230,168,90,0.18);
+    --line-soft:rgba(241,231,211,0.08);
+    --shadow:0 30px 70px -30px rgba(0,0,0,0.85);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Noto Sans SC","Noto Serif SC",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--ink-0);
+    color:var(--cream);
+    line-height:1.75;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:rgba(230,168,90,0.28);color:#fff;}
+  .serif{font-family:"Noto Serif SC",serif;}
+  .latin-display{font-family:"Playfair Display","Cormorant Garamond",serif;}
+
+  /* ---------- Background layers ---------- */
+  #bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+  .bg-veil{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:
+      radial-gradient(1200px 720px at 50% -8%, rgba(120,80,30,0.26), transparent 60%),
+      radial-gradient(900px 600px at 85% 115%, rgba(60,80,55,0.12), transparent 60%),
+      linear-gradient(180deg, rgba(10,11,16,0.2), rgba(10,11,16,0.78));
+  }
+  .grain{
+    position:fixed;inset:0;z-index:2;pointer-events:none;opacity:0.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:3;max-width:1080px;margin:0 auto;padding:0 26px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:90px 20px 60px;
+  }
+  .year-big{
+    font-family:"Playfair Display",serif;
+    font-weight:900;font-size:clamp(110px,22vw,260px);line-height:0.86;
+    color:transparent;
+    background:linear-gradient(180deg,#f4e3c4 0%,#e6a85a 48%,#8a5a23 100%);
+    -webkit-background-clip:text;background-clip:text;
+    letter-spacing:0.02em;
+    transform:perspective(640px) rotateX(16deg);
+    opacity:0.92;
+    text-shadow:0 18px 50px rgba(0,0,0,0.6);
+  }
+  .hero .eyebrow{
+    margin-top:10px;font-size:13px;letter-spacing:0.52em;text-transform:uppercase;
+    color:var(--ember);font-weight:500;padding-left:0.52em;
+  }
+  .hero h1{
+    font-family:"Noto Serif SC",serif;font-weight:900;
+    font-size:clamp(46px,9vw,104px);line-height:1.02;margin:14px 0 6px;
+    color:var(--cream);letter-spacing:0.06em;
+    text-shadow:0 10px 40px rgba(0,0,0,0.55);
+  }
+  .hero .en-title{
+    font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
+    font-size:clamp(20px,3.4vw,38px);color:var(--ember-soft);letter-spacing:0.04em;margin-bottom:26px;
+  }
+  .tagline{
+    max-width:660px;font-family:"Noto Serif SC",serif;font-size:clamp(16px,2.4vw,21px);
+    color:var(--cream-dim);letter-spacing:0.04em;line-height:1.95;
+  }
+  .tagline b{color:var(--ember);font-weight:600;}
+  .scroll-hint{
+    position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+    font-size:12px;letter-spacing:0.4em;color:var(--ember);opacity:0.7;text-transform:uppercase;
+    animation:floaty 2.6s ease-in-out infinite;
+  }
+  @keyframes floaty{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,8px);}}
+
+  /* ---------- Section frame ---------- */
+  section{padding:74px 0;position:relative;}
+  .sec-head{text-align:center;margin-bottom:46px;}
+  .sec-kicker{
+    display:inline-block;font-size:12px;letter-spacing:0.42em;text-transform:uppercase;
+    color:var(--ember);margin-bottom:14px;font-weight:600;
+  }
+  .sec-title{
+    font-family:"Noto Serif SC",serif;font-weight:700;font-size:clamp(26px,4.4vw,40px);
+    color:var(--cream);letter-spacing:0.08em;line-height:1.3;
+  }
+  .sec-title .en{display:block;font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
+    font-size:0.5em;color:var(--ember-soft);letter-spacing:0.06em;margin-top:6px;opacity:0.85;}
+
+  /* ---------- Rating bars ---------- */
+  .ratings{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .rate-card{
+    background:linear-gradient(160deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line);border-radius:16px;padding:24px 20px 22px;text-align:center;
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .rate-card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--ember),transparent);opacity:0.6;
+  }
+  .rate-src{font-size:12.5px;letter-spacing:0.18em;color:var(--ember);font-weight:600;text-transform:uppercase;}
+  .rate-val{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(34px,5vw,48px);color:var(--cream);margin:8px 0 2px;line-height:1;}
+  .rate-val .sub{font-size:0.42em;color:var(--cream-dim);font-family:"Noto Sans SC";font-weight:400;letter-spacing:0.04em;}
+  .rate-bar{height:6px;border-radius:6px;background:rgba(241,231,211,0.10);margin-top:14px;overflow:hidden;}
+  .rate-fill{height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--ember-deep),var(--ember-soft));transition:width 1.5s cubic-bezier(.2,.8,.2,1);}
+  .rate-note{font-size:11.5px;color:var(--cream-dim);margin-top:9px;letter-spacing:0.03em;}
+
+  /* ---------- Synopsis + poster ---------- */
+  .synopsis-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:center;}
+  .synopsis p{font-family:"Noto Serif SC",serif;font-size:17px;color:var(--cream-dim);line-height:2.0;margin-bottom:18px;letter-spacing:0.02em;}
+  .synopsis p .hl{color:var(--ember-soft);font-weight:600;}
+  .nospoiler{
+    display:inline-flex;align-items:center;gap:8px;margin-top:6px;
+    font-size:12.5px;letter-spacing:0.16em;color:var(--sage);
+    border:1px solid rgba(159,184,154,0.35);border-radius:999px;padding:7px 16px;font-weight:600;
+  }
+  .nospoiler .dot{width:7px;height:7px;border-radius:50%;background:var(--sage);box-shadow:0 0 10px var(--sage);}
+
+  .poster{
+    position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);
+    background:linear-gradient(170deg,#15131c,#0d0c13);
+    box-shadow:var(--shadow);aspect-ratio:3/4;
+  }
+  .poster svg{display:block;width:100%;height:100%;}
+  .poster .frame-line{position:absolute;inset:14px;border:1px solid rgba(230,168,90,0.25);border-radius:10px;pointer-events:none;}
+
+  /* ---------- Highlights ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .card{
+    background:linear-gradient(165deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line-soft);border-radius:16px;padding:28px 24px;
+    transition:transform .4s ease,border-color .4s ease,box-shadow .4s ease;position:relative;overflow:hidden;
+  }
+  .card:hover{transform:translateY(-7px);border-color:var(--line);box-shadow:0 26px 50px -28px rgba(0,0,0,0.85);}
+  .card .num{font-family:"Playfair Display",serif;font-size:30px;color:var(--ember);opacity:0.55;font-weight:700;}
+  .card h3{font-family:"Noto Serif SC",serif;font-weight:700;font-size:19px;color:var(--cream);margin:10px 0 9px;letter-spacing:0.04em;}
+  .card p{font-size:14.5px;color:var(--cream-dim);line-height:1.85;}
+
+  /* ---------- Quote ---------- */
+  .quote-block{max-width:840px;margin:0 auto;text-align:center;position:relative;padding:20px 10px;}
+  .quote-mark{font-family:"Playfair Display",serif;font-size:120px;line-height:0.5;color:var(--ember);opacity:0.25;}
+  .quote-text{font-family:"Noto Serif SC",serif;font-weight:500;font-size:clamp(20px,3.4vw,30px);line-height:1.85;color:var(--cream);letter-spacing:0.03em;margin:10px 0 18px;}
+  .quote-text .en{display:block;font-family:"Playfair Display",serif;font-style:italic;font-weight:400;font-size:0.62em;color:var(--ember-soft);margin-top:14px;opacity:0.9;letter-spacing:0.02em;}
+  .quote-by{font-size:13px;letter-spacing:0.24em;color:var(--ember);text-transform:uppercase;}
+
+  /* ---------- Why watch ---------- */
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .why-item{display:flex;gap:18px;align-items:flex-start;background:linear-gradient(160deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line-soft);border-radius:14px;padding:24px 22px;transition:border-color .4s ease,transform .4s ease;}
+  .why-item:hover{border-color:var(--line);transform:translateX(4px);}
+  .why-ico{flex:0 0 auto;width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    background:rgba(230,168,90,0.12);border:1px solid var(--line);color:var(--ember);font-family:"Playfair Display",serif;font-weight:700;font-size:20px;}
+  .why-item h4{font-family:"Noto Serif SC",serif;font-weight:600;font-size:17px;color:var(--cream);margin-bottom:6px;letter-spacing:0.03em;}
+  .why-item p{font-size:14px;color:var(--cream-dim);line-height:1.8;}
+
+  /* ---------- Honors ---------- */
+  .honors{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;}
+  .honor{
+    border:1px solid var(--line);border-radius:999px;padding:11px 20px;font-size:13.5px;letter-spacing:0.05em;
+    color:var(--cream);background:linear-gradient(160deg,rgba(230,168,90,0.08),rgba(230,168,90,0.02));
+    transition:transform .35s ease,background .35s ease;
+  }
+  .honor:hover{transform:translateY(-3px);background:linear-gradient(160deg,rgba(230,168,90,0.20),rgba(230,168,90,0.05));}
+  .honor b{color:var(--ember);font-weight:700;}
+
+  /* ---------- Archive table ---------- */
+  .archive{background:linear-gradient(160deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+  .archive .row{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid var(--line-soft);}
+  .archive .row:last-child{border-bottom:none;}
+  .archive .k{padding:16px 22px;font-size:14px;color:var(--ember);letter-spacing:0.08em;font-weight:600;background:rgba(230,168,90,0.04);}
+  .archive .v{padding:16px 22px;font-size:14.5px;color:var(--cream-dim);}
+
+  /* ---------- Verdict ---------- */
+  .verdict{max-width:880px;margin:0 auto;text-align:center;position:relative;}
+  .stars{font-size:30px;letter-spacing:10px;color:var(--ember);margin-bottom:20px;filter:drop-shadow(0 0 14px rgba(230,168,90,0.4));}
+  .verdict p{font-family:"Noto Serif SC",serif;font-size:clamp(17px,2.6vw,22px);color:var(--cream);line-height:2.0;letter-spacing:0.03em;}
+  .verdict .sign{margin-top:26px;font-family:"Playfair Display",serif;font-style:italic;font-size:15px;color:var(--ember-soft);letter-spacing:0.05em;}
+
+  footer{padding:46px 20px 70px;text-align:center;color:var(--cream-dim);font-size:12.5px;letter-spacing:0.1em;position:relative;z-index:3;}
+  footer .sep{color:var(--ember);margin:0 10px;}
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media(max-width:860px){
+    .ratings{grid-template-columns:repeat(2,1fr);}
+    .synopsis-grid{grid-template-columns:1fr;gap:30px;}
+    .poster{max-width:340px;margin:0 auto;}
+    .cards{grid-template-columns:1fr;}
+    .why{grid-template-columns:1fr;}
+    .archive .row{grid-template-columns:120px 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div class="bg-veil"></div>
+<div class="grain"></div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="year-big">1989</div>
+  <div class="eyebrow">A Film by Peter Weir</div>
+  <h1>死亡诗社</h1>
+  <div class="en-title">Dead&nbsp;Poets&nbsp;Society</div>
+  <p class="tagline">在循规蹈矩的校园里，一位老师点燃了<b>诗歌、自由与"及时行乐"</b>的火把。<br/>一群少年由此听见了自己内心的声音——关于青春，关于热爱，关于如何不虚此生。</p>
+  <div class="scroll-hint">向下滚动 ↓</div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ RATINGS ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Critical Acclaim</span>
+      <h2 class="sec-title">口碑与评分<span class="en">Ratings &amp; Recognition</span></h2>
+    </div>
+    <div class="ratings">
+      <div class="rate-card reveal">
+        <div class="rate-src">IMDb</div>
+        <div class="rate-val"><span class="count" data-target="8.1" data-dec="1">0.0</span><span class="sub"> / 10</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-pct="81"></div></div>
+        <div class="rate-note">全球影迷基准分</div>
+      </div>
+      <div class="rate-card reveal">
+        <div class="rate-src">豆瓣 Douban</div>
+        <div class="rate-val"><span class="count" data-target="9.1" data-dec="1">0.0</span><span class="sub"> / 10</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-pct="91"></div></div>
+        <div class="rate-note">Top 250 高分经典</div>
+      </div>
+      <div class="rate-card reveal">
+        <div class="rate-src">烂番茄 · 观众</div>
+        <div class="rate-val"><span class="count" data-target="96" data-dec="0">0</span><span class="sub"> %</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-pct="96"></div></div>
+        <div class="rate-note">普通观众一致好评</div>
+      </div>
+      <div class="rate-card reveal">
+        <div class="rate-src">Metacritic</div>
+        <div class="rate-val"><span class="count" data-target="79" data-dec="0">0</span><span class="sub"> / 100</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-pct="79"></div></div>
+        <div class="rate-note">影评人加权均分</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SYNOPSIS ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-kicker">The Story</span>
+      <h2 class="sec-title">剧情梗概<span class="en">What It's About</span></h2>
+    </div>
+    <div class="synopsis-grid">
+      <div class="synopsis reveal">
+        <p>1959 年，严谨刻板、以"传统、荣誉、纪律、卓越"为训的<span class="hl">威尔顿预备学院</span>，迎来了一位气质迥异的英文老师——<span class="hl">约翰·基廷</span>。他不按课本讲课，却让学生撕掉序言、站上课桌、在庭院里踢球念诗。</p>
+        <p>基廷唤醒了几名少年对诗歌与自由的渴望，他们重新拾起校史中一个被尘封的秘密社团——<span class="hl">"死亡诗社"</span>：一群人在山洞中相聚，读诗、思考、活着。青春里那股想要"不同凡响"的冲动，被悄悄点燃。</p>
+        <p>然而当理想撞上现实、个性遭遇规训，这群少年必须面对成长中最锋利也最温柔的课题：<span class="hl">如何在世界的期待里，活成自己的样子</span>。</p>
+        <div class="nospoiler"><span class="dot"></span>无剧透 · 仅呈现人物与故事框架</div>
+      </div>
+      <div class="poster reveal">
+        <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-label="死亡诗社海报插画">
+          <defs>
+            <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#15131c"/>
+              <stop offset="1" stop-color="#08070c"/>
+            </linearGradient>
+            <radialGradient id="glow" cx="50%" cy="34%" r="55%">
+              <stop offset="0" stop-color="#e6a85a" stop-opacity="0.34"/>
+              <stop offset="1" stop-color="#e6a85a" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="ember" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f2c98c"/>
+              <stop offset="1" stop-color="#c5823a"/>
+            </linearGradient>
+          </defs>
+          <rect width="300" height="400" fill="url(#pg)"/>
+          <rect width="300" height="400" fill="url(#glow)"/>
+          <!-- stars -->
+          <g fill="#f1e7d3" opacity="0.7">
+            <circle cx="46" cy="58" r="1.4"/><circle cx="250" cy="44" r="1.1"/>
+            <circle cx="200" cy="92" r="1.3"/><circle cx="70" cy="120" r="1"/>
+            <circle cx="262" cy="150" r="1.2"/><circle cx="36" cy="180" r="1"/>
+          </g>
+          <!-- distant mountains / cave hill -->
+          <path d="M0,300 C60,250 110,278 150,252 C190,228 240,270 300,244 L300,400 L0,400 Z" fill="#0c0b12"/>
+          <path d="M0,300 C60,250 110,278 150,252 C190,228 240,270 300,244" fill="none" stroke="#e6a85a" stroke-width="1" opacity="0.4"/>
+          <!-- open book -->
+          <g transform="translate(150,300)">
+            <path d="M-66,0 C-40,-14 -14,-14 0,-6 C14,-14 40,-14 66,0 L60,30 C40,18 14,18 0,26 C-14,18 -40,18 -60,30 Z" fill="#1b1822" stroke="url(#ember)" stroke-width="1.3"/>
+            <path d="M0,-6 L0,26" stroke="#e6a85a" stroke-width="1" opacity="0.55"/>
+            <g stroke="#e6a85a" stroke-width="0.8" opacity="0.5">
+              <path d="M-50,4 L-12,2"/><path d="M-50,10 L-12,8"/><path d="M-50,16 L-12,14"/>
+              <path d="M12,2 L50,4"/><path d="M12,8 L50,10"/><path d="M12,14 L50,16"/>
+            </g>
+          </g>
+          <!-- candle + flame -->
+          <g transform="translate(150,150)">
+            <rect x="-9" y="0" width="18" height="58" rx="4" fill="#efe2c6"/>
+            <rect x="-9" y="0" width="18" height="58" rx="4" fill="none" stroke="#c5823a" stroke-width="1" opacity="0.5"/>
+            <ellipse cx="0" cy="0" rx="9" ry="3.4" fill="#d8c69e"/>
+            <path d="M0,-30 C-9,-16 -8,-4 0,-2 C8,-4 9,-16 0,-30 Z" fill="url(#ember)">
+              <animate attributeName="opacity" values="0.85;1;0.85" dur="2.4s" repeatCount="indefinite"/>
+            </path>
+            <path d="M0,-20 C-4,-13 -4,-5 0,-3 C4,-5 4,-13 0,-20 Z" fill="#fff3da" opacity="0.9"/>
+            <ellipse cx="0" cy="-12" rx="26" ry="34" fill="#e6a85a" opacity="0.10"/>
+          </g>
+          <!-- floating quill -->
+          <g transform="translate(232,250) rotate(28)" opacity="0.85">
+            <path d="M0,0 C10,-26 22,-44 40,-52 C30,-30 18,-12 0,0 Z" fill="#efe2c6" stroke="#c5823a" stroke-width="0.8"/>
+            <path d="M0,0 L40,-52" stroke="#c5823a" stroke-width="0.8" opacity="0.6"/>
+          </g>
+          <text x="150" y="372" text-anchor="middle" fill="#f2c98c" font-family="Playfair Display, serif" font-style="italic" font-size="15" opacity="0.85">Carpe Diem</text>
+          <!-- decorative corners -->
+          <g stroke="url(#ember)" stroke-width="1.2" fill="none" opacity="0.6">
+            <path d="M16,16 H46 M16,16 V46"/>
+            <path d="M284,16 H254 M284,16 V46"/>
+            <path d="M16,384 H46 M16,384 V354"/>
+            <path d="M284,384 H254 M284,384 V354"/>
+          </g>
+        </svg>
+        <div class="frame-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HIGHLIGHTS ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Why It Shines</span>
+      <h2 class="sec-title">六大亮点<span class="en">Six Reasons It Endures</span></h2>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="num">01</div>
+        <h3>罗宾·威廉姆斯的封神表演</h3>
+        <p>他把基廷老师演得亦庄亦谐、亦师亦友——一个用诗意与幽默唤醒灵魂的人，是他最动人的银幕角色之一。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">02</div>
+        <h3>"及时行乐"的永恒箴言</h3>
+        <p>Carpe Diem 早已越过银幕，成为一代人面对生活的暗号：抓住今天，让生命不同凡响。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">03</div>
+        <h3>彼得·威尔的细腻调度</h3>
+        <p>这位澳大利亚名导在规整的学院影像里藏进温度与暗涌，让温暖与怅惘在同一帧里静静呼吸。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">04</div>
+        <h3>对教育与自由的叩问</h3>
+        <p>它不喊口号，却把"顺从规训"与"成为自己"的张力，剖得干净又刺心。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">05</div>
+        <h3>诗与青春的浪漫</h3>
+        <p>山洞、烛火、诗集与"Oh Captain! My Captain!"——把少年心事拍成了会发光的记忆。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">06</div>
+        <h3>奥斯卡最佳原创剧本</h3>
+        <p>汤姆·舒尔曼半自传式的剧本，细节饱满、人物鲜活，让理想主义有了真实的重量。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUOTE ============ -->
+  <section>
+    <div class="quote-block reveal">
+      <div class="quote-mark">“</div>
+      <p class="quote-text">抓住今天，孩子们。让你们的生命不同凡响。
+        <span class="en">Carpe Diem. Seize the day, boys. Make your lives extraordinary.</span>
+      </p>
+      <div class="quote-by">— 约翰·基廷 · 英文老师</div>
+    </div>
+  </section>
+
+  <!-- ============ WHY WATCH ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Worth Your Time</span>
+      <h2 class="sec-title">为什么值得一看<span class="en">Why You Should Watch</span></h2>
+    </div>
+    <div class="why">
+      <div class="why-item reveal">
+        <div class="why-ico">壹</div>
+        <div><h4>一句"及时行乐"足以改变你</h4><p>它不教你成功，只提醒你活着——看完你会想，今天有没有为自己认真活过。</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-ico">贰</div>
+        <div><h4>罗宾·威廉姆斯最动人的角色</h4><p>他把"好老师"演成了光，是表演课上绕不开、也最让人眼眶发热的范本。</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-ico">叁</div>
+        <div><h4>关于青春与勇气的共鸣</h4><p>每个曾被期待"规规矩矩"的人，都能在这群少年身上看见自己。</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-ico">肆</div>
+        <div><h4>让"诗歌"重新有了重量</h4><p>它证明诗歌不是装饰，而是我们理解自己、对抗平庸的方式。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HONORS ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-kicker">The Laurels</span>
+      <h2 class="sec-title">荣誉殿堂<span class="en">Awards &amp; Honors</span></h2>
+    </div>
+    <div class="honors reveal">
+      <div class="honor"><b>奥斯卡</b> 最佳原创剧本</div>
+      <div class="honor"><b>奥斯卡</b> 最佳影片 提名</div>
+      <div class="honor"><b>奥斯卡</b> 最佳导演 提名 · 彼得·威尔</div>
+      <div class="honor"><b>奥斯卡</b> 最佳男主角 提名 · 罗宾·威廉姆斯</div>
+      <div class="honor"><b>金球奖</b> 最佳男主角 提名</div>
+      <div class="honor"><b>英国电影学院奖</b> 最佳影片 提名</div>
+      <div class="honor"><b>AFI</b> 百年百大励志电影</div>
+      <div class="honor"><b>豆瓣</b> Top 250 经典高分</div>
+    </div>
+  </section>
+
+  <!-- ============ ARCHIVE ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Film Facts</span>
+      <h2 class="sec-title">影片档案<span class="en">At a Glance</span></h2>
+    </div>
+    <div class="archive reveal">
+      <div class="row"><div class="k">中文片名</div><div class="v">死亡诗社</div></div>
+      <div class="row"><div class="k">英文片名</div><div class="v">Dead Poets Society</div></div>
+      <div class="row"><div class="k">上映年份</div><div class="v">1989 年</div></div>
+      <div class="row"><div class="k">导演</div><div class="v">彼得·威尔（Peter Weir）</div></div>
+      <div class="row"><div class="k">主演</div><div class="v">罗宾·威廉姆斯 / 伊桑·霍克 / 罗伯特·肖恩·莱纳德 / 乔纳森·海德</div></div>
+      <div class="row"><div class="k">类型</div><div class="v">剧情</div></div>
+      <div class="row"><div class="k">片长</div><div class="v">128 分钟</div></div>
+      <div class="row"><div class="k">制片地区</div><div class="v">美国 · 试金石影片</div></div>
+      <div class="row"><div class="k">编剧</div><div class="v">汤姆·舒尔曼（Tom Schulman）</div></div>
+      <div class="row"><div class="k">配乐</div><div class="v">莫里斯·雅尔（Maurice Jarre）</div></div>
+      <div class="row"><div class="k">主要奖项</div><div class="v">奥斯卡最佳原创剧本（另获 3 项提名）</div></div>
+      <div class="row"><div class="k">综合评分</div><div class="v">IMDb 8.1 · 豆瓣 9.1 · 烂番茄观众 96%</div></div>
+    </div>
+  </section>
+
+  <!-- ============ VERDICT ============ -->
+  <section>
+    <div class="verdict reveal">
+      <div class="stars">★★★★★</div>
+      <p>《死亡诗社》讲的不是诗歌，而是"如何活过这一生"。它用一支蜡烛、一本书、一间山洞，温柔地推开每个观众心里那扇名为"不敢"的门——提醒我们：所谓不同凡响，不过是从今天起，认真地、热烈地，为自己活一次。</p>
+      <div class="sign">— 经典电影推荐 · 编辑评语</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  经典电影推荐 <span class="sep">·</span> 每日一部 <span class="sep">·</span> 2026-07-21
+  <br/>本页为自动化生成的观影推荐，评分数据来自公开平台，仅供欣赏参考。
+</footer>
+
+<script>
+/* ===== Floating ember + drifting glyph canvas ===== */
+(function(){
+  const cv = document.getElementById('bg-canvas');
+  const ctx = cv.getContext('2d');
+  let W,H,DPR;
+  const glyphs = ['诗','歌','火','光','山','书','♪','✶','❡','✦','月','风'];
+  const particles = [];
+  const DUST = 52, SYM = 14;
+
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio||1, 2);
+    W = cv.width = innerWidth*DPR;
+    H = cv.height = innerHeight*DPR;
+    cv.style.width = innerWidth+'px';
+    cv.style.height = innerHeight+'px';
+  }
+  function rand(a,b){return a+Math.random()*(b-a);}
+
+  function makeSym(){
+    const gold = Math.random()<0.78;
+    return {
+      type:'sym',
+      x:rand(0,W), y:rand(0,H),
+      vy:-rand(0.10,0.34)*DPR,
+      vx:rand(-0.10,0.10)*DPR,
+      ch:glyphs[(Math.random()*glyphs.length)|0],
+      size:rand(15,38)*DPR,
+      rot:rand(-0.25,0.25), vr:rand(-0.004,0.004),
+      a:rand(0.10,0.30),
+      color: gold ? '230,168,90' : '241,231,211'
+    };
+  }
+  function makeDust(){
+    const gold = Math.random()<0.62;
+    return {
+      type:'dust',
+      x:rand(0,W), y:rand(0,H),
+      vy:-rand(0.05,0.24)*DPR,
+      vx:rand(-0.12,0.12)*DPR,
+      r:rand(0.6,2.2)*DPR,
+      a:rand(0.15,0.55),
+      tw:rand(0.005,0.02), tp:rand(0,Math.PI*2),
+      color: gold ? '242,201,140' : '241,231,211'
+    };
+  }
+  function init(){
+    particles.length=0;
+    for(let i=0;i<SYM;i++) particles.push(makeSym());
+    for(let i=0;i<DUST;i++) particles.push(makeDust());
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(const p of particles){
+      if(p.type==='sym'){
+        p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr;
+        if(p.y< -60*DPR){p.y=H+40*DPR;p.x=rand(0,W);}
+        if(p.x<-60*DPR)p.x=W+40*DPR; if(p.x>W+60*DPR)p.x=-40*DPR;
+        ctx.save();
+        ctx.translate(p.x,p.y);
+        ctx.rotate(p.rot);
+        ctx.font = p.size+'px "Noto Serif SC", serif';
+        ctx.textAlign='center'; ctx.textBaseline='middle';
+        ctx.shadowColor='rgba('+p.color+',0.5)';
+        ctx.shadowBlur=14*DPR;
+        ctx.fillStyle='rgba('+p.color+','+p.a+')';
+        ctx.fillText(p.ch,0,0);
+        ctx.restore();
+      } else {
+        p.x+=p.vx; p.y+=p.vy; p.tp+=p.tw;
+        const a = p.a*(0.6+0.4*Math.sin(p.tp));
+        if(p.y< -10*DPR){p.y=H+10*DPR;p.x=rand(0,W);}
+        if(p.x<-10*DPR)p.x=W+10*DPR; if(p.x>W+10*DPR)p.x=-10*DPR;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba('+p.color+','+a+')';
+        ctx.shadowColor='rgba('+p.color+',0.6)';
+        ctx.shadowBlur=8*DPR;
+        ctx.fill();
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  resize(); init(); draw();
+  addEventListener('resize',()=>{resize();init();});
+})();
+
+/* ===== Reveal on scroll ===== */
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.15});
+  els.forEach((el,i)=>{ el.style.transitionDelay=(i%4*0.08)+'s'; io.observe(el); });
+})();
+
+/* ===== Rating count-up + bar fill ===== */
+(function(){
+  function animateCount(el){
+    const target = parseFloat(el.dataset.target);
+    const dec = parseInt(el.dataset.dec)||0;
+    const dur = 1400; const t0 = performance.now();
+    function step(now){
+      const p = Math.min((now-t0)/dur,1);
+      const e = 1-Math.pow(1-p,3);
+      el.textContent = dec ? (target*e).toFixed(dec) : Math.round(target*e);
+      if(p<1) requestAnimationFrame(step);
+      else el.textContent = target.toFixed(dec);
+    }
+    requestAnimationFrame(step);
+  }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.count').forEach(animateCount);
+        e.target.querySelectorAll('.rate-fill').forEach(f=>{ f.style.width = f.dataset.pct+'%'; });
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.4});
+  document.querySelectorAll('.ratings').forEach(r=>io.observe(r));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>机器人总动员 WALL·E — 经典电影推荐</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700&display=swap');
+
+  :root {
+    --rust: #C06014;
+    --rust-light: #E8943A;
+    --rust-dark: #7A3A0A;
+    --earth: #2A1A0A;
+    --dust: #C8B898;
+    --space: #060D1A;
+    --space-blue: #0F1F3A;
+    --star: #E8E4D8;
+    --eve-white: #ECF3F8;
+    --eve-glow: #4FC3F7;
+    --warm-amber: #F0C060;
+    --gold: #D4A040;
+    --charcoal: #1A1A1A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--space);
+    color: var(--star);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ===== CANVAS BACKGROUND ===== */
+  #particleCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(180deg, 
+      rgba(6,13,26,0.3) 0%,
+      rgba(42,26,10,0.4) 50%,
+      rgba(6,13,26,0.8) 100%
+    );
+  }
+
+  .hero-year {
+    font-family: 'Georgia', serif;
+    font-size: clamp(8rem, 25vw, 18rem);
+    font-weight: 900;
+    color: rgba(192,96,20,0.12);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: -0.05em;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.4rem 1.5rem;
+    border: 1px solid var(--rust);
+    color: var(--rust-light);
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    background: rgba(192,96,20,0.08);
+    backdrop-filter: blur(6px);
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--eve-white) 0%, var(--rust-light) 50%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    color: var(--dust);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-en-title {
+    font-family: 'Georgia', serif;
+    font-size: clamp(1.2rem, 3vw, 2.2rem);
+    color: var(--rust);
+    letter-spacing: 0.25em;
+    margin-bottom: 2rem;
+  }
+
+  .hero-tagline {
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    color: var(--eve-glow);
+    font-style: italic;
+    opacity: 0.85;
+    padding: 1rem 2rem;
+    border-top: 1px solid rgba(79,195,247,0.2);
+    border-bottom: 1px solid rgba(79,195,247,0.2);
+    display: inline-block;
+    max-width: 90%;
+  }
+
+  .hero-director {
+    margin-top: 2.5rem;
+    font-size: 0.9rem;
+    color: rgba(200,184,152,0.6);
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== SCROLL INDICATOR ===== */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--dust);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    opacity: 0.5;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  .scroll-indicator .arrow {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-right: 1px solid var(--dust);
+    border-bottom: 1px solid var(--dust);
+    transform: rotate(45deg);
+    animation: fadeArrow 2s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+  @keyframes fadeArrow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* ===== SECTION COMMON ===== */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    color: var(--eve-white);
+    margin-bottom: 0.5rem;
+  }
+  .section-title .highlight {
+    color: var(--rust-light);
+  }
+  .section-desc {
+    font-size: 0.95rem;
+    color: rgba(200,184,152,0.7);
+    margin-bottom: 3rem;
+    max-width: 600px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== SCORE SECTION ===== */
+  .score-section {
+    background: linear-gradient(180deg, transparent 0%, rgba(15,31,58,0.5) 30%, rgba(42,26,10,0.3) 70%, transparent 100%);
+    padding: 6rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .score-section .section-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  @media (max-width: 768px) {
+    .score-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  }
+
+  .score-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+  }
+  .score-card:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(192,96,20,0.3);
+    transform: translateY(-4px);
+  }
+
+  .score-source {
+    font-size: 0.75rem;
+    color: var(--dust);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .score-number {
+    font-family: 'Georgia', serif;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: var(--eve-white);
+    margin-bottom: 0.3rem;
+  }
+  .score-number .decimal {
+    font-size: 0.5em;
+    vertical-align: super;
+  }
+
+  .score-bar-wrap {
+    width: 100%;
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    margin-top: 0.8rem;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+    background: linear-gradient(90deg, var(--rust-dark), var(--rust-light));
+  }
+  .score-bar-fill.fill-visible {
+    width: var(--fill);
+  }
+  .score-bar-fill.imdb { background: linear-gradient(90deg, #C06014, #E8A040); }
+  .score-bar-fill.douban { background: linear-gradient(90deg, #1A8C3A, #2ECC60); }
+  .score-bar-fill.rotten { background: linear-gradient(90deg, #C0392B, #E74C3C); }
+  .score-bar-fill.meta { background: linear-gradient(90deg, #2C3E50, #5DADE2); }
+
+  .score-label {
+    font-size: 0.7rem;
+    color: rgba(200,184,152,0.5);
+    margin-top: 0.4rem;
+  }
+
+  /* ===== SVG ROBOT HERO ===== */
+  .robot-divider {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 2rem 0;
+  }
+  .robot-divider svg {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+  }
+
+  /* ===== SYNOPSIS ===== */
+  .synopsis-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    .synopsis-wrap { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .synopsis-text {
+    color: var(--dust);
+    font-size: 1rem;
+    line-height: 2;
+  }
+  .synopsis-text p {
+    margin-bottom: 1.2rem;
+  }
+  .synopsis-text .spoiler-free {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border: 1px solid var(--eve-glow);
+    color: var(--eve-glow);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    border-radius: 20px;
+    margin-top: 1rem;
+    opacity: 0.7;
+  }
+
+  .synopsis-poster {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .synopsis-poster svg {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    filter: drop-shadow(0 20px 60px rgba(192,96,20,0.15));
+  }
+
+  /* ===== HIGHLIGHTS ===== */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 768px) {
+    .highlights-grid { grid-template-columns: 1fr; }
+  }
+
+  .highlight-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    transition: all 0.5s ease;
+    cursor: default;
+  }
+  .highlight-card:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(192,96,20,0.25);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+
+  .highlight-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1.2rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+  }
+
+  .highlight-card:nth-child(1) .highlight-icon { background: rgba(192,96,20,0.15); color: var(--rust-light); }
+  .highlight-card:nth-child(2) .highlight-icon { background: rgba(79,195,247,0.15); color: var(--eve-glow); }
+  .highlight-card:nth-child(3) .highlight-icon { background: rgba(232,160,64,0.15); color: var(--warm-amber); }
+  .highlight-card:nth-child(4) .highlight-icon { background: rgba(46,204,96,0.15); color: #2ECC60; }
+  .highlight-card:nth-child(5) .highlight-icon { background: rgba(200,184,152,0.15); color: var(--dust); }
+  .highlight-card:nth-child(6) .highlight-icon { background: rgba(192,96,20,0.15); color: var(--rust-light); }
+
+  .highlight-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--eve-white);
+    margin-bottom: 0.6rem;
+  }
+  .highlight-desc {
+    font-size: 0.88rem;
+    color: rgba(200,184,152,0.75);
+    line-height: 1.8;
+  }
+
+  /* ===== QUOTES ===== */
+  .quote-section {
+    background: linear-gradient(180deg, transparent 0%, rgba(42,26,10,0.2) 30%, rgba(15,31,58,0.3) 70%, transparent 100%);
+    padding: 6rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .quote-section .section-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .quote-block {
+    padding: 2.5rem 2rem;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--rust);
+    background: rgba(255,255,255,0.02);
+    border-radius: 0 12px 12px 0;
+    position: relative;
+  }
+  .quote-block::before {
+    content: '"';
+    font-family: 'Georgia', serif;
+    font-size: 4rem;
+    color: rgba(192,96,20,0.12);
+    position: absolute;
+    top: -0.2rem;
+    left: 0.8rem;
+    line-height: 1;
+  }
+  .quote-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-style: italic;
+    color: var(--eve-white);
+    line-height: 1.8;
+    padding-left: 2rem;
+  }
+  .quote-text .en {
+    display: block;
+    color: var(--rust-light);
+    font-size: 0.85em;
+    margin-top: 0.4rem;
+    font-style: italic;
+  }
+  .quote-from {
+    font-size: 0.8rem;
+    color: rgba(200,184,152,0.5);
+    margin-top: 0.8rem;
+    padding-left: 2rem;
+  }
+
+  /* ===== WHY WATCH ===== */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 768px) {
+    .why-grid { grid-template-columns: 1fr; }
+  }
+
+  .why-card {
+    padding: 2rem;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.4s ease;
+  }
+  .why-card:hover {
+    background: rgba(255,255,255,0.04);
+  }
+  .why-number {
+    font-family: 'Georgia', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: rgba(192,96,20,0.2);
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+  .why-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--eve-white);
+    margin-bottom: 0.5rem;
+  }
+  .why-desc {
+    font-size: 0.88rem;
+    color: rgba(200,184,152,0.7);
+    line-height: 1.8;
+  }
+
+  /* ===== FILM ARCHIVE ===== */
+  .archive-section {
+    background: linear-gradient(180deg, transparent 0%, rgba(6,13,26,0.6) 50%, transparent 100%);
+    position: relative;
+    z-index: 1;
+  }
+  .archive-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+  }
+  .archive-table tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .archive-table tr:last-child {
+    border-bottom: none;
+  }
+  .archive-table td {
+    padding: 0.9rem 1rem;
+    font-size: 0.9rem;
+    vertical-align: top;
+  }
+  .archive-table td:first-child {
+    color: var(--rust);
+    font-weight: 600;
+    white-space: nowrap;
+    width: 120px;
+  }
+  .archive-table td:last-child {
+    color: var(--dust);
+  }
+
+  /* ===== VERDICT ===== */
+  .verdict-section {
+    padding: 4rem 2rem 6rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .verdict-box {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    border: 1px solid rgba(192,96,20,0.2);
+    border-radius: 20px;
+    background: radial-gradient(ellipse at center, rgba(192,96,20,0.06) 0%, transparent 70%);
+  }
+  .verdict-stars {
+    font-size: 2rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 1.5rem;
+  }
+  .verdict-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--dust);
+    line-height: 2;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .verdict-sign {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: rgba(200,184,152,0.4);
+    letter-spacing: 0.15em;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    color: rgba(200,184,152,0.3);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 480px) {
+    section { padding: 4rem 1.2rem; }
+    .score-section { padding: 4rem 1.2rem; }
+    .quote-section { padding: 4rem 1.2rem; }
+    .hero-tagline { font-size: 0.85rem; padding: 0.8rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-year">2008</div>
+  <div class="hero-content">
+    <div class="hero-badge">Pixar Animation Studios</div>
+    <h1 class="hero-title">机器人总动员</h1>
+    <p class="hero-subtitle">在废弃的地球上，一个垃圾清理机器人学会了爱</p>
+    <p class="hero-en-title">WALL·E</p>
+    <div class="hero-tagline">"我不想只是生存，我想好好活着"</div>
+    <p class="hero-director">安德鲁·斯坦顿 · 导演作品</p>
+  </div>
+  <div class="scroll-indicator">
+    <span>向下探索</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- ===== ROBOT DIVIDER ===== -->
+<div class="robot-divider">
+  <svg viewBox="0 0 500 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- WALL-E body -->
+    <rect x="60" y="50" width="60" height="55" rx="6" fill="#C06014" opacity="0.8"/>
+    <rect x="55" y="45" width="70" height="10" rx="4" fill="#7A3A0A"/>
+    <rect x="75" y="58" width="8" height="12" rx="3" fill="#2A1A0A"/>
+    <rect x="97" y="58" width="8" height="12" rx="3" fill="#2A1A0A"/>
+    <rect x="84" y="52" width="12" height="6" rx="3" fill="#2A1A0A"/>
+    <circle cx="90" cy="45" r="18" fill="#7A3A0A" opacity="0.6"/>
+    <rect x="80" y="90" width="20" height="20" rx="10" fill="#C06014" opacity="0.6"/>
+    <!-- tracks -->
+    <rect x="48" y="100" width="84" height="8" rx="4" fill="#3A2510" opacity="0.5"/>
+    <circle cx="56" cy="104" r="5" fill="#5A3A1A" opacity="0.4"/>
+    <circle cx="74" cy="104" r="5" fill="#5A3A1A" opacity="0.4"/>
+    <circle cx="92" cy="104" r="5" fill="#5A3A1A" opacity="0.4"/>
+    <circle cx="110" cy="104" r="5" fill="#5A3A1A" opacity="0.4"/>
+    <circle cx="126" cy="104" r="5" fill="#5A3A1A" opacity="0.4"/>
+    <!-- hearts -->
+    <text x="140" y="85" font-size="24" fill="#E74C3C" opacity="0.6">❤</text>
+    <text x="170" y="70" font-size="18" fill="#E74C3C" opacity="0.4">❤</text>
+    <!-- EVE -->
+    <ellipse cx="300" cy="75" rx="35" ry="28" fill="#ECF3F8" opacity="0.85"/>
+    <ellipse cx="300" cy="70" rx="22" ry="10" fill="#4FC3F7" opacity="0.4"/>
+    <ellipse cx="300" cy="55" rx="10" ry="5" fill="#4FC3F7" opacity="0.6"/>
+    <!-- EVE eyes -->
+    <circle cx="290" cy="75" r="4" fill="#0F1F3A"/>
+    <circle cx="310" cy="75" r="4" fill="#0F1F3A"/>
+    <!-- EVE arms -->
+    <line x1="265" y1="75" x2="240" y2="60" stroke="#ECF3F8" stroke-width="3" opacity="0.6"/>
+    <line x1="335" y1="75" x2="360" y2="60" stroke="#ECF3F8" stroke-width="3" opacity="0.6"/>
+    <!-- connecting line -->
+    <path d="M140 78 Q200 30 260 70" stroke="#4FC3F7" stroke-width="1" stroke-dasharray="4 4" opacity="0.3" fill="none"/>
+    <!-- floating debris -->
+    <rect x="390" y="30" width="12" height="8" rx="2" fill="#C06014" opacity="0.15" transform="rotate(15 396 34)"/>
+    <rect x="410" y="60" width="8" height="6" rx="1" fill="#7A3A0A" opacity="0.1" transform="rotate(-20 414 63)"/>
+    <rect x="380" y="85" width="10" height="7" rx="2" fill="#C8B898" opacity="0.08" transform="rotate(30 385 88)"/>
+    <!-- tiny stars -->
+    <circle cx="430" cy="20" r="1.5" fill="#E8E4D8" opacity="0.4"/>
+    <circle cx="460" cy="45" r="1" fill="#E8E4D8" opacity="0.3"/>
+    <circle cx="20" cy="30" r="1" fill="#E8E4D8" opacity="0.2"/>
+    <circle cx="480" cy="80" r="1.5" fill="#E8E4D8" opacity="0.3"/>
+    <circle cx="10" cy="95" r="1" fill="#E8E4D8" opacity="0.2"/>
+  </svg>
+</div>
+
+<!-- ===== SCORE SECTION ===== -->
+<section class="score-section">
+  <div class="section-inner">
+    <div class="section-label reveal">Ratings</div>
+    <h2 class="section-title reveal">全球口碑评分</h2>
+    <p class="section-desc reveal">一部机器人动画，横扫了全世界影评人与观众的心</p>
+
+    <div class="score-grid">
+      <div class="score-card reveal">
+        <div class="score-source">IMDb</div>
+        <div class="score-number">8.4</div>
+        <div class="score-bar-wrap">
+          <div class="score-bar-fill imdb" style="--fill:84%" data-width="84"></div>
+        </div>
+        <div class="score-label">Top 250 #60</div>
+      </div>
+      <div class="score-card reveal">
+        <div class="score-source">豆瓣</div>
+        <div class="score-number">9.3</div>
+        <div class="score-bar-wrap">
+          <div class="score-bar-fill douban" style="--fill:93%" data-width="93"></div>
+        </div>
+        <div class="score-label">Top 250 #10</div>
+      </div>
+      <div class="score-card reveal">
+        <div class="score-source">烂番茄</div>
+        <div class="score-number">95<span class="decimal">%</span></div>
+        <div class="score-bar-wrap">
+          <div class="score-bar-fill rotten" style="--fill:95%" data-width="95"></div>
+        </div>
+        <div class="score-label">新鲜度认证</div>
+      </div>
+      <div class="score-card reveal">
+        <div class="score-source">Metacritic</div>
+        <div class="score-number">95</div>
+        <div class="score-bar-wrap">
+          <div class="score-bar-fill meta" style="--fill:95%" data-width="95"></div>
+        </div>
+        <div class="score-label">必看佳作认证</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SYNOPSIS ===== -->
+<section>
+  <div class="section-label reveal">Story</div>
+  <h2 class="section-title reveal">故事的<span class="highlight">起点</span></h2>
+  <p class="section-desc reveal">不剧透 · 只带你认识这个世界</p>
+
+  <div class="synopsis-wrap">
+    <div class="synopsis-text reveal">
+      <p>公元2805年，地球早已被人类遗弃。数百年来堆积如山的垃圾覆盖了整个星球表面，空气中弥漫着尘埃与寂静。</p>
+      <p>在这片荒芜的废墟中，一个名为 WALL·E（Waste Allocation Load Lifter - Earth-Class）的小型机器人依然日复一日地履行着他的使命——将垃圾压缩成方块，堆叠成摩天大楼般的高塔。他的同伴早已停止运转，唯一的陪伴是一只顽强的蟑螂。</p>
+      <p>但 WALL·E 并不只是一个毫无感情的机器。在漫长的独处中，他渐渐拥有了好奇心、审美、甚至收藏癖——把人类留下的废弃小物件带回自己的"家"。直到有一天，一艘来自太空的飞船带来了一个洁白光滑的探测器 EVE，一切从此改变。</p>
+      <p>WALL·E 踏上了追随 EVE 的星际旅程，去往人类最后的栖息地——一艘漂浮在太空中的豪华飞船。在那里，他将面对一个他从未想象过的世界，并悄然改变两个物种的命运。</p>
+      <div class="spoiler-free">✓ 无剧透 · 放心阅读</div>
+    </div>
+    <div class="synopsis-poster reveal">
+      <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- background -->
+        <rect x="20" y="20" width="360" height="460" rx="12" fill="#0F1F3A" opacity="0.5"/>
+        <rect x="20" y="20" width="360" height="460" rx="12" stroke="rgba(192,96,20,0.2)" stroke-width="1"/>
+        
+        <!-- stars -->
+        <circle cx="60" cy="50" r="1.5" fill="#E8E4D8" opacity="0.6"/>
+        <circle cx="340" cy="80" r="1" fill="#E8E4D8" opacity="0.4"/>
+        <circle cx="290" cy="45" r="1.5" fill="#E8E4D8" opacity="0.5"/>
+        <circle cx="100" cy="460" r="1" fill="#E8E4D8" opacity="0.3"/>
+        <circle cx="350" cy="450" r="1.5" fill="#E8E4D8" opacity="0.4"/>
+        <circle cx="50" cy="200" r="1" fill="#E8E4D8" opacity="0.3"/>
+        <circle cx="370" cy="300" r="1" fill="#E8E4D8" opacity="0.2"/>
+        
+        <!-- Earth horizon -->
+        <ellipse cx="200" cy="490" rx="250" ry="60" fill="#2A1A0A" opacity="0.6"/>
+        <rect x="50" y="410" width="300" height="80" rx="40" fill="#3A2510" opacity="0.3"/>
+        
+        <!-- garbage blocks -->
+        <rect x="80" y="370" width="30" height="30" rx="3" fill="#5A3A1A" opacity="0.4"/>
+        <rect x="120" y="350" width="35" height="35" rx="3" fill="#4A2A10" opacity="0.35"/>
+        <rect x="165" y="360" width="25" height="28" rx="3" fill="#6A4A20" opacity="0.3"/>
+        <rect x="280" y="355" width="32" height="32" rx="3" fill="#5A3A1A" opacity="0.35"/>
+        <rect x="315" y="370" width="28" height="25" rx="3" fill="#4A2A10" opacity="0.3"/>
+        
+        <!-- WALL-E silhouette -->
+        <rect x="170" y="250" width="55" height="50" rx="5" fill="#C06014" opacity="0.8"/>
+        <rect x="165" y="245" width="65" height="10" rx="4" fill="#7A3A0A"/>
+        <rect x="186" y="258" width="7" height="10" rx="3" fill="#2A1A0A"/>
+        <rect x="205" y="258" width="7" height="10" rx="3" fill="#2A1A0A"/>
+        <rect x="193" y="252" width="10" height="5" rx="2" fill="#2A1A0A"/>
+        <circle cx="200" cy="240" r="14" fill="#7A3A0A" opacity="0.6"/>
+        <rect x="188" y="285" width="24" height="18" rx="8" fill="#C06014" opacity="0.6"/>
+        <rect x="162" y="295" width="76" height="7" rx="3" fill="#3A2510" opacity="0.5"/>
+        
+        <!-- plant -->
+        <line x1="200" y1="305" x2="200" y2="340" stroke="#2ECC60" stroke-width="2" opacity="0.7"/>
+        <ellipse cx="200" cy="338" rx="4" ry="6" fill="#2ECC60" opacity="0.6"/>
+        
+        <!-- EVE floating -->
+        <ellipse cx="280" cy="200" rx="30" ry="24" fill="#ECF3F8" opacity="0.8"/>
+        <ellipse cx="280" cy="196" rx="18" ry="8" fill="#4FC3F7" opacity="0.3"/>
+        <ellipse cx="280" cy="183" rx="8" ry="4" fill="#4FC3F7" opacity="0.4"/>
+        <circle cx="271" cy="200" r="3" fill="#0F1F3A"/>
+        <circle cx="289" cy="200" r="3" fill="#0F1F3A"/>
+        
+        <!-- EVE glow -->
+        <ellipse cx="280" cy="196" rx="35" ry="28" fill="#4FC3F7" opacity="0.08"/>
+        <ellipse cx="280" cy="196" rx="45" ry="36" fill="#4FC3F7" opacity="0.04"/>
+        
+        <!-- connection line -->
+        <path d="M230 240 Q250 220 260 210" stroke="#4FC3F7" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.3" fill="none"/>
+        
+        <!-- title on poster -->
+        <text x="200" y="440" font-family="Georgia, serif" font-size="24" fill="#E8A040" text-anchor="middle" opacity="0.8">WALL·E</text>
+        <text x="200" y="465" font-family="serif" font-size="11" fill="#C8B898" text-anchor="middle" opacity="0.4">2008 · PIXAR</text>
+        
+        <!-- border decorations -->
+        <rect x="30" y="30" width="340" height="440" rx="8" stroke="rgba(200,184,152,0.1)" stroke-width="0.5" fill="none"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HIGHLIGHTS ===== -->
+<section>
+  <div class="section-label reveal">Highlights</div>
+  <h2 class="section-title reveal">六大<span class="highlight">闪光点</span></h2>
+  <p class="section-desc reveal">为什么这部"动画片"被奉为影史经典</p>
+
+  <div class="highlights-grid">
+    <div class="highlight-card reveal">
+      <div class="highlight-icon">🤖</div>
+      <div class="highlight-title">无言的开篇</div>
+      <div class="highlight-desc">影片前近40分钟几乎没有对白，完全依靠机器人动作、眼神和音效来叙事——这是对"动画"本质最极致的回归，也是电影叙事能力最纯粹的展现。</div>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-icon">🌍</div>
+      <div class="highlight-title">深刻的生态寓言</div>
+      <div class="highlight-desc">垃圾覆盖的地球、被遗弃的人类文明——这不是一部简单的环保说教片，而是用最温柔的方式讲述最尖锐的命题：我们正在怎样对待自己的家园。</div>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-icon">💖</div>
+      <div class="highlight-title">最动人的机器人爱情</div>
+      <div class="highlight-desc">两个本应没有情感的机器，却演绎了影史最纯粹、最动人的爱情故事之一。WALL·E 笨拙的追求、EVE 从冷冰到柔软的转变，每一帧都令人心碎又温暖。</div>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-icon">🎬</div>
+      <div class="highlight-title">视觉与音效的巅峰</div>
+      <div class="highlight-desc">Pixar 在物理渲染上的革命性突破——锈迹斑斑的金属质感、太空中无声爆炸的敬畏感、地球与飞船的对比美学。本·伯特创作的机器人音效更是教科书级别。</div>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-icon">🎵</div>
+      <div class="highlight-title">托马斯·纽曼的灵魂配乐</div>
+      <div class="highlight-desc">从地球废墟的孤寂到星际旅行的壮阔，再到爱情萌芽的温柔，纽曼的配乐赋予了冰冷的机械以灵魂的温度。"WALL-E"主题曲可以让你笑着流泪。</div>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-icon">🌌</div>
+      <div class="highlight-title">对人类文明的深情讽刺</div>
+      <div class="highlight-desc">飞船上的人类——整天躺在悬浮椅上盯着屏幕——这个设定在2008年就已预示了我们今天的数字生活方式。温柔外表下，是一则写给成年人的深刻寓言。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTES ===== -->
+<div class="quote-section">
+  <div class="section-inner">
+    <div class="section-label reveal">Quotes</div>
+    <h2 class="section-title reveal">那些让人记住的<span class="highlight">瞬间</span></h2>
+
+    <div class="quote-block reveal">
+      <div class="quote-text">
+        我不想只是生存……我想好好活着。
+        <span class="en">"I don't want to survive… I want to live."</span>
+      </div>
+      <div class="quote-from">—— 船长（Captain B. McCrea）</div>
+    </div>
+
+    <div class="quote-block reveal">
+      <div class="quote-text">
+        WALL·E……
+        <span class="en">"WALL·E……"</span>
+      </div>
+      <div class="quote-from">—— EVE 学会的第一个词</div>
+    </div>
+
+    <div class="quote-block reveal">
+      <div class="quote-text">
+        这不就是生活吗？我们整天都在做无用功。
+        <span class="en">"This is living, isn't it? Staying in one place, doing nothing."</span>
+      </div>
+      <div class="quote-from">—— 自动导航系统 AUTO 的讽刺伏笔</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WHY WATCH ===== -->
+<section>
+  <div class="section-label reveal">Why Watch</div>
+  <h2 class="section-title reveal">为什么<span class="highlight">值得一看</span></h2>
+  <p class="section-desc reveal">这不是一部"动画片"——这是一部关于人类的电影</p>
+
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-number">01</div>
+      <div class="why-title">不看会后悔的"神作"</div>
+      <div class="why-desc">豆瓣 9.3、IMDb 8.4、烂番茄 95%、Metacritic 95——四项顶级评分同时认证的作品，在影史上屈指可数。这是一部被所有权威体系盖章的"必看"。</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-number">02</div>
+      <div class="why-title">不说教的人文关怀</div>
+      <div class="why-desc">它讨论环保、消费主义、科技异化，却没有一句说教。它让你在微笑中思考，在沉默中感悟。这是最高级的教育——让你自己得出结论。</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-number">03</div>
+      <div class="why-title">技术与艺术的完美统一</div>
+      <div class="why-desc">Pixar 在技术上的登峰造极令人叹为观止——从 WALL·E 锈迹斑斑的金属质感，到太空场景的真实光影，每一个画面都值得暂停细看。技术与艺术在此达成了完美的平衡。</div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-number">04</div>
+      <div class="why-title">适合每一个人观看</div>
+      <div class="why-desc">孩子看到冒险与友谊，年轻人看到爱情与勇气，成年人看到责任与反思。不同年龄看 WALL·E，会看到完全不同的故事。这是一部会随着你成长而不断变化的电影。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FILM ARCHIVE ===== -->
+<section class="archive-section">
+  <div class="section-label reveal">Archive</div>
+  <h2 class="section-title reveal">影片<span class="highlight">档案</span></h2>
+
+  <div class="reveal">
+    <table class="archive-table">
+      <tr><td>中文片名</td><td>机器人总动员 / 瓦力</td></tr>
+      <tr><td>英文片名</td><td>WALL·E</td></tr>
+      <tr><td>导演</td><td>安德鲁·斯坦顿（Andrew Stanton）</td></tr>
+      <tr><td>编剧</td><td>安德鲁·斯坦顿 · 吉姆·里尔顿 · 彼特·道格特</td></tr>
+      <tr><td>制片</td><td>皮克斯动画工作室 · 华特迪士尼影片</td></tr>
+      <tr><td>上映年份</td><td>2008年6月27日（美国）</td></tr>
+      <tr><td>片长</td><td>98分钟</td></tr>
+      <tr><td>类型</td><td>科幻 · 动画 · 冒险 · 爱情</td></tr>
+      <tr><td>配乐</td><td>托马斯·纽曼（Thomas Newman）</td></tr>
+      <tr><td>主要荣誉</td><td>奥斯卡最佳动画长片 · 金球奖最佳动画片 · 土星奖最佳动画电影 · 格莱美最佳配乐 · 安妮奖最佳动画长片（9项）</td></tr>
+      <tr><td>IMDb 排名</td><td>Top 250 #60</td></tr>
+      <tr><td>豆瓣排名</td><td>Top 250 #10</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ===== VERDICT ===== -->
+<section class="verdict-section">
+  <div class="verdict-box reveal">
+    <div class="verdict-stars">★★★★★</div>
+    <div class="verdict-text">
+      当后世的文明考古学家——如果还有的话——回望 21 世纪初的人类动画时，<br>
+      《WALL·E》将是他们首先从废墟中挖出的那一段记忆。
+    </div>
+    <div class="verdict-sign">—— 编辑推荐 · 全五星</div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  经典电影推荐 · 机器人总动员 WALL·E · 2026年6月12日
+</footer>
+
+<script>
+  // ===== CANVAS PARTICLE SYSTEM =====
+  const canvas = document.getElementById('particleCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  const particles = [];
+  const starParticles = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class DustParticle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.size = Math.random() * 3 + 0.5;
+      this.speedX = (Math.random() - 0.5) * 0.2;
+      this.speedY = -Math.random() * 0.15 - 0.02;
+      this.opacity = Math.random() * 0.3 + 0.05;
+      this.color = Math.random() > 0.5 
+        ? [192, 96, 20]   // rust
+        : [200, 184, 152]; // dust
+      this.life = Math.random() * 800 + 400;
+      this.maxLife = this.life;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      this.life--;
+      if (this.life <= 0 || this.x < -10 || this.x > W + 10 || this.y < -10) {
+        this.reset();
+        this.y = H + 10;
+      }
+    }
+    draw() {
+      const fadeIn = Math.min(1, (this.maxLife - this.life) / 100);
+      const a = this.opacity * fadeIn;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${this.color[0]},${this.color[1]},${this.color[2]},${a})`;
+      ctx.fill();
+    }
+  }
+
+  class Star {
+    constructor() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H * 0.7;
+      this.size = Math.random() * 1.8 + 0.3;
+      this.opacity = Math.random() * 0.7 + 0.2;
+      this.speed = Math.random() * 0.02 + 0.005;
+      this.phase = Math.random() * Math.PI * 2;
+    }
+    update() {
+      this.phase += this.speed;
+    }
+    draw() {
+      const twinkle = 0.5 + 0.5 * Math.sin(this.phase);
+      const a = this.opacity * twinkle;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(232, 228, 216, ${a})`;
+      ctx.fill();
+      // glow
+      if (this.size > 0.8) {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(232, 228, 216, ${a * 0.08})`;
+        ctx.fill();
+      }
+    }
+  }
+
+  // Initialize
+  for (let i = 0; i < 120; i++) particles.push(new DustParticle());
+  for (let i = 0; i < 80; i++) starParticles.push(new Star());
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Dust particles
+    particles.forEach(p => { p.update(); p.draw(); });
+    
+    // Stars
+    starParticles.forEach(s => { s.update(); s.draw(); });
+
+    // Gradient overlay
+    const grad = ctx.createLinearGradient(0, 0, 0, H);
+    grad.addColorStop(0, 'rgba(6,13,26,0.25)');
+    grad.addColorStop(0.4, 'rgba(6,13,26,0)');
+    grad.addColorStop(0.6, 'rgba(42,26,10,0.05)');
+    grad.addColorStop(1, 'rgba(6,13,26,0.3)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // ===== INTERSECTION OBSERVER =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Trigger score bar fill animation
+        const fill = entry.target.querySelector('.score-bar-fill');
+        if (fill) {
+          setTimeout(() => {
+            fill.classList.add('fill-visible');
+          }, 300);
+        }
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ===== SCORE NUMBER ANIMATION =====
+  const scoreObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const cards = entry.target.querySelectorAll('.score-number');
+        cards.forEach((card, index) => {
+          const text = card.textContent;
+          const target = parseFloat(text);
+          if (isNaN(target)) return;
+          setTimeout(() => {
+            animateNumber(card, target, text.includes('%'));
+          }, index * 150);
+        });
+        scoreObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.score-section').forEach(el => scoreObserver.observe(el));
+
+  function animateNumber(el, target, isPercent) {
+    let current = 0;
+    const duration = 1500;
+    const start = performance.now();
+    
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      current = target * ease;
+      
+      if (isPercent) {
+        el.innerHTML = Math.round(current) + '<span class="decimal">%</span>';
+      } else {
+        el.textContent = current.toFixed(1);
+      }
+      
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+</script>
+</body>
+</html>

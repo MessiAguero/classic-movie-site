@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天空之城 · 经典电影推荐</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --sky-deep: #0a1628;
+    --sky-mid: #0f2847;
+    --sky-light: #1a4a7a;
+    --cloud-white: #e8eef5;
+    --cloud-warm: #f0e6d0;
+    --gold: #c8a85c;
+    --gold-light: #e8d48a;
+    --amber: #b8863a;
+    --warm-cream: #f5efe0;
+    --rust: #8b5e3c;
+    --robot-green: #5a7a4a;
+    --text-primary: #e8eef5;
+    --text-secondary: #a0b8d0;
+    --card-bg: rgba(15, 40, 71, 0.7);
+    --card-border: rgba(200, 168, 92, 0.2);
+  }
+
+  body {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'STSong', 'SimSun', serif;
+    background: var(--sky-deep);
+    color: var(--text-primary);
+    line-height: 1.8;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* ── Canvas背景 ── */
+  #canvas-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ── 星空背景 ── */
+  #stars-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ── 主容器 ── */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px 60px;
+    position: relative;
+  }
+
+  .hero-year {
+    font-size: clamp(80px, 18vw, 160px);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(200, 168, 92, 0.15);
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    line-height: 1;
+    font-family: 'Georgia', serif;
+    letter-spacing: -4px;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .hero-robot {
+    width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s 0.3s ease forwards;
+    filter: drop-shadow(0 0 20px rgba(200, 168, 92, 0.3));
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    font-weight: 900;
+    color: var(--cloud-white);
+    letter-spacing: 6px;
+    margin-bottom: 8px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s 0.6s ease forwards;
+  }
+
+  .hero-title-jp {
+    font-size: clamp(1rem, 2.5vw, 1.8rem);
+    color: var(--gold-light);
+    letter-spacing: 8px;
+    margin-bottom: 16px;
+    font-weight: 400;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s 0.8s ease forwards;
+  }
+
+  .hero-tagline {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--gold);
+    font-style: italic;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s 1s ease forwards;
+    line-height: 1.6;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s 1.2s ease forwards;
+  }
+
+  .hero-meta span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    padding: 4px 14px;
+    border: 1px solid rgba(200, 168, 92, 0.15);
+    border-radius: 20px;
+    background: rgba(200, 168, 92, 0.05);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    animation: fadeUp 1s 1.5s ease forwards;
+  }
+
+  .hero-scroll span {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    letter-spacing: 2px;
+  }
+
+  .scroll-arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    transform: rotate(45deg);
+    animation: bounceArrow 2s infinite;
+  }
+
+  @keyframes bounceArrow {
+    0%, 100% { transform: rotate(45deg) translateY(0); }
+    50% { transform: rotate(45deg) translateY(6px); }
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SVG 海报 ── */
+  .poster-section {
+    margin: 0 auto 60px;
+    max-width: 700px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+  }
+  .poster-section.visible { opacity: 1; transform: translateY(0); }
+
+  .poster-section svg {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    display: block;
+  }
+
+  /* ── 通用section ── */
+  section { margin-bottom: 50px; }
+
+  .section-title {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--cloud-white);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+  }
+
+  .section-title .jp-sub {
+    font-size: 0.7rem;
+    color: var(--gold);
+    font-weight: 400;
+    letter-spacing: 2px;
+  }
+
+  section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+  }
+  section.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── 评分条 ── */
+  .ratings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+  }
+
+  .rating-item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .rating-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(200, 168, 92, 0.4);
+  }
+
+  .rating-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .rating-number {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gold-light);
+    font-family: 'Georgia', serif;
+  }
+
+  .rating-number .suffix {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  .rating-bar-wrap {
+    margin-top: 8px;
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .rating-bar {
+    height: 100%;
+    background: linear-gradient(to right, var(--gold), var(--gold-light));
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.5s ease;
+  }
+
+  /* ── 剧情梗概 ── */
+  .plot-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 32px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .plot-card::before {
+    content: '「';
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    font-size: 5rem;
+    color: rgba(200, 168, 92, 0.1);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+
+  .plot-text {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: var(--cloud-white);
+    line-height: 2;
+    text-indent: 2em;
+    letter-spacing: 0.5px;
+  }
+
+  .plot-text em {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .no-spoiler-badge {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 0.75rem;
+    color: var(--gold);
+    border: 1px solid rgba(200, 168, 92, 0.3);
+    padding: 3px 12px;
+    border-radius: 12px;
+    letter-spacing: 1px;
+  }
+
+  /* ── 六大亮点 ── */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
+
+  .highlight-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+  .highlight-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(200, 168, 92, 0.35);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .highlight-icon {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .highlight-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+  }
+
+  .highlight-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ── 经典台词 ── */
+  .quote-block {
+    background: linear-gradient(135deg, rgba(15,40,71,0.8), rgba(10,22,40,0.9));
+    border-left: 3px solid var(--gold);
+    border-radius: 0 14px 14px 0;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+  }
+
+  .quote-text {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-style: italic;
+    color: var(--cloud-warm);
+    line-height: 1.9;
+    letter-spacing: 0.5px;
+  }
+
+  .quote-source {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: var(--gold);
+    text-align: right;
+    letter-spacing: 1px;
+  }
+
+  /* ── 为何值得看 ── */
+  .reasons-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .reason-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    backdrop-filter: blur(10px);
+    transition: border-color 0.3s;
+  }
+  .reason-item:hover { border-color: rgba(200, 168, 92, 0.3); }
+
+  .reason-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--amber));
+    color: var(--sky-deep);
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .reason-text {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    line-height: 1.7;
+  }
+
+  .reason-text strong {
+    color: var(--gold-light);
+  }
+
+  /* ── 荣誉 ── */
+  .honors-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .honor-tag {
+    font-size: 0.78rem;
+    color: var(--gold);
+    border: 1px solid rgba(200, 168, 92, 0.25);
+    padding: 5px 14px;
+    border-radius: 20px;
+    background: rgba(200, 168, 92, 0.06);
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+  }
+  .honor-tag:hover {
+    background: rgba(200, 168, 92, 0.12);
+    border-color: var(--gold);
+  }
+
+  /* ── 影片档案 ── */
+  .info-table {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+
+  .info-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .info-row:last-child { border-bottom: none; }
+
+  .info-label {
+    padding: 12px 18px;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 1px;
+    background: rgba(200, 168, 92, 0.04);
+  }
+
+  .info-value {
+    padding: 12px 18px;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+  }
+
+  /* ── 编辑评语 ── */
+  .editor-note {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(200, 168, 92, 0.1);
+  }
+
+  .editor-stars {
+    font-size: 1.6rem;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+  }
+
+  .editor-quote {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .editor-sign {
+    margin-top: 16px;
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--sky-deep); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .container { padding: 0 16px 60px; }
+    .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .info-row { grid-template-columns: 90px 1fr; }
+    .plot-card { padding: 22px; }
+    .hero { padding: 60px 16px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="stars-canvas"></canvas>
+<canvas id="canvas-bg"></canvas>
+
+<div class="container">
+
+  <!-- ═══ HERO ═══ -->
+  <header class="hero">
+    <div class="hero-year">1986</div>
+
+    <!-- 机器人SVG -->
+    <svg class="hero-robot" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="25" y="15" width="50" height="40" rx="8" fill="url(#rbg)"/>
+      <circle cx="42" cy="32" r="6" fill="#1a4a7a" stroke="#c8a85c" stroke-width="1.5"/>
+      <circle cx="58" cy="32" r="6" fill="#1a4a7a" stroke="#c8a85c" stroke-width="1.5"/>
+      <circle cx="42" cy="32" r="2.5" fill="#e8d48a"/>
+      <circle cx="58" cy="32" r="2.5" fill="#e8d48a"/>
+      <rect x="35" y="43" width="30" height="4" rx="2" fill="#c8a85c" opacity="0.6"/>
+      <rect x="38" y="55" width="24" height="22" rx="4" fill="url(#rbg2)"/>
+      <rect x="14" y="62" width="14" height="28" rx="5" fill="url(#rbg2)" transform="rotate(-10 14 62)"/>
+      <rect x="72" y="62" width="14" height="28" rx="5" fill="url(#rbg2)" transform="rotate(10 72 62)"/>
+      <rect x="30" y="77" width="8" height="35" rx="3" fill="url(#rbg2)"/>
+      <rect x="62" y="77" width="8" height="35" rx="3" fill="url(#rbg2)"/>
+      <ellipse cx="50" cy="113" rx="20" ry="4" fill="#c8a85c" opacity="0.2"/>
+      <defs>
+        <linearGradient id="rbg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#5a7a4a"/>
+          <stop offset="100%" stop-color="#3a5a3a"/>
+        </linearGradient>
+        <linearGradient id="rbg2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#6a8a5a"/>
+          <stop offset="100%" stop-color="#4a6a3a"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <h1 class="hero-title">天空之城</h1>
+    <p class="hero-title-jp">天空の城ラピュタ</p>
+    <p class="hero-tagline">「 根 を 張 れ 、 風 に 乗 れ 」</p>
+
+    <div class="hero-meta">
+      <span>宫崎骏 · 执导</span>
+      <span>吉卜力工作室</span>
+      <span>1986 年 8 月</span>
+      <span>冒险 · 奇幻 · 蒸汽朋克</span>
+    </div>
+
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </header>
+
+  <!-- ═══ SVG POSTER ═══ -->
+  <div class="poster-section" data-animate>
+    <svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" style="background:linear-gradient(180deg,#0a1628 0%,#0f2847 30%,#1a4a7a 50%,#b8863a 80%,#c8a85c 100%);border-radius:12px;">
+      <!-- 星辰 -->
+      <g fill="#fff" opacity="0.6">
+        <circle cx="50" cy="30" r="1"/><circle cx="120" cy="55" r="0.8"/><circle cx="200" cy="20" r="1.2"/>
+        <circle cx="320" cy="40" r="0.7"/><circle cx="450" cy="25" r="1"/><circle cx="550" cy="50" r="0.9"/>
+        <circle cx="620" cy="30" r="0.6"/><circle cx="680" cy="45" r="1.1"/><circle cx="80" cy="80" r="0.5"/>
+        <circle cx="400" cy="65" r="0.8"/><circle cx="280" cy="70" r="0.6"/><circle cx="600" cy="70" r="0.7"/>
+      </g>
+      <!-- 月亮 -->
+      <circle cx="560" cy="80" r="28" fill="#f0e6d0" opacity="0.3"/>
+      <circle cx="568" cy="75" r="24" fill="#0a1628" opacity="0.3"/>
+      <!-- 云层 1 -->
+      <g fill="#e8eef5" opacity="0.08">
+        <ellipse cx="150" cy="130" rx="120" ry="25"/>
+        <ellipse cx="250" cy="120" rx="80" ry="20"/>
+        <ellipse cx="500" cy="140" rx="100" ry="22"/>
+      </g>
+      <g fill="#e8eef5" opacity="0.12">
+        <ellipse cx="200" cy="150" rx="90" ry="18"/>
+        <ellipse cx="450" cy="160" rx="110" ry="20"/>
+      </g>
+      <!-- 风之谷风格的飘浮岛 (下) -->
+      <g transform="translate(0,120)">
+        <ellipse cx="350" cy="180" rx="280" ry="50" fill="#3a5a3a" opacity="0.3"/>
+        <ellipse cx="350" cy="178" rx="260" ry="42" fill="#5a7a4a" opacity="0.4"/>
+        <ellipse cx="350" cy="176" rx="240" ry="36" fill="#6a8a5a" opacity="0.5"/>
+        <!-- 树 -->
+        <g fill="#2a4a2a" opacity="0.6">
+          <ellipse cx="260" cy="155" rx="25" ry="30"/>
+          <ellipse cx="350" cy="148" rx="30" ry="35"/>
+          <ellipse cx="440" cy="158" rx="22" ry="28"/>
+        </g>
+        <g fill="#3a6a3a" opacity="0.5">
+          <ellipse cx="260" cy="155" rx="18" ry="22"/>
+          <ellipse cx="350" cy="148" rx="22" ry="26"/>
+          <ellipse cx="440" cy="158" rx="16" ry="20"/>
+        </g>
+      </g>
+      <!-- 拉普达城堡 -->
+      <g transform="translate(350,130)">
+        <!-- 底座浮岛 -->
+        <ellipse cx="0" cy="60" rx="80" ry="18" fill="#4a6a3a" opacity="0.6"/>
+        <ellipse cx="0" cy="58" rx="70" ry="14" fill="#5a7a4a" opacity="0.5"/>
+        <!-- 主塔 -->
+        <rect x="-15" y="-40" width="30" height="80" rx="3" fill="#8b7a5a" opacity="0.7"/>
+        <rect x="-20" y="-45" width="40" height="8" rx="2" fill="#a08a6a" opacity="0.7"/>
+        <rect x="-10" y="-75" width="20" height="32" rx="2" fill="#7a6a4a" opacity="0.7"/>
+        <rect x="-12" y="-80" width="24" height="6" rx="2" fill="#a08a6a" opacity="0.7"/>
+        <!-- 尖顶 -->
+        <polygon points="0,-110 -10,-80 10,-80" fill="#8b7a5a" opacity="0.7"/>
+        <circle cx="0" cy="-112" r="5" fill="#c8a85c" opacity="0.6"/>
+        <!-- 侧翼建筑 -->
+        <rect x="-45" y="-20" width="25" height="50" rx="2" fill="#7a6a4a" opacity="0.5"/>
+        <rect x="20" y="-20" width="25" height="50" rx="2" fill="#7a6a4a" opacity="0.5"/>
+        <!-- 拱桥 -->
+        <path d="M-45 10 Q-22 -15 0 10" stroke="#8b7a5a" stroke-width="2" fill="none" opacity="0.4"/>
+        <path d="M0 10 Q22 -15 45 10" stroke="#8b7a5a" stroke-width="2" fill="none" opacity="0.4"/>
+      </g>
+      <!-- 风力飞行器 -->
+      <g transform="translate(180,100)" opacity="0.5">
+        <ellipse cx="0" cy="0" rx="30" ry="8" fill="#8b3a2a"/>
+        <circle cx="0" cy="-12" r="10" fill="#c8a85c" opacity="0.3"/>
+        <line x1="20" y1="0" x2="20" y2="-35" stroke="#c8a85c" stroke-width="1" opacity="0.4"/>
+        <ellipse cx="20" cy="-35" rx="18" ry="4" fill="#c8a85c" opacity="0.2"/>
+      </g>
+      <!-- 右侧飞行器 -->
+      <g transform="translate(520,110) scale(-1,1)" opacity="0.5">
+        <ellipse cx="0" cy="0" rx="25" ry="6" fill="#8b3a2a"/>
+        <circle cx="0" cy="-10" r="8" fill="#c8a85c" opacity="0.3"/>
+      </g>
+      <!-- 飞鸟 -->
+      <g stroke="#2a4a7a" stroke-width="1.5" fill="none" opacity="0.3">
+        <path d="M100 95 Q105 90 110 95"/>
+        <path d="M140 85 Q145 80 150 85"/>
+        <path d="M600 100 Q605 95 610 100"/>
+      </g>
+      <!-- 发光晶石（希达的项链） -->
+      <circle cx="350" cy="75" r="3" fill="#e8d48a" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="r" values="3;5;3" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="350" cy="75" r="8" fill="#c8a85c" opacity="0.15">
+        <animate attributeName="r" values="8;15;8" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.15;0.05;0.15" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <!-- 底部标题 -->
+      <text x="350" y="370" text-anchor="middle" fill="#c8a85c" font-size="14" font-family="serif" letter-spacing="6" opacity="0.7">天空の城ラピュタ</text>
+      <text x="350" y="390" text-anchor="middle" fill="#a0b8d0" font-size="9" font-family="sans-serif" letter-spacing="3" opacity="0.4">CASTLE IN THE SKY · 1986</text>
+    </svg>
+  </div>
+
+  <!-- ═══ 评分条 ═══ -->
+  <section data-animate>
+    <h2 class="section-title">评分 <span class="jp-sub">評価</span></h2>
+    <div class="ratings-grid">
+      <div class="rating-item">
+        <div class="rating-label">IMDb</div>
+        <div class="rating-number"><span class="count" data-target="8.0" data-decimal="1">0</span></div>
+        <div class="rating-bar-wrap"><div class="rating-bar" data-width="80"></div></div>
+      </div>
+      <div class="rating-item">
+        <div class="rating-label">豆瓣</div>
+        <div class="rating-number"><span class="count" data-target="9.2" data-decimal="1">0</span></div>
+        <div class="rating-bar-wrap"><div class="rating-bar" data-width="92"></div></div>
+      </div>
+      <div class="rating-item">
+        <div class="rating-label">烂番茄</div>
+        <div class="rating-number"><span class="count" data-target="95" data-suffix="%">0</span></div>
+        <div class="rating-bar-wrap"><div class="rating-bar" data-width="95"></div></div>
+      </div>
+      <div class="rating-item">
+        <div class="rating-label">爆米花指数</div>
+        <div class="rating-number"><span class="count" data-target="94" data-suffix="%">0</span></div>
+        <div class="rating-bar-wrap"><div class="rating-bar" data-width="94"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 剧情梗概 ═══ -->
+  <section data-animate>
+    <h2 class="section-title">剧情梗概 <span class="jp-sub">あらすじ</span></h2>
+    <div class="plot-card">
+      <p class="plot-text">
+        少女<img src="https://via.placeholder.com/1x1/0a1628" alt="" style="display:inline;width:0;height:0">
+        希达从天而降，落入矿工少年巴鲁的怀中。她随身佩戴着一颗神秘的蓝色飞行石——传说中拉普达王国力量的钥匙。两人在逃亡中结伴，穿过云层之上的风暴，追寻那座漂浮在天空中的传说之城。沿途有心地善良的空盗朵拉一家紧追不舍，也有野心勃勃的军方特务穆斯卡虎视眈眈。最终，他们抵达了被遗忘在云端的拉普达——一座被参天巨树和古老机器人守护的空中遗迹。但真正的考验，才刚刚开始……
+      </p>
+      <span class="no-spoiler-badge">✦ 无剧透 · 仅呈现故事起点</span>
+    </div>
+  </section>
+
+  <!-- ═══ 六大亮点 ═══ -->
+  <section data-animate>
+    <h2 class="section-title">六大亮点 <span class="jp-sub">魅力</span></h2>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <span class="highlight-icon">🏰</span>
+        <div class="highlight-title">拉普达的视觉奇观</div>
+        <div class="highlight-desc">宫崎骏笔下的空中城堡融合了蒸汽朋克机械美学与自然生态，参天巨树根系缠绕着古老石壁的画面，堪称动画史上最震撼的场景之一。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🎵</span>
+        <div class="highlight-title">久石让的永恒配乐</div>
+        <div class="highlight-desc">《君をのせて》（伴随着你）的旋律一响起，整个灵魂都被托举到了云端。主题曲与电影中飞翔的画面融为一体，成为日本电影音乐史上最具辨识度的乐章。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🪽</span>
+        <div class="highlight-title">飞翔的浪漫</div>
+        <div class="highlight-desc">没有比《天空之城》更能诠释"飞翔"二字的电影了。飞行石、扑翼机、滑翔翼、云海之上的城堡——每一帧都在诉说着人类对天空最原始的向往。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🤖</span>
+        <div class="highlight-title">孤独而温柔的机器人</div>
+        <div class="highlight-desc">拉普达上的园丁机器人，安静地守护着空无一人的城堡，为小鸟献上花朵。一个镜头便足以让人落泪——这是宫崎骏对"科技与自然共存"最温柔的想象。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🌱</span>
+        <div class="highlight-title">反战与环保的深刻主题</div>
+        <div class="highlight-desc">拉普达的毁灭与重生，是对人类贪欲与军国主义的反思。"根要扎在土壤里，和风一起生存"——这不是童话，而是一则关于文明命运的寓言。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">💎</span>
+        <div class="highlight-title">吉卜力的奠基之作</div>
+        <div class="highlight-desc">作为吉卜力工作室成立后的首部长片，《天空之城》确立了宫崎骏日后全部母题：飞翔的少女、机器人的温柔、自然之力与人类傲慢的对抗。一切从这里开始。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 经典台词 ═══ -->
+  <section data-animate>
+    <h2 class="section-title">经典台词 <span class="jp-sub">名台詞</span></h2>
+    <div class="quote-block">
+      <p class="quote-text">
+        "根要扎在土壤里、和风一起生存、和种子一起过冬、和鸟儿一起歌颂春天。不管你拥有多么惊人的武器，不管你操纵了多少可怜的机器人，只要离开土地，就无法生存。"
+      </p>
+      <div class="quote-source">—— 希达 · 最终之言</div>
+    </div>
+    <div class="quote-block">
+      <p class="quote-text">
+        "我终于明白，拉普达为什么会毁灭了——它是在自己了断自己的生命。"
+      </p>
+      <div class="quote-source">—— 巴鲁</div>
+    </div>
+  </section>
+
+  <!-- ═══ 为何值得看 ═══ -->
+  <section data-animate>
+    <h2 class="section-title">为何值得看 <span class="jp-sub">観る理由</span></h2>
+    <div class="reasons-list">
+      <div class="reason-item">
+        <div class="reason-num">1</div>
+        <div class="reason-text"><strong>动画史的里程碑</strong> — 作为吉卜力工作室的首部作品，它定义了一个时代的美学标准，影响了全世界无数动画人和电影创作者。</div>
+      </div>
+      <div class="reason-item">
+        <div class="reason-num">2</div>
+        <div class="reason-text"><strong>全年龄通杀的神作</strong> — 孩子看到的是冒险与奇幻，成年人看到的是文明反思与人生哲理。每看一遍都有新的发现。</div>
+      </div>
+      <div class="reason-item">
+        <div class="reason-num">3</div>
+        <div class="reason-text"><strong>无与伦比的视听体验</strong> — 久石让的配乐 + 宫崎骏的手绘画面，每一帧都是艺术品。即使在今天，其画面质感和艺术表达依然令人屏息。</div>
+      </div>
+      <div class="reason-item">
+        <div class="reason-num">4</div>
+        <div class="reason-text"><strong>跨越时代的精神内核</strong> — 在气候危机与技术孤立的今天，"离开土地就无法生存"的寓言比任何时候都更具现实意义。它不止是一部电影，更是一封写给未来人类的信。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 荣誉 ═══ -->
+  <section data-animate>
+    <h2 class="section-title">荣誉与评价 <span class="jp-sub">栄誉</span></h2>
+    <div class="honors-wrap">
+      <span class="honor-tag">🏆 日本电影学院奖 · 最佳影片（1986）</span>
+      <span class="honor-tag">🏆 日本电影评论家大奖 · 最佳导演</span>
+      <span class="honor-tag">🏆 大藤信郎奖</span>
+      <span class="honor-tag">🏆 日本动画大赏 · 最佳动画</span>
+      <span class="honor-tag">🏆 纽约影评人协会奖提名</span>
+      <span class="honor-tag">🏆 IMDb Top 250 经典</span>
+      <span class="honor-tag">🏆 豆瓣电影 Top 250 #70</span>
+      <span class="honor-tag">🏆 烂番茄新鲜度 95%</span>
+      <span class="honor-tag">🏆 Time Out 百大动画电影</span>
+      <span class="honor-tag">🏆 日本文化厅最佳动画</span>
+    </div>
+  </section>
+
+  <!-- ═══ 影片档案 ═══ -->
+  <section data-animate>
+    <h2 class="section-title">影片档案 <span class="jp-sub">作品情報</span></h2>
+    <div class="info-table">
+      <div class="info-row"><div class="info-label">中文片名</div><div class="info-value">天空之城</div></div>
+      <div class="info-row"><div class="info-label">日文片名</div><div class="info-value">天空の城ラピュタ</div></div>
+      <div class="info-row"><div class="info-label">英文片名</div><div class="info-value">Castle in the Sky</div></div>
+      <div class="info-row"><div class="info-label">上映年份</div><div class="info-value">1986 年 8 月 2 日（日本）</div></div>
+      <div class="info-row"><div class="info-label">导演</div><div class="info-value">宫崎骏</div></div>
+      <div class="info-row"><div class="info-label">制片</div><div class="info-value">高畑勋</div></div>
+      <div class="info-row"><div class="info-label">音乐</div><div class="info-value">久石让</div></div>
+      <div class="info-row"><div class="info-label">制作</div><div class="info-value">吉卜力工作室</div></div>
+      <div class="info-row"><div class="info-label">片长</div><div class="info-value">124 分钟</div></div>
+      <div class="info-row"><div class="info-label">类型</div><div class="info-value">冒险 · 奇幻 · 蒸汽朋克</div></div>
+      <div class="info-row"><div class="info-label">原作</div><div class="info-value">宫崎骏（《格列佛游记》灵感）</div></div>
+      <div class="info-row"><div class="info-label">配音演员</div><div class="info-value">田中真弓（巴鲁）· 横泽启子（希达）· 寺田农（穆斯卡）· 初井言荣（朵拉）</div></div>
+    </div>
+  </section>
+
+  <!-- ═══ 编辑评语 ═══ -->
+  <section data-animate>
+    <div class="editor-note">
+      <div class="editor-stars">★★★★★</div>
+      <p class="editor-quote">
+        "天空之上，有一座城堡在等我们。那不是权力的王座，而是人类对纯真与自由最深的渴望。<br>
+        三十多年来，它从未坠落。"
+      </p>
+      <div class="editor-sign">—— WorkBuddy · 经典电影推荐 2026.06.24</div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // ── 星空 Canvas ──
+  (function() {
+    const c = document.getElementById('stars-canvas');
+    const ctx = c.getContext('2d');
+    let stars = [];
+    let w, h;
+
+    function resize() {
+      w = c.width = window.innerWidth;
+      h = c.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const count = 180;
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.5 + 0.3,
+        alpha: Math.random() * 0.7 + 0.1,
+        speed: Math.random() * 0.008 + 0.003,
+        phase: Math.random() * Math.PI * 2
+      });
+    }
+
+    function drawStars(time) {
+      ctx.clearRect(0, 0, w, h);
+      for (const s of stars) {
+        const a = s.alpha * (0.5 + 0.5 * Math.sin(time * s.speed + s.phase));
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(232, 238, 245, ${a})`;
+        ctx.fill();
+      }
+    }
+
+    let animId;
+    function loop(time) {
+      drawStars(time);
+      animId = requestAnimationFrame(loop);
+    }
+    loop(0);
+
+    // 窗口缩放时重新分布星星
+    window.addEventListener('resize', () => {
+      resize();
+      for (const s of stars) {
+        if (s.x > w) s.x = Math.random() * w;
+        if (s.y > h) s.y = Math.random() * h;
+      }
+    });
+  })();
+
+  // ── 云海 + 光尘粒子 Canvas ──
+  (function() {
+    const c = document.getElementById('canvas-bg');
+    const ctx = c.getContext('2d');
+    let w, h;
+
+    function resize() {
+      w = c.width = window.innerWidth;
+      h = c.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // 云朵
+    const clouds = [];
+    for (let i = 0; i < 8; i++) {
+      clouds.push({
+        x: Math.random() * w,
+        y: h * (0.65 + Math.random() * 0.3),
+        w: 200 + Math.random() * 400,
+        h: 20 + Math.random() * 30,
+        speed: 0.15 + Math.random() * 0.25,
+        alpha: 0.04 + Math.random() * 0.06
+      });
+    }
+
+    // 光尘粒子
+    const particles = [];
+    for (let i = 0; i < 50; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h * 0.6,
+        r: 1 + Math.random() * 3,
+        speedX: (Math.random() - 0.5) * 0.3,
+        speedY: -0.1 - Math.random() * 0.2,
+        alpha: 0.1 + Math.random() * 0.3,
+        hue: 35 + Math.random() * 20,
+        phase: Math.random() * Math.PI * 2
+      });
+    }
+
+    function drawBg(time) {
+      ctx.clearRect(0, 0, w, h);
+
+      // 绘制云
+      for (const cl of clouds) {
+        cl.x += cl.speed;
+        if (cl.x > w + cl.w) cl.x = -cl.w;
+        ctx.beginPath();
+        ctx.ellipse(cl.x, cl.y, cl.w / 2, cl.h / 2, 0, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(232, 238, 245, ${cl.alpha})`;
+        ctx.fill();
+      }
+
+      // 绘制光尘
+      for (const p of particles) {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if (p.y < -10) { p.y = h * 0.5 + Math.random() * h * 0.1; p.x = Math.random() * w; }
+        if (p.x < -10 || p.x > w + 10) p.x = Math.random() * w;
+
+        const breath = 0.5 + 0.5 * Math.sin(time * 0.001 + p.phase);
+        const a = p.alpha * breath;
+
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+        grad.addColorStop(0, `hsla(${p.hue}, 60%, 70%, ${a * 0.6})`);
+        grad.addColorStop(0.3, `hsla(${p.hue}, 50%, 60%, ${a * 0.2})`);
+        grad.addColorStop(1, `hsla(${p.hue}, 40%, 50%, 0)`);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+      }
+    }
+
+    function loop(time) {
+      drawBg(time);
+      requestAnimationFrame(loop);
+    }
+    loop(0);
+  })();
+
+  // ── IntersectionObserver + 评分动画 ──
+  (function() {
+    const els = document.querySelectorAll('[data-animate]');
+    const observer = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      }
+    }, { threshold: 0.1 });
+    els.forEach(el => observer.observe(el));
+
+    // 评分条动画：当评分section进入视口时触发
+    const ratingSection = document.querySelector('.ratings-grid');
+    if (ratingSection) {
+      const barObserver = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            // 进度条
+            document.querySelectorAll('.rating-bar').forEach(bar => {
+              const w = bar.getAttribute('data-width');
+              bar.style.width = w + '%';
+            });
+            // 数字计数
+            document.querySelectorAll('.count').forEach(el => {
+              const target = parseFloat(el.getAttribute('data-target'));
+              const decimal = parseInt(el.getAttribute('data-decimal') || '0');
+              const suffix = el.getAttribute('data-suffix') || '';
+              const duration = 1500;
+              const start = performance.now();
+
+              function update(now) {
+                const t = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - t, 3);
+                const val = target * eased;
+                el.textContent = val.toFixed(decimal) + suffix;
+                if (t < 1) requestAnimationFrame(update);
+                else el.textContent = target.toFixed(decimal) + suffix;
+              }
+              requestAnimationFrame(update);
+            });
+            barObserver.disconnect();
+          }
+        }
+      }, { threshold: 0.3 });
+      barObserver.observe(ratingSection);
+    }
+  })();
+</script>
+
+</body>
+</html>

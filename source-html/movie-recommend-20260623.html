@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经典电影推荐 · 致命魔术</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Text:ital@0;1&display=swap');
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg: #0d0a08;
+    --bg2: #14100d;
+    --bg3: #1c1612;
+    --gold: #c89b3c;
+    --gold-light: #e8c86a;
+    --gold-dim: #8a6e2f;
+    --amber: #a0712b;
+    --sepia: #6b4d2a;
+    --cream: #e8ddd0;
+    --cream-dim: #c4b5a0;
+    --red-dark: #5c1a1a;
+    --text: #ddd5c8;
+    --text-dim: #988b7a;
+    --card-bg: rgba(20, 16, 13, 0.85);
+  }
+
+  body {
+    font-family: 'Noto Serif SC', serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ===== Canvas Background ===== */
+  #particle-canvas {
+    position: fixed; top:0; left:0; width:100vw; height:100vh;
+    z-index: 0; pointer-events: none;
+  }
+
+  /* ===== Scrollbar ===== */
+  ::-webkit-scrollbar { width:6px; }
+  ::-webkit-scrollbar-track { background:var(--bg); }
+  ::-webkit-scrollbar-thumb { background:var(--gold-dim); border-radius:3px; }
+  ::-webkit-scrollbar-thumb:hover { background:var(--gold); }
+
+  /* ===== Sections ===== */
+  section { position:relative; z-index:1; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    position:relative; overflow:hidden; padding:2rem; text-align:center;
+  }
+  .hero::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(200,155,60,0.06) 0%, transparent 70%),
+                radial-gradient(ellipse at 50% 80%, rgba(28,22,18,0.8) 0%, transparent 60%);
+    z-index:0;
+  }
+  .hero-year {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(5rem, 15vw, 12rem); font-weight:700; line-height:0.85;
+    color: rgba(200,155,60,0.08); position:absolute; top:5%; right:5%;
+    user-select:none; z-index:0;
+  }
+  .hero-content { position:relative; z-index:1; max-width:800px; }
+  .hero-badge {
+    display:inline-block; padding:0.4rem 1.5rem; margin-bottom:2rem;
+    border:1px solid var(--gold-dim); border-radius:100px;
+    font-size:0.8rem; letter-spacing:0.2em; color:var(--gold);
+    text-transform:uppercase; background:rgba(200,155,60,0.05);
+    backdrop-filter:blur(4px);
+  }
+  .hero-title {
+    font-size: clamp(2.5rem, 7vw, 5rem); font-weight:900; line-height:1.1;
+    letter-spacing:0.08em; margin-bottom:0.3rem;
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 40%, var(--cream) 70%, var(--gold) 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 2vw, 1.6rem); font-style:italic;
+    color:var(--cream-dim); margin-bottom:0.8rem;
+  }
+  .hero-tagline {
+    font-family: 'Crimson Text', serif;
+    font-size: clamp(1rem, 2vw, 1.4rem); font-style:italic;
+    color:var(--gold-dim); margin:1rem 0 2rem; letter-spacing:0.05em;
+    border-top:1px solid rgba(200,155,60,0.15);
+    border-bottom:1px solid rgba(200,155,60,0.15);
+    display:inline-block; padding:0.6rem 1.5rem;
+  }
+  .hero-meta {
+    display:flex; gap:2rem; justify-content:center; flex-wrap:wrap;
+    margin-top:1.5rem; font-size:0.85rem; color:var(--text-dim);
+  }
+  .hero-meta span { display:flex; align-items:center; gap:0.5rem; }
+  .hero-meta .dot { width:4px; height:4px; border-radius:50%; background:var(--gold-dim); display:inline-block; }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position:absolute; bottom:2rem; left:50%; transform:translateX(-50%);
+    z-index:2; display:flex; flex-direction:column; align-items:center; gap:0.5rem;
+    color:var(--gold-dim); font-size:0.7rem; letter-spacing:0.15em;
+    animation: bounceArrow 2s ease-in-out infinite;
+  }
+  .scroll-indicator .line { width:1px; height:40px; background:linear-gradient(to bottom, var(--gold-dim), transparent); }
+  @keyframes bounceArrow { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(8px);} }
+
+  /* ===== Hero SVG Poster ===== */
+  .hero-poster {
+    margin:2rem auto 0; max-width:280px; position:relative; z-index:1;
+  }
+  .hero-poster svg { width:100%; height:auto; display:block; filter:drop-shadow(0 8px 40px rgba(200,155,60,0.15)); }
+
+  /* ===== Section Headers ===== */
+  .section { padding:5rem 2rem; max-width:1100px; margin:0 auto; }
+  .section-header {
+    text-align:center; margin-bottom:3.5rem;
+  }
+  .section-number {
+    font-family: 'Playfair Display', serif; font-size:3rem; font-weight:700;
+    color:rgba(200,155,60,0.1); line-height:1;
+  }
+  .section-title {
+    font-size:clamp(1.5rem, 3.5vw, 2.2rem); font-weight:700; margin-top:-0.8rem;
+    background: linear-gradient(135deg, var(--gold-light), var(--cream));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  .section-line {
+    width:60px; height:2px; background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin:0.8rem auto 0;
+  }
+
+  /* ===== Ratings ===== */
+  .ratings-grid {
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:1rem; margin-bottom:4rem;
+  }
+  .rating-card {
+    background:var(--card-bg); border:1px solid rgba(200,155,60,0.08);
+    border-radius:8px; padding:1.5rem 1rem; text-align:center;
+    backdrop-filter:blur(8px); transition:transform 0.3s, border-color 0.3s;
+  }
+  .rating-card:hover { transform:translateY(-4px); border-color:rgba(200,155,60,0.25); }
+  .rating-source { font-size:0.75rem; color:var(--text-dim); letter-spacing:0.1em; margin-bottom:0.5rem; text-transform:uppercase; }
+  .rating-score { font-family:'Playfair Display', serif; font-size:2rem; font-weight:700; color:var(--gold-light); }
+  .rating-bar {
+    width:100%; height:3px; background:rgba(255,255,255,0.05); border-radius:2px; margin-top:0.6rem; overflow:hidden;
+  }
+  .rating-bar-fill {
+    height:100%; border-radius:2px; width:0%;
+    background:linear-gradient(90deg, var(--gold-dim), var(--gold-light));
+    transition:width 1.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  }
+  .rating-bar-fill.visible { }
+  .rating-suffix { font-size:0.65rem; color:var(--gold-dim); margin-top:0.3rem; }
+
+  @media (max-width:600px) {
+    .ratings-grid { grid-template-columns:repeat(2, 1fr); }
+  }
+
+  /* ===== Plot Section ===== */
+  .plot-card {
+    background:var(--card-bg); border:1px solid rgba(200,155,60,0.08);
+    border-radius:12px; padding:2.5rem; backdrop-filter:blur(8px);
+    position:relative; overflow:hidden;
+  }
+  .plot-card::before {
+    content:'"'; position:absolute; top:-10px; left:15px;
+    font-family:'Playfair Display', serif; font-size:8rem; line-height:1;
+    color:rgba(200,155,60,0.04);
+  }
+  .plot-text { font-size:1.05rem; line-height:2; color:var(--cream-dim); }
+  .plot-text strong { color:var(--gold-light); font-weight:600; }
+  .spoiler-badge {
+    display:inline-flex; align-items:center; gap:0.4rem;
+    background:rgba(200,155,60,0.08); border:1px solid rgba(200,155,60,0.15);
+    border-radius:100px; padding:0.3rem 0.8rem; margin-top:1.2rem;
+    font-size:0.75rem; color:var(--gold);
+  }
+  .spoiler-badge svg { width:14px; height:14px; fill:var(--gold); }
+
+  /* ===== Highlights ===== */
+  .highlights-grid {
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1.2rem;
+  }
+  .highlight-card {
+    background:var(--card-bg); border:1px solid rgba(200,155,60,0.06);
+    border-radius:10px; padding:1.8rem 1.5rem;
+    backdrop-filter:blur(8px); transition:all 0.4s;
+    position:relative; overflow:hidden;
+  }
+  .highlight-card::after {
+    content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    opacity:0; transition:opacity 0.4s;
+  }
+  .highlight-card:hover::after { opacity:1; }
+  .highlight-card:hover {
+    transform:translateY(-6px); border-color:rgba(200,155,60,0.18);
+    box-shadow:0 12px 40px rgba(0,0,0,0.3);
+  }
+  .highlight-icon { font-size:1.5rem; margin-bottom:0.8rem; }
+  .highlight-card h4 { font-size:1rem; color:var(--gold-light); margin-bottom:0.5rem; }
+  .highlight-card p { font-size:0.85rem; color:var(--text-dim); line-height:1.7; }
+
+  @media (max-width:768px) {
+    .highlights-grid { grid-template-columns:1fr; }
+  }
+
+  /* ===== Quote ===== */
+  .quote-section {
+    background:linear-gradient(135deg, var(--bg2) 0%, var(--bg3) 100%);
+    padding:4rem 2rem; margin:3rem 0; position:relative;
+  }
+  .quote-section::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(200,155,60,0.03) 0%, transparent 70%);
+  }
+  .quote-container { max-width:750px; margin:0 auto; text-align:center; position:relative; z-index:1; }
+  .quote-mark { font-family:'Playfair Display', serif; font-size:4rem; line-height:0.5; color:rgba(200,155,60,0.12); }
+  .quote-text {
+    font-family:'Crimson Text', 'Playfair Display', serif;
+    font-size:clamp(1.2rem, 2.5vw, 1.8rem); font-style:italic;
+    line-height:1.7; color:var(--cream); margin:1rem 0;
+  }
+  .quote-attribution { font-size:0.85rem; color:var(--gold-dim); font-style:normal; }
+
+  /* ===== Why Watch ===== */
+  .why-grid {
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:1.5rem;
+  }
+  .why-card {
+    background:var(--card-bg); border:1px solid rgba(200,155,60,0.06);
+    border-radius:10px; padding:2rem; transition:all 0.3s;
+    display:flex; gap:1.2rem; align-items:flex-start;
+  }
+  .why-card:hover { border-color:rgba(200,155,60,0.2); transform:translateY(-3px); }
+  .why-num {
+    font-family:'Playfair Display', serif;
+    font-size:2rem; font-weight:700; color:rgba(200,155,60,0.15);
+    line-height:1; flex-shrink:0;
+  }
+  .why-card h4 { font-size:1rem; color:var(--gold-light); margin-bottom:0.4rem; }
+  .why-card p { font-size:0.9rem; color:var(--text-dim); line-height:1.8; }
+
+  @media (max-width:600px) {
+    .why-grid { grid-template-columns:1fr; }
+  }
+
+  /* ===== Film Info Table ===== */
+  .info-table {
+    background:var(--card-bg); border:1px solid rgba(200,155,60,0.08);
+    border-radius:12px; overflow:hidden; backdrop-filter:blur(8px);
+    margin-top:3rem;
+  }
+  .info-row {
+    display:grid; grid-template-columns:140px 1fr; border-bottom:1px solid rgba(200,155,60,0.05);
+  }
+  .info-row:last-child { border-bottom:none; }
+  .info-label {
+    padding:0.8rem 1.5rem; font-size:0.8rem; color:var(--gold-dim);
+    letter-spacing:0.1em; background:rgba(200,155,60,0.03);
+  }
+  .info-value {
+    padding:0.8rem 1.5rem; font-size:0.9rem; color:var(--cream-dim);
+  }
+  .info-value .tag {
+    display:inline-block; padding:0.15rem 0.6rem; margin:0.15rem 0.2rem;
+    border:1px solid rgba(200,155,60,0.12); border-radius:100px;
+    font-size:0.75rem; color:var(--gold);
+  }
+
+  /* ===== Final Verdict ===== */
+  .verdict {
+    text-align:center; padding:3rem 2rem; margin-top:3rem;
+    border-top:1px solid rgba(200,155,60,0.08);
+  }
+  .verdict-stars { font-size:1.5rem; letter-spacing:0.2em; color:var(--gold); margin-bottom:0.8rem; }
+  .verdict-text {
+    font-size:1.1rem; color:var(--cream-dim); max-width:600px; margin:0 auto;
+    line-height:2;
+  }
+
+  /* ===== Footer ===== */
+  .footer {
+    text-align:center; padding:3rem 2rem;
+    border-top:1px solid rgba(200,155,60,0.05);
+    font-size:0.75rem; color:var(--text-dim); letter-spacing:0.1em;
+  }
+
+  /* ===== Reveal Animations ===== */
+  .reveal { opacity:0; transform:translateY(30px); transition:all 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* ===== No-Spoiler Badge Float ===== */
+  .no-spoiler-float {
+    position:fixed; top:1rem; right:1rem; z-index:100;
+    background:rgba(20,16,13,0.85); backdrop-filter:blur(8px);
+    border:1px solid rgba(200,155,60,0.15); border-radius:100px;
+    padding:0.5rem 1rem; display:flex; align-items:center; gap:0.5rem;
+    font-size:0.7rem; color:var(--gold); letter-spacing:0.08em;
+    animation: fadeIn 1s 0.5s both;
+  }
+  .no-spoiler-float svg { width:14px; height:14px; flex-shrink:0; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0);} }
+
+  @media (max-width:600px) {
+    .section { padding:3rem 1.2rem; }
+    .plot-card { padding:1.5rem; }
+    .info-row { grid-template-columns:1fr; }
+    .no-spoiler-float { top:0.5rem; right:0.5rem; font-size:0.65rem; padding:0.35rem 0.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- No-Spoiler Badge -->
+<div class="no-spoiler-float">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+  </svg>
+  本文无剧透
+</div>
+
+<!-- Particle Canvas -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-year">2006</div>
+  <div class="hero-badge">克里斯托弗·诺兰作品</div>
+  <div class="hero-content">
+    <h1 class="hero-title">致命魔术</h1>
+    <div class="hero-sub">The Prestige</div>
+    <div class="hero-tagline">"Are you watching closely?"</div>
+    <div class="hero-meta">
+      <span>类型：悬疑 · 剧情 · 科幻</span>
+      <span class="dot"></span>
+      <span>导演：克里斯托弗·诺兰</span>
+      <span class="dot"></span>
+      <span>2006 · 美国 / 英国</span>
+    </div>
+    <!-- SVG Poster -->
+    <div class="hero-poster">
+      <svg viewBox="0 0 280 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Stage backdrop -->
+        <rect x="0" y="0" width="280" height="380" rx="4" fill="#0d0a08"/>
+        <rect x="2" y="2" width="276" height="376" rx="3" stroke="#c89b3c" stroke-width="0.5" opacity="0.15"/>
+
+        <!-- Stage curtains left -->
+        <path d="M0 0 Q40 60 30 120 Q20 180 0 380" fill="#1c1410" stroke="#c89b3c" stroke-width="0.3" opacity="0.6"/>
+        <path d="M0 0 Q20 40 15 90 Q10 150 0 380" fill="#0d0a08" stroke="none" opacity="0.4"/>
+
+        <!-- Stage curtains right -->
+        <path d="M280 0 Q240 60 250 120 Q260 180 280 380" fill="#1c1410" stroke="#c89b3c" stroke-width="0.3" opacity="0.6"/>
+        <path d="M280 0 Q260 40 265 90 Q270 150 280 380" fill="#0d0a08" stroke="none" opacity="0.4"/>
+
+        <!-- Stage floor -->
+        <path d="M20 320 L260 320 L280 380 L0 380 Z" fill="#1a1410" stroke="#c89b3c" stroke-width="0.3" opacity="0.4"/>
+        <line x1="40" y1="320" x2="20" y2="380" stroke="#c89b3c" stroke-width="0.2" opacity="0.08"/>
+        <line x1="80" y1="320" x2="60" y2="380" stroke="#c89b3c" stroke-width="0.2" opacity="0.08"/>
+        <line x1="120" y1="320" x2="110" y2="380" stroke="#c89b3c" stroke-width="0.2" opacity="0.08"/>
+        <line x1="160" y1="320" x2="160" y2="380" stroke="#c89b3c" stroke-width="0.2" opacity="0.08"/>
+        <line x1="200" y1="320" x2="210" y2="380" stroke="#c89b3c" stroke-width="0.2" opacity="0.08"/>
+        <line x1="240" y1="320" x2="260" y2="380" stroke="#c89b3c" stroke-width="0.2" opacity="0.08"/>
+
+        <!-- Arch frame -->
+        <path d="M40 320 L40 80 Q140 -10 240 80 L240 320" fill="none" stroke="#c89b3c" stroke-width="0.8" opacity="0.12"/>
+        <path d="M50 320 L50 85 Q140 5 230 85 L230 320" fill="none" stroke="#c89b3c" stroke-width="0.3" opacity="0.06"/>
+
+        <!-- Light beam from above -->
+        <path d="M90 0 L110 200 L170 200 L190 0 Z" fill="url(#lightGrad)" opacity="0.04"/>
+
+        <!-- Magician silhouette left -->
+        <path d="M100 180 Q100 140 115 130 Q115 115 108 105 Q108 85 125 85 Q140 85 140 105 Q135 115 135 130 Q150 140 150 180 Z" fill="#1c1612" stroke="#c89b3c" stroke-width="0.3" opacity="0.3"/>
+        <!-- Top hat -->
+        <ellipse cx="125" cy="85" rx="20" ry="4" fill="#1c1612" stroke="#c89b3c" stroke-width="0.3" opacity="0.3"/>
+        <rect x="108" y="55" width="34" height="30" rx="2" fill="#1c1612" stroke="#c89b3c" stroke-width="0.3" opacity="0.3"/>
+        <ellipse cx="125" cy="55" rx="20" ry="4" fill="#1c1612" stroke="#c89b3c" stroke-width="0.3" opacity="0.3"/>
+        <!-- Hand with cane -->
+        <path d="M150 170 L170 180 L170 182 L148 172 Z" fill="#1c1612" opacity="0.3"/>
+        <line x1="170" y1="180" x2="170" y2="240" stroke="#c89b3c" stroke-width="0.5" opacity="0.15"/>
+
+        <!-- Magician silhouette right -->
+        <path d="M180 180 Q180 140 165 130 Q165 115 172 105 Q172 85 155 85 Q140 85 140 105 Q145 115 145 130 Q130 140 130 180 Z" fill="#1c1612" stroke="#c89b3c" stroke-width="0.3" opacity="0.3"/>
+        <!-- Top hat -->
+        <ellipse cx="155" cy="85" rx="20" ry="4" fill="#1c1612" stroke="#c89b3c" stroke-width="0.3" opacity="0.3"/>
+        <rect x="138" y="55" width="34" height="30" rx="2" fill="#1c1612" stroke="#c89b3c" stroke-width="0.3" opacity="0.3"/>
+        <ellipse cx="155" cy="55" rx="20" ry="4" fill="#1c1612" stroke="#c89b3c" stroke-width="0.3" opacity="0.3"/>
+
+        <!-- Playing cards scattered -->
+        <g opacity="0.12">
+          <rect x="95" y="230" width="16" height="22" rx="1" fill="none" stroke="#c89b3c" stroke-width="0.4" transform="rotate(-15 103 241)"/>
+          <text x="98" y="243" font-size="7" fill="#c89b3c" transform="rotate(-15 103 241)">A</text>
+          <rect x="165" y="250" width="16" height="22" rx="1" fill="none" stroke="#c89b3c" stroke-width="0.4" transform="rotate(10 173 261)"/>
+          <text x="168" y="263" font-size="7" fill="#c89b3c" transform="rotate(10 173 261)">K</text>
+          <rect x="130" y="265" width="16" height="22" rx="1" fill="none" stroke="#c89b3c" stroke-width="0.4" transform="rotate(-25 138 276)"/>
+          <text x="133" y="278" font-size="7" fill="#c89b3c" transform="rotate(-25 138 276)">Q</text>
+        </g>
+
+        <!-- Dove silhouettes -->
+        <g opacity="0.08">
+          <path d="M65 150 Q70 140 75 145 Q80 140 85 150 Q80 148 75 150 Q70 148 65 150 Z" fill="#c89b3c"/>
+          <path d="M195 160 Q200 150 205 155 Q210 150 215 160 Q210 158 205 160 Q200 158 195 160 Z" fill="#c89b3c"/>
+        </g>
+
+        <!-- Key hole light -->
+        <circle cx="140" cy="200" r="30" fill="none" stroke="#c89b3c" stroke-width="0.2" opacity="0.06"/>
+        <circle cx="140" cy="200" r="20" fill="none" stroke="#c89b3c" stroke-width="0.15" opacity="0.04"/>
+
+        <!-- Title text -->
+        <text x="140" y="305" text-anchor="middle" font-family="'Playfair Display', serif" font-size="14" fill="#c89b3c" letter-spacing="4" opacity="0.25">THE PRESTIGE</text>
+        <text x="140" y="320" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="9" fill="#c89b3c" letter-spacing="3" opacity="0.12">致命魔术</text>
+
+        <!-- Bottom decorative line -->
+        <line x1="60" y1="340" x2="220" y2="340" stroke="#c89b3c" stroke-width="0.3" opacity="0.1"/>
+        <circle cx="140" cy="340" r="2" fill="#c89b3c" opacity="0.1"/>
+
+        <!-- Gradients -->
+        <defs>
+          <linearGradient id="lightGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c89b3c" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#c89b3c" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Vignette -->
+        <rect x="0" y="0" width="280" height="380" rx="4" fill="url(#vignette)" opacity="0.3"/>
+        <defs>
+          <radialGradient id="vignette" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="transparent" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#000" stop-opacity="0.6"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>向下滚动</span>
+    <div class="line"></div>
+  </div>
+</section>
+
+<!-- ===== 评分 ===== -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-number">01</div>
+    <h2 class="section-title">权威评分</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="ratings-grid">
+    <div class="rating-card reveal">
+      <div class="rating-source">IMDb</div>
+      <div class="rating-score" data-target="8.5">8.5</div>
+      <div class="rating-bar"><div class="rating-bar-fill" data-pct="85"></div></div>
+      <div class="rating-suffix">Top 250 #45</div>
+    </div>
+    <div class="rating-card reveal">
+      <div class="rating-source">豆瓣</div>
+      <div class="rating-score" data-target="8.9">8.9</div>
+      <div class="rating-bar"><div class="rating-bar-fill" data-pct="89"></div></div>
+      <div class="rating-suffix">Top 250 #72</div>
+    </div>
+    <div class="rating-card reveal">
+      <div class="rating-source">烂番茄</div>
+      <div class="rating-score" data-target="85">85<small>%</small></div>
+      <div class="rating-bar"><div class="rating-bar-fill" data-pct="85"></div></div>
+      <div class="rating-suffix">新鲜度认证</div>
+    </div>
+    <div class="rating-card reveal">
+      <div class="rating-source">Metacritic</div>
+      <div class="rating-score" data-target="66">66</div>
+      <div class="rating-bar"><div class="rating-bar-fill" data-pct="66"></div></div>
+      <div class="rating-suffix">综合评分</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 剧情梗概 ===== -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-number">02</div>
+    <h2 class="section-title">剧情梗概</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="plot-card reveal">
+    <p class="plot-text">
+      19世纪末的伦敦，维多利亚时代的大众对魔术表演如痴如醉。两位年轻且天赋异禀的魔术师——
+      <strong>罗伯特·安吉尔</strong>（休·杰克曼 饰）与 <strong>阿尔弗雷德·波登</strong>（克里斯蒂安·贝尔 饰）——
+      原本是同行兼朋友，却在一场意外悲剧后反目成仇，从此展开了你死我活的残酷较量。
+    </p>
+    <p class="plot-text" style="margin-top:1rem;">
+      他们互相拆台、窃取秘密、设下陷阱，不惜一切代价摧毁对方。当波登创造出一个令全伦敦为之疯狂的
+      终极魔术——"移形幻影"（The Transported Man）时，安吉尔的执念达到了顶点。
+      他远赴科罗拉多，寻找传奇科学家 <strong>尼古拉·特斯拉</strong>（大卫·鲍伊 饰）的帮助，
+      赌上了一切去创造属于他自己的"完美把戏"。这场较量逐步超越了魔术的边界，
+      坠入 obsession、欺骗与自我毁灭的深渊。每一个魔术都有三个部分——<em>以虚代实、偷天换日、化腐朽为神奇</em>。
+    </p>
+    <div class="spoiler-badge">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      无剧透 · 仅提供背景框架
+    </div>
+  </div>
+</section>
+
+<!-- ===== Quote 1 ===== -->
+<div class="quote-section">
+  <div class="quote-container reveal">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">Are you watching closely?</p>
+    <p class="quote-attribution">—— 每场魔术开始的邀请，也是整部电影送给观众的挑战</p>
+  </div>
+</div>
+
+<!-- ===== 六大亮点 ===== -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-number">03</div>
+    <h2 class="section-title">六大亮点</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="highlights-grid">
+    <div class="highlight-card reveal">
+      <div class="highlight-icon">📜</div>
+      <h4>三段叙事结构</h4>
+      <p>诺兰以其标志性的非线形叙事，将日记、回忆与当下三条时间线交织，如同魔术的三段式结构——以虚代实、偷天换日、化腐朽为神奇。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-icon">🎭</div>
+      <h4>双雄对决</h4>
+      <p>休·杰克曼与克里斯蒂安·贝尔贡献了职业生涯最精彩的对飙表演之一。一个优雅狂妄，一个深沉偏执，你无从判断谁更值得同情。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-icon">⚡</div>
+      <h4>特斯拉的谜团</h4>
+      <p>大卫·鲍伊饰演的尼古拉·特斯拉亦真亦幻，将历史与虚构的边界模糊化。他的"机器"是故事中最迷人的麦高芬，也是全片悬念的核心。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-icon">🎪</div>
+      <h4>维多利亚时代的重现</h4>
+      <p>从煤气灯下的街巷到奢华剧场后台，每一个场景都浸透着19世纪末伦敦的质感。服装、道具、布景都精雕细琢，营造出令人沉浸的时代氛围。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-icon">🕊️</div>
+      <h4>"牺牲"的主题</h4>
+      <p>全片的核心母题：一个伟大的魔术需要付出什么代价？每一位角色都在不断追问这个问题，而答案远比他们（和观众）预想的更加黑暗和残酷。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-icon">🔄</div>
+      <h4>终极反转</h4>
+      <p>被誉为影史最佳反转之一——当谜底揭晓的那一刻，你会想立刻从头再看一遍。诺兰在每句台词、每个镜头里都埋下了线索，只等有心人发现。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Why Watch ===== -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-number">04</div>
+    <h2 class="section-title">为什么值得看</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-num">01</div>
+      <div>
+        <h4>叙事的魔术</h4>
+        <p>诺兰不仅讲述了一个关于魔术的故事，更用电影语言本身完成了一场魔术。每一次闪回、每一次视角切换都是一次"误导"（misdirection），让你在真相面前浑然不觉。</p>
+      </div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num">02</div>
+      <div>
+        <h4>影史级的重看价值</h4>
+        <p>几乎没有人能在第一遍就捕捉到所有细节。一旦知道了结局，第二遍观影会变成完全不同的体验——你会发现诺兰从一开始就把答案摆在了你眼前。</p>
+      </div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num">03</div>
+      <div>
+        <h4>关于执念的深度探讨</h4>
+        <p>这不是一个简单的正邪对抗故事。两位主角都在各自的道路上越陷越深，他们的执念既是动力也是诅咒，令人叹惋又令人不寒而栗。</p>
+      </div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num">04</div>
+      <div>
+        <h4>才华横溢的主创阵容</h4>
+        <p>诺兰导演、诺兰兄弟编剧，休·杰克曼、克里斯蒂安·贝尔、迈克尔·凯恩、斯嘉丽·约翰逊、大卫·鲍伊——这个阵容放在今天看堪称传奇。每个人都贡献了顶尖水准的表演。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Quote 2 ===== -->
+<div class="quote-section">
+  <div class="quote-container reveal">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">Every great magic trick consists of three parts: the pledge, the turn, and the prestige.</p>
+    <p class="quote-attribution">—— 迈克尔·凯恩 饰 Cutter，为本片定下了叙事的灵魂</p>
+  </div>
+</div>
+
+<!-- ===== 影片档案 ===== -->
+<section class="section">
+  <div class="section-header reveal">
+    <div class="section-number">05</div>
+    <h2 class="section-title">影片档案</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="info-table reveal">
+    <div class="info-row">
+      <div class="info-label">片名</div>
+      <div class="info-value">The Prestige（致命魔术）</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">导演</div>
+      <div class="info-value">克里斯托弗·诺兰</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">编剧</div>
+      <div class="info-value">克里斯托弗·诺兰 & 乔纳森·诺兰（改编自克里斯托弗·普里斯特同名小说）</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">主演</div>
+      <div class="info-value">休·杰克曼、克里斯蒂安·贝尔、迈克尔·凯恩、斯嘉丽·约翰逊、大卫·鲍伊、派珀·佩拉博</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">上映年份</div>
+      <div class="info-value">2006</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">片长</div>
+      <div class="info-value">130 分钟</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">类型</div>
+      <div class="info-value">
+        <span class="tag">悬疑</span>
+        <span class="tag">剧情</span>
+        <span class="tag">科幻</span>
+        <span class="tag">惊悚</span>
+      </div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">荣誉</div>
+      <div class="info-value">
+        <span class="tag">奥斯卡最佳摄影提名</span>
+        <span class="tag">奥斯卡最佳艺术指导提名</span>
+        <span class="tag">AFI年度十佳电影</span>
+        <span class="tag">华盛顿影评人协会奖最佳影片</span>
+        <span class="tag">《帝国》杂志 21世纪百大电影</span>
+        <span class="tag">IMDb Top 250 #45</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Final Verdict -->
+  <div class="verdict reveal">
+    <div class="verdict-stars">★★★★★</div>
+    <p class="verdict-text">
+      这不是一部看过就忘的电影——它会留在你的脑海里，像一场精心设计的魔术，
+      即使你知道谜底也无法破解其魅力。《致命魔术》是诺兰最被低估的作品，
+      却是他最完满、最令人着迷的一部。准备好，仔细看。
+    </p>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<div class="footer">
+  <div style="margin-bottom:0.5rem; font-family:'Playfair Display',serif; letter-spacing:0.3em; color:var(--gold-dim); font-size:0.85rem;">THE PRESTIGE</div>
+  <div>经典电影推荐 · 2026-06-23</div>
+  <div style="margin-top:0.3rem; font-size:0.65rem;">Are you watching closely?</div>
+</div>
+
+<script>
+// ===== Particle Canvas =====
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.size = 1 + Math.random() * 2.5;
+    this.speedY = -(0.15 + Math.random() * 0.4);
+    this.speedX = (Math.random() - 0.5) * 0.15;
+    this.opacity = 0.15 + Math.random() * 0.3;
+    this.life = Math.random() * 1;
+    this.lifeSpeed = 0.001 + Math.random() * 0.003;
+    // Golden/sepia tones
+    const hue = 30 + Math.random() * 30; // 30-60 (gold range)
+    this.color = `hsla(${hue}, 60%, ${45 + Math.random() * 30}%, `;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.life += this.lifeSpeed;
+    this.currentOpacity = this.opacity * (0.5 + 0.5 * Math.sin(this.life * Math.PI * 2));
+    if (this.y < -10) this.reset();
+    if (this.x < -10 || this.x > W + 10) { this.x = Math.random() * W; }
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.color + this.currentOpacity + ')';
+    ctx.fill();
+    // Glow
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size * 2.5, 0, Math.PI * 2);
+    ctx.fillStyle = this.color + (this.currentOpacity * 0.15) + ')';
+    ctx.fill();
+  }
+}
+
+const particleCount = Math.min(Math.floor(W * H / 8000), 120);
+const particles = Array.from({ length: particleCount }, () => new Particle());
+
+function animateParticles() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ===== Intersection Observer (Reveal) =====
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// ===== Rating Bar Fill Animation =====
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bar = entry.target;
+      const pct = parseFloat(bar.dataset.pct);
+      bar.style.width = pct + '%';
+      barObserver.unobserve(bar);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.rating-bar-fill').forEach(bar => barObserver.observe(bar));
+
+// ===== Rating Score Count Animation =====
+const scoreObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseFloat(el.dataset.target);
+      const hasPercent = el.innerHTML.includes('%');
+      let current = 0;
+      const duration = 1500;
+      const step = Math.max(target / 60, 0.01);
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        if (hasPercent) {
+          const intVal = Math.round(current);
+          el.innerHTML = intVal + '<small>%</small>';
+        } else {
+          el.textContent = current.toFixed(1);
+        }
+      }, 20);
+      scoreObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.rating-score').forEach(el => scoreObserver.observe(el));
+</script>
+</body>
+</html>

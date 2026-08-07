@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经典电影推荐 · 怦然心动 (Flipped)</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: #1a1412;
+    --bg2: #231c19;
+    --gold: #d4a85c;
+    --gold-light: #f0d48a;
+    --gold-dark: #b8893a;
+    --rose: #c47a6b;
+    --rose-light: #dba99e;
+    --cream: #f5ede0;
+    --cream-dark: #e0d4c0;
+    --sage: #7a8f6e;
+    --sky: #4a6785;
+    --text: #f0e8d8;
+    --text-dim: #a89880;
+    --card-bg: rgba(35, 28, 25, 0.85);
+    --font-serif: 'Georgia', 'Songti SC', 'SimSun', serif;
+    --font-sans: 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+  /* Canvas */
+  #particle-canvas {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* Hero */
+  .hero {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(180deg, rgba(26,20,18,0.3) 0%, rgba(26,20,18,0.8) 70%, var(--bg) 100%);
+  }
+  .hero-year {
+    font-family: var(--font-serif);
+    font-size: clamp(6rem, 18vw, 14rem);
+    font-weight: 700;
+    color: rgba(212,168,92,0.08);
+    line-height: 1;
+    letter-spacing: 0.05em;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -55%);
+    z-index: 0;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-block;
+    padding: 0.35rem 1.4rem;
+    border: 1px solid var(--gold-dark);
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    font-family: var(--font-sans);
+    backdrop-filter: blur(4px);
+  }
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+  .hero-title-en {
+    font-family: var(--font-serif);
+    font-size: clamp(1.2rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--gold);
+    font-style: italic;
+    margin-bottom: 0.3rem;
+  }
+  .hero-tagline {
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    color: var(--rose-light);
+    font-style: italic;
+    margin: 0.8rem auto 1.5rem;
+    max-width: 600px;
+    padding: 0 1rem;
+  }
+  .hero-meta {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+  .hero-meta span { color: var(--gold); }
+  .hero-tree-svg {
+    max-width: 320px;
+    margin: 1.5rem auto 0;
+    filter: drop-shadow(0 0 30px rgba(212,168,92,0.15));
+  }
+  .scroll-indicator {
+    position: absolute; bottom: 2rem;
+    left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0.5rem;
+    color: var(--text-dim); font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    animation: bounce-down 2s ease-in-out infinite;
+  }
+  .scroll-indicator .arrow {
+    width: 1.2rem; height: 1.2rem;
+    border-right: 1.5px solid var(--gold);
+    border-bottom: 1.5px solid var(--gold);
+    transform: rotate(45deg);
+    opacity: 0.6;
+  }
+  @keyframes bounce-down {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* Sections */
+  section {
+    position: relative; z-index: 1;
+    padding: 5rem 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  .section-subtitle {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 3rem;
+    letter-spacing: 0.05em;
+  }
+  .section-divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 3rem;
+  }
+
+  /* Ratings */
+  .ratings-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .rating-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(212,168,92,0.15);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    backdrop-filter: blur(8px);
+  }
+  .rating-card.visible { opacity: 1; transform: translateY(0); }
+  .rating-card-label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .rating-card-score {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1.2;
+  }
+  .rating-card-score .decimal { font-size: 1.4rem; }
+  .rating-bar-wrap {
+    width: 100%; height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    margin-top: 0.8rem;
+    overflow: hidden;
+  }
+  .rating-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .rating-card-source {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 0.4rem;
+  }
+
+  /* Synopsis */
+  .synopsis-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .synopsis-text {
+    opacity: 0; transform: translateX(-30px);
+    transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+  }
+  .synopsis-text.visible { opacity: 1; transform: translateX(0); }
+  .synopsis-text p {
+    color: var(--cream-dark);
+    font-size: 1rem;
+    line-height: 1.9;
+    margin-bottom: 1.2rem;
+  }
+  .no-spoiler-badge {
+    display: inline-flex;
+    align-items: center; gap: 0.4rem;
+    padding: 0.3rem 1rem;
+    border: 1px solid var(--sage);
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    color: var(--sage);
+    margin-top: 1rem;
+  }
+  .synopsis-poster {
+    opacity: 0; transform: translateX(30px);
+    transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+  }
+  .synopsis-poster.visible { opacity: 1; transform: translateX(0); }
+  .synopsis-poster svg { width: 100%; height: auto; }
+
+  /* Highlights */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+  .highlight-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(212,168,92,0.1);
+    border-radius: 12px;
+    padding: 1.8rem 1.5rem;
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(8px);
+  }
+  .highlight-card.visible { opacity: 1; transform: translateY(0); }
+  .highlight-card:hover {
+    border-color: rgba(212,168,92,0.3);
+    box-shadow: 0 4px 24px rgba(212,168,92,0.06);
+  }
+  .highlight-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .highlight-card h4 {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+  .highlight-card p {
+    font-size: 0.88rem;
+    color: var(--cream-dark);
+    line-height: 1.7;
+  }
+
+  /* Quotes */
+  .quotes-section {
+    background: linear-gradient(180deg, transparent, rgba(212,168,92,0.04), transparent);
+    padding: 5rem 1.5rem;
+  }
+  .quotes-inner { max-width: 800px; margin: 0 auto; }
+  .quote-card {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--gold);
+    border-right: 3px solid var(--gold);
+    background: var(--card-bg);
+    border-radius: 12px;
+    opacity: 0; transform: scale(0.95);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .quote-card.visible { opacity: 1; transform: scale(1); }
+  .quote-text {
+    font-family: var(--font-serif);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.8;
+  }
+  .quote-text::before { content: '\201C'; font-size: 2.5rem; color: var(--gold); margin-right: 0.3rem; }
+  .quote-text::after  { content: '\201D'; font-size: 2.5rem; color: var(--gold); margin-left: 0.3rem; vertical-align: top; }
+  .quote-author {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-top: 1rem;
+  }
+
+  /* Why Watch */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  .why-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(196,122,107,0.12);
+    border-radius: 12px;
+    padding: 1.8rem 1.5rem;
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .why-card.visible { opacity: 1; transform: translateY(0); }
+  .why-num {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: rgba(212,168,92,0.2);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .why-card h4 {
+    font-size: 1rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+  .why-card p {
+    font-size: 0.88rem;
+    color: var(--cream-dark);
+    line-height: 1.7;
+  }
+
+  /* Film Info */
+  .info-table {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border: 1px solid rgba(212,168,92,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .info-table.visible { opacity: 1; transform: translateY(0); }
+  .info-row {
+    display: flex;
+    padding: 0.8rem 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-label {
+    width: 120px;
+    flex-shrink: 0;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    font-weight: 600;
+  }
+  .info-value {
+    flex: 1;
+    font-size: 0.88rem;
+    color: var(--cream-dark);
+  }
+  .info-value .highlight { color: var(--gold); }
+
+  /* Editor's Note */
+  .editor-note {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(212,168,92,0.1);
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .editor-note.visible { opacity: 1; transform: translateY(0); }
+  .editor-stars {
+    font-size: 1.5rem;
+    color: var(--gold);
+    letter-spacing: 0.3rem;
+    margin-bottom: 1rem;
+  }
+  .editor-note h3 {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+  .editor-note p {
+    font-size: 0.95rem;
+    color: var(--cream-dark);
+    line-height: 1.9;
+  }
+  .editor-sign {
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-top: 1.5rem;
+    font-style: italic;
+  }
+
+  /* Footer */
+  footer {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+    .synopsis-wrap { grid-template-columns: 1fr; gap: 2rem; }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    section { padding: 3rem 1.2rem; }
+    .rating-card { padding: 1.2rem 0.8rem; }
+    .rating-card-score { font-size: 1.8rem; }
+    .quote-card { padding: 1.8rem 1.2rem; }
+  }
+  @media (max-width: 480px) {
+    .ratings-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+    .info-row { flex-direction: column; gap: 0.2rem; }
+    .info-label { width: auto; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-year">2010</div>
+  <div class="hero-content">
+    <div class="hero-badge">经典电影推荐</div>
+    <h1 class="hero-title-en">Flipped</h1>
+    <h1 class="hero-title">怦然心动</h1>
+    <p class="hero-tagline">"Some of us get dipped in flat, some in satin, some in gloss. But every once in a while you find someone who's iridescent."</p>
+    <p class="hero-meta">导演：<span>罗伯·莱纳</span> &nbsp;·&nbsp; 主演：<span>卡兰·麦克奥利菲</span>、<span>玛德琳·卡罗尔</span></p>
+    <!-- Sycamore tree SVG poster -->
+    <div class="hero-tree-svg">
+      <svg viewBox="0 0 340 240" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#b87c5a"/>
+            <stop offset="30%" stop-color="#d4a85c"/>
+            <stop offset="60%" stop-color="#e8c878"/>
+            <stop offset="100%" stop-color="#f0d48a"/>
+          </linearGradient>
+          <radialGradient id="sun" cx="50%" cy="80%" r="60%">
+            <stop offset="0%" stop-color="#f5d690"/>
+            <stop offset="100%" stop-color="#d4a85c" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="trunk" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#3d2b1c"/>
+            <stop offset="50%" stop-color="#5a3d28"/>
+            <stop offset="100%" stop-color="#3d2b1c"/>
+          </linearGradient>
+          <linearGradient id="canopy" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#4a6740"/>
+            <stop offset="100%" stop-color="#2d4a28"/>
+          </linearGradient>
+        </defs>
+        <!-- Sky -->
+        <rect width="340" height="240" fill="url(#sky)" rx="8"/>
+        <!-- Sun glow -->
+        <circle cx="170" cy="200" r="120" fill="url(#sun)"/>
+        <!-- Distant hills -->
+        <ellipse cx="30" cy="210" rx="100" ry="30" fill="rgba(180,140,80,0.2)"/>
+        <ellipse cx="200" cy="215" rx="130" ry="25" fill="rgba(180,140,80,0.15)"/>
+        <!-- Ground -->
+        <rect x="0" y="210" width="340" height="30" fill="#4a6a3a" rx="0"/>
+        <rect x="0" y="218" width="340" height="22" fill="#3d5a30"/>
+        <!-- Trunk -->
+        <rect x="156" y="60" width="12" height="155" fill="url(#trunk)" rx="3"/>
+        <!-- Main branches -->
+        <path d="M162 90 Q170 85 185 80" stroke="#5a3d28" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M162 95 Q155 88 140 85" stroke="#5a3d28" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M164 105 Q175 100 195 95" stroke="#5a3d28" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M164 75 Q150 68 135 65" stroke="#5a3d28" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M160 110 Q148 108 130 105" stroke="#5a3d28" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <path d="M164 65 Q178 58 200 60" stroke="#5a3d28" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- Canopy clusters -->
+        <ellipse cx="170" cy="55" rx="55" ry="35" fill="url(#canopy)" opacity="0.9"/>
+        <ellipse cx="200" cy="70" rx="35" ry="25" fill="#4a6740" opacity="0.85"/>
+        <ellipse cx="140" cy="68" rx="30" ry="22" fill="#3d5a35" opacity="0.85"/>
+        <ellipse cx="185" cy="45" rx="30" ry="20" fill="#5a7a4a" opacity="0.8"/>
+        <ellipse cx="150" cy="50" rx="25" ry="18" fill="#4a6a40" opacity="0.8"/>
+        <!-- Light green canopy highlights -->
+        <ellipse cx="180" cy="50" rx="18" ry="12" fill="#6a8a55" opacity="0.4"/>
+        <ellipse cx="155" cy="58" rx="14" ry="10" fill="#6a8a55" opacity="0.35"/>
+        <!-- Fence -->
+        <rect x="40" y="195" width="2" height="18" fill="#6a5030"/>
+        <rect x="90" y="195" width="2" height="18" fill="#6a5030"/>
+        <rect x="140" y="195" width="2" height="18" fill="#6a5030"/>
+        <rect x="38" y="196" width="106" height="2" fill="#6a5030"/>
+        <!-- Juli silhouette on branch -->
+        <g transform="translate(170,70)">
+          <ellipse cx="0" cy="-8" rx="4" ry="5" fill="#1a1412"/>
+          <path d="M-4,-3 Q-5,2 -4,8 Q-3,14 0,18 Q3,14 4,8 Q5,2 4,-3" fill="#1a1412" opacity="0.7"/>
+        </g>
+        <!-- Bryce silhouette near tree -->
+        <g transform="translate(195,196)">
+          <ellipse cx="0" cy="-5" rx="3" ry="4" fill="#1a1412" opacity="0.5"/>
+          <path d="M-3,0 Q-3,5 -2,12 Q-1,16 0,18 Q1,16 2,12 Q3,5 3,0" fill="#1a1412" opacity="0.4"/>
+        </g>
+        <!-- Small house silhouette -->
+        <g transform="translate(245,185)" opacity="0.3">
+          <polygon points="15,-20 0,-5 30,-5" fill="#1a1412"/>
+          <rect x="0" y="-5" width="30" height="25" fill="#1a1412"/>
+          <rect x="10" y="5" width="8" height="15" fill="#3d2b1c"/>
+        </g>
+        <!-- Fireflies -->
+        <circle cx="80" cy="140" r="1.5" fill="#f5d690" opacity="0.6"/>
+        <circle cx="260" cy="120" r="1.5" fill="#f5d690" opacity="0.5"/>
+        <circle cx="110" cy="160" r="1" fill="#f5d690" opacity="0.4"/>
+        <circle cx="230" cy="150" r="1.2" fill="#f5d690" opacity="0.5"/>
+        <circle cx="50" cy="170" r="1" fill="#f5d690" opacity="0.3"/>
+        <!-- Stars -->
+        <circle cx="50" cy="25" r="0.8" fill="#fff" opacity="0.4"/>
+        <circle cx="100" cy="15" r="0.6" fill="#fff" opacity="0.3"/>
+        <circle cx="280" cy="20" r="0.8" fill="#fff" opacity="0.35"/>
+        <circle cx="310" cy="35" r="0.6" fill="#fff" opacity="0.25"/>
+        <circle cx="30" cy="40" r="0.5" fill="#fff" opacity="0.2"/>
+      </svg>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>向下滚动</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- Ratings -->
+<section>
+  <h2 class="section-title">口碑评分</h2>
+  <div class="section-divider"></div>
+  <div class="ratings-grid">
+    <div class="rating-card" data-delay="0">
+      <div class="rating-card-label">IMDb</div>
+      <div class="rating-card-score"><span class="num" data-target="7.7" data-decimal="1">0</span></div>
+      <div class="rating-bar-wrap"><div class="rating-bar-fill" data-pct="77"></div></div>
+      <div class="rating-card-source">Top 250 常客</div>
+    </div>
+    <div class="rating-card" data-delay="0.15">
+      <div class="rating-card-label">豆瓣</div>
+      <div class="rating-card-score"><span class="num" data-target="9.1" data-decimal="1">0</span></div>
+      <div class="rating-bar-wrap"><div class="rating-bar-fill" data-pct="91"></div></div>
+      <div class="rating-card-source">Top 250 第 #26</div>
+    </div>
+    <div class="rating-card" data-delay="0.3">
+      <div class="rating-card-label">烂番茄</div>
+      <div class="rating-card-score"><span class="num" data-target="77" data-decimal="0">0</span><span style="font-size:1rem;color:var(--text-dim)">%</span></div>
+      <div class="rating-bar-wrap"><div class="rating-bar-fill" data-pct="77"></div></div>
+      <div class="rating-card-source">新鲜度认证</div>
+    </div>
+    <div class="rating-card" data-delay="0.45">
+      <div class="rating-card-label">爆米花</div>
+      <div class="rating-card-score"><span class="num" data-target="76" data-decimal="0">0</span><span style="font-size:1rem;color:var(--text-dim)">%</span></div>
+      <div class="rating-bar-wrap"><div class="rating-bar-fill" data-pct="76"></div></div>
+      <div class="rating-card-source">观众好评度</div>
+    </div>
+  </div>
+</section>
+
+<!-- Synopsis -->
+<section>
+  <h2 class="section-title">剧情梗概</h2>
+  <div class="section-divider"></div>
+  <div class="synopsis-wrap">
+    <div class="synopsis-text">
+      <p>二年级那年，朱莉·贝克第一次见到新搬来的邻居布莱斯·洛斯基，就被他那双闪闪发光的眼睛深深吸引。从那一刻起，她毫不犹豫地认定——自己爱上他了。</p>
+      <p>然而布莱斯却对朱莉的热情感到困惑与排斥。一个穷追不舍，一个避之不及，两人的关系在青涩的校园岁月中跌跌撞撞。朱莉喜欢爬上高高的梧桐树看世界，喜欢在后院养鸡，喜欢这个生养她的小镇的一切——而布莱斯却始终无法理解她的世界。</p>
+      <p>随着时光流逝，两人的视角悄然发生着变化。当朱莉开始重新审视布莱斯是否真如她想象中那般完美时，布莱斯却渐渐发现了朱莉身上那份独一无二的光彩。一段关于成长、偏见与初心的故事，在两个少年的眼中交替上演。</p>
+      <div class="no-spoiler-badge">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#7a8f6e" stroke-width="1.2"/><path d="M5 7l1.5 1.5L9 5" stroke="#7a8f6e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        无剧透 · 仅提供故事背景框架
+      </div>
+    </div>
+    <div class="synopsis-poster">
+      <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="posterBg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2a2018"/>
+            <stop offset="100%" stop-color="#1a1412"/>
+          </linearGradient>
+          <linearGradient id="sunset" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#b87c5a" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#d4a85c" stop-opacity="0.1"/>
+          </linearGradient>
+        </defs>
+        <rect width="300" height="380" fill="url(#posterBg)" rx="6"/>
+        <rect width="300" height="380" fill="url(#sunset)" rx="6"/>
+        <!-- Border frame -->
+        <rect x="6" y="6" width="288" height="368" fill="none" stroke="rgba(212,168,92,0.15)" stroke-width="1" rx="4"/>
+        <!-- Tree large -->
+        <path d="M150 320 Q150 200 150 180" stroke="#5a3d28" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M150 220 Q170 200 210 190" stroke="#5a3d28" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <path d="M150 230 Q130 215 95 205" stroke="#5a3d28" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M150 200 Q175 185 205 175" stroke="#5a3d28" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <ellipse cx="150" cy="170" rx="70" ry="50" fill="#2d4a28" opacity="0.9"/>
+        <ellipse cx="200" cy="185" rx="35" ry="28" fill="#3d5a35" opacity="0.85"/>
+        <ellipse cx="100" cy="180" rx="30" ry="25" fill="#355530" opacity="0.85"/>
+        <ellipse cx="160" cy="155" rx="25" ry="20" fill="#4a6a40" opacity="0.7"/>
+        <!-- Juli on branch -->
+        <g transform="translate(180,185)">
+          <ellipse cx="0" cy="-10" rx="5" ry="6" fill="#1a1412"/>
+          <path d="M-5,-4 Q-6,3 -5,12 Q-4,18 0,22 Q4,18 5,12 Q6,3 5,-4" fill="#1a1412" opacity="0.65"/>
+        </g>
+        <!-- Ground line -->
+        <path d="M20 330 Q150 320 280 330" fill="none" stroke="#3d5a30" stroke-width="2" opacity="0.5"/>
+        <rect x="0" y="330" width="300" height="50" fill="#1a1412" opacity="0.5"/>
+        <!-- Title on poster -->
+        <text x="150" y="358" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#d4a85c" letter-spacing="2">FLIPPED</text>
+        <!-- Decorative dots -->
+        <circle cx="110" cy="358" r="1.5" fill="#d4a85c" opacity="0.4"/>
+        <circle cx="190" cy="358" r="1.5" fill="#d4a85c" opacity="0.4"/>
+        <!-- Fireflies -->
+        <circle cx="80" cy="260" r="1.5" fill="#f5d690" opacity="0.5"/>
+        <circle cx="220" cy="240" r="1.2" fill="#f5d690" opacity="0.4"/>
+        <circle cx="60" cy="290" r="1" fill="#f5d690" opacity="0.3"/>
+        <circle cx="240" cy="270" r="1.3" fill="#f5d690" opacity="0.4"/>
+        <circle cx="130" cy="280" r="0.8" fill="#f5d690" opacity="0.35"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- Highlights -->
+<section>
+  <h2 class="section-title">精彩亮点</h2>
+  <div class="section-divider"></div>
+  <div class="highlights-grid">
+    <div class="highlight-card" data-delay="0">
+      <span class="highlight-icon">🌳</span>
+      <h4>梧桐树上的世界</h4>
+      <p>梧桐树是整部电影的灵魂意象。朱莉在树上看到的不仅是风景，更是一种看待世界的方式。当她试图把这份美好分享给布莱斯时，两个世界的碰撞就此开始。</p>
+    </div>
+    <div class="highlight-card" data-delay="0.1">
+      <span class="highlight-icon">👁️</span>
+      <h4>双视角叙事结构</h4>
+      <p>同一件事，在朱莉和布莱斯眼中是完全不同的故事。导演以精巧的分段叙事，让观众同时看到"追"与"逃"两面的真实心理，令人忍俊不禁又若有所思。</p>
+    </div>
+    <div class="highlight-card" data-delay="0.2">
+      <span class="highlight-icon">📖</span>
+      <h4>忠实原著改编</h4>
+      <p>改编自文德琳·范·德拉安南的同名畅销小说，电影精准捕捉了原著中那种青涩而真挚的少年情愫，将文字间流淌的细腻情感完美视觉化。</p>
+    </div>
+    <div class="highlight-card" data-delay="0.3">
+      <span class="highlight-icon">🎵</span>
+      <h4>温暖隽永的配乐</h4>
+      <p>Marc Shaiman 的原声配乐犹如一首写给青春的情诗。吉他与弦乐的温暖和弦，让每一个画面都多了一分温柔与怀旧，音乐本身就能让人会心一笑。</p>
+    </div>
+    <div class="highlight-card" data-delay="0.4">
+      <span class="highlight-icon">🎭</span>
+      <h4>浑然天成的少年演技</h4>
+      <p>卡兰·麦克奥利菲与玛德琳·卡罗尔的对手戏自然得仿佛本色出演。朱莉的热情直率、布莱斯的犹豫挣扎——每一个微表情都令人信服，撑起了整部电影的情感核心。</p>
+    </div>
+    <div class="highlight-card" data-delay="0.5">
+      <span class="highlight-icon">💎</span>
+      <h4>一生的成长必修课</h4>
+      <p>它不仅是一个初恋故事，更是一堂关于如何看待他人的成长课。如何不因第一印象下结论？如何看到一个人真正的内在光彩？这部电影给出了最美的答案。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Quotes -->
+<div class="quotes-section">
+  <div class="quotes-inner">
+    <h2 class="section-title">经典台词</h2>
+    <div class="section-divider"></div>
+    <div class="quote-card" data-delay="0">
+      <p class="quote-text">Some of us get dipped in flat, some in satin, some in gloss. But every once in a while you find someone who's iridescent, and when you do, nothing will ever compare.</p>
+      <p class="quote-author">—— 有些人会渐露平庸，有些人会小有所成，还有人会出类拔萃。但你偶尔才能遇上一个光彩夺目的人，当你真正遇到时，一切都无法与之相提并论。</p>
+    </div>
+    <div class="quote-card" data-delay="0.2">
+      <p class="quote-text">The first day I met Bryce Loski, I flipped. Honestly, it was his eyes that got me.</p>
+      <p class="quote-author">—— 遇见布莱斯·洛斯基的第一天，我就怦然心动了。说实话，是他的眼睛让我沦陷的。</p>
+    </div>
+  </div>
+</div>
+
+<!-- Why Watch -->
+<section>
+  <h2 class="section-title">为何值得一看</h2>
+  <div class="section-divider"></div>
+  <div class="why-grid">
+    <div class="why-card" data-delay="0">
+      <div class="why-num">01</div>
+      <h4>最纯粹的青春叙事</h4>
+      <p>没有狗血、没有虐心、没有说教。它用最温柔的方式讲述了一个关于"认识他人"的故事，让每个成年人都能在其中找到自己少年时的影子。</p>
+    </div>
+    <div class="why-card" data-delay="0.1">
+      <div class="why-num">02</div>
+      <h4>温暖的"错位"幽默</h4>
+      <p>朱莉眼中的浪漫在布莱斯眼中是尴尬，布莱斯的善意在朱莉看来是冷漠。这种认知错位制造的幽默既自然又高级，让人在笑中品出一丝酸涩的甜。</p>
+    </div>
+    <div class="why-card" data-delay="0.2">
+      <div class="why-num">03</div>
+      <h4>超越年龄的普世价值</h4>
+      <p>这部电影关于偏见、勇气和真诚。它教会我们不要只看表面，要看到一个人的"整体大于部分之和"。这个道理，十岁需要，三十岁也同样需要。</p>
+    </div>
+    <div class="why-card" data-delay="0.3">
+      <div class="why-num">04</div>
+      <h4>治愈系电影的典范</h4>
+      <p>每当你需要片刻宁静与温暖，这部电影就像一杯热可可，从舌尖暖到心底。它不长不短，恰到好处，看完之后你会忍不住微笑，并相信世界依然美好。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Film Info -->
+<section>
+  <h2 class="section-title">影片档案</h2>
+  <div class="section-divider"></div>
+  <div class="info-table">
+    <div class="info-row"><span class="info-label">片名</span><span class="info-value"><span class="highlight">怦然心动</span> (Flipped)</span></div>
+    <div class="info-row"><span class="info-label">上映年份</span><span class="info-value">2010 年</span></div>
+    <div class="info-row"><span class="info-label">导演</span><span class="info-value">罗伯·莱纳 (Rob Reiner)</span></div>
+    <div class="info-row"><span class="info-label">原著作者</span><span class="info-value">文德琳·范·德拉安南 (Wendelin Van Draanen)</span></div>
+    <div class="info-row"><span class="info-label">主演</span><span class="info-value">卡兰·麦克奥利菲、玛德琳·卡罗尔</span></div>
+    <div class="info-row"><span class="info-label">类型</span><span class="info-value">剧情 / 喜剧 / 爱情 / 家庭</span></div>
+    <div class="info-row"><span class="info-label">片长</span><span class="info-value">90 分钟</span></div>
+    <div class="info-row"><span class="info-label">IMDb 排名</span><span class="info-value"><span class="highlight">Top 250</span></span></div>
+    <div class="info-row"><span class="info-label">豆瓣排名</span><span class="info-value"><span class="highlight">Top 250 #26</span></span></div>
+    <div class="info-row"><span class="info-label">原著销量</span><span class="info-value">全球畅销超过 200 万册，译成 23 种语言</span></div>
+  </div>
+</section>
+
+<!-- Editor's Note -->
+<section>
+  <div class="editor-note">
+    <div class="editor-stars">★★★★★</div>
+    <h3>编辑评语</h3>
+    <p>
+      有些电影宏大如史诗，有些电影精巧如小品。《怦然心动》属于后者——但它的小，恰恰是它的大。<br><br>
+      在这 90 分钟里，导演用一个简单的故事告诉我们：真正的看见，需要放下偏见、放下自我，用心去感受另一个人的存在。朱莉在梧桐树上看到的落日，布莱斯最终领悟到的"整体大于部分之和"——这些瞬间平淡如水，却能在你心里扎根很久很久。<br><br>
+      这是一部值得每年重温一次的电影。每次看，你都会发现自己又长大了一点。
+    </p>
+    <div class="editor-sign">—— WorkBuddy 编辑 · 2026 年 7 月</div>
+  </div>
+</section>
+
+<footer>
+  <p>经典电影推荐 · 第 61 期 &nbsp;|&nbsp; 怦然心动 (Flipped) · 2010 &nbsp;|&nbsp; 祝观影愉快</p>
+</footer>
+
+<script>
+(function() {
+  //========== Canvas Particles ==========
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Fireflies
+  const FIREFLY_COUNT = 45;
+  const fireflies = [];
+  for (let i = 0; i < FIREFLY_COUNT; i++) {
+    fireflies.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: 1 + Math.random() * 2.5,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: -0.1 - Math.random() * 0.2,
+      phase: Math.random() * Math.PI * 2,
+      speed: 0.15 + Math.random() * 0.25,
+      hue: 35 + Math.random() * 15, // gold tones
+      life: 0.3 + Math.random() * 0.5
+    });
+  }
+
+  function drawFireflies(time) {
+    ctx.clearRect(0, 0, W, H);
+
+    fireflies.forEach(f => {
+      // Movement - slow drift upward with gentle sway
+      f.x += f.vx + Math.sin(time * 0.001 + f.phase) * 0.2;
+      f.y += f.vy;
+      f.vy -= 0.001; // very slow float upward
+
+      // Wrap around
+      if (f.y < -10) { f.y = H + 10; f.x = Math.random() * W; f.vy = -0.1 - Math.random() * 0.2; }
+      if (f.x < -10) f.x = W + 10;
+      if (f.x > W + 10) f.x = -10;
+
+      // Breathing glow
+      const glow = 0.3 + 0.7 * (0.5 + 0.5 * Math.sin(time * 0.002 + f.phase));
+      const alpha = glow * f.life;
+
+      // Glow outer
+      const grad = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.r * 6);
+      grad.addColorStop(0, `hsla(${f.hue}, 70%, 80%, ${alpha * 0.6})`);
+      grad.addColorStop(0.3, `hsla(${f.hue}, 60%, 65%, ${alpha * 0.25})`);
+      grad.addColorStop(1, `hsla(${f.hue}, 50%, 50%, 0)`);
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r * 6, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Core
+      ctx.fillStyle = `hsla(${f.hue}, 80%, 90%, ${alpha * 0.9})`;
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r * 0.6, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Bright center
+      ctx.fillStyle = `hsla(${f.hue}, 100%, 95%, ${alpha * 0.5})`;
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r * 0.25, 0, Math.PI * 2);
+      ctx.fill();
+    });
+
+    requestAnimationFrame(drawFireflies);
+  }
+
+  requestAnimationFrame(drawFireflies);
+
+  //========== Intersection Observer ==========
+  const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const delay = parseFloat(el.dataset.delay) || 0;
+        setTimeout(() => el.classList.add('visible'), delay * 1000);
+        observer.unobserve(el);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all animatable elements
+  document.querySelectorAll('.rating-card, .synopsis-text, .synopsis-poster, .highlight-card, .quote-card, .why-card, .info-table, .editor-note').forEach(el => observer.observe(el));
+
+  //========== Rating Number Animation ==========
+  const numberObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateNumbers(entry.target);
+        numberObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.num').forEach(el => numberObserver.observe(el));
+
+  function animateNumbers(el) {
+    const target = parseFloat(el.dataset.target);
+    const decimal = parseInt(el.dataset.decimal) || 0;
+    const duration = 2000;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = target * eased;
+      el.textContent = current.toFixed(decimal);
+      if (progress < 1) requestAnimationFrame(update);
+      else el.textContent = target.toFixed(decimal);
+    }
+    requestAnimationFrame(update);
+  }
+
+  //========== Rating Bar Animation ==========
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, idx) => {
+      if (entry.isIntersecting) {
+        const bar = entry.target;
+        const pct = parseInt(bar.dataset.pct);
+        setTimeout(() => { bar.style.width = pct + '%'; }, idx * 150);
+        barObserver.unobserve(bar);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.rating-bar-fill').forEach(el => barObserver.observe(el));
+
+})();
+</script>
+</body>
+</html>

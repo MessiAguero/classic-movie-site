@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>雨中曲 Singin' in the Rain — 经典电影推荐</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter','Noto Serif SC',sans-serif;
+  background:#0D0E1A;
+  color:#F0E6D3;
+  overflow-x:hidden;
+  line-height:1.7
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+::selection{background:#C4A052;color:#0D0E1A}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0D0E1A}
+::-webkit-scrollbar-thumb{background:#C4A052;border-radius:3px}
+
+/* ===== CANVAS BACKGROUND ===== */
+#bg-canvas{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:0;pointer-events:none
+}
+
+/* ===== SCANLINES ===== */
+body::after{
+  content:'';position:fixed;top:0;left:0;width:100%;height:100%;
+  background:repeating-linear-gradient(
+    0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px
+  );
+  pointer-events:none;z-index:1
+}
+
+/* ===== ART DECO BORDER GLOW ===== */
+.deco-corner{
+  position:fixed;
+  z-index:2;pointer-events:none;
+  opacity:0.15
+}
+.deco-corner--tl{top:20px;left:20px;border-top:2px solid #C4A052;border-left:2px solid #C4A052;width:60px;height:60px}
+.deco-corner--tr{top:20px;right:20px;border-top:2px solid #C4A052;border-right:2px solid #C4A052;width:60px;height:60px}
+.deco-corner--bl{bottom:20px;left:20px;border-bottom:2px solid #C4A052;border-left:2px solid #C4A052;width:60px;height:60px}
+.deco-corner--br{bottom:20px;right:20px;border-bottom:2px solid #C4A052;border-right:2px solid #C4A052;width:60px;height:60px}
+
+/* ===== CONTAINER ===== */
+.container{
+  position:relative;z-index:3;
+  max-width:1100px;margin:0 auto;padding:0 24px
+}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  text-align:center;
+  padding:80px 24px;
+  position:relative
+}
+.hero__year{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(120px,25vw,280px);
+  font-weight:900;
+  color:rgba(196,160,82,0.08);
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  z-index:0;
+  user-select:none;
+  pointer-events:none;
+  line-height:1
+}
+.hero__marquee-svg{
+  position:relative;
+  z-index:1;
+  width:clamp(260px,50vw,480px);
+  height:auto;
+  margin-bottom:24px;
+  filter:drop-shadow(0 0 40px rgba(196,160,82,0.2));
+  animation:marqueeGlow 4s ease-in-out infinite
+}
+@keyframes marqueeGlow{
+  0%,100%{filter:drop-shadow(0 0 40px rgba(196,160,82,0.15))}
+  50%{filter:drop-shadow(0 0 60px rgba(196,160,82,0.35))}
+}
+.hero__title{
+  font-family:'Playfair Display','Noto Serif SC',serif;
+  font-size:clamp(32px,5vw,56px);
+  font-weight:900;
+  color:#F0E6D3;
+  letter-spacing:2px;
+  position:relative;z-index:1;
+  margin-bottom:8px
+}
+.hero__title-en{
+  display:block;
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-weight:400;
+  font-size:clamp(18px,2.8vw,32px);
+  color:#C4A052;
+  margin-top:4px;
+  letter-spacing:3px
+}
+.hero__tagline{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:clamp(14px,2vw,22px);
+  color:rgba(196,160,82,0.8);
+  margin-top:20px;
+  position:relative;z-index:1;
+  padding:12px 28px;
+  border-top:1px solid rgba(196,160,82,0.2);
+  border-bottom:1px solid rgba(196,160,82,0.2)
+}
+.hero__director{
+  font-size:clamp(13px,1.6vw,16px);
+  color:rgba(240,230,211,0.5);
+  margin-top:20px;
+  position:relative;z-index:1;
+  letter-spacing:4px;
+  text-transform:uppercase
+}
+.hero__scroll{
+  position:absolute;bottom:32px;
+  color:rgba(196,160,82,0.4);
+  font-size:12px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  animation:scrollBounce 2s ease-in-out infinite
+}
+@keyframes scrollBounce{
+  0%,100%{transform:translateY(0);opacity:0.4}
+  50%{transform:translateY(8px);opacity:1}
+}
+
+/* ===== SECTION ===== */
+.section{
+  padding:80px 0;
+  position:relative
+}
+.section__title{
+  font-family:'Playfair Display','Noto Serif SC',serif;
+  font-size:clamp(26px,4vw,40px);
+  font-weight:700;
+  color:#F0E6D3;
+  text-align:center;
+  margin-bottom:8px
+}
+.section__subtitle{
+  text-align:center;
+  color:rgba(196,160,82,0.6);
+  font-size:14px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:48px;
+  font-weight:400
+}
+.section__divider{
+  width:60px;height:2px;
+  background:linear-gradient(90deg,transparent,#C4A052,transparent);
+  margin:0 auto 48px
+}
+
+/* ===== SCORE ROW ===== */
+.score-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
+  margin-bottom:60px
+}
+.score-card{
+  text-align:center;
+  padding:28px 16px 20px;
+  background:linear-gradient(180deg,rgba(196,160,82,0.06),transparent);
+  border:1px solid rgba(196,160,82,0.12);
+  border-radius:12px;
+  transition:all 0.4s ease;
+  opacity:0;transform:translateY(30px)
+}
+.score-card.visible{
+  opacity:1;transform:translateY(0)
+}
+.score-card:hover{
+  border-color:rgba(196,160,82,0.3);
+  background:linear-gradient(180deg,rgba(196,160,82,0.1),rgba(196,160,82,0.02));
+  transform:translateY(-4px)
+}
+.score-card__source{
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:rgba(240,230,211,0.4);
+  margin-bottom:8px
+}
+.score-card__number{
+  font-family:'Playfair Display',serif;
+  font-size:36px;
+  font-weight:700;
+  color:#C4A052;
+  line-height:1.2
+}
+.score-card__number .suffix{
+  font-size:18px;
+  font-weight:400;
+  color:rgba(196,160,82,0.5)
+}
+.score-card__label{
+  font-size:12px;
+  color:rgba(240,230,211,0.3);
+  margin-top:4px
+}
+.score-card__bar{
+  width:100%;height:3px;
+  background:rgba(196,160,82,0.08);
+  border-radius:4px;
+  margin-top:12px;
+  overflow:hidden
+}
+.score-card__bar-fill{
+  height:100%;
+  background:linear-gradient(90deg,#C4A052,#E8C97A);
+  border-radius:4px;
+  width:0;
+  transition:width 1.5s cubic-bezier(0.25,0.46,0.45,0.94)
+}
+
+/* ===== PLOT SECTION ===== */
+.plot-section{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:48px;
+  align-items:center
+}
+@media(max-width:768px){
+  .plot-section{grid-template-columns:1fr;gap:32px}
+}
+.plot-content{
+  opacity:0;transform:translateX(-30px);
+  transition:all 0.8s ease
+}
+.plot-content.visible{
+  opacity:1;transform:translateX(0)
+}
+.plot-content h3{
+  font-family:'Playfair Display','Noto Serif SC',serif;
+  font-size:24px;
+  color:#C4A052;
+  margin-bottom:12px
+}
+.plot-content p{
+  font-size:15px;
+  color:rgba(240,230,211,0.8);
+  line-height:1.9;
+  margin-bottom:16px
+}
+.plot-content .no-spoiler{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;
+  background:rgba(196,160,82,0.08);
+  border:1px solid rgba(196,160,82,0.15);
+  border-radius:6px;
+  font-size:12px;
+  color:#C4A052;
+  letter-spacing:1px;
+  margin-top:8px
+}
+.plot-visual{
+  display:flex;justify-content:center;align-items:center;
+  opacity:0;transform:translateX(30px);
+  transition:all 0.8s ease 0.2s
+}
+.plot-visual.visible{
+  opacity:1;transform:translateX(0)
+}
+
+/* ===== SVG POSTER ===== */
+.poster-svg{
+  width:100%;max-width:360px;
+  height:auto;
+  filter:drop-shadow(0 20px 60px rgba(0,0,0,0.5))
+}
+
+/* ===== HIGHLIGHTS ===== */
+.highlights-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px
+}
+.highlight-card{
+  padding:32px 24px;
+  background:linear-gradient(160deg,rgba(196,160,82,0.04),rgba(196,160,82,0.01));
+  border:1px solid rgba(196,160,82,0.08);
+  border-radius:12px;
+  transition:all 0.5s ease;
+  opacity:0;transform:translateY(30px);
+  cursor:default
+}
+.highlight-card.visible{
+  opacity:1;transform:translateY(0)
+}
+.highlight-card:hover{
+  border-color:rgba(196,160,82,0.2);
+  background:linear-gradient(160deg,rgba(196,160,82,0.08),rgba(196,160,82,0.02));
+  transform:translateY(-6px);
+  box-shadow:0 12px 40px rgba(196,160,82,0.06)
+}
+.highlight-card__num{
+  font-family:'Playfair Display',serif;
+  font-size:48px;
+  font-weight:900;
+  color:rgba(196,160,82,0.08);
+  line-height:1;
+  margin-bottom:-12px
+}
+.highlight-card__title{
+  font-family:'Playfair Display','Noto Serif SC',serif;
+  font-size:20px;
+  font-weight:700;
+  color:#F0E6D3;
+  margin-bottom:10px
+}
+.highlight-card__desc{
+  font-size:14px;
+  color:rgba(240,230,211,0.7);
+  line-height:1.8
+}
+
+/* ===== QUOTES ===== */
+.quote-section{
+  padding:60px 0
+}
+.quote-block{
+  max-width:720px;
+  margin:0 auto 48px;
+  text-align:center;
+  opacity:0;transform:scale(0.95);
+  transition:all 0.8s ease
+}
+.quote-block.visible{
+  opacity:1;transform:scale(1)
+}
+.quote-block__mark{
+  font-family:'Playfair Display',serif;
+  font-size:72px;
+  color:rgba(196,160,82,0.1);
+  line-height:0.5
+}
+.quote-block__text{
+  font-family:'Playfair Display','Noto Serif SC',serif;
+  font-style:italic;
+  font-size:clamp(18px,2.6vw,28px);
+  color:#F0E6D3;
+  line-height:1.6;
+  margin:12px 0
+}
+.quote-block__attr{
+  font-size:13px;
+  color:rgba(196,160,82,0.6);
+  letter-spacing:2px
+}
+
+/* ===== WHY WATCH ===== */
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px
+}
+.why-card{
+  padding:28px 20px;
+  background:linear-gradient(135deg,rgba(196,160,82,0.03),transparent);
+  border-left:3px solid #C4A052;
+  border-radius:0 8px 8px 0;
+  opacity:0;transform:translateX(-20px);
+  transition:all 0.6s ease
+}
+.why-card.visible{
+  opacity:1;transform:translateX(0)
+}
+.why-card__title{
+  font-family:'Playfair Display','Noto Serif SC',serif;
+  font-size:18px;
+  font-weight:700;
+  color:#C4A052;
+  margin-bottom:8px
+}
+.why-card__desc{
+  font-size:14px;
+  color:rgba(240,230,211,0.7);
+  line-height:1.8
+}
+
+/* ===== HONORS ===== */
+.honors-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  justify-content:center
+}
+.honor-tag{
+  padding:8px 16px;
+  background:rgba(196,160,82,0.06);
+  border:1px solid rgba(196,160,82,0.12);
+  border-radius:6px;
+  font-size:12px;
+  color:rgba(240,230,211,0.7);
+  letter-spacing:1px;
+  transition:all 0.3s ease;
+  opacity:0;transform:scale(0.9)
+}
+.honor-tag.visible{
+  opacity:1;transform:scale(1)
+}
+.honor-tag:hover{
+  background:rgba(196,160,82,0.12);
+  border-color:rgba(196,160,82,0.3);
+  color:#F0E6D3
+}
+.honor-tag.highlight{
+  border-color:#C4A052;
+  color:#C4A052;
+  background:rgba(196,160,82,0.1)
+}
+
+/* ===== FILM ARCHIVE ===== */
+.archive-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:16px
+}
+.archive-item{
+  padding:16px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(196,160,82,0.06);
+  border-radius:8px;
+  opacity:0;transform:translateY(20px);
+  transition:all 0.5s ease
+}
+.archive-item.visible{
+  opacity:1;transform:translateY(0)
+}
+.archive-item__label{
+  font-size:11px;
+  color:rgba(196,160,82,0.5);
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:4px
+}
+.archive-item__value{
+  font-size:14px;
+  color:#F0E6D3
+}
+
+/* ===== EDITOR RATING ===== */
+.rating-final{
+  text-align:center;
+  padding:60px 24px;
+  max-width:700px;
+  margin:0 auto
+}
+.rating-final__stars{
+  font-size:40px;
+  letter-spacing:8px;
+  color:#C4A052;
+  margin-bottom:16px
+}
+.rating-final__text{
+  font-family:'Playfair Display','Noto Serif SC',serif;
+  font-size:clamp(18px,2.8vw,28px);
+  font-style:italic;
+  color:#F0E6D3;
+  line-height:1.7
+}
+.rating-final__sign{
+  margin-top:24px;
+  font-size:13px;
+  color:rgba(240,230,211,0.3);
+  letter-spacing:3px;
+  text-transform:uppercase
+}
+
+/* ===== OBSERVER UTILITY ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:all 0.8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:480px){
+  .hero{padding:60px 16px}
+  .highlights-grid{grid-template-columns:1fr}
+  .score-row{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr}
+  .archive-grid{grid-template-columns:1fr 1fr}
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  text-align:center;
+  padding:40px 24px;
+  font-size:12px;
+  color:rgba(240,230,211,0.15);
+  letter-spacing:2px;
+  border-top:1px solid rgba(196,160,82,0.06)
+}
+</style>
+</head>
+<body>
+
+<!-- Deco corners -->
+<div class="deco-corner deco-corner--tl"></div>
+<div class="deco-corner deco-corner--tr"></div>
+<div class="deco-corner deco-corner--bl"></div>
+<div class="deco-corner deco-corner--br"></div>
+
+<!-- Canvas -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero__year">1952</div>
+
+  <!-- Marquee SVG -->
+  <svg class="hero__marquee-svg" viewBox="0 0 480 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Art Deco Marquee Frame -->
+    <rect x="40" y="15" width="400" height="130" rx="8" stroke="#C4A052" stroke-width="2" fill="none" opacity="0.3"/>
+    <rect x="36" y="11" width="408" height="138" rx="10" stroke="#C4A052" stroke-width="1" fill="none" opacity="0.12"/>
+    <!-- Lights -->
+    <circle cx="48" cy="20" r="4" fill="#C4A052" opacity="0.6"><animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/></circle>
+    <circle cx="88" cy="20" r="4" fill="#C4A052" opacity="0.3"><animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.3s" repeatCount="indefinite"/></circle>
+    <circle cx="128" cy="20" r="4" fill="#C4A052" opacity="0.7"><animate attributeName="opacity" values="0.7;1;0.7" dur="1.8s" repeatCount="indefinite"/></circle>
+    <circle cx="168" cy="20" r="4" fill="#C4A052" opacity="0.4"><animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.6s" repeatCount="indefinite"/></circle>
+    <circle cx="208" cy="20" r="4" fill="#C4A052" opacity="0.8"><animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite"/></circle>
+    <circle cx="248" cy="20" r="4" fill="#C4A052" opacity="0.3"><animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.1s" repeatCount="indefinite"/></circle>
+    <circle cx="288" cy="20" r="4" fill="#C4A052" opacity="0.6"><animate attributeName="opacity" values="0.6;1;0.6" dur="2.7s" repeatCount="indefinite"/></circle>
+    <circle cx="328" cy="20" r="4" fill="#C4A052" opacity="0.4"><animate attributeName="opacity" values="0.4;0.9;0.4" dur="1.9s" repeatCount="indefinite"/></circle>
+    <circle cx="368" cy="20" r="4" fill="#C4A052" opacity="0.7"><animate attributeName="opacity" values="0.7;1;0.7" dur="2.4s" repeatCount="indefinite"/></circle>
+    <circle cx="408" cy="20" r="4" fill="#C4A052" opacity="0.5"><animate attributeName="opacity" values="0.5;1;0.5" dur="2.2s" repeatCount="indefinite"/></circle>
+    <circle cx="448" cy="20" r="4" fill="#C4A052" opacity="0.3"><animate attributeName="opacity" values="0.3;0.8;0.3" dur="1.7s" repeatCount="indefinite"/></circle>
+    <!-- Umbrella silhouette -->
+    <path d="M328 130 C328 130, 240 98, 152 130" stroke="#C4A052" stroke-width="2.5" fill="none" opacity="0.25"/>
+    <path d="M152 130 L152 70" stroke="#C4A052" stroke-width="2" fill="none" opacity="0.2"/>
+    <path d="M120 72 Q152 55 184 72" stroke="#C4A052" stroke-width="2.5" fill="none" opacity="0.3"/>
+    <!-- Rain lines -->
+    <line x1="140" y1="82" x2="134" y2="95" stroke="#C4A052" stroke-width="0.5" opacity="0.2"/>
+    <line x1="155" y1="80" x2="149" y2="93" stroke="#C4A052" stroke-width="0.5" opacity="0.15"/>
+    <line x1="168" y1="78" x2="162" y2="91" stroke="#C4A052" stroke-width="0.5" opacity="0.2"/>
+    <!-- Spotlight beams -->
+    <path d="M240 140 L210 60" stroke="url(#spotlightGrad)" stroke-width="1" opacity="0.12"/>
+    <path d="M240 140 L270 60" stroke="url(#spotlightGrad2)" stroke-width="1" opacity="0.10"/>
+    <defs>
+      <linearGradient id="spotlightGrad" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0%" stop-color="#C4A052" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#C4A052" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="spotlightGrad2" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0%" stop-color="#C4A052" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#C4A052" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <h1 class="hero__title">
+    雨中曲
+    <span class="hero__title-en">Singin' in the Rain</span>
+  </h1>
+
+  <div class="hero__tagline">"I'm singin' in the rain, just singin' in the rain…"</div>
+  <div class="hero__director">斯坦利·多南 · 吉恩·凯利 执导</div>
+  <div class="hero__scroll">向下滑动</div>
+</section>
+
+<div class="container">
+
+<!-- ===== SCORES ===== -->
+<section class="section">
+  <div class="score-row">
+    <div class="score-card" data-delay="0">
+      <div class="score-card__source">IMDb</div>
+      <div class="score-card__number">8.3</div>
+      <div class="score-card__label">Top 250 #83</div>
+      <div class="score-card__bar"><div class="score-card__bar-fill" data-width="83"></div></div>
+    </div>
+    <div class="score-card" data-delay="100">
+      <div class="score-card__source">豆瓣</div>
+      <div class="score-card__number">9.0</div>
+      <div class="score-card__label">Top 250 #48</div>
+      <div class="score-card__bar"><div class="score-card__bar-fill" data-width="90"></div></div>
+    </div>
+    <div class="score-card" data-delay="200">
+      <div class="score-card__source">烂番茄</div>
+      <div class="score-card__number">100<span class="suffix">%</span></div>
+      <div class="score-card__label">新鲜度 · 完美口碑</div>
+      <div class="score-card__bar"><div class="score-card__bar-fill" data-width="100"></div></div>
+    </div>
+    <div class="score-card" data-delay="300">
+      <div class="score-card__source">爆米花</div>
+      <div class="score-card__number">95<span class="suffix">%</span></div>
+      <div class="score-card__label">观众喜爱度</div>
+      <div class="score-card__bar"><div class="score-card__bar-fill" data-width="95"></div></div>
+    </div>
+  </div>
+
+  <!-- Plot -->
+  <div class="plot-section">
+    <div class="plot-content">
+      <h3>剧情梗概</h3>
+      <p>1920年代末，好莱坞正经历从默片到有声片的惊涛巨变。当红默片男星唐·洛克伍德与傲慢的银幕搭档琳娜·拉蒙特面临声音革命的严峻考验——琳娜的嗓音尖锐刺耳、毫无表演天赋，这对"银幕情侣"的默片时代即将终结。</p>
+      <p>就在事业危机之际，唐邂逅了充满活力与才华的舞台演员凯西·塞尔登。她的声音、智慧与热情让唐看到了全新的可能。一场将有声片推向新纪元的大胆计划就此展开——他们要让全世界听到真正的歌声、笑声和心跳声。</p>
+      <div class="no-spoiler">⏤ 无剧透保证 · 仅提供时代背景与人物框架 ⏤</div>
+    </div>
+    <div class="plot-visual">
+      <svg class="poster-svg" viewBox="0 0 340 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Frame / border -->
+        <rect x="4" y="4" width="332" height="472" rx="6" stroke="#C4A052" stroke-width="1.5" fill="none" opacity="0.2"/>
+        <rect x="10" y="10" width="320" height="460" rx="4" fill="#0D0E1A" fill-opacity="0.6"/>
+        <!-- Art Deco frame inner -->
+        <rect x="16" y="16" width="308" height="448" rx="3" stroke="#C4A052" stroke-width="0.5" fill="none" opacity="0.15"/>
+
+        <!-- Spotlight glow -->
+        <ellipse cx="170" cy="200" rx="120" ry="160" fill="url(#spotGlow)" opacity="0.15"/>
+
+        <!-- Gene Kelly silhouette - umbrella and dancing pose -->
+        <g opacity="0.85">
+          <!-- Legs -->
+          <line x1="170" y1="280" x2="155" y2="340" stroke="#F0E6D3" stroke-width="3" stroke-linecap="round"/>
+          <line x1="170" y1="280" x2="190" y2="335" stroke="#F0E6D3" stroke-width="3" stroke-linecap="round"/>
+          <line x1="155" y1="340" x2="148" y2="370" stroke="#F0E6D3" stroke-width="2" stroke-linecap="round"/>
+          <line x1="190" y1="335" x2="198" y2="370" stroke="#F0E6D3" stroke-width="2" stroke-linecap="round"/>
+
+          <!-- Body -->
+          <path d="M150 220 Q155 200 170 198 Q185 200 190 220 L192 280 L148 280 Z" fill="#1a1a2e" stroke="#F0E6D3" stroke-width="1.5"/>
+
+          <!-- Arms - one up holding umbrella, one out to the side -->
+          <path d="M150 225 Q130 210 118 195" stroke="#F0E6D3" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M190 225 Q210 230 225 215" stroke="#F0E6D3" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+          <!-- Head / hat -->
+          <ellipse cx="170" cy="192" rx="14" ry="16" fill="#1a1a2e" stroke="#F0E6D3" stroke-width="1.5"/>
+          <!-- Fedora hat -->
+          <path d="M148 180 Q170 168 192 180" stroke="#F0E6D3" stroke-width="2.5" fill="none"/>
+          <path d="M148 180 Q170 175 192 180 L190 184 Q170 180 150 184 Z" fill="#1a1a2e" stroke="#F0E6D3" stroke-width="1"/>
+        </g>
+
+        <!-- Umbrella -->
+        <g opacity="0.7">
+          <path d="M118 195 L118 160" stroke="#F0E6D3" stroke-width="2" stroke-linecap="round"/>
+          <path d="M90 145 Q118 125 146 145" stroke="#C4A052" stroke-width="2.5" fill="none"/>
+          <path d="M90 145 Q118 148 146 145" stroke="#C4A052" stroke-width="1" fill="none"/>
+          <!-- Handle -->
+          <circle cx="118" cy="195" r="4" stroke="#F0E6D3" stroke-width="1.5" fill="none"/>
+        </g>
+
+        <!-- Rain drops -->
+        <g opacity="0.2">
+          <line x1="90" y1="120" x2="86" y2="135" stroke="#C4A052" stroke-width="0.8"/>
+          <line x1="105" y1="110" x2="101" y2="125" stroke="#C4A052" stroke-width="0.8"/>
+          <line x1="130" y1="115" x2="126" y2="130" stroke="#C4A052" stroke-width="0.8"/>
+          <line x1="145" y1="100" x2="141" y2="115" stroke="#C4A052" stroke-width="0.8"/>
+          <line x1="200" y1="108" x2="196" y2="123" stroke="#C4A052" stroke-width="0.8"/>
+          <line x1="220" y1="125" x2="216" y2="140" stroke="#C4A052" stroke-width="0.8"/>
+          <line x1="240" y1="115" x2="236" y2="130" stroke="#C4A052" stroke-width="0.8"/>
+          <line x1="255" y1="140" x2="251" y2="155" stroke="#C4A052" stroke-width="0.8"/>
+          <line x1="100" y1="155" x2="96" y2="170" stroke="#C4A052" stroke-width="0.8"/>
+          <line x1="230" y1="150" x2="226" y2="165" stroke="#C4A052" stroke-width="0.8"/>
+        </g>
+
+        <!-- Title text -->
+        <text x="170" y="410" text-anchor="middle" font-family="'Playfair Display',serif" font-size="28" font-weight="700" fill="#C4A052" letter-spacing="2">雨中曲</text>
+        <text x="170" y="432" text-anchor="middle" font-family="'Playfair Display',serif" font-size="12" font-style="italic" fill="rgba(196,160,82,0.5)" letter-spacing="3">Singin' in the Rain</text>
+
+        <!-- Year -->
+        <text x="170" y="450" text-anchor="middle" font-family="'Inter',sans-serif" font-size="10" fill="rgba(240,230,211,0.2)" letter-spacing="4">M · C · M · L · I · I</text>
+
+        <!-- Puddle at bottom -->
+        <ellipse cx="170" cy="370" rx="60" ry="4" fill="rgba(196,160,82,0.06)"/>
+
+        <defs>
+          <radialGradient id="spotGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#C4A052" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#C4A052" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HIGHLIGHTS ===== -->
+<section class="section">
+  <div class="section__divider"></div>
+  <h2 class="section__title">六大亮点</h2>
+  <p class="section__subtitle">为何这部歌舞片成为永恒经典</p>
+
+  <div class="highlights-grid">
+    <div class="highlight-card" data-delay="0">
+      <div class="highlight-card__num">01</div>
+      <div class="highlight-card__title">歌舞巅峰</div>
+      <div class="highlight-card__desc">好莱坞黄金时代歌舞片的终极代表。"Singin' in the Rain"雨中独舞段落被誉为影史最快乐的五分钟，吉恩·凯利将雨天的阴郁化为纯粹欢愉，永载电影史册。</div>
+    </div>
+    <div class="highlight-card" data-delay="100">
+      <div class="highlight-card__num">02</div>
+      <div class="highlight-card__title">时代切片</div>
+      <div class="highlight-card__desc">生动再现默片到有声片转型期的好莱坞，将行业变革的阵痛与荒诞化为绝妙喜剧。笑声背后是对电影工业本质的深刻洞察，每一帧都是活的历史。</div>
+    </div>
+    <div class="highlight-card" data-delay="200">
+      <div class="highlight-card__num">03</div>
+      <div class="highlight-card__title">吉恩·凯利</div>
+      <div class="highlight-card__desc">作为联合导演与主演，凯利将舞蹈推升至情感表达的极致艺术。他的每一段舞步都在叙事，每一个动作都在倾诉——肢体语言超越了对白的力量。</div>
+    </div>
+    <div class="highlight-card" data-delay="300">
+      <div class="highlight-card__num">04</div>
+      <div class="highlight-card__title">经典段落</div>
+      <div class="highlight-card__desc">从雨中欢舞到"Make 'Em Laugh"的疯狂喜剧，从"Good Morning"的三人沙发舞到"Broadway Melody"的华丽芭蕾组曲——每一场都是教科书级的表演与编排。</div>
+    </div>
+    <div class="highlight-card" data-delay="400">
+      <div class="highlight-card__num">05</div>
+      <div class="highlight-card__title">色彩美学</div>
+      <div class="highlight-card__desc">Technicolor技术的巅峰杰作，色彩饱和度与绚丽度令人叹为观止。从百老汇的霓虹绚烂到雨夜街头的琥珀水光，每一帧都如一幅流动的油画。</div>
+    </div>
+    <div class="highlight-card" data-delay="500">
+      <div class="highlight-card__num">06</div>
+      <div class="highlight-card__title">欢笑与感动</div>
+      <div class="highlight-card__desc">纯粹的快乐与对电影艺术的深情致敬完美交织。这是一部让人不由自主嘴角上扬的电影——它证明了电影能给予人类最纯粹的快乐，笑着流泪，感动不已。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTES ===== -->
+<section class="quote-section">
+  <div class="section__divider"></div>
+
+  <div class="quote-block" data-delay="0">
+    <div class="quote-block__mark">"</div>
+    <div class="quote-block__text">I'm singin' in the rain, just singin' in the rain. What a glorious feeling, I'm happy again.</div>
+    <div class="quote-block__attr">— 唐·洛克伍德 · 雨中曲</div>
+  </div>
+
+  <div class="quote-block" data-delay="150">
+    <div class="quote-block__mark">"</div>
+    <div class="quote-block__text">Make 'em laugh! Make 'em laugh! Don't you know everyone wants to laugh?</div>
+    <div class="quote-block__attr">— 科斯莫·布朗 · Make 'Em Laugh</div>
+  </div>
+</section>
+
+<!-- ===== WHY WATCH ===== -->
+<section class="section">
+  <div class="section__divider"></div>
+  <h2 class="section__title">为什么值得看</h2>
+  <p class="section__subtitle">它不只是一部电影，更是一场关于快乐的仪式</p>
+
+  <div class="why-grid">
+    <div class="why-card" data-delay="0">
+      <div class="why-card__title">🎭 影史最伟大的歌舞片</div>
+      <div class="why-card__desc">AFI（美国电影学会）评选史上最伟大歌舞片第一名，AFI百年百大电影第5位。它定义了好莱坞歌舞片的标准，是所有后来者仰望的巅峰。</div>
+    </div>
+    <div class="why-card" data-delay="100">
+      <div class="why-card__title">🌟 烂番茄100%完美口碑</div>
+      <div class="why-card__desc">横跨70余年，烂番茄评分仍保持100%新鲜度。这是跨越时代的胜利——无论技术如何变迁，真诚的快乐永远不会过时。</div>
+    </div>
+    <div class="why-card" data-delay="200">
+      <div class="why-card__title">📽️ 电影自反性的杰作</div>
+      <div class="why-card__desc">它以喜剧形式讲述电影史中最重要的技术变革之一——有声片的诞生。当你笑出声的同时，你已经上了一堂生动的好莱坞工业史课。</div>
+    </div>
+    <div class="why-card" data-delay="300">
+      <div class="why-card__title">💛 快乐的最完美定义</div>
+      <div class="why-card__desc">如果要用一部电影来定义"快乐"二字，非《雨中曲》莫属。它有一种奇妙的魔力：无论你在人生的哪个阶段看它，它都能让你会心一笑、心满意足。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HONORS ===== -->
+<section class="section">
+  <div class="section__divider"></div>
+  <h2 class="section__title">荣誉殿堂</h2>
+  <p class="section__subtitle">跨越时间的不朽认可</p>
+
+  <div class="honors-grid">
+    <span class="honor-tag highlight" data-delay="0">AFI #5 — 百年百大电影</span>
+    <span class="honor-tag highlight" data-delay="50">AFI #1 — 最伟大歌舞片</span>
+    <span class="honor-tag" data-delay="100">🎬 美国国家电影登记表</span>
+    <span class="honor-tag" data-delay="150">🍅 烂番茄 100% 新鲜度</span>
+    <span class="honor-tag" data-delay="200">🏆 金球奖 — 最佳音乐喜剧类男主角</span>
+    <span class="honor-tag" data-delay="250">🎵 奥斯卡 — 最佳原创配乐提名</span>
+    <span class="honor-tag" data-delay="300">🏅 奥斯卡 — 最佳女配角提名</span>
+    <span class="honor-tag" data-delay="350">📺 《视与听》影史最伟大电影之一</span>
+    <span class="honor-tag" data-delay="400">⭐ IMDb Top 250 常客</span>
+    <span class="honor-tag" data-delay="450">🎞️ BBC 影史百大美国电影入选</span>
+    <span class="honor-tag" data-delay="500">📖 国会图书馆永久典藏</span>
+    <span class="honor-tag" data-delay="550">🌍 全球文化符号</span>
+  </div>
+</section>
+
+<!-- ===== FILM ARCHIVE ===== -->
+<section class="section">
+  <div class="section__divider"></div>
+  <h2 class="section__title">影片档案</h2>
+  <p class="section__subtitle">Singin' in the Rain · 雨中曲</p>
+
+  <div class="archive-grid">
+    <div class="archive-item" data-delay="0">
+      <div class="archive-item__label">片名</div>
+      <div class="archive-item__value">Singin' in the Rain</div>
+    </div>
+    <div class="archive-item" data-delay="50">
+      <div class="archive-item__label">中文译名</div>
+      <div class="archive-item__value">雨中曲</div>
+    </div>
+    <div class="archive-item" data-delay="100">
+      <div class="archive-item__label">上映年份</div>
+      <div class="archive-item__value">1952年</div>
+    </div>
+    <div class="archive-item" data-delay="150">
+      <div class="archive-item__label">导演</div>
+      <div class="archive-item__value">斯坦利·多南 / 吉恩·凯利</div>
+    </div>
+    <div class="archive-item" data-delay="200">
+      <div class="archive-item__label">主演</div>
+      <div class="archive-item__value">吉恩·凯利 · 黛比·雷诺斯 · 唐纳德·奥康纳 · 赛德·查里斯</div>
+    </div>
+    <div class="archive-item" data-delay="250">
+      <div class="archive-item__label">片长</div>
+      <div class="archive-item__value">103分钟</div>
+    </div>
+    <div class="archive-item" data-delay="300">
+      <div class="archive-item__label">类型</div>
+      <div class="archive-item__value">歌舞 · 喜剧 · 爱情</div>
+    </div>
+    <div class="archive-item" data-delay="350">
+      <div class="archive-item__label">制片国家</div>
+      <div class="archive-item__value">美国</div>
+    </div>
+    <div class="archive-item" data-delay="400">
+      <div class="archive-item__label">发行</div>
+      <div class="archive-item__value">米高梅（MGM）</div>
+    </div>
+    <div class="archive-item" data-delay="450">
+      <div class="archive-item__label">色彩</div>
+      <div class="archive-item__value">Technicolor 彩色</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDITOR RATING ===== -->
+<section class="section">
+  <div class="rating-final">
+    <div class="rating-final__stars">★★★★★</div>
+    <div class="rating-final__text">
+      "如果快乐有形状，那就是吉恩·凯利在雨中撑着雨伞跳舞的样子。<br>
+      《雨中曲》是电影送给世界最纯粹的礼物——<br>
+      Seven decades later, it still makes the world smile."
+    </div>
+    <div class="rating-final__sign">— 编辑推荐 · 2026.07.10</div>
+  </div>
+</section>
+
+</div>
+
+<footer class="footer">
+  WORKBUDDY · 经典电影推荐 · 2026.07.10
+</footer>
+
+<script>
+// ===== CANVAS — Rain + Golden Sparkle Particles =====
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let W, H;
+
+function resize(){
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// --- Raindrops ---
+const RAIN_COUNT = 200;
+const rain = [];
+for(let i = 0; i < RAIN_COUNT; i++){
+  rain.push({
+    x: Math.random() * W,
+    y: Math.random() * H,
+    len: 12 + Math.random() * 18,
+    speed: 4 + Math.random() * 6,
+    opacity: 0.06 + Math.random() * 0.12
+  });
+}
+
+// --- Golden Sparkle Particles ---
+const SPARKLE_COUNT = 50;
+const sparkles = [];
+for(let i = 0; i < SPARKLE_COUNT; i++){
+  sparkles.push({
+    x: Math.random() * W,
+    y: Math.random() * H,
+    size: 1 + Math.random() * 3,
+    speedX: (Math.random() - 0.5) * 0.3,
+    speedY: -0.2 - Math.random() * 0.4,
+    life: Math.random(),
+    lifeSpeed: 0.002 + Math.random() * 0.004,
+    hue: 40 + Math.random() * 10  // golden hue range
+  });
+}
+
+function drawParticles(){
+  ctx.clearRect(0, 0, W, H);
+
+  // Draw rain
+  for(const r of rain){
+    ctx.beginPath();
+    ctx.moveTo(r.x, r.y);
+    ctx.lineTo(r.x - 0.5, r.y + r.len);
+    ctx.strokeStyle = `rgba(196, 160, 82, ${r.opacity})`;
+    ctx.lineWidth = 0.7;
+    ctx.stroke();
+
+    r.y += r.speed;
+    r.x -= 0.3;
+    if(r.y > H){
+      r.y = -r.len;
+      r.x = Math.random() * W;
+    }
+    if(r.x < -10) r.x = W + 10;
+  }
+
+  // Draw sparkles
+  for(const s of sparkles){
+    s.life += s.lifeSpeed;
+    if(s.life > 1){
+      s.life = 0;
+      s.x = Math.random() * W;
+      s.y = Math.random() * H;
+      s.size = 1 + Math.random() * 3;
+    }
+
+    const opacity = Math.sin(s.life * Math.PI) * 0.6;
+    const glow = s.size * 3;
+
+    // Glow
+    const grad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, glow);
+    grad.addColorStop(0, `hsla(${s.hue}, 60%, 70%, ${opacity * 0.5})`);
+    grad.addColorStop(1, `hsla(${s.hue}, 60%, 70%, 0)`);
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, glow, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Core
+    ctx.fillStyle = `hsla(${s.hue}, 70%, 85%, ${opacity * 0.8})`;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.size * 0.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    s.x += s.speedX;
+    s.y += s.speedY;
+
+    // Drift back if out of bounds
+    if(s.x < -20) s.x = W + 20;
+    if(s.x > W + 20) s.x = -20;
+    if(s.y < -20) s.y = H + 20;
+  }
+
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// ===== INTERSECTION OBSERVER =====
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -40px 0px'
+};
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      const el = entry.target;
+      const delay = parseInt(el.dataset.delay) || 0;
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, delay);
+      obs.unobserve(el);
+    }
+  });
+}, observerOptions);
+
+// Observe score cards
+document.querySelectorAll('.score-card').forEach(el => obs.observe(el));
+
+// Observe plot sections
+document.querySelectorAll('.plot-content, .plot-visual').forEach(el => obs.observe(el));
+
+// Observe highlight cards
+document.querySelectorAll('.highlight-card').forEach(el => obs.observe(el));
+
+// Observe quote blocks
+document.querySelectorAll('.quote-block').forEach(el => obs.observe(el));
+
+// Observe why cards
+document.querySelectorAll('.why-card').forEach(el => obs.observe(el));
+
+// Observe honor tags
+document.querySelectorAll('.honor-tag').forEach(el => obs.observe(el));
+
+// Observe archive items
+document.querySelectorAll('.archive-item').forEach(el => obs.observe(el));
+
+// ===== SCORE BAR ANIMATION =====
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      const bars = entry.target.querySelectorAll('.score-card__bar-fill');
+      bars.forEach(bar => {
+        const w = bar.dataset.width;
+        setTimeout(() => {
+          bar.style.width = w + '%';
+        }, 400);
+      });
+      barObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.score-row').forEach(el => barObserver.observe(el));
+</script>
+
+</body>
+</html>

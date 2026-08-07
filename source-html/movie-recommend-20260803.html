@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>后窗 Rear Window (1954) · 经典电影推荐</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#080b12;
+    --bg2:#0d121c;
+    --panel:#121826;
+    --panel2:#172030;
+    --ink:#f4ede1;
+    --muted:#9aa7b6;
+    --gold:#e8b659;
+    --gold-soft:#f2d28c;
+    --teal:#3a7d70;
+    --rose:#cf6a63;
+    --line:rgba(232,182,89,0.16);
+    --serif:"Cormorant Garamond","Noto Serif SC",serif;
+    --sans:"Noto Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:300;
+    line-height:1.85;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  #dust{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.85}
+  .wrap{position:relative;z-index:2}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    overflow:hidden;
+  }
+  .hero-svg{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+  .hero-grad{
+    position:absolute;inset:0;z-index:1;
+    background:
+      radial-gradient(120% 80% at 50% 10%, rgba(8,11,18,0) 40%, rgba(8,11,18,.55) 75%, rgba(8,11,18,.92) 100%),
+      linear-gradient(180deg, rgba(8,11,18,.25), rgba(8,11,18,.1) 40%, rgba(8,11,18,.95));
+  }
+  .hero-inner{
+    position:relative;z-index:2;
+    padding:0 7vw 6vh;
+    max-width:1180px;margin:0 auto;width:100%;
+  }
+  .eyebrow{
+    display:flex;align-items:center;gap:.8rem;
+    font-family:var(--sans);font-weight:500;
+    letter-spacing:.42em;text-transform:uppercase;
+    font-size:.72rem;color:var(--gold);
+    margin-bottom:1.4rem;
+  }
+  .eyebrow .ln{height:1px;width:54px;background:var(--gold);opacity:.6}
+  .year-tag{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(3.2rem,9vw,7.5rem);
+    line-height:.9;color:rgba(244,237,225,.10);
+    position:absolute;top:8vh;left:6vw;z-index:1;
+    letter-spacing:-.02em;pointer-events:none;user-select:none;
+  }
+  .title-cn{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(4rem,13vw,9rem);
+    line-height:.95;letter-spacing:.04em;
+    text-shadow:0 6px 40px rgba(0,0,0,.6);
+  }
+  .title-en{
+    font-family:var(--serif);
+    font-style:italic;font-weight:400;
+    font-size:clamp(1.1rem,3vw,1.9rem);
+    letter-spacing:.34em;text-transform:uppercase;
+    color:var(--gold-soft);margin-top:.6rem;
+  }
+  .meta-row{
+    display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;
+    margin-top:1.8rem;font-size:.92rem;color:var(--muted);
+    font-weight:400;
+  }
+  .meta-row b{color:var(--ink);font-weight:500}
+  .meta-row .dot{color:var(--gold);opacity:.7}
+  .tagline{
+    margin-top:2.2rem;max-width:560px;
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(1.25rem,2.6vw,1.7rem);
+    color:var(--ink);line-height:1.5;
+    border-left:2px solid var(--gold);padding-left:1.1rem;
+  }
+  .scroll-hint{
+    position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);
+    z-index:2;color:var(--muted);font-size:.7rem;letter-spacing:.3em;
+    text-transform:uppercase;opacity:.6;animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:7rem 7vw;max-width:1180px;margin:0 auto}
+  .sec-head{margin-bottom:3rem}
+  .sec-kicker{
+    font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;
+    color:var(--gold);font-weight:500;margin-bottom:1rem;
+  }
+  .sec-title{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(2.1rem,5vw,3.4rem);line-height:1.1;
+    letter-spacing:.02em;
+  }
+  .sec-sub{margin-top:1rem;color:var(--muted);max-width:620px;font-weight:400}
+
+  /* ratings */
+  .ratings{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;
+  }
+  .rate-card{
+    background:linear-gradient(180deg,var(--panel),var(--bg2));
+    border:1px solid var(--line);border-radius:14px;
+    padding:1.8rem 1.5rem;position:relative;overflow:hidden;
+  }
+  .rate-card::before{
+    content:"";position:absolute;top:-1px;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    opacity:.7;
+  }
+  .rate-src{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500}
+  .rate-num{font-family:var(--serif);font-weight:600;font-size:3.1rem;line-height:1;margin:.7rem 0 .2rem;color:var(--gold-soft)}
+  .rate-num .pct{font-size:1.4rem;color:var(--gold)}
+  .rate-bar{height:5px;border-radius:4px;background:rgba(255,255,255,.07);margin-top:1rem;overflow:hidden}
+  .rate-fill{height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--gold-soft));transition:width 1.6s cubic-bezier(.22,1,.36,1)}
+  .rate-note{font-size:.74rem;color:var(--muted);margin-top:.7rem}
+
+  /* synopsis */
+  .syn-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:center}
+  .syn-text p{font-size:1.08rem;color:#dfe4ea;font-weight:300}
+  .syn-text p + p{margin-top:1.3rem}
+  .nospoiler{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:rgba(58,125,112,.14);border:1px solid rgba(58,125,112,.4);
+    color:#7fd1c2;border-radius:30px;padding:.35rem .95rem;
+    font-size:.76rem;letter-spacing:.08em;font-weight:500;margin-bottom:1.6rem;
+  }
+  .nospoiler .ic{width:7px;height:7px;border-radius:50%;background:#7fd1c2;box-shadow:0 0 8px #7fd1c2}
+  .poster-card{
+    background:linear-gradient(160deg,#1a2230,#0e1420);
+    border:1px solid var(--line);border-radius:16px;padding:1.4rem;
+    position:relative;aspect-ratio:3/4;overflow:hidden;
+    display:flex;align-items:flex-end;
+  }
+  .poster-card svg{position:absolute;inset:0;width:100%;height:100%}
+  .poster-cap{
+    position:relative;z-index:2;
+    font-family:var(--serif);font-style:italic;
+    font-size:1.5rem;color:var(--ink);
+    text-shadow:0 2px 12px #000;
+  }
+  .poster-cap small{display:block;font-size:.8rem;font-style:normal;letter-spacing:.3em;color:var(--gold-soft);font-family:var(--sans);font-weight:500}
+
+  /* highlights */
+  .hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  .hl-card{
+    background:linear-gradient(180deg,var(--panel),var(--bg2));
+    border:1px solid var(--line);border-radius:14px;
+    padding:2rem 1.7rem;transition:transform .5s cubic-bezier(.22,1,.36,1),border-color .5s;
+    position:relative;
+  }
+  .hl-card:hover{transform:translateY(-6px);border-color:rgba(232,182,89,.45)}
+  .hl-idx{font-family:var(--serif);font-style:italic;font-size:2.6rem;color:var(--gold);opacity:.55;line-height:1}
+  .hl-title{font-family:var(--serif);font-size:1.5rem;font-weight:600;margin:.7rem 0 .8rem;color:var(--ink)}
+  .hl-body{color:var(--muted);font-size:.96rem;font-weight:300}
+
+  /* quote */
+  .quote-sec{text-align:center;padding:8rem 7vw}
+  .quote-mark{font-family:var(--serif);font-size:5rem;color:var(--gold);opacity:.35;line-height:0}
+  .quote-text{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(1.8rem,4.5vw,3.1rem);line-height:1.4;
+    max-width:900px;margin:1.5rem auto;color:var(--ink);
+  }
+  .quote-en{color:var(--muted);font-style:italic;font-size:1.05rem;margin-top:1rem}
+  .quote-by{margin-top:1.6rem;color:var(--gold-soft);letter-spacing:.2em;font-size:.85rem;text-transform:uppercase}
+
+  /* why */
+  .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem}
+  .why-item{
+    display:flex;gap:1.3rem;padding:1.8rem;
+    background:linear-gradient(180deg,var(--panel),var(--bg2));
+    border:1px solid var(--line);border-radius:14px;align-items:flex-start;
+  }
+  .why-num{
+    flex:none;width:46px;height:46px;border-radius:50%;
+    border:1px solid var(--gold);color:var(--gold-soft);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-size:1.3rem;font-weight:600;
+  }
+  .why-title{font-family:var(--serif);font-size:1.35rem;font-weight:600;margin-bottom:.5rem}
+  .why-body{color:var(--muted);font-size:.96rem;font-weight:300}
+
+  /* honors */
+  .honor-wrap{display:flex;flex-wrap:wrap;gap:.9rem}
+  .honor{
+    background:rgba(232,182,89,.06);border:1px solid var(--line);
+    border-radius:30px;padding:.7rem 1.3rem;font-size:.92rem;
+    color:var(--ink);font-weight:400;display:flex;align-items:center;gap:.6rem;
+  }
+  .honor .star{color:var(--gold)}
+  .honor.key{background:rgba(232,182,89,.14);border-color:rgba(232,182,89,.55);color:var(--gold-soft);font-weight:500}
+
+  /* facts */
+  .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:0 3rem}
+  .fact-row{
+    display:flex;justify-content:space-between;gap:1.5rem;
+    padding:1.05rem 0;border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .fact-k{color:var(--muted);font-weight:400;font-size:.95rem;flex:none}
+  .fact-v{color:var(--ink);font-weight:500;text-align:right;font-size:.97rem}
+
+  /* editor note */
+  .editor{
+    background:linear-gradient(160deg,#161d2b,#0c111a);
+    border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:14px;padding:2.6rem 2.4rem;max-width:880px;margin:0 auto;
+  }
+  .editor .stars{color:var(--gold);letter-spacing:.3em;font-size:1.2rem;margin-bottom:1.2rem}
+  .editor p{font-family:var(--serif);font-size:1.35rem;line-height:1.7;color:var(--ink)}
+  .editor .sig{margin-top:1.6rem;color:var(--muted);font-size:.9rem;font-style:italic;font-family:var(--serif)}
+
+  /* footer */
+  footer{
+    text-align:center;padding:4rem 7vw 5rem;color:var(--muted);
+    border-top:1px solid rgba(255,255,255,.06);font-size:.82rem;
+  }
+  footer .f-title{font-family:var(--serif);font-size:1.3rem;color:var(--ink);font-style:italic;margin-bottom:.8rem}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,1,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:880px){
+    .ratings{grid-template-columns:repeat(2,1fr)}
+    .syn-grid{grid-template-columns:1fr;gap:2rem}
+    .hl-grid{grid-template-columns:1fr}
+    .why-grid{grid-template-columns:1fr}
+    .facts{grid-template-columns:1fr}
+    section{padding:5rem 6vw}
+  }
+</style>
+</head>
+<body>
+<canvas id="dust"></canvas>
+
+<div class="wrap">
+  <!-- HERO -->
+  <header class="hero">
+    <svg class="hero-svg" id="court" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+    <div class="hero-grad"></div>
+    <div class="year-tag">1954</div>
+    <div class="hero-inner">
+      <div class="eyebrow"><span class="ln"></span>经典电影推荐 · 希区柯克巅峰</div>
+      <h1 class="title-cn">后&nbsp;窗</h1>
+      <div class="title-en">Rear Window</div>
+      <div class="meta-row">
+        <span><b>阿尔弗雷德·希区柯克</b> 执导</span><span class="dot">·</span>
+        <span>主演 <b>詹姆斯·斯图尔特</b> / <b>格蕾丝·凯利</b></span><span class="dot">·</span>
+        <span>1954 · 美国 · 悬疑惊悚</span>
+      </div>
+      <p class="tagline">一扇后窗，装得下整座城市的悲欢，<br/>也可能，藏着一个不敢说破的秘密。</p>
+    </div>
+    <div class="scroll-hint">向下滚动</div>
+  </header>
+
+  <!-- RATINGS -->
+  <section>
+    <div class="sec-head reveal">
+      <div class="sec-kicker">口碑与评分</div>
+      <h2 class="sec-title">为什么它是公认的杰作</h2>
+      <p class="sec-sub">影评人、观众与影史榜单罕见地达成了一致——它既是大众的心头好，也是学者笔下的范本。</p>
+    </div>
+    <div class="ratings">
+      <div class="rate-card reveal">
+        <div class="rate-src">IMDb</div>
+        <div class="rate-num"><span class="cnt" data-to="8.5" data-dec="1">0.0</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-pct="85"></div></div>
+        <div class="rate-note">逾 56 万用户评分 · 影史 Top 行列</div>
+      </div>
+      <div class="rate-card reveal">
+        <div class="rate-src">豆瓣</div>
+        <div class="rate-num"><span class="cnt" data-to="9.5" data-dec="1">0.0</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-pct="95"></div></div>
+        <div class="rate-note">华语影迷口碑至高分区</div>
+      </div>
+      <div class="rate-card reveal">
+        <div class="rate-src">烂番茄 影评人</div>
+        <div class="rate-num"><span class="cnt" data-to="99" data-dec="0">0</span><span class="pct">%</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-pct="99"></div></div>
+        <div class="rate-note">134 篇评论 · 共识："悬念的极致"</div>
+      </div>
+      <div class="rate-card reveal">
+        <div class="rate-src">Metacritic</div>
+        <div class="rate-num"><span class="cnt" data-to="100" data-dec="0">0</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-pct="100"></div></div>
+        <div class="rate-note">罕见的满分 · 普遍赞誉</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYNOPSIS -->
+  <section>
+    <div class="syn-grid">
+      <div class="syn-text reveal">
+        <span class="nospoiler"><span class="ic"></span>无剧透 · 仅提供故事框架</span>
+        <h2 class="sec-title" style="margin-bottom:1.5rem">剧情梗概</h2>
+        <p>纽约最热的夏天，摄影记者杰弗瑞在一次外拍中摔断了腿，被困在格林威治村公寓的轮椅上。酷暑让邻居们整日敞着窗，百无聊赖的他开始透过那扇"后窗"，窥看对面庭院里形形色色的人生。</p>
+        <p>练舞的女孩、失意的作曲家、新婚夫妇、形单影只的女子……直到某个平凡的日子，他察觉到一位沉默的推销员邻居似乎隐瞒着什么。他开始怀疑，一桩命案或许正在自己眼皮底下发生。</p>
+        <p>他拉上优雅聪慧的女友莉莎与刀子嘴豆腐心的看护斯泰拉，悄悄当起了业余侦探。一场关于"观看"本身的游戏，就此在闷热的空气里缓缓拉开。</p>
+      </div>
+      <div class="poster-card reveal">
+        <svg viewBox="0 0 300 400" aria-hidden="true">
+          <defs>
+            <linearGradient id="psky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1a2740"/><stop offset="1" stop-color="#0a0f1a"/>
+            </linearGradient>
+            <radialGradient id="pglow" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0" stop-color="#f6d694"/><stop offset="1" stop-color="#e8b659" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="300" height="400" fill="url(#psky)"/>
+          <rect x="20" y="40" width="260" height="300" fill="#0c1320"/>
+          <g opacity="0.9">
+            <rect x="40" y="70" width="46" height="58" fill="url(#pglow)" opacity="0.85"/>
+            <rect x="40" y="70" width="46" height="58" fill="none" stroke="#e8b659" stroke-opacity="0.5"/>
+            <rect x="110" y="90" width="46" height="58" fill="#070b12"/>
+            <rect x="110" y="90" width="46" height="58" fill="none" stroke="#2a3647"/>
+            <rect x="180" y="64" width="46" height="58" fill="url(#pglow)" opacity="0.7"/>
+            <rect x="180" y="64" width="46" height="58" fill="none" stroke="#e8b659" stroke-opacity="0.5"/>
+            <rect x="60" y="170" width="46" height="58" fill="#070b12"/>
+            <rect x="60" y="170" width="46" height="58" fill="none" stroke="#2a3647"/>
+            <rect x="150" y="180" width="46" height="58" fill="url(#pglow)" opacity="0.6"/>
+            <rect x="150" y="180" width="46" height="58" fill="none" stroke="#e8b659" stroke-opacity="0.4"/>
+            <rect x="220" y="175" width="40" height="58" fill="#070b12"/>
+            <rect x="220" y="175" width="40" height="58" fill="none" stroke="#2a3647"/>
+          </g>
+          <line x1="150" y1="40" x2="150" y2="340" stroke="#e8b659" stroke-opacity="0.25"/>
+          <line x1="20" y1="190" x2="280" y2="190" stroke="#e8b659" stroke-opacity="0.18"/>
+        </svg>
+        <div class="poster-cap">透过那扇窗<small>REAR WINDOW · 1954</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section>
+    <div class="sec-head reveal">
+      <div class="sec-kicker">亮点所在</div>
+      <h2 class="sec-title">六处值得凝视的细节</h2>
+    </div>
+    <div class="hl-grid">
+      <div class="hl-card reveal"><div class="hl-idx">01</div><div class="hl-title">一扇窗里的整个世界</div><div class="hl-body">极致的"单一空间"叙事。整部电影几乎全部发生在一间公寓、透过一扇窗，希区柯克用有限的方框，装下了整整一座城市的悲欢。派拉蒙当时最大的室内布景，就是这片庭院。</div></div>
+      <div class="hl-card reveal"><div class="hl-idx">02</div><div class="hl-title">窥视者的自觉</div><div class="hl-body">关于"偷窥"最优雅的辩题。影片让观众和主角一起成为窥视者，再回过头来质问这份注视本身——我们为何注视？注视是否等于参与？</div></div>
+      <div class="hl-card reveal"><div class="hl-idx">03</div><div class="hl-title">希区柯克的作者手艺</div><div class="hl-body">从精确的场面调度、对"悬念"而非"惊吓"的迷信，到那枚经典的导演客串（片中拧钟的人），处处是作者的指纹。</div></div>
+      <div class="hl-card reveal"><div class="hl-idx">04</div><div class="hl-title">詹姆斯·斯图尔特的"不情愿"</div><div class="hl-body">他把杰弗瑞演成一个嘴硬心软、既好奇又胆怯的普通人，让悬疑有了温度，也让那份窥探显得格外真实。</div></div>
+      <div class="hl-card reveal"><div class="hl-idx">05</div><div class="hl-title">格蕾丝·凯利的光</div><div class="hl-body">莉莎不只是"花瓶"。她的优雅、聪慧与主动，是整部电影里最锋利也最迷人的一道光，推动着故事的每一次转向。</div></div>
+      <div class="hl-card reveal"><div class="hl-idx">06</div><div class="hl-title">视听的精密机器</div><div class="hl-body">罗伯特·伯克斯的摄影把热浪与阴影拍出质感，弗朗茨·沃克斯曼的配乐在浪漫与不安间游走——每一个声音、每一束光，都被精确算计过。</div></div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-sec">
+    <div class="reveal">
+      <div class="quote-mark">&ldquo;</div>
+      <p class="quote-text">我们，变成了偷窥者的一族。</p>
+      <p class="quote-en">&ldquo;We've become a race of Peeping Toms.&rdquo;</p>
+      <div class="quote-by">—— 斯泰拉（片中台词）</div>
+    </div>
+  </section>
+
+  <!-- WHY WATCH -->
+  <section>
+    <div class="sec-head reveal">
+      <div class="sec-kicker">为什么值得一看</div>
+      <h2 class="sec-title">四个现在就看它的理由</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal"><div class="why-num">1</div><div><div class="why-title">影史坐标上的名字</div><div class="why-body">入选美国国家电影保护局典藏（1997），AFI 百年百大电影第 42 位，2022 年《视与听》影评人榜第 38 位——它不在"经典"的边缘，而在正中央。</div></div></div>
+      <div class="why-item reveal"><div class="why-num">2</div><div><div class="why-title">悬念工程的教科书</div><div class="why-body">没有血浆、没有特效，靠的是节奏、视点与信息差。看希区柯克如何让你"看见"却不敢确定，让安静本身变得惊心动魄。</div></div></div>
+      <div class="why-item reveal"><div class="why-num">3</div><div><div class="why-title">一面照见当下的镜子</div><div class="why-body">在一个人人举着屏幕、习惯围观他人生活的时代，这部 1954 年的电影反而显得格外先锋——它早就把"围观"变成了命题。</div></div></div>
+      <div class="why-item reveal"><div class="why-num">4</div><div><div class="why-title">短小却余味悠长</div><div class="why-body">112 分钟，几乎零废笔。看完你会不自觉地，朝自家窗外多望一眼。</div></div></div>
+    </div>
+  </section>
+
+  <!-- HONORS -->
+  <section>
+    <div class="sec-head reveal">
+      <div class="sec-kicker">荣誉与殿堂</div>
+      <h2 class="sec-title">它收到的勋章</h2>
+    </div>
+    <div class="honor-wrap reveal">
+      <span class="honor key"><span class="star">★</span>4 项奥斯卡提名（导演 / 改编剧本 / 彩色摄影 / 录音）</span>
+      <span class="honor key"><span class="star">★</span>美国国家电影保护局典藏（1997）</span>
+      <span class="honor"><span class="star">◆</span>AFI 百年百大电影 第 42 位</span>
+      <span class="honor"><span class="star">◆</span>《视与听》2022 影史最伟大影片 影评人榜 第 38 位</span>
+      <span class="honor"><span class="star">◆</span>威尼斯电影节 金狮奖 提名（1954）</span>
+      <span class="honor"><span class="star">◆</span>格蕾丝·凯利 国家评论协会 / 纽约影评人协会 最佳女主角</span>
+      <span class="honor"><span class="star">◆</span>爱伦·坡奖 最佳电影剧本</span>
+    </div>
+  </section>
+
+  <!-- FACTS -->
+  <section>
+    <div class="sec-head reveal">
+      <div class="sec-kicker">影片档案</div>
+      <h2 class="sec-title">关于这部电影</h2>
+    </div>
+    <div class="facts reveal">
+      <div class="fact-row"><span class="fact-k">导演</span><span class="fact-v">阿尔弗雷德·希区柯克</span></div>
+      <div class="fact-row"><span class="fact-k">编剧</span><span class="fact-v">约翰·迈克尔·海耶斯</span></div>
+      <div class="fact-row"><span class="fact-k">原著</span><span class="fact-v">康奈尔·伍尔里奇 短篇小说《It Had to Be Murder》(1942)</span></div>
+      <div class="fact-row"><span class="fact-k">主演</span><span class="fact-v">詹姆斯·斯图尔特 / 格蕾丝·凯利 / 温戴尔·柯瑞 / 瑟尔玛·瑞特 / 雷蒙德·布尔</span></div>
+      <div class="fact-row"><span class="fact-k">摄影</span><span class="fact-v">罗伯特·伯克斯</span></div>
+      <div class="fact-row"><span class="fact-k">配乐</span><span class="fact-v">弗朗茨·沃克斯曼</span></div>
+      <div class="fact-row"><span class="fact-k">片长</span><span class="fact-v">112 分钟</span></div>
+      <div class="fact-row"><span class="fact-k">上映</span><span class="fact-v">1954 年（美国）</span></div>
+      <div class="fact-row"><span class="fact-k">制片</span><span class="fact-v">派拉蒙影业</span></div>
+      <div class="fact-row"><span class="fact-k">类型</span><span class="fact-v">悬疑 / 惊悚</span></div>
+      <div class="fact-row"><span class="fact-k">色彩</span><span class="fact-v">Technicolor 彩色</span></div>
+      <div class="fact-row"><span class="fact-k">语言</span><span class="fact-v">英语</span></div>
+    </div>
+  </section>
+
+  <!-- EDITOR NOTE -->
+  <section>
+    <div class="editor reveal">
+      <div class="stars">★★★★★</div>
+      <p>《后窗》最厉害的地方，是它让你在空调房里，重新感到夏夜的闷热与心跳。希区柯克没有把悬念挂在鬼脸和惊吓上，而是挂在你我心里那点"想看又不敢看"的本能里。它是一道关于注视的谜题：当你透过窗看别人时，有没有想过，窗的另一边，也许正有人在看你。</p>
+      <div class="sig">—— 编辑部 · 今日推荐</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="f-title">后窗 · Rear Window (1954)</div>
+    <div>经典电影推荐 · 每日一部值得凝视的杰作　|　本页所有内容均不含剧情剧透</div>
+  </footer>
+</div>
+
+<script>
+/* ---------- HERO SVG: 庭院与窗格 ---------- */
+(function(){
+  const svg=document.getElementById('court');
+  const NS='http://www.w3.org/2000/svg';
+  const W=1200,H=800;
+  // defs
+  const defs=document.createElementNS(NS,'defs');
+  defs.innerHTML=`
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16243c"/>
+      <stop offset="0.55" stop-color="#0d1524"/>
+      <stop offset="1" stop-color="#070b13"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f6d694"/>
+      <stop offset="0.6" stop-color="#e8b659" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#e8b659" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0.55" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.85"/>
+    </radialGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="6"/></filter>`;
+  svg.appendChild(defs);
+
+  const sky=document.createElementNS(NS,'rect');
+  sky.setAttribute('width',W);sky.setAttribute('height',H);sky.setAttribute('fill','url(#sky)');
+  svg.appendChild(sky);
+
+  // distant building silhouettes
+  const far=document.createElementNS(NS,'rect');
+  far.setAttribute('x',0);far.setAttribute('y',120);far.setAttribute('width',W);far.setAttribute('height',H-120);
+  far.setAttribute('fill','#0a1120');svg.appendChild(far);
+
+  // courtyard brick wall band
+  const wall=document.createElementNS(NS,'rect');
+  wall.setAttribute('x',0);wall.setAttribute('y',300);wall.setAttribute('width',W);wall.setAttribute('height',H-300);
+  wall.setAttribute('fill','#0c1322');svg.appendChild(wall);
+
+  // windows grid (behind, across courtyard)
+  const cols=9, rows=4, gx=70, gy=360, cw=110, ch=92, padX=8, padY=10;
+  // pseudo-random but stable
+  let seed=20240803;
+  function rnd(){seed=(seed*9301+49297)%233280;return seed/233280;}
+  for(let r=0;r<rows;r++){
+    for(let c=0;c<cols;c++){
+      const x=gx+c*(cw+padX);
+      const y=gy+r*(ch+padY);
+      if(x>W-90) continue;
+      const lit=rnd()>0.5;
+      const grp=document.createElementNS(NS,'g');
+      // frame
+      const fr=document.createElementNS(NS,'rect');
+      fr.setAttribute('x',x);fr.setAttribute('y',y);fr.setAttribute('width',cw);fr.setAttribute('height',ch);
+      fr.setAttribute('fill',lit?'#16202f':'#070b12');
+      fr.setAttribute('stroke',lit?'rgba(232,182,89,0.4)':'rgba(255,255,255,0.06)');
+      grp.appendChild(fr);
+      // glow for lit windows
+      if(lit){
+        const gl=document.createElementNS(NS,'rect');
+        gl.setAttribute('x',x+cw*0.25);gl.setAttribute('y',y+ch*0.25);
+        gl.setAttribute('width',cw*0.5);gl.setAttribute('height',ch*0.5);
+        gl.setAttribute('fill','url(#glow)');gl.setAttribute('filter','url(#soft)');
+        grp.appendChild(gl);
+        // tiny silhouette
+        const sil=document.createElementNS(NS,'rect');
+        sil.setAttribute('x',x+cw*0.42);sil.setAttribute('y',y+ch*0.5);
+        sil.setAttribute('width',cw*0.16);sil.setAttribute('height',ch*0.42);
+        sil.setAttribute('fill','rgba(0,0,0,0.45)');
+        grp.appendChild(sil);
+      }
+      // muntin cross
+      const v=document.createElementNS(NS,'line');
+      v.setAttribute('x1',x+cw/2);v.setAttribute('y1',y);v.setAttribute('x2',x+cw/2);v.setAttribute('y2',y+ch);
+      v.setAttribute('stroke',lit?'rgba(232,182,89,0.25)':'rgba(255,255,255,0.05)');grp.appendChild(v);
+      const h=document.createElementNS(NS,'line');
+      h.setAttribute('x1',x);h.setAttribute('y1',y+ch/2);h.setAttribute('x2',x+cw);h.setAttribute('y2',y+ch/2);
+      h.setAttribute('stroke',lit?'rgba(232,182,89,0.25)':'rgba(255,255,255,0.05)');grp.appendChild(h);
+      svg.appendChild(grp);
+    }
+  }
+
+  // foreground: Jeff silhouette in wheelchair (bottom-right) with camera
+  const fg=document.createElementNS(NS,'g');
+  fg.setAttribute('opacity','0.92');
+  // chair base
+  const chair=document.createElementNS(NS,'path');
+  chair.setAttribute('d','M980 760 L1010 690 Q1015 670 1040 670 L1080 670 L1095 760 Z');
+  chair.setAttribute('fill','#05080e');fg.appendChild(chair);
+  const wheel=document.createElementNS(NS,'circle');
+  wheel.setAttribute('cx',1005);wheel.setAttribute('cy',765);wheel.setAttribute('r',34);
+  wheel.setAttribute('fill','none');wheel.setAttribute('stroke','#0c1320');wheel.setAttribute('stroke-width','8');fg.appendChild(wheel);
+  // figure
+  const fig=document.createElementNS(NS,'path');
+  fig.setAttribute('d','M1040 690 Q1035 640 1060 625 Q1085 612 1085 660 L1085 690 Z');
+  fig.setAttribute('fill','#05080e');fg.appendChild(fig);
+  // head
+  const head=document.createElementNS(NS,'circle');
+  head.setAttribute('cx',1062);head.setAttribute('cy',610);head.setAttribute('r',15);
+  head.setAttribute('fill','#05080e');fg.appendChild(head);
+  // camera / lens pointing left toward windows
+  const cam=document.createElementNS(NS,'rect');
+  cam.setAttribute('x',1010);cam.setAttribute('y',628);cam.setAttribute('width',40);cam.setAttribute('height',22);
+  cam.setAttribute('rx','4');cam.setAttribute('fill','#0a1018');fg.appendChild(cam);
+  const lens=document.createElementNS(NS,'circle');
+  lens.setAttribute('cx',1008);lens.setAttribute('cy',639);lens.setAttribute('r',9);
+  lens.setAttribute('fill','#11161f');lens.setAttribute('stroke','#1c2738');fg.appendChild(lens);
+  svg.appendChild(fg);
+
+  // viewfinder crosshair (gold, subtle) - camera motif
+  const ch1=document.createElementNS(NS,'line');
+  ch1.setAttribute('x1',W/2);ch1.setAttribute('y1',0);ch1.setAttribute('x2',W/2);ch1.setAttribute('y2',H);
+  ch1.setAttribute('stroke','rgba(232,182,89,0.07)');svg.appendChild(ch1);
+  const ch2=document.createElementNS(NS,'line');
+  ch2.setAttribute('x1',0);ch2.setAttribute('y1',H*0.42);ch2.setAttribute('x2',W);ch2.setAttribute('y2',H*0.42);
+  ch2.setAttribute('stroke','rgba(232,182,89,0.05)');svg.appendChild(ch2);
+
+  // vignette
+  const vig=document.createElementNS(NS,'rect');
+  vig.setAttribute('width',W);vig.setAttribute('height',H);vig.setAttribute('fill','url(#vig)');
+  svg.appendChild(vig);
+})();
+
+/* ---------- Canvas: 金色尘埃 / 光点 ---------- */
+(function(){
+  const cv=document.getElementById('dust');
+  const ctx=cv.getContext('2d');
+  let w,h,parts=[];
+  function size(){w=cv.width=innerWidth;h=cv.height=innerHeight;}
+  size();addEventListener('resize',size);
+  function mk(){
+    parts=[];
+    const n=Math.min(90,Math.floor(w*h/16000));
+    for(let i=0;i<n;i++){
+      parts.push({
+        x:Math.random()*w, y:Math.random()*h,
+        r:Math.random()*1.8+0.4,
+        vy:-(Math.random()*0.35+0.08),
+        vx:(Math.random()-0.5)*0.25,
+        a:Math.random()*0.5+0.2,
+        tw:Math.random()*0.02+0.005,
+        ph:Math.random()*Math.PI*2
+      });
+    }
+  }
+  mk();
+  function tick(){
+    ctx.clearRect(0,0,w,h);
+    for(const p of parts){
+      p.ph+=p.tw;
+      const tw=0.5+0.5*Math.sin(p.ph);
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(232,182,89,'+(p.a*tw)+')';
+      ctx.shadowBlur=8;ctx.shadowColor='rgba(232,182,89,0.6)';
+      ctx.fill();
+      p.y+=p.vy;p.x+=p.vx;
+      if(p.y<-10){p.y=h+10;p.x=Math.random()*w;}
+      if(p.x<-10)p.x=w+10; if(p.x>w+10)p.x=-10;
+    }
+    requestAnimationFrame(tick);
+  }
+  tick();
+  addEventListener('resize',mk);
+})();
+
+/* ---------- Reveal + count-up ---------- */
+(function(){
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        if(e.target.classList.contains('ratings')||e.target.querySelector&&e.target.querySelector('.rate-card')){}
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // count up when ratings visible
+  const rObs=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        const card=e.target;
+        const num=card.querySelector('.cnt');
+        const fill=card.querySelector('.rate-fill');
+        if(fill) fill.style.width=fill.dataset.pct+'%';
+        if(num){
+          const to=parseFloat(num.dataset.to);
+          const dec=parseInt(num.dataset.dec||'0');
+          const dur=1500;const t0=performance.now();
+          function step(t){
+            const k=Math.min(1,(t-t0)/dur);
+            const e2=1-Math.pow(1-k,3);
+            num.textContent=(to*e2).toFixed(dec);
+            if(k<1)requestAnimationFrame(step);
+            else num.textContent=to.toFixed(dec);
+          }
+          requestAnimationFrame(step);
+        }
+        rObs.unobserve(card);
+      }
+    });
+  },{threshold:0.4});
+  document.querySelectorAll('.rate-card').forEach(c=>rObs.observe(c));
+})();
+</script>
+</body>
+</html>

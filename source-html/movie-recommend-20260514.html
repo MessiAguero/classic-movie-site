@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经典电影推荐 · 沉默的羔羊</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+SC:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg-dark: #0a0a0f;
+    --bg-mid: #111118;
+    --bg-card: #16161e;
+    --red-deep: #8b1a1a;
+    --red-accent: #c0392b;
+    --red-glow: #e74c3c;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f0e8d0;
+    --cream-dim: #b8a888;
+    --white: #f5f0e8;
+    --border: rgba(201, 168, 76, 0.2);
+    --border-red: rgba(192, 57, 43, 0.3);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-dark);
+    color: var(--cream);
+    font-family: 'Noto Serif SC', serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* =================== CANVAS =================== */
+  #bgCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* =================== HERO =================== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-noise {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(139,26,26,0.18) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 80% at 20% 70%, rgba(100,10,10,0.22) 0%, transparent 60%),
+      linear-gradient(180deg, rgba(10,10,15,0) 0%, rgba(10,10,15,0.9) 100%);
+    z-index: 1;
+  }
+
+  /* Eye scan lines */
+  .hero-scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-year {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(6rem, 18vw, 14rem);
+    font-weight: 700;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,168,76,0.2);
+    letter-spacing: -0.02em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    user-select: none;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.3s forwards;
+  }
+
+  .hero-title-cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--white);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.3rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.5s forwards;
+    text-shadow: 0 0 60px rgba(201,168,76,0.3);
+  }
+
+  .hero-title-en {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 3vw, 1.8rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.7s forwards;
+  }
+
+  .hero-tagline {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: var(--cream-dim);
+    font-style: italic;
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.9s forwards;
+    border-left: 2px solid var(--red-accent);
+    padding-left: 1rem;
+    text-align: left;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.1s forwards;
+  }
+
+  .badge {
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    background: rgba(201,168,76,0.06);
+    text-transform: uppercase;
+  }
+
+  .badge.red {
+    border-color: var(--border-red);
+    color: var(--red-glow);
+    background: rgba(231,76,60,0.08);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.5s forwards;
+  }
+
+  .scroll-hint span {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 1; transform: scaleY(1); }
+    50% { opacity: 0.4; transform: scaleY(0.6); }
+  }
+
+  /* =================== SECTIONS =================== */
+  section {
+    position: relative;
+    z-index: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--border), transparent);
+  }
+
+  /* =================== SCORES =================== */
+  .scores-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5px;
+    margin-top: 2rem;
+    border: 1.5px solid var(--border);
+  }
+
+  .score-item {
+    background: var(--bg-card);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .score-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--red-deep), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s ease;
+  }
+
+  .score-item.revealed::before { transform: scaleX(1); }
+
+  .score-item:hover { background: rgba(22,22,30,0.95); }
+
+  .score-platform {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .score-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .score-number span {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--cream-dim);
+  }
+
+  .score-bar-wrap {
+    width: 100%;
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 0.6rem;
+  }
+
+  .score-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--red-accent), var(--gold));
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .score-desc {
+    font-size: 0.7rem;
+    color: var(--cream-dim);
+    margin-top: 0.5rem;
+  }
+
+  /* =================== SYNOPSIS =================== */
+  .synopsis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-top: 2rem;
+  }
+
+  .synopsis-text {
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--cream-dim);
+  }
+
+  .synopsis-text p + p { margin-top: 1.2rem; }
+
+  .synopsis-text strong {
+    color: var(--cream);
+    font-weight: 600;
+  }
+
+  /* Poster Card */
+  .poster-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 0;
+    overflow: hidden;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .poster-visual {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: #0d0d12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* SVG Moth Illustration */
+  .poster-svg-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .poster-meta {
+    padding: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .poster-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    font-size: 0.8rem;
+  }
+
+  .poster-meta-row:last-child { border-bottom: none; }
+
+  .poster-meta-key {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+  }
+
+  .poster-meta-val {
+    color: var(--cream);
+    font-weight: 600;
+    text-align: right;
+    max-width: 60%;
+  }
+
+  /* =================== HIGHLIGHTS =================== */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    margin-top: 2rem;
+  }
+
+  .highlight-card {
+    background: var(--bg-card);
+    padding: 2rem 1.5rem;
+    border: 1px solid transparent;
+    transition: border-color 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .highlight-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s, background 0.3s;
+  }
+
+  .highlight-card:hover {
+    border-color: var(--border-red);
+    background: rgba(22,22,30,0.98);
+  }
+
+  .highlight-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--red-accent);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .highlight-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.05em;
+  }
+
+  .highlight-desc {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--cream-dim);
+  }
+
+  /* =================== QUOTE =================== */
+  .quote-block {
+    position: relative;
+    background: linear-gradient(135deg, rgba(139,26,26,0.12), rgba(22,22,30,0.8));
+    border: 1px solid var(--border-red);
+    padding: 3.5rem 4rem;
+    margin-top: 2rem;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .quote-block::before {
+    content: '\201C';
+    position: absolute;
+    top: -1.5rem;
+    left: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 10rem;
+    color: rgba(192,57,43,0.15);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .quote-en {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--cream-dim);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1rem;
+  }
+
+  .quote-attr {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* =================== WHY WATCH =================== */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .why-item {
+    display: flex;
+    gap: 1.2rem;
+    padding: 1.8rem;
+    background: var(--bg-card);
+    border-left: 2px solid var(--red-deep);
+    transition: border-color 0.3s;
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+
+  .why-item.revealed {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s;
+  }
+
+  .why-item:hover { border-color: var(--gold); }
+
+  .why-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .why-body h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  .why-body p {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--cream-dim);
+  }
+
+  /* =================== AWARDS =================== */
+  .awards-section {
+    background: rgba(10,10,15,0.6);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 2rem;
+  }
+
+  .awards-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .awards-row {
+    display: flex;
+    gap: 1.5px;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .award-tag {
+    padding: 0.7rem 1.4rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .award-tag:hover {
+    background: rgba(201,168,76,0.08);
+    border-color: var(--gold);
+  }
+
+  .award-tag.primary {
+    background: rgba(139,26,26,0.3);
+    border-color: var(--red-accent);
+    color: var(--red-glow);
+  }
+
+  /* =================== ARCHIVE =================== */
+  .archive-table {
+    margin-top: 2rem;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .archive-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+
+  .archive-row:last-child { border-bottom: none; }
+
+  .archive-key {
+    padding: 1rem 1.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    background: rgba(201,168,76,0.04);
+    border-right: 1px solid rgba(201,168,76,0.08);
+    display: flex;
+    align-items: center;
+  }
+
+  .archive-val {
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    line-height: 1.6;
+  }
+
+  /* =================== FOOTER =================== */
+  .editorial-footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 5rem 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .editorial-stars {
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 1rem;
+  }
+
+  .editorial-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: var(--cream);
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.7;
+  }
+
+  .editorial-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    color: var(--cream-dim);
+    text-transform: uppercase;
+  }
+
+  /* =================== DIVIDER =================== */
+  .divider {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .divider-line {
+    width: 60px;
+    height: 1px;
+    background: var(--border);
+    margin: 0 auto;
+  }
+
+  /* =================== ANIMATIONS =================== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* =================== RESPONSIVE =================== */
+  @media (max-width: 768px) {
+    .scores-grid { grid-template-columns: repeat(2, 1fr); }
+    .synopsis-grid { grid-template-columns: 1fr; }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .archive-row { grid-template-columns: 1fr; }
+    .archive-key { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.08); }
+    .quote-block { padding: 2.5rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Background Canvas -->
+<canvas id="bgCanvas"></canvas>
+
+<!-- =================== HERO =================== -->
+<div class="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-scanlines"></div>
+
+  <div class="hero-year">1991</div>
+
+  <div class="hero-content">
+    <div class="hero-label">经典电影推荐 · No.13</div>
+    <h1 class="hero-title-cn">沉默的羔羊</h1>
+    <p class="hero-title-en">The Silence of the Lambs</p>
+    <p class="hero-tagline">
+      "你想捉到一个怪物，就必须先理解他如何思考。"<br>
+      一部让你彻夜难眠、又久久无法忘怀的心理惊悚传世之作。
+    </p>
+    <div class="hero-badges">
+      <span class="badge red">奥斯卡五项大奖</span>
+      <span class="badge">IMDb Top 250</span>
+      <span class="badge">第64届学院奖</span>
+      <span class="badge">影史惊悚经典</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- =================== SCORES =================== -->
+<section class="reveal">
+  <div class="section-label">评分口碑</div>
+  <div class="scores-grid">
+    <div class="score-item">
+      <div class="score-platform">IMDb</div>
+      <div class="score-number"><span id="imdb-num">0</span><span>/10</span></div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="86"></div></div>
+      <div class="score-desc">全球观众评分</div>
+    </div>
+    <div class="score-item">
+      <div class="score-platform">豆瓣</div>
+      <div class="score-number"><span id="douban-num">0</span><span>/10</span></div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="91"></div></div>
+      <div class="score-desc">中文评分</div>
+    </div>
+    <div class="score-item">
+      <div class="score-platform">烂番茄</div>
+      <div class="score-number"><span id="rt-num">0</span><span>%</span></div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="95"></div></div>
+      <div class="score-desc">媒体新鲜度</div>
+    </div>
+    <div class="score-item">
+      <div class="score-platform">奥斯卡</div>
+      <div class="score-number"><span id="oscar-num">0</span><span>项</span></div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="100"></div></div>
+      <div class="score-desc">包揽五项主要大奖</div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== SYNOPSIS =================== -->
+<section>
+  <div class="section-label">剧情梗概</div>
+  <div class="synopsis-grid">
+    <div class="synopsis-text reveal">
+      <p>
+        故事发生在一个<strong>连环凶手横行</strong>的时代。FBI学员<strong>克拉丽斯·史达琳</strong>刚刚踏出校园，便被委以一项特殊任务：深入最高安全级别的精神病院，访问被关押其中的天才精神科医生兼食人魔——<strong>汉尼拔·莱克特</strong>。
+      </p>
+      <p>
+        与此同时，一名被称为"水牛比尔"的变态杀手仍在追猎受害者。FBI希望借助莱克特那颠覆常人认知的洞察力，破解凶手心理，阻止悲剧继续发生。
+      </p>
+      <p>
+        年轻的克拉丽斯必须直面自己内心最深处的恐惧与脆弱，同时周旋于这位<strong>迷人而危险</strong>的囚犯之间。每一次对话，都是一场智力与心灵的博弈——猎人与猎物的角色，随时可能悄然交换。
+      </p>
+    </div>
+
+    <!-- Poster Card -->
+    <div class="poster-card reveal">
+      <div class="poster-visual">
+        <div class="poster-svg-wrap">
+          <!-- Artistic moth / face illustration -->
+          <svg viewBox="0 0 280 420" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+              <radialGradient id="glowRed" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#c0392b" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#8b1a1a" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="glowGold" cx="50%" cy="30%" r="60%">
+                <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="blur3">
+                <feGaussianBlur stdDeviation="3"/>
+              </filter>
+              <filter id="blur1">
+                <feGaussianBlur stdDeviation="1"/>
+              </filter>
+            </defs>
+
+            <!-- Dark background -->
+            <rect width="280" height="420" fill="#0a0a0f"/>
+
+            <!-- Background atmosphere -->
+            <ellipse cx="140" cy="200" rx="130" ry="160" fill="url(#glowRed)"/>
+            <ellipse cx="140" cy="130" rx="100" ry="80" fill="url(#glowGold)"/>
+
+            <!-- Scanlines -->
+            <rect width="280" height="420" fill="none"
+              style="background: repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.05) 3px,rgba(0,0,0,0.05) 4px)"/>
+
+            <!-- Human face silhouette (minimal) -->
+            <!-- Head oval -->
+            <ellipse cx="140" cy="130" rx="55" ry="65" fill="#1a1010" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.4"/>
+
+            <!-- Eyes -->
+            <ellipse cx="120" cy="118" rx="10" ry="7" fill="#0d0d12"/>
+            <ellipse cx="120" cy="118" rx="10" ry="7" fill="none" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.6"/>
+            <ellipse cx="160" cy="118" rx="10" ry="7" fill="#0d0d12"/>
+            <ellipse cx="160" cy="118" rx="10" ry="7" fill="none" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.6"/>
+
+            <!-- Eye glints -->
+            <circle cx="118" cy="116" r="1.5" fill="#c9a84c" opacity="0.8"/>
+            <circle cx="158" cy="116" r="1.5" fill="#c9a84c" opacity="0.8"/>
+
+            <!-- Pupils -->
+            <circle cx="121" cy="118" r="4" fill="#1a0a0a" opacity="0.9"/>
+            <circle cx="161" cy="118" r="4" fill="#1a0a0a" opacity="0.9"/>
+
+            <!-- Nose (subtle) -->
+            <path d="M134,130 Q140,145 146,130" fill="none" stroke="#c9a84c" stroke-width="0.4" stroke-opacity="0.3"/>
+
+            <!-- Mouth - tight, closed -->
+            <path d="M126,152 Q140,158 154,152" fill="none" stroke="#8b1a1a" stroke-width="1.5" stroke-linecap="round"/>
+
+            <!-- MOTH on the mouth (Death's Head Hawkmoth) -->
+            <!-- Left wing (upper) -->
+            <path d="M140,154 Q115,140 95,148 Q80,155 88,165 Q100,175 125,162 Z"
+              fill="#c9a84c" fill-opacity="0.85" stroke="#c9a84c" stroke-width="0.3"/>
+            <!-- Left wing (lower) -->
+            <path d="M140,165 Q112,162 95,172 Q80,182 90,190 Q105,195 130,178 Z"
+              fill="#a07830" fill-opacity="0.8" stroke="#c9a84c" stroke-width="0.3"/>
+            <!-- Right wing (upper) -->
+            <path d="M140,154 Q165,140 185,148 Q200,155 192,165 Q180,175 155,162 Z"
+              fill="#c9a84c" fill-opacity="0.85" stroke="#c9a84c" stroke-width="0.3"/>
+            <!-- Right wing (lower) -->
+            <path d="M140,165 Q168,162 185,172 Q200,182 190,190 Q175,195 150,178 Z"
+              fill="#a07830" fill-opacity="0.8" stroke="#c9a84c" stroke-width="0.3"/>
+
+            <!-- Moth body -->
+            <ellipse cx="140" cy="165" rx="4" ry="9" fill="#c9a84c" fill-opacity="0.9"/>
+            <!-- Moth head -->
+            <circle cx="140" cy="155" r="3" fill="#c9a84c" fill-opacity="0.9"/>
+            <!-- Moth antennae -->
+            <path d="M139,153 Q132,143 128,138" fill="none" stroke="#c9a84c" stroke-width="0.7" stroke-opacity="0.8"/>
+            <path d="M141,153 Q148,143 152,138" fill="none" stroke="#c9a84c" stroke-width="0.7" stroke-opacity="0.8"/>
+            <!-- Antennae tips -->
+            <circle cx="128" cy="138" r="1" fill="#c9a84c" opacity="0.8"/>
+            <circle cx="152" cy="138" r="1" fill="#c9a84c" opacity="0.8"/>
+
+            <!-- Skull pattern on moth wings -->
+            <circle cx="115" cy="155" r="5" fill="#1a1010" fill-opacity="0.6"/>
+            <circle cx="165" cy="155" r="5" fill="#1a1010" fill-opacity="0.6"/>
+            <circle cx="115" cy="155" r="5" fill="none" stroke="#c9a84c" stroke-width="0.3" stroke-opacity="0.5"/>
+            <circle cx="165" cy="155" r="5" fill="none" stroke="#c9a84c" stroke-width="0.3" stroke-opacity="0.5"/>
+
+            <!-- Wing vein patterns -->
+            <path d="M140,156 Q120,148 100,152" fill="none" stroke="#8b6820" stroke-width="0.4" stroke-opacity="0.6"/>
+            <path d="M140,160 Q118,158 98,166" fill="none" stroke="#8b6820" stroke-width="0.4" stroke-opacity="0.6"/>
+            <path d="M140,156 Q160,148 180,152" fill="none" stroke="#8b6820" stroke-width="0.4" stroke-opacity="0.6"/>
+            <path d="M140,160 Q162,158 182,166" fill="none" stroke="#8b6820" stroke-width="0.4" stroke-opacity="0.6"/>
+
+            <!-- Neck / body -->
+            <path d="M110,193 Q140,200 170,193 L175,250 Q140,265 105,250 Z" fill="#151015"/>
+            <path d="M110,193 Q140,200 170,193" fill="none" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.3"/>
+
+            <!-- Title text -->
+            <text x="140" y="298" text-anchor="middle"
+              font-family="serif" font-size="16" font-weight="bold"
+              fill="#f0e8d0" letter-spacing="4" opacity="0.9">沉默的羔羊</text>
+            <text x="140" y="316" text-anchor="middle"
+              font-family="serif" font-size="8" font-style="italic"
+              fill="#c9a84c" letter-spacing="2" opacity="0.7">THE SILENCE OF THE LAMBS</text>
+
+            <!-- Bottom line -->
+            <line x1="60" y1="328" x2="220" y2="328" stroke="#c9a84c" stroke-width="0.5" stroke-opacity="0.3"/>
+
+            <text x="140" y="345" text-anchor="middle"
+              font-family="monospace" font-size="8"
+              fill="#b8a888" letter-spacing="3" opacity="0.6">JONATHAN DEMME · 1991</text>
+
+            <!-- Corner marks -->
+            <path d="M10,10 L10,20 M10,10 L20,10" stroke="#8b1a1a" stroke-width="1" stroke-opacity="0.5"/>
+            <path d="M270,10 L270,20 M270,10 L260,10" stroke="#8b1a1a" stroke-width="1" stroke-opacity="0.5"/>
+            <path d="M10,410 L10,400 M10,410 L20,410" stroke="#8b1a1a" stroke-width="1" stroke-opacity="0.5"/>
+            <path d="M270,410 L270,400 M270,410 L260,410" stroke="#8b1a1a" stroke-width="1" stroke-opacity="0.5"/>
+
+            <!-- Glow under face -->
+            <ellipse cx="140" cy="195" rx="50" ry="8" fill="#8b1a1a" opacity="0.15" filter="url(#blur3)"/>
+          </svg>
+        </div>
+      </div>
+      <div class="poster-meta">
+        <div class="poster-meta-row">
+          <span class="poster-meta-key">导演</span>
+          <span class="poster-meta-val">乔纳森·戴米</span>
+        </div>
+        <div class="poster-meta-row">
+          <span class="poster-meta-key">主演</span>
+          <span class="poster-meta-val">朱迪·福斯特 / 安东尼·霍普金斯</span>
+        </div>
+        <div class="poster-meta-row">
+          <span class="poster-meta-key">类型</span>
+          <span class="poster-meta-val">惊悚 · 犯罪 · 心理</span>
+        </div>
+        <div class="poster-meta-row">
+          <span class="poster-meta-key">片长</span>
+          <span class="poster-meta-val">118 分钟</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== HIGHLIGHTS =================== -->
+<section>
+  <div class="section-label">六大亮点</div>
+  <div class="highlights-grid">
+
+    <div class="highlight-card">
+      <div class="highlight-num">01 · Performance</div>
+      <div class="highlight-title">安东尼·霍普金斯的封神演出</div>
+      <div class="highlight-desc">
+        汉尼拔·莱克特仅出场约16分钟，却凭借那双冷静穿透的眼神与精准计算的台词，成为影史最令人难忘的反派之一，斩获奥斯卡最佳男主角。
+      </div>
+    </div>
+
+    <div class="highlight-card">
+      <div class="highlight-num">02 · Psychology</div>
+      <div class="highlight-title">极致的心理博弈</div>
+      <div class="highlight-desc">
+        审讯室的每一场对话都如同刀锋上的舞蹈。莱克特以交换心理秘密为条件协助调查，使得"帮助"与"威胁"之间的界限模糊到令人窒息。
+      </div>
+    </div>
+
+    <div class="highlight-card">
+      <div class="highlight-num">03 · Direction</div>
+      <div class="highlight-title">突破性的视觉叙事</div>
+      <div class="highlight-desc">
+        导演大量使用直视镜头，让演员直视摄影机——让观众感到自己就是那个被逼问的人，打破了第四堵墙的心理距离，制造出罕见的沉浸式压迫感。
+      </div>
+    </div>
+
+    <div class="highlight-card">
+      <div class="highlight-num">04 · Character</div>
+      <div class="highlight-title">克拉丽斯的女性成长弧</div>
+      <div class="highlight-desc">
+        这不仅是一部惊悚片，更是关于一个年轻女性如何在充满偏见与权力压迫的体制中艰难寻找自我认同的故事，朱迪·福斯特的表演细腻而有力。
+      </div>
+    </div>
+
+    <div class="highlight-card">
+      <div class="highlight-num">05 · Sound Design</div>
+      <div class="highlight-title">氛围声效的极致运用</div>
+      <div class="highlight-desc">
+        奥斯卡最佳原创配乐从不刻意煽情，而是用近乎沉默的音景将观众的神经悄悄绷紧，每一次呼吸声与脚步声都成为恐惧的延伸。
+      </div>
+    </div>
+
+    <div class="highlight-card">
+      <div class="highlight-num">06 · Legacy</div>
+      <div class="highlight-title">流行文化的不朽印记</div>
+      <div class="highlight-desc">
+        汉尼拔·莱克特已成为全球最具辨识度的虚构人物之一，催生了书籍、剧集与续作。此片重新定义了"心理惊悚"这一类型的边界。
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =================== QUOTE =================== -->
+<section class="reveal">
+  <div class="section-label">经典台词</div>
+  <div class="quote-block">
+    <p class="quote-text">
+      "沉默了，还是羔羊的叫声停止了，克拉丽斯？"
+    </p>
+    <p class="quote-en">"Did you enjoy the silence, or did the lambs stop screaming, Clarice?"</p>
+    <p class="quote-attr">— 汉尼拔·莱克特 · 安东尼·霍普金斯 饰</p>
+  </div>
+</section>
+
+<!-- =================== WHY WATCH =================== -->
+<section>
+  <div class="section-label">为什么值得看</div>
+  <div class="why-grid">
+
+    <div class="why-item">
+      <div class="why-icon">🏆</div>
+      <div class="why-body">
+        <h4>影史第三部"大满贯"奥斯卡电影</h4>
+        <p>
+          仅三部电影曾同时包揽奥斯卡五大奖（最佳影片、导演、男主、女主、改编剧本），本片便是其中之一，与《一夜风流》《飞越疯人院》并列，含金量极高。
+        </p>
+      </div>
+    </div>
+
+    <div class="why-item">
+      <div class="why-icon">🧠</div>
+      <div class="why-body">
+        <h4>最深刻的人性剖析</h4>
+        <p>
+          这部电影不依赖血腥，而是靠语言与眼神制造最高级的恐惧——它让你意识到：真正可怕的不是鬼魂，而是另一个人类的心。
+        </p>
+      </div>
+    </div>
+
+    <div class="why-item">
+      <div class="why-icon">🎭</div>
+      <div class="why-body">
+        <h4>影史最完美的对手戏</h4>
+        <p>
+          朱迪·福斯特与安东尼·霍普金斯之间的化学反应至今无人超越。两位奥斯卡影帝影后同台，每一场对话都是电影教科书级别的示范。
+        </p>
+      </div>
+    </div>
+
+    <div class="why-item">
+      <div class="why-icon">🌀</div>
+      <div class="why-body">
+        <h4>观感远超预期</h4>
+        <p>
+          许多观众以为这是一部简单的杀手电影，却在观看过程中不断被颠覆——它的结构、悬念节奏与情感深度，都超出了任何惊悚片应有的层次。
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- =================== AWARDS =================== -->
+<div class="awards-section reveal">
+  <div class="awards-inner">
+    <div class="section-label">荣誉奖项</div>
+    <div class="awards-row">
+      <span class="award-tag primary">奥斯卡最佳影片</span>
+      <span class="award-tag primary">奥斯卡最佳导演</span>
+      <span class="award-tag primary">奥斯卡最佳男主角</span>
+      <span class="award-tag primary">奥斯卡最佳女主角</span>
+      <span class="award-tag primary">奥斯卡最佳改编剧本</span>
+      <span class="award-tag">BAFTA最佳影片</span>
+      <span class="award-tag">金球奖最佳剧情影片</span>
+      <span class="award-tag">美国国家电影保护局收录</span>
+      <span class="award-tag">AFI百年百大惊悚片第1名</span>
+      <span class="award-tag">AFI百年百大男反派第1名</span>
+    </div>
+  </div>
+</div>
+
+<!-- =================== ARCHIVE =================== -->
+<section>
+  <div class="section-label">影片档案</div>
+  <div class="archive-table reveal">
+    <div class="archive-row">
+      <span class="archive-key">原名</span>
+      <span class="archive-val">The Silence of the Lambs</span>
+    </div>
+    <div class="archive-row">
+      <span class="archive-key">中文译名</span>
+      <span class="archive-val">沉默的羔羊</span>
+    </div>
+    <div class="archive-row">
+      <span class="archive-key">上映年份</span>
+      <span class="archive-val">1991年</span>
+    </div>
+    <div class="archive-row">
+      <span class="archive-key">导演</span>
+      <span class="archive-val">乔纳森·戴米（Jonathan Demme）</span>
+    </div>
+    <div class="archive-row">
+      <span class="archive-key">主演</span>
+      <span class="archive-val">朱迪·福斯特（Jodie Foster）/ 安东尼·霍普金斯（Anthony Hopkins）/ 斯科特·格伦</span>
+    </div>
+    <div class="archive-row">
+      <span class="archive-key">原著小说</span>
+      <span class="archive-val">托马斯·哈里斯（Thomas Harris）同名小说</span>
+    </div>
+    <div class="archive-row">
+      <span class="archive-key">类型</span>
+      <span class="archive-val">惊悚 / 犯罪 / 心理</span>
+    </div>
+    <div class="archive-row">
+      <span class="archive-key">片长</span>
+      <span class="archive-val">118 分钟</span>
+    </div>
+    <div class="archive-row">
+      <span class="archive-key">制片国</span>
+      <span class="archive-val">美国</span>
+    </div>
+    <div class="archive-row">
+      <span class="archive-key">语言</span>
+      <span class="archive-val">英语</span>
+    </div>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<div class="editorial-footer">
+  <div class="editorial-stars">★ ★ ★ ★ ★</div>
+  <p class="editorial-quote">
+    "三十多年过去，这部电影依然让人冷汗直冒。<br>
+    它不是在用恐惧娱乐你，而是用智识折磨你。"
+  </p>
+  <div class="editorial-meta">Editor's Pick · Movie Recommendation · 2026.05.14</div>
+</div>
+
+
+<script>
+// =================== CANVAS PARTICLES ===================
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// Floating dust particles - blood red + gold
+const particles = [];
+for (let i = 0; i < 80; i++) {
+  particles.push({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    r: Math.random() * 1.5 + 0.3,
+    vx: (Math.random() - 0.5) * 0.3,
+    vy: -Math.random() * 0.4 - 0.1,
+    alpha: Math.random() * 0.4 + 0.05,
+    color: Math.random() > 0.6 ? '#c9a84c' : '#8b1a1a',
+    pulse: Math.random() * Math.PI * 2,
+    pulseSpeed: Math.random() * 0.02 + 0.005,
+    life: 1,
+    maxLife: Math.random() * 300 + 100
+  });
+}
+
+// Occasional blood drops
+const drops = [];
+function spawnDrop() {
+  drops.push({
+    x: Math.random() * window.innerWidth,
+    y: -10,
+    vy: Math.random() * 1.5 + 0.5,
+    alpha: Math.random() * 0.15 + 0.05,
+    r: Math.random() * 1 + 0.5,
+    length: Math.random() * 15 + 8
+  });
+  setTimeout(spawnDrop, Math.random() * 3000 + 1000);
+}
+spawnDrop();
+
+function animateCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw particles
+  particles.forEach((p, i) => {
+    p.pulse += p.pulseSpeed;
+    p.x += p.vx;
+    p.y += p.vy;
+    p.life++;
+
+    if (p.life > p.maxLife || p.y < -10) {
+      p.y = window.innerHeight + 10;
+      p.x = Math.random() * window.innerWidth;
+      p.life = 0;
+    }
+
+    const fadeAlpha = p.life < 30 ? p.life / 30 :
+                      p.life > p.maxLife - 30 ? (p.maxLife - p.life) / 30 : 1;
+    const alpha = p.alpha * (0.7 + 0.3 * Math.sin(p.pulse)) * fadeAlpha;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = p.color;
+    ctx.globalAlpha = alpha;
+    ctx.fill();
+  });
+
+  // Draw drops
+  drops.forEach((d, i) => {
+    d.y += d.vy;
+    ctx.beginPath();
+    ctx.moveTo(d.x, d.y);
+    ctx.lineTo(d.x, d.y + d.length);
+    ctx.strokeStyle = '#8b1a1a';
+    ctx.globalAlpha = d.alpha;
+    ctx.lineWidth = d.r;
+    ctx.stroke();
+
+    if (d.y > window.innerHeight + 50) {
+      drops.splice(i, 1);
+    }
+  });
+
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(animateCanvas);
+}
+animateCanvas();
+
+// =================== SCROLL REVEAL ===================
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed');
+
+      // Score bars
+      const bars = entry.target.querySelectorAll('.score-bar');
+      bars.forEach(bar => {
+        setTimeout(() => {
+          bar.style.width = bar.dataset.width + '%';
+        }, 200);
+      });
+
+      // Score numbers
+      const scoreItems = entry.target.querySelectorAll('.score-item');
+      scoreItems.forEach(item => item.classList.add('revealed'));
+
+      // Trigger counters for score numbers
+      triggerCounters(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal, .highlight-card, .why-item').forEach(el => {
+  observer.observe(el);
+});
+
+// Also trigger score section immediately on load
+const scoresSection = document.querySelector('.scores-grid');
+if (scoresSection) {
+  const scoresObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Trigger bars
+        entry.target.querySelectorAll('.score-bar').forEach(bar => {
+          setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 300);
+        });
+        entry.target.querySelectorAll('.score-item').forEach(item => item.classList.add('revealed'));
+        // Counters
+        countTo('imdb-num', 8.6, 1, 1800);
+        countTo('douban-num', 9.1, 1, 1800);
+        countTo('rt-num', 95, 0, 1800);
+        countTo('oscar-num', 5, 0, 1200);
+        scoresObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  scoresObserver.observe(scoresSection);
+}
+
+function triggerCounters(container) {
+  if (container.querySelector('#imdb-num') || container.contains(document.getElementById('imdb-num'))) {
+    // handled separately
+  }
+}
+
+function countTo(id, target, decimals, duration) {
+  const el = document.getElementById(id);
+  if (!el || el._counted) return;
+  el._counted = true;
+  const start = 0;
+  const startTime = performance.now();
+  function update(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const value = start + (target - start) * ease;
+    el.textContent = decimals > 0 ? value.toFixed(decimals) : Math.round(value);
+    if (progress < 1) requestAnimationFrame(update);
+    else el.textContent = decimals > 0 ? target.toFixed(decimals) : target;
+  }
+  requestAnimationFrame(update);
+}
+
+// Stagger highlight cards
+const highlightCards = document.querySelectorAll('.highlight-card');
+const highlightObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = Array.from(highlightCards).indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('revealed'), idx * 100);
+      highlightObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+highlightCards.forEach(c => highlightObserver.observe(c));
+
+// Stagger why items
+const whyItems = document.querySelectorAll('.why-item');
+const whyObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const idx = Array.from(whyItems).indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('revealed'), idx * 150);
+      whyObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+whyItems.forEach(w => whyObserver.observe(w));
+</script>
+
+</body>
+</html>

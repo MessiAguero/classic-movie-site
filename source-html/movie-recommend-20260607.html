@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电影推荐 · 窃听风暴</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --bg-deep: #0b0e14;
+    --bg-card: #111620;
+    --bg-card-hover: #161d2a;
+    --steel: #2c3e50;
+    --steel-light: #4a6274;
+    --amber: #c8923a;
+    --amber-glow: #e8b44f;
+    --amber-dim: #8a6a2a;
+    --warm-text: #e8d5a3;
+    --cold-text: #8faece;
+    --white-soft: #dce4ec;
+    --white-dim: #8899aa;
+    --border-subtle: rgba(200, 146, 58, 0.12);
+    --font-serif: 'Noto Serif SC', serif;
+    --font-sans: 'Inter', -apple-system, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg-deep);
+    color: var(--white-soft);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ── Canvas BG ── */
+  #particle-canvas {
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    z-index:0; pointer-events:none;
+    opacity:0.4;
+  }
+
+  /* ── Scanlines overlay ── */
+  body::after {
+    content:''; position:fixed; top:0; left:0; width:100%; height:100%;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+    pointer-events:none; z-index:1;
+  }
+
+  .container { position:relative; z-index:2; max-width:960px; margin:0 auto; padding:0 24px; }
+
+  /* ── HERO ── */
+  .hero {
+    position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    text-align:center; padding:80px 24px 60px;
+    overflow:hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+    background: radial-gradient(ellipse at 50% 30%, rgba(200,146,58,0.05) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 70%, rgba(44,62,80,0.2) 0%, transparent 50%);
+    pointer-events:none;
+  }
+
+  .hero-year {
+    font-family: var(--font-sans); font-weight:700; font-size:clamp(100px,20vw,220px);
+    color:rgba(44,62,80,0.12); line-height:0.8; user-select:none;
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    z-index:-1; letter-spacing:-6px;
+  }
+
+  .hero-badge {
+    display:inline-block; padding:6px 18px; border:1px solid var(--amber); border-radius:20px;
+    color:var(--amber); font-size:12px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
+    margin-bottom:20px; opacity:0; transform:translateY(20px);
+    animation:fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero h1 {
+    font-family: var(--font-serif); font-weight:900;
+    font-size:clamp(36px,7vw,62px); color:var(--white-soft);
+    margin-bottom:8px; opacity:0; transform:translateY(30px);
+    animation:fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero h1 .orig {
+    display:block; font-size:clamp(18px,3vw,30px); font-weight:400;
+    color:var(--cold-text); margin-top:6px; letter-spacing:2px;
+  }
+
+  .hero-tagline {
+    font-family: var(--font-serif); font-size:clamp(15px,2vw,21px);
+    color:var(--amber-glow); margin-top:24px; font-style:italic;
+    opacity:0; transform:translateY(20px);
+    animation:fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-meta {
+    margin-top:32px; display:flex; justify-content:center; flex-wrap:wrap; gap:20px;
+    font-size:13px; color:var(--white-dim); letter-spacing:1px;
+    opacity:0; transform:translateY(20px);
+    animation:fadeUp 0.8s ease 0.8s forwards;
+  }
+  .hero-meta span { display:flex; align-items:center; gap:6px; }
+  .hero-meta .dot { display:inline-block; width:4px; height:4px; border-radius:50%; background:var(--amber-dim); }
+
+  .hero-scroll {
+    position:absolute; bottom:32px; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    color:var(--steel-light); font-size:11px; letter-spacing:2px;
+    animation:fadeUp 1s ease 1.2s forwards; opacity:0;
+  }
+  .hero-scroll .arrow {
+    width:18px; height:18px; border-right:1.5px solid var(--steel-light);
+    border-bottom:1.5px solid var(--steel-light); transform:rotate(45deg);
+    animation:bounc 2s ease infinite;
+  }
+
+  @keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+  @keyframes bounc { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(6px)} }
+
+  /* ── Section ── */
+  section { padding:80px 0; }
+  .section-label {
+    font-size:11px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--amber-dim); margin-bottom:12px; font-weight:600;
+  }
+  .section-title {
+    font-family: var(--font-serif); font-weight:700;
+    font-size:clamp(24px,4vw,34px); color:var(--white-soft);
+    margin-bottom:40px;
+  }
+
+  .reveal { opacity:0; transform:translateY(40px); transition:all 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* ── Synopsis ── */
+  .synopsis-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start;
+  }
+  @media(max-width:768px){ .synopsis-grid{grid-template-columns:1fr;} }
+
+  .synopsis-text p {
+    color:var(--white-dim); font-size:15px; line-height:1.9; margin-bottom:16px;
+  }
+  .synopsis-text p:last-child{ margin-bottom:0; }
+
+  /* ── SVG Poster ── */
+  .poster-card {
+    position:relative; border-radius:12px; overflow:hidden;
+    background:var(--bg-card); border:1px solid var(--border-subtle);
+    padding:24px; aspect-ratio:3/4; display:flex; align-items:center; justify-content:center;
+  }
+  .poster-card svg { width:100%; height:100%; }
+
+  /* ── Ratings ── */
+  .ratings-grid {
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  }
+  @media(max-width:640px){ .ratings-grid{grid-template-columns:repeat(2,1fr);} }
+
+  .rating-card {
+    background:var(--bg-card); border:1px solid var(--border-subtle);
+    border-radius:10px; padding:20px 16px; text-align:center;
+    transition:all 0.3s ease;
+  }
+  .rating-card:hover { background:var(--bg-card-hover); transform:translateY(-3px); border-color:rgba(200,146,58,0.25); }
+
+  .rating-card .source {
+    font-size:11px; color:var(--white-dim); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;
+  }
+  .rating-card .score {
+    font-family: var(--font-sans); font-size:32px; font-weight:700; color:var(--amber-glow); line-height:1.1;
+  }
+  .rating-card .score .decimal { font-size:20px; color:var(--amber-dim); }
+  .rating-card .bar-wrap {
+    width:100%; height:4px; background:rgba(200,146,58,0.1); border-radius:2px; margin-top:10px; overflow:hidden;
+  }
+  .rating-card .bar-fill {
+    height:100%; background:linear-gradient(90deg, var(--amber-dim), var(--amber-glow));
+    border-radius:2px; width:0; transition:width 1.2s cubic-bezier(0.22,1,0.36,1);
+  }
+  .rating-card .bar-fill.visible { }
+
+  /* ── Highlights ── */
+  .highlights-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+  }
+  @media(max-width:768px){ .highlights-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:480px){ .highlights-grid{grid-template-columns:1fr;} }
+
+  .highlight-card {
+    background:var(--bg-card); border:1px solid var(--border-subtle);
+    border-radius:10px; padding:28px 24px; transition:all 0.3s ease;
+    position:relative; overflow:hidden;
+  }
+  .highlight-card::before {
+    content:''; position:absolute; top:0; left:0; width:3px; height:100%;
+    background:linear-gradient(180deg, var(--amber-dim), var(--amber-glow));
+    opacity:0; transition:opacity 0.3s ease;
+  }
+  .highlight-card:hover { background:var(--bg-card-hover); transform:translateY(-3px); border-color:rgba(200,146,58,0.2); }
+  .highlight-card:hover::before { opacity:1; }
+
+  .highlight-card .num {
+    font-family: var(--font-sans); font-size:32px; font-weight:700;
+    color:rgba(200,146,58,0.08); line-height:1; margin-bottom:8px;
+  }
+  .highlight-card h4 {
+    font-family: var(--font-serif); font-size:17px; color:var(--warm-text); font-weight:600;
+    margin-bottom:10px;
+  }
+  .highlight-card p {
+    font-size:13px; color:var(--white-dim); line-height:1.7;
+  }
+
+  /* ── Quote ── */
+  .quote-block {
+    background:var(--bg-card); border:1px solid var(--border-subtle);
+    border-radius:12px; padding:40px 36px; text-align:center; position:relative;
+    margin:60px 0;
+  }
+  .quote-block::before {
+    content:'\201C'; position:absolute; top:-10px; left:24px;
+    font-size:80px; color:rgba(200,146,58,0.1); font-family:serif; line-height:1;
+  }
+  .quote-block blockquote {
+    font-family: var(--font-serif); font-size:clamp(18px,2.5vw,24px);
+    color:var(--warm-text); font-style:italic; line-height:1.8;
+    max-width:600px; margin:0 auto;
+  }
+  .quote-block .attr {
+    margin-top:16px; font-size:13px; color:var(--white-dim);
+  }
+  .quote-block .attr cite { font-style:normal; color:var(--amber-dim); }
+
+  /* ── Why Watch ── */
+  .why-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:20px;
+  }
+  @media(max-width:640px){ .why-grid{grid-template-columns:1fr;} }
+
+  .why-card {
+    background:var(--bg-card); border:1px solid var(--border-subtle);
+    border-radius:10px; padding:24px; transition:all 0.3s ease;
+  }
+  .why-card:hover { background:var(--bg-card-hover); border-color:rgba(200,146,58,0.2); }
+
+  .why-card .icon { font-size:28px; margin-bottom:10px; display:block; }
+  .why-card h4 {
+    font-family: var(--font-serif); font-size:16px; color:var(--warm-text); font-weight:600; margin-bottom:8px;
+  }
+  .why-card p { font-size:13px; color:var(--white-dim); line-height:1.7; }
+
+  /* ── Honors ── */
+  .honors-list {
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;
+  }
+  .honor-tag {
+    display:inline-block; padding:6px 16px; border:1px solid var(--border-subtle);
+    border-radius:20px; font-size:12px; color:var(--cold-text); letter-spacing:0.5px;
+    background:var(--bg-card); transition:all 0.3s ease;
+  }
+  .honor-tag:hover { border-color:var(--amber-dim); color:var(--amber-glow); }
+
+  /* ── Info Table ── */
+  .info-table {
+    width:100%; border-collapse:collapse; margin-top:24px;
+  }
+  .info-table tr { border-bottom:1px solid var(--border-subtle); }
+  .info-table tr:last-child { border-bottom:none; }
+  .info-table td {
+    padding:14px 0; font-size:14px; vertical-align:top;
+  }
+  .info-table td:first-child {
+    width:100px; color:var(--amber-dim); font-weight:600; font-size:12px; letter-spacing:1px; text-transform:uppercase;
+  }
+  .info-table td:last-child { color:var(--white-dim); }
+
+  /* ── Verdict ── */
+  .verdict {
+    background:linear-gradient(135deg, rgba(200,146,58,0.06), rgba(44,62,80,0.08));
+    border:1px solid var(--border-subtle); border-radius:12px;
+    padding:36px; text-align:center; margin:80px 0;
+  }
+  .verdict .stars { color:var(--amber-glow); font-size:28px; letter-spacing:4px; margin-bottom:12px; }
+  .verdict h3 { font-family: var(--font-serif); font-size:20px; color:var(--warm-text); margin-bottom:10px; }
+  .verdict p { font-size:14px; color:var(--white-dim); max-width:500px; margin:0 auto; line-height:1.8; }
+
+  /* ── Footer ── */
+  .footer {
+    border-top:1px solid var(--border-subtle); padding:32px 0 40px;
+    text-align:center; color:var(--steel-light); font-size:12px; letter-spacing:1px;
+  }
+
+  /* ── Responsive ── */
+  @media(max-width:480px){
+    .hero { min-height:90vh; padding:60px 20px 40px; }
+    .quote-block { padding:28px 20px; }
+    .section-title { margin-bottom:24px; }
+    .poster-card { aspect-ratio:2/3; }
+  }
+
+  /* ── Loading animation ── */
+  .loading-shimmer {
+    background:linear-gradient(90deg, var(--bg-card) 25%, var(--bg-card-hover) 50%, var(--bg-card) 75%);
+    background-size:200% 100%; animation:shimmer 1.5s ease-in-out infinite;
+  }
+  @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-year">2006</div>
+  <div>
+    <div class="hero-badge">★ 奥斯卡最佳外语片</div>
+    <h1>
+      窃听风暴
+      <span class="orig">Das Leben der Anderen · The Lives of Others</span>
+    </h1>
+    <p class="hero-tagline">「这是一个关于尊严的故事。」</p>
+    <div class="hero-meta">
+      <span>导演 · 弗洛里安·亨克尔·冯·杜能斯马克</span>
+      <span class="dot"></span>
+      <span>2006 · 德国</span>
+      <span class="dot"></span>
+      <span>片长 137 分钟</span>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    向下滚动
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- RATINGS -->
+  <section>
+    <div class="section-label reveal">评分</div>
+    <h2 class="section-title reveal">口碑数据</h2>
+    <div class="ratings-grid">
+      <div class="rating-card reveal">
+        <div class="source">豆瓣电影</div>
+        <div class="score">9.2<span class="decimal">/10</span></div>
+        <div class="bar-wrap"><div class="bar-fill" data-width="92"></div></div>
+      </div>
+      <div class="rating-card reveal">
+        <div class="source">IMDb</div>
+        <div class="score">8.4<span class="decimal">/10</span></div>
+        <div class="bar-wrap"><div class="bar-fill" data-width="84"></div></div>
+      </div>
+      <div class="rating-card reveal">
+        <div class="source">烂番茄</div>
+        <div class="score">93<span class="decimal">%</span></div>
+        <div class="bar-wrap"><div class="bar-fill" data-width="93"></div></div>
+      </div>
+      <div class="rating-card reveal">
+        <div class="source">Metacritic</div>
+        <div class="score">89<span class="decimal">/100</span></div>
+        <div class="bar-wrap"><div class="bar-fill" data-width="89"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYNOPSIS -->
+  <section>
+    <div class="section-label reveal">剧情梗概</div>
+    <h2 class="section-title reveal">故事背景</h2>
+    <div class="synopsis-grid">
+      <div class="synopsis-text reveal">
+        <p>
+          1984年的东柏林，整个国家笼罩在斯塔西（东德秘密警察）严密的监控网络之下。一名代号为"HGW XX/7"的特工魏斯勒，奉命对一位著名剧作家德莱曼及其女友——知名女演员克丽斯塔进行全天候窃听监视。
+        </p>
+        <p>
+          德莱曼被怀疑有"反社会主义言论"，而魏斯勒的任务就是收集证据，坐实他的罪名。然而，在日复一日的监听中，魏斯勒逐渐被窃听到的生活所触动——艺术、爱情、自由——这些他自己早已失去的东西。冰冷的监听设备背后，一场无声的觉醒悄然发生。
+        </p>
+        <p>
+          影片以冷峻克制的手法，讲述了一段关于良知、艺术与人性的感人故事。它没有枪战追逐，却拥有令人屏息的张力。
+        </p>
+      </div>
+      <div class="reveal">
+        <div class="poster-card">
+          <svg viewBox="0 0 360 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background -->
+            <rect width="360" height="480" rx="8" fill="#111620"/>
+            <!-- Surveillance grid lines -->
+            <g opacity="0.06">
+              <line x1="0" y1="40" x2="360" y2="40" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="0" y1="80" x2="360" y2="80" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="0" y1="120" x2="360" y2="120" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="0" y1="160" x2="360" y2="160" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="0" y1="200" x2="360" y2="200" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="0" y1="240" x2="360" y2="240" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="0" y1="280" x2="360" y2="280" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="0" y1="320" x2="360" y2="320" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="0" y1="360" x2="360" y2="360" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="0" y1="400" x2="360" y2="400" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="0" y1="440" x2="360" y2="440" stroke="#c8923a" stroke-width="0.5"/>
+            </g>
+            <g opacity="0.06">
+              <line x1="40" y1="0" x2="40" y2="480" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="80" y1="0" x2="80" y2="480" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="120" y1="0" x2="120" y2="480" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="160" y1="0" x2="160" y2="480" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="200" y1="0" x2="200" y2="480" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="240" y1="0" x2="240" y2="480" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="280" y1="0" x2="280" y2="480" stroke="#c8923a" stroke-width="0.5"/>
+              <line x1="320" y1="0" x2="320" y2="480" stroke="#c8923a" stroke-width="0.5"/>
+            </g>
+            <!-- Cold East Berlin building silhouette -->
+            <rect x="40" y="140" width="280" height="300" fill="#1a2332" rx="2"/>
+            <rect x="55" y="150" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="115" y="150" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="175" y="150" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="235" y="150" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="55" y="220" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="115" y="220" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="175" y="220" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="235" y="220" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="55" y="290" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="115" y="290" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="175" y="290" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="235" y="290" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="55" y="360" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="115" y="360" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="175" y="360" width="50" height="60" fill="#0f1622" rx="1"/>
+            <rect x="235" y="360" width="50" height="60" fill="#0f1622" rx="1"/>
+            <!-- Warm amber window - the one being watched -->
+            <rect x="115" y="220" width="50" height="60" fill="#e8b44f" opacity="0.25" rx="1"/>
+            <rect x="120" y="225" width="40" height="50" fill="#e8b44f" opacity="0.15" rx="1"/>
+            <!-- Silhouette in window -->
+            <rect x="130" y="235" width="20" height="35" fill="#0b0e14" opacity="0.5" rx="2"/>
+            <!-- Listening device -->
+            <circle cx="180" cy="195" r="12" stroke="#c8923a" stroke-width="1.5" fill="none" opacity="0.4"/>
+            <circle cx="180" cy="195" r="6" stroke="#c8923a" stroke-width="1" fill="none" opacity="0.3"/>
+            <circle cx="180" cy="195" r="2" fill="#c8923a" opacity="0.5"/>
+            <!-- Signal waves from device -->
+            <path d="M192 195 Q200 188 200 195 Q200 202 192 195" stroke="#c8923a" stroke-width="0.6" fill="none" opacity="0.2"/>
+            <path d="M198 195 Q210 184 210 195 Q210 206 198 195" stroke="#c8923a" stroke-width="0.6" fill="none" opacity="0.15"/>
+            <!-- Headphones SVG at bottom -->
+            <g transform="translate(180,410)" opacity="0.5">
+              <path d="M-25 0 Q-30 -20 -20 -25 Q-10 -30 0 -15" stroke="#c8923a" stroke-width="2.5" fill="none"/>
+              <path d="M25 0 Q30 -20 20 -25 Q10 -30 0 -15" stroke="#c8923a" stroke-width="2.5" fill="none"/>
+              <circle cx="-25" cy="5" r="12" stroke="#c8923a" stroke-width="2" fill="none"/>
+              <circle cx="25" cy="5" r="12" stroke="#c8923a" stroke-width="2" fill="none"/>
+            </g>
+            <!-- Title on poster -->
+            <text x="180" y="56" text-anchor="middle" font-family="serif" font-size="14" fill="#e8b44f" opacity="0.3" letter-spacing="4">DAS LEBEN DER ANDEREN</text>
+            <text x="180" y="72" text-anchor="middle" font-family="serif" font-size="10" fill="#8faece" opacity="0.2" letter-spacing="6">THE LIVES OF OTHERS</text>
+            <!-- Subtle tape/grid overlay -->
+            <rect x="0" y="0" width="360" height="480" fill="url(#film-grain)" opacity="0.03"/>
+            <defs>
+              <pattern id="film-grain" patternUnits="userSpaceOnUse" width="4" height="4">
+                <rect width="1" height="1" fill="white"/>
+              </pattern>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section>
+    <div class="section-label reveal">亮点解析</div>
+    <h2 class="section-title reveal">为何这是一部杰作</h2>
+    <div class="highlights-grid">
+      <div class="highlight-card reveal">
+        <div class="num">01</div>
+        <h4>无懈可击的剧本</h4>
+        <p>导演杜能斯马克的处女作即一鸣惊人。剧本结构精妙如钟表，每一句台词、每一个细节都在最终汇聚成震撼人心的归属。荣获"德国奥斯卡"——罗拉奖最佳剧本奖。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="num">02</div>
+        <h4>不动声色的表演</h4>
+        <p>乌尔里希·穆埃饰演的斯塔西特工魏斯勒，用微表情和沉默完成了影史上最内敛而有力量的角色塑造之一。他的眼神本身就是一场戏剧。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="num">03</div>
+        <h4>摄影与氛围营造</h4>
+        <p>冷色调的东柏林街景、压抑的灰色建筑、昏暗的监听室，每一帧都在诉说着那个时代的沉重。而片中仅有的暖色，恰恰出现在最动人的时刻。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="num">04</div>
+        <h4>历史的真实底色</h4>
+        <p>影片基于对大量前斯塔西档案和当事人的研究，细致还原了1980年代东德的监控生态。许多细节——包括特工代号系统、审讯手法——都有据可查。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="num">05</div>
+        <h4>艺术的力量</h4>
+        <p>片中借用了贝多芬、马克思等人作品中的灵魂，探讨艺术能否改变一个人。音乐、戏剧、文学在这部电影中不只是一件道具，而是推动情节的精神力量。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="num">06</div>
+        <h4>永不褪色的主题</h4>
+        <p>在隐私与监控边界日益模糊的今天，这部电影的议题比任何时候都更具现实意义。它关乎自由与妥协、体制与个体、良知与恐惧——每一个问题都值得我们扪心自问。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <div class="quote-block reveal">
+    <blockquote>
+      这是一部关于勇气的电影——不是拿起武器的勇气，而是在沉默中坚守良知的勇气。
+    </blockquote>
+    <div class="attr">—— 影评 ·《纽约时报》</div>
+  </div>
+
+  <!-- WHY WATCH -->
+  <section>
+    <div class="section-label reveal">推荐理由</div>
+    <h2 class="section-title reveal">为什么值得一看</h2>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <span class="icon">🎭</span>
+        <h4>一段灵魂的救赎</h4>
+        <p>这不是一部政治惊悚片——它是一部关于一个人如何通过别人的生活重新找到自己的人性、尊严和自由的电影。它告诉你，即使在最黑暗的制度下，良知依然可以悄然生长。</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="icon">🎬</span>
+        <h4>教科书级别的处女作</h4>
+        <p>导演的首部长片就获得了奥斯卡最佳外语片，这在影史上极为罕见。它证明了真诚的叙事力量远胜于花哨的技巧——这是每个电影创作者都该学习的范本。</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="icon">📖</span>
+        <h4>一场震撼的结局</h4>
+        <p>影片的最后十五分钟被誉为"电影史上最震撼的结尾之一"。在这个结局面前，所有前期的铺垫都找到了归宿。它不会让你尖叫，但会让你在片尾字幕结束时，长久无法言语。</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="icon">🌍</span>
+        <h4>超越国界与时代</h4>
+        <p>无论你在哪个国家、哪个时代看这部电影，它都会击中你心中最柔软的地方。它讲述的不是德国历史，而是人性的普遍困境——这使它成为一部真正的世界级杰作。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONORS -->
+  <section>
+    <div class="section-label reveal">荣誉殿堂</div>
+    <h2 class="section-title reveal">获奖与提名</h2>
+    <div class="honors-list reveal">
+      <span class="honor-tag">🏆 奥斯卡最佳外语片 2007</span>
+      <span class="honor-tag">🏆 德国电影奖最佳影片×7项</span>
+      <span class="honor-tag">🏆 欧洲电影奖最佳影片·最佳男主角</span>
+      <span class="honor-tag">🏆 英国电影学院奖最佳外语片</span>
+      <span class="honor-tag">🏆 金球奖最佳外语片提名</span>
+      <span class="honor-tag">🏆 凯撒奖最佳欧盟电影</span>
+      <span class="honor-tag">🏆 德国巴伐利亚电影奖最佳导演处女作</span>
+      <span class="honor-tag">🏆 芝加哥影评人协会奖最佳外语片</span>
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section>
+    <div class="section-label reveal">档案</div>
+    <h2 class="section-title reveal">影片信息</h2>
+    <table class="info-table reveal">
+      <tr><td>片名</td><td>窃听风暴 / Das Leben der Anderen / The Lives of Others</td></tr>
+      <tr><td>导演</td><td>弗洛里安·亨克尔·冯·杜能斯马克</td></tr>
+      <tr><td>编剧</td><td>弗洛里安·亨克尔·冯·杜能斯马克</td></tr>
+      <tr><td>主演</td><td>乌尔里希·穆埃 / 马蒂娜·格德克 / 塞巴斯蒂安·科赫 / 乌尔里希·图库尔</td></tr>
+      <tr><td>片长</td><td>137 分钟</td></tr>
+      <tr><td>国家</td><td>德国</td></tr>
+      <tr><td>语言</td><td>德语</td></tr>
+      <tr><td>上映日期</td><td>2006年3月23日（德国）</td></tr>
+      <tr><td>豆瓣评分</td><td>9.2（Top 250 #47）</td></tr>
+      <tr><td>IMDb 评分</td><td>8.4（Top 250 #81）</td></tr>
+    </table>
+  </section>
+
+  <!-- VERDICT -->
+  <div class="verdict reveal">
+    <div class="stars">★★★★★</div>
+    <h3>编辑评语</h3>
+    <p>
+      如果你今年只看一部电影，请选择《窃听风暴》。<br>
+      它冷静、内敛、不煽情，却在你看似平静地看完之后，<br>
+      发现它已经在你心里扎下了根。<br>
+      这就是伟大电影的力量——它不告诉你该怎么想，它让你自己去发现。
+    </p>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    WorkBuddy · 经典电影推荐 · 2026.06.07
+  </div>
+</footer>
+
+<script>
+// ── Canvas Particle System ──
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// Typewriter page particles (falling pages)
+const particles = [];
+const NUM = 42;
+const colors = ['rgba(200,146,58,', 'rgba(143,174,206,', 'rgba(232,180,79,'];
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = -20 - Math.random() * 200;
+    this.size = 2 + Math.random() * 6;
+    this.speedY = 0.3 + Math.random() * 0.8;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.rotation = Math.random() * Math.PI * 2;
+    this.rotSpeed = (Math.random() - 0.5) * 0.01;
+    this.opacity = 0.15 + Math.random() * 0.25;
+    this.color = colors[Math.floor(Math.random() * colors.length)];
+    this.wobble = Math.random() * 100;
+    this.wobbleSpeed = 0.002 + Math.random() * 0.005;
+    this.type = Math.random() > 0.5 ? 'page' : 'dot';
+    this.life = 0;
+    this.maxLife = 500 + Math.random() * 800;
+  }
+  update() {
+    this.y += this.speedY;
+    this.x += this.speedX + Math.sin(this.wobble) * 0.15;
+    this.rotation += this.rotSpeed;
+    this.wobble += this.wobbleSpeed;
+    this.life++;
+    if (this.life > this.maxLife || this.y > H + 20) this.reset();
+  }
+  draw() {
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.rotation);
+    ctx.globalAlpha = this.opacity * (1 - this.life / this.maxLife);
+    if (this.type === 'page') {
+      // Draw a tiny page/rectangle
+      const w = this.size * 2;
+      const h = this.size * 2.8;
+      ctx.fillStyle = this.color + '0.6)';
+      ctx.fillRect(-w/2, -h/2, w, h);
+      // faint text lines
+      ctx.strokeStyle = this.color + '0.3)';
+      ctx.lineWidth = 0.5;
+      for (let i = 0; i < 3; i++) {
+        const ly = -h/3 + i * (h/3);
+        ctx.beginPath();
+        ctx.moveTo(-w/3, ly);
+        ctx.lineTo(w/3, ly);
+        ctx.stroke();
+      }
+    } else {
+      ctx.beginPath();
+      ctx.arc(0, 0, this.size * 0.5, 0, Math.PI * 2);
+      ctx.fillStyle = this.color + '0.5)';
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+}
+
+for (let i = 0; i < NUM; i++) {
+  const p = new Particle();
+  p.y = Math.random() * H;
+  p.life = Math.random() * p.maxLife;
+  particles.push(p);
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ── IntersectionObserver Reveal ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Trigger bar fill animation inside
+      const bars = entry.target.querySelectorAll('.bar-fill');
+      bars.forEach(bar => {
+        const w = bar.dataset.width;
+        if (w) setTimeout(() => bar.style.width = w + '%', 200);
+      });
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+reveals.forEach(el => observer.observe(el));
+
+// Also observe rating cards directly for bar fills
+const ratingCards = document.querySelectorAll('.rating-card');
+ratingCards.forEach(card => {
+  observer.observe(card);
+});
+
+// ── Constrain canvas position ──
+document.getElementById('particle-canvas').style.position = 'fixed';
+
+console.log('▲ 窃听风暴 · Das Leben der Anderen · ★★★★★');
+</script>
+</body>
+</html>

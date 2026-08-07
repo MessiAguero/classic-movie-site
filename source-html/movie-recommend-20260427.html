@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>经典电影推荐 · 辛德勒的名单</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Serif+SC:wght@300;400;600;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f5f0e8;
+      --ink: #1a1a1a;
+      --ink-soft: #3a3a3a;
+      --ink-muted: #6a6a6a;
+      --red-accent: #b33030;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #0d0d0d;
+      color: var(--cream);
+      font-family: 'Noto Serif SC', 'Playfair Display', serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── 粒子背景 ── */
+    #canvas-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    /* ── 主容器 ── */
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── 日期标签 ── */
+    .date-badge {
+      display: flex;
+      justify-content: center;
+      padding-top: 52px;
+    }
+    .date-badge span {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.35);
+      padding: 5px 18px;
+      border-radius: 100px;
+    }
+
+    /* ── 主标题区 ── */
+    .hero {
+      text-align: center;
+      padding: 56px 0 0;
+    }
+
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: 0.5em;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero-title-en {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 6vw, 60px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+
+    .hero-title-cn {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(20px, 3.5vw, 30px);
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 0.25em;
+      margin-bottom: 32px;
+    }
+
+    /* ── 分隔线 ── */
+    .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin: 0 auto 40px;
+    }
+    .ornament-line {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .ornament-line.rev {
+      background: linear-gradient(to left, transparent, var(--gold));
+    }
+    .ornament-diamond {
+      width: 7px; height: 7px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ── 海报区 ── */
+    .poster-section {
+      position: relative;
+      margin: 0 auto 56px;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .poster-frame {
+      position: relative;
+      border: 1px solid rgba(201,168,76,0.25);
+      overflow: hidden;
+      border-radius: 4px;
+    }
+
+    .poster-inner {
+      width: 100%;
+      aspect-ratio: 2/3;
+      background: #111;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* 海报艺术化占位 */
+    .poster-art {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: linear-gradient(160deg, #0a0a0a 0%, #1a1a1a 40%, #0d0d0d 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+
+    /* 黑白背景纹理 */
+    .poster-art::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(255,255,255,0.012) 3px,
+          rgba(255,255,255,0.012) 4px
+        );
+    }
+
+    /* 人物剪影 */
+    .silhouette-wrap {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 75%;
+      height: 72%;
+    }
+
+    .silhouette-wrap svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* 红色飘带 */
+    .red-ribbon {
+      position: absolute;
+      top: 38%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+
+    .red-ribbon svg {
+      width: 34px;
+      filter: drop-shadow(0 0 12px rgba(179,48,48,0.8));
+    }
+
+    /* 顶部文字 */
+    .poster-text-top {
+      position: absolute;
+      top: 32px;
+      left: 0; right: 0;
+      text-align: center;
+      z-index: 4;
+    }
+
+    .poster-text-top .director-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+    }
+
+    .poster-text-bottom {
+      position: absolute;
+      bottom: 32px;
+      left: 0; right: 0;
+      text-align: center;
+      z-index: 4;
+    }
+
+    .poster-main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.06em;
+      line-height: 1.2;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+    }
+
+    .poster-subtitle {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      margin-top: 8px;
+    }
+
+    /* 胶片齿孔 */
+    .film-strip {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      background: rgba(0,0,0,0.5);
+      z-index: 5;
+    }
+    .film-strip.left { left: 0; }
+    .film-strip.right { right: 0; }
+    .film-hole {
+      width: 12px; height: 9px;
+      border-radius: 2px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    /* 角框装饰 */
+    .corner { position: absolute; width: 18px; height: 18px; z-index: 6; }
+    .corner.tl { top: 8px; left: 8px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+    .corner.tr { top: 8px; right: 8px; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+    .corner.bl { bottom: 8px; left: 8px; border-bottom: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+    .corner.br { bottom: 8px; right: 8px; border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+
+    /* ── 评分条 ── */
+    .rating-bar {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 56px;
+      flex-wrap: wrap;
+    }
+
+    .rating-item {
+      text-align: center;
+    }
+
+    .rating-platform {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 6px;
+    }
+
+    .rating-score {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .rating-score sup {
+      font-size: 18px;
+      vertical-align: super;
+      color: var(--gold-light);
+    }
+
+    .rating-stars {
+      display: flex;
+      gap: 3px;
+      justify-content: center;
+      margin-top: 6px;
+    }
+
+    .star {
+      width: 10px; height: 10px;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+      background: var(--gold);
+    }
+    .star.half { background: linear-gradient(to right, var(--gold) 50%, rgba(201,168,76,0.25) 50%); }
+
+    /* ── 信息卡片 ── */
+    .info-strip {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .info-chip {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: rgba(245,240,232,0.7);
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 6px 16px;
+      border-radius: 100px;
+      background: rgba(201,168,76,0.05);
+    }
+
+    /* ── 内容区块 ── */
+    .section {
+      margin-bottom: 52px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .section-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      color: var(--gold);
+      opacity: 0.6;
+      min-width: 22px;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 13px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(201,168,76,0.3), transparent);
+    }
+
+    .section-body {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 16px;
+      line-height: 2;
+      color: rgba(245,240,232,0.88);
+      font-weight: 300;
+    }
+
+    .section-body p + p {
+      margin-top: 16px;
+    }
+
+    /* 引言块 */
+    .quote-block {
+      margin: 32px 0;
+      padding: 28px 32px;
+      border-left: 3px solid var(--gold);
+      background: rgba(201,168,76,0.04);
+      position: relative;
+    }
+
+    .quote-block::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 80px;
+      color: var(--gold);
+      opacity: 0.18;
+      position: absolute;
+      top: -8px;
+      left: 16px;
+      line-height: 1;
+    }
+
+    .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 1.7;
+      color: rgba(245,240,232,0.9);
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-attr {
+      margin-top: 12px;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* 亮点列表 */
+    .highlight-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 560px) {
+      .highlight-list { grid-template-columns: 1fr; }
+    }
+
+    .highlight-item {
+      padding: 22px 22px 22px 26px;
+      border: 1px solid rgba(201,168,76,0.15);
+      border-left: 3px solid var(--gold);
+      background: rgba(255,255,255,0.02);
+      border-radius: 0 4px 4px 0;
+      transition: background 0.3s;
+    }
+
+    .highlight-item:hover {
+      background: rgba(201,168,76,0.06);
+    }
+
+    .highlight-icon {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .highlight-title {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 7px;
+      font-weight: 600;
+    }
+
+    .highlight-desc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(245,240,232,0.7);
+      font-weight: 300;
+    }
+
+    /* 奖项区 */
+    .awards-grid {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .award-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 4px;
+    }
+
+    .award-icon { font-size: 16px; }
+
+    .award-text {
+      font-size: 12px;
+      color: rgba(245,240,232,0.8);
+      letter-spacing: 0.05em;
+    }
+
+    /* 适合谁看 */
+    .audience-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .audience-tag {
+      padding: 8px 18px;
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 100px;
+      font-size: 13px;
+      color: rgba(245,240,232,0.75);
+      letter-spacing: 0.05em;
+      background: rgba(201,168,76,0.04);
+    }
+
+    /* ── 底部签名 ── */
+    .footer {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(201,168,76,0.12);
+    }
+
+    .footer-text {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
+
+    .footer-date {
+      margin-top: 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      color: rgba(201,168,76,0.5);
+    }
+
+    /* ── 动画 ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.25s; }
+    .delay-3 { animation-delay: 0.4s; }
+    .delay-4 { animation-delay: 0.55s; }
+    .delay-5 { animation-delay: 0.7s; }
+    .delay-6 { animation-delay: 0.85s; }
+    .delay-7 { animation-delay: 1.0s; }
+
+    /* ── 红丝带点缀 ── */
+    .red-detail {
+      display: inline-block;
+      width: 24px;
+      height: 3px;
+      background: var(--red-accent);
+      border-radius: 2px;
+      vertical-align: middle;
+      margin: 0 6px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 粒子背景 -->
+<canvas id="canvas-bg"></canvas>
+
+<div class="page-wrap">
+
+  <!-- 日期 -->
+  <div class="date-badge fade-up delay-1">
+    <span>每日经典推荐 · 2026年4月27日</span>
+  </div>
+
+  <!-- 主标题 -->
+  <div class="hero fade-up delay-2">
+    <p class="hero-label">今日推荐经典</p>
+    <h1 class="hero-title-en">Schindler's List</h1>
+    <h2 class="hero-title-cn">辛 德 勒 的 名 单</h2>
+  </div>
+
+  <!-- 装饰线 -->
+  <div class="ornament fade-up delay-2">
+    <div class="ornament-line"></div>
+    <div class="ornament-diamond"></div>
+    <div class="ornament-diamond" style="transform:rotate(45deg) scale(0.6); opacity:0.5;"></div>
+    <div class="ornament-diamond"></div>
+    <div class="ornament-line rev"></div>
+  </div>
+
+  <!-- 艺术海报 -->
+  <div class="poster-section fade-up delay-3">
+    <div class="poster-frame">
+      <div class="poster-inner">
+        <div class="poster-art">
+
+          <!-- 扫描线纹理已通过 before 实现 -->
+
+          <!-- 渐变光晕 -->
+          <div style="position:absolute;top:10%;left:50%;transform:translateX(-50%);width:60%;height:45%;background:radial-gradient(ellipse,rgba(255,255,255,0.04) 0%,transparent 70%);pointer-events:none;z-index:1;"></div>
+
+          <!-- 人物剪影 -->
+          <div class="silhouette-wrap">
+            <svg viewBox="0 0 300 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- 主人物（站立男性，黑色剪影） -->
+              <ellipse cx="150" cy="72" rx="30" ry="36" fill="#111"/>
+              <rect x="108" y="108" width="84" height="130" rx="8" fill="#111"/>
+              <!-- 手臂 -->
+              <rect x="80" y="112" width="30" height="96" rx="14" transform="rotate(-8 80 112)" fill="#111"/>
+              <rect x="192" y="112" width="30" height="96" rx="14" transform="rotate(8 192 112)" fill="#111"/>
+              <!-- 腿 -->
+              <rect x="120" y="232" width="30" height="130" rx="12" fill="#111"/>
+              <rect x="152" y="232" width="30" height="130" rx="12" fill="#111"/>
+
+              <!-- 地面阴影 -->
+              <ellipse cx="150" cy="410" rx="90" ry="10" fill="rgba(0,0,0,0.5)"/>
+
+              <!-- 白色细节线（领带、外套） -->
+              <line x1="150" y1="108" x2="150" y2="200" stroke="rgba(255,255,255,0.08)" stroke-width="3"/>
+            </svg>
+          </div>
+
+          <!-- 红色飘带/蝴蝶结 -->
+          <div class="red-ribbon">
+            <svg viewBox="0 0 34 50" fill="none" xmlns="http://www.w3.org/2000/svg" width="34">
+              <!-- 红衣小女孩的红色外套象征 -->
+              <path d="M17 2 C17 2 6 8 4 18 C2 28 10 36 17 42 C24 36 32 28 30 18 C28 8 17 2 17 2Z"
+                    fill="#b33030" opacity="0.92"/>
+              <!-- 高光 -->
+              <path d="M14 8 C12 14 11 22 14 30" stroke="rgba(255,180,180,0.3)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- 顶部导演字幕 -->
+          <div class="poster-text-top">
+            <div class="director-name">Steven Spielberg · 1993</div>
+          </div>
+
+          <!-- 底部标题 -->
+          <div class="poster-text-bottom">
+            <div class="poster-main-title">SCHINDLER'S<br>LIST</div>
+            <div class="poster-subtitle">辛德勒的名单</div>
+          </div>
+
+        </div>
+
+        <!-- 胶片齿孔 -->
+        <div class="film-strip left">
+          <div class="film-hole"></div><div class="film-hole"></div>
+          <div class="film-hole"></div><div class="film-hole"></div>
+          <div class="film-hole"></div><div class="film-hole"></div>
+          <div class="film-hole"></div>
+        </div>
+        <div class="film-strip right">
+          <div class="film-hole"></div><div class="film-hole"></div>
+          <div class="film-hole"></div><div class="film-hole"></div>
+          <div class="film-hole"></div><div class="film-hole"></div>
+          <div class="film-hole"></div>
+        </div>
+
+      </div>
+
+      <!-- 角框装饰 -->
+      <div class="corner tl"></div>
+      <div class="corner tr"></div>
+      <div class="corner bl"></div>
+      <div class="corner br"></div>
+    </div>
+  </div>
+
+  <!-- 评分 -->
+  <div class="rating-bar fade-up delay-4">
+    <div class="rating-item">
+      <div class="rating-platform">豆瓣评分</div>
+      <div class="rating-score">9<sup>.5</sup></div>
+      <div class="rating-stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div>
+        <div class="star"></div><div class="star half"></div>
+      </div>
+    </div>
+    <div style="width:1px;background:rgba(201,168,76,0.2);"></div>
+    <div class="rating-item">
+      <div class="rating-platform">IMDb 评分</div>
+      <div class="rating-score">9<sup>.0</sup></div>
+      <div class="rating-stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div>
+        <div class="star"></div><div class="star half"></div>
+      </div>
+    </div>
+    <div style="width:1px;background:rgba(201,168,76,0.2);"></div>
+    <div class="rating-item">
+      <div class="rating-platform">烂番茄</div>
+      <div class="rating-score">98<sup>%</sup></div>
+      <div class="rating-stars">
+        <div class="star"></div><div class="star"></div><div class="star"></div>
+        <div class="star"></div><div class="star"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 基本信息 -->
+  <div class="info-strip fade-up delay-4">
+    <span class="info-chip">🎬 史蒂文·斯皮尔伯格 执导</span>
+    <span class="info-chip">📅 1993年</span>
+    <span class="info-chip">⏱ 195分钟</span>
+    <span class="info-chip">🇺🇸 美国 / 英语</span>
+    <span class="info-chip">🎭 剧情 · 历史 · 传记</span>
+  </div>
+
+  <!-- 剧情梗概 -->
+  <div class="section fade-up delay-5">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">剧情梗概</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="section-body">
+      <p>
+        二战期间，纳粹德国对犹太人展开了骇人听闻的种族清洗。野心勃勃的德国商人奥斯卡·辛德勒来到波兰，起初只是想趁乱发财——他看上了廉价的犹太劳工，打算靠军需生意大赚一笔。
+      </p>
+      <p>
+        然而，当暴行以最赤裸的面目呈现在他眼前，这个曾经冷漠逐利的人，开始发生难以言说的转变。他用尽家财与智慧，在黑暗中悄然搭建起一张名单——那是一份生死之间的名单，每一个名字，都意味着一条得以延续的生命。
+      </p>
+    </div>
+  </div>
+
+  <!-- 引言 -->
+  <div class="fade-up delay-5">
+    <div class="quote-block">
+      <p class="quote-text">"Whoever saves one life, saves the world entire."</p>
+      <p class="quote-attr" style="font-style:normal;">—— 《塔木德》，片中铭刻于戒指之上</p>
+    </div>
+  </div>
+
+  <!-- 影片亮点 -->
+  <div class="section fade-up delay-6">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">四大亮点</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="highlight-list">
+      <div class="highlight-item">
+        <div class="highlight-icon">🎞</div>
+        <div class="highlight-title">黑白影像的震撼美学</div>
+        <div class="highlight-desc">全片以黑白摄影呈现，既是历史档案质感的重现，也是对那个时代绝望色调的诠释。唯有一抹刻意保留的红色，成为全片最令人心碎的视觉符号。</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">🎭</div>
+        <div class="highlight-title">人性弧度的极致塑造</div>
+        <div class="highlight-desc">主角并非生来的英雄——他是一个投机者、享乐者。正是这种从"利己"到"救赎"的真实转变，让人物弧度如此令人动容，远比完美英雄更有力量。</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">🎼</div>
+        <div class="highlight-title">约翰·威廉姆斯的灵魂配乐</div>
+        <div class="highlight-desc">小提琴独奏贯穿始终，如哭泣般的旋律在沉默与喧嚣之间穿行，被誉为电影史上最动人的配乐之一，即便不看画面，仅凭音乐便已催人泪下。</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-icon">📖</div>
+        <div class="highlight-title">基于真实历史的叙事厚度</div>
+        <div class="highlight-desc">改编自真实事件与同名小说。斯皮尔伯格以近乎纪录片的手法，让银幕成为历史的见证者，而非仅仅是故事的载体，每一个细节都重若千钧。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 为什么值得一看 -->
+  <div class="section fade-up delay-6">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">为什么值得一看</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="section-body">
+      <p>
+        这不是一部让人"享受"的电影，而是一部让人"必须看"的电影。它直面人类历史最黑暗的章节，却并不止步于展示黑暗——它在最深的绝望中，找到了属于个体的微光。
+      </p>
+      <p>
+        斯皮尔伯格用195分钟，回答了一个永恒的问题：<em style="color:var(--gold);">当历史的洪流要求你沉默，一个普通人究竟能做些什么？</em>
+      </p>
+      <p>
+        看完这部电影，你也许会对"良知"、"勇气"、"一个人的力量"有全新的理解。而那张名单，在结尾处将以一种你无法预料的方式，在现实与历史之间打开一扇令人颤抖的门。
+      </p>
+    </div>
+  </div>
+
+  <!-- 奖项 -->
+  <div class="section fade-up delay-7">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">荣誉与奖项</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="awards-grid">
+      <div class="award-badge">
+        <span class="award-icon">🏆</span>
+        <span class="award-text">第66届奥斯卡最佳影片</span>
+      </div>
+      <div class="award-badge">
+        <span class="award-icon">🎬</span>
+        <span class="award-text">奥斯卡最佳导演 · 斯皮尔伯格</span>
+      </div>
+      <div class="award-badge">
+        <span class="award-icon">✂️</span>
+        <span class="award-text">奥斯卡最佳剪辑</span>
+      </div>
+      <div class="award-badge">
+        <span class="award-icon">🎵</span>
+        <span class="award-text">奥斯卡最佳原创配乐</span>
+      </div>
+      <div class="award-badge">
+        <span class="award-icon">🌟</span>
+        <span class="award-text">共斩获7项奥斯卡大奖</span>
+      </div>
+      <div class="award-badge">
+        <span class="award-icon">📜</span>
+        <span class="award-text">AFI百年百大影片 Top 10</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 适合谁看 -->
+  <div class="section fade-up delay-7">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <span class="section-title">适合哪些人观看</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="audience-list">
+      <span class="audience-tag">对历史有兴趣的人</span>
+      <span class="audience-tag">喜爱严肃深刻题材的观众</span>
+      <span class="audience-tag">关注人性善与恶的思考者</span>
+      <span class="audience-tag">渴望被真实故事触动的你</span>
+      <span class="audience-tag">影迷必看清单打卡者</span>
+      <span class="audience-tag">想感受电影艺术极致表达的人</span>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <div class="footer fade-up delay-7">
+    <p class="footer-text">Daily Classic Film Recommendation</p>
+    <p class="footer-date">Monday · April 27, 2026</p>
+    <div style="margin-top:16px; display:flex; justify-content:center; gap:8px; align-items:center; opacity:0.4;">
+      <div class="red-detail"></div>
+      <span style="font-size:10px; letter-spacing:0.3em; color:var(--gold);">第3期</span>
+      <div class="red-detail"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- 粒子脚本 -->
+<script>
+(function() {
+  const canvas = document.getElementById('canvas-bg');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.r = Math.random() * 1.4 + 0.3;
+      this.vx = (Math.random() - 0.5) * 0.18;
+      this.vy = -Math.random() * 0.22 - 0.06;
+      this.alpha = Math.random() * 0.5 + 0.1;
+      this.life = 0;
+      this.maxLife = Math.random() * 300 + 150;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.life++;
+      if (this.life > this.maxLife || this.y < -10) this.reset();
+    }
+    draw() {
+      const fade = this.life < 40 ? this.life / 40 : this.life > this.maxLife - 40 ? (this.maxLife - this.life) / 40 : 1;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201,168,76,${this.alpha * fade})`;
+      ctx.fill();
+    }
+  }
+
+  function init() {
+    resize();
+    particles = Array.from({length: 90}, () => new Particle());
+    particles.forEach(p => p.life = Math.floor(Math.random() * p.maxLife));
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('resize', resize);
+  init();
+  loop();
+})();
+</script>
+
+</body>
+</html>

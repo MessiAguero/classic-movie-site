@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经典电影推荐 · 阿甘正传 Forrest Gump</title>
+<style>
+  :root {
+    --cream: #F5EDD6;
+    --warm-white: #FDF9F0;
+    --sky-blue: #4A90B8;
+    --sky-deep: #2C5F82;
+    --amber: #C8872A;
+    --amber-light: #E8A83E;
+    --brown-dark: #3A2415;
+    --brown-mid: #6B4226;
+    --chocolate: #5C3317;
+    --feather-white: #FAF6EE;
+    --text-dark: #1E1208;
+    --text-mid: #4A3525;
+    --text-light: #8A7060;
+    --gold: #D4AF37;
+    --gold-light: #F0CF6A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Georgia', 'Songti SC', '宋体', serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 680px;
+    background: linear-gradient(160deg, #0D2233 0%, #1A4060 30%, #2E6A8A 55%, #C2701A 80%, #8B3A0A 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  #feather-canvas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .hero-year {
+    font-size: clamp(6rem, 14vw, 13rem);
+    font-weight: 900;
+    font-family: 'Georgia', serif;
+    color: rgba(255,255,255,0.04);
+    position: absolute;
+    bottom: -1rem;
+    right: -1rem;
+    letter-spacing: -0.04em;
+    user-select: none;
+    line-height: 1;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(212,175,55,0.18);
+    border: 1px solid rgba(212,175,55,0.45);
+    border-radius: 100px;
+    padding: 7px 20px;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 2rem;
+    backdrop-filter: blur(6px);
+  }
+  .hero-badge::before {
+    content: '✦';
+    font-size: 0.65rem;
+  }
+
+  .hero-title-en {
+    font-size: clamp(0.95rem, 2vw, 1.3rem);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0.6rem;
+  }
+
+  .hero-title-cn {
+    font-size: clamp(3.2rem, 8vw, 7rem);
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+    line-height: 1;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.6rem;
+  }
+
+  .hero-tagline {
+    font-size: clamp(0.95rem, 2.2vw, 1.25rem);
+    color: rgba(255,220,140,0.85);
+    font-style: italic;
+    letter-spacing: 0.05em;
+    max-width: 580px;
+    text-align: center;
+    line-height: 1.7;
+    padding: 0 1.5rem;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: bobble 2.4s ease-in-out infinite;
+  }
+  .hero-scroll-line {
+    width: 1px;
+    height: 42px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+  }
+  @keyframes bobble {
+    0%,100%{ transform: translateX(-50%) translateY(0); }
+    50%{ transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ===== SECTION BASE ===== */
+  section {
+    padding: 6rem 1.5rem;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.2rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--amber);
+    opacity: 0.5;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: var(--brown-dark);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ===== SCORES ===== */
+  .scores-section {
+    background: var(--brown-dark);
+    padding: 5rem 1.5rem;
+    max-width: none;
+  }
+  .scores-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .scores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px;
+    margin-top: 3rem;
+  }
+  .score-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: background 0.3s;
+  }
+  .score-card:hover { background: rgba(255,255,255,0.08); }
+  .score-platform {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1rem;
+  }
+  .score-number {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .score-suffix { font-size: 1.4rem; color: rgba(255,220,100,0.6); }
+  .score-bar-wrap {
+    width: 80%;
+    margin: 1rem auto 0;
+    height: 3px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 99px;
+  }
+  .score-bar {
+    height: 100%;
+    background: linear-gradient(to right, var(--amber), var(--gold-light));
+    border-radius: 99px;
+    width: 0%;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+  .score-desc {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    margin-top: 0.6rem;
+    letter-spacing: 0.05em;
+  }
+  .scores-section .section-label { color: var(--gold-light); }
+  .scores-section .section-label::after { background: var(--gold-light); }
+  .scores-section .section-title { color: #fff; }
+
+  /* ===== SYNOPSIS ===== */
+  .synopsis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  @media (max-width: 760px) {
+    .synopsis-grid { grid-template-columns: 1fr; }
+  }
+
+  .synopsis-text {
+    font-size: 1.08rem;
+    line-height: 2;
+    color: var(--text-mid);
+    position: relative;
+  }
+  .synopsis-text p + p { margin-top: 1.4rem; }
+  .synopsis-text::before {
+    content: '"';
+    font-size: 8rem;
+    line-height: 0;
+    position: absolute;
+    top: 3.5rem;
+    left: -2rem;
+    color: rgba(200,135,42,0.1);
+    font-family: Georgia, serif;
+  }
+
+  .poster-card {
+    background: var(--brown-dark);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    position: relative;
+  }
+  .poster-visual {
+    width: 100%;
+    aspect-ratio: 2/3;
+    background: linear-gradient(180deg, #1A3A5C 0%, #2E6080 25%, #C27820 60%, #5C2810 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .poster-bench-scene {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 55%;
+  }
+  .poster-title-overlay {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 0; right: 0;
+    text-align: center;
+    z-index: 2;
+  }
+  .poster-title-overlay h3 {
+    font-size: 1.6rem;
+    color: #fff;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+  }
+  .poster-title-overlay p {
+    font-size: 0.78rem;
+    color: rgba(255,220,140,0.8);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+  .poster-card-info {
+    padding: 1.5rem;
+    background: var(--brown-dark);
+  }
+  .poster-card-info dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1rem;
+    font-size: 0.82rem;
+  }
+  .poster-card-info dt { color: rgba(255,255,255,0.4); letter-spacing: 0.08em; }
+  .poster-card-info dd { color: rgba(255,255,255,0.8); }
+
+  /* ===== HIGHLIGHTS ===== */
+  .highlights-section { background: var(--feather-white); max-width: none; padding: 6rem 1.5rem; }
+  .highlights-inner { max-width: 1080px; margin: 0 auto; }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .highlight-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem 1.8rem;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(to bottom, var(--amber), var(--sky-blue));
+    border-radius: 4px 0 0 4px;
+  }
+  .highlight-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.1);
+  }
+  .highlight-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .highlight-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--brown-dark);
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.02em;
+  }
+  .highlight-desc {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.75;
+  }
+
+  /* ===== QUOTE ===== */
+  .quote-section {
+    background: linear-gradient(135deg, var(--brown-dark) 0%, var(--chocolate) 50%, #2C1A0A 100%);
+    max-width: none;
+    padding: 7rem 1.5rem;
+    text-align: center;
+  }
+  .quote-section blockquote {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .quote-mark {
+    font-size: 5rem;
+    color: rgba(212,175,55,0.3);
+    line-height: 0.8;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+  .quote-text {
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    color: #fff;
+    line-height: 1.7;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+  }
+  .quote-text em {
+    color: var(--gold-light);
+    font-style: normal;
+  }
+  .quote-attribution {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* ===== WHY WATCH ===== */
+  .why-list {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+  }
+  .why-item {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .why-number {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--amber), var(--amber-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(200,135,42,0.3);
+  }
+  .why-content h4 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--brown-dark);
+    margin-bottom: 0.4rem;
+  }
+  .why-content p {
+    font-size: 0.92rem;
+    color: var(--text-light);
+    line-height: 1.75;
+  }
+  .why-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.08), transparent);
+    margin-top: 1.8rem;
+  }
+
+  /* ===== AWARDS ===== */
+  .awards-section { background: var(--feather-white); max-width: none; padding: 5rem 1.5rem; }
+  .awards-inner { max-width: 1080px; margin: 0 auto; }
+  .awards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .award-tag {
+    background: #fff;
+    border: 1.5px solid var(--amber-light);
+    border-radius: 100px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.82rem;
+    color: var(--brown-mid);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(200,135,42,0.1);
+  }
+  .award-tag::before { content: '🏆'; font-size: 0.9rem; }
+
+  /* ===== ARCHIVE TABLE ===== */
+  .archive-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2.5rem;
+  }
+  .archive-table tr {
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .archive-table tr:last-child { border-bottom: none; }
+  .archive-table td {
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  .archive-table td:first-child {
+    color: var(--text-light);
+    width: 140px;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .archive-table td:last-child {
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+  .archive-table tr:nth-child(odd) { background: rgba(0,0,0,0.015); }
+
+  /* ===== EDITOR NOTE ===== */
+  .editor-section {
+    background: linear-gradient(160deg, var(--sky-deep) 0%, #1A3A5C 100%);
+    max-width: none;
+    padding: 5rem 1.5rem;
+    text-align: center;
+  }
+  .editor-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .editor-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .editor-text {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 2;
+    font-style: italic;
+  }
+  .editor-text strong {
+    color: var(--gold-light);
+    font-style: normal;
+  }
+  .editor-sig {
+    margin-top: 2rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--text-dark);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+  }
+  .footer-logo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .footer-text {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <canvas id="feather-canvas"></canvas>
+  <div class="hero-year">1994</div>
+
+  <div class="hero-badge">经典电影推荐</div>
+  <div class="hero-title-en">Forrest Gump</div>
+  <h1 class="hero-title-cn">阿甘正传</h1>
+  <p class="hero-tagline">「妈妈常说，生活就像一盒巧克力，你永远不知道会得到什么。」</p>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</div>
+
+<!-- SCORES -->
+<div class="scores-section">
+  <div class="scores-inner">
+    <div class="section-label">口碑评分</div>
+    <h2 class="section-title">众口一词的时代杰作</h2>
+    <div class="scores-grid reveal">
+      <div class="score-card">
+        <div class="score-platform">IMDb</div>
+        <div class="score-number"><span class="score-val" data-target="8.8">0</span><span class="score-suffix">/10</span></div>
+        <div class="score-bar-wrap"><div class="score-bar" data-width="88"></div></div>
+        <div class="score-desc">全球超 220 万人评价</div>
+      </div>
+      <div class="score-card">
+        <div class="score-platform">豆瓣</div>
+        <div class="score-number"><span class="score-val" data-target="9.5">0</span><span class="score-suffix">/10</span></div>
+        <div class="score-bar-wrap"><div class="score-bar" data-width="95"></div></div>
+        <div class="score-desc">豆瓣 Top 250 常年前五</div>
+      </div>
+      <div class="score-card">
+        <div class="score-platform">烂番茄</div>
+        <div class="score-number"><span class="score-val" data-target="71">0</span><span class="score-suffix">%</span></div>
+        <div class="score-bar-wrap"><div class="score-bar" data-width="71"></div></div>
+        <div class="score-desc">观众喜爱度 96%</div>
+      </div>
+      <div class="score-card">
+        <div class="score-platform">奥斯卡</div>
+        <div class="score-number"><span class="score-val" data-target="6">0</span><span class="score-suffix">项</span></div>
+        <div class="score-bar-wrap"><div class="score-bar" data-width="85"></div></div>
+        <div class="score-desc">最佳影片·最佳导演·最佳男主角</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SYNOPSIS -->
+<section>
+  <div class="section-label">剧情梗概</div>
+  <h2 class="section-title">一个人的传奇<br>一个时代的缩影</h2>
+  <div class="synopsis-grid reveal">
+    <div class="synopsis-text">
+      <p>阿甘（Forrest Gump）生来智力略低于常人，却拥有一双足以改变命运的腿。在母亲无尽的爱与挚友珍妮的陪伴下，他懵懵懂懂地跑过了半个世纪的美国历史。</p>
+      <p>从阿拉巴马州的小镇，到越战的丛林，从华盛顿的广场，到横贯大陆的公路——阿甘无意间闯入了一个又一个历史现场，却从未想过自己在改变什么。</p>
+      <p>影片没有宏大的野心，只有一张木头椅子、一盒巧克力，和一个用单纯之心感受复杂世界的普通人。他的故事，让你笑着流泪，也让你重新审视「幸福」到底是什么。</p>
+    </div>
+    <div class="poster-card">
+      <div class="poster-visual">
+        <!-- SVG Bench Scene -->
+        <svg class="poster-bench-scene" viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sky gradient background -->
+          <defs>
+            <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#8BB8D4" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#E8B87A" stop-opacity="0.4"/>
+            </linearGradient>
+            <linearGradient id="groundGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#7A9E6A"/>
+              <stop offset="100%" stop-color="#4A7040"/>
+            </linearGradient>
+          </defs>
+          <!-- Ground -->
+          <rect x="0" y="180" width="400" height="80" fill="url(#groundGrad)" opacity="0.7"/>
+          <!-- Path -->
+          <ellipse cx="200" cy="215" rx="160" ry="20" fill="#C8A870" opacity="0.5"/>
+          <!-- Bench legs -->
+          <rect x="112" y="165" width="6" height="25" fill="#6B4226" rx="2"/>
+          <rect x="162" y="165" width="6" height="25" fill="#6B4226" rx="2"/>
+          <!-- Bench seat -->
+          <rect x="105" y="152" width="70" height="8" fill="#8B5E3C" rx="2"/>
+          <rect x="105" y="145" width="70" height="6" fill="#9B6E4C" rx="1"/>
+          <!-- Bench back -->
+          <rect x="105" y="125" width="70" height="5" fill="#8B5E3C" rx="2"/>
+          <rect x="105" y="133" width="70" height="5" fill="#8B5E3C" rx="2"/>
+          <rect x="125" y="120" width="5" height="38" fill="#6B4226" rx="2"/>
+          <rect x="150" y="120" width="5" height="38" fill="#6B4226" rx="2"/>
+          <!-- Forrest sitting silhouette -->
+          <!-- body -->
+          <rect x="130" y="125" width="20" height="28" fill="#1A1A1A" rx="3"/>
+          <!-- head -->
+          <circle cx="140" cy="118" r="10" fill="#1A1A1A"/>
+          <!-- hat brim -->
+          <rect x="128" y="115" width="24" height="4" fill="#2A2A2A" rx="2"/>
+          <rect x="132" y="110" width="16" height="6" fill="#1A1A1A" rx="2"/>
+          <!-- arms -->
+          <path d="M130 132 Q118 138 115 145" stroke="#1A1A1A" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <!-- legs -->
+          <rect x="128" y="153" width="8" height="20" fill="#2A3A5A" rx="2"/>
+          <rect x="141" y="153" width="8" height="20" fill="#2A3A5A" rx="2"/>
+          <!-- Box of chocolates on lap -->
+          <rect x="133" y="145" width="18" height="12" fill="#5C3317" rx="2"/>
+          <rect x="134" y="143" width="16" height="3" fill="#8B4513" rx="1"/>
+          <!-- Feather near bench -->
+          <path d="M200 170 Q210 140 220 100 Q215 130 205 160 Z" fill="white" opacity="0.6"/>
+          <path d="M200 170 Q190 140 185 105 Q192 130 198 160 Z" fill="white" opacity="0.4"/>
+          <line x1="200" y1="170" x2="202" y2="100" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+          <!-- Trees -->
+          <ellipse cx="50" cy="130" rx="30" ry="40" fill="#3A6830" opacity="0.8"/>
+          <rect x="45" y="165" width="10" height="20" fill="#5C3A1A" opacity="0.8"/>
+          <ellipse cx="340" cy="140" rx="28" ry="35" fill="#3A6830" opacity="0.7"/>
+          <rect x="334" y="168" width="10" height="17" fill="#5C3A1A" opacity="0.7"/>
+          <ellipse cx="290" cy="150" rx="22" ry="28" fill="#4A7840" opacity="0.6"/>
+          <!-- Clouds -->
+          <ellipse cx="100" cy="50" rx="40" ry="18" fill="white" opacity="0.25"/>
+          <ellipse cx="130" cy="45" rx="30" ry="14" fill="white" opacity="0.2"/>
+          <ellipse cx="280" cy="60" rx="35" ry="16" fill="white" opacity="0.2"/>
+          <ellipse cx="310" cy="55" rx="25" ry="12" fill="white" opacity="0.15"/>
+        </svg>
+        <div class="poster-title-overlay">
+          <h3>阿甘正传</h3>
+          <p>Forrest Gump · 1994</p>
+        </div>
+      </div>
+      <div class="poster-card-info">
+        <dl>
+          <dt>导演</dt><dd>罗伯特·泽米基斯</dd>
+          <dt>主演</dt><dd>汤姆·汉克斯</dd>
+          <dt>类型</dt><dd>剧情 / 爱情 / 史诗</dd>
+          <dt>时长</dt><dd>142 分钟</dd>
+          <dt>上映</dt><dd>1994 · 美国</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<div class="highlights-section">
+  <div class="highlights-inner">
+    <div class="section-label">影片亮点</div>
+    <h2 class="section-title">六个让你无法忘怀的理由</h2>
+    <div class="highlights-grid">
+      <div class="highlight-card reveal">
+        <div class="highlight-icon">🪶</div>
+        <div class="highlight-title">那根飘落的羽毛</div>
+        <div class="highlight-desc">开场的白色羽毛随风飘落，既是视觉诗意，也是全片「命运」主题的隐喻。这个镜头已成为影史最具象征意义的开场之一。</div>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="highlight-icon">🎭</div>
+        <div class="highlight-title">汤姆·汉克斯的神演技</div>
+        <div class="highlight-desc">汉克斯凭此片蝉联奥斯卡最佳男主角，他将阿甘的纯真、执拗与深情诠释得令人叹服，赋予了这个角色真实的生命重量。</div>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="highlight-icon">🏃</div>
+        <div class="highlight-title">那场横穿美国的奔跑</div>
+        <div class="highlight-desc">阿甘的奔跑是全片最荡气回肠的段落之一，没有目的、没有终点，却感染了无数人——它象征着一种面对人生的方式：跑就是了。</div>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="highlight-icon">🗓️</div>
+        <div class="highlight-title">历史的活化石</div>
+        <div class="highlight-desc">越战、嬉皮士运动、水门事件、乒乓外交……阿甘无意间穿越了半个世纪的美国历史，编织出一部独特的时代长卷。</div>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="highlight-icon">🎵</div>
+        <div class="highlight-title">无可挑剔的配乐</div>
+        <div class="highlight-desc">艾伦·西维斯特里创作的主题曲温柔而忧伤，与50余首经典摇滚老歌共同构成了一部六十至九十年代的听觉年代记。</div>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="highlight-icon">💝</div>
+        <div class="highlight-title">爱与命运的双线叙事</div>
+        <div class="highlight-desc">阿甘对珍妮的爱穿越整部影片，纯粹、执着、不求回报。这段感情不是简单的爱情故事，而是对人性中最本真情感的礼赞。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="quote-section">
+  <blockquote>
+    <span class="quote-mark">"</span>
+    <p class="quote-text">生活就像一盒巧克力，<em>你永远不知道会得到什么。</em></p>
+    <footer class="quote-attribution">— 阿甘的妈妈 · Forrest Gump, 1994</footer>
+  </blockquote>
+</div>
+
+<!-- WHY WATCH -->
+<section>
+  <div class="section-label reveal">为什么值得看</div>
+  <h2 class="section-title reveal">每个人生阶段，<br>看它都会有不同感悟</h2>
+  <div class="why-list">
+    <div class="why-item reveal">
+      <div class="why-number">01</div>
+      <div class="why-content">
+        <h4>它治愈，但不廉价</h4>
+        <p>《阿甘正传》会让你哭，但不是用煽情手法强行催泪。它的温暖来自于真实，来自于阿甘那种不加修饰的善良，让你在喧嚣之后重新相信：人可以选择以更纯粹的方式活着。</p>
+      </div>
+    </div>
+    <div class="why-divider"></div>
+    <div class="why-item reveal">
+      <div class="why-number">02</div>
+      <div class="why-content">
+        <h4>它让你思考"命运"与"选择"</h4>
+        <p>阿甘从不计划，却走向了最好的结局；珍妮主动选择，却走了更曲折的路。影片用两条人生轨迹，悄悄抛出了一个古老的哲学问题：我们的人生，究竟是被命运左右，还是由选择决定？</p>
+      </div>
+    </div>
+    <div class="why-divider"></div>
+    <div class="why-item reveal">
+      <div class="why-number">03</div>
+      <div class="why-content">
+        <h4>它是最好的美国近代史入门</h4>
+        <p>对于想了解二战后美国社会变迁的观众，阿甘的经历是一部生动的历史注解。越战、反文化运动、艾滋病危机……真实事件以最温柔的方式融入叙事，毫不说教。</p>
+      </div>
+    </div>
+    <div class="why-divider"></div>
+    <div class="why-item reveal">
+      <div class="why-number">04</div>
+      <div class="why-content">
+        <h4>它是电影技术的里程碑</h4>
+        <p>影片在视觉特效上开创了将演员数字化合成入真实历史影像的先河，阿甘与约翰逊总统握手、出现在越战纪录片中的桥段，是当时最令人惊叹的特效成就，至今看来仍然流畅自然。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<div class="awards-section">
+  <div class="awards-inner">
+    <div class="section-label">荣誉殿堂</div>
+    <h2 class="section-title">不止口碑，更是殊荣</h2>
+    <div class="awards-grid reveal">
+      <div class="award-tag">第67届奥斯卡最佳影片</div>
+      <div class="award-tag">第67届奥斯卡最佳导演</div>
+      <div class="award-tag">第67届奥斯卡最佳男主角 · 汤姆·汉克斯</div>
+      <div class="award-tag">第67届奥斯卡最佳改编剧本</div>
+      <div class="award-tag">第67届奥斯卡最佳视觉效果</div>
+      <div class="award-tag">第67届奥斯卡最佳剪辑</div>
+      <div class="award-tag">金球奖最佳影片（剧情类）</div>
+      <div class="award-tag">金球奖最佳男主角（剧情类）</div>
+      <div class="award-tag">北美年度票房冠军</div>
+    </div>
+  </div>
+</div>
+
+<!-- ARCHIVE -->
+<section>
+  <div class="section-label">影片档案</div>
+  <h2 class="section-title">档案信息</h2>
+  <table class="archive-table reveal">
+    <tr><td>原著小说</td><td>温斯顿·葛鲁姆（Winston Groom），1986年出版</td></tr>
+    <tr><td>编剧</td><td>埃里克·罗斯（Eric Roth）</td></tr>
+    <tr><td>导演</td><td>罗伯特·泽米基斯（Robert Zemeckis）</td></tr>
+    <tr><td>主演</td><td>汤姆·汉克斯、罗宾·怀特、加里·西尼斯、迈克尔·康纳·汉弗里斯</td></tr>
+    <tr><td>配乐</td><td>艾伦·西维斯特里（Alan Silvestri）</td></tr>
+    <tr><td>制片公司</td><td>派拉蒙影业（Paramount Pictures）</td></tr>
+    <tr><td>上映日期</td><td>1994 年 7 月 6 日（美国）</td></tr>
+    <tr><td>全球票房</td><td>约 6.78 亿美元（1994年票房冠军）</td></tr>
+    <tr><td>评级</td><td>美国 PG-13 / 中国大陆未公映</td></tr>
+  </table>
+</section>
+
+<!-- EDITOR NOTE -->
+<div class="editor-section">
+  <div class="editor-inner reveal">
+    <div class="editor-icon">✍️</div>
+    <p class="editor-text">
+      三十年过去，《阿甘正传》依然是那种你可以反复观看的电影——<strong>年少时看到励志，成年后看到命运，年长后看到爱与失去</strong>。它不是教你如何成功的故事，而是告诉你：带着一颗纯粹的心，跑下去，就够了。
+    </p>
+    <div class="editor-sig">— 经典电影推荐 · 2026.05.11</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">经典电影推荐</div>
+  <div class="footer-text">每日精选一部值得珍藏的电影 · Classic Movie Recommendation</div>
+</footer>
+
+<script>
+// ===== FEATHER CANVAS =====
+(function() {
+  const canvas = document.getElementById('feather-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, feathers = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function createFeather() {
+    return {
+      x: Math.random() * W,
+      y: -40,
+      vx: (Math.random() - 0.5) * 0.6,
+      vy: Math.random() * 0.5 + 0.3,
+      angle: Math.random() * Math.PI * 2,
+      va: (Math.random() - 0.5) * 0.012,
+      scale: Math.random() * 0.6 + 0.5,
+      alpha: Math.random() * 0.35 + 0.1,
+      wobble: Math.random() * Math.PI * 2,
+      wobbleSpeed: Math.random() * 0.015 + 0.005,
+    };
+  }
+
+  function drawFeather(f) {
+    ctx.save();
+    ctx.translate(f.x, f.y);
+    ctx.rotate(f.angle);
+    ctx.scale(f.scale, f.scale);
+    ctx.globalAlpha = f.alpha;
+
+    // feather shape
+    ctx.beginPath();
+    ctx.moveTo(0, 22);
+    for (let i = 0; i <= 20; i++) {
+      const t = i / 20;
+      const x = Math.sin(t * Math.PI) * 7 * (1 - t * 0.3);
+      const y = 22 - t * 44;
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    for (let i = 20; i >= 0; i--) {
+      const t = i / 20;
+      const x = -Math.sin(t * Math.PI) * 7 * (1 - t * 0.3);
+      const y = 22 - t * 44;
+      ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(255,250,240,0.9)';
+    ctx.fill();
+
+    // quill
+    ctx.beginPath();
+    ctx.moveTo(0, 22);
+    ctx.lineTo(0, -22);
+    ctx.strokeStyle = 'rgba(255,250,240,0.5)';
+    ctx.lineWidth = 0.8;
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  let lastTime = 0;
+  function loop(ts) {
+    const dt = ts - lastTime;
+    lastTime = ts;
+    ctx.clearRect(0, 0, W, H);
+
+    if (Math.random() < 0.025) feathers.push(createFeather());
+    feathers = feathers.filter(f => f.y < H + 60);
+
+    feathers.forEach(f => {
+      f.wobble += f.wobbleSpeed;
+      f.x += f.vx + Math.sin(f.wobble) * 0.4;
+      f.y += f.vy;
+      f.angle += f.va;
+      drawFeather(f);
+    });
+
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+
+// ===== SCROLL REVEAL =====
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // trigger score animations
+      const bars = e.target.querySelectorAll('.score-bar');
+      bars.forEach(bar => {
+        bar.style.width = bar.dataset.width + '%';
+      });
+      const vals = e.target.querySelectorAll('.score-val');
+      vals.forEach(el => {
+        const target = parseFloat(el.dataset.target);
+        const isDecimal = String(target).includes('.');
+        let start = 0;
+        const step = target / 60;
+        const timer = setInterval(() => {
+          start = Math.min(start + step, target);
+          el.textContent = isDecimal ? start.toFixed(1) : Math.round(start);
+          if (start >= target) clearInterval(timer);
+        }, 16);
+      });
+    }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach(el => io.observe(el));
+</script>
+</body>
+</html>

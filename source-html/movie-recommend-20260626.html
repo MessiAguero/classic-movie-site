@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>触不可及 (Intouchables) — 电影推荐</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --blue-50: #e8f4fd;
+    --blue-100: #b3daf5;
+    --blue-200: #86c2ed;
+    --blue-300: #5aabe5;
+    --blue-400: #3d98df;
+    --blue-500: #2b7fd1;
+    --blue-600: #1e6bb8;
+    --blue-700: #155799;
+    --blue-800: #0f4275;
+    --blue-900: #0a2d52;
+    --gold: #d4a84b;
+    --gold-light: #f0d488;
+    --cream: #f5f0e8;
+    --warm-white: #faf8f5;
+    --dark-bg: #0c1929;
+    --card-bg: rgba(255,255,255,0.04);
+    --glass: rgba(255,255,255,0.06);
+    --radius: 16px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', 'Noto Serif SC', sans-serif;
+    background: var(--dark-bg);
+    color: var(--cream);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ── Canvas Particle Background ── */
+  #particle-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ── Scroll Progress ── */
+  #scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue-300), var(--blue-500));
+    z-index: 1000;
+    width: 0%;
+    transition: width 0.1s;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .hero-year {
+    font-size: clamp(6rem, 18vw, 14rem);
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: 0.05em;
+    user-select: none;
+    z-index: -1;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 20px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blue-200);
+    margin-bottom: 2rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900;
+    color: var(--warm-white);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-title .en {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    color: var(--blue-200);
+    display: block;
+    margin-top: 0.3rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .hero-tagline {
+    margin-top: 1.5rem;
+    font-size: clamp(1rem, 1.4vw, 1.3rem);
+    color: var(--gold-light);
+    font-style: italic;
+    max-width: 600px;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+    opacity: 0.9;
+  }
+
+  .hero-director {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.25);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll .arrow { font-size: 1.2rem; }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* ── Section ── */
+  .section {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-header .label {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue-300);
+    border: 1px solid rgba(90, 171, 229, 0.3);
+    padding: 4px 16px;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .section-header h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 700;
+    color: var(--warm-white);
+  }
+
+  .section-header p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.95rem;
+    margin-top: 0.6rem;
+  }
+
+  /* ── Ratings ── */
+  .ratings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .rating-card {
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--radius);
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .rating-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s, box-shadow 0.3s;
+  }
+  .rating-card:hover {
+    border-color: var(--blue-400);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 40px rgba(43, 127, 209, 0.12);
+  }
+
+  .rating-card .source {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.5rem;
+  }
+
+  .rating-card .score {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--warm-white);
+    line-height: 1;
+  }
+  .rating-card .score .decimal { font-size: 1.6rem; }
+
+  .rating-card .bar-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    margin-top: 1rem;
+    overflow: hidden;
+  }
+  .rating-card .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    width: 0%;
+    transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: linear-gradient(90deg, var(--blue-300), var(--blue-500));
+  }
+
+  /* ── Synopsis ── */
+  .synopsis-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .synopsis-content { opacity: 0; transform: translateX(-30px); }
+  .synopsis-content.visible { opacity: 1; transform: translateX(0); transition: all 0.8s ease; }
+
+  .synopsis-content .no-spoiler {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 14px;
+    background: rgba(212, 168, 75, 0.12);
+    border: 1px solid rgba(212, 168, 75, 0.25);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+
+  .synopsis-content h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.6rem;
+    color: var(--warm-white);
+    margin-bottom: 1rem;
+  }
+
+  .synopsis-content p {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.95rem;
+    line-height: 1.9;
+    margin-bottom: 1rem;
+  }
+
+  .synopsis-content .info-row {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .synopsis-content .info-tag {
+    padding: 4px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: var(--blue-200);
+  }
+
+  .synopsis-poster {
+    position: relative;
+    opacity: 0; transform: translateX(30px);
+  }
+  .synopsis-poster.visible { opacity: 1; transform: translateX(0); transition: all 0.8s ease; }
+
+  .synopsis-poster svg {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 10px 40px rgba(43, 127, 209, 0.15));
+    border-radius: 12px;
+  }
+
+  /* ── Highlights ── */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .highlight-card {
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--radius);
+    padding: 2rem;
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.4s ease;
+  }
+  .highlight-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .highlight-card:hover {
+    border-color: var(--blue-400);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(43, 127, 209, 0.1);
+  }
+
+  .highlight-card .icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+  }
+  .highlight-card h4 {
+    font-size: 1.1rem;
+    color: var(--warm-white);
+    margin-bottom: 0.5rem;
+  }
+  .highlight-card p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  /* ── Quote ── */
+  .quote-section {
+    text-align: center;
+    padding: 5rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .quote-section blockquote {
+    max-width: 720px;
+    margin: 0 auto;
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    color: var(--gold-light);
+    line-height: 1.9;
+    font-style: italic;
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  .quote-section blockquote.visible {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.8s ease;
+  }
+
+  .quote-section .quote-author {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.35);
+    font-style: normal;
+  }
+
+  /* ── Why Watch ── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .why-card {
+    background: linear-gradient(135deg, rgba(43,127,209,0.06), rgba(90,171,229,0.03));
+    border: 1px solid rgba(43,127,209,0.12);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.4s ease;
+  }
+  .why-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .why-card:hover {
+    border-color: var(--blue-400);
+    background: linear-gradient(135deg, rgba(43,127,209,0.1), rgba(90,171,229,0.05));
+  }
+
+  .why-card .num {
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(43,127,209,0.2);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .why-card h4 {
+    font-size: 1rem;
+    color: var(--warm-white);
+    margin-bottom: 0.5rem;
+  }
+  .why-card p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+
+  /* ── Awards ── */
+  .awards-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .award-tag {
+    padding: 6px 18px;
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    transition: all 0.3s;
+  }
+  .award-tag:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+  }
+
+  /* ── Info Table ── */
+  .info-table {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--radius);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .info-table.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.7s ease;
+  }
+  .info-table .row {
+    display: flex;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .info-table .row:last-child { border-bottom: none; }
+  .info-table .label {
+    width: 35%;
+    padding: 1rem 1.5rem;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+  .info-table .value {
+    width: 65%;
+    padding: 1rem 1.5rem;
+    font-size: 0.88rem;
+    color: var(--warm-white);
+  }
+
+  /* ── Final Verdict ── */
+  .final-verdict {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 0;
+  }
+  .final-verdict .stars {
+    font-size: 2rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .final-verdict h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5rem;
+    color: var(--warm-white);
+    margin-bottom: 0.8rem;
+  }
+  .final-verdict p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  /* ── Footer ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255,255,255,0.15);
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .synopsis-section {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .synopsis-poster { order: -1; }
+    .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div id="scroll-progress"></div>
+
+<!-- Particle Canvas -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- ====== HERO ====== -->
+<section class="hero">
+  <div class="hero-year">2011</div>
+  <div class="hero-badge">✦ 豆瓣 Top 250 · 口碑传奇</div>
+  <h1 class="hero-title">
+    触不可及
+    <span class="en">The Intouchables</span>
+  </h1>
+  <p class="hero-tagline">「有时，你需要的只是一个朋友。」</p>
+  <p class="hero-director">奥利维·那卡什 &amp; 艾力克·托勒达诺 执导</p>
+  <div class="hero-scroll">
+    <span>向下探索</span>
+    <span class="arrow">↓</span>
+  </div>
+</section>
+
+<!-- ====== RATINGS ====== -->
+<section class="section" id="ratings">
+  <div class="section-header">
+    <div class="label">评分</div>
+    <h2>全球口碑印证</h2>
+    <p>一部跨越国界与文化的温暖传奇</p>
+  </div>
+  <div class="ratings-grid">
+    <div class="rating-card">
+      <div class="source">IMDb</div>
+      <div class="score"><span class="count" data-target="8.5">0</span></div>
+      <div class="bar-track"><div class="bar-fill" data-pct="85"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="source">豆瓣</div>
+      <div class="score"><span class="count" data-target="9.3">0</span></div>
+      <div class="bar-track"><div class="bar-fill" data-pct="93"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="source">烂番茄</div>
+      <div class="score"><span class="count" data-target="94">0</span><span class="decimal">%</span></div>
+      <div class="bar-track"><div class="bar-fill" data-pct="94"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="source">爆米花指数</div>
+      <div class="score"><span class="count" data-target="96">0</span><span class="decimal">%</span></div>
+      <div class="bar-track"><div class="bar-fill" data-pct="96"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SYNOPSIS ====== -->
+<section class="section">
+  <div class="synopsis-section">
+    <div class="synopsis-content">
+      <div class="no-spoiler">🔒 无剧透 · 放心阅读</div>
+      <h3>故事梗概</h3>
+      <p>菲利普，一位富有的贵族，因一次滑翔伞事故导致颈部以下瘫痪，需要全天候护理。德里斯，一个来自巴黎郊区的年轻人，刚刚出狱，带着一张求职签字证明来到面试现场——他并不真的想要这份工作，只想凑够三个拒签章领取失业救济金。</p>
+      <p>然而，菲利普却在众多专业护理候选人中，意外地选择了这个最不像护工的人。一段跨越阶层、肤色与人生轨迹的友谊，就此展开。两人互相碰撞、彼此改变，在笑声与感动中重新定义了「尊重」与「自由」的含义。</p>
+      <div class="info-row">
+        <span class="info-tag">🎭 剧情 / 喜剧 / 传记</span>
+        <span class="info-tag">🇫🇷 法国</span>
+        <span class="info-tag">📅 2011</span>
+        <span class="info-tag">⏱ 112 分钟</span>
+      </div>
+    </div>
+    <div class="synopsis-poster">
+      <svg viewBox="0 0 400 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background frame -->
+        <rect x="0" y="0" width="400" height="520" rx="12" fill="url(#posterGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+        <defs>
+          <linearGradient id="posterGrad" x1="0" y1="0" x2="400" y2="520">
+            <stop offset="0%" stop-color="#1a2d45"/>
+            <stop offset="50%" stop-color="#0f1e2f"/>
+            <stop offset="100%" stop-color="#0a1522"/>
+          </linearGradient>
+          <linearGradient id="skyGrad" x1="200" y1="0" x2="200" y2="200">
+            <stop offset="0%" stop-color="#2b7fd1" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="transparent"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Sky glow -->
+        <rect x="0" y="0" width="400" height="200" fill="url(#skyGrad)" opacity="0.4"/>
+
+        <!-- Sun / warm glow -->
+        <circle cx="320" cy="180" r="60" fill="#d4a84b" opacity="0.12"/>
+        <circle cx="320" cy="180" r="35" fill="#f0d488" opacity="0.08"/>
+
+        <!-- City skyline -->
+        <g opacity="0.15">
+          <rect x="20" y="200" width="25" height="100" rx="2" fill="#86c2ed"/>
+          <rect x="55" y="220" width="18" height="80" rx="1" fill="#86c2ed"/>
+          <rect x="85" y="190" width="30" height="110" rx="2" fill="#86c2ed"/>
+          <rect x="125" y="210" width="15" height="90" rx="1" fill="#86c2ed"/>
+          <rect x="150" y="195" width="22" height="105" rx="1" fill="#86c2ed"/>
+          <rect x="185" y="215" width="20" height="85" rx="1" fill="#86c2ed"/>
+          <rect x="215" y="200" width="28" height="100" rx="2" fill="#86c2ed"/>
+          <rect x="253" y="225" width="16" height="75" rx="1" fill="#86c2ed"/>
+          <rect x="280" y="195" width="24" height="105" rx="2" fill="#86c2ed"/>
+          <rect x="315" y="215" width="18" height="85" rx="1" fill="#86c2ed"/>
+          <rect x="345" y="205" width="30" height="95" rx="2" fill="#86c2ed"/>
+        </g>
+
+        <!-- Wheelchair silhouette -->
+        <g transform="translate(140, 280)">
+          <!-- Wheelchair frame -->
+          <circle cx="0" cy="45" r="30" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+          <circle cx="0" cy="45" r="8" fill="rgba(255,255,255,0.15)"/>
+          <line x1="0" y1="15" x2="-10" y2="-5" stroke="rgba(255,255,255,0.2)" stroke-width="2.5"/>
+          <line x1="-10" y1="-5" x2="-15" y2="-15" stroke="rgba(255,255,255,0.2)" stroke-width="2.5"/>
+          <line x1="0" y1="15" x2="15" y2="10" stroke="rgba(255,255,255,0.2)" stroke-width="2.5"/>
+          <line x1="-5" y1="45" x2="-55" y2="45" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+          <line x1="-55" y1="30" x2="-55" y2="55" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+          <!-- Small wheel -->
+          <circle cx="-55" cy="45" r="12" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+          <circle cx="-55" cy="45" r="3" fill="rgba(255,255,255,0.1)"/>
+          <!-- Person silhouette -->
+          <g opacity="0.35">
+            <circle cx="10" cy="-30" r="16" fill="rgba(255,255,255,0.3)"/>
+            <ellipse cx="10" cy="-5" rx="20" ry="28" fill="rgba(255,255,255,0.25)"/>
+          </g>
+        </g>
+
+        <!-- Person standing silhouette (caregiver) -->
+        <g transform="translate(250, 270)" opacity="0.3">
+          <circle cx="0" cy="-55" r="15" fill="rgba(255,255,255,0.3)"/>
+          <path d="M-8,-40 L8,-40 L12,30 L-12,30 Z" fill="rgba(255,255,255,0.2)"/>
+          <line x1="-12" y1="-15" x2="-25" y2="15" stroke="rgba(255,255,255,0.15)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="12" y1="-15" x2="25" y2="15" stroke="rgba(255,255,255,0.15)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="-8" y1="30" x2="-15" y2="70" stroke="rgba(255,255,255,0.15)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="8" y1="30" x2="15" y2="70" stroke="rgba(255,255,255,0.15)" stroke-width="3" stroke-linecap="round"/>
+        </g>
+
+        <!-- Title overlay -->
+        <text x="200" y="450" text-anchor="middle" fill="var(--warm-white, #faf8f5)" font-family="'Noto Serif SC', serif" font-size="28" font-weight="700" opacity="0.9">触不可及</text>
+        <text x="200" y="478" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-family="Inter, sans-serif" font-size="12" letter-spacing="4" opacity="0.6">INT O U C H A B L E S</text>
+
+        <!-- Corner decorations -->
+        <path d="M12,12 L52,12 M12,12 L12,52" stroke="rgba(134,194,237,0.25)" stroke-width="1.5"/>
+        <path d="M388,12 L348,12 M388,12 L388,52" stroke="rgba(134,194,237,0.25)" stroke-width="1.5"/>
+        <path d="M12,508 L52,508 M12,508 L12,468" stroke="rgba(134,194,237,0.25)" stroke-width="1.5"/>
+        <path d="M388,508 L348,508 M388,508 L388,468" stroke="rgba(134,194,237,0.25)" stroke-width="1.5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ====== QUOTE ====== -->
+<section class="quote-section">
+  <blockquote>
+    "我需要的不是同情，而是平等的对待。他给了我这一点，其他的一切都成了多余。"
+    <div class="quote-author">— 菲利普</div>
+  </blockquote>
+</section>
+
+<!-- ====== HIGHLIGHTS ====== -->
+<section class="section" id="highlights">
+  <div class="section-header">
+    <div class="label">亮点</div>
+    <h2>六大必看理由</h2>
+    <p>为什么这部电影让全世界为之动容</p>
+  </div>
+  <div class="highlights-grid">
+    <div class="highlight-card">
+      <div class="icon">🤝</div>
+      <h4>真实故事改编</h4>
+      <p>取材自法国富翁菲利普·波佐·迪·博尔戈的亲身经历，原著自传曾感动整个法国。真实的底色让每一帧情感都沉甸甸的。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon">🎭</div>
+      <h4>双王演技对决</h4>
+      <p>弗朗索瓦·克吕泽与奥马尔·希的化学反应堪称影史经典。一个用眼神与微表情演绎全身瘫痪，一个用身体与本能诠释底层青年的生命力——两人同获凯撒奖最佳男主提名，奥马尔·希最终封帝。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon">🎵</div>
+      <h4>刻入灵魂的原声</h4>
+      <p>Ludovico Einaudi的钢琴配乐《Nuvole Bianche》《Fly》与电影画面浑然一体，成为无数人歌单中永不删除的存在。音乐本身就能让故事的情感翻倍。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon">😂</div>
+      <h4>笑中带泪的节奏</h4>
+      <p>法式幽默在文化冲突中自然流淌，笑点密集却不轻浮，感动深沉却不煽情。这是一部让你笑着笑着就哭了，哭着哭着又笑了的电影。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon">🌍</div>
+      <h4>全球现象级现象</h4>
+      <p>法国影史票房第三（本土4200万人次观看），全球累计4.26亿美元。被多个国家翻拍（美版《上行》2024年上映），证明了其跨越文化的力量。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon">❤️</div>
+      <h4>重新定义「尊重」</h4>
+      <p>电影最动人的不是护工如何照顾病人，而是他如何把对方当作一个完整的人来对待——不怜悯、不改造、不设限。这种平等，正是所有人内心深处最渴望的东西。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== WHY WATCH ====== -->
+<section class="section">
+  <div class="section-header">
+    <div class="label">推荐理由</div>
+    <h2>它为什么值得一看</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="num">01</div>
+      <h4>治愈力MAX</h4>
+      <p>在这个焦虑的时代，它用112分钟的温暖告诉你：人与人之间的善意，是抵抗生活重压最强大的武器。看完你会想给朋友打个电话。</p>
+    </div>
+    <div class="why-card">
+      <div class="num">02</div>
+      <h4>零门槛感动</h4>
+      <p>没有文化壁垒，不需要电影知识储备，这是一部所有人都能看懂、都被触动的电影。它讲的是最朴素也最普世的情感——友谊。</p>
+    </div>
+    <div class="why-card">
+      <div class="num">03</div>
+      <h4>百看不厌的细节</h4>
+      <p>每次重看都能发现新的动人细节：一个眼神的转变、一句台词的深意、一段配乐的情感呼应。它经得起反复品味。</p>
+    </div>
+    <div class="why-card">
+      <div class="num">04</div>
+      <h4>法国电影的巅峰代表</h4>
+      <p>作为法国电影全球化最成功的案例之一，它完美展现了法式幽默、人文关怀与叙事美学的结合。看一部《触不可及》，等于同时感受了法国电影最好的几面。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== AWARDS ====== -->
+<section class="section">
+  <div class="section-header">
+    <div class="label">荣誉</div>
+    <h2>奖项与认可</h2>
+  </div>
+  <div class="awards-tags">
+    <span class="award-tag">🏆 东京国际电影节 最佳影片</span>
+    <span class="award-tag">🏆 凯撒奖 最佳男主角</span>
+    <span class="award-tag">🌟 凯撒奖 8项提名</span>
+    <span class="award-tag">🌟 金球奖 最佳外语片提名</span>
+    <span class="award-tag">🌟 法国票房冠军（年度）</span>
+    <span class="award-tag">🌟 法国电影凯撒奖 最佳影片提名</span>
+    <span class="award-tag">🌟 欧洲电影奖 最佳影片提名</span>
+    <span class="award-tag">🌟 豆瓣 Top 250 #23</span>
+  </div>
+</section>
+
+<!-- ====== INFO TABLE ====== -->
+<section class="section">
+  <div class="section-header">
+    <div class="label">档案</div>
+    <h2>影片信息</h2>
+  </div>
+  <div class="info-table">
+    <div class="row"><div class="label">中文片名</div><div class="value">触不可及 / 无法触碰</div></div>
+    <div class="row"><div class="label">英文片名</div><div class="value">The Intouchables</div></div>
+    <div class="row"><div class="label">导演</div><div class="value">奥利维·那卡什 &amp; 艾力克·托勒达诺</div></div>
+    <div class="row"><div class="label">主演</div><div class="value">弗朗索瓦·克吕泽、奥马尔·希</div></div>
+    <div class="row"><div class="label">上映年份</div><div class="value">2011年</div></div>
+    <div class="row"><div class="label">片长</div><div class="value">112 分钟</div></div>
+    <div class="row"><div class="label">类型</div><div class="value">剧情 / 喜剧 / 传记</div></div>
+    <div class="row"><div class="label">制片国家</div><div class="value">法国</div></div>
+    <div class="row"><div class="label">豆瓣排名</div><div class="value">Top 250 #23</div></div>
+  </div>
+</section>
+
+<!-- ====== FINAL VERDICT ====== -->
+<section class="section">
+  <div class="final-verdict">
+    <div class="stars">★★★★★</div>
+    <h3>编辑评语</h3>
+    <p>《触不可及》不是一部需要"看懂"的电影——它只需要你用心去感受。两个来自不同世界的人，在彼此的生命里留下了不可磨灭的印记。它提醒着我们：人与人之间最珍贵的礼物，不是同情，而是被当作一个完整的人来对待。不管你在生活中处于什么位置，这部电影都会让你重新思考——什么是真正的尊重，什么是真正的自由。</p>
+  </div>
+</section>
+
+<footer>
+  <p>推荐于 2026 年 6 月 26 日 · 经典电影推荐计划</p>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  // ── Canvas Particles ──
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.r = Math.random() * 2.5 + 1;
+      this.dx = (Math.random() - 0.5) * 0.3;
+      this.dy = (Math.random() - 0.5) * 0.3 - 0.1;
+      this.opacity = Math.random() * 0.4 + 0.1;
+      this.hue = 200 + Math.random() * 30; // blue range
+      this.speed = Math.random() * 0.2 + 0.1;
+    }
+    update() {
+      this.x += this.dx;
+      this.y += this.dy;
+      this.opacity += (Math.random() - 0.5) * 0.008;
+      this.opacity = Math.max(0.05, Math.min(0.5, this.opacity));
+      if (this.x < -10 || this.x > W + 10 || this.y < -10 || this.y > H + 10) {
+        this.reset();
+        this.y = H + 10;
+      }
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${this.hue}, 60%, 70%, ${this.opacity})`;
+      ctx.fill();
+    }
+  }
+
+  const count = Math.min(120, Math.floor(W * H / 8000));
+  for (let i = 0; i < count; i++) {
+    const p = new Particle();
+    p.y = Math.random() * H;
+    particles.push(p);
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // ── Intersection Observer ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Trigger bar fills for rating cards
+        if (entry.target.classList.contains('rating-card')) {
+          const fill = entry.target.querySelector('.bar-fill');
+          if (fill) {
+            const pct = fill.dataset.pct;
+            setTimeout(() => { fill.style.width = pct + '%'; }, 200);
+          }
+          // Trigger count animation
+          const countEl = entry.target.querySelector('.count');
+          if (countEl && !countEl.dataset.animated) {
+            countEl.dataset.animated = 'true';
+            const target = parseFloat(countEl.dataset.target);
+            animateCount(countEl, target);
+          }
+        }
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.rating-card, .highlight-card, .why-card, .synopsis-content, .synopsis-poster, .info-table, blockquote').forEach(el => {
+    observer.observe(el);
+  });
+
+  // ── Count Animation ──
+  function animateCount(el, target) {
+    const isDecimal = target % 1 !== 0;
+    const duration = 1500;
+    const start = performance.now();
+
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = eased * target;
+      el.textContent = isDecimal ? current.toFixed(1) : Math.round(current);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // ── Scroll Progress ──
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    document.getElementById('scroll-progress').style.width = progress + '%';
+  });
+
+})();
+</script>
+</body>
+</html>

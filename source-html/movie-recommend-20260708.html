@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>飞屋环游记 Up (2009) — 经典电影推荐</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --sky-top: #0f1923;
+    --sky-mid: #1a2a3a;
+    --sky-light: #2c4a6a;
+    --balloon-red: #e74c3c;
+    --balloon-blue: #3498db;
+    --balloon-yellow: #f1c40f;
+    --balloon-orange: #e67e22;
+    --balloon-purple: #9b59b6;
+    --balloon-green: #2ecc71;
+    --balloon-white: #ecf0f1;
+    --gold: #f0a830;
+    --gold-light: #f7d574;
+    --warm: #d4a76a;
+    --cloud: rgba(255,255,255,0.12);
+    --text: #e8e0d0;
+    --text-dim: #b0a898;
+    --card-bg: rgba(255,255,255,0.05);
+    --card-border: rgba(255,255,255,0.08);
+    --font-serif: 'Noto Serif SC', 'Georgia', serif;
+    --font-sans: 'Noto Sans SC', 'Arial', sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 40%, var(--sky-light) 70%, #3a5a7a 100%);
+    color: var(--text);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* ===== canvas background ===== */
+  #particle-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ===== cloud overlay ===== */
+  .cloud-layer {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .cloud {
+    position: absolute;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: drift linear infinite;
+  }
+  .cloud:nth-child(1) { width: 600px; height: 120px; top: 15%; left: -10%; animation-duration: 90s; }
+  .cloud:nth-child(2) { width: 400px; height: 80px; top: 35%; left: -5%; animation-duration: 120s; animation-delay: -20s; }
+  .cloud:nth-child(3) { width: 500px; height: 100px; top: 55%; left: -15%; animation-duration: 100s; animation-delay: -50s; }
+  .cloud:nth-child(4) { width: 350px; height: 70px; top: 70%; left: -8%; animation-duration: 130s; animation-delay: -30s; }
+  .cloud:nth-child(5) { width: 700px; height: 140px; top: 5%; left: -20%; animation-duration: 80s; animation-delay: -60s; }
+
+  @keyframes drift {
+    from { transform: translateX(-20%); }
+    to { transform: translateX(120vw); }
+  }
+
+  /* ===== scrollbar ===== */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--sky-top); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
+
+  /* ===== section base ===== */
+  section { position: relative; z-index: 2; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 200px;
+    background: linear-gradient(to top, var(--sky-mid) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 20px;
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.2s forwards;
+  }
+
+  .hero-year {
+    font-family: var(--font-serif);
+    font-size: clamp(80px, 18vw, 180px);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(240, 168, 48, 0.3);
+    line-height: 0.9;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+    position: relative;
+  }
+  .hero-year::after {
+    content: '2009';
+    position: absolute;
+    top: 0; left: 0;
+    color: var(--gold);
+    opacity: 0.04;
+    font-size: 2em;
+    transform: translate(-15%, -15%);
+    pointer-events: none;
+  }
+
+  .hero-title {
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.7s forwards;
+  }
+  .hero-title h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(36px, 7vw, 68px);
+    font-weight: 900;
+    color: var(--text);
+    text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+  }
+  .hero-title .en {
+    display: block;
+    font-size: clamp(16px, 3vw, 32px);
+    font-weight: 300;
+    color: var(--gold-light);
+    letter-spacing: 6px;
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+
+  .hero-tagline {
+    margin-top: 24px;
+    font-size: clamp(14px, 2vw, 18px);
+    color: var(--text-dim);
+    font-style: italic;
+    max-width: 600px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1s forwards;
+    padding: 0 20px;
+  }
+
+  .hero-info {
+    margin-top: 30px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.3s forwards;
+  }
+  .hero-info span {
+    font-size: 13px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+  .hero-info span strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ===== balloon house SVG area ===== */
+  .hero-balloons {
+    width: clamp(240px, 40vw, 480px);
+    height: auto;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: floatIn 1.2s ease 0.3s forwards;
+  }
+  @keyframes floatIn {
+    0% { opacity: 0; transform: translateY(60px) scale(0.9); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(20px); }
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 1s ease 2s forwards;
+  }
+  .scroll-hint span {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+  }
+  .scroll-hint .arrow {
+    width: 20px; height: 20px;
+    border-right: 2px solid var(--gold);
+    border-bottom: 2px solid var(--gold);
+    transform: rotate(45deg);
+    animation: bounce 2s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.3; }
+    50% { transform: rotate(45deg) translateY(8px); opacity: 1; }
+  }
+
+  /* ===== common containers ===== */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .section-title h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 700;
+    color: var(--text);
+  }
+  .section-title .sub {
+    color: var(--text-dim);
+    font-size: 14px;
+    margin-top: 8px;
+    letter-spacing: 2px;
+  }
+  .section-title .line {
+    width: 60px; height: 2px;
+    background: var(--gold);
+    margin: 16px auto 0;
+    border-radius: 1px;
+  }
+
+  /* ===== Ratings ===== */
+  .ratings-section {
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+  }
+  .ratings-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 768px) {
+    .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .ratings-grid { grid-template-columns: 1fr; }
+  }
+
+  .rating-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 28px 20px 24px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .rating-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+  }
+  .rating-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(240,168,48,0.12);
+  }
+  .rating-card .source {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .rating-card .score {
+    font-family: var(--font-serif);
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .rating-card .score-suffix {
+    font-size: 16px;
+    color: var(--text-dim);
+  }
+  .rating-card .bar-wrap {
+    margin-top: 14px;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .rating-card .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* ===== Plot ===== */
+  .plot-section { position: relative; }
+  .plot-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+  }
+  .plot-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .plot-content p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+  .plot-content p:last-child { margin-bottom: 0; }
+  .plot-content .highlight-text {
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+  .no-spoiler {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 14px;
+    border: 1px solid rgba(46, 204, 113, 0.4);
+    border-radius: 20px;
+    color: #2ecc71;
+    font-size: 12px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== Highlights ===== */
+  .highlights-section {
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.15) 50%, transparent 100%);
+  }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 800px) {
+    .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 500px) {
+    .highlights-grid { grid-template-columns: 1fr; }
+  }
+
+  .highlight-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 30px 24px;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .highlight-card.visible { opacity: 1; transform: translateY(0); }
+  .highlight-card:hover::before { opacity: 1; }
+  .highlight-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+  .highlight-card.visible:hover { transform: translateY(-4px); }
+
+  .highlight-card .icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+  }
+  .highlight-card h3 {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--gold-light);
+  }
+  .highlight-card p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--text-dim);
+  }
+
+  /* ===== Quote ===== */
+  .quote-section {
+    text-align: center;
+    padding: 60px 24px;
+  }
+  .quote-block {
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+  }
+  .quote-block.visible { opacity: 1; transform: translateY(0); }
+  .quote-block .mark {
+    font-size: 60px;
+    color: var(--gold);
+    opacity: 0.3;
+    line-height: 0;
+    font-family: var(--font-serif);
+  }
+  .quote-block blockquote {
+    font-family: var(--font-serif);
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.7;
+    margin: 10px 0 16px;
+    padding: 0 20px;
+  }
+  .quote-block .attr {
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+  .quote-block .attr::before {
+    content: '— ';
+  }
+
+  /* ===== Why Watch ===== */
+  .why-section {
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  @media (max-width: 640px) {
+    .why-grid { grid-template-columns: 1fr; }
+  }
+  .why-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+  }
+  .why-item.visible { opacity: 1; transform: translateY(0); }
+  .why-item .num {
+    flex-shrink: 0;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--balloon-orange));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a2e;
+  }
+  .why-item .text h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .why-item .text p {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-dim);
+  }
+
+  /* ===== Film Facts ===== */
+  .facts-section { }
+  .facts-table {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 30px 36px;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .facts-table.visible { opacity: 1; transform: translateY(0); }
+  .facts-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .facts-table td {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 14px;
+  }
+  .facts-table tr:last-child td { border-bottom: none; }
+  .facts-table td:first-child {
+    color: var(--text-dim);
+    width: 30%;
+    font-weight: 300;
+  }
+  .facts-table td:last-child {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  /* ===== Editor Note ===== */
+  .editor-section {
+    text-align: center;
+    padding-bottom: 100px;
+  }
+  .editor-note {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+  }
+  .editor-note.visible { opacity: 1; transform: translateY(0); }
+  .editor-note .stars {
+    font-size: 28px;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+  }
+  .editor-note h3 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .editor-note p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text-dim);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ===== footer ===== */
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+    z-index: 2;
+  }
+  .footer p {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+
+  /* ===== reveal helper ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* balloon colors for icons */
+  .c-red { color: var(--balloon-red); }
+  .c-blue { color: var(--balloon-blue); }
+  .c-yellow { color: var(--balloon-yellow); }
+  .c-orange { color: var(--balloon-orange); }
+  .c-purple { color: var(--balloon-purple); }
+  .c-green { color: var(--balloon-green); }
+</style>
+</head>
+<body>
+
+<!-- Canvas particles -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- Cloud layer -->
+<div class="cloud-layer">
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+  <div class="cloud"></div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-badge">PIXAR · 经典动画</div>
+  
+  <!-- Balloon House SVG -->
+  <svg class="hero-balloons" viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Balloon strings -->
+    <g stroke="rgba(255,255,255,0.25)" stroke-width="1.2">
+      <path d="M160 200 L145 110" /><path d="M165 200 L155 95" />
+      <path d="M170 200 L170 85" /><path d="M175 200 L185 90" />
+      <path d="M180 200 L195 100" /><path d="M150 200 L130 120" />
+      <path d="M185 200 L210 105" /><path d="M155 200 L140 105" />
+      <path d="M190 200 L220 115" /><path d="M145 200 L120 130" />
+      <path d="M130 200 L95 135" /><path d="M195 200 L235 125" />
+      <path d="M200 200 L250 120" /><path d="M125 200 L85 145" />
+      <path d="M205 200 L260 135" /><path d="M120 200 L75 155" />
+      <path d="M140 200 L110 115" /><path d="M210 200 L275 145" />
+      <path d="M200 200 L240 110" /><path d="M135 200 L100 125" />
+    </g>
+    <!-- Balloons -->
+    <g>
+      <ellipse cx="145" cy="95" rx="13" ry="17" fill="#e74c3c" opacity="0.9"/>
+      <ellipse cx="155" cy="80" rx="12" ry="16" fill="#3498db" opacity="0.9"/>
+      <ellipse cx="170" cy="70" rx="11" ry="15" fill="#f1c40f" opacity="0.9"/>
+      <ellipse cx="185" cy="75" rx="12" ry="16" fill="#e67e22" opacity="0.9"/>
+      <ellipse cx="195" cy="85" rx="11" ry="15" fill="#9b59b6" opacity="0.9"/>
+      <ellipse cx="130" cy="105" rx="11" ry="14" fill="#2ecc71" opacity="0.8"/>
+      <ellipse cx="210" cy="90" rx="10" ry="14" fill="#ecf0f1" opacity="0.8"/>
+      <ellipse cx="220" cy="100" rx="10" ry="14" fill="#e74c3c" opacity="0.8"/>
+      <ellipse cx="240" cy="105" rx="11" ry="15" fill="#3498db" opacity="0.8"/>
+      <ellipse cx="250" cy="110" rx="10" ry="13" fill="#f1c40f" opacity="0.7"/>
+      <ellipse cx="260" cy="120" rx="9" ry="12" fill="#e67e22" opacity="0.7"/>
+      <ellipse cx="275" cy="130" rx="9" ry="12" fill="#9b59b6" opacity="0.7"/>
+      <ellipse cx="120" cy="115" rx="10" ry="13" fill="#f1c40f" opacity="0.7"/>
+      <ellipse cx="110" cy="120" rx="9" ry="12" fill="#e74c3c" opacity="0.7"/>
+      <ellipse cx="100" cy="130" rx="9" ry="12" fill="#3498db" opacity="0.6"/>
+      <ellipse cx="95" cy="140" rx="8" ry="11" fill="#2ecc71" opacity="0.6"/>
+      <ellipse cx="85" cy="150" rx="8" ry="10" fill="#ecf0f1" opacity="0.5"/>
+      <ellipse cx="75" cy="160" rx="7" ry="10" fill="#e67e22" opacity="0.5"/>
+      <ellipse cx="235" cy="115" rx="9" ry="12" fill="#2ecc71" opacity="0.6"/>
+      <ellipse cx="140" cy="108" rx="10" ry="13" fill="#9b59b6" opacity="0.7"/>
+    </g>
+    <!-- House -->
+    <g>
+      <rect x="120" y="200" width="80" height="60" rx="2" fill="#d4a76a" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <polygon points="115,200 160,175 205,200" fill="#c0392b" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+      <rect x="150" y="230" width="20" height="30" rx="1" fill="#6d4c2a"/>
+      <rect x="126" y="215" width="16" height="14" rx="1" fill="#74b9ff" opacity="0.7"/>
+      <rect x="178" y="215" width="16" height="14" rx="1" fill="#74b9ff" opacity="0.7"/>
+      <!-- chimney -->
+      <rect x="175" y="178" width="10" height="18" fill="#8b4513"/>
+    </g>
+    <!-- Small clouds under house -->
+    <ellipse cx="160" cy="195" rx="25" ry="6" fill="rgba(255,255,255,0.08)"/>
+    <ellipse cx="160" cy="270" rx="45" ry="10" fill="rgba(255,255,255,0.05)"/>
+    <!-- ground shadow -->
+    <ellipse cx="160" cy="205" rx="50" ry="5" fill="rgba(0,0,0,0.08)"/>
+  </svg>
+
+  <div class="hero-title">
+    <h1>飞屋环游记</h1>
+    <span class="en">Up</span>
+  </div>
+  <p class="hero-tagline">「幸福，不是用来回忆的，而是用来追逐的。」</p>
+
+  <div class="hero-info">
+    <span>导演 <strong>彼特·道格特</strong></span>
+    <span>上映 <strong>2009</strong></span>
+    <span>类型 <strong>动画 / 冒险 / 剧情</strong></span>
+    <span>片长 <strong>96 分钟</strong></span>
+  </div>
+
+  <div class="scroll-hint">
+    <span>向下探索</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- ===== RATINGS ===== -->
+<section class="ratings-section">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>全球口碑</h2>
+      <p class="sub">影史最受赞誉的动画之一</p>
+      <div class="line"></div>
+    </div>
+    <div class="ratings-grid">
+      <div class="rating-card" data-score="8.3" data-max="10">
+        <div class="source">IMDb</div>
+        <div class="score"><span class="num">0</span><span class="score-suffix">/10</span></div>
+        <div class="bar-wrap"><div class="bar-fill" style="width:0%"></div></div>
+      </div>
+      <div class="rating-card" data-score="9.1" data-max="10">
+        <div class="source">豆瓣</div>
+        <div class="score"><span class="num">0</span><span class="score-suffix">/10</span></div>
+        <div class="bar-wrap"><div class="bar-fill" style="width:0%"></div></div>
+      </div>
+      <div class="rating-card" data-score="98" data-max="100">
+        <div class="source">烂番茄</div>
+        <div class="score"><span class="num">0</span><span class="score-suffix">%</span></div>
+        <div class="bar-wrap"><div class="bar-fill" style="width:0%"></div></div>
+      </div>
+      <div class="rating-card" data-score="88" data-max="100">
+        <div class="source">Metacritic</div>
+        <div class="score"><span class="num">0</span><span class="score-suffix">/100</span></div>
+        <div class="bar-wrap"><div class="bar-fill" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PLOT ===== -->
+<section class="plot-section">
+  <div class="container" style="padding-top:30px;padding-bottom:30px;">
+    <div class="plot-content reveal">
+      <div class="no-spoiler">🔒 无剧透 · 放心阅读</div>
+      <p>
+        年迈的孤独老人卡尔·弗雷德里克森，为实现与已故妻子爱丽共同的梦想 — 前往南美洲的"天堂瀑布"探险， 
+        用成千上万只彩色气球将整栋房子升上天空，开始了奇幻的空中旅程。
+      </p>
+      <p>
+        然而他很快发现，自己并非唯一的"偷渡客"——<span class="highlight-text">一位年仅8岁的童子军小罗</span>意外地与他同行。
+        这对老少搭配的性格截然不同：一个固执守旧、渴望安静，一个热情话多、永不停歇。 
+        他们在旅途中遭遇了奇异的生物、突如其來的暴风雨，以及一位神秘的老探险家……
+      </p>
+      <p>
+        影片用前十分钟的<span class="highlight-text">无声蒙太奇</span>，讲述了一段跨越一生的爱情故事，被公认为动画史上最动人的开场之一。
+        之后的故事，则是一场关于勇气、放手与重新出发的壮丽冒险。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HIGHLIGHTS ===== -->
+<section class="highlights-section">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>六大亮点</h2>
+      <p class="sub">为什么《飞屋环游记》无可替代</p>
+      <div class="line"></div>
+    </div>
+    <div class="highlights-grid">
+      <div class="highlight-card reveal">
+        <div class="icon c-red">🎈</div>
+        <h3>史上最动人的开场</h3>
+        <p>前十分钟的无声蒙太奇，用画面与音乐讲述了一段完整的爱情故事。从相遇到别离，没有一句台词，却让无数观众潸然泪下——这是动画叙事艺术的巅峰。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="icon c-blue">🎨</div>
+        <h3>视觉想象力爆炸</h3>
+        <p>成千上万的彩色气球拉着房屋升空的画面，已成为影史最经典的镜头之一。南美洲的天堂瀑布、云雾缭绕的桌山、色彩斑斓的热带丛林，每一帧都是视觉盛宴。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="icon c-yellow">🎵</div>
+        <h3>迈克尔·吉亚奇诺的配乐</h3>
+        <p>斩获奥斯卡最佳原创配乐。从温馨治愈到宏大激昂，吉亚奇诺的旋律完美地捕捉了飞翔的自由感与寻梦的执着，婚礼段落 <em>Married Life</em> 更是催泪弹。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="icon c-orange">👴👦</div>
+        <h3>绝妙的老少搭档</h3>
+        <p>卡尔爷爷与小罗的性格碰撞是影片的喜剧灵魂。一个固执执拗，一个天真话痨，他们的互动既好笑又温暖，在冒险中逐渐成为彼此的家人。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="icon c-purple">💭</div>
+        <h3>深刻的主题层次</h3>
+        <p>影片以轻松的外壳包裹了沉重的命题：失去挚爱、面对衰老、遗憾与和解、放手与前行。孩子看到冒险，成人看到人生——这就是皮克斯式的魔法。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <div class="icon c-green">🏆</div>
+        <h3>双奥斯卡加冕</h3>
+        <p>史上仅有三部影片同时获得奥斯卡最佳动画长片与最佳配乐，《飞屋环游记》是其中之一。提名奥斯卡最佳影片（动画片史上第二次入围），口碑与奖项的双重肯定。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<section class="quote-section">
+  <div class="container" style="padding:30px 24px;">
+    <div class="quote-block reveal">
+      <div class="mark">"</div>
+      <blockquote>Adventure is out there!</blockquote>
+      <p class="attr">冒险就在那里！—— 《飞屋环游记》</p>
+    </div>
+    <div class="quote-block reveal" style="margin-top:40px;">
+      <div class="mark">"</div>
+      <blockquote>谢谢你给了我一段精彩的冒险。现在，去寻找你自己的吧。</blockquote>
+      <p class="attr">爱丽 · 《飞屋环游记》</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY WATCH ===== -->
+<section class="why-section">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>为什么值得一看</h2>
+      <p class="sub">它值得每个人去看的理由</p>
+      <div class="line"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <div class="num">1</div>
+        <div class="text">
+          <h4>全年龄段都能产生共鸣</h4>
+          <p>孩子为五彩缤纷的气球和会说话的狗狗欢呼，成人却在卡尔的孤独与爱丽的遗愿中看到自己的人生缩影。一部电影，两种截然不同的观感体验。</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="num">2</div>
+        <div class="text">
+          <h4>教科书级别的叙事技巧</h4>
+          <p>前十分钟被电影学院列为必学案例：没有对白，仅靠画面、音乐和剪辑，便将一生的爱情与离别讲得荡气回肠。这是叙事效率的极致。</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="num">3</div>
+        <div class="text">
+          <h4>角色塑造深入人心</h4>
+          <p>卡尔不是传统英雄——他固执、脾气大、守旧，但正是这些不完美让他无比真实。小罗的天真纯粹则像一束光，照亮了整部影片的灵魂。</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="num">4</div>
+        <div class="text">
+          <h4>关于放手与重新出发的哲学</h4>
+          <p>影片最动人之处在于它告诉我们：有时候，最大的勇气不是坚持——而是学会放手，整理好回忆，然后踏上属于你自己的新旅程。这堂人生课，值得终生回味。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FILM FACTS ===== -->
+<section class="facts-section">
+  <div class="container">
+    <div class="section-title reveal">
+      <h2>影片档案</h2>
+      <div class="line"></div>
+    </div>
+    <div class="facts-table reveal">
+      <table>
+        <tr><td>中文片名</td><td>飞屋环游记</td></tr>
+        <tr><td>英文片名</td><td>Up</td></tr>
+        <tr><td>导演</td><td>彼特·道格特 (Pete Docter)</td></tr>
+        <tr><td>制片</td><td>乔纳斯·里维拉 (Jonas Rivera)</td></tr>
+        <tr><td>编剧</td><td>彼特·道格特 / 鲍勃·彼德森 / 汤姆·麦卡锡</td></tr>
+        <tr><td>配乐</td><td>迈克尔·吉亚奇诺 (Michael Giacchino)</td></tr>
+        <tr><td>制片商</td><td>皮克斯动画工作室 (Pixar)</td></tr>
+        <tr><td>发行商</td><td>华特迪士尼影业</td></tr>
+        <tr><td>上映日期</td><td>2009年5月29日 (美国) / 2009年8月4日 (中国)</td></tr>
+        <tr><td>片长</td><td>96 分钟</td></tr>
+        <tr><td>预算</td><td>1.75亿美元</td></tr>
+        <tr><td>全球票房</td><td>7.35亿美元</td></tr>
+        <tr><td>奥斯卡</td><td>最佳动画长片 · 最佳原创配乐（2项）</td></tr>
+        <tr><td>金球奖</td><td>最佳动画长片 · 最佳原创配乐</td></tr>
+        <tr><td>豆瓣评分</td><td>⭐ 9.1（Top 250 #32）</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDITOR NOTE ===== -->
+<section class="editor-section">
+  <div class="container" style="padding-top:40px;padding-bottom:60px;">
+    <div class="editor-note reveal">
+      <div class="stars">★★★★★</div>
+      <h3>编辑评语</h3>
+      <p>
+        《飞屋环游记》是皮克斯的巅峰之作之一。它用五彩气球包裹了一段深刻的人生哲思，让笑声与泪水在九十分钟里自然交织。 
+        那些关于爱情、梦想与告别的片段，会在你离开影院后很久，依然在心底轻轻回响。
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>WorkBuddy 经典电影推荐 · 2026-07-08</p>
+</footer>
+
+<script>
+  /* ===== Canvas Balloon Particles ===== */
+  (function() {
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H;
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const COLORS = [
+      'hsla(6, 78%, 57%, VAR)',   // red
+      'hsla(204, 64%, 53%, VAR)',  // blue
+      'hsla(45, 87%, 55%, VAR)',   // yellow
+      'hsla(28, 80%, 52%, VAR)',   // orange
+      'hsla(282, 39%, 53%, VAR)',  // purple
+      'hsla(145, 63%, 49%, VAR)',  // green
+      'hsla(0, 0%, 93%, VAR)',     // white
+    ];
+
+    const balloons = [];
+    const MAX = 30;
+
+    function createBalloon() {
+      const ci = Math.floor(Math.random() * COLORS.length);
+      const alpha = 0.15 + Math.random() * 0.3;
+      return {
+        x: Math.random() * W,
+        y: H + 40 + Math.random() * 60,
+        r: 4 + Math.random() * 10,
+        color: COLORS[ci].replace('VAR', alpha),
+        vy: -(0.15 + Math.random() * 0.35),
+        vx: (Math.random() - 0.5) * 0.15,
+        sway: Math.random() * Math.PI * 2,
+        swaySpeed: 0.005 + Math.random() * 0.01,
+        swayAmp: 0.2 + Math.random() * 0.4,
+        life: 1,
+      };
+    }
+
+    for (let i = 0; i < MAX; i++) {
+      const b = createBalloon();
+      b.y = Math.random() * H;
+      balloons.push(b);
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      balloons.forEach((b, i) => {
+        b.sway += b.swaySpeed;
+        b.x += b.vx + Math.sin(b.sway) * b.swayAmp;
+        b.y += b.vy;
+        if (b.y < -40) {
+          b.y = H + 40;
+          b.x = Math.random() * W;
+          b.vy = -(0.15 + Math.random() * 0.35);
+        }
+
+        // Draw balloon
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+        ctx.fillStyle = b.color;
+        ctx.fill();
+
+        // Highlight
+        ctx.beginPath();
+        ctx.arc(b.x - b.r * 0.25, b.y - b.r * 0.25, b.r * 0.32, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${0.06 + Math.random() * 0.08})`;
+        ctx.fill();
+
+        // String
+        ctx.beginPath();
+        ctx.moveTo(b.x, b.y + b.r);
+        ctx.lineTo(b.x + (Math.random() - 0.5) * 4, b.y + b.r + 6 + Math.random() * 4);
+        ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+        ctx.lineWidth = 0.6;
+        ctx.stroke();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+
+  /* ===== Intersection Observer ===== */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // If it's a rating card, also animate numbers and bars
+        if (entry.target.classList.contains('rating-card')) {
+          animateRating(entry.target);
+        }
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal, .rating-card, .plot-content, .highlight-card, .quote-block, .why-item, .facts-table, .editor-note').forEach(el => {
+    observer.observe(el);
+  });
+
+  /* ===== Rating Animation ===== */
+  function animateRating(card) {
+    const scoreEl = card.querySelector('.num');
+    const barEl = card.querySelector('.bar-fill');
+    const target = parseFloat(card.dataset.score);
+    const max = parseFloat(card.dataset.max);
+    const isPercentage = max === 100;
+    const duration = 1800;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // easeOutCubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = eased * target;
+      scoreEl.textContent = isPercentage ? Math.round(current) : current.toFixed(1);
+      barEl.style.width = (eased * (target / max * 100)) + '%';
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+    requestAnimationFrame(update);
+  }
+
+  /* ===== Also handle ratings on page load with fallback for already-visible ===== */
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.rating-card.visible').forEach(card => {
+      animateRating(card);
+    });
+  });
+</script>
+</body>
+</html>

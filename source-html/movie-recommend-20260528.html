@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经典电影推荐 · 泰坦尼克号</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Serif+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap');
+
+  :root {
+    --navy: #0a1628;
+    --deep: #0d1f3c;
+    --ocean: #1a3a6e;
+    --steel: #2a5298;
+    --frost: #c8deff;
+    --ice: #e8f4ff;
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --red: #8b1a1a;
+    --text-main: #e8f4ff;
+    --text-sub: #a0c0e0;
+    --text-muted: #5a7fa8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text-main);
+    font-family: 'Inter', 'Noto Serif SC', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 680px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(180deg, #020812 0%, #060f22 30%, #0a1628 70%, #0d1f3c 100%);
+  }
+
+  #ocean-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-tagline {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .hero-year {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(80px, 14vw, 200px);
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(200, 220, 255, 0.12);
+    letter-spacing: 0.05em;
+    line-height: 0.9;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    z-index: 1;
+    white-space: nowrap;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201, 168, 76, 0.4);
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    background: rgba(201, 168, 76, 0.07);
+  }
+
+  .hero-title-cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(42px, 8vw, 90px);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    text-shadow: 0 0 60px rgba(100, 180, 255, 0.4), 0 4px 30px rgba(0,0,0,0.7);
+    margin-bottom: 6px;
+  }
+
+  .hero-title-en {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(14px, 2.5vw, 26px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-sub);
+    letter-spacing: 0.12em;
+    margin-bottom: 28px;
+  }
+
+  .hero-quote {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(13px, 1.8vw, 17px);
+    color: rgba(200, 222, 255, 0.7);
+    font-style: italic;
+    max-width: 480px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  }
+
+  .hero-scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.5;
+    animation: scrollBounce 2s ease-in-out infinite;
+  }
+
+  .hero-scroll span {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-sub);
+  }
+
+  .hero-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--text-sub), transparent);
+  }
+
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* ship silhouette */
+  .ship-silhouette {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(700px, 90vw);
+    z-index: 1;
+    opacity: 0.15;
+    filter: blur(0.5px);
+  }
+
+  /* ─── SCORES ─── */
+  .section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(201,168,76,0.4), transparent);
+  }
+
+  .scores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .score-item {
+    background: rgba(10, 22, 40, 0.9);
+    padding: 32px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .score-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .score-item:hover::before { opacity: 1; }
+
+  .score-platform {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .score-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .score-bar-wrap {
+    width: 100%;
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 12px;
+  }
+
+  .score-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .score-desc {
+    font-size: 11px;
+    color: var(--text-sub);
+    margin-top: 8px;
+  }
+
+  /* ─── SYNOPSIS ─── */
+  .synopsis-wrap {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: start;
+  }
+
+  @media (max-width: 700px) {
+    .synopsis-wrap { grid-template-columns: 1fr; }
+    .poster-card { display: none; }
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 24px;
+    line-height: 1.3;
+  }
+
+  .synopsis-text {
+    font-size: 15px;
+    color: var(--text-sub);
+    line-height: 1.9;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 300;
+  }
+
+  .synopsis-text p { margin-bottom: 16px; }
+
+  .synopsis-text p:last-child { margin-bottom: 0; }
+
+  .poster-card {
+    width: 200px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    background: var(--deep);
+  }
+
+  .poster-inner {
+    width: 200px;
+    height: 290px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ─── HIGHLIGHTS ─── */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .highlight-card {
+    background: rgba(15, 30, 55, 0.7);
+    border: 1px solid rgba(100, 150, 220, 0.1);
+    border-radius: 4px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .highlight-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .highlight-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(100, 150, 220, 0.3);
+  }
+
+  .highlight-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--ocean), var(--steel));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .highlight-card:hover::after { opacity: 1; }
+
+  .highlight-icon {
+    font-size: 28px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .highlight-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ice);
+    margin-bottom: 10px;
+  }
+
+  .highlight-text {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* ─── QUOTE ─── */
+  .quote-section {
+    background: linear-gradient(135deg, rgba(13, 31, 60, 0.95), rgba(26, 58, 110, 0.3));
+    border-top: 1px solid rgba(100, 150, 220, 0.12);
+    border-bottom: 1px solid rgba(100, 150, 220, 0.12);
+  }
+
+  .quote-block {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 80px 24px;
+  }
+
+  .quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: rgba(201, 168, 76, 0.15);
+    line-height: 0.6;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .quote-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(18px, 2.8vw, 24px);
+    font-weight: 300;
+    color: var(--frost);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .quote-text-en {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(13px, 1.6vw, 16px);
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .quote-speaker {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ─── WHY WATCH ─── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .why-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .why-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .why-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: rgba(201, 168, 76, 0.2);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 40px;
+  }
+
+  .why-content {}
+
+  .why-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ice);
+    margin-bottom: 6px;
+  }
+
+  .why-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* ─── HONORS ─── */
+  .honors-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .honor-tag {
+    font-size: 12px;
+    color: var(--gold);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    padding: 6px 14px;
+    border-radius: 2px;
+    background: rgba(201, 168, 76, 0.06);
+    letter-spacing: 0.05em;
+    transition: all 0.3s;
+  }
+
+  .honor-tag:hover {
+    background: rgba(201, 168, 76, 0.15);
+    border-color: rgba(201, 168, 76, 0.6);
+  }
+
+  /* ─── INFO TABLE ─── */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .info-table tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.3s;
+  }
+
+  .info-table tr:hover { background: rgba(255,255,255,0.02); }
+
+  .info-table td {
+    padding: 14px 0;
+    vertical-align: top;
+  }
+
+  .info-table td:first-child {
+    color: var(--text-muted);
+    width: 140px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    padding-right: 20px;
+  }
+
+  .info-table td:last-child {
+    color: var(--text-sub);
+  }
+
+  /* ─── CLOSING ─── */
+  .closing-section {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 60px 24px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .editor-rating {
+    display: inline-flex;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .star {
+    font-size: 20px;
+    color: var(--gold);
+    filter: drop-shadow(0 0 6px rgba(201, 168, 76, 0.6));
+  }
+
+  .closing-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    color: var(--text-sub);
+    line-height: 1.9;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 0.2em;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 40px auto;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── SECOND QUOTE ─── */
+  .quote-second {
+    background: rgba(8, 18, 35, 0.8);
+    border-left: 3px solid rgba(201, 168, 76, 0.4);
+    padding: 28px 32px;
+    border-radius: 0 4px 4px 0;
+    margin: 48px 0;
+  }
+
+  .quote-second .q-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--frost);
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 12px;
+  }
+
+  .quote-second .q-author {
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .section { padding: 60px 20px; }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .scores-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <canvas id="ocean-canvas"></canvas>
+  <div class="hero-year">1997</div>
+
+  <!-- Ship SVG silhouette -->
+  <svg class="ship-silhouette" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+    <!-- Hull -->
+    <path d="M50 160 L100 100 L150 90 L200 85 L300 82 L400 80 L500 80 L600 82 L700 85 L780 90 L830 100 L860 130 L870 160 Z" fill="white" opacity="0.9"/>
+    <!-- Lower hull -->
+    <path d="M50 160 L870 160 L880 175 L860 182 L780 188 L600 190 L400 190 L200 188 L100 182 L40 175 Z" fill="white" opacity="0.7"/>
+    <!-- Superstructure -->
+    <rect x="220" y="40" width="440" height="42" rx="2" fill="white" opacity="0.85"/>
+    <rect x="280" y="12" width="320" height="30" rx="2" fill="white" opacity="0.8"/>
+    <rect x="340" y="0" width="80" height="14" rx="1" fill="white" opacity="0.7"/>
+    <!-- Funnels -->
+    <rect x="350" y="28" width="28" height="52" rx="3" fill="white" opacity="0.9"/>
+    <rect x="390" y="26" width="28" height="54" rx="3" fill="white" opacity="0.9"/>
+    <rect x="430" y="28" width="28" height="52" rx="3" fill="white" opacity="0.9"/>
+    <rect x="470" y="30" width="22" height="48" rx="3" fill="white" opacity="0.7"/>
+    <!-- Mast -->
+    <line x1="440" y1="0" x2="440" y2="82" stroke="white" stroke-width="2.5" opacity="0.9"/>
+    <!-- Windows row -->
+    <g opacity="0.6">
+      <rect x="240" y="52" width="8" height="5" rx="1" fill="white"/>
+      <rect x="256" y="52" width="8" height="5" rx="1" fill="white"/>
+      <rect x="272" y="52" width="8" height="5" rx="1" fill="white"/>
+      <rect x="540" y="52" width="8" height="5" rx="1" fill="white"/>
+      <rect x="556" y="52" width="8" height="5" rx="1" fill="white"/>
+      <rect x="572" y="52" width="8" height="5" rx="1" fill="white"/>
+      <rect x="588" y="52" width="8" height="5" rx="1" fill="white"/>
+      <rect x="604" y="52" width="8" height="5" rx="1" fill="white"/>
+      <rect x="620" y="52" width="8" height="5" rx="1" fill="white"/>
+    </g>
+    <!-- Porthole row on hull -->
+    <g opacity="0.4">
+      <circle cx="200" cy="130" r="5" fill="none" stroke="white" stroke-width="1.5"/>
+      <circle cx="230" cy="128" r="5" fill="none" stroke="white" stroke-width="1.5"/>
+      <circle cx="260" cy="127" r="5" fill="none" stroke="white" stroke-width="1.5"/>
+      <circle cx="600" cy="127" r="5" fill="none" stroke="white" stroke-width="1.5"/>
+      <circle cx="630" cy="128" r="5" fill="none" stroke="white" stroke-width="1.5"/>
+      <circle cx="660" cy="130" r="5" fill="none" stroke="white" stroke-width="1.5"/>
+    </g>
+  </svg>
+
+  <div class="hero-tagline">
+    <div class="hero-badge">电影推荐 · Cinema Classic</div>
+    <div class="hero-title-cn">泰坦尼克号</div>
+    <div class="hero-title-en">Titanic</div>
+    <div class="hero-quote">"你跳，我也跳。"<br><em>— Jack Dawson</em></div>
+    <div class="hero-scroll">
+      <span>向下滚动</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SCORES ═══ -->
+<div class="section">
+  <div class="section-label">评分一览</div>
+  <div class="scores-grid">
+    <div class="score-item">
+      <div class="score-platform">IMDb</div>
+      <div class="score-number" data-target="7.9">0</div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="79"></div></div>
+      <div class="score-desc">全球权威评分</div>
+    </div>
+    <div class="score-item">
+      <div class="score-platform">豆瓣</div>
+      <div class="score-number" data-target="9.4">0</div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="94"></div></div>
+      <div class="score-desc">华语影迷评分</div>
+    </div>
+    <div class="score-item">
+      <div class="score-platform">烂番茄</div>
+      <div class="score-number" data-target="88">0<span style="font-size:24px">%</span></div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="88"></div></div>
+      <div class="score-desc">媒体新鲜度</div>
+    </div>
+    <div class="score-item">
+      <div class="score-platform">奥斯卡</div>
+      <div class="score-number" data-target="11"><span style="font-size:24px">×</span>0</div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="100"></div></div>
+      <div class="score-desc">史上并列最多大奖</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SYNOPSIS ═══ -->
+<div class="section" style="padding-top: 0;">
+  <div class="section-label">剧情梗概</div>
+  <div class="synopsis-wrap">
+    <div>
+      <h2 class="section-title fade-in">一艘巨轮，一段永恒</h2>
+      <div class="synopsis-text fade-in">
+        <p>1912年4月，号称"永不沉没"的白星航运旗舰<strong style="color:var(--frost)">泰坦尼克号</strong>从英国南安普顿港出发，驶向美国纽约，承载着来自各阶层的2200余名乘客与无数美好憧憬。</p>
+        <p>在这艘象征着人类文明骄傲的钢铁巨轮上，贫穷的流浪画家<strong style="color:var(--frost)">杰克</strong>与出身富贵却身陷囹圄的上流社会小姐<strong style="color:var(--frost)">露丝</strong>，在茫茫大西洋的波涛之间，相遇了。</p>
+        <p>两人之间横亘着阶级的鸿沟、家族的压力，以及露丝已有婚约的现实。然而爱情不问出身——在短短几天的航行中，一段震撼人心的情感悄然生长。</p>
+        <p>1912年4月14日深夜，泰坦尼克号与一座冰山相撞。命运的时钟骤然倒转——这艘被视为不可能沉没的巨轮，开始向深渊缓缓倾沉……</p>
+      </div>
+    </div>
+    <!-- Poster card with SVG -->
+    <div class="poster-card">
+      <div class="poster-inner">
+        <svg viewBox="0 0 200 290" xmlns="http://www.w3.org/2000/svg" width="200" height="290">
+          <defs>
+            <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#010510"/>
+              <stop offset="40%" stop-color="#050d28"/>
+              <stop offset="75%" stop-color="#0a1a3e"/>
+              <stop offset="100%" stop-color="#0d2050"/>
+            </linearGradient>
+            <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0d2050"/>
+              <stop offset="100%" stop-color="#050d28"/>
+            </linearGradient>
+            <linearGradient id="hullGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2a3a5a"/>
+              <stop offset="100%" stop-color="#0a1020"/>
+            </linearGradient>
+            <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#e8f4ff" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#c8deff" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <!-- Sky -->
+          <rect width="200" height="290" fill="url(#skyGrad)"/>
+          <!-- Stars -->
+          <g opacity="0.8">
+            <circle cx="20" cy="20" r="0.8" fill="white"/>
+            <circle cx="45" cy="12" r="1" fill="white"/>
+            <circle cx="70" cy="25" r="0.7" fill="white"/>
+            <circle cx="95" cy="8" r="1.1" fill="white"/>
+            <circle cx="120" cy="18" r="0.8" fill="white"/>
+            <circle cx="150" cy="10" r="0.9" fill="white"/>
+            <circle cx="175" cy="22" r="0.7" fill="white"/>
+            <circle cx="30" cy="40" r="0.6" fill="white"/>
+            <circle cx="60" cy="50" r="0.8" fill="white"/>
+            <circle cx="85" cy="35" r="0.6" fill="white"/>
+            <circle cx="140" cy="45" r="0.9" fill="white"/>
+            <circle cx="165" cy="38" r="0.7" fill="white"/>
+            <circle cx="190" cy="15" r="0.8" fill="white"/>
+            <circle cx="10" cy="60" r="0.6" fill="white"/>
+            <circle cx="105" cy="55" r="0.7" fill="white"/>
+            <circle cx="185" cy="50" r="0.6" fill="white"/>
+          </g>
+          <!-- Moon glow -->
+          <circle cx="160" cy="30" r="25" fill="url(#moonGlow)" opacity="0.4"/>
+          <circle cx="160" cy="30" r="10" fill="#e8f4ff" opacity="0.9"/>
+          <!-- Water surface -->
+          <rect x="0" y="190" width="200" height="100" fill="url(#waterGrad)"/>
+          <!-- Water ripples -->
+          <g opacity="0.25" stroke="#c8deff" stroke-width="0.6" fill="none">
+            <ellipse cx="100" cy="195" rx="80" ry="3"/>
+            <ellipse cx="100" cy="200" rx="70" ry="2.5"/>
+            <ellipse cx="100" cy="205" rx="75" ry="2"/>
+            <ellipse cx="100" cy="212" rx="65" ry="2"/>
+            <ellipse cx="100" cy="220" rx="55" ry="2"/>
+          </g>
+          <!-- Moon reflection on water -->
+          <rect x="150" y="192" width="6" height="80" fill="white" opacity="0.08" transform="rotate(2, 153, 240)"/>
+          <!-- Titanic Ship -->
+          <!-- Hull -->
+          <path d="M20 175 L30 145 L40 140 L60 136 L100 134 L140 136 L160 140 L170 145 L178 160 L180 175 Z" fill="url(#hullGrad)"/>
+          <!-- Waterline -->
+          <path d="M20 175 L180 175 L182 182 L178 186 L160 188 L100 190 L40 188 L20 184 Z" fill="#0a1020"/>
+          <!-- Superstructure -->
+          <rect x="40" y="110" width="120" height="28" rx="1" fill="#1a2a4a"/>
+          <rect x="55" y="90" width="90" height="22" rx="1" fill="#1e3055"/>
+          <rect x="75" y="76" width="50" height="16" rx="1" fill="#1e3055"/>
+          <!-- Funnels -->
+          <rect x="78" y="62" width="10" height="30" rx="2" fill="#243555"/>
+          <rect x="94" y="60" width="10" height="32" rx="2" fill="#243555"/>
+          <rect x="110" y="62" width="10" height="30" rx="2" fill="#243555"/>
+          <rect x="124" y="65" width="8" height="27" rx="2" fill="#1e2e45" opacity="0.8"/>
+          <!-- Funnel tops (black) -->
+          <rect x="76" y="60" width="14" height="4" rx="1" fill="#0a0a10"/>
+          <rect x="92" y="58" width="14" height="4" rx="1" fill="#0a0a10"/>
+          <rect x="108" y="60" width="14" height="4" rx="1" fill="#0a0a10"/>
+          <!-- Smoke trails -->
+          <g opacity="0.3">
+            <path d="M83 60 Q87 50 82 42 Q78 34 83 26" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M99 58 Q104 47 99 38 Q94 29 100 20" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M115 60 Q120 50 115 42 Q110 34 116 26" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </g>
+          <!-- Mast -->
+          <line x1="100" y1="42" x2="100" y2="110" stroke="#c0c8d0" stroke-width="1.5" opacity="0.7"/>
+          <!-- Crow's nest -->
+          <circle cx="100" cy="45" r="3" fill="none" stroke="#c0c8d0" stroke-width="1.2" opacity="0.7"/>
+          <!-- Windows on superstructure -->
+          <g opacity="0.5">
+            <rect x="50" y="118" width="6" height="4" rx="0.5" fill="#c8deff"/>
+            <rect x="60" y="118" width="6" height="4" rx="0.5" fill="#c8deff"/>
+            <rect x="70" y="118" width="6" height="4" rx="0.5" fill="#c8deff"/>
+            <rect x="122" y="118" width="6" height="4" rx="0.5" fill="#c8deff"/>
+            <rect x="132" y="118" width="6" height="4" rx="0.5" fill="#c8deff"/>
+            <rect x="142" y="118" width="6" height="4" rx="0.5" fill="#c8deff"/>
+          </g>
+          <!-- Porthole lights on hull -->
+          <g opacity="0.35">
+            <circle cx="55" cy="160" r="2.5" fill="#c8deff"/>
+            <circle cx="68" cy="158" r="2.5" fill="#c8deff"/>
+            <circle cx="130" cy="158" r="2.5" fill="#c8deff"/>
+            <circle cx="143" cy="160" r="2.5" fill="#c8deff"/>
+          </g>
+          <!-- Film title text -->
+          <text x="100" y="252" text-anchor="middle" fill="white" font-family="serif" font-size="13" letter-spacing="3" opacity="0.9">TITANIC</text>
+          <text x="100" y="268" text-anchor="middle" fill="#c9a84c" font-family="serif" font-size="8" letter-spacing="2" opacity="0.7">1997</text>
+          <text x="100" y="282" text-anchor="middle" fill="#5a7fa8" font-family="sans-serif" font-size="7" letter-spacing="1.5" opacity="0.6">JAMES CAMERON</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HIGHLIGHTS ═══ -->
+<div class="section" style="padding-top: 0;">
+  <div class="section-label">六大亮点</div>
+  <div class="highlights-grid">
+    <div class="highlight-card">
+      <span class="highlight-icon">🎬</span>
+      <div class="highlight-title">史诗级制作与视觉奇观</div>
+      <div class="highlight-text">卡梅隆率团队实际建造了等比重现的泰坦尼克号，耗资2亿美元打造的视觉盛宴将细节还原与数字特效完美融合，沉船场景震撼人心，开创电影制作的技术先河。</div>
+    </div>
+    <div class="highlight-card">
+      <span class="highlight-icon">💕</span>
+      <div class="highlight-title">跨越阶级的爱情力量</div>
+      <div class="highlight-text">一等舱与三等舱的隔阂，是那个时代阶级固化的缩影。杰克与露丝的相遇，是命运对社会壁垒的挑战，两人的情感真挚动人，让全球数十亿观众潸然泪下。</div>
+    </div>
+    <div class="highlight-card">
+      <span class="highlight-icon">⚓</span>
+      <div class="highlight-title">历史灾难的忠实再现</div>
+      <div class="highlight-text">影片对1912年真实沉船事件进行了大量考证，从沉没过程、逃生场景到人物心理，均有史实依据。历史的冷酷与戏剧性在此交汇，令人唏嘘。</div>
+    </div>
+    <div class="highlight-card">
+      <span class="highlight-icon">🎭</span>
+      <div class="highlight-title">迪卡普里奥与凯特·温斯莱特</div>
+      <div class="highlight-text">两位演员将青春与激情演绎得淋漓尽致，迪卡普里奥的自由洒脱与温斯莱特的内敛压抑形成了完美张力，成就了影史最令人难忘的银幕情侣之一。</div>
+    </div>
+    <div class="highlight-card">
+      <span class="highlight-icon">🎵</span>
+      <div class="highlight-title">席琳·迪翁的传世之声</div>
+      <div class="highlight-text">《My Heart Will Go On》不仅是流行音乐史上最具标志性的电影主题曲之一，更是那段悲剧爱情的灵魂回响，至今每一次响起都依然令人动容。</div>
+    </div>
+    <div class="highlight-card">
+      <span class="highlight-icon">🌊</span>
+      <div class="highlight-title">对人类骄傲与命运的叩问</div>
+      <div class="highlight-text">"上帝也无法使它沉没"——这句狂语与最终的沉船命运相互映照，折射出人类面对自然与命运时永恒的渺小感，赋予影片深邃的哲学余韵。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ QUOTE 1 ═══ -->
+<div class="quote-section">
+  <div class="quote-block">
+    <span class="quote-mark">"</span>
+    <div class="quote-text">你跳，我也跳，对吧？</div>
+    <div class="quote-text-en">"You jump, I jump, right?"</div>
+    <div class="quote-speaker">— Jack Dawson，《泰坦尼克号》</div>
+  </div>
+</div>
+
+<!-- ═══ WHY WATCH ═══ -->
+<div class="section">
+  <div class="section-label">为什么值得一看</div>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-num">01</div>
+      <div class="why-content">
+        <div class="why-title">技术史诗，无出其右</div>
+        <div class="why-text">在CGI技术尚未成熟的1997年，卡梅隆几乎以"实拍一切"的方式完成了这部震撼巨作。这种对极致的追求，本身就是电影工业的一次奇迹。</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">02</div>
+      <div class="why-content">
+        <div class="why-title">爱情的永恒模板</div>
+        <div class="why-text">在戏剧性的历史背景前，个人的爱与选择被放大到极致。这段爱情之所以令人动容，在于它在绝境中依然选择了彼此，让人看见人性最温柔的那一面。</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">03</div>
+      <div class="why-content">
+        <div class="why-title">一代人共同的记忆</div>
+        <div class="why-text">它曾是全球票房冠军长达12年，对许多人来说是第一部在电影院里流泪的影片。理解这部电影，也是理解一代人的情感坐标。</div>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">04</div>
+      <div class="why-content">
+        <div class="why-title">历史与虚构的完美交织</div>
+        <div class="why-text">虚构的杰克与露丝穿行在真实的历史场景中，让那段本已遥远的悲剧重新触手可及。电影让历史有了温度，也让故事有了分量。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote-second fade-in">
+    <div class="q-text">露丝，答应我，你会活下去，不会放弃，不论发生什么，不论希望多么渺茫。</div>
+    <div class="q-author">— Jack Dawson，《泰坦尼克号》</div>
+  </div>
+</div>
+
+<!-- ═══ HONORS ═══ -->
+<div class="section" style="padding-top: 0;">
+  <div class="section-label">荣誉与成就</div>
+  <div class="honors-wrap fade-in">
+    <span class="honor-tag">奥斯卡最佳影片</span>
+    <span class="honor-tag">奥斯卡最佳导演</span>
+    <span class="honor-tag">奥斯卡最佳摄影</span>
+    <span class="honor-tag">奥斯卡最佳剪辑</span>
+    <span class="honor-tag">奥斯卡最佳原创歌曲</span>
+    <span class="honor-tag">奥斯卡最佳原创音乐</span>
+    <span class="honor-tag">奥斯卡最佳视觉效果</span>
+    <span class="honor-tag">奥斯卡最佳音效剪辑</span>
+    <span class="honor-tag">奥斯卡最佳录音</span>
+    <span class="honor-tag">奥斯卡最佳艺术指导</span>
+    <span class="honor-tag">奥斯卡最佳服装设计</span>
+    <span class="honor-tag">全球票房历史第三（22亿美元）</span>
+    <span class="honor-tag">金球奖最佳影片&导演</span>
+    <span class="honor-tag">豆瓣 9.4 超高分</span>
+    <span class="honor-tag">AFI百年百大爱情电影 #1</span>
+  </div>
+</div>
+
+<!-- ═══ INFO TABLE ═══ -->
+<div class="section" style="padding-top: 0;">
+  <div class="section-label">影片档案</div>
+  <table class="info-table fade-in">
+    <tr><td>导演</td><td>詹姆斯·卡梅隆 (James Cameron)</td></tr>
+    <tr><td>主演</td><td>莱昂纳多·迪卡普里奥、凯特·温斯莱特、比利·赞恩、凯西·贝茨</td></tr>
+    <tr><td>类型</td><td>剧情 / 爱情 / 历史 / 灾难</td></tr>
+    <tr><td>上映时间</td><td>1997年12月19日（美国）</td></tr>
+    <tr><td>片长</td><td>194 分钟</td></tr>
+    <tr><td>制作国家</td><td>美国</td></tr>
+    <tr><td>语言</td><td>英语</td></tr>
+    <tr><td>制片预算</td><td>约2亿美元（当时史上最昂贵电影）</td></tr>
+    <tr><td>全球总票房</td><td>约22亿美元（2012年3D重映版累计）</td></tr>
+    <tr><td>主题曲</td><td>《My Heart Will Go On》— 席琳·迪翁</td></tr>
+  </table>
+</div>
+
+<!-- ═══ CLOSING ═══ -->
+<div class="closing-section fade-in">
+  <div class="divider"></div>
+  <div class="editor-rating">
+    <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+  </div>
+  <div class="closing-text">
+    《泰坦尼克号》不仅仅是一部爱情片，它是人类以电影语言书写的一封最壮丽的情书——写给那些在历史洪流中依然选择爱的人，写给那些即使面对沉没也不肯松手的灵魂。二十余年过去，大西洋深处那艘沉船依然沉默，但那句"你跳，我也跳"，至今仍在回响。
+  </div>
+</div>
+
+<footer>
+  CLASSIC CINEMA RECOMMENDATION · 泰坦尼克号 · 1997 · James Cameron<br>
+  <span style="opacity:0.5;font-size:10px;">生成于 2026-05-28</span>
+</footer>
+
+<script>
+// ─── Canvas Ocean + Stars + Ice Particles ───
+(function() {
+  const canvas = document.getElementById('ocean-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Stars
+  const stars = Array.from({length: 220}, () => ({
+    x: Math.random(),
+    y: Math.random() * 0.75,
+    r: Math.random() * 1.4 + 0.3,
+    alpha: Math.random() * 0.6 + 0.2,
+    twinkle: Math.random() * Math.PI * 2,
+    speed: Math.random() * 0.02 + 0.008
+  }));
+
+  // Ice/snow particles drifting slowly (iceberg atmosphere)
+  const particles = Array.from({length: 60}, () => ({
+    x: Math.random(),
+    y: Math.random(),
+    r: Math.random() * 2 + 0.5,
+    alpha: Math.random() * 0.2 + 0.05,
+    vx: (Math.random() - 0.5) * 0.0003,
+    vy: Math.random() * 0.0002 + 0.00005,
+    color: Math.random() > 0.5 ? [200, 222, 255] : [180, 210, 255]
+  }));
+
+  // Distant stars / Aurora shimmer
+  let t = 0;
+
+  function draw() {
+    t += 0.008;
+    ctx.clearRect(0, 0, W, H);
+
+    // Deep sky gradient
+    const sky = ctx.createLinearGradient(0, 0, 0, H);
+    sky.addColorStop(0, '#010510');
+    sky.addColorStop(0.45, '#050d28');
+    sky.addColorStop(0.75, '#0a1628');
+    sky.addColorStop(1, '#0d1f3c');
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, W, H);
+
+    // Subtle aurora / moonlight shimmer
+    const auroraX = W * 0.6 + Math.sin(t * 0.3) * W * 0.05;
+    const aurora = ctx.createRadialGradient(auroraX, H * 0.15, 0, auroraX, H * 0.15, W * 0.5);
+    aurora.addColorStop(0, 'rgba(100, 160, 255, 0.05)');
+    aurora.addColorStop(0.5, 'rgba(80, 130, 220, 0.02)');
+    aurora.addColorStop(1, 'transparent');
+    ctx.fillStyle = aurora;
+    ctx.fillRect(0, 0, W, H);
+
+    // Moon
+    const moonX = W * 0.78;
+    const moonY = H * 0.14;
+    const moonGlow = ctx.createRadialGradient(moonX, moonY, 0, moonX, moonY, W * 0.12);
+    moonGlow.addColorStop(0, 'rgba(220, 235, 255, 0.35)');
+    moonGlow.addColorStop(0.4, 'rgba(200, 220, 255, 0.08)');
+    moonGlow.addColorStop(1, 'transparent');
+    ctx.fillStyle = moonGlow;
+    ctx.fillRect(0, 0, W, H);
+
+    ctx.beginPath();
+    ctx.arc(moonX, moonY, W * 0.022, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(232, 244, 255, 0.88)';
+    ctx.fill();
+
+    // Moon reflection on water
+    const reflH = H * 0.7;
+    const reflGrad = ctx.createLinearGradient(0, reflH, 0, H);
+    reflGrad.addColorStop(0, 'rgba(255,255,255,0.06)');
+    reflGrad.addColorStop(0.5, 'rgba(255,255,255,0.03)');
+    reflGrad.addColorStop(1, 'transparent');
+    const reflW = W * 0.02 + Math.sin(t * 0.7) * W * 0.005;
+    ctx.fillStyle = reflGrad;
+    ctx.beginPath();
+    ctx.ellipse(moonX, reflH + (H - reflH) * 0.5, reflW, H * 0.25, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Stars
+    stars.forEach(s => {
+      s.twinkle += s.speed;
+      const alpha = s.alpha * (0.6 + 0.4 * Math.sin(s.twinkle));
+      ctx.beginPath();
+      ctx.arc(s.x * W, s.y * H, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(220, 235, 255, ${alpha})`;
+      ctx.fill();
+    });
+
+    // Ice particles
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.y > 0.75) { p.y = 0; p.x = Math.random(); }
+      if (p.x < 0) p.x = 1;
+      if (p.x > 1) p.x = 0;
+      ctx.beginPath();
+      ctx.arc(p.x * W, p.y * H, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.color[0]}, ${p.color[1]}, ${p.color[2]}, ${p.alpha})`;
+      ctx.fill();
+    });
+
+    // Water surface
+    const waterY = H * 0.7;
+    const waterGrad = ctx.createLinearGradient(0, waterY, 0, H);
+    waterGrad.addColorStop(0, 'rgba(10, 20, 45, 0.85)');
+    waterGrad.addColorStop(1, 'rgba(5, 12, 28, 0.95)');
+    ctx.fillStyle = waterGrad;
+    ctx.beginPath();
+    ctx.moveTo(0, waterY);
+    for (let x = 0; x <= W; x += 4) {
+      const wave = Math.sin(x * 0.015 + t) * 3 + Math.sin(x * 0.03 + t * 1.3) * 1.5;
+      ctx.lineTo(x, waterY + wave);
+    }
+    ctx.lineTo(W, H);
+    ctx.lineTo(0, H);
+    ctx.closePath();
+    ctx.fill();
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// ─── Score Animations ───
+function animateScores() {
+  document.querySelectorAll('.score-number').forEach(el => {
+    const target = parseFloat(el.dataset.target);
+    const isInt = Number.isInteger(target);
+    const prefix = el.innerHTML.includes('×') ? '×' : '';
+    const suffix = el.innerHTML.includes('%') ? '<span style="font-size:24px">%</span>' : '';
+    let start = null;
+    const dur = 1600;
+    function step(ts) {
+      if (!start) start = ts;
+      const prog = Math.min((ts - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - prog, 3);
+      const val = isInt ? Math.round(target * ease) : (target * ease).toFixed(1);
+      el.innerHTML = prefix + val + suffix;
+      if (prog < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+
+  document.querySelectorAll('.score-bar').forEach(bar => {
+    const w = bar.dataset.width;
+    setTimeout(() => bar.style.width = w + '%', 200);
+  });
+}
+
+// ─── IntersectionObserver ───
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-in, .highlight-card, .why-item').forEach(el => io.observe(el));
+
+// Score observer
+const scoreObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateScores();
+      scoreObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+const scoresSection = document.querySelector('.scores-grid');
+if (scoresSection) scoreObs.observe(scoresSection);
+
+// Stagger highlights
+document.querySelectorAll('.highlight-card').forEach((card, i) => {
+  card.style.transitionDelay = (i * 80) + 'ms';
+});
+
+// Stagger why items
+document.querySelectorAll('.why-item').forEach((item, i) => {
+  item.style.transitionDelay = (i * 100) + 'ms';
+});
+</script>
+</body>
+</html>

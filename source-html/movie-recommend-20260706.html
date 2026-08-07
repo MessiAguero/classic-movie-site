@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经典电影推荐 · 指环王：护戒使者</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --bg: #0a0e0a;
+  --bg2: #111811;
+  --card: #161e16;
+  --green-dark: #1a2e1a;
+  --gold: #c9a84c;
+  --gold-light: #e8d48b;
+  --cream: #f0e6d3;
+  --cream-dark: #d4c8b0;
+  --elf-blue: #6b9fc4;
+  --rune-glow: rgba(201, 168, 76, 0.15);
+  --ring-fire: #d4782a;
+  --text: #e0dbc4;
+  --text-dim: #9a937c;
+  --border: rgba(201, 168, 76, 0.2);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ===== Canvas BG ===== */
+#particle-canvas {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  z-index:0; pointer-events:none;
+}
+
+/* ===== Hero ===== */
+.hero {
+  position: relative; z-index:1;
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(26,46,26,0.6) 0%, transparent 70%),
+              radial-gradient(ellipse 40% 40% at 50% 30%, rgba(201,168,76,0.05) 0%, transparent 60%);
+  z-index:-1;
+}
+
+.hero-year {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(5rem, 15vw, 12rem);
+  font-weight: 700;
+  color: transparent;
+  background: linear-gradient(180deg, rgba(201,168,76,0.12) 0%, rgba(201,168,76,0.04) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  line-height: 0.8;
+  letter-spacing: 0.15em;
+  position: absolute; top: 5%; left: 5%;
+  pointer-events:none;
+  user-select:none;
+}
+
+.hero-badge {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+  color: var(--gold);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  padding: 0.4rem 1.5rem;
+  border-radius: 2px;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  background: rgba(22,30,22,0.6);
+}
+
+.hero-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  color: var(--gold-light);
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 60px var(--rune-glow);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.6rem);
+  color: var(--cream-dark);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.hero-tagline {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(0.8rem, 1.4vw, 1.2rem);
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-top: 1.5rem;
+  opacity: 0.8;
+  font-variant: small-caps;
+}
+
+.hero-credits {
+  position: absolute; bottom: 3rem;
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+
+.hero-ring {
+  width: clamp(80px, 15vw, 150px);
+  height: auto;
+  margin: 1.5rem auto;
+  animation: ringPulse 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(201,168,76,0.3));
+}
+
+@keyframes ringPulse {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity:0.8; }
+  50% { transform: scale(1.03) rotate(3deg); opacity:1; }
+}
+
+.hero-scroll {
+  position: absolute; bottom: 1.5rem;
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  color: var(--text-dim); font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  animation: bobDown 2s ease-in-out infinite;
+}
+
+@keyframes bobDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ===== Sections ===== */
+section {
+  position: relative; z-index:1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.section-label {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(0.65rem, 0.9vw, 0.75rem);
+  color: var(--gold);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+.section-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--gold-light);
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.05em;
+}
+
+/* ===== Ratings ===== */
+.ratings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+
+.rating-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem 1.2rem;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.rating-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(201,168,76,0.08);
+}
+
+.rating-source {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.rating-number {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--gold-light);
+  display: block;
+}
+
+.rating-bar-track {
+  width: 100%; height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  margin-top: 0.8rem;
+  overflow: hidden;
+}
+
+.rating-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 2px;
+  width: 0;
+  transition: width 1.2s cubic-bezier(0.22,1,0.36,1);
+}
+
+/* ===== Story ===== */
+.story-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (max-width: 700px) {
+  .story-wrap { grid-template-columns: 1fr; }
+}
+
+.story-text p {
+  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  color: var(--cream-dark);
+  margin-bottom: 1.2rem;
+  line-height: 1.8;
+}
+
+.story-text p:last-child { margin-bottom:0; }
+
+.no-spoiler-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.35rem 1rem;
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-top: 1.5rem;
+}
+
+.story-poster {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #0e150e;
+  padding: 1.5rem;
+  aspect-ratio: 3/4;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.story-poster svg {
+  width: 100%; height: 100%;
+}
+
+/* ===== Highlights ===== */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.highlight-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.8rem 1.5rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-card::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity:0.4;
+}
+
+.highlight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(201,168,76,0.06);
+}
+
+.highlight-icon {
+  font-size: 1.6rem; margin-bottom: 0.8rem; display:block;
+}
+
+.highlight-card h3 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  color: var(--gold-light);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+.highlight-card p {
+  font-size: 0.9rem;
+  color: var(--cream-dark);
+  line-height: 1.65;
+}
+
+/* ===== Quote ===== */
+.quote-block {
+  text-align: center;
+  padding: 3rem 2rem;
+  margin: 2rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.quote-block blockquote {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.quote-block cite {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  font-style: normal;
+}
+
+/* ===== Why Watch ===== */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .why-grid { grid-template-columns: 1fr; }
+}
+
+.why-item {
+  display: flex; gap: 1rem;
+  align-items: flex-start;
+  padding: 1.2rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.why-item:hover { transform: translateX(3px); }
+
+.why-num {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.3rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  line-height: 1.2;
+  opacity: 0.7;
+}
+
+.why-item h4 {
+  font-size: 1rem;
+  color: var(--gold-light);
+  margin-bottom: 0.3rem;
+}
+
+.why-item p {
+  font-size: 0.9rem;
+  color: var(--cream-dark);
+  line-height: 1.6;
+}
+
+/* ===== Honors ===== */
+.honors-grid {
+  display: flex; flex-wrap: wrap; gap: 0.8rem;
+  justify-content: center;
+}
+
+.honor-tag {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  color: var(--cream-dark);
+  transition: all 0.3s;
+}
+
+.honor-tag:hover {
+  background: var(--green-dark);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.honor-highlight {
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+/* ===== Info Table ===== */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+
+.info-table td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+
+.info-table td:first-child {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.8rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  width: 30%;
+  font-weight: 400;
+}
+
+.info-table td:last-child {
+  color: var(--cream-dark);
+}
+
+/* ===== Editor Review ===== */
+.editor-review {
+  background: linear-gradient(135deg, var(--card) 0%, #0e150e 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  margin-top: 3rem;
+  position: relative;
+}
+
+.editor-review::before {
+  content:'"'; position:absolute; top:0.5rem; left:1.2rem;
+  font-size: 4rem; color: var(--gold); opacity:0.15;
+  font-family: Georgia, serif; line-height:1;
+}
+
+.editor-review h3 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.editor-review p {
+  font-size: 1rem;
+  color: var(--cream-dark);
+  line-height: 1.8;
+  font-style: italic;
+}
+
+.editor-stars {
+  margin-top: 1rem;
+  color: var(--gold);
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+}
+
+/* ===== Footer ===== */
+.footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  border-top: 1px solid var(--border);
+  position: relative; z-index:1;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ===== Reveal Animations ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ===== Decorative divider ===== */
+.divider {
+  text-align: center;
+  color: var(--gold);
+  opacity: 0.3;
+  font-size: 1.5rem;
+  letter-spacing: 0.5em;
+  margin: 1rem 0;
+  font-family: 'Cinzel Decorative', serif;
+}
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<!-- ================== HERO ================== -->
+<section class="hero">
+  <div class="hero-year">2001</div>
+  <div class="hero-badge">An Epic Fantasy</div>
+
+  <svg class="hero-ring" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#c9a84c"/>
+        <stop offset="40%" stop-color="#e8d48b"/>
+        <stop offset="60%" stop-color="#f0e6d3"/>
+        <stop offset="100%" stop-color="#c9a84c"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="50" cy="50" rx="40" ry="42" stroke="url(#ringGrad)" stroke-width="6" fill="none" opacity="0.9"/>
+    <ellipse cx="50" cy="50" rx="40" ry="42" stroke="url(#ringGrad)" stroke-width="2" fill="none" opacity="0.4" transform="rotate(10,50,50)"/>
+    <ellipse cx="50" cy="50" rx="40" ry="42" stroke="url(#ringGrad)" stroke-width="2" fill="none" opacity="0.2" transform="rotate(-10,50,50)"/>
+    <text x="50" y="58" text-anchor="middle" fill="none" stroke="url(#ringGrad)" stroke-width="0.5" font-size="10" font-family="serif" opacity="0.6" letter-spacing="3">ASH NAZG</text>
+    <circle cx="50" cy="50" r="35" fill="none" stroke="rgba(201,168,76,0.05)" stroke-width="1"/>
+  </svg>
+
+  <h1 class="hero-title">The Lord of the Rings<br>The Fellowship of the Ring</h1>
+  <p class="hero-subtitle">指环王：护戒使者</p>
+  <p class="hero-tagline">One ring to rule them all, one ring to find them,<br>one ring to bring them all and in the darkness bind them.</p>
+
+  <div class="hero-credits">Directed by Peter Jackson · 2001</div>
+  <div class="hero-scroll">
+    <span>向下探索</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 10l5 5 5-5"/></svg>
+  </div>
+</section>
+
+<!-- ================== RATINGS ================== -->
+<section>
+  <div class="section-label reveal">Acclaim</div>
+  <h2 class="section-title reveal">评分与口碑</h2>
+  <div class="ratings-grid">
+    <div class="rating-card reveal reveal-delay-1">
+      <div class="rating-source">IMDb</div>
+      <span class="rating-number" data-target="8.8">0</span>
+      <div class="rating-bar-track"><div class="rating-bar-fill" data-pct="88"></div></div>
+    </div>
+    <div class="rating-card reveal reveal-delay-2">
+      <div class="rating-source">豆瓣</div>
+      <span class="rating-number" data-target="9.0">0</span>
+      <div class="rating-bar-track"><div class="rating-bar-fill" data-pct="90"></div></div>
+    </div>
+    <div class="rating-card reveal reveal-delay-3">
+      <div class="rating-source">烂番茄</div>
+      <span class="rating-number" data-target="91">0<span style="font-size:0.6em">%</span></span>
+      <div class="rating-bar-track"><div class="rating-bar-fill" data-pct="91"></div></div>
+    </div>
+    <div class="rating-card reveal reveal-delay-4">
+      <div class="rating-source">Metacritic</div>
+      <span class="rating-number" data-target="92">0</span>
+      <div class="rating-bar-track"><div class="rating-bar-fill" data-pct="92"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== STORY ================== -->
+<section>
+  <div class="section-label reveal">Synopsis</div>
+  <h2 class="section-title reveal">剧情梗概</h2>
+  <div class="story-wrap">
+    <div class="story-text reveal">
+      <p>在宁静祥和的夏尔田园中，住着一位平凡的霍比特人——弗罗多·巴金斯。他的叔叔比尔博在一次冒险中带回了一枚看似普通的金色戒指，却不知这枚戒指承载着黑暗魔君索伦的全部力量。这是至尊戒，是中土世界最危险的宝物，拥有腐蚀一切生灵意志的力量。</p>
+      <p>为了阻止索伦借此戒重获全部力量、将中土世界永堕黑暗，弗罗多毅然接下了一项几乎不可能完成的任务——将至尊戒带到末日火山的烈焰中彻底销毁。他并不孤单：一位睿智的巫师、一名骄傲的人类王子、一位坚毅的精灵王子、一个背负阴影的刚铎战士、一个忠厚的矮人、以及三位与他同行的霍比特伙伴，组成了九人护戒远征队。他们穿越精灵仙境瑞文戴尔、深入摩瑞亚矿坑的幽暗深渊，踏上了这场横跨中土的史诗之旅。</p>
+      <div class="no-spoiler-badge">✦ 无剧透 · 放心阅读</div>
+    </div>
+    <div class="story-poster reveal reveal-delay-2">
+      <svg viewBox="0 0 400 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0a1620"/>
+            <stop offset="40%" stop-color="#1a2e2e"/>
+            <stop offset="70%" stop-color="#2d4a2d"/>
+            <stop offset="100%" stop-color="#1a2e1a"/>
+          </linearGradient>
+          <linearGradient id="ringGrad2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#c9a84c"/>
+            <stop offset="50%" stop-color="#e8d48b"/>
+            <stop offset="100%" stop-color="#c9a84c"/>
+          </linearGradient>
+          <radialGradient id="glowGrad">
+            <stop offset="0%" stop-color="rgba(201,168,76,0.15)"/>
+            <stop offset="100%" stop-color="rgba(201,168,76,0)"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Background sky -->
+        <rect width="400" height="540" fill="url(#skyGrad)"/>
+
+        <!-- Mountains -->
+        <path d="M0 340 L60 220 L120 280 L160 190 L210 250 L260 170 L310 240 L350 200 L400 290 L400 540 L0 540Z" fill="#1a251a" opacity="0.8"/>
+        <path d="M0 360 L50 260 L100 310 L140 230 L190 280 L230 210 L280 270 L330 240 L370 260 L400 320 L400 540 L0 540Z" fill="#243424" opacity="0.6"/>
+
+        <!-- Snow caps -->
+        <path d="M60 220 L75 238 L45 238Z" fill="#abb8b0" opacity="0.5"/>
+        <path d="M160 190 L175 210 L145 210Z" fill="#abb8b0" opacity="0.5"/>
+        <path d="M260 170 L275 190 L245 190Z" fill="#abb8b0" opacity="0.5"/>
+
+        <!-- Trees/Shire -->
+        <ellipse cx="70" cy="380" rx="50" ry="60" fill="#1e3a1e" opacity="0.7"/>
+        <ellipse cx="90" cy="390" rx="40" ry="50" fill="#2a4a2a" opacity="0.6"/>
+        <ellipse cx="300" cy="370" rx="60" ry="70" fill="#1e3a1e" opacity="0.5"/>
+        <ellipse cx="330" cy="390" rx="45" ry="55" fill="#2a4a2a" opacity="0.5"/>
+
+        <!-- Ground -->
+        <rect x="0" y="380" width="400" height="160" fill="#1a2e1a"/>
+        <path d="M0 380 Q100 370 200 380 Q300 370 400 380 L400 400 L0 400Z" fill="#2d4d2d" opacity="0.5"/>
+
+        <!-- Path -->
+        <path d="M200 540 Q210 480 200 440 Q190 410 200 390" stroke="rgba(201,168,76,0.08)" stroke-width="2" fill="none" stroke-dasharray="4,4"/>
+
+        <!-- Fellowship silhouettes -->
+        <g fill="#050805" opacity="0.85">
+          <rect x="178" y="395" width="8" height="22" rx="3"/>
+          <rect x="190" y="392" width="9" height="25" rx="3"/>
+          <ellipse cx="202" cy="380" rx="6" ry="18" fill="#050805"/>
+          <rect x="210" y="390" width="8" height="27" rx="3"/>
+          <rect x="222" y="393" width="7" height="24" rx="3"/>
+          <ellipse cx="232" cy="388" rx="5" ry="20" fill="#050805"/>
+          <rect x="171" y="397" width="7" height="20" rx="3"/>
+          <rect x="163" y="400" width="6" height="17" rx="3"/>
+        </g>
+
+        <!-- Ring glow above group -->
+        <circle cx="200" cy="340" r="50" fill="url(#glowGrad)">
+          <animate attributeName="r" values="40;55;40" dur="4s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.4;0.8;0.4" dur="4s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Ring SVG -->
+        <ellipse cx="200" cy="340" rx="10" ry="11" stroke="url(#ringGrad2)" stroke-width="1.5" fill="none" opacity="0.7">
+          <animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" repeatCount="indefinite"/>
+        </ellipse>
+
+        <!-- Stars -->
+        <circle cx="50" cy="50" r="0.8" fill="white" opacity="0.4"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="150" cy="30" r="0.6" fill="white" opacity="0.3"><animate attributeName="opacity" values="0.1;0.5;0.1" dur="2.5s" repeatCount="indefinite"/></circle>
+        <circle cx="280" cy="60" r="0.7" fill="white" opacity="0.4"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="4s" repeatCount="indefinite"/></circle>
+        <circle cx="350" cy="80" r="0.5" fill="white" opacity="0.3"><animate attributeName="opacity" values="0.1;0.5;0.1" dur="3.5s" repeatCount="indefinite"/></circle>
+        <circle cx="100" cy="100" r="0.6" fill="white" opacity="0.3"><animate attributeName="opacity" values="0.15;0.5;0.15" dur="2.8s" repeatCount="indefinite"/></circle>
+        <circle cx="320" cy="35" r="0.5" fill="white" opacity="0.25"><animate attributeName="opacity" values="0.1;0.4;0.1" dur="3.2s" repeatCount="indefinite"/></circle>
+
+        <!-- Elvish script decorative -->
+        <text x="20" y="520" fill="rgba(201,168,76,0.08)" font-family="serif" font-size="8" letter-spacing="3">✦  ᛖᚾᚢᚷ ᛖᚱᛁᛟᛚ  ✦</text>
+
+        <!-- Title -->
+        <text x="200" y="460" text-anchor="middle" fill="var(--gold)" font-size="11" font-family="Cinzel Decorative, serif" letter-spacing="2" opacity="0.3">THE FELLOWSHIP</text>
+        <text x="200" y="478" text-anchor="middle" fill="var(--gold)" font-size="8" font-family="Cinzel Decorative, serif" letter-spacing="3" opacity="0.2">OF THE RING</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="divider reveal">✧ ✦ ✧</div>
+
+<!-- ================== HIGHLIGHTS ================== -->
+<section>
+  <div class="section-label reveal">Highlights</div>
+  <h2 class="section-title reveal">六大亮点</h2>
+  <div class="highlights-grid">
+    <div class="highlight-card reveal reveal-delay-1">
+      <span class="highlight-icon">🗺️</span>
+      <h3>中土世界的壮丽画卷</h3>
+      <p>彼得·杰克逊将托尔金笔下的中土世界以前所未有的方式搬上银幕。从夏尔田园的恬静到瑞文戴尔的精灵仙境，从摩瑞亚的幽暗深渊到卡斯拉德-拉斯的冰雪绝境，每一帧都美得令人窒息。</p>
+    </div>
+    <div class="highlight-card reveal reveal-delay-2">
+      <span class="highlight-icon">🎻</span>
+      <h3>霍华德·肖的天籁配乐</h3>
+      <p>以精灵语吟唱的《In Dreams》哀婉动人、夏尔主题轻盈欢快、摩瑞亚的战鼓声震人心魄。霍华德·肖的配乐不是画面的陪衬，而是整个中土世界的灵魂之声。</p>
+    </div>
+    <div class="highlight-card reveal reveal-delay-3">
+      <span class="highlight-icon">👥</span>
+      <h3>九人九色的角色群像</h3>
+      <p>甘道夫的睿智与牺牲、阿拉贡的自我怀疑与担当、莱戈拉斯的优雅、吉姆利的倔强、弗罗多的纯真与挣扎——每个成员都有完整的弧光与成长的轨迹，令人过目难忘。</p>
+    </div>
+    <div class="highlight-card reveal reveal-delay-4">
+      <span class="highlight-icon">⚔️</span>
+      <h3>史诗级的实景与特效</h3>
+      <p>在数码特效泛滥的年代，本片大量使用实景拍摄、微缩模型与化妆技术。新西兰的纯天然风光、成千上万的手工道具、Weta Workshop的匠心之作，创造出无可替代的真实质感。</p>
+    </div>
+    <div class="highlight-card reveal reveal-delay-1">
+      <span class="highlight-icon">📖</span>
+      <h3>对原著的极致尊重</h3>
+      <p>在好莱坞大片化的浪潮中，本片以罕见的认真态度对待托尔金的原著精髓。它保留了故事的深度与哲学内核，而非止步于剑与魔法的表面冒险，让史诗有了真正的重量。</p>
+    </div>
+    <div class="highlight-card reveal reveal-delay-2">
+      <span class="highlight-icon">💍</span>
+      <h3>永恒的人性寓言</h3>
+      <p>至尊戒是关于诱惑与权力的隐喻。一个最渺小的人承担起最伟大的使命，友谊与信念在绝境中闪耀——这个故事能打动任何一个文明、任何一代人。</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider reveal">✧ ✦ ✧</div>
+
+<!-- ================== QUOTE ================== -->
+<section>
+  <div class="quote-block reveal">
+    <blockquote>
+      "Even the smallest person can change the course of the future."
+      <cite>—— 加拉德瑞尔夫人 (Lady Galadriel)</cite>
+    </blockquote>
+  </div>
+  <div class="quote-block reveal" style="border-top:none;">
+    <blockquote>
+      "I wish the Ring had never come to me. I wish none of this had happened."<br>
+      "So do all who live to see such times. But that is not for them to decide. All we have to decide is what to do with the time that is given us."
+      <cite>—— 弗罗多与甘道夫的对话</cite>
+    </blockquote>
+  </div>
+</section>
+
+<div class="divider reveal">✧ ✦ ✧</div>
+
+<!-- ================== WHY WATCH ================== -->
+<section>
+  <div class="section-label reveal">Why Watch</div>
+  <h2 class="section-title reveal">为什么值得看</h2>
+  <div class="why-grid">
+    <div class="why-item reveal reveal-delay-1">
+      <span class="why-num">01</span>
+      <div>
+        <h4>现代奇幻电影的巅峰</h4>
+        <p>它不仅定义了一个类型，更重新定义了什么是"电影史诗"。所有后来者都被拿来与它比较，却很少能超越。</p>
+      </div>
+    </div>
+    <div class="why-item reveal reveal-delay-2">
+      <span class="why-num">02</span>
+      <div>
+        <h4>奥斯卡四冠王的技术标杆</h4>
+        <p>荣获最佳摄影、最佳化妆、最佳原创配乐、最佳视觉效果四项奥斯卡大奖，每一门电影技艺都达到了当时的顶峰。</p>
+      </div>
+    </div>
+    <div class="why-item reveal reveal-delay-3">
+      <span class="why-num">03</span>
+      <div>
+        <h4>一次关于勇气与友谊的精神之旅</h4>
+        <p>在这部电影里，你看到的不只是奇幻冒险，更是关于人性的深刻演绎——面对恐惧时选择前行，在黑暗中相信彼此。</p>
+      </div>
+    </div>
+    <div class="why-item reveal reveal-delay-4">
+      <span class="why-num">04</span>
+      <div>
+        <h4>无可替代的重温价值</h4>
+        <p>二十余年过去，新西兰的雪山、精灵的语调和霍华德·肖的旋律依旧熠熠生辉。每一次重温，都能发现新的感动。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider reveal">✧ ✦ ✧</div>
+
+<!-- ================== HONORS ================== -->
+<section>
+  <div class="section-label reveal">Honors</div>
+  <h2 class="section-title reveal">荣誉殿堂</h2>
+  <div class="honors-grid">
+    <span class="honor-tag honor-highlight">🏆 奥斯卡最佳摄影</span>
+    <span class="honor-tag honor-highlight">🏆 奥斯卡最佳化妆</span>
+    <span class="honor-tag honor-highlight">🏆 奥斯卡最佳原创配乐</span>
+    <span class="honor-tag honor-highlight">🏆 奥斯卡最佳视觉效果</span>
+    <span class="honor-tag">奥斯卡最佳影片提名</span>
+    <span class="honor-tag">奥斯卡最佳导演提名</span>
+    <span class="honor-tag">奥斯卡最佳改编剧本提名</span>
+    <span class="honor-tag">奥斯卡最佳男配角提名</span>
+    <span class="honor-tag">奥斯卡最佳艺术指导提名</span>
+    <span class="honor-tag">奥斯卡最佳服装设计提名</span>
+    <span class="honor-tag">奥斯卡最佳剪辑提名</span>
+    <span class="honor-tag">奥斯卡最佳原创歌曲提名</span>
+    <span class="honor-tag">🏆 英国电影学院奖最佳影片</span>
+    <span class="honor-tag">🏆 英国电影学院奖最佳导演</span>
+    <span class="honor-tag">🏆 土星奖最佳奇幻电影</span>
+    <span class="honor-tag">🏆 美国电影学会年度电影</span>
+    <span class="honor-tag">IMDb Top 250 #10</span>
+    <span class="honor-tag">豆瓣 Top 250 #37</span>
+    <span class="honor-tag">全球票房 $8.9亿</span>
+  </div>
+</section>
+
+<div class="divider reveal">✧ ✦ ✧</div>
+
+<!-- ================== INFO TABLE ================== -->
+<section>
+  <div class="section-label reveal">Film Info</div>
+  <h2 class="section-title reveal">影片档案</h2>
+  <table class="info-table reveal">
+    <tr><td>片名</td><td>指环王：护戒使者 · The Lord of the Rings: The Fellowship of the Ring</td></tr>
+    <tr><td>导演</td><td>彼得·杰克逊 (Peter Jackson)</td></tr>
+    <tr><td>原著</td><td>J·R·R·托尔金《魔戒》</td></tr>
+    <tr><td>编剧</td><td>弗兰·威尔士 / 菲利帕·鲍恩斯 / 彼得·杰克逊</td></tr>
+    <tr><td>主演</td><td>伊利亚·伍德 / 伊恩·麦克莱恩 / 维果·莫滕森 / 奥兰多·布鲁姆 / 肖恩·阿斯廷 / 约翰·里斯-戴维斯 / 凯特·布兰切特 / 丽芙·泰勒 / 肖恩·宾</td></tr>
+    <tr><td>配乐</td><td>霍华德·肖 (Howard Shore)</td></tr>
+    <tr><td>摄影</td><td>安德鲁·莱斯尼 (Andrew Lesnie)</td></tr>
+    <tr><td>类型</td><td>奇幻 / 冒险 / 动作 / 剧情</td></tr>
+    <tr><td>上映日期</td><td>2001年12月19日 (美国)</td></tr>
+    <tr><td>片长</td><td>178分钟 (剧场版) / 208分钟 (加长版)</td></tr>
+    <tr><td>制片国家</td><td>新西兰 / 美国</td></tr>
+    <tr><td>语言</td><td>英语 / 精灵语 (辛达林/昆雅)</td></tr>
+  </table>
+</section>
+
+<!-- ================== EDITOR REVIEW ================== -->
+<section>
+  <div class="editor-review reveal">
+    <h3>编辑评语</h3>
+    <p>有些电影你看完会说"这部电影拍得很好"，而有些电影你看完会说"这才是一部电影"。《指环王：护戒使者》属于后者。它诞生于一个对原著极度热爱、对电影工艺近乎偏执的创作团队，它将新西兰的山川变成中土世界的血肉，将托尔金数十万字的史诗凝练成三小时的感官与灵魂的盛宴。霍华德·肖的旋律至今仍能在你闭上眼睛时响起，甘道夫在摩瑞亚转身的那一刻你永远不会忘记。这不是一部电影——这是一段你愿意反复回去居住的时光。</p>
+    <div class="editor-stars">★ ★ ★ ★ ★</div>
+  </div>
+</section>
+
+<!-- ================== FOOTER ================== -->
+<div class="footer">
+  <p>经典电影推荐 · 2026-07-06</p>
+  <p style="margin-top:0.3rem; color:var(--text-dim);">每一部好电影，都是一段值得重温的人生</p>
+</div>
+
+<script>
+// ===== Canvas Particle System =====
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+
+let W, H;
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// Particles
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.size = Math.random() * 3 + 1;
+    this.speedY = -(Math.random() * 0.3 + 0.1);
+    this.speedX = (Math.random() - 0.5) * 0.15;
+    this.opacity = Math.random() * 0.5 + 0.1;
+    this.life = Math.random() * 200 + 100;
+    this.maxLife = this.life;
+    // Gold / green palette
+    const hue = Math.random() > 0.6 ? 45 + Math.random() * 20 : 100 + Math.random() * 40;
+    this.color = `hsla(${hue}, ${50 + Math.random() * 30}%, ${50 + Math.random() * 30}%, `;
+    this.pulsePhase = Math.random() * Math.PI * 2;
+    this.pulseSpeed = Math.random() * 0.02 + 0.01;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.life--;
+    this.pulsePhase += this.pulseSpeed;
+
+    if (this.life <= 0 || this.y < -10 || this.x < -10 || this.x > W + 10) {
+      this.reset();
+      this.y = H + 5;
+    }
+  }
+  draw() {
+    const pulse = 0.6 + 0.4 * Math.sin(this.pulsePhase);
+    const alpha = this.opacity * (this.life / this.maxLife) * pulse;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.color + alpha + ')';
+    ctx.fill();
+    // Glow
+    if (this.size > 1.5) {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+      ctx.fillStyle = this.color + (alpha * 0.08) + ')';
+      ctx.fill();
+    }
+  }
+}
+
+const particles = [];
+const count = Math.min(120, Math.floor(W * H / 8000));
+for (let i = 0; i < count; i++) {
+  const p = new Particle();
+  p.y = Math.random() * H;
+  particles.push(p);
+}
+
+function animate() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animate);
+}
+animate();
+
+// ===== Intersection Observer =====
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+reveals.forEach(el => observer.observe(el));
+
+// ===== Rating Number Counter + Bar Fill =====
+function animateRatings() {
+  const numbers = document.querySelectorAll('.rating-number');
+  const bars = document.querySelectorAll('.rating-bar-fill');
+
+  const ratingObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        // Number counter
+        if (el.classList.contains('rating-number')) {
+          const target = parseFloat(el.dataset.target);
+          const hasPercent = el.innerHTML.includes('%');
+          const duration = 1500;
+          const start = performance.now();
+
+          function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const val = eased * target;
+            if (Number.isInteger(target)) {
+              el.innerHTML = Math.round(val) + (hasPercent ? '<span style="font-size:0.6em">%</span>' : '');
+            } else {
+              el.innerHTML = val.toFixed(1);
+            }
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+        }
+
+        // Bar fill
+        bars.forEach(bar => {
+          const pct = bar.dataset.pct;
+          if (pct) {
+            bar.style.width = pct + '%';
+          }
+        });
+
+        ratingObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  numbers.forEach(el => ratingObserver.observe(el));
+  bars.forEach(el => ratingObserver.observe(el));
+}
+
+// Wait for DOM and run
+document.addEventListener('DOMContentLoaded', animateRatings);
+// Also run after a short delay in case DOMContentLoaded already fired
+setTimeout(animateRatings, 500);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西部往事 · C'era una volta il West</title>
+<style>
+  :root{
+    --bg:#0e0a07;
+    --bg2:#16100a;
+    --ink:#f3e6d2;
+    --ink-soft:#c9b69a;
+    --ink-dim:#9a856a;
+    --gold:#d8a14a;
+    --gold-bright:#f4c869;
+    --ember:#c2522b;
+    --terra:#9e3b22;
+    --sun:#f6a93b;
+    --sepia:#b89068;
+    --line:rgba(216,161,74,.18);
+    --card:rgba(38,26,16,.72);
+    --card-solid:#241810;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Songti SC","STSong","Noto Serif SC",Georgia,"Times New Roman",serif;
+    line-height:1.85;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:rgba(216,161,74,.35);color:#fff}
+  .edifice{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(1200px 700px at 78% -8%, rgba(246,169,59,.16), transparent 60%),
+      radial-gradient(900px 600px at 10% 110%, rgba(158,59,34,.18), transparent 60%),
+      linear-gradient(180deg,#0e0a07 0%,#140d08 50%,#0b0805 100%);
+  }
+  .grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");}
+  #fx{position:fixed;inset:0;z-index:1;pointer-events:none}
+  .vignette{position:fixed;inset:0;z-index:59;pointer-events:none;
+    box-shadow:inset 0 0 240px 60px rgba(0,0,0,.72);}
+  .wrap{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:0 26px}
+  section{position:relative;z-index:10}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:90px 22px;overflow:hidden}
+  .hero .year{font-size:clamp(70px,16vw,190px);font-weight:800;letter-spacing:-.04em;line-height:.9;
+    color:transparent;-webkit-text-stroke:1.4px rgba(216,161,74,.55);
+    background:linear-gradient(180deg,rgba(246,169,59,.10),transparent);
+    -webkit-background-clip:text;background-clip:text;opacity:.9;font-family:"Times New Roman",serif}
+  .hero .en{margin-top:6px;font-size:clamp(13px,2.4vw,20px);letter-spacing:.62em;color:var(--gold);
+    text-transform:uppercase;padding-left:.62em}
+  .hero h1{font-size:clamp(40px,8vw,86px);font-weight:800;letter-spacing:.12em;margin:14px 0 4px;
+    color:var(--ink);text-shadow:0 4px 30px rgba(0,0,0,.7)}
+  .hero h1 .accent{color:var(--gold-bright)}
+  .hero .meta{margin-top:18px;font-size:14px;letter-spacing:.32em;color:var(--ink-soft)}
+  .hero .meta b{color:var(--gold);font-weight:600}
+  .hero .tag{margin-top:30px;max-width:680px;font-size:clamp(15px,2.4vw,19px);color:var(--ink-soft);
+    line-height:2;font-style:italic;position:relative;padding:0 24px}
+  .hero .tag::before,.hero .tag::after{content:"“";position:absolute;top:-18px;font-size:48px;color:var(--gold);opacity:.5}
+  .hero .tag::before{left:0}
+  .hero .tag::after{content:"”";right:0;top:auto;bottom:-34px}
+  .scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+    color:var(--ink-dim);font-size:12px;letter-spacing:.4em;animation:bob 2.4s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.5}50%{transform:translate(-50%,9px);opacity:1}}
+
+  /* ===== ratings ===== */
+  .ratings{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:30px 0 8px}
+  .rate{padding:22px 16px;border:1px solid var(--line);border-radius:14px;background:var(--card);
+    text-align:center;backdrop-filter:blur(6px)}
+  .rate .lab{font-size:12px;letter-spacing:.28em;color:var(--ink-soft);text-transform:uppercase}
+  .rate .num{font-size:38px;font-weight:800;color:var(--gold-bright);margin:8px 0 2px;
+    font-family:"Times New Roman",serif}
+  .rate .num small{font-size:18px;color:var(--ink-soft);font-weight:500}
+  .rate .bar{height:5px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:10px}
+  .rate .bar i{display:block;height:100%;width:0;border-radius:4px;
+    background:linear-gradient(90deg,var(--ember),var(--gold-bright));transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+  .rate .sub{font-size:11px;letter-spacing:.18em;color:var(--ink-dim);margin-top:7px}
+
+  /* ===== section heading ===== */
+  .sec{padding:70px 0 10px}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sec-head .idx{font-family:"Times New Roman",serif;font-size:40px;font-weight:800;color:var(--gold);opacity:.7}
+  .sec-head h2{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:.14em;color:var(--ink)}
+  .sec-head .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);align-self:center}
+
+  /* ===== plot + poster ===== */
+  .plot-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:40px;align-items:start}
+  .plot p{font-size:16.5px;color:var(--ink-soft);margin-bottom:16px;line-height:2.05}
+  .plot p.first::first-letter{font-size:54px;float:left;line-height:.8;padding:6px 12px 0 0;color:var(--gold-bright);font-weight:800;font-family:"Times New Roman",serif}
+  .nospoiler{display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:8px 16px;border:1px dashed var(--gold);
+    border-radius:30px;color:var(--gold);font-size:13px;letter-spacing:.1em;background:rgba(216,161,74,.07)}
+  .poster{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);
+    background:linear-gradient(180deg,#1a120a,#0c0805);box-shadow:0 26px 60px rgba(0,0,0,.6)}
+  .poster svg{display:block;width:100%;height:auto}
+  .poster .cap{position:absolute;bottom:0;left:0;right:0;padding:14px 16px;font-size:12px;letter-spacing:.22em;
+    color:var(--ink-soft);background:linear-gradient(0deg,rgba(0,0,0,.85),transparent);text-align:center}
+
+  /* ===== highlights ===== */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{padding:26px 22px;border:1px solid var(--line);border-radius:14px;background:var(--card);
+    transition:transform .4s,box-shadow .4s,border-color .4s;position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;
+    background:linear-gradient(90deg,var(--ember),var(--gold-bright));opacity:.7}
+  .card:hover{transform:translateY(-7px);border-color:rgba(216,161,74,.5);box-shadow:0 22px 44px rgba(0,0,0,.5)}
+  .card .ic{font-size:13px;letter-spacing:.3em;color:var(--gold);margin-bottom:12px}
+  .card h3{font-size:19px;font-weight:700;color:var(--ink);margin-bottom:10px;letter-spacing:.05em}
+  .card p{font-size:14.5px;color:var(--ink-soft);line-height:1.95}
+
+  /* ===== quote ===== */
+  .quote{padding:64px 0;text-align:center}
+  .quote blockquote{font-size:clamp(22px,4.2vw,38px);line-height:1.7;color:var(--ink);
+    font-style:italic;max-width:880px;margin:0 auto;position:relative;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+  .quote blockquote .hl{color:var(--gold-bright)}
+  .quote .who{margin-top:24px;font-size:14px;letter-spacing:.3em;color:var(--gold)}
+
+  /* ===== why ===== */
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .why-item{display:flex;gap:18px;padding:24px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+  .why-item .no{flex:none;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;font-family:"Times New Roman",serif;font-weight:800;
+    font-size:20px;color:var(--gold-bright);background:rgba(216,161,74,.08)}
+  .why-item h4{font-size:17px;color:var(--ink);margin-bottom:6px;letter-spacing:.04em}
+  .why-item p{font-size:14.5px;color:var(--ink-soft);line-height:1.9}
+
+  /* ===== honors ===== */
+  .honors{display:flex;flex-wrap:wrap;gap:12px}
+  .tag-pill{padding:10px 18px;border:1px solid var(--line);border-radius:30px;font-size:13.5px;
+    letter-spacing:.08em;color:var(--ink-soft);background:rgba(38,26,16,.6);transition:.35s}
+  .tag-pill.hot{color:var(--gold-bright);border-color:rgba(216,161,74,.55);background:rgba(216,161,74,.1)}
+  .tag-pill:hover{transform:translateY(-3px);color:var(--gold-bright)}
+
+  /* ===== archive table ===== */
+  .archive{width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .archive td{padding:15px 20px;border-bottom:1px solid rgba(216,161,74,.1);font-size:15px;vertical-align:top}
+  .archive tr:last-child td{border-bottom:none}
+  .archive td.k{width:130px;color:var(--gold);letter-spacing:.1em;font-weight:600;background:rgba(216,161,74,.05)}
+  .archive td.v{color:var(--ink-soft)}
+
+  /* ===== review ===== */
+  .review{padding:50px 30px;border:1px solid var(--line);border-radius:18px;
+    background:linear-gradient(180deg,rgba(38,26,16,.8),rgba(20,13,8,.9));text-align:center;position:relative;overflow:hidden}
+  .review .stars{font-size:30px;color:var(--gold-bright);letter-spacing:.18em;margin-bottom:14px}
+  .review p{font-size:16px;color:var(--ink-soft);line-height:2.1;max-width:760px;margin:0 auto;font-style:italic}
+  .review .by{margin-top:18px;font-size:13px;letter-spacing:.3em;color:var(--gold)}
+
+  footer{padding:60px 0 50px;text-align:center;color:var(--ink-dim);font-size:12.5px;letter-spacing:.18em;line-height:2.2}
+  footer .fmark{color:var(--gold);font-size:15px;letter-spacing:.4em}
+
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:760px){
+    .ratings{grid-template-columns:repeat(2,1fr)}
+    .plot-grid{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr}
+    .why{grid-template-columns:1fr}
+    .poster{margin-top:10px}
+  }
+</style>
+</head>
+<body>
+<div class="edifice"></div>
+<canvas id="fx"></canvas>
+<div class="grain"></div>
+<div class="vignette"></div>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="year">1968</div>
+  <div class="en">C'era una volta il West</div>
+  <h1>西部<span class="accent">往事</span></h1>
+  <div class="meta">塞尔吉奥·莱昂内 执导 &nbsp;·&nbsp; 亨利·方达 / 查尔斯·布朗森 / 克劳迪娅·卡迪纳莱 / 杰森·罗巴兹 主演</div>
+  <div class="tag">当火车带来文明，也带来死亡——一片荒野，一段被落日拉长的传说。</div>
+  <div class="scroll-hint">向 下 滚 动 ↓</div>
+</section>
+
+<div class="wrap">
+
+  <!-- ===================== RATINGS ===================== -->
+  <section class="sec" data-reveal>
+    <div class="sec-head"><span class="idx">01</span><h2>口碑与评分</h2><span class="rule"></span></div>
+    <div class="ratings">
+      <div class="rate"><div class="lab">IMDb</div><div class="num" data-to="8.5" data-dec="1">0.0</div><div class="bar"><i data-w="85"></i></div><div class="sub">Top 250</div></div>
+      <div class="rate"><div class="lab">豆瓣</div><div class="num" data-to="9.1" data-dec="1">0.0</div><div class="bar"><i data-w="91"></i></div><div class="sub">Top 250 经典</div></div>
+      <div class="rate"><div class="lab">烂番茄</div><div class="num" data-to="95" data-dec="0" data-suf="%">0</div><div class="bar"><i data-w="95"></i></div><div class="sub">影评人新鲜度</div></div>
+      <div class="rate"><div class="lab">AFI</div><div class="num" data-to="100" data-dec="0" data-suf="大">0</div><div class="bar"><i data-w="90"></i></div><div class="sub">百年百大提名</div></div>
+    </div>
+  </section>
+
+  <!-- ===================== PLOT + POSTER ===================== -->
+  <section class="sec" data-reveal>
+    <div class="sec-head"><span class="idx">02</span><h2>剧情梗概</h2><span class="rule"></span></div>
+    <div class="plot-grid">
+      <div class="plot">
+        <p class="first">在美国西部旷野的边缘，一条横跨大陆的铁路正一寸寸地碾向未知。尘土、烈日与铁轨的轰鸣，构成了这个时代最粗粝也最浪漫的底色。三名身份各异的男人，因一桩看似微不足道的土地，被命运推到了同一条地平线上。</p>
+        <p>一个吹着口琴、沉默寡言的枪客，似乎只为复仇而来；一名冷酷精准、替铁路大亨清场的职业杀手，以暴力和恐惧丈量着文明的边界；还有一位机敏狡黠、在法与匪之间游走的老江湖。他们各自怀揣秘密，也各自在荒野上寻找着自己的位置。</p>
+        <p>而这片土地真正的主角，是一位突如其来的女人——她继承了荒漠中一隅小小的产业，却浑然不知，脚下的黄沙恰好坐落在未来火车站的中央。当铁路、财富与暴力同时涌向这里，个人的恩怨被卷进了更宏大的历史浪潮。</p>
+        <p>这不是一个关于胜负的故事，而是一曲献给"西部"本身的挽歌：当荒野终将被文明收编，那些在落日下拔枪、在风沙中远去的人，便成了传说本身。</p>
+        <div class="nospoiler">◆ 本页剧情仅提供背景与人物关系框架，刻意不揭示关键转折与结局</div>
+      </div>
+      <div class="poster">
+        <svg viewBox="0 0 420 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="西部往事海报">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#3a1d10"/><stop offset="0.45" stop-color="#9e3b22"/>
+              <stop offset="0.7" stop-color="#e08a2e"/><stop offset="1" stop-color="#f6c14b"/>
+            </linearGradient>
+            <radialGradient id="sun" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0" stop-color="#fff3c4"/><stop offset="0.4" stop-color="#f6c14b"/>
+              <stop offset="1" stop-color="#f6c14b" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="grd" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1c0f08"/><stop offset="1" stop-color="#0b0604"/>
+            </linearGradient>
+          </defs>
+          <rect width="420" height="560" fill="url(#sky)"/>
+          <circle cx="210" cy="232" r="118" fill="url(#sun)"/>
+          <circle cx="210" cy="232" r="46" fill="#fff0bf"/>
+          <!-- distant mesas -->
+          <path d="M0 300 Q60 268 120 296 T250 290 L260 320 0 320 Z" fill="#7a2f18" opacity=".55"/>
+          <path d="M210 300 Q280 270 360 298 T420 296 L420 322 200 322 Z" fill="#6b2614" opacity=".6"/>
+          <!-- ground -->
+          <rect y="320" width="420" height="240" fill="url(#grd)"/>
+          <!-- railroad tracks -->
+          <g stroke="#caa15e" stroke-width="2" opacity=".8">
+            <line x1="210" y1="560" x2="196" y2="338"/>
+            <line x1="210" y1="560" x2="224" y2="338"/>
+            <line x1="206" y1="400" x2="214" y2="400" stroke-width="3"/>
+            <line x1="203" y1="440" x2="217" y2="440" stroke-width="3"/>
+            <line x1="200" y1="486" x2="220" y2="486" stroke-width="3"/>
+            <line x1="197" y1="536" x2="223" y2="536" stroke-width="3"/>
+          </g>
+          <!-- station hut silhouette -->
+          <g fill="#0a0503" opacity=".92">
+            <rect x="286" y="356" width="74" height="46"/>
+            <path d="M280 356 L323 336 L366 356 Z"/>
+            <rect x="298" y="372" width="16" height="30"/>
+          </g>
+          <!-- silhouettes: harmonica man + frank -->
+          <g fill="#060302" opacity=".95">
+            <!-- left gunman -->
+            <ellipse cx="120" cy="346" rx="11" ry="13"/>
+            <rect x="109" y="358" width="22" height="52" rx="6"/>
+            <rect x="118" y="408" width="9" height="34" rx="3"/>
+            <rect x="100" y="409" width="9" height="33" rx="3"/>
+            <!-- hat brim -->
+            <ellipse cx="120" cy="336" rx="20" ry="5"/>
+            <rect x="112" y="322" width="16" height="9" rx="3"/>
+            <!-- right figure with long coat -->
+            <ellipse cx="300" cy="344" rx="10" ry="12"/>
+            <path d="M284 356 L316 356 L322 432 L278 432 Z"/>
+            <rect x="289" y="432" width="9" height="32" rx="3"/>
+            <rect x="302" y="432" width="9" height="32" rx="3"/>
+            <ellipse cx="300" cy="334" rx="19" ry="5"/>
+            <rect x="293" y="321" width="14" height="9" rx="3"/>
+          </g>
+          <!-- floating dust -->
+          <g fill="#f6c14b" opacity=".5">
+            <circle cx="70" cy="430" r="2"/><circle cx="160" cy="470" r="1.6"/>
+            <circle cx="250" cy="450" r="2.2"/><circle cx="340" cy="500" r="1.8"/>
+            <circle cx="110" cy="520" r="2"/><circle cx="200" cy="540" r="1.5"/>
+          </g>
+          <text x="210" y="540" text-anchor="middle" fill="#f3e6d2" font-family="Georgia,serif" font-size="15" letter-spacing="6" opacity=".85">ONCE UPON A TIME IN THE WEST</text>
+        </svg>
+        <div class="cap">群山、落日、铁轨与剪影 —— 莱昂内的西部画卷</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HIGHLIGHTS ===================== -->
+  <section class="sec" data-reveal>
+    <div class="sec-head"><span class="idx">03</span><h2>六大亮点</h2><span class="rule"></span></div>
+    <div class="cards">
+      <div class="card"><div class="ic">EPIC</div><h3>西部史诗的封顶之作</h3><p>莱昂内"美国三部曲"的终章，也是他最宏大、最歌剧化的一次挥洒。他把通心粉西部片从娱乐类型，升格为关于文明与荒野的厚重寓言。</p></div>
+      <div class="card"><div class="ic">SCORE</div><h3>莫里康内的神级配乐</h3><p>埃尼奥·莫里康内为每位主角写下专属主题——口琴、口哨、吉他，旋律一响起便是人物登场的前奏。配乐本身就是半部电影。</p></div>
+      <div class="card"><div class="ic">CAST</div><h3>方达的颠覆性反派</h3><p>一向以"好人"形象深入人心的亨利·方达，被莱昂内反套路选为冷血杀手，蓝眼睛里藏着令人脊背发凉的残忍，成就银幕经典反派。</p></div>
+      <div class="card"><div class="ic">CINEMA</div><h3>极致的视听语言</h3><p>开场那段近十分钟几乎无言的车站对峙，用风声、滴水与苍蝇调度出令人窒息的张力，是影史最被反复研究的长镜头序列之一。</p></div>
+      <div class="card"><div class="ic">MYTH</div><h3>落日下的文明挽歌</h3><p>铁路驶来，荒野退场。影片在枪火与黄沙间，缓缓讲述一个时代如何被另一种时代取代——浪漫、苍凉又无可挽回。</p></div>
+      <div class="card"><div class="ic">LEGACY</div><h3>永不褪色的群像</h3><p>口琴客、弗兰克、吉尔、切罗尼——这些 archetype 般的角色，连同那座小车站，成为后世无数西部片与导演的灵感母本。</p></div>
+    </div>
+  </section>
+
+  <!-- ===================== QUOTE ===================== -->
+  <section class="quote" data-reveal>
+    <blockquote>"People scare better when <span class="hl">they're dying</span>."</blockquote>
+    <div class="who">— 弗兰克，在荒野的风里低声说出</div>
+  </section>
+
+  <!-- ===================== WHY ===================== -->
+  <section class="sec" data-reveal>
+    <div class="sec-head"><span class="idx">04</span><h2>为什么值得一看</h2><span class="rule"></span></div>
+    <div class="why">
+      <div class="why-item"><div class="no">壹</div><div><h4>影史最伟大的西部片之一</h4><p>常年高居各类"影史最伟大电影"榜单，是斯皮尔伯格、昆汀等一众名导公开致敬的必修课。</p></div></div>
+      <div class="why-item"><div class="no">贰</div><div><h4>莫里康内的听觉盛宴</h4><p>把电影关掉只听配乐也足够震撼。主题旋律早已超越影片本身，成为西部精神的代名词。</p></div></div>
+      <div class="why-item"><div class="no">叁</div><div><h4>慢，却令人窒息的张力</h4><p>莱昂内用近乎奢侈的时长铺陈氛围，每一帧都像油画，越慢越让人屏息。</p></div></div>
+      <div class="why-item"><div class="no">肆</div><div><h4>重新定义西部的浪漫</h4><p>它不只讲枪战，更讲时代、孤独与宿命——看完你会明白"西部"二字为何动人至今。</p></div></div>
+    </div>
+  </section>
+
+  <!-- ===================== HONORS ===================== -->
+  <section class="sec" data-reveal>
+    <div class="sec-head"><span class="idx">05</span><h2>荣誉与地位</h2><span class="rule"></span></div>
+    <div class="honors">
+      <span class="tag-pill hot">IMDb Top 250 经典</span>
+      <span class="tag-pill hot">豆瓣 Top 250 · 9.1</span>
+      <span class="tag-pill">烂番茄 95% 新鲜度</span>
+      <span class="tag-pill">AFI 百年百大电影提名</span>
+      <span class="tag-pill">BFI /《视与听》影史最伟大电影榜单常客</span>
+      <span class="tag-pill">1969 意大利大卫奖 最佳导演</span>
+      <span class="tag-pill">1969 意大利大卫奖 最佳影片</span>
+      <span class="tag-pill hot">通心粉西部片 巅峰之作</span>
+      <span class="tag-pill">昆汀·塔伦蒂诺 公开致敬神作</span>
+      <span class="tag-pill">埃尼奥·莫里康内 传世配乐</span>
+    </div>
+  </section>
+
+  <!-- ===================== ARCHIVE ===================== -->
+  <section class="sec" data-reveal>
+    <div class="sec-head"><span class="idx">06</span><h2>影片档案</h2><span class="rule"></span></div>
+    <table class="archive">
+      <tr><td class="k">中文名</td><td class="v">西部往事</td></tr>
+      <tr><td class="k">英文名</td><td class="v">Once Upon a Time in the West</td></tr>
+      <tr><td class="k">原名</td><td class="v">C'era una volta il West</td></tr>
+      <tr><td class="k">导演</td><td class="v">塞尔吉奥·莱昂内（Sergio Leone）</td></tr>
+      <tr><td class="k">上映</td><td class="v">1968 年（意大利）</td></tr>
+      <tr><td class="k">片长</td><td class="v">约 165 分钟（意大利原版）</td></tr>
+      <tr><td class="k">类型</td><td class="v">西部 / 剧情</td></tr>
+      <tr><td class="k">编剧</td><td class="v">塞尔吉奥·莱昂内、贝纳尔多·贝托鲁奇、塞尔吉奥·多纳蒂</td></tr>
+      <tr><td class="k">配乐</td><td class="v">埃尼奥·莫里康内（Ennio Morricone）</td></tr>
+      <tr><td class="k">主演</td><td class="v">亨利·方达 / 查尔斯·布朗森 / 克劳迪娅·卡迪纳莱 / 杰森·罗巴兹</td></tr>
+      <tr><td class="k">制片</td><td class="v">意大利 / 美国</td></tr>
+      <tr><td class="k">评分</td><td class="v">IMDb 8.5 ｜ 豆瓣 9.1 ｜ 烂番茄 95%</td></tr>
+    </table>
+  </section>
+
+  <!-- ===================== REVIEW ===================== -->
+  <section class="sec" data-reveal style="padding-bottom:30px">
+    <div class="sec-head"><span class="idx">07</span><h2>编辑评语</h2><span class="rule"></span></div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>在所有的西部片里，《西部往事》最不像"西部片"。它把枪战留给了落日，把故事交给了风沙，把情感压进了一段口琴。莱昂内用近乎固执的缓慢，让每一秒都沉得下重量；莫里康内的音符一落，整片荒野便有了灵魂。这不是一部需要"看懂"的电影，而是一部需要"感受"的电影——当最后一个镜头淡出，你会忽然明白，有些传说，注定只能在落日里被讲述。</p>
+      <div class="by">— 经典电影推荐 · 每日一部</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="fmark">经典电影推荐</div><br>
+  每日一部公认经典 · 评分高 · 口碑好 · 不剧透<br>
+  Generated with WorkBuddy
+</footer>
+
+<script>
+/* ===== Canvas: 沙漠光尘 + 落日余晖粒子 ===== */
+(function(){
+  const cv=document.getElementById('fx'),ctx=cv.getContext('2d');
+  let W,H,DPR;
+  function resize(){
+    DPR=Math.min(window.devicePixelRatio||1,2);
+    W=cv.width=innerWidth*DPR;H=cv.height=innerHeight*DPR;
+    cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';
+  }
+  resize();addEventListener('resize',resize);
+  const N=Math.round((innerWidth*innerHeight)/26000);
+  const dust=[];
+  for(let i=0;i<N;i++){
+    dust.push({
+      x:Math.random()*W,y:Math.random()*H,
+      r:(Math.random()*2.2+0.6)*DPR,
+      a:Math.random()*0.5+0.15,
+      vy:-(Math.random()*0.25+0.06)*DPR,
+      vx:(Math.random()*0.4-0.2)*DPR,
+      ph:Math.random()*Math.PI*2,
+      sp:Math.random()*0.02+0.008,
+      hue:Math.random()<0.55?'246,169,59':'194,82,43'
+    });
+  }
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    // 顶部落日辉光带
+    const g=ctx.createRadialGradient(W*0.78,H*0.02,0,W*0.78,H*0.02,H*0.7);
+    g.addColorStop(0,'rgba(246,169,59,0.10)');
+    g.addColorStop(1,'rgba(246,169,59,0)');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    for(const d of dust){
+      d.ph+=d.sp;
+      d.y+=d.vy;d.x+=d.vx+Math.sin(d.ph)*0.18*DPR;
+      if(d.y<-10){d.y=H+10;d.x=Math.random()*W;}
+      if(d.x<-10)d.x=W+10; if(d.x>W+10)d.x=-10;
+      const pulse=0.6+0.4*Math.sin(d.ph);
+      const rr=d.r*(0.8+pulse*0.5);
+      const rg=ctx.createRadialGradient(d.x,d.y,0,d.x,d.y,rr*4);
+      rg.addColorStop(0,'rgba('+d.hue+','+(d.a*pulse)+')');
+      rg.addColorStop(1,'rgba('+d.hue+',0)');
+      ctx.fillStyle=rg;
+      ctx.beginPath();ctx.arc(d.x,d.y,rr*4,0,Math.PI*2);ctx.fill();
+    }
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+/* ===== 评分数字滚动 + 进度条 ===== */
+function animateNumbers(){
+  document.querySelectorAll('.rate .num').forEach(el=>{
+    const to=parseFloat(el.dataset.to),dec=parseInt(el.dataset.dec||'0'),suf=el.dataset.suf||'';
+    let cur=0;const dur=1500,st=performance.now();
+    function step(t){
+      let p=Math.min((t-st)/dur,1);p=1-Math.pow(1-p,3);
+      cur=to*p;
+      el.textContent=cur.toFixed(dec)+suf;
+      if(p<1)requestAnimationFrame(step);else el.textContent=to.toFixed(dec)+suf;
+    }
+    requestAnimationFrame(step);
+  });
+  document.querySelectorAll('.rate .bar i').forEach(i=>{
+    requestAnimationFrame(()=>{i.style.width=i.dataset.w+'%';});
+  });
+}
+
+/* ===== 滚动揭示 ===== */
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      if(e.target.querySelector&&e.target.querySelector('.rate'))animateNumbers();
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.15});
+document.querySelectorAll('[data-reveal]').forEach(s=>io.observe(s));
+// 首个含评分的 section 立即触发
+window.addEventListener('load',()=>{
+  const first=document.querySelector('[data-reveal] .rate');
+  if(first)animateNumbers();
+});
+</script>
+</body>
+</html>

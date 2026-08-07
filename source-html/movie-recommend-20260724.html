@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阿拉伯的劳伦斯 · Lawrence of Arabia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night-1:#0a1420;
+    --night-2:#13243a;
+    --dusk-1:#3a2c3e;
+    --dune-1:#c79a5b;
+    --dune-2:#e0b974;
+    --sand-1:#f3d9a4;
+    --sand-2:#faedcd;
+    --terra:#c1572f;
+    --gold:#e9c46a;
+    --gold-bright:#f4d58d;
+    --cream:#fdf3df;
+    --ink:#1a1208;
+    --txt:#f4e9d4;
+    --txt-dim:#c7b393;
+    --card-bg:rgba(22,18,12,0.62);
+    --line:rgba(233,196,106,0.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Serif SC","Cormorant Garamond",serif;
+    background:var(--night-1);
+    color:var(--txt);
+    overflow-x:hidden;
+    line-height:1.85;
+  }
+  ::selection{background:rgba(233,196,106,0.3);color:#fff}
+  /* ---------- background layers ---------- */
+  #sand-canvas{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    z-index:0;pointer-events:none;
+  }
+  .bg-veil{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(120% 80% at 50% 8%, rgba(58,44,62,0.0) 0%, rgba(10,20,32,0.0) 40%, rgba(10,20,32,0.55) 100%),
+      linear-gradient(180deg, #0a1420 0%, #13243a 28%, #2a2336 52%, #5a3a2e 78%, #8a5a32 100%);
+  }
+  .grain{
+    position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:2}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:90px 24px 60px;position:relative;
+  }
+  .hero-year{
+    font-family:"Cinzel",serif;font-weight:700;letter-spacing:.5em;
+    font-size:clamp(2.6rem,9vw,7rem);line-height:.9;
+    color:transparent;-webkit-text-stroke:1.5px rgba(233,196,106,0.55);
+    opacity:.85;margin-bottom:6px;text-indent:.5em;
+  }
+  .hero-en{
+    font-family:"Cinzel",serif;font-weight:800;letter-spacing:.18em;
+    font-size:clamp(1.5rem,5.2vw,3.4rem);
+    background:linear-gradient(180deg,#fdf3df,#e9c46a 60%,#c1572f);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 2px 30px rgba(233,196,106,0.25);
+  }
+  .hero-cn{
+    font-family:"Noto Serif SC",serif;font-weight:700;
+    font-size:clamp(1.6rem,5vw,3rem);letter-spacing:.35em;
+    color:var(--cream);margin-top:14px;text-indent:.35em;
+    text-shadow:0 2px 24px rgba(0,0,0,.6);
+  }
+  .hero-sub{
+    margin-top:22px;font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:clamp(1rem,2.4vw,1.45rem);color:var(--gold-bright);letter-spacing:.04em;
+  }
+  .hero-meta{
+    margin-top:20px;font-size:.92rem;letter-spacing:.32em;color:var(--txt-dim);
+    text-transform:uppercase;font-family:"Cinzel",serif;font-weight:500;
+  }
+  .hero-tagline{
+    margin-top:34px;max-width:680px;font-family:"Noto Serif SC",serif;font-weight:300;
+    font-size:clamp(1.05rem,2.6vw,1.5rem);color:var(--cream);letter-spacing:.06em;
+    line-height:1.9;padding:0 10px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding-top:22px;padding-bottom:22px;
+  }
+  .scroll-cue{
+    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    font-family:"Cinzel",serif;font-size:.7rem;letter-spacing:.4em;color:var(--txt-dim);
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);opacity:.5}50%{transform:translateX(-50%) translateY(8px);opacity:1}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{position:relative;padding:84px 24px;max-width:1120px;margin:0 auto}
+  .sec-title{
+    font-family:"Cinzel",serif;font-weight:700;letter-spacing:.2em;
+    font-size:clamp(1.4rem,3.6vw,2.2rem);color:var(--cream);text-align:center;
+    margin-bottom:8px;
+  }
+  .sec-cn{
+    font-family:"Noto Serif SC",serif;font-weight:500;letter-spacing:.3em;
+    font-size:clamp(.95rem,2.4vw,1.1rem);color:var(--gold);text-align:center;
+    margin-bottom:46px;
+  }
+  .sec-title .en{display:block;font-size:.5em;letter-spacing:.45em;color:var(--txt-dim);margin-top:8px;font-weight:500}
+
+  /* ---------- RATINGS ---------- */
+  .ratings{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:10px}
+  .rating{
+    background:var(--card-bg);border:1px solid var(--line);border-radius:14px;
+    padding:26px 18px;text-align:center;backdrop-filter:blur(6px);
+    transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .5s;
+  }
+  .rating:hover{transform:translateY(-6px);border-color:rgba(233,196,106,.5)}
+  .rating .src{font-family:"Cinzel",serif;letter-spacing:.22em;font-size:.82rem;color:var(--gold);margin-bottom:14px}
+  .rating .score{font-family:"Cinzel",serif;font-weight:800;font-size:2.6rem;color:var(--cream);line-height:1}
+  .rating .score .suf{font-size:1.1rem;color:var(--gold-bright)}
+  .rating .bar{height:5px;border-radius:4px;background:rgba(255,255,255,.08);margin-top:16px;overflow:hidden}
+  .rating .bar i{display:block;height:100%;width:0;border-radius:4px;
+    background:linear-gradient(90deg,var(--terra),var(--gold));transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+
+  /* ---------- SYNOPSIS ---------- */
+  .synopsis-card{
+    background:linear-gradient(160deg,rgba(28,22,14,.7),rgba(14,11,7,.7));
+    border:1px solid var(--line);border-radius:18px;padding:46px 42px;backdrop-filter:blur(8px);
+    display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:center;
+  }
+  .poster-svg{width:100%;height:auto;border-radius:12px;filter:drop-shadow(0 18px 40px rgba(0,0,0,.5))}
+  .synopsis-text p{font-size:1.12rem;color:var(--txt);font-weight:300;letter-spacing:.02em}
+  .synopsis-text p + p{margin-top:18px}
+  .no-spoiler{
+    display:inline-flex;align-items:center;gap:8px;margin-top:24px;
+    font-family:"Cinzel",serif;font-size:.72rem;letter-spacing:.25em;color:#ffe7b3;
+    background:rgba(193,87,47,.18);border:1px solid rgba(233,196,106,.35);
+    padding:9px 16px;border-radius:30px;text-transform:uppercase;
+  }
+  .no-spoiler::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
+
+  /* ---------- HIGHLIGHTS ---------- */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .hl{
+    background:var(--card-bg);border:1px solid var(--line);border-radius:14px;padding:30px 26px;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .5s,box-shadow .5s;position:relative;overflow:hidden;
+  }
+  .hl::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% -10%,rgba(233,196,106,.14),transparent 60%);opacity:0;transition:opacity .5s}
+  .hl:hover{transform:translateY(-7px);border-color:rgba(233,196,106,.5);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .hl:hover::before{opacity:1}
+  .hl .num{font-family:"Cinzel",serif;font-weight:700;font-size:1.9rem;color:rgba(233,196,106,.35);line-height:1}
+  .hl h3{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1.18rem;color:var(--cream);margin:14px 0 12px;letter-spacing:.04em}
+  .hl p{font-size:.98rem;color:var(--txt-dim);font-weight:300;line-height:1.8}
+
+  /* ---------- QUOTE ---------- */
+  .quote-block{
+    text-align:center;max-width:820px;margin:0 auto;padding:60px 20px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .quote-block .mark{font-family:"Cinzel",serif;font-size:4rem;color:rgba(233,196,106,.3);line-height:0;display:block;margin-bottom:18px}
+  .quote-block q{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(1.5rem,4vw,2.4rem);color:var(--cream);quotes:none;letter-spacing:.02em}
+  .quote-block .zh{display:block;margin-top:18px;font-family:"Noto Serif SC",serif;font-weight:300;font-size:1.15rem;color:var(--gold-bright);letter-spacing:.08em}
+  .quote-block .who{margin-top:20px;font-family:"Cinzel",serif;font-size:.78rem;letter-spacing:.3em;color:var(--txt-dim)}
+
+  /* ---------- WHY ---------- */
+  .why-list{display:flex;flex-direction:column;gap:18px;max-width:880px;margin:0 auto}
+  .why{
+    display:flex;gap:22px;align-items:flex-start;background:var(--card-bg);
+    border:1px solid var(--line);border-radius:12px;padding:24px 28px;transition:transform .4s,border-color .4s;
+  }
+  .why:hover{transform:translateX(8px);border-color:rgba(233,196,106,.45)}
+  .why .ic{font-family:"Cinzel",serif;font-weight:700;font-size:1.5rem;color:var(--gold);min-width:42px;text-align:center;
+    border:1px solid var(--line);border-radius:50%;padding:6px;height:42px;line-height:1.05;flex-shrink:0}
+  .why h4{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1.1rem;color:var(--cream);margin-bottom:6px}
+  .why p{font-size:.98rem;color:var(--txt-dim);font-weight:300}
+
+  /* ---------- HONORS ---------- */
+  .honors{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:920px;margin:0 auto}
+  .honor{
+    font-family:"Noto Serif SC",serif;font-size:.92rem;letter-spacing:.05em;color:var(--cream);
+    background:rgba(28,22,14,.55);border:1px solid var(--line);border-radius:30px;padding:11px 22px;
+    transition:transform .4s,background .4s,border-color .4s;
+  }
+  .honor.major{background:linear-gradient(120deg,rgba(193,87,47,.3),rgba(233,196,106,.18));border-color:rgba(233,196,106,.5);color:var(--gold-bright)}
+  .honor:hover{transform:translateY(-4px);border-color:var(--gold)}
+
+  /* ---------- ARCHIVE ---------- */
+  .archive{max-width:760px;margin:0 auto;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card-bg);backdrop-filter:blur(6px)}
+  .archive .row{display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid rgba(233,196,106,.12)}
+  .archive .row:last-child{border-bottom:none}
+  .archive .k{font-family:"Cinzel",serif;font-size:.78rem;letter-spacing:.18em;color:var(--gold);padding:18px 22px;background:rgba(0,0,0,.2);text-transform:uppercase}
+  .archive .v{font-family:"Noto Serif SC",serif;font-size:1rem;color:var(--txt);font-weight:300;padding:18px 22px;letter-spacing:.02em}
+
+  /* ---------- REVIEW ---------- */
+  .review{
+    max-width:820px;margin:0 auto;text-align:center;padding:50px 40px;
+    background:linear-gradient(160deg,rgba(28,22,14,.7),rgba(14,11,7,.7));
+    border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(8px);position:relative;
+  }
+  .review .stars{font-family:"Cinzel",serif;font-size:1.6rem;letter-spacing:.3em;color:var(--gold);margin-bottom:22px}
+  .review p{font-family:"Noto Serif SC",serif;font-weight:300;font-size:1.18rem;color:var(--cream);line-height:2;letter-spacing:.03em}
+  .review .sig{margin-top:26px;font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--gold-bright);font-size:1.05rem}
+
+  /* ---------- FOOTER ---------- */
+  footer{text-align:center;padding:54px 24px 70px;color:var(--txt-dim);font-family:"Cinzel",serif;letter-spacing:.25em;font-size:.72rem;position:relative;z-index:2}
+  footer .div{width:60px;height:1px;background:var(--line);margin:0 auto 22px}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    .ratings{grid-template-columns:repeat(2,1fr)}
+    .synopsis-card{grid-template-columns:1fr;gap:28px}
+    .poster-svg{max-width:300px;margin:0 auto}
+    .grid-3{grid-template-columns:1fr}
+  }
+  @media(max-width:480px){
+    .ratings{grid-template-columns:1fr}
+    section{padding:64px 18px}
+  }
+</style>
+</head>
+<body>
+<canvas id="sand-canvas"></canvas>
+<div class="bg-veil"></div>
+<div class="grain"></div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-year">1962</div>
+    <div class="hero-en">LAWRENCE&nbsp;OF&nbsp;ARABIA</div>
+    <div class="hero-cn">阿拉伯的劳伦斯</div>
+    <div class="hero-sub">A motion picture of vast proportions</div>
+    <div class="hero-meta">导演 大卫·里恩 · 主演 彼得·奥图尔</div>
+    <p class="hero-tagline">一位军官，一片无垠黄沙，<br>一个被自己亲手写进传说的名字。</p>
+    <div class="scroll-cue">SCROLL ▾</div>
+  </header>
+
+  <!-- RATINGS -->
+  <section class="reveal">
+    <h2 class="sec-title">CRITICAL ACCLAIM<span class="en">口碑与评分</span></h2>
+    <div class="sec-cn">影评人与观众共同加冕的丰碑</div>
+    <div class="ratings">
+      <div class="rating">
+        <div class="src">IMDb</div>
+        <div class="score" data-target="8.3" data-dec="1">0.0</div>
+        <div class="bar"><i data-pct="83"></i></div>
+      </div>
+      <div class="rating">
+        <div class="src">豆瓣 DOUBAN</div>
+        <div class="score" data-target="8.7" data-dec="1">0.0</div>
+        <div class="bar"><i data-pct="87"></i></div>
+      </div>
+      <div class="rating">
+        <div class="src">烂番茄 ROTTEN</div>
+        <div class="score" data-target="94" data-suf="%">0</div>
+        <div class="bar"><i data-pct="94"></i></div>
+      </div>
+      <div class="rating">
+        <div class="src">Metacritic</div>
+        <div class="score" data-target="100" data-suf="">0</div>
+        <div class="bar"><i data-pct="100"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYNOPSIS -->
+  <section class="reveal">
+    <h2 class="sec-title">THE STORY<span class="en">剧情梗概</span></h2>
+    <div class="sec-cn">无需剧透，只看它为何动人</div>
+    <div class="synopsis-card">
+      <!-- DESERT POSTER -->
+      <svg class="poster-svg" viewBox="0 0 280 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="沙漠中的独行者海报">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1b2e44"/>
+            <stop offset="42%" stop-color="#5a3a4e"/>
+            <stop offset="70%" stop-color="#a85a35"/>
+            <stop offset="100%" stop-color="#e0a85a"/>
+          </linearGradient>
+          <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fff3d6"/>
+            <stop offset="45%" stop-color="#f4d58d"/>
+            <stop offset="100%" stop-color="#e0a85a" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="duneA" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c79a5b"/><stop offset="100%" stop-color="#8a5a32"/>
+          </linearGradient>
+          <linearGradient id="duneB" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#e0b974"/><stop offset="100%" stop-color="#b07a3a"/>
+          </linearGradient>
+        </defs>
+        <rect width="280" height="380" rx="10" fill="url(#sky)"/>
+        <circle cx="140" cy="150" r="92" fill="url(#sun)"/>
+        <circle cx="140" cy="150" r="34" fill="#fff3d6" opacity="0.92"/>
+        <!-- stars -->
+        <g fill="#fdf3df" opacity="0.7">
+          <circle cx="40" cy="40" r="1.3"/><circle cx="240" cy="34" r="1"/><circle cx="200" cy="70" r="1.4"/>
+          <circle cx="70" cy="80" r="1"/><circle cx="250" cy="100" r="1.2"/><circle cx="30" cy="120" r="1"/>
+        </g>
+        <!-- distant dunes -->
+        <path d="M0,232 Q70,200 140,224 T280,216 L280,380 L0,380 Z" fill="url(#duneA)" opacity="0.85"/>
+        <!-- mid dune -->
+        <path d="M0,280 Q90,244 180,272 T280,260 L280,380 L0,380 Z" fill="url(#duneB)"/>
+        <!-- foreground dune -->
+        <path d="M0,330 Q120,300 280,328 L280,380 L0,380 Z" fill="#6e4423"/>
+        <!-- lone rider silhouette -->
+        <g fill="#1a1208" opacity="0.92">
+          <ellipse cx="150" cy="300" rx="26" ry="6"/>
+          <path d="M138,300 q4,-22 12,-22 q8,0 10,22 q-4,4 -11,4 q-7,0 -11,-4 Z"/>
+          <rect x="147" y="266" width="4" height="16" rx="2"/>
+          <circle cx="149" cy="262" r="4"/>
+          <path d="M151,272 l16,-6 -3,4 4,2 -17,4 Z"/>
+          <rect x="137" y="298" width="3" height="18" rx="1"/>
+          <rect x="161" y="298" width="3" height="18" rx="1"/>
+        </g>
+        <!-- title plate -->
+        <rect x="22" y="318" width="236" height="46" rx="6" fill="#0a1420" opacity="0.55"/>
+        <text x="140" y="338" text-anchor="middle" font-family="Cinzel,serif" font-weight="700" font-size="15" letter-spacing="2" fill="#f4d58d">LAWRENCE OF ARABIA</text>
+        <text x="140" y="356" text-anchor="middle" font-family="Noto Serif SC,serif" font-weight="500" font-size="13" letter-spacing="4" fill="#fdf3df">阿拉伯的劳伦斯</text>
+      </svg>
+
+      <div class="synopsis-text">
+        <p>第一次世界大战的硝烟中，英国陆军情报官 T.E. 劳伦斯被派往酷热而辽阔的阿拉伯半岛。他本是一个格格不入的异乡人，却渐渐融入贝都因部族的血脉，成为他们反抗奥斯曼帝国统治的起义中，难以忽视的一束光。</p>
+        <p>在无垠的黄沙与错综的部族政治之间，这位与众不同的英国人，开始书写一段远超任何人预期的传奇。影片改编自劳伦斯的回忆录《七根智慧之柱》，以近乎奢侈的影像篇幅，描摹一个人、一片土地与一场战争之间，难以厘清又令人心折的羁绊。</p>
+        <span class="no-spoiler">No Spoilers · 剧情仅提供背景框架，不揭示关键转折与结局</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="reveal">
+    <h2 class="sec-title">WHY IT SHINES<span class="en">六大亮点</span></h2>
+    <div class="sec-cn">它凭什么被写进影史</div>
+    <div class="grid-3">
+      <div class="hl">
+        <div class="num">01</div>
+        <h3>里恩的史诗之手</h3>
+        <p>大卫·里恩以近乎建筑师的精确调度宏大场面，却让每一帧都流淌着呼吸感——史诗的节奏，自此有了教科书。</p>
+      </div>
+      <div class="hl">
+        <div class="num">02</div>
+        <h3>黄沙即诗</h3>
+        <p>弗雷迪·扬的 70mm 宽银幕摄影，让沙漠不再是布景，而成为有性格、有情绪的主角。凝视，即是享受。</p>
+      </div>
+      <div class="hl">
+        <div class="num">03</div>
+        <h3>雅尔的不朽配乐</h3>
+        <p>莫里斯·雅尔写下的那支主题旋律，一响起便令人血液沸腾，成为电影音乐史上最易辨认的召唤之一。</p>
+      </div>
+      <div class="hl">
+        <div class="num">04</div>
+        <h3>奥图尔的封神</h3>
+        <p>彼得·奥图尔银幕初露锋芒便担纲主角，将一个复杂、迷人又危险的灵魂，永远刻进了电影史。</p>
+      </div>
+      <div class="hl">
+        <div class="num">05</div>
+        <h3>影史最著名转场之一</h3>
+        <p>吹灭火柴的青烟，无缝切到破晓的沙漠——一个镜头，定义了"蒙太奇的魔法"这个词。</p>
+      </div>
+      <div class="hl">
+        <div class="num">06</div>
+        <h3>七项奥斯卡加冕</h3>
+        <p>最佳影片、导演、摄影、配乐等七座小金人，为这部沙漠史诗盖上权威的认证印章。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="reveal">
+    <div class="quote-block">
+      <span class="mark">“</span>
+      <q>Nothing is written.</q>
+      <span class="zh">命运尚未写成。</span>
+      <div class="who">— T.E. LAWRENCE</div>
+    </div>
+  </section>
+
+  <!-- WHY WATCH -->
+  <section class="reveal">
+    <h2 class="sec-title">WORTH WATCHING<span class="en">为何值得一看</span></h2>
+    <div class="sec-cn">四个理由，足够你留出三个小时</div>
+    <div class="why-list">
+      <div class="why">
+        <div class="ic">Ⅰ</div>
+        <div><h4>影史最伟大史诗之一</h4><p>在众多"影史百大"权威榜单中名列前茅，是任何一部"必看电影清单"都无法省略的名字。</p></div>
+      </div>
+      <div class="why">
+        <div class="ic">Ⅱ</div>
+        <div><h4>沙漠的视觉诗学</h4><p>宽银幕美学的巅峰范本——它教你相信，一片空旷的黄沙也能承载最辽阔的人类情感。</p></div>
+      </div>
+      <div class="why">
+        <div class="ic">Ⅲ</div>
+        <div><h4>关于身份与神话的复杂肖像</h4><p>它不止于战争传奇，更在追问：一个人如何被历史塑造，又如何在自己的传说里迷失。</p></div>
+      </div>
+      <div class="why">
+        <div class="ic">Ⅳ</div>
+        <div><h4>跨越六十年的震撼</h4><p>即便今日重看，那种大银幕才有的庄严与孤独，依旧能让观众屏息——经典从不过时。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONORS -->
+  <section class="reveal">
+    <h2 class="sec-title">HONORS<span class="en">荣誉殿堂</span></h2>
+    <div class="sec-cn">10 项奥斯卡提名 · 7 项折桂</div>
+    <div class="honors">
+      <span class="honor major">奥斯卡 最佳影片</span>
+      <span class="honor major">奥斯卡 最佳导演（大卫·里恩）</span>
+      <span class="honor major">奥斯卡 最佳摄影（弗雷迪·扬）</span>
+      <span class="honor major">奥斯卡 最佳原创配乐（莫里斯·雅尔）</span>
+      <span class="honor">奥斯卡 最佳艺术指导</span>
+      <span class="honor">奥斯卡 最佳音响</span>
+      <span class="honor">奥斯卡 最佳剪辑</span>
+      <span class="honor">金球奖 最佳剧情片</span>
+      <span class="honor">金球奖 最佳导演</span>
+      <span class="honor">AFI 百年百大电影 第 5 位</span>
+    </div>
+  </section>
+
+  <!-- ARCHIVE -->
+  <section class="reveal">
+    <h2 class="sec-title">FILM DOSSIER<span class="en">影片档案</span></h2>
+    <div class="sec-cn">基本信息一览</div>
+    <div class="archive">
+      <div class="row"><div class="k">导演</div><div class="v">大卫·里恩 David Lean</div></div>
+      <div class="row"><div class="k">主演</div><div class="v">彼得·奥图尔、亚历克·吉尼斯、安东尼·奎恩、奥马尔·沙里夫</div></div>
+      <div class="row"><div class="k">上映</div><div class="v">1962 年</div></div>
+      <div class="row"><div class="k">片长</div><div class="v">216 分钟（修复版）</div></div>
+      <div class="row"><div class="k">国家</div><div class="v">英国</div></div>
+      <div class="row"><div class="k">类型</div><div class="v">传记 / 历史 / 战争 / 冒险</div></div>
+      <div class="row"><div class="k">摄影</div><div class="v">弗雷迪·扬 Freddie Young</div></div>
+      <div class="row"><div class="k">配乐</div><div class="v">莫里斯·雅尔 Maurice Jarre</div></div>
+      <div class="row"><div class="k">编剧</div><div class="v">罗伯特·博特、迈克尔·威尔逊</div></div>
+      <div class="row"><div class="k">原著</div><div class="v">T.E. 劳伦斯《七根智慧之柱》</div></div>
+    </div>
+  </section>
+
+  <!-- REVIEW -->
+  <section class="reveal">
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>在宽银幕尚未被滥用为奇观的年代，大卫·里恩用《阿拉伯的劳伦斯》证明：真正的史诗不在规模，而在凝视。当那个身影孤身立于无垠黄沙，你会明白，有些电影生来就是为了在大银幕上被仰望。</p>
+      <div class="sig">— 电影推荐 · 编辑部</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="div"></div>
+    经典电影推荐 · 每日一部 · Lawrence of Arabia (1962)
+  </footer>
+
+</div>
+
+<script>
+/* ---------- SAND / DESERT CANVAS ---------- */
+(function(){
+  const cv=document.getElementById('sand-canvas');
+  const ctx=cv.getContext('2d');
+  let W,H,DPR,parts=[];
+  function resize(){
+    DPR=Math.min(window.devicePixelRatio||1,2);
+    W=cv.width=innerWidth*DPR;H=cv.height=innerHeight*DPR;
+    cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';
+    build();
+  }
+  function build(){
+    parts=[];
+    const n=Math.round((innerWidth*innerHeight)/14000);
+    for(let i=0;i<n;i++){
+      parts.push(mk(true));
+    }
+  }
+  function mk(any){
+    return {
+      x:Math.random()*W,
+      y:any?Math.random()*H:H+10,
+      r:(Math.random()*1.6+0.4)*DPR,
+      sp:(Math.random()*0.5+0.15)*DPR,
+      drift:(Math.random()*0.4-0.1)*DPR,
+      a:Math.random()*0.5+0.18,
+      hue:Math.random()<0.5?42:34,  // sand golds
+      life:Math.random()*200+80,
+      t:Math.random()*Math.PI*2
+    };
+  }
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    // subtle warm haze gradient bottom
+    for(const p of parts){
+      p.x+=p.drift; p.y-=p.sp; p.t+=0.02;
+      const sway=Math.sin(p.t)*0.6*DPR;
+      const x=p.x+sway, y=p.y;
+      const g=ctx.createRadialGradient(x,y,0,x,y,p.r*4);
+      g.addColorStop(0,`hsla(${p.hue},70%,72%,${p.a})`);
+      g.addColorStop(1,`hsla(${p.hue},70%,72%,0)`);
+      ctx.fillStyle=g;
+      ctx.beginPath();ctx.arc(x,y,p.r*4,0,Math.PI*2);ctx.fill();
+      p.life--;
+      if(p.y< -20 || p.life<=0){ Object.assign(p,mk(false)); }
+    }
+    requestAnimationFrame(loop);
+  }
+  addEventListener('resize',resize);
+  resize();loop();
+})();
+
+/* ---------- REVEAL ---------- */
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- RATING COUNT-UP ---------- */
+function animateScores(){
+  document.querySelectorAll('.rating').forEach(card=>{
+    const scoreEl=card.querySelector('.score');
+    const bar=card.querySelector('.bar i');
+    const target=parseFloat(scoreEl.dataset.target);
+    const dec=parseInt(scoreEl.dataset.dec||"0");
+    const suf=scoreEl.dataset.suf||'';
+    const pct=parseFloat(bar.dataset.pct);
+    // bar
+    setTimeout(()=>{ bar.style.width=pct+'%'; },120);
+    // number
+    let cur=0;const dur=1500;const st=performance.now();
+    function step(now){
+      const p=Math.min((now-st)/dur,1);
+      const e=1-Math.pow(1-p,3);
+      cur=target*e;
+      scoreEl.innerHTML=(dec>0?cur.toFixed(dec):Math.round(cur))+(suf?'<span class="suf">'+suf+'</span>':'');
+      if(p<1) requestAnimationFrame(step);
+      else scoreEl.innerHTML=(dec>0?target.toFixed(dec):target)+(suf?'<span class="suf">'+suf+'</span>':'');
+    }
+    requestAnimationFrame(step);
+  });
+}
+const scoreIO=new IntersectionObserver((es)=>{
+  es.forEach(e=>{ if(e.isIntersecting){ animateScores(); scoreIO.disconnect(); }});
+},{threshold:0.3});
+const ratingsSec=document.querySelector('.ratings').closest('section');
+scoreIO.observe(ratingsSec);
+</script>
+</body>
+</html>

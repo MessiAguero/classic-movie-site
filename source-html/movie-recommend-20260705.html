@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>哈尔的移动城堡 — 经典电影推荐</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --bg: #0b1424;
+    --bg2: #111d32;
+    --teal: #1a3a4a;
+    --teal-light: #2a5a6a;
+    --copper: #c06030;
+    --copper-glow: #e08040;
+    --gold: #d4a04a;
+    --gold-light: #e8c070;
+    --cream: #f0e6d0;
+    --cream-dark: #c8b898;
+    --magic-blue: #4a8fbf;
+    --magic-glow: rgba(74, 143, 191, 0.3);
+    --text: #e8e0d0;
+    --text-dim: #a09880;
+    --card-bg: rgba(26, 58, 74, 0.25);
+    --card-border: rgba(212, 160, 74, 0.15);
+    --font-serif: 'Georgia', 'Times New Roman', serif;
+    --font-sans: 'SF Pro Display', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ─── Canvas Background ─── */
+  #particle-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ─── Scroll Progress ─── */
+  #scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--copper), var(--gold), var(--magic-blue));
+    z-index: 1000;
+    width: 0%;
+    transition: width 0.1s;
+  }
+
+  /* ─── Hero ─── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(10, 30, 50, 0.4) 0%, var(--bg) 70%);
+    z-index: -1;
+  }
+
+  .hero-year {
+    font-size: clamp(5rem, 15vw, 12rem);
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    background: linear-gradient(180deg, var(--gold-light) 0%, var(--copper) 60%, transparent 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    opacity: 0.3;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    pointer-events: none;
+  }
+
+  .hero-castle {
+    width: 280px;
+    max-width: 60vw;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 40px rgba(192, 96, 48, 0.3));
+    animation: castleFloat 6s ease-in-out infinite;
+  }
+
+  @keyframes castleFloat {
+    0%, 100% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-12px) rotate(1deg); }
+  }
+
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    color: var(--gold-light);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-title-en {
+    font-size: clamp(0.9rem, 2vw, 1.3rem);
+    color: var(--cream-dark);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+    font-weight: 300;
+  }
+
+  .hero-tagline {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: var(--cream);
+    font-style: italic;
+    font-family: var(--font-serif);
+    margin: 1rem 0 0.5rem;
+    opacity: 0.85;
+  }
+
+  .hero-sub {
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    color: var(--text-dim);
+    margin-top: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-sub span {
+    color: var(--gold);
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    color: var(--text-dim);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    animation: scrollBounce 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); opacity: 0.6; }
+    50% { transform: translateY(8px); opacity: 1; }
+  }
+
+  /* ─── Section Common ─── */
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-header p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+  }
+
+  .section-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--copper), transparent);
+    margin: 0.8rem auto;
+  }
+
+  /* ─── Reveal Animation ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── Ratings ─── */
+  .ratings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin: 0 auto 3rem;
+  }
+
+  .rating-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .rating-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+  }
+
+  .rating-source {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+
+  .rating-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    font-family: var(--font-serif);
+  }
+
+  .rating-number .suffix {
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+  }
+
+  .rating-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    margin-top: 1rem;
+    overflow: hidden;
+  }
+
+  .rating-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    width: 0%;
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+    background: linear-gradient(90deg, var(--copper), var(--gold));
+  }
+
+  .rating-bar-fill.blue { background: linear-gradient(90deg, var(--magic-blue), #6ab0e0); }
+
+  /* ─── Plot ─── */
+  .plot-section {
+    background: linear-gradient(180deg, transparent 0%, rgba(26, 58, 74, 0.15) 50%, transparent 100%);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .plot-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .plot-text {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--cream);
+  }
+
+  .plot-text p + p { margin-top: 1.2rem; }
+
+  .no-spoiler-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(192, 96, 48, 0.2);
+    border: 1px solid var(--copper);
+    border-radius: 20px;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.75rem;
+    color: var(--copper-glow);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.2rem;
+  }
+
+  .no-spoiler-badge svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+  .plot-poster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .plot-poster svg {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    filter: drop-shadow(0 10px 30px rgba(192, 96, 48, 0.2));
+  }
+
+  /* ─── Highlights ─── */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .highlight-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--copper), var(--gold), var(--magic-blue));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+  }
+
+  .highlight-card:hover::before { transform: scaleX(1); }
+  .highlight-card:hover { transform: translateY(-6px); border-color: rgba(212,160,74,0.3); }
+
+  .highlight-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .highlight-card h3 {
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+
+  .highlight-card p {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  /* ─── Quotes ─── */
+  .quote-section {
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .quote-block {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+  }
+
+  .quote-block blockquote {
+    font-family: var(--font-serif);
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.8;
+    position: relative;
+    padding: 0 1rem;
+  }
+
+  .quote-block blockquote::before {
+    content: '\201C';
+    font-size: 4rem;
+    color: var(--copper);
+    position: absolute;
+    top: -1.5rem;
+    left: -0.5rem;
+    opacity: 0.4;
+    font-style: normal;
+  }
+
+  .quote-block blockquote::after {
+    content: '\201D';
+    font-size: 4rem;
+    color: var(--copper);
+    position: absolute;
+    bottom: -2.5rem;
+    right: -0.5rem;
+    opacity: 0.4;
+    font-style: normal;
+  }
+
+  .quote-source {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    margin-top: 0.5rem;
+  }
+
+  /* ─── Why Watch ─── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .why-item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .why-item:hover {
+    background: rgba(26, 58, 74, 0.4);
+    border-color: var(--copper);
+  }
+
+  .why-num {
+    font-size: 0.75rem;
+    color: var(--copper);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.3rem;
+  }
+
+  .why-item h3 {
+    font-size: 1rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .why-item p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* ─── Film Info ─── */
+  .film-info {
+    background: rgba(26, 58, 74, 0.15);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  .film-info h3 {
+    font-family: var(--font-serif);
+    color: var(--gold);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .info-label {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+
+  .info-value {
+    font-size: 0.95rem;
+    color: var(--cream);
+  }
+
+  /* ─── Editor's Note ─── */
+  .editors-note {
+    text-align: center;
+    padding: 4rem 2rem 5rem;
+  }
+
+  .editors-note .star-rating {
+    font-size: 2rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .editors-note p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--cream);
+    font-size: 1.05rem;
+    line-height: 1.9;
+  }
+
+  .editors-note .sig {
+    margin-top: 1.5rem;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    font-style: italic;
+    font-family: var(--font-serif);
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    .plot-content { grid-template-columns: 1fr; gap: 2rem; }
+    .plot-poster { order: -1; }
+    section { padding: 3rem 1.2rem; }
+    .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+    .highlights-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .ratings-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div id="scroll-progress"></div>
+
+<!-- Canvas -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero">
+  <div class="hero-year">2004</div>
+
+  <svg class="hero-castle" viewBox="0 0 280 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background glow -->
+    <ellipse cx="140" cy="180" rx="100" ry="20" fill="rgba(192,96,48,0.12)" filter="url(#blur)"/>
+    <defs><filter id="blur"><feGaussianBlur stdDeviation="6"/></filter></defs>
+    
+    <!-- Main tower body -->
+    <rect x="120" y="40" width="40" height="80" rx="4" fill="#3a2a1a" stroke="#c06030" stroke-width="1.5"/>
+    <!-- Tower top -->
+    <polygon points="125,40 140,18 155,40" fill="#4a3a2a" stroke="#c06030" stroke-width="1.5"/>
+    <!-- Tower spire -->
+    <polygon points="138,18 140,4 142,18" fill="#c06030"/>
+    <!-- Tower windows -->
+    <rect x="130" y="55" width="8" height="12" rx="2" fill="#4a8fbf" opacity="0.7"/>
+    <rect x="142" y="55" width="8" height="12" rx="2" fill="#4a8fbf" opacity="0.7"/>
+    <rect x="130" y="80" width="8" height="12" rx="2" fill="#4a8fbf" opacity="0.5"/>
+    <rect x="142" y="80" width="8" height="12" rx="2" fill="#4a8fbf" opacity="0.5"/>
+
+    <!-- Left turret -->
+    <rect x="88" y="60" width="24" height="60" rx="3" fill="#2a1a0a" stroke="#c06030" stroke-width="1.2"/>
+    <polygon points="92,60 100,44 108,60" fill="#3a2a1a" stroke="#c06030" stroke-width="1.2"/>
+    <circle cx="100" cy="46" r="3" fill="#4a8fbf" opacity="0.8"/>
+    <rect x="94" y="75" width="6" height="8" rx="1" fill="#4a8fbf" opacity="0.5"/>
+
+    <!-- Right turret -->
+    <rect x="168" y="55" width="20" height="65" rx="3" fill="#2a1a0a" stroke="#c06030" stroke-width="1.2"/>
+    <polygon points="171,55 178,38 185,55" fill="#3a2a1a" stroke="#c06030" stroke-width="1.2"/>
+    <circle cx="178" cy="40" r="2.5" fill="#4a8fbf" opacity="0.8"/>
+
+    <!-- Base structure -->
+    <rect x="80" y="120" width="120" height="30" rx="5" fill="#3a2a1a" stroke="#d4a04a" stroke-width="1.5"/>
+    <!-- Door -->
+    <rect x="125" y="128" width="30" height="22" rx="3" fill="#5a4a3a" stroke="#d4a04a" stroke-width="1"/>
+    <circle cx="148" cy="140" r="2" fill="#d4a04a"/>
+
+    <!-- Left wing building -->
+    <polygon points="40,130 80,100 80,150" fill="#2a1a0a" stroke="#c06030" stroke-width="1.2"/>
+    <polygon points="30,150 80,150 80,170 40,170" fill="#3a2a1a" stroke="#c06030" stroke-width="1.2"/>
+    <rect x="50" y="153" width="8" height="10" rx="1" fill="#4a8fbf" opacity="0.4"/>
+
+    <!-- Right wing building -->
+    <polygon points="240,120 200,90 200,150" fill="#2a1a0a" stroke="#c06030" stroke-width="1.2"/>
+    <polygon points="200,140 200,170 250,170 250,150" fill="#3a2a1a" stroke="#c06030" stroke-width="1.2"/>
+    <rect x="218" y="148" width="8" height="10" rx="1" fill="#4a8fbf" opacity="0.4"/>
+
+    <!-- Mechanical legs/gear accents -->
+    <circle cx="90" cy="155" r="8" fill="none" stroke="#d4a04a" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="90" cy="155" r="3" fill="#d4a04a" opacity="0.3"/>
+    <circle cx="210" cy="155" r="8" fill="none" stroke="#d4a04a" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="210" cy="155" r="3" fill="#d4a04a" opacity="0.3"/>
+
+    <!-- Chimney -->
+    <rect x="145" y="26" width="6" height="16" fill="#2a1a0a" stroke="#c06030" stroke-width="0.8"/>
+    <!-- Smoke puffs -->
+    <circle cx="148" cy="18" r="5" fill="rgba(200,180,150,0.2)"/>
+    <circle cx="152" cy="10" r="7" fill="rgba(200,180,150,0.15)"/>
+    <circle cx="158" cy="4" r="6" fill="rgba(200,180,150,0.1)"/>
+
+    <!-- Magic runes around castle -->
+    <circle cx="72" cy="90" r="4" fill="none" stroke="#4a8fbf" stroke-width="0.8" opacity="0.4">
+      <animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="210" cy="80" r="3" fill="none" stroke="#4a8fbf" stroke-width="0.8" opacity="0.4">
+      <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="100" cy="30" r="3" fill="none" stroke="#4a8fbf" stroke-width="0.8" opacity="0.3">
+      <animate attributeName="opacity" values="0.1;0.5;0.1" dur="4s" repeatCount="indefinite"/>
+    </circle>
+  </svg>
+
+  <h1 class="hero-title">哈尔的移动城堡</h1>
+  <p class="hero-title-en">Howl's Moving Castle</p>
+  <p class="hero-tagline">「心を燃やせ。君の生きる意味を見つけろ。」</p>
+  <p class="hero-sub">导演: <span>宫崎骏</span> &nbsp;·&nbsp; 制作: <span>吉卜力工作室</span> &nbsp;·&nbsp; 上映: <span>2004</span></p>
+
+  <div class="scroll-indicator">— SCROLL —</div>
+</header>
+
+<!-- ═══ RATINGS ═══ -->
+<section class="reveal">
+  <div class="section-header">
+    <h2>评分与口碑</h2>
+    <div class="section-divider"></div>
+    <p>全球权威影评网站的一致赞誉</p>
+  </div>
+  <div class="ratings-grid" id="ratings-grid">
+    <div class="rating-card">
+      <div class="rating-source">IMDb</div>
+      <div class="rating-number"><span class="count" data-target="8.2">0</span><span class="suffix">/10</span></div>
+      <div class="rating-bar"><div class="rating-bar-fill" data-pct="82"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-source">豆瓣</div>
+      <div class="rating-number"><span class="count" data-target="9.1">0</span><span class="suffix">/10</span></div>
+      <div class="rating-bar"><div class="rating-bar-fill" data-pct="91"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-source">烂番茄</div>
+      <div class="rating-number"><span class="count" data-target="87">0</span><span class="suffix">%</span></div>
+      <div class="rating-bar"><div class="rating-bar-fill blue" data-pct="87"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-source">Metacritic</div>
+      <div class="rating-number"><span class="count" data-target="80">0</span><span class="suffix">/100</span></div>
+      <div class="rating-bar"><div class="rating-bar-fill" data-pct="80"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PLOT ═══ -->
+<section class="reveal">
+  <div class="section-header">
+    <h2>剧情概要</h2>
+    <div class="section-divider"></div>
+    <p>无剧透 · 仅提供故事框架</p>
+  </div>
+  <div class="plot-section">
+    <div class="plot-content">
+      <div class="plot-text">
+        <div class="no-spoiler-badge">
+          <svg viewBox="0 0 14 14"><path d="M7 1C3.5 1 1 4 1 7s2.5 6 6 6 6-2.5 6-6S10.5 1 7 1zM7 10.5a.8.8 0 0 1-.8-.8V6.8a.8.8 0 0 1 1.6 0v2.9c0 .4-.4.8-.8.8zM7 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></svg>
+          无剧透保证
+        </div>
+        <p>
+          在一個魔法與蒸汽機並存的奇幻世界裡，年輕的制帽匠苏菲过着平淡而安稳的生活。一天，她意外遇到了传说中会吞噬少女心脏的魔法师哈尔，随后被荒野女巫施下诅咒——变成了一位老婆婆。
+        </p>
+        <p>
+          为了解开诅咒，苏菲逃进了一座可以行走的移动城堡。在那里，她遇见了火焰恶魔卡西法、少年学徒马鲁克，以及神秘而充满孩子气的城堡主人哈尔。在这个看似支离破碎的大家庭中，苏菲逐渐找到了自己的位置。
+        </p>
+        <p>
+          与此同时，王国陷入了一场无端的战争，哈尔被卷入其中。苏菲必须在魔法、战争和命运的交织中，用自己的勇气和真心去拯救她所珍视的人，也找到自己存在的意义。
+        </p>
+      </div>
+      <div class="plot-poster">
+        <svg viewBox="0 0 320 440" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background frame -->
+          <rect x="0" y="0" width="320" height="440" rx="12" fill="#1a1a2a" stroke="#c06030" stroke-width="2"/>
+          <rect x="6" y="6" width="308" height="428" rx="9" fill="#0b1424" stroke="#d4a04a" stroke-width="0.5" opacity="0.3"/>
+
+          <!-- Top title area -->
+          <text x="160" y="36" text-anchor="middle" fill="#d4a04a" font-size="10" font-family="serif" letter-spacing="4">STUDIO GHIBLI</text>
+          <text x="160" y="55" text-anchor="middle" fill="#e8c070" font-size="16" font-family="serif" letter-spacing="6">ハウルの動く城</text>
+
+          <!-- Dual silhouette - Howl & Sophie -->
+          <!-- Sophie (old) silhouette -->
+          <ellipse cx="110" cy="130" rx="28" ry="35" fill="#2a1a0a" opacity="0.8"/>
+          <line x1="110" y1="165" x2="100" y2="220" stroke="#2a1a0a" stroke-width="4" opacity="0.8"/>
+          <line x1="110" y1="165" x2="120" y2="220" stroke="#2a1a0a" stroke-width="3" opacity="0.8"/>
+          <circle cx="110" cy="115" r="12" fill="#3a2a1a" opacity="0.7"/>
+          <!-- Shawl/cape -->
+          <path d="M85 145 Q110 135 135 145 Q140 180 130 220" fill="#1a1a2a" opacity="0.6"/>
+
+          <!-- Howl silhouette -->
+          <ellipse cx="210" cy="125" rx="22" ry="38" fill="#1a0a0a" opacity="0.8"/>
+          <line x1="210" y1="163" x2="200" y2="215" stroke="#1a0a0a" stroke-width="3" opacity="0.8"/>
+          <line x1="210" y1="163" x2="220" y2="215" stroke="#1a0a0a" stroke-width="3" opacity="0.8"/>
+          <circle cx="210" cy="108" r="11" fill="#1a0a0a" opacity="0.7"/>
+          <!-- Hair/cape flowing -->
+          <path d="M195 100 Q190 120 185 140 Q190 130 195 115" fill="none" stroke="#c06030" stroke-width="1.5" opacity="0.4"/>
+          <path d="M225 100 Q230 120 235 140 Q230 130 225 115" fill="none" stroke="#c06030" stroke-width="1.5" opacity="0.4"/>
+
+          <!-- Heart glow between them -->
+          <circle cx="160" cy="140" r="15" fill="none" stroke="#c06030" stroke-width="1" opacity="0.3">
+            <animate attributeName="r" values="14;18;14" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="160" cy="140" r="5" fill="#c06030" opacity="0.3">
+            <animate attributeName="opacity" values="0.2;0.6;0.2" dur="3s" repeatCount="indefinite"/>
+          </circle>
+
+          <!-- Calcifer (small flame at bottom) -->
+          <g transform="translate(140, 270)">
+            <path d="M0 15 Q-8 8 -5 0 Q-2 -6 0 -3 Q2 -6 5 0 Q8 8 0 15Z" fill="#c06030" opacity="0.7">
+              <animateTransform attributeName="transform" type="translate" values="0,0;-2,-3;2,-1;0,0" dur="0.8s" repeatCount="indefinite"/>
+            </path>
+            <path d="M0 12 Q-5 6 -3 0 Q0 -5 3 0 Q5 6 0 12Z" fill="#e8c070" opacity="0.6">
+              <animateTransform attributeName="transform" type="translate" values="0,0;1,-2;-1,-1;0,0" dur="0.6s" repeatCount="indefinite"/>
+            </path>
+            <circle cx="0" cy="1" r="1.5" fill="#fff" opacity="0.5">
+              <animate attributeName="opacity" values="0.3;0.7;0.3" dur="0.5s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+
+          <!-- Magic sparkles -->
+          <circle cx="80" cy="200" r="2" fill="#4a8fbf" opacity="0.5">
+            <animate attributeName="opacity" values="0.1;0.6;0.1" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="240" cy="180" r="1.5" fill="#4a8fbf" opacity="0.4">
+            <animate attributeName="opacity" values="0.2;0.7;0.2" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="250" cy="200" r="1.5" fill="#d4a04a" opacity="0.4">
+            <animate attributeName="opacity" values="0.1;0.5;0.1" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="70" cy="170" r="1" fill="#d4a04a" opacity="0.3">
+            <animate attributeName="opacity" values="0;0.6;0" dur="1.5s" repeatCount="indefinite"/>
+          </circle>
+
+          <!-- Field/ground -->
+          <path d="M0 320 Q80 300 160 315 Q240 330 320 310 L320 440 L0 440Z" fill="#1a3a2a" opacity="0.4"/>
+
+          <!-- Bottom text -->
+          <text x="160" y="370" text-anchor="middle" fill="#c06030" font-size="11" letter-spacing="3">HOWL'S MOVING CASTLE</text>
+          <text x="160" y="390" text-anchor="middle" fill="#a09880" font-size="8" letter-spacing="2">A STUDIO GHIBLI FILM</text>
+
+          <!-- Frame corners -->
+          <path d="M10 30 L10 10 L30 10" fill="none" stroke="#d4a04a" stroke-width="1.5" opacity="0.5"/>
+          <path d="M310 30 L310 10 L290 10" fill="none" stroke="#d4a04a" stroke-width="1.5" opacity="0.5"/>
+          <path d="M10 410 L10 430 L30 430" fill="none" stroke="#d4a04a" stroke-width="1.5" opacity="0.5"/>
+          <path d="M310 410 L310 430 L290 430" fill="none" stroke="#d4a04a" stroke-width="1.5" opacity="0.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HIGHLIGHTS ═══ -->
+<section class="reveal">
+  <div class="section-header">
+    <h2>六大亮点</h2>
+    <div class="section-divider"></div>
+    <p>为什么这部电影令人着迷</p>
+  </div>
+  <div class="highlights-grid">
+    <div class="highlight-card">
+      <span class="highlight-icon">🏰</span>
+      <h3>宫崎骏的想象巅峰</h3>
+      <p>蒸汽朋克与魔法世界的完美融合——行走的钢铁城堡、会说话的火焰恶魔、移动的荒野大门，每一帧都充满了令人惊叹的创造力。</p>
+    </div>
+    <div class="highlight-card">
+      <span class="highlight-icon">🎵</span>
+      <h3>久石让的永恒旋律</h3>
+      <p>主题曲《人生的旋转木马》(Merry-Go-Round of Life) 是影史最经典的配乐之一，圆舞曲般的旋律将浪漫与奇幻完美交织，令人过耳不忘。</p>
+    </div>
+    <div class="highlight-card">
+      <span class="highlight-icon">🕊️</span>
+      <h3>反战与和平</h3>
+      <p>宫崎骏用魔幻的外衣包裹着对战争的深刻反思。战争的无意义与荒诞在片中展露无遗，而和平的珍贵则通过每一个角色的选择得到彰显。</p>
+    </div>
+    <div class="highlight-card">
+      <span class="highlight-icon">👩</span>
+      <h3>苏菲的蜕变</h3>
+      <p>从自卑怯懦的少女到坚定勇敢的女性，苏菲的成长是整部电影的灵魂。她的勇气不是来自魔法，而是来自内心的力量——这是宫崎骏献给所有女孩的赞歌。</p>
+    </div>
+    <div class="highlight-card">
+      <span class="highlight-icon">❤️</span>
+      <h3>爱与救赎</h3>
+      <p>影片探讨了爱的多种形态——爱情、亲情、友情，以及最重要的：自爱。每一个被诅咒的角色，最终都是通过爱找回了真实的自己。</p>
+    </div>
+    <div class="highlight-card">
+      <span class="highlight-icon">🎨</span>
+      <h3>视觉盛宴</h3>
+      <p>吉卜力手绘动画的集大成之作。从移动城堡的机械细节到繁花似锦的山坡，从魔法漩涡的绚烂到夜空的梦幻，每一帧都是一幅可以挂上墙的艺术品。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QUOTES ═══ -->
+<section class="quote-section reveal">
+  <div class="quote-block">
+    <blockquote>
+      世界这么大，人生这么长，总会有这么一个人，让你想要温柔地对待。
+    </blockquote>
+    <p class="quote-source">— 苏菲</p>
+  </div>
+  <div class="quote-block" style="margin-top:2.5rem;">
+    <blockquote>
+      我已经逃避得太久了，现在终于等到了一个我愿意誓死守护的人。
+    </blockquote>
+    <p class="quote-source">— 哈尔</p>
+  </div>
+</section>
+
+<!-- ═══ WHY WATCH ═══ -->
+<section class="reveal">
+  <div class="section-header">
+    <h2>为什么值得一看</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-num">01</div>
+      <h3>跨越年龄的经典</h3>
+      <p>孩子看到奇幻冒险，少年读到浪漫爱情，成年人则品出人生与责任的重量。每一次重温，都是一次全新的共鸣。</p>
+    </div>
+    <div class="why-item">
+      <div class="why-num">02</div>
+      <h3>最浪漫的宫崎骏</h3>
+      <p>如果说《千与千寻》是关于成长，《幽灵公主》是关于自然，那《哈尔的移动城堡》就是宫崎骏最柔情似水的情书。</p>
+    </div>
+    <div class="why-item">
+      <div class="why-num">03</div>
+      <h3>画风与配乐的双重享受</h3>
+      <p>手绘动画的极致美感配上久石让最动人的配乐之一，视听体验无可挑剔。仅凭这两点，就值得你花两个小时沉浸其中。</p>
+    </div>
+    <div class="why-item">
+      <div class="why-num">04</div>
+      <h3>内核深刻，回味无穷</h3>
+      <p>关于自我认同、衰老与美丽、战争与和平的探讨，让这部电影超越了简单的童话故事，成为一部值得反复品味的成人寓言。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FILM INFO ═══ -->
+<section class="reveal">
+  <div class="section-header">
+    <h2>影片档案</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="film-info">
+    <h3>📋 基本信息</h3>
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="info-label">片名</span>
+        <span class="info-value">哈尔的移动城堡</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">英文片名</span>
+        <span class="info-value">Howl's Moving Castle</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">日文片名</span>
+        <span class="info-value">ハウルの動く城</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">导演</span>
+        <span class="info-value">宫崎骏</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">制片</span>
+        <span class="info-value">吉卜力工作室</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">上映年份</span>
+        <span class="info-value">2004 年</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">片长</span>
+        <span class="info-value">119 分钟</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">配乐</span>
+        <span class="info-value">久石让</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">原著</span>
+        <span class="info-value">戴安娜·韦恩·琼斯（1986）</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">奖项</span>
+        <span class="info-value">奥斯卡最佳动画长片提名</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EDITOR'S NOTE ═══ -->
+<section class="editors-note reveal">
+  <div class="star-rating">★★★★★</div>
+  <p>
+    《哈尔的移动城堡》不仅仅是一部动画电影——它是一扇通往魔法世界的大门，一段关于勇气与爱的旅程，一次对灵魂深处的温柔叩问。无论你是在十岁还是三十岁第一次遇见它，它都会在你心里留下一个温暖而永恒的印记。
+  </p>
+  <p class="sig">— 编辑推荐 · 五星必看</p>
+</section>
+
+<script>
+// ─── Canvas Particle System ───
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const particles = [];
+const PARTICLE_COUNT = 140;
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.size = Math.random() * 3 + 1;
+    this.speedY = -Math.random() * 0.3 - 0.08;
+    this.speedX = (Math.random() - 0.5) * 0.2;
+    this.life = Math.random();
+    this.lifeSpeed = 0.003 + Math.random() * 0.005;
+    // Color: copper / gold / magic blue / warm white
+    const colors = [
+      { h: 20, s: 70, l: 55 },   // copper
+      { h: 38, s: 75, l: 60 },   // gold
+      { h: 200, s: 50, l: 55 },  // magic blue
+      { h: 35, s: 30, l: 80 },   // warm white
+    ];
+    const c = colors[Math.floor(Math.random() * colors.length)];
+    this.h = c.h;
+    this.s = c.s;
+    this.l = c.l;
+    this.alpha = Math.random() * 0.4 + 0.1;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.life += this.lifeSpeed;
+    this.alpha = 0.15 + Math.sin(this.life * Math.PI * 2) * 0.15 + Math.random() * 0.1;
+    if (this.y < -10 || this.x < -10 || this.x > W + 10) {
+      this.reset();
+      this.y = H + 5;
+    }
+  }
+  draw(ctx) {
+    ctx.beginPath();
+    const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 3);
+    const color = `hsla(${this.h}, ${this.s}%, ${this.l}%, ${this.alpha})`;
+    grad.addColorStop(0, color);
+    grad.addColorStop(0.3, `hsla(${this.h}, ${this.s}%, ${this.l}%, ${this.alpha * 0.3})`);
+    grad.addColorStop(1, `hsla(${this.h}, ${this.s}%, ${this.l}%, 0)`);
+    ctx.fillStyle = grad;
+    ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < PARTICLE_COUNT; i++) {
+  particles.push(new Particle());
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => { p.update(); p.draw(ctx); });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ─── Scroll Progress ───
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = Math.min(scrollTop / docHeight, 1) * 100;
+  document.getElementById('scroll-progress').style.width = progress + '%';
+});
+
+// ─── Intersection Observer ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── Rating Count Animation ───
+function animateCounters() {
+  const counters = document.querySelectorAll('.count');
+  const bars = document.querySelectorAll('.rating-bar-fill');
+
+  const ratingSection = document.getElementById('ratings-grid');
+  const rect = ratingSection.getBoundingClientRect();
+  const isVisible = rect.top < window.innerHeight - 100;
+
+  if (!isVisible) return;
+
+  counters.forEach(counter => {
+    const target = parseFloat(counter.dataset.target);
+    const isDecimal = target % 1 !== 0;
+    const duration = 1800;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = eased * target;
+      counter.textContent = isDecimal ? current.toFixed(1) : Math.round(current);
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  });
+
+  bars.forEach((bar, i) => {
+    setTimeout(() => {
+      bar.style.width = bar.dataset.pct + '%';
+    }, i * 100);
+  });
+}
+
+// Initial check + scroll listener
+setTimeout(animateCounters, 600);
+window.addEventListener('scroll', animateCounters);
+</script>
+
+</body>
+</html>

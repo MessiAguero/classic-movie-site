@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>花样年华 · In the Mood for Love · 电影推荐</title>
+<style>
+  /* ========== Reset & Base ========== */
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  
+  :root {
+    --crimson: #8B0000;
+    --deep-red: #6B1A1A;
+    --emerald: #1A4A3A;
+    --dark-gold: #8B753A;
+    --light-gold: #C8A952;
+    --cream: #F5F0E8;
+    --charcoal: #1A1816;
+    --warm-black: #0D0B0A;
+    --smoke: rgba(200, 170, 90, 0.08);
+    --card-bg: rgba(20, 18, 16, 0.85);
+    --text-primary: #E8E0D0;
+    --text-secondary: #A09888;
+  }
+
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: "Noto Serif SC", "Source Han Serif SC", "STSong", "SimSun", "Songti SC", Georgia, serif;
+    background: var(--warm-black);
+    color: var(--text-primary);
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ========== Canvas Background ========== */
+  #particle-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ========== Overlay Gradients ========== */
+  .overlay-top {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 40vh;
+    background: linear-gradient(180deg, rgba(13,11,10,1) 0%, rgba(13,11,10,0.4) 60%, transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .overlay-bottom {
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 100%; height: 30vh;
+    background: linear-gradient(0deg, rgba(13,11,10,1) 0%, rgba(13,11,10,0.3) 70%, transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* ========== Vignette ========== */
+  .vignette {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.7) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* ========== Scan Lines ========== */
+  .scanlines {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.08) 2px,
+      rgba(0,0,0,0.08) 4px
+    );
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  /* ========== Main Container ========== */
+  .container {
+    position: relative;
+    z-index: 10;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ========== Hero ========== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 0 80px;
+    position: relative;
+  }
+
+  .hero-year {
+    font-size: clamp(6rem, 18vw, 14rem);
+    font-weight: 900;
+    color: rgba(139, 117, 58, 0.12);
+    letter-spacing: -0.06em;
+    line-height: 1;
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 20px;
+    border: 1px solid rgba(200, 169, 82, 0.25);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    color: var(--light-gold);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    background: rgba(139, 117, 58, 0.08);
+    backdrop-filter: blur(4px);
+  }
+  .hero-badge span { color: var(--text-secondary); }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 6vw, 4.8rem);
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 40px rgba(200, 169, 82, 0.15);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    color: var(--light-gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+
+  .hero-tagline {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--text-secondary);
+    max-width: 520px;
+    line-height: 2;
+    letter-spacing: 0.05em;
+    font-style: italic;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .hero-tagline::before,
+  .hero-tagline::after {
+    content: '——';
+    color: var(--dark-gold);
+    opacity: 0.4;
+    margin: 0 8px;
+  }
+
+  .hero-director {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+  }
+  .hero-director em {
+    color: var(--light-gold);
+    font-style: normal;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(200, 169, 82, 0.3);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    animation: floatDown 2.5s ease-in-out infinite;
+  }
+  .scroll-hint .arrow {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(180deg, rgba(200,169,82,0.4), transparent);
+  }
+
+  @keyframes floatDown {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+    50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
+  }
+
+  /* ========== Section Headers ========== */
+  .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .section-header .en {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: rgba(200, 169, 82, 0.3);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section-header h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    color: var(--cream);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .section-header .divider {
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--dark-gold), transparent);
+    margin: 16px auto 0;
+  }
+
+  /* ========== Score Cards ========== */
+  .scores {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 80px;
+  }
+
+  .score-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(200, 169, 82, 0.1);
+    border-radius: 12px;
+    padding: 24px 16px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: border-color 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .score-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .score-card:hover {
+    border-color: rgba(200, 169, 82, 0.3);
+    transform: translateY(-4px);
+  }
+  .score-card .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+  .score-card .number {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--light-gold);
+    font-feature-settings: "tnum";
+  }
+  .score-card .bar-wrap {
+    width: 100%;
+    height: 3px;
+    background: rgba(200, 169, 82, 0.08);
+    border-radius: 2px;
+    margin-top: 12px;
+    overflow: hidden;
+  }
+  .score-card .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--dark-gold), var(--light-gold));
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .score-card.visible .bar-fill { width: var(--pct); }
+
+  /* ========== 剧情梗概 ========== */
+  .synopsis {
+    margin-bottom: 80px;
+    padding: 48px;
+    background: var(--card-bg);
+    border: 1px solid rgba(200, 169, 82, 0.08);
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  .synopsis.visible { opacity: 1; transform: translateY(0); }
+  .synopsis p {
+    font-size: 1rem;
+    color: var(--text-primary);
+    line-height: 2.2;
+    text-indent: 2em;
+    margin-bottom: 16px;
+  }
+  .synopsis p:last-child { margin-bottom: 0; }
+  .synopsis .spoiler-free {
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid rgba(200, 169, 82, 0.15);
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: rgba(200, 169, 82, 0.5);
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+  }
+
+  /* ========== SVG Poster ========== */
+  .poster-wrap {
+    margin-bottom: 80px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  .poster-wrap.visible { opacity: 1; transform: translateY(0); }
+  .poster-wrap svg {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+  }
+
+  /* ========== Highlights ========== */
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 80px;
+  }
+
+  .highlight-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(200, 169, 82, 0.08);
+    border-radius: 12px;
+    padding: 32px 28px;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: border-color 0.3s, transform 0.3s, opacity 0.6s;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--crimson), var(--dark-gold));
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .highlight-card.visible { opacity: 1; transform: translateY(0); }
+  .highlight-card:hover { border-color: rgba(200, 169, 82, 0.2); }
+  .highlight-card:hover::before { opacity: 1; }
+  .highlight-card .num {
+    font-size: 0.65rem;
+    color: var(--dark-gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    opacity: 0.6;
+  }
+  .highlight-card h3 {
+    font-size: 1.1rem;
+    color: var(--light-gold);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .highlight-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.9;
+  }
+
+  /* ========== 经典台词 ========== */
+  .quote-section {
+    margin-bottom: 80px;
+    text-align: center;
+    padding: 60px 40px;
+    background: var(--card-bg);
+    border: 1px solid rgba(200, 169, 82, 0.06);
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s, transform 0.8s;
+    position: relative;
+  }
+  .quote-section.visible { opacity: 1; transform: translateY(0); }
+  .quote-section::before,
+  .quote-section::after {
+    content: '"';
+    font-size: 4rem;
+    color: var(--dark-gold);
+    opacity: 0.15;
+    position: absolute;
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+  .quote-section::before { top: 16px; left: 24px; }
+  .quote-section::after { bottom: -8px; right: 24px; transform: rotate(180deg); }
+  .quote-section blockquote {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--cream);
+    font-style: italic;
+    line-height: 2;
+    letter-spacing: 0.05em;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .quote-section .quote-source {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-style: normal;
+    letter-spacing: 0.08em;
+  }
+
+  /* ========== 为什么值得看 ========== */
+  .reasons {
+    margin-bottom: 80px;
+  }
+  .reason-item {
+    display: flex;
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(200, 169, 82, 0.06);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .reason-item.visible { opacity: 1; transform: translateY(0); }
+  .reason-item:last-child { border-bottom: none; }
+  .reason-num {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--dark-gold);
+    border-radius: 50%;
+    font-size: 0.75rem;
+    color: var(--light-gold);
+    font-weight: 600;
+  }
+  .reason-content h3 {
+    font-size: 1rem;
+    color: var(--cream);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .reason-content p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.9;
+  }
+
+  /* ========== 荣誉 ========== */
+  .awards {
+    margin-bottom: 80px;
+    text-align: center;
+  }
+  .award-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .award-tag {
+    padding: 8px 20px;
+    border: 1px solid rgba(200, 169, 82, 0.12);
+    border-radius: 100px;
+    font-size: 0.78rem;
+    color: var(--light-gold);
+    background: rgba(139, 117, 58, 0.06);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s, transform 0.5s, border-color 0.3s;
+  }
+  .award-tag.visible { opacity: 1; transform: scale(1); }
+  .award-tag:hover {
+    border-color: rgba(200, 169, 82, 0.3);
+    background: rgba(139, 117, 58, 0.12);
+  }
+
+  /* ========== 影片档案 ========== */
+  .archive {
+    margin-bottom: 80px;
+    padding: 40px;
+    background: var(--card-bg);
+    border: 1px solid rgba(200, 169, 82, 0.08);
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  .archive.visible { opacity: 1; transform: translateY(0); }
+  .archive-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .archive-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(200, 169, 82, 0.05);
+  }
+  .archive-item:last-child,
+  .archive-item:nth-last-child(2) { border-bottom: none; }
+  .archive-item .label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+  }
+  .archive-item .value {
+    font-size: 0.85rem;
+    color: var(--cream);
+    text-align: right;
+    max-width: 60%;
+  }
+
+  /* ========== 编辑评语 ========== */
+  .final-word {
+    text-align: center;
+    padding: 60px 40px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .final-word .stars {
+    font-size: 1.4rem;
+    color: var(--light-gold);
+    letter-spacing: 6px;
+    margin-bottom: 20px;
+    opacity: 0;
+    transition: opacity 0.8s;
+  }
+  .final-word.visible .stars { opacity: 1; }
+  .final-word h2 {
+    font-size: 1.3rem;
+    color: var(--cream);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s 0.2s, transform 0.6s 0.2s;
+  }
+  .final-word.visible h2 { opacity: 1; transform: translateY(0); }
+  .final-word p {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 2;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s 0.4s, transform 0.6s 0.4s;
+  }
+  .final-word.visible p { opacity: 1; transform: translateY(0); }
+  .final-word .sig {
+    margin-top: 24px;
+    font-size: 0.75rem;
+    color: var(--dark-gold);
+    letter-spacing: 0.08em;
+    opacity: 0;
+    transition: opacity 0.6s 0.6s;
+  }
+  .final-word.visible .sig { opacity: 1; }
+
+  /* ========== Responsive ========== */
+  @media (max-width: 768px) {
+    .scores { grid-template-columns: repeat(2, 1fr); }
+    .highlights { grid-template-columns: 1fr; }
+    .archive-grid { grid-template-columns: 1fr; }
+    .archive-item:nth-last-child(2) { border-bottom: 1px solid rgba(200, 169, 82, 0.05); }
+    .archive-item:last-child { border-bottom: none; }
+    .synopsis { padding: 28px 20px; }
+    .quote-section { padding: 40px 20px; }
+    .hero-tagline::before,
+    .hero-tagline::after { content: ''; }
+  }
+  @media (max-width: 480px) {
+    .scores { grid-template-columns: 1fr 1fr; }
+    .score-card { padding: 16px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Canvas Particles -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- Overlays -->
+<div class="overlay-top"></div>
+<div class="overlay-bottom"></div>
+<div class="vignette"></div>
+<div class="scanlines"></div>
+
+<!-- Main Content -->
+<div class="container">
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero">
+    <div class="hero-year">2000</div>
+    <div class="hero-badge">
+      王家卫 · <span>Wong Kar-wai</span>
+    </div>
+    <h1 class="hero-title">花样年华</h1>
+    <div class="hero-subtitle">In the Mood for Love</div>
+    <div class="hero-tagline">那些消逝了的岁月，仿佛隔着一块积着灰尘的玻璃，看得到，抓不着</div>
+    <div class="hero-director">
+      导演 · <em>王家卫</em> &nbsp;|&nbsp; 主演 · <em>梁朝伟 · 张曼玉</em>
+    </div>
+    <div class="scroll-hint">
+      <span>向下探索</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
+  <!-- ==================== SCORES ==================== -->
+  <div class="scores" id="scores">
+    <div class="score-card" style="transition-delay:0s">
+      <div class="label">IMDb</div>
+      <div class="number">8.1</div>
+      <div class="bar-wrap"><div class="bar-fill" style="--pct:81%"></div></div>
+    </div>
+    <div class="score-card" style="transition-delay:0.1s">
+      <div class="label">豆瓣</div>
+      <div class="number">8.7</div>
+      <div class="bar-wrap"><div class="bar-fill" style="--pct:87%"></div></div>
+    </div>
+    <div class="score-card" style="transition-delay:0.2s">
+      <div class="label">烂番茄</div>
+      <div class="number">92%</div>
+      <div class="bar-wrap"><div class="bar-fill" style="--pct:92%"></div></div>
+    </div>
+    <div class="score-card" style="transition-delay:0.3s">
+      <div class="label">Metacritic</div>
+      <div class="number">85</div>
+      <div class="bar-wrap"><div class="bar-fill" style="--pct:85%"></div></div>
+    </div>
+  </div>
+
+  <!-- ==================== 剧情梗概 ==================== -->
+  <section class="synopsis" id="synopsis">
+    <div class="spoiler-free">📖 无剧透 · 仅背景框架</div>
+    <p>
+      1962年的香港，闷热的夏日氤氲着潮湿的雾气。报馆编辑周慕云与妻子搬进一栋公寓，与苏丽珍夫妇成为邻居。狭长的走廊、昏黄的楼梯间、深夜的云吞面摊——在这个逼仄的空间里，两个被伴侣背叛的人渐渐走近。
+    </p>
+    <p>
+      他们开始频繁地相遇、交谈、一起吃饭，试图拼凑出"他们是怎样开始的"。然而在世俗伦理与流言蜚语编织的牢笼中，一种不该有的情愫悄然滋长。那个时代、那座城市、那道楼梯转角——有些话，终究没能说出口。
+    </p>
+    <p>
+      这是一场关于克制、错位与遗憾的东方式爱情叙事。每一个欲言又止的瞬间，都比千言万语更加动人。
+    </p>
+  </section>
+
+  <!-- ==================== SVG POSTER ==================== -->
+  <div class="poster-wrap" id="poster">
+    <svg viewBox="0 0 680 450" xmlns="http://www.w3.org/2000/svg" style="background: #1A1816;">
+      <defs>
+        <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#0D0B0A"/>
+          <stop offset="50%" stop-color="#1A1816"/>
+          <stop offset="100%" stop-color="#2A2218"/>
+        </linearGradient>
+        <linearGradient id="wallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#6B1A1A" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#3A1212" stop-opacity="0.8"/>
+        </linearGradient>
+        <linearGradient id="lampGlow" x1="50%" y1="0%" x2="50%" y2="100%">
+          <stop offset="0%" stop-color="#C8A952" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#C8A952" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#C8A952" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#C8A952" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="softGlow">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <clipPath id="frameClip">
+          <rect x="20" y="20" width="640" height="410" rx="6"/>
+        </clipPath>
+      </defs>
+
+      <!-- Border frame -->
+      <rect x="10" y="10" width="660" height="430" rx="8" fill="none" stroke="#8B753A" stroke-opacity="0.15" stroke-width="1"/>
+
+      <g clip-path="url(#frameClip)">
+        <!-- Sky -->
+        <rect x="20" y="20" width="640" height="410" fill="url(#skyGrad)"/>
+
+        <!-- Moon glow -->
+        <circle cx="340" cy="-20" r="200" fill="url(#moonGlow)"/>
+
+        <!-- Background buildings (silhouettes) -->
+        <rect x="40" y="180" width="50" height="250" fill="#12100E" opacity="0.5"/>
+        <rect x="100" y="200" width="35" height="230" fill="#0F0D0C" opacity="0.4"/>
+        <rect x="520" y="170" width="60" height="260" fill="#12100E" opacity="0.5"/>
+        <rect x="590" y="210" width="40" height="220" fill="#0F0D0C" opacity="0.4"/>
+
+        <!-- Distant neon sign -->
+        <rect x="555" y="230" width="18" height="4" fill="#6B1A1A" opacity="0.3" rx="1"/>
+
+        <!-- Main building wall (right side - apartment building facade) -->
+        <rect x="200" y="80" width="250" height="350" fill="url(#wallGrad)" opacity="0.7"/>
+
+        <!-- Building vertical lines -->
+        <line x1="280" y1="80" x2="280" y2="430" stroke="#4A1515" stroke-width="0.5" opacity="0.3"/>
+        <line x1="360" y1="80" x2="360" y2="430" stroke="#4A1515" stroke-width="0.5" opacity="0.3"/>
+
+        <!-- Windows on building -->
+        <g opacity="0.25">
+          <rect x="220" y="110" width="20" height="28" rx="1" fill="#C8A952"/>
+          <rect x="300" y="110" width="20" height="28" rx="1" fill="#C8A952" opacity="0.5"/>
+          <rect x="380" y="110" width="20" height="28" rx="1" fill="#C8A952" opacity="0.3"/>
+          <rect x="220" y="170" width="20" height="28" rx="1" fill="#C8A952" opacity="0.4"/>
+          <rect x="300" y="170" width="20" height="28" rx="1" fill="#C8A952"/>
+          <rect x="380" y="170" width="20" height="28" rx="1" fill="#C8A952" opacity="0.5"/>
+          <rect x="220" y="230" width="20" height="28" rx="1" fill="#C8A952" opacity="0.6"/>
+          <rect x="300" y="230" width="20" height="28" rx="1" fill="#C8A952" opacity="0.3"/>
+          <rect x="380" y="230" width="20" height="28" rx="1" fill="#C8A952" opacity="0.5"/>
+          <rect x="220" y="290" width="20" height="28" rx="1" fill="#C8A952" opacity="0.3"/>
+          <rect x="300" y="290" width="20" height="28" rx="1" fill="#C8A952" opacity="0.6"/>
+          <rect x="380" y="290" width="20" height="28" rx="1" fill="#C8A952"/>
+        </g>
+
+        <!-- Wall right of building (narrow street/alley) -->
+        <rect x="450" y="120" width="80" height="310" fill="#151210" opacity="0.6"/>
+
+        <!-- Street lamp -->
+        <g filter="url(#softGlow)">
+          <line x1="470" y1="120" x2="470" y2="200" stroke="#8B753A" stroke-width="1.5" opacity="0.4"/>
+          <ellipse cx="470" cy="195" rx="3" ry="2" fill="#C8A952" opacity="0.5"/>
+          <ellipse cx="470" cy="210" rx="40" ry="80" fill="url(#lampGlow)"/>
+        </g>
+
+        <!-- Alley wall texture -->
+        <rect x="530" y="140" width="70" height="290" fill="#12100E" opacity="0.5"/>
+
+        <!-- Ground / Street -->
+        <rect x="20" y="380" width="640" height="50" fill="#0D0B0A" opacity="0.6"/>
+        <line x1="20" y1="380" x2="660" y2="380" stroke="#8B753A" stroke-width="0.3" opacity="0.1"/>
+
+        <!-- Ground reflection (wet street) -->
+        <ellipse cx="340" cy="395" rx="120" ry="4" fill="#C8A952" opacity="0.03"/>
+
+        <!-- === Two Figures (distant, silhouettes) === -->
+        <!-- Female figure (left, in cheongsam - slim silhouette) -->
+        <g opacity="0.9">
+          <ellipse cx="300" cy="365" rx="8" ry="18" fill="#1A1816"/>
+          <path d="M295,347 Q292,342 296,338 Q300,336 304,338 Q308,342 305,347" fill="#1A1816"/>
+          <!-- Hair bun -->
+          <circle cx="300" cy="336" r="3" fill="#0D0B0A"/>
+        </g>
+
+        <!-- Male figure (right, in suit) -->
+        <g opacity="0.9">
+          <ellipse cx="340" cy="365" rx="9" ry="20" fill="#1A1816"/>
+          <path d="M335,345 Q332,340 336,337 Q340,335 344,337 Q348,340 345,345" fill="#1A1816"/>
+          <ellipse cx="340" cy="335" rx="4" ry="4" fill="#0D0B0A"/>
+        </g>
+
+        <!-- Figures walking away - subtle separation -->
+        <g opacity="0.3">
+          <ellipse cx="255" cy="370" rx="6" ry="14" fill="#1A1816" opacity="0.4"/>
+          <ellipse cx="390" cy="370" rx="7" ry="16" fill="#1A1816" opacity="0.4"/>
+        </g>
+
+        <!-- Smoke wisps from the lamp -->
+        <g opacity="0.08">
+          <path d="M470,190 Q475,170 468,150 Q462,130 470,110" fill="none" stroke="#C8A952" stroke-width="2"/>
+          <path d="M470,190 Q465,165 472,145 Q478,125 470,105" fill="none" stroke="#C8A952" stroke-width="1.5"/>
+        </g>
+
+        <!-- Subtle title overlay -->
+        <text x="340" y="240" text-anchor="middle" font-family="Georgia, serif" font-size="36" fill="#C8A952" opacity="0.06" letter-spacing="8">花样年华</text>
+        <text x="340" y="260" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#C8A952" opacity="0.04" letter-spacing="3" font-style="italic">In the Mood for Love</text>
+      </g>
+
+      <!-- Bottom frame accent -->
+      <rect x="10" y="440" width="660" height="1" fill="#8B753A" opacity="0.08"/>
+    </svg>
+  </div>
+
+  <!-- ==================== HIGHLIGHTS ==================== -->
+  <div class="section-header">
+    <span class="en">Highlights</span>
+    <h2>六大亮点</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="highlights" id="highlights">
+    <div class="highlight-card" style="transition-delay:0s">
+      <div class="num">01</div>
+      <h3>视觉美学登峰造极</h3>
+      <p>王家卫联手摄影师杜可风、美术指导张叔平，用浓烈饱和的红绿配色、烟雾弥漫的雨夜、狭窄的楼梯与走廊，打造了一场无可复制的视觉盛宴。每一帧都堪称电影教科书。</p>
+    </div>
+    <div class="highlight-card" style="transition-delay:0.1s">
+      <div class="num">02</div>
+      <h3>张曼玉的旗袍美学</h3>
+      <p>全片二十余套旗袍随情绪流转——初遇时的淡雅、心动时的艳丽、别离时的深沉。旗袍不仅是服装，更是角色内心世界的延伸，成为华语电影史上最具标志性的造型符号。</p>
+    </div>
+    <div class="highlight-card" style="transition-delay:0.2s">
+      <div class="num">03</div>
+      <h3>梁朝伟的戛纳封帝演技</h3>
+      <p>梁朝伟用眼神与微表情演绎了千言万语。那一低头的沉默、烟圈里的叹息、欲言又止的转身，让周慕云成为他演艺生涯中最动人的角色之一，实至名归的戛纳影帝。</p>
+    </div>
+    <div class="highlight-card" style="transition-delay:0.3s">
+      <div class="num">04</div>
+      <h3>梅林茂的绕梁配乐</h3>
+      <p>日本配乐大师梅林茂创作的主题曲《Yumeji's Theme》循环往复，像一场走不出的梦。三拍子的圆舞曲旋律与电影中擦肩而过、欲近还远的节奏完美同步，听一次就刻在记忆里。</p>
+    </div>
+    <div class="highlight-card" style="transition-delay:0.4s">
+      <div class="num">05</div>
+      <h3>东方式的克制美学</h3>
+      <p>不说的比说的更多，不做的比做的更动人。全片最亲密的时刻不过是一个搭在肩上的手、一句"如果多一张船票"——这种克制的叙事，恰恰让情感拥有了最汹涌的力量。</p>
+    </div>
+    <div class="highlight-card" style="transition-delay:0.5s">
+      <div class="num">06</div>
+      <h3>时代与空间的迷宫</h3>
+      <p>1962年的香港被浓缩在一条走廊、一间办公室、一个面摊之间。时钟、日历、雨滴——王家卫用空间与时间的反复折叠，构建了一个让人沉溺的怀旧迷宫，每一次重看都有新发现。</p>
+    </div>
+  </div>
+
+  <!-- ==================== 经典台词 ==================== -->
+  <section class="quote-section" id="quote">
+    <blockquote>
+      "如果多一张船票，你愿不愿意跟我一起走？"
+    </blockquote>
+    <div class="quote-source">—— 周慕云</div>
+  </section>
+
+  <!-- ==================== 为什么值得看 ==================== -->
+  <div class="section-header">
+    <span class="en">Why It's Worth Watching</span>
+    <h2>为什么值得看</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="reasons" id="reasons">
+    <div class="reason-item" style="transition-delay:0s">
+      <div class="reason-num">1</div>
+      <div class="reason-content">
+        <h3>它将「得不到」拍到了极致</h3>
+        <p>世界上最遥远的距离，不是生与死，而是我站在你面前，却不能说爱你。这部电影用最优雅的方式，讲述了一个关于遗憾与错过的永恒故事——克制，比歇斯底里更让人心碎。</p>
+      </div>
+    </div>
+    <div class="reason-item" style="transition-delay:0.1s">
+      <div class="reason-num">2</div>
+      <div class="reason-content">
+        <h3>每一帧都是壁纸级的视觉享受</h3>
+        <p>王家卫 + 杜可风 + 张叔平——华语电影最强视觉铁三角。从旗袍的色彩叙事到雨夜的玻璃倒影，从慢镜头中飘起的烟雾到走廊尽头的光影，这部电影的美学影响了全球无数导演与设计师。</p>
+      </div>
+    </div>
+    <div class="reason-item" style="transition-delay:0.2s">
+      <div class="reason-num">3</div>
+      <div class="reason-content">
+        <h3>非线性的叙事迷宫</h3>
+        <p>时间在这部电影里被打碎重组——同一个场景用不同的角度反复呈现，让你不断重新审视已发生的细节。第一次看是一个故事，第二次看是另一个故事，第三次看才恍然：原来导演早在第一分钟就告诉了你一切。</p>
+      </div>
+    </div>
+    <div class="reason-item" style="transition-delay:0.3s">
+      <div class="reason-num">4</div>
+      <div class="reason-content">
+        <h3>一个时代的文化符号</h3>
+        <p>旗袍、领带、云吞面摊、打字机、狭长的公寓走廊、墙上的日历、收音机里的粤语老歌——这部电影不只是一个爱情故事，它是一座1960年代香港的感官博物馆，是一代人的集体记忆。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 荣誉 ==================== -->
+  <div class="awards" id="awards">
+    <div class="section-header">
+      <span class="en">Accolades</span>
+      <h2>荣誉殿堂</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="award-tags">
+      <span class="award-tag" style="transition-delay:0s">🏆 戛纳电影节 · 最佳男主角</span>
+      <span class="award-tag" style="transition-delay:0.05s">🏆 金马奖 · 最佳女主角</span>
+      <span class="award-tag" style="transition-delay:0.1s">🎬 金马奖 · 最佳导演</span>
+      <span class="award-tag" style="transition-delay:0.15s">🏆 金像奖 · 最佳男主角</span>
+      <span class="award-tag" style="transition-delay:0.2s">🏆 金像奖 · 最佳女主角</span>
+      <span class="award-tag" style="transition-delay:0.25s">🎬 金像奖 · 最佳导演</span>
+      <span class="award-tag" style="transition-delay:0.3s">🏆 金像奖 · 最佳剪辑</span>
+      <span class="award-tag" style="transition-delay:0.35s">🏆 金像奖 · 最佳美术指导</span>
+      <span class="award-tag" style="transition-delay:0.4s">⭐ 英国电影学院奖 · 最佳非英语片</span>
+      <span class="award-tag" style="transition-delay:0.45s">⭐ 戛纳金棕榈奖 · 提名</span>
+      <span class="award-tag" style="transition-delay:0.5s">🌍 《视与听》影史百大电影</span>
+      <span class="award-tag" style="transition-delay:0.55s">🌍 IMDb Top 250 · 评分8.1</span>
+    </div>
+  </div>
+
+  <!-- ==================== 影片档案 ==================== -->
+  <section class="archive" id="archive">
+    <div class="section-header" style="margin-bottom:32px">
+      <span class="en">Film Archive</span>
+      <h2>影片档案</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="archive-grid">
+      <div class="archive-item"><span class="label">中文片名</span><span class="value">花样年华</span></div>
+      <div class="archive-item"><span class="label">英文片名</span><span class="value">In the Mood for Love</span></div>
+      <div class="archive-item"><span class="label">导演</span><span class="value">王家卫 (Wong Kar-wai)</span></div>
+      <div class="archive-item"><span class="label">上映年份</span><span class="value">2000年</span></div>
+      <div class="archive-item"><span class="label">产地</span><span class="value">中国香港 (Hong Kong, China)</span></div>
+      <div class="archive-item"><span class="label">语言</span><span class="value">粤语 / 上海话</span></div>
+      <div class="archive-item"><span class="label">片长</span><span class="value">98 分钟</span></div>
+      <div class="archive-item"><span class="label">类型</span><span class="value">剧情 · 爱情</span></div>
+      <div class="archive-item"><span class="label">主演</span><span class="value">梁朝伟 · 张曼玉</span></div>
+      <div class="archive-item"><span class="label">编剧</span><span class="value">王家卫</span></div>
+    </div>
+  </section>
+
+  <!-- ==================== 编辑评语 ==================== -->
+  <section class="final-word" id="final">
+    <div class="stars">★★★★★</div>
+    <h2>一场关于克制与遗憾的东方美学盛宴</h2>
+    <p>如果一生只看一部王家卫的电影，那必定是《花样年华》。它不只是一个爱情故事，而是一封用旗袍、烟雾、雨滴和老歌写就的情书。那种欲言又止的温柔，比任何轰轰烈烈都更刻骨铭心。</p>
+    <div class="sig">—— 编辑推荐 · 2026.06.11</div>
+  </section>
+
+</div>
+
+<script>
+// ========== Canvas Particle System ==========
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class SmokeParticle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = W * 0.2 + Math.random() * W * 0.6;
+    this.y = H + 20;
+    this.size = 2 + Math.random() * 8;
+    this.speedY = -(0.15 + Math.random() * 0.35);
+    this.speedX = (Math.random() - 0.5) * 0.15;
+    this.opacity = 0.02 + Math.random() * 0.06;
+    this.wobble = Math.random() * Math.PI * 2;
+    this.wobbleSpeed = 0.005 + Math.random() * 0.01;
+    this.wobbleAmp = 0.3 + Math.random() * 0.8;
+    this.hue = 38 + Math.random() * 12; // gold range
+  }
+  update() {
+    this.y += this.speedY;
+    this.x += this.speedX + Math.sin(this.wobble) * this.wobbleAmp;
+    this.wobble += this.wobbleSpeed;
+    this.opacity -= 0.0002;
+    if (this.opacity < 0 || this.y < -20) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 2);
+    gradient.addColorStop(0, `rgba(200, 169, 82, ${this.opacity})`);
+    gradient.addColorStop(0.4, `rgba(139, 117, 58, ${this.opacity * 0.6})`);
+    gradient.addColorStop(1, `rgba(139, 117, 58, 0)`);
+    ctx.fillStyle = gradient;
+    ctx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+const particles = [];
+const particleCount = Math.min(80, Math.floor((W * H) / 15000));
+for (let i = 0; i < particleCount; i++) {
+  const p = new SmokeParticle();
+  p.y = Math.random() * H;
+  p.opacity = 0.01 + Math.random() * 0.04;
+  particles.push(p);
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, W, H);
+  for (const p of particles) {
+    p.update();
+    p.draw();
+  }
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ========== IntersectionObserver ==========
+const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -40px 0px' };
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Don't unobserve so animations can replay on re-enter
+    }
+  });
+}, observerOptions);
+
+// Observe elements
+document.querySelectorAll('.score-card, .synopsis, .poster-wrap, .highlight-card, .quote-section, .reason-item, .award-tag, .archive, .final-word').forEach(el => observer.observe(el));
+
+// Also observe section wrappers
+document.querySelectorAll('.scores, .highlights, .reasons, .awards').forEach(el => observer.observe(el));
+
+// ========== Stagger Highlight Cards ==========
+// Cards already have transition-delay in style attribute
+
+// ========== Handle window resize for canvas ==========
+window.addEventListener('resize', () => {
+  resize();
+  // Recalculate particle count
+  const newCount = Math.min(80, Math.floor((W * H) / 15000));
+  while (particles.length < newCount) {
+    const p = new SmokeParticle();
+    p.y = Math.random() * H;
+    particles.push(p);
+  }
+  while (particles.length > newCount) {
+    particles.pop();
+  }
+});
+</script>
+
+</body>
+</html>

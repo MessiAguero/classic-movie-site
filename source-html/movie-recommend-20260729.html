@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第七封印 · The Seventh Seal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#0d0d0c;
+    --char-2:#161513;
+    --char-3:#1f1d1a;
+    --bone:#e8e2d4;
+    --bone-dim:#b9b2a3;
+    --rust:#9c3b2e;
+    --rust-bright:#c45a45;
+    --gold:#c9a24b;
+    --gold-bright:#e3c074;
+    --fog:#6b6960;
+    --txt:#e8e2d4;
+    --txt-dim:#a39c8c;
+    --card-bg:rgba(22,21,19,0.60);
+    --line:rgba(201,162,75,0.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Serif SC","Cormorant Garamond",serif;
+    background:var(--charcoal);
+    color:var(--txt);
+    overflow-x:hidden;
+    line-height:1.85;
+  }
+  ::selection{background:rgba(201,162,75,0.3);color:#fff}
+  #chess-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  .bg-veil{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(80% 55% at 50% 0%, rgba(201,162,75,0.10) 0%, rgba(201,162,75,0) 55%),
+      radial-gradient(120% 80% at 50% 6%, rgba(31,29,26,0) 0%, rgba(13,13,12,0) 40%, rgba(13,13,12,0.65) 100%),
+      linear-gradient(180deg, #121110 0%, #171513 30%, #1f1d1a 55%, #141210 80%, #0d0d0c 100%);
+  }
+  .grain{
+    position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.06;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:2}
+
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:90px 24px 60px;position:relative}
+  .hero-year{font-family:"Cinzel",serif;font-weight:700;letter-spacing:.5em;font-size:clamp(2.6rem,9vw,7rem);line-height:.9;color:transparent;-webkit-text-stroke:1.5px rgba(201,162,75,0.5);opacity:.85;margin-bottom:6px;text-indent:.5em}
+  .hero-en{font-family:"Cinzel",serif;font-weight:800;letter-spacing:.14em;font-size:clamp(1.5rem,5.2vw,3.4rem);background:linear-gradient(180deg,#e8e2d4,#c9a24b 58%,#9c3b2e);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 2px 30px rgba(201,162,75,0.2)}
+  .hero-cn{font-family:"Noto Serif SC",serif;font-weight:700;font-size:clamp(1.6rem,5vw,3rem);letter-spacing:.35em;color:var(--bone);margin-top:14px;text-indent:.35em;text-shadow:0 2px 24px rgba(0,0,0,.6)}
+  .hero-sub{margin-top:22px;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(1rem,2.4vw,1.45rem);color:var(--gold-bright);letter-spacing:.04em}
+  .hero-meta{margin-top:20px;font-size:.92rem;letter-spacing:.32em;color:var(--txt-dim);text-transform:uppercase;font-family:"Cinzel",serif;font-weight:500}
+  .hero-tagline{margin-top:34px;max-width:680px;font-family:"Noto Serif SC",serif;font-weight:300;font-size:clamp(1.05rem,2.6vw,1.5rem);color:var(--bone);letter-spacing:.06em;line-height:1.9;padding:0 10px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-top:22px;padding-bottom:22px}
+  .scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:"Cinzel",serif;font-size:.7rem;letter-spacing:.4em;color:var(--txt-dim);animation:bob 2.4s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);opacity:.5}50%{transform:translateX(-50%) translateY(8px);opacity:1}}
+
+  section{position:relative;padding:84px 24px;max-width:1120px;margin:0 auto}
+  .sec-title{font-family:"Cinzel",serif;font-weight:700;letter-spacing:.2em;font-size:clamp(1.4rem,3.6vw,2.2rem);color:var(--bone);text-align:center;margin-bottom:8px}
+  .sec-cn{font-family:"Noto Serif SC",serif;font-weight:500;letter-spacing:.3em;font-size:clamp(.95rem,2.4vw,1.1rem);color:var(--gold);text-align:center;margin-bottom:46px}
+  .sec-title .en{display:block;font-size:.5em;letter-spacing:.45em;color:var(--txt-dim);margin-top:8px;font-weight:500}
+
+  .ratings{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:10px}
+  .rating{background:var(--card-bg);border:1px solid var(--line);border-radius:14px;padding:26px 18px;text-align:center;backdrop-filter:blur(6px);transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .5s}
+  .rating:hover{transform:translateY(-6px);border-color:rgba(201,162,75,.5)}
+  .rating .src{font-family:"Cinzel",serif;letter-spacing:.22em;font-size:.82rem;color:var(--gold);margin-bottom:14px}
+  .rating .score{font-family:"Cinzel",serif;font-weight:800;font-size:2.6rem;color:var(--bone);line-height:1}
+  .rating .score .suf{font-size:1.1rem;color:var(--gold-bright)}
+  .rating .bar{height:5px;border-radius:4px;background:rgba(255,255,255,.08);margin-top:16px;overflow:hidden}
+  .rating .bar i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--rust),var(--gold));transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+
+  .synopsis-card{background:linear-gradient(160deg,rgba(31,29,26,.7),rgba(13,13,12,.7));border:1px solid var(--line);border-radius:18px;padding:46px 42px;backdrop-filter:blur(8px);display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:center}
+  .poster-svg{width:100%;height:auto;border-radius:12px;filter:drop-shadow(0 18px 40px rgba(0,0,0,.55))}
+  .synopsis-text p{font-size:1.12rem;color:var(--txt);font-weight:300;letter-spacing:.02em}
+  .synopsis-text p + p{margin-top:18px}
+  .no-spoiler{display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-family:"Cinzel",serif;font-size:.72rem;letter-spacing:.25em;color:#ffe7b3;background:rgba(156,59,46,.18);border:1px solid rgba(201,162,75,.35);padding:9px 16px;border-radius:30px;text-transform:uppercase}
+  .no-spoiler::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .hl{background:var(--card-bg);border:1px solid var(--line);border-radius:14px;padding:30px 26px;transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .5s,box-shadow .5s;position:relative;overflow:hidden}
+  .hl::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% -10%,rgba(201,162,75,.14),transparent 60%);opacity:0;transition:opacity .5s}
+  .hl:hover{transform:translateY(-7px);border-color:rgba(201,162,75,.5);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .hl:hover::before{opacity:1}
+  .hl .num{font-family:"Cinzel",serif;font-weight:700;font-size:1.9rem;color:rgba(201,162,75,.35);line-height:1}
+  .hl h3{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1.18rem;color:var(--bone);margin:14px 0 12px;letter-spacing:.04em}
+  .hl p{font-size:.98rem;color:var(--txt-dim);font-weight:300;line-height:1.8}
+
+  .quote-block{text-align:center;max-width:820px;margin:0 auto;padding:60px 20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .quote-block .mark{font-family:"Cinzel",serif;font-size:4rem;color:rgba(201,162,75,.3);line-height:0;display:block;margin-bottom:18px}
+  .quote-block q{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(1.5rem,4vw,2.4rem);color:var(--bone);quotes:none;letter-spacing:.02em}
+  .quote-block .zh{display:block;margin-top:18px;font-family:"Noto Serif SC",serif;font-weight:300;font-size:1.15rem;color:var(--gold-bright);letter-spacing:.08em}
+  .quote-block .who{margin-top:20px;font-family:"Cinzel",serif;font-size:.78rem;letter-spacing:.3em;color:var(--txt-dim)}
+
+  .why-list{display:flex;flex-direction:column;gap:18px;max-width:880px;margin:0 auto}
+  .why{display:flex;gap:22px;align-items:flex-start;background:var(--card-bg);border:1px solid var(--line);border-radius:12px;padding:24px 28px;transition:transform .4s,border-color .4s}
+  .why:hover{transform:translateX(8px);border-color:rgba(201,162,75,.45)}
+  .why .ic{font-family:"Cinzel",serif;font-weight:700;font-size:1.5rem;color:var(--gold);min-width:42px;text-align:center;border:1px solid var(--line);border-radius:50%;padding:6px;height:42px;line-height:1.05;flex-shrink:0}
+  .why h4{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1.1rem;color:var(--bone);margin-bottom:6px}
+  .why p{font-size:.98rem;color:var(--txt-dim);font-weight:300}
+
+  .honors{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:920px;margin:0 auto}
+  .honor{font-family:"Noto Serif SC",serif;font-size:.92rem;letter-spacing:.05em;color:var(--bone);background:rgba(31,29,26,.55);border:1px solid var(--line);border-radius:30px;padding:11px 22px;transition:transform .4s,background .4s,border-color .4s}
+  .honor.major{background:linear-gradient(120deg,rgba(156,59,46,.3),rgba(201,162,75,.18));border-color:rgba(201,162,75,.5);color:var(--gold-bright)}
+  .honor:hover{transform:translateY(-4px);border-color:var(--gold)}
+
+  .archive{max-width:760px;margin:0 auto;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card-bg);backdrop-filter:blur(6px)}
+  .archive .row{display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid rgba(201,162,75,.12)}
+  .archive .row:last-child{border-bottom:none}
+  .archive .k{font-family:"Cinzel",serif;font-size:.78rem;letter-spacing:.18em;color:var(--gold);padding:18px 22px;background:rgba(0,0,0,.2);text-transform:uppercase}
+  .archive .v{font-family:"Noto Serif SC",serif;font-size:1rem;color:var(--txt);font-weight:300;padding:18px 22px;letter-spacing:.02em}
+
+  .review{max-width:820px;margin:0 auto;text-align:center;padding:50px 40px;background:linear-gradient(160deg,rgba(31,29,26,.7),rgba(13,13,12,.7));border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(8px);position:relative}
+  .review .stars{font-family:"Cinzel",serif;font-size:1.6rem;letter-spacing:.3em;color:var(--gold);margin-bottom:22px}
+  .review p{font-family:"Noto Serif SC",serif;font-weight:300;font-size:1.18rem;color:var(--bone);line-height:2;letter-spacing:.03em}
+  .review .sig{margin-top:26px;font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--gold-bright);font-size:1.05rem}
+
+  footer{text-align:center;padding:54px 24px 70px;color:var(--txt-dim);font-family:"Cinzel",serif;letter-spacing:.25em;font-size:.72rem;position:relative;z-index:2}
+  footer .div{width:60px;height:1px;background:var(--line);margin:0 auto 22px}
+
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    .ratings{grid-template-columns:repeat(2,1fr)}
+    .synopsis-card{grid-template-columns:1fr;gap:28px}
+    .poster-svg{max-width:300px;margin:0 auto}
+    .grid-3{grid-template-columns:1fr}
+  }
+  @media(max-width:480px){
+    .ratings{grid-template-columns:1fr}
+    section{padding:64px 18px}
+  }
+</style>
+</head>
+<body>
+<canvas id="chess-canvas"></canvas>
+<div class="bg-veil"></div>
+<div class="grain"></div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-year">1957</div>
+    <div class="hero-en">THE&nbsp;SEVENTH&nbsp;SEAL</div>
+    <div class="hero-cn">第七封印</div>
+    <div class="hero-sub">A meditation on faith, death and silence</div>
+    <div class="hero-meta">导演 英格玛·伯格曼 · 瑞典</div>
+    <p class="hero-tagline">黑死病席卷大地，<br>一位骑士以一盘棋，向死神讨回最后的时间。</p>
+    <div class="scroll-cue">SCROLL ▾</div>
+  </header>
+
+  <!-- RATINGS -->
+  <section class="reveal">
+    <h2 class="sec-title">CRITICAL ACCLAIM<span class="en">口碑与评分</span></h2>
+    <div class="sec-cn">影史最伟大电影榜单的常客</div>
+    <div class="ratings">
+      <div class="rating">
+        <div class="src">IMDb</div>
+        <div class="score" data-target="8.3" data-dec="1">0.0</div>
+        <div class="bar"><i data-pct="83"></i></div>
+      </div>
+      <div class="rating">
+        <div class="src">豆瓣 DOUBAN</div>
+        <div class="score" data-target="9.3" data-dec="1">0.0</div>
+        <div class="bar"><i data-pct="93"></i></div>
+      </div>
+      <div class="rating">
+        <div class="src">烂番茄 ROTTEN</div>
+        <div class="score" data-target="95" data-suf="%">0</div>
+        <div class="bar"><i data-pct="95"></i></div>
+      </div>
+      <div class="rating">
+        <div class="src">Sight &amp; Sound</div>
+        <div class="score" data-target="TOP20" data-text="TOP 20">0</div>
+        <div class="bar"><i data-pct="96"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYNOPSIS -->
+  <section class="reveal">
+    <h2 class="sec-title">THE STORY<span class="en">剧情梗概</span></h2>
+    <div class="sec-cn">无需剧透，只看它为何动人</div>
+    <div class="synopsis-card">
+      <!-- KNIGHT VS DEATH POSTER -->
+      <svg class="poster-svg" viewBox="0 0 280 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="骑士与死神在海岸对弈海报">
+        <defs>
+          <linearGradient id="sky7" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1a1916"/>
+            <stop offset="50%" stop-color="#2a2823"/>
+            <stop offset="100%" stop-color="#0e0d0c"/>
+          </linearGradient>
+          <linearGradient id="sea7" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3a3830"/><stop offset="100%" stop-color="#15140f"/>
+          </linearGradient>
+        </defs>
+        <rect width="280" height="380" rx="10" fill="url(#sky7)"/>
+        <!-- distant sea -->
+        <rect x="0" y="232" width="280" height="60" fill="url(#sea7)" opacity="0.9"/>
+        <!-- bare tree -->
+        <g stroke="#0a0a09" stroke-width="3.4" fill="none" opacity="0.92" stroke-linecap="round">
+          <path d="M40,300 L46,210"/>
+          <path d="M44,250 q-16,-14 -28,-8"/>
+          <path d="M45,232 q14,-16 30,-10"/>
+          <path d="M46,218 q-10,-14 -20,-12"/>
+          <path d="M46,210 q12,-10 22,-6"/>
+        </g>
+        <!-- chessboard -->
+        <g transform="translate(96,296)">
+          <rect x="0" y="0" width="96" height="48" rx="3" fill="#0e0d0c" opacity="0.85"/>
+          <g fill="#c9a24b" opacity="0.7">
+            <rect x="4" y="4" width="20" height="20"/><rect x="44" y="4" width="20" height="20"/><rect x="24" y="24" width="20" height="20"/><rect x="64" y="24" width="20" height="20"/>
+          </g>
+          <g fill="#e8e2d4" opacity="0.85">
+            <text x="14" y="20" font-size="16" text-anchor="middle" font-family="Cinzel,serif">♞</text>
+            <text x="74" y="20" font-size="16" text-anchor="middle" font-family="Cinzel,serif">♚</text>
+            <text x="34" y="42" font-size="16" text-anchor="middle" font-family="Cinzel,serif">♟</text>
+            <text x="54" y="42" font-size="16" text-anchor="middle" font-family="Cinzel,serif">♛</text>
+          </g>
+        </g>
+        <!-- knight silhouette (left) -->
+        <g fill="#0a0a09" opacity="0.95">
+          <path d="M150,300 q14,-60 22,-96 q4,-16 -6,-22 q-10,-4 -16,8 q-10,22 -14,40 q-6,30 -4,70 Z"/>
+          <circle cx="158" cy="180" r="9"/>
+          <rect x="150" y="176" width="16" height="8" rx="3" transform="rotate(-18 158 180)"/>
+        </g>
+        <!-- death silhouette (right, hooded) -->
+        <g fill="#000" opacity="0.92">
+          <path d="M206,300 q-6,-70 6,-110 q6,-18 0,-30 q-8,-8 -16,2 q-10,18 -8,40 q2,40 4,98 Z"/>
+          <circle cx="200" cy="158" r="8"/>
+          <path d="M192,150 q8,-10 16,0 q-2,8 -8,8 q-6,0 -8,-8 Z"/>
+        </g>
+        <!-- title plate -->
+        <rect x="22" y="322" width="236" height="46" rx="6" fill="#0d0d0c" opacity="0.65"/>
+        <text x="140" y="342" text-anchor="middle" font-family="Cinzel,serif" font-weight="700" font-size="14" letter-spacing="2" fill="#e3c074">THE SEVENTH SEAL</text>
+        <text x="140" y="360" text-anchor="middle" font-family="Noto Serif SC,serif" font-weight="500" font-size="14" letter-spacing="5" fill="#e8e2d4">第七封印</text>
+      </svg>
+
+      <div class="synopsis-text">
+        <p>中世纪，黑死病在欧洲蔓延，信仰与死亡笼罩每一座村庄。远征归来的骑士布洛克，在冰冷的海岸遇见了死神——他以一场象棋对弈为筹码，为自己向死神讨回最后的一段时光。</p>
+        <p>旅途中，骑士与随从穿行于瘟疫、焚烧的女巫、流浪的卖艺人与沉默的圣母像之间，一路收集着关于生命微不足道却又珍贵的微光。影片以近乎宗教画的黑白影像，把一个关于"上帝为何沉默"的古老诘问，拍成了影史最庄严的寓言之一。</p>
+        <span class="no-spoiler">No Spoilers · 剧情仅提供背景框架，不揭示棋局结局与最终场景</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="reveal">
+    <h2 class="sec-title">WHY IT SHINES<span class="en">六大亮点</span></h2>
+    <div class="sec-cn">它凭什么被写进影史</div>
+    <div class="grid-3">
+      <div class="hl">
+        <div class="num">01</div>
+        <h3>伯格曼的存在主义寓言</h3>
+        <p>把"信仰与死亡"的宏大诘问，收束在一盘棋里——从此，"与死神对弈"成为电影最经典的意象之一。</p>
+      </div>
+      <div class="hl">
+        <div class="num">02</div>
+        <h3>黑白影像的诗意</h3>
+        <p>贡纳·费舍尔的摄影让每一帧都如中世纪壁画，光影的克制里藏着最深的凝视。</p>
+      </div>
+      <div class="hl">
+        <div class="num">03</div>
+        <h3>死神的符号化登场</h3>
+        <p>披着兜帽的沉默死神，既是具体的角色，也是抽象的命运——一个形象，定义了一整个时代的焦虑。</p>
+      </div>
+      <div class="hl">
+        <div class="num">04</div>
+        <h3>冯·西多的封神表演</h3>
+        <p>马克斯·冯·西多以几乎不动声色的面孔，承载起整部电影的信仰之重，成为银幕骑士的范本。</p>
+      </div>
+      <div class="hl">
+        <div class="num">05</div>
+        <h3>寂静与配乐的张力</h3>
+        <p>大量留白与中世纪圣咏交替，让"沉默"本身成为主角——伯格曼最懂如何用安静震慑人心。</p>
+      </div>
+      <div class="hl">
+        <div class="num">06</div>
+        <h3>影史榜单的常青树</h3>
+        <p>常年稳居 Sight &amp; Sound 影史最伟大电影前二十，是任何"必看清单"都绕不开的名字。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="reveal">
+    <div class="quote-block">
+      <span class="mark">“</span>
+      <q>I want knowledge, not faith, not suppositions, but knowledge.</q>
+      <span class="zh">我要的是知识，不是信仰，不是猜测，而是知识。</span>
+      <div class="who">— 骑士 布洛克 · THE KNIGHT</div>
+    </div>
+  </section>
+
+  <!-- WHY WATCH -->
+  <section class="reveal">
+    <h2 class="sec-title">WORTH WATCHING<span class="en">为何值得一看</span></h2>
+    <div class="sec-cn">四个理由，值得你安静地坐下来</div>
+    <div class="why-list">
+      <div class="why">
+        <div class="ic">Ⅰ</div>
+        <div><h4>影史殿堂的入场券</h4><p>如果你只想补一部"真正的经典"，它几乎是所有影评人榜单的共同答案，避无可避。</p></div>
+      </div>
+      <div class="why">
+        <div class="ic">Ⅱ</div>
+        <div><h4>用影像思考生死</h4><p>它把每个人终将面对的命题，拍得庄重而不廉价——看完你会愿意重新想想"活着"这件事。</p></div>
+      </div>
+      <div class="why">
+        <div class="ic">Ⅲ</div>
+        <div><h4>极简却极致的美学</h4><p>没有特效，没有喧闹，仅靠构图、脸孔与留白就撑起全部张力，是导演功课的范本。</p></div>
+      </div>
+      <div class="why">
+        <div class="ic">Ⅳ</div>
+        <div><h4>跨越七十年的回响</h4><p>从《异形》到《前进高棉》，无数名场面都向它致敬——看懂它，就看懂了一半的电影隐喻。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONORS -->
+  <section class="reveal">
+    <h2 class="sec-title">HONORS<span class="en">荣誉殿堂</span></h2>
+    <div class="sec-cn">戛纳评审团大奖 · 影史常青之作</div>
+    <div class="honors">
+      <span class="honor major">戛纳电影节 评审团大奖</span>
+      <span class="honor major">Sight &amp; Sound 影史最伟大电影 前二十</span>
+      <span class="honor">奥斯卡 最佳原创剧本 提名</span>
+      <span class="honor">金球奖 最佳外语片 提名</span>
+      <span class="honor">AFI 百年百大电影 提名</span>
+      <span class="honor">英国电影学院奖 最佳影片 提名</span>
+      <span class="honor">瑞典学院 最佳影片</span>
+      <span class="honor">《时代》影史百大电影</span>
+    </div>
+  </section>
+
+  <!-- ARCHIVE -->
+  <section class="reveal">
+    <h2 class="sec-title">FILM DOSSIER<span class="en">影片档案</span></h2>
+    <div class="sec-cn">基本信息一览</div>
+    <div class="archive">
+      <div class="row"><div class="k">导演</div><div class="v">英格玛·伯格曼 Ingmar Bergman</div></div>
+      <div class="row"><div class="k">主演</div><div class="v">马克斯·冯·西多、本特·埃切罗特、古纳尔·布约恩斯特兰德</div></div>
+      <div class="row"><div class="k">上映</div><div class="v">1957 年</div></div>
+      <div class="row"><div class="k">片长</div><div class="v">96 分钟</div></div>
+      <div class="row"><div class="k">国家</div><div class="v">瑞典</div></div>
+      <div class="row"><div class="k">类型</div><div class="v">剧情 / 奇幻 / 历史</div></div>
+      <div class="row"><div class="k">摄影</div><div class="v">贡纳·费舍尔 Gunnar Fischer</div></div>
+      <div class="row"><div class="k">编剧</div><div class="v">英格玛·伯格曼</div></div>
+      <div class="row"><div class="k">语言</div><div class="v">瑞典语</div></div>
+      <div class="row"><div class="k">原著</div><div class="v">英格玛·伯格曼 原创剧本</div></div>
+    </div>
+  </section>
+
+  <!-- REVIEW -->
+  <section class="reveal">
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>在人人把"深刻"拍成说教的年代，伯格曼用一盘棋、一片海、一张沉默的脸，把人类最古老的恐惧与渴望讲透了。它不是用来"爽"的，是用来"想"的——而真正的经典，从不怕你慢下来。</p>
+      <div class="sig">— 电影推荐 · 编辑部</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="div"></div>
+    经典电影推荐 · 每日一部 · The Seventh Seal (1957)
+  </footer>
+
+</div>
+
+<script>
+/* ---------- FOG + GOLD DUST + CHESS GLYPHS CANVAS ---------- */
+(function(){
+  const cv=document.getElementById('chess-canvas');
+  const ctx=cv.getContext('2d');
+  let W,H,DPR,fog=[],dust=[],glyphs=[];
+  const GLYPHS=['♞','♚','♟','♛','♜','♝'];
+  function resize(){
+    DPR=Math.min(window.devicePixelRatio||1,2);
+    W=cv.width=innerWidth*DPR;H=cv.height=innerHeight*DPR;
+    cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';
+    build();
+  }
+  function build(){
+    fog=[];dust=[];glyphs=[];
+    const nf=Math.round(innerWidth/22);
+    for(let i=0;i<nf;i++) fog.push(mkFog(true));
+    const nd=Math.round((innerWidth*innerHeight)/24000);
+    for(let i=0;i<nd;i++) dust.push(mkDust(true));
+    const ng=Math.round(innerWidth/120);
+    for(let i=0;i<ng;i++) glyphs.push(mkGlyph(true));
+  }
+  function mkFog(any){
+    return {x:Math.random()*W,y:any?Math.random()*H:H+60,r:(Math.random()*120+80)*DPR,
+      sp:(Math.random()*0.25+0.08)*DPR,drift:(Math.random()*0.3-0.15)*DPR,a:Math.random()*0.06+0.03};
+  }
+  function mkDust(any){
+    return {x:Math.random()*W,y:any?Math.random()*H:H+10,r:(Math.random()*1.3+0.3)*DPR,
+      sp:(Math.random()*0.4+0.12)*DPR,drift:(Math.random()*0.3-0.1)*DPR,a:Math.random()*0.4+0.15,
+      t:Math.random()*Math.PI*2,life:Math.random()*200+80};
+  }
+  function mkGlyph(any){
+    return {x:Math.random()*W,y:any?Math.random()*H:H+40,sp:(Math.random()*0.4+0.15)*DPR,
+      drift:(Math.random()*0.3-0.12)*DPR,a:Math.random()*0.18+0.06,
+      g:GLYPHS[Math.floor(Math.random()*GLYPHS.length)],
+      sz:(Math.random()*16+14)*DPR,rot:(Math.random()*0.6-0.3),vr:(Math.random()*0.01-0.005)};
+  }
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    ctx.globalCompositeOperation='source-over';
+    for(const p of fog){
+      p.x+=p.drift;p.y-=p.sp;
+      const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r);
+      g.addColorStop(0,`rgba(120,116,104,${p.a})`);
+      g.addColorStop(1,'rgba(120,116,104,0)');
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+      if(p.y< -p.r){Object.assign(p,mkFog(false));}
+    }
+    ctx.globalCompositeOperation='lighter';
+    for(const p of dust){
+      p.x+=p.drift;p.y-=p.sp;p.t+=0.02;
+      const sway=Math.sin(p.t)*0.5*DPR;
+      const g=ctx.createRadialGradient(p.x+sway,p.y,0,p.x+sway,p.y,p.r*4);
+      g.addColorStop(0,`rgba(227,192,116,${p.a})`);
+      g.addColorStop(1,'rgba(227,192,116,0)');
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x+sway,p.y,p.r*4,0,Math.PI*2);ctx.fill();
+      p.life--;
+      if(p.y< -20||p.life<=0){Object.assign(p,mkDust(false));}
+    }
+    ctx.globalCompositeOperation='source-over';
+    for(const p of glyphs){
+      p.x+=p.drift;p.y-=p.sp;p.rot+=p.vr;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);
+      ctx.globalAlpha=p.a;ctx.fillStyle='#c9a24b';
+      ctx.font=`${p.si||(p.si=p.sz)}px Cinzel, serif`;
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(p.g,0,0);ctx.restore();
+      if(p.y< -40){Object.assign(p,mkGlyph(false));}
+    }
+    requestAnimationFrame(loop);
+  }
+  addEventListener('resize',resize);
+  resize();loop();
+})();
+
+/* ---------- REVEAL ---------- */
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- RATING COUNT-UP ---------- */
+function animateScores(){
+  document.querySelectorAll('.rating').forEach(card=>{
+    const scoreEl=card.querySelector('.score');
+    const bar=card.querySelector('.bar i');
+    const dec=parseInt(scoreEl.dataset.dec||"0");
+    const suf=scoreEl.dataset.suf||'';
+    const txt=scoreEl.dataset.text;
+    const pct=parseFloat(bar.dataset.pct);
+    setTimeout(()=>{ bar.style.width=pct+'%'; },120);
+    if(txt){ scoreEl.textContent=txt; return; }
+    const target=parseFloat(scoreEl.dataset.target);
+    let cur=0;const dur=1500;const st=performance.now();
+    function step(now){
+      const p=Math.min((now-st)/dur,1);
+      const e=1-Math.pow(1-p,3);
+      cur=target*e;
+      scoreEl.innerHTML=(dec>0?cur.toFixed(dec):Math.round(cur))+(suf?'<span class="suf">'+suf+'</span>':'');
+      if(p<1) requestAnimationFrame(step);
+      else scoreEl.innerHTML=(dec>0?target.toFixed(dec):target)+(suf?'<span class="suf">'+suf+'</span>':'');
+    }
+    requestAnimationFrame(step);
+  });
+}
+const scoreIO=new IntersectionObserver((es)=>{
+  es.forEach(e=>{ if(e.isIntersecting){ animateScores(); scoreIO.disconnect(); }});
+},{threshold:0.3});
+const ratingsSec=document.querySelector('.ratings').closest('section');
+scoreIO.observe(ratingsSec);
+</script>
+</body>
+</html>

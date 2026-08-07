@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>星球大战：新希望 — 经典电影推荐</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Orbitron:wght@500;700;900&family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#04050a;
+    --bg2:#0a0e1c;
+    --panel:rgba(255,255,255,.045);
+    --panel-2:rgba(120,160,255,.06);
+    --border:rgba(140,170,255,.16);
+    --ink:#e9eefc;
+    --muted:#94a2c6;
+    --rebel:#4d9fff;
+    --amber:#ffc857;
+    --gold:#f5c542;
+    --empire:#ff3b4e;
+    --holo:#7df9ff;
+    --shadow:0 30px 80px -20px rgba(0,0,0,.8);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Serif SC","PingFang SC","Microsoft YaHei",serif;
+    line-height:1.8;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .star-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .nebula{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(60% 50% at 78% 12%, rgba(77,159,255,.14), transparent 70%),
+      radial-gradient(50% 45% at 12% 80%, rgba(255,200,87,.10), transparent 70%),
+      radial-gradient(90% 90% at 50% 50%, rgba(125,249,255,.05), transparent 80%);
+  }
+  .wrap{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;z-index:2;
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:80px 24px 60px;overflow:hidden;
+  }
+  .hero .year{
+    font-family:"Cinzel",serif;font-weight:900;
+    font-size:clamp(80px,18vw,200px);line-height:.9;
+    color:rgba(245,197,66,.10);
+    letter-spacing:.05em;margin-bottom:-.18em;user-select:none;
+  }
+  .hero h1{
+    font-family:"Cinzel",serif;font-weight:900;
+    font-size:clamp(42px,9vw,104px);line-height:.98;letter-spacing:.06em;
+    background:linear-gradient(180deg,#fff 10%,#cdd9ff 45%,#7da2e6 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 60px rgba(77,159,255,.35);
+    margin-bottom:6px;
+  }
+  .hero .cn-title{
+    font-family:"Noto Serif SC",serif;font-weight:900;
+    font-size:clamp(20px,4.2vw,40px);letter-spacing:.34em;
+    color:var(--amber);padding-left:.34em;margin-bottom:22px;
+    text-shadow:0 0 30px rgba(255,200,87,.4);
+  }
+  .hero .tagline{
+    font-family:"Orbitron",sans-serif;font-size:clamp(12px,2.4vw,16px);
+    letter-spacing:.34em;color:var(--holo);text-transform:uppercase;
+    opacity:.85;margin-bottom:28px;
+  }
+  .hero .crawl{
+    max-width:620px;font-size:14px;color:var(--gold);letter-spacing:.04em;
+    opacity:.78;font-style:italic;line-height:2;
+    text-shadow:0 0 18px rgba(245,197,66,.3);
+  }
+  .hero .meta{
+    margin-top:34px;display:flex;gap:10px 26px;flex-wrap:wrap;justify-content:center;
+    color:var(--muted);font-size:13px;letter-spacing:.06em;
+  }
+  .hero .meta b{color:var(--ink);font-weight:600}
+  .scroll-hint{
+    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    color:var(--muted);font-size:11px;letter-spacing:.3em;opacity:.6;
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+  /* ===== section frame ===== */
+  section{padding:72px 0;position:relative;z-index:2}
+  .sec-head{text-align:center;margin-bottom:46px}
+  .sec-head .kicker{
+    font-family:"Orbitron",sans-serif;font-size:12px;letter-spacing:.4em;
+    color:var(--rebel);text-transform:uppercase;margin-bottom:12px;
+  }
+  .sec-head h2{
+    font-family:"Noto Serif SC",serif;font-weight:900;
+    font-size:clamp(26px,5vw,40px);letter-spacing:.08em;
+    color:var(--ink);
+  }
+  .sec-head h2 .accent{color:var(--amber)}
+  .divider{
+    width:64px;height:2px;margin:18px auto 0;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  }
+
+  /* ===== ratings ===== */
+  .ratings{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .rating{
+    background:var(--panel);border:1px solid var(--border);border-radius:18px;
+    padding:26px 20px;text-align:center;backdrop-filter:blur(8px);
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .rating::before{
+    content:"";position:absolute;inset:0;border-radius:18px;padding:1px;
+    background:linear-gradient(160deg,rgba(77,159,255,.5),transparent 60%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;opacity:.5;
+  }
+  .rating .src{font-family:"Orbitron",sans-serif;font-size:13px;letter-spacing:.2em;color:var(--muted)}
+  .rating .num{font-family:"Cinzel",serif;font-weight:900;font-size:46px;margin:8px 0 4px;
+    background:linear-gradient(180deg,#fff,#9ec1ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .rating .num .suf{font-size:22px;color:var(--amber)}
+  .bar{height:6px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:10px}
+  .bar i{display:block;height:100%;width:0;border-radius:6px;
+    background:linear-gradient(90deg,var(--rebel),var(--holo));
+    transition:width 1.6s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 14px rgba(77,159,255,.6)}
+
+  /* ===== synopsis + poster ===== */
+  .synopsis{display:grid;grid-template-columns:1.25fr .9fr;gap:40px;align-items:center}
+  .syn-card{
+    background:var(--panel);border:1px solid var(--border);border-radius:22px;
+    padding:38px 36px;backdrop-filter:blur(10px);box-shadow:var(--shadow);
+  }
+  .syn-card .lead{font-size:19px;color:var(--ink);font-weight:600;margin-bottom:18px;letter-spacing:.02em}
+  .syn-card p{color:#c4cee6;font-size:15.5px;margin-bottom:14px}
+  .nos-spoiler{
+    display:inline-flex;align-items:center;gap:8px;margin-top:10px;
+    font-family:"Orbitron",sans-serif;font-size:11px;letter-spacing:.2em;
+    color:var(--holo);border:1px solid rgba(125,249,255,.35);
+    padding:7px 14px;border-radius:30px;background:rgba(125,249,255,.06);
+  }
+  .poster{
+    border-radius:22px;overflow:hidden;border:1px solid var(--border);
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.9), 0 0 40px -10px rgba(77,159,255,.4);
+    aspect-ratio:3/4;background:#04060f;
+  }
+  .poster svg{display:block;width:100%;height:100%}
+
+  /* ===== highlights ===== */
+  .grid-6{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .hl{
+    background:var(--panel);border:1px solid var(--border);border-radius:18px;
+    padding:28px 24px;backdrop-filter:blur(8px);transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease;
+    position:relative;overflow:hidden;
+  }
+  .hl:hover{transform:translateY(-6px);border-color:rgba(245,197,66,.45);
+    box-shadow:0 24px 50px -24px rgba(0,0,0,.8),0 0 30px -12px rgba(255,200,87,.5)}
+  .hl .ic{font-size:26px;margin-bottom:12px;filter:drop-shadow(0 0 10px rgba(77,159,255,.6))}
+  .hl h3{font-size:18px;font-weight:700;letter-spacing:.04em;margin-bottom:8px;color:var(--ink)}
+  .hl p{font-size:14px;color:var(--muted);line-height:1.75}
+
+  /* ===== quotes ===== */
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .quote{
+    background:linear-gradient(155deg,var(--panel-2),rgba(255,255,255,.02));
+    border:1px solid var(--border);border-left:3px solid var(--gold);
+    border-radius:14px;padding:30px 30px;position:relative;
+  }
+  .quote .mark{font-family:"Cinzel",serif;font-size:54px;color:rgba(245,197,66,.25);line-height:.6;position:absolute;top:18px;right:24px}
+  .quote .en{font-family:"Orbitron",sans-serif;font-size:17px;color:var(--holo);letter-spacing:.04em;margin-bottom:10px;line-height:1.6}
+  .quote .cn{font-size:16px;color:var(--ink);font-weight:600}
+  .quote .sub{margin-top:10px;font-size:13px;color:var(--muted)}
+
+  /* ===== why ===== */
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .why-item{display:flex;gap:18px;align-items:flex-start;
+    background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:24px 26px;backdrop-filter:blur(8px)}
+  .why-item .n{
+    flex:0 0 auto;width:42px;height:42px;border-radius:12px;
+    display:grid;place-items:center;font-family:"Cinzel",serif;font-weight:900;font-size:20px;
+    background:linear-gradient(160deg,var(--rebel),#2a5fb0);color:#fff;
+    box-shadow:0 0 24px -6px rgba(77,159,255,.7)}
+  .why-item h4{font-size:17px;font-weight:700;margin-bottom:6px;letter-spacing:.03em}
+  .why-item p{font-size:14px;color:var(--muted)}
+
+  /* ===== awards ===== */
+  .awards{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .award{
+    font-size:13.5px;letter-spacing:.03em;padding:10px 18px;border-radius:30px;
+    background:var(--panel);border:1px solid var(--border);color:#d6deff;
+    transition:transform .3s ease,border-color .3s ease;
+  }
+  .award.gold{border-color:rgba(245,197,66,.55);color:var(--gold);
+    background:rgba(245,197,66,.08);box-shadow:0 0 22px -10px rgba(245,197,66,.6)}
+  .award:hover{transform:translateY(-3px)}
+
+  /* ===== archive table ===== */
+  .archive{background:var(--panel);border:1px solid var(--border);border-radius:20px;
+    padding:14px 30px;backdrop-filter:blur(10px);box-shadow:var(--shadow)}
+  .archive .row{display:flex;justify-content:space-between;gap:20px;
+    padding:15px 4px;border-bottom:1px solid rgba(255,255,255,.06);font-size:15px}
+  .archive .row:last-child{border-bottom:none}
+  .archive .k{color:var(--muted);letter-spacing:.06em;flex:0 0 30%}
+  .archive .v{color:var(--ink);text-align:right;font-weight:600}
+
+  /* ===== editor note ===== */
+  .editor{
+    background:linear-gradient(160deg,rgba(245,197,66,.10),rgba(77,159,255,.05));
+    border:1px solid rgba(245,197,66,.3);border-radius:22px;padding:42px 40px;text-align:center;
+    box-shadow:0 30px 70px -30px rgba(0,0,0,.8);
+  }
+  .editor .stars{font-size:30px;letter-spacing:.12em;color:var(--gold);margin-bottom:14px;
+    text-shadow:0 0 24px rgba(245,197,66,.5)}
+  .editor h3{font-family:"Noto Serif SC",serif;font-weight:900;font-size:24px;letter-spacing:.1em;margin-bottom:14px}
+  .editor p{max-width:720px;margin:0 auto;color:#dbe3f7;font-size:15.5px}
+
+  footer{position:relative;z-index:2;text-align:center;padding:50px 20px 60px;color:var(--muted);font-size:12.5px;letter-spacing:.1em}
+  footer .badge{font-family:"Orbitron",sans-serif;color:rgba(245,197,66,.5);letter-spacing:.3em;margin-bottom:10px}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:880px){
+    .ratings{grid-template-columns:repeat(2,1fr)}
+    .synopsis{grid-template-columns:1fr}
+    .poster{max-width:340px;margin:0 auto}
+    .grid-6{grid-template-columns:1fr 1fr}
+    .quotes,.why{grid-template-columns:1fr}
+  }
+  @media(max-width:540px){
+    .ratings,.grid-6{grid-template-columns:1fr}
+    .archive .k{flex-basis:42%}
+  }
+</style>
+</head>
+<body>
+<canvas class="star-canvas" id="stars"></canvas>
+<div class="nebula"></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="year">1977</div>
+  <h1>STAR&nbsp;WARS</h1>
+  <div class="cn-title">星球大战 · 新希望</div>
+  <div class="tagline">Episode IV — A New Hope</div>
+  <p class="crawl">"很久以前，在一个遥远的银河系……"<br>在帝国的铁腕之下，一群自由斗士点燃了反抗的星火。</p>
+  <div class="meta">
+    <span>导演 <b>乔治·卢卡斯</b></span>
+    <span>主演 <b>马克·哈米尔 · 哈里森·福特 · 凯丽·费雪</b></span>
+    <span>配乐 <b>约翰·威廉姆斯</b></span>
+  </div>
+  <div class="scroll-hint">向下滚动 ↓</div>
+</header>
+
+<div class="wrap">
+
+  <!-- RATINGS -->
+  <section>
+    <div class="sec-head reveal">
+      <div class="kicker">Acclaim</div>
+      <h2>影评与观众 <span class="accent">口碑</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="ratings">
+      <div class="rating reveal">
+        <div class="src">IMDb</div>
+        <div class="num"><span class="cv" data-to="8.6" data-dec="1">0.0</span></div>
+        <div class="bar"><i data-w="86"></i></div>
+      </div>
+      <div class="rating reveal">
+        <div class="src">豆瓣</div>
+        <div class="num"><span class="cv" data-to="8.7" data-dec="1">0.0</span></div>
+        <div class="bar"><i data-w="87"></i></div>
+      </div>
+      <div class="rating reveal">
+        <div class="src">烂番茄 新鲜度</div>
+        <div class="num"><span class="cv" data-to="93" data-dec="0">0</span><span class="suf">%</span></div>
+        <div class="bar"><i data-w="93"></i></div>
+      </div>
+      <div class="rating reveal">
+        <div class="src">Metacritic</div>
+        <div class="num"><span class="cv" data-to="90" data-dec="0">0</span></div>
+        <div class="bar"><i data-w="90"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYNOPSIS + POSTER -->
+  <section>
+    <div class="sec-head reveal">
+      <div class="kicker">Synopsis</div>
+      <h2>剧情 <span class="accent">梗概</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="synopsis">
+      <div class="syn-card reveal">
+        <div class="lead">一颗沙漠星球上的少年，被卷入了一场跨越银河的自由之战。</div>
+        <p>在帝国的高压统治下，整个银河系都笼罩在恐惧之中。一名在偏远行星塔图因长大的农家少年卢克·天行者，偶然得到了两台携带着求救信号的机器人，由此被卷进了一场关于被囚公主、神秘"原力"与一支弱小反抗军的故事。</p>
+        <p>在一位隐居的老骑士指引下，卢克逐渐察觉到自己体内沉睡的力量。他与一群性格迥异的伙伴——漂泊的走私者、勇猛的战士、忠诚的机器人——组成了一支看似微不足道的同盟，对抗帝国那座能吞噬整颗行星的超级武器"死星"。</p>
+        <p>这是一段关于勇气、成长与希望启程的旅程：一个普通人，如何在浩瀚星海中找到属于自己的位置。</p>
+        <span class="nos-spoiler">◈ 无剧透 · 仅呈现世界观与人物关系</span>
+      </div>
+      <div class="poster reveal">
+        <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" id="posterSvg" aria-label="星球大战星空海报">
+          <defs>
+            <radialGradient id="space" cx="50%" cy="38%" r="80%">
+              <stop offset="0%" stop-color="#101a36"/>
+              <stop offset="55%" stop-color="#070b18"/>
+              <stop offset="100%" stop-color="#03040a"/>
+            </radialGradient>
+            <radialGradient id="sunA" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff3c4"/>
+              <stop offset="35%" stop-color="#ffd14d"/>
+              <stop offset="100%" stop-color="rgba(255,180,60,0)"/>
+            </radialGradient>
+            <radialGradient id="sunB" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffe9a8"/>
+              <stop offset="40%" stop-color="#ffb347"/>
+              <stop offset="100%" stop-color="rgba(255,150,50,0)"/>
+            </radialGradient>
+            <radialGradient id="ds" cx="40%" cy="35%" r="75%">
+              <stop offset="0%" stop-color="#3a4256"/>
+              <stop offset="60%" stop-color="#1a2030"/>
+              <stop offset="100%" stop-color="#0a0e18"/>
+            </radialGradient>
+            <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="6" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <rect width="300" height="400" fill="url(#space)"/>
+          <g id="starGroup"></g>
+
+          <!-- twin suns of Tatooine -->
+          <circle cx="78" cy="300" r="62" fill="url(#sunA)" opacity=".9"/>
+          <circle cx="118" cy="312" r="40" fill="url(#sunB)" opacity=".85"/>
+
+          <!-- Death Star -->
+          <g filter="url(#glow)">
+            <circle cx="222" cy="92" r="58" fill="url(#ds)" stroke="rgba(160,180,220,.35)" stroke-width="1"/>
+            <circle cx="222" cy="92" r="58" fill="none" stroke="rgba(120,150,210,.18)" stroke-width="6"/>
+            <line x1="166" y1="92" x2="278" y2="92" stroke="rgba(180,200,240,.28)" stroke-width="2"/>
+            <circle cx="205" cy="80" r="6" fill="rgba(200,215,245,.4)"/>
+            <circle cx="238" cy="108" r="4" fill="rgba(200,215,245,.3)"/>
+            <circle cx="222" cy="92" r="5" fill="#ff6b78" opacity=".9"/>
+          </g>
+
+          <!-- X-wing silhouette -->
+          <g fill="#cdd9ff" opacity=".92" transform="translate(150 150)">
+            <polygon points="0,0 -10,-6 -4,0 -10,6"/>
+            <polygon points="0,0 22,-3 30,0 22,3"/>
+            <rect x="-2" y="-1.5" width="14" height="3"/>
+          </g>
+          <!-- TIE fighter -->
+          <g fill="#aebbe0" opacity=".8" transform="translate(200 200)">
+            <circle cx="0" cy="0" r="4"/>
+            <rect x="-12" y="-2.5" width="8" height="5"/>
+            <rect x="4" y="-2.5" width="8" height="5"/>
+          </g>
+
+          <!-- lightsaber (Vader red) diagonal -->
+          <g filter="url(#glow)" transform="rotate(-32 150 250)">
+            <rect x="150" y="246" width="96" height="3.4" rx="1.7" fill="#ff3b4e"/>
+            <rect x="144" y="243" width="9" height="9" rx="2" fill="#cfd6e6"/>
+          </g>
+
+          <!-- crawl perspective lines -->
+          <g stroke="rgba(245,197,66,.18)" stroke-width="1" opacity=".5">
+            <line x1="0" y1="400" x2="120" y2="340"/>
+            <line x1="300" y1="400" x2="180" y2="340"/>
+            <line x1="60" y1="400" x2="135" y2="340"/>
+            <line x1="240" y1="400" x2="165" y2="340"/>
+          </g>
+          <text x="150" y="372" text-anchor="middle" fill="#f5c542" opacity=".55"
+            font-family="Cinzel,serif" font-size="13" letter-spacing="3">A NEW HOPE</text>
+
+          <rect width="300" height="400" fill="none" stroke="rgba(140,170,255,.18)" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section>
+    <div class="sec-head reveal">
+      <div class="kicker">Why It Shines</div>
+      <h2>六大 <span class="accent">亮点</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="grid-6">
+      <div class="hl reveal">
+        <div class="ic">🚀</div>
+        <h3>现代大片的开山祖</h3>
+        <p>它重新定义了暑期档与科幻电影，开启了"高概念商业大片"的好莱坞新纪元。</p>
+      </div>
+      <div class="hl reveal">
+        <div class="ic">🎼</div>
+        <h3>威廉姆斯的配乐</h3>
+        <p>约翰·威廉姆斯写下的主题旋律与"帝国进行曲"，成为全球流行文化的听觉符号。</p>
+      </div>
+      <div class="hl reveal">
+        <div class="ic">🪐</div>
+        <h3>视觉特效革命</h3>
+        <p>为拍摄本片而诞生的工业光魔（ILM），用模型与光学合成开创了特效新语言。</p>
+      </div>
+      <div class="hl reveal">
+        <div class="ic">🤝</div>
+        <h3>鲜活的角色群像</h3>
+        <p>卢克、莱娅、汉·索罗、楚巴卡与一对机器人，组成了影史最讨喜的冒险小队。</p>
+      </div>
+      <div class="hl reveal">
+        <div class="ic">📜</div>
+        <h3>英雄之旅的神话</h3>
+        <p>以约瑟夫·坎贝尔的"单一神话"为骨架，讲了一个人人都能共鸣的成长故事。</p>
+      </div>
+      <div class="hl reveal">
+        <div class="ic">🌌</div>
+        <h3>跨越世代的现象</h3>
+        <p>近半个世纪过去，它仍是全球观众共同的集体记忆与流行文化基因。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTES -->
+  <section>
+    <div class="sec-head reveal">
+      <div class="kicker">Iconic Lines</div>
+      <h2>经典 <span class="accent">台词</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="quotes">
+      <div class="quote reveal">
+        <div class="mark">“</div>
+        <div class="en">May the Force be with you.</div>
+        <div class="cn">愿原力与你同在。</div>
+        <div class="sub">— 全片反复回响的祝福，已成为一句世界语</div>
+      </div>
+      <div class="quote reveal">
+        <div class="mark">“</div>
+        <div class="en">The Force will be with you, always.</div>
+        <div class="cn">原力将永远与你同在。</div>
+        <div class="sub">— 一段临别赠言，温柔而意味深长</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY WORTH WATCHING -->
+  <section>
+    <div class="sec-head reveal">
+      <div class="kicker">Worth Watching</div>
+      <h2>为什么 <span class="accent">值得一看</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="why">
+      <div class="why-item reveal">
+        <div class="n">01</div>
+        <div><h4>类型开创者</h4><p>想看懂后来无数科幻片从何而来，这片是绕不开的原点。</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="n">02</div>
+        <div><h4>纯粹的冒险快感</h4><p>节奏明快、情感真挚，是一场老少皆宜、毫无沉闷的英雄旅程。</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="n">03</div>
+        <div><h4>视听母语</h4><p>它的配乐与视觉语言，早已成为全球观众共享的流行文化记忆。</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="n">04</div>
+        <div><h4>历久弥新</h4><p>近五十年后重看仍不过时，是能跨代际一起观看的佳作。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section>
+    <div class="sec-head reveal">
+      <div class="kicker">Honors</div>
+      <h2>荣誉 <span class="accent">殿堂</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="awards reveal">
+      <span class="award gold">奥斯卡 最佳原创配乐</span>
+      <span class="award gold">奥斯卡 最佳艺术指导</span>
+      <span class="award gold">奥斯卡 最佳电影剪辑</span>
+      <span class="award gold">奥斯卡 最佳视觉效果</span>
+      <span class="award gold">奥斯卡 最佳音效</span>
+      <span class="award">奥斯卡 特别成就奖（音效剪辑）</span>
+      <span class="award gold">AFI 百年百大电影 第一名</span>
+      <span class="award">美国国会图书馆 国家电影登记册</span>
+      <span class="award">金球奖 最佳电影（音乐/喜剧）提名</span>
+      <span class="award">BAFTA 最佳艺术指导 / 最佳音效</span>
+      <span class="award">土星奖 最佳科幻电影</span>
+      <span class="award">格莱美 最佳原创影视配乐</span>
+    </div>
+  </section>
+
+  <!-- ARCHIVE -->
+  <section>
+    <div class="sec-head reveal">
+      <div class="kicker">Profile</div>
+      <h2>影片 <span class="accent">档案</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="archive reveal">
+      <div class="row"><span class="k">中文片名</span><span class="v">星球大战：新希望</span></div>
+      <div class="row"><span class="k">英文片名</span><span class="v">Star Wars: Episode IV – A New Hope</span></div>
+      <div class="row"><span class="k">导演</span><span class="v">乔治·卢卡斯（George Lucas）</span></div>
+      <div class="row"><span class="k">主演</span><span class="v">马克·哈米尔 / 哈里森·福特 / 凯丽·费雪 / 亚历克·吉尼斯</span></div>
+      <div class="row"><span class="k">编剧</span><span class="v">乔治·卢卡斯</span></div>
+      <div class="row"><span class="k">配乐</span><span class="v">约翰·威廉姆斯（John Williams）</span></div>
+      <div class="row"><span class="k">类型</span><span class="v">科幻 / 冒险 / 太空歌剧</span></div>
+      <div class="row"><span class="k">片长</span><span class="v">121 分钟</span></div>
+      <div class="row"><span class="k">上映年份</span><span class="v">1977 年</span></div>
+      <div class="row"><span class="k">制片国家</span><span class="v">美国</span></div>
+      <div class="row"><span class="k">制作 / 发行</span><span class="v">卢卡斯影业 / 20 世纪福克斯</span></div>
+      <div class="row"><span class="k">全球票房</span><span class="v">约 7.75 亿美元（重映后）</span></div>
+    </div>
+  </section>
+
+  <!-- EDITOR NOTE -->
+  <section>
+    <div class="editor reveal">
+      <div class="stars">★★★★★</div>
+      <h3>编辑评语</h3>
+      <p>它不只是一部电影，而是一整套现代神话的起点。当那行金色文字缓缓爬上星空，你就知道，自己即将踏上一场属于全人类的冒险。《新希望》用最纯粹的少年气、最辽阔的想象力与最动人的配乐，证明了好故事永远不会过时——无论银河多远，希望永远年轻。</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="badge">CINEPHILE PICK</div>
+  <div>经典电影推荐 · 星球大战：新希望 · 2026-07-14</div>
+  <div style="margin-top:6px;opacity:.6">本页为自动化推荐内容，评分数据来自公开资料，仅供参考</div>
+</footer>
+
+<script>
+/* ---------- starfield canvas ---------- */
+(function(){
+  const cv=document.getElementById('stars');
+  const ctx=cv.getContext('2d');
+  let w,h,stars=[],motes=[];
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  function resize(){
+    w=cv.clientWidth; h=cv.clientHeight;
+    cv.width=w*dpr; cv.height=h*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function init(){
+    resize();
+    stars=[];
+    const n=Math.floor(w*h/7000);
+    for(let i=0;i<n;i++){
+      stars.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.4+.2,
+        a:Math.random(),tw:Math.random()*0.02+0.004,vy:Math.random()*0.12+0.03});
+    }
+    motes=[];
+    const cols=['77,159,255','255,200,87','125,249,255'];
+    for(let i=0;i<26;i++){
+      motes.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+1,
+        a:Math.random()*0.5+0.2,c:cols[i%3],vx:(Math.random()-0.5)*0.25,vy:-(Math.random()*0.3+0.1)});
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for(const s of stars){
+      s.a+=s.tw; const al=0.35+Math.abs(Math.sin(s.a))*0.6;
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,7);
+      ctx.fillStyle='rgba(255,255,255,'+al+')';ctx.fill();
+      s.y+=s.vy; if(s.y>h+2){s.y=-2;s.x=Math.random()*w;}
+    }
+    for(const m of motes){
+      ctx.beginPath();ctx.arc(m.x,m.y,m.r,0,7);
+      const g=ctx.createRadialGradient(m.x,m.y,0,m.x,m.y,m.r*4);
+      g.addColorStop(0,'rgba('+m.c+','+m.a+')');
+      g.addColorStop(1,'rgba('+m.c+',0)');
+      ctx.fillStyle=g;ctx.arc(m.x,m.y,m.r*4,0,7);ctx.fill();
+      m.x+=m.vx;m.y+=m.vy;
+      if(m.y<-10){m.y=h+10;m.x=Math.random()*w;}
+      if(m.x<-10)m.x=w+10; if(m.x>w+10)m.x=-10;
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',()=>{init();});
+  init();draw();
+})();
+
+/* ---------- poster stars ---------- */
+(function(){
+  const g=document.getElementById('starGroup');
+  if(!g)return;
+  for(let i=0;i<70;i++){
+    const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx',(Math.random()*300).toFixed(1));
+    c.setAttribute('cy',(Math.random()*400).toFixed(1));
+    c.setAttribute('r',(Math.random()*1.1+0.2).toFixed(2));
+    c.setAttribute('fill','#ffffff');
+    c.setAttribute('opacity',(Math.random()*0.7+0.2).toFixed(2));
+    g.appendChild(c);
+  }
+})();
+
+/* ---------- reveal on scroll ---------- */
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  const io=new IntersectionObserver((ents)=>{
+    ents.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        // rating bars
+        e.target.querySelectorAll?.('.bar i').forEach(b=>{b.style.width=b.dataset.w+'%';});
+        e.target.querySelectorAll?.('.cv').forEach(c=>countUp(c));
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.16});
+  els.forEach(el=>io.observe(el));
+})();
+
+/* ---------- count up ---------- */
+function countUp(el){
+  if(el.dataset.done)return; el.dataset.done='1';
+  const to=parseFloat(el.dataset.to); const dec=parseInt(el.dataset.dec||'0');
+  const dur=1400; const t0=performance.now();
+  function step(t){
+    let p=Math.min(1,(t-t0)/dur); p=1-Math.pow(1-p,3);
+    el.textContent=(to*p).toFixed(dec);
+    if(p<1)requestAnimationFrame(step); else el.textContent=to.toFixed(dec);
+  }
+  requestAnimationFrame(step);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>十二怒汉 · 今日经典电影推荐</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=IM+Fell+English:ital@0;1&display=swap');
+
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13161d;
+    --bg3: #1a1e28;
+    --card: #1e2230;
+    --card2: #242838;
+    --gold: #c9a84c;
+    --gold2: #e8c87a;
+    --gold3: #f5dfa0;
+    --ivory: #f0ead6;
+    --ivory2: #d8cdb0;
+    --red: #8b2020;
+    --red2: #b03030;
+    --red3: #d04040;
+    --blue: #2a3a5c;
+    --blue2: #3a5080;
+    --text: #c8c0a8;
+    --text2: #9a9280;
+    --accent: #c9a84c;
+    --border: rgba(201, 168, 76, 0.2);
+    --border2: rgba(201, 168, 76, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ===== CANVAS HERO ===== */
+  #hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 680px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  #hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Courtroom window light rays */
+  .hero-light {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 100%;
+    background: 
+      conic-gradient(from -15deg at 20% 0%, rgba(201,168,76,0.07) 0deg, transparent 8deg, transparent 25deg, rgba(201,168,76,0.04) 30deg, transparent 38deg),
+      conic-gradient(from -5deg at 50% 0%, rgba(201,168,76,0.06) 0deg, transparent 6deg, transparent 20deg, rgba(201,168,76,0.05) 22deg, transparent 30deg),
+      conic-gradient(from 5deg at 80% 0%, rgba(201,168,76,0.05) 0deg, transparent 7deg);
+    pointer-events: none;
+    animation: lightSway 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes lightSway {
+    from { opacity: 0.7; transform: translateX(-50%) skewX(-1deg); }
+    to   { opacity: 1;   transform: translateX(-50%) skewX(1deg); }
+  }
+
+  /* Film grain overlay */
+  .grain-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    opacity: 0.25;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  /* Vignette */
+  .vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(8,10,15,0.85) 100%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 0.35em 1.2em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+  }
+
+  .hero-year {
+    font-size: clamp(7rem, 18vw, 16rem);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    font-style: italic;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,168,76,0.18);
+    letter-spacing: -0.03em;
+    line-height: 0.85;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+  }
+
+  .hero-title-cn {
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    color: var(--ivory);
+    letter-spacing: 0.1em;
+    line-height: 1.1;
+    text-shadow: 0 2px 40px rgba(201,168,76,0.3);
+    opacity: 0;
+    animation: fadeUp 0.9s 0.8s forwards;
+    position: relative;
+    z-index: 5;
+  }
+
+  .hero-title-en {
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold2);
+    margin-top: 0.5rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    opacity: 0;
+    animation: fadeUp 0.9s 1.0s forwards;
+    position: relative;
+    z-index: 5;
+  }
+
+  .hero-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 1.8rem auto;
+    opacity: 0;
+    animation: fadeIn 1s 1.2s forwards;
+    position: relative;
+    z-index: 5;
+  }
+
+  .hero-quote {
+    font-size: clamp(0.95rem, 2vw, 1.2rem);
+    font-style: italic;
+    color: var(--ivory2);
+    max-width: 560px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 0.9s 1.4s forwards;
+    position: relative;
+    z-index: 5;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.9s 1.6s forwards;
+    position: relative;
+    z-index: 5;
+  }
+
+  .hero-meta-item {
+    text-align: center;
+  }
+
+  .hero-meta-val {
+    display: block;
+    font-size: 1.5rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    color: var(--gold2);
+  }
+
+  .hero-meta-label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text2);
+    margin-top: 0.1rem;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 0;
+    animation: fadeIn 1s 2s forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text2);
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ===== MAIN CONTENT ===== */
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  section {
+    padding: 5rem 0;
+  }
+
+  /* ===== SCORES SECTION ===== */
+  #scores {
+    background: var(--bg2);
+    padding: 4rem 0;
+    border-top: 1px solid var(--border2);
+    border-bottom: 1px solid var(--border2);
+  }
+
+  .scores-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .score-item {
+    text-align: center;
+    padding: 2rem 1rem;
+    border-right: 1px solid var(--border2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .score-item:last-child { border-right: none; }
+
+  .score-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0);
+    transition: transform 1s ease;
+  }
+
+  .score-item.visible::before {
+    transform: scaleX(1);
+  }
+
+  .score-number {
+    font-size: 2.8rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    color: var(--gold2);
+    line-height: 1;
+    display: block;
+  }
+
+  .score-platform {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text2);
+    margin-top: 0.4rem;
+    display: block;
+  }
+
+  .score-bar-wrap {
+    width: 60%;
+    height: 2px;
+    background: rgba(255,255,255,0.06);
+    margin: 0.8rem auto 0;
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  .score-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold2));
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+    border-radius: 1px;
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    color: var(--ivory);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-rule {
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 2.5rem;
+    opacity: 0.6;
+  }
+
+  /* ===== SYNOPSIS ===== */
+  #synopsis {
+    background: var(--bg);
+  }
+
+  .synopsis-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .synopsis-text p {
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-bottom: 1.4rem;
+  }
+
+  .synopsis-text p:first-of-type::first-letter {
+    float: left;
+    font-size: 4.5rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    color: var(--gold2);
+    line-height: 0.75;
+    margin-right: 0.12em;
+    margin-top: 0.1em;
+  }
+
+  /* Poster / Info Card */
+  .info-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 0;
+    overflow: hidden;
+    position: sticky;
+    top: 2rem;
+  }
+
+  .poster-area {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(160deg, #1a1e2a 0%, #0d1020 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Courtroom SVG illustration */
+  .poster-area svg {
+    width: 90%;
+    height: 90%;
+  }
+
+  .card-table {
+    padding: 1.2rem 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .card-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border2);
+    font-size: 0.82rem;
+  }
+
+  .card-row:last-child { border-bottom: none; }
+
+  .card-key {
+    color: var(--text2);
+    letter-spacing: 0.05em;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+  }
+
+  .card-val {
+    color: var(--ivory2);
+    font-weight: 600;
+    text-align: right;
+    max-width: 65%;
+  }
+
+  /* ===== HIGHLIGHTS ===== */
+  #highlights {
+    background: var(--bg2);
+    border-top: 1px solid var(--border2);
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border2);
+    border: 1.5px solid var(--border2);
+  }
+
+  .highlight-card {
+    background: var(--card);
+    padding: 2rem 1.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .highlight-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--gold);
+    transition: height 0.5s ease;
+  }
+
+  .highlight-card:hover { background: var(--card2); }
+  .highlight-card:hover::after { height: 100%; }
+
+  .hl-num {
+    font-size: 3rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    color: rgba(201,168,76,0.12);
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+
+  .hl-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--gold2);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.7rem;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+  }
+
+  .hl-desc {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ===== QUOTE ===== */
+  #quote-block {
+    background: linear-gradient(135deg, #0d1020 0%, #141824 50%, #0d1020 100%);
+    border-top: 1px solid var(--border2);
+    border-bottom: 1px solid var(--border2);
+    text-align: center;
+    padding: 5rem 2rem;
+  }
+
+  .blockquote-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .bq-mark {
+    font-size: 6rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    color: var(--gold);
+    opacity: 0.25;
+    line-height: 0.6;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+
+  .bq-text {
+    font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+    font-style: italic;
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--ivory);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .bq-source {
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text2);
+  }
+
+  .bq-source span {
+    color: var(--gold);
+  }
+
+  /* Second quote */
+  .bq-separator {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--border), transparent);
+    margin: 2.5rem auto;
+  }
+
+  /* ===== WHY WATCH ===== */
+  #why {
+    background: var(--bg);
+  }
+
+  .why-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .why-item {
+    display: flex;
+    gap: 1.2rem;
+    padding: 1.5rem 1.8rem;
+    background: var(--card);
+    border: 1px solid var(--border2);
+    border-left: 3px solid var(--gold);
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .why-item:hover {
+    background: var(--card2);
+    border-color: var(--gold2);
+  }
+
+  .why-idx {
+    font-size: 1.8rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    color: var(--gold);
+    opacity: 0.4;
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 2rem;
+  }
+
+  .why-body h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold2);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .why-body p {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* ===== AWARDS ===== */
+  #awards {
+    background: var(--bg2);
+    border-top: 1px solid var(--border2);
+    padding: 4rem 0;
+  }
+
+  .award-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .award-tag {
+    padding: 0.45em 1.1em;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--gold);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: background 0.3s, border-color 0.3s;
+    cursor: default;
+  }
+
+  .award-tag:hover {
+    background: rgba(201,168,76,0.08);
+    border-color: var(--gold2);
+  }
+
+  /* ===== FILE TABLE ===== */
+  #file-table {
+    background: var(--bg);
+  }
+
+  .file-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+
+  .file-row {
+    display: flex;
+    border-bottom: 1px solid var(--border2);
+    border-right: 1px solid var(--border2);
+  }
+
+  .file-row:nth-child(even) .file-val { background: rgba(255,255,255,0.01); }
+
+  .file-k {
+    width: 40%;
+    padding: 0.9rem 1.2rem;
+    background: rgba(0,0,0,0.2);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text2);
+    border-right: 1px solid var(--border2);
+    display: flex;
+    align-items: center;
+  }
+
+  .file-v {
+    flex: 1;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.85rem;
+    color: var(--ivory2);
+    display: flex;
+    align-items: center;
+  }
+
+  /* ===== FINAL RATING ===== */
+  #final {
+    background: linear-gradient(160deg, #0d1020 0%, #131828 100%);
+    text-align: center;
+    padding: 6rem 2rem;
+    border-top: 1px solid var(--border2);
+  }
+
+  .stars {
+    font-size: 1.5rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .final-text {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-style: italic;
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--ivory2);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+  }
+
+  .today-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--text2);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border2);
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.7rem;
+    color: var(--text2);
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== REVEAL ANIMATION ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+  .reveal-delay-6 { transition-delay: 0.6s; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .synopsis-layout { grid-template-columns: 1fr; }
+    .info-card { position: static; }
+    .scores-grid { grid-template-columns: 2fr 2fr; }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .why-list { grid-template-columns: 1fr; }
+    .file-grid { grid-template-columns: 1fr; }
+    .file-row { border-right: none; }
+  }
+
+  /* Inner scan line effect */
+  .scan-line {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 3px,
+      rgba(0,0,0,0.06) 3px,
+      rgba(0,0,0,0.06) 4px
+    );
+    pointer-events: none;
+    z-index: 2;
+    mix-blend-mode: multiply;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-light"></div>
+  <div class="grain-overlay"></div>
+  <div class="vignette"></div>
+  <div class="scan-line" style="opacity:0.3;"></div>
+
+  <div class="hero-year">1957</div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Today's Classic · 今日经典推荐</div>
+    <h1 class="hero-title-cn">十二怒汉</h1>
+    <div class="hero-title-en">12 Angry Men</div>
+    <div class="hero-divider"></div>
+    <p class="hero-quote">"一个人的生命攥在你我手中——<br>而你确定自己没有一丝疑问吗？"</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-val">9.0</span>
+        <span class="hero-meta-label">IMDb</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-val">9.4</span>
+        <span class="hero-meta-label">豆瓣</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-val">100%</span>
+        <span class="hero-meta-label">烂番茄</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-val">1957</span>
+        <span class="hero-meta-label">年份</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>向下探索</span>
+  </div>
+</section>
+
+<!-- ===== SCORES ===== -->
+<section id="scores">
+  <div class="container">
+    <div class="scores-grid">
+      <div class="score-item reveal">
+        <span class="score-number" data-target="9.0">0</span>
+        <span class="score-platform">IMDb 评分</span>
+        <div class="score-bar-wrap"><div class="score-bar" data-width="90%"></div></div>
+      </div>
+      <div class="score-item reveal reveal-delay-1">
+        <span class="score-number" data-target="9.4">0</span>
+        <span class="score-platform">豆瓣评分</span>
+        <div class="score-bar-wrap"><div class="score-bar" data-width="94%"></div></div>
+      </div>
+      <div class="score-item reveal reveal-delay-2">
+        <span class="score-number" data-target="100">0</span>
+        <span class="score-platform">烂番茄新鲜度</span>
+        <div class="score-bar-wrap"><div class="score-bar" data-width="100%"></div></div>
+      </div>
+      <div class="score-item reveal reveal-delay-3">
+        <span class="score-number" data-target="96">0</span>
+        <span class="score-platform">爆米花指数 %</span>
+        <div class="score-bar-wrap"><div class="score-bar" data-width="96%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SYNOPSIS ===== -->
+<section id="synopsis">
+  <div class="container">
+    <div class="synopsis-layout">
+      <div class="synopsis-text">
+        <span class="section-label reveal">Synopsis · 剧情梗概</span>
+        <h2 class="section-title reveal">密室中的人性拉锯</h2>
+        <div class="section-rule reveal"></div>
+        <div class="reveal">
+          <p>纽约，盛夏，法庭。一名来自贫民窟的少年被指控谋杀了自己的父亲，庭审证据显示罪证确凿，公诉方甚至未遭到有力反驳。按惯例，陪审团只需走个流程——十二位陪审员退至密室，以多数票决定这个少年的生死。</p>
+          <p>然而，第一轮举手表决出人意料：十一票有罪，一票无罪。那个唯一投出"无罪"的男人，不是在断言嫌疑人清白，而是说：<em>我只是觉得，面对一条人命，我们应该先谈谈。</em></p>
+          <p>在无人知晓的密室里，12 个素不相识的普通人开始相互逼问、反驳与动摇。证据、偏见、傲慢、恐惧与良知，在令人窒息的高温与压迫中不断碰撞。没有追车，没有爆炸，没有特效——这是一场用语言与眼神拼出的惊天博弈。</p>
+        </div>
+      </div>
+
+      <!-- Info Card -->
+      <div class="info-card reveal">
+        <div class="poster-area">
+          <!-- SVG Courtroom illustration -->
+          <svg viewBox="0 0 300 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background gradient -->
+            <defs>
+              <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0d1020"/>
+                <stop offset="100%" stop-color="#1a1e2a"/>
+              </linearGradient>
+              <linearGradient id="lightBeam" x1="0.5" y1="0" x2="0.5" y2="1">
+                <stop offset="0%" stop-color="#c9a84c" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="tableGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3a2e1a"/>
+                <stop offset="100%" stop-color="#1e1608"/>
+              </linearGradient>
+            </defs>
+            <rect width="300" height="400" fill="url(#bgGrad)"/>
+
+            <!-- Window light beams from top -->
+            <polygon points="100,0 130,0 200,400 100,400" fill="url(#lightBeam)" opacity="0.5"/>
+            <polygon points="140,0 160,0 220,400 160,400" fill="url(#lightBeam)" opacity="0.3"/>
+            <polygon points="180,0 200,0 240,400 210,400" fill="url(#lightBeam)" opacity="0.2"/>
+
+            <!-- Ceiling -->
+            <rect x="0" y="0" width="300" height="20" fill="#0a0c14"/>
+            <!-- Ceiling lamp -->
+            <line x1="150" y1="0" x2="150" y2="35" stroke="#9a8050" stroke-width="1"/>
+            <ellipse cx="150" cy="38" rx="18" ry="7" fill="#c9a84c" opacity="0.4"/>
+            <ellipse cx="150" cy="38" rx="40" ry="12" fill="#c9a84c" opacity="0.08"/>
+
+            <!-- Wall panels -->
+            <rect x="0" y="0" width="20" height="400" fill="#111420"/>
+            <rect x="280" y="0" width="20" height="400" fill="#111420"/>
+            <!-- Wall details -->
+            <line x1="20" y1="0" x2="20" y2="400" stroke="#c9a84c" stroke-width="0.5" opacity="0.2"/>
+            <line x1="280" y1="0" x2="280" y2="400" stroke="#c9a84c" stroke-width="0.5" opacity="0.2"/>
+
+            <!-- Windows on left wall -->
+            <rect x="25" y="60" width="18" height="50" fill="#1a2540" rx="1"/>
+            <line x1="34" y1="60" x2="34" y2="110" stroke="#2a3550" stroke-width="1"/>
+            <line x1="25" y1="85" x2="43" y2="85" stroke="#2a3550" stroke-width="1"/>
+            <rect x="25" y="60" width="18" height="50" fill="#c9a84c" opacity="0.04"/>
+
+            <rect x="25" y="125" width="18" height="50" fill="#1a2540" rx="1"/>
+            <line x1="34" y1="125" x2="34" y2="175" stroke="#2a3550" stroke-width="1"/>
+            <line x1="25" y1="150" x2="43" y2="150" stroke="#2a3550" stroke-width="1"/>
+            <rect x="25" y="125" width="18" height="50" fill="#c9a84c" opacity="0.04"/>
+
+            <!-- Long conference table -->
+            <rect x="55" y="160" width="190" height="12" fill="url(#tableGrad)" rx="2"/>
+            <rect x="55" y="172" width="190" height="8" fill="#1a1208" rx="1" opacity="0.5"/>
+            <!-- Table edge highlight -->
+            <rect x="55" y="160" width="190" height="2" fill="#c9a84c" opacity="0.15" rx="1"/>
+            <!-- Table legs -->
+            <rect x="70" y="172" width="6" height="30" fill="#1a1208"/>
+            <rect x="130" y="172" width="6" height="30" fill="#1a1208"/>
+            <rect x="190" y="172" width="6" height="30" fill="#1a1208"/>
+            <rect x="230" y="172" width="6" height="30" fill="#1a1208"/>
+
+            <!-- Chairs + figures (silhouettes of 12 jurors) -->
+            <!-- 6 on far side -->
+            <g opacity="0.75">
+              <ellipse cx="75" cy="155" rx="9" ry="11" fill="#1e2235"/>
+              <circle cx="75" cy="143" r="6" fill="#1e2235"/>
+              <ellipse cx="110" cy="155" rx="9" ry="11" fill="#1e2235"/>
+              <circle cx="110" cy="143" r="6" fill="#1e2235"/>
+              <ellipse cx="145" cy="155" rx="9" ry="11" fill="#1e2235"/>
+              <circle cx="145" cy="143" r="6" fill="#1e2235"/>
+              <ellipse cx="180" cy="155" rx="9" ry="11" fill="#1e2235"/>
+              <circle cx="180" cy="143" r="6" fill="#1e2235"/>
+              <ellipse cx="215" cy="155" rx="9" ry="11" fill="#1e2235"/>
+              <circle cx="215" cy="143" r="6" fill="#1e2235"/>
+              <ellipse cx="245" cy="155" rx="9" ry="11" fill="#1e2235"/>
+              <circle cx="245" cy="143" r="6" fill="#1e2235"/>
+            </g>
+
+            <!-- 6 on near side -->
+            <g opacity="0.85">
+              <ellipse cx="75" cy="188" rx="9" ry="11" fill="#252838"/>
+              <circle cx="75" cy="200" r="6" fill="#252838"/>
+              <ellipse cx="110" cy="188" rx="9" ry="11" fill="#252838"/>
+              <circle cx="110" cy="200" r="6" fill="#252838"/>
+              <ellipse cx="145" cy="188" rx="9" ry="11" fill="#252838"/>
+              <circle cx="145" cy="200" r="6" fill="#252838"/>
+              <ellipse cx="180" cy="188" rx="9" ry="11" fill="#252838"/>
+              <circle cx="180" cy="200" r="6" fill="#252838"/>
+              <ellipse cx="215" cy="188" rx="9" ry="11" fill="#252838"/>
+              <circle cx="215" cy="200" r="6" fill="#252838"/>
+              <ellipse cx="245" cy="188" rx="9" ry="11" fill="#252838"/>
+              <circle cx="245" cy="200" r="6" fill="#252838"/>
+            </g>
+
+            <!-- Papers/notes on table -->
+            <rect x="80" y="162" width="15" height="8" fill="rgba(240,234,210,0.12)" rx="1" transform="rotate(-3 80 162)"/>
+            <rect x="130" y="163" width="12" height="7" fill="rgba(240,234,210,0.08)" rx="1"/>
+            <rect x="185" y="162" width="14" height="8" fill="rgba(240,234,210,0.1)" rx="1" transform="rotate(2 185 162)"/>
+
+            <!-- Standing figure (the dissenter - juror 8, Henry Fonda) -->
+            <ellipse cx="150" cy="102" rx="12" ry="15" fill="#2a2f42"/>
+            <circle cx="150" cy="87" r="8" fill="#2a2f42"/>
+            <!-- Arm reaching out to table -->
+            <line x1="140" y1="108" x2="118" y2="130" stroke="#2a2f42" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="115" cy="132" r="4" fill="#2a2f42"/>
+            <!-- Other arm raised (making a point) -->
+            <line x1="160" y1="105" x2="172" y2="88" stroke="#2a2f42" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="174" cy="86" r="4" fill="#2a2f42"/>
+
+            <!-- Gold accent - lone standing figure highlight glow -->
+            <circle cx="150" cy="90" r="25" fill="#c9a84c" opacity="0.04"/>
+
+            <!-- Floor / perspective lines -->
+            <line x1="20" y1="380" x2="150" y2="220" stroke="#c9a84c" stroke-width="0.3" opacity="0.1"/>
+            <line x1="280" y1="380" x2="150" y2="220" stroke="#c9a84c" stroke-width="0.3" opacity="0.1"/>
+            <rect x="0" y="360" width="300" height="40" fill="#0a0c14" opacity="0.7"/>
+
+            <!-- Title overlay -->
+            <text x="150" y="310" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="bold" fill="#c9a84c" opacity="0.7" letter-spacing="6">十二怒汉</text>
+            <text x="150" y="330" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#9a9280" letter-spacing="4">12 ANGRY MEN</text>
+
+            <!-- Rating badge -->
+            <rect x="115" y="340" width="70" height="24" fill="rgba(201,168,76,0.12)" rx="2"/>
+            <text x="150" y="356" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#c9a84c" letter-spacing="2">IMDb 9.0  豆瓣 9.4</text>
+          </svg>
+        </div>
+        <div class="card-table">
+          <div class="card-row">
+            <span class="card-key">导演</span>
+            <span class="card-val">西德尼·鲁迈特</span>
+          </div>
+          <div class="card-row">
+            <span class="card-key">主演</span>
+            <span class="card-val">亨利·方达</span>
+          </div>
+          <div class="card-row">
+            <span class="card-key">类型</span>
+            <span class="card-val">剧情 / 犯罪 / 法庭</span>
+          </div>
+          <div class="card-row">
+            <span class="card-key">时长</span>
+            <span class="card-val">96 分钟</span>
+          </div>
+          <div class="card-row">
+            <span class="card-key">语言</span>
+            <span class="card-val">英语</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HIGHLIGHTS ===== -->
+<section id="highlights">
+  <div class="container">
+    <span class="section-label reveal">Highlights · 六大亮点</span>
+    <h2 class="section-title reveal">极限空间里的极致张力</h2>
+    <div class="section-rule reveal"></div>
+    <div class="highlights-grid">
+      <div class="highlight-card reveal">
+        <div class="hl-num">01</div>
+        <div class="hl-title">一室一桌，零外景</div>
+        <p class="hl-desc">几乎全片仅发生在一个斗室之中，导演西德尼·鲁迈特用镜头焦距从广角逐渐收窄，将密闭感随时间推移一步步压缩，制造出无处可逃的窒息感。</p>
+      </div>
+      <div class="highlight-card reveal reveal-delay-1">
+        <div class="hl-num">02</div>
+        <div class="hl-title">亨利·方达的孤注一掷</div>
+        <p class="hl-desc">既是主演又是制片人的方达以一己之力推动这个项目诞生。他所饰演的 8 号陪审员不靠口才取胜，靠的是沉着与坚持——一种拒绝草率的勇气，令人过目难忘。</p>
+      </div>
+      <div class="highlight-card reveal reveal-delay-2">
+        <div class="hl-num">03</div>
+        <div class="hl-title">12 个截然不同的社会切面</div>
+        <p class="hl-desc">十二位陪审员代表着不同阶层、职业与人生经历。他们的偏见各异，但同样真实——这不是单纯的善恶对立，而是一场关于"我们如何思考"的深刻检视。</p>
+      </div>
+      <div class="highlight-card reveal reveal-delay-3">
+        <div class="hl-num">04</div>
+        <div class="hl-title">对司法与偏见的无声拷问</div>
+        <p class="hl-desc">影片不是控诉司法系统，而是将镜头对准人心中的先入为主。每一条"证据"都在细致的口头推演下逐渐松动，让观众切身体会到：定罪与无罪之间，有多少空间属于偏见。</p>
+      </div>
+      <div class="highlight-card reveal reveal-delay-4">
+        <div class="hl-num">05</div>
+        <div class="hl-title">精妙的剧本与节奏</div>
+        <p class="hl-desc">雷金纳德·罗斯根据自身陪审员经历改编的剧本，每一次反转都来自逻辑与情感的双重推进，不借助任何外在戏剧手法，仅靠对话便将悬念维持 96 分钟，令人叹服。</p>
+      </div>
+      <div class="highlight-card reveal reveal-delay-5">
+        <div class="hl-num">06</div>
+        <div class="hl-title">"疑罪从无"的最好注脚</div>
+        <p class="hl-desc">影片问世近 70 年，关于法律正义与人性尊严的追问从未过时。它不提供答案，只是让你跟着那 12 个人，在汗水与争吵中认真思考一次：何谓"排除合理怀疑"？</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTES ===== -->
+<section id="quote-block">
+  <div class="blockquote-inner">
+    <span class="bq-mark reveal">"</span>
+    <p class="bq-text reveal">"我不是在说那孩子无罪。<br>我只是说：也许我们该好好谈谈。"</p>
+    <div class="bq-source reveal"><span>8号陪审员</span> · 亨利·方达 饰</div>
+
+    <div class="bq-separator"></div>
+
+    <p class="bq-text reveal">"这里有 11 个人投了有罪，你凭什么觉得自己是对的？"<br>
+    <span style="font-size:0.9em; color: var(--gold);">"我不知道我是不是对的……<br>但这就是我们今天坐在这里的原因。"</span></p>
+    <div class="bq-source reveal"><span>3号与8号陪审员</span> 的交锋</div>
+  </div>
+</section>
+
+<!-- ===== WHY WATCH ===== -->
+<section id="why">
+  <div class="container">
+    <span class="section-label reveal">Why Watch · 为何值得看</span>
+    <h2 class="section-title reveal">四个不可错过的理由</h2>
+    <div class="section-rule reveal"></div>
+    <ul class="why-list">
+      <li class="why-item reveal">
+        <div class="why-idx">I</div>
+        <div class="why-body">
+          <h4>最低成本的最高戏剧</h4>
+          <p>一个房间、一张桌子、12 张嘴——预算极低却创造了影史最紧张的密室叙事之一。它证明：好电影的核心永远是人，而不是场面。</p>
+        </div>
+      </li>
+      <li class="why-item reveal reveal-delay-1">
+        <div class="why-idx">II</div>
+        <div class="why-body">
+          <h4>从第一票到最后一票的完整旅程</h4>
+          <p>你将亲眼目睹一个人如何在不动声色中改变另一个人的想法，每一次投票翻转背后都有精心铺陈的逻辑与情感——比任何悬疑片都更扣人心弦。</p>
+        </div>
+      </li>
+      <li class="why-item reveal reveal-delay-2">
+        <div class="why-idx">III</div>
+        <div class="why-body">
+          <h4>看懂自己的偏见</h4>
+          <p>影片最可贵之处在于：它逼你反思自己。每个陪审员身上都藏着某种我们熟悉的心理——傲慢、厌倦、恐惧、愤怒……观影如照镜，余味经久不散。</p>
+        </div>
+      </li>
+      <li class="why-item reveal reveal-delay-3">
+        <div class="why-idx">IV</div>
+        <div class="why-body">
+          <h4>影史最高分的凝练课程</h4>
+          <p>IMDb 排名长期前十，烂番茄 100% 满分，是全球众多法学院、管理学院与心理学课堂指定观摩片。96 分钟，一次关于民主、理性与人性的完整思维实验。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== AWARDS ===== -->
+<section id="awards">
+  <div class="container">
+    <span class="section-label reveal">Honours · 荣誉</span>
+    <h2 class="section-title reveal">60 余年的历久弥新</h2>
+    <div class="section-rule reveal"></div>
+    <div class="award-tags">
+      <span class="award-tag reveal">柏林国际电影节金熊奖</span>
+      <span class="award-tag reveal reveal-delay-1">奥斯卡三项提名</span>
+      <span class="award-tag reveal reveal-delay-2">AFI 百年百大电影 #87</span>
+      <span class="award-tag reveal reveal-delay-3">IMDb Top 10 长期在榜</span>
+      <span class="award-tag reveal reveal-delay-4">烂番茄 100% 新鲜度</span>
+      <span class="award-tag reveal reveal-delay-5">豆瓣 9.4 分</span>
+      <span class="award-tag reveal">全球法学院推荐必看经典</span>
+      <span class="award-tag reveal reveal-delay-1">BBC 百部伟大美国电影入选</span>
+      <span class="award-tag reveal reveal-delay-2">亨利·方达职业生涯代表作</span>
+      <span class="award-tag reveal reveal-delay-3">1957 年 威尼斯电影节放映</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FILE TABLE ===== -->
+<section id="file-table">
+  <div class="container">
+    <span class="section-label reveal">Archive · 影片档案</span>
+    <h2 class="section-title reveal">基本信息</h2>
+    <div class="section-rule reveal"></div>
+    <div class="file-grid reveal">
+      <div class="file-row">
+        <span class="file-k">原片名</span>
+        <span class="file-v">12 Angry Men</span>
+      </div>
+      <div class="file-row">
+        <span class="file-k">中文译名</span>
+        <span class="file-v">十二怒汉</span>
+      </div>
+      <div class="file-row">
+        <span class="file-k">上映年份</span>
+        <span class="file-v">1957 年</span>
+      </div>
+      <div class="file-row">
+        <span class="file-k">出品国</span>
+        <span class="file-v">美国</span>
+      </div>
+      <div class="file-row">
+        <span class="file-k">导演</span>
+        <span class="file-v">西德尼·鲁迈特 (Sidney Lumet)</span>
+      </div>
+      <div class="file-row">
+        <span class="file-k">主演</span>
+        <span class="file-v">亨利·方达 (Henry Fonda)</span>
+      </div>
+      <div class="file-row">
+        <span class="file-k">编剧</span>
+        <span class="file-v">雷金纳德·罗斯 (Reginald Rose)</span>
+      </div>
+      <div class="file-row">
+        <span class="file-k">类型</span>
+        <span class="file-v">剧情 / 犯罪 / 法庭悬疑</span>
+      </div>
+      <div class="file-row">
+        <span class="file-k">片长</span>
+        <span class="file-v">96 分钟</span>
+      </div>
+      <div class="file-row">
+        <span class="file-k">拍摄周期</span>
+        <span class="file-v">约 20 天</span>
+      </div>
+      <div class="file-row">
+        <span class="file-k">IMDb 评分</span>
+        <span class="file-v">9.0 / 10</span>
+      </div>
+      <div class="file-row">
+        <span class="file-k">豆瓣评分</span>
+        <span class="file-v">9.4 / 10</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL ===== -->
+<section id="final">
+  <div class="container">
+    <span class="stars reveal">★ ★ ★ ★ ★</span>
+    <p class="final-text reveal">"这部电影不需要你相信任何英雄，只需要你相信一件事——<br>一个人真的可以改变另外十一个人，<br>而这一切，只靠良知与逻辑。"</p>
+    <span class="today-label reveal">— 今日推荐 · 2026 年 5 月 29 日</span>
+  </div>
+</section>
+
+<footer>
+  <p>今日经典电影推荐 · WorkBuddy 自动生成 · 2026.05.29</p>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// ===== HERO CANVAS =====
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  let particles = [];
+  let dustMotes = [];
+  let animId;
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  // Floating dust motes (like courtroom dust in light)
+  function initDust() {
+    dustMotes = [];
+    for (let i = 0; i < 180; i++) {
+      dustMotes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.5 + 0.3,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.15 - 0.1,
+        opacity: Math.random() * 0.5 + 0.1,
+        opacityDir: (Math.random() > 0.5 ? 1 : -1) * 0.003,
+        flicker: Math.random() * Math.PI * 2,
+        inBeam: Math.random() > 0.4
+      });
+    }
+  }
+
+  // Shadow streaks (like Venetian blind shadows)
+  function drawShadowBlinds() {
+    const numBlinds = 8;
+    const spacing = H / numBlinds;
+    ctx.save();
+    for (let i = 0; i < numBlinds; i++) {
+      const y = i * spacing + spacing * 0.3;
+      const grad = ctx.createLinearGradient(0, y, 0, y + spacing * 0.25);
+      grad.addColorStop(0, 'rgba(8,10,15,0.22)');
+      grad.addColorStop(1, 'rgba(8,10,15,0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, y, W, spacing * 0.25);
+    }
+    ctx.restore();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Dark base
+    const bgGrad = ctx.createRadialGradient(W/2, H/3, 0, W/2, H/3, H*0.85);
+    bgGrad.addColorStop(0, 'rgba(20,24,40,1)');
+    bgGrad.addColorStop(0.5, 'rgba(13,15,22,1)');
+    bgGrad.addColorStop(1, 'rgba(6,8,14,1)');
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    // Venetian blind shadows
+    drawShadowBlinds();
+
+    // Light beams from windows (left side)
+    const beams = [
+      { x1: W * 0.08, y1: 0, x2: W * 0.35, x3: W * 0.25, col: 'rgba(201,168,76,' },
+      { x1: W * 0.12, y1: 0, x2: W * 0.45, x3: W * 0.32, col: 'rgba(201,168,76,' },
+    ];
+
+    beams.forEach((b, i) => {
+      const grad = ctx.createLinearGradient(b.x1, 0, b.x2, H);
+      const alpha = 0.04 + Math.sin(Date.now() * 0.0005 + i) * 0.015;
+      grad.addColorStop(0, b.col + alpha + ')');
+      grad.addColorStop(1, b.col + '0)');
+      ctx.beginPath();
+      ctx.moveTo(b.x1 - 20, 0);
+      ctx.lineTo(b.x1 + 30, 0);
+      ctx.lineTo(b.x2 + 40, H);
+      ctx.lineTo(b.x3 - 10, H);
+      ctx.closePath();
+      ctx.fillStyle = grad;
+      ctx.fill();
+    });
+
+    // Center overhead light beam
+    const centralGrad = ctx.createLinearGradient(W/2, 0, W/2, H * 0.7);
+    const ca = 0.06 + Math.sin(Date.now() * 0.0008) * 0.02;
+    centralGrad.addColorStop(0, `rgba(240,220,160,${ca})`);
+    centralGrad.addColorStop(0.4, `rgba(201,168,76,${ca * 0.5})`);
+    centralGrad.addColorStop(1, 'rgba(201,168,76,0)');
+    ctx.beginPath();
+    ctx.moveTo(W * 0.38, 0);
+    ctx.lineTo(W * 0.62, 0);
+    ctx.lineTo(W * 0.72, H * 0.7);
+    ctx.lineTo(W * 0.28, H * 0.7);
+    ctx.closePath();
+    ctx.fillStyle = centralGrad;
+    ctx.fill();
+
+    // Dust motes
+    dustMotes.forEach(d => {
+      d.flicker += 0.02;
+      d.opacityDir = d.opacity > 0.65 ? -0.003 : (d.opacity < 0.05 ? 0.003 : d.opacityDir);
+      d.opacity += d.opacityDir;
+
+      const flicker = d.opacity * (0.85 + Math.sin(d.flicker) * 0.15);
+
+      let baseColor;
+      if (d.inBeam) {
+        // Brighter golden motes in light beams
+        const beamX = W * 0.3 + Math.random() * W * 0.4;
+        if (Math.abs(d.x - W/2) < W * 0.25) {
+          baseColor = `rgba(220, 185, 100, ${flicker * 0.9})`;
+        } else {
+          baseColor = `rgba(180, 155, 90, ${flicker * 0.5})`;
+        }
+      } else {
+        baseColor = `rgba(150, 130, 80, ${flicker * 0.3})`;
+      }
+
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.fillStyle = baseColor;
+      ctx.fill();
+
+      d.x += d.vx + Math.sin(d.flicker * 0.5) * 0.12;
+      d.y += d.vy;
+
+      if (d.y < -5) d.y = H + 5;
+      if (d.x < -5) d.x = W + 5;
+      if (d.x > W + 5) d.x = -5;
+    });
+
+    animId = requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => {
+    resize();
+    initDust();
+  });
+
+  resize();
+  initDust();
+  draw();
+})();
+
+// ===== INTERSECTION OBSERVER (reveal + score animations) =====
+const revealEls = document.querySelectorAll('.reveal');
+const scoreItems = document.querySelectorAll('.score-item');
+const scoreBars = document.querySelectorAll('.score-bar');
+const scoreNumbers = document.querySelectorAll('.score-number');
+
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach(el => revealObs.observe(el));
+
+// Score bar + number animation
+const scoreObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Animate bars in this item
+      const bar = e.target.querySelector('.score-bar');
+      const num = e.target.querySelector('.score-number');
+      if (bar) {
+        setTimeout(() => {
+          bar.style.width = bar.getAttribute('data-width');
+        }, 200);
+      }
+      if (num) {
+        const target = parseFloat(num.getAttribute('data-target'));
+        const isInt = Number.isInteger(target);
+        const duration = 1800;
+        const start = performance.now();
+        const isPercent = num.parentElement.querySelector('.score-platform').textContent.includes('%');
+
+        function tick(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          const current = target * ease;
+          num.textContent = isInt ? Math.floor(current) : current.toFixed(1);
+          if (progress < 1) requestAnimationFrame(tick);
+          else num.textContent = isInt ? target : target.toFixed(1);
+        }
+        requestAnimationFrame(tick);
+      }
+      scoreObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+scoreItems.forEach(el => scoreObs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电影推荐 · 布达佩斯大饭店</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap');
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --bg: #0d0d12;
+    --bg2: #14141c;
+    --bg3: #1c1c28;
+    --fg: #e8e0d0;
+    --fg2: #a09888;
+    --accent: #e06b8a;
+    --accent2: #c97b9d;
+    --accent3: #d4a0b0;
+    --gold: #d4a853;
+    --gold2: #b8923a;
+    --teal: #6aa0a8;
+    --teal2: #4a8088;
+    --purple: #8b69a0;
+    --red: #b8454a;
+    --pink: #e8899a;
+    --card: rgba(28,28,42,0.7);
+    --border: rgba(224,107,138,0.15);
+    --radius: 16px;
+    --shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', 'Noto Serif SC', sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ── Canvas BG ── */
+  #particle-canvas {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ── Scanline overlay ── */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ── Vignette ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, transparent 40%, rgba(0,0,0,0.6) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+  /* ── Utility ── */
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 28px;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+  }
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; left: 0;
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+
+  .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.22,1,0.36,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px 60px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    border: 1px solid var(--gold);
+    border-radius: 100px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    font-weight: 500;
+    backdrop-filter: blur(8px);
+    background: rgba(212,168,83,0.08);
+  }
+
+  .hero-year {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(100px, 20vw, 200px);
+    font-weight: 900;
+    color: rgba(224,107,138,0.06);
+    line-height: 0.8;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    user-select: none;
+    z-index: 0;
+    letter-spacing: -4px;
+  }
+
+  .hero-title {
+    position: relative;
+    z-index: 2;
+    font-family: 'Playfair Display', 'Noto Serif SC', serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 700;
+    color: var(--fg);
+    margin-bottom: 6px;
+    letter-spacing: 4px;
+    line-height: 1.2;
+  }
+  .hero-title .en {
+    display: block;
+    font-size: clamp(18px, 3vw, 32px);
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: 6px;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  .hero-director {
+    color: var(--fg2);
+    font-size: clamp(14px, 1.5vw, 16px);
+    margin-top: 12px;
+    letter-spacing: 3px;
+    font-weight: 300;
+  }
+  .hero-director span { color: var(--accent); }
+
+  .hero-tagline {
+    font-family: 'Playfair Display', 'Noto Serif SC', serif;
+    font-style: italic;
+    font-size: clamp(18px, 2.5vw, 26px);
+    color: var(--gold);
+    margin-top: 28px;
+    padding: 16px 32px;
+    border-top: 1px solid rgba(212,168,83,0.2);
+    border-bottom: 1px solid rgba(212,168,83,0.2);
+    max-width: 640px;
+    line-height: 1.6;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--fg2);
+    font-size: 11px;
+    letter-spacing: 3px;
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll svg { width: 20px; height: 20px; stroke: var(--fg2); }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ── Hotel Silhouette SVG ── */
+  .hotel-silhouette {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 480px;
+    margin: -20px auto 0;
+    opacity: 0.7;
+  }
+  .hotel-silhouette svg { width: 100%; height: auto; }
+
+  /* ── RATINGS ── */
+  .ratings-section { padding: 80px 0 60px; position: relative; z-index: 2; }
+  .ratings-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .rating-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 16px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .rating-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(224,107,138,0.12);
+  }
+  .rating-source {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--fg2);
+    margin-bottom: 8px;
+  }
+  .rating-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--fg);
+  }
+  .rating-number .decimal { color: var(--accent); font-size: 20px; }
+  .rating-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    margin-top: 10px;
+    overflow: hidden;
+  }
+  .rating-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.22,1,0.36,1);
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+  }
+  .rating-max { font-size: 12px; color: var(--fg2); margin-top: 4px; }
+
+  /* ── PLOT ── */
+  .plot-section { padding: 60px 0; position: relative; z-index: 2; }
+  .plot-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px;
+    backdrop-filter: blur(10px);
+  }
+  .plot-text {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--fg);
+    letter-spacing: 0.5px;
+  }
+  .plot-text p { margin-bottom: 16px; }
+  .plot-text p:last-child { margin-bottom: 0; }
+  .no-spoiler-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background: rgba(224,107,138,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(224,107,138,0.25);
+    margin-bottom: 20px;
+  }
+
+  /* ── HIGHLIGHTS ── */
+  .highlights-section { padding: 60px 0; position: relative; z-index: 2; }
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .highlight-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--gold), var(--teal));
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .highlight-card:hover::before { opacity: 1; }
+  .highlight-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  }
+  .highlight-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .highlight-card h3 {
+    font-family: 'Playfair Display', 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .highlight-card p {
+    font-size: 13.5px;
+    color: var(--fg2);
+    line-height: 1.7;
+  }
+
+  /* ── QUOTES ── */
+  .quotes-section {
+    padding: 60px 0;
+    position: relative;
+    z-index: 2;
+  }
+  .quote-block {
+    background: linear-gradient(135deg, rgba(224,107,138,0.06), rgba(212,168,83,0.06));
+    border: 1px solid rgba(224,107,138,0.12);
+    border-radius: var(--radius);
+    padding: 48px 40px;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+  .quote-block::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: var(--accent);
+    opacity: 0.15;
+    position: absolute;
+    top: 10px;
+    left: 24px;
+    line-height: 1;
+  }
+  .quote-text {
+    font-family: 'Playfair Display', 'Noto Serif SC', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--fg);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .quote-source {
+    font-size: 13px;
+    color: var(--fg2);
+    letter-spacing: 2px;
+  }
+  .quote-source span { color: var(--accent); }
+
+  /* ── WHY WATCH ── */
+  .whyw-section { padding: 60px 0; position: relative; z-index: 2; }
+  .whyw-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .whyw-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: all 0.3s;
+  }
+  .whyw-item:hover {
+    border-color: rgba(224,107,138,0.3);
+    transform: translateX(4px);
+  }
+  .whyw-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent);
+    opacity: 0.4;
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 32px;
+  }
+  .whyw-item h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--fg);
+    margin-bottom: 5px;
+  }
+  .whyw-item p {
+    font-size: 13px;
+    color: var(--fg2);
+    line-height: 1.6;
+  }
+
+  /* ── HONORS ── */
+  .honors-section { padding: 60px 0; position: relative; z-index: 2; }
+  .honors-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .honor-tag {
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background: rgba(224,107,138,0.08);
+    border: 1px solid rgba(224,107,138,0.15);
+    color: var(--fg);
+    transition: all 0.3s;
+  }
+  .honor-tag:hover {
+    background: rgba(224,107,138,0.15);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .honor-tag.gold {
+    background: rgba(212,168,83,0.1);
+    border-color: rgba(212,168,83,0.2);
+    color: var(--gold);
+  }
+  .honor-tag.gold:hover {
+    background: rgba(212,168,83,0.18);
+    border-color: var(--gold);
+  }
+
+  /* ── FILM INFO ── */
+  .info-section { padding: 40px 0 80px; position: relative; z-index: 2; }
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+  .info-table tr {
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+  .info-table tr:last-child { border-bottom: none; }
+  .info-table td {
+    padding: 14px 24px;
+    font-size: 14px;
+    vertical-align: top;
+  }
+  .info-table td:first-child {
+    width: 120px;
+    color: var(--fg2);
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  .info-table td:last-child { color: var(--fg); }
+
+  /* ── EDITORIAL ── */
+  .editorial-section { padding: 0 0 80px; position: relative; z-index: 2; }
+  .editorial-card {
+    background: linear-gradient(135deg, rgba(224,107,138,0.08), rgba(212,168,83,0.05));
+    border: 1px solid rgba(224,107,138,0.15);
+    border-radius: var(--radius);
+    padding: 36px 40px;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .editorial-stars {
+    font-size: 28px;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+  }
+  .editorial-text {
+    font-family: 'Playfair Display', 'Noto Serif SC', serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--fg);
+  }
+  .editorial-author {
+    font-size: 12px;
+    color: var(--fg2);
+    margin-top: 16px;
+    letter-spacing: 2px;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 24px 0 40px;
+    font-size: 12px;
+    color: var(--fg2);
+    letter-spacing: 1px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .whyw-grid { grid-template-columns: 1fr; }
+    .plot-card, .quote-block, .editorial-card { padding: 28px 20px; }
+    .info-table td { padding: 10px 16px; }
+    .info-table td:first-child { width: 90px; }
+  }
+  @media (max-width: 480px) {
+    .ratings-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .rating-card { padding: 16px 10px; }
+    .rating-number { font-size: 28px; }
+    .hero-tagline { padding: 12px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">✦ 经典推荐 · 第 40 期</div>
+  <div class="hero-year">2014</div>
+  <h1 class="hero-title">
+    布达佩斯大饭店
+    <span class="en">The Grand Budapest Hotel</span>
+  </h1>
+  <p class="hero-director">导演 · <span>韦斯·安德森</span> <span style="color:var(--fg2);font-weight:300;">Wes Anderson</span></p>
+  <div class="hero-tagline">
+    「在废墟之上，优雅从未缺席」
+  </div>
+  <div class="hotel-silhouette">
+    <svg viewBox="0 0 480 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ground -->
+      <rect x="0" y="185" width="480" height="15" fill="rgba(224,107,138,0.15)"/>
+      <!-- Base -->
+      <rect x="100" y="170" width="280" height="15" fill="rgba(224,107,138,0.12)" rx="2"/>
+      <!-- Main building body -->
+      <path d="M120 170 L120 60 L140 40 L340 40 L360 60 L360 170" fill="rgba(224,107,138,0.08)" stroke="rgba(224,107,138,0.15)" stroke-width="1.5"/>
+      <!-- Left wing -->
+      <rect x="80" y="90" width="40" height="80" fill="rgba(224,107,138,0.06)" stroke="rgba(224,107,138,0.1)" stroke-width="1"/>
+      <!-- Right wing -->
+      <rect x="360" y="90" width="40" height="80" fill="rgba(224,107,138,0.06)" stroke="rgba(224,107,138,0.1)" stroke-width="1"/>
+      <!-- Roof triangle -->
+      <path d="M140 40 L240 12 L340 40" fill="rgba(212,168,83,0.08)" stroke="rgba(212,168,83,0.2)" stroke-width="1.5"/>
+      <!-- Dormer windows -->
+      <rect x="180" y="30" width="16" height="14" rx="2" fill="rgba(255,255,255,0.04)" stroke="rgba(224,107,138,0.1)" stroke-width="0.8"/>
+      <rect x="240" y="28" width="16" height="16" rx="2" fill="rgba(255,255,255,0.04)" stroke="rgba(224,107,138,0.1)" stroke-width="0.8"/>
+      <rect x="290" y="30" width="16" height="14" rx="2" fill="rgba(255,255,255,0.04)" stroke="rgba(224,107,138,0.1)" stroke-width="0.8"/>
+      <!-- Windows row 1 -->
+      <g stroke="rgba(224,107,138,0.1)" stroke-width="0.8" fill="rgba(255,255,255,0.03)">
+        <rect x="140" y="55" width="18" height="22" rx="2"/>
+        <rect x="170" y="55" width="18" height="22" rx="2"/>
+        <rect x="200" y="55" width="18" height="22" rx="2"/>
+        <rect x="230" y="55" width="18" height="22" rx="2"/>
+        <rect x="260" y="55" width="18" height="22" rx="2"/>
+        <rect x="290" y="55" width="18" height="22" rx="2"/>
+        <rect x="320" y="55" width="18" height="22" rx="2"/>
+      </g>
+      <!-- Windows row 2 -->
+      <g stroke="rgba(224,107,138,0.08)" stroke-width="0.8" fill="rgba(255,255,255,0.02)">
+        <rect x="140" y="90" width="18" height="22" rx="2"/>
+        <rect x="170" y="90" width="18" height="22" rx="2"/>
+        <rect x="200" y="90" width="18" height="22" rx="2"/>
+        <rect x="230" y="90" width="18" height="22" rx="2"/>
+        <rect x="260" y="90" width="18" height="22" rx="2"/>
+        <rect x="290" y="90" width="18" height="22" rx="2"/>
+        <rect x="320" y="90" width="18" height="22" rx="2"/>
+      </g>
+      <!-- Windows row 3 -->
+      <g stroke="rgba(224,107,138,0.06)" stroke-width="0.8" fill="rgba(255,255,255,0.02)">
+        <rect x="140" y="125" width="18" height="22" rx="2"/>
+        <rect x="170" y="125" width="18" height="22" rx="2"/>
+        <rect x="200" y="125" width="18" height="22" rx="2"/>
+        <rect x="230" y="125" width="18" height="22" rx="2"/>
+        <rect x="260" y="125" width="18" height="22" rx="2"/>
+        <rect x="290" y="125" width="18" height="22" rx="2"/>
+        <rect x="320" y="125" width="18" height="22" rx="2"/>
+      </g>
+      <!-- Entrance -->
+      <rect x="220" y="148" width="24" height="22" rx="3" fill="rgba(212,168,83,0.12)" stroke="rgba(212,168,83,0.2)" stroke-width="1"/>
+      <!-- Balcony -->
+      <rect x="210" y="145" width="44" height="4" rx="1" fill="rgba(224,107,138,0.1)"/>
+      <!-- Flag pole -->
+      <line x1="240" y1="14" x2="240" y2="8" stroke="rgba(212,168,83,0.2)" stroke-width="1.5"/>
+      <rect x="240" y="8" width="20" height="10" rx="1" fill="rgba(224,107,138,0.15)"/>
+      <!-- Left wing windows -->
+      <g stroke="rgba(224,107,138,0.06)" stroke-width="0.8" fill="rgba(255,255,255,0.02)">
+        <rect x="88" y="100" width="14" height="16" rx="2"/>
+        <rect x="88" y="130" width="14" height="16" rx="2"/>
+        <rect x="88" y="158" width="14" height="12" rx="2"/>
+      </g>
+      <!-- Right wing windows -->
+      <g stroke="rgba(224,107,138,0.06)" stroke-width="0.8" fill="rgba(255,255,255,0.02)">
+        <rect x="378" y="100" width="14" height="16" rx="2"/>
+        <rect x="378" y="130" width="14" height="16" rx="2"/>
+        <rect x="378" y="158" width="14" height="12" rx="2"/>
+      </g>
+      <!-- Trees -->
+      <g fill="rgba(106,160,168,0.12)">
+        <path d="M70 175 L70 140 Q70 130 80 130 Q90 130 90 140 L90 175 Z"/>
+        <path d="M55 175 L55 150 Q55 142 63 142 Q71 142 71 150 L71 175 Z"/>
+        <path d="M400 175 L400 140 Q400 130 410 130 Q420 130 420 140 L420 175 Z"/>
+      </g>
+      <!-- Cable car -->
+      <line x1="48" y1="95" x2="280" y2="22" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+      <rect x="58" y="88" width="12" height="10" rx="2" fill="rgba(224,107,138,0.06)" stroke="rgba(224,107,138,0.08)" stroke-width="0.5"/>
+    </svg>
+  </div>
+  <div class="hero-scroll">
+    <span>向下探索</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+      <path d="M7 10l5 5 5-5"/>
+    </svg>
+  </div>
+</section>
+
+<!-- RATINGS -->
+<section class="ratings-section">
+  <div class="container">
+    <h2 class="section-title reveal">评分一览</h2>
+    <div class="ratings-grid">
+      <div class="rating-card reveal">
+        <div class="rating-source">IMDb</div>
+        <div class="rating-number">8.<span class="decimal">1</span></div>
+        <div class="rating-bar"><div class="rating-bar-fill" data-width="81"></div></div>
+        <div class="rating-max">/ 10</div>
+      </div>
+      <div class="rating-card reveal">
+        <div class="rating-source">豆瓣</div>
+        <div class="rating-number">8.<span class="decimal">9</span></div>
+        <div class="rating-bar"><div class="rating-bar-fill" data-width="89"></div></div>
+        <div class="rating-max">/ 10</div>
+      </div>
+      <div class="rating-card reveal">
+        <div class="rating-source">烂番茄</div>
+        <div class="rating-number"><span class="decimal">92</span>%</div>
+        <div class="rating-bar"><div class="rating-bar-fill" data-width="92"></div></div>
+        <div class="rating-max">新鲜度</div>
+      </div>
+      <div class="rating-card reveal">
+        <div class="rating-source">Metacritic</div>
+        <div class="rating-number"><span class="decimal">88</span></div>
+        <div class="rating-bar"><div class="rating-bar-fill" data-width="88"></div></div>
+        <div class="rating-max">/ 100</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLOT -->
+<section class="plot-section">
+  <div class="container">
+    <h2 class="section-title reveal">剧情梗概</h2>
+    <div class="plot-card reveal">
+      <div class="no-spoiler-badge">🔒 无剧透 · 放心阅读</div>
+      <div class="plot-text">
+        <p>故事发生在虚构的东欧小国祖布罗夫卡，围绕一座传奇酒店的兴衰展开。年轻的酒店门童零·穆斯塔法在传奇礼宾员古斯塔夫先生的带领下，亲历了一段交织着优雅、冒险与背叛的旅程。</p>
+        <p>一座名画、一份遗嘱、一间老牌酒店的秘密——事件层层展开，时代的阴影悄然降临。韦斯·安德森以标志性的对称构图、糖果般的色彩美学与令人捧腹的节奏，将一个关于欧洲旧世界消逝的故事，讲得既荒诞又动人。</p>
+        <p>影片犹如一座精致的手工模型，每一帧都值得暂停细看。它既是一封写给昨日欧洲的情书，也是一场关于尊严、忠诚与友谊的温情寓言。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="highlights-section">
+  <div class="container">
+    <h2 class="section-title reveal">六大亮点</h2>
+    <div class="highlights-grid">
+      <div class="highlight-card reveal">
+        <span class="highlight-icon">🎨</span>
+        <h3>视觉盛宴</h3>
+        <p>标志性的糖果配色与完美对称构图，每一帧都如油画般精致。韦斯·安德森的美学体系在此达到巅峰。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <span class="highlight-icon">⭐</span>
+        <h3>全明星阵容</h3>
+        <p>拉尔夫·费因斯、托尼·雷沃罗利领衔，西尔莎·罗南、阿德里安·布罗迪、威廉·达福等群星璀璨，每位配角都散发光芒。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <span class="highlight-icon">🎭</span>
+        <h3>喜剧与悲怆并存</h3>
+        <p>在荒诞幽默的表象下，暗藏对欧洲旧世界消逝的深沉怀念。笑中带泪，余韵悠长。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <span class="highlight-icon">🎬</span>
+        <h3>叙事多层嵌套</h3>
+        <p>以回忆录的形式层层嵌套，不同年代以不同画幅比例呈现，匠心独具的叙事结构令人叹服。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <span class="highlight-icon">🎵</span>
+        <h3>亚历山大·德斯普拉配乐</h3>
+        <p>俄罗斯民间风格的主题曲贯穿全片，手风琴与弦乐的绝妙融合，音乐本身就是角色。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <span class="highlight-icon">🏆</span>
+        <h3>奥斯卡四奖加冕</h3>
+        <p>2015年奥斯卡最佳原创配乐、最佳艺术指导、最佳服装设计、最佳化妆与发型设计四项大奖实至名归。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTES -->
+<section class="quotes-section">
+  <div class="container">
+    <h2 class="section-title reveal">经典台词</h2>
+    <div class="quote-block reveal">
+      <div class="quote-text">
+        "你看，仍然存在脆弱文明的痕迹。在野蛮的夹缝中，总有一丝微光幸存。这就是——布达佩斯大饭店的魅力所在。"
+      </div>
+      <div class="quote-source">—— <span>古斯塔夫先生</span> · 传奇礼宾员</div>
+    </div>
+    <div class="quote-block reveal" style="margin-top:16px;">
+      <div class="quote-text">
+        "他的世界在他去世之前就已经消亡了，但他用优雅的姿态守护着它——直到最后一刻。"
+      </div>
+      <div class="quote-source">—— <span>零·穆斯塔法</span> · 年轻门童</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY WATCH -->
+<section class="whyw-section">
+  <div class="container">
+    <h2 class="section-title reveal">为什么值得看</h2>
+    <div class="whyw-grid">
+      <div class="whyw-item reveal">
+        <div class="whyw-num">01</div>
+        <div>
+          <h4>独一无二的视觉语言</h4>
+          <p>韦斯·安德森创造了一个只属于他自己的视觉宇宙。粉红、淡紫、珊瑚橙——这些色彩在他手中讲述着无声的故事。你从未见过这样的电影。自成一派。</p>
+        </div>
+      </div>
+      <div class="whyw-item reveal">
+        <div class="whyw-num">02</div>
+        <div>
+          <h4>拉尔夫·费因斯的巅峰喜剧表演</h4>
+          <p>这位以严肃角色著称的英国演员，在这部电影中展现了惊人的喜剧天赋。他饰演的古斯塔夫先生优雅、刻薄、忠诚而又脆弱——是一个让人笑出声后又沉默的角色。</p>
+        </div>
+      </div>
+      <div class="whyw-item reveal">
+        <div class="whyw-num">03</div>
+        <div>
+          <h4>一部披着喜剧外衣的悲剧</h4>
+          <p>欢笑背后是对战争、流亡与文明消逝的沉思。安德森以他最擅长的轻巧触碰最沉重的主题——让你在品味甜蜜色彩的同时，感受一丝挥之不去的忧伤。</p>
+        </div>
+      </div>
+      <div class="whyw-item reveal">
+        <div class="whyw-num">04</div>
+        <div>
+          <h4>每一帧都是艺术品</h4>
+          <p>对称构图、模型场景、定格动画般的运镜——这部电影的每一帧都值得被装裱。它重新定义了什么是"电影的视觉美学"。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HONORS -->
+<section class="honors-section">
+  <div class="container">
+    <h2 class="section-title reveal">荣誉殿堂</h2>
+    <div class="honors-grid reveal">
+      <span class="honor-tag gold">★ 奥斯卡最佳原创配乐</span>
+      <span class="honor-tag gold">★ 奥斯卡最佳艺术指导</span>
+      <span class="honor-tag gold">★ 奥斯卡最佳服装设计</span>
+      <span class="honor-tag gold">★ 奥斯卡最佳化妆与发型</span>
+      <span class="honor-tag">柏林国际电影节 · 评审团大奖</span>
+      <span class="honor-tag">金球奖 · 最佳音乐/喜剧片提名</span>
+      <span class="honor-tag">金球奖 · 最佳导演提名</span>
+      <span class="honor-tag">英国电影学院奖 · 最佳原创剧本</span>
+      <span class="honor-tag">英国电影学院奖 · 最佳配乐</span>
+      <span class="honor-tag">AFI 年度十大佳片</span>
+      <span class="honor-tag">《卫报》21世纪百大电影</span>
+      <span class="honor-tag">《视与听》年度十佳</span>
+    </div>
+  </div>
+</section>
+
+<!-- FILM INFO -->
+<section class="info-section">
+  <div class="container">
+    <h2 class="section-title reveal">影片档案</h2>
+    <div class="reveal">
+      <table class="info-table">
+        <tr><td>片名</td><td>布达佩斯大饭店 (The Grand Budapest Hotel)</td></tr>
+        <tr><td>导演</td><td>韦斯·安德森 (Wes Anderson)</td></tr>
+        <tr><td>编剧</td><td>韦斯·安德森 (故事灵感来自斯蒂芬·茨威格)</td></tr>
+        <tr><td>主演</td><td>拉尔夫·费因斯 / 托尼·雷沃罗利 / 西尔莎·罗南 / 阿德里安·布罗迪 / 威廉·达福 / 裘德·洛 / 爱德华·诺顿 / 蒂尔达·斯文顿</td></tr>
+        <tr><td>配乐</td><td>亚历山大·德斯普拉 (Alexandre Desplat)</td></tr>
+        <tr><td>上映年份</td><td>2014 年</td></tr>
+        <tr><td>片长</td><td>99 分钟</td></tr>
+        <tr><td>国家</td><td>美国 / 德国</td></tr>
+        <tr><td>语言</td><td>英语</td></tr>
+        <tr><td>画幅</td><td>1.85:1 / 1.37:1 / 2.35:1 (三画幅叙事)</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<section class="editorial-section">
+  <div class="container">
+    <div class="editorial-card reveal">
+      <div class="editorial-stars">★★★★★</div>
+      <div class="editorial-text">
+        如果说电影是造梦的艺术，那么《布达佩斯大饭店》就是一场粉红色的、带着淡淡忧伤的华美之梦。<br><br>
+        安德森用他的镜头，为一座不存在的酒店铸造了永恒的灵魂。在这个精致到近乎偏执的艺术品中，我们看到的不仅是色彩的狂欢，更是对旧欧洲精神最后的温柔回望。当笑声落尽，你才会发现——原来那些鲜艳的糖衣下，包裹着的是最苦涩的怀念。
+      </div>
+      <div class="editorial-author">—— 电影推荐 · 编辑评语</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    电影推荐 · 第 40 期 &nbsp;|&nbsp; 经典永不过时
+  </div>
+</footer>
+
+<script>
+  // ── Intersection Observer ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Trigger rating bar fill
+        const fills = entry.target.querySelectorAll('.rating-bar-fill');
+        fills.forEach(f => {
+          const w = f.getAttribute('data-width');
+          if (w) setTimeout(() => { f.style.width = w + '%'; }, 200);
+        });
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Also trigger for initially visible
+  document.querySelectorAll('.reveal').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add('visible');
+      const fills = el.querySelectorAll('.rating-bar-fill');
+      fills.forEach(f => {
+        const w = f.getAttribute('data-width');
+        if (w) setTimeout(() => { f.style.width = w + '%'; }, 300);
+      });
+    }
+  });
+
+  // ── Canvas Particle System ──
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Two types of particles: golden keys/stars and soft pink petals
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * W;
+      this.y = -20 - Math.random() * 60;
+      this.size = 2 + Math.random() * 5;
+      this.speedY = 0.2 + Math.random() * 0.6;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.rotation = Math.random() * Math.PI * 2;
+      this.rotSpeed = (Math.random() - 0.5) * 0.01;
+      this.opacity = 0.15 + Math.random() * 0.35;
+      this.type = Math.random() > 0.6 ? 'petal' : 'sparkle';
+      this.phase = Math.random() * Math.PI * 2;
+      this.swingAmt = Math.random() * 0.8 + 0.3;
+    }
+    update() {
+      this.y += this.speedY;
+      this.x += this.speedX + Math.sin(this.phase) * 0.15;
+      this.phase += 0.01;
+      this.rotation += this.rotSpeed;
+      if (this.y > H + 30) this.reset();
+      if (this.x < -30 || this.x > W + 30) this.speedX *= -0.5;
+    }
+    draw() {
+      ctx.save();
+      ctx.globalAlpha = this.opacity;
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation);
+
+      if (this.type === 'sparkle') {
+        // Diamond / star shape
+        const s = this.size * 0.7;
+        ctx.fillStyle = '#d4a853';
+        ctx.beginPath();
+        ctx.moveTo(0, -s);
+        ctx.lineTo(s * 0.4, -s * 0.3);
+        ctx.lineTo(s, 0);
+        ctx.lineTo(s * 0.4, s * 0.3);
+        ctx.lineTo(0, s);
+        ctx.lineTo(-s * 0.4, s * 0.3);
+        ctx.lineTo(-s, 0);
+        ctx.lineTo(-s * 0.4, -s * 0.3);
+        ctx.closePath();
+        ctx.fill();
+        // Glow
+        ctx.shadowColor = '#d4a853';
+        ctx.shadowBlur = 6;
+        ctx.fill();
+      } else {
+        // Soft petal
+        const s = this.size;
+        ctx.fillStyle = this.size > 3.5 ? '#e06b8a' : '#c97b9d';
+        ctx.beginPath();
+        ctx.ellipse(0, 0, s * 0.6, s, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowColor = '#e06b8a';
+        ctx.shadowBlur = 4;
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+  }
+
+  const particles = [];
+  const count = Math.min(100, Math.floor(W * H / 12000));
+  for (let i = 0; i < count; i++) {
+    const p = new Particle();
+    p.y = Math.random() * H;
+    particles.push(p);
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // ── Resize handle for particles ──
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resize, 200);
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  });
+</script>
+</body>
+</html>

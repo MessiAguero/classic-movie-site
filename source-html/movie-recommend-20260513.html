@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>经典电影推荐 · 霸王别姬</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=ZCOOL+XiaoWei&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1209;
+      --ink-deep: #0d0905;
+      --cinnabar: #c23a2b;
+      --cinnabar-dark: #8b1a0a;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f5edd6;
+      --parchment: #faf6ee;
+      --text-warm: #3d2e1a;
+      --text-muted: #7a6a50;
+      --border: rgba(201,168,76,0.2);
+      --shadow: rgba(0,0,0,0.6);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink-deep);
+      color: var(--cream);
+      font-family: 'Noto Serif SC', 'ZCOOL XiaoWei', serif;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* ── 宣纸纹理背景 ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── 墨滴动画背景 ── */
+    #ink-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.12;
+    }
+
+    /* ══════════════════ 主容器 ══════════════════ */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 28px 80px;
+    }
+
+    /* ── 顶部红色装饰带 ── */
+    .red-banner {
+      height: 4px;
+      background: linear-gradient(90deg, var(--cinnabar-dark), var(--cinnabar), var(--cinnabar-dark));
+      position: relative;
+    }
+
+    /* ══════════════════ 报头 ══════════════════ */
+    .masthead {
+      text-align: center;
+      padding: 56px 0 0;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      margin-bottom: 0;
+    }
+
+    .masthead-date {
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+
+    .masthead-en {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(11px, 2vw, 16px);
+      letter-spacing: 0.5em;
+      color: var(--gold);
+      opacity: 0.6;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .masthead-title {
+      font-family: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: 0.15em;
+      line-height: 1.1;
+      text-shadow: 0 4px 32px rgba(194,58,43,0.4), 0 0 80px rgba(201,168,76,0.1);
+      margin-bottom: 12px;
+    }
+
+    .masthead-subtitle {
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      color: var(--cinnabar);
+      opacity: 0.85;
+      margin-bottom: 28px;
+    }
+
+    .masthead-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .masthead-divider::before,
+    .masthead-divider::after {
+      content: '';
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+
+    .masthead-divider::after {
+      background: linear-gradient(to left, transparent, var(--gold));
+    }
+
+    .masthead-gem {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+
+    /* ══════════════════ 评分条 ══════════════════ */
+    .ratings-row {
+      display: flex;
+      justify-content: center;
+      gap: 2px;
+      padding: 48px 0;
+      flex-wrap: wrap;
+    }
+
+    .rating-card {
+      flex: 1;
+      min-width: 160px;
+      max-width: 220px;
+      text-align: center;
+      padding: 32px 24px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(201,168,76,0.1);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .rating-card:first-child { border-radius: 4px 0 0 4px; }
+    .rating-card:last-child { border-radius: 0 4px 4px 0; }
+    .rating-card:hover { background: rgba(201,168,76,0.05); border-color: rgba(201,168,76,0.3); }
+
+    .rating-platform {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .rating-score {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .rating-max {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-family: 'Playfair Display', serif;
+    }
+
+    .rating-bar-wrap {
+      height: 3px;
+      background: rgba(201,168,76,0.1);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+
+    .rating-bar {
+      height: 100%;
+      background: linear-gradient(to right, var(--cinnabar-dark), var(--gold));
+      border-radius: 2px;
+      width: 0;
+      transition: width 1.5s cubic-bezier(.25,.46,.45,.94) 0.3s;
+    }
+
+    .rating-desc {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ══════════════════ 分割线 ══════════════════ */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 0 0 48px;
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border));
+    }
+
+    .section-divider::after {
+      background: linear-gradient(to left, transparent, var(--border));
+    }
+
+    .section-divider-icon {
+      color: var(--gold);
+      opacity: 0.5;
+      font-size: 12px;
+    }
+
+    /* ══════════════════ 章节通用 ══════════════════ */
+    .chapter {
+      padding: 64px 0;
+    }
+
+    .chapter-header {
+      margin-bottom: 36px;
+    }
+
+    .chapter-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      color: var(--gold);
+      opacity: 0.6;
+      letter-spacing: 0.3em;
+      margin-bottom: 8px;
+    }
+
+    .chapter-title {
+      font-family: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: 0.08em;
+      line-height: 1.2;
+      margin-bottom: 0;
+    }
+
+    .chapter-title em {
+      font-style: normal;
+      color: var(--cinnabar);
+    }
+
+    /* ══════════════════ 剧情梗概 ══════════════════ */
+    .synopsis-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    @media (max-width: 680px) {
+      .synopsis-layout { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    .synopsis-text {
+      font-size: 1.05rem;
+      line-height: 2;
+      color: rgba(245,237,214,0.82);
+      font-weight: 300;
+    }
+
+    .synopsis-text p + p {
+      margin-top: 20px;
+    }
+
+    .synopsis-text strong {
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    /* 海报视觉区 */
+    .poster-visual {
+      position: sticky;
+      top: 40px;
+    }
+
+    .poster-frame {
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .poster-art {
+      width: 100%;
+      aspect-ratio: 2/3;
+      background:
+        linear-gradient(160deg, #1a0808 0%, #2d0d0d 30%, #1a1208 60%, #0d0905 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 戏服轮廓 */
+    .opera-costume {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .opera-costume svg {
+      width: 70%;
+      opacity: 0.6;
+    }
+
+    /* 顶部装饰文字 */
+    .poster-top-text {
+      position: absolute;
+      top: 20px;
+      left: 0; right: 0;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .poster-top-text span {
+      font-family: 'Playfair Display', serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: rgba(201,168,76,0.5);
+      text-transform: uppercase;
+    }
+
+    /* 底部标题区 */
+    .poster-bottom-text {
+      position: absolute;
+      bottom: 24px;
+      left: 0; right: 0;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .poster-main-title {
+      font-family: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+      font-size: clamp(28px, 5vw, 38px);
+      color: var(--cream);
+      letter-spacing: 0.2em;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+
+    .poster-en-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* 宣纸叠加 */
+    .poster-art::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 24px,
+          rgba(201,168,76,0.015) 24px,
+          rgba(201,168,76,0.015) 25px
+        );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* 底部信息 */
+    .poster-info {
+      padding: 16px 20px;
+      background: rgba(201,168,76,0.04);
+      border-top: 1px solid rgba(201,168,76,0.1);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .poster-info-item {
+      text-align: center;
+    }
+
+    .poster-info-key {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      opacity: 0.6;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .poster-info-val {
+      font-size: 12px;
+      color: var(--cream);
+      opacity: 0.8;
+    }
+
+    /* ══════════════════ 亮点 ══════════════════ */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .highlight-card {
+      padding: 28px 24px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(201,168,76,0.1);
+      border-radius: 4px;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--cinnabar-dark), var(--gold), transparent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .highlight-card:hover {
+      background: rgba(201,168,76,0.04);
+      border-color: rgba(201,168,76,0.25);
+      transform: translateY(-3px);
+    }
+
+    .highlight-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .highlight-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--cinnabar);
+      opacity: 0.25;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .highlight-icon {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .highlight-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin-bottom: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    .highlight-desc {
+      font-size: 13px;
+      line-height: 1.75;
+      color: rgba(245,237,214,0.65);
+      font-weight: 300;
+    }
+
+    /* ══════════════════ 引言 ══════════════════ */
+    .quote-block {
+      padding: 48px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .quote-block::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 12rem;
+      color: var(--cinnabar);
+      opacity: 0.1;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .quote-text {
+      font-family: 'ZCOOL XiaoWei', 'Noto Serif SC', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--cream);
+      line-height: 1.9;
+      letter-spacing: 0.05em;
+      position: relative;
+      z-index: 1;
+      font-weight: 400;
+      max-width: 700px;
+      margin: 0 auto 16px;
+    }
+
+    .quote-attr {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      opacity: 0.6;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════ 为什么值得看 ══════════════════ */
+    .reasons-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .reason-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+      align-items: start;
+      transition: background 0.2s;
+    }
+
+    .reason-item:first-child {
+      border-top: 1px solid rgba(201,168,76,0.08);
+    }
+
+    .reason-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--cinnabar);
+      opacity: 0.3;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .reason-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 8px;
+      letter-spacing: 0.03em;
+    }
+
+    .reason-body {
+      font-size: 13px;
+      line-height: 1.8;
+      color: rgba(245,237,214,0.65);
+      font-weight: 300;
+    }
+
+    /* ══════════════════ 奖项 ══════════════════ */
+    .awards-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .award-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: rgba(194,58,43,0.08);
+      border: 1px solid rgba(194,58,43,0.25);
+      border-radius: 2px;
+      font-size: 12px;
+      color: var(--cream);
+      opacity: 0.85;
+      letter-spacing: 0.05em;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .award-tag:hover {
+      background: rgba(194,58,43,0.15);
+      border-color: rgba(194,58,43,0.5);
+    }
+
+    .award-tag-icon {
+      color: var(--cinnabar);
+      font-size: 14px;
+    }
+
+    /* ══════════════════ 档案 ══════════════════ */
+    .archive-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .archive-table tr {
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+    }
+
+    .archive-table tr:last-child { border-bottom: none; }
+
+    .archive-table td {
+      padding: 14px 0;
+      font-size: 13px;
+      vertical-align: top;
+    }
+
+    .archive-table td:first-child {
+      width: 120px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.6;
+      padding-top: 16px;
+      padding-right: 20px;
+    }
+
+    .archive-table td:last-child {
+      color: rgba(245,237,214,0.8);
+      line-height: 1.7;
+    }
+
+    /* ══════════════════ 编者按 ══════════════════ */
+    .editorial-block {
+      background: linear-gradient(135deg, rgba(194,58,43,0.08) 0%, rgba(13,9,5,0.95) 100%);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 4px;
+      padding: 40px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .editorial-block::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--cinnabar), transparent);
+    }
+
+    .editorial-label {
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      opacity: 0.6;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .editorial-text {
+      font-size: 1.05rem;
+      line-height: 2;
+      color: var(--cream);
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+
+    .editorial-text em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+
+    .editorial-stars {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 4px;
+      opacity: 0.7;
+    }
+
+    /* ══════════════════ 页脚 ══════════════════ */
+    footer {
+      text-align: center;
+      padding: 48px 0 32px;
+      border-top: 1px solid rgba(201,168,76,0.1);
+      margin-top: 32px;
+    }
+
+    .footer-text {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      opacity: 0.4;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .footer-date {
+      font-family: 'Playfair Display', serif;
+      font-size: 12px;
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+
+    /* ══════════════════ 动画 ══════════════════ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.45s; }
+    .delay-4 { animation-delay: 0.6s; }
+    .delay-5 { animation-delay: 0.75s; }
+
+    @media (max-width: 600px) {
+      .reason-item { grid-template-columns: 40px 1fr; gap: 16px; }
+      .reason-num { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="ink-canvas"></canvas>
+
+<div class="page">
+
+  <!-- 红色装饰带 -->
+  <div class="red-banner"></div>
+
+  <!-- 报头 -->
+  <div class="masthead fade-up delay-1">
+    <p class="masthead-date">每日经典推荐 · 2026年5月13日</p>
+    <p class="masthead-en">Farewell My Concubine</p>
+    <h1 class="masthead-title">霸王别姬</h1>
+    <p class="masthead-subtitle">不疯魔，不成活</p>
+    <div class="masthead-divider">
+      <div class="masthead-gem"></div>
+    </div>
+  </div>
+
+  <!-- 评分条 -->
+  <div class="ratings-row fade-up delay-2">
+    <div class="rating-card">
+      <p class="rating-platform">豆瓣评分</p>
+      <div class="rating-score">9.<span class="rating-max">6</span></div>
+      <div class="rating-bar-wrap"><div class="rating-bar" data-width="96"></div></div>
+      <p class="rating-desc">华语电影最高分之一</p>
+    </div>
+    <div class="rating-card">
+      <p class="rating-platform">IMDb</p>
+      <div class="rating-score">8.<span class="rating-max">1</span></div>
+      <div class="rating-bar-wrap"><div class="rating-bar" data-width="81"></div></div>
+      <p class="rating-desc">全球观众认可</p>
+    </div>
+    <div class="rating-card">
+      <p class="rating-platform">戛纳电影节</p>
+      <div class="rating-score" style="font-size:2rem;">金<span class="rating-max">棕榈</span></div>
+      <div class="rating-bar-wrap"><div class="rating-bar" data-width="100"></div></div>
+      <p class="rating-desc">1993年最高荣誉</p>
+    </div>
+    <div class="rating-card">
+      <p class="rating-platform">烂番茄</p>
+      <div class="rating-score">88<span class="rating-max">%</span></div>
+      <div class="rating-bar-wrap"><div class="rating-bar" data-width="88"></div></div>
+      <p class="rating-desc">专业影评人新鲜度</p>
+    </div>
+  </div>
+
+  <!-- 分割线 -->
+  <div class="section-divider fade-up delay-3">
+    <span class="section-divider-icon">✦</span>
+  </div>
+
+  <!-- 剧情梗概 -->
+  <div class="chapter fade-up delay-3">
+    <div class="chapter-header">
+      <p class="chapter-num">壹</p>
+      <h2 class="chapter-title">戏梦人生的<em>极致书写</em></h2>
+    </div>
+
+    <div class="synopsis-layout">
+      <div class="synopsis-text">
+        <p>
+          <strong>段小楼（张丰毅饰）</strong>与<strong>程蝶衣（张国荣饰）</strong>，是京剧舞台上配合了半生的搭档。从幼年在梨园学艺，到名满天下，两人经历了民国、抗战、解放、"文革"……时代的每一次震荡，都无情地冲击着这对"虞姬"与"霸王"的命运。
+        </p>
+        <p>
+          蝶衣对师兄小楼的情感，早已超越了戏里戏外的边界——他是那个"从一而终"的真虞姬。而小楼却在世俗的洪流中不断妥协、退让、放弃。蝶衣用一生的执念守候的，究竟是那段京戏，还是那个人？
+        </p>
+        <p>
+          陈凯歌以京剧《<strong>霸王别姬</strong>》为经纬，织就了一部跨越半个世纪的个人史诗与民族寓言。影片的每一个镜头，都在叩问同一个问题：<strong>在这个世界上，有什么东西是值得你"从一而终"的？</strong>
+        </p>
+      </div>
+
+      <!-- 海报视觉 -->
+      <div class="poster-visual">
+        <div class="poster-frame">
+          <div class="poster-art">
+            <div class="opera-costume">
+              <!-- 京剧霸王/虞姬轮廓 SVG -->
+              <svg viewBox="0 0 280 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- 戏服主体 -->
+                <ellipse cx="140" cy="180" rx="80" ry="100" fill="rgba(139,26,26,0.3)"/>
+                <ellipse cx="140" cy="180" rx="70" ry="85" fill="rgba(194,58,43,0.2)"/>
+                <!-- 肩部披风 -->
+                <path d="M60 150 Q140 120 220 150 L200 200 Q140 180 80 200 Z" fill="rgba(201,168,76,0.15)"/>
+                <!-- 头部轮廓 -->
+                <circle cx="140" cy="80" r="28" fill="rgba(245,237,214,0.08)"/>
+                <!-- 凤冠/头饰 -->
+                <path d="M112 65 L140 40 L168 65" stroke="rgba(201,168,76,0.3)" stroke-width="2" fill="none"/>
+                <circle cx="140" cy="55" r="4" fill="rgba(201,168,76,0.4)"/>
+                <!-- 水袖线条 -->
+                <path d="M90 250 Q60 300 40 360" stroke="rgba(245,237,214,0.12)" stroke-width="3" fill="none"/>
+                <path d="M190 250 Q220 300 240 360" stroke="rgba(245,237,214,0.12)" stroke-width="3" fill="none"/>
+                <!-- 剑（霸王之剑） -->
+                <line x1="200" y1="220" x2="260" y2="180" stroke="rgba(201,168,76,0.25)" stroke-width="2"/>
+                <line x1="200" y1="220" x2="195" y2="240" stroke="rgba(201,168,76,0.2)" stroke-width="4"/>
+              </svg>
+            </div>
+
+            <div class="poster-top-text">
+              <span>Chen Kaige · 1993</span>
+            </div>
+
+            <div class="poster-bottom-text">
+              <div class="poster-main-title">霸王别姬</div>
+              <div class="poster-en-title">Farewell My Concubine</div>
+            </div>
+          </div>
+
+          <div class="poster-info">
+            <div class="poster-info-item">
+              <div class="poster-info-key">导演</div>
+              <div class="poster-info-val">陈凯歌</div>
+            </div>
+            <div class="poster-info-item">
+              <div class="poster-info-key">主演</div>
+              <div class="poster-info-val">张国荣</div>
+            </div>
+            <div class="poster-info-item">
+              <div class="poster-info-key">片长</div>
+              <div class="poster-info-val">171 分钟</div>
+            </div>
+            <div class="poster-info-item">
+              <div class="poster-info-key">语言</div>
+              <div class="poster-info-val">普通话</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 分割线 -->
+  <div class="section-divider">
+    <span class="section-divider-icon">✦</span>
+  </div>
+
+  <!-- 六大亮点 -->
+  <div class="chapter">
+    <div class="chapter-header fade-up">
+      <p class="chapter-num">贰</p>
+      <h2 class="chapter-title">让它成为<em>永恒经典</em>的六个维度</h2>
+    </div>
+
+    <div class="highlights-grid">
+      <div class="highlight-card fade-up delay-1">
+        <div class="highlight-num">01</div>
+        <span class="highlight-icon">🎭</span>
+        <div class="highlight-title">张国荣：超越表演的"人戏合一"</div>
+        <div class="highlight-desc">程蝶衣这个角色，从举手投足到眼神流转，张国荣注入了自己的灵魂。他不是在"演"虞姬，他就是虞姬。这种程度的人物塑造，是中国电影史上前所未有的。</div>
+      </div>
+
+      <div class="highlight-card fade-up delay-1">
+        <div class="highlight-num">02</div>
+        <span class="highlight-icon">🏛</span>
+        <div class="highlight-title">京剧：戏中戏的镜像结构</div>
+        <div class="highlight-desc">"我本是男儿郎，又不是女娇娥"——蝶衣一生都在与这句唱词的性别错位搏斗。戏与人生、性别与身份、舞台与现实的多重镜像，让影片拥有无尽的解读空间。</div>
+      </div>
+
+      <div class="highlight-card fade-up delay-2">
+        <div class="highlight-num">03</div>
+        <span class="highlight-icon">📜</span>
+        <div class="highlight-title">半个世纪的民族史诗</div>
+        <div class="highlight-desc">从民国到"文革"，陈凯歌用一对伶人的命运，折射出中国近现代史最剧烈的创伤与剧变。影片不回避历史，而是以个体生命的悲欢来承载时代的重量。</div>
+      </div>
+
+      <div class="highlight-card fade-up delay-2">
+        <div class="highlight-num">04</div>
+        <span class="highlight-icon">🌓</span>
+        <div class="highlight-title">摄影美学：色彩即情感</div>
+        <div class="highlight-desc">顾长卫的摄影极具东方意境——红色（京剧、血、火）、黑色（死亡、绝望）、金色（辉煌、记忆）层层交织。每一帧画面都像是可以独立装裱的水墨画。</div>
+      </div>
+
+      <div class="highlight-card fade-up delay-3">
+        <div class="highlight-num">05</div>
+        <span class="highlight-icon">💔</span>
+        <div class="highlight-title">关于"从一而终"的永恒追问</div>
+        <div class="highlight-desc">蝶衣问：京剧能不能从一而终？小楼答：能不能是一回事。面对时代与人性的双重碾压，这份执念是悲剧的根源，也是蝶衣这个角色最令人心碎的光芒。</div>
+      </div>
+
+      <div class="highlight-card fade-up delay-3">
+        <div class="highlight-num">06</div>
+        <span class="highlight-icon">🌏</span>
+        <div class="highlight-title">华语电影的文化输出典范</div>
+        <div class="highlight-desc">它是中国第一部同时获得戛纳金棕榈与奥斯卡最佳外语片提名的电影，向全世界展示了中国传统文化的魅力与东方美学的极致表达方式。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 经典引言 -->
+  <div class="quote-block fade-up">
+    <p class="quote-text">
+      "我本是男儿郎，又不是女娇娥……"<br>
+      这句改了整整一辈子的唱词，道尽了<em>一个人如何在时代的缝隙里守住自己</em>。
+    </p>
+    <p class="quote-attr">— 影片核心意象</p>
+  </div>
+
+  <!-- 为什么值得一看 -->
+  <div class="chapter">
+    <div class="chapter-header fade-up">
+      <p class="chapter-num">叁</p>
+      <h2 class="chapter-title">为何它<em>值得一生回味</em></h2>
+    </div>
+
+    <div class="reasons-list fade-up">
+      <div class="reason-item">
+        <div class="reason-num">01</div>
+        <div>
+          <p class="reason-title">它让你重新理解"执念"这个词</p>
+          <p class="reason-body">在世俗眼中，蝶衣是"不正常"的。但陈凯歌让我们看到：正是这份对艺术、对情感、对自我的执念，让一个卑微的生命闪耀出了最耀眼的光芒。看懂蝶衣，你会对"坚持"这个词有全新的理解。</p>
+        </div>
+      </div>
+      <div class="reason-item">
+        <div class="reason-num">02</div>
+        <div>
+          <p class="reason-title">每看一遍，都有新的发现</p>
+          <p class="reason-body">这是那种你第一次看会被故事打动、第五次看会被细节震撼、第无数遍看会对整个时代产生深刻共鸣的电影。台词、服装、布景、眼神……无数细节构成了一张密不透风的网。</p>
+        </div>
+      </div>
+      <div class="reason-item">
+        <div class="reason-num">03</div>
+        <div>
+          <p class="reason-title">张国荣的告别演出</p>
+          <p class="reason-body">虽然这不是张国荣的最后一部电影，但程蝶衣这个角色几乎成为了他人生与艺术生命的最终注脚。2003年4月1日，他选择以自己的方式"别姬"——这让影片在今天看来，格外令人唏嘘。</p>
+        </div>
+      </div>
+      <div class="reason-item">
+        <div class="reason-num">04</div>
+        <div>
+          <p class="reason-title">中国传统美学的一面镜子</p>
+          <p class="reason-body">如果你对中国传统文化感兴趣，这部影片是极好的入门——京剧的程式化表演、美学意境、传统伦理与悲剧精神的融合，在陈凯歌的镜头下达到了难以企及的高度。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 分割线 -->
+  <div class="section-divider">
+    <span class="section-divider-icon">✦</span>
+  </div>
+
+  <!-- 荣誉 -->
+  <div class="chapter">
+    <div class="chapter-header fade-up">
+      <p class="chapter-num">肆</p>
+      <h2 class="chapter-title"><em>荣誉</em>与认可</h2>
+    </div>
+
+    <div class="awards-row fade-up delay-1">
+      <div class="award-tag">
+        <span class="award-tag-icon">🏆</span>
+        戛纳电影节金棕榈奖
+      </div>
+      <div class="award-tag">
+        <span class="award-tag-icon">🎬</span>
+        奥斯卡最佳外语片提名
+      </div>
+      <div class="award-tag">
+        <span class="award-tag-icon">⭐</span>
+        金球奖最佳外语片
+      </div>
+      <div class="award-tag">
+        <span class="award-tag-icon">🏅</span>
+         BAFTA最佳外语片
+      </div>
+      <div class="award-tag">
+        <span class="award-tag-icon">🎭</span>
+        中国电影史票房纪录
+      </div>
+      <div class="award-tag">
+        <span class="award-tag-icon">📽</span>
+        日本《电影旬报》最佳外语
+      </div>
+      <div class="award-tag">
+        <span class="award-tag-icon">🌟</span>
+        张国荣金棕榈影帝提名
+      </div>
+      <div class="award-tag">
+        <span class="award-tag-icon">🎨</span>
+        法国艺术骑士勋章
+      </div>
+    </div>
+  </div>
+
+  <!-- 分割线 -->
+  <div class="section-divider">
+    <span class="section-divider-icon">✦</span>
+  </div>
+
+  <!-- 影片档案 -->
+  <div class="chapter">
+    <div class="chapter-header fade-up">
+      <p class="chapter-num">伍</p>
+      <h2 class="chapter-title">影片<em>档案</em></h2>
+    </div>
+
+    <table class="archive-table fade-up delay-1">
+      <tr>
+        <td>原片名</td>
+        <td>Bà Wáng Bié Jī / Farewell My Concubine</td>
+      </tr>
+      <tr>
+        <td>中文片名</td>
+        <td>霸王别姬</td>
+      </tr>
+      <tr>
+        <td>导演</td>
+        <td>陈凯歌</td>
+      </tr>
+      <tr>
+        <td>编剧</td>
+        <td>陈凯歌 / 芦苇</td>
+      </tr>
+      <tr>
+        <td>主演</td>
+        <td>张国荣（饰 程蝶衣）· 张丰毅（饰 段小楼）· 巩俐（饰 菊仙）</td>
+      </tr>
+      <tr>
+        <td>摄影</td>
+        <td>顾长卫</td>
+      </tr>
+      <tr>
+        <td>配乐</td>
+        <td>赵季平</td>
+      </tr>
+      <tr>
+        <td>上映年份</td>
+        <td>1993年</td>
+      </tr>
+      <tr>
+        <td>片长</td>
+        <td>171 分钟</td>
+      </tr>
+      <tr>
+        <td>制片国家</td>
+        <td>中国大陆 / 香港</td>
+      </tr>
+      <tr>
+        <td>语言</td>
+        <td>普通话</td>
+      </tr>
+      <tr>
+        <td>类型</td>
+        <td>剧情 / 爱情 / 同性 / 戏曲</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 编者按 -->
+  <div class="editorial-block fade-up delay-2">
+    <p class="editorial-label">编者按</p>
+    <p class="editorial-text">
+      《霸王别姬》不是一部让人"看完就忘"的电影。它会在某个深夜突然闯入你的脑海——那句"我本是男儿郎"，蝶衣那抹永恒的侧影，或者小楼最后回头时那一眼。<br><br>
+      <em>"不疯魔，不成活"</em>——这六个字，既是蝶衣的艺术哲学，也是这部电影的灵魂。
+    </p>
+    <div class="editorial-stars">★ ★ ★ ★ ★</div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer>
+    <p class="footer-text">经典电影每日推荐 · Classic Movie Recommendation</p>
+    <p class="footer-date">Wednesday · May 13, 2026 · Issue No.13</p>
+  </footer>
+
+</div>
+
+<script>
+  // ── 墨滴粒子动画 ──
+  (function() {
+    const canvas = document.getElementById('ink-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, drops = [];
+
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function createDrop() {
+      return {
+        x: Math.random() * W,
+        y: -10,
+        r: Math.random() * 3 + 1,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: Math.random() * 0.5 + 0.2,
+        alpha: Math.random() * 0.4 + 0.1,
+        gold: Math.random() > 0.85
+      };
+    }
+
+    // 初始粒子
+    for (let i = 0; i < 50; i++) {
+      const d = createDrop();
+      d.y = Math.random() * H;
+      drops.push(d);
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      drops.forEach((d, i) => {
+        d.x += d.vx;
+        d.y += d.vy;
+
+        // 墨滴扩散效果
+        const gradient = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r * 2);
+        if (d.gold) {
+          gradient.addColorStop(0, `rgba(201,168,76,${d.alpha})`);
+          gradient.addColorStop(1, `rgba(201,168,76,0)`);
+        } else {
+          gradient.addColorStop(0, `rgba(245,237,214,${d.alpha * 0.5})`);
+          gradient.addColorStop(1, `rgba(245,237,214,0)`);
+        }
+
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r * 2, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+
+        if (d.y > H + 10) drops[i] = createDrop();
+      });
+
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  // ── 评分条动画 ──
+  (function() {
+    const bars = document.querySelectorAll('.rating-bar[data-width]');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const bar = entry.target;
+          setTimeout(() => {
+            bar.style.width = bar.dataset.width + '%';
+          }, 300);
+          observer.unobserve(bar);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    bars.forEach(bar => observer.observe(bar));
+  })();
+
+  // ── 滚动渐入 ──
+  (function() {
+    const els = document.querySelectorAll('.fade-up');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    els.forEach(el => io.observe(el));
+  })();
+</script>
+
+</body>
+</html>

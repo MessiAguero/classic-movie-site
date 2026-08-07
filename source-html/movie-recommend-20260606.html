@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经典电影推荐 — 控方证人 | Witness for the Prosecution</title>
+<style>
+/* === Reset & Base === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg-deep: #1A0F0A;
+  --bg-panel: #2C1810;
+  --wood-dark: #3D2015;
+  --wood-mid: #5C3A28;
+  --gold-light: #D4AF7A;
+  --gold: #C9A96E;
+  --gold-dim: #A8894E;
+  --cream: #F5E6C8;
+  --cream-light: #FAF0DE;
+  --cream-dim: #D4C4A8;
+  --ink: #1A1A2E;
+  --red-accent: #8B3A3A;
+  --red-glow: rgba(139, 58, 58, 0.3);
+}
+
+body {
+  font-family: 'Georgia', 'Noto Serif SC', 'Songti SC', serif;
+  background: var(--bg-deep);
+  color: var(--cream);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* === Canvas BG === */
+#scene-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* === Scrollbar === */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+/* === Utility === */
+.section-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  position: relative;
+  z-index: 2;
+}
+
+/* === Reveal === */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Divider === */
+.section-divider {
+  width: 120px; height: 1px;
+  margin: 0 auto 60px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* === HERO === */
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 80% 60% at 50% 45%, rgba(44, 24, 16, 0.6) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 50% 30%, rgba(201, 169, 110, 0.08) 0%, transparent 60%);
+  z-index: -1;
+}
+
+.hero-year {
+  font-size: clamp(80px, 18vw, 200px);
+  font-weight: 700;
+  color: rgba(201, 169, 110, 0.07);
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  letter-spacing: 8px;
+  user-select: none;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero-tagline {
+  font-size: clamp(14px, 2vw, 20px);
+  color: var(--gold-dim);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.hero-title {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 700;
+  color: var(--cream-light);
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.hero-title-en {
+  font-size: clamp(18px, 3vw, 36px);
+  color: var(--gold);
+  font-style: italic;
+  letter-spacing: 2px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.hero-sub {
+  font-size: clamp(15px, 1.6vw, 20px);
+  color: var(--cream-dim);
+  max-width: 600px;
+  margin-bottom: 50px;
+  line-height: 1.8;
+}
+
+.hero-gavel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 10px;
+}
+
+.hero-line {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.hero-line:last-child {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold-dim);
+  font-size: 12px;
+  letter-spacing: 3px;
+  animation: bounceDown 2s ease-in-out infinite;
+  cursor: default;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* === SVG Gavel Court Scene === */
+.hero-svg-area {
+  width: 280px;
+  height: 120px;
+  margin: 0 auto 30px;
+  position: relative;
+}
+
+/* === Rating Bar Section === */
+.ratings {
+  background: var(--bg-panel);
+  position: relative;
+  z-index: 1;
+}
+
+.ratings-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.rating-item {
+  text-align: center;
+  padding: 20px 12px;
+}
+
+.rating-label {
+  font-size: 13px;
+  color: var(--gold-dim);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+}
+
+.rating-number {
+  font-size: clamp(36px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.rating-number .decimal { font-size: 0.5em; vertical-align: super; }
+
+.rating-source {
+  font-size: 12px;
+  color: var(--cream-dim);
+  opacity: 0.7;
+}
+
+.rating-bar-bg {
+  width: 100%;
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.rating-bar-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+  border-radius: 2px;
+  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.rating-bar-fill.animated { width: var(--fill); }
+
+/* === Story Section === */
+.story {
+  background: var(--bg-deep);
+  position: relative;
+  z-index: 1;
+}
+
+.story-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.story-text h2,
+.highlights h2,
+.why-section h2,
+.quote-section h2,
+.info-section h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  color: var(--cream-light);
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+}
+
+.story-text h2 span,
+.highlights h2 span,
+.why-section h2 span,
+.info-section h2 span {
+  color: var(--gold);
+}
+
+.story-text p {
+  color: var(--cream-dim);
+  font-size: 16px;
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.story-badge {
+  display: inline-block;
+  padding: 4px 16px;
+  border: 1px solid var(--gold-dim);
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 24px;
+}
+
+/* === SVG Witness Poster === */
+.story-poster {
+  position: relative;
+  background: linear-gradient(135deg, var(--bg-panel), var(--wood-dark));
+  border: 1px solid rgba(201, 169, 110, 0.2);
+  border-radius: 8px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 350px;
+  overflow: hidden;
+}
+
+.story-poster::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(201, 169, 110, 0.02) 2px,
+    rgba(201, 169, 110, 0.02) 4px
+  );
+  pointer-events: none;
+}
+
+/* === Highlights === */
+.highlights {
+  background: var(--bg-panel);
+  position: relative;
+  z-index: 1;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.highlight-card {
+  background: rgba(26, 15, 10, 0.6);
+  border: 1px solid rgba(201, 169, 110, 0.12);
+  border-radius: 8px;
+  padding: 32px 24px;
+  transition: all 0.4s ease;
+  cursor: default;
+}
+
+.highlight-card:hover {
+  border-color: var(--gold-dim);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+
+.highlight-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 16px;
+  color: var(--gold);
+}
+
+.highlight-card h3 {
+  font-size: 18px;
+  color: var(--cream-light);
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.highlight-card p {
+  font-size: 14px;
+  color: var(--cream-dim);
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+/* === Quote Section === */
+.quote-section {
+  background: var(--bg-deep);
+  position: relative;
+  z-index: 1;
+}
+
+.quote-block {
+  background: var(--bg-panel);
+  border-left: 3px solid var(--gold);
+  padding: 40px 48px;
+  margin-bottom: 24px;
+  border-radius: 0 8px 8px 0;
+}
+
+.quote-block blockquote {
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-style: italic;
+  color: var(--cream-light);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.quote-block blockquote::before {
+  content: '\201C';
+  font-size: 64px;
+  color: var(--gold);
+  opacity: 0.3;
+  line-height: 0;
+  vertical-align: -20px;
+  margin-right: 8px;
+}
+
+.quote-author {
+  font-size: 14px;
+  color: var(--gold-dim);
+  letter-spacing: 1px;
+}
+
+/* === Why Watch === */
+.why-section {
+  background: var(--bg-panel);
+  position: relative;
+  z-index: 1;
+}
+
+.why-list {
+  display: grid;
+  gap: 20px;
+}
+
+.why-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 20px 24px;
+  background: rgba(26, 15, 10, 0.4);
+  border: 1px solid rgba(201, 169, 110, 0.08);
+  border-radius: 8px;
+}
+
+.why-num {
+  width: 48px; height: 48px;
+  border: 1px solid var(--gold-dim);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  font-family: 'Arial', sans-serif;
+}
+
+.why-item h3 {
+  font-size: 16px;
+  color: var(--cream-light);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.why-item p {
+  font-size: 14px;
+  color: var(--cream-dim);
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+/* === Info Section === */
+.info-section {
+  background: var(--bg-deep);
+  position: relative;
+  z-index: 1;
+}
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.info-table tr {
+  border-bottom: 1px solid rgba(201, 169, 110, 0.08);
+}
+
+.info-table tr:last-child { border-bottom: none; }
+
+.info-table td {
+  padding: 14px 20px;
+  font-size: 15px;
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--gold);
+  width: 160px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.info-table td:last-child {
+  color: var(--cream-dim);
+}
+
+/* === Final Verdict === */
+.verdict {
+  background: var(--bg-panel);
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 100px 24px;
+}
+
+.verdict-stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  padding: 16px 40px;
+  margin-bottom: 40px;
+}
+
+.verdict-stamp span {
+  font-size: clamp(24px, 3vw, 36px);
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 6px;
+  font-family: 'Arial', sans-serif;
+}
+
+.verdict p {
+  font-size: 16px;
+  color: var(--cream-dim);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.9;
+}
+
+/* === Footer === */
+.footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 40px 24px;
+  font-size: 12px;
+  color: rgba(201, 169, 110, 0.3);
+  letter-spacing: 2px;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .story-layout { grid-template-columns: 1fr; gap: 40px; }
+  .highlights-grid { grid-template-columns: 1fr; }
+  .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+  .quote-block { padding: 30px 24px; }
+  .why-item { grid-template-columns: 1fr; text-align: center; }
+  .why-num { margin: 0 auto; }
+  .info-table td { display: block; padding: 8px 12px; }
+  .info-table td:first-child { width: auto; padding-top: 14px; }
+  .verdict-stamp { padding: 12px 24px; }
+}
+
+@media (max-width: 480px) {
+  .section-inner { padding: 50px 16px; }
+  .ratings-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .highlights-grid { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Canvas Background -->
+<canvas id="scene-canvas"></canvas>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-year">1957</div>
+
+  <div class="hero-tagline">The Verdict Will Shock You</div>
+
+  <div class="hero-svg-area">
+    <svg width="280" height="120" viewBox="0 0 280 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Scales of Justice -->
+      <g transform="translate(140, 60)">
+        <!-- Central pillar -->
+        <line x1="0" y1="0" x2="0" y2="40" stroke="#C9A96E" stroke-width="1.5" opacity="0.5"/>
+        <rect x="-3" y="-2" width="6" height="8" rx="1" fill="#C9A96E" opacity="0.6"/>
+        <!-- Crossbar -->
+        <line x1="-60" y1="-4" x2="60" y2="-4" stroke="#C9A96E" stroke-width="1.5" opacity="0.5"/>
+        <!-- Left pan (chains) -->
+        <line x1="-45" y1="-4" x2="-45" y2="16" stroke="#D4AF7A" stroke-width="0.8" opacity="0.4"/>
+        <line x1="-35" y1="-4" x2="-35" y2="16" stroke="#D4AF7A" stroke-width="0.8" opacity="0.4"/>
+        <!-- Left pan -->
+        <ellipse cx="-40" cy="20" rx="14" ry="4" stroke="#C9A96E" stroke-width="1" fill="none" opacity="0.6"/>
+        <path d="M-54 20 Q-40 24 -26 20" stroke="#C9A96E" stroke-width="0.8" fill="none" opacity="0.4"/>
+        <!-- Right pan (chains) -->
+        <line x1="35" y1="-4" x2="35" y2="16" stroke="#D4AF7A" stroke-width="0.8" opacity="0.4"/>
+        <line x1="45" y1="-4" x2="45" y2="16" stroke="#D4AF7A" stroke-width="0.8" opacity="0.4"/>
+        <!-- Right pan -->
+        <ellipse cx="40" cy="20" rx="14" ry="4" stroke="#C9A96E" stroke-width="1" fill="none" opacity="0.6"/>
+        <path d="M26 20 Q40 24 54 20" stroke="#C9A96E" stroke-width="0.8" fill="none" opacity="0.4"/>
+        <!-- Gavel -->
+        <g transform="translate(70, 28) rotate(-30)">
+          <rect x="-4" y="-18" width="8" height="18" rx="1" fill="#5C3A28" opacity="0.7"/>
+          <rect x="-12" y="-20" width="24" height="6" rx="1" fill="#6B4226" opacity="0.8"/>
+        </g>
+        <!-- Glow -->
+        <circle cx="0" cy="-8" r="20" fill="url(#glow)" opacity="0.15"/>
+      </g>
+      <!-- Film frames -->
+      <g opacity="0.06">
+        <rect x="10" y="90" width="60" height="20" rx="1" stroke="#D4AF7A" stroke-width="0.5" fill="none"/>
+        <rect x="82" y="90" width="60" height="20" rx="1" stroke="#D4AF7A" stroke-width="0.5" fill="none"/>
+        <rect x="154" y="90" width="60" height="20" rx="1" stroke="#D4AF7A" stroke-width="0.5" fill="none"/>
+      </g>
+      <defs>
+        <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#D4AF7A"/>
+          <stop offset="100%" stop-color="#D4AF7A" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <h1 class="hero-title">控方证人</h1>
+  <p class="hero-title-en">Witness for the Prosecution</p>
+  <p class="hero-sub">导演：比利·怀尔德 &nbsp;·&nbsp; 主演：泰隆·鲍华 / 玛琳·黛德丽 / 查尔斯·劳顿</p>
+
+  <div class="hero-gavel">
+    <span class="hero-line"></span>
+    <span style="color:var(--gold-dim); font-size:13px; letter-spacing:3px; font-family:Arial,sans-serif;">CLASSIC · NO SPOILERS</span>
+    <span class="hero-line"></span>
+  </div>
+
+  <div class="hero-scroll">
+    <span>向下滚动</span>
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path d="M4 6l4 4 4-4" stroke="#A8894E" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== RATINGS ===== -->
+<section class="ratings">
+  <div class="section-inner">
+    <div class="ratings-grid">
+      <div class="rating-item reveal">
+        <div class="rating-label">IMDb</div>
+        <div class="rating-number">8.4<span class="decimal">/10</span></div>
+        <div class="rating-source">Top 250 #60</div>
+        <div class="rating-bar-bg"><div class="rating-bar-fill" style="--fill:84%"></div></div>
+      </div>
+      <div class="rating-item reveal">
+        <div class="rating-label">豆瓣</div>
+        <div class="rating-number">9.6<span class="decimal">/10</span></div>
+        <div class="rating-source">Top 250 #3</div>
+        <div class="rating-bar-bg"><div class="rating-bar-fill" style="--fill:96%"></div></div>
+      </div>
+      <div class="rating-item reveal">
+        <div class="rating-label">烂番茄</div>
+        <div class="rating-number">100<span class="decimal">%</span></div>
+        <div class="rating-source">新鲜度认证</div>
+        <div class="rating-bar-bg"><div class="rating-bar-fill" style="--fill:100%"></div></div>
+      </div>
+      <div class="rating-item reveal">
+        <div class="rating-label">爆米花</div>
+        <div class="rating-number">96<span class="decimal">%</span></div>
+        <div class="rating-source">观众喜爱度</div>
+        <div class="rating-bar-bg"><div class="rating-bar-fill" style="--fill:96%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STORY ===== -->
+<section class="story">
+  <div class="section-inner">
+    <div class="story-layout">
+      <div class="story-text reveal">
+        <div class="story-badge">无剧透</div>
+        <h2>剧情<span>梗概</span></h2>
+        <p>1950年代的伦敦。备受尊敬的刑事辩护律师威尔弗里德·罗巴茨爵士刚刚大病初愈，就接下一桩重量级谋杀案。</p>
+        <p>被告沃尔·沃尔是一名风度翩翩的年轻男子，被指控谋杀一位富有寡妇以获取遗产。所有证据都指向他——动机、机会、物证，环环相扣。</p>
+        <p>然而，沃尔坚称自己无罪。他的妻子克里斯汀——一位冷艳而神秘的德国女子——将成为辩方最重要的证人。但她的证词真的能拯救丈夫吗？还是说，一切远没有表面看起来那么简单？</p>
+        <p>当真相一层层剥开，每一个证人的每一句话都可能成为致命的伏笔。法庭上的每一分钟，都在考验着你的判断力……</p>
+      </div>
+      <div class="story-poster reveal">
+        <svg width="200" height="300" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Vintage court scene -->
+          <g opacity="0.06">
+            <rect x="10" y="10" width="180" height="280" rx="2" stroke="#D4AF7A" stroke-width="1" fill="none"/>
+            <rect x="14" y="14" width="172" height="272" rx="1" stroke="#D4AF7A" stroke-width="0.5" fill="none"/>
+          </g>
+          <!-- Witness stand silhouette -->
+          <rect x="60" y="40" width="80" height="8" rx="2" fill="#D4AF7A" opacity="0.15"/>
+          <rect x="90" y="48" width="20" height="140" rx="2" fill="#D4AF7A" opacity="0.1"/>
+          <!-- Judge bench -->
+          <rect x="20" y="30" width="160" height="10" rx="2" fill="#C9A96E" opacity="0.12"/>
+          <!-- Figure silhouettes -->
+          <g opacity="0.08">
+            <!-- Judge figure -->
+            <circle cx="100" cy="55" r="6" fill="#D4AF7A"/>
+            <path d="M90 55 L86 85 L114 85 L110 55" fill="#D4AF7A"/>
+            <!-- Jury -->
+            <rect x="20" y="120" width="12" height="50" rx="1" fill="#D4AF7A"/>
+            <rect x="36" y="115" width="12" height="55" rx="1" fill="#D4AF7A"/>
+            <rect x="52" y="110" width="12" height="60" rx="1" fill="#D4AF7A"/>
+            <rect x="68" y="108" width="12" height="62" rx="1" fill="#D4AF7A"/>
+            <rect x="84" y="105" width="12" height="65" rx="1" fill="#D4AF7A"/>
+            <rect x="100" y="108" width="12" height="62" rx="1" fill="#D4AF7A"/>
+            <rect x="116" y="110" width="12" height="60" rx="1" fill="#D4AF7A"/>
+            <rect x="132" y="115" width="12" height="55" rx="1" fill="#D4AF7A"/>
+            <rect x="148" y="120" width="12" height="50" rx="1" fill="#D4AF7A"/>
+            <rect x="164" y="125" width="12" height="45" rx="1" fill="#D4AF7A"/>
+          </g>
+          <!-- Stack of papers -->
+          <g opacity="0.15">
+            <rect x="55" y="200" width="90" height="2" rx="1" fill="#F5E6C8"/>
+            <rect x="58" y="204" width="84" height="2" rx="1" fill="#F5E6C8"/>
+            <rect x="55" y="208" width="90" height="2" rx="1" fill="#F5E6C8"/>
+            <rect x="60" y="212" width="80" height="2" rx="1" fill="#F5E6C8"/>
+            <rect x="56" y="216" width="88" height="2" rx="1" fill="#F5E6C8"/>
+          </g>
+          <!-- Title overlay -->
+          <text x="100" y="265" text-anchor="middle" fill="#C9A96E" font-size="11" opacity="0.5" font-family="Georgia,serif">WITNESS</text>
+          <text x="100" y="278" text-anchor="middle" fill="#C9A96E" font-size="7" opacity="0.3" font-family="Arial,sans-serif" letter-spacing="3">FOR THE PROSECUTION</text>
+          <!-- Spotlight beam -->
+          <path d="M0 0 L200 0 L180 100 L20 100 Z" fill="url(#spotlight)" opacity="0.04"/>
+          <defs>
+            <linearGradient id="spotlight" x1="50%" y1="0" x2="50%" y2="1">
+              <stop offset="0%" stop-color="#D4AF7A" stop-opacity="0"/>
+              <stop offset="50%" stop-color="#D4AF7A"/>
+              <stop offset="100%" stop-color="#D4AF7A" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HIGHLIGHTS ===== -->
+<section class="highlights">
+  <div class="section-inner">
+    <h2 class="reveal">六大<span>亮点</span></h2>
+    <div class="section-divider"></div>
+    <div class="highlights-grid">
+      <div class="highlight-card reveal">
+        <svg class="highlight-icon" viewBox="0 0 40 40" fill="none">
+          <path d="M20 6 L24 16 L34 16 L26 22 L28 33 L20 27 L12 33 L14 22 L6 16 L16 16 Z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+        <h3>影史最佳法庭片</h3>
+        <p>AFI 百年百大悬疑电影第 6 位，被无数影评人誉为「有史以来最伟大的法庭电影」，至今无人超越。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <svg class="highlight-icon" viewBox="0 0 40 40" fill="none">
+          <path d="M8 28 L20 8 L32 28 Z" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <circle cx="20" cy="20" r="2" fill="currentColor"/>
+        </svg>
+        <h3>惊天反转永载影史</h3>
+        <p>结尾的反转被《综艺》评为「影史最伟大的 twist之一」。观影结束后，你会想立刻从头再看一遍。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <svg class="highlight-icon" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="14" r="6" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <path d="M10 28 Q10 18 20 18 Q30 18 30 28" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+        <h3>殿堂级表演</h3>
+        <p>玛琳·黛德丽贡献了她演员生涯中最精彩的表演之一；查尔斯·劳顿凭借本片拿下金球奖最佳男配角。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <svg class="highlight-icon" viewBox="0 0 40 40" fill="none">
+          <rect x="6" y="8" width="28" height="24" rx="2" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <line x1="6" y1="18" x2="34" y2="18" stroke="currentColor" stroke-width="0.8"/>
+        </svg>
+        <h3>比利·怀尔德巅峰之作</h3>
+        <p>六获奥斯卡的传奇导演，在《控方证人》中将悬疑、幽默与人性洞察完美融合，炉火纯青。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <svg class="highlight-icon" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="14" r="3" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <path d="M14 24 Q14 20 20 20 Q26 20 26 24 Q26 30 20 30 Q14 30 14 24" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <path d="M18 30 L16 34" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M22 30 L24 34" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <h3>剧本的完美教科书</h3>
+        <p>改编自阿加莎·克里斯蒂的同名舞台剧，剧本环环相扣、滴水不漏，被编剧界奉为叙事范本。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <svg class="highlight-icon" viewBox="0 0 40 40" fill="none">
+          <rect x="8" y="6" width="24" height="28" rx="2" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <circle cx="20" cy="16" r="3" stroke="currentColor" stroke-width="1" fill="none"/>
+          <path d="M20 19 L20 24" stroke="currentColor" stroke-width="1"/>
+          <line x1="14" y1="28" x2="26" y2="28" stroke="currentColor" stroke-width="0.8"/>
+        </svg>
+        <h3>超越时代的观赏性</h3>
+        <p>近 70 年过去，其悬念设计和叙事技巧依然让现代观众拍案叫绝。真正经得起时间考验的经典。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<section class="quote-section">
+  <div class="section-inner">
+    <div class="quote-block reveal">
+      <blockquote>它提醒着我们，伟大的电影从不依赖特效和爆炸——好剧本、好演员、好导演，足以创造永恒。</blockquote>
+      <div class="quote-author">— 影评人评语</div>
+    </div>
+    <div class="quote-block reveal">
+      <blockquote>在真相面前，我们所有人都是被告。</blockquote>
+      <div class="quote-author">— 《控方证人》经典台词</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY WATCH ===== -->
+<section class="why-section">
+  <div class="section-inner">
+    <h2 class="reveal">为什么<span>值得一看</span></h2>
+    <div class="section-divider"></div>
+    <div class="why-list">
+      <div class="why-item reveal">
+        <div class="why-num">01</div>
+        <div>
+          <h3>教科书级的悬疑叙事</h3>
+          <p>这部影片证明了「悬疑」的核心不在于隐瞒信息，而在于如何巧妙地透露出足够的信息，让你以为猜到了真相——然后在你最自信的时候，将整个故事翻个底朝天。每一个细节都是伏笔，每一句台词都别有深意。</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">02</div>
+        <div>
+          <h3>超越时代的电影语言</h3>
+          <p>1957年的黑白影像，没有特效、没有配乐轰炸，仅凭镜头调度、台词节奏和演员的微表情就构建出无与伦比的戏剧张力。这种「纯粹的电影力量」在今天的观影体验中愈发珍贵。</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">03</div>
+        <div>
+          <h3>独一无二的观影体验</h3>
+          <p>影片结尾处特别设计了一段字幕，请求看过的观众不要向未看的人透露结局。这份「契约精神」本身就已成为电影文化的一部分。如果你还没看过，请珍惜初看的震撼——它一生只能体验一次。</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">04</div>
+        <div>
+          <h3>真正「好看」的老电影</h3>
+          <p>对于不习惯老片的观众来说，《控方证人》是黑白时代的绝佳入口。它的节奏紧凑、幽默感与现代观众完全相通，两个小时转瞬即逝。你会发现：真正的经典从未过时。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INFO ===== -->
+<section class="info-section">
+  <div class="section-inner">
+    <h2 class="reveal">影片<span>档案</span></h2>
+    <div class="section-divider"></div>
+    <table class="info-table reveal">
+      <tr><td>中文片名</td><td>控方证人</td></tr>
+      <tr><td>英文片名</td><td>Witness for the Prosecution</td></tr>
+      <tr><td>上映年份</td><td>1957 年</td></tr>
+      <tr><td>导演</td><td>比利·怀尔德 (Billy Wilder)</td></tr>
+      <tr><td>主演</td><td>泰隆·鲍华、玛琳·黛德丽、查尔斯·劳顿</td></tr>
+      <tr><td>原著</td><td>阿加莎·克里斯蒂 (Agatha Christie) 同名舞台剧</td></tr>
+      <tr><td>片长</td><td>116 分钟</td></tr>
+      <tr><td>类型</td><td>悬疑 / 犯罪 / 法庭</td></tr>
+      <tr><td>语言</td><td>英语 / 德语</td></tr>
+      <tr><td>荣誉</td><td>金球奖最佳男配角（查尔斯·劳顿）<br>美国国家评论协会奖最佳影片<br>AFI 百年百大悬疑电影第 6 位<br>奥斯卡 6 项提名</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ===== VERDICT ===== -->
+<section class="verdict reveal">
+  <div class="verdict-stamp">
+    <span>★ ★ ★ ★ ★</span>
+  </div>
+  <p>
+    《控方证人》是一部完美电影的教科书——精妙的剧本、卓越的表演、大师级的导演，
+    共同铸就了这部穿越近 70 年时光仍熠熠生辉的传世经典。
+    如果你还没有看过它，那就太幸运了：因为那份初看的震撼，正在等着你。
+  </p>
+</section>
+
+<footer class="footer">
+  WorkBuddy · 经典电影推荐 · 无剧透 · 2026.06.06
+</footer>
+
+<script>
+// === Canvas Particles ===
+const canvas = document.getElementById('scene-canvas');
+const ctx = canvas.getContext('2d');
+
+let W, H;
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// Ink dust particles — vintage courtroom atmosphere
+const PARTICLE_COUNT = 120;
+const particles = [];
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.size = Math.random() * 2 + 0.5;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = -(Math.random() * 0.15 + 0.05);
+    this.opacity = Math.random() * 0.35 + 0.05;
+    this.life = Math.random() * 300 + 200;
+    this.maxLife = this.life;
+    this.pulse = Math.random() * Math.PI * 2;
+  }
+  update() {
+    this.x += this.speedX + Math.sin(this.pulse) * 0.1;
+    this.y += this.speedY;
+    this.life--;
+    this.pulse += 0.008;
+
+    if (this.life <= 0 || this.y < -10 || this.x < -10 || this.x > W + 10) {
+      this.reset();
+      this.y = H + Math.random() * 20;
+    }
+
+    const lifeRatio = this.life / this.maxLife;
+    this.currentOpacity = this.opacity * Math.min(lifeRatio * 2, 1);
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(212, 175, 122, ${this.currentOpacity})`;
+    ctx.fill();
+
+    // Soft glow for larger particles
+    if (this.size > 1.2) {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201, 169, 110, ${this.currentOpacity * 0.08})`;
+      ctx.fill();
+    }
+  }
+}
+
+for (let i = 0; i < PARTICLE_COUNT; i++) {
+  const p = new Particle();
+  p.y = Math.random() * H;
+  particles.push(p);
+}
+
+// Occasional "scales of justice" glowing burst
+let burstTimer = 0;
+
+function animate() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Subtle vignette
+  const grad = ctx.createRadialGradient(W/2, H/2, H*0.3, W/2, H/2, H*0.9);
+  grad.addColorStop(0, 'rgba(26, 15, 10, 0)');
+  grad.addColorStop(1, 'rgba(26, 15, 10, 0.5)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Occasional gold burst from center
+  burstTimer++;
+  if (burstTimer > 300) {
+    const cx = W * (0.3 + Math.random() * 0.4);
+    const cy = H * (0.3 + Math.random() * 0.4);
+    const burstGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 60 + Math.random() * 40);
+    burstGrad.addColorStop(0, 'rgba(201, 169, 110, 0.06)');
+    burstGrad.addColorStop(1, 'rgba(201, 169, 110, 0)');
+    ctx.fillStyle = burstGrad;
+    ctx.fillRect(0, 0, W, H);
+    burstTimer = 0;
+  }
+
+  particles.forEach(p => { p.update(); p.draw(); });
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+// === IntersectionObserver Reveal ===
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+revealEls.forEach(el => observer.observe(el));
+
+// === Rating Bar Animation ===
+const ratingObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.rating-bar-fill').forEach(bar => {
+        setTimeout(() => bar.classList.add('animated'), 200);
+      });
+      ratingObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.ratings').forEach(el => ratingObserver.observe(el));
+
+// === Counter Animation for Rating Numbers ===
+function animateNumbers() {
+  document.querySelectorAll('.rating-number').forEach(el => {
+    const text = el.textContent;
+    const target = parseFloat(text);
+    if (isNaN(target)) return;
+    const isPercent = text.includes('%');
+    const matches = text.match(/^[\d.]+/);
+    if (!matches) return;
+    const targetVal = parseFloat(matches[0]);
+
+    // Check if already visible
+    const parentRow = el.closest('.ratings-grid');
+    if (!parentRow) return;
+
+    let start = 0;
+    const duration = 1500;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const current = start + (targetVal - start) * ease;
+
+      if (isPercent) {
+        el.innerHTML = Math.round(current) + '<span class="decimal">%</span>';
+      } else {
+        el.innerHTML = current.toFixed(1) + '<span class="decimal">/10</span>';
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// Trigger counter animation when ratings section comes into view
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateNumbers();
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.ratings').forEach(el => counterObserver.observe(el));
+</script>
+</body>
+</html>

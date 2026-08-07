@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电影推荐 | 飞越疯人院</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0c0c0f;
+            --bg-secondary: #111115;
+            --bg-card: #16161b;
+            --bg-card-hover: #1c1c22;
+            --accent-sterile: #d4d0c8;
+            --accent-warm: #d4843a;
+            --accent-gold: #c9a050;
+            --accent-burst: #e8943a;
+            --text-primary: #e8e4dc;
+            --text-secondary: #9a958a;
+            --text-muted: #5e5a54;
+            --border-subtle: rgba(212, 208, 200, 0.12);
+            --border-card: rgba(212, 208, 200, 0.08);
+            --glow-warm: rgba(212, 132, 58, 0.3);
+            --glow-sterile: rgba(212, 208, 200, 0.15);
+            --shadow-card: 0 1px 3px rgba(0,0,0,0.4), 0 4px 24px rgba(0,0,0,0.25);
+            --shadow-hover: 0 2px 8px rgba(0,0,0,0.5), 0 8px 40px rgba(0,0,0,0.35);
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --transition-smooth: 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Serif SC', 'Cormorant Garamond', serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Canvas */
+        #particleCanvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.55;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background:
+                linear-gradient(90deg, rgba(212,208,200,0.03) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(212,208,200,0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 20%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 20%, transparent 70%);
+            opacity: 0.6;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(212,132,58,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: heroPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes heroPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-year {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(100px, 18vw, 200px);
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            color: transparent;
+            -webkit-text-stroke: 1.5px var(--accent-sterile);
+            text-stroke: 1.5px var(--accent-sterile);
+            opacity: 0.85;
+            margin-bottom: 8px;
+            animation: yearReveal 1.2s ease-out;
+        }
+
+        @keyframes yearReveal {
+            0% { opacity: 0; letter-spacing: 0.15em; }
+            100% { opacity: 0.85; letter-spacing: -0.02em; }
+        }
+
+        .hero-title-cn {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 0.08em;
+            margin-bottom: 12px;
+            animation: fadeUp 1s 0.2s ease-out both;
+        }
+
+        .hero-title-en {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(16px, 2.5vw, 22px);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--text-secondary);
+            letter-spacing: 0.04em;
+            margin-bottom: 32px;
+            animation: fadeUp 1s 0.35s ease-out both;
+        }
+
+        .hero-tagline {
+            display: inline-block;
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(15px, 2vw, 18px);
+            font-weight: 300;
+            color: var(--accent-warm);
+            letter-spacing: 0.06em;
+            padding: 10px 28px;
+            border: 1px solid rgba(212,132,58,0.25);
+            border-radius: 50px;
+            animation: fadeUp 1s 0.5s ease-out both;
+            backdrop-filter: blur(4px);
+            background: rgba(212,132,58,0.04);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: fadeUp 1s 0.7s ease-out both, bounceDown 2s 1.2s ease-in-out infinite;
+        }
+
+        .hero-scroll span {
+            display: block;
+            width: 28px; height: 28px;
+            border-right: 1.5px solid var(--text-muted);
+            border-bottom: 1.5px solid var(--text-muted);
+            transform: rotate(45deg);
+            opacity: 0.5;
+        }
+
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceDown {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ===== SCORE BAR ===== */
+        .scores-section {
+            padding: 80px 0 60px;
+        }
+
+        .scores-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .score-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 28px 20px 24px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .score-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-warm), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .score-card:hover {
+            border-color: rgba(212,132,58,0.3);
+            background: var(--bg-card-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .score-card:hover::before { opacity: 1; }
+
+        .score-label {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .score-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            background: linear-gradient(180deg, var(--accent-warm) 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .score-sub {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* ===== PLOT SECTION ===== */
+        .plot-section {
+            padding: 60px 0 80px;
+        }
+
+        .plot-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 400;
+            color: var(--accent-warm);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--accent-warm);
+            opacity: 0.5;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            letter-spacing: 0.04em;
+        }
+
+        .plot-text {
+            font-size: 16px;
+            line-height: 2;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .plot-text strong {
+            color: var(--accent-sterile);
+            font-weight: 600;
+        }
+
+        .poster-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            text-align: center;
+            position: sticky;
+            top: 32px;
+        }
+
+        .poster-svg {
+            width: 100%;
+            height: auto;
+            margin-bottom: 16px;
+        }
+
+        .poster-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 300;
+        }
+
+        /* ===== HIGHLIGHTS ===== */
+        .highlights-section {
+            padding: 60px 0 80px;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .highlight-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 32px 24px;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .highlight-card:hover {
+            border-color: rgba(212,132,58,0.25);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+
+        .highlight-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--accent-warm);
+            opacity: 0.2;
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            line-height: 1;
+        }
+
+        .highlight-icon {
+            font-size: 28px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .highlight-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            letter-spacing: 0.03em;
+        }
+
+        .highlight-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* ===== QUOTES ===== */
+        .quotes-section {
+            padding: 60px 0 80px;
+            position: relative;
+        }
+
+        .quote-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            padding: 48px 40px;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-block::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 24px;
+            font-family: 'Playfair Display', serif;
+            font-size: 120px;
+            color: var(--accent-warm);
+            opacity: 0.06;
+            line-height: 1;
+        }
+
+        .quote-text {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 22px;
+            font-weight: 300;
+            color: var(--text-primary);
+            line-height: 1.8;
+            font-style: italic;
+            letter-spacing: 0.03em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-attribution {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 16px;
+            font-weight: 300;
+            letter-spacing: 0.06em;
+        }
+
+        /* ===== WHY WATCH ===== */
+        .why-section {
+            padding: 60px 0 80px;
+        }
+
+        .why-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .why-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 28px 28px;
+            transition: var(--transition-smooth);
+        }
+
+        .why-item:hover {
+            border-color: rgba(212,132,58,0.25);
+            background: var(--bg-card-hover);
+        }
+
+        .why-num {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid rgba(212,132,58,0.3);
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent-warm);
+            background: rgba(212,132,58,0.06);
+        }
+
+        .why-content h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            letter-spacing: 0.03em;
+        }
+
+        .why-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* ===== HONORS ===== */
+        .honors-section {
+            padding: 40px 0 80px;
+        }
+
+        .honors-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .honor-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(212,132,58,0.2);
+            background: rgba(212,132,58,0.04);
+            font-size: 14px;
+            color: var(--accent-warm);
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            transition: var(--transition-smooth);
+        }
+
+        .honor-tag:hover {
+            background: rgba(212,132,58,0.1);
+            border-color: rgba(212,132,58,0.4);
+        }
+
+        .honor-tag .trophy {
+            font-size: 16px;
+        }
+
+        /* ===== ARCHIVE ===== */
+        .archive-section {
+            padding: 40px 0 60px;
+        }
+
+        .archive-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .archive-table tr {
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .archive-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .archive-table td {
+            padding: 16px 0;
+            font-size: 14px;
+        }
+
+        .archive-table td:first-child {
+            width: 140px;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 0.06em;
+            font-size: 13px;
+        }
+
+        .archive-table td:last-child {
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        /* ===== FOOTER NOTE ===== */
+        .editor-note {
+            padding: 40px 0 80px;
+        }
+
+        .note-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .note-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at top right, rgba(212,132,58,0.06), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .note-stars {
+            font-size: 14px;
+            letter-spacing: 0.2em;
+            color: var(--accent-warm);
+            margin-bottom: 16px;
+        }
+
+        .note-text {
+            font-size: 16px;
+            line-height: 2;
+            color: var(--text-secondary);
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .note-signature {
+            margin-top: 24px;
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 0.06em;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== DIVIDER ===== */
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+            margin: 0;
+        }
+
+        /* ===== REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+
+            .hero-year { font-size: 80px; }
+            .hero-title-cn { font-size: 28px; }
+
+            .scores-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .plot-wrapper { grid-template-columns: 1fr; gap: 32px; }
+            .poster-card { position: static; max-width: 240px; margin: 0 auto; }
+            .highlights-grid { grid-template-columns: 1fr; }
+
+            .quote-block { padding: 32px 24px; }
+            .quote-text { font-size: 18px; }
+
+            .why-item { padding: 20px; }
+            .score-value { font-size: 36px; }
+        }
+
+        @media (max-width: 480px) {
+            .scores-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .score-card { padding: 20px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+        <div class="hero-year">1975</div>
+        <h1 class="hero-title-cn">飞越疯人院</h1>
+        <p class="hero-title-en">One Flew Over the Cuckoo's Nest</p>
+        <span class="hero-tagline">"至少我试过了。"</span>
+    </div>
+    <div class="hero-scroll"><span></span></div>
+</section>
+
+<div class="container">
+
+    <!-- ===== SCORES ===== -->
+    <section class="scores-section reveal">
+        <div class="scores-grid">
+            <div class="score-card">
+                <div class="score-label">IMDb</div>
+                <div class="score-value" data-target="8.7">0.0</div>
+                <div class="score-sub">Top 250 #17</div>
+            </div>
+            <div class="score-card">
+                <div class="score-label">豆瓣</div>
+                <div class="score-value" data-target="9.1">0.0</div>
+                <div class="score-sub">No.58 豆瓣电影 Top 250</div>
+            </div>
+            <div class="score-card">
+                <div class="score-label">烂番茄</div>
+                <div class="score-value" data-target="93">0</div>
+                <div class="score-sub">新鲜度认证</div>
+            </div>
+            <div class="score-card">
+                <div class="score-label">Metacritic</div>
+                <div class="score-value" data-target="84">0</div>
+                <div class="score-sub">必看经典</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider reveal"></div>
+
+    <!-- ===== PLOT ===== -->
+    <section class="plot-section reveal">
+        <div class="section-label">剧情梗概</div>
+        <div class="plot-wrapper">
+            <div>
+                <h2 class="section-title">当不羁的灵魂撞上冰冷的体制</h2>
+                <p class="plot-text">
+                    为了逃避监狱的苦役，<strong>兰德尔·麦克墨菲</strong>（杰克·尼科尔森 饰）假装精神异常，被送进了一家精神病院。他本以为这里会是安逸的避风港，却没想到，这里由<strong>护士长拉契特</strong>用一套精密而冷酷的规则统治着——没有铁链，却有比铁链更牢固的精神控制。
+                </p>
+                <p class="plot-text" style="margin-top: 16px;">
+                    麦克墨菲的到来像一颗石子投入死水。他带着赌局、笑声和对自由的渴望，唤醒了那些早已放弃反抗的病友们。他开始挑战每一项荒谬的规定，试图将"外面的世界"带进这座白色牢笼。然而，拉契特护士长不会容忍任何对秩序的威胁——一场关于"正常"定义的残酷角力悄然展开。
+                </p>
+            </div>
+            <div class="poster-card">
+                <svg class="poster-svg" viewBox="0 0 240 340" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Background - clinical white wall -->
+                    <defs>
+                        <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#1a1a1e"/>
+                            <stop offset="100%" stop-color="#0c0c0f"/>
+                        </linearGradient>
+                        <linearGradient id="warmLight" x1="0.5" y1="0" x2="0.5" y2="1">
+                            <stop offset="0%" stop-color="#d4843a" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#c9a050" stop-opacity="0.3"/>
+                        </linearGradient>
+                        <filter id="softGlow">
+                            <feGaussianBlur stdDeviation="3" result="blur"/>
+                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+                    <!-- Wall -->
+                    <rect x="0" y="0" width="240" height="340" fill="url(#wallGrad)"/>
+                    <!-- Grid lines (institutional) -->
+                    <line x1="0" y1="80" x2="240" y2="80" stroke="rgba(212,208,200,0.06)" stroke-width="0.5"/>
+                    <line x1="0" y1="160" x2="240" y2="160" stroke="rgba(212,208,200,0.06)" stroke-width="0.5"/>
+                    <line x1="0" y1="240" x2="240" y2="240" stroke="rgba(212,208,200,0.06)" stroke-width="0.5"/>
+                    <!-- Breaking grid line - warm burst -->
+                    <line x1="120" y1="80" x2="120" y2="340" stroke="rgba(212,132,58,0.15)" stroke-width="1" stroke-dasharray="8,4"/>
+
+                    <!-- Silhouette - McMurphy with arms raised -->
+                    <ellipse cx="120" cy="280" rx="90" ry="12" fill="rgba(212,132,58,0.06)"/>
+                    <!-- Head -->
+                    <circle cx="120" cy="145" r="22" fill="rgba(212,208,200,0.15)"/>
+                    <!-- Body -->
+                    <path d="M120 167 L120 260 Q120 275 105 278 L95 280 M120 260 Q120 275 135 278 L145 280" stroke="rgba(212,208,200,0.12)" stroke-width="2" fill="none"/>
+                    <!-- Arms raised -->
+                    <path d="M120 175 Q95 155 80 130" stroke="rgba(212,132,58,0.25)" stroke-width="2.5" fill="none" filter="url(#softGlow)"/>
+                    <path d="M120 175 Q145 155 160 130" stroke="rgba(212,132,58,0.25)" stroke-width="2.5" fill="none" filter="url(#softGlow)"/>
+
+                    <!-- Cuckoo bird (small, flying upward) -->
+                    <path d="M165 90 Q170 82 178 78 Q172 76 168 82 Q163 78 160 84 Z" fill="rgba(212,132,58,0.35)"/>
+                    <circle cx="176" cy="78" r="1.5" fill="rgba(212,132,58,0.5)"/>
+
+                    <!-- Warm light burst from top -->
+                    <circle cx="120" cy="60" r="50" fill="url(#warmLight)" opacity="0.15"/>
+
+                    <!-- Text -->
+                    <text x="120" y="320" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="10" fill="rgba(212,208,200,0.4)" letter-spacing="0.15em">麦克墨菲</text>
+                </svg>
+                <p class="poster-label">杰克·尼科尔森 饰 兰德尔·麦克墨菲</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HIGHLIGHTS ===== -->
+    <section class="highlights-section reveal">
+        <div class="section-label">不可错过的理由</div>
+        <h2 class="section-title">六大亮点</h2>
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <span class="highlight-num">01</span>
+                <span class="highlight-icon">🎭</span>
+                <h3 class="highlight-title">杰克·尼科尔森的巅峰表演</h3>
+                <p class="highlight-desc">他将麦克墨菲的狡黠、狂放与脆弱融为了一体，每一个眼神都在诉说反抗的诗篇。这个角色为他赢得了第一座奥斯卡影帝奖杯。</p>
+            </div>
+            <div class="highlight-card">
+                <span class="highlight-num">02</span>
+                <span class="highlight-icon">⚖️</span>
+                <h3 class="highlight-title">奥斯卡史上罕见的"大满贯"</h3>
+                <p class="highlight-desc">最佳影片、最佳导演、最佳男主角、最佳女主角、最佳改编剧本——五项最重要的奥斯卡奖项全部拿下，影史仅有三部电影达成此壮举。</p>
+            </div>
+            <div class="highlight-card">
+                <span class="highlight-num">03</span>
+                <span class="highlight-icon">🏛️</span>
+                <h3 class="highlight-title">对"体制"的深刻寓言</h3>
+                <p class="highlight-desc">拉契特护士长不是恶人——她只是制度的化身。这部电影追问的是：谁定义了"正常"？顺从就是健康吗？这些问题在今天依然刺耳。</p>
+            </div>
+            <div class="highlight-card">
+                <span class="highlight-num">04</span>
+                <span class="highlight-icon">🎬</span>
+                <h3 class="highlight-title">米洛斯·福尔曼的大师执导</h3>
+                <p class="highlight-desc">捷克新浪潮巨匠在好莱坞的封神之作。他用纪录片般的冷静镜头，让你既是旁观者，又是共谋——这种距离感反而带来了最深的震撼。</p>
+            </div>
+            <div class="highlight-card">
+                <span class="highlight-num">05</span>
+                <span class="highlight-icon">💬</span>
+                <h3 class="highlight-title">路易丝·弗莱彻的"温柔暴政"</h3>
+                <p class="highlight-desc">她塑造了影史最令人不寒而栗的反派之一——不是用暴力，而是用微笑和"为了你好"。这个表演至今仍是表演课上必分析的案例。</p>
+            </div>
+            <div class="highlight-card">
+                <span class="highlight-num">06</span>
+                <span class="highlight-icon">🕊️</span>
+                <h3 class="highlight-title">自由的代价与意义</h3>
+                <p class="highlight-desc">影片不做说教，而是让你自己去感受：当一个人愿意为自由付出一切时，那种力量可以穿透任何铁窗——无论是真实的还是隐喻的。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== QUOTES ===== -->
+    <section class="quotes-section reveal">
+        <div class="section-label">经典台词</div>
+        <div class="quote-block">
+            <p class="quote-text">"But I tried, didn't I? Goddamnit, at least I did that."</p>
+            <p class="quote-attribution">—— Randle McMurphy / "至少我试过了，该死的，至少我做到了这一点。"</p>
+        </div>
+        <div class="quote-block" style="margin-top: 16px;">
+            <p class="quote-text">"你们一直抱怨这个地方，但是你们没有勇气走出这里。"</p>
+            <p class="quote-attribution">—— Randle McMurphy</p>
+        </div>
+        <div class="quote-block" style="margin-top: 16px;">
+            <p class="quote-text">"What do you think you are, for Chrissake, crazy or somethin'? Well you're not! You're not! You're no crazier than the average asshole out walkin' around on the streets."</p>
+            <p class="quote-attribution">—— Randle McMurphy / "你以为你是什么，疯子吗？你不是！你比街上那些普通人正常多了。"</p>
+        </div>
+    </section>
+
+    <!-- ===== WHY WATCH ===== -->
+    <section class="why-section reveal">
+        <div class="section-label">编辑推荐</div>
+        <h2 class="section-title">为什么值得你花两小时</h2>
+        <div class="why-list">
+            <div class="why-item">
+                <div class="why-num">1</div>
+                <div class="why-content">
+                    <h3>它是一部超越时代的寓言</h3>
+                    <p>50年过去了，影片对体制、规训与个体自由的探讨不仅没有过时，反而在算法时代显得更加尖锐。每一次观看，都会让你重新审视自己与"规则"的关系。</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-num">2</div>
+                <div class="why-content">
+                    <h3>教科书级的表演对决</h3>
+                    <p>杰克·尼科尔森与路易丝·弗莱彻的对手戏堪称表演艺术的巅峰对话。没有任何夸张的技巧，却让每一次眼神交汇都充满张力。这是所有表演爱好者的必修课。</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-num">3</div>
+                <div class="why-content">
+                    <h3>奥斯卡"大满贯"的历史时刻</h3>
+                    <p>在近100年奥斯卡历史上，只有三部电影同时包揽"最佳影片、导演、男主、女主、剧本"五项大奖。这部就是其中之一。这是电影工业对一部作品最极致的肯定。</p>
+                </div>
+            </div>
+            <div class="why-item">
+                <div class="why-num">4</div>
+                <div class="why-content">
+                    <h3>你会笑，也会沉默很久</h3>
+                    <p>影片前半段充满黑色幽默和反叛的欢愉，但当你以为这是一部喜剧时，它会悄然撕开更深层的真相。那种余味，会伴随你很久——这正是伟大电影才有的力量。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HONORS ===== -->
+    <section class="honors-section reveal">
+        <div class="section-label">荣誉与奖项</div>
+        <div class="honors-tags">
+            <span class="honor-tag"><span class="trophy">🏆</span> 奥斯卡最佳影片</span>
+            <span class="honor-tag"><span class="trophy">🏆</span> 奥斯卡最佳导演</span>
+            <span class="honor-tag"><span class="trophy">🏆</span> 奥斯卡最佳男主角</span>
+            <span class="honor-tag"><span class="trophy">🏆</span> 奥斯卡最佳女主角</span>
+            <span class="honor-tag"><span class="trophy">🏆</span> 奥斯卡最佳改编剧本</span>
+            <span class="honor-tag"><span class="trophy">🎖️</span> 金球奖 6 项大奖</span>
+            <span class="honor-tag"><span class="trophy">🎖️</span> 英国电影学院奖 6 项大奖</span>
+            <span class="honor-tag"><span class="trophy">🎖️</span> 美国国会图书馆永久典藏</span>
+        </div>
+    </section>
+
+    <!-- ===== ARCHIVE ===== -->
+    <section class="archive-section reveal">
+        <div class="section-label">影片档案</div>
+        <h2 class="section-title" style="margin-bottom: 28px;">基本信息</h2>
+        <table class="archive-table">
+            <tr><td>中文片名</td><td>飞越疯人院</td></tr>
+            <tr><td>英文片名</td><td>One Flew Over the Cuckoo's Nest</td></tr>
+            <tr><td>上映年份</td><td>1975 年</td></tr>
+            <tr><td>导演</td><td>米洛斯·福尔曼 (Miloš Forman)</td></tr>
+            <tr><td>编剧</td><td>劳伦斯·奥邦 / 博·古德曼 (改编自肯·克西同名小说)</td></tr>
+            <tr><td>主演</td><td>杰克·尼科尔森 / 路易丝·弗莱彻 / 威尔·萨姆森 / 丹尼·德维托</td></tr>
+            <tr><td>片长</td><td>133 分钟</td></tr>
+            <tr><td>类型</td><td>剧情 / 心理</td></tr>
+            <tr><td>制片国家</td><td>美国</td></tr>
+            <tr><td>IMDb 评分</td><td>8.7 / 10（超过 110 万人评分）</td></tr>
+        </table>
+    </section>
+
+    <div class="divider reveal"></div>
+
+    <!-- ===== EDITOR'S NOTE ===== -->
+    <section class="editor-note reveal">
+        <div class="note-card">
+            <div class="note-stars">★ ★ ★ ★ ★</div>
+            <p class="note-text">
+                有些电影是为了娱乐，有些是为了逃避，而《飞越疯人院》属于那种稀有的作品——它让你在走出影院（或关掉屏幕）之后，感到自己与之前有一点点不同了。它不会给你廉价的安慰，也不会用大团圆来敷衍你。它只是静静地、近乎冷酷地展示了一个问题：当一个不羁的灵魂被困在无懈可击的体制中，会发生什么？而这个问题，从1975年到今天，从未失去过它的锋利。
+            </p>
+            <p class="note-text" style="margin-top: 16px;">
+                杰克·尼科尔森的麦克墨菲是银幕上最令人难忘的反叛者之一——他不是英雄，他只是一个拒绝被驯服的人。而正是这种"拒绝"，让这部电影在近半个世纪后依然能点燃每一个观众心中的那团火。去看吧，你会明白为什么它被称为"必看经典"。
+            </p>
+            <p class="note-signature">—— WorkBuddy 编辑部 · 2026年5月21日</p>
+        </div>
+    </section>
+
+</div>
+
+<script>
+// ===== Canvas: Playing Cards & Warm Dust Particles =====
+(function() {
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+
+    function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Card suits: hearts (warm), spades (dark)
+    const suitColors = [
+        'rgba(212,132,58,0.18)',
+        'rgba(212,132,58,0.12)',
+        'rgba(201,160,80,0.16)',
+        'rgba(201,160,80,0.10)',
+    ];
+
+    function createParticle() {
+        const isCard = Math.random() < 0.35;
+        return {
+            x: Math.random() * W,
+            y: Math.random() * H + H,
+            size: isCard ? (Math.random() * 6 + 3) : (Math.random() * 2 + 0.8),
+            speed: isCard ? (Math.random() * 0.4 + 0.2) : (Math.random() * 0.6 + 0.15),
+            drift: (Math.random() - 0.5) * 0.5,
+            wobble: Math.random() * Math.PI * 2,
+            wobbleSpeed: (Math.random() - 0.5) * 0.015,
+            opacity: Math.random() * 0.6 + 0.15,
+            isCard: isCard,
+            rotation: Math.random() * 360,
+            rotSpeed: (Math.random() - 0.5) * 0.4,
+            color: suitColors[Math.floor(Math.random() * suitColors.length)],
+        };
+    }
+
+    for (let i = 0; i < 90; i++) {
+        const p = createParticle();
+        p.y = Math.random() * H;
+        particles.push(p);
+    }
+
+    function drawCard(ctx, p) {
+        ctx.save();
+        ctx.translate(p.x + Math.sin(p.wobble) * 20, p.y);
+        ctx.rotate(p.rotation * Math.PI / 180);
+        ctx.globalAlpha = p.opacity;
+
+        const w = p.size * 2.5;
+        const h = p.size * 3.5;
+
+        // Card body
+        ctx.fillStyle = 'rgba(22,22,27,0.6)';
+        ctx.strokeStyle = 'rgba(212,208,200,0.2)';
+        ctx.lineWidth = 0.5;
+        ctx.beginPath();
+        ctx.roundRect(-w/2, -h/2, w, h, 1.5);
+        ctx.fill();
+        ctx.stroke();
+
+        // Suit symbol (simple)
+        ctx.fillStyle = p.color;
+        ctx.font = `${p.size * 2.2}px serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        const suits = ['♥', '♠', '♦'];
+        ctx.fillText(suits[Math.floor(Math.random() * suits.length)], 0, 0);
+
+        ctx.restore();
+    }
+
+    function drawDust(ctx, p) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(p.x + Math.sin(p.wobble) * 10, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.opacity;
+        ctx.fill();
+        ctx.restore();
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, W, H);
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
+
+            p.y -= p.speed;
+            p.x += p.drift;
+            p.wobble += p.wobbleSpeed;
+            if (p.isCard) p.rotation += p.rotSpeed;
+
+            if (p.isCard) {
+                drawCard(ctx, p);
+            } else {
+                drawDust(ctx, p);
+            }
+
+            // Reset when out of view
+            if (p.y < -50 || p.x < -50 || p.x > W + 50) {
+                particles[i] = createParticle();
+                particles[i].y = H + 20;
+                particles[i].x = Math.random() * W;
+            }
+        }
+
+        // Maintain particle count
+        while (particles.length < 90) {
+            particles.push(createParticle());
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+})();
+
+// ===== Intersection Observer: Scroll Reveal =====
+(function() {
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px',
+    });
+
+    reveals.forEach(el => observer.observe(el));
+})();
+
+// ===== Score Counter Animation =====
+(function() {
+    const scoreValues = document.querySelectorAll('.score-value[data-target]');
+
+    function animateScore(el) {
+        const target = parseFloat(el.getAttribute('data-target'));
+        const isFloat = el.getAttribute('data-target').includes('.');
+        const duration = 1800;
+        const startTime = performance.now();
+
+        function update(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = target * eased;
+
+            if (isFloat) {
+                el.textContent = current.toFixed(1);
+            } else {
+                el.textContent = Math.round(current);
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                el.textContent = isFloat ? target.toFixed(1) : target;
+            }
+        }
+
+        requestAnimationFrame(update);
+    }
+
+    const scoreObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateScore(entry.target);
+                scoreObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    scoreValues.forEach(el => scoreObserver.observe(el));
+})();
+
+// Polyfill: roundRect
+if (!CanvasRenderingContext2D.prototype.roundRect) {
+    CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+        if (typeof r === 'number') r = { tl: r, tr: r, br: r, bl: r };
+        this.moveTo(x + r.tl, y);
+        this.lineTo(x + w - r.tr, y);
+        this.quadraticCurveTo(x + w, y, x + w, y + r.tr);
+        this.lineTo(x + w, y + h - r.br);
+        this.quadraticCurveTo(x + w, y + h, x + w - r.br, y + h);
+        this.lineTo(x + r.bl, y + h);
+        this.quadraticCurveTo(x, y + h, x, y + h - r.bl);
+        this.lineTo(x, y + r.tl);
+        this.quadraticCurveTo(x, y, x + r.tl, y);
+    };
+}
+</script>
+</body>
+</html>

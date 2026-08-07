@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>美丽心灵 · A Beautiful Mind (2001)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:wght@500;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink-0:#060912;
+    --ink-1:#0a0f1f;
+    --ink-2:#0f1730;
+    --panel:#101a35;
+    --panel-2:#0c1428;
+    --gold:#e8c87a;
+    --gold-deep:#c9a24a;
+    --gold-soft:#f0dca6;
+    --chalk:#f4efe2;
+    --chalk-dim:#c9c6bb;
+    --teal:#9fd8c8;
+    --line:rgba(232,200,122,0.16);
+    --line-soft:rgba(244,239,226,0.08);
+    --shadow:0 30px 70px -30px rgba(0,0,0,0.8);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Noto Sans SC","Noto Serif SC",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:var(--ink-0);
+    color:var(--chalk);
+    line-height:1.75;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:rgba(232,200,122,0.28);color:#fff;}
+  .serif{font-family:"Noto Serif SC",serif;}
+  .latin-display{font-family:"Playfair Display","Cormorant Garamond",serif;}
+
+  /* ---------- Background layers ---------- */
+  #bg-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+  .bg-veil{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:
+      radial-gradient(1200px 700px at 50% -10%, rgba(40,60,110,0.30), transparent 60%),
+      radial-gradient(900px 600px at 85% 110%, rgba(120,90,30,0.10), transparent 60%),
+      linear-gradient(180deg, rgba(6,9,18,0.2), rgba(6,9,18,0.75));
+  }
+  .grain{
+    position:fixed;inset:0;z-index:2;pointer-events:none;opacity:0.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:3;max-width:1080px;margin:0 auto;padding:0 26px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:90px 20px 60px;
+  }
+  .year-big{
+    font-family:"Playfair Display",serif;
+    font-weight:900;font-size:clamp(110px,22vw,260px);line-height:0.86;
+    color:transparent;
+    background:linear-gradient(180deg,#f4e7c4 0%,#c9a24a 48%,#7a5e22 100%);
+    -webkit-background-clip:text;background-clip:text;
+    letter-spacing:0.02em;
+    transform:perspective(640px) rotateX(16deg);
+    opacity:0.9;
+    text-shadow:0 18px 50px rgba(0,0,0,0.6);
+  }
+  .hero .eyebrow{
+    margin-top:8px;font-size:13px;letter-spacing:0.52em;text-transform:uppercase;
+    color:var(--gold);font-weight:500;padding-left:0.52em;
+  }
+  .hero h1{
+    font-family:"Noto Serif SC",serif;font-weight:900;
+    font-size:clamp(46px,9vw,104px);line-height:1.02;margin:14px 0 6px;
+    color:var(--chalk);letter-spacing:0.06em;
+    text-shadow:0 10px 40px rgba(0,0,0,0.55);
+  }
+  .hero .en-title{
+    font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
+    font-size:clamp(20px,3.4vw,38px);color:var(--gold-soft);letter-spacing:0.04em;margin-bottom:26px;
+  }
+  .tagline{
+    max-width:640px;font-family:"Noto Serif SC",serif;font-size:clamp(16px,2.4vw,21px);
+    color:var(--chalk-dim);letter-spacing:0.04em;line-height:1.9;
+  }
+  .tagline b{color:var(--gold);font-weight:600;}
+  .scroll-hint{
+    position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+    font-size:12px;letter-spacing:0.4em;color:var(--gold);opacity:0.7;text-transform:uppercase;
+    animation:floaty 2.6s ease-in-out infinite;
+  }
+  @keyframes floaty{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,8px);}}
+
+  /* ---------- Section frame ---------- */
+  section{padding:74px 0;position:relative;}
+  .sec-head{text-align:center;margin-bottom:46px;}
+  .sec-kicker{
+    display:inline-block;font-size:12px;letter-spacing:0.42em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:14px;font-weight:600;
+  }
+  .sec-title{
+    font-family:"Noto Serif SC",serif;font-weight:700;font-size:clamp(26px,4.4vw,40px);
+    color:var(--chalk);letter-spacing:0.08em;line-height:1.3;
+  }
+  .sec-title .en{display:block;font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
+    font-size:0.5em;color:var(--gold-soft);letter-spacing:0.06em;margin-top:6px;opacity:0.85;}
+
+  /* ---------- Rating bars ---------- */
+  .ratings{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .rate-card{
+    background:linear-gradient(160deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line);border-radius:16px;padding:24px 20px 22px;text-align:center;
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .rate-card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.6;
+  }
+  .rate-src{font-size:12.5px;letter-spacing:0.18em;color:var(--gold);font-weight:600;text-transform:uppercase;}
+  .rate-val{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(34px,5vw,48px);color:var(--chalk);margin:8px 0 2px;line-height:1;}
+  .rate-val .sub{font-size:0.42em;color:var(--chalk-dim);font-family:"Noto Sans SC";font-weight:400;letter-spacing:0.04em;}
+  .rate-bar{height:6px;border-radius:6px;background:rgba(244,239,226,0.10);margin-top:14px;overflow:hidden;}
+  .rate-fill{height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--gold-deep),var(--gold-soft));transition:width 1.5s cubic-bezier(.2,.8,.2,1);}
+  .rate-note{font-size:11.5px;color:var(--chalk-dim);margin-top:9px;letter-spacing:0.03em;}
+
+  /* ---------- Synopsis + poster ---------- */
+  .synopsis-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:40px;align-items:center;}
+  .synopsis p{font-family:"Noto Serif SC",serif;font-size:17px;color:var(--chalk-dim);line-height:2.0;margin-bottom:18px;letter-spacing:0.02em;}
+  .synopsis p .hl{color:var(--gold-soft);font-weight:600;}
+  .nospoiler{
+    display:inline-flex;align-items:center;gap:8px;margin-top:6px;
+    font-size:12.5px;letter-spacing:0.16em;color:var(--teal);
+    border:1px solid rgba(159,216,200,0.35);border-radius:999px;padding:7px 16px;font-weight:600;
+  }
+  .nospoiler .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal);}
+
+  .poster{
+    position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);
+    background:linear-gradient(170deg,#0c1428,#0a1020);
+    box-shadow:var(--shadow);aspect-ratio:3/4;
+  }
+  .poster svg{display:block;width:100%;height:100%;}
+  .poster .frame-line{position:absolute;inset:14px;border:1px solid rgba(232,200,122,0.25);border-radius:10px;pointer-events:none;}
+
+  /* ---------- Highlights ---------- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .card{
+    background:linear-gradient(165deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line-soft);border-radius:16px;padding:28px 24px;
+    transition:transform .4s ease,border-color .4s ease,box-shadow .4s ease;position:relative;overflow:hidden;
+  }
+  .card:hover{transform:translateY(-7px);border-color:var(--line);box-shadow:0 26px 50px -28px rgba(0,0,0,0.85);}
+  .card .num{font-family:"Playfair Display",serif;font-size:30px;color:var(--gold);opacity:0.55;font-weight:700;}
+  .card h3{font-family:"Noto Serif SC",serif;font-weight:700;font-size:19px;color:var(--chalk);margin:10px 0 9px;letter-spacing:0.04em;}
+  .card p{font-size:14.5px;color:var(--chalk-dim);line-height:1.85;}
+
+  /* ---------- Quote ---------- */
+  .quote-block{max-width:840px;margin:0 auto;text-align:center;position:relative;padding:20px 10px;}
+  .quote-mark{font-family:"Playfair Display",serif;font-size:120px;line-height:0.5;color:var(--gold);opacity:0.25;}
+  .quote-text{font-family:"Noto Serif SC",serif;font-weight:500;font-size:clamp(20px,3.4vw,30px);line-height:1.85;color:var(--chalk);letter-spacing:0.03em;margin:10px 0 18px;}
+  .quote-text .en{display:block;font-family:"Playfair Display",serif;font-style:italic;font-weight:400;font-size:0.62em;color:var(--gold-soft);margin-top:14px;opacity:0.9;letter-spacing:0.02em;}
+  .quote-by{font-size:13px;letter-spacing:0.24em;color:var(--gold);text-transform:uppercase;}
+
+  /* ---------- Why watch ---------- */
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .why-item{display:flex;gap:18px;align-items:flex-start;background:linear-gradient(160deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line-soft);border-radius:14px;padding:24px 22px;transition:border-color .4s ease,transform .4s ease;}
+  .why-item:hover{border-color:var(--line);transform:translateX(4px);}
+  .why-ico{flex:0 0 auto;width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    background:rgba(232,200,122,0.12);border:1px solid var(--line);color:var(--gold);font-family:"Playfair Display",serif;font-weight:700;font-size:20px;}
+  .why-item h4{font-family:"Noto Serif SC",serif;font-weight:600;font-size:17px;color:var(--chalk);margin-bottom:6px;letter-spacing:0.03em;}
+  .why-item p{font-size:14px;color:var(--chalk-dim);line-height:1.8;}
+
+  /* ---------- Honors ---------- */
+  .honors{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;}
+  .honor{
+    border:1px solid var(--line);border-radius:999px;padding:11px 20px;font-size:13.5px;letter-spacing:0.05em;
+    color:var(--chalk);background:linear-gradient(160deg,rgba(232,200,122,0.08),rgba(232,200,122,0.02));
+    transition:transform .35s ease,background .35s ease;
+  }
+  .honor:hover{transform:translateY(-3px);background:linear-gradient(160deg,rgba(232,200,122,0.20),rgba(232,200,122,0.05));}
+  .honor b{color:var(--gold);font-weight:700;}
+
+  /* ---------- Archive table ---------- */
+  .archive{background:linear-gradient(160deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);}
+  .archive .row{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid var(--line-soft);}
+  .archive .row:last-child{border-bottom:none;}
+  .archive .k{padding:16px 22px;font-size:14px;color:var(--gold);letter-spacing:0.08em;font-weight:600;background:rgba(232,200,122,0.04);}
+  .archive .v{padding:16px 22px;font-size:14.5px;color:var(--chalk-dim);}
+
+  /* ---------- Verdict ---------- */
+  .verdict{max-width:880px;margin:0 auto;text-align:center;position:relative;}
+  .stars{font-size:30px;letter-spacing:10px;color:var(--gold);margin-bottom:20px;filter:drop-shadow(0 0 14px rgba(232,200,122,0.4));}
+  .verdict p{font-family:"Noto Serif SC",serif;font-size:clamp(17px,2.6vw,22px);color:var(--chalk);line-height:2.0;letter-spacing:0.03em;}
+  .verdict .sign{margin-top:26px;font-family:"Playfair Display",serif;font-style:italic;font-size:15px;color:var(--gold-soft);letter-spacing:0.05em;}
+
+  footer{padding:46px 20px 70px;text-align:center;color:var(--chalk-dim);font-size:12.5px;letter-spacing:0.1em;position:relative;z-index:3;}
+  footer .sep{color:var(--gold);margin:0 10px;}
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media(max-width:860px){
+    .ratings{grid-template-columns:repeat(2,1fr);}
+    .synopsis-grid{grid-template-columns:1fr;gap:30px;}
+    .poster{max-width:340px;margin:0 auto;}
+    .cards{grid-template-columns:1fr;}
+    .why{grid-template-columns:1fr;}
+    .archive .row{grid-template-columns:120px 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div class="bg-veil"></div>
+<div class="grain"></div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="year-big">2001</div>
+  <div class="eyebrow">A Film by Ron Howard</div>
+  <h1>美丽心灵</h1>
+  <div class="en-title">A&nbsp;Beautiful&nbsp;Mind</div>
+  <p class="tagline">在<b>爱的神秘方程式</b>里，才能找到理性与逻辑无法抵达的答案。<br/>一位天才数学家，在学术的巅峰与内心的隐秘风暴之间，写下属于自己的传奇。</p>
+  <div class="scroll-hint">向下滚动 ↓</div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ RATINGS ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Critical Acclaim</span>
+      <h2 class="sec-title">口碑与评分<span class="en">Ratings &amp; Recognition</span></h2>
+    </div>
+    <div class="ratings">
+      <div class="rate-card reveal">
+        <div class="rate-src">IMDb</div>
+        <div class="rate-val"><span class="count" data-target="8.2" data-dec="1">0.0</span><span class="sub"> / 10</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-pct="82"></div></div>
+        <div class="rate-note">全球影迷基准分</div>
+      </div>
+      <div class="rate-card reveal">
+        <div class="rate-src">豆瓣 Douban</div>
+        <div class="rate-val"><span class="count" data-target="9.0" data-dec="1">0.0</span><span class="sub"> / 10</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-pct="90"></div></div>
+        <div class="rate-note">Top 250 华语高分榜</div>
+      </div>
+      <div class="rate-card reveal">
+        <div class="rate-src">烂番茄 · 观众</div>
+        <div class="rate-val"><span class="count" data-target="96" data-dec="0">0</span><span class="sub"> %</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-pct="96"></div></div>
+        <div class="rate-note">普通观众一致好评</div>
+      </div>
+      <div class="rate-card reveal">
+        <div class="rate-src">Metacritic</div>
+        <div class="rate-val"><span class="count" data-target="72" data-dec="0">0</span><span class="sub"> / 100</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-pct="72"></div></div>
+        <div class="rate-note">影评人加权均分</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SYNOPSIS ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-kicker">The Story</span>
+      <h2 class="sec-title">剧情梗概<span class="en">What It's About</span></h2>
+    </div>
+    <div class="synopsis-grid">
+      <div class="synopsis reveal">
+        <p>上世纪四十年代末，<span class="hl">约翰·纳什</span>——一个天赋惊人却孤僻敏感的年轻人——踏入普林斯顿大学，在博弈论的疆域里投下一枚石破天惊的思想。他的天才如同夜空中的算式，耀眼、纯粹，却也疏离于人群。</p>
+        <p>随着事业节节攀升，纳什的生命里悄然生长出一片<span class="hl">无人能见的风景</span>。理性与幻象的边界开始模糊，他最珍视的爱、事业与自我认知，都被推到了悬崖边缘。这是一场发生在头脑深处、比任何外部战场都更险峻的较量。</p>
+        <p>影片以温柔而克制的笔触，讲述一个人如何学会在裂痕中重新拼合自己，并最终走向属于他的、迟来却璀璨的<span class="hl">荣誉时刻</span>。</p>
+        <div class="nospoiler"><span class="dot"></span>无剧透 · 仅呈现人物与故事框架</div>
+      </div>
+      <div class="poster reveal">
+        <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice" aria-label="美丽心灵海报插画">
+          <defs>
+            <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#0e1832"/>
+              <stop offset="1" stop-color="#070c18"/>
+            </linearGradient>
+            <radialGradient id="glow" cx="50%" cy="38%" r="55%">
+              <stop offset="0" stop-color="#e8c87a" stop-opacity="0.35"/>
+              <stop offset="1" stop-color="#e8c87a" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#f0dca6"/>
+              <stop offset="1" stop-color="#c9a24a"/>
+            </linearGradient>
+          </defs>
+          <rect width="300" height="400" fill="url(#pg)"/>
+          <rect width="300" height="400" fill="url(#glow)"/>
+          <!-- floating equations -->
+          <g fill="#9fd8c8" opacity="0.5" font-family="Playfair Display, serif" font-style="italic">
+            <text x="30" y="70" font-size="20">∑</text>
+            <text x="240" y="110" font-size="22">∫</text>
+            <text x="50" y="320" font-size="18">∂</text>
+            <text x="220" y="300" font-size="20">∇</text>
+            <text x="150" y="50" font-size="16" fill="#e8c87a" opacity="0.6">π</text>
+          </g>
+          <g fill="#e8c87a" opacity="0.55" font-family="Playfair Display, serif" font-style="italic" font-size="13">
+            <text x="26" y="150">e^{iπ}+1=0</text>
+            <text x="170" y="190">xᵀAx</text>
+            <text x="40" y="240">Γ(n+1)</text>
+            <text x="196" y="250">∇²φ</text>
+          </g>
+          <!-- silhouette of a thinking man -->
+          <g transform="translate(150,250)">
+            <ellipse cx="0" cy="6" rx="46" ry="14" fill="#000" opacity="0.35"/>
+            <path d="M0,-78 C18,-78 30,-64 30,-46 C30,-30 22,-20 24,-8 L24,40 L-24,40 L-24,-8 C-22,-20 -30,-30 -30,-46 C-30,-64 -18,-78 0,-78 Z" fill="#0a0f1f" stroke="url(#gold)" stroke-width="1.4"/>
+            <circle cx="0" cy="-58" r="20" fill="#0a0f1f" stroke="url(#gold)" stroke-width="1.4"/>
+            <path d="M-12,-62 C-6,-70 6,-70 12,-62" fill="none" stroke="#e8c87a" stroke-width="1.2" opacity="0.7"/>
+          </g>
+          <!-- equation halo underline -->
+          <text x="150" y="350" text-anchor="middle" fill="#f0dca6" font-family="Playfair Display, serif" font-style="italic" font-size="15" opacity="0.85">A Beautiful Mind</text>
+          <!-- decorative corners -->
+          <g stroke="url(#gold)" stroke-width="1.2" fill="none" opacity="0.6">
+            <path d="M16,16 H46 M16,16 V46"/>
+            <path d="M284,16 H254 M284,16 V46"/>
+            <path d="M16,384 H46 M16,384 V354"/>
+            <path d="M284,384 H254 M284,384 V354"/>
+          </g>
+        </svg>
+        <div class="frame-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HIGHLIGHTS ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Why It Shines</span>
+      <h2 class="sec-title">六大亮点<span class="en">Six Reasons It Endures</span></h2>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="num">01</div>
+        <h3>罗素·克劳的封神演技</h3>
+        <p>他将一位孤高、脆弱又灼灼逼人的天才演绎得层次分明，收敛处见惊雷，是影帝级的一次灵魂附体。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">02</div>
+        <h3>真人真事的诺奖传奇</h3>
+        <p>改编自数学家约翰·纳什的真实人生，从普林斯顿的灵光到斯德哥尔摩的加冕，传奇底色浑然天成。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">03</div>
+        <h3>朗·霍华德的精准调度</h3>
+        <p>不炫技、不滥情，以沉稳的镜头语言把艰深的智力世界与朴素的情感牢牢焊在了一起。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">04</div>
+        <h3>詹姆斯·霍纳的配乐</h3>
+        <p>钢琴与弦乐如溪水般流淌，在理性与温柔之间架起桥梁，听完仍久久盘旋于心头。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">05</div>
+        <h3>爱情线的温柔力量</h3>
+        <p>詹妮弗·康纳利饰演的妻子，是整部电影最柔软也最坚韧的锚——"我需要相信非凡之事可能发生"。</p>
+      </div>
+      <div class="card reveal">
+        <div class="num">06</div>
+        <h3>对"天才与脆弱"的凝视</h3>
+        <p>它不神化天才，也不怜悯病患，而是平静地注视一个人如何在裂痕里，重新学会与世界相处。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUOTE ============ -->
+  <section>
+    <div class="quote-block reveal">
+      <div class="quote-mark">“</div>
+      <p class="quote-text">只有在爱的神秘方程式里，才能找到任何逻辑或理性。
+        <span class="en">It is only in the mysterious equations of love that any logic or reasons can be found.</span>
+      </p>
+      <div class="quote-by">— 约翰·纳什 · 诺贝尔演讲</div>
+    </div>
+  </section>
+
+  <!-- ============ WHY WATCH ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Worth Your Time</span>
+      <h2 class="sec-title">为什么值得一看<span class="en">Why You Should Watch</span></h2>
+    </div>
+    <div class="why">
+      <div class="why-item reveal">
+        <div class="why-ico">壹</div>
+        <div><h4>一段关于天才与人性的寓言</h4><p>它把"聪明"拍成了有体温的故事，让你在智识的惊叹之外，看见一个完整的人。</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-ico">贰</div>
+        <div><h4>影帝级的表演范本</h4><p>罗素·克劳的每一个眼神都值得慢放，是表演课上绕不开的教科书级片段。</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-ico">叁</div>
+        <div><h4>催泪却不煽情的配乐</h4><p>詹姆斯·霍纳用音乐托住全片的分量，高潮处不动声色，却直抵泪腺。</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-ico">肆</div>
+        <div><h4>关于"被看见"的温柔和解</h4><p>它最终落在爱、陪伴与接纳上——提醒我们，最难的战役常常发生在自己心里。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HONORS ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-kicker">The Laurels</span>
+      <h2 class="sec-title">荣誉殿堂<span class="en">Awards &amp; Honors</span></h2>
+    </div>
+    <div class="honors reveal">
+      <div class="honor"><b>奥斯卡</b> 最佳影片</div>
+      <div class="honor"><b>奥斯卡</b> 最佳导演 · 朗·霍华德</div>
+      <div class="honor"><b>奥斯卡</b> 最佳改编剧本</div>
+      <div class="honor"><b>奥斯卡</b> 最佳女配角 · 詹妮弗·康纳利</div>
+      <div class="honor"><b>金球奖</b> 最佳剧情片</div>
+      <div class="honor"><b>金球奖</b> 最佳男主角 · 罗素·克劳</div>
+      <div class="honor"><b>美国编剧工会</b> 最佳改编剧本</div>
+      <div class="honor"><b>AFI</b> 年度十佳电影</div>
+      <div class="honor"><b>真实原型</b> 约翰·纳什 1994 诺贝尔经济学奖</div>
+      <div class="honor"><b>导演</b> 朗·霍华德</div>
+    </div>
+  </section>
+
+  <!-- ============ ARCHIVE ============ -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Film Facts</span>
+      <h2 class="sec-title">影片档案<span class="en">At a Glance</span></h2>
+    </div>
+    <div class="archive reveal">
+      <div class="row"><div class="k">中文片名</div><div class="v">美丽心灵</div></div>
+      <div class="row"><div class="k">英文片名</div><div class="v">A Beautiful Mind</div></div>
+      <div class="row"><div class="k">上映年份</div><div class="v">2001 年</div></div>
+      <div class="row"><div class="k">导演</div><div class="v">朗·霍华德（Ron Howard）</div></div>
+      <div class="row"><div class="k">主演</div><div class="v">罗素·克劳 / 詹妮弗·康纳利 / 艾德·哈里斯 / 保罗·贝坦尼</div></div>
+      <div class="row"><div class="k">类型</div><div class="v">传记 · 剧情</div></div>
+      <div class="row"><div class="k">片长</div><div class="v">135 分钟</div></div>
+      <div class="row"><div class="k">制片地区</div><div class="v">美国 · 环球影业</div></div>
+      <div class="row"><div class="k">改编来源</div><div class="v">西尔维娅·娜萨 同名传记《A Beautiful Mind》</div></div>
+      <div class="row"><div class="k">配乐</div><div class="v">詹姆斯·霍纳（James Horner）</div></div>
+      <div class="row"><div class="k">主要奖项</div><div class="v">奥斯卡 4 项（最佳影片 / 导演 / 改编剧本 / 女配角）</div></div>
+      <div class="row"><div class="k">综合评分</div><div class="v">IMDb 8.2 · 豆瓣 9.0 · 烂番茄观众 96%</div></div>
+    </div>
+  </section>
+
+  <!-- ============ VERDICT ============ -->
+  <section>
+    <div class="verdict reveal">
+      <div class="stars">★★★★★</div>
+      <p>《美丽心灵》不是一部关于"聪明"的电影，而是一部关于"完整"的电影。它用最克制的温柔，证明了一个人最了不起的成就，未必是解开世界的方程，而是学会在裂痕里，依然被爱、依然去爱。</p>
+      <div class="sign">— 经典电影推荐 · 编辑评语</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  经典电影推荐 <span class="sep">·</span> 每日一部 <span class="sep">·</span> 2026-07-15
+  <br/>本页为自动化生成的观影推荐，评分数据来自公开平台，仅供欣赏参考。
+</footer>
+
+<script>
+/* ===== Floating math-symbol canvas ===== */
+(function(){
+  const cv = document.getElementById('bg-canvas');
+  const ctx = cv.getContext('2d');
+  let W,H,DPR;
+  const symbols = ['∑','∫','∂','π','∞','∇','Ω','θ','λ','φ','ψ','√','≈','≅','≡','×','÷','±','σ','μ'];
+  const particles = [];
+  const DUST = 46, SYM = 26;
+
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio||1, 2);
+    W = cv.width = innerWidth*DPR;
+    H = cv.height = innerHeight*DPR;
+    cv.style.width = innerWidth+'px';
+    cv.style.height = innerHeight+'px';
+  }
+  function rand(a,b){return a+Math.random()*(b-a);}
+
+  function makeSym(){
+    const gold = Math.random()<0.7;
+    return {
+      type:'sym',
+      x:rand(0,W), y:rand(0,H),
+      vy:-rand(0.08,0.32)*DPR,
+      vx:rand(-0.10,0.10)*DPR,
+      ch:symbols[(Math.random()*symbols.length)|0],
+      size:rand(16,40)*DPR,
+      rot:rand(-0.3,0.3), vr:rand(-0.004,0.004),
+      a:rand(0.10,0.34),
+      color: gold ? '232,200,122' : '159,216,200'
+    };
+  }
+  function makeDust(){
+    const gold = Math.random()<0.6;
+    return {
+      type:'dust',
+      x:rand(0,W), y:rand(0,H),
+      vy:-rand(0.05,0.22)*DPR,
+      vx:rand(-0.12,0.12)*DPR,
+      r:rand(0.6,2.2)*DPR,
+      a:rand(0.15,0.55),
+      tw:rand(0.005,0.02), tp:rand(0,Math.PI*2),
+      color: gold ? '240,220,166' : '244,239,226'
+    };
+  }
+  function init(){
+    particles.length=0;
+    for(let i=0;i<SYM;i++) particles.push(makeSym());
+    for(let i=0;i<DUST;i++) particles.push(makeDust());
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(const p of particles){
+      if(p.type==='sym'){
+        p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr;
+        if(p.y< -60*DPR){p.y=H+40*DPR;p.x=rand(0,W);}
+        if(p.x<-60*DPR)p.x=W+40*DPR; if(p.x>W+60*DPR)p.x=-40*DPR;
+        ctx.save();
+        ctx.translate(p.x,p.y);
+        ctx.rotate(p.rot);
+        ctx.font = 'italic '+p.size+'px "Playfair Display", serif';
+        ctx.textAlign='center'; ctx.textBaseline='middle';
+        ctx.shadowColor='rgba('+p.color+',0.5)';
+        ctx.shadowBlur=14*DPR;
+        ctx.fillStyle='rgba('+p.color+','+p.a+')';
+        ctx.fillText(p.ch,0,0);
+        ctx.restore();
+      } else {
+        p.x+=p.vx; p.y+=p.vy; p.tp+=p.tw;
+        const a = p.a*(0.6+0.4*Math.sin(p.tp));
+        if(p.y< -10*DPR){p.y=H+10*DPR;p.x=rand(0,W);}
+        if(p.x<-10*DPR)p.x=W+10*DPR; if(p.x>W+10*DPR)p.x=-10*DPR;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba('+p.color+','+a+')';
+        ctx.shadowColor='rgba('+p.color+',0.6)';
+        ctx.shadowBlur=8*DPR;
+        ctx.fill();
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  resize(); init(); draw();
+  addEventListener('resize',()=>{resize();init();});
+})();
+
+/* ===== Reveal on scroll ===== */
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.15});
+  els.forEach((el,i)=>{ el.style.transitionDelay=(i%4*0.08)+'s'; io.observe(el); });
+})();
+
+/* ===== Rating count-up + bar fill ===== */
+(function(){
+  function animateCount(el){
+    const target = parseFloat(el.dataset.target);
+    const dec = parseInt(el.dataset.dec)||0;
+    const dur = 1400; const t0 = performance.now();
+    function step(now){
+      const p = Math.min((now-t0)/dur,1);
+      const e = 1-Math.pow(1-p,3);
+      const val = (target*e).toFixed(dec);
+      el.textContent = dec? val : Math.round(target*e);
+      if(p<1) requestAnimationFrame(step);
+      else el.textContent = target.toFixed(dec);
+    }
+    requestAnimationFrame(step);
+  }
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.count').forEach(animateCount);
+        e.target.querySelectorAll('.rate-fill').forEach(f=>{ f.style.width = f.dataset.pct+'%'; });
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.4});
+  document.querySelectorAll('.ratings').forEach(r=>io.observe(r));
+})();
+</script>
+</body>
+</html>

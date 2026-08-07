@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电影推荐 | 低俗小说 Pulp Fiction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Special+Elite&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #161616;
+            --bg-card-hover: #1e1e1e;
+            --accent-red: #c41e3a;
+            --accent-red-glow: rgba(196, 30, 58, 0.35);
+            --accent-gold: #d4a843;
+            --accent-gold-dim: #a07830;
+            --accent-cream: #f5e6c8;
+            --accent-yellow: #e8c547;
+            --text-primary: #ede8e0;
+            --text-secondary: #9a9488;
+            --text-muted: #5c584f;
+            --border-subtle: rgba(245, 230, 200, 0.1);
+            --border-card: rgba(245, 230, 200, 0.06);
+            --shadow-card: 0 2px 8px rgba(0,0,0,0.5), 0 8px 32px rgba(0,0,0,0.3);
+            --shadow-hover: 0 4px 16px rgba(0,0,0,0.6), 0 12px 48px rgba(0,0,0,0.4);
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --transition-smooth: 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Noto Serif SC', 'Playfair Display', serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Canvas */
+        #particleCanvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 40%, rgba(196, 30, 58, 0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 30% 80%, rgba(212, 168, 67, 0.05) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px 20px;
+        }
+
+        .hero-year {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(100px, 18vw, 200px);
+            color: rgba(196, 30, 58, 0.12);
+            letter-spacing: 12px;
+            line-height: 1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
+            z-index: -1;
+            user-select: none;
+        }
+
+        .hero-label {
+            font-family: 'Special Elite', cursive;
+            font-size: 13px;
+            color: var(--accent-gold);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.2s forwards;
+        }
+
+        .hero-title-zh {
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.4s forwards;
+        }
+
+        .hero-title-en {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(20px, 3.5vw, 32px);
+            color: var(--accent-red);
+            letter-spacing: 8px;
+            margin-bottom: 32px;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.6s forwards;
+        }
+
+        .hero-tagline {
+            font-family: 'Special Elite', cursive;
+            font-size: clamp(14px, 2vw, 18px);
+            color: var(--accent-cream);
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            border-left: 3px solid var(--accent-red);
+            border-right: 3px solid var(--accent-red);
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.8s forwards;
+        }
+
+        .hero-director {
+            margin-top: 40px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            letter-spacing: 3px;
+            opacity: 0;
+            animation: fadeUp 0.8s 1s forwards;
+        }
+
+        .hero-director span {
+            color: var(--accent-gold);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-muted);
+            font-size: 12px;
+            letter-spacing: 3px;
+            opacity: 0;
+            animation: fadeUp 0.8s 1.4s forwards;
+        }
+
+        .hero-scroll::after {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--text-muted), transparent);
+            margin: 12px auto 0;
+            animation: scrollPulse 2s infinite;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-label {
+            font-family: 'Special Elite', cursive;
+            font-size: 12px;
+            color: var(--accent-gold);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 32px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RATINGS ===== */
+        .ratings-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 64px;
+        }
+
+        .rating-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 24px 16px;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .rating-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .rating-source {
+            font-size: 11px;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .rating-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 42px;
+            color: var(--accent-gold);
+            line-height: 1.1;
+        }
+
+        .rating-bar {
+            width: 100%;
+            height: 3px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 2px;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+
+        .rating-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-gold));
+            border-radius: 2px;
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .rating-max {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        /* ===== SYNOPSIS ===== */
+        .synopsis-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .synopsis-block::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent-red), var(--accent-gold));
+        }
+
+        .synopsis-text {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 2;
+        }
+
+        .synopsis-text em {
+            color: var(--accent-cream);
+            font-style: normal;
+            border-bottom: 1px dashed var(--accent-gold-dim);
+        }
+
+        .synopsis-poster {
+            margin-top: 32px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* ===== SVG POSTER ===== */
+        .poster-card {
+            width: 280px;
+            height: 380px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        /* ===== HIGHLIGHTS ===== */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .highlight-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 28px 24px;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-red), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .highlight-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .highlight-card:hover::after {
+            opacity: 1;
+        }
+
+        .highlight-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            color: var(--accent-red);
+            opacity: 0.3;
+            position: absolute;
+            top: 12px;
+            right: 16px;
+        }
+
+        .highlight-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent-cream);
+            margin-bottom: 8px;
+        }
+
+        .highlight-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ===== QUOTES ===== */
+        .quote-section {
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .quote-section::before {
+            content: '\201C';
+            font-family: 'Playfair Display', serif;
+            font-size: 200px;
+            color: rgba(196, 30, 58, 0.08);
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .quote-text {
+            font-family: 'Special Elite', cursive;
+            font-size: clamp(18px, 3vw, 24px);
+            color: var(--accent-cream);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .quote-attr {
+            margin-top: 24px;
+            font-size: 14px;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+        }
+
+        /* ===== WHY WATCH ===== */
+        .why-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            transition: var(--transition-smooth);
+        }
+
+        .why-item:hover {
+            background: var(--bg-card-hover);
+            transform: translateX(6px);
+        }
+
+        .why-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-gold-dim));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .why-content h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent-cream);
+            margin-bottom: 6px;
+        }
+
+        .why-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ===== AWARDS ===== */
+        .awards-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 32px 0 64px;
+        }
+
+        .award-tag {
+            padding: 8px 18px;
+            background: rgba(196, 30, 58, 0.1);
+            border: 1px solid rgba(196, 30, 58, 0.2);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+            transition: var(--transition-smooth);
+        }
+
+        .award-tag:hover {
+            background: rgba(196, 30, 58, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* ===== INFO TABLE ===== */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-card);
+        }
+
+        .info-table tr { transition: var(--transition-smooth); }
+        .info-table tr:hover { background: var(--bg-card-hover); }
+
+        .info-table td {
+            padding: 16px 24px;
+            font-size: 14px;
+            border-bottom: 1px solid var(--border-card);
+        }
+
+        .info-table tr:last-child td { border-bottom: none; }
+
+        .info-label {
+            color: var(--text-muted);
+            width: 120px;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        .info-value {
+            color: var(--text-primary);
+        }
+
+        /* ===== EDITORIAL ===== */
+        .editorial {
+            text-align: center;
+            padding: 80px 0 120px;
+        }
+
+        .editorial-stars {
+            font-size: 28px;
+            color: var(--accent-gold);
+            letter-spacing: 8px;
+            margin-bottom: 24px;
+        }
+
+        .editorial-text {
+            font-size: 17px;
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+
+        .editorial-text strong {
+            color: var(--accent-cream);
+            font-weight: 600;
+        }
+
+        .editorial-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-red), var(--accent-gold));
+            margin: 40px auto 0;
+            border-radius: 1px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-card);
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 640px) {
+            .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+            .highlights-grid { grid-template-columns: 1fr; }
+            .synopsis-block { padding: 24px; }
+            .container { padding: 0 20px; }
+            .poster-card { width: 220px; height: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-year">1994</div>
+        <div class="hero-content">
+            <div class="hero-label">Classic Film Recommendation</div>
+            <h1 class="hero-title-zh">低俗小说</h1>
+            <div class="hero-title-en">PULP FICTION</div>
+            <div class="hero-tagline">Just because you are a character doesn't mean you have character.</div>
+            <div class="hero-director">Directed by <span>Quentin Tarantino</span></div>
+        </div>
+        <div class="hero-scroll">SCROLL</div>
+    </section>
+
+    <div class="container">
+
+        <!-- RATINGS -->
+        <section class="section reveal">
+            <div class="section-label">Ratings</div>
+            <div class="section-title">殿堂级口碑</div>
+            <div class="ratings-grid">
+                <div class="rating-card">
+                    <div class="rating-source">IMDb</div>
+                    <div class="rating-value" data-target="8.9">0</div>
+                    <div class="rating-bar"><div class="rating-bar-fill" data-width="89"></div></div>
+                    <div class="rating-max">/ 10</div>
+                </div>
+                <div class="rating-card">
+                    <div class="rating-source">Douban</div>
+                    <div class="rating-value" data-target="8.8">0</div>
+                    <div class="rating-bar"><div class="rating-bar-fill" data-width="88"></div></div>
+                    <div class="rating-max">/ 10</div>
+                </div>
+                <div class="rating-card">
+                    <div class="rating-source">Rotten Tomatoes</div>
+                    <div class="rating-value" data-target="92">0</div>
+                    <div class="rating-bar"><div class="rating-bar-fill" data-width="92"></div></div>
+                    <div class="rating-max">%</div>
+                </div>
+                <div class="rating-card">
+                    <div class="rating-source">Metacritic</div>
+                    <div class="rating-value" data-target="95">0</div>
+                    <div class="rating-bar"><div class="rating-bar-fill" data-width="95"></div></div>
+                    <div class="rating-max">/ 100</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SYNOPSIS -->
+        <section class="section reveal">
+            <div class="section-label">Synopsis</div>
+            <div class="section-title">剧情梗概</div>
+            <div class="synopsis-block">
+                <p class="synopsis-text">
+                    洛杉矶的地下世界，几个看似毫无关联的故事在时间的迷宫中交错编织。<em>朱尔斯</em>和<em>文森特</em>是一对职业杀手搭档，为黑帮老大马沙执行一项特殊任务；<em>布奇</em>是一名拳击手，被马沙收买要求打假赛，却在关键时刻做出了截然不同的选择；<em> Pumpkin</em> 和 <em>Honey Bunny</em> 是一对小情侣，决定在餐馆里干一票大的。<br><br>
+                    塔伦蒂诺以<em>非线性叙事</em>将这几条故事线重新排列组合——开场即是故事的中段，终场又回到了开场的时刻。每个角色的命运在交叉路口碰撞、偏转，构成一幅关于<em>暴力、偶然与救赎</em>的复杂拼图。<br><br>
+                    影片不按常理出牌：上一秒你还在为一场紧张的谈判屏住呼吸，下一秒两个杀手就在讨论汉堡的名字。这种<em>类型混搭</em>和<em>语调突变</em>正是影片最迷人的特质。
+                </p>
+                <div class="synopsis-poster">
+                    <div class="poster-card">
+                        <svg viewBox="0 0 280 380" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#1a1a1a"/>
+                                    <stop offset="100%" stop-color="#0a0a0a"/>
+                                </linearGradient>
+                                <linearGradient id="redGlow" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#c41e3a"/>
+                                    <stop offset="100%" stop-color="#8b1528"/>
+                                </linearGradient>
+                                <linearGradient id="goldGlow" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#d4a843"/>
+                                    <stop offset="100%" stop-color="#a07830"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="280" height="380" fill="url(#bgGrad)"/>
+                            <!-- Subtle film grain pattern -->
+                            <rect width="280" height="380" fill="url(#bgGrad)" opacity="0.3"/>
+                            <!-- Top red line -->
+                            <rect x="30" y="30" width="220" height="3" fill="url(#redGlow)" opacity="0.6"/>
+                            <!-- The Briefcase glow -->
+                            <rect x="90" y="120" width="100" height="70" rx="4" fill="none" stroke="#d4a843" stroke-width="1.5" opacity="0.4"/>
+                            <rect x="110" y="140" width="60" height="30" rx="2" fill="#d4a843" opacity="0.15"/>
+                            <circle cx="140" cy="155" r="8" fill="#d4a843" opacity="0.2"/>
+                            <!-- Silhouette of two figures -->
+                            <g opacity="0.6" transform="translate(60, 210)">
+                                <!-- Figure 1 - tall -->
+                                <ellipse cx="30" cy="0" rx="12" ry="14" fill="#333"/>
+                                <rect x="20" y="14" width="20" height="45" rx="4" fill="#2a2a2a"/>
+                                <!-- Figure 2 - shorter -->
+                                <ellipse cx="90" cy="8" rx="11" ry="13" fill="#333"/>
+                                <rect x="80" y="21" width="20" height="38" rx="4" fill="#2a2a2a"/>
+                            </g>
+                            <!-- Gun silhouette -->
+                            <g opacity="0.35" transform="translate(35, 230) rotate(-15)">
+                                <rect x="0" y="0" width="6" height="28" rx="1" fill="#555"/>
+                                <rect x="-4" y="18" width="14" height="6" rx="2" fill="#555"/>
+                                <rect x="4" y="-2" width="16" height="4" rx="1" fill="#555"/>
+                            </g>
+                            <!-- Dance pose hint -->
+                            <g opacity="0.25" transform="translate(160, 240)">
+                                <line x1="0" y1="0" x2="15" y2="-20" stroke="#c41e3a" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="15" y1="-20" x2="25" y2="-15" stroke="#c41e3a" stroke-width="2" stroke-linecap="round"/>
+                            </g>
+                            <!-- Title -->
+                            <text x="140" y="310" text-anchor="middle" font-family="'Bebas Neue', sans-serif" font-size="28" fill="#c41e3a" letter-spacing="6">PULP</text>
+                            <text x="140" y="340" text-anchor="middle" font-family="'Bebas Neue', sans-serif" font-size="28" fill="#c41e3a" letter-spacing="6">FICTION</text>
+                            <!-- Year -->
+                            <text x="140" y="365" text-anchor="middle" font-family="'Special Elite', cursive" font-size="11" fill="#5c584f" letter-spacing="4">1 9 9 4</text>
+                            <!-- Bottom gold line -->
+                            <rect x="30" y="375" width="220" height="1" fill="url(#goldGlow)" opacity="0.4"/>
+                            <!-- Corner decorations -->
+                            <rect x="20" y="20" width="8" height="8" fill="none" stroke="#d4a843" stroke-width="0.5" opacity="0.3"/>
+                            <rect x="252" y="352" width="8" height="8" fill="none" stroke="#d4a843" stroke-width="0.5" opacity="0.3"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HIGHLIGHTS -->
+        <section class="section reveal">
+            <div class="section-label">Highlights</div>
+            <div class="section-title">六大亮点</div>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-num">01</div>
+                    <div class="highlight-title">非线性叙事革命</div>
+                    <div class="highlight-desc">打破传统三幕结构，将故事拆解重组，观众像拼图一样逐步还原真相，每一块拼图落下的瞬间都令人拍案叫绝。</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-num">02</div>
+                    <div class="highlight-title">影史最精彩的对白</div>
+                    <div class="highlight-desc">塔伦蒂诺的标志性台词无处不在——从汉堡名字的哲学辩论到圣经段落的有力朗诵，每一场对话都值得反复咀嚼。</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-num">03</div>
+                    <div class="highlight-title">类型混搭大师课</div>
+                    <div class="highlight-desc">黑帮片、黑色幽默、公路片、惊悚片……多种类型在154分钟内无缝切换，创造出前所未有的观影节奏。</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-num">04</div>
+                    <div class="highlight-title">约翰·特拉沃尔塔的巅峰回归</div>
+                    <div class="highlight-desc">凭借文森特一角，特拉沃尔塔从事业低谷重返巅峰，获得奥斯卡最佳男主角提名，扭扭舞场面成为永恒经典。</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-num">05</div>
+                    <div class="highlight-title">塞缪尔·杰克逊的封神之演</div>
+                    <div class="highlight-desc">朱尔斯最后的慈悲场景，堪称影史上最震撼的角色转变之一。杰克逊将一个冷酷杀手演出了灵魂的深度。</div>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-num">06</div>
+                    <div class="highlight-title">独立电影的商业奇迹</div>
+                    <div class="highlight-desc">以800万美元成本斩获2.14亿美元全球票房，证明了独立电影也能在商业上大获成功，永远改变了好莱坞格局。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUOTES -->
+        <section class="quote-section reveal">
+            <div class="quote-text">
+                The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men.
+            </div>
+            <div class="quote-attr">— Jules Winnfield</div>
+        </section>
+
+        <!-- WHY WATCH -->
+        <section class="section reveal">
+            <div class="section-label">Why Watch</div>
+            <div class="section-title">为什么值得一看</div>
+            <div class="why-list">
+                <div class="why-item">
+                    <div class="why-icon">🎬</div>
+                    <div class="why-content">
+                        <h3>它重新定义了电影的叙事方式</h3>
+                        <p>在《低俗小说》之前，几乎没有主流商业电影敢如此大胆地打乱时间线。它向全世界证明了观众完全有能力享受非线性叙事，启发了后来无数电影人和剧集创作者。</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">💬</div>
+                    <div class="why-content">
+                        <h3>每一句台词都是金句</h3>
+                        <p>塔伦蒂诺是当之无愧的"对白之王"。影片中充满了令人过目不忘的经典台词，多年后你仍会想起那些关于 Royale with Cheese 和 Foot Massage 的讨论。</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">🎭</div>
+                    <div class="why-content">
+                        <h3>每个配角都光芒四射</h3>
+                        <p>从布鲁斯·威利斯的落魄拳击手到乌玛·瑟曼的黑帮妻子，从哈维·凯特尔的清理专家到蒂姆·罗斯的劫匪——没有一个人是多余的，每个角色都令人印象深刻。</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">🎵</div>
+                    <div class="why-content">
+                        <h3>原声带本身就是一部传奇</h3>
+                        <p>Dick Dale 的 surf guitar、Chuck Berry 的 rock'n'roll、Urge Overkill 的迷幻翻唱……这张原声带让尘封多年的老歌重返流行文化，至今仍是史上最伟大的电影原声带之一。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AWARDS -->
+        <section class="section reveal">
+            <div class="section-label">Awards</div>
+            <div class="section-title">荣誉与成就</div>
+            <div class="awards-bar">
+                <span class="award-tag">戛纳电影节 金棕榈奖</span>
+                <span class="award-tag">奥斯卡 最佳原创剧本</span>
+                <span class="award-tag">奥斯卡 7项提名</span>
+                <span class="award-tag">金球奖 最佳编剧</span>
+                <span class="award-tag">BAFTA 最佳原创剧本</span>
+                <span class="award-tag">独立精神奖 最佳影片</span>
+                <span class="award-tag">AFI 百大电影 Top 100</span>
+                <span class="award-tag">美国国会图书馆 收藏</span>
+                <span class="award-tag">IMDb Top 250</span>
+            </div>
+        </section>
+
+        <!-- INFO TABLE -->
+        <section class="section reveal">
+            <div class="section-label">Archive</div>
+            <div class="section-title">影片档案</div>
+            <table class="info-table">
+                <tr><td class="info-label">片名</td><td class="info-value">低俗小说 / Pulp Fiction</td></tr>
+                <tr><td class="info-label">导演</td><td class="info-value">Quentin Tarantino（昆汀·塔伦蒂诺）</td></tr>
+                <tr><td class="info-label">编剧</td><td class="info-value">Quentin Tarantino & Roger Avary</td></tr>
+                <tr><td class="info-label">上映</td><td class="info-value">1994年10月14日（戛纳首映）/ 1994年10月14日（北美）</td></tr>
+                <tr><td class="info-label">片长</td><td class="info-value">154 分钟</td></tr>
+                <tr><td class="info-label">类型</td><td class="info-value">犯罪 / 黑色幽默 / 新黑色电影</td></tr>
+                <tr><td class="info-label">主演</td><td class="info-value">John Travolta · Samuel L. Jackson · Uma Thurman · Bruce Willis · Harvey Keitel · Tim Roth · Amanda Plummer</td></tr>
+                <tr><td class="info-label">制片成本</td><td class="info-value">800 万美元</td></tr>
+                <tr><td class="info-label">全球票房</td><td class="info-value">2.14 亿美元</td></tr>
+                <tr><td class="info-label">分级</td><td class="info-value">R级（强烈暴力、粗口、毒品内容）</td></tr>
+            </table>
+        </section>
+
+        <!-- EDITORIAL -->
+        <section class="editorial reveal">
+            <div class="editorial-stars">★ ★ ★ ★ ★</div>
+            <p class="editorial-text">
+                有些电影改变了行业，有些电影定义了时代，而<strong>《低俗小说》</strong>两者兼得。它是独立电影的<em>宣言书</em>，是后现代叙事的<em>教科书</em>，也是流行文化的一座<em>丰碑</em>。三十多年过去，它依然新鲜、危险、令人兴奋——就像那个公文包里的东西一样，你永远无法完全看清它的全貌，但你知道它光芒万丈。
+            </p>
+            <div class="editorial-divider"></div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-text">经典电影推荐 · 每日一部 · 2026.05.23</div>
+        </footer>
+
+    </div>
+
+    <script>
+    // ===== Particle Canvas: Smoke & Embers =====
+    (function() {
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let w, h, particles = [];
+
+        function resize() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * w;
+                this.y = h + Math.random() * 100;
+                this.size = Math.random() * 2.5 + 0.5;
+                this.speedY = -(Math.random() * 0.5 + 0.15);
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.fade = Math.random() * 0.002 + 0.001;
+                const colors = ['196,30,58', '212,168,67', '245,230,200', '160,120,48'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX + Math.sin(this.y * 0.005) * 0.2;
+                this.opacity -= this.fade;
+                if (this.opacity <= 0 || this.y < -20) this.reset();
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${this.color},${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+        function animate() {
+            ctx.clearRect(0, 0, w, h);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    })();
+
+    // ===== IntersectionObserver Reveal =====
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Trigger rating animations
+                entry.target.querySelectorAll('.rating-bar-fill').forEach(bar => {
+                    bar.style.width = bar.dataset.width + '%';
+                });
+                entry.target.querySelectorAll('.rating-value').forEach(val => {
+                    animateCount(val, parseFloat(val.dataset.target));
+                });
+            }
+        });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // ===== Count Animation =====
+    function animateCount(el, target) {
+        const duration = 1500;
+        const start = performance.now();
+        const isDecimal = target % 1 !== 0;
+
+        function step(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = eased * target;
+            el.textContent = isDecimal ? current.toFixed(1) : Math.round(current);
+            if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+    </script>
+</body>
+</html>

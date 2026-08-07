@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>勇敢的心 Braveheart — 经典电影推荐</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --purple-dark: #2D1B4E;
+  --purple: #5B3A7A;
+  --heather: #8B6FAC;
+  --gold: #C9A96E;
+  --gold-light: #E8D5A3;
+  --amber: #B8862D;
+  --green-dark: #2D4A3E;
+  --green: #4A7C6F;
+  --cream: #F5F0E8;
+  --cream-dark: #E8DFD0;
+  --parchment: #FAF6EF;
+  --slate: #4A4A5A;
+  --slate-light: #7A7A8A;
+  --text: #2A2A3A;
+  --text-light: #6A6A7A;
+  --white: #FFFFFF;
+  --card-bg: rgba(245, 240, 232, 0.6);
+  --card-border: rgba(201, 169, 110, 0.25);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  background: var(--parchment);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* === Canvas Fog === */
+#fog-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* === Scroll Indicator === */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: bounce 2s ease-in-out infinite;
+  cursor: pointer;
+}
+.scroll-indicator span {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.7;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* === Hero Section === */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, 
+    var(--purple-dark) 0%, 
+    #3A2560 30%,
+    #4A3570 50%,
+    #3A2A50 70%,
+    var(--purple-dark) 100%
+  );
+  z-index: -1;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: 
+    radial-gradient(ellipse at 20% 30%, rgba(201, 169, 110, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(91, 58, 122, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 100%, rgba(74, 124, 111, 0.06) 0%, transparent 40%);
+}
+
+/* Hero hills silhouette */
+.hero-hills {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 30%;
+  z-index: 1;
+}
+.hero-hills svg {
+  width: 100%; height: 100%;
+  display: block;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 0 24px;
+  max-width: 900px;
+}
+
+.hero-year {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(120px, 22vw, 220px);
+  font-weight: 900;
+  color: rgba(201, 169, 110, 0.08);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  line-height: 1;
+  pointer-events: none;
+  letter-spacing: -6px;
+}
+
+.hero-badge {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201, 169, 110, 0.3);
+  padding: 6px 20px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1.15;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 40px rgba(201, 169, 110, 0.15);
+}
+
+.hero-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(18px, 2.5vw, 32px);
+  font-weight: 400;
+  color: var(--heather);
+  letter-spacing: 6px;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 2.2vw, 28px);
+  font-style: italic;
+  color: rgba(232, 213, 163, 0.8);
+  max-width: 600px;
+  margin: 0 auto 20px;
+  position: relative;
+  z-index: 1;
+  line-height: 1.5;
+}
+
+.hero-meta {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.hero-meta-item {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: rgba(232, 213, 163, 0.6);
+  letter-spacing: 1px;
+}
+.hero-meta-item strong {
+  color: var(--gold-light);
+  font-weight: 500;
+}
+
+/* === Section Common === */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 100px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  color: var(--purple-dark);
+  line-height: 1.2;
+}
+
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--amber));
+  margin: 16px auto 0;
+}
+
+/* === Rating Section === */
+.rating-section {
+  background: linear-gradient(180deg, var(--parchment) 0%, var(--cream) 100%);
+}
+
+.rating-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.rating-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s ease;
+}
+.rating-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rating-source {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--slate-light);
+  margin-bottom: 8px;
+}
+
+.rating-number {
+  font-family: 'Cinzel', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--purple-dark);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.rating-suffix {
+  font-size: 18px;
+  color: var(--slate-light);
+  font-weight: 400;
+}
+
+.rating-bar-bg {
+  width: 100%;
+  height: 4px;
+  background: var(--cream-dark);
+  border-radius: 2px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+.rating-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--amber));
+  border-radius: 2px;
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* === Story Section === */
+.story-section {
+  background: var(--white);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.story-content {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.8s ease;
+}
+.story-content.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.story-no-spoiler {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--green);
+  background: rgba(74, 124, 111, 0.08);
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.story-no-spoiler svg {
+  width: 14px; height: 14px;
+}
+
+.story-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.story-text strong {
+  color: var(--purple);
+}
+
+.story-poster {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.8s ease;
+}
+.story-poster.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.poster-card {
+  background: linear-gradient(145deg, var(--cream), var(--parchment));
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.poster-card svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === Highlights Section === */
+.highlights-section {
+  background: linear-gradient(180deg, var(--cream) 0%, var(--parchment) 100%);
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.highlight-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+  cursor: default;
+}
+.highlight-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.highlight-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 8px 32px rgba(201, 169, 110, 0.12);
+  transform: translateY(-4px);
+}
+
+.highlight-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+}
+
+.highlight-title {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--purple-dark);
+  margin-bottom: 10px;
+}
+
+.highlight-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-light);
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* === Quote Section === */
+.quote-section {
+  position: relative;
+  background: linear-gradient(135deg, var(--purple-dark) 0%, #3A2560 50%, var(--purple-dark) 100%);
+  padding: 100px 24px;
+  text-align: center;
+  z-index: 1;
+}
+
+.quote-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: 
+    radial-gradient(ellipse at 30% 50%, rgba(201, 169, 110, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 50%, rgba(139, 111, 172, 0.08) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.quote-content {
+  position: relative;
+  z-index: 2;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.quote-mark {
+  font-family: 'Cinzel', serif;
+  font-size: 80px;
+  line-height: 0.6;
+  color: rgba(201, 169, 110, 0.2);
+  margin-bottom: 20px;
+}
+
+.quote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 3.5vw, 38px);
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.quote-attribution {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--heather);
+}
+
+/* === Why Watch Section === */
+.why-section {
+  background: var(--white);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.why-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 24px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+.why-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.why-number {
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  min-width: 40px;
+}
+
+.why-text h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--purple-dark);
+  margin-bottom: 4px;
+}
+.why-text p {
+  font-size: 15px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* === Awards Section === */
+.awards-section {
+  background: linear-gradient(180deg, var(--cream) 0%, var(--parchment) 100%);
+}
+
+.awards-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.award-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: var(--slate);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 8px 18px;
+  border-radius: 20px;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.4s ease;
+}
+.award-tag.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+.award-tag.highlight {
+  background: rgba(201, 169, 110, 0.12);
+  border-color: var(--gold);
+  color: var(--amber);
+}
+.award-tag svg {
+  width: 14px; height: 14px;
+  flex-shrink: 0;
+}
+
+/* === Info Table Section === */
+.info-section {
+  background: var(--white);
+}
+
+.info-table {
+  max-width: 700px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.info-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  border-bottom: 1px solid var(--card-border);
+}
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--slate-light);
+  padding: 14px 20px;
+  background: var(--cream);
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 16px;
+  color: var(--text);
+  padding: 14px 20px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* === Editor's Note === */
+.editor-section {
+  background: linear-gradient(135deg, var(--purple-dark) 0%, #3A2560 50%, var(--purple-dark) 100%);
+  padding: 80px 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.editor-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: 
+    radial-gradient(ellipse at 50% 0%, rgba(201, 169, 110, 0.08) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.editor-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.editor-stars {
+  font-size: 24px;
+  letter-spacing: 6px;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.editor-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.editor-sign {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  color: var(--heather);
+  letter-spacing: 3px;
+}
+
+/* === Footer === */
+.footer {
+  background: var(--purple-dark);
+  padding: 40px 24px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: rgba(232, 213, 163, 0.4);
+  letter-spacing: 1px;
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .rating-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .highlights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .section {
+    padding: 60px 16px;
+  }
+  .rating-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+  .info-row {
+    grid-template-columns: 1fr;
+  }
+  .info-label {
+    padding: 10px 16px 4px;
+    background: transparent;
+    font-size: 10px;
+  }
+  .info-value {
+    padding: 4px 16px 10px;
+  }
+  .hero-meta {
+    gap: 16px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- === Fog Canvas === -->
+<canvas id="fog-canvas"></canvas>
+
+<!-- === Hero === -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-hills">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,140 C160,80 320,160 480,120 C640,80 720,160 840,130 C960,100 1080,160 1260,110 C1380,80 1440,100 1440,100 L1440,320 L0,320 Z" fill="rgba(245,240,232,0.04)"/>
+      <path d="M0,200 C200,160 340,220 520,180 C700,140 840,210 1020,175 C1200,140 1360,190 1440,170 L1440,320 L0,320 Z" fill="rgba(245,240,232,0.03)"/>
+      <path d="M0,260 C180,230 360,270 540,240 C720,210 900,260 1080,235 C1260,210 1380,240 1440,230 L1440,320 L0,320 Z" fill="rgba(245,240,232,0.02)"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-year">1995</div>
+    <div class="hero-badge">Academy Award ★ Best Picture</div>
+    <h1 class="hero-title">勇敢的心</h1>
+    <div class="hero-subtitle">Braveheart</div>
+    <p class="hero-tagline">"Every man dies. Not every man really lives."</p>
+    <div class="hero-meta">
+      <span class="hero-meta-item">Directed by <strong>Mel Gibson</strong></span>
+      <span class="hero-meta-item">Starring <strong>Mel Gibson · Sophie Marceau</strong></span>
+      <span class="hero-meta-item">Runtime <strong>178 min</strong></span>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- === Rating === -->
+<section class="section rating-section">
+  <div class="section-header">
+    <div class="section-label">Ratings</div>
+    <h2 class="section-title">评分与口碑</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="rating-grid" id="ratingGrid">
+    <div class="rating-card" data-delay="0">
+      <div class="rating-source">IMDb</div>
+      <div class="rating-number"><span class="rating-count" data-target="8.3">0</span><span class="rating-suffix">/10</span></div>
+      <div class="rating-bar-bg"><div class="rating-bar-fill" data-width="83"></div></div>
+    </div>
+    <div class="rating-card" data-delay="100">
+      <div class="rating-source">豆瓣</div>
+      <div class="rating-number"><span class="rating-count" data-target="8.9">0</span><span class="rating-suffix">/10</span></div>
+      <div class="rating-bar-bg"><div class="rating-bar-fill" data-width="89"></div></div>
+    </div>
+    <div class="rating-card" data-delay="200">
+      <div class="rating-source">烂番茄</div>
+      <div class="rating-number"><span class="rating-count" data-target="78">0</span><span class="rating-suffix">%</span></div>
+      <div class="rating-bar-bg"><div class="rating-bar-fill" data-width="78"></div></div>
+    </div>
+    <div class="rating-card" data-delay="300">
+      <div class="rating-source">爆米花</div>
+      <div class="rating-number"><span class="rating-count" data-target="94">0</span><span class="rating-suffix">%</span></div>
+      <div class="rating-bar-bg"><div class="rating-bar-fill" data-width="94"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- === Story === -->
+<section class="section story-section">
+  <div class="section-header">
+    <div class="section-label">Story</div>
+    <h2 class="section-title">剧情梗概</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="story-grid">
+    <div class="story-content" id="storyContent">
+      <div class="story-no-spoiler">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        无剧透
+      </div>
+      <p class="story-text">
+        13世纪末的苏格兰，英格兰国王"长腿"爱德华一世以铁腕统治压迫苏格兰人民，剥夺自由、横征暴敛。平民英雄<strong>威廉·华莱士</strong>在年少时目睹家人被害、同胞受辱，长大归来后因一场意外冲突，揭竿而起，领导苏格兰民众反抗英格兰的暴政。
+      </p>
+      <p class="story-text">
+        从一个小村庄的复仇，到席卷全境的起义，华莱士凭借过人的勇武与号召力，凝聚起一盘散沙的苏格兰贵族与平民，在战场上屡次以少胜多。但同时，他也深陷英格兰王室的权谋漩涡——<strong>美色、背叛、政治博弈</strong>接踵而至。最终，他在自由与妥协之间做出了一个震撼千古的选择。
+      </p>
+    </div>
+    <div class="story-poster" id="storyPoster">
+      <div class="poster-card">
+        <svg viewBox="0 0 500 620" xmlns="http://www.w3.org/2000/svg">
+          <!-- Sky gradient -->
+          <defs>
+            <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2D1B4E"/>
+              <stop offset="40%" stop-color="#4A3570"/>
+              <stop offset="70%" stop-color="#6B4F8A"/>
+              <stop offset="100%" stop-color="#8B6FAC"/>
+            </linearGradient>
+            <linearGradient id="landGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2D4A3E"/>
+              <stop offset="100%" stop-color="#1A2E25"/>
+            </linearGradient>
+            <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(232,213,163,0.6)"/>
+              <stop offset="40%" stop-color="rgba(232,213,163,0.15)"/>
+              <stop offset="100%" stop-color="rgba(232,213,163,0)"/>
+            </radialGradient>
+            <linearGradient id="swordGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#E8D5A3"/>
+              <stop offset="50%" stop-color="#C9A96E"/>
+              <stop offset="100%" stop-color="#8B6F40"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Sky -->
+          <rect width="500" height="620" fill="url(#skyGrad)"/>
+
+          <!-- Stars -->
+          <circle cx="80" cy="50" r="1.5" fill="#E8D5A3" opacity="0.6"/>
+          <circle cx="150" cy="30" r="1" fill="#E8D5A3" opacity="0.4"/>
+          <circle cx="220" cy="65" r="1.5" fill="#E8D5A3" opacity="0.5"/>
+          <circle cx="320" cy="40" r="1" fill="#E8D5A3" opacity="0.3"/>
+          <circle cx="400" cy="55" r="1.5" fill="#E8D5A3" opacity="0.5"/>
+          <circle cx="450" cy="25" r="1" fill="#E8D5A3" opacity="0.4"/>
+          <circle cx="60" cy="90" r="1" fill="#E8D5A3" opacity="0.3"/>
+          <circle cx="370" cy="80" r="1" fill="#E8D5A3" opacity="0.4"/>
+
+          <!-- Moon glow -->
+          <circle cx="380" cy="80" r="80" fill="url(#moonGlow)"/>
+          <circle cx="380" cy="80" r="18" fill="#E8D5A3" opacity="0.8"/>
+          <circle cx="380" cy="80" r="14" fill="#F5F0E8" opacity="0.5"/>
+
+          <!-- Distant mountains -->
+          <path d="M0,280 Q60,220 120,250 Q180,200 240,240 Q300,190 360,230 Q420,200 500,240 L500,350 L0,350 Z" fill="rgba(45,74,62,0.3)"/>
+
+          <!-- Mid mountains -->
+          <path d="M0,320 Q80,260 160,290 Q220,240 300,280 Q360,230 430,270 Q470,250 500,260 L500,380 L0,380 Z" fill="rgba(45,74,62,0.5)"/>
+
+          <!-- Foreground hills -->
+          <path d="M0,370 Q60,340 120,360 Q180,330 260,355 Q340,325 400,350 Q460,340 500,355 L500,500 L0,500 Z" fill="url(#landGrad)"/>
+
+          <!-- Mist layers -->
+          <ellipse cx="150" cy="340" rx="180" ry="20" fill="rgba(245,240,232,0.06)"/>
+          <ellipse cx="350" cy="330" rx="160" ry="15" fill="rgba(245,240,232,0.04)"/>
+
+          <!-- Sword (claymore) -->
+          <g transform="translate(250, 480)" filter="url(#glow)">
+            <!-- Blade -->
+            <path d="M-6,-220 L0,-280 L6,-220 L4,0 L-4,0 Z" fill="url(#swordGrad)" opacity="0.9"/>
+            <!-- Fuller line -->
+            <line x1="0" y1="-260" x2="0" y2="-10" stroke="rgba(245,240,232,0.2)" stroke-width="1"/>
+            <!-- Cross guard -->
+            <rect x="-50" y="-2" width="100" height="6" rx="2" fill="#5B3A7A"/>
+            <circle cx="-50" cy="1" r="4" fill="#C9A96E" opacity="0.5"/>
+            <circle cx="50" cy="1" r="4" fill="#C9A96E" opacity="0.5"/>
+            <!-- Grip -->
+            <rect x="-6" y="4" width="12" height="28" rx="3" fill="#8B6FAC" opacity="0.7"/>
+            <!-- Pommel -->
+            <circle cx="0" cy="36" r="8" fill="#C9A96E" opacity="0.6"/>
+            <circle cx="0" cy="36" r="4" fill="#E8D5A3" opacity="0.4"/>
+          </g>
+
+          <!-- Celtic style ring -->
+          <circle cx="250" cy="250" r="120" fill="none" stroke="rgba(201,169,110,0.04)" stroke-width="1"/>
+
+          <!-- Title text -->
+          <text x="250" y="560" text-anchor="middle" font-family="Cinzel, serif" font-size="22" font-weight="700" fill="#E8D5A3" opacity="0.8" letter-spacing="6">BRAVEHEART</text>
+          <text x="250" y="585" text-anchor="middle" font-family="Cinzel, serif" font-size="12" fill="#8B6FAC" opacity="0.5" letter-spacing="8">M·C·M·X·C·V</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === Highlights === -->
+<section class="section highlights-section">
+  <div class="section-header">
+    <div class="section-label">Highlights</div>
+    <h2 class="section-title">六大亮点</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="highlights-grid" id="highlightsGrid">
+    <div class="highlight-card" data-delay="0">
+      <div class="highlight-icon">
+        <svg viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="22" stroke="#C9A96E" stroke-width="1.5" fill="none"/>
+          <path d="M24,10 L28,20 L38,20 L30,27 L33,38 L24,31 L15,38 L18,27 L10,20 L20,20 Z" fill="#C9A96E" opacity="0.3" stroke="#C9A96E" stroke-width="1"/>
+        </svg>
+      </div>
+      <h3 class="highlight-title">奥斯卡桂冠</h3>
+      <p class="highlight-desc">荣获第68届奥斯卡最佳影片、最佳导演等5项大奖，被誉为"20世纪90年代最伟大的史诗电影之一"。</p>
+    </div>
+    <div class="highlight-card" data-delay="100">
+      <div class="highlight-icon">
+        <svg viewBox="0 0 48 48" fill="none">
+          <path d="M24,6 L26,20 L40,20 L28,30 L32,44 L24,36 L16,44 L20,30 L8,20 L22,20 Z" fill="#8B6FAC" opacity="0.25" stroke="#8B6FAC" stroke-width="1.5"/>
+          <path d="M24,10 L25,18 L33,18 L27,23 L29,32 L24,27 L19,32 L21,23 L15,18 L23,18 Z" fill="#8B6FAC" opacity="0.15"/>
+        </svg>
+      </div>
+      <h3 class="highlight-title">梅尔·吉布森</h3>
+      <p class="highlight-desc">自导自演的巅峰之作，将华莱士的刚毅、悲壮与赤诚演绎得淋漓尽致，成就影史最经典的英雄形象之一。</p>
+    </div>
+    <div class="highlight-card" data-delay="200">
+      <div class="highlight-icon">
+        <svg viewBox="0 0 48 48" fill="none">
+          <rect x="8" y="18" width="32" height="24" rx="3" stroke="#2D4A3E" stroke-width="1.5" fill="none"/>
+          <circle cx="24" cy="30" r="6" stroke="#2D4A3E" stroke-width="1.5" fill="none"/>
+          <circle cx="24" cy="30" r="2" fill="#2D4A3E" opacity="0.3"/>
+          <path d="M20,16 L24,12 L28,16" stroke="#2D4A3E" stroke-width="1.5" fill="none"/>
+          <line x1="24" y1="12" x2="24" y2="18" stroke="#2D4A3E" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h3 class="highlight-title">詹姆斯·霍纳配乐</h3>
+      <p class="highlight-desc">风笛与交响乐的交融，谱写出一曲苍凉壮阔的苏格兰悲歌。"For the love of a princess"至今仍是影史最动人的旋律之一。</p>
+    </div>
+    <div class="highlight-card" data-delay="300">
+      <div class="highlight-icon">
+        <svg viewBox="0 0 48 48" fill="none">
+          <path d="M10,34 C10,34 14,14 24,14 C34,14 38,34 38,34" stroke="#5B3A7A" stroke-width="1.5" fill="none"/>
+          <path d="M14,30 C14,30 18,18 24,18 C30,18 34,30 34,30" stroke="#5B3A7A" stroke-width="1" fill="none" opacity="0.5"/>
+          <path d="M18,26 C18,26 21,20 24,20 C27,20 30,26 30,26" stroke="#5B3A7A" stroke-width="1" fill="none" opacity="0.3"/>
+          <circle cx="24" cy="38" r="6" stroke="#5B3A7A" stroke-width="1.5" fill="none"/>
+          <line x1="24" y1="38" x2="24" y2="44" stroke="#5B3A7A" stroke-width="1.5"/>
+          <line x1="20" y1="42" x2="28" y2="42" stroke="#5B3A7A" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <h3 class="highlight-title">史诗级战争场面</h3>
+      <p class="highlight-desc">斯特灵桥战役的拍摄至今被奉为冷兵器战争戏的教科书级范本——真实、粗粝、震撼，毫无CGI时代的花哨。</p>
+    </div>
+    <div class="highlight-card" data-delay="400">
+      <div class="highlight-icon">
+        <svg viewBox="0 0 48 48" fill="none">
+          <path d="M24,4 L28,16 L40,16 L30,24 L34,36 L24,28 L14,36 L18,24 L8,16 L20,16 Z" stroke="#C9A96E" stroke-width="1.5" fill="none"/>
+          <path d="M24,10 L26,14 L32,14 L28,18 L30,24 L24,20 L18,24 L20,18 L16,14 L22,14 Z" fill="#C9A96E" opacity="0.15"/>
+        </svg>
+      </div>
+      <h3 class="highlight-title">自由之精神</h3>
+      <p class="highlight-desc">"Freedom!"——这声临终呐喊穿透银幕，成为电影史上最振聋发聩的宣言之一。它超越国界，直抵每个观众的内心。</p>
+    </div>
+    <div class="highlight-card" data-delay="500">
+      <div class="highlight-icon">
+        <svg viewBox="0 0 48 48" fill="none">
+          <rect x="12" y="8" width="24" height="32" rx="3" stroke="#8B6FAC" stroke-width="1.5" fill="none"/>
+          <circle cx="24" cy="20" r="6" stroke="#8B6FAC" stroke-width="1.5" fill="none"/>
+          <path d="M16,20 L12,24 L16,28" stroke="#8B6FAC" stroke-width="1.5" fill="none"/>
+          <path d="M32,20 L36,24 L32,28" stroke="#8B6FAC" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+      <h3 class="highlight-title">莎士比亚式悲剧</h3>
+      <p class="highlight-desc">爱恨交织、忠诚与背叛、英雄与懦夫……影片的每一个角色都充满着悲剧厚度，结构堪比古典戏剧的完美铺陈。</p>
+    </div>
+  </div>
+</section>
+
+<!-- === Quote === -->
+<section class="quote-section">
+  <div class="quote-content">
+    <div class="quote-mark">❝</div>
+    <p class="quote-text">Fight, and you may die. Run, and you'll live — at least a while. And dying in your beds, many years from now, would you be willing to trade all the days from this day to that for one chance — just one chance — to come back here and tell our enemies that they may take our lives, but they'll never take our freedom!</p>
+    <div class="quote-attribution">— William Wallace, Braveheart</div>
+  </div>
+</section>
+
+<!-- === Why Watch === -->
+<section class="section why-section">
+  <div class="section-header">
+    <div class="section-label">Why Watch</div>
+    <h2 class="section-title">为什么值得看</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="why-grid" id="whyGrid">
+    <div class="why-card" data-delay="0">
+      <div class="why-number">01</div>
+      <div class="why-text">
+        <h4>影史最伟大的史诗之一</h4>
+        <p>从苏格兰高地的苍茫壮阔到万人厮杀的战场，《勇敢的心》展现了好莱坞古典史诗最后的辉煌，也是那个年代大银幕魅力的最佳代言。</p>
+      </div>
+    </div>
+    <div class="why-card" data-delay="100">
+      <div class="why-number">02</div>
+      <div class="why-text">
+        <h4>超越时代的自由宣言</h4>
+        <p>这部电影讲述的不只是苏格兰的历史，更是关于人类尊严与自由的普世故事。无论放在哪个时代，华莱士的选择都让人热血沸腾。</p>
+      </div>
+    </div>
+    <div class="why-card" data-delay="200">
+      <div class="why-number">03</div>
+      <div class="why-text">
+        <h4>技术与艺术的巅峰融合</h4>
+        <p>詹姆斯·霍纳的配乐是灵魂，约翰·托尔的摄影是眼睛，梅尔·吉布森的导演与表演是心脏——每一个环节都堪称教科书级别。</p>
+      </div>
+    </div>
+    <div class="why-card" data-delay="300">
+      <div class="why-number">04</div>
+      <div class="why-text">
+        <h4>看完会沉默很久的那种电影</h4>
+        <p>这不是一部让人轻松走出影院的电影。它会在你心里留下深刻的烙印，让你重新思考什么是勇气、什么是牺牲、什么是真正地活着。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === Awards === -->
+<section class="section awards-section">
+  <div class="section-header">
+    <div class="section-label">Awards</div>
+    <h2 class="section-title">荣誉殿堂</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="awards-list" id="awardsList">
+    <span class="award-tag highlight" data-delay="0">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9"/></svg>
+      奥斯卡最佳影片
+    </span>
+    <span class="award-tag highlight" data-delay="50">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9"/></svg>
+      奥斯卡最佳导演
+    </span>
+    <span class="award-tag highlight" data-delay="100">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9"/></svg>
+      奥斯卡最佳摄影
+    </span>
+    <span class="award-tag highlight" data-delay="150">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9"/></svg>
+      奥斯卡最佳音效剪辑
+    </span>
+    <span class="award-tag highlight" data-delay="200">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12,2 15,9 22,9 16,14 18,21 12,17 6,21 8,14 2,9 9,9"/></svg>
+      奥斯卡最佳化妆
+    </span>
+    <span class="award-tag" data-delay="250">金球奖最佳导演</span>
+    <span class="award-tag" data-delay="300">金球奖最佳配乐</span>
+    <span class="award-tag" data-delay="350">英国电影学院奖最佳摄影</span>
+    <span class="award-tag" data-delay="400">AFI百年百大电影</span>
+    <span class="award-tag" data-delay="450">美国国家评论协会年度十佳</span>
+    <span class="award-tag" data-delay="500">MTV电影奖最佳影片</span>
+    <span class="award-tag" data-delay="550">帝国杂志影史最伟大电影</span>
+  </div>
+</section>
+
+<!-- === Info Table === -->
+<section class="section info-section">
+  <div class="section-header">
+    <div class="section-label">Info</div>
+    <h2 class="section-title">影片档案</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="info-table">
+    <div class="info-row"><div class="info-label">中文片名</div><div class="info-value">勇敢的心</div></div>
+    <div class="info-row"><div class="info-label">英文片名</div><div class="info-value">Braveheart</div></div>
+    <div class="info-row"><div class="info-label">上映年份</div><div class="info-value">1995年</div></div>
+    <div class="info-row"><div class="info-label">导演</div><div class="info-value">梅尔·吉布森 (Mel Gibson)</div></div>
+    <div class="info-row"><div class="info-label">主演</div><div class="info-value">梅尔·吉布森、苏菲·玛索 (Sophie Marceau)、帕特里克·麦高汉、布莱恩·考克斯</div></div>
+    <div class="info-row"><div class="info-label">编剧</div><div class="info-value">兰德尔·华莱士 (Randall Wallace)</div></div>
+    <div class="info-row"><div class="info-label">配乐</div><div class="info-value">詹姆斯·霍纳 (James Horner)</div></div>
+    <div class="info-row"><div class="info-label">摄影</div><div class="info-value">约翰·托尔 (John Toll)</div></div>
+    <div class="info-row"><div class="info-label">片长</div><div class="info-value">178分钟（导演剪辑版）</div></div>
+    <div class="info-row"><div class="info-label">国家</div><div class="info-value">美国</div></div>
+    <div class="info-row"><div class="info-label">类型</div><div class="info-value">剧情 / 动作 / 传记 / 历史 / 战争</div></div>
+    <div class="info-row"><div class="info-label">制作成本</div><div class="info-value">约 7200 万美元</div></div>
+  </div>
+</section>
+
+<!-- === Editor's Note === -->
+<section class="editor-section">
+  <div class="editor-content">
+    <div class="editor-stars">★★★★★</div>
+    <p class="editor-text">
+      有些电影让人热血沸腾，有些电影让人热泪盈眶。<br>
+      《勇敢的心》两者都是。它用风笛、长剑与一声"Freedom!"，<br>
+     在影史上刻下了一道永不磨灭的印记。<br>
+      如果你还没有看过——你欠自己一次。<br>
+      如果你已经看过——你知道该再看一遍。
+    </p>
+    <div class="editor-sign">— 编辑推荐 —</div>
+  </div>
+</section>
+
+<!-- === Footer === -->
+<div class="footer">
+  WorkBuddy 经典电影推荐 · 2026 · 全部内容无剧透
+</div>
+
+<script>
+// === Fog / Mist Canvas ===
+(function() {
+  const canvas = document.getElementById('fog-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const particles = [];
+  const COUNT = 60;
+
+  for (let i = 0; i < COUNT; i++) {
+    particles.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: 80 + Math.random() * 200,
+      speedX: 0.08 + Math.random() * 0.2,
+      speedY: 0.02 + Math.random() * 0.06,
+      opacity: 0.03 + Math.random() * 0.06,
+      phase: Math.random() * Math.PI * 2,
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    const time = Date.now() * 0.001;
+
+    for (const p of particles) {
+      p.x += p.speedX;
+      p.y += p.speedY + Math.sin(time + p.phase) * 0.15;
+
+      if (p.x > W + p.r) p.x = -p.r;
+      if (p.y > H + p.r) p.y = -p.r;
+
+      const pulse = 0.7 + 0.3 * Math.sin(time + p.phase);
+      const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+      grad.addColorStop(0, `rgba(232, 213, 163, ${p.opacity * pulse})`);
+      grad.addColorStop(0.4, `rgba(201, 169, 110, ${p.opacity * pulse * 0.5})`);
+      grad.addColorStop(0.7, `rgba(139, 111, 172, ${p.opacity * pulse * 0.2})`);
+      grad.addColorStop(1, 'rgba(139, 111, 172, 0)');
+
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// === Intersection Observer ===
+const observerOptions = {
+  root: null,
+  threshold: 0.1,
+  rootMargin: '0px 0px -60px 0px',
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const delay = parseInt(el.dataset.delay) || 0;
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, delay);
+      observer.unobserve(el);
+    }
+  });
+}, observerOptions);
+
+// Observe rating cards
+document.querySelectorAll('.rating-card').forEach(el => observer.observe(el));
+
+// Observe story elements
+document.querySelectorAll('.story-content, .story-poster').forEach(el => observer.observe(el));
+
+// Observe highlight cards
+document.querySelectorAll('.highlight-card').forEach(el => observer.observe(el));
+
+// Observe why cards
+document.querySelectorAll('.why-card').forEach(el => observer.observe(el));
+
+// Observe award tags
+document.querySelectorAll('.award-tag').forEach(el => observer.observe(el));
+
+// === Rating Number Count Animation ===
+function animateCount(el, target, suffix) {
+  const duration = 1500;
+  const start = performance.now();
+  const isFloat = target % 1 !== 0;
+
+  function step(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = eased * target;
+    el.textContent = isFloat ? current.toFixed(1) : Math.floor(current);
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      el.textContent = isFloat ? target.toFixed(1) : target;
+    }
+  }
+  requestAnimationFrame(step);
+}
+
+function animateBar(bar, width) {
+  setTimeout(() => {
+    bar.style.width = width + '%';
+  }, 300);
+}
+
+// Trigger rating animations when rating section is visible
+const ratingObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      document.querySelectorAll('.rating-count').forEach(el => {
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.nextElementSibling ? el.nextElementSibling.textContent : '';
+        animateCount(el, target, suffix);
+      });
+      document.querySelectorAll('.rating-bar-fill').forEach(el => {
+        const width = parseFloat(el.dataset.width);
+        animateBar(el, width);
+      });
+      ratingObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const ratingSection = document.querySelector('.rating-section');
+if (ratingSection) ratingObserver.observe(ratingSection);
+
+// === Sparkle cursor effect ===
+(function() {
+  const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+  if (isMobile) return;
+
+  const body = document.body;
+
+  document.addEventListener('mousemove', function(e) {
+    if (Math.random() > 0.15) return;
+
+    const spark = document.createElement('div');
+    spark.style.cssText = `
+      position: fixed;
+      pointer-events: none;
+      width: ${2 + Math.random() * 4}px;
+      height: ${2 + Math.random() * 4}px;
+      background: rgba(201, 169, 110, ${0.3 + Math.random() * 0.4});
+      border-radius: 50%;
+      left: ${e.clientX}px;
+      top: ${e.clientY}px;
+      z-index: 9999;
+      transition: all ${0.6 + Math.random() * 0.6}s ease-out;
+      opacity: 1;
+    `;
+    body.appendChild(spark);
+
+    requestAnimationFrame(() => {
+      spark.style.transform = `translate(${(Math.random() - 0.5) * 30}px, ${(Math.random() - 0.5) * 30}px) scale(0)`;
+      spark.style.opacity = '0';
+    });
+
+    setTimeout(() => {
+      spark.remove();
+    }, 1200);
+  });
+})();
+
+// === Smooth Scroll for scroll indicator ===
+document.querySelector('.scroll-indicator')?.addEventListener('click', () => {
+  document.querySelector('.rating-section')?.scrollIntoView({ behavior: 'smooth' });
+});
+
+// === Parallax on hero year ===
+window.addEventListener('scroll', () => {
+  const year = document.querySelector('.hero-year');
+  if (!year) return;
+  const scrolled = window.pageYOffset;
+  year.style.transform = `translate(-50%, calc(-50% - ${scrolled * 0.3}px))`;
+});
+</script>
+</body>
+</html>

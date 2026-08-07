@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>闻香识女人 · 经典电影推荐</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface2: #1a1a26;
+      --border: rgba(255,255,255,0.07);
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-dim: rgba(201,168,76,0.15);
+      --cream: #f0e6c8;
+      --tan: #d4b896;
+      --red: #8b1a1a;
+      --red-warm: #c0392b;
+      --text: #e8ddd0;
+      --text-dim: #9a8f82;
+      --accent: #b8860b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Georgia', 'Palatino Linotype', serif;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ─── Canvas 背景 ─── */
+    #bgCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 24px;
+      padding: 6px 18px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      animation: fadeDown 0.8s ease both;
+    }
+
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+
+    .hero-year {
+      font-size: clamp(6rem, 18vw, 14rem);
+      font-weight: 900;
+      line-height: 0.85;
+      color: transparent;
+      background: linear-gradient(160deg, rgba(201,168,76,0.06) 0%, rgba(201,168,76,0.02) 100%);
+      -webkit-text-stroke: 1px rgba(201,168,76,0.18);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -52%);
+      pointer-events: none;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      animation: yearIn 1.2s ease both 0.2s;
+    }
+
+    .hero-tagline {
+      font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      opacity: 0.7;
+      animation: fadeDown 0.8s ease both 0.3s;
+    }
+
+    .hero-title-zh {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      animation: fadeUp 0.8s ease both 0.4s;
+    }
+
+    .hero-title-en {
+      font-size: clamp(1rem, 2.5vw, 1.6rem);
+      color: var(--gold);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      margin-top: 8px;
+      animation: fadeUp 0.8s ease both 0.5s;
+    }
+
+    .hero-divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 28px auto;
+      animation: fadeUp 0.8s ease both 0.55s;
+    }
+
+    .hero-quote {
+      max-width: 520px;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--tan);
+      font-style: italic;
+      line-height: 1.8;
+      animation: fadeUp 0.8s ease both 0.65s;
+    }
+
+    .hero-quote span {
+      color: var(--gold-light);
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      animation: fadeUp 0.8s ease both 0.75s;
+    }
+
+    .hero-meta-item {
+      text-align: center;
+    }
+
+    .hero-meta-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-family: 'Courier New', monospace;
+    }
+
+    .hero-meta-value {
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: fadeUp 1s ease both 1.2s;
+    }
+
+    .hero-scroll span {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-family: 'Courier New', monospace;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 1.8s ease infinite;
+    }
+
+    /* ─── SCORES ─── */
+    .section {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-family: 'Courier New', monospace;
+      margin-bottom: 16px;
+      opacity: 0.8;
+    }
+
+    .section-title {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--cream);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      margin-bottom: 48px;
+    }
+
+    .scores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .score-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .score-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .score-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.3); }
+    .score-card:hover::before { opacity: 1; }
+
+    .score-platform {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-family: 'Courier New', monospace;
+      margin-bottom: 12px;
+    }
+
+    .score-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+      font-family: 'Courier New', monospace;
+    }
+
+    .score-number sup {
+      font-size: 1.2rem;
+      vertical-align: super;
+      color: var(--gold-light);
+    }
+
+    .score-bar-wrap {
+      background: rgba(255,255,255,0.05);
+      border-radius: 2px;
+      height: 3px;
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    .score-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 2px;
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .score-desc {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      margin-top: 10px;
+    }
+
+    /* ─── SYNOPSIS ─── */
+    .synopsis-wrap {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media(max-width: 700px) {
+      .synopsis-wrap { grid-template-columns: 1fr; }
+    }
+
+    .synopsis-text p {
+      color: var(--text);
+      font-size: 1.02rem;
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+
+    .synopsis-text p:first-child::first-letter {
+      font-size: 3.2em;
+      float: left;
+      line-height: 0.75;
+      margin-right: 8px;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .spoiler-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: rgba(139,26,26,0.15);
+      border: 1px solid rgba(139,26,26,0.3);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      color: #e07070;
+      letter-spacing: 0.05em;
+      margin-top: 8px;
+    }
+
+    /* ─── POSTER CARD ─── */
+    .poster-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      position: sticky;
+      top: 100px;
+    }
+
+    .poster-svg-wrap {
+      width: 100%;
+      aspect-ratio: 2/3;
+      background: #0d0d15;
+    }
+
+    .poster-info {
+      padding: 20px;
+    }
+
+    .poster-info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }
+
+    .poster-info-row:last-child { border-bottom: none; }
+    .poster-info-key { color: var(--text-dim); font-family: 'Courier New', monospace; letter-spacing: 0.05em; }
+    .poster-info-val { color: var(--cream); text-align: right; }
+
+    /* ─── HIGHLIGHTS ─── */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .highlight-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .highlight-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .highlight-card:hover {
+      border-color: rgba(201,168,76,0.25);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      transform: translateY(-4px);
+    }
+
+    .highlight-num {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: rgba(201,168,76,0.08);
+      position: absolute;
+      top: 12px; right: 16px;
+      font-family: 'Courier New', monospace;
+      line-height: 1;
+    }
+
+    .highlight-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+    }
+
+    .highlight-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .highlight-body {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* ─── QUOTE ─── */
+    .quote-block {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .quote-inner {
+      background: linear-gradient(135deg, #151520, #1a1a2a);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-left: 4px solid var(--gold);
+      border-radius: 16px;
+      padding: 48px 52px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-inner::before {
+      content: '"';
+      position: absolute;
+      top: -10px; left: 24px;
+      font-size: 12rem;
+      color: rgba(201,168,76,0.05);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .quote-text {
+      font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .quote-source {
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ─── WHY WATCH ─── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .why-card {
+      position: relative;
+      padding: 32px 24px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+
+    .why-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .why-accent {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .why-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .why-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .why-body {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* ─── HONORS ─── */
+    .honors-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .honor-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 24px;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+    }
+
+    .honor-tag.gold {
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold-light);
+    }
+
+    .honor-tag.silver {
+      background: rgba(180,180,200,0.08);
+      border: 1px solid rgba(180,180,200,0.2);
+      color: #c0c0c8;
+    }
+
+    /* ─── ARCHIVE TABLE ─── */
+    .archive-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .archive-table tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .archive-table tr:hover { background: rgba(255,255,255,0.02); }
+
+    .archive-table td {
+      padding: 14px 0;
+      font-size: 0.9rem;
+    }
+
+    .archive-table td:first-child {
+      color: var(--text-dim);
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      width: 160px;
+    }
+
+    .archive-table td:last-child { color: var(--cream); }
+
+    /* ─── EPILOGUE ─── */
+    .epilogue {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 60px 24px 100px;
+    }
+
+    .epilogue-stars {
+      font-size: 1.8rem;
+      color: var(--gold);
+      letter-spacing: 8px;
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    .epilogue-text {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--tan);
+      line-height: 1.8;
+    }
+
+    .epilogue-sig {
+      margin-top: 28px;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ─── DIVIDER ─── */
+    .section-sep {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto 0;
+      padding: 0 24px;
+    }
+
+    .sep-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.2), transparent);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes yearIn {
+      from { opacity: 0; transform: translate(-50%, -48%) scale(1.05); }
+      to   { opacity: 1; transform: translate(-50%, -52%) scale(1); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    @keyframes scrollLine {
+      0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+      50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+      51%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    }
+
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width: 600px) {
+      .quote-inner { padding: 32px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<section class="hero">
+  <div class="hero-year">1992</div>
+
+  <div class="hero-badge">
+    <span class="hero-badge-dot"></span>
+    Classic Film · Today's Pick
+  </div>
+
+  <p class="hero-tagline">Academy Award · Best Actor · IMDB 8.0 · 豆瓣 9.1</p>
+
+  <h1 class="hero-title-zh">闻香识女人</h1>
+  <p class="hero-title-en">Scent of a Woman</p>
+
+  <div class="hero-divider"></div>
+
+  <p class="hero-quote">
+    "<span>Hoo-ah！</span>"<br>
+    那个瞬间，整个世界都为一个男人停了下来。
+  </p>
+
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">导演</div>
+      <div class="hero-meta-value">马丁·布雷斯特</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">主演</div>
+      <div class="hero-meta-value">阿尔·帕西诺</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">年份</div>
+      <div class="hero-meta-value">1992</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">时长</div>
+      <div class="hero-meta-value">157 分钟</div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ════════════════════ SCORES ════════════════════ -->
+<section class="section">
+  <p class="section-label reveal-up">Rating · 评分一览</p>
+  <h2 class="section-title reveal-up">口碑与评分</h2>
+  <p class="section-subtitle reveal-up">经历三十余年，依然被影迷奉为年度最感人的人物电影之一</p>
+
+  <div class="scores-grid">
+    <div class="score-card">
+      <div class="score-platform">IMDb</div>
+      <div class="score-number" data-target="8.0">0.0</div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="80"></div></div>
+      <div class="score-desc">全球最大电影数据库</div>
+    </div>
+    <div class="score-card">
+      <div class="score-platform">豆瓣</div>
+      <div class="score-number" data-target="9.1">0.0</div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="91"></div></div>
+      <div class="score-desc">中文影迷评分最高之一</div>
+    </div>
+    <div class="score-card">
+      <div class="score-platform">烂番茄</div>
+      <div class="score-number" data-target="90"><sup>%</sup>0</div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="90"></div></div>
+      <div class="score-desc">媒体新鲜度</div>
+    </div>
+    <div class="score-card">
+      <div class="score-platform">奥斯卡</div>
+      <div class="score-number">🏆</div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="100"></div></div>
+      <div class="score-desc">最佳男主角 · 阿尔·帕西诺</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"><div class="sep-line"></div></div>
+
+<!-- ════════════════════ SYNOPSIS ════════════════════ -->
+<section class="section">
+  <p class="section-label reveal-up">Synopsis · 剧情梗概</p>
+  <h2 class="section-title reveal-up">关于这个故事</h2>
+  <p class="section-subtitle reveal-up">无需剧透，只需知道出发点</p>
+
+  <div class="synopsis-wrap">
+    <div class="synopsis-text reveal-up">
+      <p>
+        一位名叫查理的贫困大学生，为了赚取假期路费，接受了一份看护工作——陪伴一位脾气暴躁、双目失明的退役陆军中校弗兰克·斯雷德度过感恩节假期。
+      </p>
+      <p>
+        没人告诉查理，这将是一趟改变他一生的旅程。两个原本毫不相干的人，一个年轻迷茫，一个老辣孤傲，踏上了同一辆出租车，驶向纽约最奢华的酒店。
+      </p>
+      <p>
+        这不是一部盲人励志片，也不是简单的忘年交故事。它是一场关于尊严、选择与勇气的深邃对话——在鄙视与温情之间，在绝望与热爱之间。
+      </p>
+      <p>
+        斯雷德对生活有他自己的仪式感：探戈、法拉利、烈酒……以及他对身边每一位女性那种无与伦比的感知力。
+      </p>
+      <span class="spoiler-note">🔒 以下情节与结局未作任何透露，请放心观看</span>
+    </div>
+
+    <!-- SVG Poster -->
+    <div class="poster-card">
+      <div class="poster-svg-wrap">
+        <svg viewBox="0 0 340 510" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <radialGradient id="gBg" cx="50%" cy="40%" r="65%">
+              <stop offset="0%" stop-color="#1a1420"/>
+              <stop offset="100%" stop-color="#07070e"/>
+            </radialGradient>
+            <radialGradient id="gSpot" cx="50%" cy="60%" r="40%">
+              <stop offset="0%" stop-color="rgba(201,168,76,0.12)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+            <linearGradient id="gFloor" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="rgba(201,168,76,0.05)"/>
+              <stop offset="100%" stop-color="rgba(201,168,76,0.15)"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <clipPath id="posterClip">
+              <rect width="340" height="510" rx="0"/>
+            </clipPath>
+          </defs>
+
+          <g clip-path="url(#posterClip)">
+            <!-- Background -->
+            <rect width="340" height="510" fill="url(#gBg)"/>
+            <rect width="340" height="510" fill="url(#gSpot)"/>
+
+            <!-- Ballroom floor lines -->
+            <g opacity="0.12" stroke="#c9a84c" stroke-width="0.5">
+              <line x1="0" y1="510" x2="170" y2="280" />
+              <line x1="340" y1="510" x2="170" y2="280" />
+              <line x1="85" y1="510" x2="170" y2="280" />
+              <line x1="255" y1="510" x2="170" y2="280" />
+              <line x1="0" y1="420" x2="340" y2="420" />
+              <line x1="0" y1="360" x2="340" y2="380" />
+              <line x1="0" y1="460" x2="340" y2="460" />
+            </g>
+
+            <!-- Spotlight on floor -->
+            <ellipse cx="170" cy="490" rx="120" ry="25" fill="rgba(201,168,76,0.07)"/>
+
+            <!-- Male silhouette (Frank, walking with cane) -->
+            <!-- Body -->
+            <ellipse cx="148" cy="175" rx="22" ry="28" fill="#c0a060" opacity="0.9"/>
+            <!-- Head -->
+            <circle cx="148" cy="142" r="18" fill="#c8a870" opacity="0.9"/>
+            <!-- Hair / hat detail -->
+            <ellipse cx="148" cy="130" rx="18" ry="5" fill="#5a4020"/>
+            <!-- Military uniform -->
+            <rect x="126" y="200" width="44" height="80" rx="8" fill="#2a2015" opacity="0.95"/>
+            <!-- Medals on chest -->
+            <circle cx="136" cy="215" r="4" fill="#c9a84c" opacity="0.8"/>
+            <circle cx="149" cy="213" r="4" fill="#c9a84c" opacity="0.8"/>
+            <circle cx="162" cy="216" r="4" fill="#c9a84c" opacity="0.8"/>
+            <!-- Epaulettes -->
+            <rect x="122" y="200" width="14" height="6" rx="3" fill="#8a7440"/>
+            <rect x="164" y="200" width="14" height="6" rx="3" fill="#8a7440"/>
+            <!-- Left arm -->
+            <line x1="126" y1="215" x2="106" y2="260" stroke="#2a2015" stroke-width="14" stroke-linecap="round"/>
+            <!-- Right arm holding cane -->
+            <line x1="170" y1="215" x2="190" y2="260" stroke="#2a2015" stroke-width="14" stroke-linecap="round"/>
+            <!-- Cane -->
+            <line x1="192" y1="258" x2="215" y2="340" stroke="#8a7440" stroke-width="4" stroke-linecap="round"/>
+            <line x1="205" y1="340" x2="225" y2="340" stroke="#8a7440" stroke-width="4" stroke-linecap="round"/>
+            <!-- Legs -->
+            <line x1="140" y1="278" x2="128" y2="370" stroke="#1a1510" stroke-width="16" stroke-linecap="round"/>
+            <line x1="156" y1="278" x2="170" y2="370" stroke="#1a1510" stroke-width="16" stroke-linecap="round"/>
+            <!-- Shoes -->
+            <ellipse cx="126" cy="372" rx="14" ry="7" fill="#0a0a0f"/>
+            <ellipse cx="172" cy="372" rx="14" ry="7" fill="#0a0a0f"/>
+
+            <!-- Female silhouette (dancing partner) -->
+            <!-- Body dress -->
+            <path d="M215 200 Q242 220 248 280 Q238 310 215 320 Q192 310 182 280 Q188 220 215 200 Z" fill="#b8906a" opacity="0.85"/>
+            <!-- Skirt flare -->
+            <path d="M182 280 Q168 330 175 370 L215 360 L255 370 Q262 330 248 280 Z" fill="#b8906a" opacity="0.7"/>
+            <!-- Head -->
+            <circle cx="215" cy="175" r="16" fill="#c8a870" opacity="0.9"/>
+            <!-- Hair -->
+            <path d="M200 165 Q215 148 230 165 Q228 170 215 168 Q202 170 200 165Z" fill="#3a2510"/>
+            <path d="M228 172 Q238 178 232 190" stroke="#3a2510" stroke-width="6" stroke-linecap="round" fill="none"/>
+            <!-- Arm extended for dance -->
+            <line x1="182" y1="225" x2="160" y2="255" stroke="#b8906a" stroke-width="10" stroke-linecap="round"/>
+
+            <!-- Spotlight beam from top -->
+            <path d="M120 0 L50 510 L290 510 L220 0Z" fill="rgba(255,240,200,0.025)"/>
+
+            <!-- Rose petals scattered -->
+            <g filter="url(#glow)" opacity="0.6">
+              <ellipse cx="80" cy="400" rx="8" ry="4" fill="#8b1a1a" transform="rotate(-30 80 400)"/>
+              <ellipse cx="260" cy="430" rx="6" ry="3" fill="#8b1a1a" transform="rotate(20 260 430)"/>
+              <ellipse cx="140" cy="470" rx="7" ry="3.5" fill="#8b1a1a" transform="rotate(-10 140 470)"/>
+              <ellipse cx="200" cy="450" rx="5" ry="2.5" fill="#8b1a1a" transform="rotate(40 200 450)"/>
+              <ellipse cx="50" cy="460" rx="6" ry="3" fill="#c0392b" transform="rotate(-20 50 460)"/>
+              <ellipse cx="290" cy="470" rx="7" ry="3.5" fill="#c0392b" transform="rotate(15 290 470)"/>
+            </g>
+
+            <!-- Top overlay gradient -->
+            <rect width="340" height="80" fill="url(#gBg)" opacity="0.8"/>
+
+            <!-- Film title text -->
+            <text x="170" y="50" fill="#c9a84c" font-size="11" font-family="Georgia,serif" text-anchor="middle" letter-spacing="4" opacity="0.9">SCENT OF A WOMAN</text>
+            <text x="170" y="68" fill="rgba(201,168,76,0.4)" font-size="8" font-family="'Courier New',monospace" text-anchor="middle" letter-spacing="3">1992</text>
+
+            <!-- Bottom film info bar -->
+            <rect x="0" y="485" width="340" height="25" fill="rgba(0,0,0,0.6)"/>
+            <text x="170" y="501" fill="rgba(201,168,76,0.5)" font-size="7" font-family="'Courier New',monospace" text-anchor="middle" letter-spacing="2">AL PACINO · CHRIS O'DONNELL</text>
+
+            <!-- Decorative border -->
+            <rect x="8" y="8" width="324" height="494" fill="none" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+            <rect x="14" y="14" width="312" height="482" fill="none" stroke="rgba(201,168,76,0.06)" stroke-width="0.5"/>
+          </g>
+        </svg>
+      </div>
+      <div class="poster-info">
+        <div class="poster-info-row">
+          <span class="poster-info-key">导演</span>
+          <span class="poster-info-val">马丁·布雷斯特</span>
+        </div>
+        <div class="poster-info-row">
+          <span class="poster-info-key">类型</span>
+          <span class="poster-info-val">剧情 / 人物</span>
+        </div>
+        <div class="poster-info-row">
+          <span class="poster-info-key">语言</span>
+          <span class="poster-info-val">英语</span>
+        </div>
+        <div class="poster-info-row">
+          <span class="poster-info-key">国家</span>
+          <span class="poster-info-val">美国</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"><div class="sep-line"></div></div>
+
+<!-- ════════════════════ HIGHLIGHTS ════════════════════ -->
+<section class="section">
+  <p class="section-label reveal-up">Highlights · 亮点所在</p>
+  <h2 class="section-title reveal-up">六大不可错过的理由</h2>
+  <p class="section-subtitle reveal-up">每一帧都是表演教科书</p>
+
+  <div class="highlights-grid">
+    <div class="highlight-card">
+      <div class="highlight-num">01</div>
+      <div class="highlight-icon">🏆</div>
+      <div class="highlight-title">帕西诺的封神之作</div>
+      <div class="highlight-body">阿尔·帕西诺凭此片赢得奥斯卡最佳男主角，弗兰克中校是他演员生涯的集大成——霸气、脆弱、幽默与深情在同一个人物身上层叠共存。那一声"Hoo-ah！"已成为影史最具辨识度的台词之一。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">02</div>
+      <div class="highlight-icon">💃</div>
+      <div class="highlight-title">教科书级别的探戈场景</div>
+      <div class="highlight-body">餐厅中那支即兴探戈，是整部电影的心脏所在。帕西诺与搭档之间的那段舞，不依赖视觉，只凭感知——那是一种将生命热情倾注于每一个动作的宣言，被公认为影史最美舞蹈场景之一。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">03</div>
+      <div class="highlight-icon">🎭</div>
+      <div class="highlight-title">忘年之交的双向成长</div>
+      <div class="highlight-body">中校与年轻查理的关系，从对抗到信赖，是两代人之间最真实的摩擦与理解。他们互相照见了对方生命中最需要的东西：一个需要有人在意，一个需要有人教他站起来。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">04</div>
+      <div class="highlight-icon">🎤</div>
+      <div class="highlight-title">法庭演讲段落</div>
+      <div class="highlight-body">影片结尾的演讲场景，充满力量与尊严。帕西诺以全情投入的方式将一段台词变为表演学的范本，令无数观众起立鼓掌——即便只是在荧幕前。这段独白被许多演员奉为必看参考。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">05</div>
+      <div class="highlight-icon">🎷</div>
+      <div class="highlight-title">托马斯·纽曼的配乐</div>
+      <div class="highlight-body">优雅而克制的原声音乐始终游走在情绪边缘，既不喧宾夺主，又在关键处恰到好处地放大人物内心。整部电影的情感节奏，一半来自帕西诺的表演，一半依赖这段配乐。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">06</div>
+      <div class="highlight-icon">✍️</div>
+      <div class="highlight-title">剧本的哲学深度</div>
+      <div class="highlight-body">改编自意大利小说与同名意大利电影，剧本对"尊严是否可以被剥夺"这一命题有着持续而深入的追问。它不说教，不煽情，只是借两个人的旅程展开一场静默的哲学探讨。</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"><div class="sep-line"></div></div>
+
+<!-- ════════════════════ QUOTE ════════════════════ -->
+<div class="quote-block reveal-up">
+  <div class="quote-inner">
+    <p class="quote-text">
+      "现在我站在人生的十字路口，我知道哪条路是对的——毫无例外，我总是知道。但我从不走那条路。你知道为什么吗？因为那太他妈难了。"
+    </p>
+    <p class="quote-source">— 弗兰克·斯雷德 · 《闻香识女人》</p>
+  </div>
+</div>
+
+<!-- ════════════════════ WHY WATCH ════════════════════ -->
+<section class="section">
+  <p class="section-label reveal-up">Why Watch · 为何值得一看</p>
+  <h2 class="section-title reveal-up">它值得你花 157 分钟</h2>
+  <p class="section-subtitle reveal-up">有些电影让你放松，有些电影让你颤栗，这部让你重新审视自己</p>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-accent"></div>
+      <span class="why-icon">🎯</span>
+      <div class="why-title">绝无仅有的表演体验</div>
+      <div class="why-body">帕西诺没有借助任何视觉辅助，却用声音、肢体与气场构建出一个令人无法移开目光的角色。那不是表演，那是"在场"。</div>
+    </div>
+    <div class="why-card">
+      <div class="why-accent"></div>
+      <span class="why-icon">🌹</span>
+      <div class="why-title">感官与情感的双重震撼</div>
+      <div class="why-body">电影名"闻香识女人"本身就是全片最动人的意象：一个看不见世界的人，却用感知力比任何人都更深地"看见"了生活的美。</div>
+    </div>
+    <div class="why-card">
+      <div class="why-accent"></div>
+      <span class="why-icon">⚖️</span>
+      <div class="why-title">关于勇气与选择的沉思</div>
+      <div class="why-body">影片核心命题并非关于残障，而是关于每个人面对艰难抉择时的取舍。它会让你在结束后很久，仍然在心里默默回答那个问题。</div>
+    </div>
+    <div class="why-card">
+      <div class="why-accent"></div>
+      <span class="why-icon">🏫</span>
+      <div class="why-title">表演专业必看经典</div>
+      <div class="why-body">无论你是否学习表演，这部电影都会让你理解什么叫"把角色活出来"。帕西诺的每一个细节，都值得反复品味。</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"><div class="sep-line"></div></div>
+
+<!-- ════════════════════ HONORS ════════════════════ -->
+<section class="section">
+  <p class="section-label reveal-up">Honors · 荣誉记录</p>
+  <h2 class="section-title reveal-up">奖项与认可</h2>
+  <p class="section-subtitle reveal-up"></p>
+
+  <div class="honors-wrap reveal-up">
+    <span class="honor-tag gold">🏆 第65届奥斯卡 · 最佳男主角</span>
+    <span class="honor-tag gold">🎬 第50届金球奖 · 最佳男主角提名</span>
+    <span class="honor-tag gold">🌟 美国影评人协会 · 最佳男主角</span>
+    <span class="honor-tag silver">📽️ 改编自意大利经典同名电影</span>
+    <span class="honor-tag silver">🎭 帕西诺第八次获奥斯卡提名后首次摘冠</span>
+    <span class="honor-tag silver">📚 美国编剧协会奖提名</span>
+    <span class="honor-tag gold">⭐ 豆瓣 Top250 · 永久经典名单</span>
+  </div>
+</section>
+
+<div class="section-sep"><div class="sep-line"></div></div>
+
+<!-- ════════════════════ ARCHIVE ════════════════════ -->
+<section class="section">
+  <p class="section-label reveal-up">Archive · 影片档案</p>
+  <h2 class="section-title reveal-up">基本信息</h2>
+  <p class="section-subtitle reveal-up"></p>
+
+  <table class="archive-table reveal-up">
+    <tr><td>原片名</td><td>Scent of a Woman</td></tr>
+    <tr><td>中文译名</td><td>闻香识女人</td></tr>
+    <tr><td>上映年份</td><td>1992</td></tr>
+    <tr><td>导演</td><td>马丁·布雷斯特 (Martin Brest)</td></tr>
+    <tr><td>主演</td><td>阿尔·帕西诺 / 克里斯·奥唐纳</td></tr>
+    <tr><td>编剧</td><td>博·戈德曼（改编自Ruggero Maccari等）</td></tr>
+    <tr><td>类型</td><td>剧情 / 人物成长</td></tr>
+    <tr><td>国家</td><td>美国</td></tr>
+    <tr><td>片长</td><td>157 分钟</td></tr>
+    <tr><td>配乐</td><td>托马斯·纽曼 (Thomas Newman)</td></tr>
+    <tr><td>IMDb 评分</td><td>8.0 / 10</td></tr>
+    <tr><td>豆瓣评分</td><td>9.1 / 10</td></tr>
+  </table>
+</section>
+
+<!-- ════════════════════ EPILOGUE ════════════════════ -->
+<div class="epilogue reveal-up">
+  <span class="epilogue-stars">★ ★ ★ ★ ★</span>
+  <p class="epilogue-text">
+    三十年前，一个盲眼的老兵教会了一个年轻人什么叫站立；三十年后，这部电影依然在教会每一个观看它的人，什么叫做尊严。
+  </p>
+  <p class="epilogue-sig">— Classic Film Recommendation · May 17, 2026 —</p>
+</div>
+
+<script>
+/* ─── Canvas 粒子 + 玫瑰飘落 ─── */
+(function() {
+  const canvas = document.getElementById('bgCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const particles = [];
+  const roses = [];
+
+  // Ambient gold particles
+  for (let i = 0; i < 80; i++) {
+    particles.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      r: Math.random() * 1.5 + 0.3,
+      speed: Math.random() * 0.3 + 0.05,
+      opacity: Math.random() * 0.3 + 0.05,
+      drift: (Math.random() - 0.5) * 0.3,
+      pulse: Math.random() * Math.PI * 2
+    });
+  }
+
+  // Rose petals
+  for (let i = 0; i < 18; i++) {
+    roses.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight - window.innerHeight,
+      size: Math.random() * 8 + 4,
+      speed: Math.random() * 0.6 + 0.2,
+      drift: (Math.random() - 0.5) * 0.5,
+      angle: Math.random() * Math.PI * 2,
+      angleSpeed: (Math.random() - 0.5) * 0.02,
+      opacity: Math.random() * 0.25 + 0.05,
+      hue: Math.random() > 0.5 ? '#8b1a1a' : '#c0392b'
+    });
+  }
+
+  let frame = 0;
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Particles
+    particles.forEach(p => {
+      p.pulse += 0.02;
+      const op = p.opacity * (0.7 + 0.3 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201,168,76,${op})`;
+      ctx.fill();
+
+      p.y -= p.speed;
+      p.x += p.drift;
+      if (p.y < -5) { p.y = canvas.height + 5; p.x = Math.random() * canvas.width; }
+    });
+
+    // Rose petals
+    roses.forEach(r => {
+      r.angle += r.angleSpeed;
+      ctx.save();
+      ctx.translate(r.x, r.y);
+      ctx.rotate(r.angle);
+      ctx.globalAlpha = r.opacity;
+      ctx.fillStyle = r.hue;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, r.size, r.size * 0.45, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      r.y += r.speed;
+      r.x += r.drift;
+      if (r.y > canvas.height + 20) {
+        r.y = -20;
+        r.x = Math.random() * canvas.width;
+      }
+    });
+
+    frame++;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ─── Score Animation ─── */
+function animateScores() {
+  document.querySelectorAll('.score-number[data-target]').forEach(el => {
+    const target = parseFloat(el.getAttribute('data-target'));
+    const hasPct = el.querySelector('sup') !== null;
+    const isInt = Number.isInteger(target);
+    let start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      const prog = Math.min((ts - start) / 1400, 1);
+      const ease = 1 - Math.pow(1 - prog, 3);
+      const val = target * ease;
+      if (hasPct) {
+        el.innerHTML = `<sup>%</sup>${Math.round(val)}`;
+      } else {
+        el.textContent = isInt ? Math.round(val) : val.toFixed(1);
+      }
+      if (prog < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+
+  document.querySelectorAll('.score-bar').forEach(bar => {
+    const w = bar.getAttribute('data-width');
+    setTimeout(() => { bar.style.width = w + '%'; }, 100);
+  });
+}
+
+/* ─── IntersectionObserver ─── */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      if (e.target.classList.contains('scores-grid')) animateScores();
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal-up').forEach(el => io.observe(el));
+document.querySelectorAll('.highlight-card').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.1) + 's';
+  io.observe(el);
+});
+document.querySelectorAll('.why-card').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.12) + 's';
+  io.observe(el);
+});
+document.querySelector('.scores-grid') && io.observe(document.querySelector('.scores-grid'));
+</script>
+
+</body>
+</html>

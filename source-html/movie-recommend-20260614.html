@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>当幸福来敲门 — 经典电影推荐</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700&display=swap');
+
+  :root {
+    --amber: #D4953A;
+    --amber-light: #F0C060;
+    --amber-glow: #FFD54F;
+    --amber-dark: #8B6914;
+    --midnight: #0D1321;
+    --navy: #1A1F35;
+    --navy-light: #2A3050;
+    --cream: #F5F0E8;
+    --cream-dark: #D4C9B8;
+    --warm-gray: #8A8070;
+    --warm-white: #FAF6F0;
+    --gold: #D4A040;
+    --deep-brown: #2C1810;
+    --glass-bg: rgba(13,19,33,0.75);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--midnight);
+    color: var(--cream);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ===== CANVAS BACKGROUND ===== */
+  #particleCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ===== SCROLLBAR ===== */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--midnight); }
+  ::-webkit-scrollbar-thumb { background: var(--amber-dark); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--amber); }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(180deg,
+      rgba(13,19,33,0.3) 0%,
+      rgba(44,24,16,0.4) 50%,
+      rgba(13,19,33,0.85) 100%
+    );
+  }
+
+  .hero-year {
+    font-family: 'Georgia', serif;
+    font-size: clamp(8rem, 25vw, 18rem);
+    font-weight: 900;
+    color: rgba(212,149,58,0.10);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: -0.05em;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1.2rem;
+    border: 1px solid var(--amber);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    color: var(--amber-light);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    background: rgba(212,149,58,0.1);
+  }
+
+  .hero-title-en {
+    font-family: 'Georgia', serif;
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    font-weight: 700;
+    color: var(--amber-light);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+    text-shadow: 0 0 40px rgba(212,149,58,0.3);
+  }
+
+  .hero-title-cn {
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-tagline {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--warm-gray);
+    font-style: italic;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .hero-director {
+    font-size: 0.9rem;
+    color: var(--warm-gray);
+    letter-spacing: 0.05em;
+  }
+
+  .hero-director span {
+    color: var(--amber);
+  }
+
+  /* ===== SCROLL INDICATOR ===== */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+  }
+
+  .scroll-indicator span {
+    font-size: 0.75rem;
+    color: var(--warm-gray);
+    letter-spacing: 0.1em;
+  }
+
+  .scroll-arrow {
+    width: 24px;
+    height: 24px;
+    border-right: 2px solid var(--amber);
+    border-bottom: 2px solid var(--amber);
+    transform: rotate(45deg);
+    opacity: 0.6;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+  }
+
+  /* ===== SECTION WRAPPER ===== */
+  .section {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--amber-light);
+    text-align: center;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.08em;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--warm-gray);
+    font-size: 0.9rem;
+    margin-bottom: 3rem;
+    letter-spacing: 0.05em;
+  }
+
+  .section-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--amber), transparent);
+    margin: 0.5rem auto 2.5rem;
+  }
+
+  /* ===== RATING ROW ===== */
+  .rating-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .rating-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(212,149,58,0.15);
+    border-radius: 16px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .rating-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212,149,58,0.4);
+  }
+
+  .rating-label {
+    font-size: 0.75rem;
+    color: var(--warm-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .rating-number {
+    font-family: 'Georgia', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--amber-light);
+  }
+
+  .rating-number .decimal {
+    font-size: 1.2rem;
+  }
+
+  .rating-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(212,149,58,0.15);
+    border-radius: 2px;
+    margin-top: 0.8rem;
+    overflow: hidden;
+  }
+
+  .rating-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--amber), var(--amber-light));
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .rating-fill.visible {
+    /* width set via inline style */
+  }
+
+  /* ===== SYNOPSIS ===== */
+  .synopsis-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .synopsis-text {
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--cream-dark);
+  }
+
+  .synopsis-text p {
+    margin-bottom: 1.2rem;
+  }
+
+  .spoiler-free-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--amber);
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: var(--amber-light);
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+  }
+
+  .poster-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(212,149,58,0.15);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .poster-svg {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+  }
+
+  /* ===== HIGHLIGHTS ===== */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .highlight-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(212,149,58,0.1);
+    border-radius: 16px;
+    padding: 1.8rem;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .highlight-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(212,149,58,0.35);
+    box-shadow: 0 12px 40px rgba(212,149,58,0.08);
+  }
+
+  .highlight-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .highlight-card h4 {
+    font-size: 1.05rem;
+    color: var(--amber-light);
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.03em;
+  }
+
+  .highlight-card p {
+    font-size: 0.9rem;
+    color: var(--cream-dark);
+    line-height: 1.8;
+  }
+
+  /* ===== QUOTE SECTION ===== */
+  .quote-section {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(180deg,
+      transparent,
+      rgba(212,149,58,0.04),
+      transparent
+    );
+  }
+
+  .quote-block {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .quote-mark {
+    font-family: 'Georgia', serif;
+    font-size: 4rem;
+    color: var(--amber-dark);
+    line-height: 1;
+    opacity: 0.4;
+    margin-bottom: -1rem;
+  }
+
+  .quote-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--cream);
+    font-style: italic;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .quote-source {
+    font-size: 0.85rem;
+    color: var(--warm-gray);
+  }
+
+  .quote-source span {
+    color: var(--amber);
+  }
+
+  /* ===== WHY WATCH ===== */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .why-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(212,149,58,0.1);
+    border-radius: 16px;
+    padding: 1.8rem;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+
+  .why-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212,149,58,0.3);
+  }
+
+  .why-number {
+    font-family: 'Georgia', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: rgba(212,149,58,0.2);
+    margin-bottom: 0.5rem;
+  }
+
+  .why-card h4 {
+    font-size: 1rem;
+    color: var(--amber-light);
+    margin-bottom: 0.6rem;
+  }
+
+  .why-card p {
+    font-size: 0.85rem;
+    color: var(--cream-dark);
+    line-height: 1.7;
+  }
+
+  /* ===== FILM FACTS ===== */
+  .film-facts {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(212,149,58,0.12);
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .fact-item {
+    text-align: center;
+  }
+
+  .fact-label {
+    font-size: 0.7rem;
+    color: var(--warm-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.3rem;
+  }
+
+  .fact-value {
+    font-size: 0.95rem;
+    color: var(--cream);
+  }
+
+  /* ===== EDITOR RATING ===== */
+  .editor-final {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 4rem 1.5rem 5rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .editor-stars {
+    font-size: 2rem;
+    color: var(--amber-light);
+    letter-spacing: 0.3em;
+    margin-bottom: 1rem;
+  }
+
+  .editor-label {
+    font-size: 0.8rem;
+    color: var(--warm-gray);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .editor-message {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15rem;
+    color: var(--cream-dark);
+    line-height: 2;
+    font-style: italic;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: var(--warm-gray);
+    border-top: 1px solid rgba(212,149,58,0.08);
+  }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .synopsis-area {
+      grid-template-columns: 1fr;
+    }
+    .poster-card {
+      order: -1;
+    }
+    .rating-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .film-facts {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .section {
+      padding: 3rem 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .rating-row {
+      grid-template-columns: 1fr 1fr;
+    }
+    .highlights-grid {
+      grid-template-columns: 1fr;
+    }
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes glow-pulse {
+    0%, 100% { text-shadow: 0 0 20px rgba(212,149,58,0.2); }
+    50% { text-shadow: 0 0 40px rgba(212,149,58,0.4), 0 0 60px rgba(212,149,58,0.15); }
+  }
+
+  .glow-pulse {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== CANVAS ===== -->
+<canvas id="particleCanvas"></canvas>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-year">2006</div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ 经典推荐</div>
+    <div class="hero-title-cn">当幸福来敲门</div>
+    <div class="hero-title-en glow-pulse">The Pursuit of Happyness</div>
+    <div class="hero-director">
+      加布里尔·穆奇诺 执导 · <span>威尔·史密斯</span> 主演
+    </div>
+    <div class="hero-tagline">
+      "别让任何人告诉你，你做不到某事。<br>即使是我也不行。"
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>向下滚动</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ===== RATINGS ===== -->
+<section class="section">
+  <div class="rating-row reveal" id="ratingRow">
+    <div class="rating-card">
+      <div class="rating-label">IMDb</div>
+      <div class="rating-number">8.0</div>
+      <div class="rating-bar"><div class="rating-fill" data-width="80"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-label">豆瓣</div>
+      <div class="rating-number">9.2</div>
+      <div class="rating-bar"><div class="rating-fill" data-width="92"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-label">烂番茄</div>
+      <div class="rating-number">89<small style="font-size:1rem">%</small></div>
+      <div class="rating-bar"><div class="rating-fill" data-width="89"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-label">爆米花指数</div>
+      <div class="rating-number">96<small style="font-size:1rem">%</small></div>
+      <div class="rating-bar"><div class="rating-fill" data-width="96"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SYNOPSIS ===== -->
+<section class="section">
+  <h2 class="section-title reveal">剧情梗概</h2>
+  <div class="section-divider"></div>
+  <p class="section-subtitle reveal">故事背景 · 无剧透</p>
+  <div class="synopsis-area">
+    <div class="synopsis-text reveal">
+      <p>1981年的旧金山，克里斯·加德纳是一位聪明的推销员，他倾尽全部积蓄购入了一批骨密度扫描仪，却发现这种设备既昂贵又难以售出。妻子不堪生活压力离他而去，他带着年幼的儿子独自打拼。</p>
+      <p>一次偶然的机会，他路过一栋金融大厦，看到所有人脸上都洋溢着幸福的笑容。他鼓起勇气向一位开跑车的男人请教："你是怎么做到的？"那人告诉他两个字——股票经纪人。克里斯决定抓住这个改变命运的实习机会：没有薪水、竞争激烈，20人中只有1人能留下。</p>
+      <p>然而生活并未因此仁慈。被房东赶出家门、在车站厕所过夜、排长队住收容所……当所有的门似乎都关上时，他依然紧紧握着儿子的手，告诉他："别让任何人告诉你，你做不到某事。"</p>
+      <div class="spoiler-free-badge">✓ 无剧透·放心阅读</div>
+    </div>
+    <div class="poster-card reveal reveal-delay-1">
+      <svg class="poster-svg" viewBox="0 0 360 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="360" height="480" rx="8" fill="#0D1321"/>
+        <rect width="360" height="480" rx="8" stroke="rgba(212,149,58,0.2)" stroke-width="1"/>
+
+        <!-- City skyline silhouette -->
+        <g opacity="0.15">
+          <rect x="0" y="280" width="360" height="200" fill="#D4953A"/>
+          <polygon points="40,280 60,220 80,280" fill="#D4953A"/>
+          <polygon points="100,280 120,190 140,280" fill="#D4953A"/>
+          <polygon points="160,280 180,230 200,280" fill="#D4953A"/>
+          <polygon points="220,280 240,170 260,280" fill="#D4953A"/>
+          <polygon points="280,280 300,210 320,280" fill="#D4953A"/>
+          <rect x="0" y="300" width="360" height="180" fill="#1A1F35"/>
+        </g>
+
+        <!-- Glowing horizon -->
+        <rect x="0" y="270" width="360" height="40" fill="url(#horizonGlow)" opacity="0.3"/>
+
+        <!-- Moon -->
+        <circle cx="280" cy="80" r="30" fill="url(#moonGlow)" opacity="0.15"/>
+
+        <!-- Stars -->
+        <g opacity="0.2" fill="#FFD54F">
+          <circle cx="50" cy="50" r="1.5"/>
+          <circle cx="120" cy="30" r="1"/>
+          <circle cx="200" cy="60" r="1.5"/>
+          <circle cx="310" cy="45" r="1"/>
+          <circle cx="80" cy="120" r="1"/>
+          <circle cx="170" cy="95" r="0.8"/>
+          <circle cx="330" cy="110" r="1.2"/>
+        </g>
+
+        <!-- Father and son silhouettes walking right -->
+        <g opacity="0.35">
+          <!-- Father -->
+          <rect x="92" y="218" width="12" height="28" rx="3" fill="#D4953A"/>
+          <circle cx="98" cy="212" r="8" fill="#D4953A"/>
+          <!-- Son -->
+          <rect x="112" y="228" width="8" height="20" rx="3" fill="#D4953A"/>
+          <circle cx="116" cy="224" r="6" fill="#D4953A"/>
+        </g>
+
+        <!-- Light beam from behind -->
+        <rect x="0" y="200" width="360" height="150" fill="url(#lightBeam)" opacity="0.08"/>
+
+        <!-- Gradients -->
+        <defs>
+          <linearGradient id="horizonGlow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#F0C060" stop-opacity="0"/>
+            <stop offset="50%" stop-color="#F0C060"/>
+            <stop offset="100%" stop-color="#F0C060" stop-opacity="0"/>
+          </linearGradient>
+          <radialGradient id="moonGlow" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0%" stop-color="#FFD54F"/>
+            <stop offset="100%" stop-color="#FFD54F" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="lightBeam" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#F0C060" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#F0C060" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Title on poster -->
+        <text x="180" y="390" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#D4953A" letter-spacing="0.15em">The Pursuit of</text>
+        <text x="180" y="412" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="#F5F0E8" letter-spacing="0.1em" font-weight="700">Happyness</text>
+        <text x="180" y="440" text-anchor="middle" font-family="'Noto Sans SC',sans-serif" font-size="12" fill="#8A8070" letter-spacing="0.1em">当幸福来敲门</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HIGHLIGHTS ===== -->
+<section class="section">
+  <h2 class="section-title reveal">六大亮点</h2>
+  <div class="section-divider"></div>
+  <div class="highlights-grid">
+    <div class="highlight-card reveal reveal-delay-1">
+      <span class="highlight-icon">⭐</span>
+      <h4>威尔·史密斯的巅峰表演</h4>
+      <p>威尔·史密斯凭借此片首次获得奥斯卡最佳男主角提名，他将克里斯·加德纳的挣扎、坚韧与温柔刻画得入木三分。尤其是与亲儿子贾登·史密斯的真实对手戏，父爱浑然天成。</p>
+    </div>
+    <div class="highlight-card reveal reveal-delay-2">
+      <span class="highlight-icon">📖</span>
+      <h4>真实故事的震撼力量</h4>
+      <p>电影改编自美国投资家克里斯·加德纳的真实经历。他从一无所有的单亲父亲逆袭成为华尔街百万富翁，原型本人的存在本身就是一个比电影更传奇的故事。</p>
+    </div>
+    <div class="highlight-card reveal reveal-delay-3">
+      <span class="highlight-icon">❤️</span>
+      <h4>父子情的极致表达</h4>
+      <p>"别让任何人告诉你，你做不到某事"——这不仅是一句励志台词，更是克里斯在绝望中给儿子最珍贵的礼物。那段在地铁站厕所过夜、抱着熟睡的儿子流泪的场景，让无数观众破防。</p>
+    </div>
+    <div class="highlight-card reveal reveal-delay-4">
+      <span class="highlight-icon">🎬</span>
+      <h4>克制的叙事与真实感</h4>
+      <p>导演穆奇诺选择用近乎纪录片式的镜头语言，不加过度渲染地呈现生活的残酷与温暖。没有刻意煽情，每一滴眼泪都在观众心里自然发生，克制反而让情感更有力量。</p>
+    </div>
+    <div class="highlight-card reveal reveal-delay-1">
+      <span class="highlight-icon">🎵</span>
+      <h4>令人难忘的配乐</h4>
+      <p>安德烈亚·格拉的配乐以钢琴和弦乐为主，温柔而克制。当克里斯最终得到工作的那一刻，配乐与演员的微表情完美融合，创造出好莱坞影史上最令人振奋的瞬间之一。</p>
+    </div>
+    <div class="highlight-card reveal reveal-delay-2">
+      <span class="highlight-icon">💡</span>
+      <h4>永不放弃的普世主题</h4>
+      <p>这部电影超越了励志片的局限，触及了一个更深刻的命题：幸福不会自己敲门，它需要你拼尽全力去叩响那扇门。当你拥有梦想，就要去保护它。这种力量跨越时代与文化。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<section class="quote-section">
+  <div class="quote-block reveal">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">
+      如果你有梦想的话，就要去捍卫它。<br>
+      那些一事无成的人想告诉你你也成不了大器。<br>
+      如果你有理想的话，就要去努力实现。
+    </p>
+    <p class="quote-source">—— 克里斯·加德纳，<span>《当幸福来敲门》</span></p>
+  </div>
+</section>
+
+<!-- ===== WHY WATCH ===== -->
+<section class="section">
+  <h2 class="section-title reveal">为什么值得一看</h2>
+  <div class="section-divider"></div>
+  <div class="why-grid">
+    <div class="why-card reveal reveal-delay-1">
+      <div class="why-number">01</div>
+      <h4>成年人的勇气课</h4>
+      <p>这不是一碗鸡汤，而是一个男人如何在最黑暗的时刻，依然选择相信明天。每个在都市中挣扎的成年人，都能在克里斯身上看到自己。</p>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <div class="why-number">02</div>
+      <h4>父爱的力量</h4>
+      <p>即便流落街头，克里斯依然在儿子面前保持微笑。他给予孩子的不是物质，而是比物质更珍贵的东西——希望与尊严。</p>
+    </div>
+    <div class="why-card reveal reveal-delay-3">
+      <div class="why-number">03</div>
+      <h4>真实比完美更动人</h4>
+      <p>电影没有为生活套上滤镜，它诚实地展示了穷困、奔波与狼狈。正是这份真实，让最终的胜利拥有了击穿人心的力量。</p>
+    </div>
+    <div class="why-card reveal reveal-delay-4">
+      <div class="why-number">04</div>
+      <h4>重看依然热泪盈眶</h4>
+      <p>经典之所以为经典，在于每一次重温都能带来新的感动。当你知道这是真实发生过的事，那最后一幕就不再只是电影——而是一个父亲写给世界的答案。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FILM FACTS ===== -->
+<section class="section">
+  <h2 class="section-title reveal">影片档案</h2>
+  <div class="section-divider"></div>
+  <div class="film-facts reveal">
+    <div class="fact-item">
+      <div class="fact-label">上映年份</div>
+      <div class="fact-value">2006</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-label">导演</div>
+      <div class="fact-value">加布里尔·穆奇诺</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-label">主演</div>
+      <div class="fact-value">威尔·史密斯 / 贾登·史密斯</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-label">片长</div>
+      <div class="fact-value">117 分钟</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-label">类型</div>
+      <div class="fact-value">剧情 / 传记</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-label">奥斯卡提名</div>
+      <div class="fact-value">最佳男主角</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDITOR FINAL ===== -->
+<section class="editor-final">
+  <div class="reveal">
+    <div class="editor-label">编辑评语</div>
+    <div class="editor-stars">★★★★★</div>
+    <p class="editor-message">
+      如果只能推荐一部关于"希望"的电影，我的答案会是这部。<br>
+      它不是讲述一个成功的故事，而是讲述一个不放弃的人。<br>
+      每当生活艰难到想要放弃的时候，记得那个在地铁厕所里<br>
+      抱着儿子流泪，却依然选择敲开下一扇门的男人。
+    </p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <p>经典电影推荐 · 当幸福来敲门 (2006) · 无剧透版</p>
+</footer>
+
+<script>
+// ===== CANVAS PARTICLE SYSTEM =====
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = H + 20;
+    this.size = Math.random() * 3 + 1.5;
+    this.speedY = -(Math.random() * 0.6 + 0.3);
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.opacity = Math.random() * 0.4 + 0.1;
+    this.life = 0;
+    this.maxLife = Math.random() * 400 + 300;
+    this.hue = Math.random() * 30 + 35; // gold/amber range
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.life++;
+    this.opacity *= 0.998;
+    if (this.life > this.maxLife || this.y < -20 || this.x < -20 || this.x > W + 20) {
+      this.reset();
+      this.y = H + Math.random() * 100;
+    }
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 3);
+    gradient.addColorStop(0, `hsla(${this.hue}, 80%, 70%, ${this.opacity})`);
+    gradient.addColorStop(0.5, `hsla(${this.hue}, 60%, 55%, ${this.opacity * 0.5})`);
+    gradient.addColorStop(1, `hsla(${this.hue}, 60%, 50%, 0)`);
+    ctx.fillStyle = gradient;
+    ctx.fill();
+  }
+}
+
+function initParticles() {
+  particles = [];
+  const count = Math.floor((W * H) / 18000);
+  for (let i = 0; i < Math.min(count, 100); i++) {
+    const p = new Particle();
+    p.y = Math.random() * H;
+    p.life = Math.random() * 200;
+    particles.push(p);
+  }
+}
+initParticles();
+window.addEventListener('resize', () => {
+  resize();
+  initParticles();
+});
+
+function animate() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => {
+    p.update();
+    p.draw();
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+// ===== SCROLL REVEAL =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+
+      // Trigger rating bar fill
+      const fills = entry.target.querySelectorAll('.rating-fill');
+      fills.forEach(f => {
+        const w = f.dataset.width;
+        if (w) f.style.width = w + '%';
+      });
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ===== RATINGS AUTO-OBSERVE =====
+const ratingObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const fills = entry.target.querySelectorAll('.rating-fill');
+      fills.forEach(f => {
+        const w = f.dataset.width;
+        if (w) f.style.width = w + '%';
+      });
+    }
+  });
+}, { threshold: 0.3 });
+
+const ratingRow = document.getElementById('ratingRow');
+if (ratingRow) ratingObserver.observe(ratingRow);
+</script>
+</body>
+</html>

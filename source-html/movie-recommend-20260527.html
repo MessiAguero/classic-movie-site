@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>好家伙 Goodfellas (1990) — 每日经典电影推荐</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a08;
+  --bg-elevated: #141410;
+  --bg-card: #1a1a15;
+  --fg: #f0ece4;
+  --fg-muted: #8a8578;
+  --fg-dim: #5a5650;
+  --accent-red: #b83230;
+  --accent-gold: #c9a84c;
+  --accent-gold-dim: #8a7234;
+  --accent-amber: #d4883a;
+  --accent-smoke: rgba(200,195,185,0.06);
+  --border: rgba(200,195,185,0.08);
+  --border-gold: rgba(201,168,76,0.2);
+  --serif: 'Playfair Display', 'Noto Serif SC', Georgia, serif;
+  --sans: 'Inter', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Canvas */
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Hero ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 80px 24px;
+}
+.hero-year {
+  font-family: var(--serif);
+  font-size: clamp(100px, 18vw, 220px);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201,168,76,0.15);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  letter-spacing: -0.04em;
+  user-select: none;
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid var(--border-gold);
+  border-radius: 40px;
+  padding: 8px 20px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  backdrop-filter: blur(8px);
+}
+.hero-title-en {
+  font-family: var(--serif);
+  font-size: clamp(42px, 7vw, 80px);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  background: linear-gradient(135deg, var(--fg) 0%, var(--accent-gold) 50%, var(--accent-amber) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.hero-title-cn {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(20px, 3vw, 32px);
+  font-weight: 700;
+  color: var(--fg-muted);
+  margin-bottom: 32px;
+  letter-spacing: 0.1em;
+}
+.hero-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(16px, 2.2vw, 22px);
+  color: var(--fg-muted);
+  max-width: 600px;
+  position: relative;
+  padding: 0 16px;
+  line-height: 1.6;
+}
+.hero-tagline::before {
+  content: '\201C';
+  position: absolute;
+  left: -8px;
+  top: -20px;
+  font-size: 60px;
+  color: var(--accent-gold-dim);
+  font-family: var(--serif);
+  opacity: 0.4;
+}
+.hero-tagline::after {
+  content: '\201D';
+  position: absolute;
+  right: -8px;
+  bottom: -30px;
+  font-size: 60px;
+  color: var(--accent-gold-dim);
+  font-family: var(--serif);
+  opacity: 0.4;
+}
+.hero-director {
+  margin-top: 40px;
+  font-size: 14px;
+  color: var(--fg-dim);
+  letter-spacing: 0.05em;
+}
+.hero-director span {
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: float 2.5s ease-in-out infinite;
+}
+.hero-scroll span {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+.scroll-line {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, var(--accent-gold-dim), transparent);
+}
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ── Section base ── */
+section {
+  padding: 100px 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: var(--fg);
+  line-height: 1.2;
+}
+.divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent-gold), transparent);
+  margin-bottom: 40px;
+}
+
+/* ── Ratings ── */
+.ratings-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.rating-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px 20px;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.rating-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-2px);
+}
+.rating-source {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  margin-bottom: 12px;
+}
+.rating-value {
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 900;
+  color: var(--accent-gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.rating-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(200,195,185,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.rating-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--accent-gold), var(--accent-amber));
+  border-radius: 2px;
+  width: 0;
+  transition: width 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.rating-desc {
+  font-size: 12px;
+  color: var(--fg-dim);
+  margin-top: 8px;
+}
+
+/* ── Synopsis ── */
+.synopsis-body {
+  font-size: 16px;
+  line-height: 2;
+  color: rgba(240,236,228,0.75);
+  max-width: 680px;
+}
+.synopsis-body strong {
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+/* ── Poster card ── */
+.poster-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 320px;
+}
+.poster-visual {
+  background: linear-gradient(135deg, #1a1510 0%, #0f0d08 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.poster-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 60%, rgba(201,168,76,0.06) 0%, transparent 70%);
+}
+.poster-info {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+.poster-info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.poster-info-item:last-child { border-bottom: none; }
+.info-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+.info-value {
+  font-size: 14px;
+  color: var(--fg);
+  font-weight: 500;
+  text-align: right;
+}
+
+/* ── Highlights ── */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.highlight-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.highlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--accent-gold);
+  transition: height 0.5s ease;
+}
+.highlight-card:hover::before { height: 100%; }
+.highlight-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-2px);
+}
+.highlight-num {
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 900;
+  color: rgba(201,168,76,0.08);
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  line-height: 1;
+}
+.highlight-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.highlight-text {
+  font-size: 14px;
+  color: var(--fg-muted);
+  line-height: 1.7;
+}
+
+/* ── Quote ── */
+.quote-block {
+  background: linear-gradient(135deg, rgba(184,50,48,0.06) 0%, rgba(201,168,76,0.04) 100%);
+  border-left: 3px solid var(--accent-red);
+  border-radius: 0 16px 16px 0;
+  padding: 40px 48px;
+  position: relative;
+}
+.quote-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(20px, 2.8vw, 28px);
+  line-height: 1.6;
+  color: rgba(240,236,228,0.85);
+}
+.quote-text em {
+  color: var(--accent-gold);
+  font-style: italic;
+}
+.quote-author {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--fg-dim);
+  letter-spacing: 0.05em;
+}
+
+/* ── Why watch ── */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.why-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  transition: border-color 0.3s;
+}
+.why-card:hover { border-color: var(--border-gold); }
+.why-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(201,168,76,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+.why-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--fg);
+  margin-bottom: 8px;
+}
+.why-text {
+  font-size: 14px;
+  color: var(--fg-muted);
+  line-height: 1.7;
+}
+
+/* ── Honors ── */
+.honors-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.honor-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201,168,76,0.06);
+  border: 1px solid var(--border-gold);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+.honor-tag svg { flex-shrink: 0; }
+
+/* ── Archive ── */
+.archive-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.archive-table th {
+  text-align: left;
+  padding: 16px 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+  background: rgba(200,195,185,0.02);
+  border-bottom: 1px solid var(--border);
+}
+.archive-table td {
+  padding: 14px 20px;
+  font-size: 14px;
+  color: var(--fg);
+  border-bottom: 1px solid var(--border);
+}
+.archive-table tr:last-child td { border-bottom: none; }
+.archive-table td:first-child {
+  color: var(--fg-dim);
+  font-size: 13px;
+}
+
+/* ── Editor's note ── */
+.editors-note {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(201,168,76,0.03) 100%);
+  border: 1px solid var(--border-gold);
+  border-radius: 20px;
+  padding: 40px 48px;
+  text-align: center;
+}
+.editors-stars {
+  font-size: 24px;
+  color: var(--accent-gold);
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+.editors-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  line-height: 2;
+  color: rgba(240,236,228,0.75);
+  max-width: 600px;
+  margin: 0 auto;
+}
+.editors-text strong {
+  color: var(--accent-gold);
+}
+
+/* ── Footer ── */
+footer {
+  padding: 60px 0;
+  text-align: center;
+  font-size: 12px;
+  color: var(--fg-dim);
+  letter-spacing: 0.05em;
+}
+footer .brand {
+  font-family: var(--serif);
+  font-size: 16px;
+  color: var(--fg-muted);
+  margin-bottom: 8px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+  .highlights-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .poster-card { grid-template-columns: 1fr; }
+  .poster-visual { min-height: 200px; }
+  .quote-block { padding: 28px 24px; }
+  .editors-note { padding: 28px 24px; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<!-- ════ Hero ════ -->
+<section class="hero visible" style="opacity:1;transform:none;">
+  <div class="hero-year">1990</div>
+  <div class="hero-badge">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    每日经典电影推荐 · 2026.05.27
+  </div>
+  <h1 class="hero-title-en">Goodfellas</h1>
+  <p class="hero-title-cn">好 家 伙</p>
+  <p class="hero-tagline">As far back as I can remember, I always wanted to be a gangster.</p>
+  <p class="hero-director">导演 <span>Martin Scorsese</span> · 马丁·斯科塞斯</p>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- ════ Ratings ════ -->
+  <section>
+    <div class="section-label">Critical Acclaim</div>
+    <div class="section-title">口碑载道</div>
+    <div class="divider"></div>
+    <div class="ratings-grid">
+      <div class="rating-card">
+        <div class="rating-source">IMDb</div>
+        <div class="rating-value" data-target="8.7">0</div>
+        <div class="rating-bar"><div class="rating-fill" data-width="87%"></div></div>
+        <div class="rating-desc">Top 250 #17</div>
+      </div>
+      <div class="rating-card">
+        <div class="rating-source">豆瓣</div>
+        <div class="rating-value" data-target="9.3">0</div>
+        <div class="rating-bar"><div class="rating-fill" data-width="93%"></div></div>
+        <div class="rating-desc">豆瓣 Top 250</div>
+      </div>
+      <div class="rating-card">
+        <div class="rating-source">烂番茄</div>
+        <div class="rating-value" data-target="96">0</div>
+        <div class="rating-bar"><div class="rating-fill" data-width="96%"></div></div>
+        <div class="rating-desc">% 新鲜度</div>
+      </div>
+      <div class="rating-card">
+        <div class="rating-source">AFI</div>
+        <div class="rating-value" data-target="92">0</div>
+        <div class="rating-bar"><div class="rating-fill" data-width="92%"></div></div>
+        <div class="rating-desc">百年百大电影</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ Synopsis ════ -->
+  <section>
+    <div class="section-label">Story</div>
+    <div class="section-title">剧情梗概</div>
+    <div class="divider"></div>
+    <div class="synopsis-body">
+      <p>1955年，纽约布鲁克林。少年<strong>亨利·希尔</strong>在街区角头帮派的庇护下长大，看着那些穿西装、开豪车、不用排队就能入座的「先生们」，心中只有一个念头——他要成为他们中的一员。</p>
+      <br>
+      <p>亨利用一生兑现了这个愿望。从机场走私香烟的小喽啰，到深得<strong>保利</strong>和<strong>吉米</strong>信任的核心成员，再到与疯癫暴烈的<strong>汤米</strong>一起在意大利餐厅的后厨烤肉、在深夜的公路上狂飙——他闯入了那个光鲜、暴烈、令人肾上腺素飙升的世界。</p>
+      <br>
+      <p>然而，黑帮生活并非只有荣耀和忠义。当<strong>1978年甘露机场六百万美元劫案</strong>打破了所有微妙的平衡，联邦调查局步步逼近，曾经牢不可破的「家族」开始从内部瓦解……</p>
+      <br>
+      <p style="color: var(--fg-dim); font-size: 13px;">（以下内容留待你亲自在大银幕前揭晓）</p>
+    </div>
+
+    <div class="poster-card">
+      <div class="poster-visual">
+        <svg width="200" height="280" viewBox="0 0 200 280" fill="none">
+          <!-- Fedora silhouette -->
+          <ellipse cx="100" cy="100" rx="70" ry="18" fill="#1a1510"/>
+          <rect x="30" y="80" width="140" height="8" rx="4" fill="#1a1510"/>
+          <rect x="42" y="55" width="116" height="28" rx="6" fill="#1a1510"/>
+          <rect x="55" y="88" width="90" height="60" rx="10" fill="#0f0d08"/>
+          <!-- Suit collar -->
+          <path d="M70 148 L100 175 L130 148 L140 200 L60 200 Z" fill="#0f0d08"/>
+          <!-- Cigarette -->
+          <rect x="132" y="150" width="30" height="3" rx="1.5" fill="#c9a84c" opacity="0.4"/>
+          <circle cx="135" cy="151.5" r="3" fill="#b83230" opacity="0.3"/>
+          <!-- Smoke curls -->
+          <path d="M135 148 Q130 130 138 115 Q142 105 136 90" stroke="rgba(200,195,185,0.12)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M140 146 Q145 128 137 110" stroke="rgba(200,195,185,0.06)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <!-- Gold accent line -->
+          <line x1="30" y1="250" x2="170" y2="250" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+          <text x="100" y="270" text-anchor="middle" fill="rgba(201,168,76,0.2)" font-family="'Playfair Display',serif" font-size="11" letter-spacing="4">GOODFELLAS</text>
+        </svg>
+      </div>
+      <div class="poster-info">
+        <div class="poster-info-item">
+          <span class="info-label">片名</span>
+          <span class="info-value">好家伙 Goodfellas</span>
+        </div>
+        <div class="poster-info-item">
+          <span class="info-label">上映年份</span>
+          <span class="info-value">1990</span>
+        </div>
+        <div class="poster-info-item">
+          <span class="info-label">片长</span>
+          <span class="info-value">146 分钟</span>
+        </div>
+        <div class="poster-info-item">
+          <span class="info-label">类型</span>
+          <span class="info-value">犯罪 / 传记 / 剧情</span>
+        </div>
+        <div class="poster-info-item">
+          <span class="info-label">国家</span>
+          <span class="info-value">美国</span>
+        </div>
+        <div class="poster-info-item">
+          <span class="info-label">主演</span>
+          <span class="info-value">罗伯特·德尼罗 / 乔·佩西 / 雷·利奥塔</span>
+        </div>
+        <div class="poster-info-item">
+          <span class="info-label">原著</span>
+          <span class="info-value">尼古拉斯·皮莱吉《 Wiseguy 》</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ Highlights ════ -->
+  <section>
+    <div class="section-label">Highlights</div>
+    <div class="section-title">六大亮点</div>
+    <div class="divider"></div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <div class="highlight-num">01</div>
+        <div class="highlight-title">斯科塞斯的巅峰之作</div>
+        <div class="highlight-text">马丁·斯科塞斯以近乎疯狂的节奏剪辑与多声轨旁白，将三十年黑帮生涯浓缩成两个半小时的视听盛宴。被普遍认为是他职业生涯中最好的一部作品。</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">02</div>
+        <div class="highlight-title">教科书级长镜头</div>
+        <div class="highlight-text">著名的「歌雀俱乐部」入内长镜头，跟随亨利和凯伦从后巷穿过厨房、进入大厅，一镜到底三分钟，彻底革新了电影的空间叙事手法。</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">03</div>
+        <div class="highlight-title">乔·佩西的封神表演</div>
+        <div class="highlight-text">他饰演的汤米是影史上最令人不安的角色之一——前一秒在讲笑话逗众人开心，下一秒就可能拔枪杀人。「Funny how?」成为电影史上最经典的台词之一。</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">04</div>
+        <div class="highlight-title">原声带大师课</div>
+        <div class="highlight-text">从托尼·班内特到帕帕蒂克与布鲁斯兄弟，四十余首经典流行曲编织出一条音乐时间线，歌曲本身成为叙事的一部分，而非单纯的背景装饰。</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">05</div>
+        <div class="highlight-title">德尼罗的深沉演技</div>
+        <div class="highlight-text">罗伯特·德尼罗饰演的吉米·康威，表面温和老练，内心冷酷如冰。他几乎不用台词塑造角色，仅靠眼神和微表情就传递出令人不寒而栗的威压感。</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">06</div>
+        <div class="highlight-title">真实犯罪改编</div>
+        <div class="highlight-text">改编自真实人物亨利·希尔的回忆录，还原了卢切斯家族的内部运作。甘露机场劫案是当时美国历史上最大现金抢劫案之一，细节令人咋舌。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ Quote ════ -->
+  <section>
+    <div class="section-label">Classic Line</div>
+    <div class="section-title">经典台词</div>
+    <div class="divider"></div>
+    <div class="quote-block">
+      <p class="quote-text">「For us to live any other way was nuts. Uh, to us, those goody-good people who worked shitty jobs for bum paychecks… <em>they were the dead ones.</em>」</p>
+      <p class="quote-author">—— 亨利·希尔（旁白）</p>
+    </div>
+    <div style="height: 24px;"></div>
+    <div class="quote-block" style="border-left-color: var(--accent-gold);">
+      <p class="quote-text">「<em>Funny how?</em> Funny like I'm a clown, I amuse you? I make you laugh, I'm here to fuckin' amuse you?」</p>
+      <p class="quote-author">—— 汤米·德维托</p>
+    </div>
+  </section>
+
+  <!-- ════ Why Watch ════ -->
+  <section>
+    <div class="section-label">Why Watch</div>
+    <div class="section-title">为什么值得一看</div>
+    <div class="divider"></div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10,8 16,12 10,16" fill="var(--accent-gold)"/></svg>
+        </div>
+        <div class="why-title">重新定义黑帮电影</div>
+        <div class="why-text">在《教父》的史诗悲壮之外，斯科塞斯开辟了另一条路径：不仰望黑帮的权力，而是沉浸其中，让观众体验那种肾上腺素飙升的快感，再慢慢看清背后的深渊。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="why-title">所有犯罪片的灵感源泉</div>
+        <div class="why-text">从《黑道家族》到《无间道风云》，从《毒品网络》到《浴血黑帮》，几乎每一部后世优秀的犯罪题材作品，都能在这部电影中找到影子。它是类型片的活教材。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>
+        </div>
+        <div class="why-title">剪辑与叙事的里程碑</div>
+        <div class="why-text">塞尔玛·斯库恩马克的剪辑创造了影史传奇。快速跳切、声画错位、多轨旁白叠加——这些在今天被广泛使用的手法，很多都是从此片开始发扬光大。</div>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="why-title">不只是犯罪片，更是美国梦的反面</div>
+        <div class="why-text">在光鲜亮丽的外表下，斯科塞斯讲述的是一个关于贪欲、背叛与幻灭的故事。它是对「美国梦」最深刻的质疑——当你拥有一切，失去的可能远比得到的多。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ Honors ════ -->
+  <section>
+    <div class="section-label">Awards</div>
+    <div class="section-title">荣誉与认可</div>
+    <div class="divider"></div>
+    <div class="honors-wrap">
+      <div class="honor-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        奥斯卡最佳男配角 · 乔·佩西
+      </div>
+      <div class="honor-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        奥斯卡最佳影片提名
+      </div>
+      <div class="honor-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        奥斯卡最佳导演提名
+      </div>
+      <div class="honor-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        奥斯卡最佳改编剧本提名
+      </div>
+      <div class="honor-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        奥斯卡最佳女配角提名
+      </div>
+      <div class="honor-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        威尼斯电影节银狮奖
+      </div>
+      <div class="honor-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        英国电影学院奖最佳影片提名
+      </div>
+      <div class="honor-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        AFI 百年百大电影 #92
+      </div>
+      <div class="honor-tag">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        美国国家电影注册表 · 永久保存
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ Archive ════ -->
+  <section>
+    <div class="section-label">Archive</div>
+    <div class="section-title">影片档案</div>
+    <div class="divider"></div>
+    <table class="archive-table">
+      <tbody>
+        <tr><td>导演</td><td>马丁·斯科塞斯 (Martin Scorsese)</td></tr>
+        <tr><td>编剧</td><td>尼古拉斯·皮莱吉 / 马丁·斯科塞斯</td></tr>
+        <tr><td>原著</td><td>《Wiseguy》by Nicholas Pileggi (1985)</td></tr>
+        <tr><td>主演</td><td>罗伯特·德尼罗 / 乔·佩西 / 雷·利奥塔 / 洛兰·布拉科</td></tr>
+        <tr><td>摄影</td><td>迈克尔·包洛赫 (Michael Ballhaus)</td></tr>
+        <tr><td>剪辑</td><td>塞尔玛·斯库恩马克 (Thelma Schoonmaker)</td></tr>
+        <tr><td>配乐</td><td>多位艺术家经典曲目（原声带收录 40+ 首）</td></tr>
+        <tr><td>片长</td><td>146 分钟</td></tr>
+        <tr><td>制片公司</td><td>华纳兄弟</td></tr>
+        <tr><td>上映日期</td><td>1990年9月19日（威尼斯）/ 1990年9月21日（美国）</td></tr>
+        <tr><td>制作成本</td><td>约 2500 万美元</td></tr>
+        <tr><td>全球票房</td><td>4680 万美元</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ════ Editor's Note ════ -->
+  <section>
+    <div class="section-label">Editor's Note</div>
+    <div class="section-title">编辑寄语</div>
+    <div class="divider"></div>
+    <div class="editors-note">
+      <div class="editors-stars">★ ★ ★ ★ ★</div>
+      <p class="editors-text">
+        有些电影改变你看电影的方式，《好家伙》就是其中之一。斯科塞斯没有选择仰望黑帮的宏大叙事，而是把你拉进那间烟味弥漫的意大利餐厅，让你和亨利一起坐在最好的位子上，享受那种令人心跳加速的特权感——然后，在某个你猝不及防的瞬间，让你明白这种快感要付出怎样的代价。德尼罗的沉默、佩西的暴烈、利奥塔的旁白，三者构成了影史上最完美的犯罪三重奏。如果你还没看过，请不要浪费任何一个夜晚。<strong>去吧，穿上你最好的西装。</strong>
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="brand">Classic Film Daily</div>
+  <p>每日一部经典 · 让好电影不被遗忘</p>
+</footer>
+
+<script>
+// ── Particle Canvas: Smoke & Embers ──
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+  const SMOKE_COUNT = 35;
+  const EMBER_COUNT = 20;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Smoke {
+    constructor() { this.reset(true); }
+    reset(init) {
+      this.x = Math.random() * W;
+      this.y = init ? Math.random() * H : H + 20;
+      this.r = Math.random() * 30 + 10;
+      this.speed = Math.random() * 0.3 + 0.1;
+      this.opacity = Math.random() * 0.03 + 0.01;
+      this.drift = (Math.random() - 0.5) * 0.3;
+      this.wobble = Math.random() * Math.PI * 2;
+      this.wobbleSpeed = Math.random() * 0.005 + 0.002;
+    }
+    update() {
+      this.y -= this.speed;
+      this.wobble += this.wobbleSpeed;
+      this.x += Math.sin(this.wobble) * this.drift;
+      this.r += 0.02;
+      if (this.y < -50) this.reset(false);
+    }
+    draw() {
+      ctx.beginPath();
+      const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r);
+      grad.addColorStop(0, `rgba(200,195,185,${this.opacity})`);
+      grad.addColorStop(1, 'rgba(200,195,185,0)');
+      ctx.fillStyle = grad;
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  class Ember {
+    constructor() { this.reset(true); }
+    reset(init) {
+      this.x = Math.random() * W;
+      this.y = init ? Math.random() * H : H + 10;
+      this.r = Math.random() * 1.5 + 0.5;
+      this.speed = Math.random() * 0.5 + 0.2;
+      this.opacity = Math.random() * 0.5 + 0.2;
+      this.drift = (Math.random() - 0.5) * 0.5;
+      this.flicker = Math.random() * Math.PI * 2;
+      this.flickerSpeed = Math.random() * 0.03 + 0.01;
+      const colors = ['201,168,76', '212,136,58', '184,50,48'];
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+    }
+    update() {
+      this.y -= this.speed;
+      this.x += this.drift + Math.sin(this.flicker) * 0.3;
+      this.flicker += this.flickerSpeed;
+      if (this.y < -10) this.reset(false);
+    }
+    draw() {
+      const o = this.opacity * (0.5 + 0.5 * Math.sin(this.flicker));
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${this.color},${o})`;
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < SMOKE_COUNT; i++) particles.push(new Smoke());
+  for (let i = 0; i < EMBER_COUNT; i++) particles.push(new Ember());
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ── IntersectionObserver: scroll reveal ──
+const sections = document.querySelectorAll('section:not(.hero)');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Animate ratings inside
+      if (e.target.querySelector('.rating-fill')) {
+        e.target.querySelectorAll('.rating-fill').forEach(bar => {
+          setTimeout(() => { bar.style.width = bar.dataset.width; }, 200);
+        });
+      }
+      if (e.target.querySelector('.rating-value')) {
+        e.target.querySelectorAll('.rating-value').forEach(el => {
+          const target = parseFloat(el.dataset.target);
+          const isInt = target === Math.floor(target);
+          let current = 0;
+          const step = target / 60;
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            el.textContent = isInt ? Math.round(current) : current.toFixed(1);
+          }, 20);
+        });
+      }
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>

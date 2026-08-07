@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>七宗罪 · 经典电影推荐</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;600;700&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --bg3: #1a1a1a;
+    --text: #e8e4dd;
+    --text-dim: #8a8680;
+    --red: #a1251b;
+    --red-glow: #c0392b;
+    --gold: #c49a3c;
+    --gold-dim: #8a6e2b;
+    --amber: #d4a547;
+    --cream: #e8e4dd;
+    --blood: #5a1a12;
+    --dark-gray: #2a2723;
+    --card-bg: rgba(20, 18, 16, 0.85);
+  }
+
+  body {
+    font-family: 'Inter', 'Noto Serif SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ─── Canvas Background ─── */
+  #canvas-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ─── Scanline overlay ─── */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0.08) 0px,
+      rgba(0,0,0,0.08) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ─── Hero ─── */
+  .hero {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .hero-year {
+    font-size: clamp(8rem, 20vw, 16rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(196, 154, 60, 0.25);
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.06em;
+    opacity: 0.4;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--red);
+    color: var(--cream);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    padding: 0.4rem 1.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .hero-badge::before, .hero-badge::after {
+    content: '';
+    position: absolute;
+    width: 8px; height: 1px;
+    background: var(--gold);
+    top: 50%;
+  }
+  .hero-badge::before { right: 100%; margin-right: 0.5rem; }
+  .hero-badge::after  { left: 100%; margin-left: 0.5rem; }
+
+  .hero-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--cream) 30%, var(--gold) 70%, var(--red-glow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: var(--text-dim);
+    letter-spacing: 0.3em;
+    margin-bottom: 2rem;
+  }
+
+  .hero-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.15rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold-dim);
+    letter-spacing: 0.15em;
+    max-width: 600px;
+    opacity: 0.8;
+    border-top: 1px solid rgba(196, 154, 60, 0.3);
+    border-bottom: 1px solid rgba(196, 154, 60, 0.3);
+    padding: 0.8rem 0;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-dim);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  .hero-scroll .arrow { font-size: 1.2rem; }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+    50% { opacity: 0.8; transform: translateX(-50%) translateY(4px); }
+  }
+
+  /* ─── Main container ─── */
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  .section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    margin-bottom: 4rem;
+  }
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .section-label .num {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+  .section-label .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .section-label h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cream);
+    white-space: nowrap;
+  }
+
+  /* ─── SVG Poster ─── */
+  .poster-card {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto 3rem;
+    border: 1px solid rgba(196, 154, 60, 0.2);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 0 80px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  .poster-card svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ─── Synopsis ─── */
+  .synopsis {
+    font-size: 1rem;
+    color: var(--text-dim);
+    line-height: 2;
+    max-width: 720px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .synopsis em {
+    color: var(--cream);
+    font-style: normal;
+  }
+
+  .no-spoiler {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(161, 37, 27, 0.15);
+    border: 1px solid rgba(161, 37, 27, 0.3);
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+    color: var(--red-glow);
+    letter-spacing: 0.1em;
+    margin-top: 1.5rem;
+  }
+
+  /* ─── Ratings ─── */
+  .ratings-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .rating-item {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 1.2rem 0.8rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: border-color 0.3s;
+  }
+  .rating-item:hover {
+    border-color: var(--gold-dim);
+  }
+  .rating-source {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    margin-bottom: 0.4rem;
+  }
+  .rating-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--cream);
+  }
+  .rating-number .decimal { font-size: 1rem; color: var(--gold); }
+  .rating-bar {
+    margin-top: 0.6rem;
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .rating-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+    border-radius: 2px;
+    width: 0%;
+    transition: width 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  @media (max-width: 640px) {
+    .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ─── Highlights ─── */
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+  .highlight-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 1.8rem 1.2rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--gold);
+    transition: height 0.5s ease;
+  }
+  .highlight-card:hover::before { height: 100%; }
+  .highlight-card:hover {
+    border-color: rgba(196, 154, 60, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+  .highlight-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+  .highlight-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+  }
+  .highlight-desc {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 640px) {
+    .highlights { grid-template-columns: 1fr; }
+  }
+
+  /* ─── Quote ─── */
+  .quote-block {
+    background: var(--card-bg);
+    border-left: 3px solid var(--red);
+    padding: 2rem 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  .quote-block::before {
+    content: '\201C';
+    font-family: 'Georgia', serif;
+    font-size: 4rem;
+    color: var(--red);
+    opacity: 0.3;
+    position: absolute;
+    top: -0.2rem;
+    left: 0.8rem;
+    line-height: 1;
+  }
+  .quote-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.9;
+    margin-bottom: 0.6rem;
+  }
+  .quote-source {
+    font-size: 0.8rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── Why Watch ─── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+  .why-item {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+  .why-item:hover {
+    border-color: rgba(196, 154, 60, 0.2);
+  }
+  .why-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+  .why-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+  }
+  .why-desc {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 640px) {
+    .why-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── Filmmaker Quote ─── */
+  .filmmaker-block {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    margin-bottom: 3rem;
+    border-top: 1px solid rgba(196, 154, 60, 0.15);
+    border-bottom: 1px solid rgba(196, 154, 60, 0.15);
+  }
+  .filmmaker-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 2;
+    max-width: 600px;
+    margin: 0 auto;
+    font-style: italic;
+  }
+
+  /* ─── Film Info ─── */
+  .film-info {
+    background: var(--card-bg);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    margin-bottom: 3rem;
+  }
+  .film-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem 2rem;
+  }
+  .info-item {
+    display: flex;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+  }
+  .info-label {
+    color: var(--gold-dim);
+    font-weight: 600;
+    min-width: 80px;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .info-value {
+    color: var(--text);
+  }
+
+  @media (max-width: 640px) {
+    .film-info-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── Final Score ─── */
+  .final-score {
+    text-align: center;
+    padding: 3rem 2rem;
+    border: 1px solid rgba(196, 154, 60, 0.2);
+    position: relative;
+  }
+  .final-score::before, .final-score::after {
+    content: '';
+    position: absolute;
+    width: 40px; height: 1px;
+    background: var(--gold);
+    top: 1.5rem;
+  }
+  .final-score::before { left: 2rem; }
+  .final-score::after  { right: 2rem; }
+  .final-score .stars {
+    font-size: 2rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 0.5rem;
+  }
+  .final-score .label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+  .final-score .verdict {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 480px) {
+    .container { padding: 0 1rem 3rem; }
+    .quote-block { padding: 1.5rem; }
+    .final-score::before, .final-score::after { width: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="canvas-bg"></canvas>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-year">1995</div>
+  <div class="hero-badge">CRIME · THRILLER · MYSTERY</div>
+  <h1 class="hero-title">Se7en</h1>
+  <p class="hero-subtitle">七 宗 罪</p>
+  <p class="hero-tagline">"The world is a fine place and worth fighting for."</p>
+  <div class="hero-scroll">
+    <span>SCROLL DOWN</span>
+    <span class="arrow">⌄</span>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- ═══ POSTER ═══ -->
+  <div class="section" data-delay="0">
+    <div class="poster-card">
+      <svg viewBox="0 0 520 360" xmlns="http://www.w3.org/2000/svg" style="background:#0a0808;">
+        <defs>
+          <radialGradient id="glow1" cx="50%" cy="40%" r="60%">
+            <stop offset="0%" stop-color="#2a1a0a" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#0a0808" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0a0808"/>
+            <stop offset="50%" stop-color="#1a1210"/>
+            <stop offset="100%" stop-color="#0c0a08"/>
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="glowStrong">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <clipPath id="textClip">
+            <rect x="0" y="0" width="520" height="360"/>
+          </clipPath>
+        </defs>
+
+        <!-- Sky -->
+        <rect width="520" height="360" fill="url(#skyGrad)"/>
+
+        <!-- City skyline silhouette -->
+        <path d="M0 340 L0 260 L30 260 L30 230 L60 230 L60 250 L90 250 L90 210 L110 210 L110 240 L140 240 L140 200 L160 200 L160 260 L190 260 L190 220 L220 220 L220 250 L250 250 L250 190 L270 190 L270 230 L300 230 L300 210 L330 210 L330 250 L360 250 L360 200 L380 200 L380 240 L410 240 L410 220 L440 220 L440 250 L470 250 L470 210 L490 210 L490 260 L520 260 L520 340 Z"
+          fill="#0f0c0a" opacity="0.8"/>
+
+        <!-- Building windows (dim) -->
+        <g fill="#3a2a1a" opacity="0.3">
+          <rect x="35" y="235" width="4" height="4"/><rect x="45" y="235" width="4" height="4"/>
+          <rect x="35" y="245" width="4" height="4"/><rect x="95" y="215" width="4" height="4"/>
+          <rect x="105" y="215" width="4" height="4"/><rect x="145" y="205" width="4" height="4"/>
+          <rect x="155" y="205" width="4" height="4"/><rect x="165" y="245" width="4" height="4"/>
+          <rect x="175" y="245" width="4" height="4"/><rect x="255" y="195" width="4" height="4"/>
+          <rect x="265" y="195" width="4" height="4"/><rect x="275" y="215" width="4" height="4"/>
+          <rect x="315" y="215" width="4" height="4"/><rect x="325" y="215" width="4" height="4"/>
+          <rect x="365" y="205" width="4" height="4"/><rect x="375" y="205" width="4" height="4"/>
+          <rect x="475" y="215" width="4" height="4"/><rect x="485" y="215" width="4" height="4"/>
+        </g>
+
+        <!-- Neon signs -->
+        <g filter="url(#glow)">
+          <text x="80" y="285" font-family="monospace" font-size="8" fill="#c0392b" opacity="0.4">LIQUOR</text>
+          <text x="310" y="275" font-family="monospace" font-size="6" fill="#d4a547" opacity="0.3">HOTEL</text>
+          <text x="410" y="290" font-family="monospace" font-size="7" fill="#c0392b" opacity="0.35">BAR</text>
+        </g>
+
+        <!-- Rain streaks -->
+        <g stroke="#8a8680" stroke-width="0.3" opacity="0.12">
+          <line x1="40" y1="100" x2="35" y2="130"/><line x1="120" y1="80" x2="115" y2="150"/>
+          <line x1="200" y1="60" x2="195" y2="140"/><line x1="300" y1="90" x2="295" y2="170"/>
+          <line x1="380" y1="70" x2="375" y2="120"/><line x1="460" y1="50" x2="455" y2="130"/>
+          <line x1="70" y1="160" x2="65" y2="220"/><line x1="250" y1="150" x2="245" y2="210"/>
+          <line x1="420" y1="130" x2="415" y2="200"/><line x1="160" y1="170" x2="155" y2="230"/>
+          <line x1="340" y1="140" x2="335" y2="200"/><line x1="500" y1="120" x2="495" y2="190"/>
+          <line x1="60" y1="200" x2="55" y2="250"/><line x1="190" y1="180" x2="185" y2="240"/>
+          <line x1="440" y1="160" x2="435" y2="230"/><line x1="100" y1="230" x2="95" y2="280"/>
+          <line x1="360" y1="190" x2="355" y2="260"/><line x1="230" y1="200" x2="225" y2="270"/>
+        </g>
+
+        <!-- Glow center -->
+        <rect width="520" height="360" fill="url(#glow1)"/>
+
+        <!-- Two detective silhouettes -->
+        <g fill="#0c0a08">
+          <ellipse cx="210" cy="310" rx="7" ry="8"/>
+          <path d="M210 318 Q210 290 203 270 Q200 262 206 258 L214 258 Q220 262 217 270 Q210 290 210 318" fill="#0c0a08"/>
+
+          <ellipse cx="310" cy="310" rx="7" ry="8"/>
+          <path d="M310 318 Q310 290 303 270 Q300 262 306 258 L314 258 Q320 262 317 270 Q310 290 310 318" fill="#0c0a08"/>
+        </g>
+
+        <!-- Flashlight beam -->
+        <path d="M260 310 L200 240 L320 240 Z" fill="#d4a547" opacity="0.04"/>
+
+        <!-- Title -->
+        <g filter="url(#glowStrong)">
+          <text x="260" y="130" font-family="Inter, sans-serif" font-size="52" font-weight="900"
+            fill="none" stroke="#c49a3c" stroke-width="1" text-anchor="middle" letter-spacing="6"
+            opacity="0.7">SE7EN</text>
+        </g>
+
+        <!-- Subtitle -->
+        <text x="260" y="155" font-family="monospace" font-size="10" fill="#8a8680"
+          text-anchor="middle" letter-spacing="8" opacity="0.6">SEVEN DEADLY SINS</text>
+
+        <!-- The box silhouette (bottom center, suggestive) -->
+        <rect x="230" y="300" width="60" height="40" rx="2" fill="#0a0808" stroke="#2a2723" stroke-width="0.5"/>
+
+        <!-- Director credit -->
+        <text x="260" y="345" font-family="monospace" font-size="7" fill="#5a5550"
+          text-anchor="middle" letter-spacing="4">A DAVID FINCHER FILM</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ═══ SYNOPSIS ═══ -->
+  <div class="section" data-delay="150">
+    <div class="section-label">
+      <span class="num">01</span>
+      <span class="line"></span>
+      <h2>剧情梗概</h2>
+      <span class="line" style="background:linear-gradient(90deg,transparent,var(--gold))"></span>
+    </div>
+    <p class="synopsis">
+      在一座被阴雨笼罩、罪恶横行的无名都市中，即将退休的警探威廉·<em>萨默塞特</em>（摩根·弗里曼 饰）
+      与冲动的新搭档<em>大卫·米尔斯</em>（布拉德·皮特 饰）接手了一起连环凶杀案。
+      凶手以天主教"七宗罪"为线索，对"罪人"施以精心设计的惩罚。
+      随着调查深入，两位警探发现自己逐步陷入一场<em>精心策划的道德审判</em>——
+      而真正的最后一击，正等待着他们。
+    </p>
+    <div class="no-spoiler">⏤ 无剧透 · 不揭示关键情节与结局 ⏤</div>
+  </div>
+
+  <!-- ═══ RATINGS ═══ -->
+  <div class="section" data-delay="300">
+    <div class="section-label">
+      <span class="num">02</span>
+      <span class="line"></span>
+      <h2>评分口碑</h2>
+      <span class="line" style="background:linear-gradient(90deg,transparent,var(--gold))"></span>
+    </div>
+    <div class="ratings-grid">
+      <div class="rating-item">
+        <div class="rating-source">IMDb</div>
+        <div class="rating-number">8.6<span class="decimal">/10</span></div>
+        <div class="rating-bar"><div class="rating-bar-fill" data-width="86"></div></div>
+        <div style="font-size:0.65rem;color:var(--text-dim);margin-top:0.3rem">Top 250 #22</div>
+      </div>
+      <div class="rating-item">
+        <div class="rating-source">豆瓣</div>
+        <div class="rating-number">8.8<span class="decimal">/10</span></div>
+        <div class="rating-bar"><div class="rating-bar-fill" data-width="88"></div></div>
+        <div style="font-size:0.65rem;color:var(--text-dim);margin-top:0.3rem">Top 250 #168</div>
+      </div>
+      <div class="rating-item">
+        <div class="rating-source">烂番茄</div>
+        <div class="rating-number">86<span class="decimal">%</span></div>
+        <div class="rating-bar"><div class="rating-bar-fill" data-width="86"></div></div>
+        <div style="font-size:0.65rem;color:var(--text-dim);margin-top:0.3rem">新鲜度</div>
+      </div>
+      <div class="rating-item">
+        <div class="rating-source">观众爆米花</div>
+        <div class="rating-number">96<span class="decimal">%</span></div>
+        <div class="rating-bar"><div class="rating-bar-fill" data-width="96"></div></div>
+        <div style="font-size:0.65rem;color:var(--text-dim);margin-top:0.3rem">观众评分</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ HIGHLIGHTS ═══ -->
+  <div class="section" data-delay="450">
+    <div class="section-label">
+      <span class="num">03</span>
+      <span class="line"></span>
+      <h2>六大亮点</h2>
+      <span class="line" style="background:linear-gradient(90deg,transparent,var(--gold))"></span>
+    </div>
+    <div class="highlights">
+      <div class="highlight-card">
+        <span class="highlight-icon">🎬</span>
+        <div class="highlight-title">大卫·芬奇的惊世之作</div>
+        <div class="highlight-desc">芬奇的第二部长片，奠定其暗黑美学大师地位。每一帧都经过精心设计，阴郁的视觉语言成为 90 年代犯罪片的里程碑。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">✍️</span>
+        <div class="highlight-title">安德鲁·凯文·沃克的剧本</div>
+        <div class="highlight-desc">原创剧本，结构精妙如精密齿轮。七宗罪叙事框架与人物弧光完美咬合，结局反转被誉为影史最震撼之一。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">👥</span>
+        <div class="highlight-title">双主角化学反应</div>
+        <div class="highlight-desc">摩根·弗里曼的沉稳睿智与布拉德·皮特的冲动热血形成极致对比，凯文·史派西的客串演出堪称教科书级别。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🎨</span>
+        <div class="highlight-title">暗黑美学教科书</div>
+        <div class="highlight-desc">芬奇标志性的青绿+琥珀色调、精密构图、摄影棚搭建的"无名城市"——一种从未退色的风格宣言。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🎵</span>
+        <div class="highlight-title">霍华德·肖的配乐</div>
+        <div class="highlight-desc"><em>指环王</em>配乐大师的早期杰作。低沉的大提琴与工业噪音融合，营造出令人不安的绝望氛围。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🏆</span>
+        <div class="highlight-title">奥斯卡提名 & 文化印记</div>
+        <div class="highlight-desc">获奥斯卡最佳剪辑提名，AFI 百年百大惊悚电影提名。"What's in the box?" 成为流行文化中最著名的台词之一。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ QUOTE ═══ -->
+  <div class="section" data-delay="600">
+    <div class="quote-block">
+      <p class="quote-text">"Ernest Hemingway once wrote: 'The world is a fine place and worth fighting for.' I agree with the second part."</p>
+      <p class="quote-source">— 威廉·萨默塞特警探</p>
+    </div>
+  </div>
+
+  <!-- ═══ WHY WATCH ═══ -->
+  <div class="section" data-delay="750">
+    <div class="section-label">
+      <span class="num">04</span>
+      <span class="line"></span>
+      <h2>为什么值得看</h2>
+      <span class="line" style="background:linear-gradient(90deg,transparent,var(--gold))"></span>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-num">/01</div>
+        <div class="why-title">定义类型的犯罪经典</div>
+        <div class="why-desc">在《沉默的羔羊》之后，<em>七宗罪</em>重新定义了心理惊悚片的标准。它不依赖跳跃惊吓，而是通过氛围、哲学深度和角色张力来制造恐惧——一种更高级的恐怖。</div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">/02</div>
+        <div class="why-title">永不过时的视觉语言</div>
+        <div class="why-desc">30 年过去，芬奇的影像语言依然锋利如初。从片头极具冲击力的标题序列，到每一个犯罪现场的精心布置——这是一部每帧都值得暂停细看的电影。</div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">/03</div>
+        <div class="why-title">让你无法忘怀的结局</div>
+        <div class="why-desc">结尾五分钟是电影史上最著名的段落之一。即使你知道"那个"梗，当真正置身其中时，它的冲击力依然令人窒息——真正的经典就是经得起重看。 </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">/04</div>
+        <div class="why-title">不止是犯罪片，更是道德寓言</div>
+        <div class="why-desc">电影表面上是一起连环谋杀案调查，实际上是对人性与道德的深刻审视。它追问：在一个冷漠的世界里，愤怒是正义还是原罪？看完会让你久久沉思。 </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FILMMAKER QUOTE ═══ -->
+  <div class="section" data-delay="900">
+    <div class="filmmaker-block">
+      <p class="filmmaker-text">
+        "I wanted the film to feel like a very dark, rainy, depressing day in a city that could be any city.
+        Every frame should feel like a photograph — composed, deliberate, and unsettling."
+      </p>
+      <p style="margin-top:0.8rem;font-size:0.8rem;color:var(--gold-dim);letter-spacing:0.1em">
+        — 大卫·芬奇 (David Fincher)
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══ FILM INFO ═══ -->
+  <div class="section" data-delay="1050">
+    <div class="section-label">
+      <span class="num">05</span>
+      <span class="line"></span>
+      <h2>影片档案</h2>
+      <span class="line" style="background:linear-gradient(90deg,transparent,var(--gold))"></span>
+    </div>
+    <div class="film-info">
+      <div class="film-info-grid">
+        <div class="info-item"><span class="info-label">片名</span><span class="info-value">七宗罪 (Se7en)</span></div>
+        <div class="info-item"><span class="info-label">导演</span><span class="info-value">大卫·芬奇 (David Fincher)</span></div>
+        <div class="info-item"><span class="info-label">编剧</span><span class="info-value">安德鲁·凯文·沃克</span></div>
+        <div class="info-item"><span class="info-label">主演</span><span class="info-value">摩根·弗里曼 / 布拉德·皮特 / 凯文·史派西 / 格温妮斯·帕特洛</span></div>
+        <div class="info-item"><span class="info-label">上映</span><span class="info-value">1995年9月22日 (美国)</span></div>
+        <div class="info-item"><span class="info-label">片长</span><span class="info-value">127分钟</span></div>
+        <div class="info-item"><span class="info-label">配乐</span><span class="info-value">霍华德·肖 (Howard Shore)</span></div>
+        <div class="info-item"><span class="info-label">预算</span><span class="info-value">$3,300万 · 全球票房 $3.27亿</span></div>
+        <div class="info-item"><span class="info-label">评级</span><span class="info-value">R级 (美国) / 18禁 (部分地区)</span></div>
+        <div class="info-item"><span class="info-label">荣誉</span><span class="info-value">奥斯卡最佳剪辑提名 · AFI 百年百大 · 戛纳展映</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FINAL SCORE ═══ -->
+  <div class="section" data-delay="1200">
+    <div class="final-score">
+      <div class="stars">★★★★★</div>
+      <p class="label">编辑推荐 · 无可争议的经典</p>
+      <p class="verdict">
+        《七宗罪》是一部让你在片尾字幕升起后依旧无法动弹的电影。
+        芬奇以手术刀般的精准剖析了人性的幽暗面，用影像构建了一则关于罪恶与愤怒的现代寓言。
+        它不是让你"享受"，而是让你"经历"——这是一次深入人性深渊的旅程，
+        而你走出影院时，会发现窗外的世界似乎也不再一样了。
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ═══ Canvas Rain + Smoke Particles ═══
+  const canvas = document.getElementById('canvas-bg');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Rain drops
+  const raindrops = [];
+  const RAIN_COUNT = 280;
+  for (let i = 0; i < RAIN_COUNT; i++) {
+    raindrops.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      len: 8 + Math.random() * 16,
+      speed: 4 + Math.random() * 8,
+      opacity: 0.04 + Math.random() * 0.08,
+      wind: -0.5 + Math.random() * 0.5,
+    });
+  }
+
+  // Smoke particles
+  const smokeParticles = [];
+  const SMOKE_COUNT = 30;
+  for (let i = 0; i < SMOKE_COUNT; i++) {
+    smokeParticles.push({
+      x: Math.random() * W,
+      y: H * 0.5 + Math.random() * H * 0.5,
+      r: 20 + Math.random() * 60,
+      speedX: -0.15 + Math.random() * 0.1,
+      speedY: -0.1 + Math.random() * -0.3,
+      opacity: 0.02 + Math.random() * 0.04,
+    });
+  }
+
+  // Light flares
+  const flares = [];
+  for (let i = 0; i < 8; i++) {
+    flares.push({
+      x: 50 + Math.random() * (W - 100),
+      y: 30 + Math.random() * H * 0.3,
+      r: 30 + Math.random() * 80,
+      phase: Math.random() * Math.PI * 2,
+      speed: 0.005 + Math.random() * 0.01,
+      color: Math.random() > 0.5 ? '196,154,60' : '192,57,43',
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // --- Flares ---
+    for (const f of flares) {
+      f.phase += f.speed;
+      const alpha = (0.015 + 0.01 * Math.sin(f.phase)) * (H / 600);
+      const gradient = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.r);
+      gradient.addColorStop(0, `rgba(${f.color},${alpha})`);
+      gradient.addColorStop(1, `rgba(${f.color},0)`);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(f.x - f.r, f.y - f.r, f.r * 2, f.r * 2);
+    }
+
+    // --- Rain ---
+    for (const r of raindrops) {
+      ctx.strokeStyle = `rgba(138,134,128,${r.opacity})`;
+      ctx.lineWidth = 0.5;
+      ctx.beginPath();
+      ctx.moveTo(r.x, r.y);
+      ctx.lineTo(r.x + r.wind, r.y + r.len);
+      ctx.stroke();
+      r.y += r.speed;
+      r.x += r.wind;
+      if (r.y > H) {
+        r.y = -r.len;
+        r.x = Math.random() * W;
+      }
+      if (r.x < -10) r.x = W + 10;
+      if (r.x > W + 10) r.x = -10;
+    }
+
+    // --- Smoke ---
+    for (const s of smokeParticles) {
+      const gradient = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r);
+      gradient.addColorStop(0, `rgba(60,55,50,${s.opacity})`);
+      gradient.addColorStop(1, `rgba(60,55,50,0)`);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(s.x - s.r, s.y - s.r, s.r * 2, s.r * 2);
+      s.x += s.speedX;
+      s.y += s.speedY;
+      if (s.y < -60) { s.y = H + 20; s.x = Math.random() * W; }
+      if (s.x < -80) s.x = W + 20;
+      if (s.x > W + 80) s.x = -20;
+    }
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  // ═══ IntersectionObserver: Scroll Reveal ═══
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        const delay = parseInt(entry.target.dataset.delay) || 0;
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, delay);
+        observer.unobserve(entry.target);
+      }
+    }
+  }, { threshold: 0.08 });
+
+  for (const s of sections) observer.observe(s);
+
+  // ═══ Rating bar fill animation ═══
+  const ratingObserver = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        const fills = entry.target.querySelectorAll('.rating-bar-fill');
+        for (const f of fills) {
+          f.style.width = f.dataset.width + '%';
+        }
+        ratingObserver.unobserve(entry.target);
+      }
+    }
+  }, { threshold: 0.5 });
+
+  const ratingsGrid = document.querySelector('.ratings-grid');
+  if (ratingsGrid) ratingObserver.observe(ratingsGrid);
+
+  // ═══ First section visible ═══
+  setTimeout(() => {
+    const first = document.querySelector('.section');
+    if (first) first.classList.add('visible');
+  }, 200);
+
+  // ═══ Resize canvas on orientation change ═══
+  window.addEventListener('orientationchange', () => {
+    setTimeout(resize, 200);
+  });
+</script>
+
+</body>
+</html>

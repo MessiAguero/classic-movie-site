@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经典电影推荐 · 星际穿越</title>
+<style>
+  /* ===== BASE ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --space-black: #050a14;
+    --deep-blue: #0d1b35;
+    --cosmos: #0a1628;
+    --star-white: #e8f0fe;
+    --ice-blue: #a8c8ff;
+    --warm-amber: #f5a623;
+    --gold: #ffd580;
+    --copper: #c87941;
+    --text-main: #d4e4ff;
+    --text-muted: #7a9cc8;
+    --card-bg: rgba(13, 27, 53, 0.85);
+    --card-border: rgba(168, 200, 255, 0.15);
+    --accent: #4a9eff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--space-black);
+    color: var(--text-main);
+    font-family: 'Georgia', 'Noto Serif SC', 'STSong', serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: rgba(74, 158, 255, 0.3); }
+
+  /* ===== CANVAS BACKGROUND ===== */
+  #starCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-wormhole {
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+      rgba(74, 158, 255, 0.08) 0%,
+      rgba(74, 158, 255, 0.04) 30%,
+      transparent 70%
+    );
+    border: 1px solid rgba(74, 158, 255, 0.08);
+    box-shadow:
+      0 0 120px rgba(74, 158, 255, 0.15),
+      0 0 60px rgba(168, 200, 255, 0.08),
+      inset 0 0 80px rgba(74, 158, 255, 0.06);
+    animation: wormholePulse 6s ease-in-out infinite;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .hero-wormhole::before {
+    content: '';
+    position: absolute;
+    inset: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(74, 158, 255, 0.12);
+    animation: wormholeSpin 20s linear infinite;
+  }
+
+  .hero-wormhole::after {
+    content: '';
+    position: absolute;
+    inset: 90px;
+    border-radius: 50%;
+    border: 1px dashed rgba(168, 200, 255, 0.08);
+    animation: wormholeSpin 35s linear infinite reverse;
+  }
+
+  @keyframes wormholePulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+    50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+  }
+
+  @keyframes wormholeSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .hero-label {
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--accent);
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 28px;
+    animation: fadeUp 1s ease both;
+  }
+
+  .hero-year {
+    font-size: clamp(120px, 20vw, 200px);
+    font-weight: 900;
+    font-family: 'Arial Black', sans-serif;
+    letter-spacing: -4px;
+    line-height: 0.85;
+    background: linear-gradient(180deg,
+      rgba(74, 158, 255, 0.12) 0%,
+      rgba(74, 158, 255, 0.04) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    z-index: -1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 24px;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .hero-title-cn {
+    font-size: clamp(48px, 8vw, 88px);
+    font-weight: 700;
+    letter-spacing: 8px;
+    background: linear-gradient(135deg, #e8f0fe 0%, #a8c8ff 40%, #ffd580 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .hero-title-en {
+    font-size: clamp(16px, 2.5vw, 22px);
+    letter-spacing: 10px;
+    color: var(--ice-blue);
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 24px;
+  }
+
+  .hero-tagline {
+    font-size: clamp(14px, 1.8vw, 18px);
+    color: var(--gold);
+    font-style: italic;
+    letter-spacing: 2px;
+    opacity: 0.9;
+    margin-bottom: 48px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    text-align: center;
+  }
+
+  .hero-meta-value {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--warm-amber);
+    font-family: 'Arial', sans-serif;
+  }
+
+  .hero-meta-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.5;
+    animation: fadeUp 1s 1.5s ease both;
+  }
+
+  .hero-scroll span {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    animation: scrollDrop 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollDrop {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 32px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 6px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0.8;
+  }
+
+  .section-title {
+    font-size: clamp(24px, 3.5vw, 38px);
+    font-weight: 700;
+    color: var(--star-white);
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent), transparent);
+  }
+
+  /* ===== RATINGS ===== */
+  .ratings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 60px;
+  }
+
+  .rating-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .rating-card.visible {
+    animation: cardIn 0.6s ease forwards;
+  }
+
+  .rating-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(74, 158, 255, 0.35);
+  }
+
+  .rating-platform {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .rating-score {
+    font-size: 52px;
+    font-weight: 800;
+    font-family: 'Arial', sans-serif;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .rating-score.gold { color: var(--warm-amber); }
+  .rating-score.blue { color: var(--accent); }
+  .rating-score.green { color: #5fd4a0; }
+  .rating-score.red { color: #ff7c5c; }
+
+  .rating-bar-wrap {
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+
+  .rating-bar {
+    height: 100%;
+    border-radius: 4px;
+    width: 0;
+    transition: width 1.4s cubic-bezier(0.25, 1, 0.5, 1) 0.3s;
+  }
+
+  .rating-bar.gold { background: linear-gradient(to right, var(--copper), var(--gold)); }
+  .rating-bar.blue { background: linear-gradient(to right, #2979ff, var(--accent)); }
+  .rating-bar.green { background: linear-gradient(to right, #26a875, #5fd4a0); }
+  .rating-bar.red { background: linear-gradient(to right, #e84040, #ff7c5c); }
+
+  /* ===== SYNOPSIS ===== */
+  .synopsis-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .synopsis-grid { grid-template-columns: 1fr; }
+  }
+
+  .synopsis-text {
+    font-size: 16px;
+    line-height: 2;
+    color: var(--text-main);
+    opacity: 0.88;
+  }
+
+  .synopsis-text p {
+    margin-bottom: 20px;
+  }
+
+  .synopsis-text strong {
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .synopsis-poster {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    aspect-ratio: 2/3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 32px 24px;
+    position: relative;
+  }
+
+  .poster-artwork {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .poster-info {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .poster-info h3 {
+    font-size: 22px;
+    color: var(--star-white);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+
+  .poster-info p {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  /* ===== HIGHLIGHTS ===== */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .highlight-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 28px;
+    backdrop-filter: blur(12px);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .highlight-card:hover::before { opacity: 1; }
+
+  .highlight-card.visible {
+    animation: cardIn 0.6s ease forwards;
+  }
+
+  .highlight-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(74, 158, 255, 0.3);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 24px rgba(74, 158, 255, 0.06);
+  }
+
+  .highlight-num {
+    font-size: 48px;
+    font-weight: 900;
+    font-family: 'Arial Black', sans-serif;
+    color: rgba(74, 158, 255, 0.1);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .highlight-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ice-blue);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+
+  .highlight-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  @keyframes cardIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== QUOTE ===== */
+  .quote-block {
+    position: relative;
+    padding: 60px 48px;
+    margin: 0 0 0 0;
+    background: linear-gradient(135deg, rgba(13,27,53,0.95) 0%, rgba(5,10,20,0.95) 100%);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 16px 16px 0;
+    overflow: hidden;
+  }
+
+  .quote-block::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 160px;
+    font-family: Georgia, serif;
+    color: rgba(74, 158, 255, 0.06);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .quote-text {
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-style: italic;
+    color: var(--star-white);
+    line-height: 1.9;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 20px;
+  }
+
+  .quote-source {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* ===== WHY WATCH ===== */
+  .reasons-list {
+    display: grid;
+    gap: 20px;
+  }
+
+  .reason-item {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 28px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .reason-item.visible {
+    animation: slideIn 0.6s ease forwards;
+  }
+
+  .reason-item:hover {
+    transform: translateX(4px);
+    border-color: rgba(74, 158, 255, 0.3);
+  }
+
+  @keyframes slideIn {
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .reason-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(74, 158, 255, 0.1);
+    border: 1px solid rgba(74, 158, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+
+  .reason-content h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--star-white);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+  .reason-content p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ===== AWARDS ===== */
+  .awards-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .award-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    background: rgba(245, 166, 35, 0.08);
+    border: 1px solid rgba(245, 166, 35, 0.25);
+    border-radius: 30px;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+
+  .award-tag::before {
+    content: '★';
+    font-size: 10px;
+  }
+
+  /* ===== FILMOGRAPHY ===== */
+  .film-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .film-table tr {
+    border-bottom: 1px solid rgba(168, 200, 255, 0.08);
+  }
+
+  .film-table tr:last-child { border-bottom: none; }
+
+  .film-table td {
+    padding: 16px 20px;
+    font-size: 14px;
+  }
+
+  .film-table td:first-child {
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    font-size: 11px;
+    text-transform: uppercase;
+    width: 140px;
+  }
+
+  .film-table td:last-child {
+    color: var(--star-white);
+  }
+
+  /* ===== DIVIDER ===== */
+  .section-divider {
+    position: relative;
+    z-index: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(74, 158, 255, 0.2), transparent);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ===== EDITORIAL ===== */
+  .editorial {
+    background: linear-gradient(135deg, rgba(10, 22, 40, 0.95), rgba(5, 10, 20, 0.98));
+    border-top: 1px solid rgba(74, 158, 255, 0.12);
+    padding: 80px 32px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .editorial-quote {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: clamp(18px, 2.2vw, 24px);
+    font-style: italic;
+    color: var(--star-white);
+    line-height: 1.9;
+    opacity: 0.9;
+  }
+
+  .editorial-rating {
+    margin-top: 36px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .editorial-star {
+    font-size: 24px;
+    color: var(--warm-amber);
+    animation: twinkle 2s ease-in-out infinite;
+  }
+
+  .editorial-star:nth-child(2) { animation-delay: 0.2s; }
+  .editorial-star:nth-child(3) { animation-delay: 0.4s; }
+  .editorial-star:nth-child(4) { animation-delay: 0.6s; }
+  .editorial-star:nth-child(5) { animation-delay: 0.8s; }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.9); }
+  }
+
+  .editorial-label {
+    margin-top: 16px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 32px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: rgba(122, 156, 200, 0.4);
+    text-transform: uppercase;
+    border-top: 1px solid rgba(74, 158, 255, 0.05);
+  }
+
+  /* ===== REVEAL ANIMATION ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- Star / Dust Canvas -->
+<canvas id="starCanvas"></canvas>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-wormhole"></div>
+  <div class="hero-year">2014</div>
+
+  <p class="hero-label">今日经典推荐 · No.11</p>
+
+  <div class="hero-content">
+    <h1 class="hero-title-cn">星际穿越</h1>
+    <p class="hero-title-en">Interstellar</p>
+    <p class="hero-tagline">"我们仰望星空，才发现脚下才是真正需要守护的。"</p>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">8.7</span>
+        <span class="hero-meta-label">IMDb</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">9.3</span>
+        <span class="hero-meta-label">豆瓣</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">72%</span>
+        <span class="hero-meta-label">Metacritic</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-value">2014</span>
+        <span class="hero-meta-label">年份</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- ===== RATINGS ===== -->
+<div class="section-divider"></div>
+<section>
+  <p class="section-label">评分数据</p>
+  <h2 class="section-title">口碑与评分</h2>
+
+  <div class="ratings-grid">
+    <div class="rating-card">
+      <p class="rating-platform">IMDb</p>
+      <div class="rating-score gold" data-target="8.7" data-max="10">0</div>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:6px;">全球观众综合评分</p>
+      <div class="rating-bar-wrap"><div class="rating-bar gold" data-pct="87"></div></div>
+    </div>
+    <div class="rating-card">
+      <p class="rating-platform">豆瓣电影</p>
+      <div class="rating-score blue" data-target="9.3" data-max="10">0</div>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:6px;">豆瓣 Top 250 常驻榜单</p>
+      <div class="rating-bar-wrap"><div class="rating-bar blue" data-pct="93"></div></div>
+    </div>
+    <div class="rating-card">
+      <p class="rating-platform">烂番茄</p>
+      <div class="rating-score green" data-target="73%" data-max="100%" data-type="pct">73%</div>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:6px;">专业影评人综合</p>
+      <div class="rating-bar-wrap"><div class="rating-bar green" data-pct="73"></div></div>
+    </div>
+    <div class="rating-card">
+      <p class="rating-platform">观众热度</p>
+      <div class="rating-score red" data-target="91%" data-max="100%" data-type="pct">91%</div>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:6px;">烂番茄观众评分</p>
+      <div class="rating-bar-wrap"><div class="rating-bar red" data-pct="91"></div></div>
+    </div>
+  </div>
+
+  <!-- Awards -->
+  <div class="reveal">
+    <p class="section-label">荣誉殊荣</p>
+    <div class="awards-wrap">
+      <span class="award-tag">第87届奥斯卡 最佳视觉效果奖</span>
+      <span class="award-tag">土星奖 最佳科幻电影</span>
+      <span class="award-tag">全球票房近七亿美元</span>
+      <span class="award-tag">汉斯·季默 最佳原声配乐提名</span>
+      <span class="award-tag">诺兰生涯代表作之一</span>
+      <span class="award-tag">科幻史上最精准的黑洞视觉呈现</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SYNOPSIS ===== -->
+<div class="section-divider"></div>
+<section>
+  <p class="section-label">剧情梗概</p>
+  <h2 class="section-title">故事背景</h2>
+
+  <div class="synopsis-grid">
+    <div class="synopsis-text reveal">
+      <p>
+        不远的未来，<strong>地球陷入了一场前所未有的生存危机</strong>——农业崩溃、尘暴肆虐，人类文明正悄然走向终结。前NASA宇航员库珀放弃了平静的农耕生活，接受了一项秘密任务：驾驶飞船穿越土星附近神秘出现的<strong>虫洞</strong>，前往未知的星系寻找人类新家园。
+      </p>
+      <p>
+        这是一次穿越时空的旅行，是一场与黑洞、时间膨胀和量子物理的正面交锋。而在星辰之外，他心中始终挂牵着地球上等待父亲归来的女儿墨菲。
+      </p>
+      <p>
+        <strong>宇宙的壮阔与家庭的温度</strong>，在这部影片中以难以置信的方式交融在一起。库珀的每一步抉择，都是整个人类命运的赌注。
+      </p>
+    </div>
+
+    <!-- Poster SVG -->
+    <div class="synopsis-poster">
+      <div class="poster-artwork">
+        <svg viewBox="0 0 360 520" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <radialGradient id="bgGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#0a1628"/>
+              <stop offset="100%" stop-color="#050a14"/>
+            </radialGradient>
+            <radialGradient id="bhGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#000005"/>
+              <stop offset="60%" stop-color="#0d0520"/>
+              <stop offset="100%" stop-color="#1a0a30"/>
+            </radialGradient>
+            <radialGradient id="accretionGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffd580" stop-opacity="0.9"/>
+              <stop offset="40%" stop-color="#f5a623" stop-opacity="0.6"/>
+              <stop offset="70%" stop-color="#c87941" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#c87941" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="softglow">
+              <feGaussianBlur stdDeviation="8" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <clipPath id="posterClip">
+              <rect width="360" height="520"/>
+            </clipPath>
+          </defs>
+
+          <g clip-path="url(#posterClip)">
+            <!-- Background -->
+            <rect width="360" height="520" fill="url(#bgGrad)"/>
+
+            <!-- Stars -->
+            <g opacity="0.7">
+              <circle cx="30" cy="40" r="1" fill="white" opacity="0.8"/>
+              <circle cx="80" cy="20" r="0.7" fill="white" opacity="0.6"/>
+              <circle cx="140" cy="55" r="1.2" fill="white" opacity="0.9"/>
+              <circle cx="200" cy="15" r="0.8" fill="white" opacity="0.7"/>
+              <circle cx="260" cy="35" r="1" fill="white" opacity="0.8"/>
+              <circle cx="320" cy="60" r="0.6" fill="white" opacity="0.5"/>
+              <circle cx="50" cy="100" r="0.8" fill="white" opacity="0.6"/>
+              <circle cx="110" cy="90" r="1.1" fill="white" opacity="0.85"/>
+              <circle cx="170" cy="110" r="0.7" fill="white" opacity="0.6"/>
+              <circle cx="230" cy="85" r="1" fill="white" opacity="0.75"/>
+              <circle cx="290" cy="105" r="0.8" fill="white" opacity="0.65"/>
+              <circle cx="340" cy="130" r="0.9" fill="white" opacity="0.7"/>
+              <circle cx="20" cy="160" r="1" fill="white" opacity="0.8"/>
+              <circle cx="350" cy="180" r="0.7" fill="white" opacity="0.6"/>
+              <circle cx="15" cy="220" r="0.8" fill="#a8c8ff" opacity="0.7"/>
+              <circle cx="345" cy="240" r="1" fill="#a8c8ff" opacity="0.8"/>
+              <circle cx="25" cy="300" r="0.6" fill="white" opacity="0.5"/>
+              <circle cx="340" cy="320" r="0.9" fill="white" opacity="0.7"/>
+            </g>
+
+            <!-- Accretion disk (outer glow) -->
+            <ellipse cx="180" cy="220" rx="155" ry="40" fill="none" stroke="#f5a623" stroke-width="22" stroke-opacity="0.08" filter="url(#softglow)"/>
+            <ellipse cx="180" cy="220" rx="150" ry="36" fill="none" stroke="#ffd580" stroke-width="14" stroke-opacity="0.18" filter="url(#glow)"/>
+            <ellipse cx="180" cy="220" rx="145" ry="32" fill="none" stroke="#ffd580" stroke-width="6" stroke-opacity="0.55"/>
+            <ellipse cx="180" cy="220" rx="138" ry="26" fill="none" stroke="#ffaa40" stroke-width="3" stroke-opacity="0.7"/>
+
+            <!-- Upper arc (lensed light) -->
+            <path d="M 65 195 Q 180 130 295 195" fill="none" stroke="#ffd580" stroke-width="5" stroke-opacity="0.65" filter="url(#glow)"/>
+            <path d="M 80 200 Q 180 145 280 200" fill="none" stroke="#fff8dc" stroke-width="2.5" stroke-opacity="0.8"/>
+
+            <!-- Black hole -->
+            <circle cx="180" cy="220" r="68" fill="url(#bhGrad)"/>
+            <circle cx="180" cy="220" r="60" fill="#000010"/>
+
+            <!-- Lower disk (behind BH) -->
+            <ellipse cx="180" cy="230" rx="80" ry="18" fill="#c87941" opacity="0.35"/>
+            <ellipse cx="180" cy="232" rx="65" ry="12" fill="#f5a623" opacity="0.25"/>
+
+            <!-- Ship silhouette -->
+            <g transform="translate(105, 310) rotate(-8)">
+              <ellipse cx="0" cy="0" rx="30" ry="5" fill="#7090c8" opacity="0.6"/>
+              <rect x="-3" y="-18" width="6" height="22" rx="3" fill="#9ab8e8" opacity="0.8"/>
+              <path d="M-3,-2 L-22,2 L-18,6 Z" fill="#7090c8" opacity="0.7"/>
+              <path d="M3,-2 L22,2 L18,6 Z" fill="#7090c8" opacity="0.7"/>
+              <circle cx="0" cy="-18" r="2" fill="#c8e0ff" opacity="0.9"/>
+            </g>
+
+            <!-- Bottom gradient fade -->
+            <defs>
+              <linearGradient id="bottomFade" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="transparent"/>
+                <stop offset="100%" stop-color="#050a14"/>
+              </linearGradient>
+            </defs>
+            <rect y="380" width="360" height="140" fill="url(#bottomFade)"/>
+          </g>
+        </svg>
+      </div>
+      <div class="poster-info">
+        <h3>星 际 穿 越</h3>
+        <p>Christopher Nolan · 2014</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HIGHLIGHTS ===== -->
+<div class="section-divider"></div>
+<section>
+  <p class="section-label">影片亮点</p>
+  <h2 class="section-title">六大不可错过</h2>
+
+  <div class="highlights-grid">
+    <div class="highlight-card" style="animation-delay:0.1s">
+      <div class="highlight-num">01</div>
+      <div class="highlight-title">科学顾问级的宇宙奇观</div>
+      <div class="highlight-desc">诺兰邀请理论物理学家基普·索恩担任科学顾问，片中的黑洞"卡冈都亚"是迄今影史上最精确的黑洞视觉呈现，其计算结果甚至推动了真实的科学论文发表。</div>
+    </div>
+    <div class="highlight-card" style="animation-delay:0.2s">
+      <div class="highlight-num">02</div>
+      <div class="highlight-title">汉斯·季默的管风琴史诗</div>
+      <div class="highlight-desc">配乐大师汉斯·季默以教堂管风琴为核心乐器，创作出兼具宇宙空旷与人类情感的震撼原声。那种穿透灵魂的音浪，是这部电影体验中不可分割的一部分。</div>
+    </div>
+    <div class="highlight-card" style="animation-delay:0.3s">
+      <div class="highlight-num">03</div>
+      <div class="highlight-title">时间膨胀引发的情感张力</div>
+      <div class="highlight-desc">相对论的时间膨胀效应在片中不再是冷冰冰的物理概念，而是化作刀割一般的情感矛盾——宇宙中一小时，地球上数年流逝。这种设定让科幻与人性达到了奇妙的平衡。</div>
+    </div>
+    <div class="highlight-card" style="animation-delay:0.4s">
+      <div class="highlight-num">04</div>
+      <div class="highlight-title">马修·麦康纳的巅峰表演</div>
+      <div class="highlight-desc">凭借《达拉斯买家俱乐部》摘得奥斯卡最佳男主角后，麦康纳在本片中延续巅峰状态，奉献了职业生涯中最令人难以忘怀的几场戏，情感真实到令人心碎。</div>
+    </div>
+    <div class="highlight-card" style="animation-delay:0.5s">
+      <div class="highlight-num">05</div>
+      <div class="highlight-title">实拍为主的视觉奇迹</div>
+      <div class="highlight-desc">诺兰坚持大量实景拍摄——从冰岛的冰川荒原到实际搭建的超大飞船内景，CG特效仅用于呈现无法实拍的宇宙场景。这种真实质感令人窒息，IMAX观影体验尤为震撼。</div>
+    </div>
+    <div class="highlight-card" style="animation-delay:0.6s">
+      <div class="highlight-num">06</div>
+      <div class="highlight-title">关于爱与时间的哲学命题</div>
+      <div class="highlight-desc">《星际穿越》的内核并非"人类如何征服宇宙"，而是"跨越时间的爱意味着什么"。它以最宏大的宇宙尺度，讲述了一个最私密、最普世的人类故事。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<div class="section-divider"></div>
+<section>
+  <p class="section-label">经典台词</p>
+  <div class="quote-block reveal">
+    <p class="quote-text">
+      "我们仰望星空，才意识到脚下是我们的家。<br>
+      我们出发，是为了回来。<br>
+      不是为了征服宇宙，而是因为——爱。"
+    </p>
+    <p class="quote-source">— Cooper · Interstellar · 2014</p>
+  </div>
+</section>
+
+<!-- ===== WHY WATCH ===== -->
+<div class="section-divider"></div>
+<section>
+  <p class="section-label">推荐理由</p>
+  <h2 class="section-title">为什么值得一看</h2>
+
+  <div class="reasons-list">
+    <div class="reason-item">
+      <div class="reason-icon">🌌</div>
+      <div class="reason-content">
+        <h4>你能在电影院（或屏幕前）触碰宇宙的边界</h4>
+        <p>片中对黑洞、虫洞、时间膨胀的呈现，是迄今最贴近科学真实的影像。它不仅是视觉奇观，更是一堂令人愉悦的宇宙物理课，哪怕没有物理背景也能感受到那份震撼。</p>
+      </div>
+    </div>
+    <div class="reason-item">
+      <div class="reason-icon">💙</div>
+      <div class="reason-content">
+        <h4>这是一部会让你哭的科幻片</h4>
+        <p>大多数科幻电影以奇观取胜，而《星际穿越》以情感制胜。父女之间跨越时空的羁绊，让这部宏大的太空史诗有了触手可及的温度。你可能会因为某个"只是收到了一段视频"的场景而泪流满面。</p>
+      </div>
+    </div>
+    <div class="reason-item">
+      <div class="reason-icon">🎵</div>
+      <div class="reason-content">
+        <h4>声音体验无与伦比</h4>
+        <p>汉斯·季默的配乐与诺兰刻意保留的部分"无声"场景形成强烈对比，放大了宇宙的壮阔与孤独。如果条件允许，请用最好的音响/耳机欣赏这部电影。</p>
+      </div>
+    </div>
+    <div class="reason-item">
+      <div class="reason-icon">🧠</div>
+      <div class="reason-content">
+        <h4>值得反复品味的叙事结构</h4>
+        <p>诺兰的叙事向来以精密著称，《星际穿越》更是把科幻硬设定与叙事谜题完美融合。初看是震撼，二刷是恍然大悟，每次观看都会发现被你忽略的细节和伏笔。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FILM ARCHIVE ===== -->
+<div class="section-divider"></div>
+<section>
+  <p class="section-label">影片档案</p>
+  <h2 class="section-title">基本信息</h2>
+
+  <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;overflow:hidden;backdrop-filter:blur(12px);" class="reveal">
+    <table class="film-table">
+      <tr><td>原片名</td><td>Interstellar</td></tr>
+      <tr><td>导演</td><td>克里斯托弗·诺兰 Christopher Nolan</td></tr>
+      <tr><td>主演</td><td>马修·麦康纳、安·海瑟薇、杰西卡·查斯坦、麦肯齐·弗依、迈克尔·凯恩</td></tr>
+      <tr><td>上映年份</td><td>2014 年</td></tr>
+      <tr><td>片长</td><td>169 分钟</td></tr>
+      <tr><td>制作国</td><td>美国 / 英国</td></tr>
+      <tr><td>类型</td><td>科幻 / 剧情 / 冒险</td></tr>
+      <tr><td>语言</td><td>英语</td></tr>
+      <tr><td>出品公司</td><td>Paramount Pictures / Warner Bros.</td></tr>
+      <tr><td>科学顾问</td><td>基普·索恩（2017年诺贝尔物理学奖得主）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ===== EDITORIAL ===== -->
+<div class="editorial">
+  <p class="section-label" style="text-align:center;margin-bottom:24px;">编辑评语</p>
+  <p class="editorial-quote">
+    "《星际穿越》是一封写给人类好奇心与爱的情书。<br>
+    诺兰用宇宙的宏大包裹了一个关于父与女的故事，<br>
+    用相对论的冰冷诠释了情感跨越时间的温度。<br>
+    它不完美，却令人难忘——<br>
+    因为它是少数几部真正让你思考'我们为何存在'的电影之一。"
+  </p>
+  <div class="editorial-rating">
+    <span class="editorial-star">★</span>
+    <span class="editorial-star">★</span>
+    <span class="editorial-star">★</span>
+    <span class="editorial-star">★</span>
+    <span class="editorial-star">★</span>
+  </div>
+  <p class="editorial-label">满分推荐 · 必看经典</p>
+</div>
+
+<footer>经典电影推荐 · 2026-05-12 · Interstellar 1969–∞</footer>
+
+<script>
+// ===== STAR CANVAS =====
+(function() {
+  const canvas = document.getElementById('starCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, stars = [], dust = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function initStars() {
+    stars = [];
+    dust = [];
+    // Twinkling stars
+    for (let i = 0; i < 220; i++) {
+      stars.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.5 + 0.3,
+        alpha: Math.random(),
+        delta: (Math.random() - 0.5) * 0.015,
+        color: Math.random() < 0.15 ? '#a8c8ff' : Math.random() < 0.1 ? '#ffd580' : '#ffffff'
+      });
+    }
+    // Drifting cosmic dust
+    for (let i = 0; i < 60; i++) {
+      dust.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 3 + 1,
+        alpha: Math.random() * 0.25 + 0.05,
+        vx: (Math.random() - 0.5) * 0.15,
+        vy: (Math.random() - 0.5) * 0.1,
+        color: Math.random() < 0.5 ? 'rgba(74,158,255,' : 'rgba(168,200,255,'
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Stars
+    for (const s of stars) {
+      s.alpha += s.delta;
+      if (s.alpha <= 0 || s.alpha >= 1) s.delta *= -1;
+      ctx.globalAlpha = Math.max(0, Math.min(1, s.alpha));
+      ctx.fillStyle = s.color;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Dust
+    for (const d of dust) {
+      d.x += d.vx;
+      d.y += d.vy;
+      if (d.x < -10) d.x = W + 10;
+      if (d.x > W + 10) d.x = -10;
+      if (d.y < -10) d.y = H + 10;
+      if (d.y > H + 10) d.y = -10;
+
+      ctx.globalAlpha = d.alpha;
+      const grad = ctx.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.r);
+      grad.addColorStop(0, d.color + '0.4)');
+      grad.addColorStop(1, d.color + '0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  initStars();
+  draw();
+  window.addEventListener('resize', () => { resize(); initStars(); });
+})();
+
+// ===== INTERSECTION OBSERVER =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+
+      // Animate rating bars
+      if (entry.target.classList.contains('rating-card')) {
+        const bar = entry.target.querySelector('.rating-bar');
+        const score = entry.target.querySelector('[data-target]');
+        if (bar) {
+          setTimeout(() => { bar.style.width = bar.dataset.pct + '%'; }, 100);
+        }
+        // Count up score
+        if (score && !score.dataset.type) {
+          const target = parseFloat(score.dataset.target);
+          let current = 0;
+          const duration = 1400;
+          const steps = 60;
+          const increment = target / steps;
+          const interval = duration / steps;
+          const timer = setInterval(() => {
+            current = Math.min(current + increment, target);
+            score.textContent = current.toFixed(1);
+            if (current >= target) clearInterval(timer);
+          }, interval);
+        }
+      }
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.rating-card, .highlight-card, .reason-item, .reveal').forEach(el => {
+  observer.observe(el);
+});
+
+// Staggered delay for cards
+document.querySelectorAll('.highlight-card').forEach((card, i) => {
+  card.style.animationDelay = (i * 0.1) + 's';
+});
+</script>
+</body>
+</html>

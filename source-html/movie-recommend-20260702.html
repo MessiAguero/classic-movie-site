@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经典电影推荐 · 摩登时代</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0f0e0d;
+    --bg2: #1a1817;
+    --bg3: #252221;
+    --sepia: #c4a97d;
+    --gold: #d4a849;
+    --amber: #b8862c;
+    --steel: #8a8a8a;
+    --steel-light: #b0b0b0;
+    --cream: #e8dcc8;
+    --white: #f0ece4;
+    --rust: #8c4a2a;
+    --card-bg: rgba(37, 34, 33, 0.85);
+    --border: rgba(196, 169, 125, 0.15);
+    --shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Serif SC', 'Inter', serif;
+    background: var(--bg);
+    color: var(--cream);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ===== Canvas Background ===== */
+  #canvas-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ===== Gear overlay ===== */
+  .gear-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(196,169,125,0.03) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 50%, rgba(212,168,73,0.02) 0%, transparent 50%),
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(196,169,125,0.015) 2px, rgba(196,169,125,0.015) 3px);
+  }
+
+  /* ===== Noise ===== */
+  .noise {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  /* ===== Vignette ===== */
+  .vignette {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(15,14,13,0.7) 100%);
+  }
+
+  /* ===== Sections ===== */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 80px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== HERO ===== */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeInDown 1s ease 0.2s forwards;
+  }
+
+  .hero-year {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(6rem, 18vw, 12rem);
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(196,169,125,0.2);
+    line-height: 1;
+    letter-spacing: -4px;
+    opacity: 0;
+    animation: fadeIn 1.2s ease 0.4s forwards;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900;
+    color: var(--cream);
+    margin-top: -10px;
+    letter-spacing: 6px;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.6s forwards;
+  }
+
+  .hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    color: var(--steel);
+    margin-top: 8px;
+    letter-spacing: 2px;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.8s forwards;
+  }
+
+  .hero-director {
+    font-size: 0.95rem;
+    color: var(--sepia);
+    margin-top: 24px;
+    letter-spacing: 3px;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1s forwards;
+  }
+
+  .hero-tagline {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-style: italic;
+    color: var(--gold);
+    margin-top: 36px;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1.2s forwards;
+    position: relative;
+    padding: 0 20px;
+  }
+  .hero-tagline::before { content: '「'; }
+  .hero-tagline::after { content: '」'; }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--steel);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: bounce 2s ease infinite;
+    opacity: 0;
+    animation: fadeInUp 1s ease 2s forwards, bounce 2s ease 3s infinite;
+  }
+
+  /* ===== SVG TRAMP POSTER ===== */
+  .tramp-poster {
+    max-width: 460px;
+    margin: 60px auto 0;
+    opacity: 0;
+    animation: fadeInUp 1.2s ease 1.4s forwards;
+  }
+  .tramp-poster svg {
+    width: 100%;
+    height: auto;
+  }
+
+  @keyframes fadeIn { to { opacity: 1; } }
+  @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeInDown { to { opacity: 1; transform: translateY(0); } }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+  }
+
+  /* ===== Section Titles ===== */
+  .section-title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: var(--cream);
+    text-align: center;
+    margin-bottom: 16px;
+    letter-spacing: 4px;
+  }
+  .section-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 48px;
+  }
+
+  /* ===== RATINGS ===== */
+  #ratings {
+    padding-top: 60px;
+  }
+  .ratings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .rating-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 16px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .rating-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(196,169,125,0.4);
+  }
+  .rating-source {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--steel);
+    margin-bottom: 8px;
+  }
+  .rating-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.2;
+  }
+  .rating-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    margin-top: 12px;
+    overflow: hidden;
+  }
+  .rating-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--amber), var(--gold));
+    border-radius: 2px;
+    width: 0%;
+    transition: width 1.2s ease;
+  }
+
+  /* ===== PLOT ===== */
+  .plot-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 36px;
+    backdrop-filter: blur(8px);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .plot-card p {
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--cream);
+    text-indent: 2em;
+  }
+  .no-spoiler-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(212,168,73,0.1);
+    border: 1px solid rgba(212,168,73,0.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 0.75rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  .no-spoiler-badge::before {
+    content: '✓';
+    font-weight: 700;
+  }
+
+  /* ===== HIGHLIGHTS ===== */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .highlight-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 24px;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .highlight-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(196,169,125,0.3);
+  }
+  .highlight-number {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(212,168,73,0.3);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .highlight-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .highlight-desc {
+    font-size: 0.9rem;
+    color: var(--steel-light);
+    line-height: 1.8;
+  }
+
+  /* ===== QUOTE ===== */
+  .quote-section {
+    text-align: center;
+    padding: 60px 24px;
+  }
+  .quote-block {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .quote-text {
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.8;
+    position: relative;
+    padding: 20px 0;
+  }
+  .quote-text::before {
+    content: '「';
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.4;
+    position: absolute;
+    left: -30px;
+    top: -10px;
+  }
+  .quote-text::after {
+    content: '」';
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.4;
+    position: absolute;
+    right: -30px;
+    bottom: -10px;
+  }
+  .quote-source {
+    font-size: 0.85rem;
+    color: var(--steel);
+    margin-top: 12px;
+    letter-spacing: 2px;
+  }
+
+  /* ===== WHY WATCH ===== */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .why-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 24px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .why-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212,168,73,0.3);
+  }
+  .why-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+  .why-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .why-desc {
+    font-size: 0.88rem;
+    color: var(--steel-light);
+    line-height: 1.8;
+  }
+
+  /* ===== INFO TABLE ===== */
+  .info-table {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+  }
+  .info-row {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-label {
+    width: 140px;
+    padding: 14px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gold);
+    flex-shrink: 0;
+    letter-spacing: 1px;
+  }
+  .info-value {
+    flex: 1;
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    color: var(--cream);
+  }
+
+  /* ===== VERDICT ===== */
+  .verdict-box {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(212,168,73,0.08), rgba(196,169,125,0.04));
+    border: 1px solid rgba(212,168,73,0.2);
+    border-radius: 16px;
+    padding: 48px 36px;
+    backdrop-filter: blur(8px);
+  }
+  .verdict-stars {
+    font-size: 2.4rem;
+    letter-spacing: 6px;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .verdict-text {
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--cream);
+    letter-spacing: 1px;
+  }
+  .verdict-signature {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: var(--steel);
+    margin-top: 20px;
+    letter-spacing: 2px;
+  }
+
+  /* ===== Footer ===== */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px 24px;
+    font-size: 0.75rem;
+    color: var(--steel);
+    letter-spacing: 2px;
+  }
+
+  /* ==========================================
+     RESPONSIVE
+     ========================================== */
+  @media (max-width: 640px) {
+    section { padding: 60px 16px; }
+    .plot-card { padding: 28px 20px; }
+    .info-row { flex-direction: column; }
+    .info-label { width: 100%; padding-bottom: 0; }
+    .verdict-box { padding: 32px 20px; }
+    .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Canvas Background ===== -->
+<canvas id="canvas-bg"></canvas>
+<div class="gear-overlay"></div>
+<div class="noise"></div>
+<div class="vignette"></div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-badge">经典重映 · 查理·卓别林</div>
+  <div class="hero-year">1936</div>
+  <h1 class="hero-title">摩登时代</h1>
+  <p class="hero-subtitle">Modern Times</p>
+  <p class="hero-director">查理·卓别林 编剧 / 导演 / 主演 · 作曲</p>
+  <p class="hero-tagline">微笑，虽然你的心在痛</p>
+
+  <div class="tramp-poster">
+    <svg viewBox="0 0 460 340" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a1817"/>
+          <stop offset="60%" stop-color="#2a2520"/>
+          <stop offset="100%" stop-color="#3a3228"/>
+        </linearGradient>
+        <linearGradient id="moonGrad" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+          <stop offset="0%" stop-color="#f0ece490"/>
+          <stop offset="100%" stop-color="#c4a97d40"/>
+        </linearGradient>
+        <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#c4a97d20"/>
+          <stop offset="100%" stop-color="transparent"/>
+        </radialGradient>
+      </defs>
+
+      <!-- Sky -->
+      <rect width="460" height="340" fill="url(#skyGrad)"/>
+
+      <!-- Moon -->
+      <circle cx="115" cy="65" r="60" fill="url(#moonGlow)"/>
+      <circle cx="115" cy="65" r="22" fill="url(#moonGrad)" opacity="0.6"/>
+
+      <!-- Factory silhouettes -->
+      <rect x="0" y="210" width="460" height="130" fill="#151312"/>
+      <rect x="20" y="185" width="60" height="25" fill="#1c1917" rx="2"/>
+      <rect x="100" y="175" width="70" height="35" fill="#1c1917" rx="2"/>
+      <rect x="190" y="195" width="80" height="15" fill="#1c1917" rx="2"/>
+      <rect x="290" y="180" width="55" height="30" fill="#1c1917" rx="2"/>
+      <rect x="370" y="190" width="70" height="20" fill="#1c1917" rx="2"/>
+
+      <!-- Factory chimneys -->
+      <rect x="35" y="155" width="20" height="55" fill="#1c1917"/>
+      <rect x="120" y="140" width="18" height="70" fill="#1c1917"/>
+      <rect x="305" y="145" width="22" height="65" fill="#1c1917"/>
+      <rect x="395" y="155" width="16" height="55" fill="#1c1917"/>
+
+      <!-- Smoke puffs -->
+      <circle cx="42" cy="138" r="8" fill="#2a2520" opacity="0.5"/>
+      <circle cx="55" cy="125" r="10" fill="#2a2520" opacity="0.35"/>
+      <circle cx="68" cy="115" r="7" fill="#2a2520" opacity="0.2"/>
+
+      <circle cx="128" cy="122" r="9" fill="#2a2520" opacity="0.45"/>
+      <circle cx="142" cy="108" r="11" fill="#2a2520" opacity="0.3"/>
+      <circle cx="158" cy="98" r="8" fill="#2a2520" opacity="0.15"/>
+
+      <circle cx="315" cy="128" r="8" fill="#2a2520" opacity="0.4"/>
+      <circle cx="330" cy="115" r="10" fill="#2a2520" opacity="0.25"/>
+
+      <!-- Ground/street -->
+      <rect x="0" y="260" width="460" height="80" fill="#1a1817"/>
+
+      <!-- Lamp post -->
+      <rect x="350" y="180" width="4" height="80" fill="#2a2520" rx="2"/>
+      <circle cx="352" cy="178" r="10" fill="none" stroke="#c4a97d" stroke-width="1" opacity="0.3"/>
+      <circle cx="352" cy="178" r="6" fill="#c4a97d" opacity="0.1"/>
+
+      <!-- ===== TRAMP SILHOUETTE ===== -->
+      <g transform="translate(230, 200)">
+        <!-- Body - iconic baggy jacket -->
+        <path d="M-18,-16 C-20,-14 -24,-6 -24,0 L-24,30 L24,30 L24,0 C24,-6 20,-14 18,-16 C12,-20 6,-18 0,-18 C-6,-18 -12,-20 -18,-16Z" fill="#2d2825"/>
+
+        <!-- Head -->
+        <ellipse cx="0" cy="-28" rx="9" ry="10" fill="#2d2825"/>
+
+        <!-- Bowler hat -->
+        <ellipse cx="0" cy="-38" rx="14" ry="4" fill="#1a1817"/>
+        <rect x="-9" y="-44" width="18" height="7" rx="3" fill="#1a1817"/>
+
+        <!-- Legs -->
+        <rect x="-16" y="30" width="11" height="30" rx="3" fill="#2d2825" transform="rotate(-8,-10,30)"/>
+        <rect x="5" y="30" width="11" height="28" rx="3" fill="#2d2825" transform="rotate(5,10,30)"/>
+
+        <!-- Shoes (too big) -->
+        <ellipse cx="-14" cy="63" rx="13" ry="5" fill="#1a1817"/>
+        <ellipse cx="16" cy="61" rx="13" ry="5" fill="#1a1817"/>
+
+        <!-- Cane -->
+        <line x1="28" y1="-10" x2="40" y2="50" stroke="#1a1817" stroke-width="2" stroke-linecap="round"/>
+
+        <!-- Arm holding cane -->
+        <path d="M24,-4 C28,-2 32,0 35,4" stroke="#2d2825" stroke-width="4" stroke-linecap="round" fill="none"/>
+      </g>
+
+      <!-- Film title on poster -->
+      <text x="230" y="318" text-anchor="middle" font-family="'Inter',sans-serif" font-size="13" font-weight="600" fill="#c4a97d" letter-spacing="6" opacity="0.5">MODERN TIMES</text>
+    </svg>
+  </div>
+
+  <div class="hero-scroll">向下滚动</div>
+</section>
+
+<!-- ===== RATINGS ===== -->
+<section id="ratings">
+  <div class="reveal">
+    <h2 class="section-title">评分与口碑</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="ratings-grid reveal">
+    <div class="rating-card">
+      <div class="rating-source">IMDb</div>
+      <div class="rating-number">8.5</div>
+      <div class="rating-bar"><div class="rating-fill" data-pct="85"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-source">豆瓣</div>
+      <div class="rating-number">9.3</div>
+      <div class="rating-bar"><div class="rating-fill" data-pct="93"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-source">烂番茄</div>
+      <div class="rating-number">98%</div>
+      <div class="rating-bar"><div class="rating-fill" data-pct="98"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-source">Metacritic</div>
+      <div class="rating-number">96</div>
+      <div class="rating-bar"><div class="rating-fill" data-pct="96"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PLOT ===== -->
+<section>
+  <div class="reveal">
+    <h2 class="section-title">剧情梗概</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="plot-card reveal">
+    <div class="no-spoiler-badge">无剧透</div>
+    <p>
+      在经济大萧条的阴影下，一个善良而笨拙的小流浪汉在一家巨型工厂的流水线上工作。他拼命地试图跟上传送带的速度，却屡屡被卷入巨大的齿轮之中。工厂的老板试图通过"自动喂食机"来压缩工人的午餐时间，而小流浪汉在混乱中被送进了精神病院。出院后，他邂逅了一个同样无家可归的孤儿女孩，两个在社会底层挣扎的灵魂决定并肩前行。他们在一家百货公司过夜，幻想着拥有一个属于自己的小房子——一个简单得几乎奢侈的梦想。然而，失业、误会和命运的捉弄一次次将他们推向边缘。小流浪汉一次又一次地失去工作，却始终保持着乐观的微笑，用舞蹈、幽默和即兴的表演对抗着冰冷而残酷的工业时代。
+    </p>
+  </div>
+</section>
+
+<!-- ===== HIGHLIGHTS ===== -->
+<section>
+  <div class="reveal">
+    <h2 class="section-title">六大亮点</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="highlights-grid reveal">
+    <div class="highlight-card">
+      <div class="highlight-number">01</div>
+      <div class="highlight-title">卓别林的巅峰喜剧</div>
+      <div class="highlight-desc">从流水线拧螺丝到自动喂食机，每一段都是默片喜剧的教科书级表演。肢体语言的精准度和节奏感至今无人能及。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-number">02</div>
+      <div class="highlight-title">尖锐的社会批判</div>
+      <div class="highlight-desc">在一连串笑料背后，是对工业化异化、资本压迫和失业困境的深刻反思。影片以幽默为刀，解剖了"进步"的代价。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-number">03</div>
+      <div class="highlight-title">默片时代的绝唱</div>
+      <div class="highlight-desc">1936年有声片已全面普及，但卓别林坚持用默片形式完成了这部杰作。它是默片艺术最辉煌的谢幕礼。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-number">04</div>
+      <div class="highlight-title">标志性的经典场景</div>
+      <div class="highlight-desc">卓别林被卷入巨大齿轮的画面已成为电影史上最具辨识度的意象之一，象征着个人在工业化机器中的无力感。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-number">05</div>
+      <div class="highlight-title">温情与幽默的平衡</div>
+      <div class="highlight-desc">卓别林与孤儿女主角之间的羁绊令人动容。他们一起幻想"小房子"的桥段，是电影中最温暖的诗意时刻。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-number">06</div>
+      <div class="highlight-title">卓别林的全能才华</div>
+      <div class="highlight-desc">导演、编剧、主演、配乐——卓别林一人包揽核心岗位。他亲自创作的音乐完美契合每一帧画面，提升整部电影的艺术层次。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<section class="quote-section reveal">
+  <div class="quote-block">
+    <div class="quote-text">
+      人总是要有一个归宿的，即使是一间在街角的小破屋，也比四海为家要好得多
+    </div>
+    <div class="quote-source">— 查理·卓别林《摩登时代》</div>
+  </div>
+</section>
+
+<!-- ===== WHY WATCH ===== -->
+<section>
+  <div class="reveal">
+    <h2 class="section-title">为什么值得看</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="why-grid reveal">
+    <div class="why-card">
+      <div class="why-icon">🎭</div>
+      <div class="why-title">喜剧的天花板</div>
+      <div class="why-desc">即使相隔近一个世纪，卓别林的喜剧依然能让人捧腹大笑——真正的幽默经得起时间考验。</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⚙️</div>
+      <div class="why-title">超越时代的寓言</div>
+      <div class="why-desc">AI取代工作、内卷与焦虑——影片中讽刺的社会问题在近百年后变得更加尖锐，像一部穿越时光的预言。</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">❤️</div>
+      <div class="why-title">笑中带泪的力量</div>
+      <div class="why-desc">卓别林最擅长的是让你笑着笑着就哭了。在欢笑背后，是对人性尊严的守护和对美好生活的朴素渴望。</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📜</div>
+      <div class="why-title">文化遗产</div>
+      <div class="why-desc">被美国国会图书馆选入国家影片登记部保存，AFI百年百大喜剧电影第二名，世界电影史必修课。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTE 2 ===== -->
+<section class="quote-section reveal">
+  <div class="quote-block">
+    <div class="quote-text">
+      我们想得太多，感受得太少
+    </div>
+    <div class="quote-source">— 查理·卓别林《摩登时代》片头字幕</div>
+  </div>
+</section>
+
+<!-- ===== FILM INFO ===== -->
+<section>
+  <div class="reveal">
+    <h2 class="section-title">影片档案</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="info-table reveal">
+    <div class="info-row">
+      <div class="info-label">片名</div>
+      <div class="info-value">摩登时代（Modern Times）</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">上映年份</div>
+      <div class="info-value">1936</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">导演 / 编剧 / 主演</div>
+      <div class="info-value">查理·卓别林（Charlie Chaplin）</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">类型</div>
+      <div class="info-value">喜剧 / 剧情 / 爱情</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">片长</div>
+      <div class="info-value">87 分钟</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">语言</div>
+      <div class="info-value">默片（配乐及音效）</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">制片国家</div>
+      <div class="info-value">美国</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">荣誉</div>
+      <div class="info-value">AFI百年百大喜剧电影第2名 · 美国国家影片登记部典藏 · 威尼斯电影节最佳商业艺术奖</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VERDICT ===== -->
+<section style="padding-bottom: 80px;">
+  <div class="verdict-box reveal">
+    <div class="verdict-stars">★★★★★</div>
+    <p class="verdict-text">
+      如果说有一部电影能让你在笑声中思考人类命运的困境，那就是《摩登时代》。<br>
+      卓别林用他最伟大的喜剧，为我们留下了关于工业文明最温柔也最锋利的提问。<br>
+      近百年过去，那个被困在齿轮中的小流浪汉，仍然是我们每个人。
+    </p>
+    <p class="verdict-signature">编辑推荐 · 五星必看</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>经典电影推荐 · 2026年7月2日</p>
+</footer>
+
+<!-- ==========================================
+     JAVASCRIPT
+     ========================================== -->
+<script>
+(function() {
+  'use strict';
+
+  // ===== Canvas: Gear Particles & Floating Dust =====
+  const canvas = document.getElementById('canvas-bg');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Particle system
+  const particles = [];
+  const PARTICLE_COUNT = 120;
+  const GEAR_COUNT = 6;
+
+  // Gear data
+  const gears = [];
+  for (let i = 0; i < GEAR_COUNT; i++) {
+    gears.push({
+      x: Math.random() * W,
+      y: Math.random() * H * 0.8 + H * 0.1,
+      r: 12 + Math.random() * 28,
+      teeth: 8 + Math.floor(Math.random() * 10),
+      angle: Math.random() * Math.PI * 2,
+      speed: (0.003 + Math.random() * 0.008) * (Math.random() > 0.5 ? 1 : -1),
+      alpha: 0.03 + Math.random() * 0.05
+    });
+  }
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.size = 1 + Math.random() * 2.5;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.speedY = -0.2 - Math.random() * 0.4;
+      const colors = ['#c4a97d', '#d4a849', '#b8862c', '#e8dcc8', '#8a8a8a'];
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+      this.alpha = 0.1 + Math.random() * 0.3;
+      this.life = 0;
+      this.maxLife = 300 + Math.random() * 400;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      this.speedX += (Math.random() - 0.5) * 0.02;
+      this.life++;
+      // Fade in/out
+      if (this.life < 40) {
+        this.alpha *= (this.life / 40);
+      } else if (this.life > this.maxLife - 60) {
+        this.alpha *= ((this.maxLife - this.life) / 60);
+      }
+      if (this.life > this.maxLife || this.y < -20 || this.x < -20 || this.x > W + 20) {
+        this.reset();
+        this.y = H + 10;
+        this.life = 0;
+      }
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.globalAlpha = this.alpha * 0.5;
+      ctx.fill();
+      // Glow
+      ctx.shadowColor = this.color;
+      ctx.shadowBlur = 6;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+  }
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push(new Particle());
+  }
+
+  function drawGear(gear) {
+    ctx.save();
+    ctx.translate(gear.x, gear.y);
+    ctx.rotate(gear.angle);
+    ctx.globalAlpha = gear.alpha;
+
+    const R = gear.r;
+    const innerR = R * 0.6;
+    const teeth = gear.teeth;
+    const toothH = R * 0.25;
+
+    ctx.strokeStyle = '#c4a97d';
+    ctx.lineWidth = 1;
+
+    // Gear body
+    ctx.beginPath();
+    for (let i = 0; i < teeth; i++) {
+      const a1 = (i / teeth) * Math.PI * 2 - Math.PI / 2;
+      const a2 = ((i + 0.5) / teeth) * Math.PI * 2 - Math.PI / 2;
+      const a3 = ((i + 0.5) / teeth) * Math.PI * 2 - Math.PI / 2;
+      const a4 = ((i + 1) / teeth) * Math.PI * 2 - Math.PI / 2;
+
+      const t1x = R * Math.cos(a1);
+      const t1y = R * Math.sin(a1);
+      const t2x = (R + toothH) * Math.cos(a1 + (0.5/teeth) * Math.PI);
+      const t2y = (R + toothH) * Math.sin(a1 + (0.5/teeth) * Math.PI);
+      const t3x = (R + toothH) * Math.cos(a3);
+      const t3y = (R + toothH) * Math.sin(a3);
+      const t4x = R * Math.cos(a4);
+      const t4y = R * Math.sin(a4);
+
+      if (i === 0) ctx.moveTo(t1x, t1y);
+      ctx.lineTo(t2x, t2y);
+      ctx.lineTo(t3x, t3y);
+      ctx.lineTo(t4x, t4y);
+    }
+    ctx.closePath();
+    ctx.stroke();
+
+    // Inner circle
+    ctx.beginPath();
+    ctx.arc(0, 0, innerR, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // Center dot
+    ctx.beginPath();
+    ctx.arc(0, 0, 2, 0, Math.PI * 2);
+    ctx.fillStyle = '#c4a97d';
+    ctx.fill();
+
+    // Spokes
+    for (let i = 0; i < teeth; i++) {
+      const a = (i / teeth) * Math.PI * 2;
+      const x1 = innerR * 0.3 * Math.cos(a);
+      const y1 = innerR * 0.3 * Math.sin(a);
+      const x2 = innerR * 0.85 * Math.cos(a);
+      const y2 = innerR * 0.85 * Math.sin(a);
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+    }
+
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Update and draw gears
+    for (const gear of gears) {
+      gear.angle += gear.speed;
+      // Drift slowly
+      gear.x += Math.sin(Date.now() * 0.0001 + gear.r) * 0.08;
+      gear.y += Math.cos(Date.now() * 0.00008 + gear.r) * 0.06;
+      // Wrap
+      if (gear.x < -60) gear.x = W + 60;
+      if (gear.x > W + 60) gear.x = -60;
+      if (gear.y < -60) gear.y = H + 60;
+      if (gear.y > H + 60) gear.y = -60;
+      drawGear(gear);
+    }
+
+    // Draw dust particles
+    for (const p of particles) {
+      p.update();
+      p.draw();
+    }
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // ===== IntersectionObserver =====
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    }
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  for (const el of reveals) {
+    observer.observe(el);
+  }
+
+  // ===== Rating bar animation =====
+  const ratingObserver = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        const fills = entry.target.querySelectorAll('.rating-fill');
+        for (const fill of fills) {
+          const pct = parseFloat(fill.dataset.pct);
+          fill.style.width = pct + '%';
+        }
+        ratingObserver.unobserve(entry.target);
+      }
+    }
+  }, { threshold: 0.3 });
+
+  const ratingsSection = document.querySelector('.ratings-grid');
+  if (ratingsSection) ratingObserver.observe(ratingsSection);
+
+})();
+</script>
+</body>
+</html>

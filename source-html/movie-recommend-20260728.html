@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>东京物语 · Tokyo Story (1953) — 今日经典推荐</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#16130f;
+    --bg2:#1f1a14;
+    --paper:#efe6d4;
+    --paper-dim:#d8ccb4;
+    --ink:#2b231b;
+    --sepia:#c9a878;
+    --sepia-soft:#a98a5e;
+    --gold:#c9a14a;
+    --gold-bright:#e3c277;
+    --indigo:#33496b;
+    --cherry:#d9a7b0;
+    --line:rgba(201,168,120,.22);
+    --line-strong:rgba(201,168,120,.45);
+    --shadow:0 28px 70px rgba(0,0,0,.55);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--paper);
+    font-family:"Noto Serif SC","Cormorant Garamond",serif;
+    overflow-x:hidden;
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:rgba(201,161,74,.3);color:#fff}
+  .grain{
+    position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .vignette{position:fixed;inset:0;pointer-events:none;z-index:55;
+    background:radial-gradient(ellipse at center,transparent 52%,rgba(0,0,0,.5) 100%);}
+  canvas#fx{position:fixed;inset:0;z-index:1;pointer-events:none;}
+
+  /* ===== layout shell ===== */
+  .wrap{position:relative;z-index:5;max-width:1160px;margin:0 auto;padding:0 28px}
+  section{position:relative;z-index:5}
+
+  /* ===== top bar ===== */
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;
+    align-items:center;padding:16px 30px;font-family:"Noto Sans SC",sans-serif;
+    font-size:12.5px;letter-spacing:.22em;color:var(--sepia);
+    background:linear-gradient(to bottom,rgba(22,19,15,.85),transparent);backdrop-filter:blur(2px);}
+  .topbar .brand{display:flex;align-items:center;gap:10px}
+  .topbar .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
+  .topbar .right{opacity:.7}
+
+  /* ===== HERO ===== */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;position:relative;z-index:5;padding:120px 20px 80px;}
+  .hero .year{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(80px,15vw,190px);
+    line-height:.9;color:transparent;-webkit-text-stroke:1.2px rgba(201,168,120,.55);
+    letter-spacing:.04em;opacity:.9;margin-bottom:-18px;}
+  .hero .en{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(26px,4.4vw,52px);
+    letter-spacing:.42em;color:var(--paper);text-transform:uppercase;margin:6px 0 2px;padding-left:.42em}
+  .hero .cn{font-family:"Noto Serif SC",serif;font-weight:600;font-size:clamp(40px,8vw,86px);
+    letter-spacing:.28em;color:var(--gold-bright);text-shadow:0 2px 30px rgba(201,161,74,.35);
+    padding-left:.28em;margin:4px 0}
+  .hero .rule{width:74px;height:1px;background:var(--line-strong);margin:30px auto 26px;position:relative}
+  .hero .rule::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(45deg);
+    width:7px;height:7px;border:1px solid var(--gold);}
+  .hero .dir{font-family:"Noto Sans SC",sans-serif;font-size:14px;letter-spacing:.3em;color:var(--paper-dim)}
+  .hero .tag{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(16px,2.4vw,24px);
+    color:var(--sepia);margin-top:20px;letter-spacing:.04em}
+  .hero .scroll{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+    font-family:"Noto Sans SC",sans-serif;font-size:11px;letter-spacing:.32em;color:var(--sepia);opacity:.65;
+    display:flex;flex-direction:column;align-items:center;gap:10px}
+  .hero .scroll i{display:block;width:1px;height:42px;background:linear-gradient(var(--sepia),transparent);animation:drop 2.4s ease-in-out infinite}
+  @keyframes drop{0%{transform:scaleY(.2);transform-origin:top;opacity:0}40%{opacity:1}100%{transform:scaleY(1);transform-origin:top;opacity:0}}
+
+  /* ===== section heading ===== */
+  .sec{padding:84px 0}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:46px}
+  .sec-head .no{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:30px;color:var(--sepia-soft)}
+  .sec-head h2{font-family:"Noto Serif SC",serif;font-weight:600;font-size:clamp(24px,3.4vw,36px);
+    letter-spacing:.14em;color:var(--paper)}
+  .sec-head .en-s{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:18px;color:var(--sepia);opacity:.7;margin-left:auto;letter-spacing:.05em}
+
+  /* ===== ratings ===== */
+  .ratings{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .rate{background:linear-gradient(160deg,rgba(31,26,20,.9),rgba(22,19,15,.9));
+    border:1px solid var(--line);border-radius:14px;padding:26px 22px 24px;position:relative;overflow:hidden}
+  .rate::after{content:"";position:absolute;top:-40%;right:-30%;width:140px;height:140px;border-radius:50%;
+    background:radial-gradient(circle,rgba(201,161,74,.16),transparent 70%);}
+  .rate .lbl{font-family:"Noto Sans SC",sans-serif;font-size:12px;letter-spacing:.2em;color:var(--sepia);margin-bottom:14px}
+  .rate .num{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:52px;line-height:1;color:var(--gold-bright);
+    display:flex;align-items:baseline;gap:3px}
+  .rate .num .suf{font-size:20px;color:var(--paper-dim);font-weight:400}
+  .rate .bar{height:5px;border-radius:3px;background:rgba(255,255,255,.07);margin-top:18px;overflow:hidden}
+  .rate .bar i{display:block;height:100%;width:0;border-radius:3px;
+    background:linear-gradient(90deg,var(--sepia),var(--gold-bright));transition:width 1.5s cubic-bezier(.2,.7,.2,1)}
+  .rate .sub{font-family:"Noto Sans SC",sans-serif;font-size:11px;color:var(--paper-dim);opacity:.6;margin-top:9px;letter-spacing:.06em}
+
+  /* ===== synopsis + poster ===== */
+  .syn-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:start}
+  .syn p{font-size:17px;color:var(--paper-dim);margin-bottom:18px;letter-spacing:.01em}
+  .syn p .hl{color:var(--gold-bright);font-weight:500}
+  .badge{display:inline-flex;align-items:center;gap:8px;font-family:"Noto Sans SC",sans-serif;font-size:12px;
+    letter-spacing:.16em;color:var(--sepia);border:1px solid var(--line-strong);border-radius:30px;
+    padding:7px 16px;margin-bottom:26px;background:rgba(201,161,74,.06)}
+  .badge svg{width:13px;height:13px}
+
+  .poster{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line-strong);
+    box-shadow:var(--shadow);background:#0f0d0a}
+  .poster svg{display:block;width:100%;height:auto}
+  .poster .cap{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;
+    background:linear-gradient(transparent,rgba(10,8,6,.92));font-family:"Noto Sans SC",sans-serif;
+    font-size:11.5px;letter-spacing:.12em;color:var(--paper-dim)}
+
+  /* ===== highlights ===== */
+  .hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{background:linear-gradient(165deg,rgba(31,26,20,.92),rgba(20,17,13,.92));
+    border:1px solid var(--line);border-radius:14px;padding:30px 26px;position:relative;
+    transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .5s,box-shadow .5s}
+  .card:hover{transform:translateY(-7px);border-color:var(--line-strong);box-shadow:0 24px 50px rgba(0,0,0,.5)}
+  .card .idx{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:42px;color:var(--sepia);opacity:.5;line-height:1}
+  .card h3{font-family:"Noto Serif SC",serif;font-weight:600;font-size:19px;letter-spacing:.08em;color:var(--gold-bright);margin:14px 0 12px}
+  .card p{font-family:"Noto Sans SC",sans-serif;font-weight:300;font-size:14.5px;line-height:1.85;color:var(--paper-dim)}
+
+  /* ===== quote ===== */
+  .quote{text-align:center;padding:90px 20px;position:relative}
+  .quote .mark{font-family:"Cormorant Garamond",serif;font-size:120px;color:var(--sepia);opacity:.25;line-height:.5;height:60px}
+  .quote blockquote{font-family:"Noto Serif SC",serif;font-weight:400;font-style:normal;
+    font-size:clamp(22px,3.6vw,38px);line-height:1.7;color:var(--paper);max-width:840px;margin:0 auto;letter-spacing:.04em}
+  .quote .src{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:18px;color:var(--sepia);margin-top:26px;letter-spacing:.05em}
+  .quote .jp{font-family:"Noto Serif SC",serif;font-size:14px;color:var(--paper-dim);opacity:.7;margin-top:10px;letter-spacing:.2em}
+
+  /* ===== why watch ===== */
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .why .item{display:flex;gap:20px;align-items:flex-start;background:rgba(31,26,20,.6);
+    border:1px solid var(--line);border-radius:12px;padding:26px 24px}
+  .why .ic{flex:0 0 auto;width:46px;height:46px;border-radius:50%;border:1px solid var(--line-strong);
+    display:flex;align-items:center;justify-content:center;color:var(--gold-bright);font-family:"Cormorant Garamond",serif;
+    font-style:italic;font-size:24px;background:rgba(201,161,74,.05)}
+  .why .txt h4{font-family:"Noto Serif SC",serif;font-weight:600;font-size:17px;letter-spacing:.06em;color:var(--paper);margin-bottom:8px}
+  .why .txt p{font-family:"Noto Sans SC",sans-serif;font-weight:300;font-size:14px;line-height:1.8;color:var(--paper-dim)}
+
+  /* ===== honors ===== */
+  .honors{display:flex;flex-wrap:wrap;gap:14px}
+  .tag{font-family:"Noto Sans SC",sans-serif;font-size:13.5px;letter-spacing:.08em;color:var(--paper);
+    border:1px solid var(--line);border-radius:8px;padding:12px 18px;background:rgba(201,161,74,.05);
+    transition:border-color .4s,background .4s,color .4s}
+  .tag .y{color:var(--gold-bright);font-weight:500;margin-right:8px}
+  .tag.hi{border-color:var(--gold);background:rgba(201,161,74,.14);color:var(--gold-bright)}
+
+  /* ===== archive table ===== */
+  .arch{width:100%;border-collapse:collapse;font-family:"Noto Sans SC",sans-serif}
+  .arch tr{border-bottom:1px solid var(--line)}
+  .arch tr:last-child{border-bottom:none}
+  .arch th{text-align:left;width:130px;padding:16px 8px;font-weight:400;font-size:13px;letter-spacing:.14em;color:var(--sepia)}
+  .arch td{padding:16px 8px;font-size:14.5px;color:var(--paper);font-weight:300}
+
+  /* ===== verdict ===== */
+  .verdict{background:linear-gradient(160deg,rgba(31,26,20,.95),rgba(20,17,13,.95));border:1px solid var(--line-strong);
+    border-radius:16px;padding:48px 44px;position:relative;overflow:hidden}
+  .verdict::before{content:"";position:absolute;top:-60px;left:-60px;width:200px;height:200px;border-radius:50%;
+    background:radial-gradient(circle,rgba(201,161,74,.12),transparent 70%)}
+  .verdict .stars{color:var(--gold-bright);font-size:26px;letter-spacing:6px;margin-bottom:18px}
+  .verdict p{font-family:"Noto Sans SC",sans-serif;font-weight:300;font-size:16px;line-height:2;color:var(--paper-dim);position:relative}
+  .verdict p .hl{color:var(--gold-bright);font-weight:500}
+
+  footer{padding:60px 20px 70px;text-align:center;font-family:"Noto Sans SC",sans-serif;
+    font-size:12px;letter-spacing:.18em;color:var(--sepia);opacity:.6;position:relative;z-index:5}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    .ratings{grid-template-columns:repeat(2,1fr)}
+    .syn-grid{grid-template-columns:1fr;gap:36px}
+    .hl-grid{grid-template-columns:1fr}
+    .why{grid-template-columns:1fr}
+    .arch th{width:96px}
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="vignette"></div>
+<canvas id="fx"></canvas>
+
+<div class="topbar">
+  <div class="brand"><span class="dot"></span><span>每日经典 · CLASSIC OF THE DAY</span></div>
+  <div class="right">小津安二郎 · 1953</div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="year">1953</div>
+  <div class="en">Tokyo Story</div>
+  <div class="cn">东京物语</div>
+  <div class="rule"></div>
+  <div class="dir">导演 小津安二郎 · 主演 笠智衆 / 東山千栄子 / 原節子</div>
+  <div class="tag">“人生，真让人失望啊。” — 一封写给平凡岁月的家书</div>
+  <div class="scroll"><i></i>向下翻阅</div>
+</header>
+
+<!-- RATINGS -->
+<section class="sec wrap">
+  <div class="sec-head reveal">
+    <span class="no">01</span><h2>口碑与评分</h2><span class="en-s">Acclaimed Worldwide</span>
+  </div>
+  <div class="ratings">
+    <div class="rate reveal">
+      <div class="lbl">IMDb</div>
+      <div class="num" data-to="8.2" data-dec="1">0.0<span class="suf">/10</span></div>
+      <div class="bar"><i data-w="82"></i></div>
+      <div class="sub">Top 250 常驻</div>
+    </div>
+    <div class="rate reveal">
+      <div class="lbl">豆瓣 DOUBAN</div>
+      <div class="num" data-to="9.2" data-dec="1">0.0<span class="suf">/10</span></div>
+      <div class="bar"><i data-w="92"></i></div>
+      <div class="sub">Top 250 · 15万+ 人</div>
+    </div>
+    <div class="rate reveal">
+      <div class="lbl">烂番茄 ROTTEN TOMATOES</div>
+      <div class="num" data-to="100" data-dec="0" data-suf="%">0<span class="suf">%</span></div>
+      <div class="bar"><i data-w="100"></i></div>
+      <div class="sub">影评人一致好评</div>
+    </div>
+    <div class="rate reveal">
+      <div class="lbl">爆米花 POPCORN</div>
+      <div class="num" data-to="96" data-dec="0" data-suf="%">0<span class="suf">%</span></div>
+      <div class="bar"><i data-w="96"></i></div>
+      <div class="sub">观众喜爱度</div>
+    </div>
+  </div>
+</section>
+
+<!-- SYNOPSIS -->
+<section class="sec wrap">
+  <div class="sec-head reveal">
+    <span class="no">02</span><h2>剧情梗概</h2><span class="en-s">The Story</span>
+  </div>
+  <div class="syn-grid">
+    <div class="syn reveal">
+      <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20" stroke-linecap="round"/></svg>无剧透 · 仅呈现背景与情感轮廓</span>
+      <p>住在濑户内海小城<span class="hl">尾道</span>的老夫妇周吉与富子，年事已高，难得动身前往<span class="hl">东京</span>，探望早已成家立业的儿女。</p>
+      <p>孩子们各自被工作、家务与小家庭填满，对远道而来的父母既客气周到，又透着习以为常的<span class="hl">疏离</span>。反倒是已故二儿子留下的遗孀纪子，以最不动声色的温柔，接住了两位老人。</p>
+      <p>一趟短途探访，几场平淡的相聚与别离，两代人各自照见自己的生活与距离。没有剧烈的冲突，却让最寻常的天伦，显出它本来的形状。</p>
+    </div>
+    <div class="poster reveal">
+      <svg viewBox="0 0 520 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="东京物语 海报">
+        <defs>
+          <linearGradient id="room" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2a2018"/><stop offset="0.55" stop-color="#1c1611"/><stop offset="1" stop-color="#120e0a"/>
+          </linearGradient>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#cdb892"/><stop offset="1" stop-color="#8a7a5c"/>
+          </linearGradient>
+          <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e7c98a" stop-opacity=".5"/><stop offset="1" stop-color="#e7c98a" stop-opacity="0"/>
+          </linearGradient>
+          <radialGradient id="light" cx="0.78" cy="0.28" r="0.5">
+            <stop offset="0" stop-color="#f0d9a6" stop-opacity=".55"/><stop offset="1" stop-color="#f0d9a6" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="520" height="620" fill="url(#room)"/>
+        <rect width="520" height="620" fill="url(#light)"/>
+        <!-- window shoji with view -->
+        <rect x="300" y="70" width="170" height="250" fill="url(#sky)" opacity=".92"/>
+        <rect x="300" y="70" width="170" height="250" fill="none" stroke="#0e0b08" stroke-width="6"/>
+        <!-- sea horizon band -->
+        <rect x="300" y="250" width="170" height="36" fill="#7d6f52" opacity=".7"/>
+        <rect x="300" y="286" width="170" height="34" fill="#6b5f46" opacity=".55"/>
+        <!-- shoji grid -->
+        <g stroke="#0e0b08" stroke-width="2.5" opacity=".85">
+          <line x1="300" y1="132" x2="470" y2="132"/><line x1="300" y1="194" x2="470" y2="194"/><line x1="300" y1="256" x2="470" y2="256"/>
+          <line x1="356" y1="70" x2="356" y2="320"/><line x1="412" y1="70" x2="412" y2="320"/>
+        </g>
+        <rect x="300" y="70" width="170" height="250" fill="url(#glow)"/>
+        <!-- tatami floor lines (low angle) -->
+        <g stroke="#3a2c1f" stroke-width="2" opacity=".75">
+          <line x1="0" y1="470" x2="520" y2="470"/>
+          <line x1="0" y1="520" x2="520" y2="520"/>
+          <line x1="0" y1="575" x2="520" y2="575"/>
+          <line x1="150" y1="470" x2="110" y2="620"/><line x1="300" y1="470" x2="300" y2="620"/><line x1="450" y1="470" x2="500" y2="620"/>
+        </g>
+        <!-- low table -->
+        <rect x="120" y="430" width="280" height="34" rx="6" fill="#241a12" stroke="#0e0b08" stroke-width="3"/>
+        <rect x="120" y="430" width="280" height="10" rx="5" fill="#33432f" opacity=".5"/>
+        <rect x="138" y="464" width="14" height="40" fill="#241a12"/><rect x="368" y="464" width="14" height="40" fill="#241a12"/>
+        <!-- two seated silhouettes (old couple) -->
+        <g fill="#0c0a07">
+          <!-- old man (left) -->
+          <ellipse cx="200" cy="392" rx="30" ry="32"/>
+          <rect x="172" y="392" width="56" height="60" rx="20"/>
+          <circle cx="200" cy="378" r="17"/> <!-- head -->
+          <rect x="186" y="362" width="28" height="10" rx="5" fill="#0c0a07"/> <!-- cap -->
+          <!-- old woman (right) -->
+          <ellipse cx="300" cy="396" rx="31" ry="33"/>
+          <rect x="270" y="396" width="60" height="58" rx="20"/>
+          <circle cx="300" cy="382" r="16"/>
+          <path d="M284 372 q16 -16 32 0 q-4 -10 -16 -10 q-12 0 -16 10z"/> <!-- bun -->
+        </g>
+        <!-- subtle light beam from window -->
+        <path d="M300 320 L470 320 L520 470 L300 470 Z" fill="#e7c98a" opacity=".05"/>
+        <!-- falling cherry petals -->
+        <g fill="#d9a7b0">
+          <ellipse cx="120" cy="150" rx="6" ry="3" opacity=".8" transform="rotate(25 120 150)"/>
+          <ellipse cx="240" cy="220" rx="5" ry="2.6" opacity=".7" transform="rotate(-20 240 220)"/>
+          <ellipse cx="90" cy="300" rx="5.5" ry="3" opacity=".75" transform="rotate(40 90 300)"/>
+          <ellipse cx="380" cy="160" rx="6" ry="3" opacity=".65" transform="rotate(15 380 160)"/>
+          <ellipse cx="170" cy="90" rx="5" ry="2.6" opacity=".7" transform="rotate(-30 170 90)"/>
+          <ellipse cx="60" cy="210" rx="5" ry="2.6" opacity=".6" transform="rotate(50 60 210)"/>
+        </g>
+        <!-- film frame border -->
+        <rect x="10" y="10" width="500" height="600" fill="none" stroke="rgba(201,168,120,.4)" stroke-width="1.5"/>
+        <g fill="rgba(201,168,120,.5)">
+          <circle cx="10" cy="10" r="3.5"/><circle cx="510" cy="10" r="3.5"/><circle cx="10" cy="610" r="3.5"/><circle cx="510" cy="610" r="3.5"/>
+        </g>
+        <text x="36" y="588" font-family="Cormorant Garamond, serif" font-style="italic" font-size="20" fill="rgba(239,230,212,.85)">Tokyo Story</text>
+        <text x="36" y="566" font-family="Noto Serif SC, serif" font-size="13" letter-spacing="6" fill="rgba(201,161,74,.9)">東 京 物 語</text>
+      </svg>
+      <div class="cap">尾道的海，东京的窗 — 小津镜头里的低视角与留白</div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="sec wrap">
+  <div class="sec-head reveal">
+    <span class="no">03</span><h2>六大亮点</h2><span class="en-s">Why It Endures</span>
+  </div>
+  <div class="hl-grid">
+    <div class="card reveal">
+      <div class="idx">i.</div>
+      <h3>影史丰碑</h3>
+      <p>2012 年英国《视与听》(Sight &amp; Sound) 影评人票选中获封<span style="color:var(--gold-bright)">影史最伟大电影第一名</span>，2022 年仍居第三——一座几乎被所有权威片单默认的巅峰。</p>
+    </div>
+    <div class="card reveal">
+      <div class="idx">ii.</div>
+      <h3>小津的极致</h3>
+      <p>固定机位、贴地低视角、空镜留白，摒弃戏剧冲突，把"喝茶、聊天、远望"拍成诗。他定义了何谓"电影化的日常"。</p>
+    </div>
+    <div class="card reveal">
+      <div class="idx">iii.</div>
+      <h3>克制的表演</h3>
+      <p>笠智衆与原節子以近乎无事的表情，承载最深的情感；原節子饰演的纪子，自此成为日本电影里"温柔"的永恒符号。</p>
+    </div>
+    <div class="card reveal">
+      <div class="idx">iv.</div>
+      <h3>静水流深</h3>
+      <p>没有大起大落，却在平淡对话与目光的交换里，悄然刺入亲情的疏离与体谅——后劲绵长，久久不散。</p>
+    </div>
+    <div class="card reveal">
+      <div class="idx">v.</div>
+      <h3>东方侘寂</h3>
+      <p>尾道的海、东京的街、榻榻米与茶几、障子窗外的天光，影像如一张温润的旧照，是"物哀"与"余白"的视觉教科书。</p>
+    </div>
+    <div class="card reveal">
+      <div class="idx">vi.</div>
+      <h3>跨越世代</h3>
+      <p>战后日本家庭结构的变迁，今日读来依旧精准。每个成年后与父母疏远过的人，都能在其中照见自己的影子。</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote wrap reveal">
+  <div class="mark">“</div>
+  <blockquote>人生，真让人失望啊。<br>可也正因如此，才值得好好看过。</blockquote>
+  <div class="jp">人生、がっかりするわね。</div>
+  <div class="src">— 纪子（原節子 饰），《东京物语》</div>
+</section>
+
+<!-- WHY WATCH -->
+<section class="sec wrap">
+  <div class="sec-head reveal">
+    <span class="no">04</span><h2>为什么值得一看</h2><span class="en-s">Worth Your Time</span>
+  </div>
+  <div class="why">
+    <div class="item reveal">
+      <div class="ic">一</div>
+      <div class="txt"><h4>影史必修的坐标</h4><p>若想理解"电影可以怎样讲述平凡"，《东京物语》是绕不开的一课，被无数导演奉为母本。</p></div>
+    </div>
+    <div class="item reveal">
+      <div class="ic">二</div>
+      <div class="txt"><h4>极致克制之美</h4><p>小津证明：最深的情感不必靠冲突与眼泪，留白即是力量。看完你会重新理解"安静"。</p></div>
+    </div>
+    <div class="item reveal">
+      <div class="ic">三</div>
+      <div class="txt"><h4>映照自身</h4><p>陪伴与错过、靠近与疏离——它像一面温厚的镜子，照出我们与家人之间真实的距离。</p></div>
+    </div>
+    <div class="item reveal">
+      <div class="ic">四</div>
+      <div class="txt"><h4>慢下来的一课</h4><p>在一切加速的时代，它邀请你坐下来，看完一段真正安静的人生，然后轻轻合上。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HONORS -->
+<section class="sec wrap">
+  <div class="sec-head reveal">
+    <span class="no">05</span><h2>荣誉殿堂</h2><span class="en-s">Honors &amp; Legacy</span>
+  </div>
+  <div class="honors reveal">
+    <div class="tag hi"><span class="y">2012</span>Sight &amp; Sound 影评人票选 · 影史第一</div>
+    <div class="tag hi"><span class="y">2022</span>Sight &amp; Sound 影评人票选 · 影史第三</div>
+    <div class="tag"><span class="y">1958</span>威尼斯电影节 OCIC 圣乔治奖</div>
+    <div class="tag"><span class="y">1953</span>蓝丝带奖 最佳影片</div>
+    <div class="tag"><span class="y">1954</span>电影旬报 年度日本电影 第一</div>
+    <div class="tag"><span class="y">—</span>烂番茄 100% 新鲜度</div>
+    <div class="tag"><span class="y">—</span>豆瓣 Top 250 · 9.2</div>
+    <div class="tag"><span class="y">—</span>IMDb Top 250 常驻</div>
+  </div>
+</section>
+
+<!-- ARCHIVE -->
+<section class="sec wrap">
+  <div class="sec-head reveal">
+    <span class="no">06</span><h2>影片档案</h2><span class="en-s">Film Details</span>
+  </div>
+  <div class="reveal">
+    <table class="arch">
+      <tr><th>导演</th><td>小津安二郎 (Yasujirō Ozu)</td></tr>
+      <tr><th>上映</th><td>1953年（日本 · 松竹）</td></tr>
+      <tr><th>片长</th><td>136 分钟</td></tr>
+      <tr><th>类型</th><td>剧情 / 家庭</td></tr>
+      <tr><th>国家</th><td>日本</td></tr>
+      <tr><th>语言</th><td>日语（黑白）</td></tr>
+      <tr><th>编剧</th><td>野田高梧 / 小津安二郎</td></tr>
+      <tr><th>摄影</th><td>厚田雄春</td></tr>
+      <tr><th>配乐</th><td>斋藤高顺</td></tr>
+      <tr><th>主演</th><td>笠智衆 · 東山千栄子 · 原節子 · 杉村春子 · 山村聪</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- VERDICT -->
+<section class="sec wrap">
+  <div class="verdict reveal">
+    <div class="stars">★★★★★</div>
+    <p>《东京物语》是那种<span class="hl">看完不会立刻说话</span>的电影。它不喧哗，却在你心底留下一道温热的痕。小津用最朴素的家庭日常，写出了最辽阔的人生况味——关于老去、关于儿女、关于我们总在拥有时习以为常，又在失去后恍然。<span class="hl">如果你今年只想认真看一部老电影，让它成为那一部。</span></p>
+  </div>
+</section>
+
+<footer>每日经典推荐 · 2026.07.28 · 本页内容仅供观影参考，评分数据综合自公开平台</footer>
+
+<script>
+/* ===== Canvas: sepia/gold dust + drifting cherry petals ===== */
+(function(){
+  const c=document.getElementById('fx'),x=c.getContext('2d');
+  let W,H,DPR;
+  function resize(){DPR=Math.min(devicePixelRatio||1,2);W=c.width=innerWidth*DPR;H=c.height=innerHeight*DPR;c.style.width=innerWidth+'px';c.style.height=innerHeight+'px';}
+  resize();addEventListener('resize',resize);
+  const dust=[],petals=[];
+  const DN=Math.round((innerWidth*innerHeight)/26000);
+  for(let i=0;i<DN;i++){
+    dust.push({x:Math.random()*W,y:Math.random()*H,r:(Math.random()*1.8+0.8)*DPR,
+      vy:-(Math.random()*0.25+0.08)*DPR,vx:(Math.random()-0.5)*0.18*DPR,
+      a:Math.random()*0.4+0.15,ph:Math.random()*Math.PI*2,
+      hue:Math.random()<0.5?[201,161,74]:[201,168,120]});
+  }
+  const PN=Math.round(innerWidth/46);
+  for(let i=0;i<PN;i++){
+    petals.push({x:Math.random()*W,y:Math.random()*H,r:(Math.random()*5+4)*DPR,
+      vy:(Math.random()*0.5+0.35)*DPR,vx:(Math.random()-0.5)*0.4*DPR,
+      rot:Math.random()*Math.PI*2,vr:(Math.random()-0.5)*0.02*DPR,
+      a:Math.random()*0.35+0.25,sw:Math.random()*0.6+0.2});
+  }
+  function draw(t){
+    x.clearRect(0,0,W,H);
+    for(const d of dust){
+      d.ph+=0.02;const fl=d.a*(0.6+0.4*Math.sin(d.ph));
+      const g=x.createRadialGradient(d.x,d.y,0,d.x,d.y,d.r*4);
+      g.addColorStop(0,`rgba(${d.hue[0]},${d.hue[1]},${d.hue[2]},${fl})`);
+      g.addColorStop(1,'rgba(0,0,0,0)');
+      x.fillStyle=g;x.beginPath();x.arc(d.x,d.y,d.r*4,0,7);x.fill();
+      d.x+=d.vx;d.y+=d.vy;
+      if(d.y<-10){d.y=H+10;d.x=Math.random()*W;}
+      if(d.x<-10)d.x=W+10;if(d.x>W+10)d.x=-10;
+    }
+    for(const p of petals){
+      p.x+=p.vx+Math.sin(t*0.001+p.y*0.01)*0.3*DPR;p.y+=p.vy;p.rot+=p.vr;
+      x.save();x.translate(p.x,p.y);x.rotate(p.rot);x.globalAlpha=p.a;
+      x.fillStyle='rgba(217,167,176,1)';
+      x.beginPath();x.ellipse(0,0,p.r*p.sw,p.r,0,0,7);x.fill();
+      x.strokeStyle='rgba(180,120,130,0.5)';x.lineWidth=DPR*0.6;x.stroke();
+      x.restore();
+      if(p.y>H+12){p.y=-12;p.x=Math.random()*W;}
+    }
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+/* ===== reveal on scroll ===== */
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:0.18});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ===== rating count-up + bar fill ===== */
+function animateRate(box){
+  const num=box.querySelector('.num');
+  const to=parseFloat(num.dataset.to),dec=parseInt(num.dataset.dec||'0');
+  const suf=num.dataset.suf||'';
+  const span=num.querySelector('.suf');
+  const dur=1400,t0=performance.now();
+  function step(now){
+    let p=Math.min((now-t0)/dur,1);
+    p=1-Math.pow(1-p,3);
+    const v=(to*p).toFixed(dec);
+    num.firstChild.nodeValue=v;
+    if(span)span.textContent=suf;
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+  const bar=box.querySelector('.bar i');
+  setTimeout(()=>{bar.style.width=bar.dataset.w+'%';},200);
+}
+const rIO=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){animateRate(e.target);rIO.unobserve(e.target);}});
+},{threshold:0.5});
+document.querySelectorAll('.rate').forEach(el=>rIO.observe(el));
+</script>
+</body>
+</html>

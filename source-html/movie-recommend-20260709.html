@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黄金三镖客 · 经典电影推荐</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Special+Elite&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --sand: #d4a755;
+    --sunset: #c85a17;
+    --crimson: #8b1a1a;
+    --leather: #4a2c0f;
+    --dark: #1a0f08;
+    --cream: #f5e6c8;
+    --gold: #e8b84b;
+    --dust: #b8956a;
+    --shadow: rgba(10,5,2,0.85);
+    --text: #f0e0c8;
+  }
+
+  body {
+    font-family: 'Noto Serif SC', serif;
+    background: var(--dark);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ── Canvas BG ── */
+  #particle-canvas {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative; z-index: 1;
+    min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center; padding: 2rem;
+    background: linear-gradient(180deg, rgba(26,15,8,0.4) 0%, rgba(74,44,15,0.2) 50%, rgba(26,15,8,0.6) 100%);
+  }
+
+  .hero .year {
+    font-size: clamp(6rem,18vw,14rem);
+    font-weight: 900; color: rgba(200,90,23,0.12);
+    position: absolute; top: 5%; left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: 0.15em;
+    user-select: none; pointer-events: none;
+  }
+
+  .hero .wanted-poster {
+    position: relative; display: inline-block;
+    border: 6px double var(--sand); padding: 2.5rem 3.5rem;
+    background: linear-gradient(135deg, rgba(74,44,15,0.7), rgba(26,15,8,0.9));
+    backdrop-filter: blur(4px);
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0 60px rgba(200,90,23,0.3), inset 0 0 60px rgba(200,90,23,0.05);
+    max-width: 90vw;
+  }
+
+  .hero .wanted-poster::before {
+    content: 'WANTED'; display: block;
+    font-family: 'Special Elite', monospace;
+    font-size: clamp(1.2rem,3vw,2.4rem);
+    letter-spacing: 0.5em;
+    color: var(--crimson); margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px rgba(139,26,26,0.6);
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem,5vw,4.5rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold), var(--sand), var(--cream));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2; letter-spacing: 0.08em;
+  }
+
+  .hero h1 .en {
+    display: block;
+    font-size: clamp(1rem,2.5vw,2rem);
+    font-family: 'Special Elite', monospace;
+    -webkit-text-fill-color: var(--sand);
+    letter-spacing: 0.12em;
+    margin-top: 0.3rem;
+  }
+
+  .hero .tagline {
+    font-size: clamp(1rem,2vw,1.6rem);
+    color: var(--dust); font-style: italic;
+    margin-top: 1rem; letter-spacing: 0.04em;
+  }
+
+  .hero .credits {
+    margin-top: 2rem;
+    font-size: clamp(0.8rem,1.2vw,1rem);
+    color: var(--dust);
+    letter-spacing: 0.06em;
+  }
+  .hero .credits span { color: var(--gold); }
+
+  .hero .scroll-indicator {
+    position: absolute; bottom: 2.5rem;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0.5rem; color: var(--dust); font-size: 0.8rem;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  .scroll-indicator .arrow { font-size: 1.4rem; }
+
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* ── Sections ── */
+  section {
+    position: relative; z-index: 1;
+    max-width: 1100px; margin: 0 auto;
+    padding: 5rem 2rem;
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  section.visible { opacity: 1; transform: translateY(0); }
+
+  .section-title {
+    text-align: center; margin-bottom: 3rem;
+  }
+  .section-title h2 {
+    font-size: clamp(1.6rem,3vw,2.4rem);
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+  .section-title .line {
+    width: 80px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--sand), transparent);
+    margin: 0.8rem auto 0;
+  }
+
+  /* ── Ratings ── */
+  .ratings-grid {
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 1.5rem; margin: 2rem 0;
+  }
+  @media(max-width:768px){
+    .ratings-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:480px){
+    .ratings-grid{grid-template-columns:1fr;}
+  }
+  .rating-item {
+    background: rgba(74,44,15,0.4);
+    border: 1px solid rgba(212,167,85,0.2);
+    border-radius: 12px; padding: 1.5rem 1rem;
+    text-align: center; backdrop-filter: blur(6px);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .rating-item:hover {
+    border-color: var(--sand);
+    transform: translateY(-4px);
+  }
+  .rating-item .source {
+    font-size: 0.85rem; color: var(--dust);
+    letter-spacing: 0.06em; margin-bottom: 0.5rem;
+  }
+  .rating-item .score {
+    font-size: clamp(2rem,3vw,2.8rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--gold), var(--cream));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .rating-bar-wrap {
+    margin-top: 0.8rem;
+    height: 4px; background: rgba(255,255,255,0.08);
+    border-radius: 2px; overflow: hidden;
+  }
+  .rating-bar-fill {
+    height: 100%; border-radius: 2px;
+    width: 0; transition: width 1.8s cubic-bezier(0.25,0.46,0.45,0.94);
+    background: linear-gradient(90deg, var(--sunset), var(--gold));
+  }
+  section.visible .rating-bar-fill { width: var(--target); }
+  .rating-item .label {
+    font-size: 0.75rem; color: var(--dust); margin-top: 0.5rem;
+  }
+
+  /* ── Plot ── */
+  .plot-wrap {
+    background: rgba(74,44,15,0.3);
+    border: 1px solid rgba(212,167,85,0.15);
+    border-radius: 16px; padding: 2.5rem;
+    backdrop-filter: blur(6px);
+    position: relative; overflow: hidden;
+  }
+  .plot-wrap::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, var(--gold), var(--sunset), var(--crimson));
+  }
+  .plot-wrap p {
+    font-size: clamp(1rem,1.3vw,1.15rem);
+    line-height: 1.9; color: var(--cream);
+    text-indent: 2em;
+  }
+  .no-spoiler {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.35rem 1rem;
+    background: rgba(200,90,23,0.15);
+    border: 1px solid rgba(200,90,23,0.3);
+    border-radius: 20px; margin-top: 1.2rem;
+    font-size: 0.8rem; color: var(--sand);
+  }
+
+  /* ── Highlights ── */
+  .highlights-grid {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 1.5rem;
+  }
+  @media(max-width:768px){
+    .highlights-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:480px){
+    .highlights-grid{grid-template-columns:1fr;}
+  }
+  .highlight-card {
+    background: rgba(74,44,15,0.35);
+    border: 1px solid rgba(212,167,85,0.12);
+    border-radius: 14px; padding: 1.8rem 1.5rem;
+    backdrop-filter: blur(4px);
+    transition: all 0.4s ease; cursor: default;
+  }
+  .highlight-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(200,90,23,0.15);
+  }
+  .highlight-card .icon {
+    font-size: 1.8rem; margin-bottom: 0.8rem;
+  }
+  .highlight-card h3 {
+    font-size: 1.1rem; color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .highlight-card p {
+    font-size: 0.9rem; color: var(--dust);
+    line-height: 1.7;
+  }
+
+  /* ── Quote ── */
+  .quote-block {
+    text-align: center; padding: 3rem 2rem;
+    margin: 2rem 0;
+    border-top: 1px solid rgba(212,167,85,0.2);
+    border-bottom: 1px solid rgba(212,167,85,0.2);
+    background: rgba(74,44,15,0.2);
+  }
+  .quote-block blockquote {
+    font-size: clamp(1.1rem,2vw,1.6rem);
+    font-style: italic; color: var(--cream);
+    line-height: 1.8; max-width: 700px; margin: 0 auto;
+  }
+  .quote-block blockquote::before { content: '\201C'; }
+  .quote-block blockquote::after { content: '\201D'; }
+  .quote-block cite {
+    display: block; margin-top: 1rem;
+    font-size: 0.9rem; color: var(--dust);
+    font-style: normal;
+  }
+
+  .quote-block .en-quote {
+    display: block; margin-top: 0.5rem;
+    font-family: 'Special Elite', monospace;
+    font-size: clamp(0.85rem,1.5vw,1.1rem);
+    color: var(--sand); font-style: normal;
+  }
+
+  /* ── Why Watch ── */
+  .why-list {
+    display: grid; grid-template-columns: repeat(2,1fr);
+    gap: 1.2rem;
+  }
+  @media(max-width:600px){
+    .why-list{grid-template-columns:1fr;}
+  }
+  .why-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.2rem 1.5rem;
+    background: rgba(74,44,15,0.25);
+    border-radius: 12px; border-left: 3px solid var(--sunset);
+    transition: background 0.3s;
+  }
+  .why-item:hover { background: rgba(74,44,15,0.4); }
+  .why-item .num {
+    font-size: 1.4rem; font-weight: 900;
+    color: var(--gold); font-family: 'Special Elite', monospace;
+    min-width: 2rem; line-height: 1.4;
+  }
+  .why-item .why-text h4 {
+    font-size: 1rem; color: var(--cream); margin-bottom: 0.3rem;
+  }
+  .why-item .why-text p {
+    font-size: 0.85rem; color: var(--dust); line-height: 1.6;
+  }
+
+  /* ── Film Archive ── */
+  .archive {
+    background: rgba(74,44,15,0.3);
+    border: 1px solid rgba(212,167,85,0.15);
+    border-radius: 16px; padding: 2rem; overflow: hidden;
+    backdrop-filter: blur(4px);
+  }
+  .archive table {
+    width: 100%; border-collapse: collapse;
+  }
+  .archive tr { border-bottom: 1px solid rgba(212,167,85,0.08); }
+  .archive tr:last-child { border-bottom: none; }
+  .archive td {
+    padding: 0.8rem 0.6rem;
+    font-size: 0.9rem; vertical-align: top;
+  }
+  .archive td:first-child {
+    color: var(--gold); font-weight: 600;
+    white-space: nowrap; width: 120px;
+  }
+  .archive td:last-child { color: var(--cream); }
+
+  /* ── Final Note ── */
+  .final-note {
+    text-align: center; padding: 3rem 2rem;
+    border-top: 2px solid rgba(212,167,85,0.15);
+    margin-top: 2rem;
+  }
+  .final-note .stars {
+    font-size: 2rem; letter-spacing: 0.3em;
+    background: linear-gradient(90deg, var(--gold), var(--cream), var(--gold));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .final-note p {
+    margin-top: 1rem; font-size: 1.05rem;
+    color: var(--cream); font-style: italic;
+  }
+  .final-note .sig {
+    margin-top: 1.5rem; font-size: 0.85rem;
+    color: var(--dust); font-style: normal;
+  }
+
+  /* ── SVG Silhouette ── */
+  .hero-svg {
+    margin: 1.5rem auto 0;
+    width: clamp(200px, 40vw, 400px);
+    height: auto;
+    opacity: 0.7;
+  }
+
+  /* ── Responsive ── */
+  @media(max-width:480px){
+    .hero .wanted-poster{padding:1.5rem 1.2rem;}
+    section{padding:3rem 1.2rem;}
+    .plot-wrap{padding:1.5rem;}
+    .archive{padding:1.2rem;}
+    .archive td:first-child{width:90px;font-size:0.8rem;}
+    .archive td{font-size:0.8rem;padding:0.6rem 0.4rem;}
+  }
+
+  .footer {
+    position: relative; z-index: 1;
+    text-align: center; padding: 2rem;
+    color: rgba(245,230,200,0.3);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<!-- ════ HERO ════ -->
+<header class="hero">
+  <div class="year">1966</div>
+  <div class="wanted-poster">
+    <h1>
+      黄金三镖客
+      <span class="en">The Good, the Bad and the Ugly</span>
+    </h1>
+    <p class="tagline">"每个恶人都有他的好日子"</p>
+  </div>
+
+  <!-- SVG Silhouette: three cowboys + sunset -->
+  <svg class="hero-svg" viewBox="0 0 400 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="sunsetGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#c85a17"/>
+        <stop offset="40%" stop-color="#d4a755"/>
+        <stop offset="100%" stop-color="#4a2c0f"/>
+      </linearGradient>
+    </defs>
+    <!-- sun -->
+    <circle cx="200" cy="100" r="40" fill="url(#sunsetGrad)" opacity="0.6"/>
+    <!-- ground -->
+    <path d="M0 150 Q100 130 200 140 Q300 150 400 135 L400 160 L0 160Z" fill="#1a0f08" opacity="0.8"/>
+    <!-- cactus left -->
+    <path d="M60 148 L60 80 L68 80 L68 60 L60 60 L60 40 M56 80 L48 80 L48 65 M72 80 L80 80 L80 70" stroke="#1a0f08" stroke-width="4" fill="none" opacity="0.7"/>
+    <!-- cactus right -->
+    <path d="M340 145 L340 75 L348 75 L348 55 L340 55 L340 35 M336 75 L328 75 L328 60 M352 75 L360 75 L360 65" stroke="#1a0f08" stroke-width="4" fill="none" opacity="0.7"/>
+    <!-- three cowboys -->
+    <!-- left - The Good (Blondie) - poncho -->
+    <path d="M140 148 L140 125 L135 115 L145 115 L145 125 L148 148Z" fill="#1a0f08" opacity="0.85"/>
+    <circle cx="140" cy="110" r="8" fill="#1a0f08" opacity="0.85"/>
+    <path d="M130 118 L150 118 L152 120 L128 120Z" fill="#1a0f08" opacity="0.85"/>
+    <!-- center - The Bad (Angel Eyes) - coat -->
+    <path d="M195 148 L195 120 L188 110 L202 110 L205 120 L205 148Z" fill="#1a0f08" opacity="0.85"/>
+    <circle cx="200" cy="105" r="8" fill="#1a0f08" opacity="0.85"/>
+    <path d="M187 113 L213 113 L215 115 L185 115Z" fill="#1a0f08" opacity="0.85"/>
+    <!-- right - The Ugly (Tuco) - hat bigger -->
+    <path d="M255 148 L255 128 L248 118 L262 118 L265 128 L265 148Z" fill="#1a0f08" opacity="0.85"/>
+    <circle cx="260" cy="113" r="8" fill="#1a0f08" opacity="0.85"/>
+    <path d="M248 116 L272 116 L274 118 L246 118Z" fill="#1a0f08" opacity="0.85"/>
+    <!-- hats -->
+    <ellipse cx="140" cy="104" rx="10" ry="3" fill="#1a0f08" opacity="0.85"/>
+    <ellipse cx="200" cy="99" rx="10" ry="3" fill="#1a0f08" opacity="0.85"/>
+    <ellipse cx="260" cy="107" rx="12" ry="4" fill="#1a0f08" opacity="0.85"/>
+  </svg>
+
+  <p class="credits">
+    赛尔乔·莱昂内 执导 ｜ <span>克林特·伊斯特伍德</span> · <span>李·范·克里夫</span> · <span>埃里·瓦拉赫</span>
+  </p>
+
+  <div class="scroll-indicator">
+    <span>向下浏览</span>
+    <span class="arrow">⌄</span>
+  </div>
+</header>
+
+<!-- ════ 评分 ════ -->
+<section id="ratings">
+  <div class="section-title">
+    <h2>评分与口碑</h2>
+    <div class="line"></div>
+  </div>
+  <div class="ratings-grid">
+    <div class="rating-item">
+      <div class="source">IMDb</div>
+      <div class="score" data-target="8.8" data-suffix="">8.8</div>
+      <div class="rating-bar-wrap"><div class="rating-bar-fill" style="--target:88%"></div></div>
+      <div class="label">Top 250 #10</div>
+    </div>
+    <div class="rating-item">
+      <div class="source">豆瓣</div>
+      <div class="score" data-target="9.2" data-suffix="">9.2</div>
+      <div class="rating-bar-wrap"><div class="rating-bar-fill" style="--target:92%"></div></div>
+      <div class="label">Top 250 #31</div>
+    </div>
+    <div class="rating-item">
+      <div class="source">烂番茄</div>
+      <div class="score" data-target="97" data-suffix="%">97%</div>
+      <div class="rating-bar-wrap"><div class="rating-bar-fill" style="--target:97%"></div></div>
+      <div class="label">新鲜度</div>
+    </div>
+    <div class="rating-item">
+      <div class="source">Metacritic</div>
+      <div class="score" data-target="90" data-suffix="">90</div>
+      <div class="rating-bar-wrap"><div class="rating-bar-fill" style="--target:90%"></div></div>
+      <div class="label">媒体综评</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 剧情 ════ -->
+<section id="plot">
+  <div class="section-title">
+    <h2>剧情梗概</h2>
+    <div class="line"></div>
+  </div>
+  <div class="plot-wrap">
+    <p>
+      美国南北战争时期，西部荒野上演着一场关于20万美元金币的生死追逐。三个身份迥异、各怀鬼胎的男人——被人称作"好人"的赏金猎人布兰迪（克林特·伊斯特伍德 饰）、冷血无情的职业杀手"坏人"安吉尔·艾斯（李·范·克里夫 饰）、以及狡诈贪婪的墨西哥匪徒"丑人"图科（埃里·瓦拉赫 饰）——各自掌握了寻找宝藏的线索碎片。在战火纷飞的荒野、尘土飞扬的小镇和荒凉的修道院之间，三人时而结盟、时而背叛、时而厮杀，最终在一座荒芜的墓园中迎来了宿命般的对决。
+    </p>
+    <div class="no-spoiler">
+      <span>🤠</span> 无剧透 · 仅提供故事框架与人物关系
+    </div>
+  </div>
+</section>
+
+<!-- ════ Quotes ════ -->
+<section id="quote1">
+  <div class="quote-block">
+    <blockquote>
+      在这个世界上，有两种人：一种人拿枪的，一种人挖坟的。
+    </blockquote>
+    <cite>
+      图科（Tuco）
+      <span class="en-quote">"There are two kinds of people in this world: those with loaded guns, and those who dig. You dig."</span>
+    </cite>
+  </div>
+</section>
+
+<!-- ════ 六大亮点 ════ -->
+<section id="highlights">
+  <div class="section-title">
+    <h2>六大亮点</h2>
+    <div class="line"></div>
+  </div>
+  <div class="highlights-grid">
+    <div class="highlight-card">
+      <div class="icon">🎬</div>
+      <h3>西部片巅峰里程碑</h3>
+      <p>通心粉西部片的最高成就，将"镖客三部曲"推向极致。莱昂内以歌剧般的叙事节奏、壮阔的远景构图，重新定义了西部类型片的美学语言。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon">🎵</div>
+      <h3>莫里康内传奇配乐</h3>
+      <p>埃尼奥·莫里康内贡献了他职业生涯中最具标志性的配乐——从口哨到人声合唱，从号角到电吉他，每一个音符都让人血脉贲张、永生难忘。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon">🎭</div>
+      <h3>三主角化学反应</h3>
+      <p>伊斯特伍德的冷峻孤傲、范·克里夫的冷血优雅、瓦拉赫的疯癫狡诈——三人截然不同的表演风格碰撞出不可思议的火花，每一场对手戏都令人屏息。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon">📷</div>
+      <h3>革命性的视觉语言</h3>
+      <p>托纳多·德利·科利的摄影堪称教科书级别：极端大特写与浩瀚远景的切换、烈日烘烤下的超饱和色彩、人物眼神的凝视——每一帧都是艺术品。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon">🏆</div>
+      <h3>影史永恒的经典</h3>
+      <p>IMDb Top 250 中排名第10，豆瓣9.2分，被《帝国》杂志评为"影史最伟大电影之一"。无数后来者（包括昆汀·塔伦蒂诺）都公开承认受其影响至深。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon">⚖️</div>
+      <h3>超越善恶的哲学</h3>
+      <p>片名中的"好、坏、丑"绝非表面之分——在战乱与荒蛮的世界里，善恶的界限不断模糊。莱昂内用三个男人的故事拷问着人性深处的黑暗与光辉。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ Quotes 2 ════ -->
+<section id="quote2">
+  <div class="quote-block">
+    <blockquote>
+      当你不得不开枪时，就别犹豫。犹豫的人不是死了就是在牢里。
+    </blockquote>
+    <cite>
+      桑坦萨（Sentenza）
+      <span class="en-quote">"When you have to shoot, shoot. Don't talk."</span>
+    </cite>
+  </div>
+</section>
+
+<!-- ════ 为什么值得看 ════ -->
+<section id="whywatch">
+  <div class="section-title">
+    <h2>为什么值得一看？</h2>
+    <div class="line"></div>
+  </div>
+  <div class="why-list">
+    <div class="why-item">
+      <div class="num">01</div>
+      <div class="why-text">
+        <h4>影史最伟大的结尾对决</h4>
+        <p>三人在圆形墓园中的"墨西哥对峙"场景，长达6分钟没有一句台词，只有眼神、汗水、风声和莫里康内的配乐——被公认为电影史上最完美的悬念场面之一。</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="num">02</div>
+      <div class="why-text">
+        <h4>战争荒诞性的深刻隐喻</h4>
+        <p>以南北战争为背景，莱昂内用荒诞的笔触描绘战场的混乱与无谓。炸桥戏、战俘营、士兵的绝望挣扎——这是西部片外壳下对战争最辛辣的控诉。</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="num">03</div>
+      <div class="why-text">
+        <h4>每个角色都立体生动</h4>
+        <p>没有绝对的好人与坏人。图科从奸诈匪徒到让人心生怜爱，"好人"布兰迪的冷峻中闪烁着幽默的光辉——三个主角的弧光让你看完后久久回味。</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="num">04</div>
+      <div class="why-text">
+        <h4>跨越时代的观影体验</h4>
+        <p>近三小时的片长毫不拖沓，每一幕都堪称经典。无论你是不是西部片爱好者，这部电影的叙事张力、视觉美感和音乐震撼都能让你沉浸其中。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 影片档案 ════ -->
+<section id="archive">
+  <div class="section-title">
+    <h2>影片档案</h2>
+    <div class="line"></div>
+  </div>
+  <div class="archive">
+    <table>
+      <tr><td>中文片名</td><td>黄金三镖客</td></tr>
+      <tr><td>英文片名</td><td>The Good, the Bad and the Ugly</td></tr>
+      <tr><td>意大利语原名</td><td>Il buono, il brutto, il cattivo</td></tr>
+      <tr><td>上映年份</td><td>1966年（意大利）· 1967年（美国）</td></tr>
+      <tr><td>导演</td><td>赛尔乔·莱昂内（Sergio Leone）</td></tr>
+      <tr><td>主演</td><td>克林特·伊斯特伍德 · 李·范·克里夫 · 埃里·瓦拉赫</td></tr>
+      <tr><td>配乐</td><td>埃尼奥·莫里康内（Ennio Morricone）</td></tr>
+      <tr><td>片长</td><td>178分钟（原始版）/ 161分钟（国际版）</td></tr>
+      <tr><td>类型</td><td>西部 · 冒险 · 战争</td></tr>
+      <tr><td>语言</td><td>意大利语 / 英语</td></tr>
+      <tr><td>豆瓣评分</td><td>9.2（Top 250 #31）</td></tr>
+      <tr><td>IMDb评分</td><td>8.8（Top 250 #10）</td></tr>
+      <tr><td>荣誉</td><td>IMDb Top 250 #10 · 豆瓣 Top 250 #31 · 美国国家电影保护局注册典藏 · 《帝国》杂志影史最伟大电影之一</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ════ 编辑评语 ════ -->
+<section id="final">
+  <div class="final-note">
+    <div class="stars">★★★★★</div>
+    <p>"如果一生只能看一部西部片，那一定是《黄金三镖客》。<br>它不只是一部电影，而是一场关于人性、荣耀与贪婪的史诗。"</p>
+    <p class="sig">—— WorkBuddy 电影推荐 · 2026年7月9日</p>
+  </div>
+</section>
+
+<footer class="footer">每日一部经典电影 · 和你体验精彩人生</footer>
+
+<script>
+  // ══════════════════════
+  // Canvas Particle System
+  // ══════════════════════
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.size = Math.random() * 3 + 1;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.speedY = -Math.random() * 0.2 - 0.05;
+      this.opacity = Math.random() * 0.5 + 0.15;
+      this.hue = Math.random() > 0.5
+        ? 35 + Math.random() * 15   // gold
+        : 20 + Math.random() * 10;  // orange-brown
+      this.life = Math.random() * 300 + 200;
+      this.maxLife = this.life;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      this.life--;
+      this.opacity = Math.max(0, this.opacity * (this.life / this.maxLife));
+      if (this.life <= 0 || this.y < -10 || this.x < -10 || this.x > W + 10) {
+        this.reset();
+        this.y = H + 5;
+      }
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${this.hue}, 70%, 55%, ${this.opacity})`;
+      ctx.fill();
+      // glow
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size * 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${this.hue}, 60%, 50%, ${this.opacity * 0.2})`;
+      ctx.fill();
+    }
+  }
+
+  function initParticles(count) {
+    particles = [];
+    for (let i = 0; i < count; i++) {
+      const p = new Particle();
+      p.y = Math.random() * H;
+      p.life = Math.random() * p.maxLife;
+      particles.push(p);
+    }
+  }
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animateParticles);
+  }
+
+  const pCount = Math.min(120, Math.floor(W * H / 8000));
+  initParticles(pCount);
+  animateParticles();
+
+  // ══════════════════════
+  // Intersection Observer
+  // ══════════════════════
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('section').forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

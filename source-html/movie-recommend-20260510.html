@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>经典电影推荐 · 美丽人生</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Serif+SC:wght@400;600;700;900&display=swap');
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-pale: #f5e6c0;
+      --cream: #faf6ee;
+      --warm-white: #fff9f0;
+      --ink: #1a1208;
+      --ink-mid: #3d2e12;
+      --ink-soft: #6b5535;
+      --sky-blue: #4a7fa5;
+      --sky-light: #afd0e8;
+      --red-warm: #c94040;
+      --olive: #6b7c3a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Noto Serif SC', 'Lora', Georgia, serif;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ── CANVAS ── */
+    #particle-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(160deg, #2b1d0e 0%, #1a0f05 50%, #0d1a24 100%);
+    }
+
+    .hero-bg-shapes {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* Warm sun glow */
+    .hero-bg-shapes::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, rgba(201,168,76,0.06) 40%, transparent 70%);
+      animation: pulse-glow 6s ease-in-out infinite;
+    }
+
+    /* Horizon warm glow */
+    .hero-bg-shapes::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(201,100,40,0.12) 0%, transparent 100%);
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.8; transform: translateX(-50%) scale(1); }
+      50% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+    }
+
+    /* Vertical stripes (venetian blinds effect) */
+    .blinds {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 45%;
+      z-index: 1;
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      opacity: 0.08;
+    }
+    .blinds span {
+      flex: 1;
+      height: 100%;
+      background: linear-gradient(to top, var(--gold), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      max-width: 900px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold-light);
+      padding: 6px 20px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      animation: fade-up 1s ease both;
+    }
+    .badge::before { content: '✦'; font-size: 0.6rem; }
+    .badge::after { content: '✦'; font-size: 0.6rem; }
+
+    .hero-year {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(5rem, 15vw, 13rem);
+      font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(201,168,76,0.25);
+      line-height: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      pointer-events: none;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .hero-title-cn {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+      line-height: 1.1;
+      animation: fade-up 1s 0.2s ease both;
+      text-shadow: 0 4px 40px rgba(201,168,76,0.3);
+    }
+
+    .hero-title-en {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 3vw, 2rem);
+      color: rgba(232,201,122,0.7);
+      letter-spacing: 0.05em;
+      margin-top: 0.5rem;
+      animation: fade-up 1s 0.35s ease both;
+    }
+
+    .hero-tagline {
+      margin-top: 2.5rem;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: rgba(250,230,192,0.85);
+      font-style: italic;
+      letter-spacing: 0.03em;
+      animation: fade-up 1s 0.5s ease both;
+      line-height: 1.5;
+    }
+
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      animation: fade-up 1s 0.65s ease both;
+    }
+
+    .hero-meta-item {
+      text-align: center;
+    }
+    .hero-meta-item .value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .hero-meta-item .label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: rgba(232,201,122,0.6);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      animation: bounce 2.5s ease-in-out infinite;
+    }
+    .hero-scroll span {
+      display: block;
+      width: 2px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      margin: 0 auto;
+    }
+    .hero-scroll::before {
+      content: 'SCROLL';
+      display: block;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: rgba(201,168,76,0.6);
+      margin-bottom: 6px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative;
+      z-index: 2;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0 auto;
+      max-width: 300px;
+      padding: 0.5rem 0;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .divider::after {
+      background: linear-gradient(to left, transparent, var(--gold));
+    }
+    .divider-gem {
+      width: 8px; height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ── SCORES ── */
+    .scores-section {
+      background: #f5ede0;
+      padding: 4rem 0;
+    }
+
+    .scores-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .score-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.8rem 1.2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(201,168,76,0.1), 0 1px 4px rgba(0,0,0,0.06);
+      border: 1px solid rgba(201,168,76,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .score-card.visible {
+      animation: card-in 0.6s ease forwards;
+    }
+    .score-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(201,168,76,0.2);
+    }
+
+    .score-icon {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .score-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .score-num span {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      font-weight: 400;
+    }
+
+    .score-bar-wrap {
+      height: 5px;
+      background: #f0e8d5;
+      border-radius: 10px;
+      margin: 0.8rem 0.5rem 0.6rem;
+      overflow: hidden;
+    }
+    .score-bar {
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(to right, var(--gold), var(--gold-light));
+      width: 0;
+      transition: width 1.5s ease;
+    }
+
+    .score-label {
+      font-size: 0.75rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SYNOPSIS ── */
+    .synopsis-section {
+      padding: 5rem 0;
+      background: var(--warm-white);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .synopsis-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* Poster illustration */
+    .poster-art {
+      position: sticky;
+      top: 2rem;
+    }
+
+    .poster-frame {
+      aspect-ratio: 2/3;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25), 0 0 0 6px rgba(201,168,76,0.2);
+      position: relative;
+      background: linear-gradient(160deg, #2b1d0e 0%, #5c3d14 40%, #1a2e40 100%);
+    }
+
+    .poster-svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .poster-caption {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      letter-spacing: 0.05em;
+    }
+
+    .synopsis-text p {
+      font-size: 1.05rem;
+      color: var(--ink-mid);
+      line-height: 1.9;
+      margin-bottom: 1.4rem;
+    }
+
+    .synopsis-text p:first-child::first-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      float: left;
+      line-height: 0.85;
+      margin-right: 0.12em;
+      margin-top: 0.08em;
+    }
+
+    .spoiler-free-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(107,124,58,0.1);
+      border: 1px solid rgba(107,124,58,0.3);
+      color: var(--olive);
+      font-size: 0.75rem;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.08em;
+      margin-top: 0.5rem;
+    }
+    .spoiler-free-tag::before { content: '🛡'; font-size: 0.8rem; }
+
+    /* ── HIGHLIGHTS ── */
+    .highlights-section {
+      padding: 5rem 0;
+      background: #1a1208;
+      color: var(--cream);
+    }
+
+    .highlights-section .section-title {
+      color: var(--gold-light);
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .highlight-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 14px;
+      padding: 1.8rem;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(25px);
+    }
+    .highlight-card.visible {
+      animation: card-in 0.6s ease forwards;
+    }
+    .highlight-card:hover {
+      background: rgba(201,168,76,0.06);
+      border-color: rgba(201,168,76,0.35);
+      transform: translateY(-4px);
+    }
+
+    .highlight-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .highlight-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .highlight-text {
+      font-size: 0.9rem;
+      color: rgba(250,246,238,0.75);
+      line-height: 1.7;
+    }
+
+    @keyframes card-in {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── QUOTE ── */
+    .quote-section {
+      padding: 5rem 0;
+      background: linear-gradient(135deg, #3d2e12 0%, #1a1208 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-section::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 30rem;
+      position: absolute;
+      top: -8rem;
+      left: -3rem;
+      color: rgba(201,168,76,0.05);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .quote-content {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--gold-light);
+      line-height: 1.6;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    .quote-text em {
+      font-style: normal;
+      color: white;
+    }
+
+    .quote-source {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: rgba(201,168,76,0.6);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── WHY WATCH ── */
+    .why-section {
+      padding: 5rem 0;
+      background: var(--warm-white);
+    }
+
+    .why-list {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .why-item {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      padding: 1.5rem 1.8rem;
+      background: white;
+      border-radius: 12px;
+      border-left: 4px solid var(--gold);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: all 0.3s ease;
+    }
+    .why-item.visible {
+      animation: slide-in 0.6s ease forwards;
+    }
+    .why-item:hover {
+      box-shadow: 0 6px 25px rgba(201,168,76,0.15);
+      transform: translateX(3px);
+    }
+
+    @keyframes slide-in {
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .why-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold-pale);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 2rem;
+      text-align: center;
+    }
+
+    .why-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .why-body p {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    /* ── AWARDS ── */
+    .awards-section {
+      padding: 4rem 0;
+      background: #f5ede0;
+    }
+
+    .awards-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .award-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 40px;
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      color: var(--ink-mid);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
+    }
+    .award-tag:hover {
+      background: var(--gold);
+      color: white;
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .award-tag .trophy { font-size: 1.1rem; }
+
+    /* ── FILMINFO ── */
+    .filminfo-section {
+      padding: 5rem 0;
+      background: var(--warm-white);
+    }
+
+    .info-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-top: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .info-row {
+      display: contents;
+    }
+
+    .info-row:nth-child(odd) .info-key,
+    .info-row:nth-child(odd) .info-val {
+      background: #fdf7ee;
+    }
+
+    .info-key {
+      padding: 1rem 1.5rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      border-right: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      background: white;
+    }
+    .info-val {
+      padding: 1rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      background: white;
+    }
+
+    /* ── FINAL ── */
+    .final-section {
+      padding: 5rem 0;
+      background: linear-gradient(160deg, #2b1d0e 0%, #1a0f05 100%);
+      text-align: center;
+    }
+
+    .final-quote {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--gold-light);
+      font-style: italic;
+      max-width: 700px;
+      margin: 2rem auto;
+      line-height: 1.8;
+    }
+
+    .final-line {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      max-width: 400px;
+      margin: 2rem auto;
+    }
+
+    .final-tags {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .final-tag {
+      font-size: 0.75rem;
+      color: rgba(201,168,76,0.7);
+      border: 1px solid rgba(201,168,76,0.2);
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.1em;
+    }
+
+    .editor-comment {
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      max-width: 650px;
+      margin: 2.5rem auto 0;
+    }
+    .editor-comment p {
+      font-size: 0.9rem;
+      color: rgba(250,246,238,0.8);
+      line-height: 1.8;
+    }
+    .editor-comment .editor-name {
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .scores-grid { grid-template-columns: repeat(2, 1fr); }
+      .highlights-grid { grid-template-columns: 1fr; }
+      .synopsis-layout { grid-template-columns: 1fr; }
+      .poster-art { position: static; max-width: 280px; margin: 0 auto; }
+      .info-table { grid-template-columns: 1fr; }
+      .info-key { border-right: none; }
+    }
+
+    @media (max-width: 480px) {
+      .scores-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg-shapes"></div>
+  <div class="blinds" id="blinds"></div>
+  <div class="hero-year">1997</div>
+
+  <div class="hero-content">
+    <div class="badge">经典电影推荐 · 第九期</div>
+    <h1 class="hero-title-cn">美丽人生</h1>
+    <div class="hero-title-en">La Vita è Bella</div>
+    <p class="hero-tagline">
+      "即便在最深的黑暗中，<br/>他也为儿子撑起了一片光。"
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="value">8.6</div>
+        <div class="label">IMDb</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="value">9.5</div>
+        <div class="label">豆瓣</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="value">3项</div>
+        <div class="label">奥斯卡</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="value">116</div>
+        <div class="label">分钟</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll"><span></span></div>
+</section>
+
+<!-- ── SCORES ── -->
+<section class="scores-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">全球评分</div>
+      <div class="section-title">跨越语言的共同感动</div>
+    </div>
+    <div class="scores-grid">
+      <div class="score-card" data-delay="0">
+        <span class="score-icon">⭐</span>
+        <div class="score-num" data-target="8.6">0<span>/10</span></div>
+        <div class="score-bar-wrap"><div class="score-bar" data-width="86"></div></div>
+        <div class="score-label">IMDb 评分</div>
+      </div>
+      <div class="score-card" data-delay="100">
+        <span class="score-icon">🍅</span>
+        <div class="score-num" data-target="80">0<span>%</span></div>
+        <div class="score-bar-wrap"><div class="score-bar" data-width="80"></div></div>
+        <div class="score-label">烂番茄观众</div>
+      </div>
+      <div class="score-card" data-delay="200">
+        <span class="score-icon">🎬</span>
+        <div class="score-num" data-target="9.5">0<span>/10</span></div>
+        <div class="score-bar-wrap"><div class="score-bar" data-width="95"></div></div>
+        <div class="score-label">豆瓣评分</div>
+      </div>
+      <div class="score-card" data-delay="300">
+        <span class="score-icon">🏆</span>
+        <div class="score-num" data-target="3">0<span>项</span></div>
+        <div class="score-bar-wrap"><div class="score-bar" data-width="75"></div></div>
+        <div class="score-label">奥斯卡大奖</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SYNOPSIS ── -->
+<section class="synopsis-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">剧情梗概</div>
+      <h2 class="section-title">一个父亲的奇迹</h2>
+    </div>
+    <div class="synopsis-layout">
+      <div class="poster-art">
+        <div class="poster-frame">
+          <!-- Illustrated poster SVG -->
+          <svg class="poster-svg" viewBox="0 0 300 450" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="sky" cx="50%" cy="30%" r="70%">
+                <stop offset="0%" stop-color="#4a7fa5" stop-opacity="0.9"/>
+                <stop offset="60%" stop-color="#2b5070"/>
+                <stop offset="100%" stop-color="#1a1208"/>
+              </radialGradient>
+              <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f5d55e"/>
+                <stop offset="50%" stop-color="#c98a30" stop-opacity="0.7"/>
+                <stop offset="100%" stop-color="#c98a30" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5c3d14"/>
+                <stop offset="100%" stop-color="#2b1d0e"/>
+              </linearGradient>
+            </defs>
+            <!-- Sky -->
+            <rect width="300" height="450" fill="url(#sky)"/>
+            <!-- Sun glow -->
+            <circle cx="150" cy="145" r="90" fill="url(#sun)" opacity="0.5"/>
+            <!-- Warm horizon -->
+            <rect x="0" y="280" width="300" height="170" fill="url(#ground)"/>
+            <!-- Stars -->
+            <circle cx="40" cy="40" r="1" fill="white" opacity="0.8"/>
+            <circle cx="80" cy="20" r="1.5" fill="white" opacity="0.6"/>
+            <circle cx="200" cy="35" r="1" fill="white" opacity="0.9"/>
+            <circle cx="250" cy="55" r="1" fill="white" opacity="0.7"/>
+            <circle cx="120" cy="15" r="1" fill="white" opacity="0.5"/>
+            <circle cx="270" cy="90" r="1.5" fill="white" opacity="0.4"/>
+            <!-- Father silhouette (walking with child) -->
+            <!-- Father body -->
+            <g transform="translate(95, 210)">
+              <!-- Father head -->
+              <circle cx="20" cy="-60" r="12" fill="#1a0f05"/>
+              <!-- Father hat (brim) -->
+              <ellipse cx="20" cy="-69" rx="16" ry="5" fill="#0d0804"/>
+              <rect x="14" y="-84" width="12" height="16" rx="3" fill="#0d0804"/>
+              <!-- Father body -->
+              <rect x="10" y="-48" width="20" height="40" rx="4" fill="#1a1208"/>
+              <!-- Father legs -->
+              <rect x="10" y="-10" width="8" height="35" rx="3" fill="#1a1208"/>
+              <rect x="22" y="-10" width="8" height="33" rx="3" fill="#1a1208"/>
+              <!-- Father arm reaching down -->
+              <line x1="10" y1="-35" x2="-5" y2="-5" stroke="#1a1208" stroke-width="7" stroke-linecap="round"/>
+              <!-- Child head -->
+              <circle cx="-10" cy="-5" r="9" fill="#1a0f05"/>
+              <!-- Child body -->
+              <rect x="-17" y="4" width="14" height="25" rx="3" fill="#2b1d0e"/>
+              <!-- Child legs -->
+              <rect x="-15" y="28" width="5" height="22" rx="2" fill="#2b1d0e"/>
+              <rect x="-7" y="28" width="5" height="22" rx="2" fill="#2b1d0e"/>
+              <!-- Child arm held up -->
+              <line x1="-3" y1="10" x2="5" y2="-2" stroke="#2b1d0e" stroke-width="5" stroke-linecap="round"/>
+            </g>
+            <!-- Ground shadow -->
+            <ellipse cx="150" cy="345" rx="60" ry="8" fill="rgba(0,0,0,0.3)"/>
+            <!-- Title area overlay -->
+            <rect x="0" y="360" width="300" height="90" fill="rgba(10,7,3,0.85)"/>
+            <!-- Title text rendered as shapes -->
+            <text x="150" y="395" text-anchor="middle" fill="#c9a84c" font-size="20" font-family="serif" font-weight="bold" letter-spacing="3">美丽人生</text>
+            <text x="150" y="420" text-anchor="middle" fill="rgba(201,168,76,0.6)" font-size="11" font-family="serif" font-style="italic" letter-spacing="1">La Vita è Bella</text>
+            <text x="150" y="440" text-anchor="middle" fill="rgba(201,168,76,0.4)" font-size="9" font-family="sans-serif" letter-spacing="2">1997</text>
+            <!-- Frame border -->
+            <rect x="8" y="8" width="284" height="434" fill="none" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="poster-caption">手绘风格海报插图</div>
+      </div>
+
+      <div class="synopsis-text" id="synopsis-text">
+        <p>
+          圭多是一个乐观风趣、充满想象力的犹太裔意大利男人。凭借幽默与智慧，他追求到了心仪的姑娘多拉，两人喜结连理，生下了可爱的儿子乔苏埃。
+          他们的小店承载着一家人的笑声与温暖，日子看似美满而平静。
+        </p>
+        <p>
+          然而，战争的阴影悄然笼罩。二战期间，圭多一家被强制送往纳粹集中营。面对残酷的现实，圭多做出了一个令人心碎又温暖无比的决定——他用尽全部的想象力与父爱，为儿子编织了一个"游戏"，以守护那颗童稚而纯净的心。
+        </p>
+        <p>
+          影片以截然不同的两种基调讲述同一段旅程：前半段如同明媚的爱情喜剧，后半段则沉入战时的幽暗。而将这两段拼合在一起的，是一个父亲无穷无尽的爱。
+        </p>
+        <span class="spoiler-free-tag">无剧透摘要 · 安全阅读</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HIGHLIGHTS ── -->
+<section class="highlights-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label" style="color: rgba(201,168,76,0.7)">六大亮点</div>
+      <h2 class="section-title">为何它令人难忘</h2>
+    </div>
+    <div class="highlights-grid">
+      <div class="highlight-card" data-delay="0">
+        <span class="highlight-icon">🎭</span>
+        <div class="highlight-title">喜剧与悲剧的极致融合</div>
+        <p class="highlight-text">贝尼尼打破类型边界，用喜剧语言承载最沉重的历史题材，制造出一种独特的情感震荡，让笑声与眼泪在同一个瞬间交汇。</p>
+      </div>
+      <div class="highlight-card" data-delay="100">
+        <span class="highlight-icon">👨‍👦</span>
+        <div class="highlight-title">父爱的终极诠释</div>
+        <p class="highlight-text">圭多对儿子的守护方式前所未有——他用谎言造就真实，用游戏抵御残酷。银幕上很少有如此令人心碎而又温暖的父亲形象。</p>
+      </div>
+      <div class="highlight-card" data-delay="200">
+        <span class="highlight-icon">🎬</span>
+        <div class="highlight-title">导演·编剧·主演三位一体</div>
+        <p class="highlight-text">罗伯托·贝尼尼身兼导演、编剧、主演三职，将个人表达发挥至极致，造就了一部气质高度统一、笑中带泪的作者电影。</p>
+      </div>
+      <div class="highlight-card" data-delay="300">
+        <span class="highlight-icon">🎵</span>
+        <div class="highlight-title">诗意的配乐语言</div>
+        <p class="highlight-text">尼科拉·皮奥瓦尼的原声配乐获奥斯卡最佳配乐奖。那些轻盈而略带忧伤的旋律，成为电影情感的第二条叙事线索。</p>
+      </div>
+      <div class="highlight-card" data-delay="400">
+        <span class="highlight-icon">🌅</span>
+        <div class="highlight-title">两种色调·两个世界</div>
+        <p class="highlight-text">影片前半段阳光温暖，后半段阴冷幽暗，这两种截然不同的视觉与情绪基调形成对比，让最终的情感爆发具有强大的穿透力。</p>
+      </div>
+      <div class="highlight-card" data-delay="500">
+        <span class="highlight-icon">🕊️</span>
+        <div class="highlight-title">人道主义的温柔回应</div>
+        <p class="highlight-text">面对历史的巨大黑洞，这部电影选择以爱作答，而非以愤怒或绝望。它提醒我们：即便深陷黑暗，人类的尊严与温情依然可以闪光。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── QUOTE ── -->
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-content">
+      <div class="divider"><span class="divider-gem"></span></div>
+      <p class="quote-text" style="margin-top: 2rem;">
+        "<em>早安，公主！</em>"
+      </p>
+      <p class="quote-text" style="font-size: 1.1rem; margin-top: 1rem; color: rgba(232,201,122,0.7);">
+        那声呼唤，穿越了整部电影，也穿越了时间。
+      </p>
+      <div class="quote-source" style="margin-top: 1.5rem;">— 圭多 · 《美丽人生》</div>
+      <div class="divider" style="margin-top: 2rem;"><span class="divider-gem"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY WATCH ── -->
+<section class="why-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">推荐理由</div>
+      <h2 class="section-title">为什么值得一看</h2>
+    </div>
+    <div class="why-list">
+      <div class="why-item" data-delay="0">
+        <div class="why-num">01</div>
+        <div class="why-body">
+          <h3>它是电影史上对"父爱"最动人的书写之一</h3>
+          <p>如果你爱过一个孩子，或者曾被父母深深爱过，这部电影会以一种你始料未及的方式击中你。那种共鸣不分国界，不分年代。</p>
+        </div>
+      </div>
+      <div class="why-item" data-delay="150">
+        <div class="why-num">02</div>
+        <div class="why-body">
+          <h3>以轻盈触碰历史的重量</h3>
+          <p>它不回避二战与大屠杀的残酷，却以一种更聪慧、更人性化的方式与之正面相对。相比直接呈现暴力，这种处理方式更令人难以承受，也更令人难以忘怀。</p>
+        </div>
+      </div>
+      <div class="why-item" data-delay="300">
+        <div class="why-num">03</div>
+        <div class="why-body">
+          <h3>笑声背后藏着整部影史最大的悲悯</h3>
+          <p>你会在看似轻松的场景中突然鼻酸，在开怀大笑之后陷入沉默。这种情感的双重体验极为稀有，也是这部电影最了不起的创作成就。</p>
+        </div>
+      </div>
+      <div class="why-item" data-delay="450">
+        <div class="why-num">04</div>
+        <div class="why-body">
+          <h3>一部适合全家人共同观看的电影</h3>
+          <p>它既不晦涩，也不说教。每一代人都能从中找到属于自己的那份感动——无论是为人父母的守护，还是孩子对父亲目光的依赖。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AWARDS ── -->
+<section class="awards-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">荣誉</div>
+      <h2 class="section-title">全球认可</h2>
+    </div>
+    <div class="awards-grid">
+      <div class="award-tag"><span class="trophy">🏆</span>奥斯卡最佳外语片</div>
+      <div class="award-tag"><span class="trophy">🏆</span>奥斯卡最佳男主角</div>
+      <div class="award-tag"><span class="trophy">🏆</span>奥斯卡最佳原创配乐</div>
+      <div class="award-tag"><span class="trophy">🥇</span>戛纳电影节评审团大奖</div>
+      <div class="award-tag"><span class="trophy">🎭</span>英国学院奖最佳非英语片</div>
+      <div class="award-tag"><span class="trophy">⭐</span>欧洲电影奖最佳影片</div>
+      <div class="award-tag"><span class="trophy">📽</span>美国编剧工会奖提名</div>
+      <div class="award-tag"><span class="trophy">🌟</span>全球院线票房超1.5亿美元</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FILMINFO ── -->
+<section class="filminfo-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">影片档案</div>
+      <h2 class="section-title">基本信息</h2>
+    </div>
+    <div class="info-table">
+      <div class="info-row">
+        <div class="info-key">原片名</div>
+        <div class="info-val">La Vita è Bella</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">中文片名</div>
+        <div class="info-val">美丽人生</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">上映年份</div>
+        <div class="info-val">1997年（意大利） · 1998年（国际）</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">导演</div>
+        <div class="info-val">罗伯托·贝尼尼 Roberto Benigni</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">主演</div>
+        <div class="info-val">罗伯托·贝尼尼、尼可莱塔·布拉斯基、乔治·坎塔里尼</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">片长</div>
+        <div class="info-val">116 分钟</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">类型</div>
+        <div class="info-val">剧情 · 喜剧 · 战争</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">语言</div>
+        <div class="info-val">意大利语</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">制片国家</div>
+        <div class="info-val">意大利</div>
+      </div>
+      <div class="info-row">
+        <div class="info-key">配乐</div>
+        <div class="info-val">尼科拉·皮奥瓦尼 Nicola Piovani</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL ── -->
+<section class="final-section">
+  <div class="container">
+    <div class="section-label" style="color: rgba(201,168,76,0.6); text-align:center; letter-spacing:0.3em; font-size:0.7rem; text-transform:uppercase;">编辑评语</div>
+    <div class="final-line"></div>
+    <p class="final-quote">
+      看完这部电影，你可能会沉默许久。<br/>
+      不是因为它沉重，而是因为它——<br/>
+      让你想起了那些被爱过的时刻。
+    </p>
+    <div class="final-line"></div>
+    <div class="final-tags">
+      <span class="final-tag"># 父爱</span>
+      <span class="final-tag"># 二战</span>
+      <span class="final-tag"># 意大利电影</span>
+      <span class="final-tag"># 笑中带泪</span>
+      <span class="final-tag"># 人道主义</span>
+      <span class="final-tag"># 奥斯卡三冠</span>
+    </div>
+    <div class="editor-comment">
+      <p>《美丽人生》是一部敢于在最严肃的话题上开怀大笑的电影，却也是一部敢于让你笑着哭泣的电影。它选择用爱与想象对抗历史的暴力，这本身就是一种最温柔、也最有力量的姿态。如果你只能在今年看一部老电影，请选择它。</p>
+      <div class="editor-name">— 每日经典电影推荐 · 第九期</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ── Canvas warm particles ──
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Warm dust motes
+  for (let i = 0; i < 60; i++) {
+    particles.push({
+      x: Math.random() * 2000,
+      y: Math.random() * 2000,
+      r: Math.random() * 2 + 0.5,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: -Math.random() * 0.4 - 0.1,
+      a: Math.random() * 0.5 + 0.1,
+      gold: Math.random() > 0.4
+    });
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x % W, p.y % H, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.gold
+        ? `rgba(201,168,76,${p.a})`
+        : `rgba(255,240,200,${p.a * 0.6})`;
+      ctx.fill();
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.y < 0) p.y = H + 10;
+      if (p.x < 0) p.x = W + 10;
+      if (p.x > W) p.x = -10;
+    });
+    requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
+
+  // ── Venetian blinds ──
+  const blindsEl = document.getElementById('blinds');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('span');
+    blindsEl.appendChild(s);
+  }
+
+  // ── Intersection Observer ──
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const delay = parseInt(el.dataset.delay || 0);
+        setTimeout(() => el.classList.add('visible'), delay);
+
+        // Animate score bars
+        if (el.classList.contains('score-card')) {
+          const bar = el.querySelector('.score-bar');
+          const numEl = el.querySelector('.score-num');
+          if (bar) {
+            setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, delay + 200);
+          }
+          if (numEl) {
+            const target = parseFloat(numEl.dataset.target);
+            const isFloat = String(target).includes('.');
+            const suffix = numEl.querySelector('span').textContent;
+            let start = 0;
+            const duration = 1500;
+            const step = (timestamp) => {
+              if (!start) start = timestamp;
+              const progress = Math.min((timestamp - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const val = eased * target;
+              numEl.innerHTML = (isFloat ? val.toFixed(1) : Math.round(val)) + `<span>${suffix}</span>`;
+              if (progress < 1) requestAnimationFrame(step);
+            };
+            setTimeout(() => requestAnimationFrame(step), delay + 100);
+          }
+        }
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.score-card, .highlight-card, .why-item').forEach(el => io.observe(el));
+
+  // ── Synopsis fade in ──
+  const synopsisIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        synopsisIO.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  const synopsisEl = document.getElementById('synopsis-text');
+  if (synopsisEl) {
+    synopsisEl.style.opacity = '0';
+    synopsisEl.style.transform = 'translateY(20px)';
+    synopsisEl.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    synopsisIO.observe(synopsisEl);
+  }
+</script>
+
+</body>
+</html>

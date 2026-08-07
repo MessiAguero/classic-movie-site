@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>放牛班的春天 — 经典电影推荐</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-deep: #1a1520;
+  --bg-card: #231e2a;
+  --bg-dark: #2a2332;
+  --cream: #f0e6d3;
+  --cream-light: #faf5ec;
+  --indigo: #3b4f8a;
+  --indigo-light: #5a6fae;
+  --gold: #c9a96e;
+  --gold-light: #e0c78a;
+  --gold-warm: #d4a853;
+  --rust: #8b5e3c;
+  --text-primary: #f0e6d3;
+  --text-secondary: #c4b8a7;
+  --text-muted: #8a7f72;
+  --accent-coral: #d4846e;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: 'Noto Serif SC', 'Crimson Text', 'Playfair Display', serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Canvas particles */
+#particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============ HERO ============ */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(201,169,110,0.12) 0%, transparent 60%),
+              radial-gradient(ellipse at 30% 80%, rgba(59,79,138,0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 20%, rgba(201,169,110,0.08) 0%, transparent 50%);
+}
+
+.staff-lines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 24px,
+    var(--gold) 24px,
+    var(--gold) 25px,
+    transparent 25px,
+    transparent 49px,
+    var(--gold) 49px,
+    var(--gold) 50px
+  );
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  padding: 0 2rem;
+}
+
+.hero-year {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(8rem, 16vw, 14rem);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--gold);
+  opacity: 0.6;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: -1rem;
+  user-select: none;
+}
+
+.hero-french {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--gold);
+  opacity: 0.7;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--gold-light) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  letter-spacing: 0.08em;
+}
+
+.hero-tagline {
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  color: var(--text-secondary);
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0 auto 2rem;
+  opacity: 0.5;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.5;
+}
+
+.scroll-hint span {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+}
+
+.scroll-arrow {
+  width: 20px; height: 20px;
+  border-right: 1.5px solid var(--gold);
+  border-bottom: 1.5px solid var(--gold);
+  transform: rotate(45deg);
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 0.3; }
+  50% { transform: rotate(45deg) translate(4px, 4px); opacity: 0.8; }
+}
+
+/* ============ SCORES ============ */
+.section-scores {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.scores-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.score-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(201,169,110,0.12);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.score-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.score-card:hover::before { opacity: 1; }
+.score-card:hover { border-color: rgba(201,169,110,0.3); transform: translateY(-4px); }
+
+.score-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.score-value {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.score-of {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.score-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* ============ SYNOPSIS SECTION ============ */
+.section-synopsis {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 2rem 5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.synopsis-container {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.poster-area {
+  position: relative;
+  aspect-ratio: 2/3;
+  background: var(--bg-dark);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(201,169,110,0.15);
+}
+
+.poster-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.synopsis-text-area {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.section-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.3;
+  letter-spacing: 0.04em;
+}
+
+.synopsis-body {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 2;
+  letter-spacing: 0.02em;
+}
+
+.synopsis-body p {
+  margin-bottom: 1rem;
+}
+
+.meta-row {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.meta-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+.meta-value {
+  font-size: 0.95rem;
+  color: var(--cream);
+  font-weight: 500;
+}
+
+/* ============ HIGHLIGHTS ============ */
+.section-highlights {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.highlight-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(201,169,110,0.1);
+  border-radius: 12px;
+  padding: 2.5rem 1.8rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.highlight-card:hover {
+  border-color: rgba(201,169,110,0.3);
+  transform: translateY(-6px);
+  background: var(--bg-dark);
+}
+
+.highlight-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: rgba(201,169,110,0.15);
+  position: absolute;
+  top: 0.5rem;
+  right: 1.2rem;
+  line-height: 1;
+  user-select: none;
+}
+
+.highlight-icon {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
+}
+
+.highlight-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.highlight-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* ============ QUOTES ============ */
+.section-quotes {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quote-block {
+  text-align: center;
+  padding: 3rem 2rem;
+  position: relative;
+}
+
+.quote-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 6rem;
+  color: rgba(201,169,110,0.12);
+  line-height: 1;
+  user-select: none;
+  margin-bottom: -2rem;
+}
+
+.quote-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--cream);
+  line-height: 2;
+  letter-spacing: 0.06em;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.quote-text-fr {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--gold);
+  opacity: 0.7;
+  margin-top: 1.5rem;
+  letter-spacing: 0.04em;
+}
+
+.quote-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  margin: 1.5rem auto;
+  opacity: 0.3;
+}
+
+/* ============ WHY WATCH ============ */
+.section-why {
+  position: relative;
+  z-index: 1;
+  padding: 5rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.why-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(201,169,110,0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+}
+
+.why-card:hover {
+  border-color: rgba(59,79,138,0.3);
+  background: var(--bg-dark);
+}
+
+.why-icon-wrap {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(59,79,138,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.why-content h4 {
+  font-size: 1.05rem;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.why-content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* ============ HONORS ============ */
+.section-honors {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 2rem 5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.honors-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.honor-tag {
+  padding: 0.6rem 1.4rem;
+  border: 1px solid rgba(201,169,110,0.2);
+  border-radius: 100px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  background: rgba(201,169,110,0.05);
+  transition: all 0.3s ease;
+  letter-spacing: 0.03em;
+}
+
+.honor-tag:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201,169,110,0.1);
+}
+
+/* ============ FOOTER ============ */
+.footer-section {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(201,169,110,0.08);
+}
+
+.footer-stars {
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.3em;
+  margin-bottom: 1rem;
+}
+
+.footer-verdict {
+  font-size: 1.3rem;
+  color: var(--cream);
+  font-weight: 300;
+  line-height: 2;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  letter-spacing: 0.05em;
+}
+
+.footer-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* ============ ANIMATIONS ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .scores-grid { grid-template-columns: repeat(2, 1fr); }
+  .highlights-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .synopsis-container { grid-template-columns: 1fr; }
+  .poster-area { max-width: 300px; margin: 0 auto; }
+}
+
+</style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- ====== HERO ====== -->
+<section class="hero reveal">
+  <div class="hero-bg-overlay"></div>
+  <div class="staff-lines"></div>
+  <div class="hero-content">
+    <div class="hero-year">2004</div>
+    <div class="hero-french">Les Choristes</div>
+    <h1 class="hero-title">放牛班的春天</h1>
+    <p class="hero-tagline">
+      一位落魄的音乐教师，一群被世界遗忘的孩子，<br>用歌声编织出最温柔的救赎。
+    </p>
+    <div class="hero-divider"></div>
+  </div>
+  <div class="scroll-hint">
+    <span>向下探索</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ====== SCORES ====== -->
+<section class="section-scores">
+  <div class="scores-grid">
+    <div class="score-card reveal">
+      <div class="score-label">IMDb</div>
+      <div class="score-value" data-target="8.0">0</div>
+      <div class="score-of">/ 10</div>
+      <div class="score-desc">29万+评价</div>
+    </div>
+    <div class="score-card reveal">
+      <div class="score-label">豆瓣</div>
+      <div class="score-value" data-target="9.3">0</div>
+      <div class="score-of">/ 10</div>
+      <div class="score-desc">Top 250 #16</div>
+    </div>
+    <div class="score-card reveal">
+      <div class="score-label">烂番茄</div>
+      <div class="score-value" data-target="97">0</div>
+      <div class="score-of">%</div>
+      <div class="score-desc">观众评分</div>
+    </div>
+    <div class="score-card reveal">
+      <div class="score-label">Metacritic</div>
+      <div class="score-value" data-target="83">0</div>
+      <div class="score-of">/ 100</div>
+      <div class="score-desc">Universal Acclaim</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SYNOPSIS ====== -->
+<section class="section-synopsis">
+  <div class="synopsis-container">
+    <div class="poster-area reveal">
+      <svg class="poster-svg" viewBox="0 0 300 450" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3b4f8a"/>
+            <stop offset="40%" stop-color="#2a2332"/>
+            <stop offset="100%" stop-color="#1a1520"/>
+          </linearGradient>
+          <linearGradient id="warmGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#c9a96e"/>
+            <stop offset="100%" stop-color="#8b5e3c"/>
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Background -->
+        <rect width="300" height="450" fill="url(#skyGrad)"/>
+
+        <!-- Paper airplanes -->
+        <g opacity="0.7">
+          <path d="M120,80 L145,95 L120,110 Z" fill="#f0e6d3" opacity="0.6" transform="rotate(-15,132,95)"/>
+          <path d="M75,120 L95,132 L75,144 Z" fill="#f0e6d3" opacity="0.35" transform="rotate(-25,85,132)"/>
+          <path d="M200,70 L220,82 L200,94 Z" fill="#f0e6d3" opacity="0.45" transform="rotate(10,210,82)"/>
+          <path d="M160,60 L175,70 L160,80 Z" fill="#f0e6d3" opacity="0.3" transform="rotate(-8,167,70)"/>
+          <path d="M90,160 L106,170 L90,180 Z" fill="#f0e6d3" opacity="0.25" transform="rotate(-20,98,170)"/>
+          <path d="M230,130 L245,140 L230,150 Z" fill="#f0e6d3" opacity="0.3" transform="rotate(15,237,140)"/>
+        </g>
+
+        <!-- Musical staff -->
+        <g opacity="0.2" stroke="#c9a96e" stroke-width="0.5" fill="none">
+          <line x1="40" y1="250" x2="260" y2="250"/>
+          <line x1="40" y1="258" x2="260" y2="258"/>
+          <line x1="40" y1="266" x2="260" y2="266"/>
+          <line x1="40" y1="274" x2="260" y2="274"/>
+          <line x1="40" y1="282" x2="260" y2="282"/>
+        </g>
+
+        <!-- Musical notes on staff -->
+        <g fill="#c9a96e" opacity="0.5" filter="url(#glow)">
+          <ellipse cx="80" cy="266" rx="5" ry="3.5" transform="rotate(-15,80,266)"/>
+          <line x1="85" y1="266" x2="85" y2="248" stroke="#c9a96e" stroke-width="1"/>
+
+          <ellipse cx="120" cy="258" rx="5" ry="3.5" transform="rotate(-15,120,258)"/>
+          <line x1="125" y1="258" x2="125" y2="240" stroke="#c9a96e" stroke-width="1"/>
+
+          <ellipse cx="155" cy="274" rx="5" ry="3.5" transform="rotate(-15,155,274)"/>
+          <line x1="160" y1="274" x2="160" y2="256" stroke="#c9a96e" stroke-width="1"/>
+
+          <ellipse cx="195" cy="250" rx="5" ry="3.5" transform="rotate(-15,195,250)"/>
+          <line x1="200" y1="250" x2="200" y2="232" stroke="#c9a96e" stroke-width="1"/>
+
+          <ellipse cx="230" cy="266" rx="5" ry="3.5" transform="rotate(-15,230,266)"/>
+          <line x1="235" y1="266" x2="235" y2="248" stroke="#c9a96e" stroke-width="1"/>
+        </g>
+
+        <!-- Choir children silhouettes -->
+        <g opacity="0.5">
+          <!-- Child 1 -->
+          <ellipse cx="90" cy="330" rx="8" ry="10" fill="#f0e6d3"/>
+          <rect x="82" y="340" width="16" height="30" rx="4" fill="#f0e6d3" opacity="0.6"/>
+          <!-- Child 2 -->
+          <ellipse cx="115" cy="325" rx="7" ry="9" fill="#f0e6d3"/>
+          <rect x="108" y="334" width="14" height="28" rx="4" fill="#f0e6d3" opacity="0.6"/>
+          <!-- Child 3 -->
+          <ellipse cx="140" cy="328" rx="8" ry="10" fill="#f0e6d3"/>
+          <rect x="132" y="338" width="16" height="28" rx="4" fill="#f0e6d3" opacity="0.6"/>
+          <!-- Child 4 -->
+          <ellipse cx="165" cy="326" rx="7" ry="9" fill="#f0e6d3"/>
+          <rect x="158" y="335" width="14" height="26" rx="4" fill="#f0e6d3" opacity="0.6"/>
+          <!-- Child 5 -->
+          <ellipse cx="190" cy="330" rx="8" ry="10" fill="#f0e6d3"/>
+          <rect x="182" y="340" width="16" height="28" rx="4" fill="#f0e6d3" opacity="0.6"/>
+          <!-- Child 6 -->
+          <ellipse cx="215" cy="327" rx="7" ry="9" fill="#f0e6d3"/>
+          <rect x="208" y="336" width="14" height="26" rx="4" fill="#f0e6d3" opacity="0.6"/>
+        </g>
+
+        <!-- Light beam from top -->
+        <polygon points="130,0 100,350 200,350 170,0" fill="#c9a96e" opacity="0.04"/>
+
+        <!-- Title text -->
+        <text x="150" y="400" text-anchor="middle" font-family="serif" font-size="14" fill="#c9a96e" opacity="0.8" letter-spacing="6">LES CHORISTES</text>
+        <text x="150" y="420" text-anchor="middle" font-family="serif" font-size="10" fill="#f0e6d3" opacity="0.5" letter-spacing="8">放 牛 班 的 春 天</text>
+      </svg>
+    </div>
+
+    <div class="synopsis-text-area reveal">
+      <span class="section-label">剧情梗概</span>
+      <h2 class="section-title">用音乐点亮被遗忘的灵魂</h2>
+      <div class="synopsis-body">
+        <p>1949年，法国乡村。落魄的音乐家克莱芒·马修来到一所名为"池塘之底"的男子寄宿学校担任代课教师。这里关押着被社会与家庭遗弃的问题少年，校长奉行严苛的"犯错即惩罚"铁腕管理。</p>
+        <p>马修发现，这群看似桀骜不驯的孩子，内心其实藏着未被唤醒的渴望。他用音乐作为钥匙，悄悄组建了一支合唱团，让每一个孩子——无论嗓音如何——都找到了属于自己的声音。在这个过程中，那些被标签为"不可救药"的灵魂，一个接一个地被点亮。</p>
+        <p>这不仅是一个关于音乐的故事，更是一首献给教育、理解与人性温暖的颂歌。</p>
+      </div>
+      <div class="meta-row">
+        <div class="meta-item">
+          <span class="meta-label">导演</span>
+          <span class="meta-value">克里斯托夫·巴拉蒂</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">主演</span>
+          <span class="meta-value">热拉尔·朱尼奥</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">配乐</span>
+          <span class="meta-value">布鲁诺·库莱</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">片长</span>
+          <span class="meta-value">97 分钟</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== HIGHLIGHTS ====== -->
+<section class="section-highlights">
+  <div class="section-header reveal">
+    <span class="section-label">亮点所在</span>
+  </div>
+  <div class="highlights-grid">
+    <div class="highlight-card reveal">
+      <div class="highlight-number">01</div>
+      <div class="highlight-icon">🎵</div>
+      <h3 class="highlight-title">天籁童声</h3>
+      <p class="highlight-desc">由法国圣马可童声合唱团真实演绎，原声音乐《Vois sur ton chemin》成为全球合唱经典，纯净到让人落泪。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-number">02</div>
+      <div class="highlight-icon">🎭</div>
+      <h3 class="highlight-title">精湛表演</h3>
+      <p class="highlight-desc">热拉尔·朱尼奥将马修老师的善良、笨拙与坚韧融为一体，每个孩子的表演都自然真实，毫无儿童演员的刻意。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-number">03</div>
+      <div class="highlight-icon">✈️</div>
+      <h3 class="highlight-title">纸飞机名场面</h3>
+      <p class="highlight-desc">影史上最动人的告别之一——漫天飞舞的纸飞机与窗台挥动的小手，无声胜有声，不需要一句台词就让人泪流满面。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-number">04</div>
+      <div class="highlight-icon">📖</div>
+      <h3 class="highlight-title">叙事精妙</h3>
+      <p class="highlight-desc">以倒叙日记体展开，两条时间线交织——年迈的莫朗杰回忆往事，让故事的温暖与感伤层层递进。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-number">05</div>
+      <div class="highlight-icon">🎨</div>
+      <h3 class="highlight-title">法式美学</h3>
+      <p class="highlight-desc">暖色调的乡村风光、古老的石砌校舍、昏黄的灯光，每一帧都像一幅印象派油画，充满怀旧的诗意。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <div class="highlight-number">06</div>
+      <div class="highlight-icon">💡</div>
+      <h3 class="highlight-title">教育哲学</h3>
+      <p class="highlight-desc">深刻探讨了教育的本质——不是规训与控制，而是发现、唤醒与成全。用"爱"代替"罚"，改变了一群孩子的一生。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== QUOTES ====== -->
+<section class="section-quotes">
+  <div class="quote-block reveal">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">永远不要说永远，<br>凡事都有可能。</p>
+    <p class="quote-text-fr">Jamais je n'oublierai. Jamais... Ne dites jamais "jamais".</p>
+    <div class="quote-divider"></div>
+    <p class="quote-text" style="font-size: 1rem; margin-top: 1.5rem;">每一颗心都需要爱，需要温柔，需要宽容，需要理解。<br>每一个孩子都来自纯净无邪的地方，<br>永远都应该是人间万分疼惜的珍宝。</p>
+  </div>
+</section>
+
+<!-- ====== WHY WATCH ====== -->
+<section class="section-why">
+  <div class="section-header reveal">
+    <span class="section-label">为什么值得一看</span>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-icon-wrap">🎶</div>
+      <div class="why-content">
+        <h4>原声音乐堪称神作</h4>
+        <p>布鲁诺·库莱创作的配乐获法国凯撒奖最佳原创音乐，圣马可童声合唱团的演绎让整部电影成为一场听觉盛宴，原声大碟在全球销量超过百万张。</p>
+      </div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon-wrap">❤️</div>
+      <div class="why-content">
+        <h4>纯粹的情感力量</h4>
+        <p>不需要宏大叙事或炫目特效，仅凭一群孩子清澈的歌声和一个普通教师的善意，就能让你在片尾泪流满面——这是电影最本质的魅力。</p>
+      </div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon-wrap">🌟</div>
+      <div class="why-content">
+        <h4>治愈系经典标杆</h4>
+        <p>豆瓣9.3分、烂番茄97%好评率，上映二十余年来长盛不衰。它是"治愈系电影"这一类型的定义者之一，影响了后来无数同类作品。</p>
+      </div>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-icon-wrap">🌍</div>
+      <div class="why-content">
+        <h4>跨越文化的共鸣</h4>
+        <p>虽然讲述的是1949年法国乡村的故事，但师生之间的羁绊、音乐的力量、成长中的迷茫与希望——这些主题在任何文化中都能引发深深的共鸣。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== HONORS ====== -->
+<section class="section-honors">
+  <div class="section-header reveal">
+    <span class="section-label">荣誉与奖项</span>
+  </div>
+  <div class="honors-tags reveal">
+    <span class="honor-tag">奥斯卡最佳外语片 提名</span>
+    <span class="honor-tag">金球奖最佳外语片 提名</span>
+    <span class="honor-tag">法国凯撒奖 最佳原创音乐</span>
+    <span class="honor-tag">法国凯撒奖 最佳音效</span>
+    <span class="honor-tag">欧洲电影奖 最佳作曲</span>
+    <span class="honor-tag">法国凯撒奖 8项提名</span>
+    <span class="honor-tag">BAFTA最佳外语片 提名</span>
+    <span class="honor-tag">豆瓣电影Top 250 #16</span>
+    <span class="honor-tag">烂番茄观众评分 97%</span>
+  </div>
+</section>
+
+<!-- ====== FOOTER / VERDICT ====== -->
+<section class="footer-section reveal">
+  <div class="footer-stars">★ ★ ★ ★ ★</div>
+  <p class="footer-verdict">
+    每个人都曾是"池塘之底"的孩子，<br>
+    幸运的是，我们遇到了自己的"马修老师"。<br>
+    如果没有——《放牛班的春天》就是那扇窗。
+  </p>
+  <p class="footer-meta">2004 · 克里斯托夫·巴拉蒂 · 法国 · Les Choristes</p>
+</section>
+
+<script>
+(function() {
+  // ===== CANVAS PARTICLES =====
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let w, h;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Particles: musical notes, paper planes, golden dust
+  const particles = [];
+  const NOTE_SHAPES = ['♪', '♫', '♩', '♬'];
+
+  function createParticle() {
+    const type = Math.random();
+    if (type < 0.15) {
+      // Paper plane
+      return {
+        type: 'plane',
+        x: Math.random() * w,
+        y: h + 20,
+        size: 6 + Math.random() * 10,
+        vx: (Math.random() - 0.5) * 1.2,
+        vy: -(0.3 + Math.random() * 0.8),
+        opacity: 0.15 + Math.random() * 0.3,
+        rotation: (Math.random() - 0.5) * 0.8,
+        rotationSpeed: (Math.random() - 0.5) * 0.02,
+        life: 0,
+        maxLife: 300 + Math.random() * 400
+      };
+    } else if (type < 0.45) {
+      // Musical note
+      return {
+        type: 'note',
+        x: Math.random() * w,
+        y: h + 20,
+        shape: NOTE_SHAPES[Math.floor(Math.random() * NOTE_SHAPES.length)],
+        size: 12 + Math.random() * 16,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: -(0.3 + Math.random() * 0.6),
+        opacity: 0.08 + Math.random() * 0.2,
+        life: 0,
+        maxLife: 200 + Math.random() * 300
+      };
+    } else {
+      // Golden dust
+      return {
+        type: 'dust',
+        x: Math.random() * w,
+        y: Math.random() * h,
+        size: 0.5 + Math.random() * 2,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -(0.1 + Math.random() * 0.4),
+        opacity: 0.1 + Math.random() * 0.4,
+        life: 0,
+        maxLife: 400 + Math.random() * 600
+      };
+    }
+  }
+
+  // Initialize
+  for (let i = 0; i < 80; i++) {
+    const p = createParticle();
+    p.life = Math.random() * p.maxLife;
+    particles.push(p);
+  }
+
+  function drawPaperPlane(ctx, x, y, size, rotation, opacity) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(rotation);
+    ctx.globalAlpha = opacity;
+    ctx.fillStyle = '#f0e6d3';
+    ctx.beginPath();
+    ctx.moveTo(-size, 0);
+    ctx.lineTo(0, -size * 0.5);
+    ctx.lineTo(size, 0);
+    ctx.lineTo(0, size * 0.3);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawNote(ctx, x, y, shape, size, opacity) {
+    ctx.save();
+    ctx.globalAlpha = opacity;
+    ctx.fillStyle = '#c9a96e';
+    ctx.font = `${size}px 'Noto Serif SC', serif`;
+    ctx.fillText(shape, x, y);
+    ctx.restore();
+  }
+
+  function drawDust(ctx, x, y, size, opacity) {
+    ctx.save();
+    ctx.globalAlpha = opacity;
+    ctx.fillStyle = '#c9a96e';
+    ctx.beginPath();
+    ctx.arc(x, y, size, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.life++;
+
+      if (p.type === 'plane') {
+        drawPaperPlane(ctx, p.x, p.y, p.size, p.rotation, p.opacity * (1 - p.life / p.maxLife));
+        p.rotation += p.rotationSpeed;
+      } else if (p.type === 'note') {
+        drawNote(ctx, p.x, p.y, p.shape, p.size, p.opacity * (1 - p.life / p.maxLife));
+      } else {
+        drawDust(ctx, p.x, p.y, p.size, p.opacity * (1 - p.life / p.maxLife));
+      }
+
+      if (p.life >= p.maxLife || p.y < -40 || p.x < -40 || p.x > w + 40) {
+        particles[i] = createParticle();
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  // ===== SCROLL REVEAL =====
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Animate score numbers
+        const scoreEls = entry.target.querySelectorAll('.score-value[data-target]');
+        scoreEls.forEach(el => animateScore(el));
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  // ===== SCORE ANIMATION =====
+  function animateScore(el) {
+    if (el.dataset.animating) return;
+    el.dataset.animating = 'true';
+    const target = parseFloat(el.dataset.target);
+    const isInt = Number.isInteger(target);
+    const duration = 1500;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+      const current = target * eased;
+      el.textContent = isInt ? Math.round(current) : current.toFixed(1);
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = isInt ? target : target.toFixed(1);
+      }
+    }
+
+    requestAnimationFrame(update);
+  }
+
+  // Trigger hero immediately
+  setTimeout(() => {
+    document.querySelector('.hero').classList.add('visible');
+  }, 100);
+})();
+</script>
+
+</body>
+</html>

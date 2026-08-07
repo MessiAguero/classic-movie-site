@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经典电影推荐 · 阿凡达 (Avatar)</title>
+<style>
+/* ============================================
+   CSS Variables & Reset
+   ============================================ */
+:root {
+  --bg-dark: #0a0e1a;
+  --bg-card: rgba(15, 22, 45, 0.85);
+  --pandora-blue: #00d4ff;
+  --pandora-purple: #8b5cf6;
+  --pandora-green: #22d3a7;
+  --pandora-gold: #f59e0b;
+  --glow-blue: rgba(0, 212, 255, 0.3);
+  --glow-purple: rgba(139, 92, 246, 0.3);
+  --glow-green: rgba(34, 211, 167, 0.25);
+  --text-light: #e8edf5;
+  --text-muted: #8899bb;
+  --text-dark: rgba(10, 14, 30, 0.85);
+  --border-glow: rgba(0, 212, 255, 0.15);
+  --card-hover: rgba(0, 212, 255, 0.06);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  font-family: 'SF Pro Display', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ============================================
+   Canvas Background
+   ============================================ */
+#particle-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ============================================
+   Scrollbar
+   ============================================ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: rgba(0, 212, 255, 0.25); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0, 212, 255, 0.5); }
+
+/* ============================================
+   Hero Section
+   ============================================ */
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(0, 212, 255, 0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 20% 70%, rgba(34, 211, 167, 0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-year {
+  font-size: clamp(5rem, 16vw, 12rem);
+  font-weight: 900;
+  background: linear-gradient(180deg, rgba(0, 212, 255, 0.25) 0%, rgba(0, 212, 255, 0.05) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  position: relative;
+  margin-bottom: -1rem;
+}
+
+.hero-title-group {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-en-title {
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--pandora-blue) 0%, var(--pandora-purple) 50%, var(--pandora-green) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 60px rgba(0, 212, 255, 0.3);
+  line-height: 1.2;
+}
+
+.hero-cn-title {
+  font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+  color: var(--text-muted);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  margin-top: 0.3rem;
+}
+
+.hero-tagline {
+  margin-top: 2rem;
+  font-size: clamp(0.95rem, 1.4vw, 1.3rem);
+  color: rgba(0, 212, 255, 0.6);
+  font-style: italic;
+  letter-spacing: 0.15em;
+  border-top: 1px solid rgba(0, 212, 255, 0.1);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  padding: 0.8rem 2rem;
+  display: inline-block;
+}
+
+.hero-meta {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.hero-meta span {
+  padding: 0.3rem 1rem;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 20px;
+  background: rgba(139, 92, 246, 0.06);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  animation: scrollBounce 2s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ============================================
+   Section Common
+   ============================================ */
+.section {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--pandora-blue), var(--pandora-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 3rem;
+  letter-spacing: 0.1em;
+}
+
+/* ============================================
+   Ratings Section
+   ============================================ */
+.ratings-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  margin: 0 auto 4rem;
+}
+
+.rating-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 16px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.rating-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--pandora-blue), var(--pandora-purple), var(--pandora-green));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.rating-card:hover::before { opacity: 1; }
+.rating-card:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 212, 255, 0.08);
+}
+
+.rating-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.rating-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.rating-number.blue { color: var(--pandora-blue); }
+.rating-number.purple { color: var(--pandora-purple); }
+.rating-number.green { color: var(--pandora-green); }
+.rating-number.gold { color: var(--pandora-gold); }
+
+.rating-bar-wrap {
+  margin-top: 0.8rem;
+  height: 4px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.rating-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  width: 0%;
+  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bar-blue { background: linear-gradient(90deg, var(--pandora-blue), #60a5fa); }
+.bar-purple { background: linear-gradient(90deg, var(--pandora-purple), #a78bfa); }
+.bar-green { background: linear-gradient(90deg, var(--pandora-green), #6ee7b7); }
+.bar-gold { background: linear-gradient(90deg, var(--pandora-gold), #fbbf24); }
+
+.rating-suffix {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ============================================
+   Plot Section with SVG Poster
+   ============================================ */
+.plot-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.plot-content h3 {
+  font-size: 1.2rem;
+  color: var(--pandora-blue);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.plot-content p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+.no-spoiler-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--pandora-green);
+  border-radius: 20px;
+  color: var(--pandora-green);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  background: rgba(34, 211, 167, 0.06);
+}
+
+/* SVG Poster */
+.svg-poster {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.svg-poster svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ============================================
+   Highlights Section
+   ============================================ */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 4rem;
+}
+
+.highlight-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 16px;
+  padding: 1.8rem 1.5rem;
+  backdrop-filter: blur(12px);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-card::after {
+  content: '';
+  position: absolute;
+  top: -50%; right: -50%;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.04) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.highlight-card:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.highlight-card:hover::after { opacity: 1; }
+
+.highlight-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.highlight-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+}
+
+.highlight-card p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ============================================
+   Quote Section
+   ============================================ */
+.quote-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  margin: 0 auto 4rem;
+  max-width: 800px;
+  position: relative;
+}
+
+.quote-section::before,
+.quote-section::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pandora-blue), transparent);
+}
+
+.quote-section::before { top: 0; }
+.quote-section::after { bottom: 0; }
+
+.quote-text {
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  color: rgba(232, 237, 245, 0.85);
+  font-style: italic;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+}
+
+.quote-author {
+  margin-top: 1.2rem;
+  font-size: 0.85rem;
+  color: var(--pandora-blue);
+  letter-spacing: 0.1em;
+}
+
+/* ============================================
+   Why Watch Section
+   ============================================ */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 4rem;
+}
+
+.why-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 14px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.why-card:hover {
+  border-color: rgba(0, 212, 255, 0.2);
+  background: rgba(15, 22, 45, 0.9);
+}
+
+.why-num {
+  font-size: 1.8rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--pandora-blue), var(--pandora-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 2rem;
+}
+
+.why-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ============================================
+   Honors Section
+   ============================================ */
+.honors-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.honor-tag {
+  padding: 0.5rem 1.2rem;
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 20px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: rgba(0, 212, 255, 0.04);
+  transition: all 0.3s ease;
+  letter-spacing: 0.03em;
+}
+
+.honor-tag:hover {
+  border-color: rgba(0, 212, 255, 0.4);
+  color: var(--pandora-blue);
+  background: rgba(0, 212, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   Film Archive Table
+   ============================================ */
+.archive-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  margin-bottom: 4rem;
+}
+
+.archive-table td {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.88rem;
+}
+
+.archive-table tr:last-child td { border-bottom: none; }
+
+.archive-table td:first-child {
+  color: var(--pandora-blue);
+  font-weight: 500;
+  white-space: nowrap;
+  width: 120px;
+  opacity: 0.8;
+}
+
+.archive-table td:last-child {
+  color: var(--text-muted);
+}
+
+/* ============================================
+   Editor's Verdict
+   ============================================ */
+.verdict {
+  text-align: center;
+  padding: 3rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.verdict-stars {
+  font-size: 2.5rem;
+  color: var(--pandora-gold);
+  margin-bottom: 1rem;
+  letter-spacing: 0.3em;
+}
+
+.verdict-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-light);
+  margin-bottom: 0.8rem;
+}
+
+.verdict-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.75rem;
+  color: rgba(136, 153, 187, 0.4);
+  border-top: 1px solid rgba(0, 212, 255, 0.06);
+  letter-spacing: 0.1em;
+}
+
+/* ============================================
+   Scroll Reveal
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 900px) {
+  .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+  .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+  .plot-wrap { grid-template-columns: 1fr; }
+  .svg-poster { max-width: 320px; }
+}
+
+@media (max-width: 600px) {
+  .ratings-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+  .highlights-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .section { padding: 3rem 1.2rem; }
+  .rating-number { font-size: 1.8rem; }
+  .archive-table td { padding: 0.8rem 1rem; font-size: 0.8rem; }
+  .archive-table td:first-child { width: 90px; }
+  .hero-meta { gap: 0.8rem; }
+  .hero-meta span { font-size: 0.75rem; padding: 0.2rem 0.8rem; }
+}
+
+@media (max-width: 400px) {
+  .ratings-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .rating-card { padding: 1rem 0.8rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Canvas Particles -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- ==========================================
+     Hero Section
+     ========================================== -->
+<section class="hero">
+  <div class="hero-year">2009</div>
+  <div class="hero-title-group">
+    <div class="hero-en-title">AVATAR</div>
+    <div class="hero-cn-title">阿 凡 达</div>
+  </div>
+  <div class="hero-tagline">"I See You"</div>
+  <div class="hero-meta">
+    <span>詹姆斯·卡梅隆 James Cameron</span>
+    <span>科幻 · 史诗 · 冒险</span>
+    <span>162分钟</span>
+  </div>
+  <div class="hero-scroll">↓ 向下探索 ↓</div>
+</section>
+
+<!-- ==========================================
+     Ratings
+     ========================================== -->
+<section class="section">
+  <h2 class="section-title reveal">评 分</h2>
+  <p class="section-subtitle reveal">来自全球影评人与观众的认可</p>
+
+  <div class="ratings-grid reveal">
+    <div class="rating-card">
+      <div class="rating-label">IMDb</div>
+      <div class="rating-number blue">7.9<span class="rating-suffix">/10</span></div>
+      <div class="rating-bar-wrap"><div class="rating-bar-fill bar-blue" data-width="79"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-label">豆瓣</div>
+      <div class="rating-number purple">8.8<span class="rating-suffix">/10</span></div>
+      <div class="rating-bar-wrap"><div class="rating-bar-fill bar-purple" data-width="88"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-label">烂番茄</div>
+      <div class="rating-number green">82%</div>
+      <div class="rating-bar-wrap"><div class="rating-bar-fill bar-green" data-width="82"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-label">爆米花指数</div>
+      <div class="rating-number gold">82%</div>
+      <div class="rating-bar-wrap"><div class="rating-bar-fill bar-gold" data-width="82"></div></div>
+    </div>
+  </div>
+
+  <!-- Plot + SVG Poster -->
+  <div class="plot-wrap reveal">
+    <div class="plot-content">
+      <h3>▎剧情梗概</h3>
+      <p>
+        2154年，瘫痪的前海军陆战队员杰克·萨利被派往遥远的潘多拉星球——一个被原始雨林覆盖、空气中充满毒气的卫星。人类在此开采稀有的超导矿物"难得素"。
+      </p>
+      <p style="margin-top: 0.8rem;">
+        杰克通过基因工程技术进入一个名为"阿凡达"的纳美人化身，奉命潜入纳美部落。然而在熟悉纳美文化的过程中，他对这个星球的认知被彻底颠覆——一个关乎选择、信念与归属的史诗旅程就此展开。
+      </p>
+      <div class="no-spoiler-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        无剧透 · 放心阅读
+      </div>
+    </div>
+
+    <div class="svg-poster">
+      <svg viewBox="0 0 340 480" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#050a1a"/>
+            <stop offset="40%" stop-color="#0d1b3e"/>
+            <stop offset="70%" stop-color="#1a1040"/>
+            <stop offset="100%" stop-color="#0a1620"/>
+          </linearGradient>
+          <radialGradient id="glowGrad">
+            <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="moonGrad">
+            <stop offset="0%" stop-color="#e8edf5"/>
+            <stop offset="60%" stop-color="#8bb4d4"/>
+            <stop offset="100%" stop-color="#4a6a8a"/>
+          </radialGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <filter id="softGlow">
+            <feGaussianBlur stdDeviation="6" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <linearGradient id="mtGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1a2a4a"/>
+            <stop offset="100%" stop-color="#0d1528"/>
+          </linearGradient>
+          <linearGradient id="mtGrad2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2a1a3a"/>
+            <stop offset="100%" stop-color="#0d0d20"/>
+          </linearGradient>
+          <linearGradient id="titleGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#00d4ff"/>
+            <stop offset="50%" stop-color="#8b5cf6"/>
+            <stop offset="100%" stop-color="#22d3a7"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Sky background -->
+        <rect width="340" height="480" fill="url(#skyGrad)"/>
+
+        <!-- Polyphemus (gas giant) -->
+        <circle cx="230" cy="60" r="45" fill="url(#moonGrad)" opacity="0.6" filter="url(#softGlow)"/>
+        <ellipse cx="230" cy="60" rx="48" ry="8" fill="none" stroke="rgba(200,200,220,0.15)" stroke-width="1" transform="rotate(-15 230 60)"/>
+
+        <!-- Stars -->
+        <circle cx="30" cy="25" r="1" fill="#fff" opacity="0.8"/>
+        <circle cx="80" cy="50" r="0.8" fill="#fff" opacity="0.5"/>
+        <circle cx="150" cy="30" r="1.2" fill="#fff" opacity="0.7"/>
+        <circle cx="290" cy="20" r="0.7" fill="#fff" opacity="0.6"/>
+        <circle cx="310" cy="80" r="0.9" fill="#fff" opacity="0.4"/>
+        <circle cx="50" cy="90" r="0.6" fill="#fff" opacity="0.5"/>
+        <circle cx="100" cy="15" r="0.9" fill="#fff" opacity="0.6"/>
+        <circle cx="200" cy="18" r="0.7" fill="#fff" opacity="0.4"/>
+
+        <!-- Floating Mountains -->
+        <g opacity="0.9">
+          <!-- Main floating mountain -->
+          <path d="M60 240 L120 120 L180 200 L200 180 L280 280 L260 320 L160 350 L80 320 Z" fill="url(#mtGrad)" opacity="0.85"/>
+          <path d="M120 120 L140 100 L175 160 L155 140 Z" fill="url(#mtGrad2)" opacity="0.6"/>
+          <!-- Second floating mountain -->
+          <path d="M10 300 L40 220 L90 290 L120 270 L170 350 L130 380 L40 370 Z" fill="url(#mtGrad2)" opacity="0.7"/>
+          <!-- Third floating mountain -->
+          <path d="M240 200 L280 160 L330 240 L310 300 L260 320 Z" fill="url(#mtGrad)" opacity="0.6"/>
+          <!-- Floating mountain base glow -->
+          <ellipse cx="160" cy="248" rx="80" ry="10" fill="url(#glowGrad)" opacity="0.3" filter="url(#softGlow)"/>
+          <!-- Waterfall -->
+          <path d="M150 180 Q155 200 152 240" stroke="rgba(0,212,255,0.2)" stroke-width="2" fill="none" filter="url(#glow)"/>
+          <path d="M155 190 Q160 210 157 245" stroke="rgba(0,212,255,0.12)" stroke-width="1.5" fill="none"/>
+        </g>
+
+        <!-- Banshee (Ikran) silhouette -->
+        <g opacity="0.7" transform="translate(180, 130) scale(0.8)">
+          <path d="M0 0 C20 -25 40 -30 55 -20 L65 -25 L60 -15 C70 -10 75 0 65 10 C55 15 40 18 30 20 L20 30 Z" fill="#0a1620" stroke="rgba(0,212,255,0.15)" stroke-width="0.5"/>
+          <path d="M55 -20 L70 -40 L60 -18 Z" fill="#0a1620"/>
+        </g>
+
+        <!-- Banshee 2 -->
+        <g opacity="0.5" transform="translate(60, 180) scale(0.5) rotate(-10)">
+          <path d="M0 0 C20 -25 40 -30 55 -20 L65 -25 L60 -15 C70 -10 75 0 65 10 C55 15 40 18 30 20 L20 30 Z" fill="#0a1620" stroke="rgba(0,212,255,0.12)" stroke-width="0.5"/>
+        </g>
+
+        <!-- Jungle Tree Silhouettes -->
+        <g opacity="0.6">
+          <path d="M50 480 L48 380 Q50 350 55 330 L52 360 L58 340 L54 370 L60 390 L56 480 Z" fill="#0a1620"/>
+          <path d="M80 480 L82 370 Q85 340 78 310 L83 350 L87 330 L84 365 L90 380 L88 480 Z" fill="#0a1620"/>
+          <path d="M120 480 L118 390 Q122 365 115 340 L119 370 L123 350 L120 380 L125 400 L122 480 Z" fill="#0a1620"/>
+          <path d="M280 480 L282 400 Q278 375 285 355 L281 380 L277 365 L280 390 L275 410 L278 480 Z" fill="#0a1620"/>
+          <path d="M310 480 L312 380 Q308 350 315 330 L311 360 L307 345 L310 375 L305 395 L308 480 Z" fill="#0a1620"/>
+        </g>
+
+        <!-- Tree of Souls glow -->
+        <g opacity="0.3" transform="translate(170, 390)">
+          <ellipse cx="0" cy="15" rx="35" ry="25" fill="rgba(0,212,255,0.06)" filter="url(#softGlow)"/>
+          <ellipse cx="0" cy="15" rx="20" ry="15" fill="rgba(139,92,246,0.08)" filter="url(#softGlow)"/>
+        </g>
+
+        <!-- Bioluminescent spores -->
+        <circle cx="100" cy="280" r="2" fill="#00d4ff" opacity="0.6" filter="url(#glow)"/>
+        <circle cx="200" cy="300" r="1.5" fill="#8b5cf6" opacity="0.5" filter="url(#glow)"/>
+        <circle cx="150" cy="270" r="1.8" fill="#22d3a7" opacity="0.5" filter="url(#glow)"/>
+        <circle cx="250" cy="260" r="1.3" fill="#00d4ff" opacity="0.4" filter="url(#glow)"/>
+        <circle cx="130" cy="310" r="1.5" fill="#8b5cf6" opacity="0.4" filter="url(#glow)"/>
+        <circle cx="220" cy="340" r="1.2" fill="#22d3a7" opacity="0.3" filter="url(#glow)"/>
+        <circle cx="80" cy="300" r="1" fill="#00d4ff" opacity="0.5" filter="url(#glow)"/>
+        <circle cx="300" cy="310" r="1.3" fill="#8b5cf6" opacity="0.4" filter="url(#glow)"/>
+
+        <!-- Title Banner -->
+        <rect x="30" y="420" width="280" height="50" rx="6" fill="rgba(0,0,0,0.6)" stroke="rgba(0,212,255,0.15)" stroke-width="0.5"/>
+        <text x="170" y="438" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="800" fill="url(#titleGrad)" letter-spacing="4">AVATAR</text>
+        <text x="170" y="460" text-anchor="middle" font-family="sans-serif" font-size="10" fill="rgba(136,153,187,0.7)" letter-spacing="3">2009 · JAMES CAMERON</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     Highlights
+     ========================================== -->
+<section class="section">
+  <h2 class="section-title reveal">六 大 亮 点</h2>
+  <p class="section-subtitle reveal">为什么这部电影如此特别</p>
+
+  <div class="highlights-grid">
+    <div class="highlight-card reveal">
+      <span class="highlight-icon">🌌</span>
+      <h4>视觉革命</h4>
+      <p>开创性的3D技术与CGI——卡梅隆等待了十年才让技术追上他的想象力。每一个潘多拉的画面都是电影史的里程碑。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <span class="highlight-icon">🌿</span>
+      <h4>潘多拉世界构建</h4>
+      <p>从浮山到生物发光森林，从六足生物到伊卡兰飞龙——一个完整的外星生态系统被前所未有地细致创造出来。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <span class="highlight-icon">🎬</span>
+      <h4>卡梅隆的导演功勋</h4>
+      <p>从《终结者》到《泰坦尼克号》再到《阿凡达》，卡梅隆再次证明了自己是商业与艺术结合的大师。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <span class="highlight-icon">🎭</span>
+      <h4>突破性动作捕捉</h4>
+      <p>革命性的面部捕捉+身体表演捕捉技术，让纳美人拥有了前所未有的真实表情与肢体语言，表演艺术的新边界。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <span class="highlight-icon">🎵</span>
+      <h4>詹姆斯·霍纳配乐</h4>
+      <p>融合纳美语声乐与管弦乐的情感配乐，主题曲《I See You》与影片中的情感起伏完美共振，令人难以忘怀。</p>
+    </div>
+    <div class="highlight-card reveal">
+      <span class="highlight-icon">🌍</span>
+      <h4>环保与共生主题</h4>
+      <p>超越技术的表面，影片内核是对自然共生、万物互联的深刻思考。在娱乐大片的外壳下，藏着发人深省的人文关怀。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     Quote
+     ========================================== -->
+<section class="section">
+  <div class="quote-section reveal">
+    <div class="quote-text">
+      "The外星世界是一场视觉盛宴，但真正让你流连忘返的是它所激发的情感共鸣。"
+    </div>
+    <div class="quote-author">—— <em>Empire</em> 杂志</div>
+  </div>
+</section>
+
+<!-- ==========================================
+     Why Watch
+     ========================================== -->
+<section class="section">
+  <h2 class="section-title reveal">为 什 么 值 得 看</h2>
+  <p class="section-subtitle reveal">四个理由，让你无法拒绝</p>
+
+  <div class="why-grid">
+    <div class="why-card reveal">
+      <div class="why-num">01</div>
+      <p><strong style="color:var(--text-light);">电影技术史上的分水岭。</strong> 像《2001太空漫游》和《星球大战》一样，《阿凡达》重新定义了什么是"在电影院里才能体验到的奇迹"。它让3D电影从此成为主流。</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num">02</div>
+      <p><strong style="color:var(--text-light);">一个让人沉浸到无法呼吸的外星世界。</strong> 潘多拉的每一寸土地都经过精心设计——从发光的植物到漂浮的山脉，这个世界的细节密度足以让你在N刷后依然发现新的惊喜。</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num">03</div>
+      <p><strong style="color:var(--text-light);">全球票房27.9亿美元的传奇。</strong> 不仅是历史票房冠军（被《复联4》短暂超越后重映再登顶），更是一种全球文化现象——人们二刷、三刷，只为回到潘多拉。</p>
+    </div>
+    <div class="why-card reveal">
+      <div class="why-num">04</div>
+      <p><strong style="color:var(--text-light);">情感的力量超越了技术。</strong> 在最华丽的技术外壳之下，《阿凡达》讲的是一个关于"归属"的故事——你属于哪里，你愿意为谁而战。这是它历经十数年依然动人的秘密。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     Honors
+     ========================================== -->
+<section class="section">
+  <h2 class="section-title reveal">荣 誉 与 成 就</h2>
+  <p class="section-subtitle reveal">全球认可的经典地位</p>
+
+  <div class="honors-wrap reveal">
+    <span class="honor-tag">🏆 奥斯卡最佳摄影</span>
+    <span class="honor-tag">🏆 奥斯卡最佳艺术指导</span>
+    <span class="honor-tag">🏆 奥斯卡最佳视觉效果</span>
+    <span class="honor-tag">🏆 金球奖最佳影片（剧情类）</span>
+    <span class="honor-tag">🏆 金球奖最佳导演</span>
+    <span class="honor-tag">🏆 英国电影学院奖最佳制作设计</span>
+    <span class="honor-tag">🏆 英国电影学院奖最佳视觉特效</span>
+    <span class="honor-tag">🏆 格莱美最佳电影配乐</span>
+    <span class="honor-tag">🏆 全球影史票房冠军</span>
+    <span class="honor-tag">🏆 影史首部全球票房破27亿美元电影</span>
+  </div>
+</section>
+
+<!-- ==========================================
+     Film Archive
+     ========================================== -->
+<section class="section">
+  <h2 class="section-title reveal">影 片 档 案</h2>
+  <p class="section-subtitle reveal">关于这部电影的一切</p>
+
+  <table class="archive-table reveal">
+    <tr><td>片名</td><td>阿凡达 (Avatar)</td></tr>
+    <tr><td>导演</td><td>詹姆斯·卡梅隆 (James Cameron)</td></tr>
+    <tr><td>编剧</td><td>詹姆斯·卡梅隆</td></tr>
+    <tr><td>主演</td><td>萨姆·沃辛顿、佐伊·索尔达娜、西格妮·韦弗、史蒂芬·朗</td></tr>
+    <tr><td>配乐</td><td>詹姆斯·霍纳 (James Horner)</td></tr>
+    <tr><td>摄影</td><td>莫罗·菲奥雷 (Mauro Fiore)</td></tr>
+    <tr><td>上映年份</td><td>2009年</td></tr>
+    <tr><td>片长</td><td>162分钟</td></tr>
+    <tr><td>类型</td><td>科幻 / 史诗 / 冒险 / 动作</td></tr>
+    <tr><td>制片成本</td><td>$2.37亿美元</td></tr>
+    <tr><td>全球票房</td><td>$29.2亿美元</td></tr>
+    <tr><td>语言</td><td>英语 · 纳美语</td></tr>
+  </table>
+</section>
+
+<!-- ==========================================
+     Verdict
+     ========================================== -->
+<section class="section">
+  <div class="verdict reveal">
+    <div class="verdict-stars">★★★★★</div>
+    <div class="verdict-title">编辑推荐语</div>
+    <div class="verdict-text">
+      《阿凡达》不仅仅是一部电影——它是一次以银幕为媒介的"旅行"，带你前往一个你从未想象过的地方。<br>
+      当纳美人的蓝色光尘在你身边飘舞，当浮山的瀑布倾泻而下，你会明白：<br>
+      有些体验，只有在电影院里才能拥有。而有些电影，就是为了"大银幕"而生的。
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<div class="footer">
+  经典电影推荐 · 2026-06-29 · 无剧透·放心食用
+</div>
+
+<!-- ==========================================
+     JavaScript
+     ========================================== -->
+<script>
+// ========================================
+// Canvas Bioluminescent Particles
+// ========================================
+(function() {
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  const particles = [];
+  const PARTICLE_COUNT = 90;
+
+  const colors = [
+    'rgba(0, 212, 255,',   // blue
+    'rgba(139, 92, 246,',  // purple
+    'rgba(34, 211, 167,',  // green
+  ];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  class Particle {
+    constructor() {
+      this.reset();
+    }
+    reset() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.size = Math.random() * 3 + 1.5;
+      this.speedX = (Math.random() - 0.5) * 0.25;
+      this.speedY = -Math.random() * 0.2 - 0.1;
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+      this.opacity = Math.random() * 0.5 + 0.2;
+      this.pulseSpeed = Math.random() * 0.01 + 0.005;
+      this.pulsePhase = Math.random() * Math.PI * 2;
+      this.life = 0;
+    }
+    update() {
+      this.life += this.pulseSpeed;
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      // Slight drift/wobble
+      this.x += Math.sin(this.life * 1.5) * 0.15;
+      this.y += Math.cos(this.life * 1.2) * 0.1;
+
+      if (this.y < -10 || this.x < -10 || this.x > W + 10) {
+        this.y = H + 5;
+        this.x = Math.random() * W;
+      }
+    }
+    draw() {
+      const pulse = Math.sin(this.life + this.pulsePhase) * 0.3 + 0.7;
+      const alpha = this.opacity * pulse;
+      const r = this.size * (0.8 + pulse * 0.2);
+
+      // Glow
+      const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, r * 4);
+      grad.addColorStop(0, this.color + alpha + ')');
+      grad.addColorStop(0.3, this.color + (alpha * 0.4) + ')');
+      grad.addColorStop(1, this.color + '0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, r * 4, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Core
+      ctx.fillStyle = this.color + (alpha * 0.9) + ')';
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, r * 0.7, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    const p = new Particle();
+    p.y = Math.random() * H;
+    particles.push(p);
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ========================================
+// IntersectionObserver Scroll Reveal
+// ========================================
+const revealElements = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+revealElements.forEach(el => observer.observe(el));
+
+// ========================================
+// Rating Bar Fill Animation
+// ========================================
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bar = entry.target;
+      const width = bar.getAttribute('data-width');
+      setTimeout(() => { bar.style.width = width + '%'; }, 200);
+      barObserver.unobserve(bar);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.rating-bar-fill').forEach(bar => {
+  barObserver.observe(bar);
+});
+</script>
+</body>
+</html>

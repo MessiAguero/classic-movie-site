@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>狮子王 · 经典电影推荐</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --bg3: #21262d;
+  --gold: #f0c040;
+  --gold-light: #f5d76e;
+  --gold-dark: #b8860b;
+  --orange: #e87d2f;
+  --sunset: #d45d2a;
+  --savanna: #8B4513;
+  --warm-brown: #5a3a1a;
+  --text: #e6edf3;
+  --text-dim: #8b949e;
+  --text-muted: #6e7681;
+  --red: #da3633;
+  --cream: #f8f0e3;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', 'PingFang SC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ===== Canvas ===== */
+#particle-canvas {
+  position: fixed; top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: 0; pointer-events: none;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-dark); }
+
+/* ===== Sections ===== */
+section { position: relative; z-index: 1; }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  background: linear-gradient(180deg, transparent 0%, var(--bg) 85%);
+}
+
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(240,192,64,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 50% 10%, rgba(232,125,47,0.05) 0%, transparent 50%);
+  z-index: 0;
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+.hero-year {
+  font-size: clamp(5rem, 18vw, 14rem);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(240,192,64,0.2);
+  text-stroke: 2px rgba(240,192,64,0.2);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  user-select: none;
+  margin-bottom: -0.5rem;
+  opacity: 0.6;
+}
+
+.hero-title {
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--gold-light), var(--orange), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+  text-shadow: none;
+  filter: drop-shadow(0 0 30px rgba(240,192,64,0.3));
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  color: var(--text-dim);
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  margin-bottom: 2.5rem;
+}
+
+.hero-tagline {
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+/* ===== SVG Pride Rock ===== */
+.hero-svg {
+  width: min(90vw, 500px);
+  height: auto;
+  margin: 1rem auto 0;
+  filter: drop-shadow(0 0 40px rgba(240,192,64,0.15));
+}
+
+.scroll-indicator {
+  position: absolute; bottom: 2rem;
+  left: 50%; transform: translateX(-50%);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  animation: bob 2s ease-in-out infinite;
+  z-index: 2;
+}
+@keyframes bob { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+
+/* ===== Container ===== */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ===== Section headers ===== */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.section-header h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+.section-header .line {
+  width: 60px; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--orange));
+  margin: 0.8rem auto 0;
+  border-radius: 2px;
+}
+
+/* ===== Ratings ===== */
+.ratings {
+  padding: 5rem 0;
+}
+
+.ratings-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.rating-card {
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  opacity: 0; transform: translateY(30px);
+}
+.rating-card.visible { opacity: 1; transform: translateY(0); }
+.rating-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(240,192,64,0.1);
+  border-color: var(--gold-dark);
+}
+
+.rating-source {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.5rem;
+}
+
+.rating-number {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--gold-light);
+}
+
+.rating-bar {
+  height: 4px;
+  background: var(--bg3);
+  border-radius: 2px;
+  margin-top: 0.8rem;
+  overflow: hidden;
+}
+.rating-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--orange));
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.rating-card.visible .rating-bar-fill { width: var(--fill); }
+
+/* ===== Synopsis ===== */
+.synopsis {
+  padding: 4rem 0;
+}
+
+.synopsis-card {
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 20px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.synopsis-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--orange), var(--sunset));
+}
+
+.synopsis-text {
+  font-size: 1.1rem;
+  line-height: 2;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.synopsis-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.meta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 1rem;
+  background: var(--bg3);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+.meta-tag .icon { color: var(--gold); }
+
+.spoiler-free {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 1rem;
+  background: rgba(240,192,64,0.1);
+  border: 1px solid rgba(240,192,64,0.3);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+/* ===== Highlights ===== */
+.highlights {
+  padding: 5rem 0;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.highlight-card {
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  transition: all 0.4s;
+  opacity: 0; transform: translateY(30px);
+}
+.highlight-card.visible { opacity: 1; transform: translateY(0); }
+.highlight-card:hover {
+  border-color: var(--gold-dark);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(240,192,64,0.08);
+}
+
+.highlight-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.highlight-card h3 {
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.highlight-card p {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* ===== Quote ===== */
+.quote-section {
+  padding: 4rem 0;
+}
+
+.quote-block {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 20px;
+  position: relative;
+}
+
+.quote-mark {
+  font-size: 4rem;
+  color: var(--gold);
+  opacity: 0.2;
+  line-height: 0;
+  position: absolute;
+  top: 2rem; left: 2rem;
+  font-family: Georgia, serif;
+}
+
+.quote-text {
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  color: var(--cream);
+  font-style: italic;
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  font-weight: 300;
+}
+
+.quote-source {
+  color: var(--gold);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+/* ===== Why Watch ===== */
+.why-watch {
+  padding: 5rem 0;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.why-card {
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.4s;
+  opacity: 0; transform: translateY(30px);
+}
+.why-card.visible { opacity: 1; transform: translateY(0); }
+.why-card:hover {
+  border-color: var(--gold-dark);
+  box-shadow: 0 8px 25px rgba(240,192,64,0.06);
+}
+
+.why-number {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--gold);
+  opacity: 0.3;
+  margin-bottom: 0.3rem;
+  line-height: 1;
+}
+
+.why-card h3 {
+  font-size: 1rem;
+  color: var(--gold-light);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.why-card p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+/* ===== Awards ===== */
+.awards {
+  padding: 4rem 0;
+}
+
+.awards-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.award-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 30px;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  transition: all 0.3s;
+  opacity: 0; transform: scale(0.9);
+}
+.award-badge.visible { opacity: 1; transform: scale(1); }
+.award-badge:hover {
+  border-color: var(--gold-dark);
+  color: var(--gold-light);
+}
+
+/* ===== Info ===== */
+.info {
+  padding: 4rem 0;
+}
+
+.info-table {
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.info-row {
+  display: flex;
+  border-bottom: 1px solid var(--bg3);
+}
+.info-row:last-child { border-bottom: none; }
+
+.info-label {
+  width: 120px;
+  min-width: 120px;
+  padding: 1rem 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  background: rgba(255,255,255,0.02);
+}
+
+.info-value {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+/* ===== Final Verdict ===== */
+.verdict {
+  padding: 4rem 0 6rem;
+}
+
+.verdict-box {
+  background: linear-gradient(135deg, rgba(240,192,64,0.05), rgba(232,125,47,0.05));
+  border: 1px solid rgba(240,192,64,0.2);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.verdict-stars {
+  font-size: 1.8rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.verdict-box h3 {
+  font-size: 1.4rem;
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.verdict-box p {
+  font-size: 1rem;
+  color: var(--text-dim);
+  line-height: 1.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  border-top: 1px solid var(--bg3);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+  .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .ratings-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+  .highlights-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .synopsis-card { padding: 2rem 1.5rem; }
+  .info-row { flex-direction: column; }
+  .info-label { width: 100%; padding: 0.8rem 1.2rem 0.2rem; }
+  .info-value { padding: 0.2rem 1.2rem 0.8rem; }
+  .rating-number { font-size: 1.8rem; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-year">1994</div>
+    <h1 class="hero-title">狮子王</h1>
+    <p class="hero-subtitle">THE LION KING</p>
+    <p class="hero-tagline">" 生生不息 "</p>
+    <!-- SVG Pride Rock -->
+    <svg class="hero-svg" viewBox="0 0 500 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Sun -->
+      <circle cx="250" cy="110" r="55" fill="url(#sunGrad)" opacity="0.9"/>
+      <circle cx="250" cy="110" r="55" fill="url(#sunGlow)" opacity="0.4"/>
+      <!-- Sun rays -->
+      <g opacity="0.15">
+        <line x1="250" y1="30" x2="250" y2="10" stroke="var(--gold, #f0c040)" stroke-width="2"/>
+        <line x1="250" y1="190" x2="250" y2="210" stroke="var(--gold, #f0c040)" stroke-width="2"/>
+        <line x1="170" y1="110" x2="150" y2="110" stroke="var(--gold, #f0c040)" stroke-width="2"/>
+        <line x1="330" y1="110" x2="350" y2="110" stroke="var(--gold, #f0c040)" stroke-width="2"/>
+        <line x1="193" y1="53" x2="179" y2="39" stroke="var(--gold, #f0c040)" stroke-width="2"/>
+        <line x1="307" y1="53" x2="321" y2="39" stroke="var(--gold, #f0c040)" stroke-width="2"/>
+        <line x1="193" y1="167" x2="179" y2="181" stroke="var(--gold, #f0c040)" stroke-width="2"/>
+        <line x1="307" y1="167" x2="321" y2="181" stroke="var(--gold, #f0c040)" stroke-width="2"/>
+      </g>
+      <!-- Pride Rock -->
+      <path d="M130 200 L140 160 L155 150 L165 155 L170 140 L180 130 L195 115 L210 108 L220 105 L250 100 L280 105 L290 108 L305 115 L320 130 L325 140 L330 155 L340 150 L355 160 L365 200 L370 230 L380 250 L390 258 H110 L115 250 L125 230 Z"
+            fill="url(#rockGrad)" stroke="rgba(240,192,64,0.15)" stroke-width="1"/>
+      <!-- Pride Rock highlight -->
+      <path d="M220 105 L240 100 L250 98 L260 100 L280 105 L270 120 L250 125 L230 120 Z"
+            fill="rgba(240,192,64,0.08)"/>
+      <!-- Standing Lion Silhouette -->
+      <path d="M250 98 L248 92 L247 86 L249 82 L252 82 L254 86 L253 92 Z"
+            fill="rgba(240,192,64,0.25)"/>
+      <!-- Ground - savanna grass -->
+      <path d="M0 258 Q50 252 100 256 Q150 248 200 254 Q250 250 300 254 Q350 248 400 256 Q450 252 500 258 L500 260 H0Z"
+            fill="var(--warm-brown, #5a3a1a)" opacity="0.4"/>
+      <defs>
+        <linearGradient id="sunGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f5d76e"/>
+          <stop offset="50%" stop-color="#f0c040"/>
+          <stop offset="100%" stop-color="#e87d2f"/>
+        </linearGradient>
+        <radialGradient id="sunGlow" cx="0.5" cy="0.5" r="0.5">
+          <stop offset="50%" stop-color="#f0c040" stop-opacity="0.3"/>
+          <stop offset="100%" stop-color="#f0c040" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="rockGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#8B6914"/>
+          <stop offset="30%" stop-color="#6B4F12"/>
+          <stop offset="100%" stop-color="#3A2A0A"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+  <div class="scroll-indicator">↓ 向下滚动</div>
+</section>
+
+<!-- ===== RATINGS ===== -->
+<section class="ratings">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>评分口碑</h2>
+      <div class="line"></div>
+    </div>
+    <div class="ratings-grid">
+      <div class="rating-card reveal" style="--fill: 97%">
+        <div class="rating-source">IMDb</div>
+        <div class="rating-number" data-target="8.5" data-decimals="1">8.5</div>
+        <div class="rating-bar"><div class="rating-bar-fill"></div></div>
+      </div>
+      <div class="rating-card reveal" style="--fill: 96%">
+        <div class="rating-source">豆瓣</div>
+        <div class="rating-number" data-target="9.1" data-decimals="1">9.1</div>
+        <div class="rating-bar"><div class="rating-bar-fill"></div></div>
+      </div>
+      <div class="rating-card reveal" style="--fill: 93%">
+        <div class="rating-source">烂番茄</div>
+        <div class="rating-number" data-target="93" data-decimals="0">93%</div>
+        <div class="rating-bar"><div class="rating-bar-fill"></div></div>
+      </div>
+      <div class="rating-card reveal" style="--fill: 92%">
+        <div class="rating-source">爆米花指数</div>
+        <div class="rating-number" data-target="92" data-decimals="0">92%</div>
+        <div class="rating-bar"><div class="rating-bar-fill"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SYNOPSIS ===== -->
+<section class="synopsis">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>剧情梗概</h2>
+      <div class="line"></div>
+    </div>
+    <div class="synopsis-card reveal">
+      <div class="spoiler-free">🛡️ 无剧透 · 放心阅读</div>
+      <p class="synopsis-text">
+        在广袤的非洲大草原上，荣耀大地生机勃勃。小狮子辛巴是这片土地未来的国王，在父亲木法沙的悉心教导下，他学习着关于生命轮回与勇气的真谛。然而，叔父刀疤的野心悄然蔓延，一场精心策划的阴谋迫使年幼的辛巴踏上流亡之路。
+      </p>
+      <p class="synopsis-text">
+        在远离荣耀大地的热带雨林中，辛巴遇见了乐观开朗的丁满和彭彭。他们教会他"哈库拉玛塔塔"——无忧无虑的生活哲学。但过去的记忆如影随形，命运之轮缓缓转动。当荣耀大地的呼唤穿越时空响起，辛巴必须直面内心最深处的恐惧，找到属于自己的答案。
+      </p>
+      <div class="synopsis-meta">
+        <span class="meta-tag"><span class="icon">🎬</span> 导演：罗杰·阿勒斯 / 罗伯·明可夫</span>
+        <span class="meta-tag"><span class="icon">🎵</span> 配乐：汉斯·季默</span>
+        <span class="meta-tag"><span class="icon">🎤</span> 原声：埃尔顿·约翰</span>
+        <span class="meta-tag"><span class="icon">📅</span> 1994 · 迪士尼</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HIGHLIGHTS ===== -->
+<section class="highlights">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>六大亮点</h2>
+      <div class="line"></div>
+    </div>
+    <div class="highlights-grid">
+      <div class="highlight-card reveal">
+        <span class="highlight-icon">🦁</span>
+        <h3>动画巅峰之作</h3>
+        <p>迪士尼2D手绘动画的皇冠明珠，每一帧都是艺术品。从草原日出的金色光辉到角马狂奔的壮阔场面，视觉语言达到手绘动画前所未有的高度。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <span class="highlight-icon">🎵</span>
+        <h3>汉斯·季默的传世配乐</h3>
+        <p>融合非洲音乐元素与交响乐的磅礴气势，季默的配乐本身就是一部史诗。祖鲁语合唱、空灵人声与管弦乐的完美交织，让草原的灵魂在音乐中回响。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <span class="highlight-icon">🎤</span>
+        <h3>埃尔顿·约翰的经典金曲</h3>
+        <p>《Can You Feel the Love Tonight》荣获奥斯卡最佳原创歌曲，Circle of Life 更是成为影史最标志性的开场之一。每一首歌都嵌入叙事，推动情感升华。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <span class="highlight-icon">📖</span>
+        <h3>莎士比亚式的史诗叙事</h3>
+        <p>以《哈姆雷特》为蓝本构建的故事骨架，让一部动画拥有了古典悲剧的深度。关于权力、背叛、赎罪与王权的永恒主题，成年人亦能从中获得深刻感悟。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <span class="highlight-icon">🌅</span>
+        <h3>生生不息的生命哲学</h3>
+        <p>从木法沙的"生命循环"教导到辛巴的成长之旅，影片传递了东亚文化中"天人合一"般的自然观。这不仅是一个故事，更是一堂关于敬畏生命的人生课。</p>
+      </div>
+      <div class="highlight-card reveal">
+        <span class="highlight-icon">👶</span>
+        <h3>跨越世代的情感共鸣</h3>
+        <p>无论是孩童眼中的冒险奇观，还是成年人看出的命运叩问，不同年龄段的观众都能找到属于自己的感动。它是无数人人生中第一部真正流泪的电影。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<section class="quote-section">
+  <div class="container">
+    <div class="quote-block reveal">
+      <div class="quote-mark">"</div>
+      <p class="quote-text">"过去虽然痛苦，但你可以选择逃避，也可以选择从中学习。当你感到孤独的时候，记住，国王永垂不朽，他们永远活在你的心中。"</p>
+      <p class="quote-source">—— 拉菲奇</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY WATCH ===== -->
+<section class="why-watch">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>为什么值得看</h2>
+      <div class="line"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-number">01</div>
+        <h3>影史最伟大的动画电影之一</h3>
+        <p>豆瓣9.1分、IMDb 8.5分、烂番茄93%——各项数据都将其置于动画电影的顶端。它是迪士尼文艺复兴时期的巅峰之作，定义了90年代动画的艺术标准。</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-number">02</div>
+        <h3>票房与口碑的完美统一</h3>
+        <p>全球票房超9.68亿美元，是1994年全球票房亚军。它证明了商业与艺术从不矛盾——一部真正伟大的作品既能在情感上打动人心，也能在市场上大放异彩。</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-number">03</div>
+        <h3>文化符号般的经典地位</h3>
+        <p>从百老汇改编音乐剧（获6项托尼奖）到2019年CGI重制版，《狮子王》的影响力跨越了近三十年。Circle of Life 的开场已在全球观众心中烙下无法磨灭的印记。</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-number">04</div>
+        <h3>一部让你重拾勇气的电影</h3>
+        <p>当你面对人生的困境与不确定性时，辛巴的故事是对"你是谁"这一终极问题的温柔回答。它告诉我们：逃避不能解决问题，但记忆和爱可以给予我们直面过去的勇气。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AWARDS ===== -->
+<section class="awards">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>荣誉与奖项</h2>
+      <div class="line"></div>
+    </div>
+    <div class="awards-scroll">
+      <span class="award-badge reveal">🏆 奥斯卡最佳原创歌曲</span>
+      <span class="award-badge reveal">🏆 奥斯卡最佳原创配乐</span>
+      <span class="award-badge reveal">🏆 金球奖最佳音乐喜剧类影片</span>
+      <span class="award-badge reveal">🏆 金球奖最佳原创配乐</span>
+      <span class="award-badge reveal">🏆 格莱美最佳儿童专辑</span>
+      <span class="award-badge reveal">🏆 安妮奖最佳动画长片</span>
+      <span class="award-badge reveal">⭐ IMDb Top 250 常驻</span>
+      <span class="award-badge reveal">🎬 AFI百年百大电影提名</span>
+      <span class="award-badge reveal">🎵 影史最佳动画电影原声带</span>
+      <span class="award-badge reveal">🌍 全球票房 $9.68亿</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INFO TABLE ===== -->
+<section class="info">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>影片档案</h2>
+      <div class="line"></div>
+    </div>
+    <div class="info-table reveal">
+      <div class="info-row">
+        <div class="info-label">片名</div>
+        <div class="info-value">狮子王 (The Lion King)</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">导演</div>
+        <div class="info-value">罗杰·阿勒斯 / 罗伯·明可夫</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">制片</div>
+        <div class="info-value">唐·哈恩</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">配乐</div>
+        <div class="info-value">汉斯·季默</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">歌曲</div>
+        <div class="info-value">埃尔顿·约翰 / 蒂姆·赖斯</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">出品</div>
+        <div class="info-value">华特·迪士尼影片公司</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">年份</div>
+        <div class="info-value">1994年6月15日（美国首映）</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">片长</div>
+        <div class="info-value">88 分钟</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">语言</div>
+        <div class="info-value">英语</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">类型</div>
+        <div class="info-value">动画 · 冒险 · 剧情 · 音乐</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VERDICT ===== -->
+<section class="verdict">
+  <div class="container">
+    <div class="verdict-box reveal">
+      <span class="verdict-stars">★★★★★</span>
+      <h3>编辑评语</h3>
+      <p>
+        《狮子王》不仅仅是一部动画电影——它是一代人共同的记忆密码，是无数人第一次在银幕上感受到生命重量与情感震撼的作品。木法沙在星空下的教诲、辛巴在荣耀石上的觉醒、那首几乎刻进基因的 Circle of Life... 近三十年来，它始终提醒着我们：我们是谁，我们从哪里来，以及我们终将走向何方。如果你只打算看一部动画电影，就是它了。
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  经典电影推荐 · 狮子王 · 2026
+</footer>
+
+<script>
+// ===== Canvas Particle System =====
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// Firefly / golden dust particles
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.size = Math.random() * 3 + 1;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = -(Math.random() * 0.2 + 0.05);
+    this.opacity = Math.random() * 0.6 + 0.2;
+    this.life = Math.random() * 300 + 200;
+    this.maxLife = this.life;
+    this.hue = Math.random() > 0.5 ? 45 : 30; // gold or orange
+  }
+  update() {
+    this.x += this.speedX + Math.sin(this.y * 0.01) * 0.1;
+    this.y += this.speedY;
+    this.life--;
+    if (this.y < -10 || this.life <= 0 || this.x < -10 || this.x > W + 10) {
+      this.reset();
+      this.y = H + 10;
+    }
+  }
+  draw() {
+    const progress = this.life / this.maxLife;
+    const alpha = this.opacity * Math.min(progress * 2, 1) * (0.5 + 0.5 * Math.sin(Date.now() * 0.002 + this.x));
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 3);
+    grad.addColorStop(0, `hsl(${this.hue}, 90%, ${70 + Math.random() * 10}%)`);
+    grad.addColorStop(0.5, `hsl(${this.hue}, 80%, 60%)`);
+    grad.addColorStop(1, `hsla(${this.hue}, 80%, 50%, 0)`);
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+const particles = [];
+const particleCount = Math.min(Math.floor(W * H / 12000), 100);
+for (let i = 0; i < particleCount; i++) {
+  particles.push(new Particle());
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ===== Intersection Observer for reveals =====
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, idx) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, idx * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+revealEls.forEach(el => observer.observe(el));
+
+// ===== Rating number count-up =====
+const ratingNumberAnimation = () => {
+  document.querySelectorAll('.rating-number').forEach(el => {
+    const target = parseFloat(el.dataset.target);
+    const decimals = parseInt(el.dataset.decimals) || 0;
+    const suffix = el.textContent.includes('%') ? '%' : '';
+    const duration = 1500;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = target * eased;
+      if (decimals === 0) {
+        el.textContent = Math.round(current) + suffix;
+      } else {
+        el.textContent = current.toFixed(decimals) + suffix;
+      }
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  });
+};
+
+// Trigger rating animation when rating section becomes visible
+const ratingObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      ratingNumberAnimation();
+      ratingObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const ratingsSection = document.querySelector('.ratings');
+if (ratingsSection) ratingObserver.observe(ratingsSection);
+
+// ===== Smooth scroll =====
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电影推荐 | 美国往事</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #111114;
+            --bg-card: #151518;
+            --accent-gold: #c9a962;
+            --accent-amber: #d4a853;
+            --accent-copper: #b87333;
+            --text-primary: #e8e4dc;
+            --text-secondary: #9a958a;
+            --text-muted: #6b6560;
+            --border-subtle: rgba(201, 169, 98, 0.15);
+            --glow-gold: rgba(201, 169, 98, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', 'Cormorant Garamond', serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 80px;
+            padding-top: 40px;
+        }
+
+        .header-badge {
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            border: 1px solid var(--border-subtle);
+            padding: 8px 24px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header-badge::before,
+        .header-badge::after {
+            content: '◆';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 6px;
+            color: var(--accent-gold);
+        }
+
+        .header-badge::before { left: 10px; }
+        .header-badge::after { right: 10px; }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .poster-container {
+            position: relative;
+        }
+
+        .poster-frame {
+            position: relative;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-copper) 50%, var(--accent-gold) 100%);
+            box-shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.6),
+                0 0 60px var(--glow-gold),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .poster-frame::before {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            background: var(--bg-primary);
+            z-index: 0;
+        }
+
+        .poster-inner {
+            position: relative;
+            z-index: 1;
+            aspect-ratio: 2/3;
+            background: linear-gradient(180deg, #1a1814 0%, #0d0b08 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .poster-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-shadow: 0 0 40px var(--glow-gold);
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .poster-title-cn {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 12px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .poster-title-en {
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .poster-director {
+            margin-top: 30px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        .poster-decorative {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+        }
+
+        .hero-content {
+            padding: 20px 0;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .hero-rating {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            padding: 24px 0;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .rating-item {
+            text-align: center;
+        }
+
+        .rating-label {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .rating-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        .rating-max {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .rating-count {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .hero-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .meta-item {
+            padding: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .meta-label {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .meta-value {
+            font-size: 15px;
+            color: var(--text-primary);
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .section-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 60px;
+            height: 2px;
+            background: var(--accent-gold);
+        }
+
+        /* Synopsis */
+        .synopsis {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 50px;
+            position: relative;
+        }
+
+        .synopsis::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 120px;
+            color: var(--accent-gold);
+            opacity: 0.15;
+            line-height: 1;
+        }
+
+        .synopsis-text {
+            font-size: 18px;
+            line-height: 2;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .synopsis-text p {
+            margin-bottom: 24px;
+        }
+
+        .synopsis-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Highlights */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .highlight-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 40px;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .highlight-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .highlight-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--accent-gold);
+            margin-bottom: 24px;
+            color: var(--accent-gold);
+            font-size: 20px;
+        }
+
+        .highlight-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .highlight-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Why Watch */
+        .why-watch {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+            border: 1px solid var(--border-subtle);
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-watch::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--glow-gold) 0%, transparent 70%);
+            opacity: 0.1;
+        }
+
+        .why-watch-list {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-watch-item {
+            display: flex;
+            gap: 24px;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .why-watch-item:last-child {
+            border-bottom: none;
+        }
+
+        .why-watch-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            opacity: 0.5;
+            min-width: 50px;
+        }
+
+        .why-watch-content h4 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .why-watch-content p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Quote */
+        .quote-section {
+            text-align: center;
+            padding: 80px 40px;
+            position: relative;
+        }
+
+        .quote-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 300px;
+            background: radial-gradient(ellipse, var(--glow-gold) 0%, transparent 70%);
+            opacity: 0.08;
+        }
+
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--text-primary);
+            max-width: 800px;
+            margin: 0 auto 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .quote-author {
+            font-size: 14px;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 40px;
+        }
+
+        .footer-text {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        .footer-decoration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-line {
+            width: 60px;
+            height: 1px;
+            background: var(--border-subtle);
+        }
+
+        .footer-diamond {
+            color: var(--accent-gold);
+            font-size: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .poster-container {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .hero-title {
+                font-size: 42px;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 24px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            .hero-rating {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .hero-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .synopsis,
+            .why-watch {
+                padding: 30px;
+            }
+
+            .quote-text {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-badge">经典电影推荐</div>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="poster-container">
+                <div class="poster-frame">
+                    <div class="poster-inner">
+                        <div class="poster-year">1984</div>
+                        <div class="poster-title-cn">美国往事</div>
+                        <div class="poster-title-en">Once Upon a Time in America</div>
+                        <div class="poster-director">导演 / Sergio Leone</div>
+                    </div>
+                </div>
+                <div class="poster-decorative"></div>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="hero-title">美国往事</h1>
+                <p class="hero-subtitle">Once Upon a Time in America</p>
+
+                <div class="hero-rating">
+                    <div class="rating-item">
+                        <div class="rating-label">豆瓣评分</div>
+                        <div class="rating-value">9.2<span class="rating-max">/10</span></div>
+                        <div class="rating-count">32万人评价</div>
+                    </div>
+                    <div class="rating-item">
+                        <div class="rating-label">IMDb评分</div>
+                        <div class="rating-value">8.4<span class="rating-max">/10</span></div>
+                        <div class="rating-count">35万人评价</div>
+                    </div>
+                    <div class="rating-item">
+                        <div class="rating-label">Mtime评分</div>
+                        <div class="rating-value">9.1<span class="rating-max">/10</span></div>
+                        <div class="rating-count">TOP 250 第47位</div>
+                    </div>
+                </div>
+
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">导演</div>
+                        <div class="meta-value">赛尔乔·莱昂内</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">主演</div>
+                        <div class="meta-value">罗伯特·德尼罗</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">时长</div>
+                        <div class="meta-value">227分钟</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Synopsis -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">剧情梗概</h2>
+            </div>
+            <div class="synopsis">
+                <p class="synopsis-text">
+                    故事发生在20世纪20年代的美国纽约，讲述了一群犹太裔少年从街头混混成长为黑帮大佬的传奇人生。以「面条」为首的少年帮派在街头崭露头角，他们抢劫、走私、走私酒，在禁酒令时代的混乱中攫取第一桶金。
+                </p>
+                <p class="synopsis-text">
+                    几十年后，当「面条」重返故地，却发现物是人非。曾经的兄弟麦克斯背叛了他们共同的誓言，而他曾经深爱的黛博拉也成为了别人的妻子。影片通过「面条」的回忆，将友情、爱情、背叛与时间的无情交织成一幅美国社会的缩影画卷。
+                </p>
+                <p class="synopsis-text">
+                    这不仅仅是一个黑帮故事，更是一首关于美国梦的挽歌——关于梦想如何诞生，又如何破碎。
+                </p>
+            </div>
+        </section>
+
+        <!-- Highlights -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">影片亮点</h2>
+            </div>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon">◈</div>
+                    <h3 class="highlight-title">叙事大师的手笔</h3>
+                    <p class="highlight-desc">赛尔乔·莱昂内以独特的非线性叙事，将主角的一生编织成一首时间的诗篇。过去与现在交织，让观众跟随主角一同陷入回忆的迷宫。</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">◆</div>
+                    <h3 class="highlight-title">史诗般的配乐</h3>
+                    <p class="highlight-desc">埃尼奥·莫里康内创作的配乐堪称电影音乐的巅峰。那段「黛博拉主题」的排箫声，至今仍是影史上最令人心碎旋律之一。</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">◇</div>
+                    <h3 class="highlight-title">罗伯特·德尼罗的巅峰表演</h3>
+                    <p class="highlight-desc">德尼罗在片中贡献了从少年到老年不同年龄段极具说服力的表演，尤其是老年「面条」吃面条那场戏，堪称演技教科书。</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">○</div>
+                    <h3 class="highlight-title">摄影的诗意</h3>
+                    <p class="highlight-desc">摄影师托尼诺·德里·科利的镜头充满油画般的质感，每一个画面都像一幅精心构图的绘画作品，展现了默片时代的视觉美学。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Watch -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">为何值得一看</h2>
+            </div>
+            <div class="why-watch">
+                <ul class="why-watch-list">
+                    <li class="why-watch-item">
+                        <span class="why-watch-number">I</span>
+                        <div class="why-watch-content">
+                            <h4>一部关于时间的电影</h4>
+                            <p>莱昂内曾说，这部电影的主题是「时间」。当你看到少年们的意气风发，再到老年时的满目沧桑，会深深感受到时间的重量。</p>
+                        </div>
+                    </li>
+                    <li class="why-watch-item">
+                        <span class="why-watch-number">II</span>
+                        <div class="why-watch-content">
+                            <h4>兄弟情谊的深刻刻画</h4>
+                            <p>「面条」与麦克斯的友情，是这部电影最令人心碎的情感核心。他们的故事让我们思考：背叛究竟源于何处？忠诚又为何如此脆弱？</p>
+                        </div>
+                    </li>
+                    <li class="why-watch-item">
+                        <span class="why-watch-number">III</span>
+                        <div class="why-watch-content">
+                            <h4>美国梦的另一种视角</h4>
+                            <p>这不是关于成功的故事，而是关于代价的故事。当「面条」回到纽约，看到曾经追逐的美国梦最终变成一场空，你会对那个时代有更深的理解。</p>
+                        </div>
+                    </li>
+                    <li class="why-watch-item">
+                        <span class="why-watch-number">IV</span>
+                        <div class="why-watch-content">
+                            <h4>值得反复品味的细节</h4>
+                            <p>第一次观看可能只是看故事，但当你知道结局后再回头看，会发现导演在每一个细节中埋下的伏笔，每一次重温都有新的发现。</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Quote -->
+        <section class="quote-section">
+            <p class="quote-text">
+                当我回首往事，一切就像一场梦。<br>
+                但那些日子，是真实的。
+            </p>
+            <p class="quote-author">—— 电影《美国往事》</p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-decoration">
+                <span class="footer-line"></span>
+                <span class="footer-diamond">◆</span>
+                <span class="footer-line"></span>
+            </div>
+            <p class="footer-text">CLASSIC CINEMA RECOMMENDATION · 2026</p>
+        </footer>
+    </div>
+
+    <script>
+        // Particle Animation
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.5 + 0.1;
+                this.life = Math.random() * 200 + 100;
+                this.maxLife = this.life;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.life--;
+
+                if (this.life <= 0 || this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                const lifeRatio = this.life / this.maxLife;
+                const currentOpacity = this.opacity * lifeRatio;
+                
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(201, 169, 98, ${currentOpacity})`;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.min(80, Math.floor(canvas.width * canvas.height / 15000));
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function connectParticles() {
+            const maxDistance = 120;
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < maxDistance) {
+                        const opacity = (1 - distance / maxDistance) * 0.15;
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(201, 169, 98, ${opacity})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            connectParticles();
+            animationId = requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+
+        resizeCanvas();
+        initParticles();
+        animate();
+    </script>
+</body>
+</html>

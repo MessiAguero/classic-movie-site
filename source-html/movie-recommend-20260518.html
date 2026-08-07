@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>霸王别姬 · 经典电影推荐</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;600;700&family=ZCOOL+XiaoWei&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Han+Serif+SC:wght@400;600;700&display=swap');
+
+    :root {
+      --bg: #0a0809;
+      --surface: #141012;
+      --surface2: #1e1818;
+      --border: rgba(180,120,60,0.12);
+      --gold: #c9a04c;
+      --gold-light: #e8c87a;
+      --gold-dim: rgba(201,160,76,0.12);
+      --cream: #f0e6c8;
+      --warm-white: #e8ddd0;
+      --red-deep: #6b1a1a;
+      --red-accent: #a02020;
+      --red-glow: #c02828;
+      --ink: #1a1010;
+      --text: #d8cdb8;
+      --text-dim: #8a7e6a;
+      --stage-curtain: rgba(80,10,10,0.25);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+      overflow-x: hidden;
+      line-height: 1.8;
+    }
+
+    /* ─── Canvas 背景 ─── */
+    #bgCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 24px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 45%, rgba(160,32,32,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 70% at 30% 60%, rgba(201,160,76,0.06) 0%, transparent 55%);
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 200px;
+      background: linear-gradient(to top, var(--bg), transparent);
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,160,76,0.08);
+      border: 1px solid rgba(201,160,76,0.2);
+      border-radius: 24px;
+      padding: 6px 18px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      animation: fadeDown 0.8s ease both;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge-dot {
+      width: 5px; height: 5px;
+      background: var(--red-accent);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+
+    .hero-year {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(6rem, 18vw, 14rem);
+      font-weight: 900;
+      line-height: 0.85;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(201,160,76,0.1);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -52%);
+      pointer-events: none;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      z-index: 0;
+      animation: yearIn 1.2s ease both 0.2s;
+    }
+
+    .hero-title-zh {
+      font-family: 'Ma Shan Zheng', 'ZCOOL XiaoWei', serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: 0.15em;
+      line-height: 1.2;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.8s ease both 0.4s;
+      text-shadow: 0 0 60px rgba(201,160,76,0.2);
+    }
+
+    .hero-title-en {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(0.9rem, 2vw, 1.4rem);
+      color: var(--gold);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      margin-top: 10px;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.8s ease both 0.5s;
+    }
+
+    .hero-divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 28px auto;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.8s ease both 0.55s;
+    }
+
+    .hero-tagline {
+      max-width: 580px;
+      font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+      color: var(--warm-white);
+      font-style: italic;
+      line-height: 1.9;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.8s ease both 0.65s;
+    }
+
+    .hero-tagline em {
+      color: var(--gold-light);
+      font-style: normal;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 36px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 0.8s ease both 0.75s;
+    }
+
+    .hero-meta-item {
+      text-align: center;
+    }
+
+    .hero-meta-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-family: 'Courier New', monospace;
+    }
+
+    .hero-meta-value {
+      font-size: 1rem;
+      color: var(--cream);
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+      animation: fadeUp 1s ease both 1.2s;
+    }
+
+    .hero-scroll span {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-family: 'Courier New', monospace;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 1.8s ease infinite;
+    }
+
+    /* ─── Peking Opera Divider ─── */
+    .opera-divider {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .opera-divider::before,
+    .opera-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,160,76,0.2), transparent);
+    }
+
+    .opera-divider svg {
+      width: 28px;
+      height: 28px;
+      opacity: 0.35;
+    }
+
+    /* ─── SECTION ─── */
+    .section {
+      position: relative;
+      z-index: 1;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      font-family: 'Courier New', monospace;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.8;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(201,160,76,0.15), transparent);
+    }
+
+    .section-title {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--cream);
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-family: 'Noto Serif SC', serif;
+    }
+
+    .section-subtitle {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      margin-bottom: 48px;
+    }
+
+    /* ─── SCORES ─── */
+    .scores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .score-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .score-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--red-accent), var(--gold), var(--red-accent));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .score-card:hover { transform: translateY(-4px); border-color: rgba(201,160,76,0.25); }
+    .score-card:hover::before { opacity: 1; }
+
+    .score-platform {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-family: 'Courier New', monospace;
+      margin-bottom: 10px;
+    }
+
+    .score-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .score-number sup {
+      font-size: 1rem;
+      vertical-align: super;
+      color: var(--gold-light);
+      font-weight: 400;
+    }
+
+    .score-bar-wrap {
+      background: rgba(255,255,255,0.04);
+      border-radius: 2px;
+      height: 3px;
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    .score-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--red-accent), var(--gold));
+      border-radius: 2px;
+      width: 0;
+      transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .score-desc {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      margin-top: 10px;
+    }
+
+    /* ─── SYNOPSIS ─── */
+    .synopsis-wrap {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media(max-width: 720px) {
+      .synopsis-wrap { grid-template-columns: 1fr; }
+    }
+
+    .synopsis-text p {
+      color: var(--text);
+      font-size: 1.02rem;
+      line-height: 1.9;
+      margin-bottom: 18px;
+    }
+
+    .synopsis-text p:first-child::first-letter {
+      font-size: 3.5em;
+      float: left;
+      line-height: 0.75;
+      margin-right: 8px;
+      margin-top: 4px;
+      color: var(--gold);
+      font-weight: 700;
+      font-family: 'Ma Shan Zheng', serif;
+    }
+
+    .spoiler-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: rgba(107,26,26,0.12);
+      border: 1px solid rgba(160,32,32,0.25);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      color: #c07070;
+      letter-spacing: 0.05em;
+      margin-top: 8px;
+    }
+
+    /* ─── POSTER CARD ─── */
+    .poster-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      position: sticky;
+      top: 100px;
+    }
+
+    .poster-svg-wrap {
+      width: 100%;
+      aspect-ratio: 2/3;
+      background: #0d0a0a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .poster-info {
+      padding: 20px;
+    }
+
+    .poster-info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }
+
+    .poster-info-row:last-child { border-bottom: none; }
+    .poster-info-key { color: var(--text-dim); font-family: 'Courier New', monospace; letter-spacing: 0.08em; font-size: 0.72rem; }
+    .poster-info-val { color: var(--cream); text-align: right; }
+
+    /* ─── HIGHLIGHTS ─── */
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .highlight-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .highlight-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .highlight-card:hover {
+      border-color: rgba(201,160,76,0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      transform: translateY(-4px);
+    }
+
+    .highlight-num {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: rgba(201,160,76,0.06);
+      position: absolute;
+      top: 10px; right: 14px;
+      font-family: 'Courier New', monospace;
+      line-height: 1;
+    }
+
+    .highlight-icon {
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .highlight-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 10px;
+      font-family: 'Noto Serif SC', serif;
+    }
+
+    .highlight-body {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      line-height: 1.75;
+    }
+
+    /* ─── QUOTE ─── */
+    .quote-block {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .quote-inner {
+      background: linear-gradient(135deg, #1a1215, #15101a);
+      border: 1px solid rgba(201,160,76,0.12);
+      border-left: 4px solid var(--red-accent);
+      border-radius: 16px;
+      padding: 48px 52px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-inner::before {
+      content: '"';
+      position: absolute;
+      top: -10px; left: 24px;
+      font-size: 12rem;
+      color: rgba(201,160,76,0.04);
+      font-family: 'Ma Shan Zheng', serif;
+      line-height: 1;
+    }
+
+    .quote-text {
+      font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.8;
+      margin-bottom: 20px;
+      position: relative;
+      font-family: 'Noto Serif SC', serif;
+    }
+
+    .quote-source {
+      font-size: 0.78rem;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ─── WHY WATCH ─── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .why-card {
+      position: relative;
+      padding: 32px 24px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+
+    .why-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .why-accent {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red-accent), var(--gold));
+    }
+
+    .why-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .why-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 10px;
+      font-family: 'Noto Serif SC', serif;
+    }
+
+    .why-body {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.75;
+    }
+
+    /* ─── HONORS ─── */
+    .honors-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .honor-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 24px;
+      font-size: 0.76rem;
+      letter-spacing: 0.06em;
+    }
+
+    .honor-tag.gold {
+      background: rgba(201,160,76,0.08);
+      border: 1px solid rgba(201,160,76,0.25);
+      color: var(--gold-light);
+    }
+
+    .honor-tag.silver {
+      background: rgba(180,180,200,0.05);
+      border: 1px solid rgba(180,180,200,0.15);
+      color: #a0a0a8;
+    }
+
+    .honor-tag.red {
+      background: rgba(160,32,32,0.1);
+      border: 1px solid rgba(160,32,32,0.25);
+      color: var(--red-glow);
+    }
+
+    /* ─── ARCHIVE TABLE ─── */
+    .archive-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .archive-table tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .archive-table tr:hover { background: rgba(255,255,255,0.015); }
+
+    .archive-table td {
+      padding: 14px 0;
+      font-size: 0.9rem;
+    }
+
+    .archive-table td:first-child {
+      color: var(--text-dim);
+      font-family: 'Courier New', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      width: 160px;
+      text-transform: uppercase;
+    }
+
+    .archive-table td:last-child { color: var(--cream); }
+
+    /* ─── EPILOGUE ─── */
+    .epilogue {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 60px 24px 100px;
+    }
+
+    .epilogue-stars {
+      font-size: 1.6rem;
+      color: var(--gold);
+      letter-spacing: 10px;
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    .epilogue-text {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--warm-white);
+      line-height: 1.85;
+      font-family: 'Noto Serif SC', serif;
+    }
+
+    .epilogue-sig {
+      margin-top: 28px;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* ─── SECTION SEP ─── */
+    .section-sep {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .sep-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201,160,76,0.15), transparent);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes yearIn {
+      from { opacity: 0; transform: translate(-50%, -48%) scale(1.05); }
+      to   { opacity: 1; transform: translate(-50%, -52%) scale(1); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    @keyframes scrollLine {
+      0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+      50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+      51%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    }
+
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media(max-width: 600px) {
+      .quote-inner { padding: 32px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+
+<!-- ════════════════════ HERO ════════════════════ -->
+<section class="hero">
+  <div class="hero-year">1993</div>
+
+  <div class="hero-badge">
+    <span class="hero-badge-dot"></span>
+    华语影史巅峰 · 豆瓣评分最高之一
+  </div>
+
+  <h1 class="hero-title-zh">霸王别姬</h1>
+  <p class="hero-title-en">Farewell My Concubine</p>
+
+  <div class="hero-divider"></div>
+
+  <p class="hero-tagline">
+    "说的是一辈子！差一年，一个月，一天，一个时辰，都不算一辈子！"
+  </p>
+
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">导演</div>
+      <div class="hero-meta-value">陈凯歌</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">主演</div>
+      <div class="hero-meta-value">张国荣 / 张丰毅 / 巩俐</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">年份</div>
+      <div class="hero-meta-value">1993</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">片长</div>
+      <div class="hero-meta-value">171 分钟</div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<div class="opera-divider">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="color: var(--gold);">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+    <path d="M8 12l3 3 5-5"/>
+  </svg>
+</div>
+
+<!-- ════════════════════ SCORES ════════════════════ -->
+<section class="section">
+  <p class="section-label reveal-up">Rating · 评分一览</p>
+  <h2 class="section-title reveal-up">口碑与评分</h2>
+  <p class="section-subtitle reveal-up">华语电影史上评分最高的作品之一，横跨三十余年的感动</p>
+
+  <div class="scores-grid">
+    <div class="score-card">
+      <div class="score-platform">IMDb</div>
+      <div class="score-number" data-target="8.1">0.0</div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="81"></div></div>
+      <div class="score-desc">全球最大电影数据库</div>
+    </div>
+    <div class="score-card">
+      <div class="score-platform">豆瓣</div>
+      <div class="score-number" data-target="9.6">0.0</div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="96"></div></div>
+      <div class="score-desc">豆瓣华语电影评分第一</div>
+    </div>
+    <div class="score-card">
+      <div class="score-platform">戛纳</div>
+      <div class="score-number" style="font-size:2.2rem;">🏆</div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="100"></div></div>
+      <div class="score-desc">金棕榈大奖 · 华语电影唯一</div>
+    </div>
+    <div class="score-card">
+      <div class="score-platform">烂番茄</div>
+      <div class="score-number" data-target="91"><sup>%</sup></div>
+      <div class="score-bar-wrap"><div class="score-bar" data-width="91"></div></div>
+      <div class="score-desc">媒体新鲜度 · 必看认证</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"><div class="sep-line"></div></div>
+
+<!-- ════════════════════ SYNOPSIS ════════════════════ -->
+<section class="section">
+  <p class="section-label reveal-up">Synopsis · 剧情梗概</p>
+  <h2 class="section-title reveal-up">关于这个故事</h2>
+  <p class="section-subtitle reveal-up">跨越半个世纪，一场不疯魔不成活的执念</p>
+
+  <div class="synopsis-wrap">
+    <div class="synopsis-text reveal-up">
+      <p>
+        1924年，北方。两个男孩子——段小楼与程蝶衣——被送进京剧科班"喜福成"，一个演生，一个演旦。从此，他们的人生便与那出《霸王别姬》紧紧缠在了一起。
+      </p>
+      <p>
+        蝶衣对师兄，人戏不分。他把台上那段"霸王别姬"的君臣之情，当成了自己一生的执念。可段小楼终究是凡人——他会娶妻，会妥协，会在时代的洪流里一次次低头。
+      </p>
+      <p>
+        从民国到抗战，从解放到文革，三十年的中国现代史在戏台上演了一遍又一遍。他们唱的不是戏，是自己的命。蝶衣那句"我本是女娇娥，又不是男儿郎"，唱了一辈子，也活了一辈子。
+      </p>
+      <p>
+        这不是一个简单的梨园故事。它是一场关于身份、执念与时代碾压的史诗——在个人命运与历史巨轮之间，人究竟能守住多少自己？
+      </p>
+      <span class="spoiler-note">🔒 以下情节与结局未作任何透露，请放心观看</span>
+    </div>
+
+    <!-- SVG Poster -->
+    <div class="poster-card">
+      <div class="poster-svg-wrap">
+        <svg viewBox="0 0 320 480" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <radialGradient id="gStage" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="rgba(160,32,32,0.18)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+            <radialGradient id="gSpot" cx="50%" cy="35%" r="45%">
+              <stop offset="0%" stop-color="rgba(201,160,76,0.1)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+            <linearGradient id="gCurtain" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="rgba(80,10,10,0.3)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="4" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <clipPath id="posterClip">
+              <rect width="320" height="480" rx="0"/>
+            </clipPath>
+          </defs>
+
+          <g clip-path="url(#posterClip)">
+            <!-- Background -->
+            <rect width="320" height="480" fill="#0d0a0a"/>
+            <rect width="320" height="480" fill="url(#gStage)"/>
+            <rect width="320" height="480" fill="url(#gSpot)"/>
+
+            <!-- Stage curtain vignette -->
+            <rect x="0" y="0" width="320" height="80" fill="url(#gCurtain)"/>
+            <rect x="0" y="400" width="320" height="80" fill="url(#gCurtain)" transform="rotate(180 160 440)"/>
+
+            <!-- Stage floor reflection -->
+            <ellipse cx="160" cy="470" rx="100" ry="18" fill="rgba(201,160,76,0.04)"/>
+
+            <!-- Peking Opera figure - Dieyi (Dan role) -->
+            <!-- Headdress / Phoenix crown -->
+            <g filter="url(#glow)">
+              <!-- Phoenix crown base -->
+              <ellipse cx="160" cy="108" rx="38" ry="14" fill="rgba(201,160,76,0.25)" stroke="#c9a04c" stroke-width="0.5" opacity="0.8"/>
+              <!-- Ornamental balls on crown -->
+              <circle cx="140" cy="102" r="5" fill="#c9a04c" opacity="0.7"/>
+              <circle cx="160" cy="98" r="6" fill="#c9a04c" opacity="0.8"/>
+              <circle cx="180" cy="102" r="5" fill="#c9a04c" opacity="0.7"/>
+              <!-- Tassels from crown -->
+              <line x1="135" y1="112" x2="130" y2="140" stroke="#c9a04c" stroke-width="0.5" opacity="0.5"/>
+              <line x1="160" y1="114" x2="160" y2="142" stroke="#c9a04c" stroke-width="0.5" opacity="0.5"/>
+              <line x1="185" y1="112" x2="190" y2="140" stroke="#c9a04c" stroke-width="0.5" opacity="0.5"/>
+            </g>
+
+            <!-- Face - Dan makeup (pale) -->
+            <ellipse cx="160" cy="128" rx="24" ry="30" fill="#e8d8c0" opacity="0.85"/>
+            <!-- Eye makeup - Phoenix eye -->
+            <path d="M142,122 Q150,116 158,122" fill="none" stroke="#1a0a0a" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M162,122 Q170,116 178,122" fill="none" stroke="#1a0a0a" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Eyebrows - Dan style upward curve -->
+            <path d="M138,118 Q150,110 162,116" fill="none" stroke="#1a0a0a" stroke-width="1.5"/>
+            <path d="M158,116 Q170,110 182,118" fill="none" stroke="#1a0a0a" stroke-width="1.5"/>
+            <!-- Lips - small red -->
+            <ellipse cx="160" cy="138" rx="8" ry="3.5" fill="#a02020" opacity="0.9"/>
+            <!-- Forehead jewel -->
+            <circle cx="160" cy="112" r="3" fill="#c9a04c" opacity="0.9"/>
+
+            <!-- Neck -->
+            <rect x="152" y="156" width="16" height="24" rx="4" fill="#e8d8c0" opacity="0.8"/>
+
+            <!-- Costume - Water sleeves -->
+            <!-- Upper robe -->
+            <path d="M120,180 Q160,165 200,180 Q200,220 160,230 Q120,220 120,180Z" fill="#8b1a1a" opacity="0.8"/>
+            <!-- Gold embroidery patterns -->
+            <path d="M135,185 Q160,175 185,185" fill="none" stroke="#c9a04c" stroke-width="0.8" opacity="0.6"/>
+            <path d="M130,195 Q160,185 190,195" fill="none" stroke="#c9a04c" stroke-width="0.8" opacity="0.6"/>
+            <path d="M128,205 Q160,195 192,205" fill="none" stroke="#c9a04c" stroke-width="0.8" opacity="0.6"/>
+            <!-- Collar -->
+            <path d="M140,178 Q160,170 180,178" fill="none" stroke="#c9a04c" stroke-width="1.5" opacity="0.7"/>
+
+            <!-- Water sleeve - left -->
+            <path d="M120,185 Q95,195 88,220 Q90,235 110,240 Q125,230 128,210 Z" fill="#e8d8c0" opacity="0.5"/>
+            <!-- Water sleeve - right -->
+            <path d="M200,185 Q225,195 232,220 Q230,235 210,240 Q195,230 192,210 Z" fill="#e8d8c0" opacity="0.5"/>
+
+            <!-- Lower robe / skirt -->
+            <path d="M128,228 Q115,280 120,340 Q140,355 160,350 Q180,355 200,340 Q205,280 192,228 Z" fill="#6b1a1a" opacity="0.8"/>
+
+            <!-- Phoenix pattern on robe -->
+            <g opacity="0.25">
+              <path d="M150,260 Q140,275 150,290 Q165,280 160,265 Z" fill="#c9a04c"/>
+              <path d="M170,260 Q180,275 170,290 Q155,280 160,265 Z" fill="#c9a04c"/>
+            </g>
+
+            <!-- Wide trousers / cloud shoes -->
+            <ellipse cx="142" cy="352" rx="22" ry="8" fill="#1a1010"/>
+            <ellipse cx="178" cy="352" rx="22" ry="8" fill="#1a1010"/>
+            <!-- Cloud pattern on shoes -->
+            <path d="M125,348 Q135,340 145,348" fill="none" stroke="#c9a04c" stroke-width="0.5" opacity="0.5"/>
+            <path d="M175,348 Q185,340 195,348" fill="none" stroke="#c9a04c" stroke-width="0.5" opacity="0.5"/>
+
+            <!-- Second figure shadow - Duan Xiaolou (partial) -->
+            <ellipse cx="210" cy="155" rx="18" ry="22" fill="#1a1010" opacity="0.3"/>
+            <rect x="198" y="175" width="24" height="50" rx="4" fill="#1a1010" opacity="0.25"/>
+
+            <!-- Spotlight beam -->
+            <path d="M100 0 L60 480 L260 480 L220 0Z" fill="rgba(255,240,200,0.015)"/>
+
+            <!-- Petals scattered -->
+            <g opacity="0.35">
+              <ellipse cx="70" cy="380" rx="7" ry="3" fill="#c9a04c" transform="rotate(-20 70 380)"/>
+              <ellipse cx="250" cy="410" rx="5" ry="2.5" fill="#8b1a1a" transform="rotate(15 250 410)"/>
+              <ellipse cx="160" cy="440" rx="6" ry="3" fill="#c9a04c" transform="rotate(5 160 440)"/>
+              <ellipse cx="40" cy="420" rx="5" ry="2" fill="#a02020" transform="rotate(-30 40 420)"/>
+            </g>
+
+            <!-- Top overlay gradient -->
+            <rect width="320" height="70" fill="#0d0a0a" opacity="0.7"/>
+
+            <!-- Title text -->
+            <text x="160" y="48" fill="#c9a04c" font-size="11" font-family="Ma Shan Zheng, serif" text-anchor="middle" letter-spacing="6" opacity="0.9">霸王别姬</text>
+            <text x="160" y="64" fill="rgba(201,160,76,0.35)" font-size="7" font-family="'Courier New',monospace" text-anchor="middle" letter-spacing="3">FAREWELL MY CONCUBINE · 1993</text>
+
+            <!-- Bottom info bar -->
+            <rect x="0" y="455" width="320" height="25" fill="rgba(0,0,0,0.6)"/>
+            <text x="160" y="471" fill="rgba(201,160,76,0.45)" font-size="6.5" font-family="'Courier New',monospace" text-anchor="middle" letter-spacing="2">LESILE CHEUNG · ZHANG FENGYI · GONG LI</text>
+
+            <!-- Decorative border -->
+            <rect x="6" y="6" width="308" height="468" fill="none" stroke="rgba(201,160,76,0.12)" stroke-width="0.8"/>
+            <rect x="10" y="10" width="300" height="460" fill="none" stroke="rgba(201,160,76,0.05)" stroke-width="0.4"/>
+          </g>
+        </svg>
+      </div>
+      <div class="poster-info">
+        <div class="poster-info-row">
+          <span class="poster-info-key">导演</span>
+          <span class="poster-info-val">陈凯歌</span>
+        </div>
+        <div class="poster-info-row">
+          <span class="poster-info-key">主演</span>
+          <span class="poster-info-val">张国荣 / 张丰毅 / 巩俐</span>
+        </div>
+        <div class="poster-info-row">
+          <span class="poster-info-key">类型</span>
+          <span class="poster-info-val">剧情 / 爱情 / 史诗</span>
+        </div>
+        <div class="poster-info-row">
+          <span class="poster-info-key">国家</span>
+          <span class="poster-info-val">中国 / 中国香港</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"><div class="sep-line"></div></div>
+
+<!-- ════════════════════ HIGHLIGHTS ════════════════════ -->
+<section class="section">
+  <p class="section-label reveal-up">Highlights · 亮点所在</p>
+  <h2 class="section-title reveal-up">六大不可错过的理由</h2>
+  <p class="section-subtitle reveal-up">一部电影，半部中国现代史</p>
+
+  <div class="highlights-grid">
+    <div class="highlight-card">
+      <div class="highlight-num">01</div>
+      <div class="highlight-icon">🏆</div>
+      <div class="highlight-title">华语唯一戛纳金棕榈</div>
+      <div class="highlight-body">1993年，《霸王别姬》与《钢琴别恋》并列获得第46届戛纳电影节金棕榈奖，成为迄今唯一获此殊荣的华语电影，震撼世界影坛。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">02</div>
+      <div class="highlight-icon">🎭</div>
+      <div class="highlight-title">张国荣的绝唱级演出</div>
+      <div class="highlight-body">张国荣饰演的程蝶衣，人戏不分、雌雄莫辨，被影评界公认为华语影史最伟大的表演之一。他将一个角色的执念演到了极致，至今无人超越。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">03</div>
+      <div class="highlight-icon">📜</div>
+      <div class="highlight-title">半世纪的中国史诗</div>
+      <div class="highlight-body">从民国北洋到文化大革命，影片以京剧《霸王别姬》为线索，将半个世纪的中国现代史融入三个人的命运，格局之大在华语电影中绝无仅有。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">04</div>
+      <div class="highlight-icon">🎨</div>
+      <div class="highlight-title">戏曲与电影的完美融合</div>
+      <div class="highlight-body">影片将京剧的仪式感、色彩美学与电影叙事完美结合。每一帧画面都如工笔画般精致，戏曲唱腔与历史洪流的交织令人叹为观止。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">05</div>
+      <div class="highlight-icon">💔</div>
+      <div class="highlight-title">不疯魔不成活的情感力量</div>
+      <div class="highlight-body">"不疯魔不成活"——这句台词是整部电影的灵魂。蝶衣对艺术、对师兄、对自我身份的执念，构成了最令人心碎的情感张力。</div>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-num">06</div>
+      <div class="highlight-icon">🌏</div>
+      <div class="highlight-title">跨文化共鸣的世界级杰作</div>
+      <div class="highlight-body">在西方观众和影评界中同样享有极高声誉。它用一个中国传统故事，讲出了关于身份、艺术与爱的普世命题，是真正的世界级艺术作品。</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"><div class="sep-line"></div></div>
+
+<!-- ════════════════════ QUOTE ════════════════════ -->
+<div class="quote-block reveal-up">
+  <div class="quote-inner">
+    <p class="quote-text">
+      "说的是一辈子！差一年，一个月，一天，一个时辰，都不算一辈子！"
+    </p>
+    <p class="quote-source">— 程蝶衣 · 张国荣 饰 · 《霸王别姬》</p>
+  </div>
+</div>
+
+<!-- ════════════════════ WHY WATCH ════════════════════ -->
+<section class="section">
+  <p class="section-label reveal-up">Why Watch · 为何值得一看</p>
+  <h2 class="section-title reveal-up">它值得你花 171 分钟</h2>
+  <p class="section-subtitle reveal-up">有些电影看完是结束，这部看完是开始——你会久久无法走出那个世界</p>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-accent"></div>
+      <span class="why-icon">🎯</span>
+      <div class="why-title">张国荣巅峰演技必看</div>
+      <div class="why-body">张国荣为演好程蝶衣提前半年苦练京剧，片中蝶衣的每一个眼神、手势、台步都经过精心雕琢。这不是表演，这是将自己献祭给艺术。</div>
+    </div>
+    <div class="why-card">
+      <div class="why-accent"></div>
+      <span class="why-icon">🏮</span>
+      <div class="why-title">京剧美学视觉盛宴</div>
+      <div class="why-body">影片中的京剧场景由真实京剧名家指导，服装、化妆、身段无不精致入微。即便完全不懂京剧，也会被那份浓烈的美学冲击到。</div>
+    </div>
+    <div class="why-card">
+      <div class="why-accent"></div>
+      <span class="why-icon">📖</span>
+      <div class="why-title">读懂中国人的情感方式</div>
+      <div class="why-body">这部电影是理解中国人情感表达方式的一把钥匙——压抑、隐忍、以戏喻情，那份欲说还休的深情在蝶衣身上达到极致。</div>
+    </div>
+    <div class="why-card">
+      <div class="why-accent"></div>
+      <span class="why-icon">🌟</span>
+      <div class="why-title">豆瓣9.6分的底气</div>
+      <div class="why-body">在豆瓣Top250中，《霸王别姬》以9.6分高居华语电影第一。这意味着：它在过去三十年里，被一代又一代中国观众共同认证为巅峰。</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-sep"><div class="sep-line"></div></div>
+
+<!-- ════════════════════ HONORS ════════════════════ -->
+<section class="section">
+  <p class="section-label reveal-up">Honors · 荣誉记录</p>
+  <h2 class="section-title reveal-up">奖项与认可</h2>
+
+  <div class="honors-wrap reveal-up">
+    <span class="honor-tag gold">🏆 戛纳金棕榈大奖（唯一华语电影）</span>
+    <span class="honor-tag gold">🌟 豆瓣Top250华语电影第一</span>
+    <span class="honor-tag gold">📽️ IMDb Top 250 华语电影最高分</span>
+    <span class="honor-tag silver">🎭 张国荣 · 日本影迷协会最佳男主角</span>
+    <span class="honor-tag silver">📰 美国《时代》周刊年度全球十大电影</span>
+    <span class="honor-tag silver">🎬 奥斯卡最佳外语片提名</span>
+    <span class="honor-tag red">📜 入选美国《卫报》影史五十部伟大电影</span>
+    <span class="honor-tag red">🏮 入选 BBC 影史百大外语电影</span>
+  </div>
+</section>
+
+<div class="section-sep"><div class="sep-line"></div></div>
+
+<!-- ════════════════════ ARCHIVE ════════════════════ -->
+<section class="section">
+  <p class="section-label reveal-up">Archive · 影片档案</p>
+  <h2 class="section-title reveal-up">基本信息</h2>
+
+  <table class="archive-table reveal-up">
+    <tr><td>中文片名</td><td>霸王别姬</td></tr>
+    <tr><td>英文片名</td><td>Farewell My Concubine</td></tr>
+    <tr><td>上映年份</td><td>1993</td></tr>
+    <tr><td>导演</td><td>陈凯歌</td></tr>
+    <tr><td>主演</td><td>张国荣 / 张丰毅 / 巩俐 / 葛优</td></tr>
+    <tr><td>编剧</td><td>芦苇 / 陈凯歌（改编自李碧华同名小说）</td></tr>
+    <tr><td>类型</td><td>剧情 / 爱情 / 历史史诗</td></tr>
+    <tr><td>制片地区</td><td>中国 / 中国香港</td></tr>
+    <tr><td>片长</td><td>171 分钟（导演剪辑版）</td></tr>
+    <tr><td>配乐</td><td>赵季平</td></tr>
+    <tr><td>IMDb 评分</td><td>8.1 / 10</td></tr>
+    <tr><td>豆瓣评分</td><td>9.6 / 10（华语第一）</td></tr>
+    <tr><td>戛纳电影节</td><td>第46届金棕榈奖（最高奖金棕榈）</td></tr>
+  </table>
+</section>
+
+<!-- ════════════════════ EPILOGUE ════════════════════ -->
+<div class="epilogue reveal-up">
+  <span class="epilogue-stars">★ ★ ★ ★ ★</span>
+  <p class="epilogue-text">
+    三十年前，程蝶衣在戏台上说完了他的一生。三十年后，那句"不疯魔不成活"依然在每个观众心里回响——关于艺术，关于爱，关于一个人如何把自己活成一首绝唱。
+  </p>
+  <p class="epilogue-sig">— Classic Film Recommendation · May 18, 2026 —</p>
+</div>
+
+<script>
+/* ─── Canvas 粒子 + 花瓣飘落 ─── */
+(function() {
+  const canvas = document.getElementById('bgCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const particles = [];
+  const petals = [];
+
+  // Ambient gold/dust particles
+  for (let i = 0; i < 70; i++) {
+    particles.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      r: Math.random() * 1.5 + 0.3,
+      speed: Math.random() * 0.25 + 0.05,
+      opacity: Math.random() * 0.25 + 0.03,
+      drift: (Math.random() - 0.5) * 0.25,
+      pulse: Math.random() * Math.PI * 2
+    });
+  }
+
+  // Falling petals (opera/Chinese aesthetic)
+  for (let i = 0; i < 16; i++) {
+    petals.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight - window.innerHeight,
+      size: Math.random() * 7 + 3,
+      speed: Math.random() * 0.5 + 0.15,
+      drift: (Math.random() - 0.5) * 0.4,
+      angle: Math.random() * Math.PI * 2,
+      angleSpeed: (Math.random() - 0.5) * 0.015,
+      opacity: Math.random() * 0.18 + 0.04,
+      hue: Math.random() > 0.5 ? '#c9a04c' : '#8b1a1a'
+    });
+  }
+
+  let frame = 0;
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Particles
+    particles.forEach(p => {
+      p.pulse += 0.018;
+      const op = p.opacity * (0.7 + 0.3 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(201,160,76,${op})`;
+      ctx.fill();
+
+      p.y -= p.speed;
+      p.x += p.drift;
+      if (p.y < -5) { p.y = canvas.height + 5; p.x = Math.random() * canvas.width; }
+    });
+
+    // Petals
+    petals.forEach(p => {
+      p.angle += p.angleSpeed;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.angle);
+      ctx.globalAlpha = p.opacity;
+      ctx.fillStyle = p.hue;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, p.size, p.size * 0.4, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      p.y += p.speed;
+      p.x += p.drift + Math.sin(frame * 0.01 + p.x * 0.01) * 0.3;
+      if (p.y > canvas.height + 20) {
+        p.y = -20;
+        p.x = Math.random() * canvas.width;
+      }
+    });
+
+    frame++;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ─── Score Animation ─── */
+function animateScores() {
+  document.querySelectorAll('.score-number[data-target]').forEach(el => {
+    const target = parseFloat(el.getAttribute('data-target'));
+    const hasPct = el.querySelector('sup') !== null;
+    const isInt = Number.isInteger(target);
+    let start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      const prog = Math.min((ts - start) / 1500, 1);
+      const ease = 1 - Math.pow(1 - prog, 3);
+      const val = target * ease;
+      if (hasPct) {
+        el.innerHTML = `<sup>%</sup>${Math.round(val)}`;
+      } else {
+        el.textContent = isInt ? Math.round(val) : val.toFixed(1);
+      }
+      if (prog < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+
+  document.querySelectorAll('.score-bar').forEach(bar => {
+    const w = bar.getAttribute('data-width');
+    setTimeout(() => { bar.style.width = w + '%'; }, 120);
+  });
+}
+
+/* ─── IntersectionObserver ─── */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      if (e.target.classList.contains('scores-grid')) animateScores();
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal-up').forEach(el => io.observe(el));
+document.querySelectorAll('.highlight-card').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.1) + 's';
+  io.observe(el);
+});
+document.querySelectorAll('.why-card').forEach((el, i) => {
+  el.style.transitionDelay = (i * 0.12) + 's';
+  io.observe(el);
+});
+const scoresEl = document.querySelector('.scores-grid');
+if (scoresEl) io.observe(scoresEl);
+</script>
+
+</body>
+</html>

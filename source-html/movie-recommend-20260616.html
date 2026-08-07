@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>寻梦环游记 Coco — 经典电影推荐</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+  
+  :root {
+    --bg-dark: #0d0a1a;
+    --bg-card: #1a1428;
+    --bg-section: #12101e;
+    --marigold: #ff8c00;
+    --marigold-light: #ffb347;
+    --marigold-glow: #ff6b00;
+    --pink-warm: #e84393;
+    --pink-dia: #ff6b9d;
+    --purple-deep: #2d1b69;
+    --purple-night: #1a0e3e;
+    --gold: #ffd700;
+    --cream: #fff8e7;
+    --bone: #f5e6d0;
+    --text-primary: #f0e6d3;
+    --text-secondary: #b8a9c9;
+    --text-muted: #7a6b8a;
+    --border-glow: rgba(255, 140, 0, 0.2);
+  }
+
+  body {
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    line-height: 1.8;
+  }
+
+  /* ===== Canvas Particles ===== */
+  #particle-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ===== Floating Elements ===== */
+  .floating-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .floating-bg span {
+    position: absolute;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(255, 140, 0, 0.15), transparent);
+    border-radius: 50%;
+    animation: float-up linear infinite;
+    opacity: 0;
+  }
+  @keyframes float-up {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+  }
+
+  /* ===== Header / Nav ===== */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(13,10,26,0.95) 0%, transparent 100%);
+    backdrop-filter: blur(10px);
+  }
+  .nav-logo { font-family: 'Noto Serif SC', serif; font-size: 1.1rem; font-weight: 700; color: var(--marigold); letter-spacing: 2px; }
+  .nav-logo span { color: var(--text-muted); font-weight: 300; }
+  .nav-tag { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 3px; text-transform: uppercase; border: 1px solid rgba(255,140,0,0.3); padding: 0.3rem 0.8rem; border-radius: 20px; }
+
+  /* ===== Hero ===== */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    background: radial-gradient(ellipse at 50% 30%, rgba(45,27,105,0.6) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 80%, rgba(255,140,0,0.08) 0%, transparent 40%);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--marigold-light);
+    border: 1px solid rgba(255, 140, 0, 0.25);
+    padding: 0.4rem 1.2rem;
+    border-radius: 30px;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    background: rgba(255, 140, 0, 0.05);
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--marigold);
+    border-radius: 50%;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.5); }
+  }
+
+  .hero-year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--marigold), var(--marigold-glow), var(--pink-warm));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0.12;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    user-select: none;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 4.5rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    line-height: 1.15;
+    letter-spacing: 4px;
+    position: relative;
+  }
+  .hero-title .cn { color: var(--cream); }
+  .hero-title .en {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    letter-spacing: 8px;
+    margin-top: 0.3rem;
+  }
+  .hero-title .en span { color: var(--marigold); }
+
+  .hero-divider {
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--marigold), transparent);
+    margin: 1.5rem auto;
+    border-radius: 2px;
+  }
+
+  .hero-tagline {
+    font-size: 1.3rem;
+    color: var(--marigold-light);
+    font-weight: 300;
+    letter-spacing: 6px;
+    margin-bottom: 0.8rem;
+    font-style: italic;
+  }
+
+  .hero-director {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+  .hero-director strong { color: var(--text-secondary); font-weight: 500; }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    animation: bounce-scroll 2s ease-in-out infinite;
+  }
+  .hero-scroll .arrow {
+    width: 1px;
+    height: 30px;
+    background: linear-gradient(180deg, var(--marigold), transparent);
+  }
+  @keyframes bounce-scroll {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ===== SVG Marigold Arch ===== */
+  .marigold-arch {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 2;
+    overflow: hidden;
+  }
+  .marigold-arch svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ===== Content Sections ===== */
+  .section {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    color: var(--marigold);
+    text-transform: uppercase;
+    border-left: 3px solid var(--marigold);
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.8rem;
+  }
+  .section-sub {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+  }
+
+  /* ===== Ratings ===== */
+  .ratings-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .rating-card {
+    background: linear-gradient(135deg, rgba(26,20,40,0.8), rgba(13,10,26,0.8));
+    border: 1px solid rgba(255, 140, 0, 0.1);
+    border-radius: 16px;
+    padding: 1.8rem 1.2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .rating-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--marigold), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .rating-card:hover::before { opacity: 1; }
+  .rating-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 140, 0, 0.3);
+    box-shadow: 0 8px 30px rgba(255, 140, 0, 0.1);
+  }
+  .rating-card .score {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--marigold), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+  .rating-card .source {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    margin-top: 0.5rem;
+  }
+  .rating-card .bar-wrap {
+    width: 100%;
+    height: 3px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 3px;
+    margin-top: 0.8rem;
+    overflow: hidden;
+  }
+  .rating-card .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--marigold), var(--gold));
+    border-radius: 3px;
+    width: 0%;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .rating-card .bar-fill.revealed { 
+    /* widths set by js or inline */ 
+  }
+
+  /* ===== Synopsis ===== */
+  .synopsis-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .synopsis-text p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 2;
+    margin-bottom: 1.2rem;
+    text-indent: 2em;
+  }
+  .synopsis-text .no-spoiler {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 140, 0, 0.1);
+    border: 1px solid rgba(255, 140, 0, 0.2);
+    padding: 0.3rem 1rem;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    color: var(--marigold-light);
+    margin-top: 0.5rem;
+  }
+  .synopsis-text .no-spoiler::before {
+    content: '🛡';
+    font-size: 0.85rem;
+  }
+
+  /* ===== SVG Poster ===== */
+  .poster-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--purple-night), #1a0e3e);
+    border: 1px solid rgba(255, 140, 0, 0.1);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+  }
+  .poster-card svg {
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+  }
+
+  /* ===== Highlights ===== */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .highlight-card {
+    background: linear-gradient(135deg, rgba(26,20,40,0.6), rgba(13,10,26,0.6));
+    border: 1px solid rgba(255, 140, 0, 0.08);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255, 140, 0, 0.05), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .highlight-card:hover::after { opacity: 1; }
+  .highlight-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 140, 0, 0.2);
+  }
+  .highlight-card .icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .highlight-card h4 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .highlight-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== Quote ===== */
+  .quote-section {
+    text-align: center;
+    padding: 5rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .quote-block {
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .quote-mark {
+    font-size: 5rem;
+    font-family: 'Noto Serif SC', serif;
+    color: rgba(255, 140, 0, 0.15);
+    line-height: 0.5;
+    margin-bottom: 1rem;
+  }
+  .quote-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.6;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+  .quote-text .highlight {
+    color: var(--marigold);
+  }
+  .quote-from {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+  }
+
+  /* ===== Why Watch ===== */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .why-item {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    background: linear-gradient(135deg, rgba(26,20,40,0.4), rgba(13,10,26,0.4));
+    border: 1px solid rgba(255, 140, 0, 0.06);
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  .why-item:hover {
+    border-color: rgba(255, 140, 0, 0.15);
+    background: linear-gradient(135deg, rgba(26,20,40,0.6), rgba(13,10,26,0.6));
+  }
+  .why-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--marigold);
+    opacity: 0.5;
+    min-width: 32px;
+    line-height: 1.2;
+  }
+  .why-item h4 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.3rem;
+  }
+  .why-item p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ===== Info Table ===== */
+  .info-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid rgba(255, 140, 0, 0.08);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .info-row {
+    display: flex;
+    border-bottom: 1px solid rgba(255, 140, 0, 0.05);
+  }
+  .info-row:nth-last-child(-n+2) { border-bottom: none; }
+  .info-label {
+    flex: 0 0 110px;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    background: rgba(255, 140, 0, 0.03);
+  }
+  .info-value {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+
+  /* ===== Editorial ===== */
+  .editorial {
+    background: linear-gradient(135deg, rgba(255,140,0,0.06), rgba(232,67,147,0.04));
+    border: 1px solid rgba(255, 140, 0, 0.12);
+    border-radius: 18px;
+    padding: 2.5rem;
+    margin-top: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .editorial::before {
+    content: '';
+    position: absolute;
+    top: -50%; right: -20%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,140,0,0.08), transparent 70%);
+    border-radius: 50%;
+  }
+  .editorial-stars {
+    color: var(--marigold);
+    font-size: 1.3rem;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+  }
+  .editorial h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+  .editorial p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 2;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== Footer ===== */
+  .footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(255, 140, 0, 0.06);
+    margin-top: 2rem;
+  }
+  .footer p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+  }
+
+  /* ===== Scroll Reveal ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    .hero-title { font-size: 2.8rem; }
+    .hero-title .en { font-size: 1.1rem; letter-spacing: 4px; }
+    .hero-year { font-size: 5rem; }
+    .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+    .synopsis-wrap { grid-template-columns: 1fr; }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .info-table { grid-template-columns: 1fr; }
+    .info-row:nth-last-child(-n+2) { border-bottom: 1px solid rgba(255, 140, 0, 0.05); }
+    .info-row:last-child { border-bottom: none; }
+    .section { padding: 3rem 1.5rem; }
+    .nav { padding: 1rem 1.5rem; }
+    .quote-text { font-size: 1.2rem; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: 2rem; }
+    .hero-title .en { font-size: 0.9rem; }
+    .ratings-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+    .rating-card { padding: 1.2rem 0.8rem; }
+    .rating-card .score { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Canvas Particles ===== -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- ===== Floating BG Orbs ===== -->
+<div class="floating-bg" id="floating-bg"></div>
+
+<!-- ===== Nav ===== -->
+<nav class="nav">
+  <div class="nav-logo">🎬 经典 · <span>电影推荐</span></div>
+  <div class="nav-tag">无剧透 · 诚意推荐</div>
+</nav>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="hero-year">2017</div>
+  <div class="hero-badge">皮克斯动画 · 奥斯卡最佳动画长片</div>
+  <h1 class="hero-title">
+    <span class="cn">寻梦环游记</span>
+    <span class="en"><span>C</span>oco</span>
+  </h1>
+  <div class="hero-divider"></div>
+  <p class="hero-tagline">「在记忆消失前，请记住我」</p>
+  <p class="hero-director">导演：<strong>李·昂克里奇 / 阿德里安·莫利纳</strong></p>
+  <div class="hero-scroll">
+    <span>向下探索</span>
+    <div class="arrow"></div>
+  </div>
+
+  <!-- Marigold Arch SVG divider -->
+  <div class="marigold-arch">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+      <path d="M0,40 C240,100 480,0 720,60 C960,120 1200,0 1440,40 L1440,120 L0,120 Z" fill="var(--bg-dark)" opacity="0.95"/>
+      <path d="M0,60 C240,120 480,20 720,80 C960,140 1200,20 1440,60 L1440,120 L0,120 Z" fill="var(--bg-section)"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== Ratings ===== -->
+<section class="section">
+  <div class="reveal">
+    <div class="section-label">评分</div>
+    <h2 class="section-title">全球口碑一览</h2>
+    <p class="section-sub">四项权威评分，见证这部动画杰作的不凡实力</p>
+  </div>
+  <div class="ratings-grid reveal">
+    <div class="rating-card">
+      <div class="score" data-target="8.4">8.4</div>
+      <div class="source">IMDb Top 250</div>
+      <div class="bar-wrap"><div class="bar-fill" data-width="84%"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="score" data-target="9.1">9.1</div>
+      <div class="source">豆瓣电影 Top 250</div>
+      <div class="bar-wrap"><div class="bar-fill" data-width="91%"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="score" data-target="97">97%</div>
+      <div class="source">烂番茄新鲜度</div>
+      <div class="bar-wrap"><div class="bar-fill" data-width="97%"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="score" data-target="96">96%</div>
+      <div class="source">烂番茄爆米花指数</div>
+      <div class="bar-wrap"><div class="bar-fill" data-width="96%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Synopsis ===== -->
+<section class="section">
+  <div class="synopsis-wrap reveal">
+    <div class="synopsis-text">
+      <div class="section-label">剧情梗概</div>
+      <h2 class="section-title" style="margin-bottom:1.5rem;">一场穿越生死边界的音乐之旅</h2>
+      <p>在墨西哥一个鞋匠家庭里，男孩米格从小热爱音乐，但他的家族却因为一段尘封的往事，将音乐视为禁忌。在亡灵节这天，一次意外的奇遇让米格穿越到了绚烂多彩的亡灵世界。</p>
+      <p>在那里，他遇见了落魄乐手埃克托，两人结伴踏上了一段寻找祖先、追寻音乐梦想的冒险。然而，亡灵世界有着自己的法则——如果人间不再有人记得你，你将在亡灵世界中彻底消失……</p>
+      <p>米格必须在黎明前找到回家的路，同时揭开家族禁忌背后的真相，用音乐唤醒被遗忘的爱与记忆。</p>
+      <div class="no-spoiler">全程无剧透 · 请放心阅读</div>
+    </div>
+    <div class="poster-card">
+      <svg viewBox="0 0 360 480" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <defs>
+          <linearGradient id="bg-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1a0e3e"/>
+            <stop offset="50%" stop-color="#2d1b69"/>
+            <stop offset="100%" stop-color="#0d0a1a"/>
+          </linearGradient>
+          <linearGradient id="gold-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#ff8c00"/>
+            <stop offset="50%" stop-color="#ffd700"/>
+            <stop offset="100%" stop-color="#ff6b00"/>
+          </linearGradient>
+          <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+            <stop offset="0%" stop-color="rgba(255,140,0,0.15)"/>
+            <stop offset="100%" stop-color="transparent"/>
+          </radialGradient>
+        </defs>
+
+        <!-- BG -->
+        <rect width="360" height="480" fill="url(#bg-grad)" rx="12"/>
+        <rect width="360" height="480" fill="url(#glow)"/>
+
+        <!-- Stars -->
+        <g fill="var(--gold)" opacity="0.4">
+          <circle cx="45" cy="60" r="1.2"/><circle cx="120" cy="35" r="0.8"/>
+          <circle cx="290" cy="55" r="1"/><circle cx="320" cy="100" r="0.7"/>
+          <circle cx="65" cy="130" r="0.9"/><circle cx="180" cy="25" r="1.1"/>
+          <circle cx="250" cy="80" r="0.6"/><circle cx="30" cy="95" r="0.8"/>
+        </g>
+
+        <!-- Cempasúchil (Marigold) Flowers - Decorative -->
+        <g transform="translate(60, 30)" opacity="0.25">
+          <!-- flower 1 -->
+          <ellipse cx="0" cy="-8" rx="3" ry="7" fill="var(--marigold)" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-8" rx="3" ry="7" fill="var(--marigold)" transform="rotate(60)"/>
+          <ellipse cx="0" cy="-8" rx="3" ry="7" fill="var(--marigold)" transform="rotate(120)"/>
+          <circle cx="0" cy="0" r="2.5" fill="var(--gold)"/>
+        </g>
+        <g transform="translate(300, 420)" opacity="0.25">
+          <ellipse cx="0" cy="-7" rx="2.5" ry="6" fill="var(--marigold)" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-7" rx="2.5" ry="6" fill="var(--marigold)" transform="rotate(72)"/>
+          <ellipse cx="0" cy="-7" rx="2.5" ry="6" fill="var(--marigold)" transform="rotate(144)"/>
+          <ellipse cx="0" cy="-7" rx="2.5" ry="6" fill="var(--marigold)" transform="rotate(216)"/>
+          <circle cx="0" cy="0" r="2" fill="var(--gold)"/>
+        </g>
+
+        <!-- Marigold Petals Path (decorative arch) -->
+        <path d="M0 180 Q60 130 120 160 Q180 190 240 150 Q300 110 360 140" 
+              stroke="none" fill="none"/>
+        <g opacity="0.2">
+          <circle cx="40" cy="165" r="3" fill="var(--marigold)"/>
+          <circle cx="80" cy="147" r="2.5" fill="var(--gold)"/>
+          <circle cx="130" cy="163" r="3" fill="var(--marigold)"/>
+          <circle cx="170" cy="178" r="2" fill="var(--gold)"/>
+          <circle cx="220" cy="157" r="3" fill="var(--marigold)"/>
+          <circle cx="270" cy="134" r="2.5" fill="var(--gold)"/>
+          <circle cx="320" cy="130" r="3" fill="var(--marigold)"/>
+        </g>
+
+        <!-- Main illustration: Guitar + Skull + Marigolds -->
+        <!-- Guitar body -->
+        <g transform="translate(180, 310)">
+          <!-- Sonic waves from guitar -->
+          <ellipse cx="0" cy="0" rx="90" ry="90" fill="none" stroke="rgba(255,140,0,0.06)" stroke-width="1">
+            <animate attributeName="rx" values="80;95;80" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="ry" values="80;95;80" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.1;0.2;0.1" dur="4s" repeatCount="indefinite"/>
+          </ellipse>
+          <ellipse cx="0" cy="0" rx="60" ry="60" fill="none" stroke="rgba(255,140,0,0.04)" stroke-width="0.8">
+            <animate attributeName="rx" values="55;70;55" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="ry" values="55;70;55" dur="3s" repeatCount="indefinite"/>
+          </ellipse>
+        </g>
+
+        <!-- Sugar Skull (Calavera) - decorative -->
+        <g transform="translate(125, 195)" opacity="0.35">
+          <ellipse cx="0" cy="0" rx="22" ry="28" fill="#f5e6d0" stroke="none"/>
+          <!-- eyes -->
+          <ellipse cx="-8" cy="-6" rx="5" ry="7" fill="#2d1b69"/>
+          <ellipse cx="8" cy="-6" rx="5" ry="7" fill="#2d1b69"/>
+          <!-- nose -->
+          <polygon points="0,2 -4,8 4,8" fill="#2d1b69"/>
+          <!-- teeth -->
+          <rect x="-6" y="14" width="3" height="4" rx="1" fill="#2d1b69"/>
+          <rect x="-1" y="14" width="3" height="4" rx="1" fill="#2d1b69"/>
+          <rect x="4" y="14" width="3" height="4" rx="1" fill="#2d1b69"/>
+          <!-- marigold on forehead -->
+          <ellipse cx="0" cy="-17" rx="4" ry="3" fill="var(--marigold)"/>
+        </g>
+
+        <!-- Marigold flower arrangement (large) -->
+        <g transform="translate(240, 200)" opacity="0.3">
+          <ellipse cx="0" cy="-6" rx="3" ry="6" fill="var(--marigold)" transform="rotate(0)"/>
+          <ellipse cx="0" cy="-6" rx="3" ry="6" fill="var(--marigold)" transform="rotate(45)"/>
+          <ellipse cx="0" cy="-6" rx="3" ry="6" fill="var(--marigold)" transform="rotate(90)"/>
+          <ellipse cx="0" cy="-6" rx="3" ry="6" fill="var(--marigold)" transform="rotate(135)"/>
+          <ellipse cx="0" cy="-6" rx="3" ry="6" fill="var(--marigold)" transform="rotate(180)"/>
+          <ellipse cx="0" cy="-6" rx="3" ry="6" fill="var(--marigold)" transform="rotate(225)"/>
+          <ellipse cx="0" cy="-6" rx="3" ry="6" fill="var(--marigold)" transform="rotate(270)"/>
+          <ellipse cx="0" cy="-6" rx="3" ry="6" fill="var(--marigold)" transform="rotate(315)"/>
+          <circle cx="0" cy="0" r="3" fill="var(--gold)"/>
+        </g>
+
+        <!-- Central text -->
+        <text x="180" y="400" text-anchor="middle" 
+              font-family="serif" font-size="28" font-weight="700" 
+              fill="var(--cream)" opacity="0.85" letter-spacing="4">
+          Coco
+        </text>
+        <text x="180" y="428" text-anchor="middle"
+              font-family="sans-serif" font-size="9" 
+              fill="var(--text-muted)" opacity="0.5" letter-spacing="3">
+          PIXAR · 2017
+        </text>
+
+        <!-- Ornamental border corners -->
+        <path d="M10 10 L10 30 M10 10 L30 10" stroke="var(--marigold)" stroke-width="1" fill="none" opacity="0.15"/>
+        <path d="M350 10 L350 30 M350 10 L330 10" stroke="var(--marigold)" stroke-width="1" fill="none" opacity="0.15"/>
+        <path d="M10 470 L10 450 M10 470 L30 470" stroke="var(--marigold)" stroke-width="1" fill="none" opacity="0.15"/>
+        <path d="M350 470 L350 450 M350 470 L330 470" stroke="var(--marigold)" stroke-width="1" fill="none" opacity="0.15"/>
+
+        <!-- Bottom marigold row -->
+        <g transform="translate(40, 448)" opacity="0.2">
+          <circle cx="0" cy="0" r="2.5" fill="var(--marigold)"/>
+          <circle cx="15" cy="0" r="2" fill="var(--gold)"/>
+          <circle cx="30" cy="0" r="2.5" fill="var(--marigold)"/>
+          <circle cx="45" cy="0" r="1.8" fill="var(--gold)"/>
+          <circle cx="60" cy="0" r="2.5" fill="var(--marigold)"/>
+          <circle cx="75" cy="0" r="2" fill="var(--gold)"/>
+          <circle cx="90" cy="0" r="2.5" fill="var(--marigold)"/>
+        </g>
+        <g transform="translate(230, 448)" opacity="0.2">
+          <circle cx="0" cy="0" r="2.5" fill="var(--marigold)"/>
+          <circle cx="15" cy="0" r="2" fill="var(--gold)"/>
+          <circle cx="30" cy="0" r="2.5" fill="var(--marigold)"/>
+          <circle cx="45" cy="0" r="1.8" fill="var(--gold)"/>
+          <circle cx="60" cy="0" r="2.5" fill="var(--marigold)"/>
+          <circle cx="75" cy="0" r="2" fill="var(--gold)"/>
+          <circle cx="90" cy="0" r="2.5" fill="var(--marigold)"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Highlights ===== -->
+<section class="section">
+  <div class="reveal">
+    <div class="section-label">亮点</div>
+    <h2 class="section-title">六大闪光之处</h2>
+    <p class="section-sub">从视觉到情感，每一个细节都值得细细品味</p>
+  </div>
+  <div class="highlights-grid reveal">
+    <div class="highlight-card">
+      <span class="icon">💀</span>
+      <h4>亡灵节美学盛宴</h4>
+      <p>以墨西哥亡灵节为创作蓝本，万寿菊花瓣桥、彩绘骷髅、灯火通明的亡灵世界——每一帧都是流动的艺术画卷，色彩之绚烂令人叹为观止。</p>
+    </div>
+    <div class="highlight-card">
+      <span class="icon">🎵</span>
+      <h4>直击灵魂的原声音乐</h4>
+      <p>奥斯卡最佳原创歌曲《Remember Me》贯穿全片，从轻快的墨西哥民谣到催人泪下的深情告白，音乐不仅是剧情推进器，更是情感的核心载体。</p>
+    </div>
+    <div class="highlight-card">
+      <span class="icon">🧠</span>
+      <h4>关于"记忆"的终极命题</h4>
+      <p>人的一生有两次死亡——肉体死亡与社会性死亡（被遗忘）。影片用最温柔的方式切入这个沉重的哲学命题，让你笑着流泪，哭着思考。</p>
+    </div>
+    <div class="highlight-card">
+      <span class="icon">🎨</span>
+      <h4>皮克斯的技术巅峰</h4>
+      <p>从米格的精细毛发到亡灵世界的万千灯火，皮克斯再次刷新了动画技术的天花板。光影、材质、物理模拟均达到了当时行业最高水准。</p>
+    </div>
+    <div class="highlight-card">
+      <span class="icon">❤️</span>
+      <h4>家庭与梦想的普世共鸣</h4>
+      <p>不落俗套地处理了"追逐梦想 vs 家庭羁绊"的经典命题，最终给出的答案不是二选一，而是：真正的爱不需要你牺牲什么。</p>
+    </div>
+    <div class="highlight-card">
+      <span class="icon">😭</span>
+      <h4>后劲极大的情感核弹</h4>
+      <p>前半段欢笑不断，后半段泪点密集。影片最后二十分钟的情感暴击，让无数成年观众在影院里泣不成声——准备好纸巾。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Quote ===== -->
+<section class="quote-section reveal">
+  <div class="quote-block">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">
+      在爱的记忆消失以前，<br>
+      请 <span class="highlight">记住我</span>。
+    </p>
+    <p class="quote-from">—— 《寻梦环游记》· Remember Me</p>
+  </div>
+</section>
+
+<!-- ===== Why Watch ===== -->
+<section class="section">
+  <div class="reveal">
+    <div class="section-label">推荐理由</div>
+    <h2 class="section-title">为什么值得一看</h2>
+    <p class="section-sub">这不是一部只给孩子看的动画片，而是一封写给所有人的情书</p>
+  </div>
+  <div class="why-grid reveal">
+    <div class="why-item">
+      <div class="why-num">01</div>
+      <div>
+        <h4>一次文化沉浸之旅</h4>
+        <p>无需踏出国门，就能深度感受墨西哥亡灵节的独特魅力。从万寿菊桥到彩绘骷髅，皮克斯以令人屏息的细节还原了一个充满生命力的文化庆典。看完你会对"死亡"有全新的理解。</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">02</div>
+      <div>
+        <h4>全年龄段通杀的情感共鸣</h4>
+        <p>小孩看到冒险与色彩，青年看到梦想与勇气，成年人看到家庭与遗憾——不同年龄段的人都能在片中找到属于自己的泪点与笑点。这种跨越代际的力量，是真正经典才有的特质。</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">03</div>
+      <div>
+        <h4>过目不忘的音乐记忆</h4>
+        <p>听一次就忘不掉的旋律。当《Remember Me》的旋律响起，无论你身处何地、身在何时，都会忍不住跟着哼唱。奥斯卡最佳原创歌曲实至名归，它不只是好听——它是影片的灵魂本身。</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-num">04</div>
+      <div>
+        <h4>重新定义"死亡"的勇气</h4>
+        <p>很少有动画片敢直面"死亡"这个主题，更少能在不恐怖的前提下，将它变成一个温暖人心的故事。影片告诉你：死亡不是终点，遗忘才是。那些被我们记住的人，从未真正离开。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Info Table ===== -->
+<section class="section">
+  <div class="reveal">
+    <div class="section-label">档案</div>
+    <h2 class="section-title">影片信息</h2>
+  </div>
+  <div class="info-table reveal" style="margin-top: 2rem;">
+    <div class="info-row"><span class="info-label">片名</span><span class="info-value">寻梦环游记 / Coco</span></div>
+    <div class="info-row"><span class="info-label">导演</span><span class="info-value">李·昂克里奇、阿德里安·莫利纳</span></div>
+    <div class="info-row"><span class="info-label">制片</span><span class="info-value">皮克斯动画工作室</span></div>
+    <div class="info-row"><span class="info-label">发行</span><span class="info-value">华特·迪士尼工作室</span></div>
+    <div class="info-row"><span class="info-label">上映年份</span><span class="info-value">2017年</span></div>
+    <div class="info-row"><span class="info-label">片长</span><span class="info-value">105分钟</span></div>
+    <div class="info-row"><span class="info-label">类型</span><span class="info-value">动画 / 冒险 / 家庭 / 奇幻 / 音乐</span></div>
+    <div class="info-row"><span class="info-label">分级</span><span class="info-value">PG（家长辅导级）</span></div>
+    <div class="info-row"><span class="info-label">制作预算</span><span class="info-value">1.75亿美元</span></div>
+    <div class="info-row"><span class="info-label">全球票房</span><span class="info-value">8.14亿美元</span></div>
+    <div class="info-row"><span class="info-label">奥斯卡</span><span class="info-value">最佳动画长片 · 最佳原创歌曲（2项）</span></div>
+    <div class="info-row"><span class="info-label">金球奖</span><span class="info-value">最佳动画长片 · 最佳原创歌曲（2项）</span></div>
+  </div>
+
+  <!-- ===== Editorial ===== -->
+  <div class="editorial reveal">
+    <div class="editorial-stars">★★★★★</div>
+    <h3>编辑评语</h3>
+    <p>
+      《寻梦环游记》是皮克斯送给世界的一朵万寿菊。它用最绚烂的色彩讲述最温柔的道理：死亡不是终点，遗忘才是。影片用105分钟完成了一次关于记忆、家庭与身份的深度旅行，让每一个走出影院的人都忍不住想给家人打个电话。它是那种你看完之后，会更认真地记住日常中那些小事——因为所有伟大的爱，都藏在平凡的记忆里。当最后一幕响起《Remember Me》，你会发现自己的脸上已满是泪水，嘴角却挂着笑。这就是伟大的电影。
+    </p>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <p>🎬 经典电影推荐 · 无剧透 · 诚意出品 · 2026年6月16日</p>
+</footer>
+
+<script>
+// ===== Canvas Particles: Marigold Petals =====
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const PARTICLE_COUNT = 60;
+const particles = [];
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = -20;
+    this.size = 6 + Math.random() * 12;
+    this.speedY = 0.5 + Math.random() * 1.2;
+    this.speedX = -0.3 + Math.random() * 0.6;
+    this.rotation = Math.random() * Math.PI * 2;
+    this.rotSpeed = (Math.random() - 0.5) * 0.02;
+    this.opacity = 0.3 + Math.random() * 0.5;
+    this.life = 0;
+    this.maxLife = 800 + Math.random() * 600;
+    // Color: marigold variations
+    const colors = [
+      [255, 140, 0],   // orange
+      [255, 179, 71],  // light orange
+      [255, 107, 0],   // deep orange
+      [255, 215, 0],   // gold
+      [232, 67, 147],  // pink accent
+    ];
+    this.color = colors[Math.floor(Math.random() * colors.length)];
+    this.shape = Math.random() > 0.5 ? 'petal' : 'round';
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.rotation += this.rotSpeed;
+    this.life++;
+    // Sway
+    this.x += Math.sin(this.life * 0.008) * 0.15;
+    // Fade out near bottom
+    if (this.y > H - 100) {
+      this.opacity *= 0.99;
+    }
+    if (this.life > this.maxLife || this.y > H + 50) {
+      this.reset();
+      this.y = -20;
+    }
+  }
+  draw() {
+    ctx.save();
+    ctx.translate(this.x, this.y);
+    ctx.rotate(this.rotation);
+    ctx.globalAlpha = this.opacity;
+
+    const [r, g, b] = this.color;
+
+    if (this.shape === 'petal') {
+      // Marigold petal shape
+      ctx.beginPath();
+      ctx.ellipse(0, -this.size * 0.4, this.size * 0.25, this.size * 0.4, 0, 0, Math.PI * 2);
+      ctx.ellipse(0, this.size * 0.4, this.size * 0.25, this.size * 0.4, 0, 0, Math.PI * 2);
+      ctx.ellipse(-this.size * 0.4, 0, this.size * 0.4, this.size * 0.25, 0, 0, Math.PI * 2);
+      ctx.ellipse(this.size * 0.4, 0, this.size * 0.4, this.size * 0.25, 0, 0, Math.PI * 2);
+      const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, this.size * 0.6);
+      gradient.addColorStop(0, `rgba(${r+40}, ${g+40}, ${b+20}, 0.9)`);
+      gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0.3)`);
+      ctx.fillStyle = gradient;
+      ctx.fill();
+    } else {
+      // Round marigold particle
+      const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, this.size * 0.5);
+      gradient.addColorStop(0, `rgba(${Math.min(r+60,255)}, ${Math.min(g+40,255)}, ${b+30}, 0.8)`);
+      gradient.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, 0.5)`);
+      gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(0, 0, this.size * 0.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.restore();
+  }
+}
+
+for (let i = 0; i < PARTICLE_COUNT; i++) {
+  const p = new Particle();
+  p.y = Math.random() * H;
+  p.life = Math.random() * p.maxLife;
+  particles.push(p);
+}
+
+function animate() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => {
+    p.update();
+    p.draw();
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+// ===== Floating Background Orbs =====
+const bgContainer = document.getElementById('floating-bg');
+for (let i = 0; i < 20; i++) {
+  const span = document.createElement('span');
+  const size = 15 + Math.random() * 35;
+  span.style.width = size + 'px';
+  span.style.height = size + 'px';
+  span.style.left = Math.random() * 100 + '%';
+  span.style.animationDuration = 15 + Math.random() * 25 + 's';
+  span.style.animationDelay = Math.random() * 20 + 's';
+  span.style.opacity = '0';
+  bgContainer.appendChild(span);
+}
+
+// ===== Intersection Observer: Scroll Reveal =====
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Trigger rating bar fill animation
+      const bars = entry.target.querySelectorAll('.bar-fill');
+      bars.forEach(bar => {
+        const width = bar.dataset.width;
+        if (width) {
+          setTimeout(() => { bar.style.width = width; }, 200);
+        }
+      });
+    }
+  });
+}, { threshold: 0.12 });
+
+revealEls.forEach(el => observer.observe(el));
+
+// ===== Rating count-up animation =====
+const scoreEls = document.querySelectorAll('.rating-card .score');
+const scoreObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.dataset.counted) {
+      entry.target.dataset.counted = 'true';
+      const target = parseFloat(entry.target.dataset.target);
+      const isPercent = entry.target.textContent.includes('%');
+      const duration = 1500;
+      const start = performance.now();
+      
+      function update(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+        
+        if (isPercent) {
+          entry.target.textContent = Math.round(current) + '%';
+        } else {
+          entry.target.textContent = current.toFixed(1);
+        }
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          if (isPercent) {
+            entry.target.textContent = Math.round(target) + '%';
+          } else {
+            entry.target.textContent = target.toFixed(1);
+          }
+        }
+      }
+      requestAnimationFrame(update);
+    }
+  });
+}, { threshold: 0.3 });
+
+scoreEls.forEach(el => scoreObserver.observe(el));
+</script>
+</body>
+</html>

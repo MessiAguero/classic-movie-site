@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>卧虎藏龙 · Crouching Tiger, Hidden Dragon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink-night:#08120e;
+    --ink-2:#0e1c16;
+    --ink-3:#13241d;
+    --jade:#6fae9a;
+    --jade-bright:#a6d8c6;
+    --bamboo:#88a86f;
+    --gold:#e3c074;
+    --gold-bright:#f2d98f;
+    --silver:#d4dcd6;
+    --cream:#f1e7d0;
+    --crimson:#b14b3f;
+    --txt:#e7ecd9;
+    --txt-dim:#a7b4a4;
+    --card-bg:rgba(14,28,22,0.60);
+    --line:rgba(166,216,198,0.20);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Serif SC","Cormorant Garamond",serif;
+    background:var(--ink-night);
+    color:var(--txt);
+    overflow-x:hidden;
+    line-height:1.85;
+  }
+  ::selection{background:rgba(227,192,116,0.3);color:#fff}
+  /* ---------- background layers ---------- */
+  #leaf-canvas{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    z-index:0;pointer-events:none;
+  }
+  .bg-veil{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(60% 45% at 78% 12%, rgba(242,217,143,0.16) 0%, rgba(242,217,143,0.0) 60%),
+      radial-gradient(120% 80% at 50% 6%, rgba(19,36,29,0) 0%, rgba(8,18,14,0) 38%, rgba(8,18,14,0.6) 100%),
+      linear-gradient(180deg, #0a160f 0%, #0e1c16 26%, #102219 52%, #0c1a14 78%, #08120e 100%);
+  }
+  .grain{
+    position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:2}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:90px 24px 60px;position:relative;
+  }
+  .hero-year{
+    font-family:"Cinzel",serif;font-weight:700;letter-spacing:.5em;
+    font-size:clamp(2.6rem,9vw,7rem);line-height:.9;
+    color:transparent;-webkit-text-stroke:1.5px rgba(166,216,198,0.5);
+    opacity:.85;margin-bottom:6px;text-indent:.5em;
+  }
+  .hero-en{
+    font-family:"Cinzel",serif;font-weight:800;letter-spacing:.16em;
+    font-size:clamp(1.5rem,5.2vw,3.4rem);
+    background:linear-gradient(180deg,#f1e7d0,#e3c074 58%,#b14b3f);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 2px 30px rgba(227,192,116,0.22);
+  }
+  .hero-cn{
+    font-family:"Noto Serif SC",serif;font-weight:700;
+    font-size:clamp(1.6rem,5vw,3rem);letter-spacing:.35em;
+    color:var(--cream);margin-top:14px;text-indent:.35em;
+    text-shadow:0 2px 24px rgba(0,0,0,.6);
+  }
+  .hero-sub{
+    margin-top:22px;font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:clamp(1rem,2.4vw,1.45rem);color:var(--gold-bright);letter-spacing:.04em;
+  }
+  .hero-meta{
+    margin-top:20px;font-size:.92rem;letter-spacing:.32em;color:var(--txt-dim);
+    text-transform:uppercase;font-family:"Cinzel",serif;font-weight:500;
+  }
+  .hero-tagline{
+    margin-top:34px;max-width:680px;font-family:"Noto Serif SC",serif;font-weight:300;
+    font-size:clamp(1.05rem,2.6vw,1.5rem);color:var(--cream);letter-spacing:.06em;
+    line-height:1.9;padding:0 10px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding-top:22px;padding-bottom:22px;
+  }
+  .scroll-cue{
+    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    font-family:"Cinzel",serif;font-size:.7rem;letter-spacing:.4em;color:var(--txt-dim);
+    animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);opacity:.5}50%{transform:translateX(-50%) translateY(8px);opacity:1}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{position:relative;padding:84px 24px;max-width:1120px;margin:0 auto}
+  .sec-title{
+    font-family:"Cinzel",serif;font-weight:700;letter-spacing:.2em;
+    font-size:clamp(1.4rem,3.6vw,2.2rem);color:var(--cream);text-align:center;
+    margin-bottom:8px;
+  }
+  .sec-cn{
+    font-family:"Noto Serif SC",serif;font-weight:500;letter-spacing:.3em;
+    font-size:clamp(.95rem,2.4vw,1.1rem);color:var(--gold);text-align:center;
+    margin-bottom:46px;
+  }
+  .sec-title .en{display:block;font-size:.5em;letter-spacing:.45em;color:var(--txt-dim);margin-top:8px;font-weight:500}
+
+  /* ---------- RATINGS ---------- */
+  .ratings{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:10px}
+  .rating{
+    background:var(--card-bg);border:1px solid var(--line);border-radius:14px;
+    padding:26px 18px;text-align:center;backdrop-filter:blur(6px);
+    transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .5s;
+  }
+  .rating:hover{transform:translateY(-6px);border-color:rgba(166,216,198,.5)}
+  .rating .src{font-family:"Cinzel",serif;letter-spacing:.22em;font-size:.82rem;color:var(--gold);margin-bottom:14px}
+  .rating .score{font-family:"Cinzel",serif;font-weight:800;font-size:2.6rem;color:var(--cream);line-height:1}
+  .rating .score .suf{font-size:1.1rem;color:var(--gold-bright)}
+  .rating .bar{height:5px;border-radius:4px;background:rgba(255,255,255,.08);margin-top:16px;overflow:hidden}
+  .rating .bar i{display:block;height:100%;width:0;border-radius:4px;
+    background:linear-gradient(90deg,var(--jade),var(--gold));transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+
+  /* ---------- SYNOPSIS ---------- */
+  .synopsis-card{
+    background:linear-gradient(160deg,rgba(16,34,27,.7),rgba(8,18,14,.7));
+    border:1px solid var(--line);border-radius:18px;padding:46px 42px;backdrop-filter:blur(8px);
+    display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:center;
+  }
+  .poster-svg{width:100%;height:auto;border-radius:12px;filter:drop-shadow(0 18px 40px rgba(0,0,0,.55))}
+  .synopsis-text p{font-size:1.12rem;color:var(--txt);font-weight:300;letter-spacing:.02em}
+  .synopsis-text p + p{margin-top:18px}
+  .no-spoiler{
+    display:inline-flex;align-items:center;gap:8px;margin-top:24px;
+    font-family:"Cinzel",serif;font-size:.72rem;letter-spacing:.25em;color:#ffe7b3;
+    background:rgba(177,75,63,.18);border:1px solid rgba(227,192,116,.35);
+    padding:9px 16px;border-radius:30px;text-transform:uppercase;
+  }
+  .no-spoiler::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
+
+  /* ---------- HIGHLIGHTS ---------- */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .hl{
+    background:var(--card-bg);border:1px solid var(--line);border-radius:14px;padding:30px 26px;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .5s,box-shadow .5s;position:relative;overflow:hidden;
+  }
+  .hl::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% -10%,rgba(166,216,198,.14),transparent 60%);opacity:0;transition:opacity .5s}
+  .hl:hover{transform:translateY(-7px);border-color:rgba(166,216,198,.5);box-shadow:0 16px 40px rgba(0,0,0,.45)}
+  .hl:hover::before{opacity:1}
+  .hl .num{font-family:"Cinzel",serif;font-weight:700;font-size:1.9rem;color:rgba(166,216,198,.35);line-height:1}
+  .hl h3{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1.18rem;color:var(--cream);margin:14px 0 12px;letter-spacing:.04em}
+  .hl p{font-size:.98rem;color:var(--txt-dim);font-weight:300;line-height:1.8}
+
+  /* ---------- QUOTE ---------- */
+  .quote-block{
+    text-align:center;max-width:820px;margin:0 auto;padding:60px 20px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .quote-block .mark{font-family:"Cinzel",serif;font-size:4rem;color:rgba(227,192,116,.3);line-height:0;display:block;margin-bottom:18px}
+  .quote-block q{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(1.5rem,4vw,2.4rem);color:var(--cream);quotes:none;letter-spacing:.02em}
+  .quote-block .zh{display:block;margin-top:18px;font-family:"Noto Serif SC",serif;font-weight:300;font-size:1.15rem;color:var(--gold-bright);letter-spacing:.08em}
+  .quote-block .who{margin-top:20px;font-family:"Cinzel",serif;font-size:.78rem;letter-spacing:.3em;color:var(--txt-dim)}
+
+  /* ---------- WHY ---------- */
+  .why-list{display:flex;flex-direction:column;gap:18px;max-width:880px;margin:0 auto}
+  .why{
+    display:flex;gap:22px;align-items:flex-start;background:var(--card-bg);
+    border:1px solid var(--line);border-radius:12px;padding:24px 28px;transition:transform .4s,border-color .4s;
+  }
+  .why:hover{transform:translateX(8px);border-color:rgba(166,216,198,.45)}
+  .why .ic{font-family:"Cinzel",serif;font-weight:700;font-size:1.5rem;color:var(--gold);min-width:42px;text-align:center;
+    border:1px solid var(--line);border-radius:50%;padding:6px;height:42px;line-height:1.05;flex-shrink:0}
+  .why h4{font-family:"Noto Serif SC",serif;font-weight:600;font-size:1.1rem;color:var(--cream);margin-bottom:6px}
+  .why p{font-size:.98rem;color:var(--txt-dim);font-weight:300}
+
+  /* ---------- HONORS ---------- */
+  .honors{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:920px;margin:0 auto}
+  .honor{
+    font-family:"Noto Serif SC",serif;font-size:.92rem;letter-spacing:.05em;color:var(--cream);
+    background:rgba(16,34,27,.55);border:1px solid var(--line);border-radius:30px;padding:11px 22px;
+    transition:transform .4s,background .4s,border-color .4s;
+  }
+  .honor.major{background:linear-gradient(120deg,rgba(177,75,63,.3),rgba(227,192,116,.18));border-color:rgba(227,192,116,.5);color:var(--gold-bright)}
+  .honor:hover{transform:translateY(-4px);border-color:var(--gold)}
+
+  /* ---------- ARCHIVE ---------- */
+  .archive{max-width:760px;margin:0 auto;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card-bg);backdrop-filter:blur(6px)}
+  .archive .row{display:grid;grid-template-columns:160px 1fr;border-bottom:1px solid rgba(166,216,198,.12)}
+  .archive .row:last-child{border-bottom:none}
+  .archive .k{font-family:"Cinzel",serif;font-size:.78rem;letter-spacing:.18em;color:var(--gold);padding:18px 22px;background:rgba(0,0,0,.2);text-transform:uppercase}
+  .archive .v{font-family:"Noto Serif SC",serif;font-size:1rem;color:var(--txt);font-weight:300;padding:18px 22px;letter-spacing:.02em}
+
+  /* ---------- REVIEW ---------- */
+  .review{
+    max-width:820px;margin:0 auto;text-align:center;padding:50px 40px;
+    background:linear-gradient(160deg,rgba(16,34,27,.7),rgba(8,18,14,.7));
+    border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(8px);position:relative;
+  }
+  .review .stars{font-family:"Cinzel",serif;font-size:1.6rem;letter-spacing:.3em;color:var(--gold);margin-bottom:22px}
+  .review p{font-family:"Noto Serif SC",serif;font-weight:300;font-size:1.18rem;color:var(--cream);line-height:2;letter-spacing:.03em}
+  .review .sig{margin-top:26px;font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--gold-bright);font-size:1.05rem}
+
+  /* ---------- FOOTER ---------- */
+  footer{text-align:center;padding:54px 24px 70px;color:var(--txt-dim);font-family:"Cinzel",serif;letter-spacing:.25em;font-size:.72rem;position:relative;z-index:2}
+  footer .div{width:60px;height:1px;background:var(--line);margin:0 auto 22px}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(36px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    .ratings{grid-template-columns:repeat(2,1fr)}
+    .synopsis-card{grid-template-columns:1fr;gap:28px}
+    .poster-svg{max-width:300px;margin:0 auto}
+    .grid-3{grid-template-columns:1fr}
+  }
+  @media(max-width:480px){
+    .ratings{grid-template-columns:1fr}
+    section{padding:64px 18px}
+  }
+</style>
+</head>
+<body>
+<canvas id="leaf-canvas"></canvas>
+<div class="bg-veil"></div>
+<div class="grain"></div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-year">2000</div>
+    <div class="hero-en">CROUCHING&nbsp;TIGER<br>HIDDEN&nbsp;DRAGON</div>
+    <div class="hero-cn">卧虎藏龙</div>
+    <div class="hero-sub">A timeless wuxia ballad of restraint and freedom</div>
+    <div class="hero-meta">导演 李安 · 主演 周润发 · 杨紫琼 · 章子怡</div>
+    <p class="hero-tagline">一把剑，一段情，<br>一片山水之间，藏着每个人不敢说出口的自己。</p>
+    <div class="scroll-cue">SCROLL ▾</div>
+  </header>
+
+  <!-- RATINGS -->
+  <section class="reveal">
+    <h2 class="sec-title">CRITICAL ACCLAIM<span class="en">口碑与评分</span></h2>
+    <div class="sec-cn">东西方影评人与观众共同加冕的武侠经典</div>
+    <div class="ratings">
+      <div class="rating">
+        <div class="src">IMDb</div>
+        <div class="score" data-target="7.9" data-dec="1">0.0</div>
+        <div class="bar"><i data-pct="79"></i></div>
+      </div>
+      <div class="rating">
+        <div class="src">豆瓣 DOUBAN</div>
+        <div class="score" data-target="8.3" data-dec="1">0.0</div>
+        <div class="bar"><i data-pct="83"></i></div>
+      </div>
+      <div class="rating">
+        <div class="src">烂番茄 ROTTEN</div>
+        <div class="score" data-target="98" data-suf="%">0</div>
+        <div class="bar"><i data-pct="98"></i></div>
+      </div>
+      <div class="rating">
+        <div class="src">Metacritic</div>
+        <div class="score" data-target="94" data-suf="">0</div>
+        <div class="bar"><i data-pct="94"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYNOPSIS -->
+  <section class="reveal">
+    <h2 class="sec-title">THE STORY<span class="en">剧情梗概</span></h2>
+    <div class="sec-cn">无需剧透，只看它为何动人</div>
+    <div class="synopsis-card">
+      <!-- MOONLIT BAMBOO POSTER -->
+      <svg class="poster-svg" viewBox="0 0 280 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="月夜竹林中的侠客海报">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0a160f"/>
+            <stop offset="45%" stop-color="#102219"/>
+            <stop offset="75%" stop-color="#163026"/>
+            <stop offset="100%" stop-color="#0c1a14"/>
+          </linearGradient>
+          <radialGradient id="moon" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#fbf3da"/>
+            <stop offset="42%" stop-color="#f2d98f"/>
+            <stop offset="100%" stop-color="#f2d98f" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="mtn" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2c5043"/><stop offset="100%" stop-color="#143028"/>
+          </linearGradient>
+          <linearGradient id="mtn2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#3c6353"/><stop offset="100%" stop-color="#1c3a30"/>
+          </linearGradient>
+        </defs>
+        <rect width="280" height="380" rx="10" fill="url(#sky)"/>
+        <!-- moon -->
+        <circle cx="206" cy="78" r="70" fill="url(#moon)" opacity="0.55"/>
+        <circle cx="206" cy="78" r="30" fill="#fbf3da" opacity="0.92"/>
+        <!-- distant mountains -->
+        <path d="M0,250 Q60,210 120,238 T280,224 L280,380 L0,380 Z" fill="url(#mtn)" opacity="0.8"/>
+        <path d="M0,278 Q80,238 160,266 T280,256 L280,380 L0,380 Z" fill="url(#mtn2)"/>
+        <!-- bamboo stalks -->
+        <g stroke="#1f3a2e" stroke-width="3" opacity="0.85" fill="none">
+          <path d="M40,380 L36,150"/><path d="M58,380 L54,170"/><path d="M76,380 L80,140"/>
+          <path d="M210,380 L214,160"/><path d="M230,380 L226,150"/><path d="M250,380 L254,180"/>
+        </g>
+        <g stroke="#2c5043" stroke-width="1.4" opacity="0.7" fill="none">
+          <path d="M36,210 q18,-10 34,-4"/><path d="M80,180 q-18,-10 -34,-4"/>
+          <path d="M214,220 q-18,-10 -34,-4"/><path d="M226,190 q18,-10 34,-4"/>
+        </g>
+        <!-- flying swordsman silhouette (upper) -->
+        <g fill="#08120e" opacity="0.94">
+          <path d="M96,150 q26,-12 40,4 q8,10 -2,18 q-14,8 -30,-2 q-12,-10 -8,-20 Z"/>
+          <rect x="118" y="128" width="3.4" height="16" rx="1.6" transform="rotate(-32 119 136)"/>
+          <circle cx="116" cy="150" r="4.4"/>
+          <path d="M132,160 l24,-14 -4,5 5,3 -25,8 Z"/>
+          <rect x="104" y="166" width="3" height="20" rx="1.4" transform="rotate(14 105 176)"/>
+          <rect x="120" y="166" width="3" height="20" rx="1.4" transform="rotate(-12 121 176)"/>
+        </g>
+        <!-- second silhouette reaching (lower) -->
+        <g fill="#0c1a14" opacity="0.9">
+          <path d="M150,250 q24,-10 38,4 q7,9 -3,16 q-13,7 -28,-2 q-11,-9 -7,-18 Z"/>
+          <circle cx="150" cy="250" r="4"/>
+          <rect x="150" y="230" width="3.2" height="15" rx="1.6" transform="rotate(-28 151 238)"/>
+          <path d="M170,260 l-22,-12 4,-4 -4,-3 24,9 Z"/>
+          <rect x="156" y="266" width="3" height="18" rx="1.4" transform="rotate(10 157 275)"/>
+          <rect x="170" y="266" width="3" height="18" rx="1.4" transform="rotate(-8 171 275)"/>
+        </g>
+        <!-- sword glint -->
+        <line x1="156" y1="144" x2="186" y2="120" stroke="#f2d98f" stroke-width="1.6" opacity="0.7"/>
+        <!-- title plate -->
+        <rect x="22" y="322" width="236" height="46" rx="6" fill="#08120e" opacity="0.6"/>
+        <text x="140" y="342" text-anchor="middle" font-family="Cinzel,serif" font-weight="700" font-size="13" letter-spacing="2" fill="#f2d98f">CROUCHING TIGER</text>
+        <text x="140" y="360" text-anchor="middle" font-family="Noto Serif SC,serif" font-weight="500" font-size="14" letter-spacing="5" fill="#f1e7d0">卧虎藏龙</text>
+      </svg>
+
+      <div class="synopsis-text">
+        <p>江湖传说，一代大侠李慕白决意金盆洗手，将伴随自己半生的青冥宝剑，托付给敬重已久的俞秀莲，请她代为转赠。一把名剑，牵动了深宅大院里一位不甘平凡的贵女玉娇龙；一名夜行盗剑的蒙面人也悄然登场。</p>
+        <p>宝剑失窃，众人循迹追往山野与江湖深处——而真正难以追回的，是每个人心里那头卧虎、那条藏龙。影片改编自王度庐的同名武侠小说，以飘逸的影像与克制的深情，把一场"武侠"拍成了关于欲望、礼教与自由的东方寓言。</p>
+        <span class="no-spoiler">No Spoilers · 剧情仅提供背景框架，不揭示关键转折与结局</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="reveal">
+    <h2 class="sec-title">WHY IT SHINES<span class="en">六大亮点</span></h2>
+    <div class="sec-cn">它凭什么被写进影史</div>
+    <div class="grid-3">
+      <div class="hl">
+        <div class="num">01</div>
+        <h3>李安的东方诗学</h3>
+        <p>李安以克制而温润的镜头，把武侠拍成了关于"收"与"放"的寓言——江湖之外，是一整代人的情感教养。</p>
+      </div>
+      <div class="hl">
+        <div class="num">02</div>
+        <h3>袁和平的舞蹈化武打</h3>
+        <p>动作指导袁和平让打斗如舞蹈，竹林梢头那一场追逐，成为影史最被反复致敬的镜头之一。</p>
+      </div>
+      <div class="hl">
+        <div class="num">03</div>
+        <h3>谭盾的弦乐与鼓</h3>
+        <p>谭盾以大提琴对话东方鼓点，主题曲《月光爱人》余音绕梁，让武侠第一次拥有了世界级的听觉记忆。</p>
+      </div>
+      <div class="hl">
+        <div class="num">04</div>
+        <h3>鲍德熹的青绿光影</h3>
+        <p>摄影指导鲍德熹以青绿山水般的色调，把夜色与月华拍成流动的水墨长卷，每一帧都可作屏保。</p>
+      </div>
+      <div class="hl">
+        <div class="num">05</div>
+        <h3>奥斯卡四项折桂</h3>
+        <p>最佳外语片、摄影、原创配乐、艺术指导——十项提名中四度胜出，为华语武侠盖下权威印章。</p>
+      </div>
+      <div class="hl">
+        <div class="num">06</div>
+        <h3>轻功即自由的隐喻</h3>
+        <p>飞檐走壁不只是奇观，更是挣脱礼教束缚的浪漫想象——它让"武侠"变成了人人都懂的心事。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="reveal">
+    <div class="quote-block">
+      <span class="mark">“</span>
+      <q>江湖上卧虎藏龙，人心里何尝不是？</q>
+      <span class="zh">江湖藏龙卧虎，人心又何尝不是。</span>
+      <div class="who">— 卧虎藏龙 · CROUCHING TIGER, HIDDEN DRAGON</div>
+    </div>
+  </section>
+
+  <!-- WHY WATCH -->
+  <section class="reveal">
+    <h2 class="sec-title">WORTH WATCHING<span class="en">为何值得一看</span></h2>
+    <div class="sec-cn">四个理由，足够你留出两小时</div>
+    <div class="why-list">
+      <div class="why">
+        <div class="ic">Ⅰ</div>
+        <div><h4>华语电影走向世界的里程碑</h4><p>它是首部拿下奥斯卡最佳外语片的华语武侠，也是全球票房最高的外语片之一——一个绕不开的文化坐标。</p></div>
+      </div>
+      <div class="why">
+        <div class="ic">Ⅱ</div>
+        <div><h4>把"武侠"拍成了"心事"</h4><p>它不靠血腥与堆砌，而用留白与克制讲欲望与束缚——看懂了，你会想起自己心里那只未出口的猛虎。</p></div>
+      </div>
+      <div class="why">
+        <div class="ic">Ⅲ</div>
+        <div><h4>东方美学的视听盛宴</h4><p>月夜竹林、青绿山水、丝弦鼓点，是写给中国意境的一封情书，也上手即懂、老少咸宜。</p></div>
+      </div>
+      <div class="why">
+        <div class="ic">Ⅳ</div>
+        <div><h4>二十年不衰的经典成色</h4><p>无论你爱文艺还是动作，它都能接住——这才是"公认经典"该有的样子：经得起重看，也经得起时间。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONORS -->
+  <section class="reveal">
+    <h2 class="sec-title">HONORS<span class="en">荣誉殿堂</span></h2>
+    <div class="sec-cn">10 项奥斯卡提名 · 4 项折桂</div>
+    <div class="honors">
+      <span class="honor major">奥斯卡 最佳外语片</span>
+      <span class="honor major">奥斯卡 最佳摄影（鲍德熹）</span>
+      <span class="honor major">奥斯卡 最佳原创配乐（谭盾）</span>
+      <span class="honor major">奥斯卡 最佳艺术指导</span>
+      <span class="honor">奥斯卡 最佳影片 提名</span>
+      <span class="honor">金球奖 最佳导演（李安）</span>
+      <span class="honor">金球奖 最佳外语片</span>
+      <span class="honor">金球奖 最佳原创配乐</span>
+      <span class="honor">导演工会奖 最佳导演</span>
+      <span class="honor">英国电影学院奖 最佳外语片</span>
+    </div>
+  </section>
+
+  <!-- ARCHIVE -->
+  <section class="reveal">
+    <h2 class="sec-title">FILM DOSSIER<span class="en">影片档案</span></h2>
+    <div class="sec-cn">基本信息一览</div>
+    <div class="archive">
+      <div class="row"><div class="k">导演</div><div class="v">李安 Ang Lee</div></div>
+      <div class="row"><div class="k">主演</div><div class="v">周润发、杨紫琼、章子怡、张震、郑佩佩</div></div>
+      <div class="row"><div class="k">上映</div><div class="v">2000 年</div></div>
+      <div class="row"><div class="k">片长</div><div class="v">120 分钟</div></div>
+      <div class="row"><div class="k">国家 / 地区</div><div class="v">中国台湾 / 中国香港 / 美国 / 中国内地</div></div>
+      <div class="row"><div class="k">类型</div><div class="v">武侠 / 动作 / 爱情</div></div>
+      <div class="row"><div class="k">摄影</div><div class="v">鲍德熹 Peter Pau</div></div>
+      <div class="row"><div class="k">配乐</div><div class="v">谭盾 Tan Dun</div></div>
+      <div class="row"><div class="k">动作指导</div><div class="v">袁和平 Yuen Woo-ping</div></div>
+      <div class="row"><div class="k">原著</div><div class="v">王度庐《卧虎藏龙》</div></div>
+    </div>
+  </section>
+
+  <!-- REVIEW -->
+  <section class="reveal">
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>在特效把"飞"拍成杂技的年代，李安用《卧虎藏龙》证明：真正的轻功，是让人的心事离开地面三寸。当月光落在竹林梢头，你会明白，所谓经典，不过是把一句人人心头有、口中无的话，拍成了画面。</p>
+      <div class="sig">— 电影推荐 · 编辑部</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="div"></div>
+    经典电影推荐 · 每日一部 · Crouching Tiger, Hidden Dragon (2000)
+  </footer>
+
+</div>
+
+<script>
+/* ---------- BAMBOO LEAF + LIGHT DUST CANVAS ---------- */
+(function(){
+  const cv=document.getElementById('leaf-canvas');
+  const ctx=cv.getContext('2d');
+  let W,H,DPR,leaves=[],dust=[];
+  function resize(){
+    DPR=Math.min(window.devicePixelRatio||1,2);
+    W=cv.width=innerWidth*DPR;H=cv.height=innerHeight*DPR;
+    cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';
+    build();
+  }
+  function build(){
+    leaves=[];dust=[];
+    const nl=Math.round(innerWidth/26);
+    for(let i=0;i<nl;i++) leaves.push(mkLeaf(true));
+    const nd=Math.round((innerWidth*innerHeight)/22000);
+    for(let i=0;i<nd;i++) dust.push(mkDust(true));
+  }
+  function mkLeaf(any){
+    return {
+      x:Math.random()*W,
+      y:any?Math.random()*H:H+20,
+      r:(Math.random()*5+4)*DPR,
+      sp:(Math.random()*0.7+0.4)*DPR,
+      drift:(Math.random()*0.6-0.1)*DPR,
+      rot:Math.random()*Math.PI*2,
+      vr:(Math.random()*0.02-0.01),
+      sway:Math.random()*Math.PI*2,
+      hue:Math.random()<0.5?'#6fae9a':'#88a86f',
+      a:Math.random()*0.35+0.25
+    };
+  }
+  function mkDust(any){
+    return {
+      x:Math.random()*W,
+      y:any?Math.random()*H:H+10,
+      r:(Math.random()*1.4+0.3)*DPR,
+      sp:(Math.random()*0.4+0.12)*DPR,
+      drift:(Math.random()*0.3-0.1)*DPR,
+      a:Math.random()*0.4+0.12,
+      g:Math.random()<0.5?'#f2d98f':'#d4dcd6',
+      life:Math.random()*200+80,
+      t:Math.random()*Math.PI*2
+    };
+  }
+  function drawLeaf(p){
+    const sway=Math.sin(p.sway)*0.8*DPR;
+    const x=p.x+sway, y=p.y;
+    ctx.save();
+    ctx.translate(x,y);
+    ctx.rotate(p.rot);
+    ctx.globalAlpha=p.a;
+    ctx.fillStyle=p.hue;
+    ctx.beginPath();
+    ctx.ellipse(0,0,p.r*0.42,p.r,0,0,Math.PI*2);
+    ctx.fill();
+    // midrib
+    ctx.globalAlpha=p.a*0.6;
+    ctx.strokeStyle='#0c1a14';
+    ctx.lineWidth=0.6*DPR;
+    ctx.beginPath();ctx.moveTo(0,-p.r);ctx.lineTo(0,p.r);ctx.stroke();
+    ctx.restore();
+  }
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    for(const p of leaves){
+      p.x+=p.drift; p.y-=p.sp; p.rot+=p.vr; p.sway+=0.02;
+      drawLeaf(p);
+      if(p.y< -30 || p.x< -30 || p.x>W+30){ Object.assign(p,mkLeaf(false)); }
+    }
+    for(const p of dust){
+      p.x+=p.drift; p.y-=p.sp; p.t+=0.02;
+      const sway=Math.sin(p.t)*0.5*DPR;
+      const x=p.x+sway,y=p.y;
+      const g=ctx.createRadialGradient(x,y,0,x,y,p.r*4);
+      g.addColorStop(0,hexA(p.g,p.a));
+      g.addColorStop(1,hexA(p.g,0));
+      ctx.fillStyle=g;
+      ctx.beginPath();ctx.arc(x,y,p.r*4,0,Math.PI*2);ctx.fill();
+      p.life--;
+      if(p.y< -20 || p.life<=0){ Object.assign(p,mkDust(false)); }
+    }
+    requestAnimationFrame(loop);
+  }
+  function hexA(hex,a){
+    const n=parseInt(hex.slice(1),16);
+    const r=(n>>16)&255,g2=(n>>8)&255,b=n&255;
+    return `rgba(${r},${g2},${b},${a})`;
+  }
+  addEventListener('resize',resize);
+  resize();loop();
+})();
+
+/* ---------- REVEAL ---------- */
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- RATING COUNT-UP ---------- */
+function animateScores(){
+  document.querySelectorAll('.rating').forEach(card=>{
+    const scoreEl=card.querySelector('.score');
+    const bar=card.querySelector('.bar i');
+    const target=parseFloat(scoreEl.dataset.target);
+    const dec=parseInt(scoreEl.dataset.dec||"0");
+    const suf=scoreEl.dataset.suf||'';
+    const pct=parseFloat(bar.dataset.pct);
+    setTimeout(()=>{ bar.style.width=pct+'%'; },120);
+    let cur=0;const dur=1500;const st=performance.now();
+    function step(now){
+      const p=Math.min((now-st)/dur,1);
+      const e=1-Math.pow(1-p,3);
+      cur=target*e;
+      scoreEl.innerHTML=(dec>0?cur.toFixed(dec):Math.round(cur))+(suf?'<span class="suf">'+suf+'</span>':'');
+      if(p<1) requestAnimationFrame(step);
+      else scoreEl.innerHTML=(dec>0?target.toFixed(dec):target)+(suf?'<span class="suf">'+suf+'</span>':'');
+    }
+    requestAnimationFrame(step);
+  });
+}
+const scoreIO=new IntersectionObserver((es)=>{
+  es.forEach(e=>{ if(e.isIntersecting){ animateScores(); scoreIO.disconnect(); }});
+},{threshold:0.3});
+const ratingsSec=document.querySelector('.ratings').closest('section');
+scoreIO.observe(ratingsSec);
+</script>
+</body>
+</html>

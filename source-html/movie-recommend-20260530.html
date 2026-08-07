@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经典电影推荐 · 活着 To Live</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0d0a07;
+    --bg2: #13100c;
+    --bg3: #1c1610;
+    --card: #1f1a13;
+    --border: #3a2e1e;
+    --gold: #c8a86b;
+    --gold2: #e8c88a;
+    --gold-dim: #7a6440;
+    --red: #c0392b;
+    --red-warm: #d4522a;
+    --cream: #f0e8d8;
+    --cream2: #d4c8b0;
+    --text: #e8dcc8;
+    --text-dim: #9a8870;
+    --white: #faf6ef;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ===== CANVAS HERO ===== */
+  #hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 640px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  #hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 0 24px;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 24px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 300;
+  }
+
+  .hero-year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(96px, 20vw, 200px);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(200,168,107,0.18);
+    letter-spacing: -4px;
+    line-height: 0.85;
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 1;
+  }
+
+  .hero-title-cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(52px, 9vw, 96px);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1;
+    letter-spacing: 8px;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 60px rgba(200,168,107,0.3), 0 4px 20px rgba(0,0,0,0.8);
+  }
+
+  .hero-title-en {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(14px, 2.5vw, 22px);
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 6px;
+    margin-top: 12px;
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 24px auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tagline {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(14px, 2.2vw, 20px);
+    color: var(--cream2);
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.9;
+    letter-spacing: 1px;
+  }
+
+  .hero-meta {
+    position: relative;
+    z-index: 2;
+    margin-top: 32px;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-badge {
+    padding: 6px 16px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-size: 12px;
+    color: var(--gold-dim);
+    letter-spacing: 2px;
+    background: rgba(0,0,0,0.4);
+  }
+
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, transparent, var(--gold));
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  /* ===== SVG POSTER AREA ===== */
+  .poster-svg-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 32px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    padding: 80px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ===== SCORES ===== */
+  .scores-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+
+  @media (max-width: 600px) {
+    .scores-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .score-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .score-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.6s;
+  }
+
+  .score-card.active::before { opacity: 1; }
+
+  .score-source {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .score-value {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--gold2);
+    line-height: 1;
+  }
+
+  .score-max {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 4px;
+  }
+
+  .score-bar {
+    margin-top: 12px;
+    height: 2px;
+    background: var(--border);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  .score-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold2));
+    width: 0%;
+    transition: width 1.2s ease;
+    border-radius: 1px;
+  }
+
+  /* ===== STORY / POSTER SPLIT ===== */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 40px;
+    align-items: start;
+  }
+
+  @media (max-width: 700px) {
+    .story-grid { grid-template-columns: 1fr; }
+  }
+
+  .story-text {
+    font-size: 16px;
+    line-height: 2;
+    color: var(--cream2);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 300;
+  }
+
+  .story-text p + p {
+    margin-top: 16px;
+  }
+
+  .story-poster {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .story-poster-svg {
+    width: 100%;
+    display: block;
+  }
+
+  .story-poster-info {
+    padding: 16px;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+
+  .info-row:last-child { border-bottom: none; }
+
+  .info-label { color: var(--text-dim); }
+  .info-value { color: var(--cream2); text-align: right; }
+
+  /* ===== HIGHLIGHTS ===== */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 700px) {
+    .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 420px) {
+    .highlights-grid { grid-template-columns: 1fr; }
+  }
+
+  .highlight-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px 20px;
+    transition: border-color 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .highlight-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .highlight-card:hover {
+    border-color: var(--gold-dim);
+    box-shadow: 0 8px 32px rgba(200,168,107,0.1);
+  }
+
+  .highlight-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .highlight-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .highlight-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+
+  /* ===== QUOTE ===== */
+  .quote-block {
+    background: var(--bg3);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    padding: 32px 40px;
+    margin: 16px 0;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+
+  .quote-block.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .quote-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    color: var(--cream);
+    line-height: 2;
+    font-style: italic;
+    font-weight: 600;
+  }
+
+  .quote-attr {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+  }
+
+  /* ===== WHY WATCH ===== */
+  .why-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .why-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px 24px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+
+  .why-item.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .why-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold-dim);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 36px;
+  }
+
+  .why-content { flex: 1; }
+
+  .why-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .why-desc {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+
+  /* ===== AWARDS ===== */
+  .awards-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .award-tag {
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    font-size: 12px;
+    color: var(--gold-dim);
+    background: var(--card);
+    letter-spacing: 1px;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.4s, transform 0.4s;
+  }
+
+  .award-tag.revealed {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .award-tag:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* ===== ARCHIVE TABLE ===== */
+  .archive-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .archive-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .archive-table tr:last-child { border-bottom: none; }
+
+  .archive-table td {
+    padding: 14px 0;
+    font-size: 14px;
+  }
+
+  .archive-table td:first-child {
+    color: var(--text-dim);
+    width: 120px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .archive-table td:last-child {
+    color: var(--cream2);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer-editorial {
+    text-align: center;
+    padding: 60px 24px 80px;
+    border-top: 1px solid var(--border);
+  }
+
+  .editorial-stars {
+    font-size: 28px;
+    color: var(--gold);
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+  }
+
+  .editorial-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    color: var(--cream2);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 2;
+    font-style: italic;
+  }
+
+  .footer-date {
+    margin-top: 32px;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 4px;
+  }
+
+  /* ===== REVEAL UTILITY ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== CUSTOM SCROLLBAR ===== */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold-dim); }
+</style>
+</head>
+<body>
+
+<!-- ====== HERO ====== -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+
+  <div class="hero-year">1994</div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">经典电影推荐 · 今日佳片</div>
+    <div class="poster-svg-wrap">
+      <!-- SVG：一家人剪影 + 皮影戏光影 -->
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- 灯笼光晕 -->
+        <circle cx="60" cy="60" r="54" fill="rgba(192,57,43,0.07)"/>
+        <!-- 皮影人物轮廓 -->
+        <!-- 父亲 -->
+        <ellipse cx="44" cy="52" rx="7" ry="8" fill="rgba(200,168,107,0.85)"/>
+        <rect x="38" y="60" width="12" height="20" rx="3" fill="rgba(200,168,107,0.85)"/>
+        <line x1="38" y1="68" x2="30" y2="78" stroke="rgba(200,168,107,0.85)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="50" y1="68" x2="58" y2="78" stroke="rgba(200,168,107,0.85)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="40" y1="80" x2="38" y2="95" stroke="rgba(200,168,107,0.85)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="48" y1="80" x2="50" y2="95" stroke="rgba(200,168,107,0.85)" stroke-width="3" stroke-linecap="round"/>
+        <!-- 妻子 -->
+        <ellipse cx="76" cy="52" rx="7" ry="8" fill="rgba(200,168,107,0.7)"/>
+        <path d="M68 60 Q76 56 84 60 L85 80 Q76 83 67 80 Z" fill="rgba(200,168,107,0.7)"/>
+        <line x1="68" y1="80" x2="66" y2="95" stroke="rgba(200,168,107,0.7)" stroke-width="3" stroke-linecap="round"/>
+        <line x1="82" y1="80" x2="84" y2="95" stroke="rgba(200,168,107,0.7)" stroke-width="3" stroke-linecap="round"/>
+        <!-- 孩子 -->
+        <ellipse cx="60" cy="66" rx="5" ry="5.5" fill="rgba(200,168,107,0.55)"/>
+        <rect x="55.5" y="71" width="9" height="14" rx="2" fill="rgba(200,168,107,0.55)"/>
+        <line x1="56" y1="77" x2="51" y2="84" stroke="rgba(200,168,107,0.55)" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="64" y1="77" x2="69" y2="84" stroke="rgba(200,168,107,0.55)" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- 皮影幕布光线 -->
+        <line x1="60" y1="0" x2="44" y2="45" stroke="rgba(200,168,107,0.2)" stroke-width="1"/>
+        <line x1="60" y1="0" x2="76" y2="45" stroke="rgba(200,168,107,0.2)" stroke-width="1"/>
+        <!-- 光源点 -->
+        <circle cx="60" cy="6" r="4" fill="rgba(200,168,107,0.6)"/>
+        <circle cx="60" cy="6" r="8" fill="rgba(200,168,107,0.12)"/>
+      </svg>
+    </div>
+    <h1 class="hero-title-cn">活　着</h1>
+    <div class="hero-title-en">To Live</div>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">人是为了活着本身而活着，<br>而不是为了活着之外的任何事物而活着。</p>
+    <div class="hero-meta">
+      <span class="hero-badge">张艺谋 导演</span>
+      <span class="hero-badge">1994 · 中国</span>
+      <span class="hero-badge">戛纳评审团大奖</span>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ====== SCORES ====== -->
+<div class="section">
+  <div class="section-label">评分 · Ratings</div>
+  <div class="scores-grid">
+    <div class="score-card" data-score="81" data-max="100">
+      <div class="score-source">IMDb</div>
+      <div class="score-value" data-target="8.1">0.0</div>
+      <div class="score-max">/ 10</div>
+      <div class="score-bar"><div class="score-bar-fill"></div></div>
+    </div>
+    <div class="score-card" data-score="93" data-max="100">
+      <div class="score-source">豆瓣</div>
+      <div class="score-value" data-target="9.3">0.0</div>
+      <div class="score-max">/ 10</div>
+      <div class="score-bar"><div class="score-bar-fill"></div></div>
+    </div>
+    <div class="score-card" data-score="97" data-max="100">
+      <div class="score-source">烂番茄</div>
+      <div class="score-value" data-target="97">0</div>
+      <div class="score-max">% 好评</div>
+      <div class="score-bar"><div class="score-bar-fill"></div></div>
+    </div>
+    <div class="score-card" data-score="96" data-max="100">
+      <div class="score-source">观众热度</div>
+      <div class="score-value" data-target="96">0</div>
+      <div class="score-max">% 推荐</div>
+      <div class="score-bar"><div class="score-bar-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- ====== STORY ====== -->
+  <div class="section-label reveal">剧情梗概 · Synopsis</div>
+  <div class="story-grid reveal">
+    <div class="story-text">
+      <p>从20世纪40年代一路绵延至70年代，《活着》用一个普通中国家庭的命运，悄无声息地丈量了整整三十年的历史沧桑。</p>
+      <p>男主人公福贵，曾是一个挥金如土的纨绔子弟，却在一夜之间家道中落，被迫直面截然不同的人生。皮影戏是他安身立命的谋生手段，也是他在乱世中维系一家温情的寄托。</p>
+      <p>妻子家珍始终不离不弃，陪他走过战火、饥荒与不断涌动的政治变局。当时代的洪流一次次冲进这户小院，这对夫妻学会了一件事：</p>
+      <p style="color: var(--gold); font-style: italic; font-family: 'Noto Serif SC', serif;">只要活着，就还有盼头。</p>
+      <p>影片没有英雄，没有高亢的口号，只有一家普通人怀揣着韧性，在历史的褶皱里艰难却真实地活下去。</p>
+    </div>
+    <div class="story-poster">
+      <!-- SVG: 皮影戏幕布场景 -->
+      <svg viewBox="0 0 280 340" fill="none" xmlns="http://www.w3.org/2000/svg" class="story-poster-svg">
+        <rect width="280" height="340" fill="#0d0a07"/>
+        <!-- 幕布 -->
+        <rect x="20" y="40" width="240" height="180" fill="#1a1108"/>
+        <rect x="20" y="40" width="240" height="180" fill="none" stroke="#3a2e1e" stroke-width="1.5"/>
+        <!-- 幕布褶皱 -->
+        <line x1="40" y1="40" x2="35" y2="220" stroke="#231908" stroke-width="3"/>
+        <line x1="80" y1="40" x2="78" y2="220" stroke="#231908" stroke-width="2"/>
+        <line x1="140" y1="40" x2="140" y2="220" stroke="#231908" stroke-width="3"/>
+        <line x1="200" y1="40" x2="202" y2="220" stroke="#231908" stroke-width="2"/>
+        <line x1="240" y1="40" x2="245" y2="220" stroke="#231908" stroke-width="3"/>
+        <!-- 投影光区 -->
+        <ellipse cx="140" cy="130" rx="90" ry="70" fill="rgba(200,168,107,0.06)"/>
+        <!-- 皮影人物 -->
+        <!-- 男 -->
+        <ellipse cx="118" cy="94" rx="10" ry="11" fill="rgba(200,168,107,0.9)"/>
+        <rect x="109" y="105" width="18" height="28" rx="4" fill="rgba(200,168,107,0.9)"/>
+        <line x1="109" y1="116" x2="96" y2="130" stroke="rgba(200,168,107,0.9)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="127" y1="116" x2="140" y2="130" stroke="rgba(200,168,107,0.9)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="113" y1="133" x2="110" y2="158" stroke="rgba(200,168,107,0.9)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="123" y1="133" x2="126" y2="158" stroke="rgba(200,168,107,0.9)" stroke-width="4" stroke-linecap="round"/>
+        <!-- 女 -->
+        <ellipse cx="162" cy="94" rx="10" ry="11" fill="rgba(200,168,107,0.75)"/>
+        <path d="M151 105 Q162 99 173 105 L175 133 Q162 137 149 133 Z" fill="rgba(200,168,107,0.75)"/>
+        <line x1="149" y1="133" x2="147" y2="158" stroke="rgba(200,168,107,0.75)" stroke-width="4" stroke-linecap="round"/>
+        <line x1="175" y1="133" x2="177" y2="158" stroke="rgba(200,168,107,0.75)" stroke-width="4" stroke-linecap="round"/>
+        <!-- 皮影操控杆 -->
+        <line x1="118" y1="85" x2="118" y2="40" stroke="rgba(200,168,107,0.3)" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <line x1="162" y1="85" x2="162" y2="40" stroke="rgba(200,168,107,0.3)" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <!-- 灯光源 -->
+        <circle cx="140" cy="26" r="8" fill="rgba(200,168,107,0.7)"/>
+        <circle cx="140" cy="26" r="14" fill="rgba(200,168,107,0.1)"/>
+        <!-- 幕布上方横杆 -->
+        <rect x="14" y="36" width="252" height="6" rx="3" fill="#3a2e1e"/>
+        <!-- 幕布下方地基 -->
+        <rect x="14" y="218" width="252" height="6" rx="3" fill="#3a2e1e"/>
+        <!-- 文字区 -->
+        <rect x="20" y="240" width="240" height="84" fill="#13100c"/>
+        <text x="140" y="268" text-anchor="middle" font-family="serif" font-size="22" font-weight="700" fill="rgba(200,168,107,0.9)" letter-spacing="8">活 着</text>
+        <text x="140" y="291" text-anchor="middle" font-family="sans-serif" font-size="11" fill="rgba(154,136,112,0.7)" letter-spacing="3">TO LIVE</text>
+        <text x="140" y="314" text-anchor="middle" font-family="sans-serif" font-size="10" fill="rgba(154,136,112,0.5)" letter-spacing="2">张艺谋 · 1994</text>
+      </svg>
+
+      <div class="story-poster-info">
+        <div class="info-row">
+          <span class="info-label">导演</span>
+          <span class="info-value">张艺谋</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">主演</span>
+          <span class="info-value">葛优 · 巩俐</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">时长</span>
+          <span class="info-value">132 分钟</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">语言</span>
+          <span class="info-value">普通话</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== HIGHLIGHTS ====== -->
+  <div style="padding-top: 80px;">
+    <div class="section-label reveal">亮点 · Highlights</div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <span class="highlight-icon">🎭</span>
+        <div class="highlight-title">皮影戏的隐喻</div>
+        <div class="highlight-desc">皮影贯穿全片，既是主人公的生计，也是整部电影最精妙的视觉符号——人如皮影，被命运之手操弄，却依然鲜活。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🏆</span>
+        <div class="highlight-title">葛优的传奇表演</div>
+        <div class="highlight-desc">凭此片获戛纳最佳男主角，葛优将一个从纨绔子弟到普通百姓的转变诠释得克制而深沉，笑中带泪，令人难忘。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🌊</span>
+        <div class="highlight-title">历史的温柔书写</div>
+        <div class="highlight-desc">影片将宏大历史化为一个家庭的日常，不控诉、不煽情，却以平静的叙述让观者感受到比任何史诗更沉重的分量。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🎬</span>
+        <div class="highlight-title">张艺谋的视觉掌控</div>
+        <div class="highlight-desc">色彩、构图、光线无一不精准。从繁华到萧瑟，视觉语言本身就在讲述一段关于时间与失落的故事。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">💞</span>
+        <div class="highlight-title">巩俐的柔韧之力</div>
+        <div class="highlight-desc">巩俐饰演的家珍是全片的情感锚点，隐忍而有力，她的存在让这部电影从悲剧升华为关于人性尊严的颂歌。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">📖</span>
+        <div class="highlight-title">余华原著的精髓</div>
+        <div class="highlight-desc">改编自余华同名小说，张艺谋在保留文学内核的同时注入了独特的电影质感，两者相辅相成，看完电影往往会去找原著。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== QUOTE ====== -->
+  <div style="padding-top: 80px;">
+    <div class="section-label reveal">经典台词 · Quotes</div>
+    <div class="quote-block">
+      <div class="quote-text">人是为了活着本身而活着，<br>而不是为了活着之外的任何事物而活着。</div>
+      <div class="quote-attr">—— 余华 《活着》原著 · 也是这部电影的灵魂</div>
+    </div>
+    <div class="quote-block" style="margin-top: 16px;">
+      <div class="quote-text">只要家珍还在，只要凤霞和有庆还在，<br>我就没什么好怕的。</div>
+      <div class="quote-attr">—— 福贵</div>
+    </div>
+  </div>
+
+  <!-- ====== WHY WATCH ====== -->
+  <div style="padding-top: 80px;">
+    <div class="section-label reveal">为什么值得看 · Why Watch</div>
+    <ul class="why-list">
+      <li class="why-item">
+        <div class="why-num">01</div>
+        <div class="why-content">
+          <div class="why-title">世界电影史绕不开的华语经典</div>
+          <div class="why-desc">《活着》是迄今在国际舞台上影响力最深远的华语电影之一，戛纳双料大奖（评审团奖+最佳男主角）的背书，是它在世界电影版图上当之无愧的地位证明。</div>
+        </div>
+      </li>
+      <li class="why-item">
+        <div class="why-num">02</div>
+        <div class="why-content">
+          <div class="why-title">以最小的视角讲述最大的历史</div>
+          <div class="why-desc">它没有宏大战役，没有领袖人物，只有一对夫妻、几个孩子，和门前那棵老树。却正是这份普通，让三十年的历史重量真实可感，触动每一个时代的观众。</div>
+        </div>
+      </li>
+      <li class="why-item">
+        <div class="why-num">03</div>
+        <div class="why-content">
+          <div class="why-title">看完之后，你会重新理解"活着"二字</div>
+          <div class="why-desc">电影不提供答案，不布道，不说教。它只是陪你走完一段生命，然后让你独自坐在那里，思考什么是真正的韧性，什么才是值得珍惜的事。</div>
+        </div>
+      </li>
+      <li class="why-item">
+        <div class="why-num">04</div>
+        <div class="why-content">
+          <div class="why-title">葛优 + 巩俐：不可复制的化学反应</div>
+          <div class="why-desc">葛优的木讷与巩俐的深情，构成了银幕上最令人心疼的夫妻之一。这场表演至今被视为华语影史最顶级的双人搭档之一，单凭这一点，就值回票价。</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ====== AWARDS ====== -->
+  <div style="padding-top: 80px;">
+    <div class="section-label reveal">荣誉 · Awards</div>
+    <div class="awards-wrap">
+      <span class="award-tag">🏆 戛纳电影节 评审团大奖</span>
+      <span class="award-tag">🥇 戛纳电影节 最佳男演员（葛优）</span>
+      <span class="award-tag">🎬 英国影评人协会 最佳外语片</span>
+      <span class="award-tag">🌟 豆瓣 9.3 / 华语神作</span>
+      <span class="award-tag">📽 烂番茄 97% 新鲜度</span>
+      <span class="award-tag">🎖 《时代》杂志 年度十佳电影</span>
+      <span class="award-tag">📖 改编自余华同名长篇小说</span>
+      <span class="award-tag">🇨🇳 入选多国国家影像档案馆</span>
+    </div>
+  </div>
+
+  <!-- ====== ARCHIVE ====== -->
+  <div style="padding-top: 80px;">
+    <div class="section-label reveal">影片档案 · Film Archive</div>
+    <div style="background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 24px 32px;" class="reveal">
+      <table class="archive-table">
+        <tr><td>中文片名</td><td>活着</td></tr>
+        <tr><td>英文片名</td><td>To Live（Huozhe）</td></tr>
+        <tr><td>导演</td><td>张艺谋</td></tr>
+        <tr><td>编剧</td><td>芦苇 · 余华（原著）</td></tr>
+        <tr><td>主演</td><td>葛优 · 巩俐 · 牛犇 · 郭涛</td></tr>
+        <tr><td>制片国</td><td>中国 · 香港，中国</td></tr>
+        <tr><td>上映年份</td><td>1994</td></tr>
+        <tr><td>片长</td><td>132 分钟</td></tr>
+        <tr><td>类型</td><td>剧情 / 历史 / 家庭</td></tr>
+        <tr><td>摄影</td><td>吕乐</td></tr>
+        <tr><td>音乐</td><td>赵季平</td></tr>
+        <tr><td>出品公司</td><td>西安电影制片厂 · ERA International</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<!-- ====== FOOTER EDITORIAL ====== -->
+<div class="footer-editorial">
+  <div class="editorial-stars">★ ★ ★ ★ ★</div>
+  <div class="editorial-text">
+    三十年的风雨、战乱、饥荒，被装进一个普通家庭的饭碗里。<br>
+    《活着》不是一部会让你"爽"的电影，<br>
+    但它会让你在片尾字幕滚动时，静静坐着，不想离开。<br>
+    然后带着某种说不清楚的温热，重新开始第二天的生活。
+  </div>
+  <div class="footer-date">2026 · 05 · 30 &nbsp;|&nbsp; DAILY CLASSIC FILM</div>
+</div>
+
+<script>
+// ===== CANVAS: 皮影光尘 + 暖红余烬 =====
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor() { this.reset(true); }
+    reset(init) {
+      this.x = Math.random() * W;
+      this.y = init ? Math.random() * H : H + 10;
+      this.size = Math.random() * 2.5 + 0.5;
+      this.speedY = -(Math.random() * 0.5 + 0.2);
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.life = 0;
+      this.maxLife = Math.random() * 300 + 200;
+      // 颜色：金色尘粒 + 暗红余烬
+      const colors = [
+        `rgba(200,168,107,`,
+        `rgba(232,200,138,`,
+        `rgba(192,57,43,`,
+        `rgba(212,82,42,`,
+        `rgba(180,140,80,`,
+      ];
+      this.colorBase = colors[Math.floor(Math.random() * colors.length)];
+      this.sway = Math.random() * Math.PI * 2;
+      this.swaySpeed = Math.random() * 0.02 + 0.005;
+    }
+    update() {
+      this.life++;
+      this.sway += this.swaySpeed;
+      this.x += this.speedX + Math.sin(this.sway) * 0.3;
+      this.y += this.speedY;
+      if (this.life > this.maxLife || this.y < -10) this.reset(false);
+    }
+    draw() {
+      const progress = this.life / this.maxLife;
+      const alpha = progress < 0.2
+        ? progress / 0.2 * 0.7
+        : progress > 0.8
+          ? (1 - progress) / 0.2 * 0.7
+          : 0.7;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.colorBase + alpha + ')';
+      ctx.fill();
+    }
+  }
+
+  for (let i = 0; i < 130; i++) particles.push(new Particle());
+
+  // 暗红渐变背景
+  function drawBg() {
+    const gradient = ctx.createRadialGradient(W/2, H*0.4, 0, W/2, H*0.4, W*0.7);
+    gradient.addColorStop(0, 'rgba(60,18,8,0.95)');
+    gradient.addColorStop(0.4, 'rgba(30,10,5,0.98)');
+    gradient.addColorStop(1, 'rgba(13,10,7,1)');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  // 竹帘纹理暗纹
+  function drawBamboo() {
+    ctx.save();
+    ctx.globalAlpha = 0.04;
+    ctx.strokeStyle = '#c8a86b';
+    ctx.lineWidth = 1;
+    const spacing = 32;
+    for (let y = 0; y < H; y += spacing) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(W, y);
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    drawBg();
+    drawBamboo();
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// ===== INTERSECTION OBSERVER: 滚动揭示 =====
+(function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal, .quote-block, .why-item, .award-tag, .highlight-card').forEach((el, i) => {
+    el.style.transitionDelay = (i % 6) * 0.08 + 's';
+    observer.observe(el);
+  });
+})();
+
+// ===== SCORE ANIMATION =====
+(function() {
+  const scoreObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const card = entry.target;
+      card.classList.add('active');
+      const valueEl = card.querySelector('.score-value');
+      const barFill = card.querySelector('.score-bar-fill');
+      const target = parseFloat(valueEl.dataset.target);
+      const scorePct = parseInt(card.dataset.score);
+      const isDecimal = target < 20;
+      const duration = 1200;
+      const start = performance.now();
+
+      barFill.style.width = scorePct + '%';
+
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+        valueEl.textContent = isDecimal ? current.toFixed(1) : Math.round(current);
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      scoreObserver.unobserve(card);
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.score-card').forEach(card => scoreObserver.observe(card));
+})();
+</script>
+</body>
+</html>

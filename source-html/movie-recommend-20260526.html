@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天堂电影院 | 经典电影推荐</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --night: #0d0a07;
+    --warm-brown: #2a1f14;
+    --gold: #d4a843;
+    --gold-dim: #8a6d2b;
+    --gold-bright: #f0c850;
+    --cream: #faf5ea;
+    --ivory: #f5efe3;
+    --red-velvet: #8b1a1a;
+    --red-soft: #c44040;
+    --washed: #8b8175;
+    --text: #3d3428;
+    --amber: #c67b30;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ============ Canvas 胶片光尘 ============ */
+  #cinema-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ============ 胶片纹理 ============ */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(139,129,117,0.015) 2px,
+        rgba(139,129,117,0.015) 3px
+      );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .content-wrap {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 30px;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(212,168,67,0.07) 0%, transparent 50%),
+      radial-gradient(ellipse at 30% 70%, rgba(139,26,26,0.04) 0%, transparent 40%),
+      var(--night);
+    color: var(--cream);
+  }
+
+  /* 胶片边框装饰 */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 24px;
+    border: 1px solid rgba(212,168,67,0.15);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 60px;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 14px,
+      rgba(212,168,67,0.06) 14px,
+      rgba(212,168,67,0.06) 16px,
+      transparent 16px,
+      transparent 30px
+    );
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    font-size: 0.65rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(212,168,67,0.4);
+    padding: 6px 30px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(5rem, 14vw, 11rem);
+    font-weight: 900;
+    color: rgba(212,168,67,0.06);
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+    font-style: italic;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1.2;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 40px rgba(212,168,67,0.15);
+  }
+
+  .hero-title-sub {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+    color: rgba(212,168,67,0.6);
+    margin-top: 14px;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+    letter-spacing: 0.2em;
+    font-style: italic;
+  }
+
+  .hero-tagline {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    color: var(--washed);
+    margin-top: 32px;
+    font-style: italic;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+    max-width: 550px;
+    line-height: 1.8;
+  }
+
+  .hero-tagline em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 28px;
+    margin-top: 36px;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.0s forwards;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-meta span {
+    font-size: 0.78rem;
+    color: var(--washed);
+    letter-spacing: 0.1em;
+  }
+
+  .hero-meta .sep { color: rgba(212,168,67,0.3); }
+
+  /* 放映机装饰 */
+  .hero-projector {
+    margin-top: 48px;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.2s forwards;
+  }
+
+  .hero-projector svg {
+    width: 60px;
+    height: 60px;
+    opacity: 0.25;
+  }
+
+  /* 光束动画 */
+  .light-beam {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 300px;
+    height: 100%;
+    transform: translateX(-50%) rotate(2deg);
+    background: linear-gradient(
+      180deg,
+      rgba(212,168,67,0.04) 0%,
+      rgba(212,168,67,0.01) 40%,
+      transparent 80%
+    );
+    pointer-events: none;
+    z-index: 0;
+    animation: beamFlicker 4s ease-in-out infinite;
+  }
+
+  @keyframes beamFlicker {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  /* ============ 评分条 ============ */
+  .scores-section {
+    padding: 80px 30px;
+    background: var(--ivory);
+    position: relative;
+  }
+
+  .scores-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 80px; height: 1px;
+    background: var(--gold);
+  }
+
+  .section-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .scores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 20px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .score-card {
+    text-align: center;
+    padding: 30px 16px;
+    background: var(--cream);
+    border: 1px solid rgba(212,168,67,0.12);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .score-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(212,168,67,0.08);
+  }
+
+  .score-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .score-card:hover::after { opacity: 1; }
+
+  .score-source {
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--washed);
+    margin-bottom: 12px;
+  }
+
+  .score-number {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: var(--gold-dim);
+    line-height: 1;
+  }
+
+  .score-number .star { color: var(--gold); }
+
+  .score-bar-track {
+    width: 70%;
+    height: 3px;
+    background: rgba(212,168,67,0.12);
+    margin: 14px auto 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .score-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+    width: 0%;
+    transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* ============ 剧情梗概 ============ */
+  .plot-section {
+    padding: 100px 30px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 12px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; left: 0;
+    width: 50px; height: 2px;
+    background: var(--gold);
+  }
+
+  .section-intro {
+    font-size: 0.85rem;
+    color: var(--washed);
+    margin-top: 24px;
+    margin-bottom: 48px;
+    font-style: italic;
+  }
+
+  .plot-text {
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--text);
+    text-align: justify;
+  }
+
+  .plot-text p + p { margin-top: 20px; }
+
+  /* 胶片分隔 */
+  .film-divider {
+    text-align: center;
+    margin: 48px 0;
+    position: relative;
+  }
+
+  .film-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,168,67,0.2), transparent);
+  }
+
+  .film-divider span {
+    background: var(--cream);
+    padding: 0 20px;
+    position: relative;
+    color: var(--gold);
+    font-size: 0.8rem;
+    letter-spacing: 0.5em;
+  }
+
+  /* 信息卡 */
+  .info-card {
+    margin-top: 48px;
+    border-left: 3px solid var(--gold);
+    padding: 28px 32px;
+    background: rgba(212,168,67,0.03);
+    position: relative;
+  }
+
+  .info-card::before {
+    content: 'NOTE';
+    position: absolute;
+    top: -10px; left: 20px;
+    background: var(--cream);
+    padding: 0 10px;
+    font-size: 0.65rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.3em;
+    font-weight: 700;
+  }
+
+  .info-card p {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.9;
+  }
+
+  /* ============ 海报卡 ============ */
+  .poster-card {
+    margin-top: 48px;
+    background: var(--night);
+    padding: 48px 36px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 320px;
+  }
+
+  .poster-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 60%, rgba(212,168,67,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .poster-svg {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ============ 亮点 ============ */
+  .highlights-section {
+    padding: 100px 30px;
+    background: var(--night);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlights-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .highlights-section .section-label { color: rgba(212,168,67,0.5); }
+
+  .highlights-section .section-title {
+    color: var(--gold);
+  }
+
+  .highlights-section .section-title::after {
+    background: var(--gold);
+  }
+
+  .hl-sub {
+    text-align: center;
+    color: var(--washed);
+    margin-top: 8px;
+    font-size: 0.85rem;
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+    margin-top: 48px;
+  }
+
+  .highlight-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(212,168,67,0.1);
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .highlight-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+
+  .highlight-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212,168,67,0.3);
+  }
+
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .highlight-card:hover::before { opacity: 1; }
+
+  .highlight-icon {
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .highlight-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.62rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+  }
+
+  .highlight-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .highlight-desc {
+    font-size: 0.85rem;
+    color: var(--washed);
+    line-height: 1.8;
+  }
+
+  /* ============ 经典语录 ============ */
+  .quotes-section {
+    padding: 100px 30px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .quote-block {
+    text-align: center;
+    padding: 48px 30px;
+    position: relative;
+  }
+
+  .quote-block::before {
+    content: '❝';
+    font-family: 'Noto Serif SC', serif;
+    font-size: 3.5rem;
+    color: var(--gold);
+    opacity: 0.25;
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .quote-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  .quote-film {
+    font-size: 0.72rem;
+    color: var(--gold-dim);
+    margin-top: 20px;
+    letter-spacing: 0.2em;
+  }
+
+  /* ============ 为何值得看 ============ */
+  .why-section {
+    padding: 100px 30px;
+    background: var(--ivory);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .why-card {
+    background: var(--cream);
+    border: 1px solid rgba(212,168,67,0.1);
+    padding: 32px 24px;
+    text-align: center;
+    transition: transform 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .why-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+
+  .why-card:hover { transform: translateY(-4px); }
+
+  .why-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+
+  .why-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .why-desc {
+    font-size: 0.82rem;
+    color: var(--washed);
+    line-height: 1.8;
+  }
+
+  /* ============ 荣誉标签 ============ */
+  .honors-section {
+    padding: 60px 30px;
+    text-align: center;
+  }
+
+  .honors-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 32px;
+  }
+
+  .honor-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--gold-dim);
+    border: 1px solid rgba(212,168,67,0.25);
+    padding: 8px 20px;
+    background: rgba(212,168,67,0.03);
+  }
+
+  /* ============ 影片档案 ============ */
+  .archive-section {
+    padding: 100px 30px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .archive-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+  }
+
+  .archive-table tr {
+    border-bottom: 1px solid rgba(212,168,67,0.1);
+  }
+
+  .archive-table tr:last-child { border-bottom: none; }
+
+  .archive-table td {
+    padding: 16px 8px;
+    font-size: 0.88rem;
+    vertical-align: top;
+  }
+
+  .archive-table td:first-child {
+    color: var(--gold-dim);
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 700;
+    width: 110px;
+    letter-spacing: 0.1em;
+  }
+
+  .archive-table td:last-child {
+    color: var(--text);
+  }
+
+  /* ============ 编辑评语 ============ */
+  .review-section {
+    padding: 80px 30px 100px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--night);
+    color: var(--cream);
+  }
+
+  .review-stars {
+    font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 24px;
+  }
+
+  .review-content {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.05rem;
+    color: rgba(250,245,234,0.85);
+    line-height: 2;
+    font-style: italic;
+  }
+
+  .review-author {
+    margin-top: 28px;
+    font-size: 0.72rem;
+    color: var(--washed);
+    letter-spacing: 0.2em;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    text-align: center;
+    padding: 48px 30px;
+    border-top: 1px solid rgba(212,168,67,0.1);
+    font-size: 0.68rem;
+    color: var(--washed);
+    letter-spacing: 0.2em;
+    background: var(--night);
+  }
+
+  /* ============ 滚动揭示 ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============ 动画 ============ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes projectorGlow {
+    0%, 100% { filter: drop-shadow(0 0 8px rgba(212,168,67,0.2)); }
+    50% { filter: drop-shadow(0 0 16px rgba(212,168,67,0.4)); }
+  }
+
+  .hero-projector svg {
+    animation: projectorGlow 3s ease-in-out infinite;
+  }
+
+  /* ============ 响应式 ============ */
+  @media (max-width: 600px) {
+    .scores-grid { grid-template-columns: repeat(2, 1fr); }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .hero { padding: 40px 20px; }
+    .hero::before { inset: 12px; }
+    .poster-card { padding: 32px 20px; min-height: 240px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 胶片光尘 Canvas -->
+<canvas id="cinema-canvas"></canvas>
+
+<div class="content-wrap">
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="light-beam"></div>
+  <div class="hero-badge">Giuseppe Tornatore &middot; 朱塞佩·托纳多雷</div>
+  <div class="hero-year">1988</div>
+  <h1 class="hero-title">天堂电影院</h1>
+  <div class="hero-title-sub">Cinema Paradiso &middot; Nuovo Cinema Paradiso</div>
+  <div class="hero-tagline">「生活不像电影，生活……比电影难多了。」</div>
+  <div class="hero-meta">
+    <span>朱塞佩·托纳多雷 执导</span>
+    <span class="sep">|</span>
+    <span>意大利 / 法国</span>
+    <span class="sep">|</span>
+    <span>155 分钟</span>
+    <span class="sep">|</span>
+    <span>埃尼奥·莫里康内 配乐</span>
+  </div>
+  <div class="hero-projector">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- 放映机简笔 -->
+      <rect x="20" y="30" width="30" height="22" rx="3" stroke="#d4a843" stroke-width="1.5" fill="none"/>
+      <circle cx="35" cy="41" r="6" stroke="#d4a843" stroke-width="1" fill="none"/>
+      <circle cx="35" cy="41" r="2.5" fill="#d4a843" opacity="0.3"/>
+      <!-- 镜头 -->
+      <path d="M50 36 L65 30 L65 52 L50 46" stroke="#d4a843" stroke-width="1.2" fill="none"/>
+      <!-- 光束 -->
+      <path d="M65 30 L80 20 L80 62 L65 52" stroke="#d4a843" stroke-width="0.8" fill="rgba(212,168,67,0.05)"/>
+      <!-- 胶片卷 -->
+      <circle cx="18" cy="26" r="8" stroke="#d4a843" stroke-width="1" fill="none"/>
+      <circle cx="18" cy="26" r="2" fill="#d4a843" opacity="0.2"/>
+      <!-- 脚架 -->
+      <line x1="25" y1="52" x2="20" y2="68" stroke="#d4a843" stroke-width="1" opacity="0.5"/>
+      <line x1="45" y1="52" x2="50" y2="68" stroke="#d4a843" stroke-width="1" opacity="0.5"/>
+      <line x1="35" y1="52" x2="35" y2="68" stroke="#d4a843" stroke-width="1" opacity="0.5"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ==================== 评分 ==================== -->
+<section class="scores-section">
+  <div class="section-label">Critics &amp; Audience</div>
+  <div class="scores-grid">
+    <div class="score-card">
+      <div class="score-source">IMDb</div>
+      <div class="score-number"><span class="star">8.5</span></div>
+      <div class="score-bar-track"><div class="score-bar-fill" data-width="85"></div></div>
+    </div>
+    <div class="score-card">
+      <div class="score-source">豆瓣</div>
+      <div class="score-number"><span class="star">9.2</span></div>
+      <div class="score-bar-track"><div class="score-bar-fill" data-width="92"></div></div>
+    </div>
+    <div class="score-card">
+      <div class="score-source">烂番茄</div>
+      <div class="score-number"><span class="star">90%</span></div>
+      <div class="score-bar-track"><div class="score-bar-fill" data-width="90"></div></div>
+    </div>
+    <div class="score-card">
+      <div class="score-source">奥斯卡</div>
+      <div class="score-number" style="font-size:1.3rem;"><span class="star">最佳外语片</span></div>
+      <div style="font-size:0.7rem;color:var(--gold-dim);margin-top:10px;">第62届 · 1990年</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 剧情梗概 ==================== -->
+<section class="plot-section">
+  <div class="reveal">
+    <h2 class="section-title">剧情梗概</h2>
+    <p class="section-intro">一座小镇，一间影院，一个男孩与一位老人之间关于电影与成长的永恒故事</p>
+  </div>
+
+  <div class="plot-text reveal">
+    <p>意大利南部西西里岛的小镇姜卡尔多，战后百废待兴。镇上唯一的娱乐场所——「天堂电影院」，是所有人精神的避风港。那里播放着被审查官剪掉吻戏的电影，人们在黑暗中欢笑、哭泣、相爱，仿佛一切生活的苦涩都可以被银幕上的光暂时照亮。</p>
+
+    <p>小男孩萨尔瓦多（昵称多多）自幼痴迷电影。他常常溜进放映室，看放映员阿尔弗雷多操纵那台巨大的放映机，将一束光投进黑暗中，变出整个世界。阿尔弗雷多是个没有受过多少教育的老人，他常说自己「只会放电影」，却把毕生的温柔与智慧都给了这个执着的小男孩。</p>
+
+    <p>多多渐渐长大，从偷学放映技术到自己拿起摄影机拍摄生活。他开始尝试拍电影，也第一次在镜头背后遇见了让他心动的女孩。青春的爱恋如西西里的海风般炽热，却也不可避免地撞上了命运的拐角……</p>
+
+    <p>多年以后，功成名就的多多在罗马收到一封电报：阿尔弗雷多去世了。他回到阔别三十年的小镇，回到那座已经废弃的「天堂电影院」。在放映室的角落里，阿尔弗雷多给他留下了最后一样东西——一段由所有被剪掉的吻戏拼接而成的影片……</p>
+  </div>
+
+  <div class="film-divider"><span>○ ○ ○</span></div>
+
+  <div class="info-card reveal">
+    <p><strong>无剧透提示：</strong>本片有两个版本：155分钟的国际版和174分钟的导演加长版。国际版叙事更为精炼，情感冲击力更强；加长版补充了多多成年后的爱情线索，使故事更加完整。无论选择哪个版本，请务必看到最后一分钟——那个被影史无数次致敬的结尾，值得你亲身体验。</p>
+  </div>
+</section>
+
+<!-- ==================== 海报卡 ==================== -->
+<section class="poster-card reveal">
+  <svg class="poster-svg" viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;">
+    <!-- 放映机光束 -->
+    <defs>
+      <radialGradient id="screenGlow" cx="50%" cy="30%" r="60%">
+        <stop offset="0%" stop-color="#d4a843" stop-opacity="0.15"/>
+        <stop offset="100%" stop-color="#d4a843" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#d4a843" stop-opacity="0.3"/>
+        <stop offset="100%" stop-color="#d4a843" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <!-- 光束 -->
+    <polygon points="80,80 220,20 300,40 300,220 220,240 80,180" fill="url(#beamGrad)"/>
+    <polygon points="100,90 200,50 280,60 280,200 200,210 100,170" fill="url(#screenGlow)"/>
+    <!-- 银幕 -->
+    <rect x="130" y="50" width="140" height="100" rx="3" stroke="#d4a843" stroke-width="1" fill="rgba(212,168,67,0.03)" opacity="0.6"/>
+    <!-- 银幕上的两人剪影（多多与阿尔弗雷多） -->
+    <ellipse cx="175" cy="140" rx="12" ry="14" fill="#d4a843" opacity="0.2"/>
+    <rect x="169" y="154" width="12" height="18" rx="3" fill="#d4a843" opacity="0.15"/>
+    <ellipse cx="220" cy="142" rx="10" ry="12" fill="#d4a843" opacity="0.2"/>
+    <rect x="215" y="154" width="10" height="16" rx="2" fill="#d4a843" opacity="0.15"/>
+    <!-- 男孩的小手 -->
+    <circle cx="185" cy="168" r="3" fill="#d4a843" opacity="0.25"/>
+    <!-- 放映机 -->
+    <rect x="30" y="140" width="50" height="35" rx="4" stroke="#d4a843" stroke-width="1" fill="none" opacity="0.5"/>
+    <circle cx="55" cy="157" r="10" stroke="#d4a843" stroke-width="0.8" fill="none" opacity="0.4"/>
+    <circle cx="55" cy="157" r="4" fill="#d4a843" opacity="0.15"/>
+    <!-- 镜头 -->
+    <path d="M80 150 L105 135 M80 164 L105 179" stroke="#d4a843" stroke-width="0.8" opacity="0.5"/>
+    <!-- 电影院轮廓 -->
+    <line x1="120" y1="160" x2="280" y2="160" stroke="#d4a843" stroke-width="0.5" opacity="0.2"/>
+    <rect x="110" y="48" width="180" height="112" rx="5" stroke="#d4a843" stroke-width="0.5" fill="none" opacity="0.15"/>
+    <!-- 座椅（简化） -->
+    <rect x="140" y="180" width="16" height="12" rx="2" stroke="#8b1a1a" stroke-width="0.6" fill="none" opacity="0.3"/>
+    <rect x="165" y="180" width="16" height="12" rx="2" stroke="#8b1a1a" stroke-width="0.6" fill="none" opacity="0.3"/>
+    <rect x="190" y="180" width="16" height="12" rx="2" stroke="#8b1a1a" stroke-width="0.6" fill="none" opacity="0.3"/>
+    <rect x="215" y="180" width="16" height="12" rx="2" stroke="#8b1a1a" stroke-width="0.6" fill="none" opacity="0.3"/>
+    <rect x="240" y="180" width="16" height="12" rx="2" stroke="#8b1a1a" stroke-width="0.6" fill="none" opacity="0.3"/>
+    <!-- 红色天鹅绒幕布 -->
+    <path d="M115 48 Q125 100 115 160" stroke="#8b1a1a" stroke-width="2" fill="none" opacity="0.2"/>
+    <path d="M285 48 Q275 100 285 160" stroke="#8b1a1a" stroke-width="2" fill="none" opacity="0.2"/>
+    <!-- 天堂电影院字样 -->
+    <text x="200" y="230" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="14" fill="#d4a843" opacity="0.5" letter-spacing="0.3em">CINEMA PARADISO</text>
+    <text x="200" y="248" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="10" fill="#d4a843" opacity="0.3" letter-spacing="0.2em">天 堂 电 影 院</text>
+  </svg>
+</section>
+
+<!-- ==================== 亮点 ==================== -->
+<section class="highlights-section">
+  <div class="section-label" style="text-align:center;">Highlights</div>
+  <h2 class="section-title" style="text-align:center;display:block;">六大亮点</h2>
+  <p class="hl-sub">为什么它是全世界影迷心中的「写给电影的情书」</p>
+
+  <div class="highlights-grid">
+
+    <div class="highlight-card">
+      <span class="highlight-icon">🎬</span>
+      <div class="highlight-num">01</div>
+      <div class="highlight-title">写给电影的情书</div>
+      <div class="highlight-desc">这不仅仅是一部关于电影的电影——它是对电影本身最深沉的告白。从胶片燃烧的瞬间到放映机投射出光的刹那，托纳多雷用影像诉说影像的力量：电影可以改变一个人的一生，而那个人，就是曾经坐在黑暗中仰望银幕的每一个人。</div>
+    </div>
+
+    <div class="highlight-card">
+      <span class="highlight-icon">🎵</span>
+      <div class="highlight-num">02</div>
+      <div class="highlight-title">莫里康内的不朽旋律</div>
+      <div class="highlight-desc">埃尼奥·莫里康内的配乐被誉为影史最伟大的电影音乐之一。那段主题旋律，在多多离开小镇时响起、在阿尔弗雷多去世后响起、在那个最后的吻戏集锦中响起——每一次都像一把温柔的刀，精准地剖开观众的心。你不需要看过电影，只需听一次这段旋律，就会理解什么叫「音乐即叙事」。</div>
+    </div>
+
+    <div class="highlight-card">
+      <span class="highlight-icon">👴</span>
+      <div class="highlight-num">03</div>
+      <div class="highlight-title">影史最动人的忘年交</div>
+      <div class="highlight-desc">阿尔弗雷多与多多之间的关系，超越了师生、超越了父子。阿尔弗雷多用放映机教会多多看世界，又用最残忍的方式逼他离开小镇——因为他知道，留下来的天才只会腐烂。那个火车站的告别场景，没有煽情的配乐轰炸，只有老人颤抖的嘴唇和一双含泪的眼睛，却足以让全世界观众崩溃。</div>
+    </div>
+
+    <div class="highlight-card">
+      <span class="highlight-icon">💋</span>
+      <div class="highlight-num">04</div>
+      <div class="highlight-title">影史最伟大的结尾之一</div>
+      <div class="highlight-desc">最后那三分钟的吻戏集锦，被无数影评人列为「影史最催泪的结尾」。阿尔弗雷多把一生中被审查官剪掉的所有吻戏拼接在一起，留给成年后的多多。当那些黑白画面在银幕上一一闪过，观众才真正理解了阿尔弗雷多说的那句话——「不管最后怎样，你都要热爱生活。」这不是怀旧，这是一个老人用尽一生守护的温柔。</div>
+    </div>
+
+    <div class="highlight-card">
+      <span class="highlight-icon">🇮🇹</span>
+      <div class="highlight-num">05</div>
+      <div class="highlight-title">西西里岛的时光琥珀</div>
+      <div class="highlight-desc">托纳多雷的镜头下，西西里岛不是风景明信片，而是浸透了汗水与海盐的生活本身。广场上追逐的孩童、电影院里嗑瓜子的老人、放映室里弥漫的胶片药水味……每一个细节都是真实的、粗粝的、带着体温的。这不是一个被美化的回忆，而是一个被深情凝视的故乡。</div>
+    </div>
+
+    <div class="highlight-card">
+      <span class="highlight-icon">💫</span>
+      <div class="highlight-num">06</div>
+      <div class="highlight-title">关于选择与牺牲的哲学</div>
+      <div class="highlight-desc">阿尔弗雷多给多多讲过一个故事：一个士兵在公主的窗下等了一百天，第九十九天离开了。「为什么？」——因为如果第一百天公主没有打开窗户，他会承受不住。这不是关于爱情的故事，而是关于人生中最难的课题：知道什么时候该留下，什么时候该放手。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== 经典语录 ==================== -->
+<section class="quotes-section">
+  <div class="quote-block reveal">
+    <div class="quote-text">
+      「生活不像电影，生活……比电影难多了。」
+    </div>
+    <div class="quote-film">—— 阿尔弗雷多，《天堂电影院》</div>
+  </div>
+
+  <div class="film-divider"><span>○ ○ ○</span></div>
+
+  <div class="quote-block reveal" style="margin-top:40px;">
+    <div class="quote-text" style="font-size:1.1rem;">
+      「不要回头，不要回来。我不要你来看我，<br>我要听别人谈论你。」
+    </div>
+    <div class="quote-film">—— 阿尔弗雷多，火车站告别</div>
+  </div>
+</section>
+
+<!-- ==================== 为何值得看 ==================== -->
+<section class="why-section">
+  <div class="section-label" style="text-align:center;">Why Watch</div>
+  <h2 class="section-title" style="text-align:center;display:block;">为什么值得一看</h2>
+
+  <div class="why-grid" style="margin-top:48px;">
+
+    <div class="why-card">
+      <span class="why-icon">🏆</span>
+      <div class="why-title">奥斯卡最佳外语片</div>
+      <div class="why-desc">第62届奥斯卡最佳外语片，戛纳电影节评审团大奖，金球奖最佳外语片——全球三大奖项一致认可。</div>
+    </div>
+
+    <div class="why-card">
+      <span class="why-icon">❤️</span>
+      <div class="why-title">看一次哭一次</div>
+      <div class="why-desc">不是那种刻意煽情的哭，而是被温柔击中后的泪流满面。结尾三分钟足以让最硬的心肠融化。</div>
+    </div>
+
+    <div class="why-card">
+      <span class="why-icon">🎞️</span>
+      <div class="why-title">影迷必看的元电影</div>
+      <div class="why-desc">如果你热爱电影，这是你不可错过的作品——它解释了为什么我们坐在黑暗中，仰望一块白色幕布。</div>
+    </div>
+
+    <div class="why-card">
+      <span class="why-icon">🌿</span>
+      <div class="why-title">关于人生的选择</div>
+      <div class="why-desc">阿尔弗雷多教会多多最重要的道理：有时候离开才是最大的爱。这不仅是电影课，更是人生课。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== 荣誉 ==================== -->
+<section class="honors-section">
+  <div class="section-label">Honors</div>
+  <div class="honors-list">
+    <span class="honor-tag">🇺🇸 奥斯卡最佳外语片</span>
+    <span class="honor-tag">🇫🇷 戛纳电影节评审团大奖</span>
+    <span class="honor-tag">🇺🇸 金球奖最佳外语片</span>
+    <span class="honor-tag">🇬🇧 BAFTA最佳非英语片</span>
+    <span class="honor-tag">🇮🇹 大卫奖特别奖</span>
+    <span class="honor-tag">IMDb Top 250</span>
+    <span class="honor-tag">豆瓣 Top 250</span>
+  </div>
+</section>
+
+<!-- ==================== 影片档案 ==================== -->
+<section class="archive-section">
+  <div class="reveal">
+    <h2 class="section-title">影片档案</h2>
+  </div>
+
+  <table class="archive-table reveal">
+    <tr><td>导演</td><td>朱塞佩·托纳多雷（Giuseppe Tornatore）</td></tr>
+    <tr><td>上映年份</td><td>1988年（意大利）</td></tr>
+    <tr><td>片长</td><td>155 分钟（国际版）/ 174 分钟（导演加长版）</td></tr>
+    <tr><td>类型</td><td>剧情 / 爱情</td></tr>
+    <tr><td>制片国家</td><td>意大利 / 法国</td></tr>
+    <tr><td>语言</td><td>意大利语 / 英语</td></tr>
+    <tr><td>主演</td><td>菲利浦·诺瓦雷（阿尔弗雷多）、萨瓦特利·卡西欧（小多多）、马可·莱奥纳尔迪（青年多多）</td></tr>
+    <tr><td>编剧</td><td>朱塞佩·托纳多雷</td></tr>
+    <tr><td>配乐</td><td>埃尼奥·莫里康内（Ennio Morricone）</td></tr>
+    <tr><td>制片公司</td><td>Rai / Les Films Ariane / TF1 Films Production</td></tr>
+    <tr><td>荣誉</td><td>奥斯卡最佳外语片、戛纳评审团大奖、金球奖最佳外语片、BAFTA最佳非英语片、意大利大卫奖特别奖</td></tr>
+    <tr><td>影响作品</td><td>《艺术家》（2011）、《雨果》（2011）、《罗马》（2018）等多部向其致敬的影片</td></tr>
+  </table>
+</section>
+
+<!-- ==================== 编辑评语 ==================== -->
+<section class="review-section">
+  <div class="review-stars">★★★★★</div>
+  <div class="review-content">
+    《天堂电影院》是那种你看完之后会沉默很久的电影。它关于电影，关于成长，关于离别，关于那些我们再也回不去的地方。阿尔弗雷多说「生活不像电影」——但这部电影本身，却让我们相信：哪怕生活再难，只要还有一束光投向银幕，就还有值得等待的东西。最后那三分钟的吻戏集锦，不是怀旧，而是一个老人把全世界所有温柔都留给你的方式。这是写给电影最动人的情书，也是写给人生最深情的注脚。
+  </div>
+  <div class="review-author">— WorkBuddy 电影推荐 · 2026.05.26</div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <p>天堂电影院 &middot; Cinema Paradiso &middot; Nuovo Cinema Paradiso</p>
+  <p style="margin-top:8px;">每日经典推荐 &middot; WorkBuddy 自动生成 &middot; 2026.05.26</p>
+</footer>
+
+</div><!-- /content-wrap -->
+
+<script>
+/* ============ 放映机光尘粒子动画 ============ */
+const canvas = document.getElementById('cinema-canvas');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const particles = [];
+const PARTICLE_COUNT = 50;
+
+class LightParticle {
+  constructor() { this.reset(); }
+
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 2.5 + 0.5;
+    this.speedX = (Math.random() - 0.5) * 0.25;
+    this.speedY = (Math.random() - 0.5) * 0.15 - 0.1;
+    this.opacity = Math.random() * 0.2 + 0.03;
+    this.fadeSpeed = Math.random() * 0.003 + 0.001;
+    this.growing = Math.random() > 0.4;
+    this.hue = Math.random() > 0.7 ? 38 : 30; // 暖金色调
+    this.wobble = Math.random() * Math.PI * 2;
+    this.wobbleSpeed = Math.random() * 0.02 + 0.005;
+  }
+
+  update() {
+    this.wobble += this.wobbleSpeed;
+    this.x += this.speedX + Math.sin(this.wobble) * 0.15;
+    this.y += this.speedY;
+
+    if (this.growing) {
+      this.opacity += this.fadeSpeed;
+      if (this.opacity >= 0.25) this.growing = false;
+    } else {
+      this.opacity -= this.fadeSpeed;
+      if (this.opacity <= 0.02) this.reset();
+    }
+
+    if (this.x < -20 || this.x > canvas.width + 20 ||
+        this.y < -20 || this.y > canvas.height + 20) {
+      this.reset();
+    }
+  }
+
+  draw() {
+    // 核心亮点
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `hsla(${this.hue}, 65%, 60%, ${this.opacity})`;
+    ctx.fill();
+
+    // 柔光晕染
+    if (this.size > 1.2) {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${this.hue}, 60%, 55%, ${this.opacity * 0.15})`;
+      ctx.fill();
+    }
+  }
+}
+
+for (let i = 0; i < PARTICLE_COUNT; i++) {
+  particles.push(new LightParticle());
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+/* ============ 评分条动画 ============ */
+const scoreObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const fills = entry.target.querySelectorAll('.score-bar-fill');
+      fills.forEach(fill => {
+        const w = fill.getAttribute('data-width');
+        setTimeout(() => { fill.style.width = w + '%'; }, 200);
+      });
+      scoreObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.scores-section').forEach(s => scoreObserver.observe(s));
+
+/* ============ 滚动揭示 ============ */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal, .highlight-card, .why-card').forEach(el => {
+  revealObserver.observe(el);
+});
+</script>
+
+</body>
+</html>

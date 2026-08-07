@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天使爱美丽 · Amélie · 每日经典电影推荐</title>
+<style>
+/* ===== Reset & Base ===== */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "Georgia", serif;
+  background: #0d0d0d;
+  color: #e8e0d0;
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* ===== Canvas Background ===== */
+#particle-canvas {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  z-index:0; pointer-events:none;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:#0d0d0d; }
+::-webkit-scrollbar-thumb { background:#b53b3b; border-radius:3px; }
+
+/* ===== Sections Container ===== */
+section { position:relative; z-index:1; }
+
+/* ===== Hero ===== */
+.hero {
+  min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+  padding:2rem 1.5rem; text-align:center;
+  position:relative; overflow:hidden;
+}
+.hero::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(181,59,59,0.15), transparent 70%),
+              radial-gradient(ellipse at 70% 80%, rgba(45,120,60,0.1), transparent 60%);
+  z-index:0;
+}
+.hero-year {
+  font-size:clamp(6rem,20vw,16rem); font-weight:900;
+  color:rgba(181,59,59,0.08); position:absolute; top:5%; left:50%;
+  transform:translateX(-50%); letter-spacing:0.05em;
+  font-family:"Arial Black","Impact",sans-serif;
+  user-select:none; z-index:0;
+}
+.hero-badge {
+  display:inline-block; padding:0.4rem 1.2rem;
+  font-size:0.75rem; letter-spacing:0.3em; text-transform:uppercase;
+  border:1px solid rgba(181,59,59,0.5); color:#b53b3b;
+  background:rgba(181,59,59,0.08); margin-bottom:1.5rem;
+  position:relative; z-index:1;
+  backdrop-filter:blur(4px);
+}
+.hero h1 {
+  font-size:clamp(2.2rem,6vw,5rem); font-weight:700;
+  color:#f0e6d0; position:relative; z-index:1;
+  text-shadow:0 0 60px rgba(181,59,59,0.2);
+  margin-bottom:0.4rem;
+}
+.hero h1 .en {
+  display:block; font-size:clamp(0.9rem,1.8vw,1.6rem);
+  font-weight:400; color:#b53b3b; letter-spacing:0.15em;
+  margin-top:0.3rem; font-family:"Georgia",serif; font-style:italic;
+}
+.hero-sub {
+  font-size:clamp(0.85rem,1.3vw,1.1rem); color:#a09880;
+  margin-top:1.2rem; letter-spacing:0.1em; position:relative; z-index:1;
+}
+.hero-sub span { display:inline-block; margin:0 0.6rem; }
+.hero-tagline {
+  font-size:clamp(1rem,2vw,1.5rem); color:#d4c8a8;
+  font-style:italic; margin-top:2rem; position:relative; z-index:1;
+  max-width:680px; opacity:0.85;
+}
+.hero-tagline::before, .hero-tagline::after {
+  content:'"'; color:#b53b3b; font-style:normal;
+}
+.scroll-indicator {
+  position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:0.5rem;
+  color:#6a6050; font-size:0.7rem; letter-spacing:0.15em; z-index:1;
+  animation:bounce 2s ease-in-out infinite;
+}
+.scroll-indicator .arrow { width:1px; height:40px; background:linear-gradient(to bottom,#6a6050,transparent); }
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+/* ===== SVG Poster Section ===== */
+.poster-section {
+  padding:4rem 1.5rem; max-width:1100px; margin:0 auto;
+  display:flex; flex-direction:column; align-items:center;
+}
+.poster-svg-container {
+  width:100%; max-width:520px; margin-bottom:2rem;
+}
+.poster-svg-container svg { width:100%; height:auto; }
+
+/* ===== Section Titles ===== */
+.section-title {
+  text-align:center; margin-bottom:3rem; position:relative;
+}
+.section-title h2 {
+  font-size:clamp(1.6rem,3vw,2.4rem); font-weight:600; color:#f0e6d0;
+}
+.section-title .line {
+  width:50px; height:2px; background:linear-gradient(90deg,transparent,#b53b3b,transparent);
+  margin:0.8rem auto 0;
+}
+
+/* ===== Ratings ===== */
+.ratings {
+  padding:3rem 1.5rem 5rem; max-width:960px; margin:0 auto;
+}
+.ratings-grid {
+  display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem;
+}
+@media(min-width:600px){ .ratings-grid{grid-template-columns:repeat(4,1fr);} }
+.rating-item {
+  text-align:center; padding:1.5rem 0.8rem;
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
+  border-radius:8px; transition:all 0.4s ease;
+  opacity:0; transform:translateY(30px);
+}
+.rating-item.visible { opacity:1; transform:translateY(0); }
+.rating-item:hover { border-color:rgba(181,59,59,0.3); background:rgba(181,59,59,0.05); }
+.rating-source { font-size:0.75rem; color:#6a6050; letter-spacing:0.1em; margin-bottom:0.5rem; }
+.rating-score { font-size:clamp(1.8rem,3vw,2.4rem); font-weight:700; color:#b53b3b; }
+.rating-bar {
+  width:100%; height:3px; background:rgba(255,255,255,0.08); border-radius:2px;
+  margin-top:0.6rem; overflow:hidden;
+}
+.rating-fill {
+  height:100%; background:linear-gradient(90deg,#b53b3b,#d4743a); border-radius:2px;
+  width:0%; transition:width 1.5s cubic-bezier(0.22,1,0.36,1);
+}
+
+/* ===== Synopsis ===== */
+.synopsis {
+  padding:4rem 1.5rem 5rem; max-width:860px; margin:0 auto;
+}
+.synopsis p {
+  font-size:clamp(0.95rem,1.2vw,1.1rem); color:#c8c0b0;
+  text-indent:2em; margin-bottom:1.2rem;
+}
+
+/* ===== Director Card ===== */
+.director-card {
+  display:flex; align-items:center; gap:1.2rem;
+  margin-top:2rem; padding:1.2rem 1.5rem;
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
+  border-radius:8px; max-width:460px;
+}
+.director-avatar {
+  width:56px; height:56px; border-radius:50%;
+  background:linear-gradient(135deg,#b53b3b,#d4743a);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem; color:#fff; flex-shrink:0;
+}
+.director-info h4 { font-size:0.9rem; color:#f0e6d0; }
+.director-info p { font-size:0.8rem; color:#6a6050; text-indent:0; }
+
+/* ===== Highlights ===== */
+.highlights {
+  padding:5rem 1.5rem; max-width:1100px; margin:0 auto;
+}
+.highlights-grid {
+  display:grid; grid-template-columns:1fr; gap:1.2rem;
+}
+@media(min-width:600px){ .highlights-grid{grid-template-columns:repeat(2,1fr);} }
+@media(min-width:900px){ .highlights-grid{grid-template-columns:repeat(3,1fr);} }
+.highlight-card {
+  padding:2rem 1.5rem; border:1px solid rgba(255,255,255,0.06);
+  border-radius:10px; background:rgba(255,255,255,0.02);
+  transition:all 0.4s ease; cursor:default;
+  opacity:0; transform:translateY(30px);
+}
+.highlight-card.visible { opacity:1; transform:translateY(0); }
+.highlight-card:hover {
+  border-color:rgba(181,59,59,0.25);
+  background:rgba(181,59,59,0.04);
+  transform:translateY(-4px);
+}
+.highlight-icon { font-size:1.8rem; margin-bottom:0.8rem; }
+.highlight-card h3 { font-size:1rem; color:#f0e6d0; margin-bottom:0.6rem; }
+.highlight-card p { font-size:0.85rem; color:#a09880; line-height:1.6; }
+
+/* ===== Quotes ===== */
+.quotes {
+  padding:5rem 1.5rem; max-width:800px; margin:0 auto;
+}
+.quote-block {
+  margin-bottom:2rem; padding:2rem 2rem 1.5rem;
+  border-left:3px solid #b53b3b;
+  background:rgba(181,59,59,0.03);
+  border-radius:0 8px 8px 0;
+  opacity:0; transform:translateY(20px); transition:all 0.6s ease;
+}
+.quote-block.visible { opacity:1; transform:translateY(0); }
+.quote-block .text {
+  font-size:clamp(1rem,1.5vw,1.2rem); font-style:italic;
+  color:#d4c8a8; line-height:1.8;
+}
+.quote-block .from {
+  margin-top:0.8rem; font-size:0.8rem; color:#6a6050;
+}
+
+/* ===== Why Watch ===== */
+.why-watch {
+  padding:5rem 1.5rem; max-width:960px; margin:0 auto;
+}
+.why-list { list-style:none; }
+.why-item {
+  display:flex; gap:1rem; padding:1.2rem 0;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  opacity:0; transform:translateX(-20px); transition:all 0.5s ease;
+}
+.why-item.visible { opacity:1; transform:translateX(0); }
+.why-num {
+  flex-shrink:0; width:28px; height:28px; border-radius:50%;
+  background:linear-gradient(135deg,#b53b3b,#d4743a);
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.75rem; font-weight:700; color:#fff;
+  margin-top:0.2rem;
+}
+.why-item h4 { font-size:0.95rem; color:#f0e6d0; margin-bottom:0.3rem; }
+.why-item p { font-size:0.85rem; color:#a09880; line-height:1.6; }
+
+/* ===== Awards ===== */
+.awards {
+  padding:4rem 1.5rem 5rem; max-width:860px; margin:0 auto;
+}
+.awards-list {
+  display:flex; flex-wrap:wrap; gap:0.8rem; justify-content:center;
+}
+.award-tag {
+  padding:0.5rem 1rem; border:1px solid rgba(181,59,59,0.25);
+  border-radius:20px; font-size:0.75rem; color:#b0a890;
+  background:rgba(181,59,59,0.04);
+  transition:all 0.3s ease;
+}
+.award-tag:hover { border-color:#b53b3b; color:#f0e6d0; background:rgba(181,59,59,0.1); }
+
+/* ===== Film Archive ===== */
+.archive {
+  padding:3rem 1.5rem 4rem; max-width:700px; margin:0 auto;
+}
+.archive-table {
+  width:100%; border-collapse:collapse;
+}
+.archive-table tr { border-bottom:1px solid rgba(255,255,255,0.06); }
+.archive-table td {
+  padding:0.7rem 0.5rem; font-size:0.85rem;
+}
+.archive-table td:first-child { color:#6a6050; width:35%; letter-spacing:0.05em; }
+.archive-table td:last-child { color:#c8c0b0; }
+
+/* ===== Final Verdict ===== */
+.final-verdict {
+  padding:4rem 1.5rem 5rem; text-align:center; max-width:700px; margin:0 auto;
+}
+.final-verdict .stars {
+  font-size:2rem; color:#d4743a; letter-spacing:0.3em;
+  margin-bottom:1rem;
+}
+.final-verdict blockquote {
+  font-size:clamp(1rem,1.8vw,1.3rem); font-style:italic;
+  color:#c8b898; line-height:1.8; max-width:600px; margin:0 auto;
+}
+
+/* ===== Footer ===== */
+.footer {
+  padding:2rem; text-align:center; color:#4a4030;
+  font-size:0.75rem; letter-spacing:0.05em; border-top:1px solid rgba(255,255,255,0.04);
+}
+
+/* ===== Responsive ===== */
+@media(max-width:480px){
+  .rating-item { padding:1rem 0.5rem; }
+  .quote-block { padding:1.5rem 1.2rem 1rem; }
+}
+
+/* ===== Reveal Classes ===== */
+.reveal { opacity:0; transform:translateY(30px); transition:all 0.7s cubic-bezier(0.22,1,0.36,1); }
+.reveal.visible { opacity:1; transform:translateY(0); }
+.reveal-delay-1 { transition-delay:0.1s; }
+.reveal-delay-2 { transition-delay:0.2s; }
+.reveal-delay-3 { transition-delay:0.3s; }
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-year">2001</div>
+  <div class="hero-badge">2001 · France · Germany</div>
+  <h1>
+    天使爱美丽
+    <span class="en">Le Fabuleux Destin d'Amélie Poulain</span>
+  </h1>
+  <div class="hero-sub">
+    <span>让-皮埃尔·热内</span>
+    <span>·</span>
+    <span>让-皮埃尔·热内 / 吉罗姆·洛朗</span>
+  </div>
+  <div class="hero-tagline">
+    Sans toi, mon cher petit, je serais une âme errante.
+    <br><span style="font-size:0.8em;color:#6a6050;">没有你，我亲爱的，我将只是一个迷途的灵魂。</span>
+  </div>
+  <div class="scroll-indicator">
+    <span>SCROLL</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- ===== SVG POSTER ===== -->
+<section class="poster-section">
+  <div class="poster-svg-container">
+    <svg viewBox="0 0 400 560" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background -->
+      <rect width="400" height="560" fill="#1a1815" rx="6"/>
+
+      <!-- Subtle vignette -->
+      <rect width="400" height="560" fill="url(#vignette)" rx="6"/>
+      <defs>
+        <radialGradient id="vignette" cx="50%" cy="45%" r="60%">
+          <stop offset="0%" stop-color="transparent"/>
+          <stop offset="100%" stop-color="rgba(0,0,0,0.5)"/>
+        </radialGradient>
+        <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2d3a2d"/>
+          <stop offset="100%" stop-color="#1a2420"/>
+        </linearGradient>
+        <linearGradient id="warmGlow" x1="0.3" y1="0.3" x2="0.7" y2="0.7">
+          <stop offset="0%" stop-color="#d4743a"/>
+          <stop offset="100%" stop-color="#b53b3b"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Montmartre skyline silhouette -->
+      <path d="M0 380 L25 360 L55 370 L80 340 L110 355 L135 330 L160 345 L185 320 L210 335 L235 310 L260 325 L280 300 L310 320 L340 310 L360 330 L380 315 L400 340 L400 560 L0 560 Z" fill="rgba(0,0,0,0.6)"/>
+
+      <!-- Sacré-Cœur silhouette -->
+      <path d="M290 310 L295 270 L300 255 L305 250 L310 255 L315 250 L320 255 L325 270 L330 310 Z" fill="#0d0d0d"/>
+      <rect x="298" y="310" width="24" height="15" fill="#0d0d0d" rx="2"/>
+
+      <!-- Warm glow behind building -->
+      <ellipse cx="200" cy="340" rx="180" ry="60" fill="url(#warmGlow)" opacity="0.08"/>
+
+      <!-- Windows - scattered golden lights -->
+      <g fill="#d4743a" opacity="0.3">
+        <rect x="40" y="365" width="4" height="5" rx="1"/>
+        <rect x="70" y="355" width="4" height="5" rx="1"/>
+        <rect x="100" y="370" width="4" height="5" rx="1"/>
+        <rect x="130" y="350" width="4" height="5" rx="1"/>
+        <rect x="165" y="345" width="4" height="5" rx="1"/>
+        <rect x="220" y="335" width="4" height="5" rx="1"/>
+        <rect x="250" y="350" width="4" height="5" rx="1"/>
+        <rect x="310" y="345" width="4" height="5" rx="1"/>
+        <rect x="350" y="350" width="4" height="5" rx="1"/>
+      </g>
+
+      <!-- Amélie silhouette - central figure -->
+      <g transform="translate(200,240)">
+        <!-- Face -->
+        <ellipse cx="0" cy="-40" rx="14" ry="18" fill="#0d0d0d"/>
+        <!-- Body -->
+        <path d="M-16 -25 L-18 50 L18 50 L16 -25 Z" fill="#0d0d0d"/>
+        <!-- Hair -->
+        <ellipse cx="0" cy="-48" rx="16" ry="10" fill="#0d0d0d"/>
+        <path d="M-16 -45 Q-20 -50 -18 -42" fill="#0d0d0d"/>
+        <path d="M16 -45 Q20 -50 18 -42" fill="#0d0d0d"/>
+        <!-- Arms -->
+        <path d="M-16 -15 L-30 10 L-25 12 L-14 -10" fill="#0d0d0d"/>
+        <path d="M16 -15 L30 10 L25 12 L14 -10" fill="#0d0d0d"/>
+        <!-- Dress -->
+        <path d="M-18 50 Q-22 65 -20 75 Q-10 80 0 82 Q10 80 20 75 Q22 65 18 50 Z" fill="#0d0d0d"/>
+      </g>
+
+      <!-- Small photo booth strip (iconic element) -->
+      <g transform="translate(155,190)">
+        <rect x="0" y="0" width="28" height="40" fill="#0d0d0d" rx="2" stroke="#b53b3b" stroke-width="0.5" opacity="0.6"/>
+        <rect x="3" y="4" width="22" height="12" fill="rgba(181,59,59,0.15)" rx="1"/>
+        <rect x="3" y="18" width="22" height="8" fill="rgba(181,59,59,0.1)" rx="1"/>
+        <rect x="3" y="28" width="22" height="8" fill="rgba(181,59,59,0.1)" rx="1"/>
+      </g>
+
+      <!-- Globe / lamp (iconic travel lamp) -->
+      <g transform="translate(250,185)">
+        <ellipse cx="0" cy="0" rx="16" ry="20" fill="none" stroke="#d4743a" stroke-width="0.6" opacity="0.3"/>
+        <ellipse cx="0" cy="0" rx="16" ry="20" fill="rgba(212,116,58,0.06)"/>
+        <path d="M-14 -5 Q0 -12 14 -5" fill="none" stroke="#d4743a" stroke-width="0.4" opacity="0.2"/>
+        <path d="M-16 5 Q0 14 16 5" fill="none" stroke="#d4743a" stroke-width="0.4" opacity="0.2"/>
+      </g>
+
+      <!-- Scattered hearts (subtle) -->
+      <g fill="#b53b3b" opacity="0.12">
+        <path d="M100 280 Q102 276 106 276 Q110 276 112 280 Q114 284 110 287 L106 290 L102 287 Q98 284 100 280 Z"/>
+        <path d="M290 270 Q292 266 296 266 Q300 266 302 270 Q304 274 300 277 L296 280 L292 277 Q288 274 290 270 Z" transform="scale(0.7) translate(120,100)"/>
+        <path d="M340 290 Q342 286 346 286 Q350 286 352 290 Q354 294 350 297 L346 300 L342 297 Q338 294 340 290 Z" transform="scale(0.5) translate(340,280)"/>
+      </g>
+
+      <!-- Title bottom -->
+      <text x="200" y="480" text-anchor="middle" font-size="14" fill="#b53b3b" font-family="Georgia,serif" font-style="italic" opacity="0.6">Le Fabuleux Destin</text>
+      <text x="200" y="500" text-anchor="middle" font-size="11" fill="#6a6050" font-family="Georgia,serif" letter-spacing="3">D'AMÉLIE POULAIN</text>
+
+      <!-- Year -->
+      <text x="200" y="530" text-anchor="middle" font-size="12" fill="#4a4030" font-family="Arial,sans-serif" letter-spacing="5">MMI</text>
+
+      <!-- Border frame -->
+      <rect x="8" y="8" width="384" height="544" fill="none" stroke="rgba(181,59,59,0.12)" stroke-width="0.5" rx="4"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== RATINGS ===== -->
+<section class="ratings">
+  <div class="section-title">
+    <h2>评分 · RATINGS</h2>
+    <div class="line"></div>
+  </div>
+  <div class="ratings-grid">
+    <div class="rating-item" data-score="8.3" data-max="10">
+      <div class="rating-source">IMDb</div>
+      <div class="rating-score">8.3/10</div>
+      <div class="rating-bar"><div class="rating-fill" style="width:0%"></div></div>
+    </div>
+    <div class="rating-item" data-score="8.7" data-max="10">
+      <div class="rating-source">豆瓣 Douban</div>
+      <div class="rating-score">8.7/10</div>
+      <div class="rating-bar"><div class="rating-fill" style="width:0%"></div></div>
+    </div>
+    <div class="rating-item" data-score="96" data-max="100">
+      <div class="rating-source">烂番茄 Rotten Tomatoes</div>
+      <div class="rating-score">96%</div>
+      <div class="rating-bar"><div class="rating-fill" style="width:0%"></div></div>
+    </div>
+    <div class="rating-item" data-score="91" data-max="100">
+      <div class="rating-source">观众爆米花</div>
+      <div class="rating-score">91%</div>
+      <div class="rating-bar"><div class="rating-fill" style="width:0%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SYNOPSIS ===== -->
+<section class="synopsis">
+  <div class="section-title">
+    <h2>剧情梗概 · SYNOPSIS</h2>
+    <div class="line"></div>
+  </div>
+  <p>在巴黎蒙马特的一个角落里，住着一个名叫爱美丽的女孩。她有着与众不同的童年——没有玩伴、没有朋友，于是她学会了在想象力的世界里自得其乐。成年后，爱美丽在"双磨坊"咖啡馆当服务员，每天观察着身边形形色色的人。</p>
+  <p>1997年8月，戴安娜王妃去世的消息让她受到震动。她意外发现了一个藏在墙壁里的旧铁盒——里面装着一个四十年前男孩的"宝藏"。一个简单的念头在她心中萌发：如果她能找到这个铁盒的主人，把快乐还给他，她就从此开始做一件又一件好事——像悄悄改变别人命运的隐形的天使。</p>
+  <p>于是，一场温柔而俏皮的"秘密行动"开始了。她帮盲人引路、捉弄刻薄的杂货店老板、撮合孤独的咖啡馆常客、用匿名信件温暖守门人的心……然而，当她遇到一个同样喜欢收集破碎照片的男孩尼诺时，她发现——帮助别人容易，面对自己的幸福却需要更大的勇气。</p>
+  <div class="director-card">
+    <div class="director-avatar">J</div>
+    <div class="director-info">
+      <h4>让-皮埃尔·热内 · Jean-Pierre Jeunet</h4>
+      <p>导演 · 编剧 | 法国诗意现实主义大师</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUOTES ===== -->
+<section class="quotes">
+  <div class="section-title">
+    <h2>经典台词 · QUOTES</h2>
+    <div class="line"></div>
+  </div>
+  <div class="quote-block">
+    <div class="text">"生命的答案，也许就在那些微不足道的细节里——比如敲打硬蛋壳的声音，比如在运河上打水漂的声音。"</div>
+    <div class="from">—— 电影旁白</div>
+  </div>
+  <div class="quote-block">
+    <div class="text">"你不必成为别人，做你自己就好。因为——这个世界缺少的就是那个古怪、敏感、与众不同的你。"</div>
+    <div class="from">—— 爱美丽的内心独白</div>
+  </div>
+</section>
+
+<!-- ===== HIGHLIGHTS ===== -->
+<section class="highlights">
+  <div class="section-title">
+    <h2>六大亮点 · HIGHLIGHTS</h2>
+    <div class="line"></div>
+  </div>
+  <div class="highlights-grid">
+    <div class="highlight-card">
+      <div class="highlight-icon">🎨</div>
+      <h3>视觉盛宴 · 调色板的魔法</h3>
+      <p>热内将巴黎蒙马特染成了专属的色彩——暖姜黄、墨绿、砖红与焦糖金交织，每一帧都像一幅会动的油画。这种经过数字校色的"爱美丽色调"后来被无数影视作品争相模仿。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-icon">🎵</div>
+      <h3>手风琴与钢琴 · 杨·提尔森的配乐</h3>
+      <p>法国作曲家杨·提尔森用一台旧钢琴和手风琴谱写了电影的灵魂。《Comptine d'un autre été》的旋律萦绕在无数听众的耳畔，成为新世纪最经典的电影原声之一。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-icon">👁️</div>
+      <h3>细节的狂欢 · 幽默的诗意</h3>
+      <p>热内痴迷于微观世界——被捏碎的烤布蕾糖壳、手袋里钥匙碰撞的声音、指间的细沙滑落……这些被大多数人忽略的日常，在镜头下被放大成一个个俏皮的小宇宙，让人重新爱上生活。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-icon">💕</div>
+      <h3>治愈的力量 · 温柔的反抗</h3>
+      <p>这不是一部关于"拯救世界"的电影，而是一个关于"偷偷对这个世界好一点"的故事。爱美丽用最轻柔的方式反抗冷漠，告诉我们：善良不需要轰轰烈烈，藏在细节里的爱意同样能够改变命运。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-icon">🎭</div>
+      <h3>奥黛丽·塔图的灵魂演绎</h3>
+      <p>塔图那双会说话的黑眼睛和融化了全世界观众的神秘微笑，将爱美丽的天真、倔强与脆弱刻画入微。她的表演让人相信——这个有着精灵般面容的女孩真的存在。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-icon">🇫🇷</div>
+      <h3>巴黎的童话 · 浪漫的蒙马特</h3>
+      <p>电影中每一个角落都浸透着巴黎的诗意：双磨坊咖啡馆的奶油色、圣心大教堂的暮色、运河上的石桥、地铁站的风琴声……热内为世界创造了一个永恒的、只属于电影的巴黎。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY WATCH ===== -->
+<section class="why-watch">
+  <div class="section-title">
+    <h2>为什么值得看 · WHY WATCH</h2>
+    <div class="line"></div>
+  </div>
+  <ul class="why-list">
+    <li class="why-item">
+      <div class="why-num">1</div>
+      <div>
+        <h4>人类心灵的解药</h4>
+        <p>当你觉得世界灰暗、人情冷漠的时候，这部电影会用最温柔的方式告诉你——美好仍然存在，只是藏在你不经意的目光之外。</p>
+      </div>
+    </li>
+    <li class="why-item">
+      <div class="why-num">2</div>
+      <div>
+        <h4>法式浪漫的教科书</h4>
+      <p>不是好莱坞式的轰轰烈烈，而是真正的法式浪漫——在照片亭下捡碎片、收集别人撕碎的照片、用匿名信件传递心意。那些小心翼翼的靠近，比任何告白都更动人。</p>
+      </div>
+    </li>
+    <li class="why-item">
+      <div class="why-num">3</div>
+      <div>
+        <h4>一份重新发现生活的赠礼</h4>
+        <p>看完《天使爱美丽》，你会不自觉地注意到生活中那些曾被忽略的微小愉悦——阳光下的尘埃、水果的色泽、陌生人嘴角的弧度。它教会你：幸福不是宏大叙事，而是每一次微小的"发现"。</p>
+      </div>
+    </li>
+    <li class="why-item">
+      <div class="why-num">4</div>
+      <div>
+        <h4>历久弥新的艺术价值</h4>
+        <p>二十余年过去了，这部电影的视觉风格、叙事手法与配乐依然是世界影坛的标杆。它被英国电影学会评为"21世纪最伟大的100部电影"之一，是真正的"看一次，回味一生"的作品。</p>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- ===== AWARDS ===== -->
+<section class="awards">
+  <div class="section-title">
+    <h2>荣誉 · AWARDS</h2>
+    <div class="line"></div>
+  </div>
+  <div class="awards-list">
+    <span class="award-tag">🏆 奥斯卡最佳外语片提名</span>
+    <span class="award-tag">🏆 奥斯卡最佳原创剧本提名</span>
+    <span class="award-tag">🏆 奥斯卡最佳摄影提名</span>
+    <span class="award-tag">🏆 奥斯卡最佳音效剪辑提名</span>
+    <span class="award-tag">🏆 奥斯卡最佳艺术指导提名</span>
+    <span class="award-tag">🏆 欧洲电影奖 最佳影片</span>
+    <span class="award-tag">🏆 欧洲电影奖 最佳导演</span>
+    <span class="award-tag">🏆 法国凯撒奖 最佳影片</span>
+    <span class="award-tag">🏆 英国电影学院奖 最佳原创剧本</span>
+    <span class="award-tag">🏆 法国凯撒奖 最佳导演</span>
+    <span class="award-tag">🏆 多伦多国际电影节 观众选择奖</span>
+    <span class="award-tag">🏆 IMDb Top 250 #52</span>
+  </div>
+</section>
+
+<!-- ===== ARCHIVE ===== -->
+<section class="archive">
+  <div class="section-title">
+    <h2>影片档案 · ARCHIVE</h2>
+    <div class="line"></div>
+  </div>
+  <table class="archive-table">
+    <tr><td>片名</td><td>天使爱美丽 / Le Fabuleux Destin d'Amélie Poulain</td></tr>
+    <tr><td>导演</td><td>让-皮埃尔·热内 (Jean-Pierre Jeunet)</td></tr>
+    <tr><td>编剧</td><td>让-皮埃尔·热内 / 吉罗姆·洛朗</td></tr>
+    <tr><td>主演</td><td>奥黛丽·塔图 / 马修·卡索维茨 / 吕菲斯</td></tr>
+    <tr><td>制片国家</td><td>法国 / 德国</td></tr>
+    <tr><td>语言</td><td>法语</td></tr>
+    <tr><td>上映年份</td><td>2001年4月25日（法国）</td></tr>
+    <tr><td>片长</td><td>122分钟</td></tr>
+    <tr><td>音乐</td><td>杨·提尔森 (Yann Tiersen)</td></tr>
+    <tr><td>摄影</td><td>布鲁诺·德尔邦内尔</td></tr>
+    <tr><td>IMDb</td><td>8.3 / 10 (Top 250 #52)</td></tr>
+    <tr><td>豆瓣</td><td>8.7 / 10 (Top 250 #67)</td></tr>
+    <tr><td>烂番茄</td><td>96% 新鲜度 | 91% 爆米花</td></tr>
+  </table>
+</section>
+
+<!-- ===== FINAL VERDICT ===== -->
+<section class="final-verdict">
+  <div class="section-title">
+    <h2>编辑评语 · VERDICT</h2>
+    <div class="line"></div>
+  </div>
+  <div class="stars">★★★★★</div>
+  <blockquote>
+    "如果这世界上有一种药可以治愈心灵的冷漠，那它的名字大概就叫爱美丽。<br>
+    她不是超级英雄，她只是一个学会了如何温柔地对待这个世界的人。<br>
+    而这部电影，就是那剂让人重新爱上生活的药方。"
+  </blockquote>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<section class="footer">
+  每日经典电影推荐 · 天使爱美丽 · 2026年6月8日
+</section>
+
+<script>
+// ===== Canvas Particle System =====
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// Particles: warm floating dust motes + tiny lights
+const particles = [];
+const PARTICLE_COUNT = 80;
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.size = Math.random() * 3.5 + 1;
+    this.speedX = (Math.random() - 0.5) * 0.4;
+    this.speedY = -Math.random() * 0.5 - 0.2;
+    this.life = Math.random() * 1 + 0.5;
+    this.maxLife = this.life;
+    this.opacity = Math.random() * 0.3 + 0.1;
+    // Warm tones: reds, golds, amber
+    const colors = [
+      {r:212,g:116,b:58},  // amber
+      {r:181,g:59,b:59},   // red
+      {r:200,g:160,b:80},  // gold
+      {r:220,g:180,b:120}, // warm beige
+      {r:160,g:80,b:50},   // terracotta
+    ];
+    const c = colors[Math.floor(Math.random() * colors.length)];
+    this.r = c.r; this.g = c.g; this.b = c.b;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.life -= 0.003;
+    if (this.life <= 0 || this.y < -10 || this.x < -10 || this.x > W + 10) {
+      this.reset();
+    }
+  }
+  draw() {
+    const o = this.opacity * (this.life / this.maxLife);
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 2);
+    grad.addColorStop(0, `rgba(${this.r},${this.g},${this.b},${o})`);
+    grad.addColorStop(1, `rgba(${this.r},${this.g},${this.b},0)`);
+    ctx.fillStyle = grad;
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < PARTICLE_COUNT; i++) {
+  particles.push(new Particle());
+}
+
+function animate() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animate);
+}
+animate();
+
+// ===== IntersectionObserver =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      if (entry.target.classList.contains('rating-item')) {
+        entry.target.classList.add('visible');
+        // Animate fill bar
+        const fill = entry.target.querySelector('.rating-fill');
+        const score = parseFloat(entry.target.dataset.score);
+        const max = parseFloat(entry.target.dataset.max);
+        setTimeout(() => { fill.style.width = (score / max * 100) + '%'; }, 200);
+      } else {
+        entry.target.classList.add('visible');
+      }
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.rating-item, .highlight-card, .quote-block, .why-item').forEach(el => observer.observe(el));
+
+// ===== Reveal on scroll =====
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>

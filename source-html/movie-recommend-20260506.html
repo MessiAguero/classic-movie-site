@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>肖申克的救赎 — 今日经典电影推荐</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400;500;700&display=swap');
+
+    :root {
+      --brick:   #8B3A2A;
+      --rust:    #C1440E;
+      --amber:   #D4A017;
+      --gold:    #F2C94C;
+      --cream:   #F5EDD6;
+      --parchment: #EDE0C4;
+      --ink:     #1A1209;
+      --smoke:   #2C2015;
+      --ash:     #3D3020;
+      --stone:   #6B5E4E;
+      --shadow:  rgba(0,0,0,0.65);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'Noto Serif SC', 'EB Garamond', serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ── DUST PARTICLES CANVAS ── */
+    #dustCanvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    /* ── BRICK TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 28px,
+          rgba(0,0,0,0.12) 28px,
+          rgba(0,0,0,0.12) 30px
+        ),
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 60px,
+          rgba(0,0,0,0.08) 60px,
+          rgba(0,0,0,0.08) 62px
+        );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NOISE GRAIN ── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      animation: grain 8s steps(10) infinite;
+    }
+    @keyframes grain {
+      0%,100%{ transform: translate(0,0); }
+      10%{ transform: translate(-2%,-3%); }
+      20%{ transform: translate(3%,2%); }
+      30%{ transform: translate(-1%,4%); }
+      40%{ transform: translate(4%,-1%); }
+      50%{ transform: translate(-3%,3%); }
+      60%{ transform: translate(2%,-4%); }
+      70%{ transform: translate(-4%,1%); }
+      80%{ transform: translate(1%,-2%); }
+      90%{ transform: translate(-2%,4%); }
+    }
+
+    /* ── ALL SECTIONS above z:0 ── */
+    section, header, footer, .container { position: relative; z-index: 1; }
+
+    /* ══════════════════ HERO ══════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 30%, rgba(139,58,42,0.18) 0%, transparent 70%),
+        linear-gradient(180deg, rgba(26,18,9,0.0) 0%, rgba(26,18,9,0.8) 85%, var(--ink) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Light beam */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 120%;
+      background: linear-gradient(180deg, transparent 0%, rgba(212,160,23,0.6) 30%, rgba(212,160,23,0.1) 70%, transparent 100%);
+      filter: blur(8px);
+      animation: beam 6s ease-in-out infinite alternate;
+    }
+    @keyframes beam {
+      from { opacity: 0.3; transform: translateX(-50%) scaleX(1); }
+      to   { opacity: 0.8; transform: translateX(-50%) scaleX(2.5); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'EB Garamond', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 1s 0.3s forwards;
+    }
+
+    .hero-year-badge {
+      display: inline-block;
+      border: 1px solid rgba(212,160,23,0.4);
+      border-radius: 2px;
+      padding: 4px 14px;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 1s 0.5s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 9vw, 8rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      background: linear-gradient(160deg, var(--gold) 0%, var(--amber) 40%, var(--rust) 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0;
+      animation: fadeUp 1.2s 0.7s forwards;
+      text-shadow: none;
+      margin-bottom: 12px;
+    }
+
+    .hero-title-en {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(0.9rem, 2.5vw, 1.6rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--stone);
+      letter-spacing: 0.08em;
+      opacity: 0;
+      animation: fadeUp 1s 0.9s forwards;
+      margin-bottom: 48px;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-style: italic;
+      color: rgba(245,237,214,0.7);
+      max-width: 520px;
+      line-height: 1.8;
+      opacity: 0;
+      animation: fadeUp 1s 1.1s forwards;
+      margin-bottom: 56px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 1s 1.3s forwards;
+    }
+    .meta-item {
+      text-align: center;
+    }
+    .meta-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+    }
+    .meta-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 1s 2s forwards;
+      color: var(--stone);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(180deg, var(--amber), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100%{ opacity: 0.3; transform: scaleY(1); }
+      50%{ opacity: 1; transform: scaleY(1.3); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════ SECTION BASE ══════════════════ */
+    .section {
+      padding: 96px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: var(--amber);
+      opacity: 0.5;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 40px;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,160,23,0.3), transparent);
+      margin: 0;
+    }
+
+    /* ══════════════════ SYNOPSIS ══════════════════ */
+    .synopsis-section {
+      background: linear-gradient(180deg, var(--ink) 0%, rgba(44,32,21,0.5) 100%);
+    }
+
+    .synopsis-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 64px;
+      align-items: start;
+    }
+    @media(max-width:768px){
+      .synopsis-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    .synopsis-text {
+      font-size: 1.1rem;
+      line-height: 2;
+      color: rgba(245,237,214,0.85);
+    }
+    .synopsis-text p + p { margin-top: 24px; }
+
+    .synopsis-text .highlight {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    /* Poster card */
+    .poster-card {
+      background: var(--ash);
+      border: 1px solid rgba(212,160,23,0.2);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      position: sticky;
+      top: 100px;
+    }
+
+    .poster-visual {
+      width: 100%;
+      aspect-ratio: 2/3;
+      background:
+        linear-gradient(160deg, rgba(139,58,42,0.3) 0%, rgba(26,18,9,1) 100%),
+        radial-gradient(circle at 50% 35%, rgba(212,160,23,0.15), transparent 60%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Prison bars on poster */
+    .poster-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 18px,
+        rgba(0,0,0,0.35) 18px,
+        rgba(0,0,0,0.35) 22px
+      );
+      pointer-events: none;
+    }
+
+    /* Light through bars */
+    .poster-visual::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 45%;
+      background: linear-gradient(180deg, rgba(212,160,23,0.08) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .poster-figure {
+      position: relative;
+      z-index: 1;
+      margin-bottom: 20px;
+    }
+    .poster-figure svg {
+      width: 80px;
+      height: 80px;
+      filter: drop-shadow(0 0 20px rgba(212,160,23,0.4));
+    }
+
+    .poster-movie-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      position: relative; z-index: 1;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .poster-subtitle {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--stone);
+      position: relative; z-index: 1;
+    }
+
+    .poster-stats {
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .poster-stat {
+      text-align: center;
+    }
+    .poster-stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+    }
+    .poster-stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    /* ══════════════════ RATINGS BAR ══════════════════ */
+    .ratings-section {
+      padding: 64px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .ratings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media(max-width:600px){
+      .ratings-grid { grid-template-columns: 1fr; }
+    }
+
+    .rating-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,160,23,0.15);
+      border-radius: 4px;
+      padding: 28px 24px;
+      text-align: center;
+      transition: border-color 0.3s;
+    }
+    .rating-card:hover { border-color: rgba(212,160,23,0.5); }
+
+    .rating-source {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 12px;
+    }
+    .rating-score {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .rating-desc {
+      font-size: 0.8rem;
+      color: rgba(245,237,214,0.5);
+    }
+    .rating-bar-wrap {
+      margin-top: 16px;
+      height: 3px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .rating-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--rust), var(--gold));
+      border-radius: 2px;
+      width: 0;
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ══════════════════ HIGHLIGHTS ══════════════════ */
+    .highlights-section {
+      background: linear-gradient(180deg, rgba(44,32,21,0.3) 0%, rgba(26,18,9,0) 100%);
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media(max-width:900px){ .highlights-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:580px){ .highlights-grid { grid-template-columns: 1fr; } }
+
+    .highlight-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(212,160,23,0.1);
+      border-radius: 4px;
+      padding: 32px 28px;
+      transition: transform 0.3s, border-color 0.3s, background 0.3s;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .highlight-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s, background 0.3s;
+    }
+    .highlight-card:hover {
+      border-color: rgba(212,160,23,0.4);
+      background: rgba(212,160,23,0.04);
+      transform: translateY(-4px);
+    }
+
+    .highlight-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 20px;
+      color: var(--amber);
+    }
+    .highlight-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .highlight-body {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: rgba(245,237,214,0.65);
+    }
+
+    /* ══════════════════ QUOTE ══════════════════ */
+    .quote-section {
+      padding: 80px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .quote-section::before {
+      content: '\201C';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 20rem;
+      color: rgba(212,160,23,0.04);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3.5vw, 2.4rem);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--cream);
+      max-width: 780px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+      position: relative;
+    }
+    .quote-author {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+    .quote-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--amber);
+      margin: 16px auto;
+    }
+
+    /* ══════════════════ WHY WATCH ══════════════════ */
+    .why-section {
+      background: linear-gradient(180deg, rgba(26,18,9,0) 0%, rgba(44,32,21,0.4) 50%, rgba(26,18,9,0) 100%);
+    }
+
+    .why-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .why-item {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      padding: 28px 32px;
+      background: rgba(255,255,255,0.02);
+      border-left: 2px solid var(--amber);
+      border-radius: 0 4px 4px 0;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .why-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .why-item:hover { background: rgba(212,160,23,0.04); }
+
+    .why-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: rgba(212,160,23,0.15);
+      line-height: 1;
+      min-width: 48px;
+      user-select: none;
+    }
+    .why-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+    .why-content p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: rgba(245,237,214,0.65);
+    }
+
+    /* ══════════════════ FILM INFO ══════════════════ */
+    .info-section {
+      padding: 80px 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .info-table tr {
+      border-bottom: 1px solid rgba(212,160,23,0.08);
+    }
+    .info-table tr:last-child { border-bottom: none; }
+    .info-table td {
+      padding: 18px 0;
+      vertical-align: top;
+    }
+    .info-table td:first-child {
+      width: 160px;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone);
+      padding-right: 24px;
+    }
+    .info-table td:last-child {
+      font-size: 0.95rem;
+      color: var(--cream);
+      line-height: 1.6;
+    }
+
+    /* ══════════════════ FOOTER ══════════════════ */
+    .footer {
+      padding: 48px 24px 64px;
+      text-align: center;
+      border-top: 1px solid rgba(212,160,23,0.1);
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 16px;
+    }
+    .footer-text {
+      font-size: 0.75rem;
+      color: rgba(107,94,78,0.6);
+      line-height: 1.8;
+    }
+
+    /* ══════════════════ SCROLL REVEAL ══════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ══════════════════ SECTION DIVIDERS ══════════════════ */
+    .ornament {
+      text-align: center;
+      padding: 32px 0;
+      color: rgba(212,160,23,0.3);
+      font-size: 1.2rem;
+      letter-spacing: 0.5em;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="dustCanvas"></canvas>
+
+<!-- ═══════ HERO ═══════ -->
+<header class="hero">
+  <div class="hero-eyebrow">今日经典电影推荐</div>
+  <div class="hero-year-badge">1994 · Frank Darabont</div>
+  <h1 class="hero-title">肖申克的救赎</h1>
+  <p class="hero-title-en">The Shawshank Redemption</p>
+  <p class="hero-tagline">
+    "恐惧让你沦为囚徒，希望让你重获自由。"
+  </p>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <span class="meta-value">9.3</span>
+      <span class="meta-label">IMDb 评分</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-value">#1</span>
+      <span class="meta-label">IMDb Top 250</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-value">91%</span>
+      <span class="meta-label">烂番茄观众</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-value">7项</span>
+      <span class="meta-label">奥斯卡提名</span>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>探索这部电影</span>
+    <div class="scroll-line"></div>
+  </div>
+</header>
+
+<!-- ═══════ RATINGS ═══════ -->
+<div class="ratings-section">
+  <div class="ratings-grid">
+    <div class="rating-card reveal">
+      <div class="rating-source">IMDb</div>
+      <div class="rating-score" data-target="9.3">0</div>
+      <div class="rating-desc">全球近300万人评分 · 历史榜首</div>
+      <div class="rating-bar-wrap">
+        <div class="rating-bar-fill" data-width="93"></div>
+      </div>
+    </div>
+    <div class="rating-card reveal">
+      <div class="rating-source">烂番茄</div>
+      <div class="rating-score" data-target="91%">0</div>
+      <div class="rating-desc">观众新鲜度 91% · 专业91%</div>
+      <div class="rating-bar-wrap">
+        <div class="rating-bar-fill" data-width="91"></div>
+      </div>
+    </div>
+    <div class="rating-card reveal">
+      <div class="rating-source">豆瓣</div>
+      <div class="rating-score" data-target="9.7">0</div>
+      <div class="rating-desc">140万+评分 · 豆瓣神片之首</div>
+      <div class="rating-bar-wrap">
+        <div class="rating-bar-fill" data-width="97"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════ SYNOPSIS ═══════ -->
+<section class="synopsis-section">
+  <div class="section" style="padding-bottom:0;">
+    <div class="section-label">剧情梗概</div>
+    <h2 class="section-title">一个关于希望与自由的故事</h2>
+    <div class="synopsis-grid">
+      <div class="synopsis-text reveal">
+        <p>
+          1947年，美国缅因州。年轻的银行家<span class="highlight">安迪·杜弗兰</span>被控谋杀妻子及其情人，尽管他坚称无罪，仍被判处两个无期徒刑，送入了戒备森严的<span class="highlight">肖申克监狱</span>。
+        </p>
+        <p>
+          在这座看似无法逃脱的钢铁囚笼中，等待安迪的是严酷的狱规、凶悍的狱友，以及随时可能摧毁一切的绝望。然而，他并未就此沉沦。
+        </p>
+        <p>
+          在漫长的岁月里，安迪凭借智识与坚韧，逐渐与老囚徒<span class="highlight">瑞德</span>建立起一段超越高墙的深厚友谊。他以一种沉静而顽强的方式，在黑暗中寻找光隙——用头脑经营，用心灵抗争，用双手一点一点开凿出属于自己的那条路。
+        </p>
+        <p>
+          这不是一个关于越狱的故事。它是一部关于<span class="highlight">人在绝境中如何守护灵魂尊严</span>的史诗。
+        </p>
+      </div>
+
+      <!-- Poster Visual -->
+      <div class="poster-card reveal">
+        <div class="poster-visual">
+          <!-- Silhouette SVG -->
+          <div class="poster-figure">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Rain/freedom figure with arms raised -->
+              <circle cx="50" cy="18" r="9" fill="rgba(212,160,23,0.7)"/>
+              <rect x="44" y="27" width="12" height="30" rx="2" fill="rgba(212,160,23,0.6)"/>
+              <!-- Arms raised -->
+              <line x1="44" y1="35" x2="22" y2="20" stroke="rgba(212,160,23,0.6)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="56" y1="35" x2="78" y2="20" stroke="rgba(212,160,23,0.6)" stroke-width="4" stroke-linecap="round"/>
+              <!-- Legs -->
+              <line x1="48" y1="57" x2="42" y2="80" stroke="rgba(212,160,23,0.6)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="52" y1="57" x2="58" y2="80" stroke="rgba(212,160,23,0.6)" stroke-width="4" stroke-linecap="round"/>
+              <!-- Rain drops -->
+              <g opacity="0.4">
+                <line x1="15" y1="5" x2="12" y2="18" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="30" y1="2" x2="27" y2="15" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="70" y1="3" x2="67" y2="16" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="85" y1="6" x2="82" y2="19" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="8" y1="30" x2="5" y2="43" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="92" y1="28" x2="89" y2="41" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"/>
+              </g>
+            </svg>
+          </div>
+          <div class="poster-movie-title">肖申克的救赎</div>
+          <div class="poster-subtitle">THE SHAWSHANK REDEMPTION</div>
+        </div>
+        <div class="poster-stats">
+          <div class="poster-stat">
+            <span class="poster-stat-value">142</span>
+            <span class="poster-stat-label">分钟</span>
+          </div>
+          <div class="poster-stat">
+            <span class="poster-stat-value">1994</span>
+            <span class="poster-stat-label">年份</span>
+          </div>
+          <div class="poster-stat">
+            <span class="poster-stat-value">R</span>
+            <span class="poster-stat-label">分级</span>
+          </div>
+          <div class="poster-stat">
+            <span class="poster-stat-value">7项</span>
+            <span class="poster-stat-label">奥斯卡提名</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ═══════ HIGHLIGHTS ═══════ -->
+<section class="highlights-section section">
+  <div class="section-label">核心亮点</div>
+  <h2 class="section-title">让这部电影成为传奇的六个维度</h2>
+  <div class="highlights-grid">
+
+    <div class="highlight-card">
+      <svg class="highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-4.97-4.03-9-9-9z"/>
+        <path d="M12 8v4l3 3"/>
+      </svg>
+      <h3 class="highlight-title">蒂姆·罗宾斯与摩根·弗里曼</h3>
+      <p class="highlight-body">两位主演的表演如同精密咬合的齿轮，安迪的隐忍与瑞德的沧桑相互映照，将一段跨越高墙的友谊演绎得真实入骨。弗里曼的旁白更成为电影史上最迷人的声音之一。</p>
+    </div>
+
+    <div class="highlight-card">
+      <svg class="highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+      </svg>
+      <h3 class="highlight-title">斯蒂芬·金原著改编</h3>
+      <p class="highlight-body">改编自斯蒂芬·金的中篇小说《丽塔·海华斯与肖申克救赎》，达拉邦特的剧本将文字的温度完美转化为影像，保留了原著灵魂的同时赋予了更磅礴的史诗感。</p>
+    </div>
+
+    <div class="highlight-card">
+      <svg class="highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.36a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>
+      </svg>
+      <h3 class="highlight-title">摄影美学</h3>
+      <p class="highlight-body">罗杰·迪金斯（Roger Deakins）掌镜，光与阴影的对比成为"自由"与"囚禁"的视觉隐喻。每一帧画面都经过精心构建，历久弥新，不断被后来者临摹和致敬。</p>
+    </div>
+
+    <div class="highlight-card">
+      <svg class="highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+      </svg>
+      <h3 class="highlight-title">托马斯·纽曼的配乐</h3>
+      <p class="highlight-body">配乐极度克制，从不过度渲染情绪，却在关键时刻以极简的旋律撑开空间，让观众的内心自己回响。那种静水流深的力量，是好莱坞配乐史上难以复制的成就。</p>
+    </div>
+
+    <div class="highlight-card">
+      <svg class="highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+      </svg>
+      <h3 class="highlight-title">人性主题的深度</h3>
+      <p class="highlight-body">影片触及制度化对人性的蚕食、友情的纯粹价值、希望作为精神燃料的本质——这些命题跨越文化与时代，让全球不同背景的观众都能从中看见自己。</p>
+    </div>
+
+    <div class="highlight-card">
+      <svg class="highlight-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+      </svg>
+      <h3 class="highlight-title">口碑的逆袭传奇</h3>
+      <p class="highlight-body">首映年与《阿甘正传》同场竞技，票房平淡，一度被认为是"失败之作"。但通过录像租借与口耳相传，它以三十年的时间完成了最伟大的逆袭，坐上了IMDb历史第一的宝座。</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════ QUOTE ═══════ -->
+<div class="quote-section">
+  <blockquote class="quote-text reveal">
+    "Hope is a good thing, maybe the best of things, and no good thing ever dies."
+  </blockquote>
+  <div class="quote-divider"></div>
+  <div class="quote-author">— Andy Dufresne · 肖申克的救赎</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════ WHY WATCH ═══════ -->
+<section class="why-section section">
+  <div class="section-label">为何值得一看</div>
+  <h2 class="section-title">四个不看会后悔的理由</h2>
+  <div class="why-list">
+    <div class="why-item">
+      <div class="why-number">01</div>
+      <div class="why-content">
+        <h3>它是最能抚慰人心的电影之一</h3>
+        <p>当生活给你以绝境，这部电影以一种温柔而坚定的方式告诉你：只要内心有光，任何牢笼都是暂时的。它不是廉价的心灵鸡汤，而是经过深重苦难淬炼出的真实希望。</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-number">02</div>
+      <div class="why-content">
+        <h3>叙事结构堪称教科书级别</h3>
+        <p>全片几乎没有一个多余的镜头，每一个细节都在为最终的情感爆发埋下伏笔。第一次看你会被故事吸引，第二次看你会发现那些精心设计的线索——每一遍都有新的发现。</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-number">03</div>
+      <div class="why-content">
+        <h3>两段表演，终生难忘</h3>
+        <p>摩根·弗里曼那段最终独白，在全球数以百万计的观众心中留下了永久的印记。蒂姆·罗宾斯的隐忍表演证明：真正的力量不需要爆发，它就在那些沉默的眼神里。</p>
+      </div>
+    </div>
+    <div class="why-item">
+      <div class="why-number">04</div>
+      <div class="why-content">
+        <h3>结局是电影史上最值得等待的时刻之一</h3>
+        <p>不剧透，但那个结局设计的精妙之处在于：它既完全在情理之中，又让你觉得像是被突然打开了一扇窗——光涌进来的感觉，是无与伦比的观影体验。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ═══════ FILM INFO ═══════ -->
+<div class="info-section reveal">
+  <div class="section-label">影片档案</div>
+  <table class="info-table">
+    <tr>
+      <td>原片名</td>
+      <td>The Shawshank Redemption</td>
+    </tr>
+    <tr>
+      <td>上映年份</td>
+      <td>1994年</td>
+    </tr>
+    <tr>
+      <td>导演</td>
+      <td>弗兰克·达拉邦特（Frank Darabont）</td>
+    </tr>
+    <tr>
+      <td>主演</td>
+      <td>蒂姆·罗宾斯（Tim Robbins）· 摩根·弗里曼（Morgan Freeman）</td>
+    </tr>
+    <tr>
+      <td>编剧</td>
+      <td>弗兰克·达拉邦特 / 原著：斯蒂芬·金（Stephen King）</td>
+    </tr>
+    <tr>
+      <td>摄影</td>
+      <td>罗杰·迪金斯（Roger Deakins，未署名）</td>
+    </tr>
+    <tr>
+      <td>配乐</td>
+      <td>托马斯·纽曼（Thomas Newman）</td>
+    </tr>
+    <tr>
+      <td>片长</td>
+      <td>142分钟</td>
+    </tr>
+    <tr>
+      <td>类型</td>
+      <td>剧情</td>
+    </tr>
+    <tr>
+      <td>荣誉</td>
+      <td>奥斯卡七项提名（含最佳影片）· IMDb Top 250 第一名 · 豆瓣评分 9.7</td>
+    </tr>
+    <tr>
+      <td>观看平台</td>
+      <td>Netflix · Apple TV+ · 爱奇艺 · 腾讯视频（各区域可能有差异）</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="footer">
+  <div class="footer-logo">每日经典电影推荐</div>
+  <p class="footer-text">
+    今日推荐 · 2026年5月6日<br>
+    好电影值得反复回味 · 愿你找到属于自己的那扇窗
+  </p>
+</footer>
+
+<script>
+  // ── DUST PARTICLES ──
+  const canvas = document.getElementById('dustCanvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  for (let i = 0; i < 120; i++) {
+    particles.push({
+      x: Math.random() * 2000,
+      y: Math.random() * 1200,
+      r: Math.random() * 1.5 + 0.3,
+      vx: (Math.random() - 0.5) * 0.15,
+      vy: -(Math.random() * 0.2 + 0.05),
+      alpha: Math.random() * 0.5 + 0.1
+    });
+  }
+
+  function drawDust() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x % W, p.y % H, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(212,160,23,${p.alpha})`;
+      ctx.fill();
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.y < -5) p.y = H + 5;
+      if (p.x < -5) p.x = W + 5;
+      if (p.x > W + 5) p.x = -5;
+    });
+    requestAnimationFrame(drawDust);
+  }
+  drawDust();
+
+  // ── INTERSECTION OBSERVER ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+
+        // Trigger rating bars
+        const bar = entry.target.querySelector('.rating-bar-fill');
+        if (bar) {
+          setTimeout(() => {
+            bar.style.width = bar.dataset.width + '%';
+          }, 200);
+        }
+
+        // Animate score count
+        const score = entry.target.querySelector('.rating-score[data-target]');
+        if (score) {
+          const target = score.dataset.target;
+          const isPercent = target.includes('%');
+          const num = parseFloat(target);
+          let start = 0;
+          const duration = 1800;
+          const startTime = performance.now();
+          function update(t) {
+            const elapsed = t - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 3);
+            const cur = (start + (num - start) * ease);
+            score.textContent = isPercent
+              ? Math.round(cur) + '%'
+              : cur.toFixed(1);
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+        }
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal, .highlight-card, .why-item, .rating-card').forEach(el => {
+    observer.observe(el);
+  });
+
+  // ── STAGGERED CARDS ──
+  document.querySelectorAll('.highlight-card').forEach((card, i) => {
+    card.style.transitionDelay = (i * 0.1) + 's';
+  });
+  document.querySelectorAll('.why-item').forEach((item, i) => {
+    item.style.transitionDelay = (i * 0.12) + 's';
+  });
+</script>
+</body>
+</html>

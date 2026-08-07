@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>情书 Love Letter (1995) · 今日经典推荐</title>
+<style>
+  :root{
+    --bg-0:#0a131d;
+    --bg-1:#0e1b29;
+    --bg-2:#13263a;
+    --panel:#122235;
+    --panel-2:#173049;
+    --line:#23425e;
+    --snow:#eef5fb;
+    --ice:#9cc8e6;
+    --ice-deep:#3f6f97;
+    --gold:#d9b25e;
+    --gold-soft:#e7cf94;
+    --pink:#d9a7b4;
+    --txt:#dde8f2;
+    --txt-dim:#90a8bf;
+    --txt-faint:#5f7790;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Serif SC","Songti SC","STSong","SimSun",Georgia,"Times New Roman",serif;
+    background:var(--bg-0);
+    color:var(--txt);
+    line-height:1.85;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* noise texture overlay */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  #snow-canvas{position:fixed;inset:0;z-index:2;pointer-events:none}
+  .wrap{position:relative;z-index:3;max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;
+    text-align:center;overflow:hidden;
+    background:
+      radial-gradient(circle at 50% 18%, rgba(63,111,151,.55), transparent 55%),
+      linear-gradient(180deg,var(--bg-1) 0%,var(--bg-0) 100%);
+  }
+  .hero .year{
+    position:absolute;top:11%;left:50%;transform:translateX(-50%);
+    font-size:clamp(120px,26vw,300px);font-weight:700;letter-spacing:-.04em;
+    color:rgba(156,200,230,.07);z-index:0;user-select:none;font-family:Georgia,serif;
+  }
+  .hero-inner{position:relative;z-index:4;padding-top:40px}
+  .hero .eyebrow{
+    font-size:14px;letter-spacing:.5em;color:var(--gold-soft);
+    text-transform:uppercase;margin-bottom:26px;padding-left:.5em;
+  }
+  .hero h1{
+    font-size:clamp(68px,16vw,150px);font-weight:700;letter-spacing:.18em;
+    color:var(--snow);line-height:1;text-shadow:0 0 38px rgba(156,200,230,.35);
+    margin-bottom:6px;padding-left:.18em;
+  }
+  .hero .en-title{
+    font-family:Georgia,serif;font-style:italic;font-size:clamp(20px,4vw,30px);
+    letter-spacing:.32em;color:var(--ice);margin-top:14px;
+  }
+  .hero .meta{
+    margin-top:30px;font-size:15px;color:var(--txt-dim);letter-spacing:.12em;
+  }
+  .hero .meta span{color:var(--gold-soft)}
+  .hero .tagline{
+    margin-top:42px;font-size:clamp(22px,4.5vw,32px);color:var(--snow);
+    letter-spacing:.3em;font-weight:400;
+  }
+  .hero .tagline small{display:block;font-size:13px;color:var(--txt-dim);letter-spacing:.4em;margin-top:14px;font-style:italic}
+  .scroll-cue{
+    position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+    color:var(--txt-dim);font-size:12px;letter-spacing:.3em;z-index:4;animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);opacity:.6}50%{transform:translateX(-50%) translateY(8px);opacity:1}}
+
+  /* ---------- poster svg frame ---------- */
+  .poster-frame{
+    margin:54px auto 0;width:min(440px,82%);border:1px solid var(--line);
+    border-radius:6px;padding:10px;background:linear-gradient(160deg,var(--panel),var(--bg-1));
+    box-shadow:0 30px 70px rgba(0,0,0,.55),inset 0 0 0 4px rgba(217,178,94,.08);
+    position:relative;
+  }
+  .poster-frame svg{display:block;width:100%;height:auto;border-radius:3px}
+  .poster-frame::after{
+    content:"LOVE LETTER · 1995";position:absolute;bottom:-13px;left:50%;transform:translateX(-50%);
+    background:var(--bg-0);padding:2px 14px;font-family:Georgia,serif;font-size:11px;
+    letter-spacing:.3em;color:var(--gold-soft);border:1px solid var(--line);border-radius:20px;
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:88px 0}
+  .sec-tag{
+    display:inline-block;font-size:12px;letter-spacing:.4em;color:var(--gold-soft);
+    text-transform:uppercase;margin-bottom:14px;padding-left:.4em;
+  }
+  .sec-title{
+    font-size:clamp(30px,5vw,44px);color:var(--snow);letter-spacing:.1em;font-weight:700;
+    margin-bottom:14px;position:relative;padding-left:22px;
+  }
+  .sec-title::before{
+    content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+    width:6px;height:34px;background:linear-gradient(var(--gold),var(--ice-deep));border-radius:3px;
+  }
+  .sec-sub{color:var(--txt-dim);font-size:15px;letter-spacing:.06em;margin-bottom:40px;max-width:680px}
+
+  /* ratings */
+  .ratings{display:grid;grid-template-columns:repeat(2,1fr);gap:26px 40px;margin-top:10px}
+  .rating{
+    border:1px solid var(--line);border-radius:6px;padding:24px 26px;
+    background:linear-gradient(150deg,var(--panel),var(--bg-1));
+    position:relative;overflow:hidden;
+  }
+  .rating::before{
+    content:"";position:absolute;top:0;left:0;width:100%;height:3px;
+    background:linear-gradient(90deg,var(--gold),transparent);
+  }
+  .rating .r-name{font-size:14px;letter-spacing:.18em;color:var(--txt-dim);margin-bottom:8px}
+  .rating .r-val{font-family:Georgia,serif;font-size:46px;font-weight:700;color:var(--snow);line-height:1}
+  .rating .r-val .suf{font-size:22px;color:var(--gold-soft);margin-left:2px}
+  .rating .r-bar{height:5px;background:var(--bg-2);border-radius:3px;margin-top:16px;overflow:hidden}
+  .rating .r-fill{height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--ice));transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+  .rating .r-note{font-size:12px;color:var(--txt-faint);margin-top:9px;letter-spacing:.05em}
+
+  /* synopsis */
+  .synopsis{
+    border:1px solid var(--line);border-radius:8px;padding:38px 40px;
+    background:linear-gradient(160deg,var(--panel),var(--bg-1));position:relative;
+  }
+  .synopsis p{color:var(--txt);font-size:17px;margin-bottom:18px}
+  .synopsis p:last-child{margin-bottom:0}
+  .synopsis .em{color:var(--gold-soft)}
+  .no-spoiler{
+    display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;
+    font-size:12px;letter-spacing:.2em;color:var(--ice);border:1px solid var(--ice-deep);
+    padding:6px 14px;border-radius:20px;background:rgba(63,111,151,.12);
+  }
+  .no-spoiler::before{content:"●";color:var(--gold);font-size:8px}
+
+  /* highlights */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{
+    border:1px solid var(--line);border-radius:8px;padding:28px 24px;
+    background:linear-gradient(160deg,var(--panel-2),var(--bg-1));
+    transition:transform .4s ease,box-shadow .4s ease,border-color .4s ease;
+    position:relative;overflow:hidden;
+  }
+  .card:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:0 22px 44px rgba(0,0,0,.5)}
+  .card .num{font-family:Georgia,serif;font-size:13px;color:var(--gold-soft);letter-spacing:.2em;margin-bottom:14px}
+  .card .ic{width:42px;height:42px;margin-bottom:16px}
+  .card h3{font-size:19px;color:var(--snow);letter-spacing:.06em;margin-bottom:10px;font-weight:700}
+  .card p{font-size:14px;color:var(--txt-dim);line-height:1.7}
+
+  /* quote */
+  .quote{
+    text-align:center;padding:80px 0;
+    background:radial-gradient(circle at 50% 50%,rgba(63,111,151,.18),transparent 60%);
+  }
+  .quote .mark{font-family:Georgia,serif;font-size:80px;color:var(--gold);opacity:.4;line-height:.4}
+  .quote blockquote{font-size:clamp(26px,5vw,42px);color:var(--snow);letter-spacing:.22em;font-weight:400;line-height:1.5}
+  .quote .by{margin-top:28px;font-size:14px;color:var(--txt-dim);letter-spacing:.2em;font-style:italic}
+  .quote .by2{margin-top:6px;font-size:13px;color:var(--gold-soft);letter-spacing:.15em}
+
+  /* why watch */
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .why-item{
+    border-left:2px solid var(--gold);padding:6px 0 6px 24px;
+  }
+  .why-item h4{font-size:18px;color:var(--snow);letter-spacing:.08em;margin-bottom:8px}
+  .why-item p{font-size:14.5px;color:var(--txt-dim)}
+
+  /* honors */
+  .honors{display:flex;flex-wrap:wrap;gap:14px}
+  .honor{
+    border:1px solid var(--line);border-radius:30px;padding:11px 22px;
+    font-size:14px;letter-spacing:.08em;color:var(--gold-soft);
+    background:rgba(217,178,94,.06);transition:.3s;
+  }
+  .honor:hover{background:rgba(217,178,94,.16);transform:translateY(-3px)}
+
+  /* archive table */
+  .archive{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--panel)}
+  .archive .row{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid var(--line)}
+  .archive .row:last-child{border-bottom:none}
+  .archive .k{padding:16px 22px;color:var(--gold-soft);font-size:14px;letter-spacing:.12em;background:rgba(0,0,0,.18);border-right:1px solid var(--line)}
+  .archive .v{padding:16px 22px;color:var(--txt);font-size:15px}
+
+  /* verdict */
+  .verdict{
+    border:1px solid var(--gold);border-radius:10px;padding:44px 40px;text-align:center;
+    background:linear-gradient(160deg,rgba(217,178,94,.10),var(--bg-1));position:relative;
+  }
+  .verdict .stars{font-size:34px;letter-spacing:.15em;color:var(--gold);margin-bottom:18px}
+  .verdict h3{font-size:24px;color:var(--snow);letter-spacing:.1em;margin-bottom:16px}
+  .verdict p{color:var(--txt);font-size:16px;max-width:760px;margin:0 auto;line-height:1.9}
+
+  footer{
+    text-align:center;padding:50px 0 60px;color:var(--txt-faint);font-size:12.5px;letter-spacing:.18em;
+    border-top:1px solid var(--line);margin-top:40px;
+  }
+  footer .f-title{color:var(--ice);font-size:15px;letter-spacing:.3em;margin-bottom:10px}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s ease,transform 1s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:760px){
+    .ratings,.cards,.why{grid-template-columns:1fr}
+    .archive .row{grid-template-columns:120px 1fr}
+    .synopsis{padding:28px 22px}
+    section{padding:64px 0}
+  }
+</style>
+</head>
+<body>
+<canvas id="snow-canvas"></canvas>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="year">1995</div>
+  <div class="hero-inner wrap">
+    <div class="eyebrow">今日经典 · A TIMELESS CLASSIC</div>
+    <h1>情书</h1>
+    <div class="en-title">Love Letter</div>
+    <div class="meta">导演 / 编剧 <span>岩井俊二</span> &nbsp;·&nbsp; 主演 <span>中山美穗</span> · 丰川悦司 · 柏原崇 &nbsp;·&nbsp; 日本 · 1995</div>
+    <div class="poster-frame">
+      <!-- SVG poster: snow mountains + envelope + two silhouettes -->
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-label="情书 海报">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1b3a55"/>
+            <stop offset="0.55" stop-color="#214b6b"/>
+            <stop offset="1" stop-color="#0e1f2e"/>
+          </linearGradient>
+          <linearGradient id="mtn" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#dfeaf3"/>
+            <stop offset="1" stop-color="#9cbfd8"/>
+          </linearGradient>
+          <radialGradient id="glow" cx="0.5" cy="0.4" r="0.6">
+            <stop offset="0" stop-color="#e7cf94" stop-opacity="0.5"/>
+            <stop offset="1" stop-color="#e7cf94" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="400" height="300" fill="url(#sky)"/>
+        <circle cx="200" cy="120" r="120" fill="url(#glow)"/>
+        <!-- stars -->
+        <g fill="#eef5fb" opacity="0.8">
+          <circle cx="60" cy="50" r="1.4"/><circle cx="120" cy="34" r="1"/><circle cx="320" cy="48" r="1.5"/>
+          <circle cx="360" cy="90" r="1"/><circle cx="40" cy="100" r="1"/><circle cx="280" cy="30" r="1.2"/>
+          <circle cx="200" cy="40" r="1"/><circle cx="150" cy="60" r="0.8"/>
+        </g>
+        <!-- mountains -->
+        <path d="M0 220 L70 150 L120 195 L180 120 L240 185 L300 140 L360 200 L400 165 L400 300 L0 300 Z" fill="url(#mtn)" opacity="0.92"/>
+        <path d="M0 230 L90 175 L160 215 L230 165 L300 210 L400 175 L400 300 L0 300 Z" fill="#b9d3e8" opacity="0.5"/>
+        <!-- envelope -->
+        <g transform="translate(155,135)">
+          <rect x="0" y="0" width="90" height="62" rx="4" fill="#f3f7fb" stroke="#c9a227" stroke-width="1.5"/>
+          <path d="M0 0 L45 36 L90 0" fill="none" stroke="#c9a227" stroke-width="1.5"/>
+          <circle cx="45" cy="30" r="7" fill="#d9a7b4" opacity="0.85"/>
+        </g>
+        <!-- two silhouettes -->
+        <g fill="#0c1c2b" opacity="0.92">
+          <path d="M70 300 C70 250 78 232 92 222 C84 214 82 200 88 192 C96 182 112 184 116 196 C124 188 138 190 140 202 C144 214 136 224 128 228 C146 240 150 270 150 300 Z"/>
+          <path d="M250 300 C250 258 258 238 272 228 C264 218 262 204 268 196 C276 186 292 188 296 200 C304 192 318 194 320 206 C324 218 316 228 308 232 C326 246 330 272 330 300 Z"/>
+        </g>
+      </svg>
+    </div>
+    <div class="tagline">你好吗？我很好。<small>— 一封寄往记忆与告别的信</small></div>
+  </div>
+  <div class="scroll-cue">向下滑动 · SCROLL</div>
+</header>
+
+<div class="wrap">
+
+  <!-- RATINGS -->
+  <section class="reveal">
+    <div class="sec-tag">CRITICAL SCORES</div>
+    <div class="sec-title">口碑与评分</div>
+    <div class="sec-sub">三十年过去，《情书》仍在豆瓣 TOP250 高居前列，烂番茄与观众评分双高，是公认的亚洲纯爱经典。</div>
+    <div class="ratings">
+      <div class="rating">
+        <div class="r-name">豆瓣 DOUBAN</div>
+        <div class="r-val"><span class="cnt" data-to="8.9" data-dec="1">0.0</span><span class="suf">/10</span></div>
+        <div class="r-bar"><div class="r-fill" data-pct="89"></div></div>
+        <div class="r-note">TOP250 第 66 位 · 80万+ 人评分</div>
+      </div>
+      <div class="rating">
+        <div class="r-name">IMDb</div>
+        <div class="r-val"><span class="cnt" data-to="7.9" data-dec="1">0.0</span><span class="suf">/10</span></div>
+        <div class="r-bar"><div class="r-fill" data-pct="79"></div></div>
+        <div class="r-note">13,000+ 票 · 全球观众口碑</div>
+      </div>
+      <div class="rating">
+        <div class="r-name">烂番茄 TOMATOMETER</div>
+        <div class="r-val"><span class="cnt" data-to="96" data-dec="0">0</span><span class="suf">%</span></div>
+        <div class="r-bar"><div class="r-fill" data-pct="96"></div></div>
+        <div class="r-note">影评人新鲜度</div>
+      </div>
+      <div class="rating">
+        <div class="r-name">爆米花指数 POPCORNMETER</div>
+        <div class="r-val"><span class="cnt" data-to="96" data-dec="0">0</span><span class="suf">%</span></div>
+        <div class="r-bar"><div class="r-fill" data-pct="96"></div></div>
+        <div class="r-note">观众评分 4.5 / 5</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYNOPSIS -->
+  <section class="reveal">
+    <div class="sec-tag">SYNOPSIS</div>
+    <div class="sec-title">剧情梗概</div>
+    <div class="no-spoiler">无剧透 · 仅呈现故事框架</div>
+    <div class="synopsis">
+      <p>未婚夫藤井树在一次登山意外中离世，三年过去，渡边博子仍走不出思念。在一本旧毕业纪念册里，她偶然翻到他少年时代的住址，便以"寄往天国"的心情，向那个早已不存在的地址寄出一封信。</p>
+      <p>出乎意料地，她收到了回信——而写信的，是一位与未婚夫<span class="em">同名同姓</span>的女子，藤井树。两个女子就此以书信往来，一封封往返间，一段被岁月尘封的青春往事，从记忆深处缓缓浮现。</p>
+      <p>故事在两段时间里静静穿行：一面是博子面对逝去之人的释怀，一面是女藤井树在回忆里重新打捞起的、少年时代那些<span class="em">未曾言说</span>的心动。本片<strong>不依赖任何反转或激烈的冲突</strong>，只用雪、信、与沉默，写尽"记得"与"告别"两件人生大事。</p>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="reveal">
+    <div class="sec-tag">HIGHLIGHTS</div>
+    <div class="sec-title">六大亮点</div>
+    <div class="sec-sub">它为何被一代代观众奉为"纯爱教科书"。</div>
+    <div class="cards">
+      <div class="card">
+        <div class="num">01</div>
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#d9b25e" stroke-width="1.4"><path d="M4 5h16v14H4z"/><path d="M4 8l8 5 8-5"/></svg>
+        <h3>纯爱范式的开创</h3>
+        <p>岩井俊二的导演处女作，奠定了"纯净无瑕、哀而不伤、欲言又止"的东方纯爱美学，成为后来无数青春爱情片的母本。</p>
+      </div>
+      <div class="card">
+        <div class="num">02</div>
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#d9b25e" stroke-width="1.4"><circle cx="7" cy="12" r="3"/><circle cx="17" cy="12" r="3"/><path d="M10 12h4"/></svg>
+        <h3>同名同姓的巧思</h3>
+        <p>"两个藤井树"的设定既是戏剧误会，也是身份与记忆的隐喻——一封错位的信，牵出两段截然不同却彼此映照的情感。</p>
+      </div>
+      <div class="card">
+        <div class="num">03</div>
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#d9b25e" stroke-width="1.4"><path d="M12 3a4 4 0 014 4 4 4 0 01-8 0 4 4 0 018-4z"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg>
+        <h3>中山美穗一人分饰</h3>
+        <p>博子与女藤井树由中山美穗一人演绎，神情的细微差别撑起双线叙事，是表演与角色的绝佳互文。</p>
+      </div>
+      <div class="card">
+        <div class="num">04</div>
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#d9b25e" stroke-width="1.4"><path d="M3 20l5-9 4 5 3-6 6 10z"/><circle cx="17" cy="6" r="2"/></svg>
+        <h3>雪国影像之美</h3>
+        <p>小樽的飞雪、图书馆的光影、少年校服的轮廓——岩井俊二用电影拍出了"可以呼吸"的青春质感，每一帧都像明信片。</p>
+      </div>
+      <div class="card">
+        <div class="num">05</div>
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#d9b25e" stroke-width="1.4"><path d="M12 21C7 17 4 13 4 9a4 4 0 018-1 4 4 0 018 1c0 4-3 8-8 12z"/></svg>
+        <h3>暗恋的极致</h3>
+        <p>全片没有一句正式告白，爱意却藏在每一件小事里。它精准捕捉了东方情感独有的含蓄，被观众称为"暗恋的极致"。</p>
+      </div>
+      <div class="card">
+        <div class="num">06</div>
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#d9b25e" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <h3>跨越时代的共鸣</h3>
+        <p>关于记忆、失去与释怀的主题永不褪色——25年、30周年重映，它依然能让新一代观众在影院里悄悄落泪。</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- QUOTE -->
+<div class="quote reveal">
+  <div class="wrap">
+    <div class="mark">“</div>
+    <blockquote>你好吗？我很好。</blockquote>
+    <div class="by">— 全片最被传颂的一句</div>
+    <div class="by2">八个字，写尽思念、释怀，与未曾说出口的爱</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- WHY WATCH -->
+  <section class="reveal">
+    <div class="sec-tag">WHY IT'S WORTH WATCHING</div>
+    <div class="sec-title">为什么值得一看</div>
+    <div class="why">
+      <div class="why-item">
+        <h4>它让"克制"本身成为力量</h4>
+        <p>不煽情、不狗血，情绪却在每个留白处悄然涌动。看完你会明白：最高级的感动，往往来自最安静的讲述。</p>
+      </div>
+      <div class="why-item">
+        <h4>一段关于"记得"的温柔课</h4>
+        <p>它不教你怎么放下，而是告诉你：好好记住一个人，本身就是一种珍贵的能力，也是一种体面的告别。</p>
+      </div>
+      <div class="why-item">
+        <h4>青春被拍成了诗</h4>
+        <p>图书馆、借书卡、雪地里的仰望——那些被我们忽略的少年细节，在岩井俊二的镜头下都成了永恒。</p>
+      </div>
+      <div class="why-item">
+        <h4>适合一个人，也适合一起</h4>
+        <p>独处时它是情绪的容器，相伴时它是关于"如何去爱"的轻声对谈。无论哪种打开方式，都值得。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HONORS -->
+  <section class="reveal">
+    <div class="sec-tag">RECOGNITION</div>
+    <div class="sec-title">荣誉与印记</div>
+    <div class="honors">
+      <div class="honor">第21届报知电影奖 最佳影片</div>
+      <div class="honor">报知电影奖 最佳导演 · 岩井俊二</div>
+      <div class="honor">日本电影学院奖 多项提名</div>
+      <div class="honor">豆瓣 TOP250 第 66 位</div>
+      <div class="honor">烂番茄 96% 新鲜度</div>
+      <div class="honor">IMDb 7.9 / 全球 13K+ 评分</div>
+      <div class="honor">30周年纪念版 重映 (2025)</div>
+      <div class="honor">亚洲纯爱电影里程碑</div>
+    </div>
+  </section>
+
+  <!-- ARCHIVE -->
+  <section class="reveal">
+    <div class="sec-tag">FILM DOSSIER</div>
+    <div class="sec-title">影片档案</div>
+    <div class="archive">
+      <div class="row"><div class="k">中文片名</div><div class="v">情书</div></div>
+      <div class="row"><div class="k">原名</div><div class="v">Love Letter（ラブレター）</div></div>
+      <div class="row"><div class="k">导演 / 编剧</div><div class="v">岩井俊二（Shunji Iwai）</div></div>
+      <div class="row"><div class="k">主演</div><div class="v">中山美穗、丰川悦司、柏原崇、酒井美纪</div></div>
+      <div class="row"><div class="k">类型</div><div class="v">爱情 / 剧情</div></div>
+      <div class="row"><div class="k">片长</div><div class="v">117 分钟</div></div>
+      <div class="row"><div class="k">国家 / 地区</div><div class="v">日本</div></div>
+      <div class="row"><div class="k">语言</div><div class="v">日语</div></div>
+      <div class="row"><div class="k">上映年份</div><div class="v">1995 年（日本首映）</div></div>
+      <div class="row"><div class="k">分级</div><div class="v">PG（简要轻度语言）</div></div>
+      <div class="row"><div class="k">核心主题</div><div class="v">记忆 · 失去 · 暗恋 · 释怀与告别</div></div>
+    </div>
+  </section>
+
+  <!-- VERDICT -->
+  <section class="reveal">
+    <div class="verdict">
+      <div class="stars">★★★★★</div>
+      <h3>编辑评语</h3>
+      <p>《情书》不是一部需要"看懂"的电影，而是一部需要"感受"的电影。它用最干净的雪与最轻的信，托起了一个人该如何与回忆相处的命题。岩井俊二把青春、暗恋与告别拍成了一封寄给时间的信——当你在某个月夜想起那句"你好吗？我很好"，便会明白，有些电影值得被反复重逢。经典，从不因年代而褪色。</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="f-title">情书 · LOVE LETTER · 1995</div>
+    <div>今日经典电影推荐 · 评分数据截至 2026 · 仅供参考，请以官方平台为准</div>
+  </footer>
+
+</div>
+
+<script>
+/* ---------- Snow + warm dust canvas ---------- */
+(function(){
+  const c=document.getElementById('snow-canvas');
+  const ctx=c.getContext('2d');
+  let w,h,DPR;
+  function resize(){
+    DPR=Math.min(window.devicePixelRatio||1,2);
+    w=c.width=innerWidth*DPR; h=c.height=innerHeight*DPR;
+    c.style.width=innerWidth+'px'; c.style.height=innerHeight+'px';
+  }
+  resize(); addEventListener('resize',resize);
+
+  const flakes=[];
+  const dust=[];
+  const FN=Math.round(innerWidth/7)+40;
+  for(let i=0;i<FN;i++){
+    flakes.push({
+      x:Math.random()*w, y:Math.random()*h,
+      r:(Math.random()*2.2+0.8)*DPR,
+      sp:Math.random()*0.5+0.25,
+      dx:(Math.random()-0.5)*0.35*DPR,
+      o:Math.random()*0.5+0.35,
+      sw:Math.random()*0.6+0.2
+    });
+  }
+  for(let i=0;i<26;i++){
+    dust.push({
+      x:Math.random()*w, y:Math.random()*h,
+      r:(Math.random()*1.6+0.6)*DPR,
+      sp:Math.random()*0.3+0.1,
+      dx:(Math.random()-0.5)*0.25*DPR,
+      o:Math.random()*0.4+0.15,
+      ph:Math.random()*Math.PI*2
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    /* warm gold dust (memory glow) */
+    for(const d of dust){
+      d.y-=d.sp*DPR; d.x+=d.dx + Math.sin(d.ph+=0.01)*0.2*DPR;
+      if(d.y< -10) {d.y=h+10; d.x=Math.random()*w;}
+      const g=ctx.createRadialGradient(d.x,d.y,0,d.x,d.y,d.r*5);
+      g.addColorStop(0,'rgba(231,207,148,'+d.o+')');
+      g.addColorStop(1,'rgba(231,207,148,0)');
+      ctx.fillStyle=g;
+      ctx.beginPath(); ctx.arc(d.x,d.y,d.r*5,0,7); ctx.fill();
+    }
+    /* snow */
+    for(const f of flakes){
+      f.y+=f.sp*DPR; f.x+=f.dx + Math.sin((f.y*0.01)+f.sw)*0.3*DPR;
+      if(f.y>h+10){f.y=-10; f.x=Math.random()*w;}
+      ctx.fillStyle='rgba(238,245,251,'+f.o+')';
+      ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,7); ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ---------- Reveal on scroll ---------- */
+(function(){
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        if(e.target.querySelector('.cnt')||e.target.classList.contains('ratings')){
+          startCount(e.target);
+        }
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.18});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  function startCount(scope){
+    (scope.matches?.('.ratings')?scope:scope).querySelectorAll('.cnt').forEach(el=>{
+      const to=parseFloat(el.dataset.to), dec=parseInt(el.dataset.dec||'0');
+      const dur=1500; const t0=performance.now();
+      function step(t){
+        const p=Math.min((t-t0)/dur,1);
+        const e=1-Math.pow(1-p,3);
+        el.textContent=(to*e).toFixed(dec);
+        if(p<1) requestAnimationFrame(step); else el.textContent=to.toFixed(dec);
+      }
+      requestAnimationFrame(step);
+    });
+    scope.querySelectorAll('.r-fill').forEach(el=>{
+      requestAnimationFrame(()=>{el.style.width=el.dataset.pct+'%';});
+    });
+  }
+})();
+</script>
+</body>
+</html>

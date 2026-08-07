@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>寄生虫 Parasite · 经典电影推荐</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --deep-teal: #0a2a2a;
+    --basement-dark: #1a2a2a;
+    --rich-gold: #c9a94e;
+    --pure-white: #f5f3ef;
+    --glass-blue: #a8c5d6;
+    --stone-gray: #8a8a7a;
+    --accent-green: #4a7c59;
+    --blood-red: #8b2c2c;
+    --warm-amber: #d4a04a;
+    --text-dark: #1a1a1a;
+    --text-mid: #555;
+    --text-light: #aaa;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    background: var(--deep-teal);
+    color: var(--pure-white);
+    overflow-x: hidden;
+    line-height: 1.8;
+  }
+
+  /* ====== CANVAS BACKGROUND ====== */
+  #particle-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ====== HERO SCROLL INDICATOR ====== */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: floatDown 2s ease-in-out infinite;
+    cursor: pointer;
+  }
+  .scroll-indicator span {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .scroll-indicator .arrow {
+    width: 20px; height: 20px;
+    border-right: 2px solid rgba(255,255,255,0.3);
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    transform: rotate(45deg);
+  }
+  @keyframes floatDown {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    50% { transform: translateX(-50%) translateY(10px); opacity: 0.5; }
+  }
+
+  /* ====== HERO ====== */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg,
+      rgba(10,42,42,0.3) 0%,
+      rgba(10,42,42,0.5) 50%,
+      rgba(10,42,42,0.85) 100%
+    );
+    z-index: 0;
+  }
+
+  /* Split screen overlay */
+  .hero-split {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-split .upper-half {
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(180deg, rgba(245,243,239,0.08) 0%, transparent 100%);
+  }
+  .hero-split .lower-half {
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 50%;
+    background: linear-gradient(0deg, rgba(10,42,42,0.6) 0%, transparent 100%);
+  }
+  .hero-split .divider {
+    position: absolute;
+    top: 50%; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rich-gold), transparent);
+    transform: translateY(-0.5px);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 20px;
+    border: 1px solid rgba(201,169,78,0.4);
+    border-radius: 50px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rich-gold);
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(201,169,78,0.08);
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(48px, 8vw, 80px);
+    font-weight: 900;
+    color: var(--pure-white);
+    line-height: 1.2;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.5);
+  }
+  .hero-title .en {
+    display: block;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 300;
+    color: var(--rich-gold);
+    letter-spacing: 8px;
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+  .hero-title .kr {
+    display: block;
+    font-size: clamp(14px, 1.8vw, 20px);
+    font-weight: 300;
+    color: rgba(201,169,78,0.5);
+    letter-spacing: 6px;
+    margin-top: 2px;
+  }
+
+  .hero-tagline {
+    margin-top: 30px;
+    font-size: clamp(14px, 1.6vw, 18px);
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 2px;
+    font-style: italic;
+    position: relative;
+    padding: 0 30px;
+  }
+  .hero-tagline::before,
+  .hero-tagline::after {
+    content: '—';
+    color: var(--rich-gold);
+    opacity: 0.4;
+  }
+  .hero-tagline::before { margin-right: 12px; }
+  .hero-tagline::after { margin-left: 12px; }
+
+  .hero-meta {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    padding: 6px 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 1px;
+  }
+
+  /* ====== SECTION BASE ====== */
+  .section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--rich-gold);
+    margin-bottom: 16px;
+    opacity: 0.7;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 700;
+    color: var(--pure-white);
+    margin-bottom: 40px;
+  }
+  .section-title .accent {
+    color: var(--rich-gold);
+  }
+
+  /* ====== SPLIT DIVIDER ====== */
+  .split-divider {
+    position: relative;
+    height: 1px;
+    margin: 0 20px;
+    background: linear-gradient(90deg, transparent, rgba(201,169,78,0.3), transparent);
+  }
+
+  /* ====== RATINGS ====== */
+  .ratings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+  }
+
+  .rating-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+  }
+  .rating-card:hover {
+    border-color: rgba(201,169,78,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .rating-source {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 12px;
+  }
+
+  .rating-number {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--rich-gold);
+    line-height: 1;
+  }
+  .rating-number .decimal { font-size: 24px; }
+
+  .rating-bar {
+    margin-top: 14px;
+    width: 100%;
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .rating-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--rich-gold), var(--warm-amber));
+    border-radius: 4px;
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .rating-sub {
+    margin-top: 10px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ====== STORY ====== */
+  .story-section {
+    position: relative;
+  }
+
+  .story-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+  }
+  @media (max-width: 768px) {
+    .story-content { grid-template-columns: 1fr; gap: 30px; }
+  }
+
+  .story-text {
+    font-size: 16px;
+    line-height: 2;
+    color: rgba(255,255,255,0.75);
+  }
+  .story-text p { margin-bottom: 20px; }
+  .story-text .highlight {
+    color: var(--rich-gold);
+    font-weight: 500;
+  }
+
+  .story-svg-card {
+    position: relative;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 30px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .story-svg-card svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* ====== HIGHLIGHTS ====== */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .highlight-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 14px;
+    padding: 32px 28px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--rich-gold), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .highlight-card:hover::before { opacity: 1; }
+  .highlight-card:hover {
+    border-color: rgba(201,169,78,0.2);
+    transform: translateX(4px);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .highlight-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: rgba(201,169,78,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .highlight-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--pure-white);
+    margin-bottom: 10px;
+  }
+
+  .highlight-desc {
+    font-size: 14px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* ====== QUOTES ====== */
+  .quotes-section {
+    background: linear-gradient(180deg, transparent, rgba(10,42,42,0.6));
+    padding: 80px 20px;
+  }
+  .quotes-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .quote-block {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(201,169,78,0.15);
+    border-bottom: 1px solid rgba(201,169,78,0.15);
+  }
+
+  .quote-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(18px, 2.5vw, 28px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--pure-white);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .quote-source {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 2px;
+  }
+
+  /* ====== WHY WATCH ====== */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .why-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: all 0.4s ease;
+  }
+  .why-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201,169,78,0.3);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+
+  .why-number {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: rgba(201,169,78,0.15);
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+
+  .why-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--pure-white);
+    margin-bottom: 10px;
+  }
+
+  .why-desc {
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ====== HONORS ====== */
+  .honors-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .honor-tag {
+    padding: 8px 20px;
+    border: 1px solid rgba(201,169,78,0.2);
+    border-radius: 50px;
+    font-size: 12px;
+    color: var(--rich-gold);
+    background: rgba(201,169,78,0.05);
+    transition: all 0.3s;
+  }
+  .honor-tag:hover {
+    background: rgba(201,169,78,0.15);
+    border-color: var(--rich-gold);
+  }
+
+  /* ====== FILM ARCHIVE ====== */
+  .archive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+  }
+
+  .archive-item {
+    display: flex;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .archive-key {
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+
+  .archive-value {
+    font-size: 14px;
+    color: var(--pure-white);
+  }
+
+  /* ====== EDITOR RATING ====== */
+  .editor-section {
+    text-align: center;
+    padding: 80px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stars { margin-bottom: 20px; }
+  .stars span {
+    font-size: 32px;
+    color: var(--rich-gold);
+    margin: 0 4px;
+  }
+  .stars span.empty {
+    color: rgba(255,255,255,0.1);
+  }
+
+  .editor-quote {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(18px, 2.5vw, 24px);
+    color: var(--pure-white);
+    line-height: 1.8;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto 16px;
+  }
+
+  .editor-sign {
+    font-size: 13px;
+    color: var(--rich-gold);
+    letter-spacing: 2px;
+  }
+
+  /* ====== FOOTER ====== */
+  .footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 2px;
+    border-top: 1px solid rgba(255,255,255,0.03);
+  }
+
+  /* ====== REVEAL ANIMATIONS ====== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<!-- ====== HERO ====== -->
+<section class="hero">
+  <div class="hero-split">
+    <div class="upper-half"></div>
+    <div class="lower-half"></div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">✦ Palme d'Or · Oscar Best Picture</div>
+    <div class="hero-year" style="top:-40px">2019</div>
+    <h1 class="hero-title">
+      寄生虫
+      <span class="kr">기생충</span>
+      <span class="en">Parasite</span>
+    </h1>
+    <div class="hero-tagline">
+      偶尔的越界，瞬间的下沉
+    </div>
+    <div class="hero-meta">
+      <span class="hero-meta-item">奉俊昊 导演</span>
+      <span class="hero-meta-item">2019 年</span>
+      <span class="hero-meta-item">韩国 / 剧情·悬疑·喜剧</span>
+      <span class="hero-meta-item">132 分钟</span>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>SCROLL</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- ====== RATINGS ====== -->
+<section class="section" style="padding-top:60px;">
+  <div class="section-label reveal">Ratings</div>
+  <h2 class="section-title reveal">全球口碑 <span class="accent">评分</span></h2>
+  <div class="ratings-grid">
+    <div class="rating-card reveal reveal-delay-1">
+      <div class="rating-source">IMDb</div>
+      <div class="rating-number">8.5<span class="decimal">/10</span></div>
+      <div class="rating-bar"><div class="rating-bar-fill" data-width="85"></div></div>
+      <div class="rating-sub">Top 250 · #35</div>
+    </div>
+    <div class="rating-card reveal reveal-delay-2">
+      <div class="rating-source">豆瓣</div>
+      <div class="rating-number">8.8<span class="decimal">/10</span></div>
+      <div class="rating-bar"><div class="rating-bar-fill" data-width="88"></div></div>
+      <div class="rating-sub">Top 250 · 评分超 180 万</div>
+    </div>
+    <div class="rating-card reveal reveal-delay-3">
+      <div class="rating-source">烂番茄</div>
+      <div class="rating-number">98<span class="decimal">%</span></div>
+      <div class="rating-bar"><div class="rating-bar-fill" data-width="98"></div></div>
+      <div class="rating-sub">Critics · 453 则评价</div>
+    </div>
+    <div class="rating-card reveal reveal-delay-4">
+      <div class="rating-source">Metacritic</div>
+      <div class="rating-number">94<span class="decimal">/100</span></div>
+      <div class="rating-bar"><div class="rating-bar-fill" data-width="94"></div></div>
+      <div class="rating-sub">Must-See · 媒体综评</div>
+    </div>
+  </div>
+</section>
+
+<div class="split-divider"></div>
+
+<!-- ====== STORY ====== -->
+<section class="section story-section">
+  <div class="section-label reveal">Plot</div>
+  <h2 class="section-title reveal">剧情 <span class="accent">梗概</span></h2>
+  <div class="story-content">
+    <div class="story-text reveal">
+      <p>
+        金氏一家四口——父亲基泽、母亲忠淑、长子基宇、长女基婷——全部失业，
+        蜗居在首尔一间潮湿阴暗的半地下室公寓里。他们靠折披萨盒勉强维生，
+        连免费的 Wi-Fi 都要四处蹭邻居的信号。
+      </p>
+      <p>
+        一次偶然的机会，长子基宇经朋友推荐来到富有的朴社长家担任英语家教。
+        他惊讶地发现，这栋由著名建筑师设计的豪宅里，隐藏着一个全新的世界。
+        一个大胆的计划在基宇心中成形——他决定让全家人一个接一个地渗透进朴家，
+        像寄生虫一样悄然占据这个不属于他们的空间。
+      </p>
+      <p>
+        每个人都有自己的位置，<span class="highlight">但不是每个人都有自己的阶层</span>。
+        当两个世界的边界被一次次试探，一场始料未及的暴风雨即将揭开
+        隐藏在光鲜外表之下的黑暗真相。
+      </p>
+    </div>
+    <div class="story-svg-card reveal reveal-delay-2">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sky / upper world -->
+        <rect width="400" height="150" fill="#f5f3ef" opacity="0.08"/>
+        <!-- Ground / lower world -->
+        <rect y="150" width="400" height="150" fill="#0a2a2a" opacity="0.5"/>
+        <!-- Divider line -->
+        <line x1="0" y1="150" x2="400" y2="150" stroke="#c9a94e" stroke-width="0.8" opacity="0.4"/>
+        <!-- Above ground elements -->
+        <rect x="140" y="70" width="120" height="80" rx="4" fill="none" stroke="#c9a94e" stroke-width="1" opacity="0.3"/>
+        <rect x="148" y="78" width="36" height="36" rx="2" fill="rgba(201,169,78,0.08)" stroke="rgba(201,169,78,0.2)" stroke-width="0.5"/>
+        <rect x="192" y="78" width="36" height="36" rx="2" fill="rgba(201,169,78,0.08)" stroke="rgba(201,169,78,0.2)" stroke-width="0.5"/>
+        <rect x="148" y="120" width="104" height="22" rx="2" fill="rgba(201,169,78,0.06)" stroke="rgba(201,169,78,0.15)" stroke-width="0.5"/>
+        <!-- Windows -->
+        <rect x="155" y="86" width="10" height="10" rx="1" fill="rgba(168,197,214,0.3)"/>
+        <rect x="170" y="86" width="10" height="10" rx="1" fill="rgba(168,197,214,0.3)"/>
+        <rect x="199" y="86" width="10" height="10" rx="1" fill="rgba(168,197,214,0.3)"/>
+        <rect x="214" y="86" width="10" height="10" rx="1" fill="rgba(168,197,214,0.3)"/>
+        <!-- Tree above ground -->
+        <line x1="320" y1="150" x2="320" y2="50" stroke="rgba(74,124,89,0.3)" stroke-width="2"/>
+        <circle cx="320" cy="45" r="15" fill="rgba(74,124,89,0.15)"/>
+        <circle cx="310" cy="35" r="10" fill="rgba(74,124,89,0.1)"/>
+        <circle cx="330" cy="35" r="10" fill="rgba(74,124,89,0.1)"/>
+        <!-- Below ground elements -->
+        <!-- Semi-basement -->
+        <rect x="80" y="180" width="90" height="60" rx="3" fill="rgba(10,42,42,0.4)" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
+        <rect x="86" y="188" width="20" height="14" rx="1" fill="rgba(168,197,214,0.08)"/>
+        <rect x="84" y="210" width="82" height="16" rx="1" fill="rgba(201,169,78,0.04)" stroke="rgba(201,169,78,0.1)" stroke-width="0.5"/>
+        <!-- Figures below - small silhouettes -->
+        <circle cx="100" cy="234" r="5" fill="rgba(255,255,255,0.08)"/>
+        <circle cx="120" cy="234" r="4" fill="rgba(255,255,255,0.06)"/>
+        <circle cx="140" cy="234" r="4" fill="rgba(255,255,255,0.06)"/>
+        <circle cx="155" cy="234" r="3.5" fill="rgba(255,255,255,0.05)"/>
+        <!-- Steps going down from basement -->
+        <rect x="180" y="240" width="30" height="5" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="190" y="245" width="30" height="5" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <rect x="200" y="250" width="30" height="5" rx="1" fill="rgba(255,255,255,0.04)"/>
+        <!-- Underground tunnel / bunker -->
+        <rect x="230" y="200" width="100" height="40" rx="4" fill="rgba(0,0,0,0.3)" stroke="rgba(255,255,255,0.04)" stroke-width="0.5"/>
+        <ellipse cx="330" cy="220" rx="3" ry="3" fill="rgba(201,169,78,0.08)"/>
+        <!-- Water/rain drip marks -->
+        <line x1="260" y1="205" x2="260" y2="210" stroke="rgba(168,197,214,0.08)" stroke-width="0.5"/>
+        <line x1="280" y1="205" x2="280" y2="212" stroke="rgba(168,197,214,0.06)" stroke-width="0.5"/>
+        <line x1="300" y1="206" x2="300" y2="211" stroke="rgba(168,197,214,0.07)" stroke-width="0.5"/>
+        <!-- Rain drops from sky -->
+        <line x1="60" y1="30" x2="60" y2="40" stroke="rgba(168,197,214,0.08)" stroke-width="0.5"/>
+        <line x1="100" y1="20" x2="100" y2="32" stroke="rgba(168,197,214,0.06)" stroke-width="0.5"/>
+        <line x1="180" y1="15" x2="180" y2="25" stroke="rgba(168,197,214,0.07)" stroke-width="0.5"/>
+        <line x1="250" y1="25" x2="250" y2="38" stroke="rgba(168,197,214,0.05)" stroke-width="0.5"/>
+        <line x1="50" y1="55" x2="50" y2="65" stroke="rgba(168,197,214,0.06)" stroke-width="0.5"/>
+        <line x1="350" y1="35" x2="350" y2="48" stroke="rgba(168,197,214,0.05)" stroke-width="0.5"/>
+        <line x1="30" y1="80" x2="30" y2="90" stroke="rgba(168,197,214,0.04)" stroke-width="0.5"/>
+        <line x1="370" y1="60" x2="370" y2="72" stroke="rgba(168,197,214,0.05)" stroke-width="0.5"/>
+        <!-- Subtle stone motif (the stone) -->
+        <ellipse cx="90" cy="180" rx="8" ry="6" fill="rgba(138,138,122,0.15)" stroke="rgba(138,138,122,0.2)" stroke-width="0.5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="split-divider"></div>
+
+<!-- ====== HIGHLIGHTS ====== -->
+<section class="section">
+  <div class="section-label reveal">Highlights</div>
+  <h2 class="section-title reveal">六大 <span class="accent">亮点</span></h2>
+  <div class="highlights-grid">
+    <div class="highlight-card reveal reveal-delay-1">
+      <div class="highlight-icon">🏆</div>
+      <div class="highlight-title">奥斯卡创造历史</div>
+      <div class="highlight-desc">史上首部获得奥斯卡最佳影片的非英语电影，同时斩获最佳导演、最佳国际影片、最佳原创剧本四座小金人，刷新亚洲电影百年纪录。</div>
+    </div>
+    <div class="highlight-card reveal reveal-delay-2">
+      <div class="highlight-icon">🎬</div>
+      <div class="highlight-title">奉俊昊的叙事魔法</div>
+      <div class="highlight-desc">在悬疑、喜剧、惊悚和社会批判间自如切换，类型融合如水银泻地。每一帧都暗藏信息，每一个道具都是铺垫，浑然天成的叙事肌理。</div>
+    </div>
+    <div class="highlight-card reveal reveal-delay-3">
+      <div class="highlight-icon">🏠</div>
+      <div class="highlight-title">空间即隐喻</div>
+      <div class="highlight-desc">半地下室与通透豪宅、地面与地下、上行与下潜——三层空间的垂直布局本身就是最锋利的阶级寓言。楼梯的每一次上下，都是一次阶层穿越。</div>
+    </div>
+    <div class="highlight-card reveal reveal-delay-4">
+      <div class="highlight-icon">🎭</div>
+      <div class="highlight-title">全员演技在线</div>
+      <div class="highlight-desc">宋康昊、崔宇植、朴素丹、李善均、赵汝贞——没有一位演员掉线。群戏出神入化，每个角色的微表情与肢体语言都承载着丰富的社会暗示。</div>
+    </div>
+    <div class="highlight-card reveal reveal-delay-1">
+      <div class="highlight-icon">🌧️</div>
+      <div class="highlight-title">暴雨中的转折</div>
+      <div class="highlight-desc">一场暴风雨成为全片的分水岭。当雨水漫过半地下室的那一刻，命运的齿轮不可逆转地转动——这是近年来电影中最具冲击力的情感过山车之一。</div>
+    </div>
+    <div class="highlight-card reveal reveal-delay-2">
+      <div class="highlight-icon">🧩</div>
+      <div class="highlight-title">细节的迷宫</div>
+      <div class="highlight-desc">从"桃子的气味"到"摩斯电码"，从"山水石"到"印第安帐篷"，每个意象都串联成精密的符号网络。二刷三刷才能完全领略导演埋藏的玄机。</div>
+    </div>
+  </div>
+</section>
+
+<div class="split-divider"></div>
+
+<!-- ====== QUOTES ====== -->
+<section class="quotes-section">
+  <div class="quotes-inner">
+    <div class="quote-block reveal">
+      <div class="quote-text">「钱是熨斗，把一切褶皱都烫平了。」</div>
+      <div class="quote-source">—— 金基泽 · 《寄生虫》</div>
+    </div>
+  </div>
+</section>
+
+<div class="split-divider"></div>
+
+<!-- ====== WHY WATCH ====== -->
+<section class="section">
+  <div class="section-label reveal">Why Watch</div>
+  <h2 class="section-title reveal">为什么 <span class="accent">值得看</span></h2>
+  <div class="why-grid">
+    <div class="why-card reveal reveal-delay-1">
+      <div class="why-number">01</div>
+      <div class="why-title">超越语言的共鸣</div>
+      <div class="why-desc">虽然是一部韩国电影，但关于阶层、尊严和生存困境的故事，全世界的观众都能感同身受。语言从未成为理解的障碍。</div>
+    </div>
+    <div class="why-card reveal reveal-delay-2">
+      <div class="why-number">02</div>
+      <div class="why-title">不可预测的剧本</div>
+      <div class="why-desc">前半段的精巧渗透像一出黑色喜剧，后半段却急转直下。你永远猜不到下一分钟会发生什么——这就是顶级编剧的魅力。</div>
+    </div>
+    <div class="why-card reveal reveal-delay-3">
+      <div class="why-number">03</div>
+      <div class="why-title">视觉与听觉的盛宴</div>
+      <div class="why-desc">摄影精准如手术刀，空间调度堪比教科书。配乐在古典、爵士与后摇间自由切换，每一秒都在调动你的情绪。</div>
+    </div>
+    <div class="why-card reveal reveal-delay-4">
+      <div class="why-number">04</div>
+      <div class="why-title">它改变了电影史</div>
+      <div class="why-desc">在非英语电影被奥斯卡视为"小众"的传统偏见下，《寄生虫》证明了好故事没有国界。它不仅仅是电影，更是一道文化分水岭。</div>
+    </div>
+  </div>
+</section>
+
+<div class="split-divider"></div>
+
+<!-- ====== HONORS ====== -->
+<section class="section">
+  <div class="section-label reveal">Honors</div>
+  <h2 class="section-title reveal">荣誉 <span class="accent">与奖项</span></h2>
+  <div class="honors-cloud reveal">
+    <span class="honor-tag">🏆 第92届奥斯卡最佳影片</span>
+    <span class="honor-tag">🏆 第92届奥斯卡最佳导演</span>
+    <span class="honor-tag">🏆 第92届奥斯卡最佳国际影片</span>
+    <span class="honor-tag">🏆 第92届奥斯卡最佳原创剧本</span>
+    <span class="honor-tag">🏆 第72届戛纳金棕榈大奖</span>
+    <span class="honor-tag">🏆 第77届金球奖最佳外语片</span>
+    <span class="honor-tag">🏆 第73届英国电影学院奖最佳外语片</span>
+    <span class="honor-tag">🏆 第26届美国演员工会奖最佳群戏</span>
+    <span class="honor-tag">🏆 第40届韩国青龙电影奖最佳影片</span>
+    <span class="honor-tag">🏆 第56届大钟奖最佳影片</span>
+    <span class="honor-tag">🏆 第56届百想艺术大赏最佳影片</span>
+    <span class="honor-tag">🏆 第70届柏林国际电影节（荣誉金熊奖）</span>
+    <span class="honor-tag">🏆 第91届美国国家评论协会奖最佳外语片</span>
+    <span class="honor-tag">🏆 第25届评论家选择奖最佳外语片</span>
+    <span class="honor-tag">🏆 第35届独立精神奖最佳国际影片</span>
+  </div>
+</section>
+
+<div class="split-divider"></div>
+
+<!-- ====== ARCHIVE ====== -->
+<section class="section">
+  <div class="section-label reveal">Archive</div>
+  <h2 class="section-title reveal">影片 <span class="accent">档案</span></h2>
+  <div class="archive-grid reveal">
+    <div class="archive-item"><span class="archive-key">片名</span><span class="archive-value">寄生虫 (기생충)</span></div>
+    <div class="archive-item"><span class="archive-key">英文片名</span><span class="archive-value">Parasite</span></div>
+    <div class="archive-item"><span class="archive-key">导演</span><span class="archive-value">奉俊昊 (Bong Joon-ho)</span></div>
+    <div class="archive-item"><span class="archive-key">编剧</span><span class="archive-value">奉俊昊 · 韩进元</span></div>
+    <div class="archive-item"><span class="archive-key">主演</span><span class="archive-value">宋康昊 · 李善均 · 赵汝贞 · 崔宇植 · 朴素丹 · 张慧珍</span></div>
+    <div class="archive-item"><span class="archive-key">上映年份</span><span class="archive-value">2019</span></div>
+    <div class="archive-item"><span class="archive-key">片长</span><span class="archive-value">132 分钟</span></div>
+    <div class="archive-item"><span class="archive-key">国家</span><span class="archive-value">韩国</span></div>
+    <div class="archive-item"><span class="archive-key">语言</span><span class="archive-value">韩语 · 英语</span></div>
+    <div class="archive-item"><span class="archive-key">类型</span><span class="archive-value">剧情 / 悬疑 / 喜剧 / 惊悚</span></div>
+    <div class="archive-item"><span class="archive-key">制片预算</span><span class="archive-value">约 1,170 万美元</span></div>
+    <div class="archive-item"><span class="archive-key">全球票房</span><span class="archive-value">约 2.66 亿美元</span></div>
+  </div>
+</section>
+
+<div class="split-divider"></div>
+
+<!-- ====== EDITOR ====== -->
+<section class="editor-section">
+  <div class="reveal">
+    <div class="stars">
+      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+    </div>
+    <div class="editor-quote">
+      一部真正意义上的零门槛杰作——<br>
+      无论你看过多少电影，《寄生虫》都像一记精准的直拳，<br>
+      打在你以为早已麻木的地方。
+    </div>
+    <div class="editor-sign">编辑推荐 · 五星满分</div>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+  经典电影推荐 · 《寄生虫》 · 2026.06.09
+</footer>
+
+<script>
+// ====== CANVAS PARTICLE SYSTEM ======
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.size = Math.random() * 2.5 + 0.5;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = (Math.random() - 0.5) * 0.2 - 0.15;
+    this.opacity = Math.random() * 0.4 + 0.1;
+    this.life = Math.random() * 300 + 100;
+    this.maxLife = this.life;
+    // Color palette: gold tones + teal tones
+    const colors = [
+      {r: 201, g: 169, b: 78}, // gold
+      {r: 212, g: 160, b: 74}, // amber
+      {r: 168, g: 197, b: 214}, // glass blue
+      {r: 74, g: 124, b: 89}, // green
+      {r: 138, g: 138, b: 122}, // stone
+    ];
+    const c = colors[Math.floor(Math.random() * colors.length)];
+    this.r = c.r; this.g = c.g; this.b = c.b;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.life--;
+    if (this.life <= 0 || this.x < -10 || this.x > W + 10 || this.y < -10 || this.y > H + 10) {
+      this.reset();
+      this.y = H + 5;
+      this.speedY = -(Math.random() * 0.2 + 0.05);
+    }
+  }
+  draw() {
+    const fade = Math.min(1, this.life / 60);
+    const alpha = this.opacity * fade;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${this.r},${this.g},${this.b},${alpha})`;
+    ctx.fill();
+    // Glow effect
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${this.r},${this.g},${this.b},${alpha * 0.08})`;
+    ctx.fill();
+  }
+}
+
+const particles = [];
+const count = Math.min(80, Math.floor((W * H) / 15000));
+for (let i = 0; i < count; i++) {
+  particles.push(new Particle());
+}
+
+function animate() {
+  ctx.clearRect(0, 0, W, H);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animate);
+}
+animate();
+
+// ====== INTERSECTION OBSERVER ======
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+reveals.forEach(el => observer.observe(el));
+
+// ====== RATING BAR ANIMATION ======
+const ratingObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bar = entry.target;
+      const width = bar.dataset.width;
+      setTimeout(() => { bar.style.width = width + '%'; }, 300);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.rating-bar-fill').forEach(bar => {
+  ratingObserver.observe(bar);
+});
+</script>
+</body>
+</html>

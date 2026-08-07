@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>今日经典 · 千与千寻</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700;900&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --ink: oklch(14% 0.02 250);
+      --ink-soft: oklch(35% 0.02 250);
+      --ink-muted: oklch(55% 0.015 250);
+      --paper: oklch(97% 0.005 80);
+      --warm: oklch(94% 0.015 85);
+      --accent-gold: oklch(72% 0.14 85);
+      --accent-rose: oklch(62% 0.16 15);
+      --accent-teal: oklch(58% 0.12 195);
+      --accent-sky: oklch(75% 0.10 230);
+      --rule: oklch(88% 0.008 80);
+      --serif: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+      --sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+
+    html {
+      font-size: clamp(15px, 2vw, 17px);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Noise texture overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Page grid ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: clamp(2rem, 8vw, 5rem) clamp(1.2rem, 6vw, 3rem);
+    }
+
+    /* ── Header badge ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 3rem;
+    }
+
+    .badge::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--ink-muted);
+    }
+
+    /* ── Film strip decoration ── */
+    .filmstrip {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1.5rem;
+      opacity: 0.45;
+    }
+
+    .filmstrip span {
+      display: block;
+      width: 10px;
+      height: 7px;
+      border: 1.5px solid var(--ink-soft);
+      border-radius: 1px;
+    }
+
+    /* ── Hero title block ── */
+    .hero {
+      margin-bottom: clamp(2.5rem, 6vw, 4rem);
+      position: relative;
+    }
+
+    .hero-label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-rose);
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3.2rem, 10vw, 6.5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-title .char-en {
+      display: block;
+      font-family: var(--serif);
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--ink-muted);
+      margin-top: 0.4rem;
+    }
+
+    .hero-title .year-tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--paper);
+      background: var(--ink);
+      padding: 0.18em 0.5em;
+      border-radius: 2px;
+      vertical-align: middle;
+      margin-left: 0.6rem;
+      position: relative;
+      top: -0.1em;
+    }
+
+    /* ── Score strip ── */
+    .scores {
+      display: flex;
+      gap: 0;
+      margin: 2rem 0 2.5rem;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .score-item {
+      flex: 1;
+      padding: 1rem 0.8rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .score-item + .score-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 20%;
+      bottom: 20%;
+      width: 1px;
+      background: var(--rule);
+    }
+
+    .score-num {
+      display: block;
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .score-num.highlight {
+      color: var(--accent-gold);
+    }
+
+    .score-label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-top: 0.3rem;
+    }
+
+    /* ── Masthead image placeholder — stylized ── */
+    .visual-block {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      margin-bottom: clamp(2rem, 5vw, 3.5rem);
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .visual-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 30% 60%, oklch(65% 0.18 220 / 0.35) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 70% 40%, oklch(72% 0.14 85 / 0.3) 0%, transparent 55%),
+        radial-gradient(ellipse 80% 100% at 50% 100%, oklch(25% 0.08 240 / 0.8) 0%, transparent 70%),
+        linear-gradient(160deg,
+          oklch(20% 0.06 250) 0%,
+          oklch(35% 0.1 220) 35%,
+          oklch(55% 0.15 195) 60%,
+          oklch(72% 0.12 90) 100%
+        );
+    }
+
+    /* Floating lanterns */
+    .lantern {
+      position: absolute;
+      border-radius: 50% 50% 40% 40%;
+      animation: float linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(0) rotate(-3deg); opacity: 0; }
+      5%   { opacity: 1; }
+      95%  { opacity: 0.7; }
+      100% { transform: translateY(-110%) rotate(3deg); opacity: 0; }
+    }
+
+    .lantern:nth-child(1) { width:22px;height:28px; left:12%; bottom:5%; background:oklch(85% 0.18 80); animation-duration:8s; animation-delay:0s; }
+    .lantern:nth-child(2) { width:16px;height:20px; left:28%; bottom:8%; background:oklch(78% 0.2 30); animation-duration:10s; animation-delay:1.5s; }
+    .lantern:nth-child(3) { width:28px;height:34px; left:45%; bottom:2%; background:oklch(80% 0.15 60); animation-duration:9s; animation-delay:3s; }
+    .lantern:nth-child(4) { width:18px;height:22px; left:62%; bottom:10%; background:oklch(82% 0.16 50); animation-duration:11s; animation-delay:0.8s; }
+    .lantern:nth-child(5) { width:24px;height:30px; left:78%; bottom:4%; background:oklch(76% 0.19 20); animation-duration:7.5s; animation-delay:2.2s; }
+    .lantern:nth-child(6) { width:14px;height:18px; left:88%; bottom:7%; background:oklch(84% 0.17 75); animation-duration:9.5s; animation-delay:4s; }
+
+    .lantern-glow {
+      position: absolute;
+      inset: -50%;
+      background: radial-gradient(circle, currentColor 0%, transparent 70%);
+      opacity: 0.4;
+    }
+
+    .visual-label {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 1.5rem;
+      font-family: var(--serif);
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      font-weight: 600;
+      color: oklch(97% 0.01 80);
+      letter-spacing: 0.05em;
+      text-shadow: 0 2px 12px oklch(0% 0 0 / 0.5);
+    }
+
+    .visual-label em {
+      display: block;
+      font-style: normal;
+      font-family: var(--sans);
+      font-size: 0.6em;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      opacity: 0.7;
+      margin-bottom: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* ── Content columns ── */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      margin-bottom: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    @media (max-width: 600px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .section-title {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .body-text {
+      font-family: var(--serif);
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--ink-soft);
+      font-weight: 300;
+    }
+
+    .body-text strong {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    /* ── Highlight pills ── */
+    .highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 0.28em 0.75em;
+      border-radius: 1px;
+      border: 1px solid;
+    }
+
+    .pill-gold  { color: var(--accent-gold);  border-color: color-mix(in oklch, var(--accent-gold) 40%, transparent); background: color-mix(in oklch, var(--accent-gold) 8%, transparent); }
+    .pill-rose  { color: var(--accent-rose);  border-color: color-mix(in oklch, var(--accent-rose) 40%, transparent); background: color-mix(in oklch, var(--accent-rose) 8%, transparent); }
+    .pill-teal  { color: var(--accent-teal);  border-color: color-mix(in oklch, var(--accent-teal) 40%, transparent); background: color-mix(in oklch, var(--accent-teal) 8%, transparent); }
+    .pill-sky   { color: var(--accent-sky);   border-color: color-mix(in oklch, var(--accent-sky) 40%, transparent);  background: color-mix(in oklch, var(--accent-sky) 8%, transparent); }
+    .pill-ink   { color: var(--ink-soft);     border-color: var(--rule); background: var(--warm); }
+
+    /* ── Pull quote ── */
+    .pull-quote {
+      border-left: 3px solid var(--accent-gold);
+      padding: 1rem 1.4rem;
+      margin: 2rem 0;
+      background: var(--warm);
+    }
+
+    .pull-quote p {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--ink);
+      font-style: italic;
+    }
+
+    .pull-quote cite {
+      display: block;
+      font-style: normal;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-muted);
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    /* ── Crew strip ── */
+    .crew {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0;
+      border: 1px solid var(--rule);
+      margin-bottom: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .crew-item {
+      padding: 1rem 1.2rem;
+      border-right: 1px solid var(--rule);
+      position: relative;
+    }
+
+    .crew-item:last-child { border-right: none; }
+
+    .crew-role {
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .crew-name {
+      font-family: var(--serif);
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    @media (max-width: 500px) {
+      .crew { grid-template-columns: 1fr 1fr; }
+      .crew-item:nth-child(2n) { border-right: none; }
+      .crew-item:nth-child(n+3) { border-top: 1px solid var(--rule); }
+    }
+
+    /* ── Reason to watch ── */
+    .reasons {
+      margin-bottom: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .reason-list {
+      list-style: none;
+      counter-reset: reasons;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .reason-list li {
+      counter-increment: reasons;
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .reason-list li::before {
+      content: counter(reasons, decimal-leading-zero);
+      font-family: var(--serif);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      letter-spacing: 0.05em;
+      padding-top: 0.15em;
+    }
+
+    .reason-text {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .reason-text strong {
+      display: block;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.2em;
+      font-size: 0.95rem;
+    }
+
+    /* ── Awards strip ── */
+    .awards {
+      background: var(--warm);
+      border-top: 2px solid var(--ink);
+      padding: 1.4rem 0;
+      margin-bottom: clamp(2rem, 5vw, 3.5rem);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2.5rem;
+    }
+
+    .award-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .award-icon {
+      font-size: 1.1rem;
+    }
+
+    .award-text {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      line-height: 1.3;
+      color: var(--ink-soft);
+    }
+
+    .award-text strong {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      border-top: 1px solid var(--rule);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-date {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--ink-muted);
+    }
+
+    .footer-tag {
+      font-family: var(--serif);
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--ink-muted);
+      font-style: italic;
+    }
+
+    /* ── Entrance animations ── */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate {
+      opacity: 0;
+      animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.36s; }
+    .delay-4 { animation-delay: 0.5s; }
+    .delay-5 { animation-delay: 0.64s; }
+    .delay-6 { animation-delay: 0.78s; }
+    .delay-7 { animation-delay: 0.92s; }
+    .delay-8 { animation-delay: 1.06s; }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <!-- Badge -->
+    <div class="badge animate delay-1">今日经典推荐 · 2026.04.28</div>
+
+    <!-- Film strip decoration -->
+    <div class="filmstrip animate delay-1">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero animate delay-2">
+      <div class="hero-label">本期推荐</div>
+      <h1 class="hero-title">
+        千与千寻
+        <span class="year-tag">2001</span>
+        <span class="char-en">Spirited Away · Sen to Chihiro no Kamikakushi</span>
+      </h1>
+    </div>
+
+    <!-- Score strip -->
+    <div class="scores animate delay-3">
+      <div class="score-item">
+        <span class="score-num highlight">9.4</span>
+        <span class="score-label">豆瓣评分</span>
+      </div>
+      <div class="score-item">
+        <span class="score-num">8.6</span>
+        <span class="score-label">IMDb Rating</span>
+      </div>
+      <div class="score-item">
+        <span class="score-num highlight">97%</span>
+        <span class="score-label">烂番茄新鲜度</span>
+      </div>
+      <div class="score-item">
+        <span class="score-num">395<small style="font-size:0.45em;vertical-align:top;margin-top:0.2em;color:var(--ink-muted)">亿日元</small></span>
+        <span class="score-label">日本票房</span>
+      </div>
+    </div>
+
+    <!-- Visual block -->
+    <div class="visual-block animate delay-3">
+      <div class="visual-bg"></div>
+      <div class="lantern"><div class="lantern-glow"></div></div>
+      <div class="lantern"><div class="lantern-glow"></div></div>
+      <div class="lantern"><div class="lantern-glow"></div></div>
+      <div class="lantern"><div class="lantern-glow"></div></div>
+      <div class="lantern"><div class="lantern-glow"></div></div>
+      <div class="lantern"><div class="lantern-glow"></div></div>
+      <div class="visual-label">
+        <em>Studio Ghibli</em>
+        神隐少女的奇幻旅程
+      </div>
+    </div>
+
+    <!-- Crew strip -->
+    <div class="crew animate delay-4">
+      <div class="crew-item">
+        <div class="crew-role">导演 · 编剧</div>
+        <div class="crew-name">宫崎骏</div>
+      </div>
+      <div class="crew-item">
+        <div class="crew-role">制片公司</div>
+        <div class="crew-name">吉卜力工作室</div>
+      </div>
+      <div class="crew-item">
+        <div class="crew-role">音乐</div>
+        <div class="crew-name">久石让</div>
+      </div>
+      <div class="crew-item">
+        <div class="crew-role">类型</div>
+        <div class="crew-name">奇幻 / 成长 / 冒险</div>
+      </div>
+      <div class="crew-item">
+        <div class="crew-role">时长</div>
+        <div class="crew-name">125 分钟</div>
+      </div>
+    </div>
+
+    <!-- Main content grid -->
+    <div class="content-grid animate delay-4">
+      <div>
+        <div class="section-title">剧情梗概</div>
+        <p class="body-text">
+          10 岁少女<strong>荻野千寻</strong>，随父母搬家途中误入一个神秘隧道，踏入了<strong>神灵浴场</strong>——一个人类所不知晓的异世界。父母因贪食神明供品而变成猪，千寻只身一人被困于此，必须在这个充满妖怪、神明与规则的世界中打工生存，寻找机会救出父母。
+        </p>
+        <p class="body-text" style="margin-top:0.8rem;">
+          她成为浴场最底层的伙计，结识了神秘少年<strong>白龙</strong>、苦涩老妪<strong>汤婆婆</strong>、无脸男与锅炉爷爷……在这些奇异相遇中，一个关于<strong>成长、记忆与爱</strong>的故事悄然展开。
+        </p>
+        <div class="highlights" style="margin-top:1.2rem;">
+          <span class="pill pill-teal">奇幻世界构建</span>
+          <span class="pill pill-rose">少女成长叙事</span>
+          <span class="pill pill-gold">日式民俗美学</span>
+          <span class="pill pill-sky">亲情救赎主题</span>
+          <span class="pill pill-ink">无剧透放心入场</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-title">创作亮点</div>
+        <p class="body-text">
+          宫崎骏将<strong>日本传统神话、民俗与妖怪文化</strong>融入画面的每一寸——浴场的设计、食物的精细、神明的形态，无一不透露出极度认真的世界观构建。
+        </p>
+        <p class="body-text" style="margin-top:0.8rem;">
+          久石让的配乐如流水般贯穿全片，既有宏阔的史诗感，也有细腻的心理刻画。手绘动画的质感在数字化时代愈显珍贵——<strong>每一帧皆是艺术品</strong>。
+        </p>
+        <p class="body-text" style="margin-top:0.8rem;">
+          影片没有绝对的反派，每个角色都有其立场与悲哀，这种<strong>非二元道德观</strong>让成年观众回味无穷。
+        </p>
+      </div>
+    </div>
+
+    <!-- Pull quote -->
+    <div class="pull-quote animate delay-5">
+      <p>人生中偶尔会遭遇「被神隐」的处境——熟悉的世界消失，规则全然改变，只能靠自己找出路。千寻的故事，是所有人成长轨迹的隐喻。</p>
+      <cite>—— 关于这部电影的一种解读</cite>
+    </div>
+
+    <!-- Why watch -->
+    <div class="reasons animate delay-5">
+      <div class="section-title">为什么值得一看</div>
+      <ol class="reason-list">
+        <li>
+          <div class="reason-text">
+            <strong>人类动画史的峰值之一</strong>
+            全程手绘动画，细节密度惊人。每个场景都像是一幅独立画作，是工业 CG 时代前，二维动画所能抵达的极限。
+          </div>
+        </li>
+        <li>
+          <div class="reason-text">
+            <strong>儿童看故事，成人看隐喻</strong>
+            表面是少女奇幻冒险，深处是关于劳动异化、身份认同、消费主义与童年失落的复杂寓言——每隔几年重看，都会有新感悟。
+          </div>
+        </li>
+        <li>
+          <div class="reason-text">
+            <strong>世界观无与伦比</strong>
+            宫崎骏构建了一个前所未见的神明世界，规则自洽、细节丰富，逛一遍浴场就像进行了一场真实的异世界旅行。
+          </div>
+        </li>
+        <li>
+          <div class="reason-text">
+            <strong>久石让的配乐是独立杰作</strong>
+            《いつも何度でも》（永远同在）一响起，整个观影体验会上升一个维度。音乐不只是衬托，本身就是情感叙事的一部分。
+          </div>
+        </li>
+        <li>
+          <div class="reason-text">
+            <strong>历史验证的公认经典</strong>
+            奥斯卡最佳动画、柏林金熊奖、全球 30+ 国院线，超过 20 年持续影响一代代观众。这是宫崎骏送给世界的礼物。
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Awards -->
+    <div class="awards animate delay-6">
+      <div class="award-item">
+        <div class="award-icon">🏆</div>
+        <div class="award-text">
+          <strong>第 75 届奥斯卡</strong>
+          最佳动画长片
+        </div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🐻</div>
+        <div class="award-text">
+          <strong>柏林国际电影节</strong>
+          金熊奖（首部动画获此殊荣）
+        </div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🎬</div>
+        <div class="award-text">
+          <strong>日本电影</strong>
+          史上最高票房（2001—2020）
+        </div>
+      </div>
+      <div class="award-item">
+        <div class="award-icon">🌐</div>
+        <div class="award-text">
+          <strong>全球认可</strong>
+          BBC、Sight & Sound 史上最佳动画 Top 1
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer animate delay-7">
+      <div class="footer-date">Tuesday · April 28, 2026 · 每日经典推荐</div>
+      <div class="footer-tag">愿每一部好电影都值得一次认真的观看</div>
+    </footer>
+
+  </main>
+</body>
+</html>

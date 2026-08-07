@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>七武士 | 经典电影推荐</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #1a1a1a;
+    --parchment: #f5f0e8;
+    --gold: #c9a84c;
+    --gold-dim: #8a6d2b;
+    --cream: #faf7f0;
+    --red-seal: #b22222;
+    --washed: #8b8682;
+    --brush: #3d3428;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--parchment);
+    color: var(--ink);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ============ CANVAS 水墨粒子 ============ */
+  #ink-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+  }
+
+  /* ============ 宣纸纹理叠加 ============ */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(139,134,130,0.03) 3px,
+        rgba(139,134,130,0.03) 4px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 5px,
+        rgba(139,134,130,0.02) 5px,
+        rgba(139,134,130,0.02) 6px
+      );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .content-wrap {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 30px;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      var(--parchment);
+  }
+
+  /* 日式纹样边框 */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(201,168,76,0.2);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-badge {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    border: 1px solid var(--gold-dim);
+    padding: 6px 28px;
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(5rem, 15vw, 12rem);
+    font-weight: 900;
+    color: rgba(201,168,76,0.10);
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+    font-style: italic;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900;
+    color: var(--ink);
+    line-height: 1.2;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-title-sub {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(0.9rem, 2vw, 1.3rem);
+    color: var(--gold-dim);
+    margin-top: 12px;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+    letter-spacing: 0.15em;
+  }
+
+  .hero-tagline {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(0.95rem, 2vw, 1.2rem);
+    color: var(--washed);
+    margin-top: 28px;
+    font-style: italic;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+    max-width: 600px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 36px;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.0s forwards;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-meta span {
+    font-size: 0.8rem;
+    color: var(--washed);
+    letter-spacing: 0.1em;
+  }
+
+  .hero-meta .sep {
+    color: var(--gold);
+  }
+
+  /* 印章装饰 */
+  .hero-seal {
+    width: 60px;
+    height: 60px;
+    border: 3px solid var(--red-seal);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.9rem;
+    color: var(--red-seal);
+    margin-top: 40px;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.2s forwards;
+    transform: rotate(-8deg);
+    font-weight: 700;
+  }
+
+  /* ============ 评分条 ============ */
+  .scores-section {
+    padding: 80px 30px;
+    background: var(--cream);
+    position: relative;
+  }
+
+  .scores-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 80px; height: 1px;
+    background: var(--gold);
+  }
+
+  .section-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .scores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .score-card {
+    text-align: center;
+    padding: 32px 16px;
+    background: var(--parchment);
+    border: 1px solid rgba(201,168,76,0.15);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .score-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.1);
+  }
+
+  .score-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .score-card:hover::after { opacity: 1; }
+
+  .score-source {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--washed);
+    margin-bottom: 12px;
+  }
+
+  .score-number {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--gold-dim);
+    line-height: 1;
+  }
+
+  .score-number .star { color: var(--gold); }
+
+  .score-max {
+    font-size: 0.8rem;
+    color: var(--washed);
+    margin-left: 2px;
+  }
+
+  .score-bar-track {
+    width: 70%;
+    height: 3px;
+    background: rgba(201,168,76,0.15);
+    margin: 14px auto 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .score-bar-fill {
+    height: 100%;
+    background: var(--gold);
+    width: 0%;
+    transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* ============ 剧情梗概 ============ */
+  .plot-section {
+    padding: 100px 30px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 900;
+    color: var(--ink);
+    margin-bottom: 12px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -6px; left: 0;
+    width: 50px; height: 2px;
+    background: var(--gold);
+  }
+
+  .section-intro {
+    font-size: 0.85rem;
+    color: var(--washed);
+    margin-top: 24px;
+    margin-bottom: 48px;
+    font-style: italic;
+  }
+
+  /* 日式分隔线 */
+  .jp-divider {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--gold);
+    font-size: 1.2rem;
+    letter-spacing: 1em;
+    opacity: 0.4;
+  }
+
+  .plot-text {
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--brush);
+    text-align: justify;
+  }
+
+  .plot-text p + p { margin-top: 20px; }
+
+  /* 信息卡 */
+  .info-card {
+    margin-top: 48px;
+    border-left: 3px solid var(--gold);
+    padding: 28px 32px;
+    background: rgba(201,168,76,0.04);
+    position: relative;
+  }
+
+  .info-card::before {
+    content: '情報';
+    position: absolute;
+    top: -10px; left: 20px;
+    background: var(--parchment);
+    padding: 0 10px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.7rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.2em;
+  }
+
+  .info-card p {
+    font-size: 0.88rem;
+    color: var(--brush);
+    line-height: 1.9;
+  }
+
+  /* ============ 亮点卡片 ============ */
+  .highlights-section {
+    padding: 100px 30px;
+    background: var(--cream);
+    position: relative;
+  }
+
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .highlight-card {
+    background: var(--parchment);
+    border: 1px solid rgba(201,168,76,0.12);
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .highlight-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+
+  .highlight-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.08);
+  }
+
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .highlight-card:hover::before { opacity: 1; }
+
+  .highlight-icon {
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .highlight-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+  }
+
+  .highlight-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .highlight-desc {
+    font-size: 0.85rem;
+    color: var(--washed);
+    line-height: 1.8;
+  }
+
+  /* ============ 经典语录 ============ */
+  .quotes-section {
+    padding: 100px 30px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .quote-block {
+    border-left: none;
+    text-align: center;
+    padding: 48px 30px;
+    position: relative;
+  }
+
+  .quote-block::before {
+    content: '❝';
+    font-family: 'Noto Serif SC', serif;
+    font-size: 3rem;
+    color: var(--gold);
+    opacity: 0.3;
+    position: absolute;
+    top: 10px; left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .quote-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  .quote-film {
+    font-size: 0.75rem;
+    color: var(--gold-dim);
+    margin-top: 20px;
+    letter-spacing: 0.2em;
+  }
+
+  /* ============ 为何值得看 ============ */
+  .why-section {
+    padding: 100px 30px;
+    background: var(--cream);
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .why-card {
+    background: var(--parchment);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 32px 24px;
+    text-align: center;
+    transition: transform 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .why-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+
+  .why-card:hover { transform: translateY(-4px); }
+
+  .why-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+
+  .why-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .why-desc {
+    font-size: 0.82rem;
+    color: var(--washed);
+    line-height: 1.8;
+  }
+
+  /* ============ 影片档案 ============ */
+  .archive-section {
+    padding: 100px 30px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .archive-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+  }
+
+  .archive-table tr {
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .archive-table tr:last-child { border-bottom: none; }
+
+  .archive-table td {
+    padding: 16px 8px;
+    font-size: 0.88rem;
+    vertical-align: top;
+  }
+
+  .archive-table td:first-child {
+    color: var(--gold-dim);
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 700;
+    width: 120px;
+    letter-spacing: 0.1em;
+  }
+
+  .archive-table td:last-child {
+    color: var(--brush);
+  }
+
+  /* ============ 编辑评语 ============ */
+  .review-section {
+    padding: 80px 30px 100px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .review-stars {
+    font-size: 1.3rem;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 24px;
+  }
+
+  .review-content {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.05rem;
+    color: var(--brush);
+    line-height: 2;
+    font-style: italic;
+  }
+
+  .review-author {
+    margin-top: 28px;
+    font-size: 0.75rem;
+    color: var(--washed);
+    letter-spacing: 0.2em;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    text-align: center;
+    padding: 48px 30px;
+    border-top: 1px solid rgba(201,168,76,0.1);
+    font-size: 0.7rem;
+    color: var(--washed);
+    letter-spacing: 0.2em;
+    background: var(--cream);
+  }
+
+  /* ============ 滚动揭示 ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============ 动画 ============ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============ SVG 武士剪影装饰 ============ */
+  .samurai-decoration {
+    text-align: center;
+    margin: 40px 0;
+    opacity: 0.08;
+  }
+
+  .samurai-decoration svg {
+    width: 200px;
+    height: 120px;
+  }
+
+  /* ============ 响应式 ============ */
+  @media (max-width: 600px) {
+    .scores-grid { grid-template-columns: repeat(2, 1fr); }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .hero { padding: 40px 20px; }
+    .hero::before { inset: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 水墨粒子 Canvas -->
+<canvas id="ink-canvas"></canvas>
+
+<div class="content-wrap">
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="hero-badge">Kurosawa Akira &middot; 黑泽明</div>
+  <div class="hero-year">1954</div>
+  <h1 class="hero-title">七武士</h1>
+  <div class="hero-title-sub">Seven Samurai &middot; 七人の侍</div>
+  <div class="hero-tagline">「打败敌人，然后活下去。」</div>
+  <div class="hero-meta">
+    <span>黑泽明 执导</span>
+    <span class="sep">|</span>
+    <span>日本</span>
+    <span class="sep">|</span>
+    <span>207 分钟</span>
+    <span class="sep">|</span>
+    <span>黑白 &middot; 1954</span>
+  </div>
+  <div class="hero-seal">傑作</div>
+</section>
+
+<!-- ==================== 评分 ==================== -->
+<section class="scores-section">
+  <div class="section-label">Critics &amp; Audience</div>
+  <div class="scores-grid">
+    <div class="score-card">
+      <div class="score-source">IMDb</div>
+      <div class="score-number"><span class="star">8.6</span></div>
+      <div class="score-bar-track"><div class="score-bar-fill" data-width="86"></div></div>
+    </div>
+    <div class="score-card">
+      <div class="score-source">豆瓣</div>
+      <div class="score-number"><span class="star">9.3</span></div>
+      <div class="score-bar-track"><div class="score-bar-fill" data-width="93"></div></div>
+    </div>
+    <div class="score-card">
+      <div class="score-source">烂番茄</div>
+      <div class="score-number"><span class="star">100%</span></div>
+      <div class="score-bar-track"><div class="score-bar-fill" data-width="100"></div></div>
+    </div>
+    <div class="score-card">
+      <div class="score-source">AFI 百年百大</div>
+      <div class="score-number" style="font-size:1.5rem;"><span class="star">#1</span></div>
+      <div style="font-size:0.7rem;color:var(--gold-dim);margin-top:10px;">影史最佳动作片</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 剧情梗概 ==================== -->
+<section class="plot-section">
+  <div class="reveal">
+    <h2 class="section-title">剧情梗概</h2>
+    <p class="section-intro">战国乱世，农民与武士的命运交汇于一座偏远村庄</p>
+  </div>
+
+  <div class="plot-text reveal">
+    <p>日本战国时代，天灾人祸不断，山贼横行乡里。一个偏僻的村庄年年遭受劫掠，村民们已到忍无可忍的境地。村中长老决定主动出击——但他们手无寸铁，唯一的希望是雇佣武士来保护村庄。</p>
+
+    <p>问题是：没有人愿意为农民出手。武士们通常只为领主效命，而农民在当时的社会阶层中处于最底层。绝望之中，村民们找到了一位不修边幅、行事古怪的老武士——勘兵卫（志村乔 饰）。令所有人意外的是，勘兵卫答应了，条件只有一个：只有白米饭可吃。</p>
+
+    <p>勘兵卫开始召集同袍。在战乱年代，落魄武士遍地都是。他先后遇见了：冲动莽撞的年轻剑客、精于枪法的狡黠浪人、幽默自嘲的平民出身伪装者……每一位武士都有来路，每一位都怀揣着不同的理由加入这场看似必败的战斗。</p>
+
+    <p>随着第七位武士的加入，七人集结完毕。他们来到村庄，开始训练农民、构筑防御、布置战术。山贼终将到来——而这场以寡敌众的保卫战，将检验每一位武士的勇气、智慧与信念……</p>
+  </div>
+
+  <div class="jp-divider">〇</div>
+
+  <div class="info-card reveal">
+    <p><strong>无剧透提示：</strong>本片全长207分钟，分上下两篇（或四章结构），但绝无冷场。黑泽明用近乎纪录片的质感呈现战国风貌，从武士的招募过程到战前准备，再到最终的保卫战役，层层推进，张力持续累积。影片最令人震撼之处不在于动作场面本身，而在于它对"为何而战"这一命题的深刻追问。</p>
+  </div>
+</section>
+
+<!-- ==================== 亮点 ==================== -->
+<section class="highlights-section">
+  <div class="section-label" style="text-align:center;">Highlights</div>
+  <h2 class="section-title" style="text-align:center;display:block;">六大亮点</h2>
+  <p style="text-align:center;color:var(--washed);margin-top:8px;font-size:0.85rem;">为何它被称作"影史最伟大的动作电影"</p>
+
+  <div class="highlights-grid" style="margin-top:48px;">
+
+    <div class="highlight-card">
+      <span class="highlight-icon">⚔️</span>
+      <div class="highlight-num">01</div>
+      <div class="highlight-title">影史动作场面的基石</div>
+      <div class="highlight-desc">本片定义了"动作电影"的语法。快速剪辑、多机位拍摄、主观镜头与全景交替——这些今天看来理所当然的手法，很大一部分由黑泽明在本片首创。好莱坞后来无数经典（《星球大战》《荒野七蛟龙》《指环王》）均深受其影响。</div>
+    </div>
+
+    <div class="highlight-card">
+      <span class="highlight-icon">🎭</span>
+      <div class="highlight-num">02</div>
+      <div class="highlight-title">七位武士，七个世界</div>
+      <div class="highlight-desc">勘兵卫的智慧、胜四郎的理想主义、菊千代的草根野性、七郎次的沉稳、五郎兵卫的精明、久藏的沉默、平八的幽默——七位武士各具面孔、各怀心事，黑泽明用群像技法让每一个角色都拥有完整的情感弧光，这在154分钟的"招募篇"中几乎可独立成篇。</div>
+    </div>
+
+    <div class="highlight-card">
+      <span class="highlight-icon">🌾</span>
+      <div class="highlight-num">03</div>
+      <div class="highlight-title">农民与武士的阶级寓言</div>
+      <div class="highlight-desc">本片绝不只是"打怪升级"的故事。黑泽明深刻呈现了战国时代农民与武士之间的阶级鸿沟——武士鄙视农民，农民畏惧武士，而两群原本对立的人却必须并肩作战。这种社会结构的精准描绘，使影片具有超越时代的厚度。</div>
+    </div>
+
+    <div class="highlight-card">
+      <span class="highlight-icon">🎬</span>
+      <div class="highlight-num">04</div>
+      <div class="highlight-title">黑泽明的视觉史诗</div>
+      <div class="highlight-desc">全片采用黑白摄影，却呈现出令人窒息的视觉质感。雨中泥泞的决战一场，被无数影评人奉为"影史最伟大动作场面"——快速剪辑、溅起的泥浆、武士的呐喊、农民的惊恐，交织成一首暴力的交响诗。每一个镜头都经过精密计算，却又充满原始的生命力。</div>
+    </div>
+
+    <div class="highlight-card">
+      <span class="highlight-icon">🎵</span>
+      <div class="highlight-num">05</div>
+      <div class="highlight-title">配乐与节奏的完美融合</div>
+      <div class="highlight-desc">作曲家早坂文雄的配乐以鼓声为核心，配合武士拔刀的瞬间，营造出令人窒息的紧张感。更令人叫绝的是黑泽明对"沉默"的运用——战斗前的寂静往往比战斗本身更震撼，这种动静对比成为本片最鲜明的节奏特征。</div>
+    </div>
+
+    <div class="highlight-card">
+      <span class="highlight-icon">🌏</span>
+      <div class="highlight-num">06</div>
+      <div class="highlight-title">跨越文化的普世共鸣</div>
+      <div class="highlight-desc">本片1956年引入威尼斯电影节，随后在全欧美引发"黑泽明热"。乔治·卢卡斯、史蒂文·斯皮尔伯格、昆汀·塔伦蒂诺均视黑泽明为精神导师。它证明：真正伟大的电影无需翻译——勇气、牺牲、荣誉这些人类共通的情感，能够穿透任何文化的边界。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== 经典语录 ==================== -->
+<section class="quotes-section">
+  <div class="quote-block reveal">
+    <div class="quote-text">
+      「我要选那些能活下去的人。<br>我要选那些战胜后还能笑的人。」
+    </div>
+    <div class="quote-film">—— 勘兵卫（队长），《七武士》</div>
+  </div>
+
+  <div class="jp-divider">〇</div>
+
+  <div class="quote-block reveal" style="margin-top:40px;">
+    <div class="quote-text" style="font-size:1.1rem;">
+      「获胜的不是武士，而是农民。<br>武士只是工具。」
+    </div>
+    <div class="quote-film">—— 片尾台词，《七武士》</div>
+  </div>
+</section>
+
+<!-- ==================== 为何值得看 ==================== -->
+<section class="why-section">
+  <div class="section-label" style="text-align:center;">Why Watch</div>
+  <h2 class="section-title" style="text-align:center;display:block;">为什么值得一看</h2>
+
+  <div class="why-grid" style="margin-top:48px;">
+
+    <div class="why-card">
+      <span class="why-icon">🏆</span>
+      <div class="why-title">殿堂级地位</div>
+      <div class="why-desc">无数影评人榜单第一位，AFI评选"百年百大动作片"榜首，被公认为影史最伟大的黑白电影之一。</div>
+    </div>
+
+    <div class="why-card">
+      <span class="why-icon">🎞️</span>
+      <div class="why-title">影响整个电影史</div>
+      <div class="why-desc">从好莱坞西部片到现代动作大片，本片的叙事结构和镜头语言影响了整整几代电影人。</div>
+    </div>
+
+    <div class="why-card">
+      <span class="why-icon">🧠</span>
+      <div class="why-title">不只是动作片</div>
+      <div class="why-desc">它有动作场面的极致，更有对阶级、荣誉、牺牲的深刻思考。看动作，更看人心。</div>
+    </div>
+
+    <div class="why-card">
+      <span class="why-icon">⏳</span>
+      <div class="why-title">207分钟毫不拖沓</div>
+      <div class="why-desc">三个多小时的片长看似 daunting，但黑泽明的叙事节奏极为精准，招募七人的过程宛如一部精彩的群像连续剧。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== 影片档案 ==================== -->
+<section class="archive-section">
+  <div class="reveal">
+    <h2 class="section-title">影片档案</h2>
+  </div>
+
+  <table class="archive-table reveal">
+    <tr><td>导演</td><td>黑泽明（Akira Kurosawa）</td></tr>
+    <tr><td>上映年份</td><td>1954年（日本）</td></tr>
+    <tr><td>片长</td><td>207 分钟（原始剪辑版）</td></tr>
+    <tr><td>类型</td><td>动作 / 剧情 / 历史 / 冒险</td></tr>
+    <tr><td>制片国家</td><td>日本</td></tr>
+    <tr><td>语言</td><td>日语（黑白）</td></tr>
+    <tr><td>主演</td><td>志村乔、三船敏郎、稻叶义男、宫口精二、加东大介</td></tr>
+    <tr><td>编剧</td><td>黑泽明、桥本忍、小国英雄</td></tr>
+    <tr><td>制片公司</td><td>东宝株式会社</td></tr>
+    <tr><td>荣誉</td><td>威尼斯电影节银狮奖、奥斯卡最佳外语片提名、AFI百年百大动作片第一名、Sight & Sound影史最伟大电影榜单常客</td></tr>
+    <tr><td>影响作品</td><td>《荒野七蛟龙》（1960重拍版）、《星球大战》、《五遁忍术》、《七剑》等</td></tr>
+  </table>
+</section>
+
+<!-- ==================== 编辑评语 ==================== -->
+<section class="review-section">
+  <div class="review-stars">★★★★★</div>
+  <div class="review-content">
+    《七武士》是那种"看了会改变你对电影认知"的作品。它不靠特效、不靠大制作预算，只靠导演的视野、演员的演技和近乎完美的剧本，就创造出了影史最为壮阔的史诗。黑泽明用三个多小时，讲了一个关于勇气、阶级、牺牲与命运的故事——而最后的结局，或许是电影史上最令人心碎的"胜利"之一。无论你是否热爱日本电影，这片都值得一看。
+  </div>
+  <div class="review-author">— WorkBuddy 电影推荐 · 2026.05.25</div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <p>七武士 &middot; Seven Samurai &middot; 七人之侍</p>
+  <p style="margin-top:8px;">每日经典推荐 &middot; WorkBuddy 自动生成 &middot; 2026.05.25</p>
+</footer>
+
+</div><!-- /content-wrap -->
+
+<script>
+/* ============ 水墨粒子动画 ============ */
+const canvas = document.getElementById('ink-canvas');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const particles = [];
+const PARTICLE_COUNT = 45;
+
+class InkParticle {
+  constructor() { this.reset(); }
+
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 3 + 1;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = (Math.random() - 0.5) * 0.2;
+    this.opacity = Math.random() * 0.25 + 0.05;
+    this.fade = Math.random() * 0.002 + 0.001;
+    this.growing = Math.random() > 0.5;
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.growing) {
+      this.opacity += this.fade;
+      if (this.opacity >= 0.3) this.growing = false;
+    } else {
+      this.opacity -= this.fade;
+      if (this.opacity <= 0.03) this.reset();
+    }
+    if (this.x < -10 || this.x > canvas.width + 10 ||
+        this.y < -10 || this.y > canvas.height + 10) {
+      this.reset();
+    }
+  }
+
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(60, 52, 40, ${this.opacity})`;
+    ctx.fill();
+    // 水墨扩散效果
+    if (this.size > 1.5) {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size * 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(60, 52, 40, ${this.opacity * 0.2})`;
+      ctx.fill();
+    }
+  }
+}
+
+for (let i = 0; i < PARTICLE_COUNT; i++) {
+  particles.push(new InkParticle());
+}
+
+function animateInk() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateInk);
+}
+animateInk();
+
+/* ============ 评分条动画 ============ */
+const scoreObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const fills = entry.target.querySelectorAll('.score-bar-fill');
+      fills.forEach(fill => {
+        const w = fill.getAttribute('data-width');
+        setTimeout(() => { fill.style.width = w + '%'; }, 200);
+      });
+      scoreObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.scores-section').forEach(s => scoreObserver.observe(s));
+
+/* ============ 滚动揭示 ============ */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal, .highlight-card, .why-card').forEach(el => {
+  revealObserver.observe(el);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经典电影推荐：绿里奇迹 (The Green Mile)</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Noto Serif SC", "STSong", "Songti SC", "SimSun", Georgia, serif;
+  background: #0d0f0c;
+  color: #e8e4d8;
+  overflow-x: hidden;
+  line-height: 1.8;
+}
+::selection { background: rgba(147, 168, 108, 0.35); color: #fff; }
+
+/* Canvas background */
+#bgCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0d0f0c; }
+::-webkit-scrollbar-thumb { background: #3d5232; border-radius: 3px; }
+
+/* Section reveal */
+.section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.section.visible { opacity: 1; transform: translateY(0); }
+
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  z-index: 1;
+  background: radial-gradient(ellipse at center, rgba(45, 58, 35, 0.25) 0%, rgba(13, 15, 12, 0) 70%);
+}
+.hero-year {
+  font-size: clamp(6rem, 12vw, 14rem);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(160, 180, 120, 0.3);
+  letter-spacing: 0.05em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+.hero-title-cn {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 700;
+  background: linear-gradient(180deg, #d4c9a8 0%, #8fa06c 50%, #6b824a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+.hero-title-en {
+  font-size: clamp(1rem, 2.2vw, 1.5rem);
+  color: rgba(175, 190, 140, 0.5);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-family: "Georgia", "Times New Roman", serif;
+  margin-bottom: 2rem;
+}
+.hero-tagline {
+  font-size: 1.1rem;
+  color: rgba(200, 190, 160, 0.65);
+  font-style: italic;
+  max-width: 600px;
+  line-height: 1.9;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(147, 168, 108, 0.2);
+  border-bottom: 1px solid rgba(147, 168, 108, 0.2);
+  letter-spacing: 0.04em;
+}
+.hero-director {
+  margin-top: 2.5rem;
+  font-size: 0.85rem;
+  color: rgba(175, 190, 140, 0.4);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.5;
+  animation: bounce 2s infinite;
+}
+.hero-scroll span { font-size: 0.7rem; letter-spacing: 0.1em; color: rgba(175, 190, 140, 0.5); }
+.hero-scroll svg { width: 24px; height: 24px; stroke: rgba(175, 190, 140, 0.4); }
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* Container */
+.container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+
+/* Section titles */
+.sec-label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(147, 168, 108, 0.5);
+  margin-bottom: 1rem;
+}
+.sec-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: #d4c9a8;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.05em;
+  position: relative;
+  padding-bottom: 1rem;
+}
+.sec-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #8fa06c, transparent);
+}
+
+/* Rating Bar */
+.ratings-section { padding: 5rem 0 3rem; }
+.ratings-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.rating-card {
+  background: rgba(25, 30, 20, 0.7);
+  border: 1px solid rgba(147, 168, 108, 0.12);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.rating-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(147, 168, 108, 0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.rating-card:hover { transform: translateY(-4px); border-color: rgba(147, 168, 108, 0.25); }
+.rating-card:hover::before { opacity: 1; }
+.rating-source { font-size: 0.75rem; letter-spacing: 0.15em; color: rgba(175, 190, 140, 0.45); margin-bottom: 1rem; text-transform: uppercase; }
+.rating-score { font-size: 2.8rem; font-weight: 700; color: #d4c9a8; font-family: "Georgia", serif; }
+.rating-sub { font-size: 0.8rem; color: rgba(175, 190, 140, 0.45); margin-top: 0.5rem; }
+.rating-bar-bg { width: 100%; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; margin: 1rem auto 0; max-width: 160px; }
+.rating-bar-fill { height: 100%; border-radius: 2px; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.rating-bar-fill.imdb { background: linear-gradient(90deg, #E2B616, #F5C518); width: 0; }
+.rating-bar-fill.douban { background: linear-gradient(90deg, #4C9A2A, #6DB33F); width: 0; }
+.rating-bar-fill.rt { background: linear-gradient(90deg, #FA320A, #FF5733); width: 0; }
+.rating-bar-fill.oscar { background: linear-gradient(90deg, #C9A84C, #D4AF37); width: 0; }
+
+/* Synopsis */
+.synopsis-section { padding: 4rem 0; }
+.synopsis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.synopsis-text { font-size: 1.05rem; color: rgba(220, 210, 190, 0.8); line-height: 2; letter-spacing: 0.03em; }
+.synopsis-text em { color: #a8c080; font-style: normal; }
+.synopsis-info {
+  background: rgba(25, 30, 20, 0.6);
+  border: 1px solid rgba(147, 168, 108, 0.12);
+  border-radius: 16px;
+  padding: 2rem;
+}
+.synopsis-info-row { display: flex; justify-content: space-between; padding: 0.7rem 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 0.9rem; }
+.synopsis-info-row:last-child { border-bottom: none; }
+.synopsis-info-label { color: rgba(147, 168, 108, 0.6); letter-spacing: 0.08em; }
+.synopsis-info-value { color: #d4c9a8; text-align: right; }
+
+/* SVG poster */
+.svg-poster { display: flex; justify-content: center; align-items: center; }
+
+/* Highlights */
+.highlights-section { padding: 4rem 0; }
+.highlights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.hl-card {
+  background: rgba(25, 30, 20, 0.7);
+  border: 1px solid rgba(147, 168, 108, 0.1);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  transition: all 0.4s ease;
+  position: relative;
+}
+.hl-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(147, 168, 108, 0.25);
+  background: rgba(30, 36, 24, 0.8);
+}
+.hl-num { font-size: 3rem; font-weight: 900; color: rgba(147, 168, 108, 0.12); position: absolute; top: 0.5rem; right: 1rem; font-family: Georgia, serif; line-height: 1; }
+.hl-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+.hl-title { font-size: 1.05rem; color: #d4c9a8; font-weight: 600; margin-bottom: 0.7rem; letter-spacing: 0.04em; }
+.hl-desc { font-size: 0.88rem; color: rgba(200, 190, 160, 0.6); line-height: 1.8; }
+
+/* Quotes */
+.quotes-section { padding: 5rem 0; }
+.quote-block {
+  background: rgba(25, 30, 20, 0.5);
+  border-left: 3px solid rgba(147, 168, 108, 0.3);
+  padding: 2.5rem 2.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0 12px 12px 0;
+  transition: all 0.4s;
+}
+.quote-block:hover { border-left-color: rgba(147, 168, 108, 0.5); background: rgba(30, 36, 24, 0.6); }
+.quote-text { font-size: 1.15rem; color: #d4c9a8; font-style: italic; line-height: 1.9; letter-spacing: 0.03em; }
+.quote-cite { font-size: 0.85rem; color: rgba(147, 168, 108, 0.5); margin-top: 1rem; letter-spacing: 0.06em; }
+.quote-cite::before { content: '—— '; }
+
+/* Why Worth Watching */
+.why-section { padding: 4rem 0; }
+.why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.why-card {
+  background: rgba(25, 30, 20, 0.6);
+  border: 1px solid rgba(147, 168, 108, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+}
+.why-card:hover { border-color: rgba(147, 168, 108, 0.25); transform: translateY(-3px); }
+.why-num { font-family: Georgia, serif; font-size: 1.5rem; color: rgba(147, 168, 108, 0.35); margin-bottom: 0.5rem; }
+.why-title { font-size: 1.05rem; color: #d4c9a8; font-weight: 600; margin-bottom: 0.7rem; letter-spacing: 0.04em; }
+.why-desc { font-size: 0.9rem; color: rgba(200, 190, 160, 0.6); line-height: 1.8; }
+
+/* Awards */
+.awards-section { padding: 4rem 0; }
+.awards-flex { display: flex; flex-wrap: wrap; gap: 1rem; }
+.award-tag {
+  background: rgba(30, 36, 24, 0.6);
+  border: 1px solid rgba(147, 168, 108, 0.15);
+  border-radius: 100px;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.8rem;
+  color: rgba(200, 190, 160, 0.7);
+  letter-spacing: 0.05em;
+  transition: all 0.3s;
+}
+.award-tag:hover { border-color: rgba(147, 168, 108, 0.4); color: #d4c9a8; background: rgba(35, 42, 28, 0.7); }
+
+/* Film Info */
+.info-section { padding: 4rem 0; }
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(25, 30, 20, 0.5);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(147, 168, 108, 0.1);
+}
+.info-table tr { border-bottom: 1px solid rgba(255,255,255,0.03); }
+.info-table tr:last-child { border-bottom: none; }
+.info-table td { padding: 1rem 1.8rem; font-size: 0.9rem; }
+.info-table td:first-child { color: rgba(147, 168, 108, 0.55); width: 160px; letter-spacing: 0.08em; white-space: nowrap; }
+.info-table td:last-child { color: rgba(220, 210, 190, 0.8); letter-spacing: 0.03em; }
+
+/* Closing */
+.closing-section { padding: 5rem 0 6rem; text-align: center; }
+.closing-stars { font-size: 2rem; letter-spacing: 0.3em; color: rgba(200, 170, 70, 0.6); margin-bottom: 1.5rem; }
+.closing-text { font-size: 1.05rem; color: rgba(200, 190, 160, 0.6); max-width: 600px; margin: 0 auto; line-height: 2; letter-spacing: 0.04em; }
+.closing-sign { margin-top: 2rem; font-size: 0.8rem; color: rgba(147, 168, 108, 0.35); letter-spacing: 0.1em; }
+
+/* Footer */
+.footer-bar {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  font-size: 0.75rem;
+  color: rgba(175, 190, 140, 0.25);
+  letter-spacing: 0.1em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ratings-grid { grid-template-columns: repeat(2, 1fr); }
+  .synopsis-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .highlights-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+  .hero-year { font-size: 4rem; }
+}
+@media (max-width: 480px) {
+  .ratings-grid { grid-template-columns: 1fr 1fr; }
+  .container { padding: 0 1.2rem; }
+}
+
+/* Green linoleum line at bottom of hero */
+.hero-line {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent 0%, #6b824a 20%, #8fa06c 50%, #6b824a 80%, transparent 100%);
+}
+</style>
+</head>
+<body>
+<canvas id="bgCanvas"></canvas>
+
+<!-- HERO -->
+<section class="hero section">
+  <div class="hero-year">1999</div>
+  <h1 class="hero-title-cn">绿里奇迹</h1>
+  <p class="hero-title-en">The Green Mile</p>
+  <p class="hero-tagline">&ldquo;我累了，老板&hellip;&hellip;我厌倦了人们的互相伤害，厌倦了感受这个世界所有的痛苦。&rdquo;</p>
+  <p class="hero-director">DIRECTED BY FRANK DARABONT</p>
+  <div class="hero-scroll">
+    <span>向下探索</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+  <div class="hero-line"></div>
+</section>
+
+<!-- RATINGS -->
+<div class="container">
+<section class="ratings-section section">
+  <span class="sec-label">· 评分概览 ·</span>
+  <div class="ratings-grid">
+    <div class="rating-card">
+      <div class="rating-source">IMDb</div>
+      <div class="rating-score" data-target="86">8.6</div>
+      <div class="rating-sub">Top 250 #28</div>
+      <div class="rating-bar-bg"><div class="rating-bar-fill imdb" data-width="86"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-source">豆瓣</div>
+      <div class="rating-score" data-target="89">8.9</div>
+      <div class="rating-sub">超40万人评价</div>
+      <div class="rating-bar-bg"><div class="rating-bar-fill douban" data-width="89"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-source">烂番茄</div>
+      <div class="rating-score" data-target="94">94%</div>
+      <div class="rating-sub">观众评分</div>
+      <div class="rating-bar-bg"><div class="rating-bar-fill rt" data-width="94"></div></div>
+    </div>
+    <div class="rating-card">
+      <div class="rating-source">奥斯卡</div>
+      <div class="rating-score" data-target="4">4项</div>
+      <div class="rating-sub">提名</div>
+      <div class="rating-bar-bg"><div class="rating-bar-fill oscar" data-width="80"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SYNOPSIS -->
+<section class="synopsis-section section">
+  <span class="sec-label">· 剧情梗概 ·</span>
+  <h2 class="sec-title">一座监狱，一段无法被遗忘的奇迹</h2>
+  <div class="synopsis-grid">
+    <div class="synopsis-text">
+      <p>1935年，美国南方路易斯安那州，<em>冷山监狱</em>。E 区走廊上铺着褪色的绿色油毡地板——这就是死囚区，人们叫它<em>"绿里"</em>。</p>
+      <p style="margin-top:1rem;">典狱长 <em>保罗·艾奇康</em> 见过太多死刑犯在这条绿色走廊上走到尽头。他以为自己已对生死麻木，直到一个巨人般的囚犯踏入绿里——<em>约翰·科菲</em>，一个因杀害两名幼女而被判死刑的黑人。他体型庞大、沉默寡言、害怕黑暗，却拥有一种无法解释的能力&hellip;&hellip;</p>
+      <p style="margin-top:1rem;">当奇迹在绿里上一次又一次地降临，保罗和狱友们被迫面对一个残酷的拷问：一个能创造神迹的人，真的犯下了那桩不可饶恕的罪行吗？</p>
+      <p style="margin-top:1rem; font-size:0.85rem; color:rgba(147,168,108,0.45);"><em>无剧透提示：以上仅为背景设定，更多震撼等你亲身体验。</em></p>
+    </div>
+    <div class="synopsis-info">
+      <div class="svg-poster">
+        <svg viewBox="0 0 280 380" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#2d3a23"/>
+              <stop offset="100%" stop-color="#1a1f15"/>
+            </linearGradient>
+            <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#4a5d36"/>
+              <stop offset="100%" stop-color="#3d4e2c"/>
+            </linearGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <!-- Background -->
+          <rect width="280" height="380" rx="8" fill="url(#wallGrad)"/>
+          <!-- Brick pattern -->
+          <g opacity="0.08">
+            <line x1="0" y1="40" x2="280" y2="40" stroke="#fff" stroke-width="0.5"/>
+            <line x1="0" y1="80" x2="280" y2="80" stroke="#fff" stroke-width="0.5"/>
+            <line x1="0" y1="120" x2="280" y2="120" stroke="#fff" stroke-width="0.5"/>
+            <line x1="0" y1="160" x2="280" y2="160" stroke="#fff" stroke-width="0.5"/>
+            <line x1="0" y1="200" x2="280" y2="200" stroke="#fff" stroke-width="0.5"/>
+            <line x1="0" y1="240" x2="280" y2="240" stroke="#fff" stroke-width="0.5"/>
+          </g>
+          <!-- Floor / Green Mile -->
+          <rect x="0" y="280" width="280" height="100" fill="url(#floorGrad)"/>
+          <line x1="0" y1="280" x2="280" y2="280" stroke="#6b824a" stroke-width="2"/>
+          <!-- Floor tile lines -->
+          <line x1="0" y1="315" x2="280" y2="315" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+          <line x1="0" y1="350" x2="280" y2="350" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+          <!-- Prison bars -->
+          <g stroke="rgba(160,180,120,0.2)" stroke-width="3" fill="none">
+            <line x1="40" y1="40" x2="40" y2="280"/>
+            <line x1="80" y1="40" x2="80" y2="280"/>
+            <line x1="120" y1="40" x2="120" y2="280"/>
+            <line x1="160" y1="40" x2="160" y2="280"/>
+            <line x1="200" y1="40" x2="200" y2="280"/>
+            <line x1="240" y1="40" x2="240" y2="280"/>
+          </g>
+          <!-- Large silhouette (John Coffey) -->
+          <g transform="translate(140, 240)" filter="url(#glow)">
+            <!-- Body -->
+            <ellipse cx="0" cy="0" rx="38" ry="45" fill="rgba(0,0,0,0.75)"/>
+            <!-- Head -->
+            <circle cx="0" cy="-50" r="22" fill="rgba(0,0,0,0.75)"/>
+            <!-- Shoulders -->
+            <rect x="-45" y="-35" width="90" height="20" rx="10" fill="rgba(0,0,0,0.7)"/>
+            <!-- Arms -->
+            <path d="M-45,-25 Q-70,-10 -65,20" stroke="rgba(0,0,0,0.6)" stroke-width="14" fill="none" stroke-linecap="round"/>
+            <path d="M45,-25 Q70,-10 65,20" stroke="rgba(0,0,0,0.6)" stroke-width="14" fill="none" stroke-linecap="round"/>
+          </g>
+          <!-- Fireflies / light particles around John -->
+          <circle cx="70" cy="180" r="2" fill="#e8d87a" opacity="0.7" filter="url(#glow)"/>
+          <circle cx="210" cy="170" r="1.5" fill="#e8d87a" opacity="0.5" filter="url(#glow)"/>
+          <circle cx="100" cy="160" r="1.8" fill="#e8d87a" opacity="0.6" filter="url(#glow)"/>
+          <circle cx="180" cy="155" r="1.2" fill="#e8d87a" opacity="0.4" filter="url(#glow)"/>
+          <circle cx="140" cy="145" r="2.5" fill="#ffeb8a" opacity="0.6" filter="url(#glow)"/>
+          <!-- Title text -->
+          <text x="140" y="360" text-anchor="middle" fill="rgba(212,201,168,0.8)" font-size="14" font-family="Georgia,serif" letter-spacing="3">THE GREEN MILE</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="highlights-section section">
+  <span class="sec-label">· 亮点解析 ·</span>
+  <h2 class="sec-title">为什么这部作品无法被超越</h2>
+  <div class="highlights-grid">
+    <div class="hl-card">
+      <div class="hl-num">01</div>
+      <div class="hl-icon">&#x1f3ad;</div>
+      <div class="hl-title">神级表演：迈克尔·克拉克·邓肯</div>
+      <div class="hl-desc">约翰·科菲这个角色几乎是邓肯的宿命。他以一种令人心碎的天真与力量，将一个拥有超自然能力的死囚演成了影史最令人难忘的角色之一。奥斯卡最佳男配角提名实至名归。</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-num">02</div>
+      <div class="hl-icon">&#x1f3ac;</div>
+      <div class="hl-title">德拉邦特的第二部监狱杰作</div>
+      <div class="hl-desc">继《肖申克的救赎》后，弗兰克·德拉邦特再次将斯蒂芬·金的小说搬上银幕。这一次，他把监狱题材引向了一个更黑暗、更奇幻、也更催人泪下的方向。</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-num">03</div>
+      <div class="hl-icon">&#x2728;</div>
+      <div class="hl-title">现实主义与超自然的完美交融</div>
+      <div class="hl-desc">德拉邦特将1930年代南方监狱的粗粝质感与神秘主义的温情奇迹融合得天衣无缝。奇迹是真实的，但痛苦也是真实的——这种张力贯穿全片。</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-num">04</div>
+      <div class="hl-icon">&#x1f4dc;</div>
+      <div class="hl-title">斯蒂芬·金最私人的故事</div>
+      <div class="hl-desc">原作是斯蒂芬·金以连载形式发布的六卷本小说。金本人称这是他最满意的改编作品之一——一个关于神性、人性与救赎的深沉寓言。</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-num">05</div>
+      <div class="hl-icon">&#x1f3b5;</div>
+      <div class="hl-title">托马斯·纽曼的配乐</div>
+      <div class="hl-desc">配乐大师托马斯·纽曼操刀，以极简的钢琴与弦乐编织出一种既哀伤又温柔的氛围，每一次响起都直击灵魂最柔软的地方。</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-num">06</div>
+      <div class="hl-icon">&#x23f3;</div>
+      <div class="hl-title">188分钟的史诗级沉浸</div>
+      <div class="hl-desc">三个多小时的片长没有任何冗余。每一个镜头、每一句台词都在为最终的爆发积蓄力量。当片尾字幕亮起时，你会发现自己已经泪流满面而不自知。</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTES -->
+<section class="quotes-section section">
+  <span class="sec-label">· 经典台词 ·</span>
+  <h2 class="sec-title">那些刻入骨髓的对白</h2>
+  <div class="quote-block">
+    <p class="quote-text">&ldquo;我累了，老板。我厌倦了走在路上，像雨中孤独的麻雀。我厌倦了人们的互相伤害。厌倦了日复一日感受着这世上所有的痛苦。太多痛苦了&hellip;&hellip;世上有太多的痛苦。&rdquo;</p>
+    <p class="quote-cite">约翰·科菲</p>
+  </div>
+  <div class="quote-block">
+    <p class="quote-text">&ldquo;时间把所有的东西都带走了，不管你是否愿意。时间带走一切，到最后只留下黑暗。&rdquo;</p>
+    <p class="quote-cite">保罗·艾奇康</p>
+  </div>
+  <div class="quote-block">
+    <p class="quote-text">&ldquo;我们每个人都有自己的绿里要走，而那条路的长短，不由我们来决定。&rdquo;</p>
+    <p class="quote-cite">保罗·艾奇康（旁白）</p>
+  </div>
+</section>
+
+<!-- WHY WORTH WATCHING -->
+<section class="why-section section">
+  <span class="sec-label">· 为何值得一看 ·</span>
+  <h2 class="sec-title">一部让你重新审视人性的电影</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">I</div>
+      <div class="why-title">它让你相信善良的力量</div>
+      <div class="why-desc">在一个充满暴力与不公的世界里，《绿里奇迹》以一种温柔得近乎残忍的方式告诉你：善良是存在的，奇迹是存在的。即使结局并不完美，但那份善意值得被铭记。</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">II</div>
+      <div class="why-title">它是电影叙事的教科书</div>
+      <div class="why-desc">如何用188分钟牢牢抓住观众的心？德拉邦特的答案是：耐心的铺陈、精准的人物塑造，以及那个让你在最后半小时泪腺决堤的终极释放。叙事节奏堪称完美。</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">III</div>
+      <div class="why-title">它拷问法律与道德的边界</div>
+      <div class="why-desc">当一个被法律判处死刑的人是善良的化身，你会怎么做？电影没有给出简单的答案，而是把这个沉重的问题留给了每一位观众——这正是它超越一般监狱片的深度所在。</div>
+    </div>
+    <div class="why-card">
+      <div class="why-num">IV</div>
+      <div class="why-title">它是汤姆·汉克斯的演技巅峰之一</div>
+      <div class="why-desc">如果说《阿甘正传》展示了汉克斯的广度，那么《绿里奇迹》则展示了他的深度。他饰演的保罗·艾奇康是一个被命运折磨的普通人，他的每一个沉默与落泪都让人心碎。</div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="awards-section section">
+  <span class="sec-label">· 荣誉殿堂 ·</span>
+  <h2 class="sec-title">来自世界的赞誉</h2>
+  <div class="awards-flex">
+    <span class="award-tag">奥斯卡最佳影片提名</span>
+    <span class="award-tag">奥斯卡最佳男配角提名</span>
+    <span class="award-tag">奥斯卡最佳改编剧本提名</span>
+    <span class="award-tag">奥斯卡最佳音响提名</span>
+    <span class="award-tag">金球奖最佳男配角提名</span>
+    <span class="award-tag">IMDb Top 250 #28</span>
+    <span class="award-tag">豆瓣电影 Top 250</span>
+    <span class="award-tag">豆瓣 8.9 分</span>
+    <span class="award-tag">AFI百年百大励志电影</span>
+    <span class="award-tag">烂番茄观众评分 94%</span>
+    <span class="award-tag">广播影评人协会最佳影片</span>
+    <span class="award-tag">人民选择奖最受欢迎剧情片</span>
+  </div>
+</section>
+
+<!-- FILM INFO -->
+<section class="info-section section">
+  <span class="sec-label">· 影片档案 ·</span>
+  <h2 class="sec-title">基本信息</h2>
+  <table class="info-table">
+    <tr><td>中文片名</td><td>绿里奇迹</td></tr>
+    <tr><td>英文片名</td><td>The Green Mile</td></tr>
+    <tr><td>上映年份</td><td>1999年12月10日（美国）</td></tr>
+    <tr><td>导演</td><td>弗兰克·德拉邦特</td></tr>
+    <tr><td>主演</td><td>汤姆·汉克斯 / 迈克尔·克拉克·邓肯 / 大卫·摩斯</td></tr>
+    <tr><td>编剧</td><td>弗兰克·德拉邦特（改编自斯蒂芬·金同名小说）</td></tr>
+    <tr><td>类型</td><td>剧情 / 奇幻 / 犯罪</td></tr>
+    <tr><td>片长</td><td>188分钟</td></tr>
+    <tr><td>制片国家</td><td>美国</td></tr>
+    <tr><td>语言</td><td>英语</td></tr>
+    <tr><td>IMDb</td><td>8.6 / 10（超140万人评分）</td></tr>
+    <tr><td>豆瓣</td><td>8.9 / 10（超40万人评分）</td></tr>
+  </table>
+</section>
+
+<!-- CLOSING -->
+<section class="closing-section section">
+  <div class="closing-stars">★★★★★</div>
+  <p class="closing-text">这不是一部你"看完就算"的电影。它会在你心里留下一个温柔的印记，在你最不经意的时候浮现。每一次重看，你都会发现新的细节、新的感动。它是伟大的通俗艺术——让人哭，也让人思考。</p>
+  <p class="closing-sign">—— 推荐人</p>
+</section>
+
+<div class="footer-bar">Movie Recommendation · 2026年6月2日 · The Green Mile</div>
+</div>
+
+<script>
+// === CANVAS: FIREFLY / LIGHT PARTICLES ===
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let w, h;
+
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.r = Math.random() * 2 + 0.5;
+    this.vx = (Math.random() - 0.5) * 0.3;
+    this.vy = (Math.random() - 0.5) * 0.3 - 0.2;
+    this.opacity = Math.random() * 0.4 + 0.1;
+    this.life = Math.random() * 400 + 100;
+    this.age = 0;
+    this.hue = Math.random() < 0.7 ? 50 + Math.random() * 20 : 40 + Math.random() * 10;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.age++;
+    if (this.age > this.life || this.x < -20 || this.x > w + 20 || this.y < -20 || this.y > h + 20) {
+      this.reset();
+    }
+    // Gentle wobble
+    this.vx += (Math.random() - 0.5) * 0.02;
+    this.vy += (Math.random() - 0.5) * 0.02;
+    if (Math.abs(this.vx) > 0.5) this.vx *= 0.95;
+    if (Math.abs(this.vy) > 0.5) this.vy *= 0.95;
+  }
+  draw() {
+    const alpha = this.opacity * (1 - this.age / this.life);
+    const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r * 4);
+    gradient.addColorStop(0, `hsla(${this.hue}, 70%, 70%, ${alpha})`);
+    gradient.addColorStop(0.4, `hsla(${this.hue}, 60%, 50%, ${alpha * 0.5})`);
+    gradient.addColorStop(1, `hsla(${this.hue}, 50%, 30%, 0)`);
+    ctx.beginPath();
+    ctx.fillStyle = gradient;
+    ctx.arc(this.x, this.y, this.r * 4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.fillStyle = `hsla(${this.hue}, 80%, 85%, ${alpha * 1.2})`;
+    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 80; i++) {
+  particles.push(new Particle());
+}
+
+function animate() {
+  ctx.clearRect(0, 0, w, h);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animate);
+}
+animate();
+
+// === INTERSECTION OBSERVER ===
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Trigger rating bars
+      const bars = entry.target.querySelectorAll('.rating-bar-fill');
+      bars.forEach(bar => {
+        const w = bar.getAttribute('data-width');
+        setTimeout(() => { bar.style.width = w + '%'; }, 200);
+      });
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.section').forEach(el => observer.observe(el));
+
+// === RATING NUMBER ANIMATION ===
+const scoreObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.rating-score').forEach(el => {
+        const target = parseInt(el.getAttribute('data-target'));
+        const currentText = el.textContent;
+        const isPercent = currentText.includes('%');
+        const isOscar = currentText.includes('项');
+        if (isPercent) {
+          let val = 0;
+          const iv = setInterval(() => { val+=2; el.textContent = val+'%'; if(val>=target) { el.textContent = target+'%'; clearInterval(iv); } }, 20);
+        } else if (isOscar) {
+          el.textContent = target+'项';
+        } else {
+          let val = 0;
+          const iv = setInterval(() => { val++; el.textContent = (val/10).toFixed(1); if(val>=target) { el.textContent = (target/10).toFixed(1); clearInterval(iv); } }, 30);
+        }
+      });
+      scoreObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.ratings-section').forEach(el => scoreObserver.observe(el));
+</script>
+</body>
+</html>

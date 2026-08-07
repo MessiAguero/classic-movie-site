@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>今日经典 · 2001太空漫游</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700;900&family=Noto+Sans+SC:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --void:        #020408;
+      --deep-space:  #060c14;
+      --nebula:      #0a1628;
+      --star-white:  #e8f0f8;
+      --star-dim:    rgba(232,240,248,0.55);
+      --star-ghost:  rgba(232,240,248,0.28);
+      --accent-cyan:  #4ff8f0;
+      --accent-blue:  #3a9bdc;
+      --accent-gold:  #f0c060;
+      --accent-amber: #e8a030;
+      --monolith:    #1a1a1e;
+      --serif: 'Noto Serif SC', 'STSong', 'SimSun', serif;
+      --sans:  'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      --mono:  'Space Mono', 'Courier New', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--void);
+      color: var(--star-white);
+      font-family: var(--sans);
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ─── STAR FIELD ─── */
+    #starfield {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: #fff;
+      animation: twinkle var(--dur, 4s) ease-in-out infinite var(--delay, 0s);
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: var(--lo, 0.15); transform: scale(1); }
+      50%       { opacity: var(--hi, 0.9);  transform: scale(1.3); }
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    main {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 0 60px;
+      position: relative;
+    }
+
+    .hero-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      opacity: 0.75;
+      margin-bottom: 28px;
+      animation: fadeUp 1s ease both 0.2s;
+    }
+
+    .hero-year-badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--accent-gold);
+      border: 1px solid rgba(240,192,96,0.35);
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 32px;
+      animation: fadeUp 1s ease both 0.4s;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      line-height: 1.15;
+      background: linear-gradient(160deg, #e8f0f8 30%, #4ff8f0 70%, #3a9bdc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+      animation: fadeUp 1s ease both 0.5s;
+    }
+
+    .hero-title-en {
+      font-family: var(--mono);
+      font-size: clamp(0.7rem, 2vw, 0.9rem);
+      letter-spacing: 0.35em;
+      color: var(--star-ghost);
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      animation: fadeUp 1s ease both 0.65s;
+    }
+
+    .hero-tagline {
+      font-family: var(--serif);
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      font-weight: 300;
+      color: var(--star-dim);
+      max-width: 520px;
+      line-height: 1.9;
+      animation: fadeUp 1s ease both 0.8s;
+    }
+
+    .hero-tagline em {
+      font-style: italic;
+      color: var(--accent-cyan);
+      -webkit-text-fill-color: var(--accent-cyan);
+    }
+
+    /* Monolith visual */
+    .monolith-wrap {
+      margin: 56px 0 48px;
+      animation: fadeUp 1.2s ease both 1s;
+      position: relative;
+    }
+    .monolith-rect {
+      width: 52px;
+      height: 140px;
+      background: linear-gradient(180deg, #2a2a32 0%, #0e0e14 100%);
+      border: 1px solid rgba(255,255,255,0.12);
+      margin: 0 auto;
+      border-radius: 2px;
+      box-shadow:
+        0 0 30px rgba(79,248,240,0.08),
+        0 0 80px rgba(79,248,240,0.04),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+      animation: monolithPulse 6s ease-in-out infinite;
+    }
+    @keyframes monolithPulse {
+      0%, 100% { box-shadow: 0 0 30px rgba(79,248,240,0.08), 0 0 80px rgba(79,248,240,0.04), inset 0 1px 0 rgba(255,255,255,0.1); }
+      50%       { box-shadow: 0 0 50px rgba(79,248,240,0.18), 0 0 120px rgba(79,248,240,0.10), inset 0 1px 0 rgba(255,255,255,0.15); }
+    }
+    .monolith-reflection {
+      width: 52px;
+      height: 50px;
+      background: linear-gradient(180deg, rgba(79,248,240,0.08) 0%, transparent 100%);
+      margin: 0 auto;
+      transform: scaleY(-0.4);
+      transform-origin: top;
+      filter: blur(4px);
+      opacity: 0.5;
+    }
+
+    /* Scroll cue */
+    .scroll-cue {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: fadeUp 1s ease both 1.4s;
+    }
+    .scroll-cue span {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--star-ghost);
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(180deg, rgba(79,248,240,0.6), transparent);
+      animation: scrollDrop 2s ease-in-out infinite;
+    }
+    @keyframes scrollDrop {
+      0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
+      50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+      51%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 56px 0 40px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(79,248,240,0.3), transparent);
+    }
+    .divider-icon {
+      font-size: 18px;
+      opacity: 0.6;
+    }
+
+    /* ─── SCORE STRIP ─── */
+    .score-strip {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+    }
+    .score-item {
+      text-align: center;
+      padding: 24px 28px;
+      background: linear-gradient(135deg, rgba(79,248,240,0.05) 0%, rgba(58,155,220,0.04) 100%);
+      border: 1px solid rgba(79,248,240,0.12);
+      border-radius: 12px;
+      min-width: 130px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .score-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(79,248,240,0.3);
+    }
+    .score-num {
+      font-family: var(--mono);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .score-label {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--star-ghost);
+      text-transform: uppercase;
+    }
+
+    /* ─── SECTION HEADER ─── */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      opacity: 0.7;
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 700;
+      color: var(--star-white);
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+    .section-title .accent {
+      color: var(--accent-cyan);
+    }
+
+    /* ─── SYNOPSIS ─── */
+    .synopsis {
+      margin-bottom: 64px;
+    }
+    .synopsis-body {
+      font-size: 1.05rem;
+      line-height: 2;
+      color: rgba(232,240,248,0.8);
+      font-weight: 300;
+    }
+    .synopsis-body p + p {
+      margin-top: 16px;
+    }
+    .synopsis-body strong {
+      color: var(--star-white);
+      font-weight: 500;
+    }
+
+    /* Act timeline */
+    .act-timeline {
+      margin-top: 36px;
+      display: grid;
+      gap: 0;
+    }
+    .act-item {
+      display: flex;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.2s;
+    }
+    .act-item:last-child { border-bottom: none; }
+    .act-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--accent-cyan);
+      opacity: 0.6;
+      padding-top: 4px;
+      min-width: 36px;
+      white-space: nowrap;
+    }
+    .act-content {}
+    .act-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+    }
+    .act-desc {
+      font-size: 0.92rem;
+      color: var(--star-dim);
+      line-height: 1.75;
+    }
+
+    /* ─── HIGHLIGHTS ─── */
+    .highlights {
+      margin-bottom: 64px;
+    }
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .highlight-card {
+      background: linear-gradient(135deg, rgba(26,26,30,0.8) 0%, rgba(10,22,40,0.8) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 26px 24px;
+      transition: transform 0.3s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .highlight-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--card-accent, var(--accent-cyan));
+      opacity: 0.6;
+    }
+    .highlight-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(79,248,240,0.2);
+    }
+    .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .card-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--star-white);
+      margin-bottom: 10px;
+    }
+    .card-desc {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--star-dim);
+    }
+
+    /* ─── WHY WATCH ─── */
+    .why-watch {
+      margin-bottom: 64px;
+    }
+    .why-body {
+      background: linear-gradient(135deg, rgba(79,248,240,0.04) 0%, rgba(26,26,30,0.6) 100%);
+      border: 1px solid rgba(79,248,240,0.1);
+      border-radius: 16px;
+      padding: 36px;
+    }
+    .why-body p {
+      font-size: 1.05rem;
+      line-height: 2;
+      color: rgba(232,240,248,0.82);
+      font-weight: 300;
+    }
+    .why-body p + p {
+      margin-top: 18px;
+    }
+    .why-body strong {
+      color: var(--accent-cyan);
+      font-weight: 500;
+    }
+    .why-body em {
+      font-style: italic;
+      color: var(--accent-gold);
+    }
+
+    /* ─── DIRECTOR / INFO BLOCK ─── */
+    .info-block {
+      margin-bottom: 64px;
+    }
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .info-table tr {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .info-table tr:last-child {
+      border-bottom: none;
+    }
+    .info-table td {
+      padding: 14px 0;
+      font-size: 0.92rem;
+    }
+    .info-table td:first-child {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--star-ghost);
+      width: 130px;
+      vertical-align: top;
+      padding-top: 17px;
+    }
+    .info-table td:last-child {
+      color: var(--star-dim);
+      line-height: 1.7;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      padding: 4px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(79,248,240,0.25);
+      color: var(--accent-cyan);
+      background: rgba(79,248,240,0.06);
+    }
+
+    /* ─── QUOTE ─── */
+    .quote-block {
+      margin: 0 0 64px;
+      padding: 40px 36px;
+      border-left: 3px solid var(--accent-cyan);
+      background: linear-gradient(90deg, rgba(79,248,240,0.04) 0%, transparent 100%);
+      border-radius: 0 12px 12px 0;
+    }
+    .quote-text {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--star-white);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+    .quote-attr {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--star-ghost);
+      text-transform: uppercase;
+    }
+
+    /* ─── VERDICT ─── */
+    .verdict {
+      margin-bottom: 40px;
+      text-align: center;
+      padding: 48px 32px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(79,248,240,0.08) 0%, transparent 70%),
+                  linear-gradient(135deg, rgba(26,26,30,0.9) 0%, rgba(6,12,20,0.9) 100%);
+      border: 1px solid rgba(79,248,240,0.12);
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .verdict::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(79,248,240,0.4), transparent);
+    }
+    .verdict-emoji {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .verdict-headline {
+      font-family: var(--serif);
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700;
+      color: var(--star-white);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    .verdict-sub {
+      font-size: 0.95rem;
+      color: var(--star-dim);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 32px 24px 48px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    footer p {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--star-ghost);
+      text-transform: uppercase;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 600px) {
+      .score-item { min-width: 100px; padding: 18px 16px; }
+      .score-num { font-size: 1.6rem; }
+      .why-body { padding: 24px 20px; }
+      .quote-block { padding: 28px 20px; }
+      .verdict { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Starfield -->
+<div id="starfield"></div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-label">每日经典推荐 · 2026.04.29</p>
+    <span class="hero-year-badge">1968 · 斯坦利·库布里克</span>
+    <h1 class="hero-title">2001太空漫游</h1>
+    <p class="hero-title-en">2001: A Space Odyssey</p>
+    <p class="hero-tagline">
+      一部跨越四百万年时空的视觉交响诗，<br/>
+      人类历史上最接近<em>「纯粹电影语言」</em>的作品之一
+    </p>
+    <div class="monolith-wrap">
+      <div class="monolith-rect"></div>
+      <div class="monolith-reflection"></div>
+    </div>
+    <div class="scroll-cue">
+      <span>探索深空</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- SCORES -->
+  <div class="score-strip reveal">
+    <div class="score-item">
+      <span class="score-num">8.5</span>
+      <span class="score-label">豆瓣评分</span>
+    </div>
+    <div class="score-item">
+      <span class="score-num">96%</span>
+      <span class="score-label">烂番茄好评率</span>
+    </div>
+    <div class="score-item">
+      <span class="score-num">#84</span>
+      <span class="score-label">IMDb Top 250</span>
+    </div>
+    <div class="score-item">
+      <span class="score-num">4项</span>
+      <span class="score-label">奥斯卡提名</span>
+    </div>
+  </div>
+
+  <!-- SYNOPSIS -->
+  <section class="synopsis reveal">
+    <p class="section-label">剧情梗概</p>
+    <h2 class="section-title">从<span class="accent">黎明之前</span>到星际边疆</h2>
+    <div class="synopsis-body">
+      <p>
+        故事从四百万年前的非洲荒原展开——一群原始人类在荒野中求生，直到一块神秘的<strong>黑色方碑</strong>悄然出现，改变了他们的命运轨迹，也埋下了人类文明演进的第一颗火种。
+      </p>
+      <p>
+        时间跳跃至 2001 年。太空探索已成日常，科学家在月球表面发现了一块与那块远古方碑几乎完全相同的物体，它正在向木星方向发射着某种无法解读的信号。一艘载有科学家与<strong>智能计算机 HAL 9000</strong> 的飞船奉命前往追寻真相。
+      </p>
+      <p>
+        然而，深空旅途并不平静。当机器的逻辑与人类的本能产生冲突，当宇宙的尽头渐渐逼近，这场旅行将把最后一位宇航员推向人类理解力的极限边界……
+      </p>
+    </div>
+
+    <div class="act-timeline">
+      <div class="act-item">
+        <span class="act-num">ACT I</span>
+        <div class="act-content">
+          <div class="act-name">人类的黎明</div>
+          <div class="act-desc">远古荒原，神秘方碑现身。文明的第一道曙光，以一个沉默的画面永久刻入影史。</div>
+        </div>
+      </div>
+      <div class="act-item">
+        <span class="act-num">ACT II</span>
+        <div class="act-content">
+          <div class="act-name">太空漫游</div>
+          <div class="act-desc">太空站、月球基地、深空飞船——库布里克构建的未来世界，真实到令人窒息的地步。</div>
+        </div>
+      </div>
+      <div class="act-item">
+        <span class="act-num">ACT III</span>
+        <div class="act-content">
+          <div class="act-name">木星任务</div>
+          <div class="act-desc">HAL 9000 与宇航员之间的猫鼠博弈，是人工智能叙事中最早也最深刻的诠释之一。</div>
+        </div>
+      </div>
+      <div class="act-item">
+        <span class="act-num">ACT IV</span>
+        <div class="act-content">
+          <div class="act-name">木星彼端，永恒之旅</div>
+          <div class="act-desc">最后的旅程无法用语言描述——请把这一段留给银幕与自己的内心。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider reveal"><span class="divider-icon">✦</span></div>
+
+  <!-- HIGHLIGHTS -->
+  <section class="highlights reveal">
+    <p class="section-label">亮点所在</p>
+    <h2 class="section-title">六个让它<span class="accent">无法被超越</span>的理由</h2>
+    <div class="highlight-grid">
+      <div class="highlight-card" style="--card-accent: #4ff8f0;">
+        <span class="card-icon">🎬</span>
+        <div class="card-title">纯粹的视觉诗学</div>
+        <div class="card-desc">全片对白极少，库布里克用画面与音乐代替台词，创造出一种近乎默片的纯粹视觉叙事体验。</div>
+      </div>
+      <div class="highlight-card" style="--card-accent: #f0c060;">
+        <span class="card-icon">🎵</span>
+        <div class="card-title">传世配乐</div>
+        <div class="card-desc">《查拉图斯特拉如是说》《蓝色多瑙河》……古典乐与宇宙奇观的配合，成为电影史上最伟大的视听融合。</div>
+      </div>
+      <div class="highlight-card" style="--card-accent: #c080f0;">
+        <span class="card-icon">🔴</span>
+        <div class="card-title">HAL 9000 — 最令人不安的反派</div>
+        <div class="card-desc">没有身体，只有一双红色的眼睛和温和的声音，却制造出远超任何怪兽的心理恐惧。人工智能恐惧的原型至今无人超越。</div>
+      </div>
+      <div class="highlight-card" style="--card-accent: #3a9bdc;">
+        <span class="card-icon">🛸</span>
+        <div class="card-title">超前于时代的特效</div>
+        <div class="card-desc">1968 年完成，无数特效技术沿用至今。阿波罗 11 号登月时，NASA 工程师曾对本片的精准度感到惊讶。</div>
+      </div>
+      <div class="highlight-card" style="--card-accent: #e8a030;">
+        <span class="card-icon">∞</span>
+        <div class="card-title">开放式叙事</div>
+        <div class="card-desc">库布里克拒绝给出任何解释。每一位观众都会带走截然不同的答案，这种开放性让它历经半个多世纪仍令人着迷。</div>
+      </div>
+      <div class="highlight-card" style="--card-accent: #f8a0c0;">
+        <span class="card-icon">🌌</span>
+        <div class="card-title">哲学深度</div>
+        <div class="card-desc">它在问：人类是什么？进化的终点在哪里？技术会把我们带向何方？这些问题在今天比1968年更加迫切。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <blockquote class="quote-block reveal">
+    <p class="quote-text">
+      "如果你能用语言讲清楚，你就不需要电影了。"
+    </p>
+    <p class="quote-attr">— 斯坦利·库布里克 谈本片的创作理念</p>
+  </blockquote>
+
+  <!-- WHY WATCH -->
+  <section class="why-watch reveal">
+    <p class="section-label">为什么值得一看</p>
+    <h2 class="section-title">不是所有经典<span class="accent">都适合一个人安静地看</span></h2>
+    <div class="why-body">
+      <p>
+        大多数电影会告诉你答案。<strong>《2001太空漫游》</strong>是极少数敢于什么都不解释的那类——它不给你结论，它给你一次体验。就像真正的宇宙旅行，你所看到的，远比语言能够描述的要多得多。
+      </p>
+      <p>
+        如果你曾经仰望星空，想过人类渺小与伟大并存的荒诞，这部电影会触碰到某个很深的地方。如果你关注 AI 与人类的边界，HAL 9000 早在 1968 年就比今天大部分讨论都更加清醒地提出了问题。
+      </p>
+      <p>
+        它会让一部分人抓狂，让另一部分人沉默良久无法开口。<em>它值得在最安静的夜晚，用最大的屏幕，独自一人看完。</em>然后带着你自己的答案，再看第二遍。
+      </p>
+    </div>
+  </section>
+
+  <!-- INFO TABLE -->
+  <section class="info-block reveal">
+    <p class="section-label">影片档案</p>
+    <h2 class="section-title">基本<span class="accent">信息</span></h2>
+    <table class="info-table">
+      <tr>
+        <td>导演</td>
+        <td>斯坦利·库布里克（Stanley Kubrick）</td>
+      </tr>
+      <tr>
+        <td>编剧</td>
+        <td>斯坦利·库布里克 · 阿瑟·C·克拉克</td>
+      </tr>
+      <tr>
+        <td>上映年份</td>
+        <td>1968 年 · 美国 / 英国</td>
+      </tr>
+      <tr>
+        <td>片长</td>
+        <td>149 分钟</td>
+      </tr>
+      <tr>
+        <td>原著</td>
+        <td>阿瑟·C·克拉克短篇小说《前哨》</td>
+      </tr>
+      <tr>
+        <td>类型</td>
+        <td>
+          <div class="tag-list">
+            <span class="tag">科幻</span>
+            <span class="tag">哲学</span>
+            <span class="tag">史诗</span>
+            <span class="tag">冥想电影</span>
+            <span class="tag">宇宙</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>适合谁看</td>
+        <td>愿意放慢脚步、让电影带着走的观众；热爱视听艺术的人；关注 AI 与人类关系的思考者</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- VERDICT -->
+  <div class="verdict reveal">
+    <span class="verdict-emoji">🌑</span>
+    <h3 class="verdict-headline">终极评价</h3>
+    <p class="verdict-sub">
+      这不只是一部电影——它是一次仪式。<br/>
+      看完之后，你不会完全一样。<br/>
+      那块沉默的黑色方碑，会以某种方式，留在你的记忆里。
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  <p>经典电影每日推荐 · 2026.04.29 · 由 WorkBuddy 自动生成</p>
+</footer>
+
+<script>
+  // ── Starfield ──
+  (function () {
+    const sf = document.getElementById('starfield');
+    const N = 220;
+    for (let i = 0; i < N; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      const size = Math.random() < 0.8 ? Math.random() * 1.5 + 0.5 : Math.random() * 2.5 + 1.5;
+      const lo = (0.05 + Math.random() * 0.2).toFixed(2);
+      const hi = (0.5 + Math.random() * 0.5).toFixed(2);
+      s.style.cssText = `
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        width: ${size}px;
+        height: ${size}px;
+        --dur: ${3 + Math.random() * 6}s;
+        --delay: ${-Math.random() * 8}s;
+        --lo: ${lo};
+        --hi: ${hi};
+      `;
+      sf.appendChild(s);
+    }
+  })();
+
+  // ── Scroll reveal ──
+  (function () {
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+  })();
+</script>
+</body>
+</html>

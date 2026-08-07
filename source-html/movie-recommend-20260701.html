@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日经典电影推荐 | 让子弹飞</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #1a1512;
+    --bg-card: #231e1a;
+    --gold: #c9a85c;
+    --gold-dark: #a6863a;
+    --gold-light: #e8cd8a;
+    --red: #8b2c2c;
+    --red-light: #c4463a;
+    --cream: #f0e6d3;
+    --cream-dark: #d4c8b0;
+    --charcoal: #2a2420;
+    --text: #e8ddd0;
+    --text-muted: #9a8e80;
+    --border: #3a322c;
+  }
+
+  body {
+    font-family: 'Noto Sans SC', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── Canvas Background ── */
+  #particle-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* ── Noise overlay ── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(201,168,92,0.08) 0%, transparent 70%);
+  }
+
+  .hero-year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(7rem, 18vw, 16rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(201,168,92,0.25);
+    text-stroke: 2px rgba(201,168,92,0.25);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+    opacity: 0.6;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    color: var(--gold);
+    text-shadow: 0 0 60px rgba(201,168,92,0.25);
+    position: relative;
+    z-index: 1;
+    margin-top: -0.5rem;
+  }
+
+  .hero-title-en {
+    font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+    color: var(--text-muted);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tagline {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+    color: var(--gold-light);
+    opacity: 0.85;
+    margin-top: 2rem;
+    line-height: 1.8;
+    letter-spacing: 0.08em;
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+  }
+
+  .hero-director {
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    color: var(--text-muted);
+    margin-top: 1.5rem;
+    letter-spacing: 0.15em;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    animation: scrollBounce 2s ease-in-out infinite;
+    z-index: 1;
+  }
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px; height: 30px;
+    background: var(--text-muted);
+    margin: 8px auto 0;
+    animation: scrollFade 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+  @keyframes scrollFade {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* ── Section Base ── */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
+  }
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-top: 0.8rem;
+  }
+
+  /* ── Rating Bar ── */
+  #ratings { padding-top: 3rem; }
+
+  .rating-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .rating-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+  .rating-item:hover { border-color: var(--gold-dark); }
+
+  .rating-source {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .rating-score {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.2;
+  }
+  .rating-score .decimal { font-size: 1.6rem; }
+  .rating-score .suffix { font-size: 1rem; color: var(--text-muted); font-weight: 400; }
+
+  .rating-bar {
+    width: 100%;
+    height: 4px;
+    background: var(--charcoal);
+    border-radius: 2px;
+    margin-top: 0.8rem;
+    overflow: hidden;
+  }
+  .rating-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+  }
+
+  /* ── Plot Synopsis ── */
+  .plot-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .plot-text p {
+    color: var(--cream-dark);
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+    line-height: 1.9;
+  }
+
+  .plot-text .no-spoiler {
+    display: inline-block;
+    background: rgba(139,44,44,0.2);
+    border: 1px solid var(--red);
+    color: var(--red-light);
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    margin-top: 0.5rem;
+  }
+
+  .plot-poster {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .poster-svg {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+
+  /* ── Highlights ── */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .highlight-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.8rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--gold), var(--red));
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s ease;
+  }
+  .highlight-card:hover::before { transform: scaleY(1); }
+
+  .highlight-card:hover {
+    border-color: var(--gold-dark);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .highlight-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: rgba(201,168,92,0.15);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .highlight-card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15rem;
+    color: var(--gold-light);
+    margin-bottom: 0.6rem;
+  }
+
+  .highlight-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ── Quote ── */
+  .quote-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+  }
+
+  .quote-section::before,
+  .quote-section::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+  }
+  .quote-section::before { top: 0; }
+  .quote-section::after { bottom: 0; }
+
+  .quote-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    color: var(--gold);
+    line-height: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .quote-text .q-mark {
+    color: var(--gold-dark);
+    font-size: 2em;
+    line-height: 0;
+    vertical-align: -0.3em;
+    opacity: 0.5;
+  }
+
+  .quote-source {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 1.2rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Why Watch ── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .why-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.8rem;
+    transition: all 0.4s ease;
+  }
+  .why-card:hover {
+    border-color: var(--red);
+    transform: translateY(-3px);
+  }
+
+  .why-icon {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .why-card h3 {
+    font-size: 1.05rem;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  .why-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ── Awards ── */
+  .awards-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2rem;
+  }
+
+  .award-tag {
+    background: rgba(201,168,92,0.08);
+    border: 1px solid var(--gold-dark);
+    border-radius: 20px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+    color: var(--gold-light);
+    transition: all 0.3s;
+  }
+  .award-tag:hover {
+    background: rgba(201,168,92,0.18);
+    transform: translateY(-2px);
+  }
+
+  /* ── Film Info Table ── */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .info-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+  .info-table tr:last-child { border-bottom: none; }
+
+  .info-table td {
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .info-table td:first-child {
+    font-weight: 600;
+    color: var(--gold-dark);
+    width: 120px;
+    white-space: nowrap;
+  }
+
+  .info-table td:last-child {
+    color: var(--cream-dark);
+  }
+
+  /* ── Editor's Note ── */
+  .editor-note {
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .editor-note .stars {
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .editor-note p {
+    font-size: 1.05rem;
+    color: var(--cream-dark);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.9;
+  }
+
+  .editor-note .signature {
+    font-family: 'Noto Serif SC', serif;
+    color: var(--gold);
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .plot-wrap {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .rating-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .highlights-grid {
+      grid-template-columns: 1fr;
+    }
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+    section { padding: 3rem 1.5rem; }
+    .info-table td { padding: 0.8rem 1rem; }
+    .info-table td:first-child { width: 90px; }
+  }
+
+  @media (max-width: 480px) {
+    .rating-grid { grid-template-columns: 1fr; }
+    .hero { min-height: 90vh; }
+  }
+</style>
+</head>
+<body>
+
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="content">
+
+    <!-- ══ HERO ══ -->
+    <header class="hero">
+      <div class="hero-year">2010</div>
+      <h1 class="hero-title">让子弹飞</h1>
+      <div class="hero-title-en">Let the Bullets Fly</div>
+      <p class="hero-tagline">「我来鹅城，就办三件事：<br>公平，公平，还是他妈的公平！」</p>
+      <p class="hero-director">导演 · 姜文 &nbsp;|&nbsp; 主演 · 姜文 / 周润发 / 葛优</p>
+      <div class="hero-scroll">向下滚动</div>
+    </header>
+
+    <!-- ══ RATINGS ══ -->
+    <section id="ratings">
+      <div class="section-label">· 影史评分 ·</div>
+      <h2 class="section-title">口碑数据</h2>
+      <div class="rating-grid">
+        <div class="rating-item">
+          <div class="rating-source">豆瓣电影</div>
+          <div class="rating-score">9.0</div>
+          <div class="rating-bar"><div class="rating-bar-fill" data-target="90"></div></div>
+        </div>
+        <div class="rating-item">
+          <div class="rating-source">IMDb</div>
+          <div class="rating-score">7.6</div>
+          <div class="rating-bar"><div class="rating-bar-fill" data-target="76"></div></div>
+        </div>
+        <div class="rating-item">
+          <div class="rating-source">烂番茄</div>
+          <div class="rating-score">86<span class="suffix">%</span></div>
+          <div class="rating-bar"><div class="rating-bar-fill" data-target="86"></div></div>
+        </div>
+        <div class="rating-item">
+          <div class="rating-source">猫眼口碑</div>
+          <div class="rating-score">8.8</div>
+          <div class="rating-bar"><div class="rating-bar-fill" data-target="88"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PLOT ══ -->
+    <section id="plot">
+      <div class="section-label">· 剧情概览 ·</div>
+      <h2 class="section-title">故事背景</h2>
+      <div class="plot-wrap">
+        <div class="plot-text">
+          <p>北洋年间，南部中国。一列火车满载着官差与银两，驶向南方小城鹅城。车上坐着的是即将赴任的县长马邦德，他正盘算着如何在鹅城大捞一笔。</p>
+          <p>然而，火车在半路遭遇了劫匪张牧之——人称"张麻子"——的拦路打劫。一场混乱之后，马邦德的随从全军覆没，他自己则为了保命，谎称自己是汤师爷。张麻子决定将计就计，带着自己的兄弟们冒充县长，闯入鹅城。</p>
+          <p>鹅城的真正统治者是黄四郎，一个手眼通天、垄断一切的本地恶霸。新"县长"与黄四郎之间，一场围绕着"公平"二字的生死较量，就此拉开帷幕。</p>
+          <span class="no-spoiler">▸ 无剧透 · 仅提供故事背景框架</span>
+        </div>
+        <div class="plot-poster">
+          <svg class="poster-svg" viewBox="0 0 380 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background -->
+            <rect width="380" height="500" rx="12" fill="#231e1a" stroke="#3a322c" stroke-width="1"/>
+            <!-- Gradient overlay -->
+            <rect width="380" height="500" rx="12" fill="url(#posterBg)" opacity="0.6"/>
+            <defs>
+              <linearGradient id="posterBg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#1a1512" stop-opacity="0"/>
+                <stop offset="60%" stop-color="#8b2c2c" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#1a1512" stop-opacity="0.8"/>
+              </linearGradient>
+              <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop stop-color="#c9a85c"/>
+                <stop offset="1" stop-color="#e8cd8a"/>
+              </linearGradient>
+              <linearGradient id="bulletGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop stop-color="#c9a85c"/>
+                <stop offset="1" stop-color="#e8cd8a"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Decorative border corners -->
+            <path d="M30 30 L30 50 M30 30 L50 30" stroke="#c9a85c" stroke-width="1.5" opacity="0.4"/>
+            <path d="M350 30 L350 50 M350 30 L330 30" stroke="#c9a85c" stroke-width="1.5" opacity="0.4"/>
+            <path d="M30 470 L30 450 M30 470 L50 470" stroke="#c9a85c" stroke-width="1.5" opacity="0.4"/>
+            <path d="M350 470 L350 450 M350 470 L330 470" stroke="#c9a85c" stroke-width="1.5" opacity="0.4"/>
+
+            <!-- Title -->
+            <text x="190" y="50" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="22" font-weight="700" fill="#c9a85c">让子弹飞</text>
+            <text x="190" y="68" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#9a8e80" letter-spacing="3">LET THE BULLETS FLY</text>
+
+            <!-- 鹅城 archway -->
+            <rect x="100" y="95" width="180" height="180" rx="90" fill="none" stroke="#3a322c" stroke-width="3"/>
+            <rect x="115" y="110" width="150" height="150" rx="75" fill="none" stroke="#2a2420" stroke-width="2"/>
+            <!-- Gate opening -->
+            <rect x="155" y="170" width="70" height="105" rx="4" fill="#1a1512" stroke="#3a322c" stroke-width="2"/>
+            <!-- Gate top -->
+            <path d="M140 170 Q190 140 240 170" fill="none" stroke="#c9a85c" stroke-width="1.5" opacity="0.5"/>
+            <!-- 鹅城 text -->
+            <text x="190" y="218" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="16" fill="#c9a85c" opacity="0.6">鹅城</text>
+
+            <!-- Horse silhouette -->
+            <g opacity="0.7">
+              <path d="M70 300 Q75 270 85 265 Q95 260 100 270 L105 280 L110 275 Q115 265 120 270 L125 300 L118 300 L115 290 L110 295 L105 300 L95 300 L90 295 L85 290 L82 300 Z" fill="#c9a85c" opacity="0.6"/>
+              <!-- Horse legs -->
+              <rect x="88" y="300" width="4" height="30" rx="1" fill="#8b2c2c" opacity="0.5" transform="rotate(-5 90 315)"/>
+              <rect x="108" y="300" width="4" height="28" rx="1" fill="#8b2c2c" opacity="0.5" transform="rotate(3 110 314)"/>
+            </g>
+
+            <!-- Revolver silhouette -->
+            <g transform="translate(190, 340) rotate(-15)" opacity="0.8">
+              <!-- Barrel -->
+              <rect x="0" y="-3" width="100" height="8" rx="3" fill="url(#bulletGrad)"/>
+              <!-- Cylinder -->
+              <rect x="95" y="-8" width="18" height="18" rx="3" fill="#c9a85c" opacity="0.7"/>
+              <!-- Hammer -->
+              <rect x="113" y="-10" width="6" height="6" rx="1" fill="#c9a85c" opacity="0.5"/>
+              <!-- Grip -->
+              <path d="M113 10 L113 35 Q113 42 110 42 L104 42 Q100 42 100 35 L100 10 Z" fill="#8b2c2c" opacity="0.6"/>
+              <!-- Trigger guard -->
+              <path d="M100 4 Q108 4 110 12 Q112 18 106 20" fill="none" stroke="#c9a85c" stroke-width="1.5" opacity="0.4"/>
+            </g>
+
+            <!-- Flying bullet trails -->
+            <g opacity="0.5">
+              <line x1="60" y1="280" x2="140" y2="290" stroke="#c9a85c" stroke-width="1" stroke-dasharray="4 6"/>
+              <line x1="250" y1="250" x2="310" y2="240" stroke="#c9a85c" stroke-width="1" stroke-dasharray="4 6"/>
+              <line x1="290" y1="360" x2="340" y2="330" stroke="#c9a85c" stroke-width="1" stroke-dasharray="3 5"/>
+            </g>
+
+            <!-- Bottom decorative text -->
+            <text x="190" y="430" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="11" fill="#9a8e80" opacity="0.6">
+              匪气 · 侠气 · 英雄气
+            </text>
+            <text x="190" y="450" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#6a5e50" letter-spacing="2">
+              姜文作品 A JIANG WEN FILM
+            </text>
+
+            <!-- Decorative line -->
+            <line x1="100" y1="465" x2="280" y2="465" stroke="#c9a85c" stroke-width="0.5" opacity="0.3"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ QUOTE ══ -->
+    <section class="quote-section visible">
+      <p class="quote-text">
+        <span class="q-mark">「</span>站起来，不许跪！<span class="q-mark">」</span>
+      </p>
+      <p class="quote-source">—— 张牧之，《让子弹飞》</p>
+    </section>
+
+    <!-- ══ HIGHLIGHTS ══ -->
+    <section id="highlights">
+      <div class="section-label">· 电影亮点 ·</div>
+      <h2 class="section-title">六大看点</h2>
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <div class="highlight-num">01</div>
+          <h3>殿堂级阵容</h3>
+          <p>姜文、周润发、葛优——三位华语影坛最具分量的演员同台飙戏，每人身上的角色都像上了多重保险，每一个对视都暗藏杀机。</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-num">02</div>
+          <h3>姜文式叙事</h3>
+          <p>节奏快如子弹，台词密如骤雨。没有一帧浪费，没有一句废话。在荒诞与真实之间来回穿梭，让你笑到一半突然脊背发凉。</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-num">03</div>
+          <h3>台词封神</h3>
+          <p>"让子弹飞一会儿"、"公平，公平，还是他妈的公平"、"我就是想站着，还把钱挣了"——电影上映十余年，这些台词仍是国民级别的文化符号。</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-num">04</div>
+          <h3>视觉美学</h3>
+          <p>赵非掌镜的摄影，把北洋年代的鹅城拍成了一幅浓墨重彩的江湖画卷。马匹、火车、碉楼、雨夜——每一个镜头都像是一张可以裱起来的照片。</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-num">05</div>
+          <h3>配乐过耳不忘</h3>
+          <p>久石让的配乐为这部硬核西部片注入了恢弘与深情。《太阳照常升起》的主题变奏，在片头片尾两次响起，让人热血沸腾又怅然若失。</p>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-num">06</div>
+          <h3>多层解读空间</h3>
+          <p>表面是土匪打恶霸的商业爽片，内里却裹着关于权力、公平与革命的沉重寓言。每看一遍，都能发现新的细节与暗线。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ QUOTE 2 ══ -->
+    <section class="quote-section visible">
+      <p class="quote-text">
+        <span class="q-mark">「</span>我就是想站着，还把钱挣了。<span class="q-mark">」</span>
+      </p>
+      <p class="quote-source">—— 张牧之，《让子弹飞》</p>
+    </section>
+
+    <!-- ══ WHY WATCH ══ -->
+    <section id="why-watch">
+      <div class="section-label">· 推荐理由 ·</div>
+      <h2 class="section-title">为什么值得看</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <span class="why-icon">🎭</span>
+          <h3>华语电影的巅峰对决</h3>
+          <p>姜文、周润发、葛优三大影帝同框，这本身就是一段电影史。看他们如何用眼神、语气和微表情打一场没有硝烟的战争。</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">🎬</span>
+          <h3>教科书级别的编剧</h3>
+          <p>全片没有一个废镜头、一句废台词。每一处铺垫都在后面有回响，每一条线索都编织得严丝合缝，堪称叙事艺术的满分示范。</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">💬</span>
+          <h3>台词的魔力</h3>
+          <p>一部电影能贡献出十几句深入人心的金句，并且每一句都经得起反复咀嚼——这在华语影史上几乎找不到第二部。</p>
+        </div>
+        <div class="why-card">
+          <span class="why-icon">🧠</span>
+          <h3>看一遍不够</h3>
+          <p>第一遍看爽，第二遍看细节，第三遍看隐喻。每一次重看都会发现全新的解读维度，它值得你反复走进那个鹅城世界。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ AWARDS ══ -->
+    <section id="awards">
+      <div class="section-label">· 荣誉殿堂 ·</div>
+      <h2 class="section-title">所获荣誉</h2>
+      <div class="awards-flex">
+        <span class="award-tag">🏆 金马奖最佳导演</span>
+        <span class="award-tag">🏆 金马奖最佳男主角</span>
+        <span class="award-tag">🏆 金马奖最佳改编剧本</span>
+        <span class="award-tag">🏆 金马奖最佳摄影</span>
+        <span class="award-tag">🏆 金马奖最佳造型设计</span>
+        <span class="award-tag">🏆 金马奖最佳原创音乐</span>
+        <span class="award-tag">🏆 金马奖最佳音效</span>
+        <span class="award-tag">🏆 华表奖优秀故事片</span>
+        <span class="award-tag">🏆 亚洲电影大奖最佳电影</span>
+        <span class="award-tag">🏆 亚洲电影大奖最佳编剧</span>
+        <span class="award-tag">🏆 新浪网票选十年最佳华语片</span>
+        <span class="award-tag">🏆 豆瓣电影Top 250 #52</span>
+      </div>
+    </section>
+
+    <!-- ══ FILM INFO ══ -->
+    <section id="info">
+      <div class="section-label">· 影片档案 ·</div>
+      <h2 class="section-title">电影信息</h2>
+      <table class="info-table">
+        <tr><td>片名</td><td>让子弹飞 (Let the Bullets Fly)</td></tr>
+        <tr><td>导演</td><td>姜文</td></tr>
+        <tr><td>编剧</td><td>朱苏进 / 述平 / 姜文 / 郭俊立 / 危笑 / 李不空</td></tr>
+        <tr><td>主演</td><td>姜文 / 周润发 / 葛优 / 刘嘉玲 / 陈坤 / 张默 / 姜武 / 周韵</td></tr>
+        <tr><td>类型</td><td>剧情 / 喜剧 / 动作 / 西部</td></tr>
+        <tr><td>制片国家</td><td>中国大陆 / 中国香港</td></tr>
+        <tr><td>语言</td><td>汉语普通话 / 四川方言</td></tr>
+        <tr><td>上映日期</td><td>2010-12-16 (中国大陆)</td></tr>
+        <tr><td>片长</td><td>132分钟</td></tr>
+        <tr><td>配乐</td><td>久石让 (Joe Hisaishi)</td></tr>
+        <tr><td>摄影</td><td>赵非</td></tr>
+        <tr><td>票房</td><td>约6.7亿人民币</td></tr>
+      </table>
+    </section>
+
+    <!-- ══ EDITOR'S NOTE ══ -->
+    <section class="editor-note visible">
+      <div class="stars">★★★★★</div>
+      <p>
+        《让子弹飞》是一部让你从头燃到尾的电影。它爽到极致，又深到骨子里。
+        姜文用一种近乎奢侈的方式，把商业片的快感、文艺片的深度和作者电影的锋芒融为一炉。
+        十多年过去了，我们还在说"让子弹飞一会儿"——这句话本身，就是一部电影能留下的最大遗产。
+      </p>
+      <p class="signature">—— 编辑推荐 · 五星力荐</p>
+    </section>
+
+  </div>
+
+  <script>
+    /* ── Canvas Particle System ── */
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let W, H;
+    function resize() {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Bullet particles - golden streaks
+    class BulletTrail {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * W;
+        this.y = -20;
+        this.speed = 2 + Math.random() * 4;
+        this.dx = (Math.random() - 0.5) * 1.5;
+        this.length = 40 + Math.random() * 80;
+        this.opacity = 0.05 + Math.random() * 0.2;
+        this.life = 0;
+        this.maxLife = 80 + Math.random() * 60;
+        this.active = true;
+      }
+      update() {
+        this.x += this.dx;
+        this.y += this.speed;
+        this.life++;
+        if (this.life > this.maxLife || this.y > H + 30) {
+          this.active = false;
+        }
+      }
+      draw() {
+        const fadeOut = Math.min(1, (this.maxLife - this.life) / 30);
+        const alpha = this.opacity * fadeOut;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x - this.dx * this.length * 0.5, this.y - this.length);
+        ctx.strokeStyle = `rgba(201, 168, 92, ${alpha})`;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        // Glow
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 2, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(232, 205, 138, ${alpha * 0.6})`;
+        ctx.fill();
+      }
+    }
+
+    // Golden dust particles
+    class DustParticle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * W;
+        this.y = Math.random() * H;
+        this.size = 1 + Math.random() * 2.5;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = -0.1 - Math.random() * 0.3;
+        this.opacity = 0.08 + Math.random() * 0.25;
+        this.pulse = Math.random() * Math.PI * 2;
+        this.pulseSpeed = 0.01 + Math.random() * 0.02;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.pulse += this.pulseSpeed;
+        if (this.y < -10) { this.y = H + 10; this.x = Math.random() * W; }
+        if (this.x < -10 || this.x > W + 10) { this.x = Math.random() * W; }
+      }
+      draw() {
+        const pulseAlpha = this.opacity * (0.6 + 0.4 * Math.sin(this.pulse));
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(201, 168, 92, ${pulseAlpha})`;
+        ctx.fill();
+
+        // Glow
+        if (this.size > 1.5) {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(201, 168, 92, ${pulseAlpha * 0.15})`;
+          ctx.fill();
+        }
+      }
+    }
+
+    // Red ember particles
+    class EmberParticle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * W;
+        this.y = Math.random() * H;
+        this.size = 1.5 + Math.random() * 3;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = -0.2 - Math.random() * 0.4;
+        this.opacity = 0.05 + Math.random() * 0.15;
+        this.pulse = Math.random() * Math.PI * 2;
+        this.pulseSpeed = 0.008 + Math.random() * 0.015;
+        this.drift = Math.random() * 0.5;
+      }
+      update() {
+        this.x += this.speedX + Math.sin(this.pulse * 0.5) * this.drift * 0.3;
+        this.y += this.speedY;
+        this.pulse += this.pulseSpeed;
+        if (this.y < -10) { this.y = H + 10; this.x = Math.random() * W; }
+      }
+      draw() {
+        const pulseAlpha = this.opacity * (0.5 + 0.5 * Math.sin(this.pulse));
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(196, 70, 58, ${pulseAlpha})`;
+        ctx.fill();
+        // Red glow
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size * 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(196, 70, 58, ${pulseAlpha * 0.1})`;
+        ctx.fill();
+      }
+    }
+
+    const bullets = [];
+    const dusts = [];
+    const embers = [];
+
+    for (let i = 0; i < 15; i++) {
+      const b = new BulletTrail();
+      b.y = Math.random() * H;
+      b.isInit = true;
+      bullets.push(b);
+    }
+
+    // Spawn new bullets periodically
+    function spawnBullet() {
+      const inactive = bullets.find(b => !b.active);
+      if (inactive) {
+        inactive.reset();
+        inactive.y = -20;
+      } else if (bullets.length < 25) {
+        bullets.push(new BulletTrail());
+      }
+    }
+
+    for (let i = 0; i < 80; i++) dusts.push(new DustParticle());
+    for (let i = 0; i < 30; i++) embers.push(new EmberParticle());
+
+    setInterval(spawnBullet, 2000);
+
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+
+      dusts.forEach(p => { p.update(); p.draw(); });
+      embers.forEach(p => { p.update(); p.draw(); });
+      bullets.forEach(b => {
+        if (b.active) {
+          b.update();
+          b.draw();
+        }
+      });
+
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    /* ── IntersectionObserver ── */
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(s => observer.observe(s));
+
+    /* ── Rating Bar Animation ── */
+    const ratingObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const fills = entry.target.querySelectorAll('.rating-bar-fill');
+          fills.forEach(fill => {
+            const target = parseFloat(fill.dataset.target);
+            setTimeout(() => {
+              fill.style.width = target + '%';
+            }, 300);
+          });
+          ratingObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const ratingSection = document.querySelector('#ratings');
+    if (ratingSection) ratingObserver.observe(ratingSection);
+
+    /* ── Award tag entrance ── */
+    const awardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const tags = entry.target.querySelectorAll('.award-tag');
+          tags.forEach((tag, i) => {
+            tag.style.opacity = '0';
+            tag.style.transform = 'translateY(12px)';
+            setTimeout(() => {
+              tag.style.transition = 'all 0.5s ease';
+              tag.style.opacity = '1';
+              tag.style.transform = 'translateY(0)';
+            }, 100 + i * 80);
+          });
+          awardObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    const awardSection = document.querySelector('#awards .awards-flex');
+    if (awardSection) awardObserver.observe(awardSection);
+  </script>
+
+</body>
+</html>

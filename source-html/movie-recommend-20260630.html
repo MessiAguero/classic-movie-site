@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电影推荐 · 霸王别姬</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: #0a0a0a;
+    color: #e8e0d4;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* ─── Canvas ─── */
+  #particles-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ─── Hero ─── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 40%, rgba(180, 40, 40, 0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 50% 80%, rgba(200, 160, 80, 0.08) 0%, transparent 60%);
+    z-index: -1;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 0.4rem 1.6rem;
+    border: 1px solid rgba(200, 160, 80, 0.4);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    color: #c8a050;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(4px);
+    background: rgba(10, 10, 10, 0.5);
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(3.5rem, 12vw, 7rem);
+    font-weight: 900;
+    line-height: 1.15;
+    background: linear-gradient(135deg, #f0e6d0 0%, #c8a050 40%, #e8d5a0 70%, #f0e6d0 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 6s ease-in-out infinite;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.15em;
+    text-shadow: none;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: rgba(232, 224, 212, 0.6);
+    font-weight: 300;
+    letter-spacing: 0.4em;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem 1.6rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .hero-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: rgba(232, 224, 212, 0.7);
+    padding: 0.3rem 0.8rem;
+    border: 1px solid rgba(232, 224, 212, 0.12);
+    border-radius: 4px;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(4px);
+  }
+
+  .hero-meta .rating {
+    color: #f0c040;
+    border-color: rgba(240, 192, 64, 0.3);
+  }
+
+  .hero-meta .cannes {
+    color: #c8a050;
+    border-color: rgba(200, 160, 80, 0.3);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(232, 224, 212, 0.3);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  .scroll-hint .arrow {
+    width: 1.5rem; height: 1.5rem;
+    border-right: 1.5px solid rgba(232, 224, 212, 0.3);
+    border-bottom: 1.5px solid rgba(232, 224, 212, 0.3);
+    transform: rotate(45deg);
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ─── Section ─── */
+  .section {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: #c8a050;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+  }
+
+  .section-label::before {
+    content: '◆ ';
+    opacity: 0.6;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 700;
+    color: #f0e6d0;
+    margin-bottom: 2rem;
+    line-height: 1.3;
+  }
+
+  .section-text {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: rgba(232, 224, 212, 0.8);
+    font-weight: 300;
+  }
+
+  .section-text p {
+    margin-bottom: 1.4rem;
+  }
+
+  /* ─── Divider ─── */
+  .divider {
+    position: relative;
+    z-index: 1;
+    width: 60px;
+    margin: 0 auto;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c8a050, transparent);
+  }
+
+  /* ─── Highlight Cards ─── */
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .highlight-card {
+    background: linear-gradient(145deg, rgba(30, 25, 20, 0.6), rgba(15, 12, 10, 0.8));
+    border: 1px solid rgba(200, 160, 80, 0.12);
+    border-radius: 12px;
+    padding: 1.8rem 1.5rem;
+    backdrop-filter: blur(8px);
+    transition: all 0.4s ease;
+  }
+
+  .highlight-card:hover {
+    border-color: rgba(200, 160, 80, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+
+  .highlight-card .icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+    line-height: 1;
+  }
+
+  .highlight-card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #e8d5a0;
+    margin-bottom: 0.6rem;
+  }
+
+  .highlight-card p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(232, 224, 212, 0.65);
+    font-weight: 300;
+  }
+
+  /* ─── Quote ─── */
+  .quote-block {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 4rem 2rem 5rem;
+    text-align: center;
+  }
+
+  .quote-block::before {
+    content: '"';
+    font-family: 'Noto Serif SC', serif;
+    font-size: 6rem;
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(200, 160, 80, 0.1);
+    line-height: 1;
+  }
+
+  .quote-block blockquote {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    line-height: 1.8;
+    color: rgba(232, 224, 212, 0.6);
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .quote-block cite {
+    display: block;
+    margin-top: 1.5rem;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: rgba(200, 160, 80, 0.5);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── Stats ─── */
+  .stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin: 3rem 0;
+    padding: 2rem;
+    border-top: 1px solid rgba(200, 160, 80, 0.1);
+    border-bottom: 1px solid rgba(200, 160, 80, 0.1);
+  }
+
+  .stat-item {
+    text-align: center;
+    min-width: 100px;
+  }
+
+  .stat-item .number {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #c8a050;
+    line-height: 1;
+  }
+
+  .stat-item .label {
+    font-size: 0.75rem;
+    color: rgba(232, 224, 212, 0.4);
+    margin-top: 0.4rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── Footer ─── */
+  .footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 3rem 2rem 4rem;
+    border-top: 1px solid rgba(200, 160, 80, 0.06);
+  }
+
+  .footer p {
+    font-size: 0.75rem;
+    color: rgba(232, 224, 212, 0.2);
+    letter-spacing: 0.15em;
+  }
+
+  /* ─── Scrollbar ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0a0a0a; }
+  ::-webkit-scrollbar-thumb { background: rgba(200, 160, 80, 0.2); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(200, 160, 80, 0.4); }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 640px) {
+    .section { padding: 3rem 1.5rem; }
+    .highlights { grid-template-columns: 1fr; }
+    .hero-meta { gap: 0.5rem 1rem; }
+    .stats-row { gap: 1.2rem; padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="particles-canvas"></canvas>
+
+<!-- ─── Hero ─── -->
+<section class="hero">
+  <div class="hero-badge">🎬 今日经典推荐</div>
+  <h1 class="hero-title">霸王别姬</h1>
+  <p class="hero-subtitle">FAREWELL MY CONCUBINE</p>
+  <div class="hero-meta">
+    <span class="rating">★ 9.6</span>
+    <span class="cannes">🏆 戛纳金棕榈奖</span>
+    <span>1993 · 陈凯歌</span>
+    <span>171分钟</span>
+    <span>中国大陆 / 中国香港</span>
+  </div>
+  <div class="scroll-hint">
+    <span>向下阅览</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── 剧情 ─── -->
+<section class="section">
+  <div class="section-label">Plot · 剧情概要</div>
+  <h2 class="section-title">半个世纪的悲欢离合</h2>
+  <div class="section-text">
+    <p>
+      故事始于1920年代的北平。小豆子被母亲送入戏班学艺，在严苛到近乎残酷的训练中与师兄小石头结下深厚情谊。多年后，两人成为名震京城的角儿——程蝶衣与段小楼，一出《霸王别姬》倾倒无数看客。
+    </p>
+    <p>
+      然而时代的巨轮碾过每一个人。从军阀混战、日军侵华、国共内战，到新中国成立后的历次运动，舞台上下的"霸王"与"虞姬"在命运的洪流中沉浮。程蝶衣入戏太深，人戏不分；段小楼在现实与情义之间挣扎。围绕他们的是时代的荒诞、人性的复杂，以及一段注定无法圆满的执念。
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── 亮点 ─── -->
+<section class="section">
+  <div class="section-label">Highlights · 亮点解读</div>
+  <h2 class="section-title">为什么它是华语电影的巅峰</h2>
+  <div class="highlights">
+
+    <div class="highlight-card">
+      <span class="icon">🎭</span>
+      <h3>入魂的表演</h3>
+      <p>张国荣以"不疯魔不成活"的投入，将程蝶衣的痴、怨、傲、悲刻画得入木三分。每一个眼神、每一段唱腔，都是教科书级的表演。</p>
+    </div>
+
+    <div class="highlight-card">
+      <span class="icon">📜</span>
+      <h3>史诗格局</h3>
+      <p>跨越半个世纪，将京剧艺术与个人命运交织在历史大背景中。一部电影，半部中国近代史，既有江湖情仇，更有时代悲歌。</p>
+    </div>
+
+    <div class="highlight-card">
+      <span class="icon">🎨</span>
+      <h3>视听美学</h3>
+      <p>顾长卫的摄影将京剧舞台的绚烂与人世苍凉并置——戏台之上华彩流光，戏台之下满目疮痍。配乐与唱腔浑然天成，每一帧都可以入画。</p>
+    </div>
+
+    <div class="highlight-card">
+      <span class="icon">🏆</span>
+      <h3>国际殊荣</h3>
+      <p>1993年戛纳电影节金棕榈奖、国际影评人联盟大奖，美国金球奖最佳外语片。至今仍是华语电影在国际上获得的最高荣誉之一。</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── 数据 ─── -->
+<section class="section">
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="number">9.6</div>
+      <div class="label">豆瓣评分</div>
+    </div>
+    <div class="stat-item">
+      <div class="number">第1</div>
+      <div class="label">豆瓣TOP250</div>
+    </div>
+    <div class="stat-item">
+      <div class="number">5项</div>
+      <div class="label">金棕榈等国际大奖</div>
+    </div>
+    <div class="stat-item">
+      <div class="number">30年</div>
+      <div class="label">历久弥新</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── 推荐理由 ─── -->
+<section class="section">
+  <div class="section-label">Why Watch · 推荐理由</div>
+  <h2 class="section-title">值得一看的理由</h2>
+  <div class="section-text">
+    <p>
+      <strong>这是华语电影的一座丰碑。</strong> 李碧华的原著、芦苇的剧本、陈凯歌的导演、张国荣的表演——每一个环节都达到了难以复制的完美。它是"人戏不分"的极致诠释，是一部关于艺术、关于执念、关于时代如何碾碎个体的沉重寓言。
+    </p>
+    <p>
+      即使你不懂京剧，也能被它的美与痛所震撼。看过的观众说，看《霸王别姬》之前和之后，世界是不一样的。这部电影不会给你轻松的答案，但它会给你一个难以忘怀的故事。
+    </p>
+    <p>
+      <strong style="color: #c8a050;">适合在深夜独自观看。</strong> 备好纸巾，准备好被一部电影带走一整个人生。
+    </p>
+  </div>
+</section>
+
+<!-- ─── 引言 ─── -->
+<div class="quote-block">
+  <blockquote>"说的是一辈子！差一年，一个月，一天，一个时辰，都不算一辈子！"</blockquote>
+  <cite>—— 程蝶衣 ·《霸王别姬》</cite>
+</div>
+
+<!-- ─── Footer ─── -->
+<footer class="footer">
+  <p>经典永不过时 · 好电影值得被记住</p>
+</footer>
+
+<script>
+  (function(){
+    const canvas = document.getElementById('particles-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h;
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // ── Opera mask petal particles ──
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h * 1.5 - h * 0.2;
+        this.size = Math.random() * 4 + 2;
+        this.speedY = Math.random() * 0.4 + 0.15;
+        this.speedX = (Math.random() - 0.5) * 0.25;
+        this.rotation = Math.random() * Math.PI * 2;
+        this.rotSpeed = (Math.random() - 0.5) * 0.008;
+        this.opacity = Math.random() * 0.35 + 0.08;
+        this.color = this.randomColor();
+      }
+      randomColor() {
+        const colors = [
+          [200, 160, 80],   // gold
+          [180, 60, 60],    // deep red
+          [160, 140, 120],  // beige
+          [200, 100, 80],   // rose
+          [140, 120, 100],  // taupe
+        ];
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+        this.rotation += this.rotSpeed;
+        if (this.y > h + 20) {
+          this.x = Math.random() * w;
+          this.y = -20;
+          this.speedY = Math.random() * 0.4 + 0.15;
+          this.opacity = Math.random() * 0.35 + 0.08;
+        }
+        if (this.x < -20 || this.x > w + 20) this.x = Math.random() * w;
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        const [r, g, b] = this.color;
+        ctx.fillStyle = `rgba(${r},${g},${b},${this.opacity})`;
+        // petal shape
+        ctx.beginPath();
+        ctx.ellipse(0, 0, this.size, this.size * 0.55, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    const particleCount = Math.min(80, Math.floor(w * h / 15000));
+    const particles = Array.from({ length: particleCount }, () => new Particle());
+
+    function animate() {
+      ctx.clearRect(0, 0, w, h);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+</script>
+
+</body>
+</html>

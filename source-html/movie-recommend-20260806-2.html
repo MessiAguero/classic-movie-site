@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>莫扎特传 · Amadeus — 今日经典推荐</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e0b09;
+    --bg-2:#16110d;
+    --panel:#1b1510;
+    --panel-2:#221a13;
+    --gold:#c9a45c;
+    --gold-bright:#e3c483;
+    --gold-deep:#9c7c3e;
+    --cream:#f2e7cf;
+    --cream-dim:#cdbf9f;
+    --oxblood:#7c2f2a;
+    --oxblood-soft:#a64a40;
+    --ink:#0a0706;
+    --line:rgba(201,164,92,.22);
+    --line-strong:rgba(201,164,92,.42);
+    --shadow:0 28px 70px -28px rgba(0,0,0,.85);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Serif SC","Cormorant Garamond",serif;
+    background:var(--bg);
+    color:var(--cream);
+    line-height:1.85;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  #bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .vignette{
+    position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:
+      radial-gradient(120% 90% at 50% -10%, transparent 55%, rgba(0,0,0,.55) 100%),
+      radial-gradient(80% 60% at 50% 120%, rgba(124,47,42,.18), transparent 70%);
+    mix-blend-mode:multiply;
+  }
+  .grain{
+    position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .wrap{position:relative;z-index:3;max-width:1080px;margin:0 auto;padding:0 26px}
+  section{padding:78px 0}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;z-index:3;min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:90px 22px 60px;overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:-1;
+    background:
+      radial-gradient(60% 50% at 50% 38%, rgba(124,47,42,.22), transparent 70%),
+      radial-gradient(40% 40% at 50% 60%, rgba(201,164,92,.10), transparent 70%);
+  }
+  .year{
+    font-family:"Cinzel",serif;font-weight:700;
+    font-size:clamp(70px,15vw,170px);line-height:.9;
+    color:transparent;
+    background:linear-gradient(180deg,var(--gold-bright),var(--gold) 45%,var(--gold-deep));
+    -webkit-background-clip:text;background-clip:text;
+    opacity:.16;letter-spacing:.04em;user-select:none;
+    position:absolute;top:8%;z-index:0;
+  }
+  .eyebrow{
+    font-family:"Cinzel",serif;letter-spacing:.42em;font-size:13px;
+    color:var(--gold);text-transform:uppercase;margin-bottom:22px;
+    opacity:0;transform:translateY(14px);animation:rise .9s .15s forwards;
+  }
+  .hero-title{
+    font-family:"Cinzel",serif;font-weight:600;
+    font-size:clamp(46px,9vw,104px);line-height:1;letter-spacing:.02em;
+    color:var(--cream);
+    text-shadow:0 2px 30px rgba(201,164,92,.25);
+    opacity:0;transform:translateY(18px);animation:rise 1s .3s forwards;
+  }
+  .hero-cn{
+    font-family:"Noto Serif SC",serif;font-weight:600;
+    font-size:clamp(30px,5.4vw,54px);letter-spacing:.22em;
+    color:var(--gold-bright);margin-top:14px;
+    opacity:0;transform:translateY(18px);animation:rise 1s .45s forwards;
+  }
+  .hero-meta{
+    margin-top:26px;font-family:"Cormorant Garamond","Noto Serif SC",serif;
+    font-size:clamp(15px,2vw,19px);letter-spacing:.16em;color:var(--cream-dim);
+    opacity:0;transform:translateY(18px);animation:rise 1s .6s forwards;
+  }
+  .hero-meta b{color:var(--gold);font-weight:600}
+  .hero-tag{
+    margin-top:34px;max-width:640px;font-style:italic;
+    font-family:"Cormorant Garamond","Noto Serif SC",serif;
+    font-size:clamp(17px,2.4vw,23px);color:var(--cream);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:18px 10px;line-height:1.6;
+    opacity:0;transform:translateY(18px);animation:rise 1s .75s forwards;
+  }
+  .hero-tag .q{color:var(--gold);font-size:1.3em;vertical-align:-.18em}
+  .scroll-hint{
+    position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+    font-family:"Cinzel",serif;font-size:11px;letter-spacing:.3em;color:var(--gold);
+    opacity:0;animation:fade 1.4s 1.3s forwards;
+  }
+  .scroll-hint::after{content:"";display:block;width:1px;height:34px;margin:10px auto 0;
+    background:linear-gradient(var(--gold),transparent);}
+
+  /* ===== section heading ===== */
+  .sec-head{text-align:center;margin-bottom:48px}
+  .sec-num{font-family:"Cinzel",serif;color:var(--gold-deep);letter-spacing:.4em;font-size:13px;display:block;margin-bottom:10px}
+  .sec-title{
+    font-family:"Noto Serif SC",serif;font-weight:600;
+    font-size:clamp(26px,4.4vw,38px);color:var(--cream);letter-spacing:.1em;
+  }
+  .sec-title .en{display:block;font-family:"Cinzel",serif;font-weight:400;font-size:.5em;
+    letter-spacing:.4em;color:var(--gold);margin-top:8px;}
+  .sec-rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    margin:18px auto 0;}
+
+  /* ===== RATINGS ===== */
+  .ratings{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .rate-card{
+    background:linear-gradient(160deg,var(--panel),var(--bg-2));
+    border:1px solid var(--line);border-radius:14px;padding:26px 18px 22px;
+    text-align:center;position:relative;overflow:hidden;
+    box-shadow:var(--shadow);
+    opacity:0;transform:translateY(24px);transition:transform .7s,opacity .7s,border-color .4s;
+  }
+  .rate-card:hover{border-color:var(--line-strong);transform:translateY(-4px)}
+  .rate-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.7;}
+  .rate-src{font-family:"Cinzel",serif;letter-spacing:.18em;font-size:12px;color:var(--gold);text-transform:uppercase}
+  .rate-val{font-family:"Cinzel",serif;font-weight:700;font-size:clamp(34px,5vw,46px);
+    color:var(--cream);margin:10px 0 4px;line-height:1}
+  .rate-val .suf{font-size:.5em;color:var(--gold);margin-left:2px}
+  .rate-bar{height:5px;border-radius:5px;background:rgba(201,164,92,.14);overflow:hidden;margin-top:14px}
+  .rate-fill{height:100%;width:0;border-radius:5px;
+    background:linear-gradient(90deg,var(--gold-deep),var(--gold-bright));
+    transition:width 1.4s cubic-bezier(.2,.8,.2,1);}
+  .rate-note{font-size:12.5px;color:var(--cream-dim);margin-top:9px;letter-spacing:.04em}
+
+  /* ===== SYNOPSIS + POSTER ===== */
+  .synopsis-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center}
+  .badge-nospoiler{
+    display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.08em;
+    color:var(--gold);border:1px solid var(--line-strong);border-radius:30px;
+    padding:6px 16px;margin-bottom:22px;background:rgba(201,164,92,.06);
+  }
+  .badge-nospoiler .dot{width:7px;height:7px;border-radius:50%;background:var(--gold-bright);
+    box-shadow:0 0 10px var(--gold-bright)}
+  .synopsis p{font-size:17px;color:var(--cream-dim);margin-bottom:18px;letter-spacing:.01em}
+  .synopsis p .hl{color:var(--gold-bright)}
+  .synopsis .lead{font-size:19px;color:var(--cream);border-left:2px solid var(--gold);
+    padding-left:18px;font-family:"Noto Serif SC",serif;}
+  .poster-frame{
+    position:relative;border-radius:16px;overflow:hidden;
+    border:1px solid var(--line-strong);
+    box-shadow:0 30px 80px -30px rgba(0,0,0,.9), inset 0 0 60px rgba(0,0,0,.5);
+    background:radial-gradient(120% 100% at 50% 0%, #241a12, #0c0907);
+  }
+  .poster-frame svg{display:block;width:100%;height:auto}
+
+  /* ===== HIGHLIGHTS ===== */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{
+    background:linear-gradient(165deg,var(--panel-2),var(--bg-2));
+    border:1px solid var(--line);border-radius:14px;padding:28px 24px;
+    position:relative;transition:transform .5s,border-color .4s,box-shadow .5s;
+    opacity:0;transform:translateY(26px);
+  }
+  .card:hover{transform:translateY(-6px);border-color:var(--line-strong);
+    box-shadow:0 24px 50px -26px rgba(201,164,92,.4)}
+  .card-no{font-family:"Cinzel",serif;font-size:34px;color:var(--gold-deep);
+    opacity:.5;line-height:1;position:absolute;top:18px;right:22px}
+  .card-ic{width:46px;height:46px;margin-bottom:16px;color:var(--gold)}
+  .card h3{font-family:"Noto Serif SC",serif;font-weight:600;font-size:20px;color:var(--cream);
+    margin-bottom:10px;letter-spacing:.04em}
+  .card p{font-size:15px;color:var(--cream-dim);line-height:1.78}
+
+  /* ===== QUOTE ===== */
+  .quote-sec{text-align:center;padding:96px 0}
+  .quote-mark{font-family:"Cinzel",serif;font-size:80px;color:var(--gold-deep);opacity:.45;line-height:.4}
+  .quote{
+    font-family:"Cormorant Garamond","Noto Serif SC",serif;font-style:italic;
+    font-size:clamp(22px,3.6vw,34px);color:var(--cream);line-height:1.5;
+    max-width:820px;margin:0 auto;letter-spacing:.02em;
+  }
+  .quote .zh{display:block;font-style:normal;font-size:.72em;color:var(--gold-bright);
+    margin-top:18px;letter-spacing:.14em;font-family:"Noto Serif SC",serif}
+  .quote-by{margin-top:22px;font-family:"Cinzel",serif;letter-spacing:.24em;
+    font-size:13px;color:var(--gold);text-transform:uppercase}
+
+  /* ===== WHY WATCH ===== */
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .why-item{
+    display:flex;gap:18px;align-items:flex-start;padding:24px;
+    background:linear-gradient(160deg,var(--panel),var(--bg-2));
+    border:1px solid var(--line);border-radius:14px;border-left:3px solid var(--gold);
+    opacity:0;transform:translateY(22px);transition:transform .6s,opacity .6s;
+  }
+  .why-num{font-family:"Cinzel",serif;font-weight:700;font-size:26px;color:var(--gold);
+    line-height:1;min-width:38px}
+  .why-item h4{font-family:"Noto Serif SC",serif;font-weight:600;font-size:18px;
+    color:var(--cream);margin-bottom:6px;letter-spacing:.04em}
+  .why-item p{font-size:15px;color:var(--cream-dim);line-height:1.72}
+
+  /* ===== HONORS ===== */
+  .honors{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .honor{
+    border:1px solid var(--line);border-radius:30px;padding:9px 20px;
+    font-size:14px;letter-spacing:.04em;color:var(--cream-dim);
+    background:rgba(201,164,92,.05);transition:.35s;
+    opacity:0;transform:scale(.9);
+  }
+  .honor:hover{color:var(--cream);border-color:var(--line-strong);background:rgba(201,164,92,.12)}
+  .honor.gold{border-color:var(--line-strong);color:var(--gold-bright);
+    background:rgba(201,164,92,.12);font-weight:500}
+
+  /* ===== ARCHIVE TABLE ===== */
+  .archive{
+    width:100%;border-collapse:collapse;font-size:15.5px;
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;
+    background:linear-gradient(160deg,var(--panel),var(--bg-2));
+  }
+  .archive td{padding:15px 22px;border-bottom:1px solid rgba(201,164,92,.12)}
+  .archive tr:last-child td{border-bottom:none}
+  .archive td:first-child{color:var(--gold);font-family:"Cinzel",serif;
+    letter-spacing:.1em;font-size:13px;width:34%;text-transform:uppercase}
+  .archive td:last-child{color:var(--cream)}
+  .archive tr:hover td{background:rgba(201,164,92,.04)}
+
+  /* ===== VERDICT ===== */
+  .verdict{
+    text-align:center;max-width:760px;margin:0 auto;
+    background:linear-gradient(165deg,var(--panel-2),var(--bg-2));
+    border:1px solid var(--line-strong);border-radius:18px;padding:48px 40px;
+    box-shadow:var(--shadow);position:relative;
+  }
+  .verdict .stars{font-size:30px;letter-spacing:.18em;color:var(--gold);
+    margin-bottom:18px;text-shadow:0 0 16px rgba(201,164,92,.5)}
+  .verdict p{font-size:18px;color:var(--cream);line-height:1.85;letter-spacing:.01em}
+  .verdict .sig{margin-top:20px;font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:16px;color:var(--gold)}
+
+  footer{padding:60px 0 70px;text-align:center;color:var(--cream-dim);font-size:13px;
+    letter-spacing:.06em;position:relative;z-index:3}
+  footer .fl{font-family:"Cinzel",serif;letter-spacing:.3em;color:var(--gold);font-size:12px;
+    margin-bottom:10px}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s,transform .9s}
+
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+  @keyframes fade{to{opacity:.7}}
+  @media(max-width:860px){
+    .ratings{grid-template-columns:repeat(2,1fr)}
+    .synopsis-grid{grid-template-columns:1fr;gap:34px}
+    .cards{grid-template-columns:1fr}
+    .why{grid-template-columns:1fr}
+  }
+  @media(max-width:520px){.ratings{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="vignette"></div>
+<div class="grain"></div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="year">1984</div>
+  <div class="eyebrow">A Masterpiece of Classical Cinema</div>
+  <h1 class="hero-title">AMADEUS</h1>
+  <div class="hero-cn">莫 扎 特 传</div>
+  <div class="hero-meta">
+    1984 · 美国 / 捷克斯洛伐克 · 传记 / 剧情 / 音乐 &nbsp;·&nbsp;
+    <b>导演</b> 米洛斯·福尔曼 &nbsp;·&nbsp; <b>主演</b> F·默里·亚伯拉罕 / 汤姆·休斯克
+  </div>
+  <div class="hero-tag">
+    <span class="q">“</span>上帝赐我庸才的资质，却又让我如此清醒地听见天才的声音。<span class="q">”</span>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</header>
+
+<!-- ============ RATINGS ============ -->
+<section id="ratings">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">I · ACCLAIM</span>
+      <span class="sec-title">声誉与口碑<span class="en">WHAT THE WORLD SAYS</span></span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="ratings">
+      <div class="rate-card" data-target="8.3" data-dec="1">
+        <div class="rate-src">IMDb</div>
+        <div class="rate-val"><span class="num">0.0</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-w="83"></div></div>
+        <div class="rate-note">Top 250 常客</div>
+      </div>
+      <div class="rate-card" data-target="8.7" data-dec="1">
+        <div class="rate-src">豆瓣 Douban</div>
+        <div class="rate-val"><span class="num">0.0</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-w="87"></div></div>
+        <div class="rate-note">口碑长青</div>
+      </div>
+      <div class="rate-card" data-target="93" data-dec="0" data-suf="%">
+        <div class="rate-src">Rotten Tomatoes</div>
+        <div class="rate-val"><span class="num">0</span><span class="suf">%</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-w="93"></div></div>
+        <div class="rate-note">影评人新鲜度</div>
+      </div>
+      <div class="rate-card" data-target="8" data-dec="0">
+        <div class="rate-src">奥斯卡奖</div>
+        <div class="rate-val"><span class="num">0</span><span class="suf"> 项</span></div>
+        <div class="rate-bar"><div class="rate-fill" data-w="73"></div></div>
+        <div class="rate-note">11 项提名中胜出</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SYNOPSIS ============ -->
+<section id="synopsis">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">II · THE STORY</span>
+      <span class="sec-title">剧情梗概<span class="en">WITHOUT SPOILERS</span></span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="synopsis-grid">
+      <div class="synopsis reveal">
+        <span class="badge-nospoiler"><span class="dot"></span>无剧透 · 安心观看</span>
+        <p class="lead">十八世纪的维也纳，宫廷里最体面的作曲家，遇上了一个嬉笑不羁、却仿佛被神亲吻过的天才少年。</p>
+        <p>年长的宫廷乐师<span class="hl">安东尼奥·萨列里</span>毕生虔诚、规矩、克己，自认配得上上帝的恩宠；而当<span class="hl">沃尔夫冈·阿玛多伊斯·莫扎特</span>仅凭游戏般的天赋横空出世，他的信仰开始悄然崩裂。</p>
+        <p>一个是被秩序驯化的<strong>庸才</strong>，一个是被才华宠坏却光芒灼人的<strong>天才</strong>——两人之间并非刀光剑影的对手戏，而是一场关于嫉妒、敬畏与自我和解的无声战争。</p>
+        <p>影片以萨列里的晚年回忆为引，让整座金色维也纳在莫扎特的音乐里缓缓苏醒：华服、烛火、假发、宫廷舞会，以及一个永远写不完的旋律。</p>
+      </div>
+      <div class="poster-frame reveal">
+        <svg viewBox="0 0 460 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="莫扎特传 巴洛克维也纳海报">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2a1f15"/>
+              <stop offset="1" stop-color="#0c0806"/>
+            </linearGradient>
+            <radialGradient id="candle" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#ffe6a8"/>
+              <stop offset="40%" stop-color="#e3a850"/>
+              <stop offset="100%" stop-color="#e3a850" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="goldg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e3c483"/>
+              <stop offset="1" stop-color="#9c7c3e"/>
+            </linearGradient>
+            <radialGradient id="window" cx="50%" cy="30%" r="70%">
+              <stop offset="0" stop-color="#e9c074" stop-opacity=".55"/>
+              <stop offset="100%" stop-color="#e9c074" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="460" height="560" fill="url(#sky)"/>
+          <!-- baroque arched window glow -->
+          <path d="M150 120 a80 80 0 0 1 160 0 L310 300 L150 300 Z" fill="url(#window)"/>
+          <path d="M150 120 a80 80 0 0 1 160 0" fill="none" stroke="url(#goldg)" stroke-width="2.5" opacity=".7"/>
+          <line x1="230" y1="42" x2="230" y2="300" stroke="url(#goldg)" stroke-width="1.5" opacity=".4"/>
+          <line x1="150" y1="170" x2="310" y2="170" stroke="url(#goldg)" stroke-width="1.5" opacity=".4"/>
+          <!-- floor -->
+          <rect x="0" y="430" width="460" height="130" fill="#0c0806"/>
+          <line x1="0" y1="430" x2="460" y2="430" stroke="url(#goldg)" stroke-width="1" opacity=".3"/>
+          <!-- fortepiano -->
+          <g opacity=".9">
+            <rect x="60" y="392" width="150" height="44" rx="4" fill="#3a2a1c" stroke="url(#goldg)" stroke-width="1.2"/>
+            <rect x="70" y="386" width="130" height="10" fill="#241a12"/>
+            <g fill="#e9c074" opacity=".8">
+              <rect x="78" y="396" width="4" height="34"/><rect x="90" y="396" width="4" height="34"/>
+              <rect x="102" y="396" width="4" height="34"/><rect x="114" y="396" width="4" height="34"/>
+              <rect x="126" y="396" width="4" height="34"/><rect x="138" y="396" width="4" height="34"/>
+              <rect x="150" y="396" width="4" height="34"/><rect x="162" y="396" width="4" height="34"/>
+              <rect x="174" y="396" width="4" height="34"/><rect x="186" y="396" width="4" height="34"/>
+            </g>
+            <rect x="56" y="436" width="8" height="26" fill="#241a12"/>
+            <rect x="206" y="436" width="8" height="26" fill="#241a12"/>
+          </g>
+          <!-- candle -->
+          <ellipse cx="350" cy="396" rx="60" ry="60" fill="url(#candle)" opacity=".5"/>
+          <rect x="346" y="356" width="8" height="48" rx="3" fill="#f2e7cf"/>
+          <path d="M350 338 q8 10 0 20 q-8 -10 0 -20Z" fill="#ffd36b"/>
+          <!-- Salieri silhouette (left, robe) -->
+          <g fill="#0a0706" stroke="url(#goldg)" stroke-width="1" opacity=".96">
+            <path d="M150 430 q-6 -70 14 -96 q14 -20 30 0 q20 26 14 96 Z"/>
+            <circle cx="179" cy="300" r="15"/>
+          </g>
+          <!-- Mozart silhouette (right, wig) -->
+          <g fill="#0a0706" stroke="url(#goldg)" stroke-width="1" opacity=".96">
+            <path d="M250 430 q-6 -64 16 -90 q16 -18 30 0 q22 26 16 90 Z"/>
+            <circle cx="281" cy="306" r="14"/>
+            <path d="M262 300 q19 -16 38 0 q-4 -10 -19 -10 q-15 0 -19 10Z" fill="#f2e7cf" stroke="none"/>
+          </g>
+          <!-- floating notes -->
+          <g fill="url(#goldg)" opacity=".7" font-family="serif" font-size="22">
+            <text x="120" y="180">♪</text>
+            <text x="320" y="150">♫</text>
+            <text x="200" y="120">♩</text>
+            <text x="90" y="250">♬</text>
+            <text x="360" y="240">♪</text>
+          </g>
+          <!-- ornate frame -->
+          <rect x="14" y="14" width="432" height="532" fill="none" stroke="url(#goldg)" stroke-width="1.5" opacity=".55" rx="6"/>
+          <g fill="url(#goldg)" opacity=".8">
+            <circle cx="14" cy="14" r="4"/><circle cx="446" cy="14" r="4"/>
+            <circle cx="14" cy="546" r="4"/><circle cx="446" cy="546" r="4"/>
+          </g>
+          <!-- title plate -->
+          <text x="230" y="500" text-anchor="middle" font-family="Cinzel, serif" font-size="26" letter-spacing="4" fill="#e3c483">AMADEUS</text>
+          <text x="230" y="524" text-anchor="middle" font-family="serif" font-size="15" letter-spacing="8" fill="#c9a45c">莫 扎 特 传</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HIGHLIGHTS ============ -->
+<section id="highlights">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">III · WHY IT SHINES</span>
+      <span class="sec-title">六大亮点<span class="en">THE HIGHLIGHTS</span></span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="card-no">01</span>
+        <svg class="card-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg>
+        <h3>福尔曼的作者气度</h3>
+        <p>《飞越疯人院》《莫扎特传》双料奥斯卡最佳导演，他将历史巨匠拍成了人人可感的欲望寓言。</p>
+      </div>
+      <div class="card">
+        <span class="card-no">02</span>
+        <svg class="card-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19V5l8 4 8-4v14"/><circle cx="4" cy="19" r="1.6"/><circle cx="20" cy="19" r="1.6"/></svg>
+        <h3>萨列里的独白</h3>
+        <p>以"庸才"的第一人称回望天才，通篇旁白如歌剧宣叙调，把嫉妒讲成了最诚实的人类独白。</p>
+      </div>
+      <div class="card">
+        <span class="card-no">03</span>
+        <svg class="card-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l2.4 5.6L20 9.5l-4 4 1 6-5-3-5 3 1-6-4-4 5.6-.9z"/></svg>
+        <h3>亚伯拉罕封帝</h3>
+        <p>F·默里·亚伯拉罕以萨列里摘得奥斯卡最佳男主角，克制里翻涌着最危险的暗火，影史留名。</p>
+      </div>
+      <div class="card">
+        <span class="card-no">04</span>
+        <svg class="card-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="18" r="3"/><circle cx="17" cy="18" r="3"/><path d="M10 18V6l10-2v12"/><path d="M10 9h10"/></svg>
+        <h3>莫扎特在银幕复活</h3>
+        <p>真实乐章贯穿全片，从《费加罗》到《安魂曲》，电影让观众"看见"了天才如何信手成曲。</p>
+      </div>
+      <div class="card">
+        <span class="card-no">05</span>
+        <svg class="card-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
+        <h3>巴洛克视觉盛宴</h3>
+        <p>烛光、丝绒、假发与金箔般的宫廷，每一帧都像一幅会呼吸的古典油画，质感拉满。</p>
+      </div>
+      <div class="card">
+        <span class="card-no">06</span>
+        <svg class="card-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/></svg>
+        <h3>剧本与表演共振</h3>
+        <p>奥斯卡最佳改编剧本与最佳影片加持，台词机锋与人物张力层层递进，余味绕梁不去。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section class="quote-sec">
+  <div class="wrap reveal">
+    <div class="quote-mark">“</div>
+    <p class="quote">
+      Forgive me, Mozart... forgive me, Wolfgang Amadeus Mozart...
+      <span class="zh">愿上帝原谅我，沃尔夫冈·阿玛多伊斯·莫扎特。</span>
+    </p>
+    <div class="quote-by">— Antonio Salieri</div>
+  </div>
+</section>
+
+<!-- ============ WHY WATCH ============ -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">IV · WORTH YOUR TIME</span>
+      <span class="sec-title">为什么值得一看<span class="en">WHY YOU SHOULD WATCH</span></span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="why">
+      <div class="why-item">
+        <div class="why-num">壹</div>
+        <div><h4>它把"嫉妒"拍成了史诗</h4>
+        <p>不必懂古典乐也能共鸣——人人都曾在某个瞬间，仰望过一座自己到不了的高峰。</p></div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">贰</div>
+        <div><h4>音乐本身即是主角</h4>
+        <p>莫扎特的真实作品被编织进叙事，你要看的不是传记，而是一场盛大的听觉朝圣。</p></div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">叁</div>
+        <div><h4>极致考究的古典美学</h4>
+        <p>服化道、光影与构图都经得起放大，是那种"截图就能当壁纸"的电影级质感。</p></div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">肆</div>
+        <div><h4>关于天才，也关于我们</h4>
+        <p>它最终谈的不是莫扎特有多神，而是平凡者如何在仰望中与自己和解——后劲很大。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HONORS ============ -->
+<section id="honors">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">V · HONORS</span>
+      <span class="sec-title">荣誉殿堂<span class="en">THE ACCOLADES</span></span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="honors">
+      <span class="honor gold">奥斯卡 最佳影片</span>
+      <span class="honor gold">奥斯卡 最佳导演 · 福尔曼</span>
+      <span class="honor gold">奥斯卡 最佳男主角 · 亚伯拉罕</span>
+      <span class="honor gold">奥斯卡 最佳改编剧本</span>
+      <span class="honor">奥斯卡 最佳摄影</span>
+      <span class="honor">奥斯卡 最佳艺术指导</span>
+      <span class="honor">奥斯卡 最佳服装设计</span>
+      <span class="honor">奥斯卡 最佳音响</span>
+      <span class="honor">导演工会奖 DGA 最佳导演</span>
+      <span class="honor">金球奖 最佳剧情片</span>
+      <span class="honor">金球奖 最佳男主角</span>
+      <span class="honor">英国电影学院奖 BAFTA 多项</span>
+      <span class="honor">AFI 百年百大电影提名</span>
+      <span class="honor">IMDb Top 250 在榜</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARCHIVE ============ -->
+<section id="archive">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">VI · DOSSIER</span>
+      <span class="sec-title">影片档案<span class="en">FILM DOSSIER</span></span>
+      <div class="sec-rule"></div>
+    </div>
+    <table class="archive reveal">
+      <tr><td>原名</td><td>Amadeus</td></tr>
+      <tr><td>中文片名</td><td>莫扎特传</td></tr>
+      <tr><td>导演</td><td>米洛斯·福尔曼 (Miloš Forman)</td></tr>
+      <tr><td>主演</td><td>F·默里·亚伯拉罕 / 汤姆·休斯克 / 伊丽莎白·贝里奇</td></tr>
+      <tr><td>类型</td><td>传记 · 剧情 · 音乐</td></tr>
+      <tr><td>片长</td><td>160 分钟（导演剪辑版 180 分钟）</td></tr>
+      <tr><td>上映</td><td>1984 年（美国）</td></tr>
+      <tr><td>编剧</td><td>彼得·谢弗（改编自其同名舞台剧）</td></tr>
+      <tr><td>配乐</td><td>莫扎特原作 + 内维尔·马里纳指挥编排</td></tr>
+      <tr><td>语言</td><td>英语 / 意大利语 / 德语</td></tr>
+      <tr><td>奖项</td><td>奥斯卡 11 提 8 中 · 金球奖 4 项</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ VERDICT ============ -->
+<section id="verdict">
+  <div class="wrap">
+    <div class="verdict reveal">
+      <div class="stars">★★★★★</div>
+      <p>《莫扎特传》不只是一部音乐家传记，更是一则关于天赋、嫉妒与平凡的永恒寓言。它用最华贵的古典外壳，装下了最普世的人心——当你看完，耳边会久久回荡着莫扎特的旋律，心里却想着那个没能成为天才的自己。</p>
+      <div class="sig">— 今日经典推荐 · 编辑部</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">CINÉ-CLASSICS · 每日一部经典</div>
+  <div>本页为自动化推荐生成的赏析卡片，评分与荣誉数据仅供观影参考。</div>
+</footer>
+
+<script>
+/* ===== Canvas: golden dust + drifting musical notes ===== */
+(function(){
+  const canvas=document.getElementById('bg-canvas');
+  const ctx=canvas.getContext('2d');
+  let W,H,DPR;
+  function resize(){
+    DPR=Math.min(window.devicePixelRatio||1,2);
+    W=canvas.width=innerWidth*DPR;
+    H=canvas.height=innerHeight*DPR;
+    canvas.style.width=innerWidth+'px';
+    canvas.style.height=innerHeight+'px';
+  }
+  resize();addEventListener('resize',resize);
+
+  const notes=['♪','♫','♩','♬','𝄞'];
+  const dust=[];
+  const noteP=[];
+  const DUST_N=Math.round((innerWidth*innerHeight)/26000);
+  for(let i=0;i<DUST_N;i++){
+    dust.push({
+      x:Math.random()*W, y:Math.random()*H,
+      r:(Math.random()*1.6+0.6)*DPR,
+      vy:-(Math.random()*0.25+0.08)*DPR,
+      vx:(Math.random()-0.5)*0.18*DPR,
+      a:Math.random()*0.5+0.25,
+      ph:Math.random()*Math.PI*2,
+      hue:Math.random()<0.5?'201,164,92':'227,196,131'
+    });
+  }
+  for(let i=0;i<9;i++){
+    noteP.push({
+      x:Math.random()*W, y:Math.random()*H,
+      s:(Math.random()*16+14)*DPR,
+      vy:-(Math.random()*0.3+0.12)*DPR,
+      vx:(Math.random()-0.5)*0.25*DPR,
+      a:Math.random()*0.35+0.18,
+      ph:Math.random()*Math.PI*2,
+      ch:notes[(Math.random()*notes.length)|0]
+    });
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // dust
+    for(const p of dust){
+      p.y+=p.vy; p.x+=p.vx+Math.sin(p.ph+=0.01)*0.15*DPR;
+      if(p.y< -10){p.y=H+10;p.x=Math.random()*W;}
+      if(p.x< -10)p.x=W+10; if(p.x>W+10)p.x=-10;
+      const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);
+      g.addColorStop(0,'rgba('+p.hue+','+p.a+')');
+      g.addColorStop(1,'rgba('+p.hue+',0)');
+      ctx.fillStyle=g;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r*4,0,6.283);ctx.fill();
+    }
+    // notes
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    for(const p of noteP){
+      p.y+=p.vy; p.x+=p.vx+Math.sin(p.ph+=0.008)*0.2*DPR;
+      if(p.y< -30){p.y=H+30;p.x=Math.random()*W;}
+      if(p.x< -30)p.x=W+30; if(p.x>W+30)p.x=-30;
+      ctx.font=p.s+'px serif';
+      ctx.fillStyle='rgba(201,164,92,'+p.a+')';
+      ctx.shadowColor='rgba(227,196,131,'+(p.a*0.8)+')';
+      ctx.shadowBlur=12*DPR;
+      ctx.fillText(p.ch,p.x,p.y);
+      ctx.shadowBlur=0;
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ===== Reveal on scroll ===== */
+(function(){
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('reveal-in');
+        e.target.style.opacity=1;e.target.style.transform='none';
+        e.target.classList.remove('reveal');
+        if(e.target.classList.contains('rate-card')||e.target.classList.contains('card')||e.target.classList.contains('why-item')||e.target.classList.contains('honor')){
+          e.target.style.transition='opacity .7s, transform .7s';
+        }
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.18});
+  document.querySelectorAll('.reveal, .rate-card, .card, .why-item, .honor').forEach(el=>io.observe(el));
+})();
+
+/* ===== Ratings count + bar fill ===== */
+(function(){
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const card=e.target;
+      const numEl=card.querySelector('.num');
+      const fill=card.querySelector('.rate-fill');
+      const target=parseFloat(card.dataset.target);
+      const dec=parseInt(card.dataset.dec||'0');
+      const dur=1300, t0=performance.now();
+      function step(t){
+        const k=Math.min(1,(t-t0)/dur);
+        const eased=1-Math.pow(1-k,3);
+        const val=(target*eased).toFixed(dec);
+        numEl.textContent=val;
+        if(k>=1)numEl.textContent=target.toFixed(dec);
+        if(k<1)requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      if(fill)requestAnimationFrame(()=>fill.style.width=fill.dataset.w+'%');
+      io.unobserve(card);
+    });
+  },{threshold:0.4});
+  document.querySelectorAll('.rate-card').forEach(c=>io.observe(c));
+})();
+
+/* ===== Honors stagger ===== */
+(function(){
+  const honors=document.querySelectorAll('.honor');
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const idx=[...honors].indexOf(e.target);
+      e.target.style.transition='opacity .5s '+(idx*0.05)+'s, transform .5s '+(idx*0.05)+'s';
+      e.target.style.opacity=1;e.target.style.transform='none';
+      io.unobserve(e.target);
+    });
+  },{threshold:0.3});
+  honors.forEach(h=>io.observe(h));
+})();
+</script>
+</body>
+</html>

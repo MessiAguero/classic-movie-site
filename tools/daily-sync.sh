@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+#
+# 每日电影推荐自动同步脚本
+# 1. 从 WorkBuddy 目录复制新增的 movie-recommend-*.html 到 source-html/
+# 2. 重新解析生成 src/data/movies.json
+# 3. 为新电影抓取海报（src/data/gallery.json）
+# 4. git 提交并推送到 GitHub（触发 Actions 自动部署）
+#
+# 用法：
+#   ./tools/daily-sync.sh            # 正常执行
+#   DRY_RUN=1 ./tools/daily-sync.sh  # 只同步+解析，不提交不推送
+
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+SRC="${DAILY_SRC:-/Users/admin/WorkBuddy/automation-20260423112820}"
+cd "$ROOT"
+
+mkdir -p source-html
+
+# 1) 复制新 HTML
+count=0
+for f in "$SRC"/movie-recommend-*.html; do
+  [ -e "$f" ] || continue
+  base="$(basename "$f")"
+  if [ ! -e "source-html/$base" ]; then
+    cp "$f" "source-html/$base"
+    count=$((count + 1))
+    echo "新增: $base"
+  fi
+done
+echo "== 新增 $count 份 HTML（共 $(ls source-html | wc -l | tr -d ' ') 份）"
+
+# 2) 重新解析
+npm run data:parse
+
+# 3) 有新电影时抓取海报
+if [ "$count" -gt 0 ]; then
+  npm run data:gallery
+fi
+
+# 4) 提交并推送
+if [ "${DRY_RUN:-0}" = "1" ]; then
+  echo "== DRY_RUN：跳过 git 提交与推送"
+  git diff --stat
+  exit 0
+fi
+
+git add source-html src/data
+if git diff --cached --quiet; then
+  echo "== 无变更，跳过提交"
+else
+  git commit -m "每日更新：$(date +%F) $(date +%H:%M)"
+fi
+
+if git remote -v | grep -q push; then
+  git push origin HEAD
+  echo "== 已推送到远程，GitHub Actions 将自动构建部署"
+else
+  echo "!! 未配置 git 远程仓库，请先：git remote add origin <仓库地址> && git push -u origin main"
+fi

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>经典电影推荐 · 杀死一只知更鸟 (1962)</title>
+<style>
+  :root{
+    --bg:#1a140e;
+    --bg-2:#221a11;
+    --panel:#2b2017;
+    --panel-2:#332619;
+    --ink:#f3ead4;
+    --ink-soft:#d9c9a6;
+    --ink-dim:#a8946f;
+    --sepia:#c89b5a;
+    --sepia-2:#e3c184;
+    --amber:#f5d76e;
+    --moss:#7e8b56;
+    --dusk:#27324a;
+    --rust:#a8532f;
+    --line:rgba(200,155,90,.18);
+    --line-soft:rgba(200,155,90,.10);
+    --shadow:0 24px 60px -24px rgba(0,0,0,.7);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC",Georgia,"Times New Roman",serif;
+    background:
+      radial-gradient(1200px 800px at 80% -10%, rgba(245,215,110,.07), transparent 60%),
+      radial-gradient(900px 700px at 0% 100%, rgba(126,139,86,.10), transparent 55%),
+      linear-gradient(180deg,var(--bg) 0%, var(--bg-2) 100%);
+    color:var(--ink);
+    line-height:1.75;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* film grain + vignette */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-stage:none;z-index:1;
+    opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:2;
+    background:radial-gradient(120% 120% at 50% 40%, transparent 55%, rgba(0,0,0,.55) 100%);
+  }
+  #fx{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .wrap{position:relative;z-index:3;max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    padding:90px 24px 60px;max-width:1080px;margin:0 auto;
+  }
+  .hero-year{
+    font-family:Georgia,serif;font-size:clamp(90px,22vw,230px);font-weight:800;line-height:.8;
+    letter-spacing:-4px;color:transparent;
+    background:linear-gradient(180deg,var(--sepia-2),var(--sepia) 55%,rgba(168,83,47,.55));
+    -webkit-background-clip:text;background-clip:text;
+    opacity:.16;position:absolute;top:40px;left:-6px;z-index:0;user-select:none;
+  }
+  .hero-kicker{
+    position:relative;z-index:2;display:inline-flex;align-items:center;gap:12px;
+    font-size:13px;letter-spacing:.42em;color:var(--sepia);text-transform:uppercase;
+    margin-bottom:22px;font-family:Georgia,serif;
+  }
+  .hero-kicker::before{content:"";width:42px;height:1px;background:linear-gradient(90deg,transparent,var(--sepia))}
+  .hero-title{position:relative;z-index:2;font-size:clamp(46px,8.5vw,96px);font-weight:800;line-height:1.02;letter-spacing:2px;
+    text-shadow:0 2px 40px rgba(0,0,0,.6);}
+  .hero-en{position:relative;z-index:2;font-family:Georgia,serif;font-style:italic;
+    font-size:clamp(18px,3vw,28px);color:var(--ink-soft);margin-top:14px;letter-spacing:1px}
+  .hero-meta{position:relative;z-index:2;margin-top:26px;display:flex;flex-wrap:wrap;gap:10px 22px;
+    font-size:15px;color:var(--ink-dim)}
+  .hero-meta b{color:var(--ink-soft);font-weight:600}
+  .hero-tag{position:relative;z-index:2;margin-top:30px;max-width:640px;
+    font-size:clamp(17px,2.4vw,21px);color:var(--sepia-2);font-style:italic;
+    border-left:2px solid var(--sepia);padding-left:18px;letter-spacing:.5px}
+
+  /* poster in hero */
+  .hero-poster{position:absolute;right:0;top:50%;transform:translateY(-50%);width:min(40vw,420px);
+    z-index:1;opacity:.92;filter:drop-shadow(0 30px 60px rgba(0,0,0,.6));}
+
+  .scroll-cue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+    font-size:12px;letter-spacing:.3em;color:var(--ink-dim);z-index:2;animation:bob 2.4s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.5}50%{transform:translate(-50%,8px);opacity:1}}
+
+  /* ---------- SECTION ---------- */
+  section{padding:78px 0;position:relative}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:38px}
+  .sec-no{font-family:Georgia,serif;font-size:14px;color:var(--sepia);letter-spacing:.2em;
+    border:1px solid var(--line);padding:5px 12px;border-radius:2px}
+  .sec-title{font-size:clamp(26px,4vw,38px);font-weight:800;letter-spacing:2px}
+  .sec-sub{font-size:14px;color:var(--ink-dim);font-style:italic;font-family:Georgia,serif;margin-left:auto}
+
+  /* ratings */
+  .ratings{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .rate-card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);
+    border-radius:14px;padding:26px 22px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .rate-card::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--sepia),var(--amber),var(--moss))}
+  .rate-src{font-family:Georgia,serif;font-size:13px;letter-spacing:.18em;color:var(--ink-dim);text-transform:uppercase}
+  .rate-val{font-family:Georgia,serif;font-weight:800;font-size:clamp(38px,5vw,52px);color:var(--sepia-2);
+    margin:10px 0 4px;line-height:1}
+  .rate-val .suffix{font-size:.5em;color:var(--ink-dim);margin-left:2px}
+  .rate-note{font-size:12.5px;color:var(--ink-dim);margin-bottom:14px}
+  .bar{height:6px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden}
+  .bar > i{display:block;height:100%;width:0;border-radius:99px;
+    background:linear-gradient(90deg,var(--sepia),var(--amber));transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+
+  /* synopsis + poster */
+  .syn-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:start}
+  .synopsis{font-size:17px;color:var(--ink-soft)}
+  .synopsis p{margin-bottom:16px}
+  .nos-spoiler{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.12em;
+    color:var(--moss);border:1px solid rgba(126,139,86,.4);background:rgba(126,139,86,.08);
+    padding:6px 13px;border-radius:99px;margin-bottom:20px;font-family:Georgia,serif}
+  .nos-spoiler::before{content:"●";font-size:8px;color:var(--moss)}
+  .poster-card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);
+    border-radius:16px;padding:22px;box-shadow:var(--shadow)}
+  .poster-card svg{width:100%;height:auto;border-radius:10px;display:block}
+  .poster-cap{margin-top:14px;font-size:13px;color:var(--ink-dim);text-align:center;font-style:italic;font-family:Georgia,serif}
+
+  /* highlights */
+  .hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .hl{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);
+    border-radius:14px;padding:26px 24px;transition:transform .4s cubic-bezier(.2,.7,.2,1),border-color .4s,box-shadow .4s;position:relative;overflow:hidden}
+  .hl:hover{transform:translateY(-7px);border-color:var(--sepia);box-shadow:0 30px 50px -28px rgba(0,0,0,.8)}
+  .hl-no{font-family:Georgia,serif;font-size:34px;font-weight:800;color:transparent;
+    background:linear-gradient(180deg,var(--sepia),rgba(168,83,47,.4));-webkit-background-clip:text;background-clip:text;opacity:.5}
+  .hl h3{font-size:19px;margin:8px 0 12px;letter-spacing:1px;color:var(--ink)}
+  .hl p{font-size:14.5px;color:var(--ink-dim);line-height:1.7}
+
+  /* quotes */
+  .quote-block{background:linear-gradient(180deg,var(--panel),var(--bg-2));border:1px solid var(--line);
+    border-left:3px solid var(--sepia);border-radius:0 14px 14px 0;padding:34px 38px;margin-bottom:20px;
+    position:relative}
+  .quote-block::before{content:"\201C";position:absolute;top:-8px;left:14px;font-family:Georgia,serif;
+    font-size:90px;color:var(--sepia);opacity:.18;line-height:1}
+  .quote-block q{font-size:clamp(19px,2.6vw,24px);color:var(--sepia-2);font-style:italic;letter-spacing:.5px}
+  .quote-block .who{display:block;margin-top:14px;font-size:13.5px;color:var(--ink-dim);font-family:Georgia,serif;letter-spacing:.08em}
+
+  /* why list */
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .why-item{display:flex;gap:18px;background:linear-gradient(180deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line);border-radius:14px;padding:24px 26px}
+  .why-num{font-family:Georgia,serif;font-size:30px;font-weight:800;color:var(--sepia);flex:0 0 auto;line-height:1.1}
+  .why-item h4{font-size:17px;color:var(--ink);margin-bottom:6px;letter-spacing:.5px}
+  .why-item p{font-size:14px;color:var(--ink-dim)}
+
+  /* honors */
+  .honors{display:flex;flex-wrap:wrap;gap:12px}
+  .honor{font-size:14px;color:var(--ink-soft);border:1px solid var(--line);border-radius:99px;
+    padding:9px 18px;background:rgba(200,155,90,.05);letter-spacing:.04em}
+  .honor.hot{background:linear-gradient(90deg,rgba(245,215,110,.18),rgba(200,155,90,.10));
+    border-color:var(--sepia);color:var(--sepia-2);font-weight:600}
+
+  /* archive table */
+  .archive{width:100%;border-collapse:collapse;font-size:15px}
+  .archive tr{border-bottom:1px solid var(--line-soft)}
+  .archive tr:last-child{border-bottom:none}
+  .archive td{padding:15px 8px}
+  .archive td:first-child{color:var(--ink-dim);width:30%;font-family:Georgia,serif;letter-spacing:.05em}
+  .archive td:last-child{color:var(--ink-soft)}
+
+  /* verdict */
+  .verdict{background:linear-gradient(135deg,var(--panel-2),var(--panel));border:1px solid var(--line);
+    border-radius:18px;padding:42px 40px;text-align:center;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .verdict::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(600px 300px at 50% -20%, rgba(245,215,110,.12), transparent 70%)}
+  .stars{font-size:34px;color:var(--amber);letter-spacing:8px;margin-bottom:16px;position:relative}
+  .verdict h3{font-size:24px;letter-spacing:2px;margin-bottom:14px;position:relative}
+  .verdict p{font-size:16px;color:var(--ink-soft);max-width:680px;margin:0 auto;position:relative;line-height:1.9}
+
+  footer{padding:50px 0 70px;text-align:center;color:var(--ink-dim);font-size:13px;
+    border-top:1px solid var(--line-soft);margin-top:40px;font-family:Georgia,serif;letter-spacing:.06em}
+  footer .mark{color:var(--sepia);font-size:15px;letter-spacing:.3em}
+
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:880px){
+    .hero-poster{display:none}
+    .ratings{grid-template-columns:repeat(2,1fr)}
+    .syn-grid{grid-template-columns:1fr}
+    .hl-grid{grid-template-columns:1fr}
+    .why{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-year">1962</div>
+
+  <!-- SVG POSTER (dusk courthouse + oak + mockingbird) -->
+  <svg class="hero-poster" viewBox="0 0 420 540" xmlns="http://www.w3.org/2000/svg" aria-label="海报">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a2c1c"/>
+        <stop offset=".55" stop-color="#2a2014"/>
+        <stop offset="1" stop-color="#160f09"/>
+      </linearGradient>
+      <radialGradient id="moon" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#f6e7b4"/>
+        <stop offset="1" stop-color="#f6e7b4" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="court" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#4a3826"/>
+        <stop offset="1" stop-color="#2a1f13"/>
+      </linearGradient>
+      <linearGradient id="tree" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1c2a16"/>
+        <stop offset="1" stop-color="#0e160a"/>
+      </linearGradient>
+    </defs>
+
+    <rect width="420" height="540" rx="14" fill="url(#sky)"/>
+    <!-- glow -->
+    <circle cx="300" cy="130" r="120" fill="url(#moon)" opacity=".7"/>
+    <circle cx="300" cy="130" r="34" fill="#f6e7b4" opacity=".9"/>
+    <circle cx="285" cy="120" r="34" fill="#160f09" opacity=".12"/>
+
+    <!-- ground -->
+    <rect x="0" y="430" width="420" height="110" fill="#120c07"/>
+    <ellipse cx="210" cy="430" rx="240" ry="20" fill="#1c130b" opacity=".6"/>
+
+    <!-- courthouse -->
+    <g fill="url(#court)" stroke="#5a4631" stroke-width="1.2">
+      <rect x="120" y="300" width="180" height="135"/>
+      <rect x="140" y="262" width="140" height="42"/>
+      <!-- columns -->
+      <rect x="138" y="304" width="10" height="125"/>
+      <rect x="166" y="304" width="10" height="125"/>
+      <rect x="194" y="304" width="10" height="125"/>
+      <rect x="222" y="304" width="10" height="125"/>
+      <rect x="250" y="304" width="10" height="125"/>
+      <rect x="278" y="304" width="10" height="125"/>
+      <!-- pediment -->
+      <polygon points="120,300 210,258 300,300"/>
+      <!-- steps -->
+      <rect x="112" y="430" width="196" height="9"/>
+      <rect x="100" y="439" width="220" height="9"/>
+      <!-- flag pole -->
+      <rect x="208" y="226" width="3" height="34" fill="#5a4631" stroke="none"/>
+    </g>
+    <circle cx="209" cy="222" r="5" fill="#f5d76e"/>
+
+    <!-- oak tree (left) -->
+    <g fill="url(#tree)">
+      <rect x="46" y="318" width="16" height="120" rx="3"/>
+      <path d="M54 318 C 10 300,-6 250,30 232 C 18 270,40 286,54 300 C 30 268,60 250,72 270 C 70 250,96 248,98 274 C 96 252,120 262,108 286 C 130 282,128 312,96 314 C 104 300,82 296,72 308 Z"/>
+      <ellipse cx="58" cy="250" rx="70" ry="48"/>
+    </g>
+    <!-- branch to bird -->
+    <path d="M104 262 C 140 256,170 248,196 244" stroke="#1c2a16" stroke-width="5" fill="none"/>
+
+    <!-- mockingbird silhouette -->
+    <g transform="translate(196,236)" fill="#0e160a">
+      <ellipse cx="0" cy="0" rx="14" ry="9"/>
+      <circle cx="-12" cy="-5" r="5"/>
+      <path d="M-16 -5 l-7 1 7 2 Z" fill="#caa54f"/>
+      <path d="M2 -2 C 22 -14,36 -8,44 6 C 30 0,18 4,6 6 Z"/>
+      <path d="M-2 4 C -6 18,-14 22,-20 26 C -10 18,-6 12,2 10 Z"/>
+      <rect x="-2" y="6" width="3" height="12"/>
+    </g>
+
+    <!-- fireflies -->
+    <g fill="#f5d76e">
+      <circle cx="150" cy="380" r="2.2"/><circle cx="250" cy="360" r="1.8"/>
+      <circle cx="330" cy="400" r="2"/><circle cx="80" cy="360" r="1.6"/>
+      <circle cx="300" cy="330" r="1.6"/><circle cx="360" cy="300" r="2.2"/>
+    </g>
+
+    <!-- title plate -->
+    <rect x="0" y="470" width="420" height="70" fill="#0d0905" opacity=".55"/>
+    <text x="210" y="500" text-anchor="middle" fill="#e3c184" font-family="Georgia,serif" font-size="22" font-style="italic" letter-spacing="1">To Kill a Mockingbird</text>
+    <text x="210" y="526" text-anchor="middle" fill="#c89b5a" font-family="Songti SC,serif" font-size="14" letter-spacing="6">杀 死 一 只 知 更 鸟</text>
+  </svg>
+
+  <div class="hero-kicker">每日经典 · CLASSIC OF THE DAY</div>
+  <h1 class="hero-title">杀死一只知更鸟</h1>
+  <div class="hero-en">To Kill a Mockingbird</div>
+  <div class="hero-meta">
+    <span><b>导演</b> 罗伯特·马利根</span>
+    <span><b>主演</b> 格利高里·派克 · 玛丽·巴德哈姆 · 菲利普·阿尔福德</span>
+    <span><b>编剧</b> 霍顿·福特（改编自哈珀·李小说）</span>
+  </div>
+  <div class="hero-tag">"我们时代最受挚爱的电影。"——一部关于勇气、良知与同理心的永恒经典。</div>
+  <div class="scroll-cue">向 下 阅 读</div>
+</header>
+
+<div class="wrap">
+
+  <!-- ===== RATINGS ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-no">01</span>
+      <span class="sec-title">口碑与评分</span>
+      <span class="sec-sub">Acclaimed across the world</span>
+    </div>
+    <div class="ratings">
+      <div class="rate-card reveal">
+        <div class="rate-src">IMDb</div>
+        <div class="rate-val"><span class="num" data-to="8.3" data-dec="1">0</span></div>
+        <div class="rate-note">Top 250 常青之作</div>
+        <div class="bar"><i data-fill="83"></i></div>
+      </div>
+      <div class="rate-card reveal">
+        <div class="rate-src">豆瓣</div>
+        <div class="rate-val"><span class="num" data-to="9.3" data-dec="1">0</span></div>
+        <div class="rate-note">Top 250 · 数十万人标记</div>
+        <div class="bar"><i data-fill="93"></i></div>
+      </div>
+      <div class="rate-card reveal">
+        <div class="rate-src">烂番茄</div>
+        <div class="rate-val"><span class="num" data-to="93" data-dec="0">0</span><span class="suffix">%</span></div>
+        <div class="rate-note">影评人新鲜度 · 观众 96%</div>
+        <div class="bar"><i data-fill="93"></i></div>
+      </div>
+      <div class="rate-card reveal">
+        <div class="rate-src">Metacritic</div>
+        <div class="rate-val"><span class="num" data-to="88" data-dec="0">0</span></div>
+        <div class="rate-note">“必看”共识</div>
+        <div class="bar"><i data-fill="88"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SYNOPSIS ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-no">02</span>
+      <span class="sec-title">剧情梗概</span>
+      <span class="sec-sub">A town, a trial, two children</span>
+    </div>
+    <div class="syn-grid">
+      <div class="synopsis reveal">
+        <span class="nos-spoiler">无剧透 · 放心阅读</span>
+        <p>二十世纪三十年代，美国大萧条时期的南方小镇梅科姆（Maycomb）。一位温厚而坚定的鳏夫律师阿提克斯·芬奇，被法院指定为一名被诬告侵犯白人女子的黑人男子辩护。</p>
+        <p>故事借芬奇一双儿女——女孩斯库特与男孩杰姆——的眼睛徐徐展开：成人世界的种族偏见与道德勇气，在一座老宅与一位神秘邻居的流言中，悄然映照出童年的好奇、恐惧与善良。</p>
+        <p>片名是一句小镇箴言：知更鸟只为人歌唱、从不伤害谁，因此杀死一只知更鸟，便是一种罪过。关于正义与纯真如何彼此照亮，电影给出了最温柔、也最坚定的回答。</p>
+      </div>
+      <div class="poster-card reveal">
+        <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg" aria-label="黄昏小镇插画">
+          <defs>
+            <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#3a2c1c"/><stop offset="1" stop-color="#140d08"/>
+            </linearGradient>
+          </defs>
+          <rect width="360" height="360" rx="10" fill="url(#g2)"/>
+          <circle cx="270" cy="92" r="44" fill="#f6e7b4" opacity=".22"/>
+          <circle cx="270" cy="92" r="26" fill="#f6e7b4" opacity=".85"/>
+          <!-- house silhouettes -->
+          <g fill="#0e0a06">
+            <rect x="18" y="250" width="70" height="60"/><polygon points="18,250 53,222 88,250"/>
+            <rect x="280" y="262" width="62" height="48"/><polygon points="280,262 311,240 342,262"/>
+          </g>
+          <!-- fence -->
+          <g stroke="#5a4631" stroke-width="2">
+            <line x1="0" y1="312" x2="360" y2="312"/>
+            <line x1="40" y1="300" x2="40" y2="320"/><line x1="90" y1="300" x2="90" y2="320"/>
+            <line x1="140" y1="300" x2="140" y2="320"/><line x1="190" y1="300" x2="190" y2="320"/>
+            <line x1="240" y1="300" x2="240" y2="320"/><line x1="290" y1="300" x2="290" y2="320"/>
+            <line x1="330" y1="300" x2="330" y2="320"/>
+          </g>
+          <!-- oak -->
+          <g fill="#15210f">
+            <rect x="150" y="200" width="12" height="120" rx="3"/>
+            <ellipse cx="156" cy="180" rx="74" ry="50"/>
+          </g>
+          <path d="M214 196 C 250 190,286 182,320 178" stroke="#15210f" stroke-width="5" fill="none"/>
+          <!-- mockingbird -->
+          <g transform="translate(320,170)" fill="#0e160a">
+            <ellipse cx="0" cy="0" rx="13" ry="8"/>
+            <circle cx="-11" cy="-4" r="4.5"/>
+            <path d="M-15 -4 l-6 1 6 2 Z" fill="#caa54f"/>
+            <path d="M2 -2 C 20 -12,32 -7,40 5 C 27 0,16 4,5 5 Z"/>
+          </g>
+          <g fill="#f5d76e">
+            <circle cx="120" cy="280" r="2"/><circle cx="240" cy="300" r="1.8"/>
+            <circle cx="90" cy="250" r="1.6"/><circle cx="300" cy="240" r="2"/>
+          </g>
+        </svg>
+        <div class="poster-cap">黄昏下的梅科姆小镇 · 橡树与知更鸟</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HIGHLIGHTS ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-no">03</span>
+      <span class="sec-title">六大亮点</span>
+      <span class="sec-sub">Why it endures</span>
+    </div>
+    <div class="hl-grid">
+      <div class="hl reveal">
+        <div class="hl-no">01</div>
+        <h3>影史第一英雄</h3>
+        <p>阿提克斯·芬奇被美国电影学会（AFI）评为"百年电影中最伟大的银幕英雄"，超越无数动作主角，成为"好人"的代名词。</p>
+      </div>
+      <div class="hl reveal">
+        <div class="hl-no">02</div>
+        <h3>派克封神</h3>
+        <p>格利高里·派克凭此片斩获奥斯卡最佳男主。他坦言，阿提克斯是"自己最引以为傲的角色"，温润与坚定浑然天成。</p>
+      </div>
+      <div class="hl reveal">
+        <div class="hl-no">03</div>
+        <h3>童真视角</h3>
+        <p>以孩子的眼睛打量成人世界的偏见，哀而不伤、温柔而不犬儒，把沉重的命题讲得清澈可感。</p>
+      </div>
+      <div class="hl reveal">
+        <div class="hl-no">04</div>
+        <h3>原著的魂</h3>
+        <p>改编自哈珀·李的普利策奖小说，霍顿·福特的剧本被誉為最忠实动人的改编之一，台词至今回响。</p>
+      </div>
+      <div class="hl reveal">
+        <div class="hl-no">05</div>
+        <h3>三十年代质感</h3>
+        <p>黑白影像里的橡树、法庭与小镇长街，沉静隽永；留白处自有南方夏夜的闷热与微光。</p>
+      </div>
+      <div class="hl reveal">
+        <div class="hl-no">06</div>
+        <h3>跨越时代的箴言</h3>
+        <p>"穿上别人的鞋子走走看"——一句朴素的话，成了几代人的同理心教科书，历久弥新。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUOTES ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-no">04</span>
+      <span class="sec-title">经典台词</span>
+      <span class="sec-sub">Lines that linger</span>
+    </div>
+    <div class="quote-block reveal">
+      <q>你永远不可能真正了解一个人，除非你从他的角度去看问题……除非你钻进他的皮肤里，像他一样走来走去。</q>
+      <span class="who">—— 阿提克斯·芬奇</span>
+    </div>
+    <div class="quote-block reveal">
+      <q>有一种东西不能遵循从众原则，那就是一个人的良心。</q>
+      <span class="who">—— 阿提克斯·芬奇</span>
+    </div>
+    <div class="quote-block reveal">
+      <q>知更鸟只唱歌给我们听，什么坏事也不做……所以，杀死一只知更鸟是种罪过。</q>
+      <span class="who">—— 片名的由来</span>
+    </div>
+  </section>
+
+  <!-- ===== WHY WATCH ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-no">05</span>
+      <span class="sec-title">为什么值得一看</span>
+      <span class="sec-sub">Four reasons</span>
+    </div>
+    <div class="why">
+      <div class="why-item reveal">
+        <div class="why-num">Ⅰ</div>
+        <div><h4>影史公认的经典</h4><p>无数权威榜单将其列入"最伟大电影"之列，阿提克斯更是公认的银幕道德标杆。</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">Ⅱ</div>
+        <div><h4>派克的灵魂表演</h4><p>克制、温润又坚定，他定义了一个时代的"好人"形象，温暖而有力。</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">Ⅲ</div>
+        <div><h4>温柔而深刻</h4><p>把种族不公与成长阵痛讲得清澈动人，不煽情、不绝望，哀而不伤。</p></div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-num">Ⅳ</div>
+        <div><h4>历久弥新的启示</h4><p>关于同理心与勇气的命题，在半个多世纪后的今天，依旧锋利而必要。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HONORS ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-no">06</span>
+      <span class="sec-title">荣誉殿堂</span>
+      <span class="sec-sub">Accolades</span>
+    </div>
+    <div class="honors reveal">
+      <span class="honor hot">奥斯卡最佳男主角（派克）</span>
+      <span class="honor hot">奥斯卡最佳改编剧本</span>
+      <span class="honor hot">奥斯卡最佳黑白艺术指导</span>
+      <span class="honor">8 项奥斯卡提名（含最佳影片）</span>
+      <span class="honor hot">AFI 百年百大英雄 第 1 位</span>
+      <span class="honor">AFI 百年百大电影 第 25 位（2007）</span>
+      <span class="honor">美国国家电影保护局典藏（1995）</span>
+      <span class="honor">金球奖最佳剧情片男主（派克）</span>
+    </div>
+  </section>
+
+  <!-- ===== ARCHIVE ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="sec-no">07</span>
+      <span class="sec-title">影片档案</span>
+      <span class="sec-sub">The facts</span>
+    </div>
+    <div class="reveal" style="background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:14px;padding:8px 26px;box-shadow:var(--shadow)">
+      <table class="archive">
+        <tr><td>导演</td><td>罗伯特·马利根（Robert Mulligan）</td></tr>
+        <tr><td>编剧</td><td>霍顿·福特（改编自哈珀·李 1960 年普利策奖小说）</td></tr>
+        <tr><td>主演</td><td>格利高里·派克 · 玛丽·巴德哈姆 · 菲利普·阿尔福德 · 罗伯特·杜瓦尔（银幕处女作）</td></tr>
+        <tr><td>类型</td><td>剧情 / 犯罪</td></tr>
+        <tr><td>片长</td><td>129 分钟</td></tr>
+        <tr><td>上映</td><td>1962 年 12 月（美国）</td></tr>
+        <tr><td>制片国家</td><td>美国</td></tr>
+        <tr><td>画幅</td><td>黑白</td></tr>
+        <tr><td>预算 / 票房</td><td>约 200 万美元 / 约 1310 万美元</td></tr>
+        <tr><td>豆瓣评分</td><td>9.3（Top 250）</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== VERDICT ===== -->
+  <section>
+    <div class="verdict reveal">
+      <div class="stars">★★★★★</div>
+      <h3>编辑评语</h3>
+      <p>它不靠惊心动魄取胜，却用最朴素的正直叩击人心。当孩子眼中的世界渐渐染上成人的阴影，那个始终挺直脊背的身影，成了电影史上最温柔也最坚硬的注脚。半个多世纪过去，《杀死一只知更鸟》依旧在提醒我们：良知、勇气与同理心，是人类最不该杀死的东西。一部值得每个人至少看一次的片。</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="mark">CINEMA · 经典永流传</div>
+  <div style="margin-top:10px">本页为自动化电影推荐 · 评分数据依据公开资料整理，仅供观影参考</div>
+</footer>
+
+<script>
+/* ---------- Canvas: drifting seeds + warm motes (dusk small-town) ---------- */
+(function(){
+  const cv=document.getElementById('fx'), ctx=cv.getContext('2d');
+  let W,H,seeds=[],motes=[],DPR=Math.min(window.devicePixelRatio||1,2);
+  function resize(){W=cv.width=innerWidth*DPR;H=cv.height=innerHeight*DPR;cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';}
+  resize();addEventListener('resize',resize);
+  const rnd=(a,b)=>a+Math.random()*(b-a);
+  for(let i=0;i<34;i++){seeds.push(newSeed())}
+  for(let i=0;i<46;i++){motes.push(newMote())}
+  function newSeed(){
+    return{x:rnd(0,W),y:rnd(0,H),vy:rnd(.15,.5)*DPR,vx:rnd(-.3,.5)*DPR,
+      r:rnd(2.4,5)*DPR,ph:rnd(0,6.28),sw:rnd(.3,.9),a:rnd(.25,.6)};
+  }
+  function newMote(){
+    return{x:rnd(0,W),y:rnd(0,H),vy:rnd(-.25,.25)*DPR,vx:rnd(.05,.4)*DPR,
+      r:rnd(.8,2.2)*DPR,ph:rnd(0,6.28),sp:rnd(.01,.03),a:rnd(.15,.45)};
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // seeds (dandelion fluff)
+    for(const s of seeds){
+      s.y+=s.vy;s.x+=s.vx+Math.sin(s.ph)*0.4*DPR;s.ph+=0.01;
+      if(s.y>H+10){Object.assign(s,newSeed());s.y=-10;}
+      if(s.x>W+10)s.x=-10; if(s.x<-10)s.x=W+10;
+      ctx.save();ctx.translate(s.x,s.y);ctx.globalAlpha=s.a;
+      const g=ctx.createRadialGradient(0,0,0,0,0,s.r*3.2);
+      g.addColorStop(0,'rgba(246,231,180,.9)');g.addColorStop(1,'rgba(246,231,180,0)');
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,s.r*3.2,0,6.28);ctx.fill();
+      // spokes
+      ctx.strokeStyle='rgba(230,210,150,'+(s.a+.2)+')';ctx.lineWidth=.6*DPR;
+      for(let k=0;k<7;k++){const a=k/7*6.28+s.ph;ctx.beginPath();ctx.moveTo(0,0);
+        ctx.lineTo(Math.cos(a)*s.r*1.6,Math.sin(a)*s.r*1.6);ctx.stroke();}
+      ctx.restore();
+    }
+    // warm motes
+    for(const m of motes){
+      m.y+=m.vy;m.x+=m.vx+Math.sin(m.ph)*0.3*DPR;m.ph+=m.sp;
+      if(m.x>W+10)m.x=-10; if(m.y<0){m.y=H+10;} if(m.y>H+10)m.y=-10;
+      ctx.save();ctx.globalAlpha=m.a*(0.6+0.4*Math.sin(m.ph));
+      const g=ctx.createRadialGradient(m.x,m.y,0,m.x,m.y,m.r*4);
+      g.addColorStop(0,'rgba(245,215,110,.9)');g.addColorStop(1,'rgba(245,215,110,0)');
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(m.x,m.y,m.r*4,0,6.28);ctx.fill();
+      ctx.restore();
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ---------- Reveal on scroll ---------- */
+(function(){
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
+      if(e.target.classList.contains('rate-card'))activate(e.target);io.unobserve(e.target);}});
+  },{threshold:.18});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  function activate(card){
+    const num=card.querySelector('.num'), bar=card.querySelector('.bar > i');
+    if(num){const to=parseFloat(num.dataset.to),dec=parseInt(num.dataset.dec||'0');
+      const dur=1500,t0=performance.now();
+      (function step(t){const k=Math.min((t-t0)/dur,1);const e=1-Math.pow(1-k,3);
+        num.textContent=(to*e).toFixed(dec);if(k<1)requestAnimationFrame(step);
+        else num.textContent=to.toFixed(dec);})(t0);}
+    if(bar){requestAnimationFrame(()=>{bar.style.width=bar.dataset.fill+'%';});}
+  }
+})();
+</script>
+</body>
+</html>
