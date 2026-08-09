@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沉默的羔羊 · The Silence of the Lambs (1991)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08080a;
+    --bg-2:#0d0c0f;
+    --panel:#111013;
+    --panel-2:#16131a;
+    --ink:#e9e2d4;
+    --ink-soft:#b7afa0;
+    --ink-dim:#7d7669;
+    --oxblood:#7c1a17;
+    --oxblood-bright:#a3241f;
+    --crimson:#c0392b;
+    --gold:#c9a24b;
+    --gold-soft:#e3c577;
+    --line:rgba(201,162,75,0.16);
+    --line-soft:rgba(233,226,212,0.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.8;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:rgba(195,57,43,0.35);color:#fff}
+  /* ---------- film grain + vignette overlay ---------- */
+  .grain{
+    position:fixed;inset:0;pointer-events:none;z-index:9;opacity:.05;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    mix-blend-mode:overlay;
+  }
+  .vignette{
+    position:fixed;inset:0;pointer-events:none;z-index:8;
+    background:radial-gradient(ellipse at center,transparent 38%,rgba(0,0,0,0.55) 100%);
+  }
+  canvas#ash{position:fixed;inset:0;z-index:1;pointer-events:none;}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;position:relative;z-index:2}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;height:100vh;min-height:680px;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(ellipse at 50% 40%,rgba(124,26,23,0.22),transparent 60%),
+      linear-gradient(180deg,#0a090c 0%,#060506 60%,#000 100%);
+  }
+  /* faint cell bars */
+  .bars{position:absolute;inset:0;z-index:0;opacity:.5;
+    background-image:repeating-linear-gradient(90deg,transparent 0 78px,rgba(201,162,75,0.05) 78px 80px);
+    mask-image:radial-gradient(ellipse at center,black 30%,transparent 80%);
+  }
+  .moth-hero{position:relative;z-index:3;width:min(340px,62vw);filter:drop-shadow(0 0 38px rgba(124,26,23,0.45));animation:floaty 7s ease-in-out infinite}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  .hero .year-tag{
+    z-index:3;margin-top:6px;font-family:"Cinzel",serif;letter-spacing:.5em;
+    font-size:13px;color:var(--gold);text-transform:uppercase;
+  }
+  .hero h1{
+    z-index:3;font-family:"Noto Serif SC",serif;font-weight:900;
+    font-size:clamp(48px,9vw,104px);letter-spacing:.12em;line-height:1.05;
+    margin-top:10px;color:#f3ece0;text-shadow:0 4px 40px rgba(0,0,0,.7);
+  }
+  .hero .en{
+    z-index:3;font-family:"Cinzel",serif;font-size:clamp(13px,2vw,18px);
+    letter-spacing:.42em;color:var(--ink-soft);margin-top:14px;text-transform:uppercase;
+  }
+  .hero .meta{
+    z-index:3;margin-top:26px;display:flex;gap:22px;flex-wrap:wrap;justify-content:center;
+    font-size:13px;color:var(--ink-dim);letter-spacing:.08em;
+  }
+  .hero .meta span{display:inline-flex;align-items:center;gap:8px}
+  .hero .meta b{color:var(--gold-soft);font-weight:500}
+  .hero .tagline{
+    z-index:3;margin-top:30px;max-width:620px;font-family:"Cormorant Garamond",serif;
+    font-style:italic;font-size:clamp(17px,2.4vw,22px);color:var(--ink-soft);line-height:1.6;
+  }
+  .scroll-hint{z-index:3;position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+    font-size:11px;letter-spacing:.3em;color:var(--ink-dim);text-transform:uppercase}
+  .scroll-hint::after{content:"";display:block;width:1px;height:42px;margin:12px auto 0;
+    background:linear-gradient(var(--gold),transparent);animation:drop 2s ease-in-out infinite}
+  @keyframes drop{0%{opacity:0;transform:scaleY(.2)}50%{opacity:1}100%{opacity:0;transform:scaleY(1) translateY(10px)}}
+
+  /* ---------- section ---------- */
+  section{position:relative;z-index:2;padding:90px 0;border-top:1px solid var(--line-soft)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:38px}
+  .sec-head .num{font-family:"Cinzel",serif;font-size:14px;color:var(--oxblood-bright);letter-spacing:.2em}
+  .sec-head h2{font-family:"Noto Serif SC",serif;font-weight:700;font-size:clamp(26px,4vw,38px);
+    letter-spacing:.06em;color:#f1e9db}
+  .sec-head .en{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--ink-dim);font-size:18px;margin-left:auto}
+
+  /* ---------- ratings ---------- */
+  .ratings{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .rate-card{background:linear-gradient(160deg,var(--panel),var(--panel-2));border:1px solid var(--line);
+    border-radius:14px;padding:24px 22px;position:relative;overflow:hidden}
+  .rate-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.6}
+  .rate-card .src{font-family:"Cinzel",serif;font-size:13px;letter-spacing:.15em;color:var(--gold-soft)}
+  .rate-card .val{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:46px;line-height:1;margin:10px 0 4px;color:#f3ece0}
+  .rate-card .val .suffix{font-size:22px;color:var(--ink-soft)}
+  .rate-card .count{font-size:12px;color:var(--ink-dim);margin-bottom:14px}
+  .bar{height:5px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;border-radius:3px;
+    background:linear-gradient(90deg,var(--oxblood),var(--crimson),var(--gold-soft));
+    transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+  .rate-card .label{font-size:11px;color:var(--ink-dim);margin-top:8px;letter-spacing:.05em}
+
+  /* ---------- synopsis ---------- */
+  .synopsis{font-size:17px;color:var(--ink-soft);line-height:2;max-width:820px}
+  .synopsis p{margin-bottom:18px}
+  .nospoiler{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;
+    padding:7px 16px;border:1px solid var(--oxblood-bright);border-radius:30px;
+    font-size:12px;letter-spacing:.12em;color:var(--gold-soft);background:rgba(124,26,23,.12)}
+  .nospoiler svg{width:14px;height:14px}
+
+  /* ---------- poster card ---------- */
+  .poster-row{display:grid;grid-template-columns:minmax(260px,360px) 1fr;gap:46px;align-items:center}
+  .poster-frame{position:relative;border:1px solid var(--line);border-radius:8px;padding:30px;
+    background:radial-gradient(ellipse at 50% 30%,#15110f,#08080a);
+    box-shadow:0 30px 80px rgba(0,0,0,.6),inset 0 0 60px rgba(124,26,23,.1)}
+  .poster-frame .moth{width:100%;display:block;filter:drop-shadow(0 0 26px rgba(124,26,23,.35))}
+  .poster-frame .cap{margin-top:14px;text-align:center;font-family:"Cormorant Garamond",serif;
+    font-style:italic;color:var(--ink-dim);font-size:14px;letter-spacing:.05em}
+  .poster-text h3{font-family:"Noto Serif SC",serif;font-size:23px;color:#f1e9db;margin-bottom:14px;letter-spacing:.04em}
+  .poster-text p{color:var(--ink-soft);font-size:15.5px;line-height:2}
+  .poster-text .symbols{display:flex;gap:28px;margin-top:24px;flex-wrap:wrap}
+  .poster-text .sym{text-align:center}
+  .poster-text .sym svg{width:34px;height:34px;stroke:var(--gold);fill:none;stroke-width:1.4;opacity:.85}
+  .poster-text .sym span{display:block;font-size:12px;color:var(--ink-dim);margin-top:8px;letter-spacing:.05em}
+
+  /* ---------- highlights ---------- */
+  .highlights{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .hl{background:linear-gradient(155deg,var(--panel),#0e0c10);border:1px solid var(--line-soft);
+    border-radius:14px;padding:28px;position:relative;transition:transform .4s,border-color .4s}
+  .hl:hover{transform:translateY(-5px);border-color:var(--line)}
+  .hl .ic{width:42px;height:42px;stroke:var(--gold);fill:none;stroke-width:1.3;margin-bottom:16px;opacity:.9}
+  .hl h4{font-family:"Noto Serif SC",serif;font-size:19px;color:#f1e9db;margin-bottom:10px;letter-spacing:.03em}
+  .hl p{font-size:14.5px;color:var(--ink-soft);line-height:1.85}
+  .hl .tag{position:absolute;top:22px;right:22px;font-family:"Cinzel",serif;font-size:11px;
+    color:var(--oxblood-bright);letter-spacing:.15em}
+
+  /* ---------- quote ---------- */
+  .quote{text-align:center;padding:80px 0}
+  .quote blockquote{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(26px,4vw,42px);
+    line-height:1.5;color:#f3ece0;max-width:840px;margin:0 auto;position:relative}
+  .quote blockquote::before{content:"\201C";font-family:"Cinzel",serif;position:absolute;top:-34px;left:50%;
+    transform:translateX(-50%);font-size:80px;color:var(--oxblood);opacity:.5}
+  .quote .mark{width:40px;height:40px;stroke:var(--gold);fill:none;stroke-width:1.2;margin:0 auto 26px;opacity:.8}
+  .quote cite{display:block;margin-top:26px;font-style:normal;font-size:13px;letter-spacing:.2em;
+    color:var(--gold-soft);font-family:"Cinzel",serif;text-transform:uppercase}
+
+  /* ---------- why ---------- */
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 40px}
+  .why li{list-style:none;display:flex;gap:18px;padding:18px 0;border-bottom:1px solid var(--line-soft)}
+  .why .n{font-family:"Cinzel",serif;font-size:22px;color:var(--oxblood-bright);min-width:34px}
+  .why .t b{display:block;font-family:"Noto Serif SC",serif;font-size:16.5px;color:#f1e9db;margin-bottom:5px;letter-spacing:.03em}
+  .why .t span{font-size:14px;color:var(--ink-soft);line-height:1.8}
+
+  /* ---------- honors ---------- */
+  .honors{display:flex;flex-wrap:wrap;gap:14px}
+  .honor{padding:14px 22px;border:1px solid var(--gold);border-radius:8px;
+    background:linear-gradient(160deg,rgba(201,162,75,.10),rgba(201,162,75,.02));
+    font-family:"Noto Serif SC",serif;font-size:15px;color:var(--gold-soft);letter-spacing:.04em;
+    position:relative}
+  .honor b{color:#fff;font-weight:700}
+  .honor.special{border-color:var(--oxblood-bright);background:linear-gradient(160deg,rgba(195,57,43,.16),transparent);color:#f0c9c5}
+
+  /* ---------- archive table ---------- */
+  .archive{width:100%;border-collapse:collapse;font-size:14.5px}
+  .archive tr{border-bottom:1px solid var(--line-soft)}
+  .archive th{text-align:left;padding:14px 16px;color:var(--gold-soft);font-weight:500;
+    width:34%;font-family:"Noto Serif SC",serif;letter-spacing:.05em;vertical-align:top}
+  .archive td{padding:14px 16px;color:var(--ink-soft)}
+
+  /* ---------- review ---------- */
+  .review{background:linear-gradient(160deg,var(--panel),#0c0a0e);border:1px solid var(--line);border-radius:16px;
+    padding:42px;position:relative}
+  .review .stars{color:var(--gold);font-size:26px;letter-spacing:6px;margin-bottom:18px}
+  .review p{font-family:"Cormorant Garamond",serif;font-size:21px;line-height:1.7;color:var(--ink);font-style:italic}
+  .review .by{margin-top:22px;font-size:13px;letter-spacing:.2em;color:var(--gold-soft);font-family:"Cinzel",serif;text-transform:uppercase}
+
+  footer{padding:60px 0 70px;text-align:center;border-top:1px solid var(--line-soft);position:relative;z-index:2}
+  footer .moth-mini{width:46px;opacity:.5;margin-bottom:18px}
+  footer p{font-size:12px;color:var(--ink-dim);letter-spacing:.1em;line-height:1.9}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.2,.7,.2,1),transform 1s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:820px){
+    .ratings{grid-template-columns:repeat(2,1fr)}
+    .poster-row{grid-template-columns:1fr;gap:30px}
+    .highlights,.why{grid-template-columns:1fr}
+    section{padding:64px 0}
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="vignette"></div>
+<canvas id="ash"></canvas>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="bars"></div>
+  <svg class="moth-hero" viewBox="0 0 420 460" aria-label="死亡头像骷髅蛾">
+    <defs>
+      <linearGradient id="wing" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#241c1a"/>
+        <stop offset=".55" stop-color="#3a201c"/>
+        <stop offset="1" stop-color="#6e1c18"/>
+      </linearGradient>
+      <linearGradient id="wing2" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#1c1513"/>
+        <stop offset="1" stop-color="#4a1f1b"/>
+      </linearGradient>
+      <radialGradient id="skull" cx=".5" cy=".4" r=".7">
+        <stop offset="0" stop-color="#efe7d6"/>
+        <stop offset="1" stop-color="#b9ac93"/>
+      </radialGradient>
+      <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#15110f"/>
+        <stop offset="1" stop-color="#2a211d"/>
+      </linearGradient>
+    </defs>
+    <!-- LEFT HALF -->
+    <g>
+      <!-- forewing -->
+      <path d="M205,108 C140,70 50,78 36,150 C28,196 70,238 150,212 C184,200 200,160 205,140 Z" fill="url(#wing)" stroke="#caa44d" stroke-width="1.1" stroke-opacity=".5"/>
+      <!-- hindwing -->
+      <path d="M205,168 C150,178 78,206 80,262 C82,308 150,320 196,272 C204,250 206,200 205,180 Z" fill="url(#wing2)" stroke="#caa44d" stroke-width="1.1" stroke-opacity=".4"/>
+      <!-- forewing markings -->
+      <path d="M70,120 C110,108 150,118 175,150" fill="none" stroke="#1a1310" stroke-width="3" stroke-opacity=".6"/>
+      <ellipse cx="92" cy="148" rx="20" ry="13" fill="#0d0a08" stroke="#caa44d" stroke-width="1" stroke-opacity=".5"/>
+      <ellipse cx="92" cy="148" rx="9" ry="6" fill="#7c1a17"/>
+      <path d="M60,180 C100,176 140,182 162,200" fill="none" stroke="#1a1310" stroke-width="2.5" stroke-opacity=".5"/>
+      <!-- hindwing marking -->
+      <circle cx="118" cy="262" r="11" fill="#0d0a08" stroke="#caa44d" stroke-width="1" stroke-opacity=".5"/>
+      <circle cx="118" cy="262" r="4.5" fill="#c9a24b"/>
+    </g>
+    <!-- RIGHT HALF (mirror) -->
+    <g transform="matrix(-1,0,0,1,420,0)">
+      <path d="M205,108 C140,70 50,78 36,150 C28,196 70,238 150,212 C184,200 200,160 205,140 Z" fill="url(#wing)" stroke="#caa44d" stroke-width="1.1" stroke-opacity=".5"/>
+      <path d="M205,168 C150,178 78,206 80,262 C82,308 150,320 196,272 C204,250 206,200 205,180 Z" fill="url(#wing2)" stroke="#caa44d" stroke-width="1.1" stroke-opacity=".4"/>
+      <path d="M70,120 C110,108 150,118 175,150" fill="none" stroke="#1a1310" stroke-width="3" stroke-opacity=".6"/>
+      <ellipse cx="92" cy="148" rx="20" ry="13" fill="#0d0a08" stroke="#caa44d" stroke-width="1" stroke-opacity=".5"/>
+      <ellipse cx="92" cy="148" rx="9" ry="6" fill="#7c1a17"/>
+      <path d="M60,180 C100,176 140,182 162,200" fill="none" stroke="#1a1310" stroke-width="2.5" stroke-opacity=".5"/>
+      <circle cx="118" cy="262" r="11" fill="#0d0a08" stroke="#caa44d" stroke-width="1" stroke-opacity=".5"/>
+      <circle cx="118" cy="262" r="4.5" fill="#c9a24b"/>
+    </g>
+    <!-- BODY -->
+    <ellipse cx="210" cy="135" rx="20" ry="26" fill="url(#body)"/>
+    <path d="M210,158 C198,180 198,260 210,300 C222,260 222,180 210,158 Z" fill="url(#body)"/>
+    <!-- abdomen segments -->
+    <g stroke="#3a2c25" stroke-width="1.4" stroke-opacity=".7">
+      <line x1="199" y1="190" x2="221" y2="190"/>
+      <line x1="200" y1="214" x2="220" y2="214"/>
+      <line x1="201" y1="238" x2="219" y2="238"/>
+      <line x1="203" y1="262" x2="217" y2="262"/>
+    </g>
+    <!-- head + antennae -->
+    <circle cx="210" cy="104" r="13" fill="#15110f"/>
+    <path d="M203,98 C180,70 160,58 146,52" fill="none" stroke="#caa44d" stroke-width="2" stroke-opacity=".7"/>
+    <path d="M217,98 C240,70 260,58 274,52" fill="none" stroke="#caa44d" stroke-width="2" stroke-opacity=".7"/>
+    <g stroke="#caa44d" stroke-width="1" stroke-opacity=".5">
+      <line x1="196" y1="92" x2="184" y2="80"/><line x1="190" y1="84" x2="176" y2="74"/>
+      <line x1="184" y1="76" x2="170" y2="68"/><line x1="178" y1="68" x2="164" y2="62"/>
+      <line x1="224" y1="92" x2="236" y2="80"/><line x1="230" y1="84" x2="244" y2="74"/>
+      <line x1="236" y1="76" x2="250" y2="68"/><line x1="242" y1="68" x2="256" y2="62"/>
+    </g>
+    <!-- DEATH'S-HEAD skull on thorax -->
+    <g>
+      <ellipse cx="210" cy="128" rx="15" ry="17" fill="url(#skull)"/>
+      <ellipse cx="204" cy="124" rx="4" ry="5" fill="#1a1310"/>
+      <ellipse cx="216" cy="124" rx="4" ry="5" fill="#1a1310"/>
+      <path d="M210,130 L207,138 L213,138 Z" fill="#1a1310"/>
+      <path d="M203,140 q7,5 14,0" fill="none" stroke="#1a1310" stroke-width="1.4"/>
+    </g>
+  </svg>
+  <div class="year-tag">A Classic Film · 1991</div>
+  <h1>沉默的羔羊</h1>
+  <div class="en">The Silence of the Lambs</div>
+  <div class="meta">
+    <span>导演&nbsp;<b>乔纳森·戴米</b></span>
+    <span>主演&nbsp;<b>朱迪·福斯特 · 安东尼·霍普金斯</b></span>
+    <span>类型&nbsp;<b>心理惊悚 / 犯罪</b></span>
+  </div>
+  <p class="tagline">当羔羊停止尖叫，你会是什么感受？一场关于恐惧、欲望与救赎的暗黑博弈。</p>
+  <div class="scroll-hint">向下滚动</div>
+</header>
+
+<div class="wrap">
+
+  <!-- ===== RATINGS ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="num">01</span><h2>口碑与评分</h2><span class="en">Acclaim</span>
+    </div>
+    <div class="ratings reveal">
+      <div class="rate-card">
+        <div class="src">IMDb</div>
+        <div class="val"><span class="cnt" data-to="8.6" data-dec="1">0.0</span></div>
+        <div class="count">1.7M 人评分</div>
+        <div class="bar"><i data-pct="86"></i></div>
+        <div class="label">满分 10</div>
+      </div>
+      <div class="rate-card">
+        <div class="src">豆瓣</div>
+        <div class="val"><span class="cnt" data-to="8.9" data-dec="1">0.0</span></div>
+        <div class="count">101 万人评分</div>
+        <div class="bar"><i data-pct="89"></i></div>
+        <div class="label">好于 99% 惊悚片</div>
+      </div>
+      <div class="rate-card">
+        <div class="src">Rotten Tomatoes</div>
+        <div class="val"><span class="cnt" data-to="96" data-dec="0" data-suffix="%">0</span></div>
+        <div class="count">影评人一致好评</div>
+        <div class="bar"><i data-pct="96"></i></div>
+        <div class="label">Certified Fresh</div>
+      </div>
+      <div class="rate-card">
+        <div class="src">Metacritic</div>
+        <div class="val"><span class="cnt" data-to="85" data-dec="0">0</span></div>
+        <div class="count">普遍赞誉</div>
+        <div class="bar"><i data-pct="85"></i></div>
+        <div class="label">满分 100</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SYNOPSIS ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="num">02</span><h2>剧情梗概</h2><span class="en">Synopsis</span>
+    </div>
+    <div class="nospoiler reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+      无剧透 · 仅呈现故事设定
+    </div>
+    <div class="synopsis reveal">
+      <p>年轻的 FBI 实习生克拉丽丝·史达琳，被派去处理一桩令人不安的连环命案——一名代号"野牛比尔"的杀手专门绑架女性，并在事后剥下她们的皮肤。线索稀少，案情胶着，上司交给了她一项特殊任务。</p>
+      <p>她需要前往一所高度戒备的监狱，去请教一位被囚禁的精神病学家：汉尼拔·莱克特博士。此人智商超群、优雅博学，却也是一名令人闻风丧胆的食人杀人魔。汉尼拔答应为克拉丽丝提供线索，但条件是——她必须交出自己深藏心底的秘密。</p>
+      <p>于是，一场在铁栏两侧展开的猫鼠博弈就此开始。克拉丽丝要在黑暗中直面自己的童年创伤，而观众则被拖入一场关于人性深渊的注视之中。</p>
+    </div>
+  </section>
+
+  <!-- ===== POSTER ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="num">03</span><h2>封面的符号</h2><span class="en">The Death's-head Moth</span>
+    </div>
+    <div class="poster-row reveal">
+      <div class="poster-frame">
+        <svg class="moth" viewBox="0 0 420 460" aria-label="骷髅蛾">
+          <g>
+            <path d="M205,108 C140,70 50,78 36,150 C28,196 70,238 150,212 C184,200 200,160 205,140 Z" fill="url(#wing)" stroke="#caa44d" stroke-width="1.1" stroke-opacity=".5"/>
+            <path d="M205,168 C150,178 78,206 80,262 C82,308 150,320 196,272 C204,250 206,200 205,180 Z" fill="url(#wing2)" stroke="#caa44d" stroke-width="1.1" stroke-opacity=".4"/>
+            <ellipse cx="92" cy="148" rx="20" ry="13" fill="#0d0a08" stroke="#caa44d" stroke-width="1" stroke-opacity=".5"/>
+            <ellipse cx="92" cy="148" rx="9" ry="6" fill="#7c1a17"/>
+            <circle cx="118" cy="262" r="11" fill="#0d0a08" stroke="#caa44d" stroke-width="1" stroke-opacity=".5"/>
+            <circle cx="118" cy="262" r="4.5" fill="#c9a24b"/>
+          </g>
+          <g transform="matrix(-1,0,0,1,420,0)">
+            <path d="M205,108 C140,70 50,78 36,150 C28,196 70,238 150,212 C184,200 200,160 205,140 Z" fill="url(#wing)" stroke="#caa44d" stroke-width="1.1" stroke-opacity=".5"/>
+            <path d="M205,168 C150,178 78,206 80,262 C82,308 150,320 196,272 C204,250 206,200 205,180 Z" fill="url(#wing2)" stroke="#caa44d" stroke-width="1.1" stroke-opacity=".4"/>
+            <ellipse cx="92" cy="148" rx="20" ry="13" fill="#0d0a08" stroke="#caa44d" stroke-width="1" stroke-opacity=".5"/>
+            <ellipse cx="92" cy="148" rx="9" ry="6" fill="#7c1a17"/>
+            <circle cx="118" cy="262" r="11" fill="#0d0a08" stroke="#caa44d" stroke-width="1" stroke-opacity=".5"/>
+            <circle cx="118" cy="262" r="4.5" fill="#c9a24b"/>
+          </g>
+          <ellipse cx="210" cy="135" rx="20" ry="26" fill="url(#body)"/>
+          <path d="M210,158 C198,180 198,260 210,300 C222,260 222,180 210,158 Z" fill="url(#body)"/>
+          <circle cx="210" cy="104" r="13" fill="#15110f"/>
+          <path d="M203,98 C180,70 160,58 146,52" fill="none" stroke="#caa44d" stroke-width="2" stroke-opacity=".7"/>
+          <path d="M217,98 C240,70 260,58 274,52" fill="none" stroke="#caa44d" stroke-width="2" stroke-opacity=".7"/>
+          <ellipse cx="210" cy="128" rx="15" ry="17" fill="url(#skull)"/>
+          <ellipse cx="204" cy="124" rx="4" ry="5" fill="#1a1310"/>
+          <ellipse cx="216" cy="124" rx="4" ry="5" fill="#1a1310"/>
+          <path d="M210,130 L207,138 L213,138 Z" fill="#1a1310"/>
+        </svg>
+        <div class="cap">骷髅蛾 · 海报的灵魂意象</div>
+      </div>
+      <div class="poster-text">
+        <h3>一只蛾子，承载了整部电影的隐喻</h3>
+        <p>影片最著名的视觉符号，是那只停驻在海报上的"死神头骷髅蛾"——其胸背天然长有近似人类头骨的花纹。导演乔纳森·戴米将这一意象贯穿全片，让它成为连接"野牛比尔"罪恶行径与角色内心黑暗的钥匙。骷髅蛾既是死亡的暗示，也是人性深渊的具象。</p>
+        <div class="symbols">
+          <div class="sym">
+            <svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l7-5 7 5M5 8v8l7 5 7-5V8"/></svg>
+            <span>铁栏两侧</span>
+          </div>
+          <div class="sym">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
+            <span>被凝视的恐惧</span>
+          </div>
+          <div class="sym">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8 6 8 10 12 14s4 6 0 8"/><path d="M12 2c4 4 4 8 0 12s-4 6 0 8"/></svg>
+            <span>羔羊的尖叫</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HIGHLIGHTS ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="num">04</span><h2>亮点所在</h2><span class="en">Why It Shines</span>
+    </div>
+    <div class="highlights">
+      <div class="hl reveal">
+        <span class="tag">LEGEND</span>
+        <svg class="ic" viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4zM7 4H4v2a3 3 0 0 0 3 3M17 4h3v2a3 3 0 0 1-3 3"/></svg>
+        <h4>影史罕见的"奥斯卡大满贯"</h4>
+        <p>第 64 届奥斯卡一举包揽最佳影片、导演、男主、女主、改编剧本五项最高奖，成为影史仅有的三部"大满贯"电影之一，也是唯一摘得最佳影片的恐怖片。</p>
+      </div>
+      <div class="hl reveal">
+        <span class="tag">16 MIN</span>
+        <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg>
+        <h4>仅 16 分钟银幕时长的影帝</h4>
+        <p>安东尼·霍普金斯全片出镜约 16 分钟，却凭汉尼拔封神，拿下奥斯卡最佳男主角，塑造出影史最令人胆寒又最优雅的反派。一个眼神，便足以令人脊背发凉。</p>
+      </div>
+      <div class="hl reveal">
+        <span class="tag">HEROINE</span>
+        <svg class="ic" viewBox="0 0 24 24"><path d="M12 2l3 6 6 .9-4.5 4.3L18 20l-6-3-6 3 1.5-6.8L3 8.9 9 8z"/></svg>
+        <h4>朱迪·福斯特的克拉丽丝</h4>
+        <p>在男性主导的 FBI 中突围的年轻女探员，坚韧、敏感又勇敢。她不是被拯救的客体，而是故事真正的主角，其成长弧线正是影片救赎主题的核心。</p>
+      </div>
+      <div class="hl reveal">
+        <span class="tag">MASTER</span>
+        <svg class="ic" viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>
+        <h4>心理惊悚的教科书</h4>
+        <p>戴米用大量的特写与对视，营造出"被注视"的窒息感。克拉丽丝、汉尼拔、野牛比尔，三方彼此窥探——恐惧不再来自 jump scare，而来自对人性的直视。</p>
+      </div>
+      <div class="hl reveal">
+        <span class="tag">ICON</span>
+        <svg class="ic" viewBox="0 0 24 24"><path d="M12 2c-3 4-3 7 0 10s3 6 0 10M12 2c3 4 3 7 0 10s-3 6 0 10"/><circle cx="12" cy="12" r="2"/></svg>
+        <h4>骷髅蛾与羔羊的意象</h4>
+        <p>从封面骷髅蛾到童年"羔羊尖叫"的创伤隐喻，影片把惊悚升华为诗意的象征系统。时隔 35 年，这些意象依然鲜活，成为流行文化难以磨灭的印记。</p>
+      </div>
+      <div class="hl reveal">
+        <span class="tag">TIMELESS</span>
+        <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <h4>经得起时间检验的经典</h4>
+        <p>2011 年入选美国国家电影保护局典藏，AFI 百年百大电影第 74 位。2026 年迎来 35 周年重映，新一代观众仍在影院为它屏息——真正的杰作从不过时。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== QUOTE ===== -->
+  <section class="quote">
+    <svg class="mark" viewBox="0 0 24 24"><path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v3a2 2 0 0 1-2 2M19 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v3a2 2 0 0 1-2 2"/></svg>
+    <blockquote>勇气，克拉丽丝。<br>Courage, Clarice.</blockquote>
+    <cite>— 汉尼拔·莱克特</cite>
+  </section>
+
+  <!-- ===== WHY WATCH ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="num">05</span><h2>为什么值得一看</h2><span class="en">Worth Watching</span>
+    </div>
+    <ul class="why reveal">
+      <li><span class="n">Ⅰ</span><span class="t"><b>它重新定义了心理惊悚</b><span>不是靠血腥吓人，而是把恐怖变成对人性的拷问。看它，等于看惊悚片如何被提升到"严肃电影"的高度。</span></span></li>
+      <li><span class="n">Ⅱ</span><span class="t"><b>影史最精彩的心理博弈之一</b><span>福斯特与霍普金斯的对手戏火花四溅，每一句台词都暗藏机锋，是表演课反复研究的范本。</span></span></li>
+      <li><span class="n">Ⅲ</span><span class="t"><b>它关于成长、恐惧与救赎</b><span>表面是追凶，内核是一个女孩如何直面童年阴影、在黑暗中寻找微光。惊悚外壳下，是一颗温柔的心。</span></span></li>
+      <li><span class="n">Ⅳ</span><span class="t"><b>经典经得起反复重看</b><span>细节密度极高，每一次回看都能发现新的伏笔与隐喻。35 周年仍在重映，足以证明它的不朽。</span></span></li>
+    </ul>
+  </section>
+
+  <!-- ===== HONORS ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="num">06</span><h2>荣誉殿堂</h2><span class="en">Honors</span>
+    </div>
+    <div class="honors reveal">
+      <div class="honor special">奥斯卡 <b>大满贯</b> 五项大奖</div>
+      <div class="honor">唯一获 <b>最佳影片</b> 的恐怖片</div>
+      <div class="honor">AFI 百年百大电影 <b>第 74 位</b></div>
+      <div class="honor">国家电影登记处 <b>典藏 (2011)</b></div>
+      <div class="honor">全球票房 <b>$2.73 亿</b></div>
+      <div class="honor">豆瓣 <b>8.9</b> · IMDb <b>8.6</b></div>
+    </div>
+  </section>
+
+  <!-- ===== ARCHIVE ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="num">07</span><h2>影片档案</h2><span class="en">Film Facts</span>
+    </div>
+    <table class="archive reveal">
+      <tr><th>中文片名</th><td>沉默的羔羊</td></tr>
+      <tr><th>英文片名</th><td>The Silence of the Lambs</td></tr>
+      <tr><th>导演</th><td>乔纳森·戴米 (Jonathan Demme)</td></tr>
+      <tr><th>主演</th><td>朱迪·福斯特 / 安东尼·霍普金斯 / 斯科特·格伦</td></tr>
+      <tr><th>类型</th><td>心理惊悚 · 犯罪 · 悬疑</td></tr>
+      <tr><th>上映年份</th><td>1991 年（美国）</td></tr>
+      <tr><th>片长</th><td>118 分钟</td></tr>
+      <tr><th>国家 / 语言</th><td>美国 / 英语</td></tr>
+      <tr><th>改编来源</th><td>托马斯·哈里斯 同名小说</td></tr>
+      <tr><th>编剧</th><td>泰德·塔利 (Ted Tally)</td></tr>
+      <tr><th>分级</th><td>R 级</td></tr>
+      <tr><th>票房</th><td>预算 $1900 万 · 全球 $2.73 亿</td></tr>
+    </table>
+  </section>
+
+  <!-- ===== REVIEW ===== -->
+  <section>
+    <div class="sec-head reveal">
+      <span class="num">08</span><h2>编辑评语</h2><span class="en">Editor's Note</span>
+    </div>
+    <div class="review reveal">
+      <div class="stars">★★★★★</div>
+      <p>它不靠尖叫取胜，而用沉默与对视将你钉在座位上。当汉尼拔在铁栏后微微歪头、低声说出那句"勇气，克拉丽丝"时，你就知道——自己正凝视着影史最优雅的恶魔。一部把惊悚拍成诗的电影，值得每一个爱电影的人，至少屏息看一次。</p>
+      <div class="by">— 经典电影推荐 · 编辑部</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <svg class="moth-mini" viewBox="0 0 420 460" aria-hidden="true">
+    <g fill="#caa44d" fill-opacity=".6">
+      <path d="M205,108 C140,70 50,78 36,150 C28,196 70,238 150,212 C184,200 200,160 205,140 Z"/>
+      <path d="M215,108 C280,70 370,78 384,150 C392,196 350,238 270,212 C236,200 220,160 215,140 Z"/>
+      <ellipse cx="210" cy="135" rx="16" ry="22"/>
+    </g>
+  </svg>
+  <p>经典电影推荐 · 每日一部公认佳作<br>本页内容仅供观影参考，评分数据截至 2026 年</p>
+</footer>
+
+<script>
+  /* ---------- ash / ember particle canvas ---------- */
+  (function(){
+    const c=document.getElementById('ash'),x=c.getContext('2d');
+    let w,h,parts=[];
+    function rs(){w=c.width=innerWidth;h=c.height=innerHeight;}
+    rs();addEventListener('resize',rs);
+    const N=Math.min(90,Math.floor(w/16));
+    for(let i=0;i<N;i++){
+      parts.push({
+        x:Math.random()*w, y:Math.random()*h,
+        r:Math.random()*1.8+0.4,
+        vy:-(Math.random()*0.5+0.15),
+        vx:(Math.random()-0.5)*0.3,
+        a:Math.random()*0.5+0.2,
+        hue:Math.random()<0.25
+      });
+    }
+    function tick(){
+      x.clearRect(0,0,w,h);
+      for(const p of parts){
+        p.y+=p.vy;p.x+=p.vx;
+        if(p.y<-10){p.y=h+10;p.x=Math.random()*w;}
+        if(p.x<-10)p.x=w+10; if(p.x>w+10)p.x=-10;
+        const g=x.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);
+        if(p.hue){
+          g.addColorStop(0,'rgba(195,57,43,'+p.a+')');
+          g.addColorStop(1,'rgba(195,57,43,0)');
+        }else{
+          g.addColorStop(0,'rgba(201,162,75,'+p.a*0.7+')');
+          g.addColorStop(1,'rgba(201,162,75,0)');
+        }
+        x.fillStyle=g;
+        x.beginPath();x.arc(p.x,p.y,p.r*4,0,7);x.fill();
+      }
+      requestAnimationFrame(tick);
+    }
+    tick();
+  })();
+
+  /* ---------- reveal on scroll ---------- */
+  const io=new IntersectionObserver((es)=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        // bars
+        e.target.querySelectorAll?.('.bar i').forEach(b=>{
+          b.style.width=b.dataset.pct+'%';
+        });
+        // counters
+        e.target.querySelectorAll?.('.cnt').forEach(el=>{
+          if(el.dataset.done)return;el.dataset.done=1;
+          const to=parseFloat(el.dataset.to),dec=parseInt(el.dataset.dec||'0'),
+                suf=el.dataset.suffix||'',dur=1500,t0=performance.now();
+          function step(t){
+            const k=Math.min(1,(t-t0)/dur),e2=1-Math.pow(1-k,3);
+            el.textContent=(to*e2).toFixed(dec)+suf;
+            if(k<1)requestAnimationFrame(step);else el.textContent=to.toFixed(dec)+suf;
+          }
+          requestAnimationFrame(step);
+        });
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.18});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

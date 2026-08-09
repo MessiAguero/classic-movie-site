@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>霸王别姬 · Farewell My Concubine</title>
+<style>
+  :root{
+    --bg:#100608;
+    --bg2:#1a080c;
+    --ink:#f6ece4;
+    --ink-soft:#d9c4b6;
+    --ink-dim:#a5897e;
+    --crimson:#c8273b;
+    --crimson-deep:#8e1a28;
+    --gold:#d8a14a;
+    --gold-bright:#f4c869;
+    --jade:#4f9b86;
+    --rose:#e0738a;
+    --line:rgba(216,161,74,.20);
+    --card:rgba(40,16,20,.72);
+    --card-solid:#250f13;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Songti SC","STSong","Noto Serif SC",Georgia,"Times New Roman",serif;
+    line-height:1.85;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:rgba(200,39,59,.4);color:#fff}
+  .edifice{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(1100px 680px at 80% -6%, rgba(200,39,59,.18), transparent 58%),
+      radial-gradient(820px 560px at 8% 108%, rgba(79,155,134,.10), transparent 60%),
+      linear-gradient(180deg,#100608 0%,#17090c 52%,#0b0405 100%);
+  }
+  .grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");}
+  #fx{position:fixed;inset:0;z-index:1;pointer-events:none}
+  .vignette{position:fixed;inset:0;z-index:59;pointer-events:none;
+    box-shadow:inset 0 0 240px 60px rgba(0,0,0,.74);}
+  .wrap{position:relative;z-index:10;max-width:1080px;margin:0 auto;padding:0 26px}
+  section{position:relative;z-index:10}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:90px 22px;overflow:hidden}
+  .hero .year{font-size:clamp(70px,16vw,190px);font-weight:800;letter-spacing:-.04em;line-height:.9;
+    color:transparent;-webkit-text-stroke:1.4px rgba(216,161,74,.55);
+    background:linear-gradient(180deg,rgba(244,200,105,.10),transparent);
+    -webkit-background-clip:text;background-clip:text;opacity:.9;font-family:"Times New Roman",serif}
+  .hero .en{margin-top:6px;font-size:clamp(13px,2.4vw,20px);letter-spacing:.62em;color:var(--gold);
+    text-transform:uppercase;padding-left:.62em}
+  .hero h1{font-size:clamp(40px,8vw,86px);font-weight:800;letter-spacing:.14em;margin:14px 0 4px;
+    color:var(--ink);text-shadow:0 4px 30px rgba(0,0,0,.7)}
+  .hero h1 .accent{color:var(--gold-bright)}
+  .hero .meta{margin-top:18px;font-size:14px;letter-spacing:.28em;color:var(--ink-soft)}
+  .hero .meta b{color:var(--gold);font-weight:600}
+  .hero .tag{margin-top:30px;max-width:680px;font-size:clamp(15px,2.4vw,19px);color:var(--ink-soft);
+    line-height:2;font-style:italic;position:relative;padding:0 24px}
+  .hero .tag::before,.hero .tag::after{content:"“";position:absolute;top:-18px;font-size:48px;color:var(--gold);opacity:.5}
+  .hero .tag::before{left:0}
+  .hero .tag::after{content:"”";right:0;top:auto;bottom:-34px}
+  .scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+    color:var(--ink-dim);font-size:12px;letter-spacing:.4em;animation:bob 2.4s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.5}50%{transform:translate(-50%,9px);opacity:1}}
+
+  /* ===== ratings ===== */
+  .ratings{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:30px 0 8px}
+  .rate{padding:22px 16px;border:1px solid var(--line);border-radius:14px;background:var(--card);
+    text-align:center;backdrop-filter:blur(6px)}
+  .rate .lab{font-size:12px;letter-spacing:.28em;color:var(--ink-soft);text-transform:uppercase}
+  .rate .num{font-size:38px;font-weight:800;color:var(--gold-bright);margin:8px 0 2px;
+    font-family:"Times New Roman",serif}
+  .rate .num small{font-size:18px;color:var(--ink-soft);font-weight:500}
+  .rate .bar{height:5px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:10px}
+  .rate .bar i{display:block;height:100%;width:0;border-radius:4px;
+    background:linear-gradient(90deg,var(--crimson),var(--gold-bright));transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+  .rate .sub{font-size:11px;letter-spacing:.18em;color:var(--ink-dim);margin-top:7px}
+  .rate.special .num{font-size:24px;letter-spacing:.04em}
+
+  /* ===== section heading ===== */
+  .sec{padding:70px 0 10px}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sec-head .idx{font-family:"Times New Roman",serif;font-size:40px;font-weight:800;color:var(--gold);opacity:.7}
+  .sec-head h2{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:.14em;color:var(--ink)}
+  .sec-head .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);align-self:center}
+
+  /* ===== plot + poster ===== */
+  .plot-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:40px;align-items:start}
+  .plot p{font-size:16.5px;color:var(--ink-soft);margin-bottom:16px;line-height:2.05}
+  .plot p.first::first-letter{font-size:54px;float:left;line-height:.8;padding:6px 12px 0 0;color:var(--gold-bright);font-weight:800;font-family:"Times New Roman",serif}
+  .nospoiler{display:inline-flex;align-items:center;gap:8px;margin-top:8px;padding:8px 16px;border:1px dashed var(--gold);
+    border-radius:30px;color:var(--gold);font-size:13px;letter-spacing:.1em;background:rgba(216,161,74,.07)}
+  .poster{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);
+    background:linear-gradient(180deg,#220c10,#0c0405);box-shadow:0 26px 60px rgba(0,0,0,.6)}
+  .poster svg{display:block;width:100%;height:auto}
+  .poster .cap{position:absolute;bottom:0;left:0;right:0;padding:14px 16px;font-size:12px;letter-spacing:.2em;
+    color:var(--ink-soft);background:linear-gradient(0deg,rgba(0,0,0,.85),transparent);text-align:center}
+
+  /* ===== highlights ===== */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{padding:26px 22px;border:1px solid var(--line);border-radius:14px;background:var(--card);
+    transition:transform .4s,box-shadow .4s,border-color .4s;position:relative;overflow:hidden}
+  .card::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;
+    background:linear-gradient(90deg,var(--crimson),var(--gold-bright));opacity:.7}
+  .card:hover{transform:translateY(-7px);border-color:rgba(216,161,74,.5);box-shadow:0 22px 44px rgba(0,0,0,.5)}
+  .card .ic{font-size:13px;letter-spacing:.3em;color:var(--gold);margin-bottom:12px}
+  .card h3{font-size:19px;font-weight:700;color:var(--ink);margin-bottom:10px;letter-spacing:.05em}
+  .card p{font-size:14.5px;color:var(--ink-soft);line-height:1.95}
+
+  /* ===== quote ===== */
+  .quote{padding:64px 0;text-align:center}
+  .quote blockquote{font-size:clamp(22px,4.2vw,38px);line-height:1.7;color:var(--ink);
+    font-style:italic;max-width:880px;margin:0 auto;position:relative;text-shadow:0 2px 20px rgba(0,0,0,.6)}
+  .quote blockquote .hl{color:var(--gold-bright)}
+  .quote .who{margin-top:24px;font-size:14px;letter-spacing:.3em;color:var(--gold)}
+
+  /* ===== why ===== */
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .why-item{display:flex;gap:18px;padding:24px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+  .why-item .no{flex:none;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;font-family:"Times New Roman",serif;font-weight:800;
+    font-size:20px;color:var(--gold-bright);background:rgba(216,161,74,.08)}
+  .why-item h4{font-size:17px;color:var(--ink);margin-bottom:6px;letter-spacing:.04em}
+  .why-item p{font-size:14.5px;color:var(--ink-soft);line-height:1.9}
+
+  /* ===== honors ===== */
+  .honors{display:flex;flex-wrap:wrap;gap:12px}
+  .tag-pill{padding:10px 18px;border:1px solid var(--line);border-radius:30px;font-size:13.5px;
+    letter-spacing:.08em;color:var(--ink-soft);background:rgba(40,16,20,.6);transition:.35s}
+  .tag-pill.hot{color:var(--gold-bright);border-color:rgba(216,161,74,.55);background:rgba(216,161,74,.1)}
+  .tag-pill:hover{transform:translateY(-3px);color:var(--gold-bright)}
+
+  /* ===== archive table ===== */
+  .archive{width:100%;border-collapse:collapse;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .archive td{padding:15px 20px;border-bottom:1px solid rgba(216,161,74,.1);font-size:15px;vertical-align:top}
+  .archive tr:last-child td{border-bottom:none}
+  .archive td.k{width:130px;color:var(--gold);letter-spacing:.1em;font-weight:600;background:rgba(216,161,74,.05)}
+  .archive td.v{color:var(--ink-soft)}
+
+  /* ===== review ===== */
+  .review{padding:50px 30px;border:1px solid var(--line);border-radius:18px;
+    background:linear-gradient(180deg,rgba(40,16,20,.8),rgba(20,9,12,.9));text-align:center;position:relative;overflow:hidden}
+  .review .stars{font-size:30px;color:var(--gold-bright);letter-spacing:.18em;margin-bottom:14px}
+  .review p{font-size:16px;color:var(--ink-soft);line-height:2.1;max-width:760px;margin:0 auto;font-style:italic}
+  .review .by{margin-top:18px;font-size:13px;letter-spacing:.3em;color:var(--gold)}
+
+  footer{padding:60px 0 50px;text-align:center;color:var(--ink-dim);font-size:12.5px;letter-spacing:.18em;line-height:2.2}
+  footer .fmark{color:var(--gold);font-size:15px;letter-spacing:.4em}
+
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:760px){
+    .ratings{grid-template-columns:repeat(2,1fr)}
+    .plot-grid{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr}
+    .why{grid-template-columns:1fr}
+    .poster{margin-top:10px}
+  }
+</style>
+</head>
+<body>
+<div class="edifice"></div>
+<canvas id="fx"></canvas>
+<div class="grain"></div>
+<div class="vignette"></div>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="year">1993</div>
+  <div class="en">Farewell My Concubine</div>
+  <h1>霸王<span class="accent">别姬</span></h1>
+  <div class="meta">陈凯歌 执导 &nbsp;·&nbsp; 张国荣 / 张丰毅 / 巩俐 / 葛优 主演</div>
+  <div class="tag">戏台之上，霸王别姬唱了千年；戏台之下，一生痴缠，戏如人生，人不由己。</div>
+  <div class="scroll-hint">向 下 滚 动 ↓</div>
+</section>
+
+<div class="wrap">
+
+  <!-- ===================== RATINGS ===================== -->
+  <section class="sec" data-reveal>
+    <div class="sec-head"><span class="idx">01</span><h2>口碑与评分</h2><span class="rule"></span></div>
+    <div class="ratings">
+      <div class="rate"><div class="lab">IMDb</div><div class="num" data-to="8.1" data-dec="1">0.0</div><div class="bar"><i data-w="81"></i></div><div class="sub">Top 250 常客</div></div>
+      <div class="rate"><div class="lab">豆瓣</div><div class="num" data-to="9.6" data-dec="1">0.0</div><div class="bar"><i data-w="96"></i></div><div class="sub">华语片评分榜首</div></div>
+      <div class="rate"><div class="lab">烂番茄</div><div class="num" data-to="95" data-dec="0" data-suf="%">0</div><div class="bar"><i data-w="95"></i></div><div class="sub">影评人新鲜度</div></div>
+      <div class="rate special"><div class="lab">戛纳</div><div class="num">金棕榈</div><div class="bar"><i data-w="100"></i></div><div class="sub">1993 最高奖金棕榈</div></div>
+    </div>
+  </section>
+
+  <!-- ===================== PLOT + POSTER ===================== -->
+  <section class="sec" data-reveal>
+    <div class="sec-head"><span class="idx">02</span><h2>剧情梗概</h2><span class="rule"></span></div>
+    <div class="plot-grid">
+      <div class="plot">
+        <p class="first">1924 年的北平，乱世将至。两个男孩被送进梨园科班，在戒尺与汗水里学一身唱念做打的硬功夫。一个被塑造成专演"旦角"的程蝶衣，一个成了演"生角"的段小楼——一把好嗓子，一副好身段，是他们在苦难里唯一的出路。</p>
+        <p>岁月流转，两人从挨打的学徒长成了名动京城的角儿，最常贴演的戏，正是那出缠绵悲壮的《霸王别姬》。台上是霸王与虞姬的生离死别，台下是两个人牵绊一生的情义与龃龉。一位风尘女子菊仙的出现，悄悄改写了三人之间的平衡。</p>
+        <p>而真正笼罩全片的，是门外那个天翻地覆的世纪：从军阀混战到日据，从政权更迭到那场席卷一切的运动。时代一次次改写规矩与人心，戏台却仿佛成了唯一不变的孤岛。当"戏"与"真"的界限日渐模糊，每个人都必须在忠诚、身份与生存之间，做出自己的选择。</p>
+        <p>这是一段横跨数十年的痴缠，也是一首写给"不疯魔不成活"的挽歌——关于艺术如何成为一个人活下去的方式，又如何在时代洪流里被反复撕扯。</p>
+        <div class="nospoiler">◆ 本页剧情仅呈现背景与人物关系框架，刻意不揭示关键转折与结局</div>
+      </div>
+      <div class="poster">
+        <svg viewBox="0 0 420 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="霸王别姬海报">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2a0c12"/><stop offset="0.5" stop-color="#5e1622"/>
+              <stop offset="1" stop-color="#120608"/>
+            </linearGradient>
+            <radialGradient id="moon" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0" stop-color="#fff3d6"/><stop offset="0.5" stop-color="#f4c869"/>
+              <stop offset="1" stop-color="#f4c869" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="curtain" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#8e1a28"/><stop offset="1" stop-color="#3a0a10"/>
+            </linearGradient>
+          </defs>
+          <rect width="420" height="560" fill="url(#sky)"/>
+          <!-- moon -->
+          <circle cx="312" cy="120" r="78" fill="url(#moon)"/>
+          <circle cx="312" cy="120" r="40" fill="#fff0c4"/>
+          <!-- top curtain -->
+          <path d="M0 0 H420 V40 Q392 78 364 40 Q336 78 308 40 Q280 78 252 40 Q224 78 196 40 Q168 78 140 40 Q112 78 84 40 Q56 78 28 40 Q14 60 0 40 Z" fill="url(#curtain)"/>
+          <rect x="0" y="0" width="420" height="6" fill="#d8a14a" opacity=".7"/>
+          <!-- lantern -->
+          <g>
+            <line x1="78" y1="40" x2="78" y2="70" stroke="#d8a14a" stroke-width="2"/>
+            <ellipse cx="78" cy="92" rx="20" ry="26" fill="#c8273b" opacity=".92"/>
+            <ellipse cx="78" cy="92" rx="20" ry="26" fill="none" stroke="#f4c869" stroke-width="1.4"/>
+            <line x1="78" y1="118" x2="78" y2="130" stroke="#d8a14a" stroke-width="2"/>
+          </g>
+          <!-- stage floor -->
+          <rect y="430" width="420" height="130" fill="#0c0405"/>
+          <ellipse cx="210" cy="440" rx="180" ry="20" fill="#3a0a10" opacity=".5"/>
+          <!-- two opera silhouettes -->
+          <g fill="#060203">
+            <!-- 旦 (left, with headdress) -->
+            <path d="M150 250 q-14 0 -14 18 l0 150 q0 12 14 12 l26 0 q14 0 14 -12 l0 -150 q0 -18 -14 -18 Z" fill="#0a0304"/>
+            <circle cx="163" cy="232" r="16"/>
+            <!-- headdress plumes -->
+            <path d="M163 218 q-26 -34 -8 -64" stroke="#d8a14a" stroke-width="3" fill="none"/>
+            <path d="M163 218 q26 -34 8 -64" stroke="#d8a14a" stroke-width="3" fill="none"/>
+            <circle cx="155" cy="156" r="5" fill="#e0738a"/>
+            <circle cx="171" cy="156" r="5" fill="#e0738a"/>
+            <!-- water sleeve -->
+            <path d="M136 280 q-30 20 -10 60" stroke="#e9d9c9" stroke-width="10" fill="none" opacity=".85" stroke-linecap="round"/>
+          </g>
+          <g fill="#060203">
+            <!-- 生 / 霸王 (right, armor) -->
+            <path d="M250 244 q-16 0 -16 18 l0 158 q0 12 16 12 l34 0 q16 0 16 -12 l0 -158 q0 -18 -16 -18 Z"/>
+            <circle cx="267" cy="224" r="17"/>
+            <!-- helmet feather -->
+            <path d="M267 208 q4 -40 30 -52" stroke="#c8273b" stroke-width="5" fill="none"/>
+            <path d="M267 208 q-4 -40 -30 -52" stroke="#c8273b" stroke-width="5" fill="none"/>
+            <!-- shoulder armor -->
+            <path d="M238 268 q29 16 58 0 l-4 16 q-25 12 -50 0 Z" fill="#3a0a10"/>
+          </g>
+          <!-- plum blossom branch -->
+          <g stroke="#6b2a1c" stroke-width="3" fill="none" opacity=".8">
+            <path d="M20 470 q40 -30 70 -10"/>
+            <path d="M50 462 q14 -22 34 -18"/>
+          </g>
+          <g fill="#e0738a" opacity=".9">
+            <circle cx="86" cy="458" r="4"/><circle cx="92" cy="464" r="4"/><circle cx="80" cy="466" r="4"/>
+            <circle cx="70" cy="476" r="3.4"/><circle cx="58" cy="444" r="3.4"/>
+          </g>
+          <text x="210" y="540" text-anchor="middle" fill="#f6ece4" font-family="Georgia,serif" font-size="14" letter-spacing="5" opacity=".85">FAREWELL MY CONCUBINE</text>
+        </svg>
+        <div class="cap">戏台、明月、红绸与圆场身影 —— 一生的痴缠开场</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HIGHLIGHTS ===================== -->
+  <section class="sec" data-reveal>
+    <div class="sec-head"><span class="idx">03</span><h2>六大亮点</h2><span class="rule"></span></div>
+    <div class="cards">
+      <div class="card"><div class="ic">PALME</div><h3>华语影史首座金棕榈</h3><p>1993 年戛纳电影节最高奖，是第一部获此殊荣的华语电影，至今仍是华语片在世界影坛最具分量的勋章。</p></div>
+      <div class="card"><div class="ic">ROLE</div><h3>张国荣的程蝶衣</h3><p>"不疯魔不成活"的入魔式表演，雌雄莫辨、人戏不分，缔造了华语影史最令人难忘的角色之一，至今无人可替。</p></div>
+      <div class="card"><div class="ic">EPIC</div><h3>半部中国近代史</h3><p>从北洋、抗战到风云激荡的世纪洪流，六十年家国命运尽收眼底——以一出戏，写尽一个时代的悲欢。</p></div>
+      <div class="card"><div class="ic">OPERA</div><h3>京剧之美的影像化</h3><p>水袖、脸谱、唱腔、身段与锣鼓点，被镜头淬炼成流动的东方戏曲美学，每一帧都像一幅工笔。</p></div>
+      <div class="card"><div class="ic">AUTEUR</div><h3>陈凯歌的作者表达</h3><p>艺术与政治、真实与扮演的深刻互文，让这部电影既是情感史诗，也是关于"戏与人生"的哲学寓言。</p></div>
+      <div class="card"><div class="ic">THEME</div><h3>戏梦人生的宿命</h3><p>"差一年，一个月，一天，一个时辰，都不算一辈子"——关于忠诚、身份与痴缠的母题，余韵绕梁。</p></div>
+    </div>
+  </section>
+
+  <!-- ===================== QUOTE ===================== -->
+  <section class="quote" data-reveal>
+    <blockquote>"说好是一辈子，<span class="hl">差一年，一个月，一天，一个时辰</span>，都不算一辈子。"</blockquote>
+    <div class="who">— 程蝶衣，把一句承诺唱成了一生</div>
+  </section>
+
+  <!-- ===================== WHY ===================== -->
+  <section class="sec" data-reveal>
+    <div class="sec-head"><span class="idx">04</span><h2>为什么值得一看</h2><span class="rule"></span></div>
+    <div class="why">
+      <div class="why-item"><div class="no">壹</div><div><h4>华语电影的天花板</h4><p>豆瓣、IMDb 常年高居华语片榜首，是几乎无争议的华语第一梯队，没看过便不算真正补课完影史。</p></div></div>
+      <div class="why-item"><div class="no">贰</div><div><h4>张国荣的封神表演</h4><p>程蝶衣一角，看一次便再难忘记。它告诉你，表演可以抵达怎样"人戏合一"的至高之境。</p></div></div>
+      <div class="why-item"><div class="no">叁</div><div><h4>京剧美学的视听盛宴</h4><p>即便你不懂戏，也会被那一袭水袖、一折唱腔、一幕明月击中——东方韵味，极致而克制。</p></div></div>
+      <div class="why-item"><div class="no">肆</div><div><h4>读懂"戏如人生"</h4><p>它讲的是时代、忠诚与自我，看完会久久沉默——好电影从不急于让你"懂"，而是让你"记得"。</p></div></div>
+    </div>
+  </section>
+
+  <!-- ===================== HONORS ===================== -->
+  <section class="sec" data-reveal>
+    <div class="sec-head"><span class="idx">05</span><h2>荣誉与地位</h2><span class="rule"></span></div>
+    <div class="honors">
+      <span class="tag-pill hot">1993 戛纳电影节 金棕榈奖（华语首部）</span>
+      <span class="tag-pill hot">豆瓣 华语片评分榜首常客</span>
+      <span class="tag-pill">1994 金球奖 最佳外语片</span>
+      <span class="tag-pill">1994 奥斯卡 最佳外语片 / 摄影 提名</span>
+      <span class="tag-pill">IMDb Top 250 常驻</span>
+      <span class="tag-pill">《时代》周刊 影史百佳</span>
+      <span class="tag-pill">美国影评人协会 最佳外语片</span>
+      <span class="tag-pill hot">陈凯歌 导演代表作</span>
+      <span class="tag-pill">张国荣 程蝶衣 永留影史</span>
+    </div>
+  </section>
+
+  <!-- ===================== ARCHIVE ===================== -->
+  <section class="sec" data-reveal>
+    <div class="sec-head"><span class="idx">06</span><h2>影片档案</h2><span class="rule"></span></div>
+    <table class="archive">
+      <tr><td class="k">中文名</td><td class="v">霸王别姬</td></tr>
+      <tr><td class="k">英文名</td><td class="v">Farewell My Concubine</td></tr>
+      <tr><td class="k">导演</td><td class="v">陈凯歌</td></tr>
+      <tr><td class="k">上映</td><td class="v">1993 年（中国大陆 / 中国香港）</td></tr>
+      <tr><td class="k">片长</td><td class="v">约 171 分钟</td></tr>
+      <tr><td class="k">类型</td><td class="v">剧情 / 爱情 / 历史</td></tr>
+      <tr><td class="k">编剧</td><td class="v">芦苇 / 李碧华（改编自李碧华同名小说）</td></tr>
+      <tr><td class="k">主演</td><td class="v">张国荣 / 张丰毅 / 巩俐 / 葛优</td></tr>
+      <tr><td class="k">制片</td><td class="v">中国 / 中国香港</td></tr>
+      <tr><td class="k">原著</td><td class="v">李碧华《霸王别姬》</td></tr>
+      <tr><td class="k">评分</td><td class="v">IMDb 8.1 ｜ 豆瓣 9.6 ｜ 烂番茄 95%</td></tr>
+    </table>
+  </section>
+
+  <!-- ===================== REVIEW ===================== -->
+  <section class="sec" data-reveal style="padding-bottom:30px">
+    <div class="sec-head"><span class="idx">07</span><h2>编辑评语</h2><span class="rule"></span></div>
+    <div class="review">
+      <div class="stars">★★★★★</div>
+      <p>《霸王别姬》是那种极少见的电影：它把一段个人痴缠，唱成了半个世纪的家国注脚。陈凯歌用浓墨重彩的镜头，把京剧的水袖、唱腔与锣鼓点碾进每一帧画面；而张国荣的程蝶衣，则把"人戏不分"演到了一种近乎献祭的纯度。它不急着讨好你，也不害怕让你沉默——当那出《霸王别姬》在戏台上又一次落幕，你会忽然懂得，"不疯魔不成活"原来不只是一句台词，而是一个人用一生去回答的问题。华语影史绕不开的一部，值得每一个爱电影的人，安静地看上一遍。</p>
+      <div class="by">— 经典电影推荐 · 每日一部</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="fmark">经典电影推荐</div><br>
+  每日一部公认经典 · 评分高 · 口碑好 · 不剧透<br>
+  Generated with WorkBuddy
+</footer>
+
+<script>
+/* ===== Canvas: 飘落花瓣 ===== */
+(function(){
+  const cv=document.getElementById('fx'),ctx=cv.getContext('2d');
+  let W,H,DPR;
+  function resize(){
+    DPR=Math.min(window.devicePixelRatio||1,2);
+    W=cv.width=innerWidth*DPR;H=cv.height=innerHeight*DPR;
+    cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';
+  }
+  resize();addEventListener('resize',resize);
+  const N=Math.round((innerWidth*innerHeight)/22000);
+  const petals=[];
+  for(let i=0;i<N;i++){
+    petals.push({
+      x:Math.random()*W,y:Math.random()*H,
+      r:(Math.random()*4+3)*DPR,
+      a:Math.random()*0.45+0.25,
+      vy:(Math.random()*0.4+0.25)*DPR,
+      vx:(Math.random()*0.3-0.15)*DPR,
+      ph:Math.random()*Math.PI*2,
+      sp:Math.random()*0.02+0.008,
+      rot:Math.random()*Math.PI,
+      vr:(Math.random()*0.02-0.01),
+      hue:Math.random()<0.6?'224,115,138':'246,236,228'
+    });
+  }
+  function drawPetal(p){
+    ctx.save();
+    ctx.translate(p.x,p.y);
+    ctx.rotate(p.rot);
+    const pulse=0.7+0.3*Math.sin(p.ph);
+    const s=p.r*(0.85+pulse*0.4);
+    ctx.fillStyle='rgba('+p.hue+','+(p.a*pulse)+')';
+    ctx.beginPath();
+    ctx.moveTo(0,0);
+    ctx.bezierCurveTo(s*0.6,-s*0.5, s*0.6,-s*1.4, 0,-s*1.8);
+    ctx.bezierCurveTo(-s*0.6,-s*1.4, -s*0.6,-s*0.5, 0,0);
+    ctx.fill();
+    ctx.restore();
+  }
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    for(const p of petals){
+      p.ph+=p.sp;
+      p.rot+=p.vr;
+      p.y+=p.vy;
+      p.x+=p.vx+Math.sin(p.ph)*0.4*DPR;
+      if(p.y>H+12){p.y=-12;p.x=Math.random()*W;}
+      if(p.x<-12)p.x=W+12; if(p.x>W+12)p.x=-12;
+      drawPetal(p);
+    }
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+/* ===== 评分数字滚动 + 进度条 ===== */
+function animateNumbers(){
+  document.querySelectorAll('.rate .num').forEach(el=>{
+    if(!el.dataset.to)return;
+    const to=parseFloat(el.dataset.to),dec=parseInt(el.dataset.dec||'0'),suf=el.dataset.suf||'';
+    let cur=0;const dur=1500,st=performance.now();
+    function step(t){
+      let p=Math.min((t-st)/dur,1);p=1-Math.pow(1-p,3);
+      cur=to*p;
+      el.textContent=cur.toFixed(dec)+suf;
+      if(p<1)requestAnimationFrame(step);else el.textContent=to.toFixed(dec)+suf;
+    }
+    requestAnimationFrame(step);
+  });
+  document.querySelectorAll('.rate .bar i').forEach(i=>{
+    requestAnimationFrame(()=>{i.style.width=i.dataset.w+'%';});
+  });
+}
+
+/* ===== 滚动揭示 ===== */
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      if(e.target.querySelector&&e.target.querySelector('.rate'))animateNumbers();
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.15});
+document.querySelectorAll('[data-reveal]').forEach(s=>io.observe(s));
+window.addEventListener('load',()=>{
+  const first=document.querySelector('[data-reveal] .rate');
+  if(first)animateNumbers();
+});
+</script>
+</body>
+</html>

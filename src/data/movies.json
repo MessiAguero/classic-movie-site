@@ -10953,5 +10953,283 @@
     "reviewStars": 5,
     "posterSvg": "<svg viewBox=\"0 0 420 560\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"西部往事海报\">\n          <defs>\n            <linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0\" stop-color=\"#3a1d10\"></stop><stop offset=\"0.45\" stop-color=\"#9e3b22\"></stop>\n              <stop offset=\"0.7\" stop-color=\"#e08a2e\"></stop><stop offset=\"1\" stop-color=\"#f6c14b\"></stop>\n            </linearGradient>\n            <radialGradient id=\"sun\" cx=\"0.5\" cy=\"0.5\" r=\"0.5\">\n              <stop offset=\"0\" stop-color=\"#fff3c4\"></stop><stop offset=\"0.4\" stop-color=\"#f6c14b\"></stop>\n              <stop offset=\"1\" stop-color=\"#f6c14b\" stop-opacity=\"0\"></stop>\n            </radialGradient>\n            <linearGradient id=\"grd\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0\" stop-color=\"#1c0f08\"></stop><stop offset=\"1\" stop-color=\"#0b0604\"></stop>\n            </linearGradient>\n          </defs>\n          <rect width=\"420\" height=\"560\" fill=\"url(#sky)\"></rect>\n          <circle cx=\"210\" cy=\"232\" r=\"118\" fill=\"url(#sun)\"></circle>\n          <circle cx=\"210\" cy=\"232\" r=\"46\" fill=\"#fff0bf\"></circle>\n          <!-- distant mesas -->\n          <path d=\"M0 300 Q60 268 120 296 T250 290 L260 320 0 320 Z\" fill=\"#7a2f18\" opacity=\".55\"></path>\n          <path d=\"M210 300 Q280 270 360 298 T420 296 L420 322 200 322 Z\" fill=\"#6b2614\" opacity=\".6\"></path>\n          <!-- ground -->\n          <rect y=\"320\" width=\"420\" height=\"240\" fill=\"url(#grd)\"></rect>\n          <!-- railroad tracks -->\n          <g stroke=\"#caa15e\" stroke-width=\"2\" opacity=\".8\">\n            <line x1=\"210\" y1=\"560\" x2=\"196\" y2=\"338\"></line>\n            <line x1=\"210\" y1=\"560\" x2=\"224\" y2=\"338\"></line>\n            <line x1=\"206\" y1=\"400\" x2=\"214\" y2=\"400\" stroke-width=\"3\"></line>\n            <line x1=\"203\" y1=\"440\" x2=\"217\" y2=\"440\" stroke-width=\"3\"></line>\n            <line x1=\"200\" y1=\"486\" x2=\"220\" y2=\"486\" stroke-width=\"3\"></line>\n            <line x1=\"197\" y1=\"536\" x2=\"223\" y2=\"536\" stroke-width=\"3\"></line>\n          </g>\n          <!-- station hut silhouette -->\n          <g fill=\"#0a0503\" opacity=\".92\">\n            <rect x=\"286\" y=\"356\" width=\"74\" height=\"46\"></rect>\n            <path d=\"M280 356 L323 336 L366 356 Z\"></path>\n            <rect x=\"298\" y=\"372\" width=\"16\" height=\"30\"></rect>\n          </g>\n          <!-- silhouettes: harmonica man + frank -->\n          <g fill=\"#060302\" opacity=\".95\">\n            <!-- left gunman -->\n            <ellipse cx=\"120\" cy=\"346\" rx=\"11\" ry=\"13\"></ellipse>\n            <rect x=\"109\" y=\"358\" width=\"22\" height=\"52\" rx=\"6\"></rect>\n            <rect x=\"118\" y=\"408\" width=\"9\" height=\"34\" rx=\"3\"></rect>\n            <rect x=\"100\" y=\"409\" width=\"9\" height=\"33\" rx=\"3\"></rect>\n            <!-- hat brim -->\n            <ellipse cx=\"120\" cy=\"336\" rx=\"20\" ry=\"5\"></ellipse>\n            <rect x=\"112\" y=\"322\" width=\"16\" height=\"9\" rx=\"3\"></rect>\n            <!-- right figure with long coat -->\n            <ellipse cx=\"300\" cy=\"344\" rx=\"10\" ry=\"12\"></ellipse>\n            <path d=\"M284 356 L316 356 L322 432 L278 432 Z\"></path>\n            <rect x=\"289\" y=\"432\" width=\"9\" height=\"32\" rx=\"3\"></rect>\n            <rect x=\"302\" y=\"432\" width=\"9\" height=\"32\" rx=\"3\"></rect>\n            <ellipse cx=\"300\" cy=\"334\" rx=\"19\" ry=\"5\"></ellipse>\n            <rect x=\"293\" y=\"321\" width=\"14\" height=\"9\" rx=\"3\"></rect>\n          </g>\n          <!-- floating dust -->\n          <g fill=\"#f6c14b\" opacity=\".5\">\n            <circle cx=\"70\" cy=\"430\" r=\"2\"></circle><circle cx=\"160\" cy=\"470\" r=\"1.6\"></circle>\n            <circle cx=\"250\" cy=\"450\" r=\"2.2\"></circle><circle cx=\"340\" cy=\"500\" r=\"1.8\"></circle>\n            <circle cx=\"110\" cy=\"520\" r=\"2\"></circle><circle cx=\"200\" cy=\"540\" r=\"1.5\"></circle>\n          </g>\n          <text x=\"210\" y=\"540\" text-anchor=\"middle\" fill=\"#f3e6d2\" font-family=\"Georgia,serif\" font-size=\"15\" letter-spacing=\"6\" opacity=\".85\">ONCE UPON A TIME IN THE WEST</text>\n        </svg>",
     "posterCaption": "群山、落日、铁轨与剪影 —— 莱昂内的西部画卷"
+  },
+  {
+    "id": "20260807",
+    "date": "20260807",
+    "zhTitle": "霸王别姬",
+    "enTitle": "Farewell My Concubine",
+    "year": "1993",
+    "tagline": "戏台之上，霸王别姬唱了千年；戏台之下，一生痴缠，戏如人生，人不由己。",
+    "meta": "陈凯歌 执导 · 张国荣 / 张丰毅 / 巩俐 / 葛优 主演",
+    "ratings": [
+      {
+        "source": "IMDb",
+        "value": "8.1",
+        "sub": "Top 250 常客"
+      },
+      {
+        "source": "豆瓣",
+        "value": "9.6",
+        "sub": "华语片评分榜首"
+      },
+      {
+        "source": "烂番茄",
+        "value": "95",
+        "sub": "影评人新鲜度"
+      },
+      {
+        "source": "戛纳",
+        "value": "金棕榈",
+        "sub": "1993 最高奖金棕榈"
+      }
+    ],
+    "plot": [
+      "1924 年的北平，乱世将至。两个男孩被送进梨园科班，在戒尺与汗水里学一身唱念做打的硬功夫。一个被塑造成专演\"旦角\"的程蝶衣，一个成了演\"生角\"的段小楼——一把好嗓子，一副好身段，是他们在苦难里唯一的出路。",
+      "岁月流转，两人从挨打的学徒长成了名动京城的角儿，最常贴演的戏，正是那出缠绵悲壮的《霸王别姬》。台上是霸王与虞姬的生离死别，台下是两个人牵绊一生的情义与龃龉。一位风尘女子菊仙的出现，悄悄改写了三人之间的平衡。",
+      "而真正笼罩全片的，是门外那个天翻地覆的世纪：从军阀混战到日据，从政权更迭到那场席卷一切的运动。时代一次次改写规矩与人心，戏台却仿佛成了唯一不变的孤岛。当\"戏\"与\"真\"的界限日渐模糊，每个人都必须在忠诚、身份与生存之间，做出自己的选择。",
+      "这是一段横跨数十年的痴缠，也是一首写给\"不疯魔不成活\"的挽歌——关于艺术如何成为一个人活下去的方式，又如何在时代洪流里被反复撕扯。"
+    ],
+    "spoilerNote": "◆ 本页剧情仅呈现背景与人物关系框架，刻意不揭示关键转折与结局",
+    "highlights": [
+      {
+        "ic": "PALME",
+        "title": "华语影史首座金棕榈",
+        "body": "1993 年戛纳电影节最高奖，是第一部获此殊荣的华语电影，至今仍是华语片在世界影坛最具分量的勋章。"
+      },
+      {
+        "ic": "ROLE",
+        "title": "张国荣的程蝶衣",
+        "body": "不疯魔不成活\"的入魔式表演，雌雄莫辨、人戏不分，缔造了华语影史最令人难忘的角色之一，至今无人可替。"
+      },
+      {
+        "ic": "EPIC",
+        "title": "半部中国近代史",
+        "body": "从北洋、抗战到风云激荡的世纪洪流，六十年家国命运尽收眼底——以一出戏，写尽一个时代的悲欢。"
+      },
+      {
+        "ic": "OPERA",
+        "title": "京剧之美的影像化",
+        "body": "水袖、脸谱、唱腔、身段与锣鼓点，被镜头淬炼成流动的东方戏曲美学，每一帧都像一幅工笔。"
+      },
+      {
+        "ic": "AUTEUR",
+        "title": "陈凯歌的作者表达",
+        "body": "艺术与政治、真实与扮演的深刻互文，让这部电影既是情感史诗，也是关于\"戏与人生\"的哲学寓言。"
+      },
+      {
+        "ic": "THEME",
+        "title": "戏梦人生的宿命",
+        "body": "差一年，一个月，一天，一个时辰，都不算一辈子\"——关于忠诚、身份与痴缠的母题，余韵绕梁。"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "说好是一辈子，差一年，一个月，一天，一个时辰，都不算一辈子。",
+        "who": "程蝶衣，把一句承诺唱成了一生"
+      }
+    ],
+    "why": [
+      {
+        "no": "壹",
+        "title": "华语电影的天花板",
+        "body": "豆瓣、IMDb 常年高居华语片榜首，是几乎无争议的华语第一梯队，没看过便不算真正补课完影史。"
+      },
+      {
+        "no": "贰",
+        "title": "张国荣的封神表演",
+        "body": "程蝶衣一角，看一次便再难忘记。它告诉你，表演可以抵达怎样\"人戏合一\"的至高之境。"
+      },
+      {
+        "no": "叁",
+        "title": "京剧美学的视听盛宴",
+        "body": "即便你不懂戏，也会被那一袭水袖、一折唱腔、一幕明月击中——东方韵味，极致而克制。"
+      },
+      {
+        "no": "肆",
+        "title": "读懂\"戏如人生",
+        "body": "它讲的是时代、忠诚与自我，看完会久久沉默——好电影从不急于让你\"懂\"，而是让你\"记得\"。"
+      }
+    ],
+    "honors": [
+      "1993 戛纳电影节 金棕榈奖（华语首部）",
+      "豆瓣 华语片评分榜首常客",
+      "1994 金球奖 最佳外语片",
+      "1994 奥斯卡 最佳外语片 / 摄影 提名",
+      "IMDb Top 250 常驻",
+      "《时代》周刊 影史百佳",
+      "美国影评人协会 最佳外语片",
+      "陈凯歌 导演代表作",
+      "张国荣 程蝶衣 永留影史"
+    ],
+    "archive": [
+      {
+        "k": "中文名",
+        "v": "霸王别姬"
+      },
+      {
+        "k": "英文名",
+        "v": "Farewell My Concubine"
+      },
+      {
+        "k": "导演",
+        "v": "陈凯歌"
+      },
+      {
+        "k": "上映",
+        "v": "1993 年（中国大陆 / 中国香港）"
+      },
+      {
+        "k": "片长",
+        "v": "约 171 分钟"
+      },
+      {
+        "k": "类型",
+        "v": "剧情 / 爱情 / 历史"
+      },
+      {
+        "k": "编剧",
+        "v": "芦苇 / 李碧华（改编自李碧华同名小说）"
+      },
+      {
+        "k": "主演",
+        "v": "张国荣 / 张丰毅 / 巩俐 / 葛优"
+      },
+      {
+        "k": "制片",
+        "v": "中国 / 中国香港"
+      },
+      {
+        "k": "原著",
+        "v": "李碧华《霸王别姬》"
+      },
+      {
+        "k": "评分",
+        "v": "IMDb 8.1 ｜ 豆瓣 9.6 ｜ 烂番茄 95%"
+      }
+    ],
+    "review": "《霸王别姬》是那种极少见的电影：它把一段个人痴缠，唱成了半个世纪的家国注脚。陈凯歌用浓墨重彩的镜头，把京剧的水袖、唱腔与锣鼓点碾进每一帧画面；而张国荣的程蝶衣，则把\"人戏不分\"演到了一种近乎献祭的纯度。它不急着讨好你，也不害怕让你沉默——当那出《霸王别姬》在戏台上又一次落幕，你会忽然懂得，\"不疯魔不成活\"原来不只是一句台词，而是一个人用一生去回答的问题。华语影史绕不开的一部，值得每一个爱电影的人，安静地看上一遍。",
+    "reviewBy": "— 经典电影推荐 · 每日一部",
+    "reviewStars": 5,
+    "posterSvg": "<svg viewBox=\"0 0 420 560\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"霸王别姬海报\">\n          <defs>\n            <linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0\" stop-color=\"#2a0c12\"></stop><stop offset=\"0.5\" stop-color=\"#5e1622\"></stop>\n              <stop offset=\"1\" stop-color=\"#120608\"></stop>\n            </linearGradient>\n            <radialGradient id=\"moon\" cx=\"0.5\" cy=\"0.5\" r=\"0.5\">\n              <stop offset=\"0\" stop-color=\"#fff3d6\"></stop><stop offset=\"0.5\" stop-color=\"#f4c869\"></stop>\n              <stop offset=\"1\" stop-color=\"#f4c869\" stop-opacity=\"0\"></stop>\n            </radialGradient>\n            <linearGradient id=\"curtain\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0\" stop-color=\"#8e1a28\"></stop><stop offset=\"1\" stop-color=\"#3a0a10\"></stop>\n            </linearGradient>\n          </defs>\n          <rect width=\"420\" height=\"560\" fill=\"url(#sky)\"></rect>\n          <!-- moon -->\n          <circle cx=\"312\" cy=\"120\" r=\"78\" fill=\"url(#moon)\"></circle>\n          <circle cx=\"312\" cy=\"120\" r=\"40\" fill=\"#fff0c4\"></circle>\n          <!-- top curtain -->\n          <path d=\"M0 0 H420 V40 Q392 78 364 40 Q336 78 308 40 Q280 78 252 40 Q224 78 196 40 Q168 78 140 40 Q112 78 84 40 Q56 78 28 40 Q14 60 0 40 Z\" fill=\"url(#curtain)\"></path>\n          <rect x=\"0\" y=\"0\" width=\"420\" height=\"6\" fill=\"#d8a14a\" opacity=\".7\"></rect>\n          <!-- lantern -->\n          <g>\n            <line x1=\"78\" y1=\"40\" x2=\"78\" y2=\"70\" stroke=\"#d8a14a\" stroke-width=\"2\"></line>\n            <ellipse cx=\"78\" cy=\"92\" rx=\"20\" ry=\"26\" fill=\"#c8273b\" opacity=\".92\"></ellipse>\n            <ellipse cx=\"78\" cy=\"92\" rx=\"20\" ry=\"26\" fill=\"none\" stroke=\"#f4c869\" stroke-width=\"1.4\"></ellipse>\n            <line x1=\"78\" y1=\"118\" x2=\"78\" y2=\"130\" stroke=\"#d8a14a\" stroke-width=\"2\"></line>\n          </g>\n          <!-- stage floor -->\n          <rect y=\"430\" width=\"420\" height=\"130\" fill=\"#0c0405\"></rect>\n          <ellipse cx=\"210\" cy=\"440\" rx=\"180\" ry=\"20\" fill=\"#3a0a10\" opacity=\".5\"></ellipse>\n          <!-- two opera silhouettes -->\n          <g fill=\"#060203\">\n            <!-- 旦 (left, with headdress) -->\n            <path d=\"M150 250 q-14 0 -14 18 l0 150 q0 12 14 12 l26 0 q14 0 14 -12 l0 -150 q0 -18 -14 -18 Z\" fill=\"#0a0304\"></path>\n            <circle cx=\"163\" cy=\"232\" r=\"16\"></circle>\n            <!-- headdress plumes -->\n            <path d=\"M163 218 q-26 -34 -8 -64\" stroke=\"#d8a14a\" stroke-width=\"3\" fill=\"none\"></path>\n            <path d=\"M163 218 q26 -34 8 -64\" stroke=\"#d8a14a\" stroke-width=\"3\" fill=\"none\"></path>\n            <circle cx=\"155\" cy=\"156\" r=\"5\" fill=\"#e0738a\"></circle>\n            <circle cx=\"171\" cy=\"156\" r=\"5\" fill=\"#e0738a\"></circle>\n            <!-- water sleeve -->\n            <path d=\"M136 280 q-30 20 -10 60\" stroke=\"#e9d9c9\" stroke-width=\"10\" fill=\"none\" opacity=\".85\" stroke-linecap=\"round\"></path>\n          </g>\n          <g fill=\"#060203\">\n            <!-- 生 / 霸王 (right, armor) -->\n            <path d=\"M250 244 q-16 0 -16 18 l0 158 q0 12 16 12 l34 0 q16 0 16 -12 l0 -158 q0 -18 -16 -18 Z\"></path>\n            <circle cx=\"267\" cy=\"224\" r=\"17\"></circle>\n            <!-- helmet feather -->\n            <path d=\"M267 208 q4 -40 30 -52\" stroke=\"#c8273b\" stroke-width=\"5\" fill=\"none\"></path>\n            <path d=\"M267 208 q-4 -40 -30 -52\" stroke=\"#c8273b\" stroke-width=\"5\" fill=\"none\"></path>\n            <!-- shoulder armor -->\n            <path d=\"M238 268 q29 16 58 0 l-4 16 q-25 12 -50 0 Z\" fill=\"#3a0a10\"></path>\n          </g>\n          <!-- plum blossom branch -->\n          <g stroke=\"#6b2a1c\" stroke-width=\"3\" fill=\"none\" opacity=\".8\">\n            <path d=\"M20 470 q40 -30 70 -10\"></path>\n            <path d=\"M50 462 q14 -22 34 -18\"></path>\n          </g>\n          <g fill=\"#e0738a\" opacity=\".9\">\n            <circle cx=\"86\" cy=\"458\" r=\"4\"></circle><circle cx=\"92\" cy=\"464\" r=\"4\"></circle><circle cx=\"80\" cy=\"466\" r=\"4\"></circle>\n            <circle cx=\"70\" cy=\"476\" r=\"3.4\"></circle><circle cx=\"58\" cy=\"444\" r=\"3.4\"></circle>\n          </g>\n          <text x=\"210\" y=\"540\" text-anchor=\"middle\" fill=\"#f6ece4\" font-family=\"Georgia,serif\" font-size=\"14\" letter-spacing=\"5\" opacity=\".85\">FAREWELL MY CONCUBINE</text>\n        </svg>",
+    "posterCaption": "戏台、明月、红绸与圆场身影 —— 一生的痴缠开场"
+  },
+  {
+    "id": "20260809",
+    "date": "20260809",
+    "zhTitle": "沉默的羔羊",
+    "enTitle": "The Silence of the Lambs",
+    "year": "19",
+    "tagline": "",
+    "meta": "导演 乔纳森·戴米 主演 朱迪·福斯特 · 安东尼·霍普金斯 类型 心理惊悚 / 犯罪",
+    "ratings": [],
+    "plot": [
+      "年轻的 FBI 实习生克拉丽丝·史达琳，被派去处理一桩令人不安的连环命案——一名代号\"野牛比尔\"的杀手专门绑架女性，并在事后剥下她们的皮肤。线索稀少，案情胶着，上司交给了她一项特殊任务。",
+      "她需要前往一所高度戒备的监狱，去请教一位被囚禁的精神病学家：汉尼拔·莱克特博士。此人智商超群、优雅博学，却也是一名令人闻风丧胆的食人杀人魔。汉尼拔答应为克拉丽丝提供线索，但条件是——她必须交出自己深藏心底的秘密。",
+      "于是，一场在铁栏两侧展开的猫鼠博弈就此开始。克拉丽丝要在黑暗中直面自己的童年创伤，而观众则被拖入一场关于人性深渊的注视之中。"
+    ],
+    "spoilerNote": "无剧透 · 仅呈现故事设定",
+    "highlights": [
+      {
+        "ic": "",
+        "title": "",
+        "body": "第 64 届奥斯卡一举包揽最佳影片、导演、男主、女主、改编剧本五项最高奖，成为影史仅有的三部\"大满贯\"电影之一，也是唯一摘得最佳影片的恐怖片。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "安东尼·霍普金斯全片出镜约 16 分钟，却凭汉尼拔封神，拿下奥斯卡最佳男主角，塑造出影史最令人胆寒又最优雅的反派。一个眼神，便足以令人脊背发凉。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "在男性主导的 FBI 中突围的年轻女探员，坚韧、敏感又勇敢。她不是被拯救的客体，而是故事真正的主角，其成长弧线正是影片救赎主题的核心。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "戴米用大量的特写与对视，营造出\"被注视\"的窒息感。克拉丽丝、汉尼拔、野牛比尔，三方彼此窥探——恐惧不再来自 jump scare，而来自对人性的直视。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "从封面骷髅蛾到童年\"羔羊尖叫\"的创伤隐喻，影片把惊悚升华为诗意的象征系统。时隔 35 年，这些意象依然鲜活，成为流行文化难以磨灭的印记。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "2011 年入选美国国家电影保护局典藏，AFI 百年百大电影第 74 位。2026 年迎来 35 周年重映，新一代观众仍在影院为它屏息——真正的杰作从不过时。"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "勇气，克拉丽丝。Courage, Clarice.",
+        "who": ""
+      }
+    ],
+    "why": [],
+    "honors": [
+      "奥斯卡 大满贯 五项大奖",
+      "唯一获 最佳影片 的恐怖片",
+      "AFI 百年百大电影 第 74 位",
+      "国家电影登记处 典藏 (2011)",
+      "全球票房 $2.73 亿",
+      "豆瓣 8.9 · IMDb 8.6"
+    ],
+    "archive": [
+      {
+        "k": "中文片名",
+        "v": "沉默的羔羊"
+      },
+      {
+        "k": "英文片名",
+        "v": "The Silence of the Lambs"
+      },
+      {
+        "k": "导演",
+        "v": "乔纳森·戴米 (Jonathan Demme)"
+      },
+      {
+        "k": "主演",
+        "v": "朱迪·福斯特 / 安东尼·霍普金斯 / 斯科特·格伦"
+      },
+      {
+        "k": "类型",
+        "v": "心理惊悚 · 犯罪 · 悬疑"
+      },
+      {
+        "k": "上映年份",
+        "v": "1991 年（美国）"
+      },
+      {
+        "k": "片长",
+        "v": "118 分钟"
+      },
+      {
+        "k": "国家 / 语言",
+        "v": "美国 / 英语"
+      },
+      {
+        "k": "改编来源",
+        "v": "托马斯·哈里斯 同名小说"
+      },
+      {
+        "k": "编剧",
+        "v": "泰德·塔利 (Ted Tally)"
+      },
+      {
+        "k": "分级",
+        "v": "R 级"
+      },
+      {
+        "k": "票房",
+        "v": "预算 $1900 万 · 全球 $2.73 亿"
+      }
+    ],
+    "review": "它不靠尖叫取胜，而用沉默与对视将你钉在座位上。当汉尼拔在铁栏后微微歪头、低声说出那句\"勇气，克拉丽丝\"时，你就知道——自己正凝视着影史最优雅的恶魔。一部把惊悚拍成诗的电影，值得每一个爱电影的人，至少屏息看一次。",
+    "reviewBy": "— 经典电影推荐 · 编辑部",
+    "reviewStars": 5,
+    "posterSvg": "<svg class=\"moth\" viewBox=\"0 0 420 460\" aria-label=\"骷髅蛾\">\n          <g>\n            <path d=\"M205,108 C140,70 50,78 36,150 C28,196 70,238 150,212 C184,200 200,160 205,140 Z\" fill=\"url(#wing)\" stroke=\"#caa44d\" stroke-width=\"1.1\" stroke-opacity=\".5\"></path>\n            <path d=\"M205,168 C150,178 78,206 80,262 C82,308 150,320 196,272 C204,250 206,200 205,180 Z\" fill=\"url(#wing2)\" stroke=\"#caa44d\" stroke-width=\"1.1\" stroke-opacity=\".4\"></path>\n            <ellipse cx=\"92\" cy=\"148\" rx=\"20\" ry=\"13\" fill=\"#0d0a08\" stroke=\"#caa44d\" stroke-width=\"1\" stroke-opacity=\".5\"></ellipse>\n            <ellipse cx=\"92\" cy=\"148\" rx=\"9\" ry=\"6\" fill=\"#7c1a17\"></ellipse>\n            <circle cx=\"118\" cy=\"262\" r=\"11\" fill=\"#0d0a08\" stroke=\"#caa44d\" stroke-width=\"1\" stroke-opacity=\".5\"></circle>\n            <circle cx=\"118\" cy=\"262\" r=\"4.5\" fill=\"#c9a24b\"></circle>\n          </g>\n          <g transform=\"matrix(-1,0,0,1,420,0)\">\n            <path d=\"M205,108 C140,70 50,78 36,150 C28,196 70,238 150,212 C184,200 200,160 205,140 Z\" fill=\"url(#wing)\" stroke=\"#caa44d\" stroke-width=\"1.1\" stroke-opacity=\".5\"></path>\n            <path d=\"M205,168 C150,178 78,206 80,262 C82,308 150,320 196,272 C204,250 206,200 205,180 Z\" fill=\"url(#wing2)\" stroke=\"#caa44d\" stroke-width=\"1.1\" stroke-opacity=\".4\"></path>\n            <ellipse cx=\"92\" cy=\"148\" rx=\"20\" ry=\"13\" fill=\"#0d0a08\" stroke=\"#caa44d\" stroke-width=\"1\" stroke-opacity=\".5\"></ellipse>\n            <ellipse cx=\"92\" cy=\"148\" rx=\"9\" ry=\"6\" fill=\"#7c1a17\"></ellipse>\n            <circle cx=\"118\" cy=\"262\" r=\"11\" fill=\"#0d0a08\" stroke=\"#caa44d\" stroke-width=\"1\" stroke-opacity=\".5\"></circle>\n            <circle cx=\"118\" cy=\"262\" r=\"4.5\" fill=\"#c9a24b\"></circle>\n          </g>\n          <ellipse cx=\"210\" cy=\"135\" rx=\"20\" ry=\"26\" fill=\"url(#body)\"></ellipse>\n          <path d=\"M210,158 C198,180 198,260 210,300 C222,260 222,180 210,158 Z\" fill=\"url(#body)\"></path>\n          <circle cx=\"210\" cy=\"104\" r=\"13\" fill=\"#15110f\"></circle>\n          <path d=\"M203,98 C180,70 160,58 146,52\" fill=\"none\" stroke=\"#caa44d\" stroke-width=\"2\" stroke-opacity=\".7\"></path>\n          <path d=\"M217,98 C240,70 260,58 274,52\" fill=\"none\" stroke=\"#caa44d\" stroke-width=\"2\" stroke-opacity=\".7\"></path>\n          <ellipse cx=\"210\" cy=\"128\" rx=\"15\" ry=\"17\" fill=\"url(#skull)\"></ellipse>\n          <ellipse cx=\"204\" cy=\"124\" rx=\"4\" ry=\"5\" fill=\"#1a1310\"></ellipse>\n          <ellipse cx=\"216\" cy=\"124\" rx=\"4\" ry=\"5\" fill=\"#1a1310\"></ellipse>\n          <path d=\"M210,130 L207,138 L213,138 Z\" fill=\"#1a1310\"></path>\n        </svg>",
+    "posterCaption": ""
   }
 ]
