@@ -12,6 +12,9 @@
 
 set -euo pipefail
 
+# launchd 环境 PATH 很精简，手动补全 node/npm/git 路径
+export PATH="/Users/admin/.local/bin:/Users/admin/.hermes/node/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SRC="${DAILY_SRC:-/Users/admin/WorkBuddy/automation-20260423112820}"
 cd "$ROOT"

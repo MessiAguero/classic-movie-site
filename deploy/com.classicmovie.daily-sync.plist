@@ -10,37 +10,13 @@
 		<string>/Users/admin/codex/0806/classic-movie-site/tools/daily-sync.sh</string>
 	</array>
 	<key>RunAtLoad</key>
-	<false/>
+	<true/>
 	<key>StandardErrorPath</key>
 	<string>/tmp/classicmovie-sync.err.log</string>
 	<key>StandardOutPath</key>
 	<string>/tmp/classicmovie-sync.log</string>
-	<key>StartCalendarInterval</key>
-	<array>
-		<dict>
-			<key>Hour</key>
-			<integer>0</integer>
-			<key>Minute</key>
-			<integer>10</integer>
-		</dict>
-		<dict>
-			<key>Hour</key>
-			<integer>6</integer>
-			<key>Minute</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Hour</key>
-			<integer>12</integer>
-			<key>Minute</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Hour</key>
-			<integer>18</integer>
-			<key>Minute</key>
-			<integer>0</integer>
-		</dict>
-	</array>
+	<!-- 每 6 小时检查一次（21600 秒），避免睡眠错过固定时刻 -->
+	<key>StartInterval</key>
+	<integer>21600</integer>
 </dict>
 </plist>
