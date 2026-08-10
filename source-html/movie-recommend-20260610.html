@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>龙猫 — 经典电影推荐</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --forest-dark: #1a2418;
+    --forest-mid: #2d3d2a;
+    --forest-light: #4a6b42;
+    --leaf-light: #7cb65c;
+    --leaf-bright: #9dd06d;
+    --twilight-blue: #1a2640;
+    --twilight-mid: #2a4060;
+    --moon-glow: #f0e6c0;
+    --warm-cream: #f5f0e0;
+    --warm-tan: #d4c8a0;
+    --warm-amber: #c9a84c;
+    --soft-brown: #8b7355;
+    --text-light: #e8e4d8;
+    --text-mid: #b8b0a0;
+    --card-bg: rgba(45, 61, 42, 0.6);
+    --card-border: rgba(124, 182, 92, 0.2);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--forest-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ── Canvas ── */
+  #particle-canvas {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--forest-dark); }
+  ::-webkit-scrollbar-thumb { background: var(--forest-light); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--leaf-light); }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(180deg,
+      rgba(26, 36, 24, 0.3) 0%,
+      rgba(26, 36, 24, 0.6) 50%,
+      rgba(26, 36, 24, 0.9) 100%
+    );
+  }
+
+  .hero-year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(6rem, 18vw, 14rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(124, 182, 92, 0.25);
+    line-height: 1;
+    letter-spacing: 0.05em;
+    user-select: none;
+    opacity: 0;
+    animation: fadeInUp 1.2s ease 0.2s forwards;
+  }
+
+  .hero-title-jp {
+    font-size: clamp(1.2rem, 3vw, 2.2rem);
+    font-weight: 300;
+    color: var(--warm-tan);
+    letter-spacing: 0.3em;
+    margin-top: -0.5rem;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.5s forwards;
+  }
+
+  .hero-title-cn {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 900;
+    color: var(--moon-glow);
+    text-shadow: 0 0 40px rgba(240, 230, 192, 0.15);
+    margin-top: 0.5rem;
+    letter-spacing: 0.15em;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.7s forwards;
+  }
+
+  .hero-title-en {
+    font-size: clamp(0.9rem, 1.8vw, 1.4rem);
+    font-weight: 300;
+    color: var(--text-mid);
+    letter-spacing: 0.25em;
+    margin-top: 0.3rem;
+    font-style: italic;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.9s forwards;
+  }
+
+  .hero-tagline {
+    margin-top: 2rem;
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--leaf-bright);
+    letter-spacing: 0.1em;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1.1s forwards;
+    position: relative;
+  }
+
+  .hero-tagline::before, .hero-tagline::after {
+    content: '✦';
+    margin: 0 1rem;
+    color: var(--warm-amber);
+    font-size: 0.6em;
+  }
+
+  .hero-credits {
+    margin-top: 2.5rem;
+    font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+    color: var(--text-mid);
+    letter-spacing: 0.15em;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1.3s forwards;
+  }
+
+  .hero-credits span {
+    display: inline-block;
+    margin: 0 0.8rem;
+  }
+
+  .hero-credits .dot { color: var(--leaf-light); margin: 0 0.3rem; }
+
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0.5rem; color: var(--text-mid);
+    font-size: 0.75rem; letter-spacing: 0.1em;
+    opacity: 0;
+    animation: fadeInUp 1s ease 1.8s forwards;
+  }
+
+  .scroll-hint .arrow {
+    width: 1.5rem; height: 1.5rem;
+    border-right: 1.5px solid var(--text-mid);
+    border-bottom: 1.5px solid var(--text-mid);
+    transform: rotate(45deg);
+    animation: bounceArrow 2s ease infinite;
+  }
+
+  /* ── Container ── */
+  .container {
+    position: relative; z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+  }
+
+  /* ── Section ── */
+  .section {
+    margin-top: 5rem;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .section-header {
+    display: flex; align-items: center;
+    gap: 1rem; margin-bottom: 2rem;
+  }
+
+  .section-number {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--leaf-light);
+    opacity: 0.5;
+  }
+
+  .section-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--card-border), transparent);
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    color: var(--moon-glow);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Synopsis ── */
+  .synopsis-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .synopsis-card p {
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    line-height: 2;
+    color: var(--text-light);
+    text-indent: 2em;
+  }
+
+  .synopsis-card .spoiler-free {
+    display: inline-block;
+    margin-top: 1.2rem;
+    padding: 0.3rem 1rem;
+    border: 1px solid var(--warm-amber);
+    border-radius: 20px;
+    color: var(--warm-amber);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Rating Badges ── */
+  .ratings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .rating-badge {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.2rem 1rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.4s ease;
+  }
+
+  .rating-badge:hover {
+    border-color: var(--leaf-light);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(124, 182, 92, 0.15);
+  }
+
+  .rating-source {
+    font-size: 0.75rem;
+    color: var(--text-mid);
+    letter-spacing: 0.1em;
+  }
+
+  .rating-value {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--leaf-bright);
+    margin: 0.3rem 0 0.2rem;
+  }
+
+  .rating-bar {
+    width: 100%; height: 3px;
+    background: rgba(124, 182, 92, 0.15);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 0.4rem;
+  }
+
+  .rating-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--forest-light), var(--leaf-bright));
+    border-radius: 2px;
+    width: 0%;
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .rating-badge.visible .rating-bar-fill { width: var(--target); }
+
+  /* ── Highlights ── */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .highlight-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 1.8rem 1.5rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.4s ease;
+    cursor: default;
+  }
+
+  .highlight-card:hover {
+    border-color: var(--leaf-light);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(124, 182, 92, 0.12);
+  }
+
+  .highlight-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .highlight-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--moon-glow);
+    margin-bottom: 0.5rem;
+  }
+
+  .highlight-desc {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+
+  /* ── Quote ── */
+  .quote-block {
+    margin-top: 3rem;
+    text-align: center;
+    padding: 2.5rem 2rem;
+    background: linear-gradient(135deg, rgba(45, 61, 42, 0.4), rgba(26, 38, 64, 0.4));
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    position: relative;
+  }
+
+  .quote-block::before {
+    content: '\201C';
+    font-family: 'Noto Serif SC', serif;
+    font-size: 4rem;
+    color: var(--warm-amber);
+    opacity: 0.3;
+    position: absolute;
+    top: -0.5rem; left: 1.5rem;
+    line-height: 1;
+  }
+
+  .quote-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1rem, 1.8vw, 1.3rem);
+    color: var(--warm-cream);
+    line-height: 1.9;
+    font-style: italic;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .quote-source {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-mid);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Why Watch ── */
+  .why-list {
+    display: flex; flex-direction: column;
+    gap: 1rem;
+  }
+
+  .why-item {
+    display: flex; gap: 1.2rem;
+    align-items: flex-start;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.4s ease;
+  }
+
+  .why-item:hover {
+    border-color: var(--twilight-mid);
+    transform: translateX(4px);
+  }
+
+  .why-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--leaf-light);
+    opacity: 0.6;
+    min-width: 2rem;
+    line-height: 1.5;
+  }
+
+  .why-content h4 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--moon-glow);
+    margin-bottom: 0.4rem;
+  }
+
+  .why-content p {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+  }
+
+  /* ── Film Facts ── */
+  .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .fact-item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .fact-label {
+    font-size: 0.7rem;
+    color: var(--leaf-light);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .fact-value {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.95rem;
+    color: var(--text-light);
+  }
+
+  /* ── Verdict ── */
+  .verdict {
+    margin-top: 4rem;
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg,
+      rgba(124, 182, 92, 0.08),
+      rgba(201, 168, 76, 0.08)
+    );
+    border-radius: 16px;
+    border: 1px solid rgba(124, 182, 92, 0.15);
+  }
+
+  .verdict-stars {
+    font-size: 2rem;
+    color: var(--warm-amber);
+    letter-spacing: 0.3em;
+    margin-bottom: 1rem;
+  }
+
+  .verdict-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--moon-glow);
+    margin-bottom: 0.8rem;
+  }
+
+  .verdict p {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.9;
+  }
+
+  .verdict-signature {
+    margin-top: 1.5rem;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.85rem;
+    color: var(--leaf-light);
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounceArrow {
+    0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.4; }
+    50% { transform: rotate(45deg) translateY(6px); opacity: 1; }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .ratings { grid-template-columns: repeat(2, 1fr); }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .facts-grid { grid-template-columns: repeat(2, 1fr); }
+    .synopsis-card { padding: 1.5rem; }
+    .hero { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-year">1988</div>
+  <div class="hero-title-jp">となりのトトロ</div>
+  <div class="hero-title-cn">龙 猫</div>
+  <div class="hero-title-en">My Neighbor Totoro</div>
+  <div class="hero-tagline">只有内心纯真的人，才能看见奇迹</div>
+  <div class="hero-credits">
+    <span>宫崎骏</span><span class="dot">✦</span><span>吉卜力工作室</span><span class="dot">✦</span><span>久石让</span>
+  </div>
+  <div class="scroll-hint">
+    <span>向下探索</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- ── 剧情梗概 ── -->
+  <section class="section" data-delay="0">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <div class="section-line"></div>
+      <h2 class="section-title">剧情梗概</h2>
+    </div>
+    <div class="synopsis-card">
+      <p>
+        昭和时代的日本乡村，两姐妹小月和小梅随父亲搬进了一栋被森林环绕的老房子。新家附近有一棵巨大的樟树，树下住着一种神秘的生物——只有天真无邪的孩子才能看见的龙猫。某天，小梅在院子里追逐小龙猫时，意外发现了正在树洞里呼呼大睡的大龙猫。从此，姐妹俩的平凡暑假中，多了一份来自大自然的不可思议的温柔陪伴。在龙猫的带领下，她们经历了一段段充满梦幻与温暖的奇遇。
+      </p>
+      <span class="spoiler-free">✦ 无剧透 · 纯真体验 ✦</span>
+    </div>
+  </section>
+
+  <!-- ── 评分 ── -->
+  <section class="section" data-delay="100">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <div class="section-line"></div>
+      <h2 class="section-title">口碑评分</h2>
+    </div>
+    <div class="ratings">
+      <div class="rating-badge" data-target="81%">
+        <div class="rating-source">IMDb</div>
+        <div class="rating-value">8.1</div>
+        <div class="rating-bar"><div class="rating-bar-fill" style="--target:81%"></div></div>
+      </div>
+      <div class="rating-badge" data-target="92%">
+        <div class="rating-source">豆瓣</div>
+        <div class="rating-value">9.2</div>
+        <div class="rating-bar"><div class="rating-bar-fill" style="--target:92%"></div></div>
+      </div>
+      <div class="rating-badge" data-target="94%">
+        <div class="rating-source">烂番茄</div>
+        <div class="rating-value">94%</div>
+        <div class="rating-bar"><div class="rating-bar-fill" style="--target:94%"></div></div>
+      </div>
+      <div class="rating-badge" data-target="87%">
+        <div class="rating-source">Metacritic</div>
+        <div class="rating-value">87</div>
+        <div class="rating-bar"><div class="rating-bar-fill" style="--target:87%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 六大亮点 ── -->
+  <section class="section" data-delay="200">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <div class="section-line"></div>
+      <h2 class="section-title">亮点所在</h2>
+    </div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <span class="highlight-icon">🌳</span>
+        <div class="highlight-title">宫崎骏的魔法世界</div>
+        <div class="highlight-desc">每一帧都如手绘水彩画般细腻——郁郁葱葱的森林、生机勃勃的田野、夏日的蝉鸣和光影交错，构筑了一个令人心驰神往的童话世界。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🎵</span>
+        <div class="highlight-title">久石让的经典配乐</div>
+        <div class="highlight-desc">《我的邻居龙猫》《散步》等旋律早已成为几代人的共同记忆。音乐与画面完美交融，让每一个场景都浸透着纯粹的感动。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">��</span>
+        <div class="highlight-title">龙猫——动画史最治愈角色</div>
+        <div class="highlight-desc">胖乎乎、毛茸茸的龙猫，用沉默的陪伴和温柔的微笑治愈了无数观众。它不仅是孩子们的守护者，更是所有人心中对纯真与善意的永恒寄托。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🌙</span>
+        <div class="highlight-title">月夜下的橡子舞</div>
+        <div class="highlight-desc">龙猫带着姐妹俩在月光下跳起让橡子发芽的舞蹈——这短短几分钟，是动画史最纯粹的魔力时刻，无需一句台词便让人热泪盈眶。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">🌸</span>
+        <div class="highlight-title">无冲突的叙事奇迹</div>
+        <div class="highlight-desc">没有反派、没有正邪对抗，仅靠生活化的细节和细腻的情感描写，就构建了一个令人动容的故事。这在动画叙事中极为罕见，却极为动人。</div>
+      </div>
+      <div class="highlight-card">
+        <span class="highlight-icon">👧</span>
+        <div class="highlight-title">童年的纯真赞歌</div>
+        <div class="highlight-desc">姐姐小月的责任与担当、妹妹小梅的天真与勇敢，姐妹之间真实而动人的情感，让每一个曾经是孩子的人都能在其中找到自己的影子。</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <div class="quote-text">
+        "如果把童年再放映一遍，我们一定会先大笑，然后放声痛哭，最后挂着泪，微笑着睡去。"
+      </div>
+      <div class="quote-source">— 宫崎骏，《龙猫》</div>
+    </div>
+  </section>
+
+  <!-- ── 为何值得看 ── -->
+  <section class="section" data-delay="300">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <div class="section-line"></div>
+      <h2 class="section-title">为什么值得一看</h2>
+    </div>
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div class="why-content">
+          <h4>跨越年龄的治愈力量</h4>
+          <p>无论你是孩子还是成年人，《龙猫》都能触及你内心最柔软的角落。它像一场温暖的拥抱，让你在纷扰的现实中找回片刻宁静。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div class="why-content">
+          <h4>吉卜力美学的巅峰代表</h4>
+          <p>作为吉卜力最经典的标志性作品，龙猫的形象已成为整个品牌的象征。影片中的每一帧乡村风景都美得令人窒息，堪称手绘动画的教科书级作品。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div class="why-content">
+          <h4>纯粹的情感，无需戏剧冲突</h4>
+          <p>这部电影证明了——真正伟大的故事，不需要反派、不需要惊天动地的情节。日常生活中的爱、陪伴与想象力，本身就是最动人的故事。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-num">04</div>
+        <div class="why-content">
+          <h4>永恒的文化符号，不可错过</h4>
+          <p>龙猫早已超越电影本身，成为治愈与童真的世界级文化符号。错过它，错过的是人类动画史上的一个里程碑，也是一次心灵SPA般的观影体验。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 影片档案 ── -->
+  <section class="section" data-delay="400">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <div class="section-line"></div>
+      <h2 class="section-title">影片档案</h2>
+    </div>
+    <div class="facts-grid">
+      <div class="fact-item">
+        <div class="fact-label">导演</div>
+        <div class="fact-value">宫崎骏</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">制片</div>
+        <div class="fact-value">吉卜力工作室</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">配乐</div>
+        <div class="fact-value">久石让</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">片长</div>
+        <div class="fact-value">86 分钟</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">上映年份</div>
+        <div class="fact-value">1988 年</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">类型</div>
+        <div class="fact-value">动画 / 奇幻 / 家庭</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">奖项</div>
+        <div class="fact-value">日本电影蓝丝带奖 特别奖</div>
+      </div>
+      <div class="fact-item">
+        <div class="fact-label">影响力</div>
+        <div class="fact-value">《帝国》杂志 史上最伟大动画第 2 位</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 编辑评语 ── -->
+  <div class="verdict">
+    <div class="verdict-stars">★★★★★</div>
+    <div class="verdict-title">编辑评语</div>
+    <p>
+      《龙猫》是一部不需要解释"为什么好"的电影。它存在的本身，就是对这个世界温柔与美好的证明。当你感到疲惫时，龙猫会在月夜的树梢上等你——坐上那辆猫巴士，它会带你回到童年。
+    </p>
+    <div class="verdict-signature">— 经典电影推荐 · 2026年6月</div>
+  </div>
+
+</div>
+
+<script>
+  // ── Canvas 粒子系统 ──
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Firefly {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.r = 1 + Math.random() * 3;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = (Math.random() - 0.5) * 0.3;
+      this.life = 0;
+      this.maxLife = 120 + Math.random() * 180;
+      this.phase = Math.random() * Math.PI * 2;
+      this.wobble = Math.random() * 0.5 + 0.3;
+      this.trail = [];
+    }
+    update() {
+      this.life++;
+      if (this.life > this.maxLife) { this.reset(); return; }
+
+      this.vx += (Math.random() - 0.5) * 0.04;
+      this.vy += (Math.random() - 0.5) * 0.04;
+      this.vx *= 0.98;
+      this.vy *= 0.98;
+
+      this.x += this.vx + Math.sin(this.life * 0.02 + this.phase) * this.wobble * 0.3;
+      this.y += this.vy + Math.cos(this.life * 0.015 + this.phase) * this.wobble * 0.2;
+
+      if (this.x < 0) this.x = W;
+      if (this.x > W) this.x = 0;
+      if (this.y < 0) this.y = H;
+      if (this.y > H) this.y = 0;
+
+      this.trail.push({ x: this.x, y: this.y });
+      if (this.trail.length > 8) this.trail.shift();
+    }
+    draw() {
+      const alpha = Math.sin(this.life / this.maxLife * Math.PI) * 0.7;
+      const pulse = 0.7 + 0.3 * Math.sin(this.life * 0.04 + this.phase);
+
+      // Trail
+      for (let i = 0; i < this.trail.length; i++) {
+        const ta = (i / this.trail.length) * alpha * 0.2;
+        ctx.beginPath();
+        ctx.arc(this.trail[i].x, this.trail[i].y, this.r * (i / this.trail.length) * 0.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(157, 208, 109, ${ta})`;
+        ctx.fill();
+      }
+
+      // Glow
+      const grd = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r * 8 * pulse);
+      grd.addColorStop(0, `rgba(157, 208, 109, ${alpha * 0.6})`);
+      grd.addColorStop(0.3, `rgba(201, 168, 76, ${alpha * 0.2})`);
+      grd.addColorStop(1, 'rgba(157, 208, 109, 0)');
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r * 8 * pulse, 0, Math.PI * 2);
+      ctx.fillStyle = grd;
+      ctx.fill();
+
+      // Core
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r * pulse, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(240, 230, 192, ${alpha})`;
+      ctx.fill();
+    }
+  }
+
+  // ── Soot Sprites (煤煤虫) ──
+  class SootSprite {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * W;
+      this.y = H * (0.2 + Math.random() * 0.6);
+      this.r = 2 + Math.random() * 2;
+      this.vx = (Math.random() - 0.5) * 0.6;
+      this.vy = (Math.random() - 0.5) * 0.6;
+      this.bounce = 0;
+    }
+    update() {
+      this.bounce += 0.03;
+      this.x += this.vx;
+      this.y += this.vy + Math.sin(this.bounce) * 0.15;
+      this.vx *= 0.995;
+      this.vy *= 0.995;
+
+      if (this.x < 0) this.x = W;
+      if (this.x > W) this.x = 0;
+      if (this.y < 0) this.y = H;
+      if (this.y > H) this.y = 0;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(40, 35, 30, 0.7)';
+      ctx.fill();
+      // tiny eyes
+      ctx.beginPath();
+      ctx.arc(this.x - this.r * 0.4, this.y - this.r * 0.2, this.r * 0.2, 0, Math.PI * 2);
+      ctx.arc(this.x + this.r * 0.4, this.y - this.r * 0.2, this.r * 0.2, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+      ctx.fill();
+    }
+  }
+
+  const fireflies = Array.from({ length: 50 }, () => new Firefly());
+  const soots = Array.from({ length: 12 }, () => new SootSprite());
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Dark overlay gradient
+    const grd = ctx.createRadialGradient(W * 0.5, H * 0.3, 0, W * 0.5, H * 0.3, H * 0.8);
+    grd.addColorStop(0, 'rgba(26, 38, 64, 0.3)');
+    grd.addColorStop(1, 'rgba(26, 36, 24, 0)');
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, W, H);
+
+    soots.forEach(s => { s.update(); s.draw(); });
+    fireflies.forEach(f => { f.update(); f.draw(); });
+
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+
+  // ── IntersectionObserver ──
+  const sections = document.querySelectorAll('.section');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const delay = parseInt(entry.target.dataset.delay) || 0;
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+          // Trigger rating bars inside this section
+          entry.target.querySelectorAll('.rating-badge').forEach(b => {
+            b.classList.add('visible');
+          });
+        }, delay);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Also observe rating badges directly
+  const badges = document.querySelectorAll('.rating-badge');
+  const badgeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        badgeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  badges.forEach(b => badgeObserver.observe(b));
+</script>
+
+</body>
+</html>

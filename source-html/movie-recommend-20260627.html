@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>末代皇帝 · 电影推荐</title>
+<style>
+/* ── Reset & Base ── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family: "PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  background:#0a0806;
+  color:#f0e8d8;
+  overflow-x:hidden;
+  line-height:1.7;
+}
+
+/* ── Canvas Background ── */
+#particleCanvas{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  z-index:0;pointer-events:none;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#0a0806}
+::-webkit-scrollbar-thumb{background:#8b6914;border-radius:3px}
+
+/* ── Hero ── */
+.hero{
+  position:relative;z-index:1;
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:2rem;
+}
+.hero-year{
+  font-size:clamp(6rem,18vw,14rem);
+  font-weight:900;
+  background:linear-gradient(180deg,#d4a843 0%,#8b6914 40%,#5a4210 70%,#8b6914 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  letter-spacing:0.15em;line-height:1;
+  opacity:0;transform:scale(0.8);transition:all 1.2s cubic-bezier(0.16,1,0.3,1);
+  position:relative;
+}
+.hero-year.reveal{opacity:1;transform:scale(1)}
+.hero-tagline{
+  font-size:clamp(1.6rem,4vw,3.4rem);
+  font-weight:300;
+  color:#d4a843;
+  letter-spacing:0.4em;
+  margin:1rem 0 0.5rem;
+  opacity:0;transform:translateY(30px);
+  transition:all 1s cubic-bezier(0.16,1,0.3,1) 0.3s;
+}
+.hero-tagline.reveal{opacity:1;transform:translateY(0)}
+.hero-sub{
+  font-size:clamp(0.9rem,1.4vw,1.2rem);
+  color:#a09070;
+  letter-spacing:0.3em;
+  opacity:0;transform:translateY(20px);
+  transition:all 1s cubic-bezier(0.16,1,0.3,1) 0.6s;
+}
+.hero-sub.reveal{opacity:1;transform:translateY(0)}
+.hero-scroll{
+  position:absolute;bottom:2.5rem;
+  font-size:0.75rem;color:#8b7a50;letter-spacing:0.2em;
+  animation:bounceDown 2s ease-in-out infinite;
+}
+@keyframes bounceDown{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(8px)}
+}
+
+/* ── Dragon Divider ── */
+.dragon-divider{
+  position:relative;z-index:1;
+  text-align:center;padding:2rem 0;opacity:0.3;
+  font-size:2.5rem;color:#8b6914;
+}
+
+/* ── Sections ── */
+section{
+  position:relative;z-index:1;
+  max-width:1100px;margin:0 auto;padding:5rem 2rem;
+}
+.section-title{
+  font-size:clamp(1.6rem,3vw,2.4rem);
+  font-weight:700;color:#d4a843;
+  text-align:center;margin-bottom:0.6rem;
+  letter-spacing:0.15em;
+}
+.section-sub{
+  text-align:center;color:#8b7a50;
+  font-size:0.85rem;letter-spacing:0.2em;
+  margin-bottom:3rem;
+}
+.section-title::after{
+  content:'';display:block;width:60px;height:2px;
+  background:linear-gradient(90deg,transparent,#d4a843,transparent);
+  margin:0.8rem auto 0;
+}
+
+/* ── Rating Bars ── */
+.rating-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:2rem;margin-top:2rem;
+}
+.rating-item{opacity:0;transform:translateY(30px);transition:all 0.8s cubic-bezier(0.16,1,0.3,1)}
+.rating-item.reveal{opacity:1;transform:translateY(0)}
+.rating-label{
+  display:flex;justify-content:space-between;
+  font-size:0.85rem;margin-bottom:0.4rem;
+}
+.rating-label span:first-child{color:#a09070}
+.rating-label span:last-child{color:#d4a843;font-weight:700}
+.rating-bar-bg{
+  height:4px;background:#2a2218;border-radius:2px;overflow:hidden;
+}
+.rating-bar-fill{
+  height:100%;width:0;
+  background:linear-gradient(90deg,#8b6914,#d4a843);
+  border-radius:2px;transition:width 1.5s cubic-bezier(0.16,1,0.3,1);
+}
+
+/* ── Plot ── */
+.plot-content{
+  max-width:800px;margin:0 auto;
+  font-size:clamp(0.95rem,1.2vw,1.08rem);
+  color:#c8b898;line-height:2;
+  text-align:justify;
+  opacity:0;transform:translateY(30px);
+  transition:all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.plot-content.reveal{opacity:1;transform:translateY(0)}
+.no-spoiler-badge{
+  display:inline-block;
+  padding:0.25rem 0.8rem;
+  border:1px solid #8b6914;
+  border-radius:3px;
+  font-size:0.7rem;color:#d4a843;
+  letter-spacing:0.15em;
+  margin-bottom:1.5rem;
+}
+
+/* ── Highlights Grid ── */
+.highlights-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem;margin-top:2rem;
+}
+.highlight-card{
+  background:linear-gradient(135deg,rgba(20,15,10,0.9),rgba(30,22,12,0.9));
+  border:1px solid rgba(139,105,20,0.2);
+  border-radius:12px;padding:1.8rem 1.5rem;
+  transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+  opacity:0;transform:translateY(30px);
+}
+.highlight-card.reveal{opacity:1;transform:translateY(0)}
+.highlight-card:hover{
+  border-color:rgba(212,168,67,0.5);
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(139,105,20,0.15);
+}
+.highlight-icon{
+  font-size:2rem;margin-bottom:0.8rem;
+}
+.highlight-card h3{
+  color:#d4a843;font-size:1.05rem;
+  margin-bottom:0.5rem;letter-spacing:0.05em;
+}
+.highlight-card p{
+  color:#a09070;font-size:0.9rem;line-height:1.7;
+}
+
+/* ── Quote ── */
+.quote-block{
+  max-width:750px;margin:0 auto;padding:3rem 0;
+  text-align:center;
+  opacity:0;transform:translateY(30px);
+  transition:all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.quote-block.reveal{opacity:1;transform:translateY(0)}
+.quote-text{
+  font-size:clamp(1.1rem,2vw,1.5rem);
+  font-weight:300;font-style:italic;
+  color:#d4a843;line-height:1.8;
+  position:relative;
+}
+.quote-text::before{content:'「';color:#8b6914;margin-right:0.2rem}
+.quote-text::after{content:'」';color:#8b6914;margin-left:0.2rem}
+.quote-author{
+  margin-top:1rem;font-size:0.85rem;
+  color:#8b7a50;letter-spacing:0.15em;
+}
+
+/* ── Why Watch ── */
+.why-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2rem;margin-top:2rem;
+}
+.why-card{
+  background:rgba(139,105,20,0.06);
+  border-left:3px solid #8b6914;
+  border-radius:0 8px 8px 0;
+  padding:1.5rem 1.8rem;
+  opacity:0;transform:translateX(-20px);
+  transition:all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.why-card.reveal{opacity:1;transform:translateX(0)}
+.why-card:nth-child(2n){border-left-color:#d4a843}
+.why-card h3{
+  color:#d4a843;font-size:1rem;
+  margin-bottom:0.5rem;letter-spacing:0.05em;
+}
+.why-card p{
+  color:#a09070;font-size:0.9rem;line-height:1.7;
+}
+
+/* ── Honor Tags ── */
+.honor-wrap{
+  margin-top:2rem;text-align:center;
+  opacity:0;transform:translateY(20px);
+  transition:all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.honor-wrap.reveal{opacity:1;transform:translateY(0)}
+.honor-tag{
+  display:inline-block;
+  padding:0.4rem 1rem;margin:0.3rem;
+  background:rgba(139,105,20,0.12);
+  border:1px solid rgba(139,105,20,0.25);
+  border-radius:20px;
+  font-size:0.78rem;color:#c8b080;
+  transition:all 0.3s;
+}
+.honor-tag:hover{background:rgba(139,105,20,0.25);color:#d4a843}
+
+/* ── Film Info Table ── */
+.info-table{
+  max-width:600px;margin:2rem auto 0;
+  border-collapse:collapse;width:100%;
+  opacity:0;transform:translateY(20px);
+  transition:all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.info-table.reveal{opacity:1;transform:translateY(0)}
+.info-table tr{border-bottom:1px solid rgba(139,105,20,0.15)}
+.info-table td{padding:0.8rem 1rem;font-size:0.9rem}
+.info-table td:first-child{color:#8b7a50;white-space:nowrap;width:100px}
+.info-table td:last-child{color:#c8b898}
+
+/* ── Editor Rating ── */
+.editor-rating{
+  text-align:center;padding:3rem 0 4rem;
+  opacity:0;transform:translateY(20px);
+  transition:all 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.editor-rating.reveal{opacity:1;transform:translateY(0)}
+.stars{font-size:2rem;color:#d4a843;letter-spacing:0.3rem;margin-bottom:1rem}
+.editor-rating h3{color:#d4a843;font-size:1.2rem;letter-spacing:0.1em}
+.editor-rating p{color:#8b7a50;font-size:0.85rem;margin-top:0.5rem;max-width:500px;margin-left:auto;margin-right:auto}
+
+/* ── Footer ── */
+.footer{
+  position:relative;z-index:1;
+  text-align:center;padding:2rem;
+  color:#5a4a30;font-size:0.75rem;letter-spacing:0.15em;
+}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  section{padding:3rem 1.2rem}
+  .rating-grid{grid-template-columns:1fr}
+  .highlights-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<canvas id="particleCanvas"></canvas>
+
+<!-- ═══ Hero ═══ -->
+<header class="hero">
+  <div class="hero-year" id="heroYear">1987</div>
+  <div class="hero-tagline" id="heroTagline">末代皇帝</div>
+  <div class="hero-sub" id="heroSub">
+    The Last Emperor&emsp;·&emsp;贝纳尔多·贝托鲁奇 作品
+  </div>
+  <div class="hero-scroll">— 向下滚动 —</div>
+</header>
+
+<!-- ═══ Dragon Divider ═══ -->
+<div class="dragon-divider">✦ ✦ ✦</div>
+
+<!-- ═══ Ratings ═══ -->
+<section>
+  <h2 class="section-title">口碑评分</h2>
+  <p class="section-sub">全球影评人 &amp; 观众的一致赞誉</p>
+  <div class="rating-grid" id="ratingGrid">
+    <div class="rating-item">
+      <div class="rating-label"><span>IMDb</span><span>7.7/10</span></div>
+      <div class="rating-bar-bg"><div class="rating-bar-fill" data-width="77"></div></div>
+    </div>
+    <div class="rating-item">
+      <div class="rating-label"><span>豆瓣</span><span>9.3/10</span></div>
+      <div class="rating-bar-bg"><div class="rating-bar-fill" data-width="93"></div></div>
+    </div>
+    <div class="rating-item">
+      <div class="rating-label"><span>🍅 烂番茄</span><span>94%</span></div>
+      <div class="rating-bar-bg"><div class="rating-bar-fill" data-width="94"></div></div>
+    </div>
+    <div class="rating-item">
+      <div class="rating-label"><span>Metacritic</span><span>87/100</span></div>
+      <div class="rating-bar-bg"><div class="rating-bar-fill" data-width="87"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Plot ═══ -->
+<div class="dragon-divider">✦ ✦ ✦</div>
+<section>
+  <h2 class="section-title">剧情梗概</h2>
+  <p class="section-sub">一个关于囚笼、身份与自由的故事</p>
+  <div class="plot-content" id="plotContent">
+    <span class="no-spoiler-badge">📖 无剧透</span>
+    <p>
+      影片基于中国末代皇帝溥仪的传奇一生改编。从1908年三岁登基为帝，到在紫禁城中度过与世隔绝的童年与少年；从被逐出皇宫、在天津租界流亡，到日本扶植的伪满洲国傀儡皇帝；再到战俘营的改造与晚年作为普通公民的平凡生活——这部电影横跨六十余年，展现了一个被时代洪流裹挟的个体命运。贝托鲁奇以恢弘的史诗笔触，将个人悲剧与历史巨变交织在一起，讲述了一个关于囚禁、觉醒与最终解脱的故事。
+    </p>
+  </div>
+</section>
+
+<!-- ═══ Highlights ═══ -->
+<div class="dragon-divider">✦ ✦ ✦</div>
+<section>
+  <h2 class="section-title">六大亮点</h2>
+  <p class="section-sub">让《末代皇帝》成为不朽经典的理由</p>
+  <div class="highlights-grid" id="highlightGrid">
+    <div class="highlight-card">
+      <div class="highlight-icon">🏛️</div>
+      <h3>紫禁城实景拍摄</h3>
+      <p>史上第一部获准进入北京紫禁城内实景拍摄的西方电影。每一帧画面都是真正的历史空间，恢弘与幽闭并存的建筑美学令人窒息。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-icon">🎵</div>
+      <h3>坂本龙一 · 永恒配乐</h3>
+      <p>坂本龙一、大卫·伯恩、苏聪联袂创作的配乐，东方宫韵与西方电子乐的完美融合，荣获奥斯卡最佳原创配乐。前奏一响，即入宫门。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-icon">🎬</div>
+      <h3>导演的东方叙事</h3>
+      <p>意大利导演贝托鲁奇以西方视角解读东方历史，却未落入猎奇窠臼。他用普世的人性视角，讲述了一个关于"囚徒"的永恒寓言。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-icon">👑</div>
+      <h3>尊龙 · 宿命般的演绎</h3>
+      <p>尊龙饰演的溥仪，从少年帝王到垂暮老人，层次分明、令人心碎。他眼神中的孤独与迷茫，成为影史上最动人的表演之一。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-icon">📸</div>
+      <h3>维托里奥·斯托拉罗的光影</h3>
+      <p>传奇摄影师斯托拉罗以光影为笔，用金色象征皇权禁锢、用蓝色代表自由向往，每一帧构图都堪称油画级别的视觉盛宴。</p>
+    </div>
+    <div class="highlight-card">
+      <div class="highlight-icon">🏆</div>
+      <h3>奥斯卡九项大奖</h3>
+      <p>1988年奥斯卡最佳影片、最佳导演、最佳改编剧本、最佳摄影、最佳艺术指导、最佳服装设计、最佳剪辑、最佳原创配乐、最佳音响——九提九中，史无前例。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Quote ═══ -->
+<div class="dragon-divider">✦ ✦ ✦</div>
+<section>
+  <div class="quote-block" id="quoteBlock">
+    <div class="quote-text">
+      紫禁城是世界上最大的监狱。
+    </div>
+    <div class="quote-author">—— 溥仪（在电影中）</div>
+  </div>
+</section>
+
+<!-- ═══ Why Watch ═══ -->
+<div class="dragon-divider">✦ ✦ ✦</div>
+<section>
+  <h2 class="section-title">为什么值得看</h2>
+  <p class="section-sub">这不仅仅是一部电影，更是一面镜子</p>
+  <div class="why-grid" id="whyGrid">
+    <div class="why-card">
+      <h3>跨越文化与历史的史诗</h3>
+      <p>它是东西方电影合作的巅峰之作。一个意大利导演，一位中国末代皇帝的故事，一群国际顶尖电影人——这种跨文化碰撞本身就值得铭记。</p>
+    </div>
+    <div class="why-card">
+      <h3>视觉与听觉的双重盛宴</h3>
+      <p>斯托拉罗的摄影与坂本龙一的配乐，共同构筑了一个沉浸式的感官宇宙。即便只看画面、只听音乐，这部电影都是一件无可挑剔的艺术品。</p>
+    </div>
+    <div class="why-card">
+      <h3>关于"自由"的普世寓言</h3>
+      <p>溥仪一生都生活在各种各样的"囚笼"之中：紫禁城的红墙、伪满的宫殿、战俘营的铁丝网……这部电影最终问的是：什么是真正的自由？</p>
+    </div>
+    <div class="why-card">
+      <h3>历史长河中的个体命运</h3>
+      <p>纵使是"天子"，也不过是时代洪流中的一粒尘埃。溥仪的故事之所以动人，是因为它让每个观众都在其中看到了自己与命运博弈的影子。</p>
+    </div>
+    <div class="why-card">
+      <h3>绝对无剧透观看体验</h3>
+      <p>这部电影的魅力不在于"剧情反转"，而在于每一帧画面、每一个音符、每一次光影变化中蕴含的情感力量。你不知道结局，反而更好。</p>
+    </div>
+    <div class="why-card">
+      <h3>值得反复品味的杰作</h3>
+      <p>每一次重温，都会有新的发现：多一重光影的解读、多一层历史的理解、多一份人生的感悟。真正的好电影，是永远看不完的。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Honors ═══ -->
+<div class="dragon-divider">✦ ✦ ✦</div>
+<section>
+  <h2 class="section-title">荣誉殿堂</h2>
+  <p class="section-sub">一部电影，囊括电影世界的最高敬意</p>
+  <div class="honor-wrap" id="honorWrap">
+    <span class="honor-tag">🏆 奥斯卡最佳影片</span>
+    <span class="honor-tag">🏆 奥斯卡最佳导演</span>
+    <span class="honor-tag">🏆 奥斯卡最佳改编剧本</span>
+    <span class="honor-tag">🏆 奥斯卡最佳摄影</span>
+    <span class="honor-tag">🏆 奥斯卡最佳艺术指导</span>
+    <span class="honor-tag">🏆 奥斯卡最佳服装设计</span>
+    <span class="honor-tag">🏆 奥斯卡最佳剪辑</span>
+    <span class="honor-tag">🏆 奥斯卡最佳原创配乐</span>
+    <span class="honor-tag">🏆 奥斯卡最佳音响</span>
+    <span class="honor-tag">🎬 金球奖最佳影片（剧情类）</span>
+    <span class="honor-tag">🎬 金球奖最佳导演</span>
+    <span class="honor-tag">🎬 金球奖最佳原创配乐</span>
+    <span class="honor-tag">🎬 金球奖最佳编剧</span>
+    <span class="honor-tag">🌟 英国电影学院奖最佳影片</span>
+    <span class="honor-tag">🌟 欧洲电影奖最佳影片</span>
+    <span class="honor-tag">🎞️ AFI百年百大电影</span>
+  </div>
+</section>
+
+<!-- ═══ Film Info ═══ -->
+<div class="dragon-divider">✦ ✦ ✦</div>
+<section>
+  <h2 class="section-title">影片档案</h2>
+  <p class="section-sub">关于这部电影，你应该知道的</p>
+  <table class="info-table" id="infoTable">
+    <tr><td>片名</td><td>末代皇帝 / The Last Emperor</td></tr>
+    <tr><td>导演</td><td>贝纳尔多·贝托鲁奇（Bernardo Bertolucci）</td></tr>
+    <tr><td>编剧</td><td>马克·派普罗（Mark Peploe）× 贝托鲁奇</td></tr>
+    <tr><td>主演</td><td>尊龙、陈冲、邬君梅、彼得·奥图尔</td></tr>
+    <tr><td>配乐</td><td>坂本龙一、大卫·伯恩、苏聪</td></tr>
+    <tr><td>摄影</td><td>维托里奥·斯托拉罗（Vittorio Storaro）</td></tr>
+    <tr><td>上映年份</td><td>1987年（意大利） / 1988年（全球广泛上映）</td></tr>
+    <tr><td>片长</td><td>163分钟（剧场版）/ 219分钟（导演剪辑版）</td></tr>
+    <tr><td>语言</td><td>英语 / 中文 / 日语</td></tr>
+    <tr><td>制片国家</td><td>意大利 / 英国 / 中国</td></tr>
+  </table>
+</section>
+
+<!-- ═══ Editor Rating ═══ -->
+<div class="dragon-divider">✦ ✦ ✦</div>
+<section>
+  <div class="editor-rating" id="editorRating">
+    <div class="stars">★★★★★</div>
+    <h3>「一部无可挑剔的史诗杰作」</h3>
+    <p>贝托鲁奇的《末代皇帝》不仅是电影史上的丰碑，更是一次对人性、历史与自由的深刻叩问。它用紫禁城的光影和坂本龙一的旋律，铭记了一个时代最后的背影。</p>
+  </div>
+</section>
+
+<!-- ═══ Footer ═══ -->
+<footer class="footer">
+  <p>经典电影推荐 · 每日一部 · 2026</p>
+</footer>
+
+<script>
+// ═══════════════════════════════════════
+// Canvas 金尘粒子动画
+// ═══════════════════════════════════════
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
+let W,H;
+
+function resize(){
+  W=canvas.width=window.innerWidth;
+  H=canvas.height=window.innerHeight;
+}
+resize(); window.addEventListener('resize',resize);
+
+const PARTICLE_COUNT = 110;
+const particles = Array.from({length:PARTICLE_COUNT},()=>({
+  x:Math.random()*W,
+  y:Math.random()*H,
+  vx:(Math.random()-0.5)*0.3,
+  vy:-(Math.random()*0.2+0.08),
+  size:Math.random()*3+1,
+  alpha:Math.random()*0.5+0.15,
+  alphaBase:Math.random()*0.5+0.15,
+  phase:Math.random()*Math.PI*2,
+}));
+
+function drawParticles(){
+  ctx.clearRect(0,0,W,H);
+  particles.forEach(p=>{
+    p.x+=p.vx;
+    p.y+=p.vy;
+    p.alpha=p.alphaBase*(0.6+0.4*Math.sin(p.phase+Date.now()*0.001));
+    if(p.y<-10){p.y=H+10;p.x=Math.random()*W}
+    if(p.x<-10||p.x>W+10){p.x=Math.random()*W;p.y=Math.random()*H}
+
+    const rad=p.size;
+    const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,rad*4);
+    const a=p.alpha;
+    g.addColorStop(0,`rgba(212,168,67,${a})`);
+    g.addColorStop(0.4,`rgba(139,105,20,${a*0.5})`);
+    g.addColorStop(1,`rgba(139,105,20,0)`);
+    ctx.fillStyle=g;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,rad*4,0,Math.PI*2);
+    ctx.fill();
+
+    ctx.fillStyle=`rgba(255,235,180,${a*0.6})`;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,rad*0.6,0,Math.PI*2);
+    ctx.fill();
+  });
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// ═══════════════════════════════════════
+// IntersectionObserver 滚动揭示
+// ═══════════════════════════════════════
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      if(entry.target.classList.contains('rating-item')){
+        entry.target.classList.add('reveal');
+        const bar = entry.target.querySelector('.rating-bar-fill');
+        if(bar) setTimeout(()=>{bar.style.width=bar.dataset.width+'%'},200);
+      } else {
+        entry.target.classList.add('reveal');
+      }
+      // unobserve after reveal
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:0.15});
+
+document.querySelectorAll(
+  '.hero-year,.hero-tagline,.hero-sub,' +
+  '.rating-item,.plot-content,' +
+  '.highlight-card,.quote-block,' +
+  '.why-card,.honor-wrap,.info-table,.editor-rating'
+).forEach(el=>observer.observe(el));
+
+// Hero immediate reveal (IntersectionObserver may also fire)
+setTimeout(()=>{
+  document.getElementById('heroYear').classList.add('reveal');
+  document.getElementById('heroTagline').classList.add('reveal');
+  document.getElementById('heroSub').classList.add('reveal');
+},200);
+
+// Re-trigger IO for hero in case it's not in view
+setTimeout(()=>{
+  document.getElementById('heroYear').classList.add('reveal');
+  document.getElementById('heroTagline').classList.add('reveal');
+  document.getElementById('heroSub').classList.add('reveal');
+},1200);
+</script>
+</body>
+</html>
