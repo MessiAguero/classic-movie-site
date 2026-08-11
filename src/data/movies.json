@@ -12482,5 +12482,36 @@
     "reviewStars": 5,
     "posterSvg": "<svg class=\"moth\" viewBox=\"0 0 420 460\" aria-label=\"骷髅蛾\">\n          <g>\n            <path d=\"M205,108 C140,70 50,78 36,150 C28,196 70,238 150,212 C184,200 200,160 205,140 Z\" fill=\"url(#wing)\" stroke=\"#caa44d\" stroke-width=\"1.1\" stroke-opacity=\".5\"></path>\n            <path d=\"M205,168 C150,178 78,206 80,262 C82,308 150,320 196,272 C204,250 206,200 205,180 Z\" fill=\"url(#wing2)\" stroke=\"#caa44d\" stroke-width=\"1.1\" stroke-opacity=\".4\"></path>\n            <ellipse cx=\"92\" cy=\"148\" rx=\"20\" ry=\"13\" fill=\"#0d0a08\" stroke=\"#caa44d\" stroke-width=\"1\" stroke-opacity=\".5\"></ellipse>\n            <ellipse cx=\"92\" cy=\"148\" rx=\"9\" ry=\"6\" fill=\"#7c1a17\"></ellipse>\n            <circle cx=\"118\" cy=\"262\" r=\"11\" fill=\"#0d0a08\" stroke=\"#caa44d\" stroke-width=\"1\" stroke-opacity=\".5\"></circle>\n            <circle cx=\"118\" cy=\"262\" r=\"4.5\" fill=\"#c9a24b\"></circle>\n          </g>\n          <g transform=\"matrix(-1,0,0,1,420,0)\">\n            <path d=\"M205,108 C140,70 50,78 36,150 C28,196 70,238 150,212 C184,200 200,160 205,140 Z\" fill=\"url(#wing)\" stroke=\"#caa44d\" stroke-width=\"1.1\" stroke-opacity=\".5\"></path>\n            <path d=\"M205,168 C150,178 78,206 80,262 C82,308 150,320 196,272 C204,250 206,200 205,180 Z\" fill=\"url(#wing2)\" stroke=\"#caa44d\" stroke-width=\"1.1\" stroke-opacity=\".4\"></path>\n            <ellipse cx=\"92\" cy=\"148\" rx=\"20\" ry=\"13\" fill=\"#0d0a08\" stroke=\"#caa44d\" stroke-width=\"1\" stroke-opacity=\".5\"></ellipse>\n            <ellipse cx=\"92\" cy=\"148\" rx=\"9\" ry=\"6\" fill=\"#7c1a17\"></ellipse>\n            <circle cx=\"118\" cy=\"262\" r=\"11\" fill=\"#0d0a08\" stroke=\"#caa44d\" stroke-width=\"1\" stroke-opacity=\".5\"></circle>\n            <circle cx=\"118\" cy=\"262\" r=\"4.5\" fill=\"#c9a24b\"></circle>\n          </g>\n          <ellipse cx=\"210\" cy=\"135\" rx=\"20\" ry=\"26\" fill=\"url(#body)\"></ellipse>\n          <path d=\"M210,158 C198,180 198,260 210,300 C222,260 222,180 210,158 Z\" fill=\"url(#body)\"></path>\n          <circle cx=\"210\" cy=\"104\" r=\"13\" fill=\"#15110f\"></circle>\n          <path d=\"M203,98 C180,70 160,58 146,52\" fill=\"none\" stroke=\"#caa44d\" stroke-width=\"2\" stroke-opacity=\".7\"></path>\n          <path d=\"M217,98 C240,70 260,58 274,52\" fill=\"none\" stroke=\"#caa44d\" stroke-width=\"2\" stroke-opacity=\".7\"></path>\n          <ellipse cx=\"210\" cy=\"128\" rx=\"15\" ry=\"17\" fill=\"url(#skull)\"></ellipse>\n          <ellipse cx=\"204\" cy=\"124\" rx=\"4\" ry=\"5\" fill=\"#1a1310\"></ellipse>\n          <ellipse cx=\"216\" cy=\"124\" rx=\"4\" ry=\"5\" fill=\"#1a1310\"></ellipse>\n          <path d=\"M210,130 L207,138 L213,138 Z\" fill=\"#1a1310\"></path>\n        </svg>",
     "posterCaption": ""
+  },
+  {
+    "id": "20260811",
+    "date": "20260811",
+    "zhTitle": "重庆森林",
+    "enTitle": "",
+    "year": "19",
+    "tagline": "",
+    "meta": "导演 / 编剧 王家卫 林青霞 · 金城武 · 梁朝伟 · 王菲 102 min · 粤语 / 国语",
+    "ratings": [],
+    "plot": [],
+    "spoilerNote": "",
+    "highlights": [],
+    "quotes": [
+      {
+        "text": "不知道从什么时候开始，在什么东西上面都有个日期。秋刀鱼会过期，肉罐头会过期，连保鲜纸都会过期。— 何志武 独白",
+        "who": ""
+      },
+      {
+        "text": "每天你都有机会跟别人擦肩而过，你也许对他一无所知，不过也许有一天，他会变成你的朋友或者知己。— 影片独白",
+        "who": ""
+      }
+    ],
+    "why": [],
+    "honors": [],
+    "archive": [],
+    "review": "《California Dreamin'》《Yumeji's Theme》……音乐与画面咬合得恰到好处，几段随歌起舞的画面已成华语影史经典。",
+    "reviewBy": "",
+    "reviewStars": 5,
+    "posterSvg": "",
+    "posterCaption": ""
   }
 ]

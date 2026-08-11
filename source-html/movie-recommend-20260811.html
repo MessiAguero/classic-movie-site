@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>重庆森林 · Chungking Express (1994)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#07060a;
+    --bg2:#0d0b14;
+    --ink:#ece8f1;
+    --muted:#9a93ad;
+    --cyan:#5eead4;
+    --pink:#fb7185;
+    --amber:#fbbf24;
+    --violet:#a78bfa;
+    --line:rgba(255,255,255,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Noto Sans SC',system-ui,sans-serif;
+    line-height:1.85;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* film grain overlay */
+  body::after{
+    content:"";
+    position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;
+  }
+  #rain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.55}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;position:relative;padding:80px 24px;
+  }
+  .kicker{
+    font-family:'Cormorant Garamond',serif;letter-spacing:.5em;text-transform:uppercase;
+    color:var(--cyan);font-size:14px;margin-bottom:26px;opacity:0;animation:fadeUp 1s .2s forwards;
+  }
+  .title{
+    font-family:'Noto Serif SC',serif;font-weight:900;
+    font-size:clamp(64px,15vw,168px);line-height:.95;letter-spacing:.04em;
+    background:linear-gradient(120deg,#fff 0%,var(--cyan) 40%,var(--violet) 70%,var(--pink) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 60px rgba(94,234,212,.25);
+    opacity:0;animation:fadeUp 1.1s .4s forwards;
+  }
+  .en-title{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,4vw,34px);
+    color:var(--muted);margin-top:14px;letter-spacing:.18em;opacity:0;animation:fadeUp 1.1s .6s forwards;
+  }
+  .meta{
+    margin-top:30px;display:flex;gap:18px;flex-wrap:wrap;justify-content:center;
+    font-size:14px;color:var(--muted);opacity:0;animation:fadeUp 1.1s .8s forwards;
+  }
+  .meta span{padding:6px 16px;border:1px solid var(--line);border-radius:999px;backdrop-filter:blur(4px)}
+  .tagline{
+    margin-top:42px;max-width:620px;font-family:'Noto Serif SC',serif;font-size:clamp(17px,2.4vw,22px);
+    color:#d9d3e6;line-height:1.9;opacity:0;animation:fadeUp 1.1s 1s forwards;
+  }
+  .tagline b{color:var(--amber);font-weight:600}
+  .scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:12px;letter-spacing:.3em;opacity:0;animation:fadeUp 1s 1.4s forwards}
+  .scroll-cue .dot{display:block;width:1px;height:42px;margin:10px auto 0;background:linear-gradient(var(--cyan),transparent);animation:cue 1.8s infinite}
+
+  /* ===== SECTIONS ===== */
+  section{padding:96px 0;position:relative}
+  .sec-tag{
+    font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.4em;text-transform:uppercase;
+    color:var(--pink);margin-bottom:14px;
+  }
+  .sec-title{
+    font-family:'Noto Serif SC',serif;font-weight:700;font-size:clamp(30px,5vw,46px);
+    margin-bottom:34px;letter-spacing:.03em;
+  }
+  .sec-title .num{color:var(--cyan);font-family:'Cormorant Garamond',serif;font-style:italic;margin-right:14px;font-size:.8em}
+
+  .lead{
+    font-size:clamp(18px,2.5vw,22px);color:#e7e2f0;max-width:780px;
+    border-left:3px solid var(--cyan);padding-left:24px;line-height:1.95;
+  }
+  .lead em{color:var(--amber);font-style:normal}
+
+  /* two stories */
+  .stories{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:10px}
+  .card{
+    background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.01));
+    border:1px solid var(--line);border-radius:18px;padding:30px 28px;position:relative;overflow:hidden;
+    transition:transform .5s ease,border-color .5s ease;
+  }
+  .card::before{content:"";position:absolute;top:-40%;right:-30%;width:200px;height:200px;border-radius:50%;
+    background:radial-gradient(var(--cyan),transparent 70%);opacity:.12;filter:blur(20px)}
+  .card:hover{transform:translateY(-6px);border-color:rgba(94,234,212,.4)}
+  .card h3{font-family:'Noto Serif SC',serif;font-size:22px;margin-bottom:6px}
+  .card .who{color:var(--cyan);font-size:13px;letter-spacing:.1em;margin-bottom:16px}
+  .card p{color:var(--muted);font-size:15.5px;font-weight:300}
+
+  /* highlights */
+  .hl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:10px}
+  .hl{display:flex;gap:18px;align-items:flex-start;padding:22px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02);transition:.4s}
+  .hl:hover{border-color:rgba(167,139,250,.45);background:rgba(167,139,250,.05)}
+  .hl .ic{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:34px;color:var(--amber);min-width:46px;line-height:1}
+  .hl h4{font-family:'Noto Serif SC',serif;font-size:19px;margin-bottom:6px}
+  .hl p{color:var(--muted);font-size:14.5px;font-weight:300}
+
+  /* why */
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:10px}
+  .why li{list-style:none;background:linear-gradient(160deg,rgba(251,113,133,.06),transparent);border:1px solid var(--line);border-radius:14px;padding:22px 24px;font-size:16px;color:#e0daec;transition:.4s}
+  .why li:hover{transform:translateY(-4px);border-color:rgba(251,113,133,.4)}
+  .why b{color:var(--pink)}
+
+  /* quotes */
+  .quotes{display:flex;flex-direction:column;gap:26px;margin-top:10px}
+  .quote{position:relative;padding:26px 30px 26px 64px;border-left:2px solid var(--violet);background:rgba(167,139,250,.04);border-radius:0 14px 14px 0}
+  .quote::before{content:"“";position:absolute;left:18px;top:6px;font-family:'Cormorant Garamond',serif;font-size:64px;color:var(--violet);opacity:.5}
+  .quote p{font-family:'Noto Serif SC',serif;font-size:clamp(18px,2.6vw,23px);color:#efeaf8;line-height:1.8}
+  .quote .src{display:block;margin-top:12px;font-size:13px;color:var(--muted);letter-spacing:.1em}
+
+  /* facts table */
+  .facts{margin-top:10px;border:1px solid var(--line);border-radius:18px;overflow:hidden;backdrop-filter:blur(4px)}
+  .facts .row{display:grid;grid-template-columns:160px 1fr;border-top:1px solid var(--line)}
+  .facts .row:first-child{border-top:none}
+  .facts .k{padding:18px 22px;background:rgba(255,255,255,.03);color:var(--cyan);font-weight:500;letter-spacing:.05em}
+  .facts .v{padding:18px 22px;color:#e3ddef;font-weight:300}
+  .score{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+  .score .pill{flex:1;min-width:140px;text-align:center;padding:22px 14px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(160deg,rgba(94,234,212,.07),transparent)}
+  .score .pill .s{font-family:'Cormorant Garamond',serif;font-size:46px;font-weight:600;color:#fff;line-height:1}
+  .score .pill .l{margin-top:8px;font-size:13px;color:var(--muted);letter-spacing:.15em}
+
+  /* footer */
+  footer{text-align:center;padding:60px 24px 80px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);position:relative;z-index:2}
+  footer .rec{font-family:'Noto Serif SC',serif;color:var(--ink);font-size:16px;margin-bottom:10px}
+
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  @keyframes cue{0%{opacity:.2;transform:scaleY(.4)}50%{opacity:1;transform:scaleY(1)}100%{opacity:.2;transform:scaleY(.4)}}
+  @media(max-width:760px){
+    .stories,.hl-grid,.why{grid-template-columns:1fr}
+    .facts .row{grid-template-columns:120px 1fr}
+    section{padding:70px 0}
+  }
+</style>
+</head>
+<body>
+<canvas id="rain"></canvas>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="kicker">A Wong Kar-wai Film · 1994</div>
+  <h1 class="title">重庆森林</h1>
+  <div class="en-title">Chungking Express</div>
+  <div class="meta">
+    <span>导演 / 编剧　王家卫</span>
+    <span>林青霞 · 金城武 · 梁朝伟 · 王菲</span>
+    <span>102 min · 粤语 / 国语</span>
+  </div>
+  <p class="tagline">在时间的缝隙里，每个人都在等一罐<b>还没过期</b>的爱情。<br>一部写给都市孤独者的、温柔又迷幻的情书。</p>
+  <div class="scroll-cue">SCROLL<span class="dot"></span></div>
+</header>
+
+<div class="wrap">
+
+  <!-- 一句话推荐 -->
+  <section class="reveal">
+    <div class="sec-tag">Recommendation</div>
+    <h2 class="sec-title"><span class="num">01</span>一句话推荐</h2>
+    <p class="lead">《重庆森林》是王家卫 1994 年的代表作，用两段<em>擦肩而过</em>的都市爱情，写尽了现代人的孤独、暧昧与温柔——它不靠大起大落的剧情催泪，却让人看完久久难忘，像在深夜的便利店门口吹了一阵又凉又软的风。</p>
+  </section>
+
+  <!-- 剧情梗概 -->
+  <section class="reveal">
+    <div class="sec-tag">Synopsis</div>
+    <h2 class="sec-title"><span class="num">02</span>剧情梗概 · 不剧透</h2>
+    <p class="lead" style="margin-bottom:34px">片名里的"重庆"指香港的<em>重庆大厦</em>，"森林"则暗喻钢筋水泥的都市丛林。影片由两段独立又微妙呼应的故事组成，讲的都是"错过"与"靠近"之间，最微小的那点心动。</p>
+    <div class="stories">
+      <div class="card">
+        <h3>故事一 · 凤梨罐头</h3>
+        <div class="who">编号 223 的警察 何志武 / 金发女杀手</div>
+        <p>被女友分手的何志武，固执地每天买一罐 5 月 1 日到期的凤梨罐头，用"保质期"丈量一段感情的去留。某个雨夜，他在重庆大厦迷离的走廊里，遇见一位戴金色假发、墨镜与雨衣的神秘女子——两个寂寞的灵魂，有了一夜短暂而奇妙的靠近。</p>
+      </div>
+      <div class="card">
+        <h3>故事二 · 加州梦游</h3>
+        <div class="who">编号 663 的警察 / 快餐店女孩 阿菲</div>
+        <p>沉默的警察 663 每天到同一家快餐店买厨师沙拉，习惯对着家里的一切自言自语。店里的女孩阿菲偷偷拿了他的钥匙，趁他不在时潜入他的生活，一点一点、温柔地改变他的世界——直到某天，他发现自己的生活被悄悄翻新了。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 亮点 -->
+  <section class="reveal">
+    <div class="sec-tag">Highlights</div>
+    <h2 class="sec-title"><span class="num">03</span>它好在哪</h2>
+    <div class="hl-grid">
+      <div class="hl"><div class="ic">01</div><div><h4>影像语言 · 抽帧的诗意</h4><p>摄影师杜可风用手持摄影与抽帧技术，把香港的霓虹、雨夜与逼仄走廊，拍出了一种迷幻又写实的都市浪漫。</p></div></div>
+      <div class="hl"><div class="ic">02</div><div><h4>音乐 · 会呼吸的配乐</h4><p>《California Dreamin'》《Yumeji's Theme》……音乐与画面咬合得恰到好处，几段随歌起舞的画面已成华语影史经典。</p></div></div>
+      <div class="hl"><div class="ic">03</div><div><h4>表演 · 本色的灵动</h4><p>王菲的银幕处女作，灵动得像一阵风；梁朝伟、金城武、林青霞都贡献了极具辨识度的表演。</p></div></div>
+      <div class="hl"><div class="ic">04</div><div><h4>台词 · 轻而重的独白</h4><p>全片 46 段内心独白，把都市人对时间与爱的焦虑，说得又轻又重，句句像写在自己心上。</p></div></div>
+    </div>
+  </section>
+
+  <!-- 为什么值得看 -->
+  <section class="reveal">
+    <div class="sec-tag">Why Watch</div>
+    <h2 class="sec-title"><span class="num">04</span>为什么值得一看</h2>
+    <ul class="why">
+      <li><b>它懂孤独。</b>如果你曾在深夜的便利店、地铁或陌生城市的街头，感到过一阵莫名的寂寥，这部电影会精准地接住你。</li>
+      <li><b>它很浪漫。</b>不靠戏剧冲突，而是用气味、光线、音乐和碎碎念，复刻"都市里微小而真实"的浪漫。</li>
+      <li><b>它很传奇。</b>仅用 23 天拍完、极低预算，却成为华语电影最具风格化的爱情诗篇，被昆汀誉为"我看过最好的电影之一"。</li>
+      <li><b>它会行动。</b>看完你大概会想：去便利店买罐罐头，或者，给很久没联系的人发一条消息。</li>
+    </ul>
+  </section>
+
+  <!-- 台词 -->
+  <section class="reveal">
+    <div class="sec-tag">Lines</div>
+    <h2 class="sec-title"><span class="num">05</span>几句话，先认识它</h2>
+    <div class="quotes">
+      <div class="quote"><p>不知道从什么时候开始，在什么东西上面都有个日期。秋刀鱼会过期，肉罐头会过期，连保鲜纸都会过期。</p><span class="src">— 何志武 独白</span></div>
+      <div class="quote"><p>每天你都有机会跟别人擦肩而过，你也许对他一无所知，不过也许有一天，他会变成你的朋友或者知己。</p><span class="src">— 影片独白</span></div>
+    </div>
+  </section>
+
+  <!-- 影片档案 -->
+  <section class="reveal">
+    <div class="sec-tag">Film Profile</div>
+    <h2 class="sec-title"><span class="num">06</span>影片档案</h2>
+    <div class="facts">
+      <div class="row"><div class="k">导演 / 编剧</div><div class="v">王家卫</div></div>
+      <div class="row"><div class="k">主　演</div><div class="v">林青霞 / 金城武 / 梁朝伟 / 王菲 / 周嘉玲</div></div>
+      <div class="row"><div class="k">上　映</div><div class="v">1994 年 7 月 14 日（香港）</div></div>
+      <div class="row"><div class="k">片　长</div><div class="v">102 分钟</div></div>
+      <div class="row"><div class="k">语　言</div><div class="v">粤语 / 国语 / 英语 / 日语</div></div>
+      <div class="row"><div class="k">主要奖项</div><div class="v">第 14 届香港电影金像奖 最佳电影、最佳导演；第 31 届金马奖 最佳男主角（梁朝伟）</div></div>
+    </div>
+    <div class="score">
+      <div class="pill"><div class="s">8.8</div><div class="l">豆瓣 DOUBAN</div></div>
+      <div class="pill"><div class="s">8.1</div><div class="l">IMDb</div></div>
+      <div class="pill"><div class="s">93%</div><div class="l">烂番茄 新鲜度</div></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="rec">每天一部经典电影，和您体验精彩人生。</div>
+  本页为自动化电影推荐 · 重庆森林 (1994) · 剧情介绍不含剧透，请放心观看
+</footer>
+
+<script>
+  // scroll reveal
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // neon rain
+  const cv=document.getElementById('rain'),cx=cv.getContext('2d');
+  let W,H,cols,dp=[];
+  const colors=['#5eead4','#fb7185','#a78bfa','#fbbf24'];
+  function resize(){W=cv.width=innerWidth;H=cv.height=innerHeight;cols=Math.floor(W/14);
+    dp=Array.from({length:cols},(_,i)=>({x:i*14+Math.random()*8,y:Math.random()*H,len:18+Math.random()*40,sp:.6+Math.random()*1.8,c:colors[i%colors.length],a:.2+Math.random()*.5}));}
+  resize();addEventListener('resize',resize);
+  function draw(){
+    cx.clearRect(0,0,W,H);
+    cx.lineWidth=1.4;
+    dp.forEach(d=>{
+      cx.strokeStyle=d.c;cx.globalAlpha=d.a;
+      cx.beginPath();cx.moveTo(d.x,d.y);cx.lineTo(d.x,d.y+d.len);cx.stroke();
+      d.y+=d.sp;if(d.y>H+40){d.y=-d.len;d.x=Math.random()*W;d.c=colors[Math.floor(Math.random()*colors.length)];}
+    });
+    cx.globalAlpha=1;requestAnimationFrame(draw);
+  }
+  draw();
+</script>
+</body>
+</html>
