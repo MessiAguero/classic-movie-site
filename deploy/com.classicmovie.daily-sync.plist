@@ -15,8 +15,8 @@
 	<string>/tmp/classicmovie-sync.err.log</string>
 	<key>StandardOutPath</key>
 	<string>/tmp/classicmovie-sync.log</string>
-	<!-- 每 6 小时检查一次（21600 秒），避免睡眠错过固定时刻 -->
+	<!-- 每 3 小时检查一次（10800 秒），避免睡眠错过固定时刻 -->
 	<key>StartInterval</key>
-	<integer>21600</integer>
+	<integer>10800</integer>
 </dict>
 </plist>

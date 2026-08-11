@@ -19,6 +19,8 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SRC="${DAILY_SRC:-/Users/admin/WorkBuddy/automation-20260423112820}"
 cd "$ROOT"
 
+echo "== $(date '+%F %T') 开始同步 =="
+
 # 加载 Supabase 凭据（可选，用于同步新电影到云端）
 if [ -f "$ROOT/supabase/.env.local" ]; then
   set -a
@@ -75,3 +77,5 @@ if git remote -v | grep -q push; then
 else
   echo "!! 未配置 git 远程仓库，请先：git remote add origin <仓库地址> && git push -u origin main"
 fi
+
+echo "== $(date '+%F %T') 同步完成 =="
