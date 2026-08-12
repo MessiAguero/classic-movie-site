@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>回到未来 · Back to the Future (1985) — 每日一部经典电影</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Serif+SC:wght@600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#060818;
+    --bg2:#0a0e27;
+    --ink:#eaf2ff;
+    --muted:#9fb0c9;
+    --line:rgba(120,150,200,.16);
+    --cyan:#00e5ff;
+    --magenta:#ff2d95;
+    --flux:#b6ff00;
+    --amber:#ffb347;
+    --card:rgba(18,26,54,.6);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:radial-gradient(1200px 800px at 50% -10%, #131a3e 0%, var(--bg2) 45%, var(--bg) 100%);
+    color:var(--ink);
+    font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    line-height:1.85;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* film grain + vignette overlay */
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:60;
+    background:
+      radial-gradient(120% 120% at 50% 50%, transparent 55%, rgba(0,0,0,.55) 100%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.018) 0 1px, transparent 1px 3px);
+    mix-blend-mode:screen;opacity:.5;
+  }
+  #warp{position:fixed;inset:0;z-index:0;opacity:.9}
+  .wrap{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 26px}
+
+  /* ===== HERO ===== */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;padding:60px 20px}
+  .hero .year{
+    font-family:"Orbitron",sans-serif;font-weight:900;font-size:clamp(64px,16vw,180px);
+    letter-spacing:.06em;line-height:.9;
+    background:linear-gradient(180deg,#fff 0%, #bcd2ff 55%, #6f86c9 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 0 28px rgba(0,229,255,.35));
+    transform:perspective(600px) rotateX(14deg);
+    opacity:0;animation:rise 1.1s .1s forwards cubic-bezier(.2,.7,.2,1);
+  }
+  .hero .en{
+    font-family:"Orbitron",sans-serif;font-weight:700;letter-spacing:.42em;
+    font-size:clamp(13px,2.4vw,22px);color:var(--cyan);
+    text-shadow:0 0 18px rgba(0,229,255,.6);margin-top:6px;
+    opacity:0;animation:rise 1.1s .35s forwards;
+  }
+  .hero .cn{
+    font-family:"Noto Serif SC",serif;font-weight:900;font-size:clamp(38px,8vw,76px);
+    margin-top:14px;letter-spacing:.1em;
+    background:linear-gradient(90deg,var(--flux),var(--cyan) 55%, var(--magenta));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    opacity:0;animation:rise 1.1s .55s forwards;
+  }
+  .hero .meta{margin-top:22px;color:var(--muted);font-size:15px;letter-spacing:.04em;
+    opacity:0;animation:rise 1.1s .8s forwards}
+  .hero .meta b{color:var(--ink);font-weight:500}
+  .hero .tag{
+    margin-top:30px;max-width:640px;font-family:"Noto Serif SC",serif;font-weight:600;
+    font-size:clamp(16px,2.6vw,22px);color:#dbe7ff;line-height:1.7;
+    opacity:0;animation:rise 1.1s 1s forwards}
+  .hero .tag .hl{color:var(--flux);text-shadow:0 0 14px rgba(182,255,0,.5)}
+  .scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:var(--muted);
+    font-size:12px;letter-spacing:.3em;animation:bob 2s infinite}
+  @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.5}50%{transform:translate(-50%,8px);opacity:1}}
+
+  /* ===== SECTION ===== */
+  section{padding:84px 0;position:relative}
+  .kicker{font-family:"Orbitron",sans-serif;letter-spacing:.4em;font-size:12px;color:var(--cyan);
+    text-transform:uppercase;margin-bottom:10px;opacity:.85}
+  .sec-title{font-family:"Noto Serif SC",serif;font-weight:900;font-size:clamp(26px,4.6vw,40px);
+    letter-spacing:.04em;margin-bottom:6px}
+  .sec-sub{color:var(--muted);font-size:15px;margin-bottom:38px}
+  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:0 0 0}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ===== SCORES ===== */
+  .scores{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .score{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 20px;text-align:center;
+    backdrop-filter:blur(8px);position:relative;overflow:hidden}
+  .score::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--cyan),var(--magenta))}
+  .score .src{font-size:12px;color:var(--muted);letter-spacing:.18em;margin-bottom:10px}
+  .score .num{font-family:"Orbitron",sans-serif;font-weight:900;font-size:clamp(30px,5vw,44px);
+    color:#fff;text-shadow:0 0 22px rgba(0,229,255,.45)}
+  .score .num small{font-size:.5em;color:var(--muted);font-weight:500}
+  .score .bar{height:6px;border-radius:6px;background:rgba(255,255,255,.08);margin-top:14px;overflow:hidden}
+  .score .bar i{display:block;height:100%;width:0;border-radius:6px;
+    background:linear-gradient(90deg,var(--flux),var(--cyan));transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+
+  /* ===== SYNOPSIS ===== */
+  .syn-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center}
+  .syn-text p{color:#cdd9ef;font-size:16.5px;margin-bottom:16px}
+  .badge{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--flux);
+    border:1px solid rgba(182,255,0,.4);border-radius:999px;padding:6px 14px;margin-bottom:18px;
+    background:rgba(182,255,0,.06)}
+  .badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--flux);box-shadow:0 0 10px var(--flux)}
+  .poster{position:relative;aspect-ratio:3/4;border-radius:18px;overflow:hidden;
+    border:1px solid var(--line);background:radial-gradient(120% 90% at 50% 0%, #1a2350, #0a0f28)}
+  .poster svg{width:100%;height:100%;display:block}
+
+  /* ===== HIGHLIGHTS ===== */
+  .grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .hl{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 22px;
+    transition:transform .4s,border-color .4s,box-shadow .4s;position:relative}
+  .hl:hover{transform:translateY(-6px);border-color:rgba(0,229,255,.45);
+    box-shadow:0 18px 40px -20px rgba(0,229,255,.5)}
+  .hl .n{font-family:"Orbitron",sans-serif;font-weight:900;font-size:30px;
+    background:linear-gradient(180deg,var(--cyan),var(--magenta));-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.85}
+  .hl h4{font-size:18px;font-weight:700;margin:10px 0 8px;letter-spacing:.02em}
+  .hl p{color:var(--muted);font-size:14.5px;line-height:1.75}
+
+  /* ===== QUOTE ===== */
+  .quote{text-align:center;padding:70px 0}
+  .quote .mark{font-family:"Orbitron",sans-serif;font-size:60px;color:rgba(0,229,255,.35);line-height:1}
+  .quote blockquote{font-family:"Noto Serif SC",serif;font-weight:700;font-size:clamp(22px,4vw,34px);
+    max-width:760px;margin:14px auto;line-height:1.7;
+    background:linear-gradient(90deg,#fff,#cfe6ff 50%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .quote .from{color:var(--muted);letter-spacing:.2em;font-size:13px;margin-top:8px}
+
+  /* ===== WHY ===== */
+  .why{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .why .item{display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid var(--line);
+    border-radius:16px;padding:22px}
+  .why .ic{flex:0 0 auto;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--cyan),var(--magenta));font-family:"Orbitron",sans-serif;font-weight:900;color:#04121f}
+  .why .item h4{font-size:17px;margin-bottom:6px}
+  .why .item p{color:var(--muted);font-size:14.5px}
+
+  /* ===== HONORS ===== */
+  .honors{display:flex;flex-wrap:wrap;gap:12px}
+  .tag{font-size:13.5px;padding:9px 16px;border-radius:999px;border:1px solid var(--line);
+    background:rgba(255,255,255,.03);color:#cdd9ef;letter-spacing:.02em}
+  .tag.gold{border-color:rgba(255,179,71,.5);color:var(--amber);background:rgba(255,179,71,.08)}
+  .tag.flux{border-color:rgba(182,255,0,.4);color:var(--flux);background:rgba(182,255,0,.07)}
+
+  /* ===== ARCHIVE ===== */
+  .archive{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);
+    border-radius:16px;overflow:hidden}
+  .archive td{padding:16px 22px;border-bottom:1px solid var(--line);font-size:15px;vertical-align:top}
+  .archive tr:last-child td{border-bottom:none}
+  .archive td.k{color:var(--muted);width:120px;letter-spacing:.08em;white-space:nowrap}
+  .archive td.v{color:var(--ink)}
+
+  /* ===== VERDICT ===== */
+  .verdict{text-align:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:40px}
+  .stars{font-size:34px;letter-spacing:8px;color:var(--flux);text-shadow:0 0 18px rgba(182,255,0,.5)}
+  .verdict p{color:#cdd9ef;max-width:680px;margin:18px auto 0;font-size:16px;line-height:1.9}
+
+  footer{text-align:center;padding:50px 20px 70px;color:var(--muted);font-size:13px;letter-spacing:.06em}
+  footer .f-en{font-family:"Orbitron",sans-serif;color:var(--cyan);letter-spacing:.3em;font-size:13px;margin-bottom:8px}
+
+  @media(max-width:880px){
+    .scores{grid-template-columns:repeat(2,1fr)}
+    .syn-grid{grid-template-columns:1fr}
+    .grid6{grid-template-columns:1fr 1fr}
+    .why{grid-template-columns:1fr}
+  }
+  @media(max-width:560px){.grid6{grid-template-columns:1fr}.archive td.k{width:90px}}
+</style>
+</head>
+<body>
+<canvas id="warp"></canvas>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="year">1985</div>
+  <div class="en">BACK TO THE FUTURE</div>
+  <div class="cn">回到未来</div>
+  <div class="meta">导演 <b>罗伯特·泽米吉斯</b> &nbsp;·&nbsp; 主演 <b>迈克尔·J·福克斯</b> / <b>克里斯托弗·劳埃德</b> &nbsp;·&nbsp; 环球影业 · 安培林娱乐</div>
+  <div class="tag">" roads? where we're going, <span class="hl">we don't need roads.</span> "</div>
+  <div class="scroll-hint">向下滚动 ↓</div>
+</header>
+
+<div class="wrap">
+
+  <!-- SCORES -->
+  <section>
+    <div class="kicker">Critical Acclaim</div>
+    <h2 class="sec-title">口碑与评分</h2>
+    <p class="sec-sub">跨越四十年，依然稳居影史最被喜爱的时间旅行电影之列。</p>
+    <div class="scores reveal">
+      <div class="score"><div class="src">IMDb</div><div class="num" data-to="8.5">0<small>/10</small></div><div class="bar"><i data-w="85"></i></div></div>
+      <div class="score"><div class="src">豆瓣</div><div class="num" data-to="8.8">0<small>/10</small></div><div class="bar"><i data-w="88"></i></div></div>
+      <div class="score"><div class="src">烂番茄 · 影评人</div><div class="num" data-to="96">0<small>%</small></div><div class="bar"><i data-w="96"></i></div></div>
+      <div class="score"><div class="src">Metacritic</div><div class="num" data-to="87">0<small>/100</small></div><div class="bar"><i data-w="87"></i></div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SYNOPSIS -->
+  <section>
+    <div class="kicker">Synopsis</div>
+    <h2 class="sec-title">剧情梗概</h2>
+    <div class="syn-grid">
+      <div class="syn-text reveal">
+        <span class="badge">无剧透 · 仅呈现故事框架</span>
+        <p>加州小镇希尔谷，一个酷爱摇滚乐的高中生偶然卷入了邻居——一位行事古怪的"疯狂科学家"——秘密研制的项目：一辆经过改装的德罗宁跑车，竟是一台能穿越时间的时间机器。</p>
+        <p>一次意外中，少年被抛回了三十年前的 1955 年。在那里，他遇见了年轻时的父母，却惊恐地发现——自己若不设法让年轻的父母坠入爱河，自己的存在将从时间线上被彻底抹去。</p>
+        <p>于是他在过去展开了一场与时间为赛的修补：既要隐藏身份、撮合父母，又要避开引发蝴蝶效应的连锁麻烦，并设法找到足够"能量"回到属于自己的时代。</p>
+      </div>
+      <div class="poster reveal">
+        <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1b2350"/><stop offset="1" stop-color="#070b20"/>
+            </linearGradient>
+            <radialGradient id="glow" cx="50%" cy="42%" r="55%">
+              <stop offset="0" stop-color="#00e5ff" stop-opacity=".5"/><stop offset="1" stop-color="#00e5ff" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="car" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#cfd8ec"/><stop offset="1" stop-color="#7f8db0"/>
+            </linearGradient>
+          </defs>
+          <rect width="300" height="400" fill="url(#sky)"/>
+          <circle cx="150" cy="168" r="120" fill="url(#glow)"/>
+          <!-- time trails -->
+          <g stroke-linecap="round" opacity=".8">
+            <path d="M150 168 L150 20" stroke="#00e5ff" stroke-width="2" opacity=".5"/>
+            <path d="M150 168 L60 40" stroke="#ff2d95" stroke-width="2" opacity=".5"/>
+            <path d="M150 168 L240 40" stroke="#b6ff00" stroke-width="2" opacity=".5"/>
+            <path d="M150 168 L30 168" stroke="#00e5ff" stroke-width="1.5" opacity=".35"/>
+            <path d="M150 168 L270 168" stroke="#ff2d95" stroke-width="1.5" opacity=".35"/>
+          </g>
+          <!-- ground glow line -->
+          <line x1="20" y1="320" x2="280" y2="320" stroke="#00e5ff" stroke-width="1" opacity=".5"/>
+          <!-- DeLorean silhouette -->
+          <g transform="translate(150 300)">
+            <path d="M-58 14 L-50 -8 Q-46 -22 -28 -22 L28 -22 Q46 -22 50 -8 L58 14 Z" fill="url(#car)" stroke="#0a0f28" stroke-width="1.5"/>
+            <path d="M-40 -8 Q-36 -18 -20 -18 L20 -18 Q36 -18 40 -8 Z" fill="#0a1228" opacity=".85"/>
+            <circle cx="-32" cy="16" r="9" fill="#0a0f28" stroke="#00e5ff" stroke-width="1.5"/>
+            <circle cx="32" cy="16" r="9" fill="#0a0f28" stroke="#00e5ff" stroke-width="1.5"/>
+            <rect x="-6" y="-30" width="12" height="12" rx="2" fill="#b6ff00" opacity=".9"/>
+          </g>
+          <text x="150" y="372" text-anchor="middle" fill="#9fb0c9" font-family="Orbitron,sans-serif" font-size="11" letter-spacing="3">1.21 GIGAWATTS</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- HIGHLIGHTS -->
+  <section>
+    <div class="kicker">Highlights</div>
+    <h2 class="sec-title">六大亮点</h2>
+    <p class="sec-sub">它凭什么成为一代人的共同记忆？</p>
+    <div class="grid6">
+      <div class="hl reveal"><div class="n">01</div><h4>教科书级剧本</h4><p>泽米吉斯与盖尔构建的时间悖论逻辑严密又举重若轻，悬念与笑点密度极高，节奏堪称商业科幻范本。</p></div>
+      <div class="hl reveal"><div class="n">02</div><h4>灵气的少年偶像</h4><p>迈克尔·J·福克斯把 Marty McFly 演得鲜活动人，滑板、吉他、犹豫与热血，定格了一代青春符号。</p></div>
+      <div class="hl reveal"><div class="n">03</div><h4>疯癫科学家 Doc</h4><p>克里斯托弗·劳埃德白发蓬乱、台词炸裂，"Great Scott!""1.21 吉瓦"成为影史最洗脑的科怪形象。</p></div>
+      <div class="hl reveal"><div class="n">04</div><h4>复古未来美学</h4><p>德罗宁时间机器、通量电容、霓虹小镇——80 年代对"未来"的浪漫想象，至今仍前卫有型。</p></div>
+      <div class="hl reveal"><div class="n">05</div><h4>上头的配乐</h4><p>艾伦·西尔维斯特里明快昂扬的旋律，搭配 Huey Lewis《The Power of Love》，一听就回到 1985。</p></div>
+      <div class="hl reveal"><div class="n">06</div><h4>跨代际温情</h4><p>表面是冒险，内核是父子关系与自我认同——"让世界看见真正的你"，温柔得超出预期。</p></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- QUOTE -->
+  <section class="quote">
+    <div class="mark reveal">"</div>
+    <blockquote class="reveal">Roads? Where we're going, we don't need roads.</blockquote>
+    <div class="from reveal">—— 博士对马蒂说的最后一句话</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WHY -->
+  <section>
+    <div class="kicker">Why Watch</div>
+    <h2 class="sec-title">为什么值得一看</h2>
+    <p class="sec-sub">无论你是否喜欢科幻，这都是一部能让人会心一笑的经典。</p>
+    <div class="why">
+      <div class="item reveal"><div class="ic">A</div><div><h4>轻松好入口的科幻喜剧</h4><p>幽默、热血、零门槛，阖家可看，是许多人"入坑"时间旅行题材的第一站。</p></div></div>
+      <div class="item reveal"><div class="ic">B</div><div><h4>时间旅行题材的标杆</h4><p>后世无数电影、动画、游戏都向它致敬，看它等于看懂一整条流行文化脉络。</p></div></div>
+      <div class="item reveal"><div class="ic">C</div><div><h4>对"改变过去"的温柔反思</h4><p>它不贩卖焦虑，而是提醒你：当下与所爱之人，本就值得珍惜。</p></div></div>
+      <div class="item reveal"><div class="ic">D</div><div><h4>鲜活的 80 年代切片</h4><p>怀旧与活力兼具，服饰、音乐、街景都像一封写给黄金年代的情书。</p></div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- HONORS -->
+  <section>
+    <div class="kicker">Accolades</div>
+    <h2 class="sec-title">荣誉与地位</h2>
+    <p class="sec-sub">奖杯与榜单，是它"公认经典"的注脚。</p>
+    <div class="honors reveal">
+      <span class="tag gold">1986 奥斯卡最佳音效剪辑奖</span>
+      <span class="tag">奥斯卡 4 项提名（原创剧本 / 配乐 / 歌曲 / 音效剪辑）</span>
+      <span class="tag">金球奖 音乐喜剧类最佳影片 提名</span>
+      <span class="tag">BAFTA 最佳视觉特效 提名</span>
+      <span class="tag flux">雨果奖 最佳戏剧呈现</span>
+      <span class="tag">AFI 百年百大电影（十周年榜 #57）</span>
+      <span class="tag flux">AFI 十佳科幻片 #10</span>
+      <span class="tag">IMDb Top 250</span>
+      <span class="tag">烂番茄 影评人 96% / 观众 95%</span>
+      <span class="tag">全球票房约 3.89 亿美元</span>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ARCHIVE -->
+  <section>
+    <div class="kicker">Film Archive</div>
+    <h2 class="sec-title">影片档案</h2>
+    <table class="archive reveal">
+      <tr><td class="k">片名</td><td class="v">回到未来 / Back to the Future</td></tr>
+      <tr><td class="k">年份</td><td class="v">1985</td></tr>
+      <tr><td class="k">导演</td><td class="v">罗伯特·泽米吉斯（Robert Zemeckis）</td></tr>
+      <tr><td class="k">编剧</td><td class="v">罗伯特·泽米吉斯、鲍勃·盖尔</td></tr>
+      <tr><td class="k">主演</td><td class="v">迈克尔·J·福克斯、克里斯托弗·劳埃德、莉亚·汤普森、克里斯平·格洛弗、托马斯·F·威尔森</td></tr>
+      <tr><td class="k">类型</td><td class="v">科幻 / 喜剧 / 冒险</td></tr>
+      <tr><td class="k">制片</td><td class="v">环球影业 / 安培林娱乐</td></tr>
+      <tr><td class="k">片长</td><td class="v">116 分钟</td></tr>
+      <tr><td class="k">语言</td><td class="v">英语</td></tr>
+      <tr><td class="k">评分</td><td class="v">IMDb 8.5 / 豆瓣 8.8 / 烂番茄 96% / Metacritic 87</td></tr>
+      <tr><td class="k">荣誉</td><td class="v">奥斯卡最佳音效剪辑等 4 项提名、雨果奖、AFI 十佳科幻 #10</td></tr>
+    </table>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- VERDICT -->
+  <section>
+    <div class="verdict reveal">
+      <div class="kicker">Editor's Verdict</div>
+      <div class="stars">★★★★★</div>
+      <p>一部把"科学性"与"人情味"同时做满的 Rare Gem：它让你笑着穿越时间，最后却为平凡的生活热泪盈眶。无论重看多少遍，那辆冲向时钟塔的德罗宁，永远年轻、永远让人心动。</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="f-en">BACK TO THE FUTURE · 1985</div>
+  <div>每日一部经典电影 · 与您体验精彩人生 &nbsp;|&nbsp; 本页为自动化推荐，评分以各平台实时数据为准</div>
+</footer>
+
+<script>
+/* ===== time-travel warp canvas ===== */
+(function(){
+  const c=document.getElementById('warp'),x=c.getContext('2d');
+  let w,h,cx,cy,P=[];const N=120;
+  function rs(){w=c.width=innerWidth;h=c.height=innerHeight;cx=w/2;cy=h*0.42}
+  rs();addEventListener('resize',rs);
+  const cols=['#00e5ff','#ff2d95','#b6ff00'];
+  for(let i=0;i<N;i++)P.push(sp());
+  function sp(){const a=Math.random()*Math.PI*2,r=Math.random()*40+6;
+    return{x:Math.cos(a)*r,y:Math.sin(a)*r,z:Math.random()*0.6+0.25,c:cols[i%3|0],s:Math.random()*0.6+0.5}}
+  let t=0;
+  (function loop(){
+    t+=0.012;
+    x.fillStyle='rgba(6,8,24,0.20)';x.fillRect(0,0,w,h);
+    for(const p of P){
+      const k=1/(1-p.z*t*0.6);
+      const px=cx+p.x*k, py=cy+p.y*k;
+      const len=6*(1+p.z*2);
+      x.strokeStyle=p.c;x.lineWidth=p.s;x.globalAlpha=Math.min(1,p.z+0.2);
+      x.beginPath();x.moveTo(px,py);
+      x.lineTo(cx+p.x*k*1.06, cy+p.y*k*1.06);x.stroke();
+      p.z+=0.0035; if(p.z>1.7){Object.assign(p,sp());p.z=0.05;p.x*=0.3;p.y*=0.3}
+    }
+    x.globalAlpha=1;
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* ===== reveal on scroll ===== */
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
+    if(e.target.classList.contains('scores'))animScores();}});
+},{threshold:.18});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ===== score count-up + bar fill ===== */
+function animScores(){
+  document.querySelectorAll('.score').forEach(s=>{
+    const num=s.querySelector('.num'),to=parseFloat(num.dataset.to),bar=s.querySelector('.bar i');
+    const dec=(to%1!==0);let cur=0;const dur=1300,st=performance.now();
+    (function step(now){let p=Math.min(1,(now-st)/dur);p=1-Math.pow(1-p,3);
+      cur=to*p;num.innerHTML=(dec?cur.toFixed(1):Math.round(cur))+'<small>'+num.innerHTML.match(/<small>([\s\S]*)<\/small>/)[1]+'</small>';
+      if(p<1)requestAnimationFrame(step);else num.innerHTML=to+(dec?to.toFixed(1).slice(1):'')+'<small>'+num.innerHTML.match(/<small>([\s\S]*)<\/small>/)[1]+'</small>';
+    })(st);
+    bar.style.width=bar.dataset.w+'%';
+  });
+}
+</script>
+</body>
+</html>
