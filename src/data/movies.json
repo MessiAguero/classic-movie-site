@@ -12648,5 +12648,79 @@
     "reviewStars": 5,
     "posterSvg": "<svg viewBox=\"0 0 300 400\" xmlns=\"http://www.w3.org/2000/svg\">\n          <defs>\n            <linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0\" stop-color=\"#1b2350\"></stop><stop offset=\"1\" stop-color=\"#070b20\"></stop>\n            </linearGradient>\n            <radialGradient id=\"glow\" cx=\"50%\" cy=\"42%\" r=\"55%\">\n              <stop offset=\"0\" stop-color=\"#00e5ff\" stop-opacity=\".5\"></stop><stop offset=\"1\" stop-color=\"#00e5ff\" stop-opacity=\"0\"></stop>\n            </radialGradient>\n            <linearGradient id=\"car\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"0\">\n              <stop offset=\"0\" stop-color=\"#cfd8ec\"></stop><stop offset=\"1\" stop-color=\"#7f8db0\"></stop>\n            </linearGradient>\n          </defs>\n          <rect width=\"300\" height=\"400\" fill=\"url(#sky)\"></rect>\n          <circle cx=\"150\" cy=\"168\" r=\"120\" fill=\"url(#glow)\"></circle>\n          <!-- time trails -->\n          <g stroke-linecap=\"round\" opacity=\".8\">\n            <path d=\"M150 168 L150 20\" stroke=\"#00e5ff\" stroke-width=\"2\" opacity=\".5\"></path>\n            <path d=\"M150 168 L60 40\" stroke=\"#ff2d95\" stroke-width=\"2\" opacity=\".5\"></path>\n            <path d=\"M150 168 L240 40\" stroke=\"#b6ff00\" stroke-width=\"2\" opacity=\".5\"></path>\n            <path d=\"M150 168 L30 168\" stroke=\"#00e5ff\" stroke-width=\"1.5\" opacity=\".35\"></path>\n            <path d=\"M150 168 L270 168\" stroke=\"#ff2d95\" stroke-width=\"1.5\" opacity=\".35\"></path>\n          </g>\n          <!-- ground glow line -->\n          <line x1=\"20\" y1=\"320\" x2=\"280\" y2=\"320\" stroke=\"#00e5ff\" stroke-width=\"1\" opacity=\".5\"></line>\n          <!-- DeLorean silhouette -->\n          <g transform=\"translate(150 300)\">\n            <path d=\"M-58 14 L-50 -8 Q-46 -22 -28 -22 L28 -22 Q46 -22 50 -8 L58 14 Z\" fill=\"url(#car)\" stroke=\"#0a0f28\" stroke-width=\"1.5\"></path>\n            <path d=\"M-40 -8 Q-36 -18 -20 -18 L20 -18 Q36 -18 40 -8 Z\" fill=\"#0a1228\" opacity=\".85\"></path>\n            <circle cx=\"-32\" cy=\"16\" r=\"9\" fill=\"#0a0f28\" stroke=\"#00e5ff\" stroke-width=\"1.5\"></circle>\n            <circle cx=\"32\" cy=\"16\" r=\"9\" fill=\"#0a0f28\" stroke=\"#00e5ff\" stroke-width=\"1.5\"></circle>\n            <rect x=\"-6\" y=\"-30\" width=\"12\" height=\"12\" rx=\"2\" fill=\"#b6ff00\" opacity=\".9\"></rect>\n          </g>\n          <text x=\"150\" y=\"372\" text-anchor=\"middle\" fill=\"#9fb0c9\" font-family=\"Orbitron,sans-serif\" font-size=\"11\" letter-spacing=\"3\">1.21 GIGAWATTS</text>\n        </svg>",
     "posterCaption": ""
+  },
+  {
+    "id": "20260814",
+    "date": "20260814",
+    "zhTitle": "大话西游",
+    "enTitle": "A Chinese Odyssey",
+    "year": "",
+    "tagline": "",
+    "meta": "",
+    "ratings": [
+      {
+        "source": "豆瓣（系列）",
+        "value": "9.1",
+        "sub": ""
+      },
+      {
+        "source": "IMDb",
+        "value": "7.9",
+        "sub": ""
+      },
+      {
+        "source": "华语·cult→封神",
+        "value": "影史经典",
+        "sub": ""
+      }
+    ],
+    "plot": [
+      "五百年前的一段未了尘缘，让一位盖世英雄背负宿命，转世落入凡间。这一世，他成了山贼寨子里一个吊儿郎当的小喽啰——满嘴歪理、贪财好色，最大的理想不过是回高老庄娶个媳妇。",
+      "直到一位神秘女子寻仇而来，把他卷进一出关于\"月光宝盒\"的奇遇：穿越、追逐、误会、错身，皆因一段谁都说不清的因果。他在一次次阴差阳错里，越陷越深。",
+      "这是一部披着无厘头喜剧外衣的神话。越往后，笑与泪的边界就越模糊——你会忽然发现，自己早已不是在笑。",
+      "＊ 以上为止于冲突展开前的故事轮廓，结局、反转与那句\"名台词\"此处一概不剧透。"
+    ],
+    "spoilerNote": "",
+    "highlights": [
+      {
+        "ic": "🌙",
+        "title": "无厘头美学的巅峰",
+        "body": "周星驰式荒诞笑料炉火纯青：台词、节奏、肢体，每一帧都写满九十年代港式喜剧的灵魂。"
+      },
+      {
+        "ic": "💔",
+        "title": "笑中带泪的反转结构",
+        "body": "前半段越搞笑，后半段越扎心。它用喜剧做壳，讲的是人人都懂的\"错过\"与\"宿命\"。"
+      },
+      {
+        "ic": "🎼",
+        "title": "《一生所爱》封神配乐",
+        "body": "卢冠廷作曲、莫文蔚献唱的主题曲，已成为华语影史最催泪的旋律之一，余韵三十年不散。"
+      },
+      {
+        "ic": "🌹",
+        "title": "紫霞仙子的经典形象",
+        "body": "朱茵饰演的紫霞，是几代人心中的\"白月光\"。那一份倔强又天真的爱，至今无人能替。"
+      },
+      {
+        "ic": "🪞",
+        "title": "东方浪漫的\"错过\"母题",
+        "body": "关于\"想爱不敢爱、爱了又错过\"的东方式深情，被它讲到了极致，成为后来无数作品的母本。"
+      },
+      {
+        "ic": "🗣️",
+        "title": "句句皆是\"名台词",
+        "body": "从开场到结尾，几乎每段对话都被奉为经典，深刻植入了华语流行文化的肌理。"
+      }
+    ],
+    "quotes": [],
+    "why": [],
+    "honors": [],
+    "archive": [],
+    "review": "直到一位神秘女子寻仇而来，把他卷进一出关于\"月光宝盒\"的奇遇：穿越、追逐、误会、错身，皆因一段谁都说不清的因果。他在一次次阴差阳错里，越陷越深。",
+    "reviewBy": "",
+    "reviewStars": 5,
+    "posterSvg": "<svg viewBox=\"0 0 300 400\" preserveAspectRatio=\"xMidYMid slice\" role=\"img\">\n        <defs>\n          <linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n            <stop offset=\"0\" stop-color=\"#0b1228\"></stop>\n            <stop offset=\".5\" stop-color=\"#0c1124\"></stop>\n            <stop offset=\"1\" stop-color=\"#070a16\"></stop>\n          </linearGradient>\n          <radialGradient id=\"moon\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n            <stop offset=\"0\" stop-color=\"#f4f7ff\"></stop>\n            <stop offset=\".6\" stop-color=\"#dfe6ff\"></stop>\n            <stop offset=\"1\" stop-color=\"#dfe6ff\" stop-opacity=\"0\"></stop>\n          </radialGradient>\n          <linearGradient id=\"dune1\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n            <stop offset=\"0\" stop-color=\"#2a2740\"></stop>\n            <stop offset=\"1\" stop-color=\"#161427\"></stop>\n          </linearGradient>\n          <linearGradient id=\"dune2\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n            <stop offset=\"0\" stop-color=\"#3a2f3f\"></stop>\n            <stop offset=\"1\" stop-color=\"#1d1626\"></stop>\n          </linearGradient>\n        </defs>\n        <rect width=\"300\" height=\"400\" fill=\"url(#sky)\"></rect>\n        <!-- stars -->\n        <g fill=\"#dfe6ff\">\n          <circle cx=\"40\" cy=\"50\" r=\"1.1\" opacity=\".7\"></circle><circle cx=\"90\" cy=\"30\" r=\"0.8\" opacity=\".5\"></circle>\n          <circle cx=\"250\" cy=\"60\" r=\"1.2\" opacity=\".7\"></circle><circle cx=\"210\" cy=\"34\" r=\"0.7\" opacity=\".5\"></circle>\n          <circle cx=\"160\" cy=\"46\" r=\"0.9\" opacity=\".6\"></circle><circle cx=\"280\" cy=\"120\" r=\"1\" opacity=\".5\"></circle>\n          <circle cx=\"20\" cy=\"110\" r=\"0.8\" opacity=\".5\"></circle><circle cx=\"120\" cy=\"70\" r=\"0.7\" opacity=\".4\"></circle>\n        </g>\n        <!-- moon glow + disc -->\n        <circle cx=\"150\" cy=\"135\" r=\"92\" fill=\"url(#moon)\" opacity=\".35\"></circle>\n        <circle cx=\"150\" cy=\"135\" r=\"46\" fill=\"#f4f7ff\"></circle>\n        <circle cx=\"150\" cy=\"135\" r=\"46\" fill=\"#dfe6ff\" opacity=\".0\"></circle>\n        <circle cx=\"138\" cy=\"124\" r=\"9\" fill=\"#e3e8f7\" opacity=\".55\"></circle>\n        <circle cx=\"166\" cy=\"148\" r=\"6\" fill=\"#e3e8f7\" opacity=\".45\"></circle>\n        <!-- distant dune ridge -->\n        <path d=\"M0 250 C70 222 130 244 180 232 C230 220 270 240 300 226 L300 400 L0 400 Z\" fill=\"url(#dune1)\" opacity=\".75\"></path>\n        <!-- near dune -->\n        <path d=\"M0 300 C60 276 110 298 160 286 C215 272 260 296 300 282 L300 400 L0 400 Z\" fill=\"url(#dune2)\"></path>\n        <!-- silhouette of a lone figure + staff -->\n        <g fill=\"#0a0814\">\n          <ellipse cx=\"150\" cy=\"352\" rx=\"20\" ry=\"5\" opacity=\".5\"></ellipse>\n          <path d=\"M146 348 q4 -22 8 0 Z\"></path>\n          <rect x=\"149.3\" y=\"312\" width=\"1.4\" height=\"38\" rx=\"0.7\"></rect>\n          <circle cx=\"150\" cy=\"309\" r=\"3.4\"></circle>\n          <path d=\"M150 309 q-9 2 -12 8\" stroke=\"#0a0814\" stroke-width=\"1.6\" fill=\"none\"></path>\n        </g>\n        <!-- drifting petals -->\n        <g fill=\"#e8a9b8\" opacity=\".9\">\n          <circle cx=\"96\" cy=\"190\" r=\"2\"></circle><circle cx=\"214\" cy=\"210\" r=\"1.6\"></circle>\n          <circle cx=\"170\" cy=\"175\" r=\"1.4\"></circle><circle cx=\"120\" cy=\"225\" r=\"1.7\"></circle>\n          <circle cx=\"236\" cy=\"180\" r=\"1.3\"></circle><circle cx=\"74\" cy=\"205\" r=\"1.5\"></circle>\n        </g>\n      </svg>",
+    "posterCaption": ""
   }
 ]
