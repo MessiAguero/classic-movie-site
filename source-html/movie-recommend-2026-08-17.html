@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>第三人 · The Third Man (1949) | 经典电影推荐</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0c;
+    --bg-2:#111114;
+    --ink:#e9e4d8;
+    --ink-soft:#b9b2a4;
+    --ink-dim:#7d7669;
+    --amber:#d8a24a;
+    --amber-glow:#f2c879;
+    --teal:#5f8d86;
+    --line:rgba(216,162,74,.22);
+    --card:rgba(22,22,26,.72);
+    --shadow:0 24px 60px -20px rgba(0,0,0,.8);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Noto Sans SC","Noto Serif SC",system-ui,sans-serif;
+    line-height:1.85;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* canvas rain */
+  #rain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5}
+  /* film grain + vignette */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
+    background:
+      radial-gradient(120% 80% at 50% 0%,transparent 40%,rgba(0,0,0,.55) 100%),
+      radial-gradient(100% 100% at 50% 50%,transparent 55%,rgba(0,0,0,.85) 100%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;animation:grain 1.1s steps(3) infinite;
+  }
+  @keyframes grain{
+    0%{transform:translate(0,0)}33%{transform:translate(-4px,3px)}66%{transform:translate(3px,-2px)}100%{transform:translate(0,0)}
+  }
+  .wrap{position:relative;z-index:2;max-width:980px;margin:0 auto;padding:0 26px}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;
+    padding:22px 26px;font-family:"Playfair Display",serif;letter-spacing:.18em;
+    font-size:12px;color:var(--ink-dim);text-transform:uppercase;border-bottom:1px solid var(--line);
+  }
+  .topbar .brand{color:var(--amber)}
+  .topbar .date{color:var(--ink-soft)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;z-index:2;padding:90px 26px 70px;text-align:center}
+  .kicker{
+    display:inline-block;font-family:"Playfair Display",serif;letter-spacing:.42em;
+    font-size:12px;color:var(--amber);text-transform:uppercase;margin-bottom:26px;
+    padding:8px 18px;border:1px solid var(--line);border-radius:40px;
+    background:rgba(216,162,74,.05);
+  }
+  .hero h1{
+    font-family:"Noto Serif SC",serif;font-weight:900;
+    font-size:clamp(58px,12vw,128px);line-height:.98;letter-spacing:.04em;
+    background:linear-gradient(180deg,#fff 0%,#f2c879 55%,#b9852f 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 60px rgba(242,200,121,.18);
+  }
+  .hero .en{
+    font-family:"Playfair Display",serif;font-style:italic;font-weight:500;
+    font-size:clamp(18px,3.4vw,30px);color:var(--ink-soft);margin-top:14px;letter-spacing:.04em;
+  }
+  .hero .meta{
+    margin-top:30px;display:flex;gap:14px 26px;justify-content:center;flex-wrap:wrap;
+    font-size:14px;color:var(--ink-dim);font-family:"Playfair Display",serif;letter-spacing:.08em;
+  }
+  .hero .meta b{color:var(--ink);font-weight:700}
+  .tagline{
+    margin:34px auto 0;max-width:620px;font-family:"Noto Serif SC",serif;
+    font-size:clamp(16px,2.4vw,20px);color:var(--ink-soft);font-style:italic;line-height:1.9;
+  }
+  .scroll-cue{margin-top:46px;color:var(--ink-dim);font-size:12px;letter-spacing:.3em;text-transform:uppercase}
+
+  /* ---------- sections ---------- */
+  section{padding:54px 0;position:relative;z-index:2}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:30px}
+  .sec-num{
+    font-family:"Playfair Display",serif;font-size:14px;color:var(--amber);
+    letter-spacing:.2em;border:1px solid var(--line);border-radius:6px;padding:4px 10px;
+  }
+  .sec-title{font-family:"Noto Serif SC",serif;font-weight:700;font-size:clamp(24px,4vw,34px);color:var(--ink)}
+  .sec-sub{font-family:"Playfair Display",serif;font-style:italic;color:var(--ink-dim);font-size:14px;margin-left:auto;letter-spacing:.05em}
+
+  p.lead{color:var(--ink-soft);font-size:17px;line-height:1.95}
+  p.lead + p.lead{margin-top:18px}
+  .hl{color:var(--amber-glow);font-weight:500}
+
+  /* dossier card */
+  .dossier{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    box-shadow:var(--shadow);padding:34px 36px;backdrop-filter:blur(6px);
+    display:grid;grid-template-columns:1fr 1fr;gap:18px 40px;
+  }
+  .dossier .row{display:flex;flex-direction:column;gap:4px;border-bottom:1px dashed rgba(216,162,74,.14);padding-bottom:12px}
+  .dossier .k{font-family:"Playfair Display",serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-dim)}
+  .dossier .v{font-family:"Noto Serif SC",serif;font-size:16px;color:var(--ink);font-weight:600}
+  .dossier .v small{display:block;font-weight:400;color:var(--ink-dim);font-size:13px;font-family:"Noto Sans SC";margin-top:2px}
+
+  /* highlights grid */
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .cell{
+    background:linear-gradient(180deg,rgba(28,28,33,.7),rgba(16,16,19,.7));
+    border:1px solid var(--line);border-radius:14px;padding:24px 26px;transition:.35s;
+  }
+  .cell:hover{border-color:rgba(216,162,74,.55);transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(242,200,121,.4)}
+  .cell .ic{font-family:"Playfair Display",serif;font-size:13px;color:var(--amber);letter-spacing:.2em;margin-bottom:10px}
+  .cell h3{font-family:"Noto Serif SC",serif;font-size:19px;color:var(--ink);margin-bottom:8px;font-weight:700}
+  .cell p{color:var(--ink-soft);font-size:14.5px;line-height:1.8}
+
+  /* why */
+  .why{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:36px 38px;box-shadow:var(--shadow)}
+  .why ul{list-style:none;display:grid;gap:20px}
+  .why li{display:grid;grid-template-columns:34px 1fr;gap:16px;align-items:start}
+  .why li .n{font-family:"Playfair Display",serif;font-size:20px;color:var(--amber);font-weight:700}
+  .why li b{color:var(--ink);font-family:"Noto Serif SC",serif;font-size:17px}
+  .why li span{color:var(--ink-soft);font-size:15px}
+
+  /* quote */
+  .quote{
+    text-align:center;padding:60px 26px;position:relative;z-index:2;
+  }
+  .quote blockquote{
+    font-family:"Noto Serif SC",serif;font-style:italic;font-weight:600;
+    font-size:clamp(22px,4.4vw,38px);line-height:1.7;color:var(--amber-glow);
+    max-width:760px;margin:0 auto;text-shadow:0 0 40px rgba(242,200,121,.2);
+  }
+  .quote .src{margin-top:24px;font-family:"Playfair Display",serif;letter-spacing:.2em;font-size:13px;color:var(--ink-dim);text-transform:uppercase}
+
+  /* ratings */
+  .ratings{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .rate{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 16px;text-align:center}
+  .rate .score{font-family:"Playfair Display",serif;font-weight:900;font-size:34px;color:var(--amber-glow);line-height:1}
+  .rate .src{font-family:"Noto Sans SC";font-size:12px;color:var(--ink-dim);margin-top:8px;letter-spacing:.08em}
+  .rate .note{font-family:"Noto Serif SC";font-size:12px;color:var(--ink-soft);margin-top:6px}
+
+  footer{position:relative;z-index:2;text-align:center;padding:50px 26px 70px;border-top:1px solid var(--line);color:var(--ink-dim);font-size:13px;font-family:"Playfair Display",serif;letter-spacing:.1em}
+  footer .f-title{font-family:"Noto Serif SC";color:var(--ink-soft);font-size:15px;margin-bottom:10px;letter-spacing:.05em}
+
+  @media(max-width:720px){
+    .dossier,.grid{grid-template-columns:1fr}
+    .ratings{grid-template-columns:repeat(2,1fr)}
+    .sec-sub{display:none}
+    .hero{padding:60px 20px 50px}
+  }
+</style>
+</head>
+<body>
+<canvas id="rain"></canvas>
+
+<div class="topbar">
+  <span class="brand">CLASSIC FILM · 经典电影推荐</span>
+  <span class="date">2026.08.17 · 第 85 部</span>
+</div>
+
+<header class="hero">
+  <span class="kicker">Film Noir · 黑色电影巅峰</span>
+  <h1>第三人</h1>
+  <div class="en">The Third Man</div>
+  <div class="meta">
+    <span>导演 <b>卡罗尔·里德</b></span>
+    <span>编剧 <b>格雷厄姆·格林</b></span>
+    <span>年份 <b>1949</b></span>
+    <span>片长 <b>104 分钟</b></span>
+    <span>黑白 <b>英国 / 美国</b></span>
+  </div>
+  <p class="tagline">"在那座被四国瓜分的战后维也纳，朋友之死只是一连串疑团的开始——而真相，藏在那个'第三人'身上。"</p>
+  <div class="scroll-cue">▼ 向下阅读</div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <span class="sec-title">剧情梗概</span>
+      <span class="sec-sub">No Spoilers</span>
+    </div>
+    <p class="lead">二战后的维也纳，被美、英、法、苏四个占领区分而治之，街道上满是废墟、铁丝网与黑市的暗影。<span class="hl">廉价西部小说作家霍莉·马丁斯</span>应邀来到这座城市，投奔旧友哈里·莱姆——对方曾许诺给他一份工作。</p>
+    <p class="lead">然而他刚下火车，迎来的却是一场葬礼：哈里在街头车祸中离奇身亡。英国军事警察告诉他，哈里生前深陷黑市交易。马丁斯不信，因为所有证人都说事故当晚有<span class="hl">两个人</span>曾在现场试图救助哈里——可偏偏有一位目击者坚称，他看见的，是<span class="hl">第三个男人</span>。</p>
+    <p class="lead">带着对故友的执念，马丁斯开始追查这段说法中的破绽。他越接近答案，越发现这座雾气弥漫的城市里，没有人、也没有一件事，像表面上那样简单。</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <span class="sec-title">影片档案</span>
+      <span class="sec-sub">The Dossier</span>
+    </div>
+    <div class="dossier">
+      <div class="row"><span class="k">Director</span><span class="v">卡罗尔·里德 <small>Carol Reed</small></span></div>
+      <div class="row"><span class="k">Screenplay</span><span class="v">格雷厄姆·格林 <small>改编自本人同名小说</small></span></div>
+      <div class="row"><span class="k">Cast</span><span class="v">约瑟夫·科顿 / 阿莉达·瓦利 <small>奥逊·威尔斯 / 特雷弗·霍华德</small></span></div>
+      <div class="row"><span class="k">Cinematography</span><span class="v">罗伯特·克拉斯克 <small>奥斯卡最佳摄影</small></span></div>
+      <div class="row"><span class="k">Music</span><span class="v">安东·卡拉斯的齐特琴 <small>Zither — 影史最独特配乐之一</small></span></div>
+      <div class="row"><span class="k">Genre</span><span class="v">黑色电影 / 悬疑 / 剧情</span></div>
+      <div class="row"><span class="k">Runtime</span><span class="v">104 分钟 <small>黑白 · 1.37:1</small></span></div>
+      <div class="row"><span class="k">Setting</span><span class="v">1947 年 · 四国分治的维也纳</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <span class="sec-title">影片亮点</span>
+      <span class="sec-sub">What Makes It Great</span>
+    </div>
+    <div class="grid">
+      <div class="cell">
+        <div class="ic">A · ATMOSPHERE</div>
+        <h3>教科书级的悬疑氛围</h3>
+        <p>倾斜的"荷兰角"镜头、断壁残垣间的光影、永不消散的雾气与雨夜——里德把战后维也纳拍成一座巨大的迷宫，每一帧都弥漫着不安与诱惑。</p>
+      </div>
+      <div class="cell">
+        <div class="ic">B · SCORE</div>
+        <h3>一把齐特琴成就的灵魂</h3>
+        <p>维也纳街头艺人安东·卡拉斯的单人齐特琴配乐，轻佻又诡谲，成了全片的听觉签名，至今无人能复制这种独树一帜的气质。</p>
+      </div>
+      <div class="cell">
+        <div class="ic">C · CHARACTER</div>
+        <h3>奥逊·威尔斯的"幽灵"</h3>
+        <p>威尔斯戏份不多，却塑造出影史最神秘、最迷人的反派之一——一个谈笑间让人脊背发凉的角色，存在感贯穿全片。</p>
+      </div>
+      <div class="cell">
+        <div class="ic">D · MORALITY</div>
+        <h3>没有正确答案的灰色世界</h3>
+        <p>它拒绝廉价的善恶二分：友情、背叛、良知在废墟中纠缠，结局的余味远比"正义获胜"更复杂、更诚实。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <span class="sec-title">为什么值得一看</span>
+      <span class="sec-sub">Why Watch It</span>
+    </div>
+    <div class="why">
+      <ul>
+        <li><span class="n">Ⅰ</span><span><b>影史公认的巅峰之作</b>——先后斩获戛纳电影节大奖、奥斯卡最佳摄影、BAFTA 最佳影片；1999 年英国电影协会更将其票选为"20 世纪最佳英国电影"。</span></li>
+        <li><span class="n">Ⅱ</span><span><b>短小精悍，毫不拖沓</b>——仅 104 分钟，节奏紧绷、信息密度极高，是入门"黑色电影"最理想的一扇门。</span></li>
+        <li><span class="n">Ⅲ</span><span><b>悬疑而不靠血浆</b>——它用氛围、对白与道德困境吊住你，适合想看"聪明电影"的观众，重看仍能发现新细节。</span></li>
+        <li><span class="n">Ⅳ</span><span><b>美学永不过时</b>——无论你是爱摄影、爱配乐，还是爱老派叙事，这片子都经得起反复咀嚼，是真正的"经典"而非"老片"。</span></li>
+      </ul>
+    </div>
+  </section>
+
+</div>
+
+<div class="quote">
+  <blockquote>"那年的维也纳，被四个战胜国分而治之；而在城市的阴影里，连真相也要从第三个人的嘴里才能听到。"</blockquote>
+  <div class="src">— 影片开篇旁白 · 改编自格雷厄姆·格林</div>
+</div>
+
+<div class="wrap">
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">05</span>
+      <span class="sec-title">口碑数据</span>
+      <span class="sec-sub">Critical Reception</span>
+    </div>
+    <div class="ratings">
+      <div class="rate"><div class="score">8.1</div><div class="src">IMDb</div><div class="note">/ 10 · 逾 19 万票</div></div>
+      <div class="rate"><div class="score">99%</div><div class="src">Rotten Tomatoes</div><div class="note">影评人共识好评</div></div>
+      <div class="rate"><div class="score">97</div><div class="src">Metacritic</div><div class="note">必看级盛赞</div></div>
+      <div class="rate"><div class="score">4.2</div><div class="src">Letterboxd</div><div class="note">/ 5 · 影迷挚爱</div></div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="f-title">第三人 · The Third Man (1949)</div>
+  经典电影推荐 · 每天一部，体验精彩人生 ｜ 本页为自动化生成，剧透已规避，放心观看
+</footer>
+
+<script>
+(function(){
+  const c=document.getElementById('rain');
+  const ctx=c.getContext('2d');
+  let w,h,drops,cols;
+  const fontSize=14;
+  function resize(){
+    w=c.width=window.innerWidth;
+    h=c.height=window.innerHeight;
+    cols=Math.floor(w/fontSize);
+    drops=new Array(cols).fill(0).map(()=>Math.random()*-h);
+  }
+  resize();
+  window.addEventListener('resize',resize);
+  // subtle diagonal "rain" as faint streaks — keeps noir mood without noise
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    ctx.strokeStyle='rgba(216,162,74,0.10)';
+    ctx.lineWidth=1;
+    for(let i=0;i<cols;i++){
+      const x=i*fontSize + (Math.random()*2-1);
+      const y=drops[i];
+      const len=8+Math.random()*14;
+      ctx.beginPath();
+      ctx.moveTo(x,y);
+      ctx.lineTo(x-3,y+len); // slight diagonal
+      ctx.stroke();
+      drops[i]+=2.4+Math.random()*2.2;
+      if(drops[i]>h && Math.random()>0.975) drops[i]=Math.random()*-120;
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  // entrance reveal
+  const obs=new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.style.opacity=1; e.target.style.transform='none'; } });
+  },{threshold:0.12});
+  document.querySelectorAll('section, .quote, .topbar').forEach((el,i)=>{
+    el.style.opacity=0; el.style.transform='translateY(18px)';
+    el.style.transition='opacity .8s ease '+(i*0.04)+'s, transform .8s ease '+(i*0.04)+'s';
+    obs.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
