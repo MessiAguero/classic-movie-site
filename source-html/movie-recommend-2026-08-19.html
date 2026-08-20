@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>公寓春光 · The Apartment (1960)</title>
+<style>
+  :root{
+    --bg:#0c0e14;
+    --bg-soft:#12151f;
+    --panel:#161a26;
+    --panel-2:#1c2130;
+    --ink:#ece6d8;
+    --ink-dim:#9aa0ac;
+    --ink-faint:#6b7280;
+    --gold:#d8a857;
+    --gold-soft:#e8c98a;
+    --rose:#c77b7b;
+    --line:rgba(216,168,87,.18);
+    --shadow:0 24px 60px -20px rgba(0,0,0,.7);
+    --serif:"Songti SC","STSong","Noto Serif SC",Georgia,"Times New Roman",serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(216,168,87,.10), transparent 60%),
+      radial-gradient(900px 500px at 0% 100%, rgba(199,123,123,.08), transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  #snow{position:fixed;inset:0;z-index:0;pointer-events:none}
+  .wrap{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:0 24px}
+
+  /* HERO */
+  .hero{padding:120px 0 70px;text-align:center}
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:13px;letter-spacing:.32em;color:var(--gold);
+    text-transform:uppercase;margin-bottom:26px;
+    font-family:var(--sans);
+  }
+  .kicker::before,.kicker::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+  .kicker::after{background:linear-gradient(90deg,var(--gold),transparent)}
+  .hero h1{
+    font-family:var(--serif);
+    font-size:clamp(54px,11vw,108px);
+    font-weight:700;letter-spacing:.04em;line-height:1.02;
+    background:linear-gradient(180deg,#fff 0%,var(--gold-soft) 120%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 1px 0 rgba(0,0,0,.3);
+  }
+  .hero .en{
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(18px,3.4vw,26px);
+    color:var(--ink-dim);margin-top:14px;letter-spacing:.06em;
+  }
+  .meta-row{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:38px;
+  }
+  .chip{
+    border:1px solid var(--line);border-radius:999px;
+    padding:8px 18px;font-size:13.5px;color:var(--ink-dim);
+    background:rgba(22,26,38,.6);backdrop-filter:blur(4px);
+  }
+  .chip b{color:var(--gold-soft);font-weight:600}
+
+  /* RATINGS */
+  .ratings{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:54px 0 0;
+  }
+  .rate{
+    background:linear-gradient(160deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line);border-radius:16px;padding:22px 16px;text-align:center;
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .rate::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.6}
+  .rate .n{font-family:var(--serif);font-size:38px;font-weight:700;color:var(--gold-soft)}
+  .rate .s{font-size:12.5px;color:var(--ink-faint);letter-spacing:.12em;margin-top:4px}
+
+  /* SECTIONS */
+  section{padding:70px 0;border-top:1px solid rgba(255,255,255,.045)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:30px}
+  .sec-no{font-family:var(--serif);font-size:15px;color:var(--gold);letter-spacing:.2em}
+  .sec-head h2{font-family:var(--serif);font-size:clamp(28px,5vw,40px);font-weight:700;letter-spacing:.04em}
+  .lead{font-size:18px;color:var(--ink);margin-bottom:22px}
+  p{color:var(--ink-dim);font-size:16px;margin-bottom:18px}
+  p .hl{color:var(--gold-soft);font-weight:600}
+
+  /* HIGHLIGHT CARDS */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+  .card{
+    background:linear-gradient(155deg,var(--panel),rgba(28,33,48,.7));
+    border:1px solid var(--line);border-radius:16px;padding:26px 24px;
+    transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s;
+  }
+  .card:hover{transform:translateY(-6px);border-color:rgba(216,168,87,.5)}
+  .card .ic{font-family:var(--serif);font-size:22px;color:var(--gold);margin-bottom:12px;display:block}
+  .card h3{font-family:var(--serif);font-size:20px;color:var(--ink);margin-bottom:10px;letter-spacing:.03em}
+  .card p{font-size:14.5px;margin:0}
+
+  /* QUOTE */
+  .quote{
+    margin:8px 0 0;padding:40px 36px;border-radius:20px;
+    background:
+      radial-gradient(600px 300px at 100% 0%, rgba(216,168,87,.10), transparent 60%),
+      var(--panel);
+    border:1px solid var(--line);position:relative;
+  }
+  .quote::before{content:"\201C";position:absolute;top:-18px;left:20px;
+    font-family:var(--serif);font-size:120px;color:var(--gold);opacity:.22;line-height:1}
+  .quote p{font-family:var(--serif);font-size:clamp(20px,4vw,28px);color:var(--ink);
+    line-height:1.55;font-style:italic;margin:0 0 14px}
+  .quote .by{font-size:13px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}
+
+  /* ARCHIVE */
+  .archive{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel);
+  }
+  .archive div{padding:18px 22px;border-bottom:1px solid rgba(255,255,255,.05)}
+  .archive div:nth-child(odd){border-right:1px solid rgba(255,255,255,.05)}
+  .archive dt{font-size:12px;letter-spacing:.16em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+  .archive dd{font-size:15.5px;color:var(--ink)}
+
+  footer{padding:60px 0 80px;text-align:center;color:var(--ink-faint);font-size:13px;letter-spacing:.08em}
+  footer .dot{color:var(--gold)}
+
+  @media(max-width:640px){
+    .ratings{grid-template-columns:1fr}
+    .cards,.archive{grid-template-columns:1fr}
+    .archive div:nth-child(odd){border-right:none}
+    .hero{padding:90px 0 50px}
+  }
+</style>
+</head>
+<body>
+<canvas id="snow"></canvas>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="kicker">每日经典 · 第 86 部</div>
+    <h1>公寓春光</h1>
+    <div class="en">The Apartment · 1960</div>
+    <div class="meta-row">
+      <span class="chip">导演 <b>比利·怀尔德</b></span>
+      <span class="chip">主演 <b>杰克·莱蒙 / 雪莉·麦克雷恩</b></span>
+      <span class="chip">类型 <b>爱情 · 喜剧 · 剧情</b></span>
+      <span class="chip">片长 <b>125 分钟</b></span>
+      <span class="chip">奥斯卡 <b>最佳影片</b></span>
+    </div>
+
+    <div class="ratings">
+      <div class="rate"><div class="n">8.3</div><div class="s">IMDb 评分</div></div>
+      <div class="rate"><div class="n">94%</div><div class="s">烂番茄新鲜度</div></div>
+      <div class="rate"><div class="n">5 座</div><div class="s">奥斯卡金像奖</div></div>
+    </div>
+  </header>
+
+  <!-- SYNOPSIS -->
+  <section>
+    <div class="sec-head"><span class="sec-no">01</span><h2>剧情梗概</h2></div>
+    <p class="lead">纽约圣诞季，一家大型保险公司的底层小职员巴克斯特，正悄悄经营着一门"特殊生意"。</p>
+    <p>巴克斯特（杰克·莱蒙 饰）是个勤奋、寡言、渴望出头的普通白领。为了在公司里被上司"看见"，他把自己那间小小的公寓，借给几位高管用作<span class="hl">秘密约会的场所</span>。作为交换，他在晋升名单上一步步往前挪。</p>
+    <p>故事由此变得微妙——他渐渐对楼里那位温柔的电梯员弗兰（雪莉·麦克雷恩 饰）动了心，却意外发现，她竟与自己那间公寓里的某位"常客"有着说不清的牵绊。两个都在大城市里孤独打转的人，就这样被一桩荒唐的交易牵到了一起。</p>
+    <p>这是一部关于<span class="hl">孤独、妥协与尊严</span>的都市寓言：在霓虹与雪夜之间，一个普通人要怎样守住自己心里那点不肯将就的东西。</p>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section>
+    <div class="sec-head"><span class="sec-no">02</span><h2>亮点所在</h2></div>
+    <div class="cards">
+      <div class="card">
+        <span class="ic">❶</span>
+        <h3>悲喜之间，拿捏到极致</h3>
+        <p>比利·怀尔德把职场喜剧的外壳，与深不见底的孤独内核揉在一起。你笑着笑着，忽然就沉默了——这是极少数能同时做到这两点的电影。</p>
+      </div>
+      <div class="card">
+        <span class="ic">❷</span>
+        <h3>教科书级的表演</h3>
+        <p>杰克·莱蒙把一个"讨好型"小人物的卑微与可爱演活；雪莉·麦克雷恩的弗兰，温柔里藏着倔强，是全片最动人的一束光。</p>
+      </div>
+      <div class="card">
+        <span class="ic">❸</span>
+        <h3>犀利又温柔的剧本</h3>
+        <p>对职场马屁文化、灰色交易的讽刺入木三分，却始终对人保有善意。荣获奥斯卡最佳原创剧本，句句机锋，至今不过时。</p>
+      </div>
+      <div class="card">
+        <span class="ic">❹</span>
+        <h3>时代质感的画面</h3>
+        <p>60 年代纽约的写字楼、电话总机、圣诞灯火，被拍得像一封泛黄的情书。黑白影像里的暖意，反而比彩色更戳人。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section style="border-top:none;padding-top:10px">
+    <div class="quote">
+      <p>“当我们真正想要的东西，和我们得到的东西，是两回事的时候——那才叫活着。”</p>
+      <div class="by">— 影片隐而不宣的内核</div>
+    </div>
+  </section>
+
+  <!-- WHY WATCH -->
+  <section>
+    <div class="sec-head"><span class="sec-no">03</span><h2>为什么值得一看</h2></div>
+    <p class="lead">它不是那种需要"做功课"的严肃艺术片，而是一眼就能看进去、看完却久久走不出来的经典。</p>
+    <p><span class="hl">主题永恒。</span>关于"为了往上爬，要不要交出自己"的纠结，放在今天的大厂与职场里，反而更扎心。每个打工人都能在巴克斯特身上，看到一点自己的影子。</p>
+    <p><span class="hl">温柔的力量。</span>它没有愤世嫉俗，也没有强行圆满。它只是轻轻告诉你：守住底线、诚实地爱人，本身就是一种胜利。这种克制，比任何煽情都高级。</p>
+    <p><span class="hl">影响的源头。</span>从《土拨鼠之日》的叙事结构，到无数现代都市爱情喜剧，《公寓春光》是公认的"祖师爷"级作品。看过它，你会看懂后来很多好电影的"基因"。</p>
+    <p><span class="hl">奥斯卡最佳影片的含金量。</span>1960 年一举拿下最佳影片、最佳导演、最佳原创剧本等 5 项大奖。它是那种"既叫好又叫座"的稀罕物——雅俗共赏，老少咸宜。</p>
+  </section>
+
+  <!-- ARCHIVE -->
+  <section>
+    <div class="sec-head"><span class="sec-no">04</span><h2>影片档案</h2></div>
+    <dl class="archive">
+      <div><dt>中文片名</dt><dd>公寓春光（又译《桃色公寓》）</dd></div>
+      <div><dt>英文片名</dt><dd>The Apartment</dd></div>
+      <div><dt>导演</dt><dd>比利·怀尔德 (Billy Wilder)</dd></div>
+      <div><dt>编剧</dt><dd>比利·怀尔德 / I.A.L. 戴蒙德</dd></div>
+      <div><dt>主演</dt><dd>杰克·莱蒙 / 雪莉·麦克雷恩 / 弗雷德·麦克默里</dd></div>
+      <div><dt>上映年份</dt><dd>1960 年</dd></div>
+      <div><dt>片长</dt><dd>125 分钟</dd></div>
+      <div><dt>类型</dt><dd>爱情 / 喜剧 / 剧情</dd></div>
+      <div><dt>主要荣誉</dt><dd>奥斯卡最佳影片、最佳导演、最佳原创剧本等 5 奖</dd></div>
+      <div><dt>AFI 百年百大</dt><dd>入选"百年百大电影"榜单</dd></div>
+    </dl>
+  </section>
+
+  <footer>
+    每日一部经典电影 <span class="dot">·</span> 与您体验精彩人生 <span class="dot">·</span> 2026.08.19
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  const canvas = document.getElementById('snow');
+  const ctx = canvas.getContext('2d');
+  let w, h, flakes = [];
+  const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+  function resize(){
+    w = canvas.width = innerWidth * DPR;
+    h = canvas.height = innerHeight * DPR;
+    canvas.style.width = innerWidth + 'px';
+    canvas.style.height = innerHeight + 'px';
+  }
+  function make(){
+    flakes = [];
+    const count = Math.round((innerWidth * innerHeight) / 26000);
+    for(let i=0;i<count;i++){
+      flakes.push({
+        x: Math.random()*w,
+        y: Math.random()*h,
+        r: (Math.random()*1.6 + 0.6) * DPR,
+        s: (Math.random()*0.4 + 0.15) * DPR,
+        d: Math.random()*Math.PI*2,
+        a: Math.random()*0.5 + 0.25
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for(const f of flakes){
+      f.y += f.s;
+      f.x += Math.sin(f.d) * 0.3 * DPR;
+      f.d += 0.01;
+      if(f.y > h + 5){ f.y = -5; f.x = Math.random()*w; }
+      ctx.beginPath();
+      ctx.arc(f.x, f.y, f.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(232,201,138,' + f.a + ')';
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  resize(); make(); draw();
+  addEventListener('resize', ()=>{ resize(); make(); });
+})();
+</script>
+</body>
+</html>
