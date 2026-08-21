@@ -81,7 +81,14 @@ const movies = JSON.parse(fs.readFileSync(MOVIES_FILE, 'utf8'));
 const results = [];
 let ok = 0;
 
+// 增量模式：已存在于 gallery.json 的电影直接跳过，只抓新增
+let existingIds = new Set();
+try {
+  existingIds = new Set(JSON.parse(fs.readFileSync(OUT_FILE, 'utf8')).map((x) => x.id));
+} catch { /* 首次运行 */ }
+
 for (const m of movies) {
+  if (existingIds.has(m.id)) continue;
   process.stdout.write(`[${ok}/${movies.length}] ${m.zhTitle} … `);
   const img = await findImage(m);
   if (img) {

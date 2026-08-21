@@ -1,5 +1,101 @@
 [
   {
+    "id": "20260817",
+    "date": "20260817",
+    "zhTitle": "第三人",
+    "enTitle": "The Third Man",
+    "year": "19",
+    "tagline": "",
+    "meta": "导演 卡罗尔·里德 编剧 格雷厄姆·格林 年份 1949 片长 104 分钟 黑白 英国 / 美国",
+    "ratings": [
+      {
+        "source": "IMDb",
+        "value": "8.1",
+        "sub": ""
+      },
+      {
+        "source": "Rotten Tomatoes",
+        "value": "99%",
+        "sub": ""
+      },
+      {
+        "source": "Metacritic",
+        "value": "97",
+        "sub": ""
+      },
+      {
+        "source": "Letterboxd",
+        "value": "4.2",
+        "sub": ""
+      }
+    ],
+    "plot": [],
+    "spoilerNote": "",
+    "highlights": [],
+    "quotes": [
+      {
+        "text": "那年的维也纳，被四个战胜国分而治之；而在城市的阴影里，连真相也要从第三个人的嘴里才能听到。",
+        "who": ""
+      }
+    ],
+    "why": [],
+    "honors": [],
+    "archive": [],
+    "review": "倾斜的\"荷兰角\"镜头、断壁残垣间的光影、永不消散的雾气与雨夜——里德把战后维也纳拍成一座巨大的迷宫，每一帧都弥漫着不安与诱惑。",
+    "reviewBy": "",
+    "reviewStars": 5,
+    "posterSvg": "",
+    "posterCaption": ""
+  },
+  {
+    "id": "20260819",
+    "date": "20260819",
+    "zhTitle": "公寓春光",
+    "enTitle": "The Apartment · 1960",
+    "year": "19",
+    "tagline": "",
+    "meta": "",
+    "ratings": [],
+    "plot": [],
+    "spoilerNote": "",
+    "highlights": [
+      {
+        "ic": "❶",
+        "title": "悲喜之间，拿捏到极致",
+        "body": "比利·怀尔德把职场喜剧的外壳，与深不见底的孤独内核揉在一起。你笑着笑着，忽然就沉默了——这是极少数能同时做到这两点的电影。"
+      },
+      {
+        "ic": "❷",
+        "title": "教科书级的表演",
+        "body": "杰克·莱蒙把一个\"讨好型\"小人物的卑微与可爱演活；雪莉·麦克雷恩的弗兰，温柔里藏着倔强，是全片最动人的一束光。"
+      },
+      {
+        "ic": "❸",
+        "title": "犀利又温柔的剧本",
+        "body": "对职场马屁文化、灰色交易的讽刺入木三分，却始终对人保有善意。荣获奥斯卡最佳原创剧本，句句机锋，至今不过时。"
+      },
+      {
+        "ic": "❹",
+        "title": "时代质感的画面",
+        "body": "60 年代纽约的写字楼、电话总机、圣诞灯火，被拍得像一封泛黄的情书。黑白影像里的暖意，反而比彩色更戳人。"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "当我们真正想要的东西，和我们得到的东西，是两回事的时候——那才叫活着。” — 影片隐而不宣的内核",
+        "who": ""
+      }
+    ],
+    "why": [],
+    "honors": [],
+    "archive": [],
+    "review": "奥斯卡最佳影片的含金量。1960 年一举拿下最佳影片、最佳导演、最佳原创剧本等 5 项大奖。它是那种\"既叫好又叫座\"的稀罕物——雅俗共赏，老少咸宜。",
+    "reviewBy": "",
+    "reviewStars": 5,
+    "posterSvg": "",
+    "posterCaption": ""
+  },
+  {
     "id": "20260427",
     "date": "20260427",
     "zhTitle": "辛 德 勒 的 名 单",
@@ -12512,6 +12608,141 @@
     "reviewBy": "",
     "reviewStars": 5,
     "posterSvg": "",
+    "posterCaption": ""
+  },
+  {
+    "id": "20260812-bttf",
+    "date": "20260812",
+    "zhTitle": "回到未来",
+    "enTitle": "BACK TO THE FUTURE",
+    "year": "1985",
+    "tagline": "\" roads? where we're going, we don't need roads. \"",
+    "meta": "导演 罗伯特·泽米吉斯 · 主演 迈克尔·J·福克斯 / 克里斯托弗·劳埃德 · 环球影业 · 安培林娱乐",
+    "ratings": [],
+    "plot": [],
+    "spoilerNote": "无剧透 · 仅呈现故事框架",
+    "highlights": [
+      {
+        "ic": "",
+        "title": "",
+        "body": "泽米吉斯与盖尔构建的时间悖论逻辑严密又举重若轻，悬念与笑点密度极高，节奏堪称商业科幻范本。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "迈克尔·J·福克斯把 Marty McFly 演得鲜活动人，滑板、吉他、犹豫与热血，定格了一代青春符号。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "克里斯托弗·劳埃德白发蓬乱、台词炸裂，\"Great Scott!\"\"1.21 吉瓦\"成为影史最洗脑的科怪形象。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "德罗宁时间机器、通量电容、霓虹小镇——80 年代对\"未来\"的浪漫想象，至今仍前卫有型。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "艾伦·西尔维斯特里明快昂扬的旋律，搭配 Huey Lewis《The Power of Love》，一听就回到 1985。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "表面是冒险，内核是父子关系与自我认同——\"让世界看见真正的你\"，温柔得超出预期。"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "Roads? Where we're going, we don't need roads. —— 博士对马蒂说的最后一句话",
+        "who": ""
+      }
+    ],
+    "why": [
+      {
+        "no": "",
+        "title": "轻松好入口的科幻喜剧",
+        "body": "幽默、热血、零门槛，阖家可看，是许多人\"入坑\"时间旅行题材的第一站。"
+      },
+      {
+        "no": "",
+        "title": "时间旅行题材的标杆",
+        "body": "后世无数电影、动画、游戏都向它致敬，看它等于看懂一整条流行文化脉络。"
+      },
+      {
+        "no": "",
+        "title": "对\"改变过去\"的温柔反思",
+        "body": "它不贩卖焦虑，而是提醒你：当下与所爱之人，本就值得珍惜。"
+      },
+      {
+        "no": "",
+        "title": "鲜活的 80 年代切片",
+        "body": "怀旧与活力兼具，服饰、音乐、街景都像一封写给黄金年代的情书。"
+      }
+    ],
+    "honors": [
+      "1986 奥斯卡最佳音效剪辑奖",
+      "奥斯卡 4 项提名（原创剧本 / 配乐 / 歌曲 / 音效剪辑）",
+      "金球奖 音乐喜剧类最佳影片 提名",
+      "BAFTA 最佳视觉特效 提名",
+      "雨果奖 最佳戏剧呈现",
+      "AFI 百年百大电影（十周年榜 #57）",
+      "AFI 十佳科幻片 #10",
+      "IMDb Top 250",
+      "烂番茄 影评人 96% / 观众 95%",
+      "全球票房约 3.89 亿美元"
+    ],
+    "archive": [
+      {
+        "k": "片名",
+        "v": "回到未来 / Back to the Future"
+      },
+      {
+        "k": "年份",
+        "v": "1985"
+      },
+      {
+        "k": "导演",
+        "v": "罗伯特·泽米吉斯（Robert Zemeckis）"
+      },
+      {
+        "k": "编剧",
+        "v": "罗伯特·泽米吉斯、鲍勃·盖尔"
+      },
+      {
+        "k": "主演",
+        "v": "迈克尔·J·福克斯、克里斯托弗·劳埃德、莉亚·汤普森、克里斯平·格洛弗、托马斯·F·威尔森"
+      },
+      {
+        "k": "类型",
+        "v": "科幻 / 喜剧 / 冒险"
+      },
+      {
+        "k": "制片",
+        "v": "环球影业 / 安培林娱乐"
+      },
+      {
+        "k": "片长",
+        "v": "116 分钟"
+      },
+      {
+        "k": "语言",
+        "v": "英语"
+      },
+      {
+        "k": "评分",
+        "v": "IMDb 8.5 / 豆瓣 8.8 / 烂番茄 96% / Metacritic 87"
+      },
+      {
+        "k": "荣誉",
+        "v": "奥斯卡最佳音效剪辑等 4 项提名、雨果奖、AFI 十佳科幻 #10"
+      }
+    ],
+    "review": "一部把\"科学性\"与\"人情味\"同时做满的 Rare Gem：它让你笑着穿越时间，最后却为平凡的生活热泪盈眶。无论重看多少遍，那辆冲向时钟塔的德罗宁，永远年轻、永远让人心动。",
+    "reviewBy": "",
+    "reviewStars": 5,
+    "posterSvg": "<svg viewBox=\"0 0 300 400\" xmlns=\"http://www.w3.org/2000/svg\">\n          <defs>\n            <linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0\" stop-color=\"#1b2350\"></stop><stop offset=\"1\" stop-color=\"#070b20\"></stop>\n            </linearGradient>\n            <radialGradient id=\"glow\" cx=\"50%\" cy=\"42%\" r=\"55%\">\n              <stop offset=\"0\" stop-color=\"#00e5ff\" stop-opacity=\".5\"></stop><stop offset=\"1\" stop-color=\"#00e5ff\" stop-opacity=\"0\"></stop>\n            </radialGradient>\n            <linearGradient id=\"car\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"0\">\n              <stop offset=\"0\" stop-color=\"#cfd8ec\"></stop><stop offset=\"1\" stop-color=\"#7f8db0\"></stop>\n            </linearGradient>\n          </defs>\n          <rect width=\"300\" height=\"400\" fill=\"url(#sky)\"></rect>\n          <circle cx=\"150\" cy=\"168\" r=\"120\" fill=\"url(#glow)\"></circle>\n          <!-- time trails -->\n          <g stroke-linecap=\"round\" opacity=\".8\">\n            <path d=\"M150 168 L150 20\" stroke=\"#00e5ff\" stroke-width=\"2\" opacity=\".5\"></path>\n            <path d=\"M150 168 L60 40\" stroke=\"#ff2d95\" stroke-width=\"2\" opacity=\".5\"></path>\n            <path d=\"M150 168 L240 40\" stroke=\"#b6ff00\" stroke-width=\"2\" opacity=\".5\"></path>\n            <path d=\"M150 168 L30 168\" stroke=\"#00e5ff\" stroke-width=\"1.5\" opacity=\".35\"></path>\n            <path d=\"M150 168 L270 168\" stroke=\"#ff2d95\" stroke-width=\"1.5\" opacity=\".35\"></path>\n          </g>\n          <!-- ground glow line -->\n          <line x1=\"20\" y1=\"320\" x2=\"280\" y2=\"320\" stroke=\"#00e5ff\" stroke-width=\"1\" opacity=\".5\"></line>\n          <!-- DeLorean silhouette -->\n          <g transform=\"translate(150 300)\">\n            <path d=\"M-58 14 L-50 -8 Q-46 -22 -28 -22 L28 -22 Q46 -22 50 -8 L58 14 Z\" fill=\"url(#car)\" stroke=\"#0a0f28\" stroke-width=\"1.5\"></path>\n            <path d=\"M-40 -8 Q-36 -18 -20 -18 L20 -18 Q36 -18 40 -8 Z\" fill=\"#0a1228\" opacity=\".85\"></path>\n            <circle cx=\"-32\" cy=\"16\" r=\"9\" fill=\"#0a0f28\" stroke=\"#00e5ff\" stroke-width=\"1.5\"></circle>\n            <circle cx=\"32\" cy=\"16\" r=\"9\" fill=\"#0a0f28\" stroke=\"#00e5ff\" stroke-width=\"1.5\"></circle>\n            <rect x=\"-6\" y=\"-30\" width=\"12\" height=\"12\" rx=\"2\" fill=\"#b6ff00\" opacity=\".9\"></rect>\n          </g>\n          <text x=\"150\" y=\"372\" text-anchor=\"middle\" fill=\"#9fb0c9\" font-family=\"Orbitron,sans-serif\" font-size=\"11\" letter-spacing=\"3\">1.21 GIGAWATTS</text>\n        </svg>",
     "posterCaption": ""
   },
   {

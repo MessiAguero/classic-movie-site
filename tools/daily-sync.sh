@@ -52,6 +52,13 @@ if [ "$count" -gt 0 ]; then
   npm run data:gallery
 fi
 
+COUNT_HTML=$(ls source-html | wc -l | tr -d ' ')
+COUNT_JSON=$(node -e "console.log(require('./src/data/movies.json').length)")
+echo "== HTML $COUNT_HTML 份 / 解析 $COUNT_JSON 条"
+if [ "$COUNT_HTML" -ne "$COUNT_JSON" ]; then
+  echo "!! 警告：HTML 数量与解析条数不一致，可能存在漏解析（检查文件名格式）"
+fi
+
 # 4) 同步新电影到 Supabase 云端（前端直接读云端数据）
 if [ -n "${SUPABASE_URL:-}" ] && [ -n "${SUPABASE_SERVICE_ROLE_KEY:-}" ]; then
   npm run data:sync

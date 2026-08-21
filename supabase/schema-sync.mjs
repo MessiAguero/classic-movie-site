@@ -72,3 +72,7 @@ for (const m of movies) {
 }
 
 console.log(`完成：${ok}/${movies.length} 部电影已同步到 Supabase`);
+if (ok < movies.length) {
+  console.error('存在同步失败，请检查上面的错误信息');
+  process.exit(1);
+}
