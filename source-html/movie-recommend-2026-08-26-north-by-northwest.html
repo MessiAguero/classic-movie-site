@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>西北偏北 · North by Northwest | 每日一部经典电影</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+SC:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --night:#0d0f13;
+    --night-2:#14171d;
+    --night-3:#1d2129;
+    --amber:#c9a24b;
+    --amber-soft:#e2c987;
+    --amber-deep:#9e7a2e;
+    --steel:#6f8aa8;
+    --steel-soft:#9fb6cc;
+    --ink:#e9e4d8;
+    --ink-soft:#b9b2a4;
+    --line:rgba(201,162,75,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans SC",sans-serif;
+    background:var(--night);
+    color:var(--ink);
+    line-height:1.9;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:"Cormorant Garamond","Noto Serif SC",serif}
+  .zh-serif{font-family:"Noto Serif SC",serif}
+
+  /* film grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  /* vignette */
+  body::after{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9998;
+    background:radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(0,0,0,.55) 100%);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;flex-direction:column;
+    justify-content:center;align-items:center;text-align:center;
+    background:
+      radial-gradient(130% 90% at 50% -15%, rgba(201,162,75,.20), transparent 52%),
+      radial-gradient(120% 120% at 50% 130%, rgba(111,138,168,.14), transparent 60%),
+      linear-gradient(165deg,#0b0d11 0%, #14171d 48%, #0c0e12 100%);
+    overflow:hidden;
+  }
+  #motes{position:absolute;inset:0;z-index:1}
+  .hero-inner{position:relative;z-index:2;padding:0 24px}
+  .kicker{
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    letter-spacing:.34em;font-size:clamp(13px,1.6vw,18px);
+    color:var(--amber);text-transform:uppercase;margin-bottom:22px;
+    opacity:0;animation:fadeUp 1s .2s forwards;
+  }
+  .rule{width:64px;height:1px;background:var(--amber);margin:0 auto 26px;opacity:0;animation:fadeUp 1s .5s forwards}
+  .film-title{
+    font-family:"Noto Serif SC",serif;font-weight:700;
+    font-size:clamp(50px,10.5vw,132px);line-height:1.05;color:#f3eede;
+    letter-spacing:.06em;text-shadow:0 2px 30px rgba(201,162,75,.25);
+    opacity:0;animation:fadeUp 1.1s .4s forwards;
+  }
+  .film-title-en{
+    font-family:"Cormorant Garamond",serif;font-weight:500;font-style:italic;
+    font-size:clamp(20px,3.4vw,42px);color:var(--amber-soft);
+    letter-spacing:.10em;margin-top:14px;
+    opacity:0;animation:fadeUp 1.1s .65s forwards;
+  }
+  .meta{
+    margin-top:34px;display:flex;gap:26px;flex-wrap:wrap;justify-content:center;
+    font-size:15px;color:var(--ink-soft);letter-spacing:.05em;
+    opacity:0;animation:fadeUp 1.1s .9s forwards;
+  }
+  .meta span{position:relative;padding:0 4px}
+  .meta span+span::before{content:"·";position:absolute;left:-16px;color:var(--amber)}
+  .scroll-cue{
+    position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:2;
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-size:13px;
+    letter-spacing:.2em;color:var(--ink-soft);opacity:0;animation:fadeUp 1s 1.4s forwards;
+  }
+  .scroll-cue::after{content:"";display:block;width:1px;height:34px;margin:10px auto 0;background:linear-gradient(var(--amber),transparent)}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+  /* ---------- SECTIONS ---------- */
+  section{position:relative;padding:clamp(70px,9vw,120px) clamp(22px,7vw,120px);max-width:1120px;margin:0 auto}
+  .sec-tag{
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-size:16px;
+    letter-spacing:.28em;color:var(--amber);text-transform:uppercase;margin-bottom:10px;
+  }
+  .sec-title{
+    font-family:"Noto Serif SC",serif;font-weight:600;font-size:clamp(28px,4.4vw,42px);
+    color:#f3eede;margin-bottom:30px;letter-spacing:.03em;
+  }
+  .sec-title::after{content:"";display:block;width:48px;height:2px;background:var(--amber);margin-top:16px}
+
+  /* synopsis */
+  .synopsis p{font-size:clamp(16px,1.9vw,19px);color:var(--ink-soft);max-width:780px}
+  .synopsis p + p{margin-top:18px}
+  .pull{
+    margin:34px 0 0;padding:26px 30px;border-left:3px solid var(--amber);
+    background:linear-gradient(90deg,rgba(201,162,75,.10),transparent);
+    font-family:"Noto Serif SC",serif;font-size:clamp(18px,2.3vw,23px);
+    color:#f3eede;line-height:1.7;
+  }
+
+  /* highlights */
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:22px;margin-top:8px}
+  .card{
+    background:linear-gradient(160deg,#1a1e25,#12151b);
+    border:1px solid var(--line);border-radius:16px;padding:30px 26px;
+    position:relative;overflow:hidden;transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;
+  }
+  .card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--amber),var(--steel))}
+  .card:hover{transform:translateY(-6px);border-color:rgba(201,162,75,.4);box-shadow:0 18px 44px -18px rgba(0,0,0,.7)}
+  .card .num{font-family:"Cormorant Garamond",serif;font-size:42px;color:var(--amber);line-height:1;opacity:.75}
+  .card h3{font-family:"Noto Serif SC",serif;font-weight:600;font-size:20px;color:#f3eede;margin:14px 0 10px}
+  .card p{font-size:15px;color:var(--ink-soft)}
+
+  /* why watch */
+  .why{background:linear-gradient(165deg,#16191f,#0f1216);color:var(--ink);border:1px solid var(--line);border-radius:24px;padding:clamp(40px,6vw,68px)}
+  .why .sec-tag{color:var(--amber-soft)}
+  .why .sec-title{color:#f3eede}
+  .why .sec-title::after{background:var(--amber-soft)}
+  .why-list{list-style:none;margin-top:10px}
+  .why-list li{
+    display:flex;gap:18px;padding:22px 0;border-bottom:1px solid rgba(201,162,75,.14);
+    font-size:clamp(15px,1.8vw,18px);color:#d9d2c4;
+  }
+  .why-list li:last-child{border-bottom:none}
+  .why-list .ic{
+    flex:0 0 auto;width:38px;height:38px;border-radius:50%;
+    background:rgba(201,162,75,.14);display:flex;align-items:center;justify-content:center;
+    font-family:"Cormorant Garamond",serif;color:var(--amber-soft);font-size:20px;
+  }
+  .why-list b{color:#f6efe2;font-weight:600}
+
+  /* ratings */
+  .ratings{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;margin-top:14px}
+  .rate{border:1px solid var(--line);border-radius:14px;padding:26px 20px;text-align:center;background:linear-gradient(160deg,#181b21,#101319)}
+  .rate .src{font-size:13px;letter-spacing:.12em;color:var(--ink-soft);text-transform:uppercase}
+  .rate .val{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(34px,5vw,52px);color:var(--amber-soft);line-height:1.1;margin:8px 0 4px}
+  .rate .val small{font-size:.5em;color:var(--amber)}
+  .rate .star{color:var(--amber);letter-spacing:2px;font-size:14px}
+  .rate .note{font-size:12px;color:var(--ink-soft);margin-top:4px}
+
+  /* archive */
+  .archive{width:100%;border-collapse:collapse;margin-top:8px;font-size:15px}
+  .archive th,.archive td{padding:15px 16px;text-align:left;border-bottom:1px solid var(--line)}
+  .archive th{font-family:"Noto Serif SC",serif;color:var(--amber);font-weight:600;letter-spacing:.04em}
+  .archive td{color:var(--ink-soft)}
+  .archive tr:hover td{background:rgba(201,162,75,.06)}
+
+  /* footer */
+  .foot{
+    text-align:center;padding:54px 22px 60px;color:var(--ink-soft);
+    font-family:"Cormorant Garamond",serif;font-style:italic;letter-spacing:.08em;font-size:15px;
+    border-top:1px solid var(--line);margin-top:30px;
+  }
+  .foot b{color:var(--amber);font-style:normal}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease, transform .9s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}#motes{display:none}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <canvas id="motes"></canvas>
+  <div class="hero-inner">
+    <div class="kicker">A Daily Classic · 每日一部经典电影</div>
+    <div class="rule"></div>
+    <h1 class="film-title">西北偏北</h1>
+    <div class="film-title-en">North by Northwest</div>
+    <div class="meta">
+      <span>1959</span>
+      <span>阿尔弗雷德·希区柯克 执导</span>
+      <span>加里·格兰特 / 爱娃·玛丽·森特</span>
+      <span>悬疑 · 惊悚 · 冒险</span>
+    </div>
+  </div>
+  <div class="scroll-cue">SCROLL</div>
+</header>
+
+<!-- SYNOPSIS -->
+<section class="synopsis reveal">
+  <div class="sec-tag">Synopsis</div>
+  <h2 class="sec-title">剧情梗概</h2>
+  <p>纽约曼哈顿，一位精明体面、把广告词玩得比真话还溜的商务精英罗杰·索恩希尔，在某个再普通不过的饭局上被一群陌生人"认错"了身份——他们坚信他就是某个叫"乔治·卡普兰"的政府特工。而事实上，这个卡普兰根本不存在。</p>
+  <p>一夜之间，罗杰被卷入一场他完全看不懂的间谍游戏：先是险些被灌醉驾车冲下悬崖，接着又在某间联合国礼堂"目睹"了一场与自己无关的命案，随后便成了警方与间谍两边都要抓的人。为了洗清莫须有的罪名，也为了揪出那个虚构名字背后的真相，他被迫逃离纽约，沿着铁轨与公路一路向西，在空旷的玉米地与巍峨的总统山石像之间，与一位身份成谜的女子和一位彬彬有礼的杀手周旋。</p>
+  <div class="pull">"名字只是一个名字，可当它被写进通缉令，你就再也回不去原来的生活了。"</div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="reveal">
+  <div class="sec-tag">Highlights</div>
+  <h2 class="sec-title">亮点所在</h2>
+  <div class="cards">
+    <div class="card">
+      <div class="num">01</div>
+      <h3>悬疑大师的"麦高芬"巅峰</h3>
+      <p>全片由希区柯克最钟爱的"麦高芬"——一个并不存在的特工名字——驱动，却把"无中生有的误会"拍成了一场令人窒息又忍俊不禁的逃亡，堪称悬念叙事的教科书。</p>
+    </div>
+    <div class="card">
+      <div class="num">02</div>
+      <h3>玉米地飞机追杀</h3>
+      <p>无人公路上，一架农用喷粉机径直朝手无寸铁的男主俯冲而来——这场没有一句对白的追逐，被誉为影史最伟大、最纯粹的惊险段落之一，影响了此后无数动作片。</p>
+    </div>
+    <div class="card">
+      <div class="num">03</div>
+      <h3>总统山上的终章</h3>
+      <p>镜头从宏伟的拉什莫尔山雕像切换到惊险的攀岩追逐，恢弘景观与逼仄危机的反差，把"奇观叙事"推向了那个年代的天花板。</p>
+    </div>
+    <div class="card">
+      <div class="num">04</div>
+      <h3>加里·格兰特的型格</h3>
+      <p>年过半百的加里·格兰特以西装笔挺、妙语连珠的从容，把一个"被命运错认的普通人"演得既潇洒又可信，定义了后世间谍片男主角的优雅范本。</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY WATCH -->
+<section class="reveal">
+  <div class="sec-tag">Why It Matters</div>
+  <h2 class="sec-title">为什么值得一看</h2>
+  <div class="why">
+    <ul class="why-list">
+      <li><span class="ic">✦</span><span><b>纯粹而高级的观影快感。</b>没有说教、没有沉重，希区柯克把"惊险"与"幽默"调成一杯气泡充足的鸡尾酒——你会在紧绷与发笑之间反复横跳，两个小时眨眼即过。</span></li>
+      <li><span class="ic">✦</span><span><b>间谍片的"源代码"。</b>从《碟中谍》到《谍影重重》《007》，几乎所有现代特工类型片的基因都能在这里找到原型：错误身份、跨国逃亡、神秘女郎与优雅反派。</span></li>
+      <li><span class="ic">✦</span><span><b>视觉语言的活教材。</b>构图、剪辑节奏、声画对位，每一帧都经得起逐格拆解；即使今天重看，它的镜头语言依然领先太多"爆米花大片"。</span></li>
+      <li><span class="ic">✦</span><span><b>横跨六十余年不过时。</b>AFI 百年百大电影排名第 40、百年百大惊悚片第 4，影评人与观众口碑长期同高——它是那种"没看过会心虚、看过会想二刷"的真正经典。</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- RATINGS -->
+<section class="reveal">
+  <div class="sec-tag">Acclaim</div>
+  <h2 class="sec-title">口碑数据</h2>
+  <div class="ratings">
+    <div class="rate">
+      <div class="src">Douban 豆瓣</div>
+      <div class="val">8.3<small>/10</small></div>
+      <div class="star">★★★★★</div>
+      <div class="note">超三十万影迷标记</div>
+    </div>
+    <div class="rate">
+      <div class="src">IMDb</div>
+      <div class="val">8.3<small>/10</small></div>
+      <div class="star">★★★★☆</div>
+      <div class="note">Top 250 常驻</div>
+    </div>
+    <div class="rate">
+      <div class="src">Rotten Tomatoes</div>
+      <div class="val">97<small>%</small></div>
+      <div class="star">鲜</div>
+      <div class="note">影评人一致盛赞</div>
+    </div>
+    <div class="rate">
+      <div class="src">AFI 排名</div>
+      <div class="val">40<small>位</small></div>
+      <div class="star">★</div>
+      <div class="note">百年百大电影</div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHIVE -->
+<section class="reveal">
+  <div class="sec-tag">Film Archive</div>
+  <h2 class="sec-title">影片档案</h2>
+  <table class="archive">
+    <tr><th>片名</th><td>西北偏北 / North by Northwest</td></tr>
+    <tr><th>年份</th><td>1959 年</td></tr>
+    <tr><th>导演</th><td>阿尔弗雷德·希区柯克（Alfred Hitchcock）</td></tr>
+    <tr><th>主演</th><td>加里·格兰特、爱娃·玛丽·森特、詹姆斯·梅森</td></tr>
+    <tr><th>编剧</th><td>欧内斯特·莱曼（Ernest Lehman）</td></tr>
+    <tr><th>配乐</th><td>伯纳德·赫尔曼（Bernard Herrmann）</td></tr>
+    <tr><th>类型</th><td>悬疑 / 惊悚 / 冒险</td></tr>
+    <tr><th>片长</th><td>136 分钟</td></tr>
+    <tr><th>制片</th><td>美国 · 米高梅（MGM）</td></tr>
+    <tr><th>荣誉</th><td>AFI 百年百大电影第 40 位、百年百大惊悚片第 4 位；奥斯卡 3 项提名</td></tr>
+  </table>
+</section>
+
+<footer class="foot">
+  <div>每日一部经典电影 · 第 <b>89</b> 部推荐</div>
+  <div style="margin-top:8px;opacity:.7">Wrong man, right movie — 愿你也在错误身份里，遇见一段好故事。</div>
+</footer>
+
+<script>
+  // drifting golden motes — suspense-atmosphere particles
+  const cv = document.getElementById('motes');
+  const ctx = cv.getContext('2d');
+  let W,H,parts;
+  function resize(){
+    W = cv.width = cv.parentElement.offsetWidth;
+    H = cv.height = cv.parentElement.offsetHeight;
+    parts = Array.from({length:54}, ()=>spawn());
+  }
+  function spawn(){
+    return {
+      x: Math.random()*W,
+      y: Math.random()*H,
+      r: 0.5 + Math.random()*2.0,
+      vy: -0.12 - Math.random()*0.35,
+      vx: (Math.random()-0.5)*0.22,
+      a: 0.12 + Math.random()*0.5,
+      tw: Math.random()*Math.PI*2
+    };
+  }
+  function tick(){
+    ctx.clearRect(0,0,W,H);
+    for(const p of parts){
+      p.y += p.vy; p.x += p.vx; p.tw += 0.018;
+      if(p.y < -10){ p.y = H+10; p.x = Math.random()*W; }
+      const al = p.a * (0.6 + 0.4*Math.sin(p.tw));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(201,162,75,'+al+')';
+      ctx.shadowBlur = 8; ctx.shadowColor = 'rgba(226,201,135,.6)';
+      ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  resize(); tick();
+  window.addEventListener('resize', resize);
+
+  // scroll reveal
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
