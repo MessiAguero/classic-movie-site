@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="xFfQiN627H7Bc9TCAPZ7cH">
+<head data-page-node-id="2JSISZ4vOJdl5dAOG9YLnh">
+<meta charset="UTF-8" data-page-node-id="3sDIKehtXQ5M0dl5QlLD4U">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="BvmYjf3HOS9KTRewTLvicw">
+<title>老男孩 · Oldboy — 韩国犯罪电影经典推荐</title>
+<style>
+  :root {
+    --bg-0: #07090a;
+    --bg-1: #0b0e0f;
+    --bg-2: #101415;
+    --bg-3: #171c1d;
+    --line: rgba(200, 163, 94, 0.14);
+    --line-dim: rgba(200, 163, 94, 0.08);
+    --gold: #c8a35e;
+    --gold-bright: #e9cd92;
+    --gold-dim: #8f7237;
+    --blood: #a3262e;
+    --blood-bright: #d13a42;
+    --blood-dim: #6e1a20;
+    --jade: #3e6b58;
+    --jade-dim: #27473a;
+    --ink: #ece7db;
+    --ink-dim: #a69e8e;
+    --ink-faint: #665f52;
+    --serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", "Times New Roman", serif;
+    --sans: "Inter", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-0);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.8;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 粗粝胶片颗粒 */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 300;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection { background: rgba(163, 38, 46, 0.5); color: #fff; }
+
+  /* ============ 导航 ============ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 120;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 52px;
+    transition: background 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+    border-bottom: 1px solid transparent;
+  }
+  nav.scrolled {
+    background: rgba(7, 9, 10, 0.84);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom-color: var(--line);
+    padding: 12px 52px;
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--serif);
+    letter-spacing: 0.22em;
+    font-size: 13px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-brand .blade {
+    width: 7px; height: 18px;
+    background: linear-gradient(180deg, var(--blood-bright), var(--blood));
+    transform: skewX(-18deg);
+    box-shadow: 0 0 14px rgba(209, 58, 66, 0.55);
+  }
+  .nav-links { display: flex; gap: 30px; }
+  .nav-links a {
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-bright); }
+  .nav-right {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--ink-faint);
+  }
+
+  /* ============ Hero ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 80% 55% at 50% 115%, rgba(163, 38, 46, 0.16), transparent 60%),
+      radial-gradient(ellipse 60% 45% at 78% 12%, rgba(62, 107, 88, 0.10), transparent 55%),
+      radial-gradient(ellipse 55% 40% at 12% 30%, rgba(200, 163, 94, 0.05), transparent 55%),
+      linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 55%, var(--bg-2) 100%);
+  }
+  /* 海报外框细线 */
+  .hero-frame {
+    position: absolute;
+    inset: 22px;
+    border: 1px solid rgba(200, 163, 94, 0.10);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .hero-frame::before, .hero-frame::after {
+    content: "";
+    position: absolute;
+    width: 34px; height: 34px;
+    border-color: rgba(200, 163, 94, 0.4);
+    border-style: solid;
+  }
+  .hero-frame::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+  .hero-frame::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+
+  #fxCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 120px 24px 80px;
+    max-width: 900px;
+  }
+  .hero-kicker {
+    font-size: 12px;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 1.1s 0.2s forwards;
+  }
+  .hero-kicker em {
+    font-style: normal;
+    color: var(--ink-faint);
+    padding: 0 10px;
+  }
+  .lang-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 26px;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeUp 1.1s 0.45s forwards;
+  }
+  .lang-row .ko {
+    font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    font-size: 26px;
+    color: rgba(236, 231, 219, 0.4);
+    letter-spacing: 0.08em;
+  }
+  .lang-row .en {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: 0.5em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(200, 163, 94, 0.55);
+    transform: translateX(0.25em);
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(72px, 14vw, 168px);
+    font-weight: 900;
+    line-height: 1.04;
+    letter-spacing: 0.06em;
+    color: transparent;
+    background: linear-gradient(180deg, #f5efe0 0%, #d8c9a4 38%, var(--blood-bright) 72%, #7a1a20 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 4px 30px rgba(163, 38, 46, 0.25));
+    opacity: 0;
+    animation: fadeUp 1.2s 0.6s forwards;
+    position: relative;
+  }
+  .hero-sub {
+    margin-top: 26px;
+    font-family: var(--serif);
+    font-size: clamp(15px, 2vw, 19px);
+    color: var(--ink-dim);
+    letter-spacing: 0.12em;
+    line-height: 2;
+    opacity: 0;
+    animation: fadeUp 1.2s 0.85s forwards;
+  }
+  .hero-sub b { color: var(--gold-bright); font-weight: 600; }
+
+  .hero-meta {
+    margin-top: 34px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp 1.2s 1.05s forwards;
+  }
+  .hero-meta span {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: var(--ink-dim);
+    border: 1px solid var(--line);
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: rgba(16, 20, 21, 0.5);
+    backdrop-filter: blur(4px);
+  }
+  .hero-meta span.hl {
+    color: var(--gold-bright);
+    border-color: rgba(200, 163, 94, 0.45);
+  }
+  .hero-meta span.hl2 {
+    color: var(--blood-bright);
+    border-color: rgba(209, 58, 66, 0.45);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 34px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink-faint);
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    opacity: 0;
+    animation: fadeIn 1.5s 1.6s forwards;
+  }
+  .scroll-hint .bar {
+    width: 1px; height: 52px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    animation: drip 2.2s ease-in-out infinite;
+  }
+  @keyframes drip {
+    0% { transform: scaleY(0); transform-origin: top; }
+    45% { transform: scaleY(1); transform-origin: top; }
+    55% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(34px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ============ 通用区块 ============ */
+  section { position: relative; padding: 120px 0; }
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  .sec-head { margin-bottom: 64px; }
+  .sec-tag {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    color: var(--gold);
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+  .sec-tag::before {
+    content: "";
+    width: 34px; height: 1px;
+    background: linear-gradient(90deg, var(--blood), transparent);
+  }
+  .sec-title {
+    font-family: var(--serif);
+    font-size: clamp(30px, 4.2vw, 46px);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+  }
+  .sec-title .en {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.5em;
+    color: var(--ink-faint);
+    margin-top: 14px;
+    text-transform: uppercase;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.on { opacity: 1; transform: translateY(0); }
+
+  /* 血色分隔带 */
+  .divider {
+    height: 1px;
+    margin: 0 auto;
+    max-width: 1120px;
+    background: linear-gradient(90deg, transparent, rgba(163, 38, 46, 0.5) 30%, rgba(200, 163, 94, 0.5) 70%, transparent);
+  }
+
+  /* ============ 剧情梗概 ============ */
+  #plot { background: linear-gradient(180deg, var(--bg-2), var(--bg-1)); }
+  .plot-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 70px;
+    align-items: start;
+  }
+  .plot-num {
+    font-family: var(--serif);
+    font-size: 120px;
+    font-weight: 900;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(163, 38, 46, 0.65);
+    user-select: none;
+  }
+  .plot-num small {
+    display: block;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    color: var(--ink-faint);
+    -webkit-text-stroke: 0;
+    margin-top: 8px;
+    font-weight: 400;
+  }
+  .plot-copy p {
+    font-size: 16.5px;
+    color: var(--ink-dim);
+    margin-bottom: 26px;
+    letter-spacing: 0.03em;
+    text-align: justify;
+  }
+  .plot-copy p.lead {
+    font-family: var(--serif);
+    font-size: clamp(19px, 2.4vw, 24px);
+    color: var(--ink);
+    line-height: 1.9;
+  }
+  .plot-copy p.lead em {
+    font-style: normal;
+    color: var(--blood-bright);
+  }
+  .plot-copy .phone {
+    border-left: 2px solid var(--blood);
+    background: linear-gradient(90deg, rgba(163, 38, 46, 0.08), transparent);
+    padding: 18px 26px;
+    font-family: var(--serif);
+    font-size: 17px;
+    color: var(--gold-bright);
+    letter-spacing: 0.06em;
+    margin: 6px 0 8px;
+  }
+
+  /* ============ 影片档案 ============ */
+  #credits { background: var(--bg-0); }
+  .credits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line-dim);
+    border: 1px solid var(--line-dim);
+  }
+  .credit-cell {
+    background: var(--bg-1);
+    padding: 34px 28px;
+    transition: background 0.4s;
+  }
+  .credit-cell:hover { background: var(--bg-3); }
+  .credit-cell .k {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .credit-cell .v {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+  .credit-cell .v small {
+    display: block;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    margin-top: 6px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ============ 评分与荣誉 ============ */
+  #honors { background: linear-gradient(180deg, var(--bg-1), var(--bg-2)); }
+  .scores {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-bottom: 54px;
+  }
+  .score-card {
+    position: relative;
+    border: 1px solid var(--line);
+    background: linear-gradient(160deg, var(--bg-3), var(--bg-1));
+    padding: 34px 26px;
+    text-align: center;
+    overflow: hidden;
+    transition: border-color 0.4s, transform 0.4s;
+  }
+  .score-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blood), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .score-card:hover { border-color: rgba(209, 58, 66, 0.5); transform: translateY(-5px); }
+  .score-card:hover::before { opacity: 1; }
+  .score-card .num {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--gold-bright);
+    letter-spacing: 0.02em;
+  }
+  .score-card .num sup { font-size: 20px; color: var(--gold-dim); }
+  .score-card .src {
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--ink-dim);
+    margin-top: 10px;
+    text-transform: uppercase;
+  }
+  .score-card .note {
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    margin-top: 4px;
+    letter-spacing: 0.06em;
+  }
+
+  .award-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+  }
+  .award {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid var(--line);
+    padding: 13px 22px;
+    background: rgba(16, 20, 21, 0.7);
+    transition: border-color 0.35s;
+  }
+  .award:hover { border-color: rgba(200, 163, 94, 0.5); }
+  .award .ic {
+    width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    border: 1px solid rgba(200, 163, 94, 0.35);
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .award .t {
+    font-size: 13.5px;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+  }
+  .award .t small {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-faint);
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+  }
+
+  /* ============ 亮点 ============ */
+  #highlights { background: var(--bg-0); }
+  .hl-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .hl-card {
+    position: relative;
+    border: 1px solid var(--line-dim);
+    background: linear-gradient(170deg, var(--bg-2), var(--bg-1));
+    padding: 40px 30px 32px;
+    overflow: hidden;
+    transition: transform 0.45s, border-color 0.45s, box-shadow 0.45s;
+  }
+  .hl-card::after {
+    content: "";
+    position: absolute;
+    inset: auto -30% -60% -30%;
+    height: 90%;
+    background: radial-gradient(ellipse 60% 55% at 50% 100%, rgba(163, 38, 46, 0.16), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+  .hl-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(163, 38, 46, 0.45);
+    box-shadow: 0 24px 50px -22px rgba(0, 0, 0, 0.85);
+  }
+  .hl-card:hover::after { opacity: 1; }
+  .hl-idx {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--blood);
+    letter-spacing: 0.3em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hl-idx::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, rgba(163, 38, 46, 0.5), transparent);
+  }
+  .hl-card h3 {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+    font-weight: 700;
+    position: relative;
+  }
+  .hl-card p {
+    font-size: 14px;
+    color: var(--ink-dim);
+    line-height: 1.9;
+    position: relative;
+    text-align: justify;
+  }
+
+  /* ============ 为什么值得看 ============ */
+  #why { background: linear-gradient(180deg, var(--bg-2), var(--bg-1)); }
+  .why-list { display: flex; flex-direction: column; gap: 0; }
+  .why-item {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 40px;
+    padding: 44px 0;
+    border-bottom: 1px solid var(--line-dim);
+    transition: background 0.4s;
+  }
+  .why-item:first-child { border-top: 1px solid var(--line-dim); }
+  .why-item:hover { background: radial-gradient(ellipse 90% 100% at 0% 50%, rgba(163, 38, 46, 0.05), transparent 60%); }
+  .why-item .no {
+    font-family: var(--serif);
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(200, 163, 94, 0.55);
+  }
+  .why-item h3 {
+    font-family: var(--serif);
+    font-size: 23px;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .why-item h3 .mark {
+    color: var(--blood-bright);
+    font-style: normal;
+  }
+  .why-item p {
+    font-size: 15.5px;
+    color: var(--ink-dim);
+    text-align: justify;
+    max-width: 880px;
+  }
+  .why-item p b { color: var(--gold-bright); font-weight: 600; }
+
+  .why-quote {
+    margin-top: 60px;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--blood);
+    background: linear-gradient(120deg, rgba(163, 38, 46, 0.07), transparent 60%);
+    padding: 34px 40px;
+    font-family: var(--serif);
+  }
+  .why-quote .cn {
+    font-size: 18px;
+    color: var(--ink);
+    letter-spacing: 0.06em;
+    line-height: 2;
+  }
+  .why-quote .attr {
+    margin-top: 12px;
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+  }
+
+  /* ============ 台词 / 尾幕 ============ */
+  #quote {
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(62, 107, 88, 0.10), transparent 60%),
+      radial-gradient(ellipse 50% 50% at 50% 100%, rgba(163, 38, 46, 0.10), transparent 65%),
+      var(--bg-0);
+    text-align: center;
+    padding: 140px 0;
+  }
+  #quote .wrap { max-width: 860px; }
+  .quote-ko {
+    font-family: "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+    font-size: 18px;
+    color: rgba(236, 231, 219, 0.35);
+    letter-spacing: 0.2em;
+    margin-bottom: 44px;
+  }
+  .quote-en {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3.2vw, 34px);
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--gold-bright);
+    letter-spacing: 0.03em;
+  }
+  .quote-cn {
+    margin-top: 30px;
+    font-family: var(--serif);
+    font-size: clamp(17px, 2.2vw, 22px);
+    color: var(--ink-dim);
+    letter-spacing: 0.1em;
+    line-height: 2.1;
+  }
+  .quote-attr {
+    margin-top: 40px;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+  .quote-attr .sword { color: var(--blood-bright); padding: 0 6px; }
+
+  .spoil-note {
+    margin-top: 74px;
+    border: 1px dashed rgba(200, 163, 94, 0.3);
+    padding: 28px 34px;
+    text-align: left;
+    background: rgba(16, 20, 21, 0.6);
+  }
+  .spoil-note h4 {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--blood-bright);
+    letter-spacing: 0.14em;
+    margin-bottom: 10px;
+  }
+  .spoil-note p {
+    font-size: 13.5px;
+    color: var(--ink-dim);
+    line-height: 2;
+  }
+  .spoil-note p b { color: var(--gold-bright); }
+
+  /* ============ Footer ============ */
+  footer {
+    border-top: 1px solid var(--line-dim);
+    padding: 44px 0;
+    text-align: center;
+    background: var(--bg-0);
+  }
+  footer .brand {
+    font-family: var(--serif);
+    font-size: 14px;
+    letter-spacing: 0.34em;
+    color: var(--ink-dim);
+    margin-bottom: 8px;
+  }
+  footer .brand i { color: var(--blood-bright); font-style: normal; }
+  footer .tip {
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    color: var(--ink-faint);
+  }
+
+  /* ============ 响应式 ============ */
+  @media (max-width: 900px) {
+    nav { padding: 16px 22px; }
+    nav.scrolled { padding: 11px 22px; }
+    .nav-links, .nav-right { display: none; }
+    .wrap { padding: 0 24px; }
+    section { padding: 84px 0; }
+    .plot-layout { grid-template-columns: 1fr; gap: 30px; }
+    .credits-grid { grid-template-columns: repeat(2, 1fr); }
+    .scores { grid-template-columns: repeat(2, 1fr); }
+    .hl-grid { grid-template-columns: 1fr; }
+    .why-item { grid-template-columns: 1fr; gap: 14px; }
+    .hero-frame { inset: 12px; }
+  }
+</style>
+</head>
+<body data-page-node-id="xSNsKVJgM3HQEzyeO7xtED">
+
+<nav id="nav" data-page-node-id="GhtYmwFAYBaQL7GZsVgCAO">
+  <a class="nav-brand" href="#top" data-page-node-id="xHBRcJ3YVhsDSN8LtPb7Tt"><span class="blade" data-page-node-id="QpcrBCLzXlS8satuYBqA0k"></span>OLDBOY · 老男孩</a>
+  <div class="nav-links" data-page-node-id="9FiMvdWGLpqOMYuuSrZHZ8">
+    <a href="#plot" data-page-node-id="76bKqDdXIdPS2h54Tvge9j">剧情梗概</a>
+    <a href="#honors" data-page-node-id="pr8ow71LGlisVCICzlgj9M">评分荣誉</a>
+    <a href="#highlights" data-page-node-id="Gdz1OCB5W5ddEKTIIPt0Wm">高光时刻</a>
+    <a href="#why" data-page-node-id="RTWrzJKskdidNJtbXxpeh7">为何值得看</a>
+    <a href="#quote" data-page-node-id="82LCYsfa3yxGMQ5ULsBcoB">片语</a>
+  </div>
+  <div class="nav-right" data-page-node-id="2DJxjlSVMaElW26aUEDmzR">2003 / 朴赞郁</div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top" data-page-node-id="Jcl3vrL2FziBm1zrmyH43V">
+  <div class="hero-frame" data-page-node-id="Y3XNyquasSyS9mKMbVyDDb"></div>
+  <canvas id="fxCanvas" data-page-node-id="lj7RfDVdovkLJDqYPGMIrG"></canvas>
+
+  <div class="hero-content" data-page-node-id="iPEB4Qe7ftRTAus7AGsF6N">
+    <div class="hero-kicker" data-page-node-id="0vmOR3b3YRfAFLkEzFfuUV">韩国犯罪电影 · 复仇美学巅峰之作<em data-page-node-id="ZhbqfR7ataAOlvylsEB9Ab">·</em>2003</div>
+    <div class="lang-row" data-page-node-id="RLkUWkbeBwkBp0QiPoTBPy">
+      <span class="ko" data-page-node-id="6VtDi7ijIaNKYHvBEbjUOQ">올드보이</span>
+      <span class="en" data-page-node-id="rYL5gFbY349nw400CtfZrB">OLDBOY</span>
+    </div>
+    <h1 class="hero-title" data-page-node-id="qsrZLvaZOGdTQBYdF8E5ZV">老男孩</h1>
+    <p class="hero-sub" data-page-node-id="mENDo5QMBNFv5GuemK52yf">
+      十五年,他被偷走了一切——自由、名誉、家人,甚至活着的理由。<br data-page-node-id="WOqATincyqPHa2NO5aB4KB">
+      获释后他只拿到一句话:<b data-page-node-id="tBDCbFTi9EoHQ32UBwTSRZ">五天</b>,找出真相,否则失去所爱。<br data-page-node-id="f7ERjVmYDdv6E8Tt6CH34h">
+      这不是一场复仇,而是一张织了十五年的网。
+    </p>
+    <div class="hero-meta" data-page-node-id="nhGn2Gcer3rmfxD4O8OMUf">
+      <span class="hl" data-page-node-id="EYbx3PgZ1GyD6HEX0O6oqG">戛纳评审团大奖</span>
+      <span data-page-node-id="q2OKH6AIuZHICGsz3YYLQG">IMDb 8.4</span>
+      <span data-page-node-id="AfDUDVlXyy90REbhchjEPi">豆瓣 8.3</span>
+      <span class="hl2" data-page-node-id="5QnlyB8FPfhwdVmF4sKQBF">朴赞郁执导</span>
+      <span data-page-node-id="ehpnmkoVQy1uSovY7JaTeL">崔岷植 主演</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint" data-page-node-id="rXFbIEbbEW8m4jp0vNcj7c">
+    <span data-page-node-id="1WHsnfogfAkDdqrCh7ojzD">往下 · 慢慢看,别急着知道答案</span>
+    <div class="bar" data-page-node-id="jtcFb0GGGuYCvVSZWfOuAD"></div>
+  </div>
+</header>
+
+<div class="divider" data-page-node-id="xYc8nVApvb3kTqDBlvA9Gq"></div>
+
+<!-- ================= 剧情梗概 ================= -->
+<section id="plot" data-page-node-id="Gzbir5hNuxt7aTxBBnY4Ar">
+  <div class="wrap" data-page-node-id="VgYINrZHhkg4VOo7NkdmIZ">
+    <div class="plot-layout" data-page-node-id="49bEnzffXIsgKCyP82moyH">
+      <div class="reveal plot-num" data-page-node-id="xOVA26REGZhYSGUj6GLvrM">01<small data-page-node-id="DloT79PGr1EYCgBUqfqXuY">STORY · 无剧透</small></div>
+      <div class="plot-copy" data-page-node-id="NVqL2HPQghOoALateBQzW0">
+        <div class="reveal sec-title" data-page-node-id="dR80lBWSLXfio9aOVm8ykH">一段被偷走的十五年</div>
+        <div class="reveal" style="margin-top:40px;" data-page-node-id="ToPR3S0uDvHoXoeMFoDDXH">
+          <p class="lead" data-page-node-id="4S7LCvZIyr4LYGN3e9VJrB">某个深夜,中年男人吴大修在女儿生日那天喝得酩酊大醉,<em data-page-node-id="FEwBSrhFC7PcvrE4GhyfSe">归家途中被人当街掳走。</em></p>
+          <p data-page-node-id="yl5iZacrJ6rkx8rDm8iS4H">没有缘由,没有审判。他醒来时,已被关进一间与世隔绝的私人囚室——每天有人准时送来煎饺,电视是他与外界唯一的联系。他靠着墙上一道道刻痕数日子,却始终数不清自己究竟<strong data-page-node-id="jOIS8TgyUIfVPeG3WwrMUo">为什么</strong>被囚。</p>
+          <p data-page-node-id="WNQBoZ6vXMR3IjqxKga2LY">透过荧幕他得知:妻子惨死,自己竟被警方列为头号嫌疑人,女儿下落不明。他绝望到想死都死不成,索性把囚室当成道场,日复一日挥拳、俯卧撑、对抗墙壁,把十五年的恨意锻造成一副铁打的身躯——只为撑到出去的那一天,亲手问一句:为什么是我?</p>
+          <p data-page-node-id="FekFlMcBDUZuVrpNattPBi">第十五年的某个清晨,囚室的门毫无征兆地开了。他像一件刚被丢弃的旧物,重新被丢回人间。茫然站在天台,手机骤然响起,听筒里传来一个陌生而平静的声音:</p>
+          <div class="phone" data-page-node-id="AyuMa1vTWaKcGh15ClgAaC">"五天。查出我是谁、你为什么被关了十五年。否则——你最爱的人,性命不保。"</div>
+          <p data-page-node-id="8k0otKqdSSm5f0WrOLiywK">于是,吴大修开始了此生最疯狂的一场追逐。他挥拳砸开一个个线索,却发现每接近真相一步,自己就离那个囚禁他的人布下的棋局更近一步……而那张网的尽头,藏着一个他拼死也不愿揭开的答案。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 影片档案 ================= -->
+<section id="credits" style="padding-top:0;" data-page-node-id="FrNGMouYfsbHfhHSMDhxrN">
+  <div class="wrap" data-page-node-id="HPdACwM8FWsSM6YFxuHGZ9">
+    <div class="reveal credits-grid" style="transform:none;" data-page-node-id="EunrerNe1IvQrP1d4mPO47">
+      <div class="credit-cell" data-page-node-id="mDaR3iXvoTHeVk5uiVBN6W">
+        <div class="k" data-page-node-id="WhI30kChZNOYGhtQNvAmTg">Director</div>
+        <div class="v" data-page-node-id="vQuDZedp1MTbugyXE52dRj">朴赞郁<small data-page-node-id="K0Pu2C7DmN50cCZqdWp1Ky">复仇三部曲 · 第二部</small></div>
+      </div>
+      <div class="credit-cell" data-page-node-id="QM17EN4RiPOFamuZAdoBBt">
+        <div class="k" data-page-node-id="fPeIZi7JjAX7iGZuHo2UEx">Starring</div>
+        <div class="v" data-page-node-id="d1ImlxnE1vIwKvFxLowyNG">崔岷植 · 刘智泰<small data-page-node-id="9Mo9MIIGyaVw5o6QmjDHZd">姜惠贞 等</small></div>
+      </div>
+      <div class="credit-cell" data-page-node-id="aiT188EqSEnyvmfsXB9hBP">
+        <div class="k" data-page-node-id="BpLz9nUZ8UsbgDanSk9ICF">Genre</div>
+        <div class="v" data-page-node-id="S8C7zPmwIiuFUNODsuhXJF">悬疑 / 惊悚<small data-page-node-id="7YQvZ7dhkm6EB9ZRjoDJPW">犯罪 / 动作</small></div>
+      </div>
+      <div class="credit-cell" data-page-node-id="5PkhcGToAkdrPM80szdMiR">
+        <div class="k" data-page-node-id="9jT2Xa3HszwsxQa7tfIzDy">Runtime</div>
+        <div class="v" data-page-node-id="OfFj5jxCS3kGEsmLFKCk8y">120 分钟<small data-page-node-id="jkdZz5Afdkjvvi0ZdToctN">2003-11-21 韩国上映</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 评分荣誉 ================= -->
+<section id="honors" data-page-node-id="bliwTIaH0jKOiK8TFKUjVa">
+  <div class="wrap" data-page-node-id="s4flCMOC118S5pVOyyYitc">
+    <div class="sec-head reveal" data-page-node-id="qczLVM9znxShXIyWSfLN4J">
+      <div class="sec-tag" data-page-node-id="4at4zNnzCuIvKVU4snqPia">Honors &amp; Scores</div>
+      <div class="sec-title" data-page-node-id="sVOcSFEgd2knpkQtBxNp6q">凭什么被称为"公认经典"<span class="en" data-page-node-id="sBDqoNj92kAdrZX6QDZ5CE">凭数据,也凭那些站在它面前沉默的人</span></div>
+    </div>
+
+    <div class="scores reveal" data-page-node-id="zr4MOu2FdExFhyhevsPayk">
+      <div class="score-card" data-page-node-id="AQINXHK3F3awsUCDjy8Aj1">
+        <div class="num" data-page-node-id="jhUEfmEYittxNhS0X2ZcRj">8.4</div>
+        <div class="src" data-page-node-id="Y9P8dbCHYwpG276EQSiOhy">IMDb</div>
+        <div class="note" data-page-node-id="fHAz2gV6dicEBiexFFiUcf">韩国电影最高分之列 · 全球影迷榜</div>
+      </div>
+      <div class="score-card" data-page-node-id="8vWHHSWqUGZGD9npfqhSAQ">
+        <div class="num" data-page-node-id="4E0WoCpfJTXGuFFgY6c675">8.3</div>
+        <div class="src" data-page-node-id="EHxQfjkuVyg46BE4JSsVho">豆瓣</div>
+        <div class="note" data-page-node-id="AmkpgCtct0R4m42xXGUB5b">超 28 万人评分 · 高分犯罪片</div>
+      </div>
+      <div class="score-card" data-page-node-id="8vjxSLCJepTQoYKBLamsS8">
+        <div class="num" data-page-node-id="OEwgnB7oVeLaLcmHKBGIKq">82<sup data-page-node-id="Pl5TgkhHpnx14bnNq7KYr5">%</sup></div>
+        <div class="src" data-page-node-id="0PDfa8LjjeaWHbHcrAh3TZ">Rotten Tomatoes</div>
+        <div class="note" data-page-node-id="0oa7oosNrsdmKgwxNKAuZw">烂番茄新鲜度 · 媒体一致好评</div>
+      </div>
+      <div class="score-card" data-page-node-id="kl9GPrQE2EGmNEs8tGPvTY">
+        <div class="num" data-page-node-id="KvuAIYR9ffKuFiPEDl7yei">#29</div>
+        <div class="src" data-page-node-id="whr4IfagoAxzWRJqZpc9ZN">BBC</div>
+        <div class="note" data-page-node-id="qhiUuLaBjNLjQamV0ATP6g">"21 世纪最伟大电影"百佳榜</div>
+      </div>
+    </div>
+
+    <div class="award-strip reveal" data-page-node-id="73HijGAsNpp5dceYfA6zC7">
+      <div class="award" data-page-node-id="Yz56ghXQwURF3MNCBev5qG"><div class="ic" data-page-node-id="5Y9bvKFDKnDbe9n3YW0yPR">🏆</div><div class="t" data-page-node-id="WiP1i57zZALZIisx1XRKnz">戛纳电影节 评审团大奖<small data-page-node-id="TBfTq4X8TJxhEt4THMsCTD">2004 · 第 57 届</small></div></div>
+      <div class="award" data-page-node-id="Fc0Tfiqim02Yzs7sSUEFW0"><div class="ic" data-page-node-id="lI0BnbVUOTWKfgMeWjGWwv">★</div><div class="t" data-page-node-id="kbTANrm0ZqRYlyCSzKvWEt">金棕榈奖 提名<small data-page-node-id="Nbl5I1JAA3Q6QBLEUVL1T4">当年惜败《华氏 911》</small></div></div>
+      <div class="award" data-page-node-id="JfNMymhp9rWfb18szpehUo"><div class="ic" data-page-node-id="7BFwcG9XIMgTuKGCkOMWyk">🏅</div><div class="t" data-page-node-id="WaLUxL4zosMpXYb3qqnfsa">香港电影金像奖 最佳亚洲电影<small data-page-node-id="mW4z7iownNqfGrlqs7aZX4">第 24 届</small></div></div>
+      <div class="award" data-page-node-id="reCr1mWfBddRzkzh7rddj9"><div class="ic" data-page-node-id="jQPc0OWoygGtKgNhOA8ONs">◆</div><div class="t" data-page-node-id="1IGyPzqMZY0X64qsCs5kpi">韩国青龙 · 大钟 · 百想 多项大奖<small data-page-node-id="jPJwcfu7WBiAraoA5Uc1UK">本土三大奖通杀</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 亮点 ================= -->
+<section id="highlights" data-page-node-id="h2msUNrVnquIqb7T5QNOwP">
+  <div class="wrap" data-page-node-id="CDADxcgiAXcMsaXVvYrUBz">
+    <div class="sec-head reveal" data-page-node-id="9zbVRbar2Dniecby7xGH6J">
+      <div class="sec-tag" data-page-node-id="62f2YE6DbrX4ZYC3OE73Og">Why It Shines</div>
+      <div class="sec-title" data-page-node-id="7eH8M24wdk1XMw3YUeo5so">它高光在哪里<span class="en" data-page-node-id="1N2cj2GPXzg4erdabmJONg">六个让影史记住它的理由</span></div>
+    </div>
+
+    <div class="hl-grid" data-page-node-id="WBZDv33rNMrFODxV3L8zTu">
+      <div class="hl-card reveal" data-page-node-id="GWEArxAvhXAJqEU09Sxhvm">
+        <div class="hl-idx" data-page-node-id="L6FdYy0QOZgWDOoWQHJeh4">01</div>
+        <h3 data-page-node-id="y3EmXpuzMIozcgsTjhTUuJ">载入史册的走廊长镜头</h3>
+        <p data-page-node-id="NOCXTD4sm4gpIJqnJD7ZVV">吴大修与数十名打手在一条狭窄走廊里鏖战,摄影机一镜到底、毫不闪躲——暴力第一次被拍出近乎舞蹈的韵律。这个三分钟镜头至今仍是全球动作片反复致敬的教科书。</p>
+      </div>
+      <div class="hl-card reveal" data-page-node-id="0o2drlIYUyh4cItLDhHHXR">
+        <div class="hl-idx" data-page-node-id="c2vhv93RMgH1rHpicNwJrk">02</div>
+        <h3 data-page-node-id="zgHKQ3wo70SVUzr41nzpK7">复仇三部曲的顶点</h3>
+        <p data-page-node-id="sm97jV2p4LMBZhPtrDPobV">朴赞郁《我要复仇》《老男孩》《亲切的金子》承前启后之作。它把"复仇"从类型片题材,升维成对罪与罚、记忆与救赎的存在主义拷问。</p>
+      </div>
+      <div class="hl-card reveal" data-page-node-id="x0sPcOSCoSMfWIZW0geaAr">
+        <div class="hl-idx" data-page-node-id="EXzwDEDgUNQaG7rMcvpjI4">03</div>
+        <h3 data-page-node-id="JFc64eujCixAST2WyfVUqx">让戛纳起立的亚洲面孔</h3>
+        <p data-page-node-id="IT5IVaSSL8CAqPJcqLvk8C">2004 年斩获戛纳评审团大奖,时任评委会主席昆汀·塔伦蒂诺公开盛赞。这是韩国电影叩开世界影坛大门、最有分量的那一声门铃。</p>
+      </div>
+      <div class="hl-card reveal" data-page-node-id="h497Enn5nVqBc82QANSNDn">
+        <div class="hl-idx" data-page-node-id="nVGo84RH4rCGYehHDjA4mX">04</div>
+        <h3 data-page-node-id="AWlx1wt05QewVXgB1V5f1L">崔岷植"献祭式"表演</h3>
+        <p data-page-node-id="wuFf2YWUPWExyNNJHZIH05">为贴近角色,他减重塑形、亲自完成高危动作、甚至当众生吞活章鱼。他用一双熬了十五年的眼睛,演出了一个人被时间碾碎又重新拼起的样子。</p>
+      </div>
+      <div class="hl-card reveal" data-page-node-id="BAoCpevasOOTf2v3QEzVFV">
+        <div class="hl-idx" data-page-node-id="lvU22CnGdi2CgAjyKNTevg">05</div>
+        <h3 data-page-node-id="tHOKg631BZ6Rp3NCbEgxLo">每一帧都在布线的悬念</h3>
+        <p data-page-node-id="MswNZCJTLwmPTNnijP8kV4">时间、记忆、身份三重谜题相互咬合。你以为在看一场复仇,其实是在旁观一局提前十五年落子的棋——棋局终了,无人能笑着离席。</p>
+      </div>
+      <div class="hl-card reveal" data-page-node-id="DViftIjciGGXLyB11O6y7o">
+        <div class="hl-idx" data-page-node-id="5CySRzKLl1ozsDBSIFyTEU">06</div>
+        <h3 data-page-node-id="qxNQ847XWFvCyaoJdS5VAu">残忍又优雅的暴力美学</h3>
+        <p data-page-node-id="KQndleX1mBtDpfHms7Jwpw">曹英沃的配乐让血浆与圆舞曲同台共舞,构图、色彩、剪辑无一不精。它黑暗、华丽、神经质,却始终保持着一种近乎古典的克制与体面。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 为什么值得看 ================= -->
+<section id="why" data-page-node-id="sJriu3XNv073ZHGpxEK8LC">
+  <div class="wrap" data-page-node-id="LwQCoR3zYjbCF4eH79RaQb">
+    <div class="sec-head reveal" data-page-node-id="Bpwgx5bM4XLBSqd2nluEct">
+      <div class="sec-tag" data-page-node-id="Xkl78eHxhXnR9ZtsVfNU2Y">Worth Your Time</div>
+      <div class="sec-title" data-page-node-id="tcMxgVf0pHWtEnVIYAEpLO">为什么它值得你花 120 分钟<span class="en" data-page-node-id="eAENhLZSG7CsmzwJzHATLO">以及为什么你不该被提前剧透哪怕一句</span></div>
+    </div>
+
+    <div class="why-list" data-page-node-id="5jdMkha3k7KCbSUboddDtM">
+      <div class="why-item reveal" data-page-node-id="ImylNzj0o7ipAkbJKrFC3f">
+        <div class="no" data-page-node-id="KPX9oHfuH478ZGxHmIIogm">壹</div>
+        <div data-page-node-id="jRJ06QYt7HJ6NOZMq805OW">
+          <h3 data-page-node-id="SHcSSzAlYf2XhAAZ5qkrxY">「知道得越少,<span class="mark" data-page-node-id="RrD0bG3KfHCDVcz38l5N8Y">震撼越大</span>」的悬念范本</h3>
+          <p data-page-node-id="c0boL3L5yO8rr1gl5AsaGe">这部电影真正的威力,在于它把观众和主角放在同一条起跑线上:你和他一样被蒙在鼓里、一样步步逼近真相,也因此和他一样,在真相揭晓的瞬间被同一股力量击穿。所以请务必在<b data-page-node-id="vRusnF21d3Ur85kwlZWXx1">零剧透</b>的状态下观看——那将是你与这部作品之间最完整、也唯一的一次相遇。</p>
+        </div>
+      </div>
+      <div class="why-item reveal" data-page-node-id="6XXOvxfZG87vEZ6AXAcyWc">
+        <div class="no" data-page-node-id="Qw7AUEHQEUtIqNARstWP8q">贰</div>
+        <div data-page-node-id="CIJJT8WD6HwAWtP68Dbizy">
+          <h3 data-page-node-id="K51rjfSlJsadQ9FFzI5N2F">它问的从来不是"谁干的",<span class="mark" data-page-node-id="eOn3t9afV0ZIfnH9nvwHBy">而是"人靠什么活下去"</span></h3>
+          <p data-page-node-id="aAkGUQkpHD6zyyVT6uTJMw">表面看,《老男孩》是一部节奏凌厉、拳拳到肉的复仇片;骨子里,它是对<b data-page-node-id="a3UEkBctUG1EHUUN9P21el">记忆、罪与罚、自我欺骗</b>的残酷解剖。一个被剥夺一切的人,只能把"恨"锻造成活下去的支点——可当真相揭晓,他才发现要面对的敌人早已不是别人。它用一个极端情境,逼问每一个普通的我们:如果恨是你唯一拥有的东西,你还学得会重新去爱吗?</p>
+        </div>
+      </div>
+      <div class="why-item reveal" data-page-node-id="NU2VLROBU9HEvc0avSqT34">
+        <div class="no" data-page-node-id="wChsK03oq8kW84IgB0jPF4">叁</div>
+        <div data-page-node-id="MTwFlwfi5IFqO9RHpFXDrC">
+          <h3 data-page-node-id="EPZ78PKFtSjsvvUUqiv4u1">韩国电影史绕不开的<span class="mark" data-page-node-id="kfc0vEJgqQbkrSBPCwRpPB">坐标原点</span></h3>
+          <p data-page-node-id="ZXaw9Lu8sVA9K8bKiSR1Ub">它是韩国最早打入<b data-page-node-id="2RhIAYZTiB8f7kxvFSlfkg"> IMDb 顶尖榜单</b>的电影之一,BBC 将其列为"21 世纪最伟大百部电影"第 29 位,后来更被好莱坞翻拍。看懂《老男孩》,你就看懂了为什么全世界影迷会为一个叫朴赞郁的导演疯狂——那不是嗜血,而是一代人敢于<b data-page-node-id="YZQDlvE8Xzf1501AMyjN6Q">直视人性深渊</b>的勇气,正是这份勇气,把韩国电影推上了世界舞台。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="why-quote reveal" data-page-node-id="yWB9UCxWrvRnjzW3GglaTN">
+      <div class="cn" data-page-node-id="dyuvzUGehlvZjMVWNnTXTo">"《老男孩》最残忍的地方,不是它展示了多少暴力,而是它让你发现——<br data-page-node-id="6XVo8QY6gyXVuVDb1N99ra">原来仇恨可以如此整齐地、像钟表一样,把一个人的一生精准拆毁。"</div>
+      <div class="attr" data-page-node-id="wMmgMsYb9VTRSGh4yOxRGa">—— 观后感常被引述的一句话 · 详情请自行观影体会</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 台词 / 尾幕 ================= -->
+<section id="quote" data-page-node-id="ySCVRtCj4apK2TLLLeh7IX">
+  <div class="wrap" data-page-node-id="PRjb6bNKm8hOS5czXXESfa">
+    <div class="reveal quote-ko" data-page-node-id="pJfeD4SO524S4QE14Y3CkB">올드보이 · 2003</div>
+    <div class="reveal quote-en" data-page-node-id="6Zg4XgAs28aC4qZEFZB5IA">"Laugh, and the world laughs with you;<br data-page-node-id="JIr3GilbNWzI494CHjX9YS">Weep, and you weep alone."</div>
+    <div class="reveal quote-cn" data-page-node-id="UmWNEhZ6DE4tBHaN0YgRcE">"笑,全世界与你同笑;<br data-page-node-id="ah1FsPF3COg9OjGvGcdF72">哭,你便独自哭泣。"</div>
+    <div class="reveal quote-attr" data-page-node-id="UxyCp4jHL7cDKNWRP5kjUg">片首旁白 · 源自 19 世纪诗人 Ella Wheeler Wilcox《孤独》<span class="sword" data-page-node-id="rjyWrUyZ63EsVxRlX2bfWp">✦</span>也是通往最终谜底的第一把钥匙</div>
+
+    <div class="spoil-note reveal" data-page-node-id="BTqEF0OfwJjfsajAFqsI9e">
+      <h4 data-page-node-id="Ev5KUAKCC32TzEnG0qbPZ9">⚠ 观影前必读 · 防剧透</h4>
+      <p data-page-node-id="2bhOrRdxGXZb5o144fJrBf">本片之所以成为经典,恰恰因为它的<b data-page-node-id="06HbMBlicEJdHBnFQuwxxq">反转与结局</b>需要在毫无防备时亲身经历。若你尚未看过,请立即停止阅读任何影评与解析,直接打开电影。<br data-page-node-id="HcJFRQN64EvsjK3mVbi6cy">那将是你送给自己的、一份不会被第二次复制的礼物。</p>
+    </div>
+  </div>
+</section>
+
+<footer data-page-node-id="vi4Ulp4undvlF002ShD8od">
+  <div class="brand" data-page-node-id="wZAqKpuhiUkot84VPguGXG">旺财<i data-page-node-id="3dY23vf8dynvkp2lSO5Hbl">◆</i>每日电影推荐</div>
+  <div class="tip" data-page-node-id="CGxUCBs5hYQfxbTfBQjQs9">今日片单 · 《老男孩》(2003)　|　全程无剧透,放心观看</div>
+</footer>
+
+<script>
+/* ---------- 导航滚动 ---------- */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+/* ---------- 滚动显现 ---------- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('on');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---------- Hero 动画:血色尘埃 + 被偷走的钟 ---------- */
+const canvas = document.getElementById('fxCanvas');
+const ctx = canvas.getContext('2d');
+let W, H, DPR;
+const parts = [];
+
+function resize() {
+  DPR = Math.min(window.devicePixelRatio || 1, 2);
+  W = canvas.clientWidth;
+  H = canvas.clientHeight;
+  canvas.width = W * DPR;
+  canvas.height = H * DPR;
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  seed();
+}
+function seed() {
+  parts.length = 0;
+  const count = Math.min(110, Math.floor(W * H / 14000));
+  for (let i = 0; i < count; i++) {
+    const isBlood = Math.random() < 0.72;
+    parts.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: (Math.random() * 1.6 + 0.3) * (isBlood ? 1 : 0.8),
+      s: Math.random() * 0.35 + 0.12,        // 下落速度
+      drift: (Math.random() - 0.5) * 0.3,    // 横向漂移
+      ph: Math.random() * Math.PI * 2,
+      a: Math.random() * 0.4 + 0.1,
+      blood: isBlood
+    });
+  }
+}
+
+let clockAngle = 0;
+function draw(t) {
+  ctx.clearRect(0, 0, W, H);
+
+  /* 巨大的"命运之钟"——十五年被它一圈圈转走 */
+  const cx = W / 2;
+  const cy = H * 0.46;
+  const R = Math.max(W, H) * 0.46;
+  clockAngle = t * 0.00006;
+
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(-Math.PI / 2);
+  ctx.strokeStyle = 'rgba(200, 163, 94, 0.055)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i < 60; i++) {
+    const ang = (i / 60) * Math.PI * 2;
+    const isHour = i % 5 === 0;
+    const r1 = isHour ? R * 0.94 : R * 0.97;
+    const r2 = R * 0.99;
+    ctx.beginPath();
+    ctx.moveTo(Math.cos(ang) * r1, Math.sin(ang) * r1);
+    ctx.lineTo(Math.cos(ang) * r2, Math.sin(ang) * r2);
+    ctx.strokeStyle = isHour ? 'rgba(200, 163, 94, 0.09)' : 'rgba(200, 163, 94, 0.045)';
+    ctx.stroke();
+  }
+  /* 指针 */
+  const hands = [
+    { len: R * 0.62, w: 1.4, c: 'rgba(200, 163, 94, 0.16)', sp: 0.02 },
+    { len: R * 0.88, w: 1,   c: 'rgba(163, 38, 46, 0.22)',  sp: 1 }
+  ];
+  hands.forEach(h => {
+    ctx.save();
+    ctx.rotate(clockAngle * h.sp * 40);
+    ctx.strokeStyle = h.c;
+    ctx.lineWidth = h.w;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(h.len, 0);
+    ctx.stroke();
+    ctx.restore();
+  });
+  ctx.restore();
+
+  /* 尘埃 */
+  parts.forEach(p => {
+    p.y += p.s;
+    p.x += p.drift + Math.sin(t * 0.0004 + p.ph) * 0.12;
+    if (p.y > H + 6) { p.y = -6; p.x = Math.random() * W; }
+    if (p.x < -6) p.x = W + 6;
+    if (p.x > W + 6) p.x = -6;
+    const tw = 0.65 + 0.35 * Math.sin(t * 0.001 + p.ph * 3);
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = p.blood
+      ? 'rgba(163, 38, 46,' + (p.a * tw * 0.5).toFixed(3) + ')'
+      : 'rgba(233, 205, 146,' + (p.a * tw * 0.4).toFixed(3) + ')';
+    ctx.fill();
+  });
+
+  requestAnimationFrame(draw);
+}
+
+window.addEventListener('resize', resize);
+resize();
+requestAnimationFrame(draw);
+</script>
+</body>
+</html>
