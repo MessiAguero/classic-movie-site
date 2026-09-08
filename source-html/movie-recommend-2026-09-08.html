@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>追击者 · The Chaser — 韩国犯罪电影经典推荐</title>
+<style>
+  :root {
+    --bg-0: #08090b;
+    --bg-1: #0c0e11;
+    --bg-2: #111418;
+    --bg-3: #171b20;
+    --line: rgba(208, 52, 44, 0.16);
+    --line-dim: rgba(150, 170, 182, 0.09);
+    --blood: #d0342c;
+    --blood-bright: #ef4b3f;
+    --blood-dim: #7a1f1a;
+    --steel: #96a6b1;
+    --steel-dim: #5c6872;
+    --ink: #e9e9e3;
+    --ink-dim: #a2a8a6;
+    --ink-faint: #5d6468;
+    --phone-red: #e03a2f;
+    --rain: #6f8291;
+    --serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", "Times New Roman", serif;
+    --sans: "Inter", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    --mono: "SFMono-Regular", "JetBrains Mono", Menlo, Consolas, monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-0);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.85;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 湿冷胶片颗粒 */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 300;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection { background: rgba(208, 52, 44, 0.55); color: #fff; }
+
+  /* ============ 导航 ============ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 120;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 52px;
+    transition: background 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+    border-bottom: 1px solid transparent;
+  }
+  nav.scrolled {
+    background: rgba(8, 9, 11, 0.86);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom-color: var(--line-dim);
+    padding: 11px 52px;
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--sans);
+    letter-spacing: 0.2em;
+    font-size: 12.5px;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .nav-brand .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ff8a7e, var(--blood) 70%);
+    box-shadow: 0 0 12px rgba(208, 52, 44, 0.8);
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 6px rgba(208, 52, 44, 0.5); }
+    50% { box-shadow: 0 0 16px rgba(224, 58, 47, 0.95); }
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    color: var(--ink-dim);
+    text-decoration: none;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--blood-bright); }
+  .nav-right {
+    font-size: 10.5px;
+    letter-spacing: 0.3em;
+    color: var(--ink-faint);
+    font-family: var(--mono);
+  }
+
+  /* ============ Hero ============ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% 120%, rgba(208, 52, 44, 0.13), transparent 62%),
+      radial-gradient(ellipse 50% 40% at 82% 8%, rgba(111, 130, 145, 0.08), transparent 58%),
+      linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 55%, var(--bg-2) 100%);
+  }
+  .hero-frame {
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(150, 170, 182, 0.10);
+    pointer-events: none;
+    z-index: 2;
+  }
+  .hero-frame::before, .hero-frame::after {
+    content: "";
+    position: absolute;
+    width: 36px; height: 36px;
+    border-color: rgba(224, 58, 47, 0.45);
+    border-style: solid;
+  }
+  .hero-frame::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+  .hero-frame::after  { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+
+  #fxCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 130px 24px 90px;
+    max-width: 960px;
+  }
+  .hero-kicker {
+    font-size: 11.5px;
+    letter-spacing: 0.55em;
+    color: var(--blood);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: fadeUp 1.1s 0.2s forwards;
+  }
+  .hero-kicker em { font-style: normal; color: var(--ink-faint); margin: 0 10px; letter-spacing: 0.2em; }
+  .lang-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 6px;
+    opacity: 0;
+    animation: fadeUp 1.1s 0.35s forwards;
+  }
+  .lang-row .ko {
+    font-size: 15px;
+    letter-spacing: 0.5em;
+    color: var(--ink-faint);
+  }
+  .lang-row .en {
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.42em;
+    color: var(--steel-dim);
+    text-transform: uppercase;
+  }
+  h1.hero-title {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(74px, 13vw, 168px);
+    line-height: 1.06;
+    letter-spacing: 0.06em;
+    color: transparent;
+    background: linear-gradient(180deg, #f5f5ee 12%, #cfd3cd 52%, #7e8986 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: 0 0 90px rgba(208, 52, 44, 0.18);
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 1.2s 0.5s forwards;
+  }
+  .hero-sub {
+    margin: 22px auto 0;
+    max-width: 640px;
+    font-size: 15.5px;
+    line-height: 2.15;
+    color: var(--ink-dim);
+    letter-spacing: 0.06em;
+    opacity: 0;
+    animation: fadeUp 1.2s 0.7s forwards;
+  }
+  .hero-sub b {
+    color: var(--blood-bright);
+    font-weight: 600;
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 36px;
+    opacity: 0;
+    animation: fadeUp 1.2s 0.9s forwards;
+  }
+  .hero-meta span {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--ink-dim);
+    padding: 7px 16px;
+    border: 1px solid var(--line-dim);
+    border-radius: 999px;
+    background: rgba(17, 20, 24, 0.55);
+    backdrop-filter: blur(4px);
+  }
+  .hero-meta .hl { border-color: rgba(224, 58, 47, 0.5); color: var(--blood-bright); }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 34px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+    text-align: center;
+    color: var(--ink-faint);
+    font-size: 11px;
+    letter-spacing: 0.34em;
+    opacity: 0;
+    animation: fadeUp 1s 1.4s forwards;
+  }
+  .scroll-hint .bar {
+    width: 1px; height: 40px;
+    margin: 12px auto 0;
+    background: linear-gradient(180deg, var(--blood), transparent);
+    animation: drip 2s ease-in-out infinite;
+  }
+  @keyframes drip {
+    0% { transform: scaleY(0); transform-origin: top; opacity: 0.8; }
+    60% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+    100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(26px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(208, 52, 44, 0.28), transparent);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* ============ 通用 section ============ */
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 44px;
+  }
+  section { padding: 120px 0; position: relative; }
+  .sec-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--blood);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .sec-tag::before {
+    content: "";
+    width: 34px; height: 1px;
+    background: var(--blood);
+  }
+  .sec-title {
+    font-family: var(--serif);
+    font-size: clamp(30px, 4.6vw, 46px);
+    font-weight: 800;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+    margin-bottom: 18px;
+  }
+  .sec-title .en {
+    display: block;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.34em;
+    color: var(--ink-faint);
+    margin-top: 12px;
+    text-transform: uppercase;
+  }
+  .sec-sub {
+    color: var(--ink-dim);
+    font-size: 15px;
+    max-width: 680px;
+    line-height: 2;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ============ 01 剧情 ============ */
+  #plot { background: linear-gradient(180deg, var(--bg-1), var(--bg-0)); }
+  .plot-layout { display: grid; grid-template-columns: 200px 1fr; gap: 56px; }
+  .plot-num {
+    font-family: var(--serif);
+    font-size: 84px;
+    line-height: 1;
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(208, 52, 44, 0.55);
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+  }
+  .plot-num.in { opacity: 1; transform: none; }
+  .plot-num small {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.3em;
+    color: var(--ink-faint);
+    -webkit-text-stroke: 0;
+    margin-top: 14px;
+    font-weight: 400;
+  }
+  .plot-copy p {
+    color: var(--ink-dim);
+    font-size: 15.5px;
+    line-height: 2.1;
+    margin-bottom: 24px;
+  }
+  .plot-copy p.lead {
+    color: var(--ink);
+    font-size: 17.5px;
+    line-height: 2.05;
+  }
+  .plot-copy p em { color: var(--blood-bright); font-style: normal; }
+  .plot-copy p strong { color: var(--ink); font-weight: 600; }
+  .phone-box {
+    margin: 38px 0 8px;
+    padding: 30px 36px;
+    border-left: 3px solid var(--blood);
+    background: linear-gradient(90deg, rgba(208, 52, 44, 0.09), rgba(208, 52, 44, 0.015) 75%);
+    position: relative;
+  }
+  .phone-box::before {
+    content: "☏";
+    position: absolute;
+    right: 26px; top: 18px;
+    font-size: 20px;
+    color: rgba(224, 58, 47, 0.4);
+  }
+  .phone-box .line {
+    font-family: var(--serif);
+    font-size: 19px;
+    color: var(--ink);
+    line-height: 1.9;
+    letter-spacing: 0.05em;
+  }
+  .phone-box .cap {
+    margin-top: 12px;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--ink-faint);
+    font-family: var(--mono);
+    text-transform: uppercase;
+  }
+  .plot-extra {
+    margin-top: 46px;
+    padding-top: 30px;
+    border-top: 1px dashed rgba(150, 170, 182, 0.16);
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 12.5px;
+    color: var(--steel);
+    letter-spacing: 0.06em;
+  }
+  .plot-extra span b { color: var(--blood-bright); font-weight: 600; margin-right: 4px; }
+
+  /* ============ 档案 ============ */
+  #credits { padding-top: 0; }
+  .credits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line-dim);
+    border-left: 1px solid var(--line-dim);
+  }
+  .credit-cell {
+    padding: 34px 30px;
+    border-right: 1px solid var(--line-dim);
+    border-bottom: 1px solid var(--line-dim);
+    background: rgba(17, 20, 24, 0.35);
+    transition: background 0.4s;
+  }
+  .credit-cell:hover { background: rgba(208, 52, 44, 0.05); }
+  .credit-cell .k {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.3em;
+    color: var(--blood);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .credit-cell .v {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .credit-cell .v small {
+    display: block;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-faint);
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+  }
+  .true-crime {
+    margin-top: 30px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 26px 30px;
+    border: 1px solid rgba(208, 52, 44, 0.22);
+    background:
+      repeating-linear-gradient(-45deg, rgba(208, 52, 44, 0.035) 0 14px, transparent 14px 28px),
+      rgba(8, 9, 11, 0.6);
+  }
+  .true-crime .badge {
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.26em;
+    color: #fff;
+    background: var(--blood);
+    padding: 5px 10px;
+    border-radius: 2px;
+    margin-top: 4px;
+  }
+  .true-crime p { color: var(--ink-dim); font-size: 14px; line-height: 2; }
+  .true-crime p b { color: var(--ink); font-weight: 600; }
+
+  /* ============ 02 评分荣誉 ============ */
+  #honors {
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(208, 52, 44, 0.07), transparent 65%),
+      var(--bg-0);
+  }
+  .sec-head { margin-bottom: 54px; }
+  .scores {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 64px;
+  }
+  .score-card {
+    position: relative;
+    padding: 36px 28px 30px;
+    border: 1px solid var(--line-dim);
+    background: linear-gradient(170deg, rgba(23, 27, 32, 0.9), rgba(12, 14, 17, 0.85));
+    overflow: hidden;
+  }
+  .score-card::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blood), transparent);
+    opacity: 0.6;
+  }
+  .score-card .num {
+    font-family: var(--serif);
+    font-size: 54px;
+    font-weight: 900;
+    line-height: 1.05;
+    color: #fff;
+  }
+  .score-card .num sup { font-size: 22px; color: var(--blood-bright); }
+  .score-card .src {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.32em;
+    color: var(--blood);
+    text-transform: uppercase;
+    margin: 10px 0 14px;
+  }
+  .score-card .note { font-size: 12.5px; color: var(--ink-faint); line-height: 1.8; }
+  .score-card.hot { border-color: rgba(224, 58, 47, 0.45); }
+  .score-card.hot::after { opacity: 1; }
+
+  .honor-list { border-top: 1px solid var(--line-dim); }
+  .honor-item {
+    display: grid;
+    grid-template-columns: 130px 1fr 120px;
+    align-items: center;
+    gap: 26px;
+    padding: 22px 10px;
+    border-bottom: 1px solid var(--line-dim);
+    transition: background 0.35s, padding 0.35s;
+  }
+  .honor-item:hover { background: rgba(208, 52, 44, 0.04); padding-left: 22px; }
+  .honor-item .award {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .honor-item .year { font-family: var(--mono); font-size: 11px; color: var(--steel-dim); }
+  .honor-item .detail { font-size: 13.5px; color: var(--ink-dim); line-height: 1.9; }
+  .honor-item .detail b { color: var(--blood-bright); font-weight: 600; }
+  .honor-item .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-align: right;
+    color: var(--blood);
+  }
+
+  /* ============ 03 高光看点 ============ */
+  #highlights { background: linear-gradient(180deg, var(--bg-0), var(--bg-1)); }
+  .hl-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 26px;
+  }
+  .hl-card {
+    padding: 40px 32px 34px;
+    border: 1px solid var(--line-dim);
+    background: linear-gradient(165deg, rgba(23, 27, 32, 0.75), rgba(12, 14, 17, 0.6));
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s, box-shadow 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .hl-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(224, 58, 47, 0.5);
+    box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.85);
+  }
+  .hl-card .idx {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--ink-faint);
+    margin-bottom: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hl-card .idx .no { color: var(--blood); }
+  .hl-card h3 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+  .hl-card p { font-size: 13.5px; color: var(--ink-dim); line-height: 2; }
+  .hl-card.wide { grid-column: span 2; }
+
+  /* ============ 04 为何值得看 ============ */
+  #why {
+    background:
+      radial-gradient(ellipse 80% 55% at 20% 100%, rgba(208, 52, 44, 0.08), transparent 60%),
+      var(--bg-0);
+  }
+  .why-layout { display: grid; grid-template-columns: 200px 1fr; gap: 56px; }
+  .why-list { counter-reset: why; }
+  .why-item {
+    counter-increment: why;
+    padding: 42px 0 38px;
+    border-bottom: 1px solid var(--line-dim);
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 30px;
+  }
+  .why-item:first-child { padding-top: 6px; }
+  .why-item .n {
+    font-family: var(--serif);
+    font-size: 30px;
+    font-weight: 800;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(224, 58, 47, 0.7);
+    line-height: 1.2;
+  }
+  .why-item .n::before { content: counter(why, decimal-leading-zero); }
+  .why-item h3 {
+    font-family: var(--serif);
+    font-size: 23px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 14px;
+    letter-spacing: 0.02em;
+  }
+  .why-item p { color: var(--ink-dim); font-size: 15px; line-height: 2.1; }
+  .why-item p + p { margin-top: 16px; }
+  .why-item p b { color: var(--ink); font-weight: 600; }
+  .why-item p .hl-red { color: var(--blood-bright); }
+
+  /* ============ 结尾 ============ */
+  .outro {
+    text-align: center;
+    padding: 130px 24px 150px;
+    position: relative;
+    overflow: hidden;
+  }
+  .outro::before {
+    content: "추격자";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(200px, 34vw, 460px);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(150, 170, 182, 0.05);
+    pointer-events: none;
+    user-select: none;
+  }
+  .outro .q {
+    position: relative;
+    font-family: var(--serif);
+    font-size: clamp(24px, 3.6vw, 34px);
+    font-weight: 700;
+    line-height: 1.8;
+    color: var(--ink);
+    max-width: 760px;
+    margin: 0 auto 26px;
+    letter-spacing: 0.04em;
+  }
+  .outro .q b { color: var(--blood-bright); font-weight: 700; }
+  .outro .attr {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 44px;
+  }
+  .outro .cta {
+    position: relative;
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: var(--ink);
+    text-decoration: none;
+    border: 1px solid rgba(224, 58, 47, 0.55);
+    padding: 16px 40px;
+    transition: all 0.4s;
+    background: transparent;
+  }
+  .outro .cta:hover {
+    background: var(--blood);
+    color: #fff;
+    box-shadow: 0 0 40px rgba(208, 52, 44, 0.4);
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 24px 56px;
+    border-top: 1px solid var(--line-dim);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    color: var(--ink-faint);
+  }
+  footer .chaser {
+    font-family: var(--mono);
+    color: var(--steel-dim);
+    letter-spacing: 0.4em;
+    margin-bottom: 10px;
+  }
+  footer .no-spoiler {
+    margin-top: 14px;
+    font-size: 10.5px;
+    color: rgba(208, 52, 44, 0.6);
+    letter-spacing: 0.14em;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    nav.scrolled { padding: 10px 24px; }
+    .nav-links { display: none; }
+    .wrap { padding: 0 24px; }
+    section { padding: 88px 0; }
+    .plot-layout, .why-layout { grid-template-columns: 1fr; gap: 30px; }
+    .plot-num { font-size: 56px; }
+    .credits-grid { grid-template-columns: repeat(2, 1fr); }
+    .scores { grid-template-columns: repeat(2, 1fr); }
+    .hl-grid { grid-template-columns: 1fr; }
+    .hl-card.wide { grid-column: span 1; }
+    .honor-item { grid-template-columns: 1fr; gap: 8px; padding: 20px 4px; }
+    .honor-item .tag { text-align: left; }
+    .why-item { grid-template-columns: 46px 1fr; gap: 18px; }
+  }
+  @media (max-width: 560px) {
+    .credits-grid, .scores { grid-template-columns: 1fr; }
+    .phone-box { padding: 24px 22px; }
+    .hl-card { padding: 30px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ 导航 ============ -->
+<nav id="nav">
+  <a class="nav-brand" href="#top"><span class="dot"></span>THE CHASER · 追击者</a>
+  <div class="nav-links">
+    <a href="#plot">剧情梗概</a>
+    <a href="#honors">评分荣誉</a>
+    <a href="#highlights">高光看点</a>
+    <a href="#why">为何值得看</a>
+  </div>
+  <div class="nav-right">2008 / 罗泓轸</div>
+</nav>
+
+<!-- ============ Hero ============ -->
+<header class="hero" id="top">
+  <div class="hero-frame"></div>
+  <canvas id="fxCanvas"></canvas>
+  <div class="hero-content">
+    <div class="hero-kicker">韩国犯罪电影 · 猫鼠游戏教科书<em>·</em>2008</div>
+    <div class="lang-row">
+      <span class="ko">추격자</span>
+      <span class="en">The Chaser</span>
+    </div>
+    <h1 class="hero-title">追击者</h1>
+    <p class="hero-sub">
+      一个失联的应召女郎，一个冷静到反常的男人。<br>
+      前刑警的直觉告诉他——<b>凶手就在眼前。</b><br>
+      可整座城市的警察，没有一个人信他。<br>
+      于是，他只能一个人，跑在这场下不完的雨里。
+    </p>
+    <div class="hero-meta">
+      <span class="hl">百想 · 电影部门大奖</span>
+      <span>豆瓣 8.4</span>
+      <span>IMDb 7.8</span>
+      <span>罗泓轸 长篇处女作</span>
+      <span>金允石 × 河正宇</span>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>往下 · 慢慢看</span>
+    <div class="bar"></div>
+  </div>
+</header>
+
+<div class="divider"></div>
+
+<!-- ============ 01 剧情 ============ -->
+<section id="plot">
+  <div class="wrap">
+    <div class="plot-layout">
+      <div class="plot-num reveal">01<small>STORY · 无剧透</small></div>
+      <div class="plot-copy">
+        <div class="sec-tag reveal">Plot · 剧情梗概</div>
+        <div class="sec-title reveal">一座城市都睡着了，只有他在追<em style="font-style:normal;color:var(--blood-bright);">真相</em></div>
+        <p class="reveal lead">深夜的首尔街头，出租车窗上又被塞进一张写着电话号码的小卡片。前刑警出身的严忠浩（金允石 饰）如今经营着一档皮肉生意——他手下的应召女郎，近来却一个接一个地<em>人间蒸发</em>。</p>
+        <p class="reveal">翻遍登记簿后，忠浩把疑点锁定在一个尾号 <strong>4885</strong> 的电话上。偏偏这时，那个号码打来电话要人。手头无人可用，他只能让发着烧的美珍（徐英姬 饰）接下这单，临出门前反复叮嘱：<strong>把地址发给我</strong>。</p>
+        <p class="reveal">地址到了，人却没了消息。忠浩循着线索冲进雨夜里的旧街区，迎面撞上一个看起来再普通不过的中年男人——池英民（河正宇 饰）。凭着刑警的直觉和对方身上的血迹，他几乎当场断定：<em>这个人，就是凶手。</em></p>
+        <p class="reveal">他亲手把池英民扭进了警察局。可接下来的事，远远超出他的预料：池英民的冷静近乎可怕，警方被官僚程序绑住了手脚，证据链在雨水中一点点泡软。嫌疑人随时可能被放走，而美珍——<strong>还不知是死是活。</strong></p>
+        <p class="reveal">没人相信他了。忠浩只能靠自己的双腿和拳头，在时间的缝隙里抢跑。雨一直在下，电话再也没有响起，而他始终没有停下追赶的脚步……</p>
+        <div class="phone-box reveal">
+          <div class="line">「没有证据，你们就得放了我。」</div>
+          <div class="cap">—— 池英民 · 审讯室里令人脊背发凉的一句话</div>
+        </div>
+        <div class="plot-extra reveal">
+          <span><b>改编</b>柳永哲连环杀人案</span>
+          <span><b>取景</b>首尔望远洞 · 实景拍摄</span>
+          <span><b>票房</b>韩国观影 507 万人次</span>
+          <span><b>分级</b>韩国 18 禁 · 慎入</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 影片档案 ============ -->
+<section id="credits">
+  <div class="wrap">
+    <div class="credits-grid reveal" style="transform:none;">
+      <div class="credit-cell">
+        <div class="k">Director</div>
+        <div class="v">罗泓轸<small>编剧 / 导演 · 长篇处女作</small></div>
+      </div>
+      <div class="credit-cell">
+        <div class="k">Starring</div>
+        <div class="v">金允石 × 河正宇<small>徐英姬 等</small></div>
+      </div>
+      <div class="credit-cell">
+        <div class="k">Genre</div>
+        <div class="v">犯罪 / 惊悚<small>动作 · 悬疑</small></div>
+      </div>
+      <div class="credit-cell">
+        <div class="k">Runtime</div>
+        <div class="v">125 分钟<small>2008-02-14 韩国上映</small></div>
+      </div>
+    </div>
+    <div class="true-crime reveal">
+      <span class="badge">真案改编</span>
+      <p>影片取材于真实案件——韩国头号连环杀人犯<strong>柳永哲</strong>在 2003–2004 年间犯下的系列罪行。导演罗泓轸没有照搬案情，而是借真实犯罪的结构，拍出一部关于<strong>「一个人对抗整个失灵系统」</strong>的都市寓言：越真实，越让人透不过气。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 评分荣誉 ============ -->
+<section id="honors">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Honors &amp; Scores</div>
+      <div class="sec-title">凭什么被称为「公认经典」<span class="en">凭数据，也凭口碑发酵的口口相传</span></div>
+      <p class="sec-sub">没有大牌卡司光环，没有巨额宣发，这部电影靠首周口碑逆袭登顶票房冠军，最终写下韩国犯罪片的一座里程碑。</p>
+    </div>
+
+    <div class="scores reveal">
+      <div class="score-card hot">
+        <div class="num">8.4</div>
+        <div class="src">Douban · 豆瓣</div>
+        <div class="note">数十万人评分的高分犯罪片，长期稳居豆瓣高分韩影之列</div>
+      </div>
+      <div class="score-card">
+        <div class="num">7.8</div>
+        <div class="src">IMDb</div>
+        <div class="note">超 8 万全球影迷打分 · 北美发行方口碑爆棚</div>
+      </div>
+      <div class="score-card">
+        <div class="num">9.09</div>
+        <div class="src">Naver · 韩国观众</div>
+        <div class="note">韩国最大门户的观众评分 · 本地观众盖章认证</div>
+      </div>
+      <div class="score-card">
+        <div class="num">82<sup>%</sup></div>
+        <div class="src">Rotten Tomatoes</div>
+        <div class="note">烂番茄评论家新鲜度 · 国际媒体一致好评</div>
+      </div>
+    </div>
+
+    <div class="honor-list reveal">
+      <div class="honor-item">
+        <div class="award">百想艺术大赏</div>
+        <div class="detail">摘得电影部门<b>大奖（全场最高荣誉）</b>，并获最佳新人导演</div>
+        <div class="tag">2008 · 获奖</div>
+      </div>
+      <div class="honor-item">
+        <div class="award">大钟奖</div>
+        <div class="detail">拿下<b>最佳影片、最佳导演、最佳男主角</b>三项核心大奖</div>
+        <div class="tag">2008 · 获奖</div>
+      </div>
+      <div class="honor-item">
+        <div class="award">青龙电影奖</div>
+        <div class="detail">金允石凭本片获<b>最佳男主角</b>，全片共获 9 项提名</div>
+        <div class="tag">2008 · 获奖</div>
+      </div>
+      <div class="honor-item">
+        <div class="award">亚洲电影大奖</div>
+        <div class="detail">获<b>最佳剪辑</b>——对节奏与张力的最高国际认可</div>
+        <div class="tag">2009 · 获奖</div>
+      </div>
+      <div class="honor-item">
+        <div class="award">戛纳电影节</div>
+        <div class="detail">入围金摄影机奖（导演处女作最高荣誉）提名，受邀展映</div>
+        <div class="tag">2008 · 提名</div>
+      </div>
+      <div class="honor-item">
+        <div class="award">好莱坞翻拍</div>
+        <div class="detail">华纳兄弟重金购得翻拍权，原定奥斯卡班底操刀——剧本含金量不言自明</div>
+        <div class="tag">2008 · 版权售出</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 高光看点 ============ -->
+<section id="highlights">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Highlights</div>
+      <div class="sec-title">六个让人过目不忘的理由<span class="en">看完第一分钟，你就再也走不开了</span></div>
+    </div>
+    <div class="hl-grid">
+      <div class="hl-card reveal">
+        <div class="idx"><span class="no">01</span><span>结构</span></div>
+        <h3>凶手开场就亮牌</h3>
+        <p>「谁是凶手」从来不是悬念——他第一幕就站在你面前。真正吊住你喉咙的是另一个问题：<b>美珍还活着吗？还来得及吗？</b>把真相提前交底还能让观众全程屏息，是悬疑叙事的顶级手艺。</p>
+      </div>
+      <div class="hl-card reveal">
+        <div class="idx"><span class="no">02</span><span>表演</span></div>
+        <h3>河正宇的封神反派</h3>
+        <p>一张人畜无害的平静面孔，一个慢条斯理的语调，却在每个眼神间隙渗出彻骨寒意。河正宇凭此角一跃成为韩国影坛最令人不寒而栗的存在，后来者再演「冷血杀手」都绕不开他。</p>
+      </div>
+      <div class="hl-card reveal">
+        <div class="idx"><span class="no">03</span><span>表演</span></div>
+        <h3>金允石在雨里狂奔</h3>
+        <p>灰暗的前刑警、落魄的皮条客、偏执的追凶者——三种身份在他身上撕扯。大量实拍追戏亲身上阵，把一个人的愤怒、直觉与不肯认输，跑成了全片最滚烫的血肉。</p>
+      </div>
+      <div class="hl-card reveal">
+        <div class="idx"><span class="no">04</span><span>风格</span></div>
+        <h3>冷到骨子里的镜头</h3>
+        <p>阴雨的巷弄、渗水的墙皮、无配乐的寂静。导演克制到近乎残忍，紧张感不靠吓人音效，全靠剪辑的呼吸与节奏——这份功力直接拿下亚洲电影大奖的最佳剪辑。</p>
+      </div>
+      <div class="hl-card reveal">
+        <div class="idx"><span class="no">05</span><span>题材</span></div>
+        <h3>真实罪案，更添寒意</h3>
+        <p>柳永哲案是韩国社会的一道伤疤。影片没消费受害者，而是把镜头对准案件背后更沉重的东西：一个普通人想在黑夜保住另一个人，究竟有多难。</p>
+      </div>
+      <div class="hl-card reveal">
+        <div class="idx"><span class="no">06</span><span>作者</span></div>
+        <h3>处女作即巅峰</h3>
+        <p>罗泓轸一出手便横扫韩国三大奖。此后《黄海》《哭声》一再印证：这位导演的镜头里，永远住着那个不肯放过真相的雨夜。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 为何值得看 ============ -->
+<section id="why">
+  <div class="wrap">
+    <div class="why-layout">
+      <div class="plot-num reveal" style="-webkit-text-stroke-color:rgba(224,58,47,.5);">04<small>Why · 为何值得看</small></div>
+      <div class="why-list">
+        <div class="why-item reveal">
+          <div class="n"></div>
+          <div>
+            <h3>类型片的极限示范</h3>
+            <p>它把最难的叙事结构拍成了范本：<b>观众全程全知，主角蒙在鼓里</b>，本该索然无味，却让每一分钟都踩在刀尖上。每一个情节点都由人物的选择推动——不靠降智巧合，不靠机械降神，编剧的每个决定都站得住脚。</p>
+            <p>这种「明知答案却坐立难安」的体验，正是顶级惊悚片的稀有质地。</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="n"></div>
+          <div>
+            <h3>不是爽片，是记在社会脸上的一耳光</h3>
+            <p>如果只想看「好人抓住坏人」，你会失望——它根本不给你发泄的出口。镜头冷冷对准办案现场：证据不足、程序空转、踢皮球式的推诿，让一场本可挽回的悲剧滑向深渊。</p>
+            <p>愤怒无从安放，才是它真正让你记住的原因。<span class="hl-red">当公权力靠不住的时候，一个普通人愿意为另一个普通人跑多远？</span>——这是电影抛给每一个观众的问题。</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="n"></div>
+          <div>
+            <h3>一追一逃，两位影帝互为镜像</h3>
+            <p>金允石浑身是泥地往前冲，河正宇干干净净地站在原地——<b>追的人狼狈不堪，被追的人从容不迫</b>，越失衡的画面越让人脊背发凉。两人戏份几乎全程交织，却演出了正邪之间最微妙的错位感。</p>
+            <p>等到最后一个镜头落下，你会明白：这场追击里，没有人是真正的赢家。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 结尾 ============ -->
+<div class="divider"></div>
+<section class="outro">
+  <div class="reveal">
+    <div class="q">雨停之后，答案不会自己走来。<br>有些真相，<b>得靠人拼命去追</b>。</div>
+    <div class="attr">추격자 · The Chaser · 2008</div>
+    <a class="cta" href="#top">去追吧，别停</a>
+  </div>
+</section>
+
+<footer>
+  <div class="chaser">THE CHASER</div>
+  <div>追击者 · 韩国犯罪电影经典 · 一部献给所有不肯放弃的人的电影</div>
+  <div class="no-spoiler">※ 本篇全程无剧透 · 建议留出 125 分钟完整观看</div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- 导航滚动态 ---------- */
+  var nav = document.getElementById("nav");
+  function onScroll() {
+    if (window.scrollY > 40) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- 滚动显现 ---------- */
+  var revealEls = document.querySelectorAll(".reveal, .plot-num");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ---------- Hero Canvas：雨夜 + 血色微光 ---------- */
+  var canvas = document.getElementById("fxCanvas");
+  var ctx = canvas.getContext("2d");
+  var W = 0, H = 0, DPR = 1;
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var raindrops = [];
+  var bloodDrops = [];
+  var rippleX = [];
+
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W * DPR;
+    canvas.height = H * DPR;
+    canvas.style.width = W + "px";
+    canvas.style.height = H + "px";
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    buildParticles();
+  }
+
+  function buildParticles() {
+    var count = Math.floor(W / 11);
+    count = Math.max(60, Math.min(count, 150));
+    raindrops = [];
+    bloodDrops = [];
+    for (var i = 0; i < count; i++) {
+      raindrops.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        len: 9 + Math.random() * 16,
+        spd: 7 + Math.random() * 9,
+        a: 0.10 + Math.random() * 0.22,
+        drift: -0.6 + Math.random() * 0.4
+      });
+    }
+    var bCount = Math.floor(W / 260) + 2;
+    for (var j = 0; j < bCount; j++) {
+      bloodDrops.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        len: 2 + Math.random() * 3,
+        spd: 2 + Math.random() * 3,
+        a: 0.12 + Math.random() * 0.25
+      });
+    }
+    rippleX = [];
+    for (var k = 0; k < 6; k++) {
+      rippleX.push({ x: Math.random() * W, start: 0 });
+    }
+  }
+
+  var glows = [];
+  function buildGlows() {
+    glows = [];
+    for (var i = 0; i < 4; i++) {
+      glows.push({
+        x: W * (0.12 + Math.random() * 0.76),
+        y: H * (0.3 + Math.random() * 0.6),
+        r: 30 + Math.random() * 60,
+        phase: Math.random() * Math.PI * 2,
+        color: i % 2 === 0 ? "208,52,44" : "150,170,182"
+      });
+    }
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+
+    // 呼吸微光
+    for (var g = 0; g < glows.length; g++) {
+      var gl = glows[g];
+      var pulse = 0.5 + 0.5 * Math.sin(t / 1400 + gl.phase);
+      var grad = ctx.createRadialGradient(gl.x, gl.y, 0, gl.x, gl.y, gl.r * (0.9 + pulse * 0.4));
+      grad.addColorStop(0, "rgba(" + gl.color + "," + (0.05 + pulse * 0.045) + ")");
+      grad.addColorStop(1, "rgba(" + gl.color + ",0)");
+      ctx.fillStyle = grad;
+      ctx.fillRect(gl.x - gl.r, gl.y - gl.r, gl.r * 2, gl.r * 2);
+    }
+
+    // 斜向雨丝
+    ctx.lineCap = "round";
+    for (var i = 0; i < raindrops.length; i++) {
+      var r = raindrops[i];
+      r.y += r.spd;
+      r.x += r.drift;
+      if (r.y > H + 20) { r.y = -20; r.x = Math.random() * W; }
+      if (r.x > W + 30) r.x = -30;
+      if (r.x < -30) r.x = W + 30;
+      ctx.strokeStyle = "rgba(150,170,182," + r.a + ")";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(r.x, r.y);
+      ctx.lineTo(r.x + r.drift * 2.2, r.y - r.len);
+      ctx.stroke();
+    }
+
+    // 血色细滴（危险信号）
+    for (var b = 0; b < bloodDrops.length; b++) {
+      var bd = bloodDrops[b];
+      bd.y += bd.spd;
+      bd.x += Math.sin(t / 2000 + b) * 0.12;
+      if (bd.y > H + 10) { bd.y = -8; bd.x = Math.random() * W; }
+      ctx.strokeStyle = "rgba(224,58,47," + bd.a + ")";
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.moveTo(bd.x, bd.y);
+      ctx.lineTo(bd.x, bd.y - bd.len);
+      ctx.stroke();
+    }
+
+    // 底部水面反光横线
+    ctx.strokeStyle = "rgba(150,170,182,0.05)";
+    ctx.lineWidth = 1;
+    for (var s = 0; s < 3; s++) {
+      var yy = H - 14 - s * 26;
+      ctx.beginPath();
+      ctx.moveTo(0, yy);
+      ctx.lineTo(W, yy + (s % 2 === 0 ? 6 : -4));
+      ctx.stroke();
+    }
+  }
+
+  function loop(ts) {
+    draw(ts);
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener("resize", resize);
+  resize();
+  buildGlows();
+  if (reduced) {
+    ctx.clearRect(0, 0, W, H);
+  } else {
+    requestAnimationFrame(loop);
+  }
+})();
+</script>
+</body>
+</html>
