@@ -548,6 +548,82 @@
     "posterCaption": ""
   },
   {
+    "id": "20260909",
+    "date": "20260909",
+    "zhTitle": "韩 影 典 藏黄 海",
+    "enTitle": "",
+    "year": "",
+    "tagline": "",
+    "meta": "",
+    "ratings": [],
+    "plot": [],
+    "spoilerNote": "本页全程未透露任何关键反转与结局 · 敬请安心观影",
+    "highlights": [],
+    "quotes": [
+      {
+        "text": "我想拍一部像《教父》一样，充满男人气息的大制作电影。 —— 罗泓轸（导演） 雪夜跨海 · 孤舟不返 愿你看完，也记住那个再也回不了头的人 本页全程未透露任何关键反转与结局 · 敬请安心观影",
+        "who": ""
+      }
+    ],
+    "why": [
+      {
+        "no": "",
+        "title": "",
+        "body": "罗泓轸、河正宇、金允石——这个铁三角把写实暴力、凌厉剪辑与追杀节奏推到极致：肉搏见骨、追车见火，几乎不给人喘息。想见识\"教科书级\"的韩国犯罪动作，它与《追击者》是绕不开的双璧；而这一部，是导演口中格局更大的那一版。"
+      },
+      {
+        "no": "",
+        "title": "",
+        "body": "黑帮与悬疑只是外壳，内核是被债务、国境与身份三重夹击的普通人久南。他的每一次奔逃与挣扎，都把\"天地不仁，以万物为刍狗\"从一句感叹变成扑面而来的画面。看着看着你会发现——这不是爽片，是一面照向边缘者命运冷镜。"
+      },
+      {
+        "no": "",
+        "title": "",
+        "body": "河正宇的隐忍与金允石的凶悍互为镜像，两位顶级演员用截然不同的身体语言，演完一场\"不必开口的战争\"。媒体形容金允石\"充满野兽般的生命力\"——而他越是狠辣，久南的绝望就越发无处遁形。"
+      }
+    ],
+    "honors": [],
+    "archive": [
+      {
+        "k": "片名",
+        "v": "黄海The Yellow Sea · 황해（港译《追击者2之黄海杀机》）"
+      },
+      {
+        "k": "导演 / 编剧",
+        "v": "罗泓轸《追击者》《哭声》作者，韩国犯罪惊悚的旗手"
+      },
+      {
+        "k": "主演",
+        "v": "河正宇 · 金允石 · 赵成夏郑满植 / 李哲民 / 李艾 等"
+      },
+      {
+        "k": "上映",
+        "v": "2010-12-222011 年入围戛纳国际电影节"
+      },
+      {
+        "k": "片长",
+        "v": "157 分钟141 分钟（导演剪辑版）"
+      },
+      {
+        "k": "语言",
+        "v": "韩语 · 普通话横跨延边与首尔的双语叙事"
+      },
+      {
+        "k": "票房",
+        "v": "韩国约 226 万人次全球票房约 1,580 万美元"
+      },
+      {
+        "k": "幕后注脚",
+        "v": "首部获好莱坞投资的韩国电影20 世纪福斯投资，改写韩国影史"
+      }
+    ],
+    "review": "河正宇的隐忍与金允石的凶悍互为镜像，两位顶级演员用截然不同的身体语言，演完一场\"不必开口的战争\"。媒体形容金允石\"充满野兽般的生命力\"——而他越是狠辣，久南的绝望就越发无处遁形。",
+    "reviewBy": "",
+    "reviewStars": 5,
+    "posterSvg": "<svg class=\"poster-svg\" viewBox=\"0 0 300 450\" xmlns=\"http://www.w3.org/2000/svg\">\n            <defs>\n              <linearGradient id=\"seaG\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n                <stop offset=\"0\" stop-color=\"#0a1424\"></stop><stop offset=\".55\" stop-color=\"#050a12\"></stop><stop offset=\"1\" stop-color=\"#0b0f18\"></stop>\n              </linearGradient>\n              <radialGradient id=\"moonG\" cx=\".5\" cy=\".5\" r=\".5\">\n                <stop offset=\"0\" stop-color=\"#e9e4d0\" stop-opacity=\".92\"></stop><stop offset=\"1\" stop-color=\"#e9e4d0\" stop-opacity=\"0\"></stop>\n              </radialGradient>\n              <linearGradient id=\"goldT\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n                <stop offset=\"0\" stop-color=\"#ecd9a8\"></stop><stop offset=\"1\" stop-color=\"#b08d4f\"></stop>\n              </linearGradient>\n              <filter id=\"blur1\" x=\"-60%\" y=\"-60%\" width=\"220%\" height=\"220%\"><feGaussianBlur stdDeviation=\"3\"></feGaussianBlur></filter>\n            </defs>\n            <rect width=\"300\" height=\"450\" fill=\"url(#seaG)\"></rect>\n            <circle cx=\"212\" cy=\"86\" r=\"52\" fill=\"url(#moonG)\" filter=\"url(#blur1)\" opacity=\".8\"></circle>\n            <circle cx=\"212\" cy=\"86\" r=\"26\" fill=\"#efe9d8\" opacity=\".85\"></circle>\n            <ellipse cx=\"150\" cy=\"330\" rx=\"230\" ry=\"160\" fill=\"rgba(6,10,16,.9)\"></ellipse>\n            <path d=\"M0 336 Q75 322 150 336 T300 336 L300 450 L0 450 Z\" fill=\"#0c0f16\"></path>\n            <path d=\"M0 356 Q90 340 180 356 T300 352 L300 450 L0 450 Z\" fill=\"#0a0d14\"></path>\n            <line x1=\"0\" y1=\"336\" x2=\"300\" y2=\"336\" stroke=\"rgba(200,180,130,.14)\" stroke-width=\"1\"></line>\n            <!-- 孤舟 -->\n            <g opacity=\".9\">\n              <path d=\"M112 332 q18 -9 38 0 l-5 8 q-14 -5 -28 0 z\" fill=\"#141b24\" stroke=\"rgba(180,160,120,.5)\" stroke-width=\"1\"></path>\n              <line x1=\"131\" y1=\"330\" x2=\"131\" y2=\"300\" stroke=\"#6d5430\" stroke-width=\"2\"></line>\n              <path d=\"M131 302 l22 8 -22 5 z\" fill=\"rgba(200,162,94,.75)\"></path>\n            </g>\n            <circle cx=\"62\" cy=\"300\" r=\"2.4\" fill=\"#a62b36\" opacity=\".9\"></circle>\n            <circle cx=\"236\" cy=\"282\" r=\"1.6\" fill=\"#a62b36\" opacity=\".55\"></circle>\n            <!-- 标题 -->\n            <text x=\"150\" y=\"416\" text-anchor=\"middle\" font-family=\"'Songti SC','STSong',Georgia,serif\" font-size=\"44\" letter-spacing=\"10\" fill=\"url(#goldT)\">黄 海</text>\n            <text x=\"150\" y=\"436\" text-anchor=\"middle\" font-family=\"Georgia,serif\" font-size=\"9.5\" letter-spacing=\"4.5\" fill=\"rgba(200,185,150,.72)\">THE YELLOW SEA</text>\n          </svg>",
+    "posterCaption": "2010 · 韩国罗泓轸 作品"
+  },
+  {
     "id": "20260427",
     "date": "20260427",
     "zhTitle": "辛 德 勒 的 名 单",

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黄海 The Yellow Sea — 韩国犯罪电影经典推荐</title>
+<style>
+  :root{
+    --ink0:#04060b;
+    --ink1:#070b12;
+    --ink2:#0b1018;
+    --panel:rgba(15,21,31,.66);
+    --panel2:rgba(19,27,39,.55);
+    --line:rgba(205,168,102,.20);
+    --line-soft:rgba(255,255,255,.07);
+    --gold:#c8a25e;
+    --gold-hi:#e6c98e;
+    --gold-dim:#8a6f42;
+    --blood:#a62b36;
+    --blood-deep:#6e1a22;
+    --mist:#9fb3c3;
+    --paper:#eae5d8;
+    --dim:#8c98a6;
+    --serif:"Noto Serif SC","Songti SC","STSong","SimSun",Georgia,"Times New Roman",serif;
+    --en:Georgia,"Times New Roman","Noto Serif SC",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink0);
+    color:var(--paper);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.9;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:rgba(166,43,54,.55);color:#fff}
+  a{color:inherit;text-decoration:none}
+
+  /* ===== 顶部进度条 ===== */
+  #pbar{position:fixed;top:0;left:0;height:2px;width:0;z-index:99;background:linear-gradient(90deg,var(--blood),var(--gold));opacity:.9}
+
+  /* ===== 顶部导航 ===== */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px clamp(20px,5vw,56px);
+    transition:all .4s ease;
+  }
+  header.nav.scrolled{background:rgba(4,6,11,.78);backdrop-filter:blur(14px);padding:11px clamp(20px,5vw,56px);border-bottom:1px solid var(--line-soft)}
+  .brand{display:flex;align-items:baseline;gap:10px;font-family:var(--serif);letter-spacing:.22em;color:var(--paper);font-size:15px}
+  .brand b{color:var(--gold);font-weight:600}
+  .nav-links{display:flex;gap:clamp(14px,2.4vw,30px);font-size:12.5px;letter-spacing:.18em;color:var(--mist)}
+  .nav-links a{opacity:.78;transition:opacity .25s,color .25s}
+  .nav-links a:hover{opacity:1;color:var(--gold-hi)}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+  #sea{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+  .hero .halo{position:absolute;z-index:1;pointer-events:none}
+  .halo.h1{width:70vmin;height:70vmin;left:50%;top:44%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(140,165,190,.10),transparent 65%);filter:blur(6px)}
+  .halo.h2{width:34vmin;height:34vmin;right:6vw;top:18vh;background:radial-gradient(circle,rgba(166,43,54,.10),transparent 62%)}
+  .halo.h3{width:26vmin;height:26vmin;left:5vw;bottom:16vh;background:radial-gradient(circle,rgba(200,162,94,.07),transparent 62%)}
+  .hero-grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .hero-inner{position:relative;z-index:3;padding:16vh 24px 12vh;max-width:1100px}
+  .kicker{
+    display:inline-flex;align-items:center;gap:14px;
+    font-size:12px;letter-spacing:.5em;color:var(--gold-dim);text-transform:uppercase;
+    font-family:var(--sans);
+  }
+  .kicker::before,.kicker::after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dim))}
+  .kicker::after{background:linear-gradient(90deg,var(--gold-dim),transparent)}
+  .kr{font-size:14px;letter-spacing:.9em;color:var(--mist);opacity:.75;margin-top:26px;font-family:var(--sans)}
+  h1.title{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(88px,17vw,216px);
+    line-height:1.04;letter-spacing:.14em;margin:4px 0 2px;
+    background:linear-gradient(180deg,#f4efe2 20%,#cfc6b0 55%,#8d8577 90%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    text-shadow:0 0 80px rgba(200,162,94,.06);
+    position:relative;
+  }
+  h1.title .t2{position:absolute;font-size:.32em;letter-spacing:.5em;color:var(--blood);-webkit-text-fill-color:var(--blood);left:50%;transform:translateX(-50%);bottom:calc(100% + 6px);font-weight:500;opacity:.9;font-family:var(--serif)}
+  .tagline{
+    font-family:var(--serif);font-size:clamp(16px,2.2vw,21px);letter-spacing:.34em;
+    color:var(--mist);margin-top:30px;
+  }
+  .tagline em{font-style:normal;color:var(--gold-hi)}
+  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 14px;margin-top:34px}
+  .chip{
+    font-size:12px;letter-spacing:.16em;color:var(--mist);
+    border:1px solid var(--line-soft);padding:7px 16px;border-radius:2px;
+    background:rgba(255,255,255,.02);backdrop-filter:blur(4px);
+  }
+  .chip b{color:var(--paper);font-weight:500}
+  .score-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin-top:40px;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:16px 0}
+  .s-item{padding:4px clamp(18px,3vw,40px);border-right:1px solid var(--line-soft)}
+  .s-item:last-child{border-right:none}
+  .s-item .v{font-family:var(--en);font-size:clamp(24px,3vw,34px);color:var(--gold-hi);letter-spacing:.02em;line-height:1.15}
+  .s-item .v small{font-size:.5em;color:var(--dim);font-family:var(--sans)}
+  .s-item .k{font-size:11px;letter-spacing:.32em;color:var(--dim);margin-top:3px}
+  .scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;color:var(--dim);font-size:11px;letter-spacing:.5em;animation:cue 2.2s ease-in-out infinite}
+  .scroll-cue::after{content:"▾";display:block;text-align:center;font-size:14px;margin-top:4px}
+  @keyframes cue{0%,100%{opacity:.35;transform:translate(-50%,0)}50%{opacity:.95;transform:translate(-50%,6px)}}
+
+  /* ===== 主体区块 ===== */
+  main{position:relative;z-index:2;background:linear-gradient(180deg,var(--ink0),var(--ink1) 12%,var(--ink1))}
+  section{max-width:1080px;margin:0 auto;padding:clamp(70px,10vh,120px) clamp(22px,5vw,40px)}
+  .sec-head{margin-bottom:clamp(36px,6vh,60px)}
+  .sec-no{font-family:var(--en);font-size:13px;letter-spacing:.42em;color:var(--blood);display:flex;align-items:center;gap:16px}
+  .sec-no::after{content:"";flex:0 0 60px;height:1px;background:linear-gradient(90deg,var(--blood),transparent)}
+  .sec-title{font-family:var(--serif);font-size:clamp(30px,4.6vw,46px);font-weight:600;letter-spacing:.16em;margin-top:16px}
+  .sec-title small{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.5em;color:var(--dim);margin-top:12px;font-weight:400}
+
+  .divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(200,162,94,.16),transparent)}
+
+  /* ===== 剧情区 ===== */
+  .story-wrap{display:grid;grid-template-columns:320px 1fr;gap:clamp(34px,5vw,64px);align-items:start}
+  .poster-frame{
+    position:relative;border:1px solid rgba(205,168,102,.30);padding:9px;background:rgba(10,13,20,.5);
+    box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.4);
+  }
+  .poster-frame::before,.poster-frame::after{content:"";position:absolute;width:16px;height:16px;pointer-events:none}
+  .poster-frame::before{top:-1px;left:-1px;border-top:1px solid var(--gold);border-left:1px solid var(--gold)}
+  .poster-frame::after{bottom:-1px;right:-1px;border-bottom:1px solid var(--gold);border-right:1px solid var(--gold)}
+  .poster-svg{width:100%;display:block;aspect-ratio:2/3;background:linear-gradient(165deg,#0a101c,#04060b 60%,#101420)}
+  .poster-cap{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.3em;color:var(--gold-dim);padding:14px 6px 2px}
+  .story-copy p{color:#c9cdd0;text-indent:2em;font-size:15.5px;margin-bottom:18px}
+  .story-copy p b{color:var(--gold-hi);font-weight:500}
+  .story-copy p.lead{font-family:var(--serif);font-size:18px;line-height:2.05;color:var(--paper);text-indent:0;letter-spacing:.04em;border-left:2px solid var(--blood);padding-left:20px;margin-bottom:26px}
+  .spoiler-note{
+    margin-top:26px;border:1px dashed rgba(255,255,255,.14);padding:14px 18px;font-size:13px;
+    color:var(--dim);letter-spacing:.08em;background:rgba(255,255,255,.015);display:flex;gap:12px;align-items:baseline;
+  }
+  .spoiler-note b{color:var(--gold);font-weight:600;white-space:nowrap}
+
+  /* ===== 影片档案 ===== */
+  .archive-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--line-soft);border:1px solid var(--line-soft)}
+  .a-cell{background:var(--panel);padding:24px 22px;transition:background .3s}
+  .a-cell:hover{background:var(--panel2)}
+  .a-cell .k{font-size:11px;letter-spacing:.34em;color:var(--gold-dim);margin-bottom:10px}
+  .a-cell .v{font-size:15px;color:var(--paper);line-height:1.65;letter-spacing:.02em}
+  .a-cell .v small{display:block;color:var(--dim);font-size:12.5px;margin-top:4px}
+
+  /* ===== 评分 ===== */
+  .score-big{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-bottom:26px}
+  .sc-card{
+    position:relative;padding:28px 20px 22px;text-align:center;overflow:hidden;
+    background:linear-gradient(180deg,rgba(200,162,94,.05),rgba(200,162,94,.01));border:1px solid var(--line-soft);
+    transition:transform .35s ease,border-color .35s;
+  }
+  .sc-card:hover{transform:translateY(-4px);border-color:rgba(200,162,94,.4)}
+  .sc-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.5}
+  .sc-card .n{font-family:var(--en);font-size:clamp(38px,4.5vw,52px);color:var(--gold-hi);line-height:1;letter-spacing:.02em}
+  .sc-card .n span{font-size:.45em;color:var(--dim)}
+  .sc-card .src{font-size:12px;letter-spacing:.28em;color:var(--mist);margin-top:10px}
+  .sc-card .meta{font-size:11.5px;color:var(--dim);margin-top:4px;letter-spacing:.06em}
+  .score-foot{font-size:12px;color:var(--dim);text-align:center;letter-spacing:.12em}
+
+  /* ===== 荣誉 ===== */
+  .honor-list{border-left:1px solid rgba(166,43,54,.5);margin-left:8px;padding-left:0}
+  .h-row{position:relative;padding:20px 0 20px 34px;border-bottom:1px solid var(--line-soft)}
+  .h-row:last-child{border-bottom:none}
+  .h-row::before{content:"";position:absolute;left:-5px;top:30px;width:9px;height:9px;background:var(--blood);transform:rotate(45deg)}
+  .h-year{font-family:var(--en);font-size:12px;letter-spacing:.3em;color:var(--gold-dim)}
+  .h-txt{font-size:15px;color:var(--paper);margin-top:6px;line-height:1.8}
+  .h-txt b{color:var(--gold-hi);font-weight:500}
+  .h-txt .tag{display:inline-block;font-size:11px;color:#0c0f16;background:var(--gold);padding:1px 9px;border-radius:1px;letter-spacing:.2em;margin-left:8px;vertical-align:2px;font-weight:600}
+  .h-txt .tag.red{background:var(--blood);color:#f3e7e7}
+
+  /* ===== 看点六宫格 ===== */
+  .hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .hl-card{
+    position:relative;padding:30px 26px 26px;border:1px solid var(--line-soft);overflow:hidden;
+    background:linear-gradient(160deg,rgba(19,27,39,.72),rgba(10,14,21,.5));
+    transition:transform .35s ease,border-color .35s;
+  }
+  .hl-card:hover{transform:translateY(-5px);border-color:rgba(166,43,54,.55)}
+  .hl-card .ic{font-family:var(--en);font-size:40px;color:var(--blood);opacity:.85;line-height:1}
+  .hl-card .tt{font-family:var(--serif);font-size:19px;letter-spacing:.1em;margin:16px 0 10px;color:var(--paper)}
+  .hl-card .tx{font-size:13.5px;color:var(--mist);line-height:1.95}
+  .hl-card .tx b{color:var(--gold-hi);font-weight:500}
+
+  /* ===== 为何值得看 ===== */
+  .why-wrap{display:flex;flex-direction:column;gap:22px}
+  .why-row{display:grid;grid-template-columns:78px 1fr;gap:26px;padding:26px 28px;border:1px solid var(--line-soft);background:var(--panel);transition:border-color .3s}
+  .why-row:hover{border-color:rgba(200,162,94,.35)}
+  .why-idx{font-family:var(--en);font-size:clamp(34px,4vw,46px);color:var(--blood);line-height:1;opacity:.9}
+  .why-body .h3{font-family:var(--serif);font-size:clamp(18px,2.4vw,23px);letter-spacing:.12em;color:var(--paper);margin-bottom:10px}
+  .why-body .h3 em{font-style:normal;color:var(--gold)}
+  .why-body p{font-size:14.5px;color:#c3c8cc;line-height:2;text-align:justify}
+  .why-body p b{color:var(--gold-hi);font-weight:500}
+
+  /* ===== 引用/结语 ===== */
+  .quote-sec{position:relative;overflow:hidden}
+  .quote-sec .bg-word{position:absolute;font-family:var(--serif);font-size:44vmin;line-height:1;color:rgba(255,255,255,.018);right:-4vw;top:50%;transform:translateY(-50%);letter-spacing:.02em;pointer-events:none;user-select:none}
+  .quote-inner{position:relative;text-align:center;padding:20px 0}
+  .qmark{font-family:var(--en);font-size:70px;color:var(--blood);line-height:.6;display:block;margin-bottom:34px}
+  .quote-inner blockquote{font-family:var(--serif);font-size:clamp(20px,3vw,28px);line-height:2;letter-spacing:.1em;color:var(--paper);max-width:780px;margin:0 auto}
+  .quote-inner blockquote em{font-style:normal;color:var(--gold-hi)}
+  .q-src{margin-top:26px;font-size:13px;letter-spacing:.3em;color:var(--dim)}
+  .closing{margin-top:60px;border-top:1px solid var(--line-soft);padding-top:34px;text-align:center}
+  .closing .c1{font-family:var(--serif);font-size:clamp(16px,2vw,20px);letter-spacing:.3em;color:var(--mist)}
+  .closing .c2{font-family:var(--serif);font-size:clamp(22px,3vw,30px);letter-spacing:.26em;color:var(--gold-hi);margin-top:14px}
+  .no-spoiler{margin-top:22px;font-size:12px;letter-spacing:.24em;color:var(--dim)}
+
+  /* ===== 页脚 ===== */
+  footer{padding:44px clamp(22px,5vw,40px) 60px;text-align:center;font-size:12px;color:var(--dim);letter-spacing:.14em;line-height:2.2}
+  footer .foot-line{max-width:1080px;margin:0 auto 22px;height:1px;background:linear-gradient(90deg,transparent,rgba(200,162,94,.2),transparent)}
+  footer b{color:var(--gold-dim);font-weight:500}
+  .series{display:inline-flex;gap:8px;flex-wrap:wrap;justify-content:center}
+  .series span{border:1px solid var(--line-soft);padding:2px 10px;font-size:11px;letter-spacing:.2em;color:var(--mist);border-radius:1px}
+
+  /* ===== 滚动显现 ===== */
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.6,.2,1),transform .8s cubic-bezier(.2,.6,.2,1)}
+  .rv.in{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    .story-wrap{grid-template-columns:1fr}
+    .poster-frame{max-width:300px;margin:0 auto 30px}
+    .hl-grid{grid-template-columns:1fr 1fr}
+    .nav-links{display:none}
+  }
+  @media(max-width:560px){
+    .hl-grid{grid-template-columns:1fr}
+    .why-row{grid-template-columns:1fr;gap:10px}
+    .score-strip{display:grid;grid-template-columns:1fr 1fr;gap:14px 0}
+    .s-item{border-right:none}
+  }
+</style>
+</head>
+<body>
+
+<div id="pbar"></div>
+
+<header class="nav" id="nav">
+  <div class="brand">旺财<b>·</b>影院</div>
+  <nav class="nav-links">
+    <a href="#story">剧情梗概</a>
+    <a href="#archive">影片档案</a>
+    <a href="#score">口碑评分</a>
+    <a href="#honor">影史荣誉</a>
+    <a href="#highlights">六大看点</a>
+    <a href="#why">为何值得看</a>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <canvas id="sea"></canvas>
+  <div class="halo h1"></div><div class="halo h2"></div><div class="halo h3"></div>
+  <div class="hero-grain"></div>
+
+  <div class="hero-inner">
+    <div class="kicker">韩国犯罪电影 · 经典连映 · 第 05 期</div>
+    <div class="kr">황해 · THE YELLOW SEA</div>
+    <h1 class="title"><span class="t2">韩 影 典 藏</span>黄&nbsp;海</h1>
+    <p class="tagline">雪夜跨过一道海 · <em>就再也回不了头</em></p>
+    <div class="chips">
+      <span class="chip">导演&nbsp;<b>罗泓轸</b></span>
+      <span class="chip">主演&nbsp;<b>河正宇 · 金允石</b></span>
+      <span class="chip"><b>2010</b>&nbsp;韩国</span>
+      <span class="chip">类型&nbsp;<b>动作 / 犯罪 / 惊悚</b></span>
+      <span class="chip">片长&nbsp;<b>157′</b></span>
+    </div>
+    <div class="score-strip">
+      <div class="s-item"><div class="v">8.5<small> /10</small></div><div class="k">豆瓣</div></div>
+      <div class="s-item"><div class="v">7.3<small> /10</small></div><div class="k">IMDb</div></div>
+      <div class="s-item"><div class="v">88<small>%</small></div><div class="k">烂番茄</div></div>
+      <div class="s-item"><div class="v">70<small> /100</small></div><div class="k">Metacritic</div></div>
+      <div class="s-item"><div class="v">226<small> 万</small></div><div class="k">韩国观影人次</div></div>
+    </div>
+  </div>
+  <div class="scroll-cue">向下 · 启幕</div>
+</section>
+
+<main>
+
+  <div class="divider"></div>
+
+  <!-- ================= 剧情梗概 ================= -->
+  <section id="story">
+    <div class="sec-head rv">
+      <div class="sec-no">01 · STORY</div>
+      <h2 class="sec-title">剧情梗概<small>SPOILER-FREE SYNOPSIS · 全程无剧透</small></h2>
+    </div>
+    <div class="story-wrap">
+      <div class="rv">
+        <div class="poster-frame">
+          <svg class="poster-svg" viewBox="0 0 300 450" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="seaG" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#0a1424"/><stop offset=".55" stop-color="#050a12"/><stop offset="1" stop-color="#0b0f18"/>
+              </linearGradient>
+              <radialGradient id="moonG" cx=".5" cy=".5" r=".5">
+                <stop offset="0" stop-color="#e9e4d0" stop-opacity=".92"/><stop offset="1" stop-color="#e9e4d0" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="goldT" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#ecd9a8"/><stop offset="1" stop-color="#b08d4f"/>
+              </linearGradient>
+              <filter id="blur1" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3"/></filter>
+            </defs>
+            <rect width="300" height="450" fill="url(#seaG)"/>
+            <circle cx="212" cy="86" r="52" fill="url(#moonG)" filter="url(#blur1)" opacity=".8"/>
+            <circle cx="212" cy="86" r="26" fill="#efe9d8" opacity=".85"/>
+            <ellipse cx="150" cy="330" rx="230" ry="160" fill="rgba(6,10,16,.9)"/>
+            <path d="M0 336 Q75 322 150 336 T300 336 L300 450 L0 450 Z" fill="#0c0f16"/>
+            <path d="M0 356 Q90 340 180 356 T300 352 L300 450 L0 450 Z" fill="#0a0d14"/>
+            <line x1="0" y1="336" x2="300" y2="336" stroke="rgba(200,180,130,.14)" stroke-width="1"/>
+            <!-- 孤舟 -->
+            <g opacity=".9">
+              <path d="M112 332 q18 -9 38 0 l-5 8 q-14 -5 -28 0 z" fill="#141b24" stroke="rgba(180,160,120,.5)" stroke-width="1"/>
+              <line x1="131" y1="330" x2="131" y2="300" stroke="#6d5430" stroke-width="2"/>
+              <path d="M131 302 l22 8 -22 5 z" fill="rgba(200,162,94,.75)"/>
+            </g>
+            <circle cx="62" cy="300" r="2.4" fill="#a62b36" opacity=".9"/>
+            <circle cx="236" cy="282" r="1.6" fill="#a62b36" opacity=".55"/>
+            <!-- 标题 -->
+            <text x="150" y="416" text-anchor="middle" font-family="'Songti SC','STSong',Georgia,serif" font-size="44" letter-spacing="10" fill="url(#goldT)">黄 海</text>
+            <text x="150" y="436" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" letter-spacing="4.5" fill="rgba(200,185,150,.72)">THE YELLOW SEA</text>
+          </svg>
+          <div class="poster-cap"><span>2010 · 韩国</span><span>罗泓轸 作品</span></div>
+        </div>
+      </div>
+      <div class="story-copy rv">
+        <p class="lead">有些海，渡过去是异乡，渡不回来，是故乡。</p>
+        <p>中国延边，朝鲜族出租车司机<b>久南</b>（河正宇 饰）为送妻子赴韩打工欠下巨额债务。妻子已整整六个月音讯全无，他靠酒精与麻将麻醉自己，在讨债声中一日日沉沦。</p>
+        <p>走投无路之际，当地黑道头目<b>绵正鹤</b>（金允石 饰）递来一份交易：替他还清全部债务，再送他偷渡去首尔寻妻——条件是，替他在那里杀一个人。</p>
+        <p>久南横渡茫茫黄海，抵达陌生的首尔。目标被严密保护，迟迟无法下手；妻子却像人间蒸发，踪迹全无。限期将至的那个夜晚，一桩与他无关的凶案在他眼前发生——他没有杀人，却成了全城通缉的头号疑犯。</p>
+        <p>更致命的是，怕买凶之事败露，绵正鹤也渡过海来，要将他永远封口。前有警方天罗地网，后有雇主索命追杀，在举目无亲的异国街头，这个只想找回妻子、还清债务的男人，被一步步逼上绝路。</p>
+        <p>而黄海那一头的真相，比他想象中更冷，也更远。</p>
+        <div class="spoiler-note">
+          <b>无剧透声明</b>
+          <span>梗概仅止于故事中段的绝境开局——谁是真凶、妻子的下落、每个人的结局，请留到正片里亲历。反转与结局，一个都没说。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ================= 影片档案 ================= -->
+  <section id="archive">
+    <div class="sec-head rv">
+      <div class="sec-no">02 · PROFILE</div>
+      <h2 class="sec-title">影片档案<small>FILE · 一组数据读懂它</small></h2>
+    </div>
+    <div class="archive-grid rv">
+      <div class="a-cell"><div class="k">片名</div><div class="v">黄海<small>The Yellow Sea · 황해（港译《追击者2之黄海杀机》）</small></div></div>
+      <div class="a-cell"><div class="k">导演 / 编剧</div><div class="v">罗泓轸<small>《追击者》《哭声》作者，韩国犯罪惊悚的旗手</small></div></div>
+      <div class="a-cell"><div class="k">主演</div><div class="v">河正宇 · 金允石 · 赵成夏<small>郑满植 / 李哲民 / 李艾 等</small></div></div>
+      <div class="a-cell"><div class="k">上映</div><div class="v">2010-12-22<small>2011 年入围戛纳国际电影节</small></div></div>
+      <div class="a-cell"><div class="k">片长</div><div class="v">157 分钟<small>141 分钟（导演剪辑版）</small></div></div>
+      <div class="a-cell"><div class="k">语言</div><div class="v">韩语 · 普通话<small>横跨延边与首尔的双语叙事</small></div></div>
+      <div class="a-cell"><div class="k">票房</div><div class="v">韩国约 226 万人次<small>全球票房约 1,580 万美元</small></div></div>
+      <div class="a-cell"><div class="k">幕后注脚</div><div class="v">首部获好莱坞投资的韩国电影<small>20 世纪福斯投资，改写韩国影史</small></div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ================= 口碑评分 ================= -->
+  <section id="score">
+    <div class="sec-head rv">
+      <div class="sec-no">03 · RATINGS</div>
+      <h2 class="sec-title">口碑评分<small>公认的高分 · 数据核校于 2026-09-09</small></h2>
+    </div>
+    <div class="score-big rv">
+      <div class="sc-card"><div class="n">8.5<span> /10</span></div><div class="src">豆 瓣</div><div class="meta">约 24.6 万人评分 · 高分犯罪片</div></div>
+      <div class="sc-card"><div class="n">7.3<span> /10</span></div><div class="src">IMDb</div><div class="meta">约 2.5 万人评分</div></div>
+      <div class="sc-card"><div class="n">88<span>%</span></div><div class="src">烂番茄新鲜度</div><div class="meta">25 家专业媒体好评</div></div>
+      <div class="sc-card"><div class="n">70<span> /100</span></div><div class="src">Metacritic</div><div class="meta">19 家媒体加权均分 · "普遍好评"</div></div>
+    </div>
+    <div class="score-foot rv">—— 与《追击者》《杀人回忆》并称韩式写实犯罪片三座高峰 ——</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ================= 影史荣誉 ================= -->
+  <section id="honor">
+    <div class="sec-head rv">
+      <div class="sec-no">04 · HONORS</div>
+      <h2 class="sec-title">影史荣誉<small>戛纳到青龙 · 8 项获奖 / 20 余项提名</small></h2>
+    </div>
+    <div class="honor-list rv">
+      <div class="h-row"><div class="h-year">2011 · CANNES</div><div class="h-txt">第 64 届<b>戛纳国际电影节「一种关注」单元</b>官方入围<span class="tag red">国际首映</span></div></div>
+      <div class="h-row"><div class="h-year">第 47 届 · 百想艺术大赏</div><div class="h-txt"><b>河正宇 最佳男演员</b>（获奖）<span class="tag">获奖</span><br>最佳影片 / 最佳导演 提名 · 影帝演出获本土最高认可</div></div>
+      <div class="h-row"><div class="h-year">第 48 届 · 大钟奖</div><div class="h-txt"><b>赵成夏 最佳男配角</b>（获奖）· 最佳服装设计（获奖）<span class="tag">获奖</span><br>最佳影片 / 最佳导演 / 最佳男演员 提名</div></div>
+      <div class="h-row"><div class="h-year">第 32 届 · 青龙奖</div><div class="h-txt"><b>最佳照明</b>（获奖）<span class="tag">获奖</span><br>最佳男演员（金允石）/ 最佳男配角 / 最佳摄影 / 最佳美术 提名</div></div>
+      <div class="h-row"><div class="h-year">第 5 届 · 亚洲电影大奖</div><div class="h-txt"><b>河正宇 最佳男主角</b>（获奖）<span class="tag">获奖</span><br>最佳导演 / 最佳原创音乐 提名</div></div>
+      <div class="h-row"><div class="h-year">第 15 届 · 富川国际奇幻电影节</div><div class="h-txt"><b>最佳导演 罗泓轸</b>（获奖）<span class="tag">获奖</span></div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ================= 六大看点 ================= -->
+  <section id="highlights">
+    <div class="sec-head rv">
+      <div class="sec-no">05 · HIGHLIGHTS</div>
+      <h2 class="sec-title">六大看点<small>它凭什么被封神</small></h2>
+    </div>
+    <div class="hl-grid">
+      <div class="hl-card rv"><div class="ic">壹</div><div class="tt">河正宇 · 自毁式封神</div><div class="tx">为演活落魄的延边司机，<b>300 天蓄须减重、不剪头发</b>，邋遢到在首尔南大门取景竟无人认出。一个眼神，把小人物的绝望刻进骨子里，凭此封百想影帝。</div></div>
+      <div class="hl-card rv"><div class="ic">贰</div><div class="tt">金允石 · 野兽气场</div><div class="tx">为贴近角色短期内<b>增重 8 公斤</b>，与河正宇同练三个月延边口音与麻将。"绵正鹤"三字，自此成为韩国犯罪片反派的名字级存在。</div></div>
+      <div class="hl-card rv"><div class="ic">叁</div><div class="tt">罗泓轸 · 更狠的第二击</div><div class="tx">《追击者》一鸣惊人后，导演把野心拉满：跨国双城、海陆奔袭、多方角力。他坦言想拍一部<b>《教父》式的男人史诗</b>。</div></div>
+      <div class="hl-card rv"><div class="ic">肆</div><div class="tt">实拍生猛 · 街头大场面</div><div class="tx">釜山闹市爆破追车，动用<b>13 台摄影机、50 辆机动车、20 辆大巴、150 人参演</b>，市中心三公里交通管制实拍。媒体评其"火爆十足、刀刀见血"。</div></div>
+      <div class="hl-card rv"><div class="ic">伍</div><div class="tt">罕见的跨境叙事</div><div class="tx">延边 → 大连 → 黄海 → 首尔，韩语与普通话交错。导演在延边<b>背包考察一个月</b>，把在韩朝鲜族边缘人的生存与身份困境拍成冷峻寓言。</div></div>
+      <div class="hl-card rv"><div class="ic">陆</div><div class="tt">改写影史的投资</div><div class="tx">获<b>20 世纪福斯投资</b>，成为好莱坞主流公司投资韩国电影的第一例；随后入围戛纳「一种关注」，让世界看见韩式犯罪片的能量。</div></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ================= 为何值得看 ================= -->
+  <section id="why">
+    <div class="sec-head rv">
+      <div class="sec-no">06 · WHY</div>
+      <h2 class="sec-title">为什么值得一看<small>三个理由，不够再看一遍</small></h2>
+    </div>
+    <div class="why-wrap">
+      <div class="why-row rv">
+        <div class="why-idx">01</div>
+        <div class="why-body">
+          <h3>韩式硬核犯罪片的<em>「完成形态」</em></h3>
+          <p>罗泓轸、河正宇、金允石——这个铁三角把写实暴力、凌厉剪辑与追杀节奏推到极致：肉搏见骨、追车见火，几乎不给人喘息。想见识"教科书级"的韩国犯罪动作，它与《追击者》是绕不开的双璧；而这一部，是导演口中格局更大的那一版。</p>
+        </div>
+      </div>
+      <div class="why-row rv">
+        <div class="why-idx">02</div>
+        <div class="why-body">
+          <h3>一个被时代碾碎的<em>小人物史诗</em></h3>
+          <p>黑帮与悬疑只是外壳，内核是被债务、国境与身份三重夹击的普通人久南。他的每一次奔逃与挣扎，都把"天地不仁，以万物为刍狗"从一句感叹变成扑面而来的画面。看着看着你会发现——这不是爽片，是一面照向边缘者命运冷镜。</p>
+        </div>
+      </div>
+      <div class="why-row rv">
+        <div class="why-idx">03</div>
+        <div class="why-body">
+          <h3>表演史上的一场<em>巅峰对垒</em></h3>
+          <p>河正宇的隐忍与金允石的凶悍互为镜像，两位顶级演员用截然不同的身体语言，演完一场"不必开口的战争"。媒体形容金允石"充满野兽般的生命力"——而他越是狠辣，久南的绝望就越发无处遁形。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ================= 结语 ================= -->
+  <section class="quote-sec" id="quote">
+    <div class="bg-word">黄海</div>
+    <div class="quote-inner rv">
+      <span class="qmark">“</span>
+      <blockquote>我想拍一部像《教父》一样，<br><em>充满男人气息</em>的大制作电影。</blockquote>
+      <div class="q-src">—— 罗泓轸（导演）</div>
+      <div class="closing">
+        <div class="c1">雪夜跨海 · 孤舟不返</div>
+        <div class="c2">愿你看完，也记住那个再也回不了头的人</div>
+        <div class="no-spoiler">本页全程未透露任何关键反转与结局 · 敬请安心观影</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-line"></div>
+  <div class="series">
+    <span>韩国犯罪片连映 01 杀人回忆</span><span>02 老男孩</span><span>03 新世界</span><span>04 追击者</span><span>05 黄海</span>
+  </div>
+  <p style="margin-top:16px">本页评分与荣誉信息经公开资料核校 · 截至 2026-09-09　·　旺财<b>·</b>影院 出品</p>
+</footer>
+
+<script>
+/* ================= 顶部进度条 / 导航 ================= */
+(function(){
+  const bar=document.getElementById('pbar'),nav=document.getElementById('nav');
+  const onScroll=()=>{
+    const h=document.documentElement;
+    const p=h.scrollTop/(h.scrollHeight-h.clientHeight);
+    bar.style.width=(p*100)+'%';
+    nav.classList.toggle('scrolled',h.scrollTop>40);
+  };
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+})();
+
+/* ================= 滚动显现 ================= */
+(function(){
+  const els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return;}
+  const io=new IntersectionObserver(es=>{
+    es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  els.forEach(e=>io.observe(e));
+})();
+
+/* ================= 黄海 · 雪与雾与血 Canvas ================= */
+(function(){
+  const cv=document.getElementById('sea'),ctx=cv.getContext('2d');
+  let W,H,DPR,raf;
+  const snow=[],fog=[],dust=[];
+  function resize(){
+    DPR=Math.min(devicePixelRatio||1,2);
+    W=cv.clientWidth;H=cv.clientHeight;
+    cv.width=W*DPR;cv.height=H*DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  function seed(){
+    snow.length=0;fog.length=0;dust.length=0;
+    const n=Math.min(160,Math.floor(W*H/9000));
+    for(let i=0;i<n;i++){
+      snow.push({x:Math.random()*W,y:Math.random()*H,
+        r:Math.random()*1.9+.5,vy:.14+Math.random()*.5,vx:-(.05+Math.random()*.25),
+        a:.2+Math.random()*.6,ph:Math.random()*Math.PI*2});
+    }
+    for(let i=0;i<7;i++){
+      fog.push({x:Math.random()*W,y:H*(.35+Math.random()*.55),
+        rx:120+Math.random()*220,ry:26+Math.random()*50,
+        vx:.05+Math.random()*.18,a:.025+Math.random()*.045});
+    }
+    for(let i=0;i<26;i++){
+      dust.push({x:Math.random()*W,y:H*.55+Math.random()*H*.45,
+        r:.5+Math.random()*1.6,vy:-(.05+Math.random()*.22),vx:(Math.random()-.5)*.1,
+        a:.04+Math.random()*.2});
+    }
+  }
+  function frame(t){
+    ctx.clearRect(0,0,W,H);
+    /* 雾带 */
+    for(const f of fog){
+      f.x+=f.vx;if(f.x-rx(f)>W)f.x=-rx(f);
+      const g=ctx.createRadialGradient(f.x,f.y,0,f.x,f.y,Math.max(f.rx,f.ry));
+      g.addColorStop(0,'rgba(190,205,220,'+f.a+')');g.addColorStop(1,'rgba(190,205,220,0)');
+      ctx.save();ctx.globalCompositeOperation='lighter';
+      ctx.beginPath();ctx.ellipse(f.x,f.y,f.rx,f.ry,0,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+      ctx.restore();
+    }
+    /* 血尘（缓缓上浮的绯色微粒） */
+    ctx.save();ctx.globalCompositeOperation='lighter';
+    for(const d of dust){
+      d.y+=d.vy;d.x+=d.vx+Math.sin((t/1000)+d.ph)*.08;
+      if(d.y<-6){d.y=H+6;d.x=Math.random()*W;}
+      if(d.x<-6)d.x=W+6;if(d.x>W+6)d.x=-6;
+      ctx.beginPath();ctx.arc(d.x,d.y,d.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(166,43,54,'+(d.a*(0.6+0.4*Math.sin(t/700+d.ph)))+')';
+      ctx.fill();
+    }
+    ctx.restore();
+    /* 落雪 */
+    for(const s of snow){
+      s.ph+=.012; s.y+=s.vy; s.x+=s.vx+Math.sin(s.ph)*.3;
+      if(s.y>H+4){s.y=-4;s.x=Math.random()*W;}
+      if(s.x<-4)s.x=W+4;if(s.x>W+4)s.x=-4;
+      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(236,238,240,'+(s.a*(.55+.45*Math.sin(t/800+s.ph)))+')';
+      ctx.fill();
+    }
+    raf=requestAnimationFrame(frame);
+  }
+  function rx(f){return f.rx;}
+  function start(){resize();seed();cancelAnimationFrame(raf);raf=requestAnimationFrame(frame);}
+  addEventListener('resize',start);
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden){cancelAnimationFrame(raf);}else{start();}
+  });
+  start();
+})();
+</script>
+</body>
+</html>
