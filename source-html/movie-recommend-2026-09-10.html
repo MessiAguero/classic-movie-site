@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《孤胆特工》The Man from Nowhere · 今日电影推荐</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07090e;
+  --bg2:#0b0f16;
+  --panel:#101620;
+  --panel2:#141b26;
+  --line:rgba(214,190,142,.14);
+  --line2:rgba(214,190,142,.28);
+  --gold:#d9a441;
+  --gold-soft:#eccf92;
+  --gold-dim:#8a6a2c;
+  --steel:#7d97b3;
+  --steel-dim:#3d4f63;
+  --red:#b03a2e;
+  --text:#eae6de;
+  --muted:#8b95a4;
+  --muted2:#69737f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;z-index:1;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  opacity:.035;mix-blend-mode:overlay;
+}
+.serif{font-family:'Noto Serif SC',Georgia,serif}
+.wrap{max-width:1060px;margin:0 auto;padding:0 28px;position:relative;z-index:2}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+.hero::after{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 45% at 50% 46%,rgba(217,164,65,.10),transparent 68%),
+    radial-gradient(ellipse 90% 70% at 50% 110%,rgba(176,58,46,.07),transparent 70%),
+    linear-gradient(180deg,rgba(7,9,14,.55) 0%,rgba(7,9,14,.15) 38%,rgba(7,9,14,.86) 88%,var(--bg) 100%);
+}
+.hero-inner{position:relative;z-index:3;width:100%;padding:120px 0 96px}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:12px;letter-spacing:.34em;color:var(--gold);
+  text-transform:uppercase;margin-bottom:34px;
+  padding:8px 18px;border:1px solid var(--line2);border-radius:100px;
+  background:rgba(217,164,65,.05);backdrop-filter:blur(6px);
+}
+.hero-tag i{width:5px;height:5px;border-radius:50%;background:var(--gold);display:block;animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(217,164,65,.6)}50%{opacity:.45;box-shadow:0 0 0 7px rgba(217,164,65,0)}}
+.hero h1{
+  font-family:'Noto Serif SC',serif;
+  font-size:clamp(46px,8.4vw,104px);
+  font-weight:900;line-height:1.02;letter-spacing:.01em;
+  background:linear-gradient(178deg,#fffaf0 4%,#f0dcae 42%,#b98a3c 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 8px 34px rgba(217,164,65,.18));
+}
+.hero-kr{
+  font-family:'Noto Serif SC',serif;
+  font-size:clamp(18px,2.6vw,26px);color:var(--gold-soft);opacity:.9;
+  letter-spacing:.62em;margin-top:20px;font-weight:400;
+}
+.hero-en{
+  font-size:13px;letter-spacing:.42em;color:var(--muted2);
+  text-transform:uppercase;margin-top:12px;
+}
+.hero-line{width:76px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:36px 0 30px}
+.hero-sub{max-width:600px;font-size:16.5px;color:#c3c9d3;font-weight:300;line-height:2}
+.hero-sub b{color:var(--gold-soft);font-weight:500}
+.hero-stats{display:flex;flex-wrap:wrap;gap:38px;margin-top:52px}
+.hs-num{font-family:'Noto Serif SC',serif;font-size:30px;font-weight:700;color:var(--gold-soft);line-height:1}
+.hs-num small{font-size:13px;color:var(--muted);font-weight:400;margin-left:3px}
+.hs-lab{font-size:11.5px;letter-spacing:.2em;color:var(--muted2);margin-top:9px}
+.scroll-cue{
+  position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:9px;
+  font-size:10.5px;letter-spacing:.3em;color:var(--muted2);
+}
+.scroll-cue span{width:1px;height:46px;background:linear-gradient(180deg,var(--gold),transparent);animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ---------- SECTION ---------- */
+section{position:relative;z-index:2}
+.sec{padding:100px 0}
+.sec-head{margin-bottom:52px}
+.sec-num{font-size:11.5px;letter-spacing:.36em;color:var(--gold-dim);margin-bottom:16px}
+.sec-title{
+  font-family:'Noto Serif SC',serif;font-size:clamp(27px,3.6vw,40px);
+  font-weight:700;color:#f4efe6;line-height:1.32;
+}
+.sec-title em{font-style:normal;color:var(--gold)}
+.sec-desc{color:var(--muted);font-size:14.5px;margin-top:16px;max-width:660px}
+
+/* ---------- LEAD ---------- */
+.lead-sec{padding:88px 0 60px}
+.lead{
+  font-family:'Noto Serif SC',serif;
+  font-size:clamp(19px,2.4vw,25px);line-height:2.05;color:#ddd8ce;font-weight:400;
+  border-left:2px solid var(--gold-dim);padding-left:34px;
+}
+.lead b{color:var(--gold-soft);font-weight:600}
+.nospoil{
+  margin-top:40px;display:inline-flex;align-items:center;gap:13px;
+  padding:13px 22px;border:1px dashed var(--line2);border-radius:8px;
+  background:rgba(217,164,65,.035);font-size:13px;color:var(--gold-soft);letter-spacing:.04em;
+}
+.nospoil i{font-style:normal;font-size:15px}
+
+/* ---------- PLOT ---------- */
+.plot-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:56px;align-items:start}
+.plot p{margin-bottom:20px;color:#c8ced8;font-size:15.6px;font-weight:300}
+.plot p:last-child{margin-bottom:0}
+.plot .drop::first-letter{
+  font-family:'Noto Serif SC',serif;font-size:56px;float:left;line-height:.92;
+  padding:6px 14px 0 0;color:var(--gold);font-weight:700;
+}
+.plot-kw{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+.kw{font-size:12.5px;padding:6px 14px;border:1px solid var(--line);border-radius:100px;color:var(--steel);background:rgba(125,151,179,.06)}
+
+/* poster */
+.poster{
+  position:relative;border:1px solid var(--line2);border-radius:4px;overflow:hidden;
+  background:linear-gradient(168deg,#131a25 0%,#0a0e15 60%,#080a10 100%);
+  aspect-ratio:2/3;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:26px 22px;box-shadow:0 30px 70px -30px rgba(0,0,0,.95),inset 0 0 90px rgba(217,164,65,.05);
+}
+.poster svg{position:absolute;inset:0;width:100%;height:100%}
+.poster-cap{position:relative;z-index:2}
+.poster-cap .pc-t{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:#f2e7cf;letter-spacing:.06em}
+.poster-cap .pc-s{font-size:10.5px;letter-spacing:.3em;color:var(--gold-dim);margin-top:8px}
+.poster-cap .pc-d{font-size:11.5px;color:var(--muted2);margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+
+/* ---------- TABLE ---------- */
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.fact{background:var(--bg2);padding:20px 24px;display:flex;gap:18px;align-items:baseline;transition:background .35s}
+.fact:hover{background:var(--panel)}
+.fact .k{font-size:12px;letter-spacing:.16em;color:var(--muted2);min-width:66px;flex-shrink:0}
+.fact .v{font-size:14.4px;color:#d5dae3;font-weight:400}
+
+/* ---------- SCORES ---------- */
+.scores{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.score{
+  position:relative;background:linear-gradient(170deg,var(--panel),var(--bg2));
+  border:1px solid var(--line);border-radius:8px;padding:28px 22px;overflow:hidden;
+  transition:transform .4s cubic-bezier(.2,.8,.2,1),border-color .4s;
+}
+.score:hover{transform:translateY(-6px);border-color:var(--line2)}
+.score::after{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:.7}
+.score .src{font-size:11.5px;letter-spacing:.22em;color:var(--muted2);text-transform:uppercase}
+.score .val{font-family:'Noto Serif SC',serif;font-size:42px;font-weight:700;color:var(--gold-soft);line-height:1.1;margin:14px 0 4px}
+.score .val sup{font-size:15px;color:var(--muted2);font-weight:400;margin-left:3px}
+.score .note{font-size:12px;color:var(--muted);line-height:1.7}
+.score.hi .val{color:#e8503f}
+
+/* ---------- AWARDS ---------- */
+.awards{margin-top:64px;border-top:1px solid var(--line);padding-top:44px}
+.awards h3{font-family:'Noto Serif SC',serif;font-size:17px;color:#e6e0d5;margin-bottom:26px;font-weight:600;letter-spacing:.05em}
+.aw-list{display:grid;gap:0}
+.aw{display:grid;grid-template-columns:104px 1fr;gap:22px;padding:15px 0;border-bottom:1px dashed rgba(214,190,142,.1);font-size:14px;align-items:baseline}
+.aw:last-child{border-bottom:none}
+.aw .y{font-family:'Noto Serif SC',serif;color:var(--gold-dim);font-size:13.5px;letter-spacing:.05em}
+.aw .c{color:#cbd1da;font-weight:300}
+.aw .c b{color:var(--gold-soft);font-weight:500}
+
+/* ---------- HIGHLIGHTS ---------- */
+.hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.hl{
+  background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:30px 26px 32px;
+  position:relative;overflow:hidden;transition:.45s cubic-bezier(.2,.8,.2,1);
+}
+.hl:hover{background:var(--panel);border-color:var(--line2);transform:translateY(-5px)}
+.hl .idx{font-family:'Noto Serif SC',serif;font-size:12px;color:var(--gold-dim);letter-spacing:.2em;margin-bottom:18px}
+.hl h4{font-family:'Noto Serif SC',serif;font-size:18px;font-weight:600;color:#f0ebe1;margin-bottom:14px;line-height:1.5}
+.hl p{font-size:13.8px;color:#9ba5b3;line-height:1.95;font-weight:300}
+.hl::before{content:'';position:absolute;left:0;top:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dim),transparent);opacity:0;transition:opacity .45s}
+.hl:hover::before{opacity:1}
+
+/* ---------- WHY ---------- */
+.why{display:grid;gap:26px}
+.why-item{
+  display:grid;grid-template-columns:78px 1fr;gap:34px;
+  padding:34px 34px 34px 30px;background:linear-gradient(100deg,rgba(217,164,65,.045),transparent 60%);
+  border-left:2px solid var(--gold-dim);border-radius:0 8px 8px 0;
+  transition:.45s;
+}
+.why-item:hover{border-left-color:var(--gold);background:linear-gradient(100deg,rgba(217,164,65,.085),transparent 60%)}
+.why-item .no{font-family:'Noto Serif SC',serif;font-size:34px;font-weight:700;color:var(--gold-dim);line-height:1;opacity:.85}
+.why-item h4{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:600;color:#f2ede3;margin-bottom:14px;line-height:1.5}
+.why-item p{font-size:14.8px;color:#a9b2bf;font-weight:300;line-height:2}
+.why-item p+p{margin-top:12px}
+
+/* ---------- OUTRO ---------- */
+.outro{padding:96px 0 110px;text-align:center;border-top:1px solid var(--line)}
+.outro .mark{font-family:'Noto Serif SC',serif;font-size:clamp(30px,5vw,50px);font-weight:900;letter-spacing:.5em;color:var(--gold);opacity:.9;margin-bottom:26px;padding-left:.5em}
+.outro .txt{max-width:600px;margin:0 auto;color:#b3bbc7;font-size:15px;font-weight:300;line-height:2.1}
+.outro .meta{margin-top:44px;font-size:12px;color:var(--muted2);letter-spacing:.14em;line-height:2.2}
+
+/* ---------- REVEAL ---------- */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.on{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .plot-grid{grid-template-columns:1fr;gap:40px}
+  .poster{max-width:290px}
+  .scores{grid-template-columns:repeat(2,1fr)}
+  .hl-grid{grid-template-columns:1fr 1fr}
+  .facts{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .wrap{padding:0 20px}
+  .sec{padding:74px 0}
+  .scores{grid-template-columns:1fr}
+  .hl-grid{grid-template-columns:1fr}
+  .why-item{grid-template-columns:1fr;gap:14px;padding:26px 22px}
+  .hero-stats{gap:26px}
+  .lead{padding-left:22px}
+  .aw{grid-template-columns:1fr;gap:5px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-inner">
+    <div class="wrap">
+      <div class="hero-tag"><i></i>今日电影推荐 · 韩国犯罪经典</div>
+      <h1>孤胆特工</h1>
+      <div class="hero-kr">아저씨</div>
+      <div class="hero-en">The Man from Nowhere · 2010</div>
+      <div class="hero-line"></div>
+      <p class="hero-sub">
+        一个沉默的当铺老板，一扇永远半掩的铁门，一盏忽明忽暗的钨丝灯。<br>
+        当唯一的牵挂被人夺走，他掀开的不是仇人的门——而是自己封存多年的那一段过去。
+        <b>韩国 2010 年度本土票房冠军</b>，也是被反复模仿、却始终没被超越的那一部。
+      </p>
+      <div class="hero-stats">
+        <div><div class="hs-num">8.2<small>/10</small></div><div class="hs-lab">豆瓣 · 21万+人评分</div></div>
+        <div><div class="hs-num">100<small>%</small></div><div class="hs-lab">烂番茄新鲜度</div></div>
+        <div><div class="hs-num">622<small>万</small></div><div class="hs-lab">韩国观影人次</div></div>
+        <div><div class="hs-num">2010</div><div class="hs-lab">年度本土票房冠军</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span></span>SCROLL</div>
+</header>
+
+<!-- ================= LEAD ================= -->
+<section class="sec lead-sec">
+  <div class="wrap">
+    <p class="lead rv">
+      如果说韩国犯罪片是一片刀锋林立的森林，那《孤胆特工》就是其中最锋利、也最安静的那把刀——<b>它不炫技，却每一刀都落在人心上</b>。
+    </p>
+    <div class="nospoil rv"><i>✓</i>全文不含关键剧情与结局，请放心阅读</div>
+  </div>
+</section>
+
+<!-- ================= PLOT ================= -->
+<section class="sec" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">01 — STORY</div>
+      <h2 class="sec-title">剧情梗概 <em>·</em> 无剧透</h2>
+    </div>
+    <div class="plot-grid">
+      <div class="plot rv">
+        <p class="drop">城市某个不起眼的旧街区里，有一间堆满旧物的当铺。老板车泰植寡言、邋遢，几乎不与任何人来往。邻居们对他的来历有各种猜测，却没人真的了解他——除了住在同一栋楼里的小女孩郑小米。</p>
+        <p>小米的母亲靠在夜场工作糊口，家中常常只有她一个人。于是这间冷清的当铺，成了她唯一愿意去的地方。两个人之间没有多余的话，却慢慢有了一种不像亲情、也不像友谊的默契。</p>
+        <p>直到某一天，小米的母亲把一台来路不明的相机典当在了当铺。随后，母女二人被卷入一场毒品纠纷，双双被人带走。</p>
+        <p>看着空荡荡的楼道，那个说自己"什么都不想管"的男人，第一次走出了当铺的门。而随着他一步步深入这座城市的暗面，警方档案里那个被抹去的名字，也正在被一页页翻出来——他到底是谁？他为什么要把自己藏起来？</p>
+        <p>他能把小米带回来吗？答案，留给你在银幕前亲眼见证。</p>
+        <div class="plot-kw">
+          <span class="kw">犯罪</span><span class="kw">动作</span><span class="kw">惊悚</span>
+          <span class="kw">营救</span><span class="kw">黑帮</span><span class="kw">救赎</span>
+        </div>
+      </div>
+
+      <div class="rv">
+        <div class="poster">
+          <svg viewBox="0 0 300 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <defs>
+              <radialGradient id="bulb" cx="50%" cy="34%" r="52%">
+                <stop offset="0%" stop-color="#ffd68a" stop-opacity=".55"/>
+                <stop offset="45%" stop-color="#d9a441" stop-opacity=".16"/>
+                <stop offset="100%" stop-color="#d9a441" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="fig" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0a0e15" stop-opacity=".2"/>
+                <stop offset="100%" stop-color="#05070b" stop-opacity=".98"/>
+              </linearGradient>
+            </defs>
+            <rect width="300" height="450" fill="#0b0f16"/>
+            <circle cx="150" cy="152" r="140" fill="url(#bulb)"/>
+            <g stroke="#d9a441" stroke-opacity=".34" fill="none" stroke-width="1.2">
+              <circle cx="150" cy="152" r="19"/>
+              <path d="M150 133 v-26 M150 171 v18 M131 152 h-24 M169 152 h24"/>
+            </g>
+            <circle cx="150" cy="152" r="7" fill="#ffe1a3" opacity=".85"/>
+            <g fill="none" stroke="#7d97b3" stroke-opacity=".16" stroke-width="1">
+              <path d="M0 300 H300 M0 316 H300 M0 332 H300 M0 348 H300 M0 364 H300 M0 380 H300"/>
+              <path d="M40 286 V450 M80 286 V450 M120 286 V450 M160 286 V450 M200 286 V450 M240 286 V450 M280 286 V450"/>
+            </g>
+            <path d="M150 214 c-26 0-40 17-44 38 l-9 62 h106 l-9-62 c-4-21-18-38-44-38 z" fill="url(#fig)"/>
+            <ellipse cx="150" cy="204" rx="21" ry="24" fill="#080b11"/>
+            <path d="M150 214 c-26 0-40 17-44 38 l-9 62 h106 l-9-62 c-4-21-18-38-44-38 z" fill="none" stroke="#7d97b3" stroke-opacity=".3" stroke-width="1.1"/>
+            <rect width="300" height="450" fill="none"/>
+          </svg>
+          <div class="poster-cap">
+            <div class="pc-t">孤胆特工</div>
+            <div class="pc-s">THE MAN FROM NOWHERE</div>
+            <div class="pc-d">韩国 · 2010 · 119 分钟 · 李桢凡 编导</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FACTS ================= -->
+<section class="sec" style="padding-top:40px">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">02 — PROFILE</div>
+      <h2 class="sec-title">影片档案</h2>
+    </div>
+    <div class="facts rv">
+      <div class="fact"><span class="k">中文片名</span><span class="v">孤胆特工（中国台湾译《大叔》／中国香港译《杀手代父》）</span></div>
+      <div class="fact"><span class="k">原名</span><span class="v">아저씨（Ajeossi）</span></div>
+      <div class="fact"><span class="k">英文片名</span><span class="v">The Man from Nowhere</span></div>
+      <div class="fact"><span class="k">年份</span><span class="v">2010 年 8 月 4 日（韩国上映）</span></div>
+      <div class="fact"><span class="k">导演／编剧</span><span class="v">李桢凡（自编自导，个人第二部长片）</span></div>
+      <div class="fact"><span class="k">主演</span><span class="v">元斌 · 金赛纶 · 金熙元 · 金成伍 · 金泰勋</span></div>
+      <div class="fact"><span class="k">动作指导</span><span class="v">朴正律（凭本片获青龙奖最佳技术·动作）</span></div>
+      <div class="fact"><span class="k">配乐</span><span class="v">沈炫廷（主题曲《Dear》由 Mad Soul Child 演唱）</span></div>
+      <div class="fact"><span class="k">类型</span><span class="v">剧情／动作／惊悚／犯罪</span></div>
+      <div class="fact"><span class="k">片长</span><span class="v">119 分钟（韩国公映版）</span></div>
+      <div class="fact"><span class="k">分级</span><span class="v">R（美国）／青少年禁止观看（韩国）</span></div>
+      <div class="fact"><span class="k">票房</span><span class="v">韩国 6,228,300 人次 · 全球约 4,470 万美元</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCORES ================= -->
+<section class="sec" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">03 — RECEPTION</div>
+      <h2 class="sec-title">口碑与评分 <em>·</em> 数字不会说谎</h2>
+      <p class="sec-desc">一部 2010 年的犯罪动作片，十几年后仍在各类"韩国最佳"榜单里被反复提及。</p>
+    </div>
+    <div class="scores rv">
+      <div class="score hi">
+        <div class="src">豆瓣</div>
+        <div class="val">8.2<sup>/10</sup></div>
+        <div class="note">21 万+ 人评分，长期稳居韩国动作犯罪片第一梯队</div>
+      </div>
+      <div class="score">
+        <div class="src">IMDb</div>
+        <div class="val">7.8<sup>/10</sup></div>
+        <div class="note">在同类型黑帮动作片中属高位，海外观众接受度极高</div>
+      </div>
+      <div class="score">
+        <div class="src">烂番茄</div>
+        <div class="val">100<sup>%</sup></div>
+        <div class="note">新鲜度满分；爆米花指数 90%，影评人与观众罕见地一致</div>
+      </div>
+      <div class="score">
+        <div class="src">韩国票房</div>
+        <div class="val">622<sup>万</sup></div>
+        <div class="note">2010 年度最卖座韩国本土电影，连续 5 周蝉联周末票房冠军</div>
+      </div>
+    </div>
+
+    <div class="awards rv">
+      <h3>主要荣誉</h3>
+      <div class="aw-list">
+        <div class="aw"><span class="y">第47届</span><span class="c">韩国电影大钟奖 — <b>最佳男主角（元斌）获奖</b>；最佳影片、最佳剪辑、最佳影像技术等提名</span></div>
+        <div class="aw"><span class="y">第47届</span><span class="c">百想艺术大赏 — <b>电影部门最佳影片 获奖</b>；最佳导演、最佳男演员、最佳新人女演员提名</span></div>
+        <div class="aw"><span class="y">第31届</span><span class="c">韩国电影青龙奖 — <b>最佳技术（动作）获奖 · 最多观影人次奖</b>；另获最佳影片、导演、男主等 8 项提名</span></div>
+        <div class="aw"><span class="y">第8届</span><span class="c">大韩民国电影奖 — <b>最佳男演员（元斌）· 最佳新人女演员（金赛纶）获奖</b></span></div>
+        <div class="aw"><span class="y">第19届</span><span class="c">釜日电影奖 — <b>釜日读者审查团奖 获奖</b></span></div>
+        <div class="aw"><span class="y">第11届</span><span class="c">韩国国会大奖 — <b>年度最佳电影</b></span></div>
+        <div class="aw"><span class="y">影响</span><span class="c">《疾速追杀》（John Wick）导演查德·斯塔赫斯基公开表示，本片与朴赞郁复仇三部曲是其重要的风格来源；好莱坞与宝莱坞先后买下翻拍权</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HIGHLIGHTS ================= -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">04 — CRAFT</div>
+      <h2 class="sec-title">六大亮点 <em>·</em> 它到底好在哪</h2>
+    </div>
+    <div class="hl-grid">
+      <div class="hl rv">
+        <div class="idx">01</div>
+        <h4>元斌的"消失式"表演</h4>
+        <p>他把自己彻底藏进角色里：减重、蓬头垢面、驼背缩肩，全片台词少得可怜，全靠眼神和身体的迟疑说话。开场前几场戏甚至看不清他的正脸——这是刻意的"剥洋葱"，让你一层层认识这个人。凭此片，他一举拿下大钟奖与韩国电影大奖双料影帝。</p>
+      </div>
+      <div class="hl rv">
+        <div class="idx">02</div>
+        <h4>被业界当作范本的动作设计</h4>
+        <p>片中有两段著名的长镜头式近身搏斗：狭窄走廊、短刀匕首、没有花哨的吊威亚，只有拳拳到肉的距离感。动作指导朴正律凭此拿下青龙奖最佳技术奖，这两场戏至今仍被韩国动作片当作教学案例。</p>
+      </div>
+      <div class="hl rv">
+        <div class="idx">03</div>
+        <h4>冷冽到底的影像质感</h4>
+        <p>当铺的钨丝灯、堆叠的旧物、潮湿的楼道、夜里的冷蓝街灯——摄影把"寒酸"拍出了美感。全片色调克制到近乎吝啬，直到血出现，画面才第一次有了别的颜色。这种视觉节制，正是高级感的来源。</p>
+      </div>
+      <div class="hl rv">
+        <div class="idx">04</div>
+        <h4>不煽情的情感内核</h4>
+        <p>同样是"大叔与小女孩"，它没有走温情套路。两人之间几乎没有一句"感人台词"，全靠细节堆出来：一句称呼、一次递伞、一个站在门口不走的背影。正因如此，当情感在结尾被引爆时，杀伤力才格外惊人。</p>
+      </div>
+      <div class="hl rv">
+        <div class="idx">05</div>
+        <h4>反派写得足够真</h4>
+        <p>这里的恶不是漫画式的大魔王。金熙元与金成伍饰演的两兄弟，一个狠得不动声色，一个疯得近乎变态，层次分明、动机清晰。有了站得住的反派，主角的每一次出手才有了分量。</p>
+      </div>
+      <div class="hl rv">
+        <div class="idx">06</div>
+        <h4>配乐与主题曲的记忆点</h4>
+        <p>沈炫廷的配乐克制而沉重，主题曲《Dear》在多年之后仍是无数观众一听到就会起鸡皮疙瘩的旋律。好的类型片从不只靠画面留下痕迹，声音同样会。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY ================= -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-num">05 — WHY WATCH</div>
+      <h2 class="sec-title">为什么值得一看</h2>
+    </div>
+    <div class="why">
+      <div class="why-item rv">
+        <div class="no">Ⅰ</div>
+        <div>
+          <h4>它是"类型片教科书"，而且毫不枯燥</h4>
+          <p>《孤胆特工》几乎把所有经典元素都摆在了明面上：隐姓埋名的高手、被夺走的牵挂、必须独自闯入的龙潭虎穴。但它的高明之处在于——每一处都做到了行业上限。节奏、剪辑、动作、配乐、表演，没有任何一环掉链子。</p>
+          <p>看它，你能清楚地理解一部商业类型片"该怎么拍才对"，却又不会有一秒钟想按快进。</p>
+        </div>
+      </div>
+      <div class="why-item rv">
+        <div class="no">Ⅱ</div>
+        <div>
+          <h4>它把"暴力"拍成了一种情绪，而不是一种表演</h4>
+          <p>很多动作片的打斗是为了炫技，本片的打斗是为了表达。你看到的不是"这个人好能打"，而是"这个人有多痛"。每一次出手都带着压抑已久的重量，每一次收手都藏着不甘。</p>
+          <p>也正因为如此，片中的暴力让人不适，却让人信服——它不是被观赏的，而是被承受的。</p>
+        </div>
+      </div>
+      <div class="why-item rv">
+        <div class="no">Ⅲ</div>
+        <div>
+          <h4>它证明了：真正动人的，从来不是"救别人"，而是"救自己"</h4>
+          <p>表面上，这是一个"为了一个孩子闯入地狱"的故事；实际上，它是一个"一个人如何重新允许自己活过来"的故事。当一个人把所有门都关上、把自己活成一间当铺的时候，是什么让他愿意再打开一次门？</p>
+          <p>这是影片真正想问的问题，也是它在十几年后依然能打动新一批观众的原因。看完之后你记住的不会是打了多少场，而是那个人终于愿意抬起头的样子。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OUTRO ================= -->
+<section class="outro">
+  <div class="wrap">
+    <div class="mark serif rv">아저씨</div>
+    <p class="txt rv">
+      一个人可以把自己藏得很深，深到连名字都被档案抹去。<br>
+      但只要还有一个人愿意敲开那扇门，他就还有重新活一次的理由。
+    </p>
+    <div class="meta rv">
+      《孤胆特工》The Man from Nowhere · 2010 · 韩国 · 119 分钟<br>
+      本页为无剧透推荐 · 全程未涉及关键剧情与结局 · 建议完整观影
+    </div>
+  </div>
+</section>
+
+<script>
+/* ============ HERO CANVAS ============ */
+(function(){
+  const c=document.getElementById('heroCanvas');
+  const ctx=c.getContext('2d');
+  let W,H,dpr,parts=[],dust=[];
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    W=c.clientWidth;H=c.clientHeight;
+    c.width=W*dpr;c.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();
+  }
+  function build(){
+    parts=[];
+    const n=Math.round(W/16);
+    for(let i=0;i<n;i++){
+      parts.push({
+        x:Math.random()*W, y:Math.random()*H,
+        r:Math.random()*1.5+0.5,
+        vy:Math.random()*0.32+0.10,
+        vx:(Math.random()-0.5)*0.22,
+        a:Math.random()*0.45+0.12,
+        ph:Math.random()*Math.PI*2
+      });
+    }
+    dust=[];
+    const m=Math.round(W/26);
+    for(let i=0;i<m;i++){
+      dust.push({
+        x:Math.random()*W, y:Math.random()*H,
+        r:Math.random()*1.9+0.7,
+        vy:-(Math.random()*0.16+0.04),
+        vx:(Math.random()-0.5)*0.16,
+        a:Math.random()*0.30+0.06,
+        ph:Math.random()*Math.PI*2
+      });
+    }
+  }
+  let t=0;
+  function draw(){
+    t+=0.008;
+    ctx.clearRect(0,0,W,H);
+
+    // 钨丝灯呼吸光晕
+    const glowX=W*0.5, glowY=H*0.44;
+    const breathe=0.72+Math.sin(t*1.1)*0.28;
+    const g=ctx.createRadialGradient(glowX,glowY,0,glowX,glowY,Math.max(W,H)*0.46);
+    g.addColorStop(0,'rgba(255,214,138,'+(0.10*breathe).toFixed(3)+')');
+    g.addColorStop(0.35,'rgba(217,164,65,'+(0.055*breathe).toFixed(3)+')');
+    g.addColorStop(1,'rgba(217,164,65,0)');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+
+    // 冷色底光
+    const g2=ctx.createLinearGradient(0,H*0.55,0,H);
+    g2.addColorStop(0,'rgba(125,151,179,0)');
+    g2.addColorStop(1,'rgba(125,151,179,0.045)');
+    ctx.fillStyle=g2;ctx.fillRect(0,0,W,H);
+
+    // 飘落微尘／雪
+    ctx.lineCap='round';
+    for(const p of parts){
+      p.y+=p.vy; p.x+=p.vx+Math.sin(t+p.ph)*0.16;
+      if(p.y>H+6){p.y=-6;p.x=Math.random()*W;}
+      if(p.x<-6)p.x=W+6; if(p.x>W+6)p.x=-6;
+      const tw=p.a*(0.62+Math.sin(t*2.2+p.ph)*0.38);
+      ctx.beginPath();
+      ctx.strokeStyle='rgba(233,229,221,'+tw.toFixed(3)+')';
+      ctx.lineWidth=p.r*0.75;
+      ctx.moveTo(p.x,p.y);
+      ctx.lineTo(p.x-p.vx*7,p.y-p.vy*7);
+      ctx.stroke();
+    }
+    // 上浮金色尘埃
+    for(const p of dust){
+      p.y+=p.vy; p.x+=p.vx+Math.sin(t*0.8+p.ph)*0.22;
+      if(p.y<-6){p.y=H+6;p.x=Math.random()*W;}
+      const tw=p.a*(0.55+Math.sin(t*1.7+p.ph)*0.45);
+      ctx.beginPath();
+      ctx.fillStyle='rgba(236,207,146,'+tw.toFixed(3)+')';
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',resize);
+  resize();
+  if(!reduce){draw();}else{
+    ctx.clearRect(0,0,W,H);
+    const g=ctx.createRadialGradient(W*0.5,H*0.44,0,W*0.5,H*0.44,Math.max(W,H)*0.46);
+    g.addColorStop(0,'rgba(255,214,138,.09)');g.addColorStop(1,'rgba(217,164,65,0)');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  }
+})();
+
+/* ============ SCROLL REVEAL ============ */
+(function(){
+  const els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('on'));return;}
+  const io=new IntersectionObserver((ents)=>{
+    ents.forEach((en,i)=>{
+      if(en.isIntersecting){
+        const el=en.target;
+        const delay=parseFloat(el.dataset.d||0)||0;
+        setTimeout(()=>el.classList.add('on'),delay);
+        io.unobserve(el);
+      }
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+
+  // 同组元素依次入场
+  document.querySelectorAll('.scores, .hl-grid, .why, .facts').forEach(group=>{
+    Array.from(group.children).forEach((ch,i)=>{
+      if(ch.classList.contains('rv')) ch.dataset.d=String(i*90);
+    });
+  });
+  els.forEach(e=>io.observe(e));
+})();
+</script>
+</body>
+</html>
