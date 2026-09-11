@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>卑劣的街头 · A Dirty Carnival (2006) — 韩国犯罪片经典</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#07090c;
+  --bg:#0c0f14;
+  --panel:#12161d;
+  --panel-2:#161b23;
+  --line:rgba(255,255,255,.08);
+  --line-2:rgba(255,255,255,.14);
+  --cyan:#3fd0c9;
+  --cyan-dim:rgba(63,208,201,.16);
+  --magenta:#ec3a7d;
+  --magenta-dim:rgba(236,58,125,.16);
+  --amber:#f0b429;
+  --blood:#b9182c;
+  --text:#e9ecf1;
+  --muted:#8d95a3;
+  --muted-2:#616a78;
+  --serif:'Noto Serif SC',Georgia,serif;
+  --sans:'Noto Sans SC',-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif;
+  --disp:'Bebas Neue','Noto Sans SC',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  font-weight:300;
+  line-height:1.85;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:rgba(236,58,125,.35);color:#fff}
+
+/* ---------- background canvas ---------- */
+#bg{
+  position:fixed;inset:0;
+  width:100%;height:100%;
+  z-index:0;
+  opacity:.62;
+  pointer-events:none;
+}
+#bg-fade{
+  position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(12,15,20,0) 0%, rgba(12,15,20,.55) 45%, var(--bg) 82%),
+    linear-gradient(180deg, rgba(12,15,20,.15) 0%, rgba(12,15,20,.72) 60%, var(--bg) 100%);
+}
+.grain{
+  position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.wrap{position:relative;z-index:3;max-width:1080px;margin:0 auto;padding:0 28px}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;z-index:3;
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 0 90px;
+}
+.eyebrow{
+  font-size:11px;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--cyan);font-weight:500;
+  display:flex;align-items:center;gap:14px;margin-bottom:26px;
+}
+.eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--cyan-dim),transparent)}
+.hero h1{
+  font-family:var(--serif);
+  font-weight:900;
+  font-size:clamp(52px,10.5vw,120px);
+  line-height:.94;
+  letter-spacing:.02em;
+  margin-bottom:6px;
+  background:linear-gradient(176deg,#fff 8%,#cfd6e0 48%,#7d8797 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero .latin{
+  font-family:var(--disp);
+  font-size:clamp(26px,5.4vw,58px);
+  letter-spacing:.09em;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(236,58,125,.72);
+  line-height:1;
+  margin-bottom:10px;
+}
+.hero .hangul{
+  font-size:clamp(14px,2.3vw,20px);
+  letter-spacing:.5em;color:var(--muted-2);
+  font-weight:400;margin-bottom:34px;
+}
+.hero .tagline{
+  font-family:var(--serif);
+  font-size:clamp(17px,2.7vw,25px);
+  line-height:1.7;color:#c9d0da;
+  max-width:640px;font-weight:400;
+  border-left:2px solid var(--magenta);
+  padding-left:22px;margin-bottom:40px;
+}
+.hero .tagline em{font-style:normal;color:var(--amber)}
+.meta-row{
+  display:flex;flex-wrap:wrap;gap:10px 12px;margin-bottom:44px;
+}
+.chip{
+  font-size:12px;letter-spacing:.12em;
+  padding:7px 15px;border:1px solid var(--line-2);
+  border-radius:999px;color:var(--muted);
+  background:rgba(255,255,255,.02);
+  backdrop-filter:blur(6px);
+}
+.chip.hot{border-color:rgba(236,58,125,.45);color:#ff8db5}
+.scroll-hint{
+  position:absolute;bottom:34px;left:28px;
+  font-size:10px;letter-spacing:.36em;color:var(--muted-2);
+  text-transform:uppercase;display:flex;align-items:center;gap:12px;
+}
+.scroll-hint span{
+  display:block;width:52px;height:1px;background:var(--muted-2);
+  animation:pull 2.4s ease-in-out infinite;transform-origin:left;
+}
+@keyframes pull{0%,100%{transform:scaleX(.35);opacity:.4}50%{transform:scaleX(1);opacity:1}}
+
+/* ---------- sections ---------- */
+section{position:relative;z-index:3;padding:86px 0}
+.sec-head{margin-bottom:46px}
+.sec-num{
+  font-family:var(--disp);font-size:14px;letter-spacing:.3em;
+  color:var(--magenta);display:block;margin-bottom:12px;
+}
+.sec-title{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(26px,4.4vw,40px);
+  letter-spacing:.03em;line-height:1.25;
+}
+.sec-title .en{
+  display:block;font-family:var(--sans);font-weight:300;
+  font-size:12px;letter-spacing:.3em;color:var(--muted-2);
+  text-transform:uppercase;margin-top:12px;
+}
+.rule{height:1px;background:linear-gradient(90deg,var(--line-2),transparent);margin:0 0 46px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- intro ---------- */
+.lede{
+  font-family:var(--serif);
+  font-size:clamp(18px,2.9vw,24px);
+  line-height:1.95;color:#d5dbe4;font-weight:400;
+  max-width:820px;
+}
+.lede strong{color:var(--amber);font-weight:700}
+
+/* ---------- spoiler note ---------- */
+.spoiler{
+  margin-top:38px;display:flex;gap:16px;align-items:flex-start;
+  border:1px dashed rgba(63,208,201,.34);
+  background:linear-gradient(90deg,rgba(63,208,201,.07),transparent);
+  padding:20px 24px;border-radius:4px;
+}
+.spoiler .ico{color:var(--cyan);font-size:15px;line-height:1.6;flex:none}
+.spoiler p{font-size:13.5px;color:#a7b3c0;line-height:1.8;margin:0}
+
+/* ---------- synopsis ---------- */
+.syn{max-width:760px;font-size:16.5px;line-height:2.15;color:#c3cbd6}
+.syn p+p{margin-top:22px}
+.syn .drop::first-letter{
+  font-family:var(--serif);font-size:4.05em;font-weight:900;
+  float:left;line-height:.82;margin:6px 14px 0 0;
+  color:var(--magenta);
+  text-shadow:0 0 34px rgba(236,58,125,.4);
+}
+.syn .hl{color:var(--text);font-weight:500}
+.syn .q{color:var(--amber);font-family:var(--serif);font-weight:600}
+.stopper{
+  margin-top:36px;padding:24px 28px;
+  border-left:3px solid var(--blood);
+  background:linear-gradient(90deg,rgba(185,24,44,.11),transparent);
+  font-family:var(--serif);font-size:17px;line-height:1.9;color:#dbe0e8;
+}
+
+/* ---------- dossier ---------- */
+.poster-flex{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:48px;align-items:start}
+.poster{
+  border:1px solid var(--line-2);border-radius:3px;overflow:hidden;
+  background:#0a0d11;box-shadow:0 30px 70px -30px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.03) inset;
+}
+.poster svg{display:block;width:100%;height:auto}
+.poster .cap{
+  font-size:10px;letter-spacing:.28em;color:var(--muted-2);
+  text-transform:uppercase;padding:12px 14px;border-top:1px solid var(--line);
+  background:#0a0d11;
+}
+.dossier{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 30px}
+.dr{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.dr dt{font-size:12px;letter-spacing:.16em;color:var(--muted-2);flex:none;width:72px;text-transform:uppercase}
+.dr dd{font-size:14.5px;color:#d3d9e2;font-weight:400;line-height:1.7}
+.dr dd small{display:block;color:var(--muted);font-size:12.5px;margin-top:3px;font-weight:300}
+
+/* ---------- scores ---------- */
+.scores{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.sc{
+  border:1px solid var(--line);border-radius:4px;padding:26px 22px;
+  background:linear-gradient(160deg,var(--panel-2),var(--panel));
+  position:relative;overflow:hidden;
+  transition:border-color .4s,transform .4s;
+}
+.sc:hover{border-color:var(--line-2);transform:translateY(-3px)}
+.sc::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;background:linear-gradient(90deg,var(--cyan),transparent)}
+.sc.m::before{background:linear-gradient(90deg,var(--magenta),transparent)}
+.sc.a::before{background:linear-gradient(90deg,var(--amber),transparent)}
+.sc.b::before{background:linear-gradient(90deg,var(--blood),transparent)}
+.sc .src{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-2);margin-bottom:14px}
+.sc .val{font-family:var(--disp);font-size:clamp(38px,5.6vw,52px);line-height:1;letter-spacing:.02em}
+.sc.c .val{color:var(--cyan)}
+.sc.m .val{color:var(--magenta)}
+.sc.a .val{color:var(--amber)}
+.sc.b .val{color:#e0525f}
+.sc .val i{font-style:normal;font-size:.42em;color:var(--muted-2);margin-left:4px}
+.sc .note{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.7}
+
+/* ---------- awards ---------- */
+.tl{position:relative;padding-left:26px}
+.tl::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,var(--amber),var(--magenta),transparent)}
+.tl-item{position:relative;padding:0 0 28px 0}
+.tl-item::before{
+  content:'';position:absolute;left:-25px;top:9px;width:9px;height:9px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--amber);
+}
+.tl-item.win::before{background:var(--amber);box-shadow:0 0 16px rgba(240,180,41,.7)}
+.tl-item h4{font-size:15px;font-weight:500;color:#e3e8ef;margin-bottom:5px}
+.tl-item h4 .tag{
+  font-size:10px;letter-spacing:.16em;padding:3px 9px;border-radius:3px;
+  margin-left:10px;vertical-align:middle;text-transform:uppercase;
+}
+.tl-item.win h4 .tag{background:rgba(240,180,41,.14);color:var(--amber);border:1px solid rgba(240,180,41,.4)}
+.tl-item.nom h4 .tag{background:rgba(255,255,255,.04);color:var(--muted);border:1px solid var(--line-2)}
+.tl-item p{font-size:13px;color:var(--muted);line-height:1.75}
+.tl-item .yr{font-family:var(--disp);font-size:13px;letter-spacing:.2em;color:var(--muted-2);display:block;margin-bottom:4px}
+
+/* ---------- highlights grid ---------- */
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.hl{
+  border:1px solid var(--line);border-radius:4px;padding:28px 24px;
+  background:linear-gradient(170deg,rgba(255,255,255,.028),rgba(255,255,255,0));
+  position:relative;overflow:hidden;transition:border-color .4s,background .4s,transform .4s;
+}
+.hl:hover{border-color:rgba(236,58,125,.34);background:linear-gradient(170deg,rgba(236,58,125,.07),transparent);transform:translateY(-3px)}
+.hl .n{
+  font-family:var(--disp);font-size:34px;line-height:1;letter-spacing:.04em;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.2);display:block;margin-bottom:16px;
+}
+.hl:hover .n{-webkit-text-stroke:1px rgba(236,58,125,.6)}
+.hl h4{font-family:var(--serif);font-size:17px;font-weight:700;color:#eef1f6;margin-bottom:11px;line-height:1.5}
+.hl p{font-size:13.5px;color:#9ea7b4;line-height:1.85}
+
+/* ---------- why ---------- */
+.why-item{display:grid;grid-template-columns:64px 1fr;gap:26px;padding:34px 0;border-top:1px solid var(--line)}
+.why-item:last-child{border-bottom:1px solid var(--line)}
+.why-item .idx{font-family:var(--disp);font-size:42px;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(63,208,201,.5)}
+.why-item h4{font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:14px;color:#f0f3f8;line-height:1.5}
+.why-item p{font-size:15px;line-height:2;color:#b3bcc9}
+.why-item p+p{margin-top:14px}
+.why-item .k{color:var(--cyan);font-weight:500}
+
+/* ---------- quote / ending ---------- */
+.quote-sec{padding-bottom:120px}
+.qbox{
+  border:1px solid var(--line-2);border-radius:4px;
+  padding:56px 48px;text-align:center;
+  background:
+    radial-gradient(70% 120% at 50% 0%, rgba(236,58,125,.09), transparent 70%),
+    linear-gradient(180deg,var(--panel),#0b0e13);
+  position:relative;overflow:hidden;
+}
+.qbox::before,.qbox::after{
+  content:'';position:absolute;width:44px;height:44px;border:1px solid rgba(63,208,201,.5);
+}
+.qbox::before{top:18px;left:18px;border-right:0;border-bottom:0}
+.qbox::after{bottom:18px;right:18px;border-left:0;border-top:0}
+.qbox .mark{font-family:var(--serif);font-size:56px;color:rgba(236,58,125,.5);line-height:.6;display:block;margin-bottom:22px}
+.qbox blockquote{
+  font-family:var(--serif);font-size:clamp(18px,3.1vw,27px);
+  line-height:1.85;color:#eaeef4;font-weight:400;max-width:760px;margin:0 auto 24px;
+}
+.qbox blockquote em{font-style:normal;color:var(--amber)}
+.qbox .attr{font-size:12px;letter-spacing:.24em;color:var(--muted-2);text-transform:uppercase}
+.qbox .note{
+  margin-top:38px;padding-top:28px;border-top:1px solid var(--line);
+  font-size:13.5px;color:#98a2b0;line-height:1.9;max-width:720px;margin-left:auto;margin-right:auto;
+}
+.qbox .note b{color:var(--cyan);font-weight:500}
+
+footer{
+  position:relative;z-index:3;
+  border-top:1px solid var(--line);
+  padding:38px 0 56px;
+  font-size:11.5px;letter-spacing:.16em;color:var(--muted-2);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+footer .hangul{letter-spacing:.36em}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .poster-flex{grid-template-columns:1fr;gap:34px}
+  .poster{max-width:300px}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .scores{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  .wrap{padding:0 20px}
+  section{padding:62px 0}
+  .hero{padding:96px 0 76px;min-height:auto}
+  .dossier{grid-template-columns:1fr}
+  .grid6{grid-template-columns:1fr}
+  .scores{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .why-item{grid-template-columns:1fr;gap:12px}
+  .qbox{padding:40px 24px}
+  .scroll-hint{left:20px}
+  footer{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+<div id="bg-fade"></div>
+<div class="grain"></div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">韩国犯罪电影 · 第 97 期推荐</div>
+    <h1>卑劣的街头</h1>
+    <div class="latin">A DIRTY CARNIVAL</div>
+    <div class="hangul">비열한 거리</div>
+    <p class="tagline">他只想让家人过上好日子，<br>却走进了一条<em>没有出口</em>的街。</p>
+    <div class="meta-row">
+      <span class="chip">2006</span>
+      <span class="chip">柳河 导演 / 编剧</span>
+      <span class="chip">赵寅成 · 千虎珍 · 南宫珉 · 李宝英</span>
+      <span class="chip hot">豆瓣 8.1</span>
+      <span class="chip">141 分钟</span>
+    </div>
+  </div>
+  <div class="scroll-hint"><span></span>向下滚动</div>
+</header>
+
+<!-- ================= INTRO ================= -->
+<section>
+  <div class="wrap">
+    <p class="lede rv">
+      如果只看一部「不美化黑帮」的韩国黑帮片，很多影迷的答案会是它。<strong>《卑劣的街头》</strong>没有义气神话，没有慢镜头枪战，只有一个二十九岁的男人，和他那条越走越窄的路。
+    </p>
+    <div class="spoiler rv">
+      <span class="ico">◈</span>
+      <p><b>无剧透承诺</b>　以下内容只交代影片的起点、处境与看点，不涉及任何关键转折、人物结局与核心场景。请放心阅读。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SYNOPSIS ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">故事梗概<span class="en">Synopsis · Without Spoilers</span></h2>
+    </div>
+    <div class="rule"></div>
+    <div class="syn">
+      <p class="drop rv">
+        <span class="hl">赵炳斗</span>，二十九岁，一个三流暴力组织里的小头目。他的人生清单短得可怜：一个体弱多病的母亲，一个弟弟，一个妹妹，一间破旧的老屋。组织里的事轮不到他出头，日常无非是当街打架、上门催债——那些最脏、最不体面的活。他刚争来的娱乐场所经营权，转手就被分给了别人。
+      </p>
+      <p class="rv">
+        就在他快撑不住的时候，组织里的黄会长递来一个提案：<span class="hl">把一件麻烦事摆平，未来要什么有什么。</span>炳斗犹豫了。但家里等不起，他最终决定铤而走险——这是他第一次，把自己彻底交给了这条街的规则。
+      </p>
+      <p class="rv">
+        与此同时，他重逢了小学同窗<span class="hl">金珉浩</span>。珉浩是个不得志的导演，正筹备一部黑帮题材的电影，想找炳斗「体验生活」；也正是在珉浩的牵线下，炳斗与初恋<span class="hl">姜贤珠</span>再度相遇。一边是刀口舔血的上升通道，一边是久违的、像普通人一样生活的可能——炳斗以为自己终于能把两头都攥在手里。
+      </p>
+      <p class="rv">
+        然后，一通电话打来了。<span class="q">一部取材于他身边的电影，一次再也无法收回的信任，让两个人的命运同时滑向失控的方向。</span>当街头的规则和仅剩的情义摆在天平两端，炳斗发现，他连选择的权利都没有。
+      </p>
+    </div>
+    <div class="stopper rv">
+      「欲望之下，是生存。」——这条街从不问你想要什么，只问你愿意付出什么。
+    </div>
+  </div>
+</section>
+
+<!-- ================= DOSSIER ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">影片档案<span class="en">Film Dossier</span></h2>
+    </div>
+    <div class="rule"></div>
+    <div class="poster-flex">
+      <div class="poster rv">
+        <svg viewBox="0 0 300 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="卑劣的街头 概念海报">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0a0e13"/>
+              <stop offset="55%" stop-color="#111722"/>
+              <stop offset="100%" stop-color="#070a0e"/>
+            </linearGradient>
+            <linearGradient id="neon1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ec3a7d" stop-opacity=".95"/>
+              <stop offset="100%" stop-color="#ec3a7d" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="neon2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3fd0c9" stop-opacity=".9"/>
+              <stop offset="100%" stop-color="#3fd0c9" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="wet" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1a2130"/>
+              <stop offset="100%" stop-color="#080b0f"/>
+            </linearGradient>
+            <linearGradient id="fig" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1c222c"/>
+              <stop offset="100%" stop-color="#05070a"/>
+            </linearGradient>
+            <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ec3a7d" stop-opacity=".38"/>
+              <stop offset="100%" stop-color="#ec3a7d" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <rect width="300" height="430" fill="url(#sky)"/>
+          <ellipse cx="150" cy="150" rx="130" ry="120" fill="url(#halo)"/>
+
+          <!-- 楼宇剪影 -->
+          <rect x="0" y="150" width="46" height="180" fill="#0b0f15"/>
+          <rect x="52" y="112" width="38" height="218" fill="#0d1219"/>
+          <rect x="96" y="168" width="30" height="162" fill="#0a0e14"/>
+          <rect x="178" y="128" width="42" height="202" fill="#0d1219"/>
+          <rect x="226" y="96" width="34" height="234" fill="#0b0f15"/>
+          <rect x="264" y="158" width="36" height="172" fill="#0a0e14"/>
+          <!-- 塔吊（拆迁） -->
+          <g stroke="#161d27" stroke-width="2" fill="none">
+            <path d="M150 168 V96"/>
+            <path d="M132 100 H196"/>
+            <path d="M150 96 L132 100"/>
+            <path d="M150 96 L176 100"/>
+            <path d="M176 100 V120"/>
+          </g>
+
+          <!-- 霓虹招牌光 -->
+          <rect x="20" y="176" width="14" height="52" rx="2" fill="url(#neon1)"/>
+          <rect x="236" y="140" width="10" height="40" rx="2" fill="url(#neon2)"/>
+          <rect x="60" y="150" width="8" height="30" rx="2" fill="url(#neon1)" opacity=".7"/>
+          <rect x="188" y="188" width="8" height="26" rx="2" fill="url(#neon2)" opacity=".6"/>
+
+          <!-- 窗光 -->
+          <g fill="#f0b429" opacity=".5">
+            <rect x="60" y="128" width="5" height="7"/><rect x="72" y="146" width="5" height="7"/>
+            <rect x="236" y="112" width="5" height="7"/><rect x="246" y="132" width="5" height="7"/>
+            <rect x="272" y="180" width="5" height="7"/><rect x="16" y="196" width="5" height="7"/>
+          </g>
+
+          <!-- 湿地 -->
+          <rect x="0" y="330" width="300" height="100" fill="url(#wet)"/>
+          <g opacity=".22">
+            <rect x="20" y="330" width="14" height="52" fill="#ec3a7d"/>
+            <rect x="236" y="330" width="10" height="40" fill="#3fd0c9"/>
+            <rect x="60" y="330" width="8" height="30" fill="#ec3a7d"/>
+          </g>
+          <ellipse cx="150" cy="332" rx="150" ry="12" fill="#000" opacity=".5"/>
+
+          <!-- 人物剪影 -->
+          <g>
+            <ellipse cx="150" cy="330" rx="30" ry="6" fill="#000" opacity=".65"/>
+            <path d="M150 214 c11 0 19 8 19 19 v40 c0 5 -3 9 -7 10 l-2 40 h-9 l-2 -30 h-2 l-2 30 h-9 l-2 -40 c-4 -1 -7 -5 -7 -10 v-40 c0 -11 8 -19 19 -19 z" fill="url(#fig)"/>
+            <circle cx="150" cy="200" r="13" fill="url(#fig)"/>
+            <path d="M137 196 c0 -9 6 -14 13 -14 s13 5 13 14 c-4 -5 -8 -7 -13 -7 s-9 2 -13 7 z" fill="#05070a"/>
+          </g>
+
+          <!-- 雨丝 -->
+          <g stroke="#9fb3c8" stroke-width=".7" opacity=".18">
+            <path d="M30 0 L22 430"/><path d="M78 0 L70 430"/><path d="M126 0 L118 430"/>
+            <path d="M174 0 L166 430"/><path d="M222 0 L214 430"/><path d="M270 0 L262 430"/>
+          </g>
+
+          <!-- 标题 -->
+          <text x="150" y="382" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="30" font-weight="900" fill="#f2f5f9" letter-spacing="3">卑劣的街头</text>
+          <text x="150" y="404" text-anchor="middle" font-family="'Bebas Neue',sans-serif" font-size="15" fill="#ec3a7d" letter-spacing="4">A DIRTY CARNIVAL</text>
+          <text x="150" y="420" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#5b6473" letter-spacing="5">2006 · 비열한 거리</text>
+          <rect x="96" y="366" width="108" height="1" fill="#ec3a7d" opacity=".55"/>
+        </svg>
+        <div class="cap">Concept Poster · 概念海报</div>
+      </div>
+
+      <div>
+        <dl class="dossier">
+          <div class="dr rv"><dt>片名</dt><dd>卑劣的街头<small>비열한 거리 / A Dirty Carnival / 港译「悲劣的街头」</small></dd></div>
+          <div class="dr rv"><dt>年份</dt><dd>2006 年 6 月 15 日（韩国）<small>片长 141 分钟 · 18 岁以上观看</small></dd></div>
+          <div class="dr rv"><dt>导演</dt><dd>柳河<small>自编自导 · 诗人出身 · 「暴力三部曲」第二部</small></dd></div>
+          <div class="dr rv"><dt>主演</dt><dd>赵寅成 / 千虎珍 / 南宫珉 / 李宝英<small>另：晋久、尹济文、朴孝俊、鲜于银淑</small></dd></div>
+          <div class="dr rv"><dt>摄影</dt><dd>崔贤基<small>与《马粥街残酷史》原班团队共同制作</small></dd></div>
+          <div class="dr rv"><dt>配乐</dt><dd>赵英郁<small>片尾曲《Old and Wise》成为影迷集体记忆</small></dd></div>
+          <div class="dr rv"><dt>出品</dt><dd>Sidus Pictures<small>发行：CJ Entertainment</small></dd></div>
+          <div class="dr rv"><dt>票房</dt><dd>约 204.8 万观影人次<small>全球票房约 1,037 万美元 · 制作成本约 470 万美元</small></dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCORES ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">03</span>
+      <h2 class="sec-title">口碑数据<span class="en">Ratings &amp; Reception</span></h2>
+    </div>
+    <div class="rule"></div>
+    <div class="scores">
+      <div class="sc c rv">
+        <div class="src">豆瓣</div>
+        <div class="val">8.1<i>/10</i></div>
+        <div class="note">约 11.4 万人评分<br>韩国黑帮片序列中的高口碑代表作</div>
+      </div>
+      <div class="sc m rv">
+        <div class="src">IMDb</div>
+        <div class="val">7.3<i>/10</i></div>
+        <div class="note">海外观众长期稳定评分<br>非英语犯罪片中的中上水准</div>
+      </div>
+      <div class="sc a rv">
+        <div class="src">烂番茄 · 爆米花</div>
+        <div class="val">84<i>%</i></div>
+        <div class="note">观众喜爱度 84%<br>类型片受众的认可度极高</div>
+      </div>
+      <div class="sc b rv">
+        <div class="src">韩国观影</div>
+        <div class="val">204<i>万</i></div>
+        <div class="note">观影人次 · 18 岁以上分级<br>成人向犯罪片的稳健成绩</div>
+      </div>
+    </div>
+    <div class="spoiler rv" style="margin-top:34px">
+      <span class="ico">◈</span>
+      <p>数据整理自公开影视资料库（豆瓣 / IMDb / 烂番茄 / 韩国票房统计），评分随平台更新会有小幅浮动，以实际查询为准。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= AWARDS ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">04</span>
+      <h2 class="sec-title">奖项与提名<span class="en">Awards &amp; Nominations</span></h2>
+    </div>
+    <div class="rule"></div>
+    <div class="tl">
+      <div class="tl-item win rv">
+        <span class="yr">2006</span>
+        <h4>第 26 届韩国影评人协会奖 · 最佳导演<span class="tag">获奖</span></h4>
+        <p>柳河 —— 诗人出身的导演，凭借对底层黑帮生态的冷静观察拿下这一奖项。</p>
+      </div>
+      <div class="tl-item win rv">
+        <span class="yr">2006</span>
+        <h4>第 5 届韩国电影大奖 · 最佳男演员 / 最佳剪辑<span class="tag">获奖</span></h4>
+        <p>赵寅成凭赵炳斗一角获最佳男演员，完成从偶像到演员的关键一跃；朴曲之、郑振熙获最佳剪辑。</p>
+      </div>
+      <div class="tl-item win rv">
+        <span class="yr">2006</span>
+        <h4>第 14 届春史电影奖 · 最佳新人女演员<span class="tag">获奖</span></h4>
+        <p>李宝英 —— 她饰演的姜贤珠，是这部阳刚电影里最柔软也最清醒的一笔。</p>
+      </div>
+      <div class="tl-item nom rv">
+        <span class="yr">2006</span>
+        <h4>第 27 届韩国青龙电影奖 · 最佳导演 / 最佳男演员 / 最佳新人男演员<span class="tag">提名</span></h4>
+        <p>柳河、赵寅成、晋久同时入围，影片在当年青龙奖上获得广泛关注。</p>
+      </div>
+      <div class="tl-item nom rv">
+        <span class="yr">2007</span>
+        <h4>第 44 届韩国电影大钟奖 · 最佳电影 / 最佳男演员 / 最佳男配角 / 最佳编剧<span class="tag">提名</span></h4>
+        <p>四项重磅提名，覆盖影片、表演与剧本，足见其类型完成度之高。</p>
+      </div>
+      <div class="tl-item nom rv">
+        <span class="yr">2007</span>
+        <h4>第 43 届百想艺术大赏 · 最佳男演员 / 最佳新人男演员 / 最佳剧本<span class="tag">提名</span></h4>
+        <p>以及第 1 届亚洲电影大奖最佳剪接提名 —— 影片的剪辑节奏一向被视为其强项。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HIGHLIGHTS ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">05</span>
+      <h2 class="sec-title">六个亮点<span class="en">Six Reasons It Stands Out</span></h2>
+    </div>
+    <div class="rule"></div>
+    <div class="grid6">
+      <div class="hl rv">
+        <span class="n">01</span>
+        <h4>赵寅成的分水岭</h4>
+        <p>此前以偶像剧形象为人熟知的他，在这部片里彻底卸下光环。危险打斗镜头全部亲自上阵、拒用替身，把一个又狠又累的底层混混演得让人心疼。</p>
+      </div>
+      <div class="hl rv">
+        <span class="n">02</span>
+        <h4>拳拳到肉的真实</h4>
+        <p>没有夸张特技，没有华丽枪战。导演刻意不给演员规定死动作，让人群在狭窄空间里真打真撞——观众能感到疼，而不是在看表演。</p>
+      </div>
+      <div class="hl rv">
+        <span class="n">03</span>
+        <h4>三场教科书级群架</h4>
+        <p>仁川废厂隧道的百人混战，剧组在寒冬里拍了整整一周；车内「六对二」的贴身缠斗拍了三天；娱乐场所那场混战，拍完直接砸坏了十台机器。</p>
+      </div>
+      <div class="hl rv">
+        <span class="n">04</span>
+        <h4>一个「追求尊严」的人</h4>
+        <p>炳斗不是天生的恶人。他重义、护短、对家人掏心掏肺，正因为如此，当他被这条街的规则一步步推着走，悲剧感才格外沉重。</p>
+      </div>
+      <div class="hl rv">
+        <span class="n">05</span>
+        <h4>一部「反黑帮」的黑帮片</h4>
+        <p>它不歌颂义气，也不浪漫化暴力，而是把「欲望如何让人踩过一切伦理」摆到台面上。类型的外壳，悲剧的内核。</p>
+      </div>
+      <div class="hl rv">
+        <span class="n">06</span>
+        <h4>被低估的影像与声音</h4>
+        <p>摄影与美术由《马粥街残酷史》原班团队操刀，旧城、霓虹、拆迁工地构成了一整个时代的质感；配乐与片尾曲把余味拉得极长。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-num">06</span>
+      <h2 class="sec-title">为什么值得一看<span class="en">Why It&rsquo;s Worth Your Time</span></h2>
+    </div>
+    <div class="rule"></div>
+
+    <div class="why-item rv">
+      <div class="idx">01</div>
+      <div>
+        <h4>它拍出了黑帮片最少见的东西——清醒</h4>
+        <p>大多数黑帮片靠「兄弟情义」和「上位爽感」取悦观众，《卑劣的街头》反过来：它让主角每一次靠近权力，都同时失去一点自己。<span class="k">没有荣耀，只有代价。</span></p>
+        <p>看它不会让你热血沸腾，但会让你在散场后安静很久——这种「不舒适」，恰恰是它比同类作品高出一档的原因。</p>
+      </div>
+    </div>
+
+    <div class="why-item rv">
+      <div class="idx">02</div>
+      <div>
+        <h4>因为它是一个演员真正意义上的「开窍」</h4>
+        <p>赵寅成在这部片里做了一件当时很少有人敢做的事：主动放弃讨喜。他演的不是帅哥混混，而是一个疲惫、自卑、又拼命想体面活下去的普通人。眼神里的算计、隐忍与松动，层次极细。</p>
+        <p>凭这个角色拿下韩国电影大奖最佳男演员之后，<span class="k">他的演艺轨迹被彻底改写</span>——这也是影迷常说的「看一个偶像怎么变成演员」的现场。</p>
+      </div>
+    </div>
+
+    <div class="why-item rv">
+      <div class="idx">03</div>
+      <div>
+        <h4>因为它是一份关于城市与阶层的时代切片</h4>
+        <p>旧城区、拆迁工地、待价而沽的地皮、替人「清理」的麻烦——影片把 2000 年代韩国社会的另一面缝进了类型叙事里。炳斗一家曾因拆迁颠沛，而他的工作却是替人赶走别的钉子户，这种自反的荒诞，比任何台词都更有力。</p>
+        <p>而 2024 年 CJ 娱乐宣布启动好莱坞翻拍计划，也说明这个故事的内核<span class="k">并不只属于韩国</span>。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUOTE / ENDING ================= -->
+<section class="quote-sec">
+  <div class="wrap">
+    <div class="qbox rv">
+      <span class="mark">&ldquo;</span>
+      <blockquote>
+        他以为自己在往上爬，<br>其实只是走完了这条街上<em>每个人都会走的那一圈</em>。
+      </blockquote>
+      <div class="attr">The Street Always Wins · 关于本片主题的注脚</div>
+      <p class="note">
+        <b>观看提示</b>　本片为 18 岁以上分级，含写实暴力场面，建议做好心理预期。全片节奏沉稳、台词密集，适合安静地一次看完——最好不要中途刷手机，很多细节都在沉默和眼神里。<br>
+        如果它让你觉得沉重，那正是它的目的：<b>它讲的从来不是黑帮，而是一个人在生存面前，能退到哪里。</b>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>MOVIE RECOMMENDATION · NO.97</span>
+  <span class="hangul">비열한 거리 · 2006</span>
+  <span>无剧透推荐 · 观影愉快</span>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ================= Canvas 霓虹废墟 ================= */
+  var cvs = document.getElementById('bg');
+  var ctx = cvs.getContext('2d');
+  var W = 0, H = 0, DPR = 1;
+  var skyline = null;
+  var drops = [], dust = [], neons = [];
+  var t = 0;
+
+  function rand(a,b){ return a + Math.random()*(b-a); }
+
+  function buildSkyline(){
+    var off = document.createElement('canvas');
+    off.width = W; off.height = H;
+    var o = off.getContext('2d');
+    var baseY = H * 0.86;
+    var x = -20;
+    while (x < W + 40){
+      var w = rand(W*0.035, W*0.085);
+      var h = rand(H*0.14, H*0.42);
+      var y = baseY - h;
+      o.fillStyle = 'rgba(9,12,17,0.92)';
+      o.fillRect(x, y, w, h);
+
+      /* 窗光 */
+      var cols = Math.max(2, Math.floor(w/16));
+      var rows = Math.max(3, Math.floor(h/22));
+      for (var i=0;i<cols;i++){
+        for (var j=0;j<rows;j++){
+          if (Math.random() < 0.13){
+            o.fillStyle = Math.random() < 0.72
+              ? 'rgba(240,180,41,'+rand(0.22,0.6).toFixed(2)+')'
+              : 'rgba(63,208,201,'+rand(0.18,0.45).toFixed(2)+')';
+            o.fillRect(x + 7 + i*16, y + 9 + j*22, 5, 7);
+          }
+        }
+      }
+      x += w + rand(2, 9);
+    }
+
+    /* 塔吊剪影 */
+    o.strokeStyle = 'rgba(24,31,42,0.95)';
+    o.lineWidth = Math.max(1.5, W*0.0016);
+    for (var k=0;k<3;k++){
+      var cx = rand(W*0.12, W*0.88);
+      var top = baseY - rand(H*0.30, H*0.46);
+      o.beginPath();
+      o.moveTo(cx, baseY);
+      o.lineTo(cx, top);
+      o.moveTo(cx - W*0.05, top + H*0.02);
+      o.lineTo(cx + W*0.07, top + H*0.02);
+      o.moveTo(cx, top);
+      o.lineTo(cx + W*0.07, top + H*0.02);
+      o.moveTo(cx + W*0.045, top + H*0.02);
+      o.lineTo(cx + W*0.045, top + H*0.06);
+      o.stroke();
+    }
+
+    /* 地面积水反光带 */
+    var g = o.createLinearGradient(0, baseY, 0, H);
+    g.addColorStop(0, 'rgba(14,18,25,0.95)');
+    g.addColorStop(1, 'rgba(6,8,12,1)');
+    o.fillStyle = g;
+    o.fillRect(0, baseY, W, H - baseY);
+
+    skyline = off;
+  }
+
+  function initParticles(){
+    drops = []; dust = []; neons = [];
+
+    var dn = Math.min(220, Math.floor(W/DPR/6));
+    for (var i=0;i<dn;i++){
+      drops.push({
+        x: rand(-W*0.1, W*1.1),
+        y: rand(0, H),
+        len: rand(H*0.03, H*0.11),
+        v: rand(H*0.0016, H*0.0042),
+        a: rand(0.05, 0.2)
+      });
+    }
+
+    var un = Math.min(90, Math.floor(W/DPR/14));
+    for (var j=0;j<un;j++){
+      dust.push({
+        x: rand(0, W),
+        y: rand(0, H),
+        r: rand(0.6, 2.4)*DPR,
+        vx: rand(-0.14, 0.14),
+        vy: rand(-0.32, -0.06),
+        a: rand(0.1, 0.45),
+        hue: Math.random() < 0.5 ? '236,58,125' : '63,208,201',
+        ph: rand(0, Math.PI*2)
+      });
+    }
+
+    var nn = 5;
+    for (var m=0;m<nn;m++){
+      neons.push({
+        x: rand(W*0.06, W*0.94),
+        y: rand(H*0.16, H*0.66),
+        r: rand(W*0.07, W*0.18),
+        col: Math.random() < 0.55 ? '236,58,125' : '63,208,201',
+        ph: rand(0, Math.PI*2),
+        sp: rand(0.006, 0.02)
+      });
+    }
+  }
+
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = cvs.width = Math.floor(window.innerWidth * DPR);
+    H = cvs.height = Math.floor(window.innerHeight * DPR);
+    cvs.style.width = window.innerWidth + 'px';
+    cvs.style.height = window.innerHeight + 'px';
+    buildSkyline();
+    initParticles();
+  }
+
+  function draw(){
+    t++;
+    ctx.clearRect(0, 0, W, H);
+
+    /* 底色渐变 */
+    var bg = ctx.createLinearGradient(0, 0, 0, H);
+    bg.addColorStop(0, '#0a0d12');
+    bg.addColorStop(0.55, '#0d1118');
+    bg.addColorStop(1, '#070a0e');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    /* 霓虹光晕（呼吸 + 闪烁） */
+    ctx.globalCompositeOperation = 'lighter';
+    for (var i=0;i<neons.length;i++){
+      var n = neons[i];
+      var pulse = 0.5 + 0.5*Math.sin(t*n.sp + n.ph);
+      var flick = (Math.sin(t*0.13 + n.ph*3) > 0.93) ? 0.35 : 1;
+      var alpha = (0.05 + pulse*0.11) * flick;
+      var rg = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r);
+      rg.addColorStop(0, 'rgba('+n.col+','+alpha.toFixed(3)+')');
+      rg.addColorStop(1, 'rgba('+n.col+',0)');
+      ctx.fillStyle = rg;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI*2);
+      ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+
+    /* 楼宇剪影 */
+    if (skyline) ctx.drawImage(skyline, 0, 0);
+
+    /* 尘埃 */
+    ctx.globalCompositeOperation = 'lighter';
+    for (var j=0;j<dust.length;j++){
+      var d = dust[j];
+      d.x += d.vx * DPR;
+      d.y += d.vy * DPR;
+      if (d.y < -10) { d.y = H + 10; d.x = rand(0, W); }
+      if (d.x < -10) d.x = W + 10;
+      if (d.x > W + 10) d.x = -10;
+      var tw = 0.55 + 0.45*Math.sin(t*0.03 + d.ph);
+      ctx.fillStyle = 'rgba('+d.hue+','+(d.a*tw).toFixed(3)+')';
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI*2);
+      ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+
+    /* 雨丝 */
+    ctx.strokeStyle = '#a8bdd2';
+    ctx.lineWidth = Math.max(0.5, DPR*0.5);
+    for (var k=0;k<drops.length;k++){
+      var p = drops[k];
+      p.y += p.v * DPR;
+      p.x -= p.v * 0.18 * DPR;
+      if (p.y > H + 20){ p.y = -20; p.x = rand(-W*0.1, W*1.1); }
+      ctx.globalAlpha = p.a;
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(p.x + p.len*0.12, p.y + p.len);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+
+    /* 顶部扫描光带 */
+    var sy = (t * 0.35 * DPR) % (H + 400) - 200;
+    var sg = ctx.createLinearGradient(0, sy - 120, 0, sy + 120);
+    sg.addColorStop(0, 'rgba(236,58,125,0)');
+    sg.addColorStop(0.5, 'rgba(236,58,125,0.035)');
+    sg.addColorStop(1, 'rgba(236,58,125,0)');
+    ctx.fillStyle = sg;
+    ctx.fillRect(0, sy - 120, W, 240);
+
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener('resize', function(){
+    clearTimeout(window.__rt);
+    window.__rt = setTimeout(resize, 180);
+  });
+  requestAnimationFrame(draw);
+
+  /* ================= 滚动入场 ================= */
+  var items = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window){
+    var groups = new Map();
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        var siblings = Array.prototype.slice.call(
+          el.parentNode.querySelectorAll(':scope > .rv')
+        );
+        var idx = siblings.indexOf(el);
+        var d = Math.max(0, idx) * 90;
+        el.style.transitionDelay = d + 'ms';
+        el.classList.add('in');
+        io.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function(el){ io.observe(el); });
+  } else {
+    items.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* 首屏元素立即入场 */
+  window.addEventListener('load', function(){
+    document.querySelectorAll('.hero .rv').forEach(function(el){ el.classList.add('in'); });
+  });
+})();
+</script>
+</body>
+</html>
