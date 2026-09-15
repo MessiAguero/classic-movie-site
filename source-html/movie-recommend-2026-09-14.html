@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《母亲》Mother · 마더 — 奉俊昊 2009 | 无剧透推荐</title>
+<style>
+  :root{
+    --ink:#0b0e0b;
+    --ink-2:#12160f;
+    --ink-3:#181d14;
+    --line:rgba(200,190,160,.14);
+    --line-2:rgba(200,190,160,.26);
+    --straw:#c2a464;
+    --straw-2:#e0c88e;
+    --moss:#6f8465;
+    --moss-2:#8fa382;
+    --mist:#cfd6c8;
+    --paper:#e9e6dc;
+    --paper-dim:#a9a89c;
+    --blood:#8a2f2b;
+    --blood-2:#b04a3f;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+    font-size:16px;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .serif{
+    font-family:"Songti SC","Noto Serif SC","Source Han Serif SC",Georgia,"Times New Roman",serif;
+  }
+
+  /* ---------- grain ---------- */
+  .grain{
+    position:fixed;inset:0;pointer-events:none;z-index:60;
+    opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    overflow:hidden;
+    background:
+      radial-gradient(120% 70% at 50% 8%, #2b3122 0%, #1a1f14 34%, #0e120c 66%, #080a07 100%);
+  }
+  #field{position:absolute;inset:0;width:100%;height:100%;display:block;}
+  .hero-hills{
+    position:absolute;left:0;right:0;bottom:0;height:56%;
+    pointer-events:none;
+  }
+  .hero-veil{
+    position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(60% 45% at 50% 30%, rgba(224,200,142,.10), transparent 70%),
+      linear-gradient(180deg, rgba(8,10,7,.72) 0%, rgba(8,10,7,.12) 34%, rgba(8,10,7,.30) 66%, rgba(8,10,7,.94) 100%);
+  }
+  .hero-vig{
+    position:absolute;inset:0;pointer-events:none;
+    box-shadow:inset 0 0 220px 90px rgba(6,8,5,.9);
+  }
+
+  .hero-inner{
+    position:relative;z-index:3;
+    width:100%;max-width:1080px;
+    margin:0 auto;padding:120px 32px 96px;
+  }
+  .kicker{
+    display:flex;align-items:center;gap:16px;
+    font-size:12px;letter-spacing:.42em;
+    color:var(--straw);text-transform:uppercase;
+    margin-bottom:30px;
+  }
+  .kicker::before{content:"";width:54px;height:1px;background:linear-gradient(90deg,var(--straw),transparent);}
+  .kicker span{color:var(--paper-dim);letter-spacing:.3em;}
+
+  h1.title{
+    margin:0;
+    font-size:clamp(72px,15vw,178px);
+    line-height:.92;
+    font-weight:400;
+    letter-spacing:.1em;
+    color:#f2eee2;
+    text-shadow:0 2px 60px rgba(0,0,0,.75);
+  }
+  .title-rom{
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:22px;
+    margin-top:22px;
+  }
+  .title-rom .en{
+    font-size:clamp(18px,2.6vw,30px);
+    letter-spacing:.36em;color:var(--straw-2);font-weight:400;
+  }
+  .title-rom .kr{
+    font-size:clamp(15px,2vw,22px);
+    letter-spacing:.3em;color:var(--moss-2);
+  }
+  .title-rom .yr{
+    font-size:12px;letter-spacing:.3em;color:var(--paper-dim);
+    border-left:1px solid var(--line-2);padding-left:22px;
+  }
+
+  .tagline{
+    margin:44px 0 0;max-width:640px;
+    font-size:clamp(17px,2.1vw,21px);
+    line-height:2.05;color:#d5d2c6;
+  }
+  .tagline em{
+    font-style:normal;color:var(--straw-2);
+    border-bottom:1px solid rgba(224,200,142,.4);
+    padding-bottom:1px;
+  }
+
+  .hero-meta{
+    margin-top:56px;display:flex;flex-wrap:wrap;gap:0;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .hero-meta div{
+    flex:1 1 150px;padding:18px 22px 18px 0;
+    border-right:1px solid var(--line);
+  }
+  .hero-meta div:last-child{border-right:none;}
+  .hero-meta .k{font-size:11px;letter-spacing:.26em;color:var(--paper-dim);display:block;margin-bottom:6px;}
+  .hero-meta .v{font-size:15px;color:#e6e2d5;letter-spacing:.04em;}
+
+  .scroll-hint{
+    position:absolute;left:50%;bottom:30px;transform:translateX(-50%);
+    z-index:4;font-size:10px;letter-spacing:.36em;color:rgba(233,230,220,.5);
+    display:flex;flex-direction:column;align-items:center;gap:12px;
+  }
+  .scroll-hint i{display:block;width:1px;height:52px;background:linear-gradient(180deg,transparent,var(--straw));animation:drop 2.4s ease-in-out infinite;}
+  @keyframes drop{0%,100%{opacity:.25;transform:scaleY(.5);transform-origin:top;}50%{opacity:1;transform:scaleY(1);}}
+
+  /* ---------- layout ---------- */
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  section{padding:110px 0;}
+  .sec-head{margin-bottom:56px;}
+  .sec-no{
+    font-size:11px;letter-spacing:.4em;color:var(--straw);
+    display:block;margin-bottom:16px;
+  }
+  .sec-head h2{
+    margin:0;font-weight:400;
+    font-size:clamp(30px,4.4vw,48px);
+    letter-spacing:.06em;color:#f0ece0;line-height:1.28;
+  }
+  .sec-head p{
+    margin:18px 0 0;max-width:680px;color:var(--paper-dim);
+    font-size:15px;line-height:2;
+  }
+  .rule{height:1px;background:linear-gradient(90deg,var(--line-2),transparent);margin-top:34px;}
+
+  /* ---------- spoiler bar ---------- */
+  .spoiler{
+    border:1px solid rgba(138,47,43,.45);
+    background:linear-gradient(90deg,rgba(138,47,43,.16),rgba(138,47,43,.04));
+    padding:22px 26px;display:flex;gap:18px;align-items:flex-start;
+    margin-top:-40px;
+  }
+  .spoiler .badge{
+    flex:0 0 auto;font-size:10px;letter-spacing:.24em;
+    color:#e7b3ab;border:1px solid rgba(176,74,63,.6);
+    padding:4px 10px;margin-top:4px;
+  }
+  .spoiler p{margin:0;font-size:14px;line-height:1.95;color:#cfc9bd;}
+
+  /* ---------- synopsis ---------- */
+  .syn-body{max-width:760px;}
+  .syn-body p{font-size:17px;line-height:2.15;color:#d8d5c9;margin:0 0 26px;}
+  .syn-body p.lead::first-letter{
+    float:left;font-family:"Songti SC",Georgia,serif;
+    font-size:82px;line-height:.82;
+    padding:8px 16px 0 0;color:var(--straw);
+  }
+  .syn-body .close{
+    margin-top:38px;padding-left:26px;border-left:2px solid var(--straw);
+    font-size:19px;line-height:1.95;color:#efe9d8;
+  }
+
+  /* ---------- archive ---------- */
+  .archive{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));
+    border-top:1px solid var(--line);border-left:1px solid var(--line);
+  }
+  .archive div{
+    padding:24px 26px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,rgba(255,255,255,.014),transparent);
+    transition:background .4s ease;
+  }
+  .archive div:hover{background:rgba(194,164,100,.055);}
+  .archive .k{font-size:11px;letter-spacing:.24em;color:var(--paper-dim);display:block;margin-bottom:9px;}
+  .archive .v{font-size:15.5px;color:#e8e4d7;line-height:1.7;letter-spacing:.02em;}
+  .archive .v small{display:block;font-size:12.5px;color:var(--paper-dim);letter-spacing:.04em;margin-top:4px;}
+
+  /* ---------- scores ---------- */
+  .scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(212px,1fr));gap:18px;}
+  .score{
+    border:1px solid var(--line);padding:30px 26px 26px;
+    background:linear-gradient(165deg,rgba(194,164,100,.075),rgba(255,255,255,.012) 55%);
+    position:relative;overflow:hidden;
+  }
+  .score::after{
+    content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;
+    border:1px solid rgba(194,164,100,.2);border-radius:50%;
+  }
+  .score .src{font-size:11px;letter-spacing:.24em;color:var(--paper-dim);}
+  .score .num{
+    font-family:Georgia,"Songti SC",serif;
+    font-size:52px;line-height:1;color:var(--straw-2);margin:16px 0 6px;letter-spacing:.01em;
+  }
+  .score .num sup{font-size:17px;color:var(--moss-2);margin-left:4px;}
+  .score .note{font-size:12.5px;color:var(--paper-dim);letter-spacing:.03em;}
+
+  /* ---------- poster ---------- */
+  .poster-row{display:grid;grid-template-columns:minmax(260px,400px) 1fr;gap:56px;align-items:center;}
+  @media(max-width:820px){.poster-row{grid-template-columns:1fr;gap:40px;}}
+  .poster{
+    border:1px solid var(--line-2);position:relative;
+    box-shadow:0 40px 90px -40px rgba(0,0,0,.95), inset 0 0 0 1px rgba(0,0,0,.4);
+    background:#0d100b;
+  }
+  .poster svg{display:block;width:100%;height:auto;}
+  .poster-cap{
+    position:absolute;left:0;right:0;bottom:0;padding:16px 18px;
+    font-size:10px;letter-spacing:.3em;color:rgba(233,230,220,.55);
+    background:linear-gradient(0deg,rgba(6,8,5,.9),transparent);
+    text-align:center;
+  }
+  .poster-note h3{
+    margin:0 0 20px;font-weight:400;font-size:26px;letter-spacing:.06em;color:#f0ece0;
+  }
+  .poster-note p{margin:0 0 20px;font-size:16px;line-height:2.1;color:#d2cfc3;}
+  .poster-note ul{margin:0;padding:0;list-style:none;}
+  .poster-note li{
+    padding:12px 0 12px 24px;border-top:1px solid var(--line);
+    font-size:14.5px;color:#c9c6ba;position:relative;
+  }
+  .poster-note li::before{
+    content:"";position:absolute;left:0;top:21px;
+    width:9px;height:1px;background:var(--straw);
+  }
+
+  /* ---------- highlights ---------- */
+  .grid6{display:grid;grid-template-columns:repeat(auto-fit,minmax(292px,1fr));gap:1px;background:var(--line);}
+  .cell{
+    background:var(--ink-2);padding:36px 32px 38px;
+    transition:background .45s ease, transform .45s ease;
+    position:relative;
+  }
+  .cell:hover{background:#161b12;}
+  .cell .idx{
+    font-family:Georgia,serif;font-size:13px;letter-spacing:.2em;color:var(--straw);
+    display:block;margin-bottom:20px;
+  }
+  .cell h4{margin:0 0 14px;font-weight:400;font-size:19.5px;letter-spacing:.04em;color:#eee9dc;}
+  .cell p{margin:0;font-size:14.5px;line-height:1.95;color:#b9b7ac;}
+  .cell::after{
+    content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+    background:linear-gradient(90deg,var(--straw),transparent);transition:width .6s ease;
+  }
+  .cell:hover::after{width:100%;}
+
+  /* ---------- timeline ---------- */
+  .tl{position:relative;padding-left:34px;}
+  .tl::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--straw),rgba(194,164,100,.06));}
+  .tl-item{position:relative;padding:0 0 34px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:"";position:absolute;left:-33px;top:9px;
+    width:11px;height:11px;border-radius:50%;
+    background:var(--ink);border:1px solid var(--straw);
+  }
+  .tl-item .y{
+    font-family:Georgia,serif;font-size:12px;letter-spacing:.24em;color:var(--straw);
+    display:block;margin-bottom:6px;
+  }
+  .tl-item .t{font-size:16px;color:#e9e5d8;letter-spacing:.02em;}
+  .tl-item .d{font-size:13.5px;color:var(--paper-dim);margin-top:4px;}
+
+  /* ---------- why ---------- */
+  .why{display:grid;gap:0;border-top:1px solid var(--line);}
+  .why-item{
+    display:grid;grid-template-columns:120px 1fr;gap:36px;
+    padding:44px 0;border-bottom:1px solid var(--line);
+  }
+  @media(max-width:720px){.why-item{grid-template-columns:1fr;gap:14px;}}
+  .why-item .n{
+    font-family:Georgia,serif;font-size:44px;line-height:1;color:rgba(194,164,100,.32);
+  }
+  .why-item h4{margin:0 0 14px;font-weight:400;font-size:22px;letter-spacing:.05em;color:#f1ece0;}
+  .why-item p{margin:0;font-size:16px;line-height:2.1;color:#cbc8bc;}
+
+  /* ---------- quote ---------- */
+  .quote-sec{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:100px 0;background:linear-gradient(180deg,rgba(194,164,100,.045),transparent 60%);
+  }
+  blockquote{
+    margin:0;max-width:820px;
+    font-family:"Songti SC","Noto Serif SC",Georgia,serif;
+    font-size:clamp(21px,3vw,32px);line-height:1.9;color:#efe9d9;
+    letter-spacing:.04em;
+  }
+  blockquote::before{
+    content:"";display:block;width:48px;height:2px;background:var(--straw);margin-bottom:34px;
+  }
+  .quote-by{margin-top:30px;font-size:13px;letter-spacing:.24em;color:var(--paper-dim);}
+  .quote-by b{color:var(--straw);font-weight:400;}
+
+  /* ---------- footer ---------- */
+  footer{padding:70px 0 90px;}
+  .foot-line{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:flex-end;}
+  .foot-line .l{font-size:12px;letter-spacing:.24em;color:var(--paper-dim);line-height:2.2;}
+  .foot-line .l b{color:var(--straw);font-weight:400;}
+  .foot-line .r{font-size:11px;letter-spacing:.3em;color:rgba(169,168,156,.6);}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity 1s cubic-bezier(.22,.61,.36,1),transform 1s cubic-bezier(.22,.61,.36,1);}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    .scroll-hint i{animation:none;}
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <canvas id="field"></canvas>
+  <svg class="hero-hills" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="h1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#242a1b"/><stop offset="1" stop-color="#161a11"/>
+      </linearGradient>
+      <linearGradient id="h2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1b2015"/><stop offset="1" stop-color="#10140d"/>
+      </linearGradient>
+      <linearGradient id="h3" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#12160f"/><stop offset="1" stop-color="#0a0d08"/>
+      </linearGradient>
+    </defs>
+    <path fill="url(#h1)" d="M0,238 C160,196 300,246 460,222 C620,198 760,246 920,224 C1080,202 1250,244 1440,214 L1440,420 L0,420 Z" opacity=".85"/>
+    <path fill="url(#h2)" d="M0,290 C180,258 330,300 500,282 C680,262 820,304 1000,286 C1180,268 1300,300 1440,282 L1440,420 L0,420 Z"/>
+    <path fill="url(#h3)" d="M0,342 C200,318 360,352 560,338 C760,324 900,356 1100,344 C1260,334 1360,352 1440,344 L1440,420 L0,420 Z"/>
+  </svg>
+  <div class="hero-veil"></div>
+  <div class="hero-vig"></div>
+
+  <div class="hero-inner">
+    <div class="kicker">Bong Joon-ho <span>· 无剧透推荐 · 韩国犯罪电影</span></div>
+
+    <h1 class="title serif">母亲</h1>
+
+    <div class="title-rom">
+      <span class="en">MOTHER</span>
+      <span class="kr">마더</span>
+      <span class="yr">2009 · 韩国 · 128 分钟</span>
+    </div>
+
+    <p class="tagline">
+      一位母亲走进小镇的沉默里，<br>
+      去找一个<em>没有人愿意给</em>的答案。
+    </p>
+
+    <div class="hero-meta">
+      <div><span class="k">DIRECTOR</span><span class="v">奉俊昊</span></div>
+      <div><span class="k">STARRING</span><span class="v">金惠子 · 元斌</span></div>
+      <div><span class="k">DOUBAN</span><span class="v">8.3 / 10</span></div>
+      <div><span class="k">ROTTEN TOMATOES</span><span class="v">96%</span></div>
+      <div><span class="k">CANNES 2009</span><span class="v">一种关注</span></div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">SCROLL<i></i></div>
+</header>
+
+<!-- ============ SPOILER ============ -->
+<div class="wrap">
+  <div class="spoiler reveal">
+    <span class="badge">NO SPOILER</span>
+    <p>本篇推荐全程不剧透：梗概止于母亲开始独自查案的那一刻，不涉及案件真相、凶手身份、任何一位角色的结局与影片结尾。放心往下看。</p>
+  </div>
+</div>
+
+<!-- ============ SYNOPSIS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">01 / 故事</span>
+      <h2 class="serif">一位母亲的<br>第一次独自出门</h2>
+      <p>不是侦探片，也不是法庭片。这是一个从没走出过小镇的女人，被逼着走进每一个她原本不必敲的门。</p>
+      <div class="rule"></div>
+    </div>
+
+    <div class="syn-body reveal">
+      <p class="lead">守寡多年的惠子，和一个儿子相依为命。她在小镇上卖药材，也有一手私下的针灸手艺，替镇上的女人们处理一些不愿声张的事。儿子道俊二十八岁，心智却停在少年时候——温顺、安静，也容易被冒犯。</p>
+
+      <p>一天清晨，一名高中女生被发现死在镇边废弃建筑的楼顶。小镇哗然，警方需要尽快给出答案。现场留下的那点东西，把目光引到了道俊身上。证据单薄，可在一个急着结案的小镇里，单薄也够了。</p>
+
+      <p>没有钱，没有背景，指派来的律师只想让儿子认下一条最省事的路。惠子不信。她比任何人都清楚自己的儿子是什么样的人。于是她开始一个人去问、去看、去追——沿着女孩生前的行踪，走进那些平日被礼貌遮住的门后面。</p>
+
+      <p>她越往下走，小镇就越不像她住了几十年的那个样子。而她要找的那个答案，从一开始就没人打算交给她。</p>
+
+      <div class="close serif">她只是想知道真相。<br>她没想过，真相也会想知道她。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARCHIVE ============ -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">02 / 影片档案</span>
+      <h2 class="serif">数据一览</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="archive reveal">
+      <div><span class="k">原名</span><span class="v">마더 / Mother<small>台译《非常母亲》· 港译《骨肉同谋》</small></span></div>
+      <div><span class="k">导演</span><span class="v">奉俊昊<small>《杀人回忆》《汉江怪物》《寄生虫》</small></span></div>
+      <div><span class="k">编剧</span><span class="v">奉俊昊 · 朴恩桥</span></div>
+      <div><span class="k">主演</span><span class="v">金惠子 · 元斌 · 晋久</span></div>
+      <div><span class="k">类型</span><span class="v">犯罪 / 剧情 / 悬疑</span></div>
+      <div><span class="k">片长</span><span class="v">128 分钟<small>18 岁以上观览分级</small></span></div>
+      <div><span class="k">上映</span><span class="v">2009 年 5 月 28 日<small>韩国 · 戛纳首映 5 月 16 日</small></span></div>
+      <div><span class="k">摄影 / 配乐</span><span class="v">洪庆彪 / 李丙雨</span></div>
+      <div><span class="k">制作成本</span><span class="v">约 500 万美元</span></div>
+      <div><span class="k">全球票房</span><span class="v">约 1,710 万美元<small>韩国观影约 300 万人次，首周即票房冠军</small></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SCORES ============ -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">03 / 口碑</span>
+      <h2 class="serif">十七年过去，<br>分数没有掉下来</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="scores reveal">
+      <div class="score">
+        <span class="src">DOUBAN 豆瓣</span>
+        <div class="num">8.3<sup>/10</sup></div>
+        <div class="note">约 11.5 万人评分</div>
+      </div>
+      <div class="score">
+        <span class="src">IMDb</span>
+        <div class="num">7.7<sup>/10</sup></div>
+        <div class="note">约 8.1 万人评分</div>
+      </div>
+      <div class="score">
+        <span class="src">ROTTEN TOMATOES</span>
+        <div class="num">96<sup>%</sup></div>
+        <div class="note">媒体新鲜度 · 观众指数 82%</div>
+      </div>
+      <div class="score">
+        <span class="src">METACRITIC / LETTERBOXD</span>
+        <div class="num">79<sup>·4.2</sup></div>
+        <div class="note">Metascore 79 · Letterboxd 4.17/5</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POSTER ============ -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">04 / 概念海报</span>
+      <h2 class="serif">荒原与一个背影</h2>
+      <p>影片开场，是一片望不到边的枯草荒原。那是奉俊昊给整部电影定下的底色——辽阔、枯败，一个人在其中小得几乎看不见。</p>
+      <div class="rule"></div>
+    </div>
+
+    <div class="poster-row">
+      <div class="poster reveal">
+        <svg viewBox="0 0 420 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="概念海报：荒原上的孤影">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#2c3323"/>
+              <stop offset=".45" stop-color="#1d2317"/>
+              <stop offset="1" stop-color="#0c100a"/>
+            </linearGradient>
+            <radialGradient id="sun" cx="50%" cy="30%" r="52%">
+              <stop offset="0" stop-color="#e0c88e" stop-opacity=".38"/>
+              <stop offset="1" stop-color="#e0c88e" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1a1f14"/>
+              <stop offset="1" stop-color="#080b06"/>
+            </linearGradient>
+            <linearGradient id="fig" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#050703"/>
+              <stop offset="1" stop-color="#050703"/>
+            </linearGradient>
+            <filter id="soft"><feGaussianBlur stdDeviation="6"/></filter>
+          </defs>
+
+          <rect width="420" height="600" fill="url(#sky)"/>
+          <rect width="420" height="600" fill="url(#sun)"/>
+
+          <!-- 远山 -->
+          <path d="M0,330 C70,308 130,336 200,320 C270,304 330,332 420,314 L420,600 L0,600 Z" fill="#151a10" opacity=".9"/>
+          <path d="M0,368 C90,352 160,378 240,364 C320,350 370,372 420,362 L420,600 L0,600 Z" fill="#10140c"/>
+
+          <!-- 地平线 -->
+          <rect x="0" y="392" width="420" height="1" fill="#c2a464" opacity=".28"/>
+
+          <!-- 地面 -->
+          <rect x="0" y="392" width="420" height="208" fill="url(#ground)"/>
+
+          <!-- 草浪（远景细线） -->
+          <g stroke="#6f8465" stroke-width="1" opacity=".5" fill="none">
+            <path d="M0,440 Q30,420 60,438 T120,436 T180,440 T240,434 T300,440 T360,436 T420,440"/>
+            <path d="M0,470 Q36,448 72,466 T144,464 T216,470 T288,462 T360,468 T420,466"/>
+            <path d="M0,506 Q42,484 84,502 T168,500 T252,506 T336,498 T420,504"/>
+            <path d="M0,548 Q48,524 96,544 T192,542 T288,548 T384,540 T420,544"/>
+          </g>
+
+          <!-- 主体草叶剪影 -->
+          <g stroke="#0a0d07" stroke-width="2.6" fill="none" opacity=".95" stroke-linecap="round">
+            <path d="M18,600 Q22,536 12,498"/>
+            <path d="M40,600 Q46,528 34,486"/>
+            <path d="M62,600 Q66,542 58,512"/>
+            <path d="M84,600 Q90,530 78,492"/>
+            <path d="M108,600 Q112,548 104,518"/>
+            <path d="M132,600 Q140,522 126,478"/>
+            <path d="M158,600 Q162,540 154,506"/>
+            <path d="M182,600 Q188,526 176,490"/>
+            <path d="M206,600 Q210,548 202,516"/>
+            <path d="M232,600 Q240,524 226,482"/>
+            <path d="M258,600 Q262,542 254,510"/>
+            <path d="M282,600 Q288,528 276,492"/>
+            <path d="M306,600 Q310,548 302,518"/>
+            <path d="M332,600 Q340,524 326,484"/>
+            <path d="M358,600 Q362,540 354,508"/>
+            <path d="M382,600 Q388,530 376,494"/>
+            <path d="M404,600 Q408,548 400,518"/>
+          </g>
+
+          <!-- 孤影 -->
+          <g filter="url(#soft)" opacity=".55">
+            <ellipse cx="210" cy="396" rx="46" ry="9" fill="#000"/>
+          </g>
+          <g fill="url(#fig)">
+            <ellipse cx="210" cy="298" rx="12" ry="14"/>
+            <path d="M198,312 Q210,306 222,312 L228,368 Q210,376 192,368 Z"/>
+            <path d="M196,366 Q203,364 206,366 L204,396 L197,396 Z"/>
+            <path d="M214,366 Q221,364 224,366 L223,396 L216,396 Z"/>
+            <path d="M200,316 Q190,336 186,358 L191,360 Q196,338 204,320 Z"/>
+            <path d="M220,316 Q230,336 234,358 L229,360 Q224,338 216,320 Z"/>
+          </g>
+
+          <!-- 金色飞尘 -->
+          <g fill="#e0c88e" opacity=".55">
+            <circle cx="96" cy="250" r="1.4"/><circle cx="150" cy="198" r="1"/><circle cx="272" cy="222" r="1.2"/>
+            <circle cx="330" cy="286" r="1"/><circle cx="70" cy="330" r="1.1"/><circle cx="352" cy="176" r="1.3"/>
+            <circle cx="196" cy="158" r=".9"/><circle cx="118" cy="392" r="1"/><circle cx="300" cy="352" r=".9"/>
+          </g>
+
+          <!-- 竖排片名 -->
+          <g fill="#f0ece0" font-family="Songti SC, Noto Serif SC, serif" font-size="34" letter-spacing="6">
+            <text x="42" y="140">母</text>
+            <text x="42" y="186">亲</text>
+          </g>
+          <g fill="#c2a464" font-family="Georgia, serif" font-size="11" letter-spacing="5">
+            <text x="44" y="222">MOTHER</text>
+            <text x="44" y="242" font-size="10" fill="#8fa382">마더</text>
+          </g>
+
+          <rect x="24" y="24" width="372" height="552" fill="none" stroke="#c2a464" stroke-opacity=".22"/>
+        </svg>
+        <div class="poster-cap">CONCEPT POSTER · 非官方设计</div>
+      </div>
+
+      <div class="poster-note reveal">
+        <h3 class="serif">为什么是"荒原"</h3>
+        <p>奉俊昊把镜头第一次完全交给一个人。他说过，以往的电影都是外部事件把他推进主角的内心，这一次反过来——一切从主角的内心出发，然后像岩浆一样烧到周围的一切。</p>
+        <ul>
+          <li>全片首次使用变形镜头，2.35:1 宽银幕，人物背后永远有一整片世界在呼吸</li>
+          <li>摄影洪庆彪（《寄生虫》《燃烧》摄影指导）用大量长焦与留白，把人压在画面的一角</li>
+          <li>配乐李丙雨用弦乐与手风琴交替，把"温情"和"不安"缝在同一段旋律里</li>
+          <li>取景地集中在韩国南部小镇，湿冷、褪色、没有一处是漂亮的</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HIGHLIGHTS ============ -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">05 / 六个亮点</span>
+      <h2 class="serif">它好在哪儿</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="grid6 reveal">
+      <div class="cell">
+        <span class="idx">01</span>
+        <h4>金惠子的"野兽级"表演</h4>
+        <p>韩国人称她"国民妈妈"，这是她十年后重返银幕、也是第一次在电影里挑大梁。她把这个角色演成一头被逼到墙角的母兽——不漂亮，不可怜，甚至让人害怕。洛杉矶影评人协会奖、亚洲电影传媒奖最佳女主角。</p>
+      </div>
+      <div class="cell">
+        <span class="idx">02</span>
+        <h4>奉俊昊的转向之作</h4>
+        <p>从《杀人回忆》的群体无能与《汉江怪物》的社会怪兽，到这一次只写一个人。这是他第一次把社会寓言彻底收进一颗心里，也是通往《寄生虫》的必经一站。</p>
+      </div>
+      <div class="cell">
+        <span class="idx">03</span>
+        <h4>悬疑只是外壳</h4>
+        <p>真相当然会揭开，但真正让人难受的不是"谁做的"，而是那些什么都没做、却什么都知道的人。影片真正讨论的，是体系的压抑、人与人之间的极度冷漠，以及真相的不可知与不可逆。</p>
+      </div>
+      <div class="cell">
+        <span class="idx">04</span>
+        <h4>一座小镇就是整个韩国</h4>
+        <p>表面礼貌、底下沉默，每个人都守着自己那点不愿被翻出来的东西。凶手要到最后才浮现，而在此之前，所有邻居、警察、律师都已经各自"结案"了。</p>
+      </div>
+      <div class="cell">
+        <span class="idx">05</span>
+        <h4>元斌的复出之作</h4>
+        <p>退伍后接拍的第一部电影，也是他阔别大银幕五年的回归。他第一次完全不顾形象，演一个心智停留在少年时期的成年人。奉俊昊甚至把角色名改成与他本名"道振"相近的"道俊"。</p>
+      </div>
+      <div class="cell">
+        <span class="idx">06</span>
+        <h4>一个戛纳级别的开场</h4>
+        <p>影片的第一个镜头，是一片辽阔到失焦的枯草荒原，一个身影在其中缓慢行走。没有台词，没有交代，但整部电影的情绪基调——孤独、辽阔、无处可逃——在那两分钟里已经全部写完。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">06 / 荣誉</span>
+      <h2 class="serif">它拿到的那些认可</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="tl reveal">
+      <div class="tl-item">
+        <span class="y">2009 · 戛纳</span>
+        <div class="t">第 62 届戛纳国际电影节"一种关注"单元 入围</div>
+        <div class="d">与《寄生虫》十年后的金棕榈首尾呼应，也是奉俊昊第一次进入欧洲三大主舞台。</div>
+      </div>
+      <div class="tl-item">
+        <span class="y">2009 · 青龙</span>
+        <div class="t">第 30 届韩国青龙电影奖 · 最佳影片</div>
+        <div class="d">同时拿下最佳男配角（晋久）与最佳照明（朴东顺）；金惠子获最佳女演员提名。</div>
+      </div>
+      <div class="tl-item">
+        <span class="y">2009 · 大钟</span>
+        <div class="t">第 46 届韩国大钟奖 · 最佳男配角（晋久）</div>
+        <div class="d">影片同时入围最佳电影、最佳导演、最佳女演员。</div>
+      </div>
+      <div class="tl-item">
+        <span class="y">2009 · 釜山</span>
+        <div class="t">第 10 届釜山影评家奖 · 最优秀作品奖</div>
+        <div class="d">金惠子获最佳女主角，洪庆彪获最佳摄影。</div>
+      </div>
+      <div class="tl-item">
+        <span class="y">2010 · 亚洲电影大奖</span>
+        <div class="t">第 4 届亚洲电影大奖 · 最佳编剧</div>
+        <div class="d">奉俊昊、朴恩桥；金惠子同时入围最佳女主角。</div>
+      </div>
+      <div class="tl-item">
+        <span class="y">2010 · 北美</span>
+        <div class="t">第 36 届洛杉矶影评人协会奖 最佳女主角（金惠子）</div>
+        <div class="d">第 31 届波士顿影评人协会奖 最佳外语片；第 19 届亚洲电影传媒奖 最佳女主角。</div>
+      </div>
+      <div class="tl-item">
+        <span class="y">2010 · 奥斯卡</span>
+        <div class="t">代表韩国角逐第 82 届奥斯卡最佳外语片</div>
+        <div class="d">同届候选中击败《蝙蝠》《窒息》等片，成为韩国当年唯一的申奥代表。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">07 / 为什么值得看</span>
+      <h2 class="serif">三个理由</h2>
+      <div class="rule"></div>
+    </div>
+
+    <div class="why reveal">
+      <div class="why-item">
+        <div class="n">01</div>
+        <div>
+          <h4>因为这是一部"没有反派"的犯罪片</h4>
+          <p>它不给你一个可以恨的人。凶手藏在最后，但真正让你后背发凉的，是那些普通得不能再普通的镇民、那个只想快点结案的警察、那个劝人认罪的律师。你会发现，真正杀死一个人的，往往不是刀，而是所有人的"与我无关"。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="n">02</div>
+        <div>
+          <h4>因为金惠子把这个角色演到了让人不敢直视</h4>
+          <p>六十多岁第一次主演电影，她把"母爱"这个被讲滥了的词，演成了一件有重量、有代价、甚至有罪的东西。看完你会明白：爱到极致是什么样子，以及它要付多少钱。这一个表演，就值回整部电影。</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="n">03</div>
+        <div>
+          <h4>因为它是理解奉俊昊的一把钥匙</h4>
+          <p>《杀人回忆》写集体的无能，《汉江怪物》写体制的荒诞，《寄生虫》写阶级的不可跨越——而《母亲》是中间那块拼图：他第一次把镜头收进一个人的内心，然后用一部悬疑片的外壳，讲了一个关于"知道真相之后该怎么办"的故事。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section class="quote-sec">
+  <div class="wrap reveal">
+    <blockquote class="serif">
+      母子关系是所有人际关系的根源，也是每个观众都能感同身受的关系。但已经有太多文学、电影和电视剧描写过它，我决定用自己的方式去探索，去触碰最极限、最具冲突力量的那种母爱。
+    </blockquote>
+    <div class="quote-by">— <b>奉俊昊</b>　导演访谈</div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-line">
+      <div class="l">
+        <b>《母亲》</b> Mother · 마더　2009<br>
+        奉俊昊 导演 ｜ 金惠子 · 元斌 主演<br>
+        豆瓣 8.3 ｜ IMDb 7.7 ｜ 烂番茄 96% ｜ 戛纳"一种关注"
+      </div>
+      <div class="r">NO SPOILER · 放心观影</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------- Canvas: 草浪 + 飞絮 ---------------- */
+  var cv = document.getElementById("field");
+  if (!cv) return;
+  var ctx = cv.getContext("2d");
+  var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var blades = [], motes = [];
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function rnd(a, b){ return a + Math.random() * (b - a); }
+
+  function build(){
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = Math.floor(W * DPR);
+    cv.height = Math.floor(H * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+
+    blades = [];
+    var count = Math.round(Math.min(240, Math.max(110, W / 6)));
+    for (var i = 0; i < count; i++){
+      var t = Math.random();
+      blades.push({
+        x: rnd(-40, W + 40),
+        base: H - rnd(-30, H * 0.30),
+        h: rnd(H * 0.06, H * 0.26) * (0.6 + t * 0.7),
+        w: rnd(1, 2.4),
+        ph: Math.random() * Math.PI * 2,
+        sp: rnd(0.35, 0.95),
+        amp: rnd(10, 40),
+        a: rnd(0.16, 0.62),
+        hue: Math.random()
+      });
+    }
+    blades.sort(function(a, b){ return a.h - b.h; });
+
+    motes = [];
+    var mCount = Math.round(Math.min(120, W / 12));
+    for (var j = 0; j < mCount; j++){
+      motes.push({
+        x: rnd(0, W),
+        y: rnd(0, H),
+        r: rnd(0.6, 2.1),
+        vy: rnd(-0.30, -0.06),
+        vx: rnd(-0.16, 0.30),
+        a: rnd(0.12, 0.55),
+        ph: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  function colorFor(hue, alpha){
+    // 枯草色系：干黄 -> 苔绿
+    if (hue < 0.42){
+      return "rgba(194,164,100," + alpha.toFixed(3) + ")";
+    } else if (hue < 0.78){
+      return "rgba(143,163,130," + alpha.toFixed(3) + ")";
+    }
+    return "rgba(96,116,88," + alpha.toFixed(3) + ")";
+  }
+
+  var t0 = performance.now();
+
+  function frame(now){
+    var t = (now - t0) / 1000;
+    ctx.clearRect(0, 0, W, H);
+
+    // 雾带
+    for (var b = 0; b < 3; b++){
+      var y = H * (0.42 + b * 0.13) + Math.sin(t * 0.22 + b) * 12;
+      var g = ctx.createLinearGradient(0, y - 70, 0, y + 70);
+      g.addColorStop(0, "rgba(207,214,200,0)");
+      g.addColorStop(0.5, "rgba(207,214,200," + (0.035 - b * 0.008) + ")");
+      g.addColorStop(1, "rgba(207,214,200,0)");
+      ctx.fillStyle = g;
+      ctx.fillRect(0, y - 70, W, 140);
+    }
+
+    // 草浪
+    for (var i = 0; i < blades.length; i++){
+      var bl = blades[i];
+      var sway = Math.sin(t * bl.sp + bl.ph) * bl.amp * (0.35 + bl.h / (H * 0.30) * 0.65);
+      var gust = Math.sin(t * 0.5 + bl.x * 0.004) * bl.amp * 0.5;
+      var tipX = bl.x + sway + gust;
+      var tipY = bl.base - bl.h;
+      var midX = bl.x + (sway + gust) * 0.34;
+      var midY = bl.base - bl.h * 0.58;
+
+      ctx.beginPath();
+      ctx.moveTo(bl.x, bl.base);
+      ctx.quadraticCurveTo(midX, midY, tipX, tipY);
+      ctx.strokeStyle = colorFor(bl.hue, bl.a);
+      ctx.lineWidth = bl.w;
+      ctx.lineCap = "round";
+      ctx.stroke();
+    }
+
+    // 飞絮 / 金色微尘
+    for (var k = 0; k < motes.length; k++){
+      var m = motes[k];
+      m.y += m.vy;
+      m.x += m.vx + Math.sin(t * 0.7 + m.ph) * 0.22;
+      if (m.y < -12){ m.y = H + 12; m.x = rnd(0, W); }
+      if (m.x < -14) m.x = W + 14;
+      if (m.x > W + 14) m.x = -14;
+      ctx.beginPath();
+      ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(224,200,142," + m.a.toFixed(3) + ")";
+      ctx.fill();
+    }
+
+    raf = requestAnimationFrame(frame);
+  }
+
+  var raf = null;
+  build();
+  if (!reduce){
+    raf = requestAnimationFrame(frame);
+  } else {
+    frame(performance.now());
+    cancelAnimationFrame(raf);
+  }
+
+  var rt = null;
+  window.addEventListener("resize", function(){
+    clearTimeout(rt);
+    rt = setTimeout(function(){
+      build();
+      if (reduce) frame(performance.now());
+    }, 200);
+  });
+
+  document.addEventListener("visibilitychange", function(){
+    if (reduce) return;
+    if (document.hidden){
+      if (raf) cancelAnimationFrame(raf);
+      raf = null;
+    } else if (!raf){
+      t0 = performance.now() - 1000;
+      raf = requestAnimationFrame(frame);
+    }
+  });
+
+  /* ---------------- 分组错峰入场 ---------------- */
+  var items = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  if (!("IntersectionObserver" in window) || reduce){
+    items.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var groups = new Map();
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        var key = el.parentElement || document.body;
+        var n = groups.get(key) || 0;
+        groups.set(key, n + 1);
+        setTimeout(function(){ el.classList.add("in"); }, Math.min(n, 5) * 110);
+        io.unobserve(el);
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+    items.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

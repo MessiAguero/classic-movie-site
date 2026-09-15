@@ -778,6 +778,49 @@
     "posterCaption": "Concept Poster · 概念海报"
   },
   {
+    "id": "20260914",
+    "date": "20260914",
+    "zhTitle": "母亲",
+    "enTitle": "MOTHER",
+    "year": "2009",
+    "tagline": "",
+    "meta": "DIRECTOR奉俊昊 STARRING金惠子 · 元斌 DOUBAN8.3 / 10 ROTTEN TOMATOES96% CANNES 2009一种关注",
+    "ratings": [],
+    "plot": [],
+    "spoilerNote": "NO SPOILER",
+    "highlights": [],
+    "quotes": [
+      {
+        "text": "母子关系是所有人际关系的根源，也是每个观众都能感同身受的关系。但已经有太多文学、电影和电视剧描写过它，我决定用自己的方式去探索，去触碰最极限、最具冲突力量的那种母爱。",
+        "who": "奉俊昊 导演访谈"
+      }
+    ],
+    "why": [
+      {
+        "no": "",
+        "title": "因为这是一部\"没有反派\"的犯罪片",
+        "body": "它不给你一个可以恨的人。凶手藏在最后，但真正让你后背发凉的，是那些普通得不能再普通的镇民、那个只想快点结案的警察、那个劝人认罪的律师。你会发现，真正杀死一个人的，往往不是刀，而是所有人的\"与我无关\"。"
+      },
+      {
+        "no": "",
+        "title": "因为金惠子把这个角色演到了让人不敢直视",
+        "body": "六十多岁第一次主演电影，她把\"母爱\"这个被讲滥了的词，演成了一件有重量、有代价、甚至有罪的东西。看完你会明白：爱到极致是什么样子，以及它要付多少钱。这一个表演，就值回整部电影。"
+      },
+      {
+        "no": "",
+        "title": "因为它是理解奉俊昊的一把钥匙",
+        "body": "《杀人回忆》写集体的无能，《汉江怪物》写体制的荒诞，《寄生虫》写阶级的不可跨越——而《母亲》是中间那块拼图：他第一次把镜头收进一个人的内心，然后用一部悬疑片的外壳，讲了一个关于\"知道真相之后该怎么办\"的故事。"
+      }
+    ],
+    "honors": [],
+    "archive": [],
+    "review": "《杀人回忆》写集体的无能，《汉江怪物》写体制的荒诞，《寄生虫》写阶级的不可跨越——而《母亲》是中间那块拼图：他第一次把镜头收进一个人的内心，然后用一部悬疑片的外壳，讲了一个关于\"知道真相之后该怎么办\"的故事。",
+    "reviewBy": "",
+    "reviewStars": 5,
+    "posterSvg": "<svg viewBox=\"0 0 420 600\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"概念海报：荒原上的孤影\">\n          <defs>\n            <linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0\" stop-color=\"#2c3323\"></stop>\n              <stop offset=\".45\" stop-color=\"#1d2317\"></stop>\n              <stop offset=\"1\" stop-color=\"#0c100a\"></stop>\n            </linearGradient>\n            <radialGradient id=\"sun\" cx=\"50%\" cy=\"30%\" r=\"52%\">\n              <stop offset=\"0\" stop-color=\"#e0c88e\" stop-opacity=\".38\"></stop>\n              <stop offset=\"1\" stop-color=\"#e0c88e\" stop-opacity=\"0\"></stop>\n            </radialGradient>\n            <linearGradient id=\"ground\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0\" stop-color=\"#1a1f14\"></stop>\n              <stop offset=\"1\" stop-color=\"#080b06\"></stop>\n            </linearGradient>\n            <linearGradient id=\"fig\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0\" stop-color=\"#050703\"></stop>\n              <stop offset=\"1\" stop-color=\"#050703\"></stop>\n            </linearGradient>\n            <filter id=\"soft\"><feGaussianBlur stdDeviation=\"6\"></feGaussianBlur></filter>\n          </defs>\n\n          <rect width=\"420\" height=\"600\" fill=\"url(#sky)\"></rect>\n          <rect width=\"420\" height=\"600\" fill=\"url(#sun)\"></rect>\n\n          <!-- 远山 -->\n          <path d=\"M0,330 C70,308 130,336 200,320 C270,304 330,332 420,314 L420,600 L0,600 Z\" fill=\"#151a10\" opacity=\".9\"></path>\n          <path d=\"M0,368 C90,352 160,378 240,364 C320,350 370,372 420,362 L420,600 L0,600 Z\" fill=\"#10140c\"></path>\n\n          <!-- 地平线 -->\n          <rect x=\"0\" y=\"392\" width=\"420\" height=\"1\" fill=\"#c2a464\" opacity=\".28\"></rect>\n\n          <!-- 地面 -->\n          <rect x=\"0\" y=\"392\" width=\"420\" height=\"208\" fill=\"url(#ground)\"></rect>\n\n          <!-- 草浪（远景细线） -->\n          <g stroke=\"#6f8465\" stroke-width=\"1\" opacity=\".5\" fill=\"none\">\n            <path d=\"M0,440 Q30,420 60,438 T120,436 T180,440 T240,434 T300,440 T360,436 T420,440\"></path>\n            <path d=\"M0,470 Q36,448 72,466 T144,464 T216,470 T288,462 T360,468 T420,466\"></path>\n            <path d=\"M0,506 Q42,484 84,502 T168,500 T252,506 T336,498 T420,504\"></path>\n            <path d=\"M0,548 Q48,524 96,544 T192,542 T288,548 T384,540 T420,544\"></path>\n          </g>\n\n          <!-- 主体草叶剪影 -->\n          <g stroke=\"#0a0d07\" stroke-width=\"2.6\" fill=\"none\" opacity=\".95\" stroke-linecap=\"round\">\n            <path d=\"M18,600 Q22,536 12,498\"></path>\n            <path d=\"M40,600 Q46,528 34,486\"></path>\n            <path d=\"M62,600 Q66,542 58,512\"></path>\n            <path d=\"M84,600 Q90,530 78,492\"></path>\n            <path d=\"M108,600 Q112,548 104,518\"></path>\n            <path d=\"M132,600 Q140,522 126,478\"></path>\n            <path d=\"M158,600 Q162,540 154,506\"></path>\n            <path d=\"M182,600 Q188,526 176,490\"></path>\n            <path d=\"M206,600 Q210,548 202,516\"></path>\n            <path d=\"M232,600 Q240,524 226,482\"></path>\n            <path d=\"M258,600 Q262,542 254,510\"></path>\n            <path d=\"M282,600 Q288,528 276,492\"></path>\n            <path d=\"M306,600 Q310,548 302,518\"></path>\n            <path d=\"M332,600 Q340,524 326,484\"></path>\n            <path d=\"M358,600 Q362,540 354,508\"></path>\n            <path d=\"M382,600 Q388,530 376,494\"></path>\n            <path d=\"M404,600 Q408,548 400,518\"></path>\n          </g>\n\n          <!-- 孤影 -->\n          <g filter=\"url(#soft)\" opacity=\".55\">\n            <ellipse cx=\"210\" cy=\"396\" rx=\"46\" ry=\"9\" fill=\"#000\"></ellipse>\n          </g>\n          <g fill=\"url(#fig)\">\n            <ellipse cx=\"210\" cy=\"298\" rx=\"12\" ry=\"14\"></ellipse>\n            <path d=\"M198,312 Q210,306 222,312 L228,368 Q210,376 192,368 Z\"></path>\n            <path d=\"M196,366 Q203,364 206,366 L204,396 L197,396 Z\"></path>\n            <path d=\"M214,366 Q221,364 224,366 L223,396 L216,396 Z\"></path>\n            <path d=\"M200,316 Q190,336 186,358 L191,360 Q196,338 204,320 Z\"></path>\n            <path d=\"M220,316 Q230,336 234,358 L229,360 Q224,338 216,320 Z\"></path>\n          </g>\n\n          <!-- 金色飞尘 -->\n          <g fill=\"#e0c88e\" opacity=\".55\">\n            <circle cx=\"96\" cy=\"250\" r=\"1.4\"></circle><circle cx=\"150\" cy=\"198\" r=\"1\"></circle><circle cx=\"272\" cy=\"222\" r=\"1.2\"></circle>\n            <circle cx=\"330\" cy=\"286\" r=\"1\"></circle><circle cx=\"70\" cy=\"330\" r=\"1.1\"></circle><circle cx=\"352\" cy=\"176\" r=\"1.3\"></circle>\n            <circle cx=\"196\" cy=\"158\" r=\".9\"></circle><circle cx=\"118\" cy=\"392\" r=\"1\"></circle><circle cx=\"300\" cy=\"352\" r=\".9\"></circle>\n          </g>\n\n          <!-- 竖排片名 -->\n          <g fill=\"#f0ece0\" font-family=\"Songti SC, Noto Serif SC, serif\" font-size=\"34\" letter-spacing=\"6\">\n            <text x=\"42\" y=\"140\">母</text>\n            <text x=\"42\" y=\"186\">亲</text>\n          </g>\n          <g fill=\"#c2a464\" font-family=\"Georgia, serif\" font-size=\"11\" letter-spacing=\"5\">\n            <text x=\"44\" y=\"222\">MOTHER</text>\n            <text x=\"44\" y=\"242\" font-size=\"10\" fill=\"#8fa382\">마더</text>\n          </g>\n\n          <rect x=\"24\" y=\"24\" width=\"372\" height=\"552\" fill=\"none\" stroke=\"#c2a464\" stroke-opacity=\".22\"></rect>\n        </svg>",
+    "posterCaption": "CONCEPT POSTER · 非官方设计"
+  },
+  {
     "id": "20260427",
     "date": "20260427",
     "zhTitle": "辛 德 勒 的 名 单",
