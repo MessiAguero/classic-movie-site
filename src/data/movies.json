@@ -821,6 +821,49 @@
     "posterCaption": "CONCEPT POSTER · 非官方设计"
   },
   {
+    "id": "20260915",
+    "date": "20260915",
+    "zhTitle": "恐怖直播",
+    "enTitle": "",
+    "year": "",
+    "tagline": "",
+    "meta": "编导 金秉宇·主演 河正宇·李璟荣·全慧珍",
+    "ratings": [],
+    "plot": [
+      "清晨的首尔，一间并不起眼的电台直播间。一个从电视新闻主播被贬到广播节目的男人，正对着话筒念着税率改革——那是一种体面地被放逐的声音。",
+      "然后，一通电话打了进来。对方自称是住在昌信洞的普通工人，抱怨电费、抱怨生计、抱怨没有人听他说话。他被打断、被当作胡言乱语、被一句挑衅草率地送走。紧接着，窗外的大桥在他眼前炸成了废墟。",
+      "对于一个职业生涯已经跌到谷底的主持人来说，这不是灾难，这是机会。他几乎是本能地做了一个决定：把这通电话留在节目里，把整场危机做成一次独家直播，用自己的麦克风换回属于他的黄金时段。",
+      "电话那头的人愿意配合。他要的甚至不是钱——而是一句始终没有人打算说出口的话。于是直播间变成了谈判桌，麦克风变成了唯一的通道。可随着每一分钟过去，这个坐在椅子上的男人慢慢意识到：他不是这场直播的主持人，而是它的人质。"
+    ],
+    "spoilerNote": "NO SPOILER 本页全程无剧透：不透露凶案真相、幕后身份、关键反转与结局走向。请放心阅读。",
+    "highlights": [],
+    "quotes": [],
+    "why": [
+      {
+        "no": "",
+        "title": "它证明了\"小成本\"从来不是限制312 万美元",
+        "body": "35 亿韩元、一间直播间、一个主演、97 分钟。它没有把钱花在奇观上，而是全部押在剧本的密度和表演的强度上。上映第 6 天就跨过盈亏平衡线，最终吸引 555 万韩国观众——这是对\"类型片必须靠大场面\"最直接的反驳。"
+      },
+      {
+        "no": "",
+        "title": "它是一部真正\"关于镜头\"的犯罪片媒介即主题",
+        "body": "大部分犯罪片让观众站在现场之外看案子，这一部把案子和摄像机放在同一个房间里。谁被拍、谁被剪掉、谁被代言、谁的哭声更适合做背景音——这些在别的片子里是手段，在这里是主题本身。"
+      },
+      {
+        "no": "",
+        "title": "它敢让观众不舒服没有英雄，没有出口",
+        "body": "主角不是好人——他精明、投机、把灾难当成升职的台阶；对手也不是纯粹的恶，他只有一个别人不愿给的诉求。影片不给廉价的正义，也不给安慰性的答案，它把整件事推到逻辑的尽头，然后把门关上。"
+      }
+    ],
+    "honors": [],
+    "archive": [],
+    "review": "主角不是好人——他精明、投机、把灾难当成升职的台阶；对手也不是纯粹的恶，他只有一个别人不愿给的诉求。影片不给廉价的正义，也不给安慰性的答案，它把整件事推到逻辑的尽头，然后把门关上。",
+    "reviewBy": "",
+    "reviewStars": 5,
+    "posterSvg": "<svg viewBox=\"0 0 420 600\" role=\"img\" aria-label=\"恐怖直播概念海报\">\n        <defs>\n          <linearGradient id=\"pbg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n            <stop offset=\"0%\" stop-color=\"#101728\"></stop><stop offset=\"100%\" stop-color=\"#060910\"></stop>\n          </linearGradient>\n          <radialGradient id=\"pglow\" cx=\"50%\" cy=\"38%\" r=\"52%\">\n            <stop offset=\"0%\" stop-color=\"#3fe0d8\" stop-opacity=\".20\"></stop>\n            <stop offset=\"100%\" stop-color=\"#3fe0d8\" stop-opacity=\"0\"></stop>\n          </radialGradient>\n          <radialGradient id=\"pred\" cx=\"50%\" cy=\"86%\" r=\"46%\">\n            <stop offset=\"0%\" stop-color=\"#ff2e3f\" stop-opacity=\".34\"></stop>\n            <stop offset=\"100%\" stop-color=\"#ff2e3f\" stop-opacity=\"0\"></stop>\n          </radialGradient>\n        </defs>\n        <rect width=\"420\" height=\"600\" fill=\"url(#pbg)\"></rect>\n        <rect width=\"420\" height=\"600\" fill=\"url(#pglow)\"></rect>\n        <rect width=\"420\" height=\"600\" fill=\"url(#pred)\"></rect>\n\n        <!-- 外框 -->\n        <rect x=\"18\" y=\"18\" width=\"384\" height=\"564\" fill=\"none\" stroke=\"#1d283c\" stroke-width=\"1\"></rect>\n        <rect x=\"26\" y=\"26\" width=\"368\" height=\"548\" fill=\"none\" stroke=\"#121b2b\" stroke-width=\"1\"></rect>\n\n        <!-- 顶部 ON AIR -->\n        <g>\n          <rect x=\"150\" y=\"46\" width=\"120\" height=\"24\" fill=\"none\" stroke=\"#ff2e3f\" stroke-opacity=\".6\"></rect>\n          <circle cx=\"166\" cy=\"58\" r=\"3.6\" fill=\"#ff2e3f\"></circle>\n          <text x=\"178\" y=\"62\" font-family=\"SF Mono,Menlo,monospace\" font-size=\"11\" letter-spacing=\"3.2\" fill=\"#ffb3ba\">ON AIR</text>\n        </g>\n\n        <!-- 声波同心圆 -->\n        <g fill=\"none\" stroke=\"#3fe0d8\">\n          <circle cx=\"210\" cy=\"288\" r=\"52\" stroke-opacity=\".42\" stroke-width=\"1\"></circle>\n          <circle cx=\"210\" cy=\"288\" r=\"82\" stroke-opacity=\".28\" stroke-width=\"1\"></circle>\n          <circle cx=\"210\" cy=\"288\" r=\"116\" stroke-opacity=\".18\" stroke-width=\"1\"></circle>\n          <circle cx=\"210\" cy=\"288\" r=\"152\" stroke-opacity=\".10\" stroke-width=\"1\"></circle>\n          <circle cx=\"210\" cy=\"288\" r=\"190\" stroke-opacity=\".055\" stroke-width=\"1\"></circle>\n        </g>\n\n        <!-- 麦克风 -->\n        <g transform=\"translate(210,272)\">\n          <rect x=\"-19\" y=\"-52\" width=\"38\" height=\"66\" rx=\"19\" fill=\"#0d1421\" stroke=\"#3fe0d8\" stroke-opacity=\".7\" stroke-width=\"1.4\"></rect>\n          <g stroke=\"#3fe0d8\" stroke-opacity=\".42\" stroke-width=\"1\">\n            <line x1=\"-13\" y1=\"-38\" x2=\"13\" y2=\"-38\"></line><line x1=\"-13\" y1=\"-27\" x2=\"13\" y2=\"-27\"></line>\n            <line x1=\"-13\" y1=\"-16\" x2=\"13\" y2=\"-16\"></line><line x1=\"-13\" y1=\"-5\" x2=\"13\" y2=\"-5\"></line>\n          </g>\n          <path d=\"M-30 -14 A30 30 0 0 0 30 -14\" fill=\"none\" stroke=\"#3fe0d8\" stroke-opacity=\".55\" stroke-width=\"1.4\"></path>\n          <line x1=\"0\" y1=\"16\" x2=\"0\" y2=\"52\" stroke=\"#3fe0d8\" stroke-opacity=\".55\" stroke-width=\"1.4\"></line>\n          <line x1=\"-22\" y1=\"52\" x2=\"22\" y2=\"52\" stroke=\"#3fe0d8\" stroke-opacity=\".55\" stroke-width=\"1.4\"></line>\n          <circle cx=\"0\" cy=\"-9\" r=\"2.6\" fill=\"#ff2e3f\"></circle>\n        </g>\n\n        <!-- 声音波纹线 -->\n        <g fill=\"none\" stroke=\"#3fe0d8\" stroke-opacity=\".5\" stroke-width=\"1.2\">\n          <path d=\"M56 288 h26 v-14 h20 v28 h22 v-42 h24 v56 h24 v-30 h22 v16 h20 v-8 h26\"></path>\n          <path d=\"M56 340 h20 v10 h22 v-22 h24 v34 h26 v-26 h22 v14 h22 v-10 h28\" stroke-opacity=\".26\"></path>\n        </g>\n\n        <!-- 底部汉江大桥 -->\n        <g>\n          <rect x=\"40\" y=\"470\" width=\"340\" height=\"2\" fill=\"#22314a\"></rect>\n          <g stroke=\"#1b2639\" stroke-width=\"1\" fill=\"none\">\n            <rect x=\"150\" y=\"418\" width=\"8\" height=\"54\" fill=\"#0e1626\" stroke=\"#22314a\"></rect>\n            <rect x=\"262\" y=\"418\" width=\"8\" height=\"54\" fill=\"#0e1626\" stroke=\"#22314a\"></rect>\n            <path d=\"M154 420 L60 470 M154 420 L110 470 M154 420 L200 470 M154 420 L240 470 M154 420 L300 470 M154 420 L360 470\"></path>\n            <path d=\"M266 420 L170 470 M266 420 L230 470 M266 420 L320 470 M266 420 L380 470\"></path>\n          </g>\n          <ellipse cx=\"210\" cy=\"472\" rx=\"120\" ry=\"16\" fill=\"#ff2e3f\" opacity=\".16\"></ellipse>\n        </g>\n\n        <!-- 标题 -->\n        <text x=\"210\" y=\"536\" text-anchor=\"middle\" font-family=\"PingFang SC,Hiragino Sans GB,sans-serif\" font-size=\"30\" font-weight=\"700\" letter-spacing=\"9\" fill=\"#eef3f9\">恐怖直播</text>\n        <text x=\"210\" y=\"560\" text-anchor=\"middle\" font-family=\"SF Mono,Menlo,monospace\" font-size=\"9.5\" letter-spacing=\"3.4\" fill=\"#63707f\">THE TERROR LIVE · 2013</text>\n      </svg>",
+    "posterCaption": "CONCEPT POSTER · 概念视觉"
+  },
+  {
     "id": "20260427",
     "date": "20260427",
     "zhTitle": "辛 德 勒 的 名 单",
