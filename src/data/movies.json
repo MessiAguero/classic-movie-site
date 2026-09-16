@@ -864,6 +864,49 @@
     "posterCaption": "CONCEPT POSTER · 概念视觉"
   },
   {
+    "id": "20260916",
+    "date": "20260916",
+    "zhTitle": "共同警备区",
+    "enTitle": "",
+    "year": "",
+    "tagline": "",
+    "meta": "",
+    "ratings": [],
+    "plot": [],
+    "spoilerNote": "无剧透 本文只介绍影片的设定、气质与看点，不含关键情节与结局。放心往下读。",
+    "highlights": [],
+    "quotes": [
+      {
+        "text": "有些线画在地上，一米宽，抬脚就能跨过去； 有些线画在人心里，一辈子也跨不过去。",
+        "who": ""
+      }
+    ],
+    "why": [
+      {
+        "no": "",
+        "title": "它用类型片的外壳，装了一个悲剧的内核",
+        "body": "表面上看，这是一部标准的悬疑犯罪片：一起枪击案、两份对不上的口供、一颗消失的子弹、一个层层剥开的真相。可它真正在意的从来不是\"凶手是谁\"。"
+      },
+      {
+        "no": "",
+        "title": "表演的密度，高到几乎不像一部 2000 年的类型片",
+        "body": "宋康昊把喜剧节奏和悲剧重量放在同一个角色身上；李秉宪靠沉默和眼神撑起整个中段；申河均用不到一半的戏份拿到了青龙奖最佳男配角；李英爱则提供了全片唯一的\"理性视角\"。"
+      },
+      {
+        "no": "",
+        "title": "它改写了韩国电影的坐标",
+        "body": "在这部片子之前，韩国电影还在摸索自己的工业标准；在它之后，本土票房纪录、宽银幕技术、国际电影节的入场券，一起被重新定义了。"
+      }
+    ],
+    "honors": [],
+    "archive": [],
+    "review": "2000 年度票房冠军、打破影史纪录、柏林金熊奖提名、香港金像奖最佳亚洲电影提名——它之后，才有《老男孩》的戛纳、才有后来那一整代韩国电影的底气。想理解韩国电影是怎么走到今天的，这部是绕不过去的一课。",
+    "reviewBy": "",
+    "reviewStars": 5,
+    "posterSvg": "<svg viewBox=\"0 0 600 800\" role=\"img\" aria-label=\"共同警备区 概念海报\">\n            <defs>\n              <linearGradient id=\"pbg\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n                <stop offset=\"0\" stop-color=\"#0d1410\"></stop>\n                <stop offset=\".5\" stop-color=\"#080c09\"></stop>\n                <stop offset=\"1\" stop-color=\"#050705\"></stop>\n              </linearGradient>\n              <radialGradient id=\"pline\" cx=\".5\" cy=\".5\" r=\".5\">\n                <stop offset=\"0\" stop-color=\"#e3b166\" stop-opacity=\".55\"></stop>\n                <stop offset=\"1\" stop-color=\"#e3b166\" stop-opacity=\"0\"></stop>\n              </radialGradient>\n              <linearGradient id=\"psweep\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n                <stop offset=\"0\" stop-color=\"#e3b166\" stop-opacity=\".30\"></stop>\n                <stop offset=\"1\" stop-color=\"#e3b166\" stop-opacity=\"0\"></stop>\n              </linearGradient>\n              <linearGradient id=\"phor\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"0\">\n                <stop offset=\"0\" stop-color=\"#8a9a63\" stop-opacity=\"0\"></stop>\n                <stop offset=\".5\" stop-color=\"#e3b166\" stop-opacity=\".9\"></stop>\n                <stop offset=\"1\" stop-color=\"#8a9a63\" stop-opacity=\"0\"></stop>\n              </linearGradient>\n              <g id=\"fig\">\n                <circle cx=\"0\" cy=\"-82\" r=\"10.5\"></circle>\n                <path d=\"M-13 -70 L13 -70 L9.5 -36 L-9.5 -36 Z\"></path>\n                <path d=\"M-9.5 -36 L-6 0 L-1.5 0 L-2.5 -36 Z\"></path>\n                <path d=\"M9.5 -36 L6 0 L1.5 0 L2.5 -36 Z\"></path>\n                <path d=\"M-13 -67 L-27 -44\" stroke-width=\"6\" fill=\"none\" stroke-linecap=\"round\"></path>\n                <path d=\"M13 -67 L26 -46\" stroke-width=\"6\" fill=\"none\" stroke-linecap=\"round\"></path>\n                <path d=\"M-22 -60 L18 -12\" stroke-width=\"2.6\" fill=\"none\" stroke=\"#8ba3b0\" stroke-opacity=\".55\"></path>\n              </g>\n            </defs>\n\n            <rect width=\"600\" height=\"800\" fill=\"url(#pbg)\"></rect>\n            <!-- 探照光束 -->\n            <path d=\"M120 0 L330 0 L250 520 L40 520 Z\" fill=\"url(#psweep)\" opacity=\".55\"></path>\n            <path d=\"M470 0 L600 0 L600 520 L420 520 Z\" fill=\"url(#psweep)\" opacity=\".32\"></path>\n            <!-- 雪 -->\n            <g fill=\"#e9e5db\" opacity=\".5\">\n              <circle cx=\"72\" cy=\"120\" r=\"1.5\"></circle><circle cx=\"180\" cy=\"66\" r=\"1.1\"></circle><circle cx=\"266\" cy=\"182\" r=\"1.6\"></circle>\n              <circle cx=\"352\" cy=\"104\" r=\"1.2\"></circle><circle cx=\"438\" cy=\"204\" r=\"1.4\"></circle><circle cx=\"528\" cy=\"142\" r=\"1.1\"></circle>\n              <circle cx=\"118\" cy=\"292\" r=\"1.3\"></circle><circle cx=\"232\" cy=\"346\" r=\"1.1\"></circle><circle cx=\"318\" cy=\"266\" r=\"1.5\"></circle>\n              <circle cx=\"406\" cy=\"330\" r=\"1.2\"></circle><circle cx=\"494\" cy=\"386\" r=\"1.4\"></circle><circle cx=\"150\" cy=\"430\" r=\"1.1\"></circle>\n              <circle cx=\"286\" cy=\"462\" r=\"1.3\"></circle><circle cx=\"378\" cy=\"424\" r=\"1\"></circle><circle cx=\"546\" cy=\"470\" r=\"1.2\"></circle>\n              <circle cx=\"96\" cy=\"536\" r=\"1.1\"></circle><circle cx=\"212\" cy=\"586\" r=\"1.3\"></circle><circle cx=\"330\" cy=\"618\" r=\"1\"></circle>\n              <circle cx=\"452\" cy=\"566\" r=\"1.2\"></circle><circle cx=\"524\" cy=\"646\" r=\"1.1\"></circle><circle cx=\"164\" cy=\"686\" r=\"1.2\"></circle>\n              <circle cx=\"404\" cy=\"712\" r=\"1\"></circle><circle cx=\"278\" cy=\"742\" r=\"1.2\"></circle>\n            </g>\n            <!-- 远景塔 -->\n            <g fill=\"#070a08\">\n              <path d=\"M78 520 L88 520 L98 372 L68 372 Z\"></path>\n              <rect x=\"58\" y=\"346\" width=\"52\" height=\"26\"></rect>\n              <path d=\"M52 346 L116 346 L104 332 L64 332 Z\"></path>\n            </g>\n            <!-- 地面 -->\n            <rect x=\"0\" y=\"520\" width=\"600\" height=\"280\" fill=\"#060906\"></rect>\n            <!-- 分界线光 -->\n            <ellipse cx=\"300\" cy=\"520\" rx=\"300\" ry=\"30\" fill=\"url(#pline)\"></ellipse>\n            <rect x=\"0\" y=\"519\" width=\"600\" height=\"2\" fill=\"url(#phor)\"></rect>\n            <!-- 界桩 -->\n            <g fill=\"#0a0f0b\" stroke=\"#e3b166\" stroke-opacity=\".5\" stroke-width=\"1\">\n              <rect x=\"290\" y=\"498\" width=\"20\" height=\"44\"></rect>\n              <rect x=\"70\" y=\"502\" width=\"14\" height=\"36\"></rect>\n              <rect x=\"516\" y=\"502\" width=\"14\" height=\"36\"></rect>\n            </g>\n            <!-- 两名士兵 -->\n            <g fill=\"#040604\" stroke=\"#8a9a63\" stroke-opacity=\".35\" stroke-width=\"1\">\n              <use href=\"#fig\" x=\"248\" y=\"520\"></use>\n              <use href=\"#fig\" x=\"352\" y=\"520\" transform=\"translate(352,520) scale(-1,1) translate(-352,-520)\"></use>\n            </g>\n            <!-- 标题 -->\n            <g fill=\"#f2eee4\">\n              <text x=\"46\" y=\"118\" font-family=\"Songti SC,STSong,serif\" font-size=\"46\" letter-spacing=\"8\">共同</text>\n              <text x=\"46\" y=\"176\" font-family=\"Songti SC,STSong,serif\" font-size=\"46\" letter-spacing=\"8\">警备区</text>\n            </g>\n            <line x1=\"46\" y1=\"200\" x2=\"150\" y2=\"200\" stroke=\"#8a9a63\" stroke-width=\"1\"></line>\n            <text x=\"46\" y=\"228\" fill=\"#8ba3b0\" font-family=\"-apple-system,sans-serif\" font-size=\"12.5\" letter-spacing=\"3.4\">공동경비구역 JSA</text>\n            <text x=\"46\" y=\"700\" fill=\"#8a9a63\" font-family=\"-apple-system,sans-serif\" font-size=\"12\" letter-spacing=\"4\">A FILM BY PARK CHAN-WOOK</text>\n            <text x=\"46\" y=\"726\" fill=\"#5f6659\" font-family=\"-apple-system,sans-serif\" font-size=\"11.5\" letter-spacing=\"3\">2000 · 110 MIN</text>\n            <text x=\"554\" y=\"700\" fill=\"#5f6659\" font-family=\"-apple-system,sans-serif\" font-size=\"11.5\" letter-spacing=\"2\" text-anchor=\"end\">KOREA</text>\n            <text x=\"554\" y=\"726\" fill=\"#5f6659\" font-family=\"-apple-system,sans-serif\" font-size=\"11.5\" letter-spacing=\"2\" text-anchor=\"end\">CJ ENT.</text>\n          </svg>",
+    "posterCaption": "概念海报 · 依影片意象重绘"
+  },
+  {
     "id": "20260427",
     "date": "20260427",
     "zhTitle": "辛 德 勒 的 名 单",
