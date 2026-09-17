@@ -59,6 +59,20 @@ const pages = fs.readdirSync(SRC)
 const byId = new Map(movies.map((m) => [m.id, m]));
 const latestId = pages[0]?.id;
 
+/* 统一去重：同一部电影只保留最新一次推荐（按片名归一化） */
+const normTitle = (s) => (s || '').replace(/\s+/g, '').toLowerCase();
+const uniquePages = (() => {
+  const seen = new Map();
+  for (const p of pages) {
+    const m = byId.get(p.id);
+    const key = normTitle(m?.zhTitle || p.id);
+    if (!seen.has(key)) seen.set(key, p); // pages 已按日期倒序，先到先得 = 最新
+  }
+  return [...seen.values()];
+})();
+console.log(`去重：${pages.length} 天 → ${uniquePages.length} 部唯一电影`);
+const CSS_VER = '20260917b'; // 版本号用于刷新浏览器缓存
+
 /* ---------- 统一主题 CSS ---------- */
 const CSS = `:root{--bg:#0e0a07;--bg2:#171009;--ink:#f3e6d2;--ink-soft:#c9b69a;--ink-dim:#9a856a;
 --gold:#d8a14a;--gold-bright:#f4c869;--line:rgba(216,161,74,.22);--card:rgba(38,26,16,.72)}
@@ -155,6 +169,8 @@ function navHtml(prefix, current) {
 }
 
 /** 右下角「回到顶部」按钮（滚动超过 400px 才出现） */
+const BACK_TO_TOP = `<script>if('scrollRestoration' in history)history.scrollRestoration='manual';addEventListener('load',function(){window.scrollTo(0,0)});</script>`;
+
 const TOP_BUTTON = `<button class="cmp-top" id="cmp-top" aria-label="回到顶部" title="回到顶部"
   onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 <script>addEventListener('scroll',function(){var b=document.getElementById('cmp-top');if(b){b.className='cmp-top'+(scrollY>400?' on':'')}},{passive:true});</script>`;
@@ -166,7 +182,7 @@ function shell({ title, current, prefix, body, extraHead = '' }) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${esc(title)}</title>
-<link rel="stylesheet" href="${prefix}assets/site.css">
+<link rel="stylesheet" href="${prefix}assets/site.css?v=${CSS_VER}">
 ${extraHead}
 </head>
 <body>
@@ -175,6 +191,7 @@ ${navHtml(prefix, current)}
 ${body}
 </div>
 <footer class="cmp-foot"><div class="m">经典电影推荐</div>每日一部公认经典 · 评分高 · 口碑好 · 不剧透</footer>
+<script>if('scrollRestoration' in history)history.scrollRestoration='manual';</script>
 </body>
 </html>`;
 }
@@ -189,16 +206,30 @@ fs.mkdirSync(path.join(DIST, 'daily'), { recursive: true });
 fs.mkdirSync(path.join(DIST, 'assets'), { recursive: true });
 fs.writeFileSync(path.join(DIST, 'assets', 'site.css'), CSS);
 
+// 本地海报（自托管，避免外链失效）
+const POSTERS_SRC = path.join(ROOT, 'public', 'posters');
+if (fs.existsSync(POSTERS_SRC)) {
+  fs.mkdirSync(path.join(DIST, 'posters'), { recursive: true });
+  let n = 0;
+  for (const f of fs.readdirSync(POSTERS_SRC)) {
+    fs.copyFileSync(path.join(POSTERS_SRC, f), path.join(DIST, 'posters', f));
+    n++;
+  }
+  console.log(`本地海报：${n} 张 → dist/posters/`);
+}
+
 // 1) 原版页面（注入统一导航，其余原文保留）
 for (const p of pages) {
   let html = fs.readFileSync(path.join(SRC, p.file), 'utf8');
-  const link = `<link rel="stylesheet" href="../assets/site.css">`;
+  const link = `<link rel="stylesheet" href="../assets/site.css?v=${CSS_VER}">`;
   html = html.includes('</head>') ? html.replace('</head>', `${link}\n</head>`) : `${link}\n${html}`;
   // 导航条放在页面最顶部（随页面滚动，不悬浮）
   html = /<body[^>]*>/i.test(html)
     ? html.replace(/<body([^>]*)>/i, `<body$1>\n${navHtml('../', '')}`)
     : `${navHtml('../', '')}\n${html}`;
-  html = html.includes('</body>') ? html.replace('</body>', `${TOP_BUTTON}\n</body>`) : html + TOP_BUTTON;
+  html = html.includes('</body>')
+    ? html.replace('</body>', `${TOP_BUTTON}\n${BACK_TO_TOP}\n</body>`)
+    : html + TOP_BUTTON + BACK_TO_TOP;
   fs.writeFileSync(path.join(DIST, 'daily', `${p.id}.html`), html);
 }
 console.log(`原版页面：${pages.length} 份 → dist/daily/`);
@@ -206,18 +237,20 @@ console.log(`原版页面：${pages.length} 份 → dist/daily/`);
 // 2) 首页 = 最新一天的原版页面
 if (latestId) {
   let html = fs.readFileSync(path.join(SRC, pages[0].file), 'utf8');
-  const link = `<link rel="stylesheet" href="assets/site.css">`;
+  const link = `<link rel="stylesheet" href="assets/site.css?v=${CSS_VER}">`;
   html = html.includes('</head>') ? html.replace('</head>', `${link}\n</head>`) : `${link}\n${html}`;
   html = /<body[^>]*>/i.test(html)
     ? html.replace(/<body([^>]*)>/i, `<body$1>\n${navHtml('', 'index.html')}`)
     : `${navHtml('', 'index.html')}\n${html}`;
-  html = html.includes('</body>') ? html.replace('</body>', `${TOP_BUTTON}\n</body>`) : html + TOP_BUTTON;
+  html = html.includes('</body>')
+    ? html.replace('</body>', `${TOP_BUTTON}\n${BACK_TO_TOP}\n</body>`)
+    : html + TOP_BUTTON + BACK_TO_TOP;
   fs.writeFileSync(path.join(DIST, 'index.html'), html);
   console.log(`首页 ← ${latestId}（${byId.get(latestId)?.zhTitle || ''}）`);
 }
 
 // 3) 往期推荐
-const rows = pages
+const rows = uniquePages
   .map((p) => {
     const m = byId.get(p.id) || {};
     return `<a class="cmp-row" href="daily/${p.id}.html">
@@ -233,14 +266,14 @@ fs.writeFileSync(
     title: '往期推荐 · 经典电影推荐',
     current: 'archive.html',
     prefix: '',
-    body: `${pageTitle('往期<em>推荐</em>', `共 ${pages.length} 部 · 点击查看当日完整推荐页`)}
+    body: `${pageTitle('往期<em>推荐</em>', `共 ${uniquePages.length} 部 · 点击查看当日完整推荐页`)}
 <div class="cmp-card">${rows}</div>`,
   }),
 );
 
 // 4) 电影海报
 const galleryById = new Map(gallery.map((g) => [g.id, g]));
-const posterCards = pages
+const posterCards = uniquePages
   .map((p) => {
     const m = byId.get(p.id) || {};
     const g = galleryById.get(p.id);
@@ -264,16 +297,23 @@ fs.writeFileSync(
 );
 
 // 5) 经典台词
-const quoteCards = pages
+const seenQuotes = new Set();
+const quoteCards = uniquePages
   .flatMap((p) => {
     const m = byId.get(p.id) || {};
     return (m.quotes || [])
-      .map((q) => String(q.text || '').replace(/^["“”'‘]+|["“”'‘]+$/g, '').trim())
-      .filter(Boolean)
+      .map((q) => ({ text: String(q.text || '').replace(/^["“”'‘]+|["“”'‘]+$/g, '').trim(), who: q.who || '' }))
+      .filter((q) => {
+        if (!q.text) return false;
+        const key = q.text.replace(/\s+/g, '');
+        if (seenQuotes.has(key)) return false;
+        seenQuotes.add(key);
+        return true;
+      })
       .map(
-        (text) => `<div class="cmp-quote cmp-card">
-  <p>${esc(text)}</p>
-  <div class="w">— ${esc((m.quotes.find((q) => q.text.includes(text)) || {}).who || '')}</div>
+        (q) => `<div class="cmp-quote cmp-card">
+  <p>${esc(q.text)}</p>
+  <div class="w">— ${esc(q.who)}</div>
   <div class="f"><a href="daily/${p.id}.html">《${esc(m.zhTitle || p.id)}》${m.year ? ' · ' + esc(m.year) : ''} ↗</a></div>
 </div>`,
       );
@@ -291,7 +331,7 @@ fs.writeFileSync(
 );
 
 // 6) 经典解析
-const analysisCards = pages
+const analysisCards = uniquePages
   .filter((p) => byId.get(p.id)?.review)
   .map((p) => {
     const m = byId.get(p.id);
@@ -308,7 +348,7 @@ fs.writeFileSync(
     title: '经典解析 · 经典电影推荐',
     current: 'analyses.html',
     prefix: '',
-    body: `${pageTitle('经典<em>解析</em>', `${analysisCards ? pages.filter((p) => byId.get(p.id)?.review).length : 0} 篇编辑评语 · 点击进入当日推荐页`)}
+    body: `${pageTitle('经典<em>解析</em>', `${uniquePages.filter((p) => byId.get(p.id)?.review).length} 篇编辑评语 · 点击进入当日推荐页`)}
 <div class="cmp-grid p3">${analysisCards || '<div class="cmp-empty">暂无解析</div>'}</div>`,
   }),
 );
