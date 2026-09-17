@@ -452,8 +452,8 @@ function parseFile(file) {
   const base = path.basename(file, '.html').replace('movie-recommend-', '');
   // 归一化 id / date（兼容 2026-08-17 与 20260812-bttf 两种命名）
   const idMatch =
-    base.match(/^(\d{4})-(\d{2})-(\d{2})(?:-([A-Za-z0-9]+))?$/) ||
-    base.match(/^(\d{8})(?:-([A-Za-z0-9]+))?$/);
+    base.match(/^(\d{4})-(\d{2})-(\d{2})(?:-([A-Za-z0-9-]+))?$/) ||
+    base.match(/^(\d{8})(?:-([A-Za-z0-9-]+))?$/);
   const compactDate = idMatch
     ? idMatch[1].length === 4
       ? idMatch[1] + idMatch[2] + idMatch[3]
@@ -498,7 +498,7 @@ function parseFile(file) {
 }
 
 const files = fs.readdirSync(SRC_DIR)
-  .filter((f) => /^movie-recommend-(\d{8}|\d{4}-\d{2}-\d{2})(-[A-Za-z0-9]+)?\.html$/.test(f))
+  .filter((f) => /^movie-recommend-(\d{8}|\d{4}-\d{2}-\d{2})(-[A-Za-z0-9-]+)?\.html$/.test(f))
   .sort();
 
 const movies = files.map((f) => parseFile(path.join(SRC_DIR, f)));

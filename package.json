@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "predev": "node tools/copy-pages.mjs",
+    "prebuild": "node tools/copy-pages.mjs",
+    "pages": "node tools/copy-pages.mjs",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",

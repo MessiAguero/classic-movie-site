@@ -77,6 +77,14 @@ export default function PosterPage() {
             <Link to={`/daily/${movie.id}`} className="auth-submit" style={{ width: 'auto', padding: '10px 26px', textDecoration: 'none' }}>
               查看每日推荐
             </Link>
+            <a
+              className="btn-ghost"
+              href={`daily/${movie.id}.html`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              原版精美页面 ↗
+            </a>
           </div>
         </div>
       </div>

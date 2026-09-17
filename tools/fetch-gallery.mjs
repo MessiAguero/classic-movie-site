@@ -16,30 +16,40 @@ const UA =
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function getVqd(query) {
-  const url = 'https://duckduckgo.com/?q=' + encodeURIComponent(query) + '&iax=images&ia=images';
-  const r = await fetch(url, { headers: { 'User-Agent': UA } });
-  const html = await r.text();
-  const m = html.match(/vqd=['"]?([\d-]+)/);
-  return m ? m[1] : null;
+  try {
+    const url = 'https://duckduckgo.com/?q=' + encodeURIComponent(query) + '&iax=images&ia=images';
+    const r = await fetch(url, { headers: { 'User-Agent': UA } });
+    const html = await r.text();
+    const m = html.match(/vqd=['"]?([\d-]+)/);
+    return m ? m[1] : null;
+  } catch (e) {
+    console.warn('  搜索受限，跳过本次查询:', e instanceof Error ? e.message : e);
+    return null;
+  }
 }
 
 async function imageSearch(query) {
   const vqd = await getVqd(query);
   if (!vqd) return [];
-  const url =
-    `https://duckduckgo.com/i.js?l=us-en&o=json&q=` + encodeURIComponent(query) + `&vqd=` + vqd;
-  const r = await fetch(url, { headers: { 'User-Agent': UA } });
-  if (!r.ok) return [];
-  const j = await r.json();
-  return (j.results || [])
-    .map((x) => ({ title: x.title || '', image: x.image || '', width: x.width, height: x.height }))
-    .filter(
-      (x) =>
-        x.image &&
-        /\.(jpe?g|png|webp)(\?|$)/i.test(x.image) &&
-        !/\.(svg|gif)/i.test(x.image) &&
-        x.image.startsWith('http'),
-    );
+  try {
+    const url =
+      `https://duckduckgo.com/i.js?l=us-en&o=json&q=` + encodeURIComponent(query) + `&vqd=` + vqd;
+    const r = await fetch(url, { headers: { 'User-Agent': UA } });
+    if (!r.ok) return [];
+    const j = await r.json();
+    return (j.results || [])
+      .map((x) => ({ title: x.title || '', image: x.image || '', width: x.width, height: x.height }))
+      .filter(
+        (x) =>
+          x.image &&
+          /\.(jpe?g|png|webp)(\?|$)/i.test(x.image) &&
+          !/\.(svg|gif)/i.test(x.image) &&
+          x.image.startsWith('http'),
+      );
+  } catch (e) {
+    console.warn('  图片搜索失败，跳过:', e instanceof Error ? e.message : e);
+    return [];
+  }
 }
 
 /** 给结果打分：TMDB CDN 海报最优，标题含片名加分 */
@@ -107,5 +117,15 @@ for (const m of movies) {
   }
 }
 
-fs.writeFileSync(OUT_FILE, JSON.stringify(results, null, 2), 'utf8');
-console.log(`\n完成：${ok}/${movies.length} 部电影获得图片 → ${OUT_FILE}`);
+// 合并写回：保留已有条目（含此前人工校正过的海报），仅新增/更新本次抓取的条目
+let existing = [];
+try {
+  existing = JSON.parse(fs.readFileSync(OUT_FILE, 'utf8'));
+} catch {
+  /* 首次运行 */
+}
+const merged = new Map(existing.map((x) => [x.id, x]));
+for (const item of results) merged.set(item.id, item);
+const ordered = movies.map((m) => merged.get(m.id)).filter(Boolean);
+fs.writeFileSync(OUT_FILE, JSON.stringify(ordered, null, 2), 'utf8');
+console.log(`\n完成：本次新增/更新 ${ok} 部，图库共 ${ordered.length}/${movies.length} 部 → ${OUT_FILE}`);

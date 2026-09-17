@@ -55,6 +55,14 @@ export default function HistoryPage() {
                       {m.enTitle}
                     </div>
                   ) : null}
+                  <a
+                    href={`daily/${m.id}.html`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ fontSize: 12, color: 'var(--blue)' }}
+                  >
+                    原版页面 ↗
+                  </a>
                 </td>
                 <td className="td-year">{m.year || '—'}</td>
                 <td style={{ color: 'var(--gold)' }}>{top}</td>

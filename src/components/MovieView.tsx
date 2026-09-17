@@ -52,6 +52,16 @@ export default function MovieView({ movie }: { movie: Movie }) {
                 ))}
               </div>
             )}
+            <div className="hero-actions">
+              <a
+                className="btn-ghost"
+                href={`daily/${movie.id}.html`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                查看原版精美页面 ↗
+              </a>
+            </div>
           </div>
         </div>
       </section>
