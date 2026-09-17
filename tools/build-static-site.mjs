@@ -107,6 +107,14 @@ transition:transform .3s,box-shadow .3s,border-color .3s}
 .cmp-poster .cap{padding:12px 14px}
 .cmp-poster .cap b{display:block;font-size:15px;font-weight:700;letter-spacing:.06em}
 .cmp-poster .cap span{font-size:12px;color:var(--ink-dim)}
+.cmp-poster{position:relative}
+.cmp-poster-link{display:block;color:inherit;text-decoration:none}
+.cmp-poster .dl{position:absolute;right:10px;bottom:12px;z-index:2;padding:6px 12px;border-radius:20px;
+border:1px solid rgba(216,161,74,.55);background:rgba(14,10,7,.86);color:var(--gold-bright);font-size:12px;
+text-decoration:none;opacity:0;transition:opacity .25s,background .25s}
+.cmp-poster:hover .dl,.cmp-poster .dl:focus{opacity:1}
+.cmp-poster .dl:hover{background:rgba(216,161,74,.25)}
+@media(hover:none){.cmp-poster .dl{opacity:1}}
 .cmp-row{display:flex;align-items:baseline;gap:14px;padding:14px 18px;border-bottom:1px solid rgba(216,161,74,.12);
 text-decoration:none;color:var(--ink-soft)}
 .cmp-row:hover{background:rgba(216,161,74,.06)}
@@ -114,8 +122,7 @@ text-decoration:none;color:var(--ink-soft)}
 .cmp-row .t{font-size:16px;color:var(--ink);font-weight:700;letter-spacing:.05em}
 .cmp-row .e{font-size:12px;color:var(--ink-dim)}
 .cmp-row .y{margin-left:auto;color:var(--gold-bright);font-family:"Times New Roman",serif}
-.cmp-quote{padding:24px 26px;position:relative}
-.cmp-quote::before{content:"“";position:absolute;top:6px;left:16px;font-size:44px;color:var(--gold);opacity:.35;font-family:Georgia,serif}
+.cmp-quote{padding:22px 24px;position:relative;border-left:3px solid var(--gold)}
 .cmp-quote p{font-size:15px;color:var(--ink);font-style:italic;line-height:1.95}
 .cmp-quote .w{margin-top:10px;font-size:12.5px;color:var(--gold)}
 .cmp-quote .f{margin-top:6px;font-size:12px;color:var(--ink-dim)}
@@ -278,10 +285,15 @@ const posterCards = uniquePages
     const m = byId.get(p.id) || {};
     const g = galleryById.get(p.id);
     if (!g?.imageUrl) return '';
-    return `<a class="cmp-poster cmp-card" href="daily/${p.id}.html">
-  <img src="${esc(g.imageUrl)}" alt="${esc(m.zhTitle)} 海报" loading="lazy">
-  <div class="cap"><b>${esc(m.zhTitle)}</b><span>${esc(m.year || '')}${m.enTitle ? ' · ' + esc(m.enTitle) : ''}</span></div>
-</a>`;
+    const fileExt = (g.imageUrl.match(/\.(jpe?g|png|webp)$/i) || ['.jpg'])[0];
+    const dlName = `${m.zhTitle}${m.year ? '-' + m.year : ''}-海报${fileExt}`;
+    return `<div class="cmp-poster cmp-card">
+  <a class="cmp-poster-link" href="daily/${p.id}.html">
+    <img src="${esc(g.imageUrl)}" alt="${esc(m.zhTitle)} 海报" loading="lazy">
+    <div class="cap"><b>${esc(m.zhTitle)}</b><span>${esc(m.year || '')}${m.enTitle ? ' · ' + esc(m.enTitle) : ''}</span></div>
+  </a>
+  <a class="dl" href="${esc(g.imageUrl)}" download="${esc(dlName)}" title="下载海报">⬇ 下载</a>
+</div>`;
   })
   .filter(Boolean)
   .join('\n');
@@ -302,7 +314,14 @@ const quoteCards = uniquePages
   .flatMap((p) => {
     const m = byId.get(p.id) || {};
     return (m.quotes || [])
-      .map((q) => ({ text: String(q.text || '').replace(/^["“”'‘]+|["“”'‘]+$/g, '').trim(), who: q.who || '' }))
+      .map((q) => ({
+        // 去掉所有引号字符，避免与文案混在一起造成干扰
+        text: String(q.text || '')
+          .replace(/["“”„‟「」『』『』'‘’‚‛›‹]/g, '')
+          .replace(/\s{2,}/g, ' ')
+          .trim(),
+        who: String(q.who || '').replace(/["“”「」『』]/g, '').trim(),
+      }))
       .filter((q) => {
         if (!q.text) return false;
         const key = q.text.replace(/\s+/g, '');
