@@ -66,11 +66,16 @@ const CSS = `:root{--bg:#0e0a07;--bg2:#171009;--ink:#f3e6d2;--ink-soft:#c9b69a;-
 body{background:var(--bg);color:var(--ink);font-family:"Songti SC","STSong","Noto Serif SC",Georgia,serif;line-height:1.9}
 a{color:var(--gold)}
 ::selection{background:rgba(216,161,74,.35);color:#fff}
-.cmp-nav{position:fixed;top:14px;right:16px;z-index:9999;display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;
-background:rgba(14,10,7,.82);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:30px;padding:6px 10px}
+.cmp-nav{position:relative;z-index:9999;display:flex;gap:4px;flex-wrap:wrap;justify-content:center;
+background:rgba(14,10,7,.96);border-bottom:1px solid var(--line);padding:9px 16px}
 .cmp-nav a{font-size:13px;letter-spacing:.08em;padding:6px 12px;border-radius:20px;text-decoration:none;color:var(--ink-soft)}
 .cmp-nav a:hover{color:var(--gold-bright);background:rgba(216,161,74,.12)}
 .cmp-nav a.on{color:var(--gold-bright);background:rgba(216,161,74,.16)}
+.cmp-top{position:fixed;right:22px;bottom:26px;z-index:9999;width:46px;height:46px;border-radius:50%;
+border:1px solid rgba(216,161,74,.55);background:rgba(14,10,7,.88);color:var(--gold-bright);font-size:20px;
+line-height:1;cursor:pointer;display:none;backdrop-filter:blur(6px);transition:background .2s,transform .2s}
+.cmp-top.on{display:block}
+.cmp-top:hover{background:rgba(216,161,74,.22);transform:translateY(-2px)}
 .cmp-wrap{max-width:1120px;margin:0 auto;padding:96px 22px 70px}
 .cmp-title{text-align:center;margin-bottom:38px}
 .cmp-title h1{font-size:clamp(26px,4vw,40px);letter-spacing:.14em;font-weight:800}
@@ -127,7 +132,8 @@ footer.cmp-foot{text-align:center;color:var(--ink-dim);font-size:12.5px;letter-s
 footer.cmp-foot .m{color:var(--gold);letter-spacing:.4em;font-size:14px}
 @media(max-width:900px){.cmp-grid.p4{grid-template-columns:repeat(2,1fr)}.cmp-grid.p3{grid-template-columns:1fr}}
 @media(max-width:760px){.cmp-grid.p4,.cmp-grid.p2,.cmp-form{grid-template-columns:1fr}
-.cmp-nav{left:12px;right:12px;top:auto;bottom:12px;justify-content:center}.cmp-wrap{padding-top:40px}}
+.cmp-nav{padding:8px 10px;gap:2px}.cmp-nav a{padding:6px 9px;font-size:12.5px}
+.cmp-wrap{padding-top:40px}.cmp-top{right:14px;bottom:16px;width:42px;height:42px}}
 `;
 
 /* ---------- 通用渲染 ---------- */
@@ -147,6 +153,11 @@ function navHtml(prefix, current) {
   ).join('');
   return `<nav class="cmp-nav">${items}</nav>`;
 }
+
+/** 右下角「回到顶部」按钮（滚动超过 400px 才出现） */
+const TOP_BUTTON = `<button class="cmp-top" id="cmp-top" aria-label="回到顶部" title="回到顶部"
+  onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>addEventListener('scroll',function(){var b=document.getElementById('cmp-top');if(b){b.className='cmp-top'+(scrollY>400?' on':'')}},{passive:true});</script>`;
 
 function shell({ title, current, prefix, body, extraHead = '' }) {
   return `<!DOCTYPE html>
@@ -183,8 +194,11 @@ for (const p of pages) {
   let html = fs.readFileSync(path.join(SRC, p.file), 'utf8');
   const link = `<link rel="stylesheet" href="../assets/site.css">`;
   html = html.includes('</head>') ? html.replace('</head>', `${link}\n</head>`) : `${link}\n${html}`;
-  const nav = navHtml('../', '');
-  html = html.includes('</body>') ? html.replace('</body>', `${nav}\n</body>`) : html + nav;
+  // 导航条放在页面最顶部（随页面滚动，不悬浮）
+  html = /<body[^>]*>/i.test(html)
+    ? html.replace(/<body([^>]*)>/i, `<body$1>\n${navHtml('../', '')}`)
+    : `${navHtml('../', '')}\n${html}`;
+  html = html.includes('</body>') ? html.replace('</body>', `${TOP_BUTTON}\n</body>`) : html + TOP_BUTTON;
   fs.writeFileSync(path.join(DIST, 'daily', `${p.id}.html`), html);
 }
 console.log(`原版页面：${pages.length} 份 → dist/daily/`);
@@ -194,8 +208,10 @@ if (latestId) {
   let html = fs.readFileSync(path.join(SRC, pages[0].file), 'utf8');
   const link = `<link rel="stylesheet" href="assets/site.css">`;
   html = html.includes('</head>') ? html.replace('</head>', `${link}\n</head>`) : `${link}\n${html}`;
-  const nav = navHtml('', 'index.html');
-  html = html.includes('</body>') ? html.replace('</body>', `${nav}\n</body>`) : html + nav;
+  html = /<body[^>]*>/i.test(html)
+    ? html.replace(/<body([^>]*)>/i, `<body$1>\n${navHtml('', 'index.html')}`)
+    : `${navHtml('', 'index.html')}\n${html}`;
+  html = html.includes('</body>') ? html.replace('</body>', `${TOP_BUTTON}\n</body>`) : html + TOP_BUTTON;
   fs.writeFileSync(path.join(DIST, 'index.html'), html);
   console.log(`首页 ← ${latestId}（${byId.get(latestId)?.zhTitle || ''}）`);
 }
@@ -359,7 +375,6 @@ fs.writeFileSync(
     current: 'contact.html',
     prefix: '',
     body: contactBody,
-    extraHead: contactScript.replace(/^<script>|<\/script>$/g, ''),
   }).replace('</body>', `${contactScript}\n</body>`),
 );
 
