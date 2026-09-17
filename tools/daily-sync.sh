@@ -46,6 +46,7 @@ echo "== 新增 $count 份 HTML（共 $(ls source-html | wc -l | tr -d ' ') 份�
 
 # 2) 重新解析
 npm run data:parse
+npm run data:years
 
 # 3) 有新电影时抓取海报
 if [ "$count" -gt 0 ]; then

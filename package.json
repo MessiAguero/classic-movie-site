@@ -6,12 +6,14 @@
   "scripts": {
     "dev": "vite",
     "predev": "node tools/copy-pages.mjs",
+    "prebuild": "node tools/fill-years.mjs",
     "pages": "node tools/copy-pages.mjs",
     "build": "node tools/build-static-site.mjs",
     "build:app": "node tools/copy-pages.mjs && tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
     "data:parse": "node tools/parse-html.mjs",
+    "data:years": "node tools/fill-years.mjs",
     "data:gallery": "node tools/fetch-gallery.mjs",
     "data:sync": "node supabase/schema-sync.mjs",
     "admin:create": "node supabase/create-admin.mjs"

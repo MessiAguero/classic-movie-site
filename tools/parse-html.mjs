@@ -407,7 +407,10 @@ function parseHero($) {
       .replace(/[\uAC00-\uD7AF]+/g, ' ')
       .replace(/\s+/g, ' ')
       .trim();
-    if (zhClean && zhClean.length >= 2) zh = zhClean;
+    // 去掉片名首尾多余的标点（如「黄金三镖客 ,」「窃听风暴 ·」）
+    const zhTidy = zhClean.replace(/^[\s,，、.。·・:：;；\-—_|]+|[\s,，、.。·・:：;；\-—_|]+$/g, '').trim();
+    if (zhTidy && zhTidy.length >= 2) zh = zhTidy;
+    else if (zhClean && zhClean.length >= 2) zh = zhClean;
   }
   return { zhTitle: zh, enTitle: en, year, tagline, meta };
 }
