@@ -15,6 +15,14 @@ set -euo pipefail
 # launchd 环境 PATH 很精简，手动补全 node/npm/git 路径
 export PATH="/Users/admin/.local/bin:/Users/admin/.hermes/node/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
+# 防并发：文件监听 + 定时任务可能同时触发
+LOCK="/tmp/classicmovie-sync.lock"
+if ! mkdir "$LOCK" 2>/dev/null; then
+  echo "== $(date '+%F %T') 已有同步任务在运行，跳过本次"
+  exit 0
+fi
+trap 'rmdir "$LOCK" 2>/dev/null || true' EXIT
+
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SRC="${DAILY_SRC:-/Users/admin/WorkBuddy/automation-20260423112820}"
 cd "$ROOT"
@@ -43,6 +51,12 @@ for f in "$SRC"/movie-recommend-*.html; do
   fi
 done
 echo "== 新增 $count 份 HTML（共 $(ls source-html | wc -l | tr -d ' ') 份）"
+
+# 没有任何新文件、且工作区无改动时直接退出（让高频检查几乎零开销）
+if [ "$count" -eq 0 ] && [ -z "$(git status --porcelain)" ]; then
+  echo "== $(date '+%F %T') 没有新内容，跳过解析与同步"
+  exit 0
+fi
 
 # 2) 重新解析
 npm run data:parse

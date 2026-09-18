@@ -17,6 +17,16 @@
 	<string>/tmp/classicmovie-sync.log</string>
 	<!-- 每 3 小时检查一次（10800 秒），避免睡眠错过固定时刻 -->
 	<key>StartInterval</key>
-	<integer>10800</integer>
+	<integer>900</integer>
+
+	<!-- WorkBuddy 生成新页面时立即触发同步（准实时） -->
+	<key>WatchPaths</key>
+	<array>
+		<string>/Users/admin/WorkBuddy/automation-20260423112820</string>
+	</array>
+
+	<!-- 两次触发的最小间隔，避免频繁抖动 -->
+	<key>ThrottleInterval</key>
+	<integer>60</integer>
 </dict>
 </plist>
