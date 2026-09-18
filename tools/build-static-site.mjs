@@ -198,6 +198,7 @@ ${navHtml(prefix, current)}
 ${body}
 </div>
 <footer class="cmp-foot"><div class="m">经典电影推荐</div>每日一部公认经典 · 评分高 · 口碑好 · 不剧透</footer>
+${TOP_BUTTON}
 <script>if('scrollRestoration' in history)history.scrollRestoration='manual';</script>
 </body>
 </html>`;

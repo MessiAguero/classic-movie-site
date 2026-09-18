@@ -6,7 +6,8 @@
     "year": "2015",
     "imageUrl": "posters/20260917.jpg",
     "title": "局内人 (2015) — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/ai5MmnirK6YgJkgZyFU8zgUHKze.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/ai5MmnirK6YgJkgZyFU8zgUHKze.jpg",
+    "hiRes": true
   },
   {
     "id": "20260916",
@@ -15,7 +16,8 @@
     "year": "2000",
     "imageUrl": "posters/20260916.jpg",
     "title": "共同警备区 (2000) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/m4OVFuBJc1bwmez1vLAXNvpBgus.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/m4OVFuBJc1bwmez1vLAXNvpBgus.jpg",
+    "hiRes": true
   },
   {
     "id": "20260915",
@@ -25,7 +27,8 @@
     "imageUrl": "posters/20260915.jpg",
     "title": "The Terror Live (2013) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/9VFBtfMRKh5Yfd8jQ4kPhhD441D.jpg",
-    "tmdbId": "209764"
+    "tmdbId": "209764",
+    "hiRes": true
   },
   {
     "id": "20260914",
@@ -35,7 +38,8 @@
     "imageUrl": "posters/20260914.jpg",
     "title": "Mother (2009) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/8oBnSkZE6GDVugAbLPO6uJd4GcS.jpg",
-    "tmdbId": "30018"
+    "tmdbId": "30018",
+    "hiRes": true
   },
   {
     "id": "20260907-new-world",
@@ -44,7 +48,8 @@
     "year": "2013",
     "imageUrl": "posters/20260907-new-world.jpg",
     "title": "New World (2013) — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/zPo7SQ20IqcZK6JPjCWg2GzOCQp.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/zPo7SQ20IqcZK6JPjCWg2GzOCQp.jpg",
+    "hiRes": true
   },
   {
     "id": "20260907",
@@ -53,7 +58,8 @@
     "year": "2003",
     "imageUrl": "posters/20260907.jpg",
     "title": "Oldboy (2003) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/7fORin7liRDkgFBslrT4ZYWi6AN.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/7fORin7liRDkgFBslrT4ZYWi6AN.jpg",
+    "hiRes": true
   },
   {
     "id": "20260901",
@@ -62,7 +68,8 @@
     "year": "2003",
     "imageUrl": "posters/20260901.jpg",
     "title": "杀人回忆 (2003) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/fOtl0hH2g3wJ5Hf4saKMzhpOf7h.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/fOtl0hH2g3wJ5Hf4saKMzhpOf7h.jpg",
+    "hiRes": true
   },
   {
     "id": "20260831",
@@ -71,7 +78,8 @@
     "year": "1992",
     "imageUrl": "posters/20260831.jpg",
     "title": "Scent of a Woman (1992) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/4adI7IaveWb7EidYXfLb3MK3CgO.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/4adI7IaveWb7EidYXfLb3MK3CgO.jpg",
+    "hiRes": true
   },
   {
     "id": "20260827",
@@ -81,7 +89,8 @@
     "imageUrl": "posters/20260827.jpg",
     "title": "Sunset Boulevard (1950) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/zt8aQ6ksqK6p1AopC5zVTDS9pKT.jpg",
-    "tmdbId": "599"
+    "tmdbId": "599",
+    "hiRes": true
   },
   {
     "id": "20260826-north-by-northwest",
@@ -90,7 +99,8 @@
     "year": "1959",
     "imageUrl": "posters/20260826-north-by-northwest.jpg",
     "title": "North by Northwest (1959) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/lPsJvVIAlM7QxhyakcFBeqyWyJL.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/lPsJvVIAlM7QxhyakcFBeqyWyJL.jpg",
+    "hiRes": true
   },
   {
     "id": "20260826",
@@ -99,7 +109,8 @@
     "year": "1953",
     "imageUrl": "posters/20260826.jpg",
     "title": "罗马假日 (1953) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/epc4NAJZOiQa9h4AkEgDnVY4F7E.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/epc4NAJZOiQa9h4AkEgDnVY4F7E.jpg",
+    "hiRes": true
   },
   {
     "id": "20260824",
@@ -108,7 +119,8 @@
     "year": "1979",
     "imageUrl": "posters/20260824.jpg",
     "title": "Apocalypse Now (1979) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/gQB8Y5RCMkv2zwzFHbUJX3kAhvA.jpg",
+    "hiRes": true
   },
   {
     "id": "20260819",
@@ -118,7 +130,8 @@
     "imageUrl": "posters/20260819.jpg",
     "title": "The Apartment (1960) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/hhSRt1KKfRT0yEhEtRW3qp31JFU.jpg",
-    "tmdbId": "284"
+    "tmdbId": "284",
+    "hiRes": true
   },
   {
     "id": "20260817",
@@ -128,7 +141,8 @@
     "imageUrl": "posters/20260817.jpg",
     "title": "The Third Man (1949) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/vqnFHTx1phgTAsLfxZoejSbMVHA.jpg",
-    "tmdbId": "1092"
+    "tmdbId": "1092",
+    "hiRes": true
   },
   {
     "id": "20260814",
@@ -138,7 +152,8 @@
     "imageUrl": "posters/20260814.jpg",
     "title": "A Chinese Odyssey Part Two: Cinderella (1995) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/ksloRonL1kOq4yErf9LOJ5qDhem.jpg",
-    "tmdbId": "21835"
+    "tmdbId": "21835",
+    "hiRes": true
   },
   {
     "id": "20260812-bttf",
@@ -147,7 +162,8 @@
     "year": "1985",
     "imageUrl": "posters/20260812-bttf.jpg",
     "title": "Back to the Future (1985) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/16W1FzOFcWPdAj7WHzxV4perI96.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/16W1FzOFcWPdAj7WHzxV4perI96.jpg",
+    "hiRes": true
   },
   {
     "id": "20260811",
@@ -156,7 +172,8 @@
     "year": "1994",
     "imageUrl": "posters/20260811.jpg",
     "title": "重庆森林 (1994) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/jMbs0P5evFJG9xGlVr3tkpqjX2j.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/jMbs0P5evFJG9xGlVr3tkpqjX2j.jpg",
+    "hiRes": true
   },
   {
     "id": "20260809",
@@ -166,7 +183,8 @@
     "imageUrl": "posters/20260809.jpg",
     "title": "The Silence of the Lambs (1991) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg",
-    "tmdbId": "274"
+    "tmdbId": "274",
+    "hiRes": true
   },
   {
     "id": "20260808",
@@ -176,7 +194,8 @@
     "imageUrl": "posters/20260808.jpg",
     "title": "Amadeus (1984) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/gQRfiyfGvr1az0quaYyMram3Aqt.jpg",
-    "tmdbId": "279"
+    "tmdbId": "279",
+    "hiRes": true
   },
   {
     "id": "20260807",
@@ -185,7 +204,8 @@
     "year": "1993",
     "imageUrl": "posters/20260807.jpg",
     "title": "Farewell My Concubine (1993) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/iJ99VEPZ8aZTGm18DN6RfZCxYwk.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/iJ99VEPZ8aZTGm18DN6RfZCxYwk.jpg",
+    "hiRes": true
   },
   {
     "id": "20260806",
@@ -195,7 +215,8 @@
     "imageUrl": "posters/20260806.jpg",
     "title": "Once Upon a Time in the West (1968) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/qbYgqOczabWNn2XKwgMtVrntD6P.jpg",
-    "tmdbId": "335"
+    "tmdbId": "335",
+    "hiRes": true
   },
   {
     "id": "20260805",
@@ -204,7 +225,8 @@
     "year": "1962",
     "imageUrl": "posters/20260805.jpg",
     "title": "杀死一只知更鸟 (1962) - 剧照 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/9yzIq7uNp1HuVZcYHrUbblNch2Y.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/9yzIq7uNp1HuVZcYHrUbblNch2Y.jpg",
+    "hiRes": true
   },
   {
     "id": "20260803",
@@ -213,7 +235,8 @@
     "year": "1954",
     "imageUrl": "posters/20260803.jpg",
     "title": "Rear Window (1954) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/o9U7kbBLY1jtis5dnEc2V1qRsvk.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/o9U7kbBLY1jtis5dnEc2V1qRsvk.jpg",
+    "hiRes": true
   },
   {
     "id": "20260731",
@@ -223,7 +246,8 @@
     "imageUrl": "posters/20260731.jpg",
     "title": "The Godfather Part II (1974) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/sSuQTCZwqKrNBNIsksO9IAUoWP9.jpg",
-    "tmdbId": "240"
+    "tmdbId": "240",
+    "hiRes": true
   },
   {
     "id": "20260729-2",
@@ -232,7 +256,8 @@
     "year": "2000",
     "imageUrl": "posters/20260729-2.jpg",
     "title": "卧虎藏龙 (2000) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/uGpoarcMIBuwmHLD9NEhQoxHrap.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/uGpoarcMIBuwmHLD9NEhQoxHrap.jpg",
+    "hiRes": true
   },
   {
     "id": "20260729",
@@ -241,7 +266,8 @@
     "year": "1957",
     "imageUrl": "posters/20260729.jpg",
     "title": "第七封印 (1957) - 剧照 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/64ps50GBTBCgcfgJ2xlYEZKW6Zp.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/64ps50GBTBCgcfgJ2xlYEZKW6Zp.jpg",
+    "hiRes": true
   },
   {
     "id": "20260728",
@@ -250,7 +276,8 @@
     "year": "1953",
     "imageUrl": "posters/20260728.jpg",
     "title": "Tokyo Story (1953) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/1m22QAnNpGqJStARqwLbZ1wTrVu.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/1m22QAnNpGqJStARqwLbZ1wTrVu.jpg",
+    "hiRes": true
   },
   {
     "id": "20260724",
@@ -259,7 +286,8 @@
     "year": "1962",
     "imageUrl": "posters/20260724.jpg",
     "title": "Lawrence of Arabia (1962) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/kbkrxQ8FpJ09mMwgaLZG6HJ0xv4.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/kbkrxQ8FpJ09mMwgaLZG6HJ0xv4.jpg",
+    "hiRes": true
   },
   {
     "id": "20260723",
@@ -268,7 +296,8 @@
     "year": "1950",
     "imageUrl": "posters/20260723.jpg",
     "title": "Rashomon (1950) - TMDB",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/nNq2fIswPphwd57JeFI6BVHqxvW.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/nNq2fIswPphwd57JeFI6BVHqxvW.jpg",
+    "hiRes": true
   },
   {
     "id": "20260721-2",
@@ -286,7 +315,8 @@
     "year": "1989",
     "imageUrl": "posters/20260721.jpg",
     "title": "死亡诗社 (1989) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/kUFV2FLrXWyZIRGsLCTBNtjhFmh.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/kUFV2FLrXWyZIRGsLCTBNtjhFmh.jpg",
+    "hiRes": true
   },
   {
     "id": "20260716",
@@ -296,7 +326,8 @@
     "imageUrl": "posters/20260716.jpg",
     "title": "Vertigo (1958) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/15uOEfqBNTVtDUT7hGBVCka0rZz.jpg",
-    "tmdbId": "426"
+    "tmdbId": "426",
+    "hiRes": true
   },
   {
     "id": "20260715",
@@ -306,7 +337,8 @@
     "imageUrl": "posters/20260715.jpg",
     "title": "A Beautiful Mind (2001) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/rEIg5yJdNOt9fmX4P8gU9LeNoTQ.jpg",
-    "tmdbId": "453"
+    "tmdbId": "453",
+    "hiRes": true
   },
   {
     "id": "20260714",
@@ -315,7 +347,8 @@
     "year": "1977",
     "imageUrl": "posters/20260714.jpg",
     "title": "星球大战4：新希望 (1977) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/1X0XMBED4PE6jVv3o1FHSKZZBvp.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/1X0XMBED4PE6jVv3o1FHSKZZBvp.jpg",
+    "hiRes": true
   },
   {
     "id": "20260713-2",
@@ -324,7 +357,8 @@
     "year": "1995",
     "imageUrl": "posters/20260713-2.jpg",
     "title": "Braveheart (1995) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/bvdPq5pMB5fycE5m21sX1yzR9ga.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/bvdPq5pMB5fycE5m21sX1yzR9ga.jpg",
+    "hiRes": true
   },
   {
     "id": "20260713",
@@ -334,7 +368,8 @@
     "imageUrl": "posters/20260713.jpg",
     "title": "Flipped (2010) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/6zDYFigohwncqFL00MKbFV01dWb.jpg",
-    "tmdbId": "43949"
+    "tmdbId": "43949",
+    "hiRes": true
   },
   {
     "id": "20260711",
@@ -343,7 +378,8 @@
     "year": "1991",
     "imageUrl": "posters/20260711.jpg",
     "title": "终结者2：审判日 (1991) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/bG9hLbMaT5EsUpypTFlzx01IAGM.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/bG9hLbMaT5EsUpypTFlzx01IAGM.jpg",
+    "hiRes": true
   },
   {
     "id": "20260710",
@@ -352,7 +388,8 @@
     "year": "1952",
     "imageUrl": "posters/20260710.jpg",
     "title": "Singin' in the Rain (1952) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/hO6qlozcTsowL253xv8ibAUOmdV.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/hO6qlozcTsowL253xv8ibAUOmdV.jpg",
+    "hiRes": true
   },
   {
     "id": "20260709",
@@ -361,7 +398,8 @@
     "year": "1966",
     "imageUrl": "posters/20260709.jpg",
     "title": "黄金三镖客 (1966) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/4ecd2JeSwC217sifKYwwjEJUt3S.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/4ecd2JeSwC217sifKYwwjEJUt3S.jpg",
+    "hiRes": true
   },
   {
     "id": "20260708",
@@ -379,7 +417,8 @@
     "year": "1995",
     "imageUrl": "posters/20260707.jpg",
     "title": "七宗罪 (1995) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/e7J95YHcmLtyUtB1yojY76xQO90.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/e7J95YHcmLtyUtB1yojY76xQO90.jpg",
+    "hiRes": true
   },
   {
     "id": "20260706",
@@ -389,7 +428,8 @@
     "imageUrl": "posters/20260706.jpg",
     "title": "The Lord of the Rings: The Fellowship of the Ring (2001) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg",
-    "tmdbId": "120"
+    "tmdbId": "120",
+    "hiRes": true
   },
   {
     "id": "20260705",
@@ -398,7 +438,8 @@
     "year": "2004",
     "imageUrl": "posters/20260705.jpg",
     "title": "哈尔的移动城堡 (2004) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/kCkujRkvuiGavqevrUvSDzHwvq3.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/kCkujRkvuiGavqevrUvSDzHwvq3.jpg",
+    "hiRes": true
   },
   {
     "id": "20260704",
@@ -407,7 +448,8 @@
     "year": "2009",
     "imageUrl": "posters/20260704.jpg",
     "title": "三傻大闹宝莱坞 (2009) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/3Kdkci7FE36fWcsuoeGFYApBBE1.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/3Kdkci7FE36fWcsuoeGFYApBBE1.jpg",
+    "hiRes": true
   },
   {
     "id": "20260703",
@@ -416,7 +458,8 @@
     "year": "1939",
     "imageUrl": "posters/20260703.jpg",
     "title": "乱世佳人 (1939) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/s7nCZSELEAHO6xIcVj2ONolmC59.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/s7nCZSELEAHO6xIcVj2ONolmC59.jpg",
+    "hiRes": true
   },
   {
     "id": "20260702",
@@ -425,7 +468,8 @@
     "year": "1936",
     "imageUrl": "posters/20260702.jpg",
     "title": "摩登时代 (1936) - TMDB",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/q1GGtQ5OUBEOdq50aaKZUjUVaSU.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/q1GGtQ5OUBEOdq50aaKZUjUVaSU.jpg",
+    "hiRes": true
   },
   {
     "id": "20260701",
@@ -434,7 +478,8 @@
     "year": "2010",
     "imageUrl": "posters/20260701.jpg",
     "title": "让子弹飞 (2010) - 剧照 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/jXPtpe8LoVEq77JBFecESeOCjsp.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/jXPtpe8LoVEq77JBFecESeOCjsp.jpg",
+    "hiRes": true
   },
   {
     "id": "20260629",
@@ -443,7 +488,8 @@
     "year": "2009",
     "imageUrl": "posters/20260629.jpg",
     "title": "阿凡达 (2009) - 剧照 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/ivnxAMAtFlzKy3JMRAcQur7bHVR.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/ivnxAMAtFlzKy3JMRAcQur7bHVR.jpg",
+    "hiRes": true
   },
   {
     "id": "20260628",
@@ -451,8 +497,10 @@
     "enTitle": "Your Name.",
     "year": "2016",
     "imageUrl": "posters/20260628.jpg",
-    "title": "你的名字。 (2016) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/xlwgJ4ixmr999HbRNhPmyXP9SML.jpg"
+    "title": "Your Name. (2016) — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/vfJFJPepRKapMd5G2ro7klIRysq.jpg",
+    "hiRes": true,
+    "tmdbId": "372058"
   },
   {
     "id": "20260627",
@@ -462,7 +510,8 @@
     "imageUrl": "posters/20260627.jpg",
     "title": "The Last Emperor (1987) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/7TILJhdeJAaEyDiwvJZMo9SQBoe.jpg",
-    "tmdbId": "746"
+    "tmdbId": "746",
+    "hiRes": true
   },
   {
     "id": "20260626",
@@ -471,7 +520,8 @@
     "year": "2011",
     "imageUrl": "posters/20260626.jpg",
     "title": "触不可及 (2011) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/6oJg6F5uDiDXZeOgmtGPFCk3zbf.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/6oJg6F5uDiDXZeOgmtGPFCk3zbf.jpg",
+    "hiRes": true
   },
   {
     "id": "20260624",
@@ -480,7 +530,8 @@
     "year": "1986",
     "imageUrl": "posters/20260624.jpg",
     "title": "天空之城 (1986) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/38HFcLw99MzQCCqsmzKsXNdluqH.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/38HFcLw99MzQCCqsmzKsXNdluqH.jpg",
+    "hiRes": true
   },
   {
     "id": "20260623",
@@ -490,7 +541,8 @@
     "imageUrl": "posters/20260623.jpg",
     "title": "The Prestige (2006) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/Ag2B2KHKQPukjH7WutmgnnSNurZ.jpg",
-    "tmdbId": "1124"
+    "tmdbId": "1124",
+    "hiRes": true
   },
   {
     "id": "20260622",
@@ -499,7 +551,8 @@
     "year": "1998",
     "imageUrl": "posters/20260622.jpg",
     "title": "Saving Private Ryan (1998) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/wUyhdcvGN9YCQ8SzRn1R04MHE2H.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/wUyhdcvGN9YCQ8SzRn1R04MHE2H.jpg",
+    "hiRes": true
   },
   {
     "id": "20260618",
@@ -508,7 +561,8 @@
     "year": "1994",
     "imageUrl": "posters/20260618.jpg",
     "title": "狮子王 (1994) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/1GRlzimoDrKqMP88pN1OLTJTGus.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/1GRlzimoDrKqMP88pN1OLTJTGus.jpg",
+    "hiRes": true
   },
   {
     "id": "20260617",
@@ -518,7 +572,8 @@
     "imageUrl": "posters/20260617.jpg",
     "title": "The Pianist (2002) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/2hFvxCCWrTmCYwfy7yum0GKRi3Y.jpg",
-    "tmdbId": "423"
+    "tmdbId": "423",
+    "hiRes": true
   },
   {
     "id": "20260616",
@@ -527,7 +582,8 @@
     "year": "2017",
     "imageUrl": "posters/20260616.jpg",
     "title": "寻梦环游记 (2017) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/5axGVn1bomdYBHcOvbGyYOHdovE.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/5axGVn1bomdYBHcOvbGyYOHdovE.jpg",
+    "hiRes": true
   },
   {
     "id": "20260615",
@@ -536,7 +592,8 @@
     "year": "2014",
     "imageUrl": "posters/20260615.jpg",
     "title": "布达佩斯大饭店 (2014) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/74OikPMyF1VMuYO4wXp9OEAoazY.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/74OikPMyF1VMuYO4wXp9OEAoazY.jpg",
+    "hiRes": true
   },
   {
     "id": "20260614",
@@ -545,7 +602,8 @@
     "year": "2006",
     "imageUrl": "posters/20260614.jpg",
     "title": "当幸福来敲门 (2006) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/d27bAwHJdrcuWjgXFA5yMDj8wZq.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/d27bAwHJdrcuWjgXFA5yMDj8wZq.jpg",
+    "hiRes": true
   },
   {
     "id": "20260612",
@@ -554,7 +612,8 @@
     "year": "2008",
     "imageUrl": "posters/20260612.jpg",
     "title": "机器人总动员 (2008) - 剧照 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/pjLdH5VIKirwVUIZ0iDisXoRGo4.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/pjLdH5VIKirwVUIZ0iDisXoRGo4.jpg",
+    "hiRes": true
   },
   {
     "id": "20260611-2",
@@ -563,7 +622,8 @@
     "year": "1988",
     "imageUrl": "posters/20260611-2.jpg",
     "title": "My Neighbor Totoro (1988) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/sFO4iuTYo2oaO1GNpxROIb29wX6.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/sFO4iuTYo2oaO1GNpxROIb29wX6.jpg",
+    "hiRes": true
   },
   {
     "id": "20260611",
@@ -572,7 +632,8 @@
     "year": "2000",
     "imageUrl": "posters/20260611.jpg",
     "title": "花样年华 (2000) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/ytl36o0jNXI8QZvJcS3nCwusgCf.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/ytl36o0jNXI8QZvJcS3nCwusgCf.jpg",
+    "hiRes": true
   },
   {
     "id": "20260609",
@@ -581,7 +642,8 @@
     "year": "2019",
     "imageUrl": "posters/20260609.jpg",
     "title": "Parasite (2019) - TMDB",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/tNuG3xRhzGUJJRdBmPg9CgRBKNt.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/tNuG3xRhzGUJJRdBmPg9CgRBKNt.jpg",
+    "hiRes": true
   },
   {
     "id": "20260608",
@@ -590,7 +652,8 @@
     "year": "2001",
     "imageUrl": "posters/20260608.jpg",
     "title": "天使爱美丽 (2001) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/hvou87sesWG0CEqJE0opgLWUgWw.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/hvou87sesWG0CEqJE0opgLWUgWw.jpg",
+    "hiRes": true
   },
   {
     "id": "20260607",
@@ -598,8 +661,10 @@
     "enTitle": "",
     "year": "2006",
     "imageUrl": "posters/20260607.jpg",
-    "title": "窃听风暴 (2006) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/gTdEqLE542zaurmaNDEiRQdooV2.jpg"
+    "title": "The Lives of Others (2006) — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/cVUDMnskSc01rdbyH0tLATTJUdP.jpg",
+    "hiRes": true,
+    "tmdbId": "582"
   },
   {
     "id": "20260606",
@@ -608,7 +673,8 @@
     "year": "1957",
     "imageUrl": "posters/20260606.jpg",
     "title": "Witness for the Prosecution (1957) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/fajDQ2p3ub3K5xvRnwCpHwJIAEH.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/fajDQ2p3ub3K5xvRnwCpHwJIAEH.jpg",
+    "hiRes": true
   },
   {
     "id": "20260604",
@@ -617,7 +683,8 @@
     "year": "1982",
     "imageUrl": "posters/20260604.jpg",
     "title": "Blade Runner (1982) - Posters — The Movie Database (TMDb)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/5qz0tVHVa2vc5IpgzfDfMTefUiq.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/5qz0tVHVa2vc5IpgzfDfMTefUiq.jpg",
+    "hiRes": true
   },
   {
     "id": "20260602",
@@ -626,7 +693,8 @@
     "year": "1999",
     "imageUrl": "posters/20260602.jpg",
     "title": "The Green Mile (1999) - TMDB",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/8VG8fDNiy50H4FedGwdSVUPoaJe.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/8VG8fDNiy50H4FedGwdSVUPoaJe.jpg",
+    "hiRes": true
   },
   {
     "id": "20260531",
@@ -636,7 +704,8 @@
     "imageUrl": "posters/20260531.jpg",
     "title": "The Chorus (2004) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/hUl7gSvkGygyk9wt3zy5NqpC5bb.jpg",
-    "tmdbId": "5528"
+    "tmdbId": "5528",
+    "hiRes": true
   },
   {
     "id": "20260530",
@@ -645,7 +714,8 @@
     "year": "1994",
     "imageUrl": "posters/20260530.jpg",
     "title": "活着 (1994) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/lYxJxcRQAoEHtz94ZMJyODiwh8S.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/lYxJxcRQAoEHtz94ZMJyODiwh8S.jpg",
+    "hiRes": true
   },
   {
     "id": "20260529",
@@ -654,7 +724,8 @@
     "year": "1957",
     "imageUrl": "posters/20260529.jpg",
     "title": "12 Angry Men (1957) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/5W4wwMOGMYVdbig2ahYGa6NOXhM.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/5W4wwMOGMYVdbig2ahYGa6NOXhM.jpg",
+    "hiRes": true
   },
   {
     "id": "20260528",
@@ -663,7 +734,8 @@
     "year": "1997",
     "imageUrl": "posters/20260528.jpg",
     "title": "泰坦尼克号 (1997) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/yz5kSGuTX3GY2ZPvPLNf8zAZg35.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/yz5kSGuTX3GY2ZPvPLNf8zAZg35.jpg",
+    "hiRes": true
   },
   {
     "id": "20260527",
@@ -672,7 +744,8 @@
     "year": "1990",
     "imageUrl": "posters/20260527.jpg",
     "title": "GoodFellas (1990) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/gSnvo52jLCXbooPJorpYcCojKYR.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/gSnvo52jLCXbooPJorpYcCojKYR.jpg",
+    "hiRes": true
   },
   {
     "id": "20260526",
@@ -681,7 +754,8 @@
     "year": "1988",
     "imageUrl": "posters/20260526.jpg",
     "title": "天堂电影院 (1988) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/wf4WcKHtHoUrqxI1rT1WhL52K1o.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/wf4WcKHtHoUrqxI1rT1WhL52K1o.jpg",
+    "hiRes": true
   },
   {
     "id": "20260525",
@@ -690,7 +764,8 @@
     "year": "1954",
     "imageUrl": "posters/20260525.jpg",
     "title": "七武士 (1954) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/uQGJ26Ei8nbLfEBJRryHuk1OIjl.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/uQGJ26Ei8nbLfEBJRryHuk1OIjl.jpg",
+    "hiRes": true
   },
   {
     "id": "20260523",
@@ -699,7 +774,8 @@
     "year": "1994",
     "imageUrl": "posters/20260523.jpg",
     "title": "低俗小说 (1994) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/tUZHzvi5CUL0KADYR0qtWEIDJws.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/tUZHzvi5CUL0KADYR0qtWEIDJws.jpg",
+    "hiRes": true
   },
   {
     "id": "20260521",
@@ -709,7 +785,8 @@
     "imageUrl": "posters/20260521.jpg",
     "title": "One Flew Over the Cuckoo&#39;s Nest (1975) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/kjWsMh72V6d8KRLV4EOoSJLT1H7.jpg",
-    "tmdbId": "510"
+    "tmdbId": "510",
+    "hiRes": true
   },
   {
     "id": "20260520",
@@ -727,7 +804,8 @@
     "year": "1984",
     "imageUrl": "posters/20260519.jpg",
     "title": "美国往事 (1984) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/jFnyOSSKvC4pZIw1MS70z1BoihS.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/jFnyOSSKvC4pZIw1MS70z1BoihS.jpg",
+    "hiRes": true
   },
   {
     "id": "20260517",
@@ -736,7 +814,8 @@
     "year": "1992",
     "imageUrl": "posters/20260517.jpg",
     "title": "闻香识女人 (1992) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/zy18NKFofQKH9sK6aF54iKtdKP0.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/zy18NKFofQKH9sK6aF54iKtdKP0.jpg",
+    "hiRes": true
   },
   {
     "id": "20260512",
@@ -745,7 +824,8 @@
     "year": "2014",
     "imageUrl": "posters/20260512.jpg",
     "title": "星际穿越中的科学 (2014) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/bVgktt2xTD2ozetg2GdJE3SvML.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/bVgktt2xTD2ozetg2GdJE3SvML.jpg",
+    "hiRes": true
   },
   {
     "id": "20260511",
@@ -754,7 +834,8 @@
     "year": "1994",
     "imageUrl": "posters/20260511.jpg",
     "title": "阿甘正传 (1994) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/ftprKUqXGn10GzMe4w8UD668zyG.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/ftprKUqXGn10GzMe4w8UD668zyG.jpg",
+    "hiRes": true
   },
   {
     "id": "20260510",
@@ -763,7 +844,8 @@
     "year": "1997",
     "imageUrl": "posters/20260510.jpg",
     "title": "美丽人生 (1997) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/bDT5DlZxVU1IDcggwy8iSA3qsO8.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/bDT5DlZxVU1IDcggwy8iSA3qsO8.jpg",
+    "hiRes": true
   },
   {
     "id": "20260509",
@@ -772,7 +854,8 @@
     "year": "1941",
     "imageUrl": "posters/20260509.jpg",
     "title": "Citizen Kane (1941) - Posters — The Movie Database (TMDb)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/qSYaVzgkPPwKsyK6VHxyT3SMmJU.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/qSYaVzgkPPwKsyK6VHxyT3SMmJU.jpg",
+    "hiRes": true
   },
   {
     "id": "20260508",
@@ -781,7 +864,8 @@
     "year": "1999",
     "imageUrl": "posters/20260508.jpg",
     "title": "黑客帝国 (1999) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/wchCokag4zVHCSQeCiVMGRwvaxx.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/wchCokag4zVHCSQeCiVMGRwvaxx.jpg",
+    "hiRes": true
   },
   {
     "id": "20260506",
@@ -790,7 +874,8 @@
     "year": "1994",
     "imageUrl": "posters/20260506.jpg",
     "title": "肖申克的救赎 (1994) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/6yDAJdZzYyGysBZ0dkLh6oW3lkK.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/6yDAJdZzYyGysBZ0dkLh6oW3lkK.jpg",
+    "hiRes": true
   },
   {
     "id": "20260505",
@@ -799,7 +884,8 @@
     "year": "1972",
     "imageUrl": "posters/20260505.jpg",
     "title": "The Godfather (1972) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/9nzglwFdTHiuMQFzIXHVmkkJdI1.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/9nzglwFdTHiuMQFzIXHVmkkJdI1.jpg",
+    "hiRes": true
   },
   {
     "id": "20260430",
@@ -808,7 +894,8 @@
     "year": "1999",
     "imageUrl": "posters/20260430.jpg",
     "title": "搏击俱乐部 (1999) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/8v4jKpiXHIP83XcVkAED3r8oHrf.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/8v4jKpiXHIP83XcVkAED3r8oHrf.jpg",
+    "hiRes": true
   },
   {
     "id": "20260429",
@@ -817,7 +904,8 @@
     "year": "1968",
     "imageUrl": "posters/20260429.jpg",
     "title": "2001太空漫游 (1968) - 海报 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/k4n4c1TVuPBG9mAfKvDLEGnaVg3.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/k4n4c1TVuPBG9mAfKvDLEGnaVg3.jpg",
+    "hiRes": true
   },
   {
     "id": "20260428",
@@ -826,7 +914,8 @@
     "year": "2001",
     "imageUrl": "posters/20260428.jpg",
     "title": "千と千尋の神隠し (2001) - ポスター画像 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/dbowwGmprCrPCn6YTsOoxzcBDA9.jpg"
+    "remoteUrl": "https://image.tmdb.org/t/p/w780/dbowwGmprCrPCn6YTsOoxzcBDA9.jpg",
+    "hiRes": true
   },
   {
     "id": "20260427",
@@ -836,7 +925,8 @@
     "imageUrl": "posters/20260427.jpg",
     "title": "Schindler&#39;s List (1993) — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg",
-    "tmdbId": "424"
+    "tmdbId": "424",
+    "hiRes": true
   },
   {
     "id": "20260908",
@@ -846,7 +936,8 @@
     "imageUrl": "posters/20260908.jpg",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/hy49xJiKN1nakkN1ZmKuOf6vQYR.jpg",
     "title": "The Chaser (2008) — The Movie Database (TMDB)",
-    "tmdbId": "13855"
+    "tmdbId": "13855",
+    "hiRes": true
   },
   {
     "id": "20260909",
@@ -856,7 +947,8 @@
     "imageUrl": "posters/20260909.jpg",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/yPJMDxam5HP0DAc1rMk0aNRpSc5.jpg",
     "title": "The Yellow Sea (2010) — The Movie Database (TMDB)",
-    "tmdbId": "57361"
+    "tmdbId": "57361",
+    "hiRes": true
   },
   {
     "id": "20260910",
@@ -866,7 +958,8 @@
     "imageUrl": "posters/20260910.jpg",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/9QJ3cPpYgoPfhRnRPxpQUfx790r.jpg",
     "title": "The Man from Nowhere (2010) — The Movie Database (TMDB)",
-    "tmdbId": "51608"
+    "tmdbId": "51608",
+    "hiRes": true
   },
   {
     "id": "20260911",
@@ -876,6 +969,7 @@
     "imageUrl": "posters/20260911.jpg",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/ag6d5exA6s8VjxxHTXg756wnfGh.jpg",
     "title": "A Dirty Carnival (2006) — The Movie Database (TMDB)",
-    "tmdbId": "23538"
+    "tmdbId": "23538",
+    "hiRes": true
   }
 ]
