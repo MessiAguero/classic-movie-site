@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>与犯罪的战争：坏家伙的全盛时代 · 观影推荐 | 尹钟彬 · 崔岷植 · 河正宇</title>
+<meta name="description" content="韩国犯罪片《与犯罪的战争：坏家伙的全盛时代》(Nameless Gangster, 2012) 无剧透观影推荐：剧情梗概、影片档案、荣誉与为什么值得看。" />
+<style>
+  :root{
+    --ink:#0a0c0d;
+    --ink-2:#0e1113;
+    --panel:#141819;
+    --panel-2:#1b2022;
+    --line:rgba(255,255,255,.075);
+    --line-2:rgba(255,255,255,.145);
+    --text:#eae4d8;
+    --text-2:#b3ada1;
+    --dim:#837e74;
+    --neon:#f0b429;
+    --neon-2:#ffd97a;
+    --neon-3:#fff2cc;
+    --teal:#4fa8a0;
+    --teal-2:#8fd0c9;
+    --red:#c5303a;
+    --red-2:#e8695f;
+    --serif:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    --mono:"SF Mono","JetBrains Mono","Menlo","Consolas",monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;z-index:9998;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.5'/></svg>");
+    opacity:.045;
+    mix-blend-mode:overlay;
+  }
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .serif{font-family:var(--serif)}
+  .mono{font-family:var(--mono)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;align-items:center;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(980px 620px at 22% 18%, rgba(240,180,41,.14), transparent 66%),
+      radial-gradient(760px 520px at 84% 78%, rgba(79,168,160,.11), transparent 68%),
+      linear-gradient(180deg,#0f1213 0%, #08090a 100%);
+  }
+  #heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:.9}
+  .hero-sky{position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;opacity:.94;pointer-events:none}
+  .hero-vignette{
+    position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 92% at 46% 44%, transparent 28%, rgba(3,4,4,.8) 100%);
+  }
+  .hero-inner{position:relative;z-index:5;width:100%;padding:124px 28px 142px}
+
+  .kicker{
+    display:inline-flex;align-items:center;gap:12px;
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.3em;
+    color:var(--neon-2);text-transform:uppercase;
+    border:1px solid rgba(240,180,41,.3);
+    background:rgba(240,180,41,.07);
+    padding:8px 16px;border-radius:2px;
+    margin-bottom:34px;
+  }
+  .kicker i{display:block;width:6px;height:6px;background:var(--neon);border-radius:50%;box-shadow:0 0 12px var(--neon);animation:pulse 2.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+
+  .hero h1{
+    font-family:var(--serif);
+    font-size:clamp(34px,6.2vw,74px);
+    line-height:1.1;
+    letter-spacing:.01em;
+    font-weight:700;
+    background:linear-gradient(174deg,#fff5dd 4%,#f3cd77 36%,#c1912a 72%,#78591a 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 0 74px rgba(240,180,41,.1);
+  }
+  .hero h1 .sm{display:block;font-size:.62em;letter-spacing:.03em;margin-top:6px;opacity:.94}
+  .hero .kr{
+    font-family:var(--serif);
+    font-size:clamp(14px,2.1vw,21px);
+    letter-spacing:.26em;color:var(--neon-2);
+    margin-top:24px;opacity:.88;
+  }
+  .hero .en{
+    font-family:var(--mono);
+    font-size:11.5px;letter-spacing:.36em;color:var(--dim);
+    margin-top:12px;text-transform:uppercase;
+  }
+  .hero-tag{
+    margin-top:36px;max-width:680px;
+    font-size:clamp(16px,2vw,19px);line-height:1.94;color:var(--text-2);
+    border-left:2px solid var(--neon);
+    padding-left:20px;
+  }
+  .hero-meta{
+    margin-top:46px;display:flex;flex-wrap:wrap;gap:22px 36px;
+    font-size:13.5px;color:var(--dim);
+  }
+  .hero-meta b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--neon);text-transform:uppercase;margin-bottom:5px;font-weight:500}
+  .hero-meta span{color:var(--text-2)}
+
+  .scroll-hint{
+    position:absolute;left:50%;bottom:34px;transform:translateX(-50%);
+    z-index:6;font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--dim);
+    display:flex;flex-direction:column;align-items:center;gap:9px;
+  }
+  .scroll-hint i{display:block;width:1px;height:44px;background:linear-gradient(180deg,transparent,var(--neon));animation:drop 2.1s ease-in-out infinite}
+  @keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:104px 0;position:relative}
+  section + section{border-top:1px solid var(--line)}
+  .sec-label{
+    font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--neon);
+    text-transform:uppercase;display:flex;align-items:center;gap:14px;margin-bottom:26px;
+  }
+  .sec-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(240,180,41,.5),transparent)}
+  h2{
+    font-family:var(--serif);
+    font-size:clamp(27px,3.9vw,41px);
+    font-weight:700;letter-spacing:.01em;line-height:1.36;
+    margin-bottom:20px;color:#f7f1e4;
+  }
+  h2 em{font-style:normal;color:var(--neon-2)}
+  .lede{color:var(--text-2);max-width:760px;font-size:16.5px}
+
+  /* spoiler bar */
+  .nospoil{
+    display:flex;gap:16px;align-items:flex-start;
+    border:1px solid rgba(197,48,58,.36);
+    background:linear-gradient(100deg,rgba(197,48,58,.12),rgba(197,48,58,.02));
+    padding:18px 22px;border-radius:3px;
+    font-size:14px;color:#e8ccca;line-height:1.8;
+    margin-bottom:52px;
+  }
+  .nospoil .tag{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:#fff;
+    background:var(--red);padding:4px 9px;border-radius:2px;white-space:nowrap;margin-top:3px;
+  }
+
+  /* synopsis */
+  .syn{display:grid;grid-template-columns:1.35fr .95fr;gap:56px;align-items:start}
+  .syn-body p{margin-bottom:22px;color:var(--text-2);font-size:16.5px;line-height:1.98}
+  .syn-body p:first-of-type::first-letter{
+    font-family:var(--serif);font-size:64px;line-height:.82;float:left;
+    padding:8px 14px 0 0;color:var(--neon-2);font-weight:700;
+  }
+  .pull{
+    margin:34px 0 0;padding:22px 26px;
+    border-left:2px solid var(--red);
+    background:linear-gradient(90deg,rgba(197,48,58,.10),transparent 80%);
+    font-family:var(--serif);font-size:18px;line-height:1.85;color:#eabcb6;
+  }
+  .poster-card{
+    border:1px solid var(--line-2);border-radius:4px;overflow:hidden;
+    background:var(--panel);box-shadow:0 30px 70px -30px rgba(0,0,0,.92);
+  }
+  .poster-card svg{display:block;width:100%;height:auto}
+  .poster-cap{
+    padding:14px 18px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--dim);
+  }
+
+  /* facts */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .fact{background:var(--panel);padding:22px 20px;min-height:106px}
+  .fact b{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--neon);text-transform:uppercase;margin-bottom:9px;font-weight:500}
+  .fact span{font-size:14.2px;color:var(--text-2);line-height:1.65;display:block}
+  .fact span strong{color:#f8f2e4;font-weight:600}
+
+  /* score cards */
+  .scores{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .score{
+    position:relative;background:linear-gradient(165deg,var(--panel-2),var(--panel));
+    border:1px solid var(--line-2);border-radius:4px;padding:26px 24px;overflow:hidden;
+  }
+  .score::after{
+    content:"";position:absolute;top:0;left:0;width:100%;height:2px;
+    background:linear-gradient(90deg,var(--neon),var(--teal),transparent);
+  }
+  .score .n{font-family:var(--serif);font-size:38px;line-height:1;color:#f9f3e6;font-weight:700}
+  .score .n small{font-size:15px;color:var(--dim);margin-left:4px;font-weight:400}
+  .score .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--neon);text-transform:uppercase;margin-bottom:12px}
+  .score .d{margin-top:10px;font-size:12.8px;color:var(--dim);line-height:1.6}
+
+  /* timeline */
+  .tl{position:relative;padding-left:30px;margin-top:12px}
+  .tl::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--neon),rgba(79,168,160,.45),transparent)}
+  .tl-item{position:relative;padding:0 0 30px 0}
+  .tl-item::before{
+    content:"";position:absolute;left:-29px;top:10px;width:9px;height:9px;border-radius:50%;
+    background:var(--ink);border:2px solid var(--neon);box-shadow:0 0 14px rgba(240,180,41,.5);
+  }
+  .tl-item .y{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--teal-2);margin-bottom:5px}
+  .tl-item .t{font-size:15.5px;color:#f1ebdd;line-height:1.7}
+  .tl-item .t em{font-style:normal;color:var(--neon-2);font-weight:600}
+  .tl-item .t span{display:block;font-size:13.4px;color:var(--dim);margin-top:4px}
+
+  /* highlights */
+  .grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:12px}
+  .hl-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:28px 26px;
+    transition:border-color .4s ease,transform .4s ease,background .4s ease;
+  }
+  .hl-card:hover{border-color:rgba(240,180,41,.42);transform:translateY(-4px);background:var(--panel-2)}
+  .hl-card .no{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--teal-2);margin-bottom:14px}
+  .hl-card h4{font-family:var(--serif);font-size:19.5px;line-height:1.45;margin-bottom:12px;color:#f9f3e6}
+  .hl-card p{font-size:14.2px;color:var(--text-2);line-height:1.8}
+
+  /* why */
+  .why{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:12px}
+  .why-row{background:var(--panel);display:grid;grid-template-columns:118px 1fr;gap:0}
+  .why-row .idx{
+    padding:32px 22px;font-family:var(--serif);font-size:40px;color:rgba(240,180,41,.32);
+    border-right:1px solid var(--line);display:flex;align-items:flex-start;justify-content:center;
+  }
+  .why-row .txt{padding:30px 32px}
+  .why-row h4{font-family:var(--serif);font-size:21px;margin-bottom:12px;color:#f9f3e6;line-height:1.5}
+  .why-row p{font-size:15px;color:var(--text-2);line-height:1.9}
+
+  /* notice */
+  .notice{
+    border:1px solid rgba(79,168,160,.34);
+    background:linear-gradient(120deg,rgba(79,168,160,.11),rgba(79,168,160,.02));
+    border-radius:4px;padding:26px 30px;
+    font-size:14.6px;color:#c6d6d3;line-height:1.9;
+  }
+  .notice b{color:var(--teal-2);font-weight:600}
+  .notice .h{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;color:var(--teal-2);
+    text-transform:uppercase;display:block;margin-bottom:12px;
+  }
+
+  /* closing */
+  .closing{
+    text-align:center;padding:118px 0;
+    background:
+      radial-gradient(760px 420px at 50% 38%, rgba(240,180,41,.13), transparent 70%),
+      linear-gradient(180deg,var(--ink-2),var(--ink));
+    border-top:1px solid var(--line);
+  }
+  .closing .q{
+    font-family:var(--serif);font-size:clamp(19px,2.9vw,30px);line-height:1.9;
+    max-width:860px;margin:0 auto 26px;color:#f4eee0;
+  }
+  .closing .q em{font-style:normal;color:var(--neon-2)}
+  .closing .sig{
+    font-family:var(--mono);font-size:11px;letter-spacing:.28em;color:var(--dim);text-transform:uppercase;
+  }
+  .closing .rule{width:56px;height:1px;background:linear-gradient(90deg,transparent,var(--neon),transparent);margin:0 auto 34px}
+
+  /* footer */
+  footer{
+    border-top:1px solid var(--line);
+    padding:26px 0;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--dim);
+    text-transform:uppercase;
+  }
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.68,.28,1),transform .9s cubic-bezier(.22,.68,.28,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:960px){
+    .syn{grid-template-columns:1fr;gap:40px}
+    .facts{grid-template-columns:repeat(2,1fr)}
+    .scores{grid-template-columns:repeat(2,1fr)}
+    .grid6{grid-template-columns:1fr}
+    .why-row{grid-template-columns:74px 1fr}
+    .why-row .idx{font-size:30px;padding:26px 14px}
+    .why-row .txt{padding:26px 22px}
+    section{padding:78px 0}
+    .hero-inner{padding:104px 22px 116px}
+  }
+  @media (max-width:560px){
+    .facts{grid-template-columns:1fr}
+    .scores{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <canvas id="heroCanvas"></canvas>
+
+  <svg class="hero-sky" viewBox="0 0 1600 470" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="bldFar" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#151a1c"/>
+        <stop offset="100%" stop-color="#0a0d0e"/>
+      </linearGradient>
+      <linearGradient id="bldNear" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0d1112"/>
+        <stop offset="100%" stop-color="#060808"/>
+      </linearGradient>
+      <linearGradient id="craneArm" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="rgba(240,180,41,0)"/>
+        <stop offset="40%" stop-color="rgba(240,180,41,.34)"/>
+        <stop offset="100%" stop-color="rgba(240,180,41,0)"/>
+      </linearGradient>
+      <linearGradient id="harborLine" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="rgba(240,180,41,0)"/>
+        <stop offset="34%" stop-color="rgba(240,180,41,.34)"/>
+        <stop offset="70%" stop-color="rgba(79,168,160,.26)"/>
+        <stop offset="100%" stop-color="rgba(79,168,160,0)"/>
+      </linearGradient>
+      <linearGradient id="glowFade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="rgba(240,180,41,.18)"/>
+        <stop offset="100%" stop-color="rgba(240,180,41,0)"/>
+      </linearGradient>
+    </defs>
+
+    <!-- 远处城市天际线 -->
+    <g fill="url(#bldFar)" opacity=".72">
+      <rect x="40" y="266" width="56" height="120"/>
+      <rect x="108" y="238" width="42" height="148"/>
+      <rect x="164" y="282" width="72" height="104"/>
+      <rect x="252" y="252" width="38" height="134"/>
+      <rect x="306" y="296" width="88" height="90"/>
+      <rect x="1178" y="256" width="62" height="130"/>
+      <rect x="1254" y="284" width="46" height="102"/>
+      <rect x="1316" y="242" width="54" height="144"/>
+      <rect x="1386" y="272" width="80" height="114"/>
+      <rect x="1482" y="252" width="46" height="134"/>
+      <rect x="1542" y="288" width="58" height="98"/>
+    </g>
+
+    <!-- 塔吊 -->
+    <g stroke="rgba(240,180,41,.24)" stroke-width="1.4" fill="none">
+      <line x1="596" y1="386" x2="596" y2="176"/>
+      <line x1="596" y1="176" x2="744" y2="176"/>
+      <line x1="596" y1="176" x2="470" y2="176"/>
+      <line x1="596" y1="176" x2="640" y2="150"/>
+      <line x1="640" y1="150" x2="676" y2="176"/>
+      <line x1="700" y1="176" x2="700" y2="212"/>
+      <line x1="596" y1="176" x2="516" y2="176"/>
+    </g>
+    <rect x="516" y="176" width="26" height="10" fill="rgba(240,180,41,.18)"/>
+
+    <!-- 集装箱起重机 -->
+    <g stroke="rgba(143,208,201,.2)" stroke-width="1.2" fill="none">
+      <line x1="1128" y1="386" x2="1128" y2="204"/>
+      <line x1="1128" y1="204" x2="1216" y2="204"/>
+      <line x1="1152" y1="204" x2="1152" y2="250"/>
+      <line x1="1104" y1="386" x2="1104" y2="250"/>
+    </g>
+
+    <!-- 近处楼群与屋顶轮廓 -->
+    <path d="M0 386 L0 322 L96 322 L96 338 L188 338 L188 306 L268 306 L268 348 L360 348 L360 318 L446 318 L446 360 L540 360 L540 340 L640 340 L640 302 L742 302 L742 344 L846 344 L846 320 L946 320 L946 356 L1046 356 L1046 330 L1148 330 L1148 300 L1250 300 L1250 342 L1352 342 L1352 318 L1452 318 L1452 352 L1546 352 L1546 328 L1600 328 L1600 470 L0 470 Z" fill="url(#bldNear)"/>
+
+    <!-- 屋顶水塔与烟囱 -->
+    <g fill="#070909">
+      <rect x="210" y="278" width="26" height="28"/>
+      <rect x="214" y="270" width="18" height="10"/>
+      <rect x="880" y="286" width="16" height="34"/>
+      <rect x="1386" y="280" width="20" height="38"/>
+    </g>
+
+    <!-- 窗格微光 -->
+    <g fill="rgba(240,180,41,.2)">
+      <rect x="112" y="248" width="7" height="10"/>
+      <rect x="124" y="268" width="7" height="10"/>
+      <rect x="136" y="252" width="7" height="10"/>
+      <rect x="330" y="308" width="7" height="10"/>
+      <rect x="346" y="324" width="7" height="10"/>
+      <rect x="368" y="312" width="7" height="10"/>
+      <rect x="670" y="314" width="7" height="10"/>
+      <rect x="688" y="328" width="7" height="10"/>
+      <rect x="1188" y="266" width="7" height="10"/>
+      <rect x="1204" y="282" width="7" height="10"/>
+      <rect x="1334" y="254" width="7" height="10"/>
+      <rect x="1350" y="270" width="7" height="10"/>
+      <rect x="1500" y="264" width="7" height="10"/>
+    </g>
+    <g fill="rgba(143,208,201,.16)">
+      <rect x="270" y="352" width="8" height="10"/>
+      <rect x="292" y="336" width="8" height="10"/>
+      <rect x="960" y="330" width="8" height="10"/>
+      <rect x="1160" y="312" width="8" height="10"/>
+      <rect x="1460" y="330" width="8" height="10"/>
+    </g>
+
+    <!-- 港口水线 / 霓虹反光 -->
+    <rect x="0" y="386" width="1600" height="1" fill="url(#harborLine)"/>
+    <rect x="0" y="392" width="1600" height="1" fill="rgba(79,168,160,.14)"/>
+    <g stroke="rgba(240,180,41,.16)" stroke-width="1">
+      <line x1="596" y1="398" x2="596" y2="440"/>
+      <line x1="1128" y1="398" x2="1128" y2="432"/>
+      <line x1="1340" y1="398" x2="1340" y2="424"/>
+    </g>
+
+    <!-- 霓虹灯管横条（片名区背景暗示） -->
+    <rect x="0" y="300" width="1600" height="120" fill="url(#glowFade)" opacity=".3"/>
+  </svg>
+
+  <div class="hero-vignette"></div>
+
+  <div class="hero-inner">
+    <div class="wrap">
+      <div class="kicker reveal"><i></i>韩国犯罪经典 · 第 13 期 / KOREAN CRIME CLASSICS</div>
+
+      <h1 class="reveal">与犯罪的战争<span class="sm">坏家伙的全盛时代</span></h1>
+      <div class="kr reveal">범죄와의 전쟁 : 나쁜놈들 전성시대</div>
+      <div class="en reveal">Nameless Gangster · Rules of the Time · 2012 · 133 min</div>
+
+      <p class="hero-tag reveal">
+        那个年代，进去的路子和出来的路子，都要靠人去说。<br/>
+        而他这辈子最擅长的，恰恰就是说话。
+      </p>
+
+      <div class="hero-meta reveal">
+        <div><b>Director</b><span>尹钟彬</span></div>
+        <div><b>Cast</b><span>崔岷植 · 河正宇 · 赵镇雄 · 马东锡</span></div>
+        <div><b>Setting</b><span>1982–1990 · 釜山</span></div>
+        <div><b>Douban</b><span>8.8 / 10</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint"><span>SCROLL</span><i></i></div>
+</header>
+
+<!-- ============ 剧情梗概 ============ -->
+<section id="synopsis">
+  <div class="wrap">
+    <div class="nospoil reveal">
+      <span class="tag">NO SPOILER</span>
+      <span>本文全程不剧透。剧情梗概止于影片第一幕，不含结局、反转、人物最终命运与关键情节的解答。可放心阅读。</span>
+    </div>
+
+    <div class="syn">
+      <div class="syn-body">
+        <div class="sec-label reveal">01 / 剧情梗概 · Synopsis</div>
+        <h2 class="reveal">一个<em>什么都不会</em>的人，<br/>走进了一个只认本事的年代</h2>
+
+        <p class="reveal">
+          1982 年，釜山。崔翼贤在海关监督科做事，说得体面些是公务员，说得难听些，是靠放行与不放行的分寸吃饭。他出身名门望族，逢人便提，可惜家道早就落了；他没有什么真本事，唯一的本钱是能听懂人话、记得住人情、把每个人都招呼得舒服。
+        </p>
+
+        <p class="reveal">
+          一次举报风波下来，上司找了个替罪的人，那个人就是他。饭碗眼看要碎，崔翼贤决定在被扫地出门之前，替自己挣一条退路。他找上了一个同姓的年轻人——崔炯培，釜山一带有名的拳头，动手从不犹豫，说话向来简洁。一个只有嘴和关系，一个只有拳和兄弟，两个人凑在一起，竟然严丝合缝。
+        </p>
+
+        <p class="reveal">
+          往后几年，那些街面上的事、场馆里的事、需要有人出面周旋的事，慢慢都开始经过崔翼贤的手。他不出拳，也不站到最前面，他坐在两者之间——那一小块只属于「会办事的人」的位置上。那几年，是「坏家伙们的全盛时代」，也是崔翼贤这辈子最像样的一段日子。
+        </p>
+
+        <div class="pull reveal">
+          「讲义气的人负责流血，会办事的人负责收钱。这个局，从一开始就是这么分的。」
+        </div>
+      </div>
+
+      <div class="poster-card reveal">
+        <svg viewBox="0 0 600 880" xmlns="http://www.w3.org/2000/svg" aria-label="概念海报示意">
+          <defs>
+            <linearGradient id="pSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#111617"/>
+              <stop offset="48%" stop-color="#0c1011"/>
+              <stop offset="100%" stop-color="#070909"/>
+            </linearGradient>
+            <radialGradient id="pTung" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(255,242,204,.86)"/>
+              <stop offset="34%" stop-color="rgba(240,180,41,.4)"/>
+              <stop offset="100%" stop-color="rgba(240,180,41,0)"/>
+            </radialGradient>
+            <linearGradient id="pStreet" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#121718"/>
+              <stop offset="100%" stop-color="#050707"/>
+            </linearGradient>
+            <linearGradient id="pReflect" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="rgba(240,180,41,.2)"/>
+              <stop offset="100%" stop-color="rgba(240,180,41,0)"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="600" height="880" fill="url(#pSky)"/>
+
+          <!-- 顶灯 -->
+          <circle cx="300" cy="150" r="168" fill="url(#pTung)"/>
+          <circle cx="300" cy="150" r="40" fill="#fdf2d4" opacity=".9"/>
+          <circle cx="300" cy="150" r="86" fill="none" stroke="rgba(240,180,41,.22)" stroke-width="1"/>
+          <circle cx="300" cy="150" r="128" fill="none" stroke="rgba(240,180,41,.12)" stroke-width="1"/>
+          <line x1="300" y1="0" x2="300" y2="112" stroke="rgba(240,180,41,.24)" stroke-width="1"/>
+
+          <!-- 桥面 -->
+          <rect x="0" y="600" width="600" height="1" fill="rgba(240,180,41,.3)"/>
+          <rect x="0" y="600" width="600" height="280" fill="url(#pStreet)"/>
+          <rect x="0" y="600" width="600" height="150" fill="url(#pReflect)" opacity=".5"/>
+
+          <!-- 栏杆 -->
+          <g stroke="rgba(143,208,201,.22)" stroke-width="1.4" fill="none">
+            <line x1="0" y1="536" x2="600" y2="536"/>
+            <line x1="0" y1="600" x2="600" y2="600"/>
+            <line x1="60" y1="536" x2="60" y2="600"/>
+            <line x1="150" y1="536" x2="150" y2="600"/>
+            <line x1="240" y1="536" x2="240" y2="600"/>
+            <line x1="330" y1="536" x2="330" y2="600"/>
+            <line x1="420" y1="536" x2="420" y2="600"/>
+            <line x1="510" y1="536" x2="510" y2="600"/>
+            <line x1="590" y1="536" x2="590" y2="600"/>
+          </g>
+
+          <!-- 灯柱 -->
+          <g stroke="rgba(240,180,41,.22)" stroke-width="1.6">
+            <line x1="118" y1="150" x2="118" y2="536"/>
+            <line x1="482" y1="150" x2="482" y2="536"/>
+          </g>
+          <circle cx="118" cy="150" r="7" fill="rgba(255,242,204,.7)"/>
+          <circle cx="482" cy="150" r="7" fill="rgba(255,242,204,.7)"/>
+
+          <!-- 左边的胖子：西装，站姿 -->
+          <g fill="#050707">
+            <ellipse cx="228" cy="392" rx="26" ry="29"/>
+            <path d="M196 424 C206 420 250 420 260 424 L278 536 L178 536 Z"/>
+            <path d="M200 438 C184 466 176 496 174 528 L188 530 C192 500 200 474 212 452 Z"/>
+            <path d="M256 438 C272 466 280 496 282 528 L268 530 C264 500 256 474 244 452 Z"/>
+          </g>
+          <!-- 领带与眼镜反光 -->
+          <path d="M228 424 L234 452 L228 470 L222 452 Z" fill="rgba(197,48,58,.62)"/>
+          <ellipse cx="228" cy="390" rx="21" ry="4" fill="rgba(143,208,201,.16)"/>
+
+          <!-- 右边的年轻人：西装，纹身袖口 -->
+          <g fill="#040606">
+            <ellipse cx="382" cy="392" rx="24" ry="27"/>
+            <path d="M352 422 C362 418 402 418 412 422 L428 536 L336 536 Z"/>
+            <path d="M356 436 C340 464 332 494 330 526 L344 528 C348 498 356 472 368 450 Z"/>
+            <path d="M408 436 C424 464 432 494 434 526 L420 528 C416 498 408 472 396 450 Z"/>
+          </g>
+          <path d="M336 470 C352 464 400 464 428 470" stroke="rgba(143,208,201,.14)" stroke-width="1" fill="none"/>
+          <path d="M334 500 C354 494 406 494 430 500" stroke="rgba(143,208,201,.1)" stroke-width="1" fill="none"/>
+
+          <!-- 竖排片名 -->
+          <g fill="#f8f1e0" font-family="Songti SC, STSong, serif" font-size="38" letter-spacing="4">
+            <text x="46" y="200">与</text>
+            <text x="46" y="252">犯</text>
+            <text x="46" y="304">罪</text>
+            <text x="46" y="356">的</text>
+            <text x="46" y="408">战</text>
+            <text x="46" y="460">争</text>
+          </g>
+          <rect x="48" y="484" width="42" height="1" fill="rgba(197,48,58,.8)"/>
+
+          <g font-family="Songti SC, STSong, serif" font-size="17" fill="rgba(143,208,201,.78)" letter-spacing="2">
+            <text x="48" y="516">坏家伙的全盛时代</text>
+          </g>
+
+          <g font-family="SF Mono, Menlo, monospace" font-size="11" letter-spacing="3" fill="rgba(131,126,116,.9)">
+            <text x="48" y="552">NAMELESS GANGSTER</text>
+            <text x="48" y="572">2012 / 133 MIN</text>
+          </g>
+
+          <!-- 暗角 -->
+          <rect width="600" height="880" fill="none"/>
+        </svg>
+        <div class="poster-cap">概念海报 · 桥下会面 / 非官方物料，仅作氛围示意</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 影片档案 ============ -->
+<section id="facts">
+  <div class="wrap">
+    <div class="sec-label reveal">02 / 影片档案 · Fact Sheet</div>
+    <h2 class="reveal">一部<em>没有一个好人</em>的年度票房冠军</h2>
+    <p class="lede reveal" style="margin-bottom:44px">
+      它把一部 133 分钟、19 禁、几乎全员灰色人物的黑帮片，放在了韩国电影最冷清的二月档期——然后它连拿三周票房第一，成为 2012 年第一季度韩国最卖座的电影。
+    </p>
+
+    <div class="facts reveal">
+      <div class="fact"><b>中文片名</b><span><strong>与犯罪的战争：坏家伙的全盛时代</strong></span></div>
+      <div class="fact"><b>韩文原名</b><span>범죄와의 전쟁 : 나쁜놈들 전성시대<br/>副题直译「坏家伙的全盛时代」</span></div>
+      <div class="fact"><b>英文片名</b><span>Nameless Gangster: Rules of the Time<br/>又名 War on Crime</span></div>
+      <div class="fact"><b>导演 / 编剧</b><span><strong>尹钟彬</strong>（윤종빈）<br/>与 韩东郁 联合编剧</span></div>
+      <div class="fact"><b>主演</b><span>崔岷植（崔翼贤）<br/>河正宇（崔炯培）</span></div>
+      <div class="fact"><b>其他演员</b><span>赵镇雄 · 马东锡 · 郭道元<br/>金成钧 · 金惠恩 · 金英善</span></div>
+      <div class="fact"><b>片长</b><span>133 分钟</span></div>
+      <div class="fact"><b>分级</b><span>韩国 19 禁（青少年观览不可）</span></div>
+      <div class="fact"><b>上映</b><span>2012 年 2 月 2 日（韩国）</span></div>
+      <div class="fact"><b>制作 / 发行</b><span>Palette Pictures 制作<br/>Showbox 发行</span></div>
+      <div class="fact"><b>制片人</b><span>韩载德 · 朴信圭<br/>崔岷植亦列名制片人之一</span></div>
+      <div class="fact"><b>拍摄期</b><span>2011 年 4 月 17 日 – 8 月 9 日<br/>主要拍摄地：韩国釜山</span></div>
+      <div class="fact"><b>观影人次</b><span><strong>472 万</strong>（KOFIC 官方）<br/>上映 26 天突破 400 万</span></div>
+      <div class="fact"><b>全球票房</b><span>约 3,247 万美元<br/>韩国本土约 360 亿韩元</span></div>
+      <div class="fact"><b>摄影 / 音乐</b><span>摄影 高诺善 · 配乐 曹英沃<br/>剪辑 金宰范 · 美术 曹和成</span></div>
+      <div class="fact"><b>题材来源</b><span>依据 1980–90 年代韩国真实历史时期<br/>人物为化名，故事经过艺术加工</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 评分 ============ -->
+<section id="score">
+  <div class="wrap">
+    <div class="sec-label reveal">03 / 口碑数据 · Ratings</div>
+    <h2 class="reveal">中文观众眼里，它是<em>韩国黑帮片的准满分线</em></h2>
+    <p class="lede reveal" style="margin-bottom:44px">
+      在中文互联网的各种「韩国十大黑帮片」「崔岷植必看」榜单里，这部片几乎从不缺席，并且长期被排在前三位。
+    </p>
+
+    <div class="scores reveal">
+      <div class="score">
+        <div class="k">豆瓣电影</div>
+        <div class="n">8.8<small>/ 10</small></div>
+        <div class="d">韩国犯罪 / 黑帮题材最高分区之一<br/>常年在各类黑帮片榜单前三</div>
+      </div>
+      <div class="score">
+        <div class="k">韩国电影振兴委员会</div>
+        <div class="n">472<small>万人次</small></div>
+        <div class="d">KOFIC 官方统计<br/>2012 年第一季度韩国最卖座影片</div>
+      </div>
+      <div class="score">
+        <div class="k">韩国《Cine21》</div>
+        <div class="n">2<small>nd</small></div>
+        <div class="d">2012 年度最佳电影第二名<br/>韩国权威电影杂志年度评选</div>
+      </div>
+      <div class="score">
+        <div class="k">Awards</div>
+        <div class="n">15<small>胜 / 41 提名</small></div>
+        <div class="d">IMDb 收录获奖与提名总数<br/>含百想艺术大赏电影部门大奖</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 荣誉 ============ -->
+<section id="awards">
+  <div class="wrap">
+    <div class="sec-label reveal">04 / 荣誉时间线 · Awards</div>
+    <h2 class="reveal">崔岷植<em>一年拿下四座影帝</em></h2>
+    <p class="lede reveal" style="margin-bottom:48px">
+      第 33 届青龙电影奖，这部电影一共进了 12 个奖项的名单，最后带走三座奖杯。而崔岷植凭借崔翼贤这个角色，在短短一年内拿遍了韩国与亚太地区的四个最佳男演员奖。
+    </p>
+
+    <div class="tl reveal">
+      <div class="tl-item">
+        <div class="y">2012 · 第 33 届青龙电影奖</div>
+        <div class="t"><em>最佳男主角（崔岷植）· 最佳剧本（尹钟彬）· 最佳配乐（曹英沃）获奖</em><span>另提名最佳电影、最佳导演、最佳男配角、最佳摄影、最佳美术、最佳照明等，共 12 项入围；河正宇获人气明星奖</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="y">2012 · 第 48 届百想艺术大赏</div>
+        <div class="t"><em>电影部门大奖（尹钟彬）· 最佳新人男演员（金成钧）获奖</em><span>同时提名最佳电影、最佳导演、最佳男演员、最佳女演员、最佳剧本</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="y">2012 · 第 21 届釜日电影奖</div>
+        <div class="t"><em>最佳男主角（崔岷植）· 最佳男配角（赵镇雄）· 最佳新人男演员（金成钧）获奖</em><span>河正宇同时提名最佳男主角，形成同一部片「双男主」入围的局面</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="y">2012 · 第 6 届亚太电影大奖</div>
+        <div class="t"><em>最佳男演员 · 崔岷植 获奖</em><span>影片同时获得最佳影片高度赞扬（High Commendation）；河正宇提名最佳男配角</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="y">2012 · 第 32 届韩国影评人协会奖</div>
+        <div class="t"><em>最佳剧本 · 尹钟彬 获奖</em><span>影评人系统对文本结构的最高认可</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="y">2012 · 第 13 届釜山影评人协会奖</div>
+        <div class="t"><em>最佳影片 获奖</em><span>把年度最佳给了一部商业黑帮片，这个选择本身就很说明问题</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="y">2012 · 第 49 届大钟奖</div>
+        <div class="t">提名最佳男主角、最佳男配角、最佳新人男演员、最佳剧本、最佳剪辑<span>共 7 项提名</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="y">2013 · 第 7 届亚洲电影大奖</div>
+        <div class="t">提名最佳男主角（崔岷植）、最佳男配角（河正宇）、最佳编剧、最佳美术设计、最佳原创音乐<span>5 项提名</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="y">2013 · 第 4 届韩国电影记者协会奖</div>
+        <div class="t"><em>最佳男主角 · 崔岷植 获奖</em></div>
+      </div>
+      <div class="tl-item">
+        <div class="y">2013 · 佛罗伦萨韩国电影节</div>
+        <div class="t"><em>最佳影片 获奖</em><span>2012 年锡切斯国际奇幻电影节亦提名最高荣誉「玛丽亚奖」</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 亮点 ============ -->
+<section id="highlights">
+  <div class="wrap">
+    <div class="sec-label reveal">05 / 六宫格亮点 · Highlights</div>
+    <h2 class="reveal">它凭什么被写进<em>「韩国黑帮片教科书」</em></h2>
+    <p class="lede reveal" style="margin-bottom:44px">
+      韩国黑帮片很多，够狠的也很多。但能把「一个时代怎么把人变成坏人」拍得这么清楚的，很少。以下六点，是它最站得住脚的地方。
+    </p>
+
+    <div class="grid6">
+      <div class="hl-card reveal">
+        <div class="no">01</div>
+        <h4>一个荧幕上最不像黑帮的黑帮人物</h4>
+        <p>崔翼贤不会打、不会狠、也谈不上有胆，他靠的是端着笑脸端茶递水、记住每个人的痛点。把一个「市井、谄媚、有求于人时低三下四、有人求他时趾高气昂」的小人物当作黑帮片主角，是这部片最冒险也最成功的一步。</p>
+      </div>
+      <div class="hl-card reveal">
+        <div class="no">02</div>
+        <h4>崔岷植 × 河正宇，两代影帝的正面交锋</h4>
+        <p>两位领衔的对手戏几乎撑起了全片的张力。有意思的是，河正宇在片场对崔岷植的评价只有两个字：经典——因为这位前辈无论被踩被摔，从来不说一个「不」字。为了角色，崔岷植增重 10 公斤。</p>
+      </div>
+      <div class="hl-card reveal">
+        <div class="no">03</div>
+        <h4>尹钟彬的第三次合作，终于成了爆款</h4>
+        <p>这是导演尹钟彬与河正宇的第三度合作（前两部是《不可饶恕》《野兽男孩》）。也是从这一部开始，他成为韩国中生代里最会说「时代」两个字的导演——剧本后来拿了百想电影部门大奖。</p>
+      </div>
+      <div class="hl-card reveal">
+        <div class="no">04</div>
+        <h4>年代不是布景，年份不用字幕</h4>
+        <p>西装肩线、发型、塑料凳、录音机、街上的招牌字体、汽车的型号——每一个年份的质感都被反复校准。你不需要镜头给出年份，看衣服就知道这是哪一年。这种考据在韩国黑帮片里是标杆级的。</p>
+      </div>
+      <div class="hl-card reveal">
+        <div class="no">05</div>
+        <h4>它拍的是「关系」，不是「拳头」</h4>
+        <p>大多数黑帮片的高潮是打。这部片的高潮是饭桌、是电话、是敬酒的顺序、是谁先站起来。它把暴力社会的运行规则还原成了一套人情账本：谁欠谁的，谁替谁挡过，谁的名字不该再被提起。</p>
+      </div>
+      <div class="hl-card reveal">
+        <div class="no">06</div>
+        <h4>「살아 있네」——一句台词成了国民流行语</h4>
+        <p>片中一句口头语，在上映后被《无限挑战》《搞笑演唱会》等综艺反复模仿，连男团神话都在演唱会上玩梗。一部 19 禁犯罪片，能火到成为全民记忆的一部分，这在韩国影史里并不多见。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 为什么值得看 ============ -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-label reveal">06 / 为什么值得看 · Why Watch</div>
+    <h2 class="reveal">三个<em>不该错过</em>的理由</h2>
+    <p class="lede reveal" style="margin-bottom:44px">
+      如果你已经看过《新世界》和《卑劣的街头》，这部片依然值得补——因为它讲的其实不是黑帮。
+    </p>
+
+    <div class="why">
+      <div class="why-row reveal">
+        <div class="idx serif">01</div>
+        <div class="txt">
+          <h4>它其实是一部「普通人如何被时代选中」的电影</h4>
+          <p>1980 年代的韩国在经济上一路狂奔，规则却远远落在后面。那个缝隙里长出来的东西，正是崔翼贤这种人。他没有野心开局，只有一份怕被淘汰的恐惧；他没有变坏的开端，只有一次又一次「先把这关过了」的选择。看他往上走，你会不太舒服地意识到：这条路上最要紧的本事，可能你也有。</p>
+        </div>
+      </div>
+      <div class="why-row reveal">
+        <div class="idx serif">02</div>
+        <div class="txt">
+          <h4>它把「义气」和「办事」摆在同一张桌上称重</h4>
+          <p>崔炯培讲情义，手上有人，心里有线；崔翼贤讲利弊，嘴上有话，心里有账。两个人合作的每一年，这两种逻辑都在角力。韩国黑帮片常见的主题是「背叛」，而这部电影更狠的一点是：它让你看清，背叛不是某一天突然发生的，它是被两个人不同的活法一天一天推出来的。</p>
+        </div>
+      </div>
+      <div class="why-row reveal">
+        <div class="idx serif">03</div>
+        <div class="txt">
+          <h4>它的观赏性，来自一部教科书级别的类型片手艺</h4>
+          <p>133 分钟不闷，节奏和信息的密度控制得极稳：一场饭局能交代三组关系，一句玩笑能埋下一个伏笔，剪辑干净，配乐用过门音就把年代推过去。它不是靠场面撑起来的黑帮片，而是靠结构、表演和对白。拿它当一部「韩国类型片工业水准」的样本看，一点都不亏。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 观影提示 ============ -->
+<section id="notice">
+  <div class="wrap">
+    <div class="sec-label reveal">07 / 观影提示 · Before You Watch</div>
+    <div class="notice reveal">
+      <span class="h">Viewer Advisory</span>
+      本片为韩国 <b>19 禁</b> 分级（青少年观览不可）。全片含持续的粗口、暴力殴打与黑帮火并场面，题材涉黑、涉毒、涉官商往来。它的暴力并不猎奇，但密度不低——<b>不适合与未成年观众同看</b>。如果你偏好节奏紧凑、对白密集的写实犯罪片，它会非常对味；如果你排斥脏话与群殴场面，建议先斟酌。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 结尾 ============ -->
+<section class="closing">
+  <div class="wrap">
+    <div class="rule reveal"></div>
+    <p class="q reveal">
+      全盛时代里，人人都说自己是被时代推着走的；<br/>
+      可每一次伸手接住那个信封的时候——<em>他其实都可以不接</em>。
+    </p>
+    <div class="sig reveal">범죄와의 전쟁 : 나쁜놈들 전성시대 · Nameless Gangster · 2012</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%">
+    <span>MOVIE RECOMMENDATION · 2026-09-20</span>
+    <span>韩国犯罪片系列 · 第 13 部 · 全程无剧透</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- HERO CANVAS ---------- */
+  var cv = document.getElementById('heroCanvas');
+  if (cv && cv.getContext){
+    var ctx = cv.getContext('2d');
+    var W = 0, H = 0, dpr = 1, raf = null;
+    var t = 0;
+    var rain = [];   // 斜向雨丝
+    var motes = [];  // 上浮霓虹尘埃
+
+    function build(){
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = Math.round(W * dpr);
+      cv.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      rain = [];
+      var n1 = Math.max(50, Math.round(W / 13));
+      for (var i = 0; i < n1; i++){
+        rain.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          len: 12 + Math.random() * 34,
+          vx: 1.05 + Math.random() * 1.5,
+          vy: 5.4 + Math.random() * 6.2,
+          a: 0.05 + Math.random() * 0.16
+        });
+      }
+
+      motes = [];
+      var n2 = Math.max(26, Math.round(W / 32));
+      for (var j = 0; j < n2; j++){
+        motes.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          r: 0.6 + Math.random() * 1.7,
+          vy: -(0.12 + Math.random() * 0.46),
+          vx: (Math.random() - 0.5) * 0.22,
+          a: 0.1 + Math.random() * 0.32,
+          ph: Math.random() * Math.PI * 2,
+          teal: Math.random() < 0.3
+        });
+      }
+    }
+
+    function draw(){
+      t += 0.005;
+      ctx.clearRect(0, 0, W, H);
+
+      // ---- 钨丝灯 / 街灯呼吸光晕 ----
+      var lamps = [
+        { x: 0.24, y: 0.20, hue: '240,180,41', base: 0.09 },
+        { x: 0.82, y: 0.34, hue: '79,168,160', base: 0.07 }
+      ];
+      for (var L = 0; L < lamps.length; L++){
+        var lp = lamps[L];
+        var br = 0.5 + 0.5 * Math.sin(t * 0.9 + L * 1.7);
+        var cx0 = W * lp.x, cy0 = H * lp.y;
+        var r0 = Math.min(W, H) * (0.26 + br * 0.05);
+        var g0 = ctx.createRadialGradient(cx0, cy0, 0, cx0, cy0, r0);
+        g0.addColorStop(0, 'rgba(' + lp.hue + ',' + (lp.base + br * 0.06).toFixed(3) + ')');
+        g0.addColorStop(0.42, 'rgba(' + lp.hue + ',' + (lp.base * 0.42).toFixed(3) + ')');
+        g0.addColorStop(1, 'rgba(' + lp.hue + ',0)');
+        ctx.fillStyle = g0;
+        ctx.fillRect(0, 0, W, H);
+      }
+
+      // ---- 雨丝 ----
+      for (var i = 0; i < rain.length; i++){
+        var r = rain[i];
+        r.x += r.vx;
+        r.y += r.vy;
+        if (r.y > H + 30){
+          r.y = -30;
+          r.x = Math.random() * W - 40;
+        }
+        if (r.x > W + 30){
+          r.x = -30;
+          r.y = Math.random() * H;
+        }
+        var ra = r.a * (0.6 + 0.4 * Math.sin(t * 2.3 + i));
+        ctx.strokeStyle = 'rgba(196,214,214,' + ra.toFixed(3) + ')';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(r.x, r.y);
+        ctx.lineTo(r.x - r.len * 0.17, r.y - r.len);
+        ctx.stroke();
+      }
+
+      // ---- 上浮霓虹尘埃 ----
+      ctx.globalCompositeOperation = 'lighter';
+      for (var k = 0; k < motes.length; k++){
+        var p = motes[k];
+        p.y += p.vy;
+        p.x += p.vx + Math.sin(t * 1.4 + p.ph) * 0.16;
+        if (p.y < -12){ p.y = H + 12; p.x = Math.random() * W; }
+        if (p.x < -12) p.x = W + 12;
+        if (p.x > W + 12) p.x = -12;
+        var pa = p.a * (0.58 + 0.42 * Math.sin(t * 1.8 + p.ph));
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.teal
+          ? 'rgba(143,208,201,' + pa.toFixed(3) + ')'
+          : 'rgba(255,217,122,' + pa.toFixed(3) + ')';
+        ctx.fill();
+      }
+      ctx.globalCompositeOperation = 'source-over';
+
+      if (!reduced) raf = requestAnimationFrame(draw);
+    }
+
+    build();
+    draw();
+
+    var rt;
+    window.addEventListener('resize', function(){
+      clearTimeout(rt);
+      rt = setTimeout(function(){
+        if (raf) cancelAnimationFrame(raf);
+        build(); draw();
+      }, 180);
+    });
+  }
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if (!('IntersectionObserver' in window) || reduced){
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var el = e.target;
+        var sibs = Array.prototype.slice.call(el.parentNode.children).filter(function(c){
+          return c.classList && c.classList.contains('reveal');
+        });
+        var idx = sibs.indexOf(el);
+        var delay = idx > -1 ? Math.min(idx, 6) * 90 : 0;
+        setTimeout(function(){ el.classList.add('in'); }, delay);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
