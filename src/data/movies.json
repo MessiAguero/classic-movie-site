@@ -1249,6 +1249,50 @@
     "posterCaption": "概念海报 · 桥下会面 / 非官方物料，仅作氛围示意"
   },
   {
+    "id": "20260921",
+    "date": "20260921",
+    "zhTitle": "蒙太奇抓住那个家伙 · 模犯母亲",
+    "enTitle": "2013 · 120 min · Directed by 정근섭",
+    "year": "2013",
+    "tagline": "法律给这桩案子，划了十五年的期限。 而她们，从来没有答应过这件事。",
+    "meta": "Director郑根燮（自编自导 · 长片处女作） Cast金相庆 · 严正化 · 宋永彰 · 曹熙奉 Douban8.0 – 8.2 / 10 Admissions209 万人次（韩国）",
+    "ratings": [],
+    "plot": [
+      "一个下雨的早晨，小女孩西珍背着书包出门，没有回来。案子落在重案组刑警吴青浩手上。孩子的母亲把全部希望都交给了他，而他也答应了——会把那个人找出来。",
+      "然后就是十五年。审讯、排查、蹲守，一次次指向某人又落空的线索；嫌疑人的名字换过一轮又一轮，卷宗厚到可以当枕头。韩国的法律给这类案子划了一条线：十五年。线一到，案子就得合上——不管里面还缺什么。",
+      "期限只剩最后几天的时候，吴青浩在案发现场看到了一样不该出现在那里的东西。他顺着这条线拼命追下去，一路追到那几步之外——然后，和那个人擦肩而过。",
+      "期限过了。他脱下警服，开始用酒对付日子。而西珍的母亲没有停下来：她一个人，把所有还能翻的东西，全都翻了一遍。",
+      "再后来，又一个孩子在白天被人带走，手法和十五年前几乎一模一样。旧案已经没人愿意再碰，除非——把他请回来。"
+    ],
+    "spoilerNote": "",
+    "highlights": [],
+    "quotes": [],
+    "why": [
+      {
+        "no": "",
+        "title": "",
+        "body": "十五年、二十五年，这些数字在法条里只是数字。这部电影做的事情，是把它们换算成人：一个人可以在这些数字里等多久，可以在这些数字里翻完多少份资料，可以在期限到来那一天，仍然不肯承认这件事结束了。看完之后，你再听到「公诉时效」四个字，感受会不一样。"
+      },
+      {
+        "no": "",
+        "title": "",
+        "body": "没有肢解，没有猎奇镜头，没有靠血浆撑起来的压迫感。它靠的是结构：两条时间线怎么交错、什么时候给你一块拼图、哪一句话其实早就说过了。这种「信息手工活」在商业类型片里越来越稀有，而它做得干净、克制，也足够聪明。"
+      },
+      {
+        "no": "",
+        "title": "",
+        "body": "全片最有力的部分，不是谁抓住了谁，而是一个没有权力、没有技术、也没有后援的中年女人，始终拒绝让事情停在「没办法」。这种固执不英雄、不漂亮，甚至有点笨——但它正是这部电影最后能打动人的原因。它信的不是奇迹，是有人不肯松手。"
+      }
+    ],
+    "honors": [],
+    "archive": [],
+    "review": "全片最有力的部分，不是谁抓住了谁，而是一个没有权力、没有技术、也没有后援的中年女人，始终拒绝让事情停在「没办法」。这种固执不英雄、不漂亮，甚至有点笨——但它正是这部电影最后能打动人的原因。它信的不是奇迹，是有人不肯松手。",
+    "reviewBy": "",
+    "reviewStars": 5,
+    "posterSvg": "<svg viewBox=\"0 0 600 880\" xmlns=\"http://www.w3.org/2000/svg\" aria-label=\"概念海报示意\">\n          <defs>\n            <linearGradient id=\"pSky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0%\" stop-color=\"#121520\"></stop>\n              <stop offset=\"46%\" stop-color=\"#0c0e14\"></stop>\n              <stop offset=\"100%\" stop-color=\"#07080b\"></stop>\n            </linearGradient>\n            <radialGradient id=\"pLamp\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n              <stop offset=\"0%\" stop-color=\"rgba(253,244,214,.82)\"></stop>\n              <stop offset=\"32%\" stop-color=\"rgba(201,162,39,.34)\"></stop>\n              <stop offset=\"100%\" stop-color=\"rgba(201,162,39,0)\"></stop>\n            </radialGradient>\n            <linearGradient id=\"pFrame\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0%\" stop-color=\"rgba(216,201,166,.30)\"></stop>\n              <stop offset=\"100%\" stop-color=\"rgba(216,201,166,.14)\"></stop>\n            </linearGradient>\n            <linearGradient id=\"pFloor\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0%\" stop-color=\"#101319\"></stop>\n              <stop offset=\"100%\" stop-color=\"#050608\"></stop>\n            </linearGradient>\n          </defs>\n\n          <rect width=\"600\" height=\"880\" fill=\"url(#pSky)\"></rect>\n\n          <!-- 上方时间刻度 -->\n          <g stroke=\"rgba(216,201,166,.22)\" stroke-width=\"1\">\n            <line x1=\"40\" y1=\"86\" x2=\"560\" y2=\"86\"></line>\n            <line x1=\"40\" y1=\"86\" x2=\"40\" y2=\"76\"></line>\n            <line x1=\"92\" y1=\"86\" x2=\"92\" y2=\"80\"></line>\n            <line x1=\"144\" y1=\"86\" x2=\"144\" y2=\"76\"></line>\n            <line x1=\"196\" y1=\"86\" x2=\"196\" y2=\"80\"></line>\n            <line x1=\"248\" y1=\"86\" x2=\"248\" y2=\"76\"></line>\n            <line x1=\"300\" y1=\"86\" x2=\"300\" y2=\"80\"></line>\n            <line x1=\"352\" y1=\"86\" x2=\"352\" y2=\"76\"></line>\n            <line x1=\"404\" y1=\"86\" x2=\"404\" y2=\"80\"></line>\n            <line x1=\"456\" y1=\"86\" x2=\"456\" y2=\"76\"></line>\n            <line x1=\"508\" y1=\"86\" x2=\"508\" y2=\"80\"></line>\n            <line x1=\"560\" y1=\"86\" x2=\"560\" y2=\"76\"></line>\n          </g>\n          <rect x=\"536\" y=\"62\" width=\"2\" height=\"24\" fill=\"rgba(217,99,90,.9)\"></rect>\n\n          <!-- 拼贴墙：叠放的相纸与剪报 -->\n          <g>\n            <rect x=\"96\" y=\"150\" width=\"180\" height=\"130\" fill=\"rgba(216,201,166,.09)\" stroke=\"url(#pFrame)\" stroke-width=\"1.2\" transform=\"rotate(-4 186 215)\"></rect>\n            <rect x=\"104\" y=\"160\" width=\"164\" height=\"110\" fill=\"rgba(216,201,166,.05)\" transform=\"rotate(-4 186 215)\"></rect>\n            <rect x=\"298\" y=\"128\" width=\"150\" height=\"108\" fill=\"rgba(216,201,166,.09)\" stroke=\"url(#pFrame)\" stroke-width=\"1.2\" transform=\"rotate(3 373 182)\"></rect>\n            <rect x=\"306\" y=\"138\" width=\"134\" height=\"88\" fill=\"rgba(216,201,166,.05)\" transform=\"rotate(3 373 182)\"></rect>\n            <rect x=\"150\" y=\"300\" width=\"164\" height=\"122\" fill=\"rgba(216,201,166,.085)\" stroke=\"url(#pFrame)\" stroke-width=\"1.2\" transform=\"rotate(2 232 361)\"></rect>\n            <rect x=\"158\" y=\"310\" width=\"148\" height=\"102\" fill=\"rgba(216,201,166,.045)\" transform=\"rotate(2 232 361)\"></rect>\n            <rect x=\"336\" y=\"272\" width=\"140\" height=\"150\" fill=\"rgba(216,201,166,.085)\" stroke=\"url(#pFrame)\" stroke-width=\"1.2\" transform=\"rotate(-3 406 347)\"></rect>\n            <rect x=\"344\" y=\"282\" width=\"124\" height=\"130\" fill=\"rgba(216,201,166,.045)\" transform=\"rotate(-3 406 347)\"></rect>\n            <rect x=\"120\" y=\"452\" width=\"150\" height=\"106\" fill=\"rgba(216,201,166,.08)\" stroke=\"url(#pFrame)\" stroke-width=\"1.2\" transform=\"rotate(-2 195 505)\"></rect>\n            <rect x=\"316\" y=\"452\" width=\"168\" height=\"112\" fill=\"rgba(216,201,166,.08)\" stroke=\"url(#pFrame)\" stroke-width=\"1.2\" transform=\"rotate(4 400 508)\"></rect>\n\n            <!-- 相纸内的小小剪影（示意） -->\n            <circle cx=\"188\" cy=\"200\" r=\"12\" fill=\"rgba(6,7,9,.72)\"></circle>\n            <path d=\"M170 234 L170 216 C170 208 206 208 206 216 L206 234 Z\" fill=\"rgba(6,7,9,.72)\"></path>\n            <circle cx=\"376\" cy=\"176\" r=\"11\" fill=\"rgba(6,7,9,.7)\"></circle>\n            <path d=\"M360 208 L360 192 C360 184 392 184 392 192 L392 208 Z\" fill=\"rgba(6,7,9,.7)\"></path>\n            <rect x=\"205\" y=\"330\" width=\"70\" height=\"4\" fill=\"rgba(6,7,9,.5)\"></rect>\n            <rect x=\"205\" y=\"344\" width=\"96\" height=\"4\" fill=\"rgba(6,7,9,.4)\"></rect>\n            <rect x=\"205\" y=\"358\" width=\"58\" height=\"4\" fill=\"rgba(6,7,9,.4)\"></rect>\n            <rect x=\"392\" y=\"300\" width=\"66\" height=\"4\" fill=\"rgba(6,7,9,.5)\"></rect>\n            <rect x=\"392\" y=\"314\" width=\"52\" height=\"4\" fill=\"rgba(6,7,9,.4)\"></rect>\n            <circle cx=\"398\" cy=\"356\" r=\"18\" fill=\"none\" stroke=\"rgba(168,50,45,.5)\" stroke-width=\"1.4\"></circle>\n          </g>\n\n          <!-- 线索红线 -->\n          <g stroke=\"rgba(168,50,45,.5)\" stroke-width=\"1.1\" fill=\"none\">\n            <path d=\"M276 200 C312 176 322 172 352 176\"></path>\n            <path d=\"M268 220 C300 268 316 300 338 320\"></path>\n            <path d=\"M232 424 C284 452 320 470 380 468\"></path>\n          </g>\n          <g fill=\"rgba(217,99,90,.85)\">\n            <circle cx=\"276\" cy=\"200\" r=\"2.6\"></circle>\n            <circle cx=\"352\" cy=\"176\" r=\"2.6\"></circle>\n            <circle cx=\"268\" cy=\"220\" r=\"2.6\"></circle>\n            <circle cx=\"338\" cy=\"320\" r=\"2.6\"></circle>\n            <circle cx=\"232\" cy=\"424\" r=\"2.6\"></circle>\n            <circle cx=\"380\" cy=\"468\" r=\"2.6\"></circle>\n          </g>\n\n          <!-- 顶灯 -->\n          <circle cx=\"300\" cy=\"612\" r=\"150\" fill=\"url(#pLamp)\" opacity=\".52\"></circle>\n          <line x1=\"300\" y1=\"0\" x2=\"300\" y2=\"612\" stroke=\"rgba(201,162,39,.14)\"></line>\n\n          <!-- 地面 -->\n          <rect x=\"0\" y=\"684\" width=\"600\" height=\"196\" fill=\"url(#pFloor)\"></rect>\n          <rect x=\"0\" y=\"684\" width=\"600\" height=\"1\" fill=\"rgba(216,201,166,.26)\"></rect>\n\n          <!-- 孤身人影（背影 · 大衣） -->\n          <g fill=\"#050608\">\n            <ellipse cx=\"300\" cy=\"612\" rx=\"23\" ry=\"26\"></ellipse>\n            <path d=\"M270 646 C282 640 318 640 330 646 L348 684 L252 684 Z\"></path>\n            <path d=\"M272 660 C262 668 258 674 256 682 L268 684 C270 674 274 668 280 662 Z\"></path>\n            <path d=\"M328 660 C338 668 342 674 344 682 L332 684 C330 674 326 668 320 662 Z\"></path>\n          </g>\n          <ellipse cx=\"300\" cy=\"610\" rx=\"19\" ry=\"3.6\" fill=\"rgba(216,201,166,.14)\"></ellipse>\n\n          <!-- 竖排片名 -->\n          <g fill=\"#faf4e6\" font-family=\"Songti SC, STSong, serif\" font-size=\"40\" letter-spacing=\"4\">\n            <text x=\"26\" y=\"560\">蒙</text>\n            <text x=\"26\" y=\"612\">太</text>\n            <text x=\"26\" y=\"664\">奇</text>\n          </g>\n          <rect x=\"28\" y=\"690\" width=\"42\" height=\"1\" fill=\"rgba(168,50,45,.85)\"></rect>\n\n          <g font-family=\"Songti SC, STSong, serif\" font-size=\"16\" fill=\"rgba(168,192,203,.8)\" letter-spacing=\"2\">\n            <text x=\"30\" y=\"722\">抓住那个家伙 · 模犯母亲</text>\n          </g>\n          <g font-family=\"SF Mono, Menlo, monospace\" font-size=\"11\" letter-spacing=\"3\" fill=\"rgba(126,123,116,.92)\">\n            <text x=\"30\" y=\"754\">MONTAGE / 몽타주</text>\n            <text x=\"30\" y=\"774\">2013 / 120 MIN / 15+</text>\n          </g>\n        </svg>",
+    "posterCaption": "概念海报 · 拼贴墙与背影 / 非官方物料，仅作氛围示意"
+  },
+  {
     "id": "20260427",
     "date": "20260427",
     "zhTitle": "辛 德 勒 的 名 单",
