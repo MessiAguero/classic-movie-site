@@ -216,9 +216,17 @@
     "id": "20260924",
     "zhTitle": "走到尽头黑仔刑警 · 非常警探",
     "enTitle": "2014 · 111 min · Directed by 김성훈",
-    "year": "2014",
+    "year": "2024",
     "imageUrl": "https://image.tmdb.org/t/p/original/6xbkuuHGUjb0efGmooCKL42f2lU.jpg",
     "title": "辣手警探2 (2024) - 海报 — The Movie Database (TMDB)"
+  },
+  {
+    "id": "20260927",
+    "zhTitle": "看见恶魔",
+    "enTitle": "I Saw the Devil / 2010 / dir. Kim Jee-woon",
+    "year": "2010",
+    "imageUrl": "https://sothebys-md.brightspotcdn.com/03/61/2e9a31474cb095281dfe44006f6e/239.%20I%20SAW%20THE%20DEVIL.jpg",
+    "title": "Ang-ma-reul bo-at-da / I Saw the Devil (2010) Poster, US, First ..."
   },
   {
     "id": "20260427",
@@ -950,6 +958,14 @@
     "hiRes": true
   },
   {
+    "id": "20260727",
+    "zhTitle": "卧虎藏龙",
+    "enTitle": "CROUCHING TIGERHIDDEN DRAGON",
+    "year": "2000",
+    "imageUrl": "https://image.tmdb.org/t/p/original/uGpoarcMIBuwmHLD9NEhQoxHrap.jpg",
+    "title": "卧虎藏龙 (2000) - 海报 — The Movie Database (TMDB)"
+  },
+  {
     "id": "20260728",
     "zhTitle": "东京物语",
     "enTitle": "Tokyo Story",
@@ -1009,6 +1025,14 @@
     "title": "杀死一只知更鸟 (1962) - 剧照 — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/9yzIq7uNp1HuVZcYHrUbblNch2Y.jpg",
     "hiRes": true
+  },
+  {
+    "id": "20260806-2",
+    "zhTitle": "莫 扎 特 传",
+    "enTitle": "",
+    "year": "1984",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Mozhaisk11.jpg/1280px-Mozhaisk11.jpg",
+    "title": "莫扎伊斯克 - Wikiwand"
   },
   {
     "id": "20260806",
@@ -1072,6 +1096,14 @@
     "title": "Back to the Future (1985) - Posters — The Movie Database (TMDB)",
     "remoteUrl": "https://image.tmdb.org/t/p/w780/16W1FzOFcWPdAj7WHzxV4perI96.jpg",
     "hiRes": true
+  },
+  {
+    "id": "20260812",
+    "zhTitle": "回到未来",
+    "enTitle": "BACK TO THE FUTURE",
+    "year": "1985",
+    "imageUrl": "https://image.tmdb.org/t/p/original/wZOsxwQjTdtSki0MiPIy8Zu9lv1.jpg",
+    "title": "回到未来 (1985) - 海报 — The Movie Database (TMDB)"
   },
   {
     "id": "20260814",

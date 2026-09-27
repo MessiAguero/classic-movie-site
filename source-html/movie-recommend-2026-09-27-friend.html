@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>朋友 · 观影推荐 | 郭景泽 · 张东健 · 刘五性</title>
+<meta name="description" content="韩国犯罪经典《朋友》(친구 / Friend, 2001) 无剧透观影推荐：剧情梗概、影片档案、荣誉一览、二十年时间线与为什么值得看。" />
+<style>
+  :root{
+    --ink:#0e0b09;
+    --ink-2:#131010;
+    --panel:#171210;
+    --panel-2:#1e1815;
+    --panel-3:#251d19;
+    --line:rgba(232,214,184,.10);
+    --line-2:rgba(232,214,184,.20);
+    --text:#f0e8dc;
+    --text-2:#bdb3a2;
+    --dim:#8a7f6e;
+    --paper:#e8d9b8;
+    --paper-2:#cbb68a;
+    --gold:#c9a24a;
+    --gold-2:#e3c377;
+    --rust:#9d3a2b;
+    --rust-2:#c85a44;
+    --mist:#5d7480;
+    --mist-2:#92abb6;
+    --serif:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    --mono:"SF Mono","JetBrains Mono","Menlo","Consolas",monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* 全局旧胶片颗粒 */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='150' height='150' filter='url(%23n)' opacity='.5'/></svg>");
+    opacity:.055;mix-blend-mode:overlay;
+  }
+  /* 放映机呼吸（极轻） */
+  body::after{
+    content:"";position:fixed;inset:0;z-index:9997;pointer-events:none;
+    background:radial-gradient(120% 80% at 50% 0%,rgba(201,162,74,.07),transparent 60%);
+    animation:gate 7.5s ease-in-out infinite;
+  }
+  @keyframes gate{0%,100%{opacity:.55}42%{opacity:.9}58%{opacity:.62}}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .serif{font-family:var(--serif)}
+  .mono{font-family:var(--mono)}
+
+  /* ---------------- HERO ---------------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  #heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-svg{position:absolute;inset:0;width:100%;height:100%}
+  .hero-scrim{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(90% 60% at 22% 52%,rgba(14,11,9,.86),rgba(14,11,9,.30) 62%,transparent 82%),
+      linear-gradient(180deg,rgba(14,11,9,.72) 0%,transparent 26%,transparent 58%,rgba(14,11,9,.95) 100%);
+  }
+  .hero-in{position:relative;z-index:3;width:100%;padding:120px 0 96px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.30em;text-transform:uppercase;
+    color:var(--gold);border:1px solid rgba(201,162,74,.34);
+    padding:7px 14px;border-radius:2px;background:rgba(201,162,74,.06);
+  }
+  .eyebrow i{width:5px;height:5px;background:var(--rust-2);border-radius:50%;display:block}
+  h1.title{
+    font-family:var(--serif);
+    font-size:clamp(64px,13vw,152px);
+    line-height:1;letter-spacing:.10em;font-weight:600;
+    margin:26px 0 0 -6px;
+    color:var(--paper);
+    text-shadow:0 2px 40px rgba(0,0,0,.75),0 0 90px rgba(201,162,74,.10);
+  }
+  .title-rule{width:84px;height:2px;background:linear-gradient(90deg,var(--rust-2),transparent);margin:22px 0 20px}
+  .sub{
+    font-family:var(--mono);font-size:clamp(11px,1.5vw,13.5px);
+    letter-spacing:.24em;color:var(--mist-2);text-transform:uppercase;
+  }
+  .tagline{
+    font-family:var(--serif);font-size:clamp(18px,2.5vw,25px);line-height:1.72;
+    color:var(--text);max-width:640px;margin-top:22px;
+  }
+  .tagline em{font-style:normal;color:var(--gold-2);border-bottom:1px solid rgba(201,162,74,.4)}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px}
+  .chip{
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+    padding:6px 12px;border:1px solid var(--line-2);border-radius:2px;
+    color:var(--text-2);background:rgba(255,255,255,.02);
+  }
+  .scroll-cue{
+    position:absolute;left:28px;bottom:26px;z-index:4;
+    font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--dim);
+    display:flex;align-items:center;gap:10px;
+  }
+  .scroll-cue span{width:44px;height:1px;background:var(--dim);display:block;animation:cue 2.6s ease-in-out infinite}
+  @keyframes cue{0%,100%{transform:scaleX(.35);opacity:.4}50%{transform:scaleX(1);opacity:1}}
+
+  /* ---------------- 通用版块 ---------------- */
+  section{padding:96px 0;position:relative}
+  .sec-head{margin-bottom:42px}
+  .sec-kicker{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.30em;text-transform:uppercase;
+    color:var(--gold);display:flex;align-items:center;gap:12px;
+  }
+  .sec-kicker::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(201,162,74,.34),transparent)}
+  .sec-title{
+    font-family:var(--serif);font-size:clamp(26px,4vw,40px);line-height:1.3;
+    margin-top:14px;color:var(--paper);letter-spacing:.03em;font-weight:600;
+  }
+  .sec-note{margin-top:12px;color:var(--dim);font-size:13.5px;max-width:720px}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* 防剧透条 */
+  .spoiler{padding:0;border-bottom:1px solid var(--line)}
+  .spoiler-in{
+    display:flex;gap:18px;align-items:flex-start;
+    border-left:2px solid var(--rust-2);
+    background:linear-gradient(90deg,rgba(157,58,43,.16),rgba(157,58,43,.03));
+    padding:20px 24px;border-radius:2px;
+  }
+  .spoiler-badge{
+    flex:none;font-family:var(--mono);font-size:10px;letter-spacing:.2em;
+    color:var(--rust-2);border:1px solid rgba(200,90,68,.42);padding:5px 9px;border-radius:2px;
+    white-space:nowrap;margin-top:3px;
+  }
+  .spoiler-in p{color:var(--text-2);font-size:14.5px;line-height:1.85}
+  .spoiler-in strong{color:var(--paper);font-weight:600}
+
+  /* 梗概 + 速览 */
+  .two-col{display:grid;grid-template-columns:1.62fr 1fr;gap:52px;align-items:start}
+  .syn p{color:var(--text-2);margin-bottom:20px;font-size:16.5px}
+  .syn p:first-of-type::first-letter{
+    font-family:var(--serif);font-size:66px;line-height:.86;float:left;
+    margin:6px 14px 0 0;color:var(--paper);
+    text-shadow:0 0 34px rgba(201,162,74,.28);
+  }
+  .syn p b{color:var(--paper);font-weight:600}
+  .syn p i{font-style:normal;color:var(--gold-2)}
+
+  .glance{
+    border:1px solid var(--line);background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border-radius:3px;padding:26px 24px;position:sticky;top:26px;
+  }
+  .glance h3{
+    font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line);
+  }
+  .glance dl{display:grid;gap:13px}
+  .glance .row{display:grid;grid-template-columns:76px 1fr;gap:12px;font-size:13.5px}
+  .glance .row dt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--dim);padding-top:3px}
+  .glance .row dd{color:var(--text-2)}
+  .glance .row dd b{color:var(--paper);font-weight:600}
+  .stamp{
+    margin-top:22px;padding-top:16px;border-top:1px dashed var(--line-2);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--mist-2);line-height:2;
+  }
+
+  /* 海报区 */
+  .poster-wrap{display:grid;grid-template-columns:minmax(0,1fr) 1fr;gap:56px;align-items:center}
+  .poster-frame{
+    position:relative;border:1px solid var(--line-2);background:var(--ink-2);
+    padding:14px;border-radius:3px;
+    box-shadow:0 34px 90px -40px rgba(0,0,0,.95),inset 0 0 0 1px rgba(232,214,184,.04);
+  }
+  .poster-frame svg{display:block;width:100%;height:auto}
+  .poster-frame::before,.poster-frame::after{
+    content:"";position:absolute;width:34px;height:34px;border:1px solid rgba(201,162,74,.45);
+  }
+  .poster-frame::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  .poster-frame::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+  .poster-cap{
+    margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--dim);text-align:center;
+  }
+  .reading li{list-style:none;padding:0 0 20px 26px;position:relative;color:var(--text-2);font-size:15px}
+  .reading li::before{
+    content:"";position:absolute;left:0;top:11px;width:10px;height:10px;
+    border:1px solid var(--gold);transform:rotate(45deg);
+  }
+  .reading li b{color:var(--paper);font-weight:600;display:block;margin-bottom:3px;font-size:15px}
+
+  /* 档案 */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .fact{background:var(--panel);padding:20px 18px;min-height:104px;display:flex;flex-direction:column;gap:7px}
+  .fact dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+  .fact dd{color:var(--text);font-size:14px;line-height:1.6}
+  .fact dd small{display:block;color:var(--dim);font-size:11.5px;margin-top:5px;line-height:1.55}
+  .fact.accent dd{color:var(--gold-2)}
+
+  /* 口碑 */
+  .scores{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .score{
+    border:1px solid var(--line);background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border-radius:3px;padding:22px 20px;position:relative;overflow:hidden;
+  }
+  .score::after{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:linear-gradient(90deg,var(--gold),transparent)}
+  .score .src{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase}
+  .score .num{font-family:var(--serif);font-size:44px;line-height:1.1;color:var(--paper);margin:10px 0 2px}
+  .score .num sup{font-family:var(--mono);font-size:12px;color:var(--dim);margin-left:4px}
+  .score .det{font-size:12.5px;color:var(--dim);line-height:1.7}
+  .bar{height:3px;background:rgba(232,214,184,.10);margin-top:14px;border-radius:2px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--rust-2));transition:width 1.5s cubic-bezier(.22,.61,.36,1)}
+  .score.in .bar i{width:var(--w)}
+
+  /* 时间线 */
+  .tl{position:relative;padding-left:34px}
+  .tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,transparent,var(--line-2) 6%,var(--line-2) 94%,transparent)}
+  .tl-item{position:relative;padding-bottom:30px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-30px;top:9px;width:9px;height:9px;border-radius:50%;
+    background:var(--ink);border:1px solid var(--gold);
+  }
+  .tl-item.key::before{background:var(--rust-2);border-color:var(--rust-2);box-shadow:0 0 0 4px rgba(157,58,43,.20)}
+  .tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--gold-2)}
+  .tl-t{font-family:var(--serif);font-size:17.5px;color:var(--paper);margin:3px 0 4px}
+  .tl-d{color:var(--text-2);font-size:14px}
+
+  /* 荣誉 */
+  .awards{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .aw{background:var(--panel);padding:20px 22px;display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:baseline}
+  .aw .org{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--gold);line-height:1.7}
+  .aw .what{color:var(--text-2);font-size:14.5px}
+  .aw .what b{color:var(--paper);font-weight:600}
+
+  /* 六宫格 */
+  .grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .gcard{
+    border:1px solid var(--line);background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border-radius:3px;padding:26px 24px;position:relative;transition:border-color .4s,transform .4s;
+  }
+  .gcard:hover{border-color:rgba(201,162,74,.42);transform:translateY(-3px)}
+  .gcard .idx{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--rust-2)}
+  .gcard h4{font-family:var(--serif);font-size:19px;color:var(--paper);margin:11px 0 10px;line-height:1.5;font-weight:600}
+  .gcard p{color:var(--text-2);font-size:14px;line-height:1.85}
+
+  /* 为什么值得看 */
+  .why{display:grid;gap:22px}
+  .wcard{
+    border-left:2px solid var(--gold);padding:4px 0 4px 26px;
+  }
+  .wcard h4{font-family:var(--serif);font-size:21px;color:var(--paper);margin-bottom:10px;font-weight:600;line-height:1.5}
+  .wcard p{color:var(--text-2);font-size:15.5px}
+  .wcard p + p{margin-top:12px}
+
+  /* 提示 */
+  .notice{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .ncard{border:1px dashed var(--line-2);padding:22px 20px;border-radius:3px;background:rgba(157,58,43,.045)}
+  .ncard dt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--rust-2);margin-bottom:10px}
+  .ncard dd{color:var(--text-2);font-size:13.5px;line-height:1.85}
+
+  /* 收尾 */
+  .ending{
+    padding:110px 0 96px;text-align:center;position:relative;overflow:hidden;
+    border-top:1px solid var(--line);
+    background:radial-gradient(80% 70% at 50% 30%,rgba(201,162,74,.07),transparent 70%);
+  }
+  .ending .quote{
+    font-family:var(--serif);font-size:clamp(21px,3.2vw,32px);line-height:1.78;
+    color:var(--paper);max-width:800px;margin:0 auto;
+  }
+  .ending .fn{margin-top:20px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--dim)}
+  .endmarks{display:flex;justify-content:center;gap:9px;margin-top:38px}
+  .endmarks i{width:6px;height:6px;border:1px solid var(--gold);transform:rotate(45deg);display:block}
+
+  footer{
+    border-top:1px solid var(--line);padding:30px 0 44px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--dim);
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+
+  /* ---------------- 响应式 ---------------- */
+  @media (max-width:980px){
+    .two-col,.poster-wrap{grid-template-columns:1fr;gap:40px}
+    .glance{position:static}
+    .facts{grid-template-columns:repeat(2,1fr)}
+    .scores{grid-template-columns:repeat(2,1fr)}
+    .grid6{grid-template-columns:1fr 1fr}
+    .notice{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    body{font-size:15px}
+    .wrap{padding:0 20px}
+    section{padding:70px 0}
+    .hero-in{padding:96px 0 84px}
+    .facts{grid-template-columns:1fr}
+    .scores{grid-template-columns:1fr}
+    .grid6{grid-template-columns:1fr}
+    .aw{grid-template-columns:1fr;gap:6px}
+    .spoiler-in{flex-direction:column;gap:12px}
+    .syn p:first-of-type::first-letter{font-size:52px}
+    h1.title{letter-spacing:.06em}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    .score .bar i{width:var(--w)}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-bg">
+    <canvas id="heroCanvas"></canvas>
+    <svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0e0b09" stop-opacity="0"/>
+          <stop offset="60%" stop-color="#1a1512" stop-opacity=".55"/>
+          <stop offset="100%" stop-color="#0d0a08" stop-opacity=".92"/>
+        </linearGradient>
+        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#4a5f6a" stop-opacity=".30"/>
+          <stop offset="100%" stop-color="#0e0b09" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="lamp" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#e3c377" stop-opacity=".55"/>
+          <stop offset="45%" stop-color="#c9a24a" stop-opacity=".10"/>
+          <stop offset="100%" stop-color="#c9a24a" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <rect x="0" y="0" width="1440" height="900" fill="url(#sky)"/>
+
+      <!-- 远处低矮楼群 -->
+      <g fill="#100c0a" opacity=".92">
+        <rect x="0" y="596" width="58" height="46"/><rect x="60" y="612" width="42" height="30"/>
+        <rect x="104" y="586" width="66" height="56"/><rect x="172" y="606" width="38" height="36"/>
+        <rect x="214" y="592" width="74" height="50"/><rect x="292" y="614" width="46" height="28"/>
+        <rect x="342" y="600" width="56" height="42"/><rect x="402" y="620" width="40" height="22"/>
+        <rect x="446" y="590" width="62" height="52"/><rect x="512" y="610" width="44" height="32"/>
+        <rect x="560" y="598" width="70" height="44"/><rect x="634" y="616" width="42" height="26"/>
+        <rect x="680" y="588" width="54" height="54"/><rect x="738" y="608" width="48" height="34"/>
+        <rect x="790" y="596" width="64" height="46"/><rect x="858" y="618" width="40" height="24"/>
+        <rect x="902" y="592" width="58" height="50"/><rect x="964" y="612" width="46" height="30"/>
+        <rect x="1014" y="600" width="68" height="42"/><rect x="1086" y="616" width="42" height="26"/>
+        <rect x="1132" y="590" width="56" height="52"/><rect x="1192" y="610" width="48" height="32"/>
+        <rect x="1244" y="598" width="62" height="44"/><rect x="1310" y="618" width="40" height="24"/>
+        <rect x="1354" y="592" width="86" height="50"/>
+      </g>
+      <!-- 零星窗光 -->
+      <g fill="#c9a24a" opacity=".30">
+        <rect x="76" y="618" width="3" height="4"/><rect x="126" y="602" width="3" height="4"/>
+        <rect x="238" y="608" width="3" height="4"/><rect x="368" y="614" width="3" height="4"/>
+        <rect x="470" y="606" width="3" height="4"/><rect x="588" y="612" width="3" height="4"/>
+        <rect x="700" y="604" width="3" height="4"/><rect x="820" y="610" width="3" height="4"/>
+        <rect x="930" y="606" width="3" height="4"/><rect x="1044" y="614" width="3" height="4"/>
+        <rect x="1160" y="604" width="3" height="4"/><rect x="1272" y="610" width="3" height="4"/>
+      </g>
+
+      <!-- 港口起重机 -->
+      <g stroke="#161110" stroke-width="4" fill="none" opacity=".95">
+        <path d="M120 642 L120 500 L206 500 M206 500 L236 546 M206 500 L112 546"/>
+        <path d="M120 500 L112 546"/>
+        <path d="M1028 642 L1028 512 L1104 512 M1104 512 L1130 556 M1104 512 L1022 556"/>
+      </g>
+      <g stroke="#c9a24a" stroke-width="2" opacity=".22">
+        <path d="M1028 512 L1028 588"/><path d="M120 500 L120 574"/>
+      </g>
+
+      <!-- 海平面 -->
+      <rect x="0" y="642" width="1440" height="120" fill="url(#sea)"/>
+      <g stroke="#92abb6" stroke-width="1.4" opacity=".20">
+        <path d="M60 668 H240"/><path d="M330 682 H470"/><path d="M540 664 H700"/>
+        <path d="M760 690 H910"/><path d="M980 670 H1140"/><path d="M1200 686 H1370"/>
+      </g>
+
+      <!-- 防波堤 -->
+      <rect x="0" y="752" width="1440" height="10" fill="#0b0806"/>
+      <rect x="0" y="762" width="1440" height="138" fill="#080605"/>
+      <g stroke="#2a2119" stroke-width="1" opacity=".7">
+        <path d="M0 762 H1440"/><path d="M0 812 H1440"/><path d="M0 866 H1440"/>
+      </g>
+
+      <!-- 路灯与光晕 -->
+      <circle cx="1180" cy="700" r="230" fill="url(#lamp)"/>
+      <g stroke="#120d0a" stroke-width="5" fill="none">
+        <path d="M1180 752 L1180 640"/>
+        <path d="M1180 640 q0 -24 30 -24"/>
+      </g>
+      <circle cx="1212" cy="616" r="5" fill="#e3c377" opacity=".9"/>
+
+      <!-- 四个人的剪影：站在防波堤上 -->
+      <g fill="#070505">
+        <g transform="translate(300,0)">
+          <circle cx="0" cy="646" r="10"/>
+          <path d="M-11 660 h22 l5 92 h-32 z"/>
+          <path d="M-11 664 l-9 54 h7 l7 -46z"/>
+          <path d="M11 664 l10 54 h-7 l-8 -46z"/>
+        </g>
+        <g transform="translate(348,0)">
+          <circle cx="0" cy="651" r="9"/>
+          <path d="M-10 665 h20 l4 87 h-28 z"/>
+          <path d="M-10 668 l-7 50 h6 l6 -43z"/>
+          <path d="M10 668 l8 50 h-6 l-7 -43z"/>
+        </g>
+        <g transform="translate(392,0)">
+          <circle cx="0" cy="643" r="11"/>
+          <path d="M-12 658 h24 l6 94 h-36 z"/>
+          <path d="M-12 662 l-11 56 h8 l8 -48z"/>
+          <path d="M12 662 l11 56 h-8 l-8 -48z"/>
+        </g>
+        <g transform="translate(446,0)">
+          <circle cx="0" cy="655" r="9"/>
+          <path d="M-10 669 h20 l4 83 h-28 z"/>
+          <path d="M-10 672 l-8 48 h6 l7 -42z"/>
+          <path d="M10 672 l8 48 h-6 l-7 -42z"/>
+        </g>
+      </g>
+      <!-- 地面倒影 -->
+      <g fill="#c9a24a" opacity=".10">
+        <rect x="296" y="768" width="8" height="34"/>
+        <rect x="444" y="772" width="7" height="28"/>
+      </g>
+    </svg>
+    <div class="hero-scrim"></div>
+  </div>
+
+  <div class="hero-in wrap">
+    <div class="eyebrow"><i></i>韩国犯罪经典 · 无剧透观影笔记 · 第 17 部</div>
+    <h1 class="title serif">朋友</h1>
+    <div class="title-rule"></div>
+    <p class="sub">친구 · FRIEND · 2001 · 郭景泽</p>
+    <p class="tagline serif">一部没有大场面、没有特效、没有明星式炫技的电影，却把韩国影史的票房纪录<em>整整数提高了一截</em>。</p>
+    <div class="chips">
+      <span class="chip">片长 113 分钟</span>
+      <span class="chip">韩国 18+</span>
+      <span class="chip">全片釜山方言</span>
+      <span class="chip">半自传剧本</span>
+      <span class="chip">818 万观影人次</span>
+    </div>
+  </div>
+
+  <div class="scroll-cue"><span></span>向下滚动 · 本文不含任何剧情反转</div>
+</header>
+
+<!-- ================= 防剧透 ================= -->
+<section class="spoiler">
+  <div class="wrap">
+    <div class="spoiler-in reveal">
+      <div class="spoiler-badge">NO SPOILER</div>
+      <p><strong>阅读说明：</strong>本篇为无剧透导览。剧情梗概止于影片第一幕的转折点，不涉及结局、关键反转、人物的最终命运与决定性场面；文中所有引语均为主题式表述，<strong>不是片中台词</strong>。你可以放心在观影前读完它。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 梗概 ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">STORY · 一句话与四段人生</div>
+      <h2 class="sec-title serif">四个男孩，一座港城，二十年</h2>
+      <p class="sec-note">以下内容全部来自影片的公开宣传梗概，止于第一幕的转折。</p>
+    </div>
+
+    <div class="two-col">
+      <div class="syn reveal">
+        <p>1978 年，<b>釜山</b>。四个男孩在同一片街区长大：一个家里最穷，一个父亲是帮派头目，一个永远是全校第一，一个最会说话、最会活跃气氛。他们一起逃课、一起打架、一起把整个夏天耗在码头和巷子里。在那几年里，"朋友"这个词不需要解释，也没有人想过它会需要解释。</p>
+
+        <p>后来他们升上中学。为了让被欺负的同学不白受委屈，最麻烦的那两个替人出了头——代价是被学校开除。分岔就是从那一刻开始的。它不是一声巨响，而是某一天起，四个人走的路上，少了两个身影。</p>
+
+        <p>1984 年，<b>汉城</b>。念大学的两个人四处打听另外两个朋友的下落，得到的消息一个比一个糟：一个在牢里，一个在戒毒所。他们当初站在一起的理由很简单，如今分开的理由也一样简单——只是生活把那份"简单"收了回去。</p>
+
+        <p>1990 年的秋天，漂在外面的那个朋友回来了。城市还在，海还在，弄堂还在，只是当年一起站在防波堤上的四个人，已经有人走在街的这一边，有人走在<strong>另一边</strong>。影片并不急着交代他们会怎样收场，它只是把二十年的时间摊开，让你自己看到：<i>一段友谊，是怎么一点一点变成往事的。</i></p>
+      </div>
+
+      <aside class="glance reveal">
+        <h3>At a Glance · 一眼速览</h3>
+        <dl>
+          <div class="row"><dt>类型</dt><dd>犯罪 / 剧情</dd></div>
+          <div class="row"><dt>导演</dt><dd><b>郭景泽</b><br><span style="color:var(--dim);font-size:12px">兼编剧 · 半自传</span></dd></div>
+          <div class="row"><dt>主演</dt><dd>张东健 · 刘五性<br>徐泰和 · 郑云泽</dd></div>
+          <div class="row"><dt>年份</dt><dd>2001 · 韩国</dd></div>
+          <div class="row"><dt>分级</dt><dd>18 岁以上观览可</dd></div>
+          <div class="row"><dt>一句话</dt><dd style="color:var(--gold-2)">被媒体称为"韩国版《美国往事》"的友谊挽歌。</dd></div>
+        </dl>
+        <div class="stamp">
+          8,180,000 ADMISSIONS<br>
+          2001 KOREA BOX OFFICE NO.1
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 概念海报 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">KEY ART · 概念海报解读</div>
+      <h2 class="sec-title serif">四个人，没有一个人回头看</h2>
+    </div>
+
+    <div class="poster-wrap">
+      <div class="reveal">
+        <div class="poster-frame">
+          <svg viewBox="0 0 520 720" role="img" aria-label="概念海报：雨夜防波堤上的四个背影">
+            <defs>
+              <linearGradient id="pSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0b0908"/>
+                <stop offset="46%" stop-color="#1d1713"/>
+                <stop offset="70%" stop-color="#241b15"/>
+                <stop offset="100%" stop-color="#0b0908"/>
+              </linearGradient>
+              <linearGradient id="pSea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5d7480" stop-opacity=".34"/>
+                <stop offset="100%" stop-color="#0b0908" stop-opacity="0"/>
+              </linearGradient>
+              <radialGradient id="pLamp" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#e3c377" stop-opacity=".60"/>
+                <stop offset="40%" stop-color="#c9a24a" stop-opacity=".12"/>
+                <stop offset="100%" stop-color="#c9a24a" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="pPaper" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#e8d9b8" stop-opacity=".10"/>
+                <stop offset="50%" stop-color="#e8d9b8" stop-opacity="0"/>
+                <stop offset="100%" stop-color="#c85a44" stop-opacity=".10"/>
+              </linearGradient>
+              <pattern id="pGrain" width="6" height="6" patternUnits="userSpaceOnUse">
+                <rect width="6" height="6" fill="none"/>
+                <circle cx="1" cy="1.5" r=".5" fill="#e8d9b8" opacity=".07"/>
+                <circle cx="4" cy="4" r=".45" fill="#e8d9b8" opacity=".05"/>
+              </pattern>
+            </defs>
+
+            <rect width="520" height="720" fill="url(#pSky)"/>
+            <rect width="520" height="720" fill="url(#pPaper)"/>
+            <rect width="520" height="720" fill="url(#pGrain)"/>
+
+            <!-- 雨丝 -->
+            <g stroke="#92abb6" stroke-width="1" opacity=".16">
+              <path d="M40 0 L20 120"/><path d="M96 0 L76 130"/><path d="M150 20 L130 150"/>
+              <path d="M204 0 L184 128"/><path d="M262 30 L242 160"/><path d="M318 0 L298 132"/>
+              <path d="M372 24 L352 154"/><path d="M428 0 L408 126"/><path d="M482 34 L462 164"/>
+              <path d="M68 220 L48 350"/><path d="M176 250 L156 380"/><path d="M290 236 L270 366"/>
+              <path d="M400 262 L380 392"/><path d="M466 300 L446 430"/>
+              <path d="M120 430 L100 560"/><path d="M244 452 L224 582"/><path d="M356 440 L336 570"/>
+              <path d="M470 470 L450 600"/>
+            </g>
+
+            <!-- 远处船灯 -->
+            <g opacity=".85">
+              <circle cx="96" cy="404" r="3.2" fill="#e3c377"/>
+              <circle cx="96" cy="404" r="16" fill="#c9a24a" opacity=".16"/>
+              <circle cx="420" cy="392" r="2.4" fill="#c85a44" opacity=".8"/>
+              <circle cx="420" cy="392" r="12" fill="#c85a44" opacity=".12"/>
+            </g>
+
+            <!-- 海平面 -->
+            <rect x="0" y="404" width="520" height="130" fill="url(#pSea)"/>
+            <g stroke="#92abb6" stroke-width="1" opacity=".22">
+              <path d="M20 452 H150"/><path d="M180 432 H300"/><path d="M330 466 H470"/>
+              <path d="M60 484 H190"/><path d="M240 494 H360"/>
+            </g>
+
+            <!-- 路灯 -->
+            <circle cx="440" cy="430" r="150" fill="url(#pLamp)"/>
+            <g stroke="#0f0b09" stroke-width="4" fill="none">
+              <path d="M440 560 L440 452"/><path d="M440 452 q0 -18 22 -18"/>
+            </g>
+            <circle cx="464" cy="434" r="4" fill="#e3c377" opacity=".92"/>
+
+            <!-- 防波堤 -->
+            <rect x="0" y="556" width="520" height="164" fill="#080605"/>
+            <path d="M0 556 H520" stroke="#2a2119" stroke-width="1.5"/>
+            <path d="M0 612 H520" stroke="#221a14" stroke-width="1"/>
+            <path d="M0 678 H520" stroke="#221a14" stroke-width="1"/>
+
+            <!-- 四个背影 -->
+            <g fill="#070505">
+              <g transform="translate(96,0)">
+                <circle cx="0" cy="470" r="11"/>
+                <path d="M-12 485 h24 l6 77 h-36 z"/>
+                <path d="M-12 489 l-11 46 h8 l8 -39z"/>
+                <path d="M12 489 l11 46 h-8 l-8 -39z"/>
+              </g>
+              <g transform="translate(148,0)">
+                <circle cx="0" cy="478" r="10"/>
+                <path d="M-11 492 h22 l5 70 h-32 z"/>
+                <path d="M-11 496 l-9 42 h7 l7 -36z"/>
+                <path d="M11 496 l9 42 h-7 l-7 -36z"/>
+              </g>
+              <g transform="translate(200,0)">
+                <circle cx="0" cy="466" r="12"/>
+                <path d="M-13 482 h26 l7 80 h-40 z"/>
+                <path d="M-13 486 l-12 48 h9 l9 -41z"/>
+                <path d="M13 486 l12 48 h-9 l-9 -41z"/>
+              </g>
+              <g transform="translate(258,0)">
+                <circle cx="0" cy="482" r="10"/>
+                <path d="M-11 496 h22 l5 66 h-32 z"/>
+                <path d="M-11 500 l-10 40 h7 l8 -34z"/>
+                <path d="M11 500 l10 40 h-7 l-8 -34z"/>
+              </g>
+            </g>
+            <!-- 水面倒影 -->
+            <g fill="#c9a24a" opacity=".10">
+              <rect x="92" y="572" width="9" height="40"/>
+              <rect x="254" y="578" width="8" height="34"/>
+            </g>
+
+            <!-- 四周暗角 -->
+            <rect width="520" height="720" fill="none" stroke="#e8d9b8" stroke-opacity=".10" stroke-width="1"/>
+            <g stroke="#e8d9b8" stroke-opacity=".28" stroke-width="1">
+              <path d="M0 34 V0 H34"/><path d="M486 0 H520 V34"/>
+              <path d="M520 686 V720 H486"/><path d="M34 720 H0 V686"/>
+            </g>
+
+            <!-- 竖排片名 -->
+            <g fill="#e8d9b8">
+              <text x="382" y="118" font-family="Songti SC,STSong,serif" font-size="46" letter-spacing="6" opacity=".95">朋</text>
+              <text x="382" y="176" font-family="Songti SC,STSong,serif" font-size="46" letter-spacing="6" opacity=".95">友</text>
+            </g>
+            <g fill="#c9a24a" opacity=".9">
+              <text x="384" y="222" font-family="SF Mono,Menlo,monospace" font-size="13" letter-spacing="4">친구</text>
+              <text x="384" y="246" font-family="SF Mono,Menlo,monospace" font-size="13" letter-spacing="4">FRIEND</text>
+            </g>
+            <g fill="#bdb3a2" opacity=".72">
+              <text x="384" y="286" font-family="SF Mono,Menlo,monospace" font-size="9" letter-spacing="2.4">2001 · KWAK KYUNG-TAEK</text>
+            </g>
+            <path d="M384 306 H492" stroke="#c85a44" stroke-width="1.4" opacity=".7"/>
+            <g fill="#bdb3a2" opacity=".55">
+              <text x="384" y="330" font-family="SF Mono,Menlo,monospace" font-size="8" letter-spacing="1.6">EIGHTEEN YEARS OLD</text>
+              <text x="384" y="346" font-family="SF Mono,Menlo,monospace" font-size="8" letter-spacing="1.6">AND OVER ONLY</text>
+            </g>
+          </svg>
+        </div>
+        <p class="poster-cap">CONCEPT KEY ART · ILLUSTRATIVE, NOT THE OFFICIAL POSTER</p>
+      </div>
+
+      <ul class="reading reveal">
+        <li><b>没有一个人回头看</b>四个背影排成一列，面朝同一片海。他们看向的方向是一样的——这正是这部片最让人难受的地方：分岔从来不是因为谁转过身。</li>
+        <li><b>天空占了三分之一以上</b>地平线被刻意压低，人物小得像四粒墨点。这是"往事"该有的比例：人很小，时间很大。</li>
+        <li><b>一盏灯，一段防波堤</b>全片最重要的场景从来不是火并与清算，而是少年们坐着吹风、什么也不做的那个地方。</li>
+        <li><b>细雨与湿掉的码头</b>釜山的雨季是这部片的底色——潮气、方言、海腥味，构成了一套无法搬到别的城市的质感。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 档案 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">DOSSIER · 影片档案</div>
+      <h2 class="sec-title serif">关于这部片的十六件事</h2>
+    </div>
+
+    <dl class="facts reveal">
+      <div class="fact"><dt>中文片名</dt><dd>朋友<small>又译《往事如烟》</small></dd></div>
+      <div class="fact"><dt>韩文 / 英文</dt><dd>친구 / Friend</dd></div>
+      <div class="fact"><dt>年份</dt><dd>2001</dd></div>
+      <div class="fact accent"><dt>类型</dt><dd>犯罪 / 剧情</dd></div>
+
+      <div class="fact"><dt>导演</dt><dd>郭景泽</dd></div>
+      <div class="fact"><dt>编剧</dt><dd>郭景泽<small>取材自身与高中挚友的经历</small></dd></div>
+      <div class="fact"><dt>主演</dt><dd>张东健 · 刘五性<br>徐泰和 · 郑云泽</dd></div>
+      <div class="fact"><dt>片长</dt><dd>113 分钟</dd></div>
+
+      <div class="fact"><dt>上映</dt><dd>2001-03-31<small>韩国</small></dd></div>
+      <div class="fact"><dt>分级</dt><dd>18 岁以上观览可<small>青少年不可观看</small></dd></div>
+      <div class="fact"><dt>语言</dt><dd>韩语<small>全片为浓重的釜山方言</small></dd></div>
+      <div class="fact"><dt>出品</dt><dd>Cineline II<br>JR Pictures</dd></div>
+
+      <div class="fact accent"><dt>观影人次</dt><dd>818 万<small>韩国影史首部破 800 万的本土电影</small></dd></div>
+      <div class="fact accent"><dt>年度成绩</dt><dd>2001 年韩国票房冠军<small>打破《生死谍变》保持的影史纪录</small></dd></div>
+      <div class="fact"><dt>地域背景</dt><dd>釜山<small>1978 → 1990 的二十年</small></dd></div>
+      <div class="fact"><dt>衍生作品</dt><dd>2009 电视剧 · 2013 续集<small>《朋友，我们的传说》/《朋友 2》</small></dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ================= 口碑 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">RECEPTION · 口碑与成绩</div>
+      <h2 class="sec-title serif">四项数据，两个时代的共识</h2>
+      <p class="sec-note">需要说明：本片在中文语境里属于"地位高于分数"的典型——它的影史分量，远不止评分能概括。</p>
+    </div>
+
+    <div class="scores">
+      <div class="score reveal" style="--w:78%">
+        <div class="src">豆瓣 · 中国</div>
+        <div class="num">7.8<sup>/ 10</sup></div>
+        <div class="det">约 3.4 万人评分，长期稳定在韩国犯罪片第一梯队。</div>
+        <div class="bar"><i></i></div>
+      </div>
+      <div class="score reveal" style="--w:74%">
+        <div class="src">IMDb · 全球</div>
+        <div class="num">7.4<sup>/ 10</sup></div>
+        <div class="det">海外观众口径的核心分数，二十余年后仍在被新观众翻出。</div>
+        <div class="bar"><i></i></div>
+      </div>
+      <div class="score reveal" style="--w:87%">
+        <div class="src">Rotten Tomatoes</div>
+        <div class="num">87%<sup>观众指数</sup></div>
+        <div class="det">2,500+ 条观众评分；影评人共识亦称其为"怀旧而动人的忠诚写照"。</div>
+        <div class="bar"><i></i></div>
+      </div>
+      <div class="score reveal" style="--w:96%">
+        <div class="src">韩国票房</div>
+        <div class="num">818<sup>万人次</sup></div>
+        <div class="det">2001 年度冠军，并刷新《生死谍变》保持的韩国影史纪录。</div>
+        <div class="bar"><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 时间线 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">TIME LINE · 从釜山到影史</div>
+      <h2 class="sec-title serif">二十年，与它之后的一切</h2>
+      <p class="sec-note">上半段是影片内部的时间，下半段是这部电影在现实里留下的时间。</p>
+    </div>
+
+    <div class="tl reveal">
+      <div class="tl-item"><div class="tl-y">1978</div><div class="tl-t">釜山 · 结义</div><div class="tl-d">四个出身迥异的男孩在同一片街区长大，友谊还不需要理由。</div></div>
+      <div class="tl-item key"><div class="tl-y">1984</div><div class="tl-t">汉城 · 分岔</div><div class="tl-d">两个人进了大学，另外两个的下落成了打听不到的消息。</div></div>
+      <div class="tl-item key"><div class="tl-y">1990 · 秋</div><div class="tl-t">重逢之前</div><div class="tl-d">漂在外面的那位回来了。影片的时间线在此处开始收紧。</div></div>
+      <div class="tl-item"><div class="tl-y">2001.03.31</div><div class="tl-t">上映 · 818 万</div><div class="tl-d">打破《生死谍变》保持的韩国影史票房纪录，成为年度冠军，也是韩国影史首部观影人次破 800 万的本土电影。</div></div>
+      <div class="tl-item"><div class="tl-y">2001.12.10</div><div class="tl-t">第 9 届春史电影奖</div><div class="tl-d">一举拿下最佳作品、最佳导演（郭景泽）、最佳男主角（刘五性）。</div></div>
+      <div class="tl-item"><div class="tl-y">2002</div><div class="tl-t">第 38 届百想艺术大赏</div><div class="tl-d">郑云泽获电影部门男子新人演技奖；同年本片亦获亚太影展表演类奖项肯定。</div></div>
+      <div class="tl-item"><div class="tl-y">2009</div><div class="tl-t">改编电视剧播出</div><div class="tl-d">MBC 将这个故事重制为《朋友，我们的传说》，足见其分量。</div></div>
+      <div class="tl-item"><div class="tl-y">2013</div><div class="tl-t">《朋友 2》上映</div><div class="tl-d">这套关于釜山与兄弟的叙事，被再次捡起来续写。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 荣誉 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">HONOURS · 荣誉一览</div>
+      <h2 class="sec-title serif">它拿走了当年最实在的奖</h2>
+    </div>
+
+    <div class="awards reveal">
+      <div class="aw"><div class="org">第 9 届春史电影奖<br>2001</div><div class="what"><b>最佳作品</b> · <b>最佳导演</b>（郭景泽）· <b>最佳男主角</b>（刘五性）</div></div>
+      <div class="aw"><div class="org">第 22 届青龙电影奖<br>2001</div><div class="what"><b>韩国电影最高观影次数奖</b>——即当年的"最卖座韩国电影"</div></div>
+      <div class="aw"><div class="org">第 46 届亚太影展<br>2001</div><div class="what"><b>最佳男主角</b>（刘五性）· <b>最佳男配角</b>（张东健）</div></div>
+      <div class="aw"><div class="org">第 38 届百想艺术大赏<br>2002</div><div class="what"><b>电影部门男子新人演技奖</b>（郑云泽）</div></div>
+      <div class="aw"><div class="org">韩国电影评论家协会奖<br>第 21 届</div><div class="what"><b>特别奖</b>——来自影评人群体的确认</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 六宫格 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">HIGHLIGHTS · 六处亮点</div>
+      <h2 class="sec-title serif">它凭什么被称为地标</h2>
+    </div>
+
+    <div class="grid6">
+      <div class="gcard reveal"><div class="idx">01</div><h4>时间才是真正的对手</h4><p>1978 到 1990，十二年跨度。影片从头到尾没有安排一个"恶人"——它把时间本身写成了那个无法战胜的角色，于是每一次和解都来得太晚。</p></div>
+      <div class="gcard reveal"><div class="idx">02</div><h4>釜山方言成为叙事本身</h4><p>全片用浓重的釜山方言演出。上映后，方言台词成了韩国的全民模仿对象——一种地方口音，第一次在银幕上拥有了与剧情同等的分量。</p></div>
+      <div class="gcard reveal"><div class="idx">03</div><h4>半自传，所以粗粝</h4><p>郭景泽写的是自己与高中挚友的真实经历。它不修饰、不升华，也不给任何一个角色安排体面的退场，那份私人记忆的颗粒感正是它的锋利处。</p></div>
+      <div class="gcard reveal"><div class="idx">04</div><h4>"韩国版《美国往事》"</h4><p>媒体反复使用这个比喻：不是照搬，而是同一道命题——忠诚如何被权力异化、被生存逻辑扭曲，最后变成一句无人兑现的承诺。</p></div>
+      <div class="gcard reveal"><div class="idx">05</div><h4>不美化暴力的暴力片</h4><p>它几乎不炫技于火并。真正被反复端详的，是一场冲突之后留下的空地、湿掉的地面和没人说话的长镜头。</p></div>
+      <div class="gcard reveal"><div class="idx">06</div><h4>两位主演的转型之作</h4><p>张东健为角色增重并剃光头发，刘五性交出了一个冷硬到令人不适的领袖形象。这部片直接改写了公众对两人"偶像演员"的想象。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 为什么值得看 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">WHY WATCH · 为什么值得看</div>
+      <h2 class="sec-title serif">三个理由，三个层次</h2>
+    </div>
+
+    <div class="why">
+      <div class="wcard reveal">
+        <h4>一、它问的不是"谁赢了"，而是"人是怎么变成后来那个样子的"</h4>
+        <p>犯罪片的外壳，成长片的内核。这部片里没有智斗、没有反转套娃、没有酣畅的复仇——它把全部注意力放在一件更难拍的事上：让观众眼睁睁看着四个人一点一点变成彼此不认识的人，而不给任何人台阶下。</p>
+        <p>看完之后你记住的不会是某个场面，而是某种情绪：你也会想起自己曾经的那个朋友，然后想不起是哪一年开始不再联系。</p>
+      </div>
+      <div class="wcard reveal">
+        <h4>二、地域与语言本身，就是它的质感来源</h4>
+        <p>釜山的海边、弄堂、码头，加上浓重的方言，让这部片无法被搬到任何别的城市。它的怀旧不是滤镜式的，而是潮湿的、带着海腥味的——这种"扎根在具体地方"的现实主义，是后来许多韩国犯罪片共同的起点。</p>
+      </div>
+      <div class="wcard reveal">
+        <h4>三、作为一次产业事件，它改写了韩国电影的坐标系</h4>
+        <p>818 万观影人次、韩国影史首部破 800 万的本土电影、2001 年度票房冠军、打破《生死谍变》的纪录——这一切由一部没有大场面、没有特效、主演还剃了光头的电影完成。它证明了"本土故事 + 本土语言"可以成为最大的商业武器，也几乎预演了此后二十年韩国电影的路线。</p>
+        <p>换句话说：想看明白今天的韩国电影，绕不开这一部。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 观影提示 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">BEFORE YOU PRESS PLAY · 开播之前</div>
+      <h2 class="sec-title serif">三条必要提示</h2>
+    </div>
+    <div class="notice">
+      <dl class="ncard reveal">
+        <dt>分级</dt>
+        <dd>韩国 18 岁以上观览可（青少年不可观看）。请按当地上映版本与分级要求选择。</dd>
+      </dl>
+      <dl class="ncard reveal">
+        <dt>内容</dt>
+        <dd>涉及帮派暴力、械斗、饮酒与吸烟等情节。本文不展开任何具体场面，也不描述任何一次冲突的结果。</dd>
+      </dl>
+      <dl class="ncard reveal">
+        <dt>观看建议</dt>
+        <dd>请留出完整的 113 分钟。它的时间线需要你跟着一起走完——中途停下，情绪会散掉。</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 收尾 ================= -->
+<section class="ending">
+  <div class="wrap reveal">
+    <p class="quote serif">"这部电影真正想说的，不是他们如何成为敌人，<br>而是他们曾经真的做过朋友。"</p>
+    <p class="fn">— 主题式表述，非片中台词</p>
+    <div class="endmarks"><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>朋友 · 친구 · FRIEND (2001) · DIR. KWAK KYUNG-TAEK</span>
+  <span>无剧透观影笔记 · 第 17 部 · 2026-09-27</span>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Hero Canvas：三层动画 ---------- */
+  var cvs = document.getElementById('heroCanvas');
+  var ctx = cvs.getContext('2d');
+  var W = 0, H = 0, dpr = 1, rain = [], motes = [], band = {x: -0.35};
+  var warm = function(a){ return 'rgba(227,195,119,' + a + ')'; };
+
+  function build(){
+    rain = [];
+    var n = Math.round(W / 11);
+    for (var i = 0; i < n; i++){
+      rain.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        len: 12 + Math.random() * 34,
+        sp: 2.2 + Math.random() * 4.6,
+        a: 0.05 + Math.random() * 0.16,
+        ph: Math.random() * Math.PI * 2,
+        amp: 3 + Math.random() * 9
+      });
+    }
+    motes = [];
+    var m = Math.round(W / 26);
+    for (var j = 0; j < m; j++){
+      motes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: 0.5 + Math.random() * 1.7,
+        vy: 0.10 + Math.random() * 0.34,
+        vx: -0.16 + Math.random() * 0.32,
+        a: 0.05 + Math.random() * 0.26,
+        col: Math.random() > 0.72 ? 'rust' : 'warm'
+      });
+    }
+  }
+
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cvs.clientWidth || window.innerWidth;
+    H = cvs.clientHeight || window.innerHeight;
+    cvs.width = Math.round(W * dpr);
+    cvs.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    build();
+  }
+
+  function frame(t){
+    ctx.clearRect(0, 0, W, H);
+
+    /* 层 1：放映机横扫光带 */
+    var gx = (Math.sin(t / 5200) * 0.5 + 0.5) * (W + 900) - 450;
+    var g = ctx.createLinearGradient(gx - 420, 0, gx + 420, H);
+    g.addColorStop(0, 'rgba(227,195,119,0)');
+    g.addColorStop(0.5, 'rgba(227,195,119,0.045)');
+    g.addColorStop(1, 'rgba(227,195,119,0)');
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'source-over';
+
+    /* 层 2：斜向细雨 */
+    ctx.lineCap = 'round';
+    for (var i = 0; i < rain.length; i++){
+      var d = rain[i];
+      d.y += d.sp;
+      if (d.y > H + 40){ d.y = -50; d.x = Math.random() * W; }
+      var sway = Math.sin(t / 1400 + d.ph) * d.amp;
+      ctx.strokeStyle = 'rgba(146,171,182,' + d.a + ')';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(d.x + sway, d.y);
+      ctx.lineTo(d.x + sway - d.len * 0.22, d.y + d.len);
+      ctx.stroke();
+    }
+
+    /* 层 3：上浮暖尘 */
+    for (var j = 0; j < motes.length; j++){
+      var m = motes[j];
+      m.y -= m.vy;
+      m.x += m.vx;
+      if (m.y < -20){ m.y = H + 12; m.x = Math.random() * W; }
+      if (m.x < -20) m.x = W + 12;
+      if (m.x > W + 20) m.x = -12;
+      ctx.beginPath();
+      ctx.fillStyle = m.col === 'rust'
+        ? 'rgba(200,90,68,' + (m.a * 0.75) + ')'
+        : warm(m.a);
+      ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    raf = requestAnimationFrame(frame);
+  }
+
+  var raf = null;
+  resize();
+  window.addEventListener('resize', function(){
+    resize();
+    if (reduce){ ctx.clearRect(0, 0, W, H); drawStatic(); }
+  });
+
+  function drawStatic(){
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < rain.length; i++){
+      var d = rain[i];
+      ctx.strokeStyle = 'rgba(146,171,182,' + d.a + ')';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x - d.len * 0.22, d.y + d.len);
+      ctx.stroke();
+    }
+    for (var j = 0; j < motes.length; j++){
+      var m = motes[j];
+      ctx.beginPath();
+      ctx.fillStyle = m.col === 'rust' ? 'rgba(200,90,68,' + (m.a * 0.7) + ')' : warm(m.a);
+      ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  if (reduce){ drawStatic(); } else { raf = requestAnimationFrame(frame); }
+
+  document.addEventListener('visibilitychange', function(){
+    if (reduce) return;
+    if (document.hidden){ if (raf) cancelAnimationFrame(raf); raf = null; }
+    else if (!raf){ raf = requestAnimationFrame(frame); }
+  });
+
+  /* ---------- 滚动入场 ---------- */
+  var items = [].slice.call(document.querySelectorAll('.reveal'));
+  if (!('IntersectionObserver' in window) || reduce){
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      var batch = [];
+      entries.forEach(function(en){
+        if (en.isIntersecting) batch.push(en.target);
+      });
+      batch.forEach(function(el, idx){
+        setTimeout(function(){ el.classList.add('in'); }, idx * 90);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
