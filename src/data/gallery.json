@@ -88,8 +88,8 @@
     "enTitle": "NEW WORLD",
     "year": "2013",
     "imageUrl": "posters/20260907-new-world.jpg",
-    "title": "New World (2013) — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/zPo7SQ20IqcZK6JPjCWg2GzOCQp.jpg",
+    "title": "New World (2013) - Posters — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/9BTlmi5d9YasRFLwnC3Q5dwym6G.jpg",
     "hiRes": true
   },
   {
@@ -201,8 +201,10 @@
     "zhTitle": "与犯罪的战争坏家伙的全盛时代",
     "enTitle": "Nameless Gangster · Rules of the Time · 2012 · 133 min",
     "year": "1982",
-    "imageUrl": "https://img.goldposter.com/2020/04/nameless-gangster-rules-of-the-time_poster_goldposter_com_1.jpg?x-oss-process=image/resize,m_fill,h_315,w_236/quality,q_80",
-    "title": "与犯罪的战争：坏家伙的全盛时代 (2012) | 金海报-GoldPoster"
+    "imageUrl": "posters/20260920.jpg",
+    "title": "Nameless Gangster (2012) - Posters — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/RZSZwHXLdhZA3WmSVrSbqUmfq9.jpg",
+    "hiRes": true
   },
   {
     "id": "20260921",
@@ -233,16 +235,20 @@
     "zhTitle": "看见恶魔",
     "enTitle": "I Saw the Devil / 2010 / dir. Kim Jee-woon",
     "year": "2010",
-    "imageUrl": "https://sothebys-md.brightspotcdn.com/03/61/2e9a31474cb095281dfe44006f6e/239.%20I%20SAW%20THE%20DEVIL.jpg",
-    "title": "Ang-ma-reul bo-at-da / I Saw the Devil (2010) Poster, US, First ..."
+    "imageUrl": "posters/20260927.jpg",
+    "title": "I Saw the Devil (2010) - Posters — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/jK1icmGxG3R6kY9xijjMIk3VhX1.jpg",
+    "hiRes": true
   },
   {
     "id": "20260928",
     "zhTitle": "恶人传",
     "enTitle": "",
     "year": "2019",
-    "imageUrl": "https://img.goldposter.com/2019/03/the-evil-2_poster_goldposter_com_1.jpg?x-oss-process=image/resize,m_fill,h_338,w_236/quality,q_80/format,webp",
-    "title": "恶人传 (2019) | 金海报-GoldPoster"
+    "imageUrl": "posters/20260928.webp",
+    "title": "恶人传（2019）｜剧情｜动作｜犯罪 - 经典电影全集",
+    "remoteUrl": "https://jingdianmovie.com/wp-content/uploads/2025/06/e-ren-chuan-2019-ju-qing-dong-zuo-fan-zui-767x1024.webp",
+    "hiRes": false
   },
   {
     "id": "20260427",
@@ -595,9 +601,9 @@
     "enTitle": "WALL·E",
     "year": "2008",
     "imageUrl": "posters/20260612.jpg",
-    "title": "机器人总动员 (2008) - 剧照 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/pjLdH5VIKirwVUIZ0iDisXoRGo4.jpg",
-    "hiRes": true
+    "title": "机器人总动员 (2008) - 海报 — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/plHmcAn8RWO5rIbBri5xcaa0fIZ.jpg",
+    "hiRes": false
   },
   {
     "id": "20260614",
@@ -735,8 +741,8 @@
     "enTitle": "AVATAR",
     "year": "2009",
     "imageUrl": "posters/20260629.jpg",
-    "title": "阿凡达 (2009) - 剧照 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/ivnxAMAtFlzKy3JMRAcQur7bHVR.jpg",
+    "title": "Avatar (2009) - Posters — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/FpH1WMn80l2ZeDjPoOW5aWZfJT.jpg",
     "hiRes": true
   },
   {
@@ -761,8 +767,8 @@
     "enTitle": "Let the Bullets Fly",
     "year": "2010",
     "imageUrl": "posters/20260701.jpg",
-    "title": "让子弹飞 (2010) - 剧照 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/jXPtpe8LoVEq77JBFecESeOCjsp.jpg",
+    "title": "Let the Bullets Fly (2010) - Posters — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/pkwBO3XkQLhgb31vl5ZwmGC5meT.jpg",
     "hiRes": true
   },
   {
@@ -1007,9 +1013,9 @@
     "enTitle": "THE SEVENTH SEAL",
     "year": "1957",
     "imageUrl": "posters/20260729.jpg",
-    "title": "第七封印 (1957) - 剧照 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/64ps50GBTBCgcfgJ2xlYEZKW6Zp.jpg",
-    "hiRes": true
+    "title": "The Seventh Seal (1957) - Posters — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/ylJOAIFXV9H2uwArniPMC3iLj1F.jpg",
+    "hiRes": false
   },
   {
     "id": "20260731",
@@ -1038,8 +1044,8 @@
     "enTitle": "To Kill a Mockingbird",
     "year": "1962",
     "imageUrl": "posters/20260805.jpg",
-    "title": "杀死一只知更鸟 (1962) - 剧照 — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/w780/9yzIq7uNp1HuVZcYHrUbblNch2Y.jpg",
+    "title": "To Kill a Mockingbird (1962) - Posters — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/5eZ2xRm4nqwORyzLZN0gUrNFFZx.jpg",
     "hiRes": true
   },
   {
@@ -1047,8 +1053,10 @@
     "zhTitle": "莫 扎 特 传",
     "enTitle": "",
     "year": "1984",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Mozhaisk11.jpg/1280px-Mozhaisk11.jpg",
-    "title": "莫扎伊斯克 - Wikiwand"
+    "imageUrl": "posters/20260806-2.jpg",
+    "title": "莫扎特传(1984) - 电影海报|电影台词 - 影库",
+    "remoteUrl": "https://mdb.yuncongz.com/static/upload/large/6dab7e8700b04adcacca0879cf9fc780.jpg",
+    "hiRes": false
   },
   {
     "id": "20260806",

@@ -1,0 +1,37 @@
+{
+  "at": "2026-09-28T08:32:11.897Z",
+  "dryRun": false,
+  "targetCount": 1,
+  "fixedCount": 1,
+  "failureCount": 0,
+  "changes": [
+    {
+      "id": "20260701",
+      "zhTitle": "让子弹飞",
+      "before": {
+        "imageUrl": "posters/20260701.jpg",
+        "dims": "1920×1080",
+        "status": "error",
+        "issues": [
+          "landscape"
+        ]
+      },
+      "after": {
+        "imageUrl": "posters/20260701.jpg",
+        "dims": "1000×1500",
+        "source": "bing",
+        "url": "https://image.tmdb.org/t/p/original/pkwBO3XkQLhgb31vl5ZwmGC5meT.jpg",
+        "title": "Let the Bullets Fly (2010) - Posters — The Movie Database (TMDB)"
+      }
+    }
+  ],
+  "failures": [],
+  "recheck": [
+    {
+      "id": "20260701",
+      "status": "ok",
+      "dims": "1000×1500",
+      "issues": []
+    }
+  ]
+}
