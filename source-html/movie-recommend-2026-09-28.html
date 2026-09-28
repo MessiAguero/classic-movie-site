@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>恶人传 · 观影推荐 | 李元泰 · 马东锡 · 金武烈 · 金成圭</title>
+<meta name="description" content="韩国犯罪片《恶人传》(악인전 / The Gangster, the Cop, the Devil, 2019) 无剧透观影推荐：剧情梗概、影片档案、口碑数据、戛纳与翻拍时间线，以及为什么值得看。" />
+<style>
+  :root{
+    --ink:#0a0d11;
+    --ink-2:#0d1117;
+    --panel:#121822;
+    --panel-2:#171e2a;
+    --panel-3:#1e2735;
+    --line:rgba(212,226,238,.10);
+    --line-2:rgba(212,226,238,.20);
+    --text:#e9eff5;
+    --text-2:#aebac6;
+    --dim:#7c8a97;
+    --neon:#37c8bd;
+    --neon-2:#83e7dd;
+    --gold:#d8a63f;
+    --gold-2:#efca7c;
+    --blood:#b02a20;
+    --blood-2:#d4483a;
+    --steel:#8b98a5;
+    --serif:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    --mono:"SF Mono","JetBrains Mono","Menlo","Consolas",monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* 全局胶片颗粒 */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='150' height='150' filter='url(%23n)' opacity='.5'/></svg>");
+    opacity:.06;mix-blend-mode:overlay;
+  }
+  /* 霓虹呼吸 */
+  body::after{
+    content:"";position:fixed;inset:0;z-index:9997;pointer-events:none;
+    background:
+      radial-gradient(70% 42% at 12% 4%,rgba(55,200,189,.075),transparent 62%),
+      radial-gradient(58% 40% at 92% 8%,rgba(212,72,58,.06),transparent 62%);
+    animation:neon 6.8s ease-in-out infinite;
+  }
+  @keyframes neon{0%,100%{opacity:.55}38%{opacity:.95}62%{opacity:.6}}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .serif{font-family:var(--serif)}
+  .mono{font-family:var(--mono)}
+
+  /* ---------------- HERO ---------------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  #heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-svg{position:absolute;inset:0;width:100%;height:100%}
+  .hero-scrim{
+    position:absolute;inset:0;
+    background:
+      radial-gradient(86% 62% at 26% 56%,rgba(10,13,17,.80),rgba(10,13,17,.18) 58%,transparent 84%),
+      linear-gradient(180deg,rgba(10,13,17,.62) 0%,transparent 22%,transparent 62%,rgba(10,13,17,.94) 100%);
+  }
+  .hero-in{position:relative;z-index:3;width:100%;padding:120px 28px 96px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.30em;text-transform:uppercase;
+    color:var(--neon);border:1px solid rgba(55,200,189,.34);
+    padding:7px 14px;border-radius:2px;background:rgba(55,200,189,.06);
+  }
+  .eyebrow i{width:5px;height:5px;background:var(--blood-2);border-radius:50%;display:block}
+  h1.title{
+    font-family:var(--serif);
+    font-size:clamp(56px,11.5vw,136px);
+    line-height:1;letter-spacing:.10em;font-weight:600;
+    margin:26px 0 0 -6px;
+    color:#f2f6fa;
+    text-shadow:0 2px 40px rgba(0,0,0,.78),0 0 90px rgba(55,200,189,.12);
+  }
+  .title-rule{width:84px;height:2px;background:linear-gradient(90deg,var(--blood-2),transparent);margin:22px 0 20px}
+  .sub{
+    font-family:var(--mono);font-size:clamp(10.5px,1.45vw,13px);
+    letter-spacing:.22em;color:var(--neon-2);text-transform:uppercase;
+  }
+  .tagline{
+    font-family:var(--serif);font-size:clamp(18px,2.5vw,25px);line-height:1.72;
+    color:var(--text);max-width:660px;margin-top:22px;
+  }
+  .tagline em{font-style:normal;color:var(--gold-2);border-bottom:1px solid rgba(216,166,63,.4)}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px}
+  .chip{
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+    padding:6px 12px;border:1px solid var(--line-2);border-radius:2px;
+    color:var(--text-2);background:rgba(255,255,255,.02);
+  }
+  .scroll-cue{
+    position:absolute;left:28px;bottom:26px;z-index:4;
+    font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--dim);
+    display:flex;align-items:center;gap:10px;
+  }
+  .scroll-cue span{width:44px;height:1px;background:var(--dim);display:block;animation:cue 2.6s ease-in-out infinite}
+  @keyframes cue{0%,100%{transform:scaleX(.35);opacity:.4}50%{transform:scaleX(1);opacity:1}}
+
+  /* ---------------- 通用版块 ---------------- */
+  section{padding:96px 0;position:relative}
+  .sec-head{margin-bottom:42px}
+  .sec-kicker{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.30em;text-transform:uppercase;
+    color:var(--neon);display:flex;align-items:center;gap:12px;
+  }
+  .sec-kicker::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(55,200,189,.34),transparent)}
+  .sec-title{
+    font-family:var(--serif);font-size:clamp(26px,4vw,40px);line-height:1.3;
+    margin-top:14px;color:#f2f6fa;letter-spacing:.03em;font-weight:600;
+  }
+  .sec-note{margin-top:12px;color:var(--dim);font-size:13.5px;max-width:760px}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* 防剧透条 */
+  .spoiler{padding:0;border-bottom:1px solid var(--line)}
+  .spoiler-in{
+    display:flex;gap:18px;align-items:flex-start;
+    border-left:2px solid var(--blood-2);
+    background:linear-gradient(90deg,rgba(176,42,32,.18),rgba(176,42,32,.03));
+    padding:20px 24px;border-radius:2px;
+  }
+  .spoiler-badge{
+    flex:none;font-family:var(--mono);font-size:10px;letter-spacing:.2em;
+    color:var(--blood-2);border:1px solid rgba(212,72,58,.44);padding:5px 9px;border-radius:2px;
+    white-space:nowrap;margin-top:3px;
+  }
+  .spoiler-in p{color:var(--text-2);font-size:14.5px;line-height:1.85}
+  .spoiler-in strong{color:#f2f6fa;font-weight:600}
+
+  /* 梗概 + 速览 */
+  .two-col{display:grid;grid-template-columns:1.62fr 1fr;gap:52px;align-items:start}
+  .syn p{color:var(--text-2);margin-bottom:20px;font-size:16.5px}
+  .syn p:first-of-type::first-letter{
+    font-family:var(--serif);font-size:66px;line-height:.86;float:left;
+    margin:6px 14px 0 0;color:var(--neon-2);
+    text-shadow:0 0 34px rgba(55,200,189,.3);
+  }
+  .syn p b{color:#f2f6fa;font-weight:600}
+  .syn p i{font-style:normal;color:var(--gold-2)}
+
+  .glance{
+    border:1px solid var(--line);background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border-radius:3px;padding:26px 24px;position:sticky;top:26px;
+  }
+  .glance h3{
+    font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--neon);margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line);
+  }
+  .glance dl{display:grid;gap:13px}
+  .glance .row{display:grid;grid-template-columns:76px 1fr;gap:12px;font-size:13.5px}
+  .glance .row dt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--dim);padding-top:3px}
+  .glance .row dd{color:var(--text-2)}
+  .glance .row dd b{color:#f2f6fa;font-weight:600}
+  .stamp{
+    margin-top:22px;padding-top:16px;border-top:1px dashed var(--line-2);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--neon-2);line-height:2;
+  }
+
+  /* 海报区 */
+  .poster-wrap{display:grid;grid-template-columns:minmax(0,1fr) 1fr;gap:56px;align-items:center}
+  .poster-frame{
+    position:relative;border:1px solid var(--line-2);background:var(--ink-2);
+    padding:14px;border-radius:3px;
+    box-shadow:0 34px 90px -40px rgba(0,0,0,.95),inset 0 0 0 1px rgba(212,226,238,.04);
+  }
+  .poster-frame svg{display:block;width:100%;height:auto}
+  .poster-frame::before,.poster-frame::after{
+    content:"";position:absolute;width:34px;height:34px;border:1px solid rgba(55,200,189,.45);
+  }
+  .poster-frame::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  .poster-frame::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+  .poster-cap{
+    margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--dim);text-align:center;
+  }
+  .reading li{list-style:none;padding:0 0 20px 26px;position:relative;color:var(--text-2);font-size:15px}
+  .reading li::before{
+    content:"";position:absolute;left:0;top:11px;width:10px;height:10px;
+    border:1px solid var(--neon);transform:rotate(45deg);
+  }
+  .reading li b{color:#f2f6fa;font-weight:600;display:block;margin-bottom:3px;font-size:15px}
+
+  /* 档案 */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .fact{background:var(--panel);padding:20px 18px;min-height:104px;display:flex;flex-direction:column;gap:7px}
+  .fact dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+  .fact dd{color:var(--text);font-size:14px;line-height:1.6}
+  .fact dd small{display:block;color:var(--dim);font-size:11.5px;margin-top:5px;line-height:1.55}
+  .fact.accent dd{color:var(--gold-2)}
+
+  /* 口碑 */
+  .scores{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .score{
+    border:1px solid var(--line);background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border-radius:3px;padding:22px 20px;position:relative;overflow:hidden;
+  }
+  .score::after{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:linear-gradient(90deg,var(--neon),transparent)}
+  .score .src{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase}
+  .score .num{font-family:var(--serif);font-size:44px;line-height:1.1;color:#f2f6fa;margin:10px 0 2px}
+  .score .num sup{font-family:var(--mono);font-size:12px;color:var(--dim);margin-left:4px}
+  .score .det{font-size:12.5px;color:var(--dim);line-height:1.7}
+  .bar{height:3px;background:rgba(212,226,238,.10);margin-top:14px;border-radius:2px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--neon),var(--blood-2));transition:width 1.5s cubic-bezier(.22,.61,.36,1)}
+  .score.in .bar i{width:var(--w)}
+
+  /* 时间线 */
+  .tl{position:relative;padding-left:34px}
+  .tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,transparent,var(--line-2) 6%,var(--line-2) 94%,transparent)}
+  .tl-item{position:relative;padding-bottom:30px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-30px;top:9px;width:9px;height:9px;border-radius:50%;
+    background:var(--ink);border:1px solid var(--neon);
+  }
+  .tl-item.key::before{background:var(--blood-2);border-color:var(--blood-2);box-shadow:0 0 0 4px rgba(176,42,32,.20)}
+  .tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--gold-2)}
+  .tl-t{font-family:var(--serif);font-size:17.5px;color:#f2f6fa;margin:3px 0 4px}
+  .tl-d{color:var(--text-2);font-size:14px}
+
+  /* 荣誉 */
+  .awards{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .aw{background:var(--panel);padding:20px 22px;display:grid;grid-template-columns:170px 1fr;gap:20px;align-items:baseline}
+  .aw .org{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--neon);line-height:1.7}
+  .aw .what{color:var(--text-2);font-size:14.5px}
+  .aw .what b{color:#f2f6fa;font-weight:600}
+
+  /* 六宫格 */
+  .grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .gcard{
+    border:1px solid var(--line);background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border-radius:3px;padding:26px 24px;position:relative;transition:border-color .4s,transform .4s;
+  }
+  .gcard:hover{border-color:rgba(55,200,189,.42);transform:translateY(-3px)}
+  .gcard .idx{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--blood-2)}
+  .gcard h4{font-family:var(--serif);font-size:19px;color:#f2f6fa;margin:11px 0 10px;line-height:1.5;font-weight:600}
+  .gcard p{color:var(--text-2);font-size:14px;line-height:1.85}
+
+  /* 为什么值得看 */
+  .why{display:grid;gap:22px}
+  .wcard{border-left:2px solid var(--neon);padding:4px 0 4px 26px}
+  .wcard h4{font-family:var(--serif);font-size:21px;color:#f2f6fa;margin-bottom:10px;font-weight:600;line-height:1.5}
+  .wcard p{color:var(--text-2);font-size:15.5px}
+  .wcard p + p{margin-top:12px}
+
+  /* 提示 */
+  .notice{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .ncard{border:1px dashed var(--line-2);padding:22px 20px;border-radius:3px;background:rgba(176,42,32,.05)}
+  .ncard dt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--blood-2);margin-bottom:10px}
+  .ncard dd{color:var(--text-2);font-size:13.5px;line-height:1.85}
+
+  /* 收尾 */
+  .ending{
+    padding:110px 0 96px;text-align:center;position:relative;overflow:hidden;
+    border-top:1px solid var(--line);
+    background:radial-gradient(80% 70% at 50% 30%,rgba(55,200,189,.07),transparent 70%);
+  }
+  .ending .quote{
+    font-family:var(--serif);font-size:clamp(21px,3.2vw,32px);line-height:1.78;
+    color:#f2f6fa;max-width:820px;margin:0 auto;
+  }
+  .ending .fn{margin-top:20px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--dim)}
+  .endmarks{display:flex;justify-content:center;gap:9px;margin-top:38px}
+  .endmarks i{width:6px;height:6px;border:1px solid var(--neon);transform:rotate(45deg);display:block}
+
+  footer{
+    border-top:1px solid var(--line);padding:30px 0 44px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--dim);
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+
+  /* ---------------- 响应式 ---------------- */
+  @media (max-width:980px){
+    .two-col,.poster-wrap{grid-template-columns:1fr;gap:40px}
+    .glance{position:static}
+    .facts{grid-template-columns:repeat(2,1fr)}
+    .scores{grid-template-columns:repeat(2,1fr)}
+    .grid6{grid-template-columns:1fr 1fr}
+    .notice{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    body{font-size:15px}
+    .wrap{padding:0 20px}
+    section{padding:70px 0}
+    .hero-in{padding:96px 20px 84px}
+    .scroll-cue{left:20px;bottom:20px}
+    .facts{grid-template-columns:1fr}
+    .scores{grid-template-columns:1fr}
+    .grid6{grid-template-columns:1fr}
+    .aw{grid-template-columns:1fr;gap:6px}
+    .spoiler-in{flex-direction:column;gap:12px}
+    .syn p:first-of-type::first-letter{font-size:52px}
+    h1.title{letter-spacing:.06em}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    .score .bar i{width:var(--w)}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-bg">
+    <canvas id="heroCanvas"></canvas>
+    <svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#05070a"/>
+          <stop offset="38%" stop-color="#0a1016"/>
+          <stop offset="62%" stop-color="#101c22"/>
+          <stop offset="76%" stop-color="#15252a"/>
+          <stop offset="100%" stop-color="#05070a"/>
+        </linearGradient>
+        <radialGradient id="neonGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#83e7dd" stop-opacity=".34"/>
+          <stop offset="38%" stop-color="#37c8bd" stop-opacity=".13"/>
+          <stop offset="100%" stop-color="#37c8bd" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="redGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#d4483a" stop-opacity=".30"/>
+          <stop offset="42%" stop-color="#b02a20" stop-opacity=".10"/>
+          <stop offset="100%" stop-color="#b02a20" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#efca7c" stop-opacity=".62"/>
+          <stop offset="26%" stop-color="#d8a63f" stop-opacity=".15"/>
+          <stop offset="100%" stop-color="#d8a63f" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="wetRoad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#16232a" stop-opacity=".85"/>
+          <stop offset="46%" stop-color="#0b1116" stop-opacity=".9"/>
+          <stop offset="100%" stop-color="#05070a"/>
+        </linearGradient>
+      </defs>
+
+      <rect x="0" y="0" width="1440" height="900" fill="url(#sky)"/>
+
+      <!-- 两侧楼群剪影 -->
+      <g fill="#060809" opacity=".96">
+        <rect x="0" y="352" width="86" height="300"/><rect x="96" y="392" width="64" height="260"/>
+        <rect x="170" y="326" width="98" height="326"/><rect x="278" y="376" width="72" height="276"/>
+        <rect x="360" y="416" width="88" height="236"/><rect x="458" y="384" width="60" height="268"/>
+        <rect x="940" y="392" width="66" height="260"/><rect x="1014" y="356" width="92" height="296"/>
+        <rect x="1116" y="404" width="70" height="248"/><rect x="1196" y="336" width="104" height="316"/>
+        <rect x="1310" y="386" width="72" height="266"/><rect x="1392" y="352" width="48" height="300"/>
+      </g>
+      <!-- 霓虹招牌 -->
+      <g opacity=".9">
+        <rect x="180" y="368" width="8" height="88" fill="#37c8bd" opacity=".55"/>
+        <rect x="212" y="404" width="44" height="7" fill="#83e7dd" opacity=".5"/>
+        <rect x="196" y="470" width="52" height="6" fill="#37c8bd" opacity=".35"/>
+        <rect x="1040" y="396" width="8" height="76" fill="#d4483a" opacity=".5"/>
+        <rect x="1066" y="432" width="46" height="6" fill="#d4483a" opacity=".42"/>
+        <rect x="1222" y="378" width="7" height="94" fill="#d8a63f" opacity=".5"/>
+        <rect x="1246" y="428" width="40" height="6" fill="#efca7c" opacity=".4"/>
+      </g>
+      <circle cx="206" cy="440" r="128" fill="url(#neonGlow)"/>
+      <circle cx="1238" cy="428" r="118" fill="url(#lampGlow)"/>
+      <circle cx="1068" cy="440" r="104" fill="url(#redGlow)"/>
+
+      <!-- 湿沥青路面（透视） -->
+      <path d="M0 900 L432 606 L1008 606 L1440 900 Z" fill="url(#wetRoad)"/>
+      <!-- 中央虚线 -->
+      <g fill="#8b98a5" opacity=".34">
+        <rect x="700" y="608" width="4" height="7"/>
+        <rect x="694" y="632" width="5" height="12"/>
+        <rect x="686" y="668" width="7" height="20"/>
+        <rect x="676" y="716" width="9" height="30"/>
+        <rect x="662" y="778" width="12" height="42"/>
+        <rect x="644" y="856" width="16" height="56"/>
+      </g>
+      <!-- 路面反光条 -->
+      <g opacity=".5">
+        <rect x="180" y="700" width="4" height="150" fill="#37c8bd" opacity=".30"/>
+        <rect x="1236" y="690" width="4" height="160" fill="#d8a63f" opacity=".26"/>
+        <rect x="1052" y="726" width="4" height="130" fill="#d4483a" opacity=".26"/>
+      </g>
+
+      <!-- 左侧护栏 -->
+      <g stroke="#151c22" stroke-width="5" fill="none">
+        <path d="M0 700 L420 626"/>
+        <path d="M28 690 L28 800"/><path d="M150 668 L150 782"/><path d="M272 646 L272 762"/><path d="M394 628 L394 744"/>
+      </g>
+      <!-- 右侧护栏 -->
+      <g stroke="#151c22" stroke-width="5" fill="none">
+        <path d="M1440 706 L1020 630"/>
+        <path d="M1412 696 L1412 806"/><path d="M1290 674 L1290 788"/><path d="M1168 652 L1168 768"/><path d="M1046 634 L1046 750"/>
+      </g>
+
+      <!-- 路灯（左右各一） -->
+      <circle cx="300" cy="470" r="250" fill="url(#lampGlow)"/>
+      <g stroke="#0b0f13" stroke-width="6" fill="none">
+        <path d="M300 620 L300 440"/>
+        <path d="M300 440 q0 -30 40 -30"/>
+      </g>
+      <circle cx="342" cy="412" r="6" fill="#efca7c" opacity=".92"/>
+      <circle cx="1146" cy="500" r="210" fill="url(#neonGlow)"/>
+      <g stroke="#0b0f13" stroke-width="6" fill="none">
+        <path d="M1146 632 L1146 472"/>
+        <path d="M1146 472 q0 -28 -38 -28"/>
+      </g>
+      <circle cx="1106" cy="446" r="5.5" fill="#83e7dd" opacity=".88"/>
+
+      <!-- 远处来车（双灯） -->
+      <g opacity=".92">
+        <circle cx="760" cy="600" r="7" fill="#e9f6f6"/>
+        <circle cx="760" cy="600" r="44" fill="url(#neonGlow)"/>
+        <circle cx="792" cy="600" r="6" fill="#e9f6f6" opacity=".8"/>
+      </g>
+      <!-- 远去车尾灯 -->
+      <g opacity=".85">
+        <circle cx="486" cy="618" r="4" fill="#d4483a"/>
+        <circle cx="504" cy="618" r="4" fill="#d4483a"/>
+        <circle cx="495" cy="618" r="30" fill="url(#redGlow)"/>
+      </g>
+
+      <!-- 三个人影：黑帮（左·宽肩） / 杀手（中后·兜帽） / 刑警（右·微躬） -->
+      <g fill="#04060a">
+        <g transform="translate(408,0)">
+          <circle cx="0" cy="628" r="17"/>
+          <path d="M-30 652 h60 l10 150 h-80 z"/>
+          <path d="M-30 658 l-19 92 h13 l15 -78z"/>
+          <path d="M30 658 l20 92 h-13 l-16 -78z"/>
+        </g>
+        <g transform="translate(700,0)">
+          <circle cx="0" cy="566" r="13"/>
+          <path d="M-15 588 h30 l5 66 h-40 z"/>
+          <path d="M-15 592 l-9 44 h7 l8 -36z"/>
+          <path d="M15 592 l9 44 h-7 l-8 -36z"/>
+        </g>
+        <g transform="translate(996,0)">
+          <circle cx="0" cy="604" r="14"/>
+          <path d="M-20 624 h40 l8 92 h-56 z"/>
+          <path d="M-20 628 l-15 54 h10 l12 -44z"/>
+          <path d="M20 628 l15 54 h-10 l-12 -44z"/>
+        </g>
+      </g>
+      <!-- 轮廓光（三色） -->
+      <g stroke-width="1.8" fill="none" stroke-linecap="round">
+        <path d="M378 626 v168" stroke="#d8a63f" stroke-opacity=".34"/>
+        <path d="M685 564 v88" stroke="#d4483a" stroke-opacity=".34"/>
+        <path d="M976 602 v112" stroke="#83e7dd" stroke-opacity=".32"/>
+      </g>
+      <!-- 地面倒影 -->
+      <g opacity=".14">
+        <rect x="392" y="806" width="10" height="60" fill="#d8a63f"/>
+        <rect x="694" y="660" width="7" height="40" fill="#d4483a"/>
+        <rect x="988" y="722" width="9" height="52" fill="#83e7dd"/>
+      </g>
+
+      <!-- 底部暗角 -->
+      <rect x="0" y="0" width="1440" height="900" fill="none"/>
+    </svg>
+    <div class="hero-scrim"></div>
+  </div>
+
+  <div class="hero-in wrap">
+    <div class="eyebrow"><i></i>韩国犯罪经典 · 无剧透观影笔记 · 第 18 部</div>
+    <h1 class="title serif">恶人传</h1>
+    <div class="title-rule"></div>
+    <p class="sub">악인전 · THE GANGSTER, THE COP, THE DEVIL · 2019 · 李元泰</p>
+    <p class="tagline serif">一个黑帮老大，一个被称为"疯狗"的刑警，一个不按常理出牌的连环杀手——三条本不该交汇的线，被<em>同一桩案子</em>拧在了一起。</p>
+    <div class="chips">
+      <span class="chip">片长 109 分钟</span>
+      <span class="chip">韩国 19+</span>
+      <span class="chip">336 万观影人次</span>
+      <span class="chip">戛纳午夜展映</span>
+      <span class="chip">售出 104 国</span>
+    </div>
+  </div>
+
+  <div class="scroll-cue"><span></span>向下滚动 · 本文不含任何剧情反转</div>
+</header>
+
+<!-- ================= 防剧透 ================= -->
+<section class="spoiler">
+  <div class="wrap">
+    <div class="spoiler-in reveal">
+      <div class="spoiler-badge">NO SPOILER</div>
+      <p><strong>阅读说明：</strong>本篇是无剧透导览。剧情梗概止于影片第一幕的转折点，不涉及结局、关键反转、人物的最终命运与决定性场面；文中的引语均为主题式表述，<strong>不是片中台词</strong>。观影前可以放心读完。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 梗概 ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">STORY · 三句话讲清格局</div>
+      <h2 class="sec-title serif">三个人，一张桌子</h2>
+      <p class="sec-note">以下内容全部来自公开宣传梗概，止于第一幕的转折点。</p>
+    </div>
+
+    <div class="two-col">
+      <div class="syn reveal">
+        <p><b>天安</b>，一座中等城市。一连串命案接连发生，死者之间找不到任何关联，唯一相同的是手法——干净、随机、没有动机。负责这一片区的重案组刑警<b>郑泰锡</b>最先判断出，这是同一个人做的。他向上汇报，却只换来怀疑：上司不认为这些案子有什么关系，甚至觉得他是在为晋升编故事。</p>
+
+        <p>城里的黑帮老大<b>张东秀</b>，靠赌场、游戏厅和夜总会把势力铺满整个忠清道。他有自己的一套秩序，也有自己的一套体面。某个夜里，他独自开车回家，被后车追尾；他下车查看，以为只是一场小事故——然后对方动了手。他活了下来，成了这一连串案子里<i>唯一活着见过凶手的人</i>。</p>
+
+        <p>要抓凶手的，和不惜代价也要把人翻出来的，本来是两条互相敌视的线。可当证据不足、程序走不通、而这唯一活口又握在对方手里时，两条线第一次有了交集。于是一桩交易被摆上桌面：<b>谁先抓到那个人，谁就有处置权。</b></p>
+
+        <p>从那晚开始，同一座雨城里，两拨人马朝着同一个方向奔跑，彼此较劲，也彼此利用。影片并不急着告诉你谁会先到——它先把一个更麻烦的问题放在台面上：<i>当正义手里的工具不够用的时候，恶人能不能被当成工具？</i></p>
+      </div>
+
+      <aside class="glance reveal">
+        <h3>At a Glance · 一眼速览</h3>
+        <dl>
+          <div class="row"><dt>类型</dt><dd>犯罪 / 动作</dd></div>
+          <div class="row"><dt>导演</dt><dd><b>李元泰</b><br><span style="color:var(--dim);font-size:12px">兼编剧 · 长片作品之一</span></dd></div>
+          <div class="row"><dt>主演</dt><dd>马东锡 · 金武烈<br>金成圭</dd></div>
+          <div class="row"><dt>年份</dt><dd>2019 · 韩国</dd></div>
+          <div class="row"><dt>分级</dt><dd>19 岁以上观览可</dd></div>
+          <div class="row"><dt>一句话</dt><dd style="color:var(--gold-2)">把"警匪对立"拆开重拼的类型片，也是 2019 年最卖座的韩国犯罪片之一。</dd></div>
+        </dl>
+        <div class="stamp">
+          3,364,924 ADMISSIONS<br>
+          CANNES 2019 · MIDNIGHT SCREENINGS
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 概念海报 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">KEY ART · 概念海报解读</div>
+      <h2 class="sec-title serif">三束光，三个方向</h2>
+    </div>
+
+    <div class="poster-wrap">
+      <div class="reveal">
+        <div class="poster-frame">
+          <svg viewBox="0 0 520 720" role="img" aria-label="概念海报：雨夜街上三方对峙的剪影，中心地面插着一把刀">
+            <defs>
+              <linearGradient id="pSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#05070a"/>
+                <stop offset="40%" stop-color="#0b1218"/>
+                <stop offset="66%" stop-color="#12222a"/>
+                <stop offset="100%" stop-color="#05070a"/>
+              </linearGradient>
+              <radialGradient id="pNeon" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#83e7dd" stop-opacity=".42"/>
+                <stop offset="42%" stop-color="#37c8bd" stop-opacity=".12"/>
+                <stop offset="100%" stop-color="#37c8bd" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="pRed" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#d4483a" stop-opacity=".40"/>
+                <stop offset="44%" stop-color="#b02a20" stop-opacity=".12"/>
+                <stop offset="100%" stop-color="#b02a20" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="pGold" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#efca7c" stop-opacity=".40"/>
+                <stop offset="44%" stop-color="#d8a63f" stop-opacity=".12"/>
+                <stop offset="100%" stop-color="#d8a63f" stop-opacity="0"/>
+              </radialGradient>
+              <pattern id="pGrain" width="6" height="6" patternUnits="userSpaceOnUse">
+                <rect width="6" height="6" fill="none"/>
+                <circle cx="1" cy="1.5" r=".5" fill="#e9eff5" opacity=".07"/>
+                <circle cx="4" cy="4" r=".45" fill="#e9eff5" opacity=".05"/>
+              </pattern>
+              <linearGradient id="pSheen" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#37c8bd" stop-opacity=".10"/>
+                <stop offset="52%" stop-color="#e9eff5" stop-opacity="0"/>
+                <stop offset="100%" stop-color="#d4483a" stop-opacity=".10"/>
+              </linearGradient>
+            </defs>
+
+            <rect width="520" height="720" fill="url(#pSky)"/>
+            <rect width="520" height="720" fill="url(#pSheen)"/>
+            <rect width="520" height="720" fill="url(#pGrain)"/>
+
+            <!-- 雨丝 -->
+            <g stroke="#83a8ae" stroke-width="1" opacity=".17">
+              <path d="M36 0 L16 126"/><path d="M92 0 L72 136"/><path d="M148 22 L128 152"/>
+              <path d="M204 0 L184 130"/><path d="M260 30 L240 162"/><path d="M316 0 L296 134"/>
+              <path d="M372 26 L352 156"/><path d="M428 0 L408 128"/><path d="M484 36 L464 166"/>
+              <path d="M64 224 L44 354"/><path d="M172 252 L152 382"/><path d="M286 238 L266 368"/>
+              <path d="M396 264 L376 394"/><path d="M462 302 L442 432"/>
+              <path d="M116 432 L96 562"/><path d="M240 454 L220 584"/><path d="M352 442 L332 572"/>
+              <path d="M466 472 L446 602"/>
+            </g>
+
+            <!-- 远处楼群与霓虹 -->
+            <g fill="#05080b">
+              <rect x="0" y="316" width="60" height="150"/><rect x="66" y="344" width="44" height="122"/>
+              <rect x="392" y="330" width="52" height="136"/><rect x="450" y="300" width="70" height="166"/>
+            </g>
+            <g opacity=".85">
+              <rect x="14" y="344" width="5" height="52" fill="#37c8bd" opacity=".5"/>
+              <rect x="466" y="326" width="5" height="60" fill="#d8a63f" opacity=".5"/>
+              <rect x="482" y="404" width="26" height="4" fill="#efca7c" opacity=".34"/>
+            </g>
+            <circle cx="40" cy="372" r="86" fill="url(#pNeon)"/>
+            <circle cx="470" cy="356" r="80" fill="url(#pGold)"/>
+
+            <!-- 湿路面 -->
+            <path d="M0 720 L176 470 L344 470 L520 720 Z" fill="#0a0e13"/>
+            <g fill="#7c8a97" opacity=".30">
+              <rect x="256" y="474" width="3" height="6"/>
+              <rect x="252" y="500" width="4" height="12"/>
+              <rect x="246" y="542" width="5" height="22"/>
+              <rect x="238" y="600" width="7" height="34"/>
+              <rect x="226" y="668" width="9" height="52"/>
+            </g>
+            <g opacity=".45">
+              <rect x="86" y="560" width="4" height="120" fill="#d8a63f" opacity=".26"/>
+              <rect x="430" y="548" width="4" height="128" fill="#37c8bd" opacity=".24"/>
+            </g>
+
+            <!-- 三个方向的暗示光 -->
+            <ellipse cx="120" cy="430" rx="120" ry="90" fill="url(#pGold)"/>
+            <ellipse cx="264" cy="336" rx="110" ry="86" fill="url(#pRed)"/>
+            <ellipse cx="408" cy="420" rx="120" ry="90" fill="url(#pNeon)"/>
+
+            <!-- 三个剪影：左＝黑帮（宽肩） 中后＝杀手（兜帽·小） 右＝刑警 -->
+            <g fill="#04060a">
+              <g transform="translate(120,0)">
+                <circle cx="0" cy="400" r="15"/>
+                <path d="M-27 422 h54 l10 150 h-74 z"/>
+                <path d="M-27 428 l-17 88 h12 l14 -74z"/>
+                <path d="M27 428 l18 88 h-12 l-15 -74z"/>
+              </g>
+              <g transform="translate(264,0)">
+                <circle cx="0" cy="332" r="11"/>
+                <path d="M-13 352 h26 l4 62 h-34 z"/>
+                <path d="M-13 356 l-8 40 h6 l7 -33z"/>
+                <path d="M13 356 l8 40 h-6 l-7 -33z"/>
+              </g>
+              <g transform="translate(408,0)">
+                <circle cx="0" cy="386" r="13"/>
+                <path d="M-18 404 h36 l7 88 h-50 z"/>
+                <path d="M-18 408 l-14 50 h9 l11 -41z"/>
+                <path d="M18 408 l14 50 h-9 l-11 -41z"/>
+              </g>
+            </g>
+            <!-- 轮廓光 -->
+            <g stroke-width="1.8" fill="none" stroke-linecap="round">
+              <path d="M93 398 v174" stroke="#d8a63f" stroke-opacity=".38"/>
+              <path d="M252 330 v84" stroke="#d4483a" stroke-opacity=".40"/>
+              <path d="M390 384 v108" stroke="#83e7dd" stroke-opacity=".36"/>
+            </g>
+
+            <!-- 中心：插在地面的刀 -->
+            <g opacity=".95">
+              <path d="M260 636 L262 540 L264 636 Z" fill="#c9d4dd"/>
+              <path d="M262 540 L262 512" stroke="#e9eff5" stroke-width="2"/>
+              <path d="M244 634 L280 634" stroke="#8b98a5" stroke-width="3.4"/>
+              <path d="M262 636 L262 660" stroke="#8b98a5" stroke-width="3"/>
+              <circle cx="262" cy="560" r="58" fill="url(#pRed)" opacity=".5"/>
+            </g>
+            <!-- 三道指向中心的细线 -->
+            <g stroke-width="1" opacity=".38" stroke-dasharray="4 6">
+              <path d="M132 560 L250 622" stroke="#d8a63f"/>
+              <path d="M262 404 L262 508" stroke="#d4483a"/>
+              <path d="M394 552 L276 622" stroke="#37c8bd"/>
+            </g>
+
+            <!-- 边框与角标 -->
+            <rect width="520" height="720" fill="none" stroke="#e9eff5" stroke-opacity=".10" stroke-width="1"/>
+            <g stroke="#e9eff5" stroke-opacity=".28" stroke-width="1">
+              <path d="M0 34 V0 H34"/><path d="M486 0 H520 V34"/>
+              <path d="M520 686 V720 H486"/><path d="M34 720 H0 V686"/>
+            </g>
+
+            <!-- 竖排片名 -->
+            <g fill="#f2f6fa">
+              <text x="386" y="116" font-family="Songti SC,STSong,serif" font-size="44" letter-spacing="6" opacity=".96">恶</text>
+              <text x="386" y="174" font-family="Songti SC,STSong,serif" font-size="44" letter-spacing="6" opacity=".96">人</text>
+              <text x="386" y="232" font-family="Songti SC,STSong,serif" font-size="44" letter-spacing="6" opacity=".96">传</text>
+            </g>
+            <g fill="#83e7dd" opacity=".92">
+              <text x="388" y="276" font-family="SF Mono,Menlo,monospace" font-size="13" letter-spacing="4">악인전</text>
+            </g>
+            <g fill="#d8a63f" opacity=".9">
+              <text x="388" y="314" font-family="SF Mono,Menlo,monospace" font-size="9.5" letter-spacing="1.2">THE GANGSTER,</text>
+              <text x="388" y="330" font-family="SF Mono,Menlo,monospace" font-size="9.5" letter-spacing="1.2">THE COP,</text>
+              <text x="388" y="346" font-family="SF Mono,Menlo,monospace" font-size="9.5" letter-spacing="1.2">THE DEVIL</text>
+            </g>
+            <path d="M388 368 H492" stroke="#d4483a" stroke-width="1.4" opacity=".7"/>
+            <g fill="#aebac6" opacity=".7">
+              <text x="388" y="392" font-family="SF Mono,Menlo,monospace" font-size="9" letter-spacing="1.4">2019 · LEE WON-TAE</text>
+              <text x="388" y="410" font-family="SF Mono,Menlo,monospace" font-size="9" letter-spacing="1.4">19 AND OVER ONLY</text>
+            </g>
+          </svg>
+        </div>
+        <p class="poster-cap">CONCEPT KEY ART · ILLUSTRATIVE, NOT THE OFFICIAL POSTER</p>
+      </div>
+
+      <ul class="reading reveal">
+        <li><b>三束光，三个方向</b>左、中、右三种色光分别是黑帮、杀手与刑警。海报不给任何一方"主角位"——这正是影片的立场：这不是一个好人抓坏人的故事，而是三个坏东西各自的算盘撞在了一起。</li>
+        <li><b>中心那把刀</b>三个人物都朝同一件东西倾斜。全片的驱动力不是"谁对"，而是"谁先到"——刀是这场竞赛唯一的奖杯，而它插在地上，谁都够不着。</li>
+        <li><b>雨夜霓虹与湿路面</b>天安的雨、霓虹招牌、反光的路面，构成了影片最主要的视觉气味。它不是冷调的犯罪片，而是被湿气和灯光泡过的犯罪片。</li>
+        <li><b>大小比例刻意失衡</b>黑帮与刑警都被画得很大，中间的杀手很小、很远，还戴着帽子看不清脸。恶，在这部片里从来不打算解释自己。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 档案 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">DOSSIER · 影片档案</div>
+      <h2 class="sec-title serif">关于这部片的十六件事</h2>
+    </div>
+
+    <dl class="facts reveal">
+      <div class="fact"><dt>中文片名</dt><dd>恶人传<small>港译《恶霸·魔警·杀人狂》/ 台译《极恶对决》</small></dd></div>
+      <div class="fact"><dt>韩文 / 英文</dt><dd>악인전 / The Gangster, The Cop, The Devil</dd></div>
+      <div class="fact"><dt>年份</dt><dd>2019</dd></div>
+      <div class="fact accent"><dt>类型</dt><dd>犯罪 / 动作</dd></div>
+
+      <div class="fact"><dt>导演</dt><dd>李元泰<small>同时是本片编剧</small></dd></div>
+      <div class="fact"><dt>主演</dt><dd>马东锡 · 金武烈<br>金成圭</dd></div>
+      <div class="fact"><dt>片长</dt><dd>109 分钟</dd></div>
+      <div class="fact"><dt>分级</dt><dd>韩国 19 岁以上观览可</dd></div>
+
+      <div class="fact"><dt>上映</dt><dd>2019-05-15<small>韩国</small></dd></div>
+      <div class="fact"><dt>背景城市</dt><dd>天安（忠清道）<small>雨、霓虹、赌场与夜总会</small></dd></div>
+      <div class="fact"><dt>摄影 / 配乐</dt><dd>朴世承 / 赵英旭<small>后者曾为《老男孩》《亲切的金子》《与犯罪的战争》配乐</small></dd></div>
+      <div class="fact"><dt>制片</dt><dd>BA Entertainment<br>Twin Film</dd></div>
+
+      <div class="fact accent"><dt>韩国观影</dt><dd>336 万人次<small>2019 年韩国本土片票房第 9 位</small></dd></div>
+      <div class="fact accent"><dt>电影节</dt><dd>第 72 届戛纳午夜展映<small>放映后观众起立鼓掌约 4 分钟</small></dd></div>
+      <div class="fact"><dt>海外发行</dt><dd>售出约 104 个国家和地区</dd></div>
+      <div class="fact"><dt>翻拍</dt><dd>好莱坞版<small>史泰龙的 Balboa Pictures 参与，马东锡将继续出演黑帮老大</small></dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ================= 口碑 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">RECEPTION · 口碑与成绩</div>
+      <h2 class="sec-title serif">四项数据，一个有意思的分歧</h2>
+      <p class="sec-note">这部片在中文与英文观众中的口碑都相当扎实，但在海外影评人那里明显保守（Metacritic 65）——属于典型的"类型片观众比影评人更买账"。韩国本土 336 万观影人次，位列 2019 年韩国本土片票房第 9 位。</p>
+    </div>
+
+    <div class="scores">
+      <div class="score reveal" style="--w:78%">
+        <div class="src">豆瓣 · 中国</div>
+        <div class="num">7.8<sup>/ 10</sup></div>
+        <div class="det">约 29 万人评分，韩国犯罪片里稳居中上位置。</div>
+        <div class="bar"><i></i></div>
+      </div>
+      <div class="score reveal" style="--w:97%">
+        <div class="src">Rotten Tomatoes</div>
+        <div class="num">97%<sup>新鲜度</sup></div>
+        <div class="det">烂番茄新鲜度极高；加拿大奇幻电影节选片人称之为"全速奔跑的疯狂动作惊悚片"。</div>
+        <div class="bar"><i></i></div>
+      </div>
+      <div class="score reveal" style="--w:87%">
+        <div class="src">Naver · 韩国观众</div>
+        <div class="num">8.73<sup>/ 10</sup></div>
+        <div class="det">韩国本土观众打分（评论家口径 5.71），"爽片"在母语观众中口碑最好。</div>
+        <div class="bar"><i></i></div>
+      </div>
+      <div class="score reveal" style="--w:69%">
+        <div class="src">IMDb · 全球</div>
+        <div class="num">6.9<sup>/ 10</sup></div>
+        <div class="det">IMDb 与 Metacritic（65）同为海外口径，明显低于亚洲观众评分。</div>
+        <div class="bar"><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 时间线 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">TIME LINE · 从戛纳到好莱坞</div>
+      <h2 class="sec-title serif">一部类型片走过的路</h2>
+    </div>
+
+    <div class="tl reveal">
+      <div class="tl-item"><div class="tl-y">2019.05.15</div><div class="tl-t">韩国上映</div><div class="tl-d">上映当天即登上票房榜首，并连续多日领跑同期影片。</div></div>
+      <div class="tl-item key"><div class="tl-y">2019.05.22</div><div class="tl-t">第 72 届戛纳 · 午夜展映</div><div class="tl-d">放映结束观众起立鼓掌约 4 分钟。戛纳艺术总监弗雷莫公开表示现场反响"极其热烈"；昆汀·塔伦蒂诺一句"这是我在这届戛纳唯一想看的电影"，让它成为当年最出圈的午夜场。</div></div>
+      <div class="tl-item"><div class="tl-y">2019</div><div class="tl-t">售出约 104 个国家和地区</div><div class="tl-d">韩国犯罪片的海外版权销售，在这部片上又向前挪了一格。</div></div>
+      <div class="tl-item key"><div class="tl-y">2019</div><div class="tl-t">本土票房收官</div><div class="tl-d">336 万观影人次，进入 2019 年韩国本土电影票房前十，也是当年最卖座的韩国犯罪片之一。</div></div>
+      <div class="tl-item"><div class="tl-y">2019.11</div><div class="tl-t">第 56 届大钟奖</div><div class="tl-d">饰演连环杀手的金成圭入围最佳男配角——影片在韩国三大奖中最受认可的一项表演类提名。</div></div>
+      <div class="tl-item"><div class="tl-y">2020.07</div><div class="tl-t">第 23 届上海国际电影节</div><div class="tl-d">被列为官方推荐影片，进入中国影迷的视野。</div></div>
+      <div class="tl-item key"><div class="tl-y">2022.06</div><div class="tl-t">好莱坞翻拍启动</div><div class="tl-d">《Deadline》报道，派拉蒙将翻拍本片，史泰龙旗下的 Balboa Pictures 参与制作，马东锡继续出演那个黑帮老大——韩式类型片的又一次对外输出。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 荣誉 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">HONOURS · 荣誉与认可</div>
+      <h2 class="sec-title serif">它的成绩单，不写在奖杯上</h2>
+      <p class="sec-note">坦白说，这部片在韩国三大奖里的收获有限。它的分量更多来自影展口碑、海外销售与市场成绩——下面这些都是可查有据的。</p>
+    </div>
+
+    <div class="awards reveal">
+      <div class="aw"><div class="org">第 56 届大钟奖<br>2019</div><div class="what"><b>最佳男配角提名</b>（金成圭）——那个几乎不说话、也不解释自己的杀人狂</div></div>
+      <div class="aw"><div class="org">第 72 届戛纳电影节<br>2019</div><div class="what"><b>午夜展映单元正式入选</b>，映后观众起立鼓掌约 4 分钟</div></div>
+      <div class="aw"><div class="org">第 23 届上海国际电影节<br>2020</div><div class="what"><b>官方推荐影片</b></div></div>
+      <div class="aw"><div class="org">韩国本土市场<br>2019</div><div class="what"><b>336 万人次</b>观影，2019 年度韩国本土片票房前十</div></div>
+      <div class="aw"><div class="org">好莱坞<br>2022 起</div><div class="what"><b>派拉蒙翻拍权</b>被买下，史泰龙旗下公司参与制作</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 六宫格 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">HIGHLIGHTS · 六处亮点</div>
+      <h2 class="sec-title serif">它凭什么被反复提起</h2>
+    </div>
+
+    <div class="grid6">
+      <div class="gcard reveal"><div class="idx">01</div><h4>一个当时没人用过的概念</h4><p>"黑帮老大联手刑警追凶"——2019 年韩国犯罪片正卡在类型瓶颈里，这个设定第一次把警匪片的敌我关系拆开重装。它不靠反转取胜，靠的是规则本身足够新鲜。</p></div>
+      <div class="gcard reveal"><div class="idx">02</div><h4>马东锡的身体，就是叙事</h4><p>开场的"人肉沙包"戏是马东锡本人向导演提议加上的，用来让观众在三秒内看清这个人是谁。他背上的刺青请美术团队做了一个多月、出了约 40 版方案才定稿。</p></div>
+      <div class="gcard reveal"><div class="idx">03</div><h4>反派的表演方式：不解释</h4><p>金成圭饰演的凶手几乎没有动机交代，也不给同情分。他的表演方法不是咆哮，而是空——一种不跟你讲道理的恶。这条提名是影片最实在的表演认可。</p></div>
+      <div class="gcard reveal"><div class="idx">04</div><h4>配乐来自韩国犯罪片的"老班底"</h4><p>配乐赵英旭此前为《老男孩》《亲切的金子》《与犯罪的战争》作曲，摄影朴世承负责影像质感。雨夜霓虹、湿路面反光、追车与近身格斗——视听全部服务于"这场雨一直没停"的压迫感。</p></div>
+      <div class="gcard reveal"><div class="idx">05</div><h4>三方叙事，靠"规则"咬合</h4><p>影片先立规矩——谁先抓到，谁处置——再让三方在同一座城市里各自奔跑。冲突不是因为谁突然变坏，而是因为规矩本身把三个人推向同一个路口。</p></div>
+      <div class="gcard reveal"><div class="idx">06</div><h4>一次教科书式的类型输出</h4><p>戛纳午夜场 4 分钟起立鼓掌、售出约 104 个国家、被派拉蒙和史泰龙的公司买下翻拍。它标出了那一年的韩式犯罪片在国际市场上能走到多远。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 为什么值得看 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">WHY WATCH · 为什么值得看</div>
+      <h2 class="sec-title serif">三个理由，三个层次</h2>
+    </div>
+
+    <div class="why">
+      <div class="wcard reveal">
+        <h4>一、它把"警匪片"最根深蒂固的那条线，反过来用了</h4>
+        <p>观众看警匪片看的是对立：一边执法，一边违法。这部片把对立抽掉，换成合作——但合作是有条件的、有期限的、随时会翻脸的。于是紧张感不再来自"好人能不能赢"，而来自"这两个人什么时候会互相动手"。</p>
+        <p>更关键的是，它让一个不舒服的问题一直悬在观众头顶：如果一个人明明在犯罪，却成了正义唯一的合作伙伴，那这算谁的胜利？影片不替你回答。</p>
+      </div>
+      <div class="wcard reveal">
+        <h4>二、马东锡的"银幕体感"，是这部片不可替代的资产</h4>
+        <p>很少有演员能让观众在还没看到剧情之前，就先相信"这个人真的不怕"。他的戏不是靠台词堆出来的，而是靠身体：开场的沙包、拳馆里的一拳、走廊里的近身缠斗——动作指导做得克制而重，每一下都有重量。</p>
+        <p>他演的黑帮老大也不是脸谱化的恶人：对敌人足够狠，对手下和小人物却留着分寸。这种"有规矩的坏人"，正是这个高概念能成立的前提。</p>
+      </div>
+      <div class="wcard reveal">
+        <h4>三、作为类型样本，它是 2019 年韩式犯罪片的"完成度上限"</h4>
+        <p>当年韩国犯罪片正被评论界反复念叨"创意枯竭"，这部片是少数在创意与执行上都站住的作品：剧作结构工整、动作场面扎实、视听风格统一，还带着一个足够好卖的高概念。</p>
+        <p>它的说服力不在奖杯上，而在市场反馈上——戛纳午夜场的掌声、104 国的版权销售、以及五年后被好莱坞买走翻拍。想看明白韩式类型片凭什么能一路输出到海外，这是一部很好的样本。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 观影提示 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">BEFORE YOU PRESS PLAY · 开播之前</div>
+      <h2 class="sec-title serif">三条必要提示</h2>
+    </div>
+    <div class="notice">
+      <dl class="ncard reveal">
+        <dt>分级</dt>
+        <dd>韩国 19 岁以上观览可。请按当地可观看的版本与分级要求选择，未满 19 岁不建议观看。</dd>
+      </dl>
+      <dl class="ncard reveal">
+        <dt>内容</dt>
+        <dd>涉及高强度暴力、刀具袭击、血腥场面与刑事犯罪情节。本文不展开任何具体场面，也不描述任何一次冲突的结果。</dd>
+      </dl>
+      <dl class="ncard reveal">
+        <dt>观看建议</dt>
+        <dd>请留出完整的 109 分钟一次看完。这部片的节奏是它最锋利的武器——中途暂停，紧绷感会散掉。</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 收尾 ================= -->
+<section class="ending">
+  <div class="wrap reveal">
+    <p class="quote serif">"正义有时候需要一个不合规矩的伙伴。<br>真正难的是，谁在利用谁。"</p>
+    <p class="fn">— 主题式表述，非片中台词</p>
+    <div class="endmarks"><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>恶人传 · 악인전 · THE GANGSTER, THE COP, THE DEVIL (2019) · DIR. LEE WON-TAE</span>
+  <span>无剧透观影笔记 · 第 18 部 · 2026-09-28</span>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Hero Canvas：三层动画 ---------- */
+  var cvs = document.getElementById('heroCanvas');
+  var ctx = cvs.getContext('2d');
+  var W = 0, H = 0, dpr = 1, rain = [], motes = [];
+  var neonA = function(a){ return 'rgba(131,231,221,' + a + ')'; };
+  var goldA = function(a){ return 'rgba(239,202,124,' + a + ')'; };
+
+  function build(){
+    rain = [];
+    var n = Math.round(W / 11);
+    for (var i = 0; i < n; i++){
+      rain.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        len: 14 + Math.random() * 38,
+        sp: 3.0 + Math.random() * 5.4,
+        a: 0.05 + Math.random() * 0.17,
+        ph: Math.random() * Math.PI * 2,
+        amp: 3 + Math.random() * 9
+      });
+    }
+    motes = [];
+    var m = Math.round(W / 24);
+    for (var j = 0; j < m; j++){
+      motes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: 0.5 + Math.random() * 1.8,
+        vy: 0.12 + Math.random() * 0.38,
+        vx: -0.18 + Math.random() * 0.36,
+        a: 0.05 + Math.random() * 0.26,
+        col: Math.random() > 0.68 ? 'blood' : (Math.random() > 0.45 ? 'neon' : 'gold')
+      });
+    }
+  }
+
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cvs.clientWidth || window.innerWidth;
+    H = cvs.clientHeight || window.innerHeight;
+    cvs.width = Math.round(W * dpr);
+    cvs.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    build();
+  }
+
+  function frame(t){
+    ctx.clearRect(0, 0, W, H);
+
+    /* 层 1：追车车灯横扫（较快、双色） */
+    var period = 6400;
+    var gx = ((t % period) / period) * (W + 1100) - 550;
+    var g = ctx.createLinearGradient(gx - 300, 0, gx + 300, H);
+    g.addColorStop(0, 'rgba(131,231,221,0)');
+    g.addColorStop(0.44, 'rgba(131,231,221,0.055)');
+    g.addColorStop(0.56, 'rgba(239,202,124,0.05)');
+    g.addColorStop(1, 'rgba(239,202,124,0)');
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'source-over';
+
+    /* 层 2：斜向雨丝 */
+    ctx.lineCap = 'round';
+    for (var i = 0; i < rain.length; i++){
+      var d = rain[i];
+      d.y += d.sp;
+      if (d.y > H + 50){ d.y = -60; d.x = Math.random() * W; }
+      var sway = Math.sin(t / 1300 + d.ph) * d.amp;
+      ctx.strokeStyle = 'rgba(131,168,174,' + d.a + ')';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(d.x + sway, d.y);
+      ctx.lineTo(d.x + sway - d.len * 0.20, d.y + d.len);
+      ctx.stroke();
+    }
+
+    /* 层 3：上浮三色微尘 */
+    for (var j = 0; j < motes.length; j++){
+      var m = motes[j];
+      m.y -= m.vy;
+      m.x += m.vx;
+      if (m.y < -20){ m.y = H + 12; m.x = Math.random() * W; }
+      if (m.x < -20) m.x = W + 12;
+      if (m.x > W + 20) m.x = -12;
+      ctx.beginPath();
+      ctx.fillStyle = m.col === 'blood'
+        ? 'rgba(212,72,58,' + (m.a * 0.78) + ')'
+        : (m.col === 'neon' ? neonA(m.a) : goldA(m.a));
+      ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    raf = requestAnimationFrame(frame);
+  }
+
+  var raf = null;
+  resize();
+  window.addEventListener('resize', function(){
+    resize();
+    if (reduce){ ctx.clearRect(0, 0, W, H); drawStatic(); }
+  });
+
+  function drawStatic(){
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < rain.length; i++){
+      var d = rain[i];
+      ctx.strokeStyle = 'rgba(131,168,174,' + d.a + ')';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x - d.len * 0.20, d.y + d.len);
+      ctx.stroke();
+    }
+    for (var j = 0; j < motes.length; j++){
+      var m = motes[j];
+      ctx.beginPath();
+      ctx.fillStyle = m.col === 'blood'
+        ? 'rgba(212,72,58,' + (m.a * 0.72) + ')'
+        : (m.col === 'neon' ? neonA(m.a) : goldA(m.a));
+      ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  if (reduce){ drawStatic(); } else { raf = requestAnimationFrame(frame); }
+
+  document.addEventListener('visibilitychange', function(){
+    if (reduce) return;
+    if (document.hidden){ if (raf) cancelAnimationFrame(raf); raf = null; }
+    else if (!raf){ raf = requestAnimationFrame(frame); }
+  });
+
+  /* ---------- 滚动入场 ---------- */
+  var items = [].slice.call(document.querySelectorAll('.reveal'));
+  if (!('IntersectionObserver' in window) || reduce){
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      var batch = [];
+      entries.forEach(function(en){
+        if (en.isIntersecting) batch.push(en.target);
+      });
+      batch.forEach(function(el, idx){
+        setTimeout(function(){ el.classList.add('in'); }, idx * 90);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

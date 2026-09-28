@@ -221,12 +221,28 @@
     "title": "辣手警探2 (2024) - 海报 — The Movie Database (TMDB)"
   },
   {
+    "id": "20260927-friend",
+    "zhTitle": "朋友",
+    "enTitle": "",
+    "year": "2001",
+    "imageUrl": "https://image.tmdb.org/t/p/original/jztuEJoA96vC8elXNCDvGIH6WZw.jpg",
+    "title": "创世纪 (TV Series 1999-2001) - 海报 — The Movie Database (TMDB)"
+  },
+  {
     "id": "20260927",
     "zhTitle": "看见恶魔",
     "enTitle": "I Saw the Devil / 2010 / dir. Kim Jee-woon",
     "year": "2010",
     "imageUrl": "https://sothebys-md.brightspotcdn.com/03/61/2e9a31474cb095281dfe44006f6e/239.%20I%20SAW%20THE%20DEVIL.jpg",
     "title": "Ang-ma-reul bo-at-da / I Saw the Devil (2010) Poster, US, First ..."
+  },
+  {
+    "id": "20260928",
+    "zhTitle": "恶人传",
+    "enTitle": "",
+    "year": "2019",
+    "imageUrl": "https://img.goldposter.com/2019/03/the-evil-2_poster_goldposter_com_1.jpg?x-oss-process=image/resize,m_fill,h_338,w_236/quality,q_80/format,webp",
+    "title": "恶人传 (2019) | 金海报-GoldPoster"
   },
   {
     "id": "20260427",
