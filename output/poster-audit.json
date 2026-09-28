@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T08:34:32.700Z",
+  "generatedAt": "2026-09-28T08:49:22.848Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -9,9 +9,9 @@
     "minBytes": 8192
   },
   "total": 115,
-  "ok": 113,
+  "ok": 90,
   "warn": 2,
-  "error": 0,
+  "error": 23,
   "entries": [
     {
       "id": "20260817",
@@ -24,6 +24,7 @@
       "size": "269KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -42,6 +43,7 @@
       "size": "67KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "英文关键词:apartment",
         "年份"
@@ -60,6 +62,7 @@
       "size": "831KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -78,11 +81,18 @@
       "size": "1342KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：North by Northwest (1959) - Posters — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260826",
@@ -95,6 +105,7 @@
       "size": "888KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -113,6 +124,7 @@
       "size": "290KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -131,6 +143,7 @@
       "size": "829KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -149,6 +162,7 @@
       "size": "255KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -167,6 +181,7 @@
       "size": "1228KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -185,6 +200,7 @@
       "size": "701KB",
       "dims": "1204×1806",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -203,6 +219,7 @@
       "size": "752KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -221,11 +238,18 @@
       "size": "2101KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Yellow Sea (2010) — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260910",
@@ -238,6 +262,7 @@
       "size": "1029KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "英文关键词:from",
         "年份"
@@ -256,11 +281,18 @@
       "size": "828KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：A Dirty Carnival (2006) — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260914",
@@ -273,6 +305,7 @@
       "size": "663KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -291,11 +324,18 @@
       "size": "461KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Terror Live (2013) — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260916",
@@ -308,6 +348,7 @@
       "size": "567KB",
       "dims": "1356×2034",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -326,6 +367,7 @@
       "size": "464KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -344,6 +386,7 @@
       "size": "144KB",
       "dims": "837×1200",
       "ratio": 1.43,
+      "identityKind": "name",
       "identityHits": [
         "英文关键词:bedevilled",
         "年份"
@@ -362,6 +405,7 @@
       "size": "297KB",
       "dims": "1280×1920",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "英文关键词:nameless"
       ],
@@ -379,11 +423,18 @@
       "size": "490KB",
       "dims": "1400×2100",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Best-Rated Movies from 2013）"
+        }
+      ]
     },
     {
       "id": "20260924",
@@ -396,11 +447,18 @@
       "size": "1299KB",
       "dims": "1433×2048",
       "ratio": 1.43,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：辣手警探2 (2024) - 海报 — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260927-friend",
@@ -413,11 +471,18 @@
       "size": "874KB",
       "dims": "2000×2999",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：创世纪 (TV Series 1999-2001) - 海报 — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260927",
@@ -430,6 +495,7 @@
       "size": "506KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "英文关键词:devil",
         "年份"
@@ -448,6 +514,7 @@
       "size": "65KB",
       "dims": "767×1024",
       "ratio": 1.34,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -472,6 +539,7 @@
       "size": "164KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "英文关键词:schindler",
         "年份"
@@ -490,11 +558,18 @@
       "size": "243KB",
       "dims": "1066×1600",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：千と千尋の神隠し (2001) - ポスター画像 — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260429",
@@ -507,6 +582,7 @@
       "size": "993KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -525,6 +601,7 @@
       "size": "2091KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -543,6 +620,7 @@
       "size": "644KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -561,6 +639,7 @@
       "size": "265KB",
       "dims": "1000×1418",
       "ratio": 1.42,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -579,6 +658,7 @@
       "size": "478KB",
       "dims": "1028×1539",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -597,6 +677,7 @@
       "size": "392KB",
       "dims": "1088×1600",
       "ratio": 1.47,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -615,6 +696,7 @@
       "size": "1106KB",
       "dims": "1672×2508",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -633,6 +715,7 @@
       "size": "182KB",
       "dims": "1026×1540",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -651,6 +734,7 @@
       "size": "457KB",
       "dims": "1500×2250",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -669,6 +753,7 @@
       "size": "896KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -687,6 +772,7 @@
       "size": "484KB",
       "dims": "1500×2250",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -705,6 +791,7 @@
       "size": "472KB",
       "dims": "1200×1800",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -723,6 +810,7 @@
       "size": "896KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -741,6 +829,7 @@
       "size": "1130KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -759,11 +848,18 @@
       "size": "327KB",
       "dims": "780×1170",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Casablanca (1942) - IMDb）"
+        }
+      ]
     },
     {
       "id": "20260521",
@@ -776,6 +872,7 @@
       "size": "204KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "英文关键词:flew",
         "年份"
@@ -794,6 +891,7 @@
       "size": "1090KB",
       "dims": "1995×2962",
       "ratio": 1.48,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -812,6 +910,7 @@
       "size": "571KB",
       "dims": "968×1449",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -830,6 +929,7 @@
       "size": "2166KB",
       "dims": "2000×2856",
       "ratio": 1.43,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -848,6 +948,7 @@
       "size": "184KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -866,6 +967,7 @@
       "size": "1874KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -884,6 +986,7 @@
       "size": "162KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -902,6 +1005,7 @@
       "size": "1000KB",
       "dims": "1404×2108",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -920,11 +1024,18 @@
       "size": "183KB",
       "dims": "1035×1552",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Chorus (2004) — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260602",
@@ -937,6 +1048,7 @@
       "size": "536KB",
       "dims": "1400×2100",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -955,6 +1067,7 @@
       "size": "494KB",
       "dims": "1466×2200",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -973,6 +1086,7 @@
       "size": "490KB",
       "dims": "1525×2156",
       "ratio": 1.41,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -991,11 +1105,18 @@
       "size": "801KB",
       "dims": "1400×2100",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Lives of Others (2006) — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260608",
@@ -1008,6 +1129,7 @@
       "size": "308KB",
       "dims": "1062×1600",
       "ratio": 1.51,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1026,6 +1148,7 @@
       "size": "587KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1044,6 +1167,7 @@
       "size": "964KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1062,6 +1186,7 @@
       "size": "316KB",
       "dims": "1333×2000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1080,6 +1205,7 @@
       "size": "517KB",
       "dims": "1000×1429",
       "ratio": 1.43,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1098,6 +1224,7 @@
       "size": "119KB",
       "dims": "600×900",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1116,6 +1243,7 @@
       "size": "461KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1134,6 +1262,7 @@
       "size": "244KB",
       "dims": "800×1200",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1152,6 +1281,7 @@
       "size": "113KB",
       "dims": "600×800",
       "ratio": 1.33,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1170,6 +1300,7 @@
       "size": "1714KB",
       "dims": "2000×2818",
       "ratio": 1.41,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1188,6 +1319,7 @@
       "size": "372KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1206,6 +1338,7 @@
       "size": "501KB",
       "dims": "1014×1412",
       "ratio": 1.39,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1224,6 +1357,7 @@
       "size": "356KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1242,11 +1376,18 @@
       "size": "335KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Prestige (2006) — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260624",
@@ -1259,6 +1400,7 @@
       "size": "932KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1277,11 +1419,18 @@
       "size": "1361KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Predator 1987 Original Turkish Movie Poster Original Film Art）"
+        }
+      ]
     },
     {
       "id": "20260626",
@@ -1294,6 +1443,7 @@
       "size": "995KB",
       "dims": "2000×2870",
       "ratio": 1.44,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1312,11 +1462,18 @@
       "size": "284KB",
       "dims": "1067×1600",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Last Emperor (1987) — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260628",
@@ -1329,6 +1486,7 @@
       "size": "718KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1347,6 +1505,7 @@
       "size": "654KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1365,6 +1524,7 @@
       "size": "896KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1383,6 +1543,7 @@
       "size": "101KB",
       "dims": "600×900",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1401,6 +1562,7 @@
       "size": "161KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1419,6 +1581,7 @@
       "size": "301KB",
       "dims": "1400×2100",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1437,6 +1600,7 @@
       "size": "697KB",
       "dims": "1451×2073",
       "ratio": 1.43,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1455,6 +1619,7 @@
       "size": "309KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1473,6 +1638,7 @@
       "size": "505KB",
       "dims": "1534×2048",
       "ratio": 1.34,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1491,11 +1657,18 @@
       "size": "1399KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Lord of the Rings: The Fellowship of the Ring (2001) — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260707",
@@ -1508,11 +1681,18 @@
       "size": "1365KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：七宗罪 (1995) - 海报 — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260708",
@@ -1525,11 +1705,18 @@
       "size": "115KB",
       "dims": "780×1170",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Up (2009) - IMDb）"
+        }
+      ]
     },
     {
       "id": "20260709",
@@ -1542,6 +1729,7 @@
       "size": "185KB",
       "dims": "771×1100",
       "ratio": 1.43,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1560,6 +1748,7 @@
       "size": "777KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "英文关键词:singin",
         "年份"
@@ -1578,11 +1767,18 @@
       "size": "374KB",
       "dims": "1200×1800",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：终结者2：审判日 (1991) - 海报 — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260712",
@@ -1595,6 +1791,7 @@
       "size": "1373KB",
       "dims": "1975×2962",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1613,6 +1810,7 @@
       "size": "1373KB",
       "dims": "1975×2962",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1631,6 +1829,7 @@
       "size": "1161KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1649,11 +1848,18 @@
       "size": "849KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：星球大战4：新希望 (1977) - 海报 — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260715",
@@ -1666,11 +1872,18 @@
       "size": "267KB",
       "dims": "950×1425",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：A Beautiful Mind (2001) — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260716",
@@ -1683,6 +1896,7 @@
       "size": "224KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1701,6 +1915,7 @@
       "size": "315KB",
       "dims": "973×1459",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1719,11 +1934,18 @@
       "size": "75KB",
       "dims": "634×900",
       "ratio": 1.42,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Love Letter (1995) - IMDb）"
+        }
+      ]
     },
     {
       "id": "20260721",
@@ -1736,6 +1958,7 @@
       "size": "374KB",
       "dims": "1182×1772",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1754,6 +1977,7 @@
       "size": "237KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1772,6 +1996,7 @@
       "size": "254KB",
       "dims": "800×1200",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1790,6 +2015,7 @@
       "size": "604KB",
       "dims": "1122×1696",
       "ratio": 1.51,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1808,6 +2034,7 @@
       "size": "1138KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1826,6 +2053,7 @@
       "size": "604KB",
       "dims": "1122×1696",
       "ratio": 1.51,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1844,6 +2072,7 @@
       "size": "116KB",
       "dims": "869×1303",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1862,6 +2091,7 @@
       "size": "96KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1880,11 +2110,18 @@
       "size": "746KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Rear Window (1954) - Posters — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260805",
@@ -1897,6 +2134,7 @@
       "size": "1200KB",
       "dims": "1820×2776",
       "ratio": 1.53,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1915,6 +2153,7 @@
       "size": "116KB",
       "dims": "720×1080",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -1939,6 +2178,7 @@
       "size": "825KB",
       "dims": "1600×2400",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "英文关键词:west",
         "年份"
@@ -1957,6 +2197,7 @@
       "size": "2119KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -1975,11 +2216,18 @@
       "size": "886KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Amadeus (1984) — The Movie Database (TMDB)）"
+        }
+      ]
     },
     {
       "id": "20260809",
@@ -1992,6 +2240,7 @@
       "size": "276KB",
       "dims": "1000×1500",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -2010,6 +2259,7 @@
       "size": "1174KB",
       "dims": "1518×2278",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -2028,6 +2278,7 @@
       "size": "836KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
@@ -2046,6 +2297,7 @@
       "size": "746KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
@@ -2064,6 +2316,7 @@
       "size": "923KB",
       "dims": "2000×3000",
       "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
         "片名英文",
         "年份"
