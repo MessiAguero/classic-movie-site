@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.classicmovie.poster-qa</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>/Users/admin/codex/0806/classic-movie-site/tools/poster-qa.sh</string>
+	</array>
+	<key>RunAtLoad</key>
+	<false/>
+	<key>StandardErrorPath</key>
+	<string>/tmp/classicmovie-posterqa.err.log</string>
+	<key>StandardOutPath</key>
+	<string>/tmp/classicmovie-posterqa.log</string>
+
+	<!-- 每天 03:30 全站巡检一次；新内容入库时 daily-sync.sh 也会顺带巡检 -->
+	<key>StartCalendarInterval</key>
+	<dict>
+		<key>Hour</key>
+		<integer>3</integer>
+		<key>Minute</key>
+		<integer>30</integer>
+	</dict>
+
+	<!-- 机器休眠错过 03:30 时，launchd 会在唤醒后补跑一次 -->
+</dict>
+</plist>

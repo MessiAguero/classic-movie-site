@@ -174,6 +174,43 @@ DRY_RUN=1 ./tools/daily-sync.sh # 只同步不推送
 
 说明：首页日期按当天匹配，某天没有新文件时自动显示最近一部，不会报错。
 
+## 海报自检（每天自动校验并纠错）
+
+每天自动检查全站海报有没有错，发现错误就重新抓可信图源替换掉。详细机制见
+[docs/海报自检机制.md](docs/海报自检机制.md)。
+
+```bash
+npm run poster:qa      # 自检 → 有错就修 → 复检 → 提交推送
+npm run poster:check   # 只巡检（有硬错误时退出码 1）
+npm run poster:fix     # 自动纠错替换
+```
+
+会检查：文件缺失/无法访问、内容不是图片、体积过小、分辨率不足、
+**横版剧照被当成竖版海报**、**来源与片名对不上的错图**、
+**只对得上年份、片名对不上（疑似配了同年的另一部电影）**、两部电影共用同一张图、
+图源可信度、扩展名与真实格式是否一致。
+
+自动纠错优先取 TMDB 官方图（配置 `TMDB_API_KEY` 后启用），
+其次 Bing 图片 → 维基百科 → DuckDuckGo；每个候选都要通过
+「能下载 + 是竖版 + 够清晰 + **片名对得上**」的严格校验才会被采用，
+校验不过就宁可不换，避免越修越错。
+
+站内 `movies.json` 的英文片名常是脏数据，因此用 `src/data/poster-aliases.json`
+保存每部电影的可信别名（自动解析 + 人工维护），自检据此要求「海报来源必须出现片名」：
+
+```bash
+npm run poster:aliases   # 解析/补充可信片名别名
+```
+
+报告写入 `output/poster-audit.json` / `.md` 与 `output/poster-fix-log.json`。
+
+定时巡检（每天 03:30）：
+
+```bash
+cp deploy/com.classicmovie.poster-qa.plist ~/Library/LaunchAgents/
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.classicmovie.poster-qa.plist
+```
+
 ## 目录结构
 
 ```text
@@ -184,6 +221,11 @@ src/
   data/         movies.json（75 部解析结果）
   styles/       theme.css（20260806 设计系统）
 tools/          parse-html.mjs（HTML → JSON 解析器）
+  check-posters.mjs  海报自检（每天巡检全站海报）
+  fix-posters.mjs    海报自动纠错替换
+  resolve-aliases.mjs 解析可信片名别名（英文/日文/韩文）
+  poster-qa.sh       自检 + 纠错 + 提交的完整流程
+  lib/               海报自检 / 纠错公共库
 supabase/       migrations/0001_init.sql + schema-sync.mjs
 .github/workflows/deploy.yml
 ```

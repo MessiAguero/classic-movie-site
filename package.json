@@ -16,7 +16,11 @@
     "data:years": "node tools/fill-years.mjs",
     "data:gallery": "node tools/fetch-gallery.mjs",
     "data:sync": "node supabase/schema-sync.mjs",
-    "admin:create": "node supabase/create-admin.mjs"
+    "admin:create": "node supabase/create-admin.mjs",
+    "poster:check": "node tools/check-posters.mjs",
+    "poster:fix": "node tools/fix-posters.mjs",
+    "poster:aliases": "node tools/resolve-aliases.mjs",
+    "poster:qa": "./tools/poster-qa.sh"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.1",

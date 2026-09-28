@@ -67,6 +67,13 @@ if [ "$count" -gt 0 ]; then
   npm run data:gallery
 fi
 
+# 3.5) 海报自检 + 自动纠错
+#      新抓的海报可能抓错图（张冠李戴 / 横版剧照 / 缩略图），
+#      入库前先体检一遍，发现问题当场换图，避免错误海报被发布上线。
+if [ "$count" -gt 0 ]; then
+  "$ROOT/tools/poster-qa.sh" --no-commit || echo "!! 海报自检异常，详见 output/poster-audit.md"
+fi
+
 COUNT_HTML=$(ls source-html | wc -l | tr -d ' ')
 COUNT_JSON=$(node -e "console.log(require('./src/data/movies.json').length)")
 echo "== HTML $COUNT_HTML 份 / 解析 $COUNT_JSON 条"
@@ -86,7 +93,11 @@ if [ "${DRY_RUN:-0}" = "1" ]; then
   exit 0
 fi
 
-git add source-html src/data
+git add source-html src/data public/posters
+# 海报巡检报告一并入库，便于回溯「哪张图什么时候被换过」
+for report in output/poster-audit.json output/poster-audit.md output/poster-audit-history.jsonl output/poster-fix-log.json; do
+  if [ -e "$report" ]; then git add "$report"; fi
+done
 if git diff --cached --quiet; then
   echo "== 无变更，跳过提交"
 else
