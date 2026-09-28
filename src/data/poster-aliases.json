@@ -1,10 +1,916 @@
 {
-  "generatedAt": null,
+  "generatedAt": "2026-09-28T09:08:10.043Z",
   "manual": {
-    "20260927-friend": ["Friend", "친구"],
-    "20260924": ["A Hard Day", "走到尽头", "非常警探", "끝까지 간다"],
-    "20260921": ["Montage", "蒙太奇", "몽타주"],
-    "20260626-2": ["The Last Emperor", "末代皇帝"]
+    "20260921": [
+      "Montage",
+      "蒙太奇",
+      "몽타주"
+    ],
+    "20260924": [
+      "A Hard Day",
+      "走到尽头",
+      "非常警探",
+      "끝까지 간다"
+    ],
+    "20260927-friend": [
+      "Friend",
+      "친구"
+    ],
+    "20260626-2": [
+      "The Last Emperor",
+      "末代皇帝"
+    ]
   },
-  "auto": {}
+  "auto": {
+    "20260427": {
+      "aliases": [
+        "辛德勒的名单"
+      ],
+      "samples": [
+        "辛德勒的名单"
+      ]
+    },
+    "20260428": {
+      "aliases": [
+        "千与千寻2001",
+        "千与千寻"
+      ],
+      "samples": [
+        "千与千寻"
+      ]
+    },
+    "20260430": {
+      "aliases": [
+        "搏击俱乐部",
+        "Fight Club",
+        "搏擊會"
+      ],
+      "samples": [
+        "Fight Club",
+        "搏击俱乐部",
+        "搏擊會"
+      ]
+    },
+    "20260505": {
+      "aliases": [
+        "教父",
+        "The Godfather"
+      ],
+      "samples": [
+        "The Godfather",
+        "教父"
+      ]
+    },
+    "20260506": {
+      "aliases": [
+        "肖申克的救赎",
+        "The Shawshank Redemption"
+      ],
+      "samples": [
+        "The Shawshank Redemption"
+      ]
+    },
+    "20260508": {
+      "aliases": [
+        "黑客帝国",
+        "The Matrix"
+      ],
+      "samples": [
+        "The Matrix",
+        "黑客帝国"
+      ]
+    },
+    "20260509": {
+      "aliases": [
+        "公民凯恩",
+        "Citizen Kane"
+      ],
+      "samples": [
+        "Citizen Kane"
+      ]
+    },
+    "20260510": {
+      "aliases": [
+        "美丽人生"
+      ],
+      "samples": [
+        "美丽人生"
+      ]
+    },
+    "20260511": {
+      "aliases": [
+        "阿甘正传",
+        "Forrest Gump"
+      ],
+      "samples": [
+        "阿甘正传",
+        "Forrest Gump"
+      ]
+    },
+    "20260512": {
+      "aliases": [
+        "星际穿越",
+        "Críticas de Interstellar",
+        "Interstellar"
+      ],
+      "samples": [
+        "星际穿越",
+        "Críticas de Interstellar",
+        "Interstellar"
+      ]
+    },
+    "20260513": {
+      "aliases": [
+        "霸王别姬"
+      ],
+      "samples": [
+        "霸王别姬"
+      ]
+    },
+    "20260514": {
+      "aliases": [
+        "沉默的羔羊",
+        "The Silence of the Lambs"
+      ],
+      "samples": [
+        "The Silence of the Lambs",
+        "沉默的羔羊"
+      ]
+    },
+    "20260517": {
+      "aliases": [
+        "闻香识女人",
+        "Scent of a Woman"
+      ],
+      "samples": [
+        "Scent of a Woman",
+        "闻香识女人"
+      ]
+    },
+    "20260518": {
+      "aliases": [
+        "霸王别姬",
+        "Farewell My Concubine"
+      ],
+      "samples": [
+        "Farewell My Concubine",
+        "霸王别姬"
+      ]
+    },
+    "20260519": {
+      "aliases": [
+        "美国往事",
+        "Once Upon a Time in America"
+      ],
+      "samples": [
+        "Once Upon a Time in America",
+        "美国往事"
+      ]
+    },
+    "20260521": {
+      "aliases": [
+        "飞越疯人院",
+        "One Flew Over the Cuckoo's Nest"
+      ],
+      "samples": [
+        "One Flew Over the Cuckoo's Nest",
+        "飞越疯人院"
+      ]
+    },
+    "20260523": {
+      "aliases": [
+        "低俗小说"
+      ],
+      "samples": [
+        "低俗小说"
+      ]
+    },
+    "20260525": {
+      "aliases": [
+        "七武士"
+      ],
+      "samples": [
+        "七武士"
+      ]
+    },
+    "20260526": {
+      "aliases": [
+        "天堂电影院"
+      ],
+      "samples": [
+        "天堂电影院"
+      ]
+    },
+    "20260527": {
+      "aliases": [
+        "好家伙",
+        "GoodFellas"
+      ],
+      "samples": [
+        "GoodFellas",
+        "好家伙"
+      ]
+    },
+    "20260528": {
+      "aliases": [
+        "泰坦尼克号",
+        "Titanic"
+      ],
+      "samples": [
+        "Titanic",
+        "泰坦尼克号"
+      ]
+    },
+    "20260529": {
+      "aliases": [
+        "十二怒汉",
+        "12 Angry Men"
+      ],
+      "samples": [
+        "12 Angry Men",
+        "十二怒汉"
+      ]
+    },
+    "20260530": {
+      "aliases": [
+        "活着",
+        "To Live"
+      ],
+      "samples": [
+        "To Live",
+        "活着"
+      ]
+    },
+    "20260602": {
+      "aliases": [
+        "绿里奇迹",
+        "The Green Mile"
+      ],
+      "samples": [
+        "The Green Mile",
+        "绿里奇迹"
+      ]
+    },
+    "20260604": {
+      "aliases": [
+        "银翼杀手",
+        "Blade Runner"
+      ],
+      "samples": [
+        "Blade Runner",
+        "银翼杀手"
+      ]
+    },
+    "20260606": {
+      "aliases": [
+        "控方证人",
+        "Witness for the Prosecution"
+      ],
+      "samples": [
+        "Witness for the Prosecution",
+        "控方证人"
+      ]
+    },
+    "20260607": {
+      "aliases": [
+        "窃听风暴"
+      ],
+      "samples": [
+        "窃听风暴"
+      ]
+    },
+    "20260609": {
+      "aliases": [
+        "寄生虫",
+        "Parasite"
+      ],
+      "samples": [
+        "Parasite",
+        "寄生虫"
+      ]
+    },
+    "20260610": {
+      "aliases": [
+        "龙猫",
+        "My Neighbor Totoro"
+      ],
+      "samples": [
+        "My Neighbor Totoro"
+      ]
+    },
+    "20260611": {
+      "aliases": [
+        "花样年华",
+        "In the Mood for Love"
+      ],
+      "samples": [
+        "In the Mood for Love",
+        "花样年华"
+      ]
+    },
+    "20260612": {
+      "aliases": [
+        "机器人总动员"
+      ],
+      "samples": [
+        "机器人总动员"
+      ]
+    },
+    "20260615": {
+      "aliases": [
+        "布达佩斯大饭店",
+        "The Grand Budapest Hotel"
+      ],
+      "samples": [
+        "The Grand Budapest Hotel",
+        "布达佩斯大饭店"
+      ]
+    },
+    "20260616": {
+      "aliases": [
+        "寻梦环游记",
+        "Coco"
+      ],
+      "samples": [
+        "Coco",
+        "寻梦环游记"
+      ]
+    },
+    "20260617": {
+      "aliases": [
+        "钢琴家",
+        "The Pianist"
+      ],
+      "samples": [
+        "The Pianist",
+        "钢琴家"
+      ]
+    },
+    "20260618": {
+      "aliases": [
+        "狮子王",
+        "The Lion King"
+      ],
+      "samples": [
+        "The Lion King",
+        "狮子王"
+      ]
+    },
+    "20260622": {
+      "aliases": [
+        "拯救大兵瑞恩",
+        "Saving Private Ryan"
+      ],
+      "samples": [
+        "拯救大兵瑞恩",
+        "Saving Private Ryan"
+      ]
+    },
+    "20260623": {
+      "aliases": [
+        "致命魔术"
+      ],
+      "samples": [
+        "致命魔术"
+      ]
+    },
+    "20260624": {
+      "aliases": [
+        "天空之城"
+      ],
+      "samples": [
+        "天空之城"
+      ]
+    },
+    "20260626": {
+      "aliases": [
+        "触不可及",
+        "The Intouchables"
+      ],
+      "samples": [
+        "The Intouchables",
+        "触不可及"
+      ]
+    },
+    "20260627": {
+      "aliases": [
+        "末代皇帝"
+      ],
+      "samples": [
+        "末代皇帝"
+      ]
+    },
+    "20260628": {
+      "aliases": [
+        "你的名字",
+        "Your Name.",
+        "君の名は。"
+      ],
+      "samples": [
+        "Your Name.",
+        "君の名は。"
+      ]
+    },
+    "20260629": {
+      "aliases": [
+        "阿凡达",
+        "Avatar",
+        "阿凡達"
+      ],
+      "samples": [
+        "Avatar",
+        "阿凡达",
+        "阿凡達"
+      ]
+    },
+    "20260630": {
+      "aliases": [
+        "霸王别姬",
+        "Farewell My Concubine"
+      ],
+      "samples": [
+        "Farewell My Concubine",
+        "霸王别姬"
+      ]
+    },
+    "20260701": {
+      "aliases": [
+        "让子弹飞",
+        "Let the Bullets Fly"
+      ],
+      "samples": [
+        "Let the Bullets Fly"
+      ]
+    },
+    "20260702": {
+      "aliases": [
+        "摩登时代",
+        "Modern Times"
+      ],
+      "samples": [
+        "Modern Times",
+        "摩登时代"
+      ]
+    },
+    "20260703": {
+      "aliases": [
+        "乱世佳人",
+        "Gone with the Wind"
+      ],
+      "samples": [
+        "Gone with the Wind"
+      ]
+    },
+    "20260704": {
+      "aliases": [
+        "三傻大闹宝莱坞"
+      ],
+      "samples": [
+        "三傻大闹宝莱坞"
+      ]
+    },
+    "20260705": {
+      "aliases": [
+        "哈尔的移动城堡",
+        "Howl's Moving Castle"
+      ],
+      "samples": [
+        "Howl's Moving Castle"
+      ]
+    },
+    "20260706": {
+      "aliases": [
+        "TheLordoftheRingsTheFellowshipoftheRing",
+        "The Lord of the Rings: The Fellowship of the Ring"
+      ],
+      "samples": [
+        "The Lord of the Rings: The Fellowship of the Ring"
+      ]
+    },
+    "20260707": {
+      "aliases": [
+        "Se7en",
+        "Seven"
+      ],
+      "samples": [
+        "Se7en",
+        "Seven"
+      ]
+    },
+    "20260709": {
+      "aliases": [
+        "黄金三镖客",
+        "The Good, the Bad and the Ugly"
+      ],
+      "samples": [
+        "黄金三镖客",
+        "The Good, the Bad and the Ugly"
+      ]
+    },
+    "20260710": {
+      "aliases": [
+        "雨中曲",
+        "Singin' in the Rain"
+      ],
+      "samples": [
+        "Singin' in the Rain"
+      ]
+    },
+    "20260711": {
+      "aliases": [
+        "终结者2：审判日",
+        "Terminator 2: Judgment Day"
+      ],
+      "samples": [
+        "终结者2：审判日",
+        "Terminator 2: Judgment Day"
+      ]
+    },
+    "20260712": {
+      "aliases": [
+        "勇敢的心",
+        "Braveheart"
+      ],
+      "samples": [
+        "Braveheart"
+      ]
+    },
+    "20260713": {
+      "aliases": [
+        "怦然心动",
+        "Flipped"
+      ],
+      "samples": [
+        "Flipped",
+        "怦然心动"
+      ]
+    },
+    "20260714": {
+      "aliases": [
+        "STARWARS",
+        "Star Wars"
+      ],
+      "samples": [
+        "Star Wars"
+      ]
+    },
+    "20260715": {
+      "aliases": [
+        "美丽心灵",
+        "A Beautiful Mind"
+      ],
+      "samples": [
+        "A Beautiful Mind",
+        "美丽心灵"
+      ]
+    },
+    "20260716": {
+      "aliases": [
+        "VERTIGO",
+        "Vertigo"
+      ],
+      "samples": [
+        "Vertigo"
+      ]
+    },
+    "20260720": {
+      "aliases": [
+        "情书"
+      ],
+      "samples": [
+        "情书"
+      ]
+    },
+    "20260723": {
+      "aliases": [
+        "罗生门",
+        "Rashomon",
+        "羅生門"
+      ],
+      "samples": [
+        "Rashomon",
+        "羅生門"
+      ]
+    },
+    "20260724": {
+      "aliases": [
+        "阿拉伯的劳伦斯",
+        "Lawrence of Arabia"
+      ],
+      "samples": [
+        "Lawrence of Arabia"
+      ]
+    },
+    "20260727": {
+      "aliases": [
+        "卧虎藏龙",
+        "Crouching Tiger, Hidden Dragon",
+        "O Tigre e o Dragão"
+      ],
+      "samples": [
+        "Crouching Tiger, Hidden Dragon",
+        "O Tigre e o Dragão"
+      ]
+    },
+    "20260728": {
+      "aliases": [
+        "东京物语",
+        "Tokyo Story"
+      ],
+      "samples": [
+        "Tokyo Story"
+      ]
+    },
+    "20260729": {
+      "aliases": [
+        "第七封印",
+        "The Seventh Seal"
+      ],
+      "samples": [
+        "The Seventh Seal",
+        "第七封印"
+      ]
+    },
+    "20260805": {
+      "aliases": [
+        "杀死一只知更鸟",
+        "To Kill a Mockingbird"
+      ],
+      "samples": [
+        "To Kill a Mockingbird",
+        "杀死一只知更鸟"
+      ]
+    },
+    "20260806": {
+      "aliases": [
+        "西部往事"
+      ],
+      "samples": [
+        "西部往事"
+      ]
+    },
+    "20260807": {
+      "aliases": [
+        "霸王别姬",
+        "Farewell My Concubine"
+      ],
+      "samples": [
+        "Farewell My Concubine",
+        "霸王别姬"
+      ]
+    },
+    "20260809": {
+      "aliases": [
+        "沉默的羔羊",
+        "The Silence of the Lambs"
+      ],
+      "samples": [
+        "The Silence of the Lambs",
+        "沉默的羔羊"
+      ]
+    },
+    "20260811": {
+      "aliases": [
+        "重庆森林"
+      ],
+      "samples": [
+        "重庆森林"
+      ]
+    },
+    "20260812": {
+      "aliases": [
+        "回到未来",
+        "Back to the Future"
+      ],
+      "samples": [
+        "Back to the Future",
+        "回到未来"
+      ]
+    },
+    "20260814": {
+      "aliases": [
+        "大话西游",
+        "A Chinese Odyssey Part One: Pandora's Box",
+        "大话西游之仙履奇缘",
+        "大话西游之大圣娶亲"
+      ],
+      "samples": [
+        "A Chinese Odyssey Part One: Pandora's Box",
+        "大话西游之仙履奇缘",
+        "大话西游之大圣娶亲"
+      ]
+    },
+    "20260817": {
+      "aliases": [
+        "第三人",
+        "The Third Man"
+      ],
+      "samples": [
+        "The Third Man"
+      ]
+    },
+    "20260824": {
+      "aliases": [
+        "现代启示录",
+        "Apocalypse Now"
+      ],
+      "samples": [
+        "Apocalypse Now",
+        "现代启示录"
+      ]
+    },
+    "20260826": {
+      "aliases": [
+        "罗马假日",
+        "Roman Holiday"
+      ],
+      "samples": [
+        "罗马假日",
+        "Roman Holiday"
+      ]
+    },
+    "20260827": {
+      "aliases": [
+        "日落大道",
+        "Sunset Boulevard"
+      ],
+      "samples": [
+        "Sunset Boulevard"
+      ]
+    },
+    "20260831": {
+      "aliases": [
+        "ScentofaWoman",
+        "Scent of a Woman"
+      ],
+      "samples": [
+        "Scent of a Woman"
+      ]
+    },
+    "20260901": {
+      "aliases": [
+        "杀人回忆",
+        "살인의 추억"
+      ],
+      "samples": [
+        "杀人回忆",
+        "살인의 추억"
+      ]
+    },
+    "20260907": {
+      "aliases": [
+        "老男孩",
+        "Oldboy"
+      ],
+      "samples": [
+        "Oldboy",
+        "老男孩"
+      ]
+    },
+    "20260908": {
+      "aliases": [
+        "追击者",
+        "The Chaser"
+      ],
+      "samples": [
+        "The Chaser",
+        "追击者"
+      ]
+    },
+    "20260911": {
+      "aliases": [
+        "卑劣的街头"
+      ],
+      "samples": [
+        "卑劣的街头"
+      ]
+    },
+    "20260914": {
+      "aliases": [
+        "母亲",
+        "Mother"
+      ],
+      "samples": [
+        "Mother"
+      ]
+    },
+    "20260916": {
+      "aliases": [
+        "共同警备区"
+      ],
+      "samples": [
+        "共同警备区"
+      ]
+    },
+    "20260917": {
+      "aliases": [
+        "局内人"
+      ],
+      "samples": [
+        "局内人"
+      ]
+    },
+    "20260918": {
+      "aliases": [
+        "金福南杀人事件始末"
+      ],
+      "samples": [
+        "金福南杀人事件始末"
+      ]
+    },
+    "20260907-new-world": {
+      "aliases": [
+        "新世界",
+        "New World",
+        "신세계"
+      ],
+      "samples": [
+        "New World",
+        "新世界",
+        "신세계"
+      ]
+    },
+    "20260927-friend": {
+      "aliases": [
+        "朋友",
+        "Friend"
+      ],
+      "samples": [
+        "Friend"
+      ]
+    },
+    "20260611-2": {
+      "aliases": [
+        "龙猫",
+        "My Neighbor Totoro"
+      ],
+      "samples": [
+        "My Neighbor Totoro"
+      ]
+    },
+    "20260616-2": {
+      "aliases": [
+        "狮子王",
+        "The Lion King"
+      ],
+      "samples": [
+        "The Lion King",
+        "狮子王"
+      ]
+    },
+    "20260626-2": {
+      "aliases": [
+        "末代皇帝"
+      ],
+      "samples": [
+        "末代皇帝"
+      ]
+    },
+    "20260701-2": {
+      "aliases": [
+        "三傻大闹宝莱坞"
+      ],
+      "samples": [
+        "三傻大闹宝莱坞"
+      ]
+    },
+    "20260713-2": {
+      "aliases": [
+        "勇敢的心",
+        "Braveheart"
+      ],
+      "samples": [
+        "Braveheart"
+      ]
+    },
+    "20260721-2": {
+      "aliases": [
+        "情书"
+      ],
+      "samples": [
+        "情书"
+      ]
+    },
+    "20260729-2": {
+      "aliases": [
+        "卧虎藏龙",
+        "Crouching Tiger, Hidden Dragon",
+        "O Tigre e o Dragão"
+      ],
+      "samples": [
+        "Crouching Tiger, Hidden Dragon",
+        "O Tigre e o Dragão"
+      ]
+    },
+    "20260812-bttf": {
+      "aliases": [
+        "回到未来",
+        "Back to the Future"
+      ],
+      "samples": [
+        "Back to the Future",
+        "回到未来"
+      ]
+    }
+  }
 }
