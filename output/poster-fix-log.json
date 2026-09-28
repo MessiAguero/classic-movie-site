@@ -1,36 +1,61 @@
 {
-  "at": "2026-09-28T08:32:11.897Z",
+  "at": "2026-09-28T09:20:12.928Z",
   "dryRun": false,
-  "targetCount": 1,
-  "fixedCount": 1,
+  "targetCount": 2,
+  "fixedCount": 2,
   "failureCount": 0,
   "changes": [
     {
-      "id": "20260701",
-      "zhTitle": "让子弹飞",
+      "id": "20260921",
+      "zhTitle": "蒙太奇抓住那个家伙 · 模犯母亲",
       "before": {
-        "imageUrl": "posters/20260701.jpg",
-        "dims": "1920×1080",
+        "imageUrl": "https://image.tmdb.org/t/p/original/qhPtAc1TKbMPqNvcdXSOn9Bn7hZ.jpg",
+        "dims": "1400×2100",
         "status": "error",
         "issues": [
-          "landscape"
+          "identity_unverified"
         ]
       },
       "after": {
-        "imageUrl": "posters/20260701.jpg",
-        "dims": "1000×1500",
+        "imageUrl": "posters/20260921.jpg",
+        "dims": "684×1027",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/pkwBO3XkQLhgb31vl5ZwmGC5meT.jpg",
-        "title": "Let the Bullets Fly (2010) - Posters — The Movie Database (TMDB)"
+        "url": "https://image.tmdb.org/t/p/original/zie6l0kKWfV30q1K4T9OPQPhXD0.jpg",
+        "title": "Montage (2013) - Posters — The Movie Database (TMDB)"
+      }
+    },
+    {
+      "id": "20260924",
+      "zhTitle": "走到尽头黑仔刑警 · 非常警探",
+      "before": {
+        "imageUrl": "https://image.tmdb.org/t/p/original/6xbkuuHGUjb0efGmooCKL42f2lU.jpg",
+        "dims": "1433×2048",
+        "status": "error",
+        "issues": [
+          "identity_unverified"
+        ]
+      },
+      "after": {
+        "imageUrl": "posters/20260924.jpg",
+        "dims": "2000×3000",
+        "source": "bing",
+        "url": "https://image.tmdb.org/t/p/original/aIkc5DwGPZIdImSudkUDQ799rq3.jpg",
+        "title": "A Hard Day (2014) | The Poster Database (TPDb)"
       }
     }
   ],
   "failures": [],
   "recheck": [
     {
-      "id": "20260701",
+      "id": "20260921",
       "status": "ok",
-      "dims": "1000×1500",
+      "dims": "684×1027",
+      "issues": []
+    },
+    {
+      "id": "20260924",
+      "status": "ok",
+      "dims": "2000×3000",
       "issues": []
     }
   ]

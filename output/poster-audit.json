@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-28T08:49:22.848Z",
+  "generatedAt": "2026-09-28T09:23:45.871Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -9,9 +9,9 @@
     "minBytes": 8192
   },
   "total": 115,
-  "ok": 90,
+  "ok": 113,
   "warn": 2,
-  "error": 23,
+  "error": 0,
   "entries": [
     {
       "id": "20260817",
@@ -27,6 +27,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:The Third Man",
         "年份"
       ],
       "status": "ok",
@@ -45,7 +46,7 @@
       "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
-        "英文关键词:apartment",
+        "片名英文",
         "年份"
       ],
       "status": "ok",
@@ -65,6 +66,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Apocalypse Now",
         "年份"
       ],
       "status": "ok",
@@ -81,18 +83,13 @@
       "size": "1342KB",
       "dims": "2000×3000",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:North by Northwest",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：North by Northwest (1959) - Posters — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260826",
@@ -108,6 +105,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:罗马假日",
         "年份"
       ],
       "status": "ok",
@@ -127,6 +125,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Sunset Boulevard",
         "年份"
       ],
       "status": "ok",
@@ -146,6 +145,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:ScentofaWoman",
         "年份"
       ],
       "status": "ok",
@@ -165,6 +165,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:杀人回忆",
         "年份"
       ],
       "status": "ok",
@@ -184,6 +185,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:New World",
         "年份"
       ],
       "status": "ok",
@@ -203,6 +205,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Oldboy",
         "年份"
       ],
       "status": "ok",
@@ -222,6 +225,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:The Chaser",
         "年份"
       ],
       "status": "ok",
@@ -238,18 +242,13 @@
       "size": "2101KB",
       "dims": "2000×3000",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:The Yellow Sea",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Yellow Sea (2010) — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260910",
@@ -264,7 +263,7 @@
       "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
-        "英文关键词:from",
+        "片名英文",
         "年份"
       ],
       "status": "ok",
@@ -281,18 +280,13 @@
       "size": "828KB",
       "dims": "2000×3000",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:A Dirty Carnival",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：A Dirty Carnival (2006) — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260914",
@@ -308,6 +302,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Mother",
         "年份"
       ],
       "status": "ok",
@@ -324,18 +319,13 @@
       "size": "461KB",
       "dims": "2000×3000",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:The Terror Live",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Terror Live (2013) — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260916",
@@ -351,6 +341,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:共同警备区",
         "年份"
       ],
       "status": "ok",
@@ -370,6 +361,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:局内人",
         "年份"
       ],
       "status": "ok",
@@ -416,73 +408,58 @@
       "id": "20260921",
       "zhTitle": "蒙太奇抓住那个家伙 · 模犯母亲",
       "year": "2013",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/qhPtAc1TKbMPqNvcdXSOn9Bn7hZ.jpg",
+      "source": "本地",
+      "imageUrl": "posters/20260921.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "490KB",
-      "dims": "1400×2100",
+      "size": "88KB",
+      "dims": "684×1027",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:Montage",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Best-Rated Movies from 2013）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260924",
       "zhTitle": "走到尽头黑仔刑警 · 非常警探",
-      "year": "2024",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/6xbkuuHGUjb0efGmooCKL42f2lU.jpg",
+      "year": "2014",
+      "source": "本地",
+      "imageUrl": "posters/20260924.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "1299KB",
-      "dims": "1433×2048",
-      "ratio": 1.43,
-      "identityKind": "year",
+      "size": "1159KB",
+      "dims": "2000×3000",
+      "ratio": 1.5,
+      "identityKind": "name",
       "identityHits": [
+        "别名:A Hard Day",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：辣手警探2 (2024) - 海报 — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260927-friend",
       "zhTitle": "朋友",
       "year": "2001",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/jztuEJoA96vC8elXNCDvGIH6WZw.jpg",
+      "source": "本地",
+      "imageUrl": "posters/20260927-friend.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "874KB",
-      "dims": "2000×2999",
+      "size": "887KB",
+      "dims": "2000×3000",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:Friend",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：创世纪 (TV Series 1999-2001) - 海报 — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260927",
@@ -558,18 +535,13 @@
       "size": "243KB",
       "dims": "1066×1600",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:千と千尋の神隠し",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：千と千尋の神隠し (2001) - ポスター画像 — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260429",
@@ -604,6 +576,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:搏击俱乐部",
         "年份"
       ],
       "status": "ok",
@@ -623,6 +596,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:The Godfather",
         "年份"
       ],
       "status": "ok",
@@ -642,6 +616,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:肖申克的救赎",
         "年份"
       ],
       "status": "ok",
@@ -661,6 +636,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:黑客帝国",
         "年份"
       ],
       "status": "ok",
@@ -680,6 +656,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Citizen Kane",
         "年份"
       ],
       "status": "ok",
@@ -699,6 +676,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:美丽人生",
         "年份"
       ],
       "status": "ok",
@@ -718,6 +696,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:阿甘正传",
         "年份"
       ],
       "status": "ok",
@@ -737,6 +716,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:星际穿越",
         "年份"
       ],
       "status": "ok",
@@ -756,6 +736,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:霸王别姬",
         "年份"
       ],
       "status": "ok",
@@ -769,12 +750,13 @@
       "imageUrl": "https://image.tmdb.org/t/p/original/97HWc7WsIcPQDMsgLCl61g07gEy.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "484KB",
+      "size": "641KB",
       "dims": "1500×2250",
       "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:The Silence of the Lambs",
         "年份"
       ],
       "status": "ok",
@@ -794,6 +776,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:闻香识女人",
         "年份"
       ],
       "status": "ok",
@@ -807,12 +790,13 @@
       "imageUrl": "https://image.tmdb.org/t/p/original/qmTJGYcgSzokhsyhTUJMF6SWfFA.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "896KB",
+      "size": "1201KB",
       "dims": "2000×3000",
       "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:霸王别姬",
         "年份"
       ],
       "status": "ok",
@@ -832,6 +816,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:美国往事",
         "年份"
       ],
       "status": "ok",
@@ -848,18 +833,13 @@
       "size": "327KB",
       "dims": "780×1170",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:Casablanca",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Casablanca (1942) - IMDb）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260521",
@@ -894,6 +874,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:低俗小说",
         "年份"
       ],
       "status": "ok",
@@ -913,6 +894,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:七武士",
         "年份"
       ],
       "status": "ok",
@@ -932,6 +914,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:天堂电影院",
         "年份"
       ],
       "status": "ok",
@@ -951,6 +934,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:GoodFellas",
         "年份"
       ],
       "status": "ok",
@@ -970,6 +954,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:泰坦尼克号",
         "年份"
       ],
       "status": "ok",
@@ -989,6 +974,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:12 Angry Men",
         "年份"
       ],
       "status": "ok",
@@ -1024,18 +1010,13 @@
       "size": "183KB",
       "dims": "1035×1552",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:The Chorus",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Chorus (2004) — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260602",
@@ -1051,6 +1032,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:The Green Mile",
         "年份"
       ],
       "status": "ok",
@@ -1070,6 +1052,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Blade Runner",
         "年份"
       ],
       "status": "ok",
@@ -1089,6 +1072,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Witness for the Prosecution",
         "年份"
       ],
       "status": "ok",
@@ -1105,18 +1089,13 @@
       "size": "801KB",
       "dims": "1400×2100",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:The Lives of Others",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Lives of Others (2006) — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260608",
@@ -1151,6 +1130,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Parasite",
         "年份"
       ],
       "status": "ok",
@@ -1164,12 +1144,13 @@
       "imageUrl": "https://image.tmdb.org/t/p/original/b8YgXJLTDAlayqKR8Wb8lTXPUxo.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "964KB",
+      "size": "1280KB",
       "dims": "2000×3000",
       "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:My Neighbor Totoro",
         "年份"
       ],
       "status": "ok",
@@ -1189,6 +1170,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:My Neighbor Totoro",
         "年份"
       ],
       "status": "ok",
@@ -1208,6 +1190,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:花样年华",
         "年份"
       ],
       "status": "ok",
@@ -1227,6 +1210,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:机器人总动员",
         "年份"
       ],
       "status": "ok",
@@ -1246,6 +1230,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:当幸福来敲门",
         "年份"
       ],
       "status": "ok",
@@ -1265,6 +1250,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:布达佩斯大饭店",
         "年份"
       ],
       "status": "ok",
@@ -1284,6 +1270,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:狮子王",
         "年份"
       ],
       "status": "ok",
@@ -1303,6 +1290,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:寻梦环游记",
         "年份"
       ],
       "status": "ok",
@@ -1322,6 +1310,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:The Pianist",
         "年份"
       ],
       "status": "ok",
@@ -1341,6 +1330,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:狮子王",
         "年份"
       ],
       "status": "ok",
@@ -1360,6 +1350,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Saving Private Ryan",
         "年份"
       ],
       "status": "ok",
@@ -1376,18 +1367,13 @@
       "size": "335KB",
       "dims": "2000×3000",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:The Prestige",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Prestige (2006) — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260624",
@@ -1403,6 +1389,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:天空之城",
         "年份"
       ],
       "status": "ok",
@@ -1412,25 +1399,20 @@
       "id": "20260626-2",
       "zhTitle": "末代皇帝",
       "year": "1987",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/h08Mm1YpCECIVYRBvsNF1NAWlMY.jpg",
+      "source": "本地",
+      "imageUrl": "posters/20260626-2.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "1361KB",
-      "dims": "2000×3000",
+      "size": "335KB",
+      "dims": "1000×1500",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:The Last Emperor",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Predator 1987 Original Turkish Movie Poster Original Film Art）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260626",
@@ -1446,6 +1428,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:触不可及",
         "年份"
       ],
       "status": "ok",
@@ -1462,18 +1445,13 @@
       "size": "284KB",
       "dims": "1067×1600",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:The Last Emperor",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Last Emperor (1987) — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260628",
@@ -1489,6 +1467,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Your Name.",
         "年份"
       ],
       "status": "ok",
@@ -1508,6 +1487,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Avatar",
         "年份"
       ],
       "status": "ok",
@@ -1521,12 +1501,13 @@
       "imageUrl": "https://image.tmdb.org/t/p/original/qmTJGYcgSzokhsyhTUJMF6SWfFA.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "896KB",
+      "size": "1201KB",
       "dims": "2000×3000",
       "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:霸王别姬",
         "年份"
       ],
       "status": "ok",
@@ -1540,12 +1521,13 @@
       "imageUrl": "https://image.tmdb.org/t/p/original/qEVZeu6ODIpS3zwyhOxKEmvkDpH.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "101KB",
+      "size": "154KB",
       "dims": "600×900",
       "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:三傻大闹宝莱坞",
         "年份"
       ],
       "status": "ok",
@@ -1565,6 +1547,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Let the Bullets Fly",
         "年份"
       ],
       "status": "ok",
@@ -1584,6 +1567,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:摩登时代",
         "年份"
       ],
       "status": "ok",
@@ -1603,6 +1587,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:乱世佳人",
         "年份"
       ],
       "status": "ok",
@@ -1622,6 +1607,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:三傻大闹宝莱坞",
         "年份"
       ],
       "status": "ok",
@@ -1641,6 +1627,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:哈尔的移动城堡",
         "年份"
       ],
       "status": "ok",
@@ -1657,18 +1644,14 @@
       "size": "1399KB",
       "dims": "2000×3000",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "片名中文",
+        "别名:TheLordoftheRingsTheFellowshipoftheRing",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Lord of the Rings: The Fellowship of the Ring (2001) — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260707",
@@ -1681,18 +1664,13 @@
       "size": "1365KB",
       "dims": "2000×3000",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:七宗罪",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：七宗罪 (1995) - 海报 — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260708",
@@ -1705,18 +1683,13 @@
       "size": "115KB",
       "dims": "780×1170",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:Up (2009)",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Up (2009) - IMDb）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260709",
@@ -1732,6 +1705,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:黄金三镖客",
         "年份"
       ],
       "status": "ok",
@@ -1750,7 +1724,8 @@
       "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
-        "英文关键词:singin",
+        "片名英文",
+        "别名:Singin' in the Rain",
         "年份"
       ],
       "status": "ok",
@@ -1767,18 +1742,14 @@
       "size": "374KB",
       "dims": "1200×1800",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "片名中文",
+        "别名:终结者2：审判日",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：终结者2：审判日 (1991) - 海报 — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260712",
@@ -1788,12 +1759,13 @@
       "imageUrl": "https://image.tmdb.org/t/p/original/bvdPq5pMB5fycE5m21sX1yzR9ga.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "1373KB",
+      "size": "1783KB",
       "dims": "1975×2962",
       "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Braveheart",
         "年份"
       ],
       "status": "ok",
@@ -1813,6 +1785,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Braveheart",
         "年份"
       ],
       "status": "ok",
@@ -1832,6 +1805,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Flipped",
         "年份"
       ],
       "status": "ok",
@@ -1848,18 +1822,13 @@
       "size": "849KB",
       "dims": "2000×3000",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:星球大战4：新希望",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：星球大战4：新希望 (1977) - 海报 — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260715",
@@ -1872,18 +1841,13 @@
       "size": "267KB",
       "dims": "950×1425",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:A Beautiful Mind",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：A Beautiful Mind (2001) — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260716",
@@ -1899,6 +1863,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:VERTIGO",
         "年份"
       ],
       "status": "ok",
@@ -1912,7 +1877,7 @@
       "imageUrl": "https://image.tmdb.org/t/p/original/gnpkKnVqllXBSBOnbdQyaL6I5xs.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "315KB",
+      "size": "381KB",
       "dims": "973×1459",
       "ratio": 1.5,
       "identityKind": "name",
@@ -1934,18 +1899,13 @@
       "size": "75KB",
       "dims": "634×900",
       "ratio": 1.42,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:Love Letter",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Love Letter (1995) - IMDb）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260721",
@@ -1980,6 +1940,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Rashomon",
         "年份"
       ],
       "status": "ok",
@@ -1999,6 +1960,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Lawrence of Arabia",
         "年份"
       ],
       "status": "ok",
@@ -2018,6 +1980,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:卧虎藏龙",
         "年份"
       ],
       "status": "ok",
@@ -2037,6 +2000,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Tokyo Story",
         "年份"
       ],
       "status": "ok",
@@ -2056,6 +2020,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:卧虎藏龙",
         "年份"
       ],
       "status": "ok",
@@ -2075,6 +2040,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:The Seventh Seal",
         "年份"
       ],
       "status": "ok",
@@ -2110,18 +2076,13 @@
       "size": "746KB",
       "dims": "2000×3000",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:Rear Window",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Rear Window (1954) - Posters — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260805",
@@ -2137,6 +2098,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:To Kill a Mockingbird",
         "年份"
       ],
       "status": "ok",
@@ -2200,6 +2162,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Farewell My Concubine",
         "年份"
       ],
       "status": "ok",
@@ -2216,18 +2179,13 @@
       "size": "886KB",
       "dims": "2000×3000",
       "ratio": 1.5,
-      "identityKind": "year",
+      "identityKind": "name",
       "identityHits": [
+        "别名:Amadeus",
         "年份"
       ],
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Amadeus (1984) — The Movie Database (TMDB)）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260809",
@@ -2243,6 +2201,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:The Silence of the Lambs",
         "年份"
       ],
       "status": "ok",
@@ -2262,6 +2221,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:重庆森林",
         "年份"
       ],
       "status": "ok",
@@ -2281,6 +2241,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名英文",
+        "别名:Back to the Future",
         "年份"
       ],
       "status": "ok",
@@ -2294,12 +2255,13 @@
       "imageUrl": "https://image.tmdb.org/t/p/original/wZOsxwQjTdtSki0MiPIy8Zu9lv1.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "746KB",
+      "size": "1139KB",
       "dims": "2000×3000",
       "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:回到未来",
         "年份"
       ],
       "status": "ok",

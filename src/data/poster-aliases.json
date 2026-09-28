@@ -1,6 +1,18 @@
 {
-  "generatedAt": "2026-09-28T09:08:10.043Z",
+  "generatedAt": "2026-09-28T09:15:56.600Z",
   "manual": {
+    "20260826-north-by-northwest": [
+      "North by Northwest"
+    ],
+    "20260909": [
+      "The Yellow Sea"
+    ],
+    "20260911": [
+      "A Dirty Carnival"
+    ],
+    "20260915": [
+      "The Terror Live"
+    ],
     "20260921": [
       "Montage",
       "蒙太奇",
@@ -19,6 +31,46 @@
     "20260626-2": [
       "The Last Emperor",
       "末代皇帝"
+    ],
+    "20260627": [
+      "The Last Emperor",
+      "末代皇帝"
+    ],
+    "20260428": [
+      "Spirited Away",
+      "千と千尋の神隠し"
+    ],
+    "20260520": [
+      "Casablanca"
+    ],
+    "20260531": [
+      "The Chorus"
+    ],
+    "20260607": [
+      "The Lives of Others"
+    ],
+    "20260623": [
+      "The Prestige"
+    ],
+    "20260707": [
+      "七宗罪",
+      "Seven"
+    ],
+    "20260708": [
+      "Up (2009)"
+    ],
+    "20260714": [
+      "星球大战4：新希望",
+      "星球大战"
+    ],
+    "20260721-2": [
+      "Love Letter"
+    ],
+    "20260803": [
+      "Rear Window"
+    ],
+    "20260808": [
+      "Amadeus"
     ]
   },
   "auto": {
@@ -153,8 +205,8 @@
         "Farewell My Concubine"
       ],
       "samples": [
-        "Farewell My Concubine",
-        "霸王别姬"
+        "霸王别姬",
+        "Farewell My Concubine"
       ]
     },
     "20260519": {
@@ -214,11 +266,13 @@
     "20260528": {
       "aliases": [
         "泰坦尼克号",
-        "Titanic"
+        "Titanic",
+        "泰坦尼克号The Titanic"
       ],
       "samples": [
         "Titanic",
-        "泰坦尼克号"
+        "泰坦尼克号",
+        "泰坦尼克号The Titanic"
       ]
     },
     "20260529": {
@@ -234,11 +288,13 @@
     "20260530": {
       "aliases": [
         "活着",
-        "To Live"
+        "To Live",
+        "活着To Live"
       ],
       "samples": [
         "To Live",
-        "活着"
+        "活着",
+        "活着To Live"
       ]
     },
     "20260602": {
@@ -314,6 +370,15 @@
       ],
       "samples": [
         "机器人总动员"
+      ]
+    },
+    "20260614": {
+      "aliases": [
+        "当幸福来敲门",
+        "The Pursuit of Happyness"
+      ],
+      "samples": [
+        "The Pursuit of Happyness"
       ]
     },
     "20260615": {
@@ -429,8 +494,8 @@
         "Farewell My Concubine"
       ],
       "samples": [
-        "Farewell My Concubine",
-        "霸王别姬"
+        "霸王别姬",
+        "Farewell My Concubine"
       ]
     },
     "20260701": {
@@ -519,11 +584,13 @@
     "20260711": {
       "aliases": [
         "终结者2：审判日",
-        "Terminator 2: Judgment Day"
+        "Terminator 2: Judgment Day",
+        "终结者2：审判日Terminator 2: Judgment Day"
       ],
       "samples": [
         "终结者2：审判日",
-        "Terminator 2: Judgment Day"
+        "Terminator 2: Judgment Day",
+        "终结者2：审判日Terminator 2: Judgment Day"
       ]
     },
     "20260712": {
@@ -655,8 +722,8 @@
         "Farewell My Concubine"
       ],
       "samples": [
-        "Farewell My Concubine",
-        "霸王别姬"
+        "霸王别姬",
+        "Farewell My Concubine"
       ]
     },
     "20260809": {
@@ -741,10 +808,12 @@
     "20260831": {
       "aliases": [
         "ScentofaWoman",
-        "Scent of a Woman"
+        "Scent of a Woman",
+        "闻香识女人"
       ],
       "samples": [
-        "Scent of a Woman"
+        "Scent of a Woman",
+        "闻香识女人"
       ]
     },
     "20260901": {
