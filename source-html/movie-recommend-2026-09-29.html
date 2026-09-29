@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>杀人者的记忆法 · 观影推荐 | 元新渊 · 薛景求 · 金南佶 · 2017</title>
+<meta name="description" content="韩国犯罪片《杀人者的记忆法》(살인자의 기억법 / Memoir of a Murderer, 2017) 无剧透观影推荐：剧情梗概、影片档案、口碑数据、从小说到银幕的时间线，以及为什么值得看。" />
+<style>
+  :root{
+    --ink:#0a0b0e;
+    --ink-2:#0e1015;
+    --panel:#14171d;
+    --panel-2:#1a1e25;
+    --panel-3:#222731;
+    --line:rgba(232,227,214,.10);
+    --line-2:rgba(232,227,214,.20);
+    --text:#ece8df;
+    --text-2:#b6b1a6;
+    --dim:#807b71;
+    --paper:#e8e3d6;
+    --paper-2:#f5f2ea;
+    --note:#7fa2dd;
+    --note-2:#aec6ee;
+    --blood:#a8271c;
+    --blood-2:#c9412f;
+    --amber:#d2a44a;
+    --amber-2:#ecc884;
+    --serif:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    --mono:"SF Mono","JetBrains Mono","Menlo","Consolas",monospace;
+    --hand:"Kaiti SC","STKaiti","KaiTi","Songti SC",serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* 全局胶片颗粒 */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='150' height='150'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='150' height='150' filter='url(%23n)' opacity='.5'/></svg>");
+    opacity:.055;mix-blend-mode:overlay;
+  }
+  /* 旧纸的呼吸微光 */
+  body::after{
+    content:"";position:fixed;inset:0;z-index:9997;pointer-events:none;
+    background:
+      radial-gradient(64% 40% at 14% 3%,rgba(232,227,214,.055),transparent 62%),
+      radial-gradient(56% 38% at 90% 10%,rgba(127,162,221,.05),transparent 62%);
+    animation:breathe 8.4s ease-in-out infinite;
+  }
+  @keyframes breathe{0%,100%{opacity:.5}42%{opacity:.92}66%{opacity:.58}}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .serif{font-family:var(--serif)}
+  .mono{font-family:var(--mono)}
+  .hand{font-family:var(--hand)}
+
+  /* ---------------- HERO ---------------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-svg{position:absolute;inset:0;z-index:0;width:100%;height:100%}
+  .hero-scrim{
+    position:absolute;inset:0;z-index:1;
+    background:
+      radial-gradient(84% 62% at 24% 58%,rgba(8,9,12,.82),rgba(8,9,12,.20) 58%,transparent 84%),
+      linear-gradient(180deg,rgba(8,9,12,.60) 0%,transparent 24%,transparent 60%,rgba(8,9,12,.95) 100%);
+  }
+  #heroCanvas{position:absolute;inset:0;z-index:2;width:100%;height:100%;display:block}
+  .hero-in{position:relative;z-index:4;width:100%;padding:120px 28px 96px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--note-2);border:1px solid rgba(127,162,221,.32);
+    padding:7px 14px;border-radius:2px;background:rgba(127,162,221,.06);
+  }
+  .eyebrow i{width:5px;height:5px;background:var(--blood-2);border-radius:50%;display:block}
+  h1.title{
+    font-family:var(--serif);
+    font-size:clamp(42px,8.6vw,104px);
+    line-height:1.08;letter-spacing:.09em;font-weight:600;
+    margin:26px 0 0 -5px;
+    color:#f6f3ea;
+    text-shadow:0 2px 44px rgba(0,0,0,.82),0 0 96px rgba(210,164,74,.14);
+  }
+  .title-rule{width:84px;height:2px;background:linear-gradient(90deg,var(--blood-2),transparent);margin:24px 0 20px}
+  .sub{
+    font-family:var(--mono);font-size:clamp(10px,1.35vw,12.5px);
+    letter-spacing:.2em;color:var(--paper);opacity:.62;text-transform:uppercase;
+  }
+  .tagline{
+    font-family:var(--serif);font-size:clamp(17px,2.35vw,24px);line-height:1.75;
+    color:var(--text);max-width:680px;margin-top:22px;
+  }
+  .tagline em{font-style:normal;color:var(--amber-2);border-bottom:1px solid rgba(210,164,74,.42)}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px}
+  .chip{
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+    padding:6px 12px;border:1px solid var(--line-2);border-radius:2px;
+    color:var(--text-2);background:rgba(232,227,214,.025);
+  }
+  .scroll-cue{
+    position:absolute;left:28px;bottom:26px;z-index:5;
+    font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--dim);
+    display:flex;align-items:center;gap:10px;
+  }
+  .scroll-cue span{width:44px;height:1px;background:var(--dim);display:block;animation:cue 2.6s ease-in-out infinite}
+  @keyframes cue{0%,100%{transform:scaleX(.35);opacity:.4}50%{transform:scaleX(1);opacity:1}}
+
+  /* 记忆保持率 HUD */
+  .hud{
+    position:fixed;right:22px;bottom:22px;z-index:9000;pointer-events:none;
+    border:1px solid var(--line-2);border-radius:3px;
+    background:rgba(14,16,21,.72);backdrop-filter:blur(6px);
+    padding:11px 13px;min-width:158px;opacity:.62;transition:opacity .4s;
+  }
+  .hud b{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--note-2);font-weight:400}
+  .hud .track{height:3px;background:rgba(232,227,214,.12);margin:9px 0 7px;border-radius:2px;overflow:hidden}
+  .hud .track i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--paper),var(--amber));transition:width .35s linear}
+  .hud u{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--paper);text-decoration:none}
+  .hud s{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--dim);text-decoration:none;margin-left:6px}
+
+  /* ---------------- 通用版块 ---------------- */
+  section{padding:96px 0;position:relative}
+  .sec-head{margin-bottom:42px}
+  .sec-kicker{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--note);display:flex;align-items:center;gap:12px;
+  }
+  .sec-kicker::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(127,162,221,.32),transparent)}
+  .sec-title{
+    font-family:var(--serif);font-size:clamp(25px,3.9vw,39px);line-height:1.32;
+    margin-top:14px;color:#f6f3ea;letter-spacing:.03em;font-weight:600;
+  }
+  .sec-note{margin-top:12px;color:var(--dim);font-size:13.5px;max-width:780px}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* 防剧透条 */
+  .spoiler{padding:0;border-bottom:1px solid var(--line)}
+  .spoiler-in{
+    display:flex;gap:18px;align-items:flex-start;
+    border-left:2px solid var(--blood-2);
+    background:linear-gradient(90deg,rgba(168,39,28,.18),rgba(168,39,28,.03));
+    padding:20px 24px;border-radius:2px;
+  }
+  .spoiler-badge{
+    flex:none;font-family:var(--mono);font-size:10px;letter-spacing:.2em;
+    color:var(--blood-2);border:1px solid rgba(201,65,47,.42);padding:5px 9px;border-radius:2px;
+    white-space:nowrap;margin-top:3px;
+  }
+  .spoiler-in p{color:var(--text-2);font-size:14.5px;line-height:1.85}
+  .spoiler-in strong{color:#f6f3ea;font-weight:600}
+
+  /* 梗概 + 速览 */
+  .two-col{display:grid;grid-template-columns:1.62fr 1fr;gap:52px;align-items:start}
+  .syn p{color:var(--text-2);margin-bottom:20px;font-size:16.5px}
+  .syn p:first-of-type::first-letter{
+    font-family:var(--serif);font-size:66px;line-height:.86;float:left;
+    margin:6px 14px 0 0;color:var(--paper);
+    text-shadow:0 0 34px rgba(232,227,214,.28);
+  }
+  .syn p b{color:#f6f3ea;font-weight:600}
+  .syn p i{font-style:normal;color:var(--amber-2)}
+
+  .glance{
+    border:1px solid var(--line);background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border-radius:3px;padding:26px 24px;position:sticky;top:26px;position:relative;overflow:hidden;
+  }
+  .glance::before{
+    content:"";position:absolute;left:0;top:0;width:100%;height:3px;
+    background:repeating-linear-gradient(90deg,rgba(232,227,214,.5) 0 14px,transparent 14px 26px);
+    opacity:.5;
+  }
+  .glance h3{
+    font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--note);margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--line);
+  }
+  .glance dl{display:grid;gap:13px}
+  .glance .row{display:grid;grid-template-columns:76px 1fr;gap:12px;font-size:13.5px}
+  .glance .row dt{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--dim);padding-top:3px}
+  .glance .row dd{color:var(--text-2)}
+  .glance .row dd b{color:#f6f3ea;font-weight:600}
+  .stamp{
+    margin-top:22px;padding-top:16px;border-top:1px dashed var(--line-2);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--note-2);line-height:2;
+  }
+
+  /* 海报区 */
+  .poster-wrap{display:grid;grid-template-columns:minmax(0,1fr) 1fr;gap:56px;align-items:center}
+  .poster-frame{
+    position:relative;border:1px solid var(--line-2);background:var(--ink-2);
+    padding:14px;border-radius:3px;
+    box-shadow:0 34px 90px -40px rgba(0,0,0,.95),inset 0 0 0 1px rgba(232,227,214,.04);
+  }
+  .poster-frame svg{display:block;width:100%;height:auto}
+  .poster-frame::before,.poster-frame::after{
+    content:"";position:absolute;width:34px;height:34px;border:1px solid rgba(232,227,214,.42);
+  }
+  .poster-frame::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+  .poster-frame::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+  .poster-cap{
+    margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--dim);text-align:center;
+  }
+  .reading{list-style:none}
+  .reading li{padding:0 0 20px 26px;position:relative;color:var(--text-2);font-size:15px}
+  .reading li::before{
+    content:"";position:absolute;left:0;top:11px;width:10px;height:10px;
+    border:1px solid var(--paper);opacity:.7;transform:rotate(45deg);
+  }
+  .reading li b{color:#f6f3ea;font-weight:600;display:block;margin-bottom:3px;font-size:15px}
+
+  /* 档案 */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .fact{background:var(--panel);padding:20px 18px;min-height:104px;display:flex;flex-direction:column;gap:7px}
+  .fact dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+  .fact dd{color:var(--text);font-size:14px;line-height:1.6}
+  .fact dd small{display:block;color:var(--dim);font-size:11.5px;margin-top:5px;line-height:1.55}
+  .fact.accent dd{color:var(--amber-2)}
+
+  /* 口碑 */
+  .scores{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .score{
+    border:1px solid var(--line);background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border-radius:3px;padding:22px 20px;position:relative;overflow:hidden;
+  }
+  .score::after{content:"";position:absolute;left:0;top:0;height:2px;width:100%;background:linear-gradient(90deg,var(--paper),transparent)}
+  .score .src{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--dim);text-transform:uppercase}
+  .score .num{font-family:var(--serif);font-size:44px;line-height:1.1;color:#f6f3ea;margin:10px 0 2px}
+  .score .num sup{font-family:var(--mono);font-size:12px;color:var(--dim);margin-left:4px}
+  .score .det{font-size:12.5px;color:var(--dim);line-height:1.7}
+  .bar{height:3px;background:rgba(232,227,214,.10);margin-top:14px;border-radius:2px;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--paper),var(--note));transition:width 1.5s cubic-bezier(.22,.61,.36,1)}
+  .score.in .bar i{width:var(--w)}
+
+  /* 时间线 */
+  .tl{position:relative;padding-left:34px}
+  .tl::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,transparent,var(--line-2) 6%,var(--line-2) 94%,transparent)}
+  .tl-item{position:relative;padding-bottom:30px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-30px;top:9px;width:9px;height:9px;border-radius:50%;
+    background:var(--ink);border:1px solid var(--paper);
+  }
+  .tl-item.key::before{background:var(--blood-2);border-color:var(--blood-2);box-shadow:0 0 0 4px rgba(168,39,28,.20)}
+  .tl-y{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--amber-2)}
+  .tl-t{font-family:var(--serif);font-size:17.5px;color:#f6f3ea;margin:3px 0 4px}
+  .tl-d{color:var(--text-2);font-size:14px}
+
+  /* 荣誉 */
+  .awards{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .aw{background:var(--panel);padding:20px 22px;display:grid;grid-template-columns:186px 1fr;gap:20px;align-items:baseline}
+  .aw .org{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--note-2);line-height:1.7}
+  .aw .what{color:var(--text-2);font-size:14.5px}
+  .aw .what b{color:#f6f3ea;font-weight:600}
+
+  /* 原著 */
+  .novel{display:grid;grid-template-columns:1fr 1.15fr;gap:52px;align-items:start}
+  .bookcard{
+    border:1px solid var(--line-2);background:linear-gradient(160deg,var(--panel-2),var(--panel));
+    padding:30px 28px;border-radius:3px;position:relative;
+  }
+  .bookcard .bk-rule{width:52px;height:2px;background:var(--blood-2);margin:0 0 18px}
+  .bookcard h4{font-family:var(--serif);font-size:23px;color:#f6f3ea;line-height:1.4;font-weight:600}
+  .bookcard .bk-kr{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--note-2);margin-top:8px}
+  .bookcard p{color:var(--text-2);font-size:14.5px;margin-top:16px}
+  .bookcard p + p{margin-top:12px}
+  .bookcard .bk-meta{
+    margin-top:20px;padding-top:14px;border-top:1px dashed var(--line-2);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--dim);line-height:2;
+  }
+  .adapt{display:grid;gap:20px}
+  .adcard{border-left:2px solid var(--note);padding:2px 0 2px 24px}
+  .adcard h4{font-family:var(--serif);font-size:19px;color:#f6f3ea;margin-bottom:9px;font-weight:600;line-height:1.5}
+  .adcard p{color:var(--text-2);font-size:15px}
+
+  /* 六宫格 */
+  .grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .gcard{
+    border:1px solid var(--line);background:linear-gradient(180deg,var(--panel-2),var(--panel));
+    border-radius:3px;padding:28px 24px 26px;position:relative;transition:border-color .4s,transform .4s;
+  }
+  .gcard::before{
+    content:"";position:absolute;top:-1px;left:22px;width:38px;height:9px;
+    background:rgba(232,227,214,.16);border:1px solid rgba(232,227,214,.12);border-top:0;
+  }
+  .gcard:hover{border-color:rgba(232,227,214,.34);transform:translateY(-3px)}
+  .gcard .idx{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--blood-2)}
+  .gcard h4{font-family:var(--serif);font-size:18.5px;color:#f6f3ea;margin:11px 0 10px;line-height:1.5;font-weight:600}
+  .gcard p{color:var(--text-2);font-size:14px;line-height:1.85}
+
+  /* 为什么值得看 */
+  .why{display:grid;gap:22px}
+  .wcard{border-left:2px solid var(--paper);padding:4px 0 4px 26px}
+  .wcard h4{font-family:var(--serif);font-size:21px;color:#f6f3ea;margin-bottom:10px;font-weight:600;line-height:1.5}
+  .wcard p{color:var(--text-2);font-size:15.5px}
+  .wcard p + p{margin-top:12px}
+
+  /* 提示 */
+  .notice{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .ncard{border:1px dashed var(--line-2);padding:22px 20px;border-radius:3px;background:rgba(168,39,28,.05)}
+  .ncard dt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--blood-2);margin-bottom:10px}
+  .ncard dd{color:var(--text-2);font-size:13.5px;line-height:1.85}
+
+  /* 收尾 */
+  .ending{
+    padding:110px 0 96px;text-align:center;position:relative;overflow:hidden;
+    border-top:1px solid var(--line);
+    background:radial-gradient(80% 70% at 50% 30%,rgba(232,227,214,.06),transparent 70%);
+  }
+  .ending .quote{
+    font-family:var(--serif);font-size:clamp(20px,3.1vw,31px);line-height:1.78;
+    color:#f6f3ea;max-width:840px;margin:0 auto;
+  }
+  .ending .fn{margin-top:20px;font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--dim)}
+  .endmarks{display:flex;justify-content:center;gap:9px;margin-top:38px}
+  .endmarks i{width:6px;height:6px;border:1px solid var(--paper);transform:rotate(45deg);display:block;opacity:.7}
+
+  footer{
+    border-top:1px solid var(--line);padding:30px 0 44px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--dim);
+    display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+
+  /* ---------------- 响应式 ---------------- */
+  @media (max-width:980px){
+    .two-col,.poster-wrap,.novel{grid-template-columns:1fr;gap:40px}
+    .glance{position:static}
+    .facts{grid-template-columns:repeat(2,1fr)}
+    .scores{grid-template-columns:repeat(2,1fr)}
+    .grid6{grid-template-columns:1fr 1fr}
+    .notice{grid-template-columns:1fr}
+    .hud{display:none}
+  }
+  @media (max-width:640px){
+    body{font-size:15px}
+    .wrap{padding:0 20px}
+    section{padding:70px 0}
+    .hero-in{padding:96px 20px 84px}
+    .eyebrow{font-size:9.5px;letter-spacing:.13em;padding:6px 10px;line-height:1.6;gap:8px}
+    .sub{font-size:10px;letter-spacing:.12em;line-height:1.9}
+    .tagline{margin-top:18px}
+    .chips{margin-top:26px;gap:7px}
+    .chip{font-size:10px;padding:5px 9px;letter-spacing:.06em}
+    .scroll-cue{left:20px;bottom:20px}
+    .facts{grid-template-columns:1fr}
+    .scores{grid-template-columns:1fr}
+    .grid6{grid-template-columns:1fr}
+    .aw{grid-template-columns:1fr;gap:6px}
+    .spoiler-in{flex-direction:column;gap:12px}
+    .syn p:first-of-type::first-letter{font-size:52px}
+    h1.title{letter-spacing:.06em}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    .score .bar i{width:var(--w)}
+    .hud .track i{width:var(--w0,100%)}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-bg">
+    <svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#05060a"/>
+          <stop offset="30%" stop-color="#0a0c12"/>
+          <stop offset="56%" stop-color="#111520"/>
+          <stop offset="70%" stop-color="#151a24"/>
+          <stop offset="100%" stop-color="#05060a"/>
+        </linearGradient>
+        <radialGradient id="tunnelGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#f4dfae" stop-opacity=".78"/>
+          <stop offset="26%" stop-color="#ecc884" stop-opacity=".34"/>
+          <stop offset="58%" stop-color="#d2a44a" stop-opacity=".13"/>
+          <stop offset="100%" stop-color="#d2a44a" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="coldGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#aec6ee" stop-opacity=".26"/>
+          <stop offset="46%" stop-color="#7fa2dd" stop-opacity=".09"/>
+          <stop offset="100%" stop-color="#7fa2dd" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="snowGround" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#151a24"/>
+          <stop offset="34%" stop-color="#0d1016"/>
+          <stop offset="100%" stop-color="#05060a"/>
+        </linearGradient>
+        <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ecc884" stop-opacity=".62"/>
+          <stop offset="100%" stop-color="#ecc884" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="vig" cx="50%" cy="46%" r="72%">
+          <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+          <stop offset="66%" stop-color="#000" stop-opacity=".28"/>
+          <stop offset="100%" stop-color="#000" stop-opacity=".82"/>
+        </radialGradient>
+      </defs>
+
+      <rect x="0" y="0" width="1440" height="900" fill="url(#sky)"/>
+
+      <!-- 远处山脊两层 -->
+      <path d="M0 470 L150 440 L292 462 L430 428 L560 460 L700 434 L840 458 L980 432 L1130 462 L1280 438 L1440 466 V560 H0 Z" fill="#0b0e15" opacity=".9"/>
+      <path d="M0 500 L180 478 L330 498 L500 470 L660 496 L820 472 L1000 498 L1180 474 L1340 498 L1440 482 V560 H0 Z" fill="#080a10" opacity=".95"/>
+
+      <!-- 隧道口（暖光的唯一来源） -->
+      <g>
+        <path d="M596 560 V494 A124 124 0 0 1 844 494 V560 Z" fill="#05060a"/>
+        <path d="M604 560 V496 A116 116 0 0 1 836 496 V560 Z" fill="url(#tunnelGlow)" opacity=".92"/>
+        <path d="M628 560 V500 A92 92 0 0 1 812 500 V560 Z" fill="#ecc884" opacity=".22"/>
+        <circle cx="720" cy="516" r="250" fill="url(#tunnelGlow)"/>
+      </g>
+
+      <!-- 雪地（透视平面） -->
+      <path d="M0 900 L596 560 L844 560 L1440 900 Z" fill="url(#snowGround)"/>
+      <!-- 雪地反光 -->
+      <g opacity=".5">
+        <rect x="700" y="562" width="40" height="336" fill="#ecc884" opacity=".07"/>
+        <rect x="660" y="640" width="120" height="260" fill="#aec6ee" opacity=".035"/>
+      </g>
+
+      <!-- 枕木（近大远小） -->
+      <g fill="#171b21" opacity=".85">
+        <rect x="676" y="576" width="88" height="7"/>
+        <rect x="620" y="614" width="212" height="9"/>
+        <rect x="537" y="662" width="378" height="12"/>
+        <rect x="437" y="722" width="578" height="16"/>
+        <rect x="316" y="794" width="820" height="21"/>
+        <rect x="183" y="874" width="1086" height="26"/>
+      </g>
+
+      <!-- 铁轨 -->
+      <g stroke="#6f7783" stroke-width="3.4" fill="none" opacity=".62">
+        <path d="M713 556 L176 900"/>
+        <path d="M727 556 L1264 900"/>
+      </g>
+      <g stroke="#ecc884" stroke-width="1.2" fill="none" opacity=".30">
+        <path d="M714 556 L182 900"/>
+        <path d="M726 556 L1258 900"/>
+      </g>
+
+      <!-- 电线杆 + 电线 -->
+      <g fill="#0a0c11">
+        <rect x="466" y="452" width="9" height="176"/>
+        <rect x="446" y="470" width="49" height="5"/>
+        <rect x="246" y="486" width="10" height="220"/>
+        <rect x="224" y="506" width="54" height="6"/>
+        <rect x="58" y="520" width="12" height="284"/>
+        <rect x="32" y="544" width="64" height="7"/>
+        <rect x="1008" y="466" width="9" height="176"/>
+        <rect x="990" y="486" width="46" height="5"/>
+        <rect x="1226" y="500" width="10" height="222"/>
+        <rect x="1204" y="522" width="54" height="6"/>
+        <rect x="1396" y="530" width="12" height="278"/>
+        <rect x="1370" y="556" width="66" height="7"/>
+      </g>
+      <g stroke="#141922" stroke-width="1.6" fill="none" opacity=".9">
+        <path d="M470 470 Q300 512 251 508"/>
+        <path d="M251 508 Q150 540 64 548"/>
+        <path d="M1012 488 Q1180 528 1231 524"/>
+        <path d="M1231 524 Q1330 558 1402 560"/>
+        <path d="M470 470 Q620 500 1012 488" opacity=".55"/>
+      </g>
+      <g opacity=".85">
+        <circle cx="470" cy="470" r="3" fill="#ecc884"/>
+        <circle cx="251" cy="508" r="2.6" fill="#ecc884"/>
+        <circle cx="1012" cy="488" r="3" fill="#ecc884"/>
+        <circle cx="1231" cy="524" r="2.6" fill="#ecc884"/>
+      </g>
+
+      <!-- 冷调补光（右侧·雪夜的蓝） -->
+      <circle cx="1200" cy="330" r="300" fill="url(#coldGlow)"/>
+
+      <!-- 孤影落影 -->
+      <ellipse cx="716" cy="708" rx="44" ry="9" fill="#03040a" opacity=".7"/>
+
+      <!-- 孤影：背对镜头，站在两轨之间，被隧道的光打出轮廓 -->
+      <g fill="#03040a">
+        <circle cx="716" cy="628" r="13.5"/>
+        <path d="M-18 646 h36 l9 62 h-54 z" transform="translate(716,0)"/>
+        <path d="M-18 650 l-14 40 h10 l11 -33z" transform="translate(716,0)"/>
+        <path d="M18 650 l14 40 h-10 l-11 -33z" transform="translate(716,0)"/>
+        <rect x="702" y="704" width="11" height="6"/>
+        <rect x="719" y="704" width="11" height="6"/>
+      </g>
+      <!-- 轮廓光 -->
+      <g stroke="url(#rim)" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".85">
+        <path d="M729 616 v30"/>
+        <path d="M729 650 v56"/>
+        <path d="M722 700 v12"/>
+      </g>
+
+      <!-- 静态雪（近处较大的雪片） -->
+      <g fill="#e9eef6" opacity=".5">
+        <circle cx="120" cy="180" r="2.1"/><circle cx="284" cy="96" r="1.5"/>
+        <circle cx="392" cy="268" r="1.8"/><circle cx="516" cy="140" r="1.4"/>
+        <circle cx="654" cy="322" r="1.9"/><circle cx="880" cy="126" r="1.6"/>
+        <circle cx="988" cy="300" r="2.2"/><circle cx="1128" cy="168" r="1.5"/>
+        <circle cx="1296" cy="356" r="1.8"/><circle cx="1388" cy="220" r="1.4"/>
+        <circle cx="208" cy="392" r="1.7"/><circle cx="780" cy="228" r="1.3"/>
+      </g>
+
+      <rect x="0" y="0" width="1440" height="900" fill="url(#vig)"/>
+    </svg>
+    <div class="hero-scrim"></div>
+    <canvas id="heroCanvas"></canvas>
+  </div>
+
+  <div class="hero-in wrap">
+    <div class="eyebrow"><i></i>韩国犯罪经典 · 无剧透观影笔记 · 第 19 部</div>
+    <h1 class="title serif">杀人者的<br>记忆法</h1>
+    <div class="title-rule"></div>
+    <p class="sub">살인자의 기억법 · MEMOIR OF A MURDERER · 2017 · 元新渊</p>
+    <p class="tagline serif">一个曾经以杀人为业的人，正在一页一页地忘掉自己。<em>而他唯一还想记住的，是女儿。</em></p>
+    <div class="chips">
+      <span class="chip">片长 118 分钟</span>
+      <span class="chip">韩国 15+</span>
+      <span class="chip">265.9 万观影人次</span>
+      <span class="chip">第 61 届伦敦国际电影节 惊悚单元</span>
+      <span class="chip">改编自金英夏同名小说</span>
+    </div>
+  </div>
+
+  <div class="scroll-cue"><span></span>向下滚动 · 本文不含任何剧情反转</div>
+</header>
+
+<!-- ================= 记忆保持率 ================= -->
+<div class="hud" id="hud" aria-hidden="true">
+  <b>기억 보존율 / MEMORY RETAINED</b>
+  <div class="track"><i id="hudBar"></i></div>
+  <u id="hudNum">100%</u><s id="hudTag">RECORDING…</s>
+</div>
+
+<!-- ================= 防剧透 ================= -->
+<section class="spoiler">
+  <div class="wrap">
+    <div class="spoiler-in reveal">
+      <div class="spoiler-badge">NO SPOILER</div>
+      <p><strong>阅读说明：</strong>本篇是无剧透导览。剧情梗概止于影片第一幕的转折点，不涉及结局、关键反转、人物的最终命运与决定性场面；文中的引语均为主题式表述，<strong>不是片中台词</strong>。观影前可以放心读完。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 梗概 ================= -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">STORY · 五段讲清格局</div>
+      <h2 class="sec-title serif">记忆一页页脱落，而案子不会等你</h2>
+      <p class="sec-note">以下内容全部来自公开宣传梗概，止于第一幕的转折点。</p>
+    </div>
+
+    <div class="two-col">
+      <div class="syn reveal">
+        <p><b>金秉洙</b>（薛景求）每天都要重新认识一次自己。三个月前，医生告诉他，他得了阿尔茨海默症。女儿恩熙给他买来录音笔，把家里的每一样东西都贴上标签，还开始替他理发——她告诉他，习惯比记忆活得更久。他知道自己在往下掉，只是不知道会掉到哪里去。</p>
+
+        <p>在他身上，还有一段不方便提起的过去：很多年前，他是<i>一名连环杀人犯</i>，专挑那些他认定"该死"的人下手。后来他结了婚、有了女儿，也把那件事停了很久。可记忆不会因为被忘掉就消失——它只是换了个地方，埋在他自己都够不着的地方。</p>
+
+        <p>这个冬天，附近接连有年轻女性失踪、遇害，有人开始提起十七年前那桩旧案。某个下雪的夜里，他的车追尾了前面一辆车；在那辆车里，他看见了不该出现在那个时间、那个地点的东西。更让他脊背发凉的是那个男人的眼神——那是一种他<span style="color:var(--text)">太过熟悉</span>的眼光。</p>
+
+        <p>他去了警局。接待他的，正是那个男人：<b>一名警察</b>。没有人会去相信一个连自己名字都要靠字条提醒的人。而那场追尾之后，这个男人开始一次次出现在他和女儿的生活里。</p>
+
+        <p>于是他给自己定下了一件必须办成的事：在忘掉之前，把证据留住。<i>影片没有急着判他有罪，也没有急着判他无辜——它把"记忆到底可不可信"这个问题，直接推到了观众面前。</i></p>
+      </div>
+
+      <aside class="glance reveal">
+        <h3>At a Glance · 一眼速览</h3>
+        <dl>
+          <div class="row"><dt>类型</dt><dd>犯罪 / 悬疑 / 惊悚</dd></div>
+          <div class="row"><dt>导演</dt><dd><b>元新渊</b><br><span style="color:var(--dim);font-size:12px">兼编剧 · 动作指导出身<br>前作《七天》《嫌疑人》</span></dd></div>
+          <div class="row"><dt>主演</dt><dd>薛景求 · 金南佶<br>金雪炫 · 吴达洙</dd></div>
+          <div class="row"><dt>年份</dt><dd>2017 · 韩国</dd></div>
+          <div class="row"><dt>原著</dt><dd>金英夏《살인자의 기억법》</dd></div>
+          <div class="row"><dt>分级</dt><dd>韩国 15 岁以上观览可</dd></div>
+          <div class="row"><dt>一句话</dt><dd style="color:var(--amber-2)">一部把"记忆"当成凶案现场来勘查的类型片：你看到的每一格，都可能是真的，也可能不是。</dd></div>
+        </dl>
+        <div class="stamp">
+          2,658,589 ADMISSIONS<br>
+          BASED ON THE NOVEL BY KIM YOUNG-HA
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 概念海报 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">KEY ART · 概念海报解读</div>
+      <h2 class="sec-title serif">一沓字条，一个人</h2>
+    </div>
+
+    <div class="poster-wrap">
+      <div class="reveal">
+        <div class="poster-frame">
+          <svg viewBox="0 0 520 720" role="img" aria-label="概念海报：雪夜里一张写满字迹的便条纸，纸上夹着一张隧道照片，右侧竖排片名">
+            <defs>
+              <linearGradient id="pSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#05060a"/>
+                <stop offset="42%" stop-color="#0a0d13"/>
+                <stop offset="72%" stop-color="#121722"/>
+                <stop offset="100%" stop-color="#05060a"/>
+              </linearGradient>
+              <radialGradient id="pGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f4dfae" stop-opacity=".58"/>
+                <stop offset="30%" stop-color="#ecc884" stop-opacity=".22"/>
+                <stop offset="100%" stop-color="#d2a44a" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="pPaper" x1="0" y1="0" x2="0.4" y2="1">
+                <stop offset="0%" stop-color="#efeade"/>
+                <stop offset="52%" stop-color="#e8e3d6"/>
+                <stop offset="100%" stop-color="#d9d3c2"/>
+              </linearGradient>
+              <linearGradient id="pPhoto" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0b0e14"/>
+                <stop offset="62%" stop-color="#161c26"/>
+                <stop offset="100%" stop-color="#080a0f"/>
+              </linearGradient>
+              <pattern id="pGrain" width="6" height="6" patternUnits="userSpaceOnUse">
+                <rect width="6" height="6" fill="none"/>
+                <circle cx="1" cy="1.5" r=".5" fill="#e9eef6" opacity=".07"/>
+                <circle cx="4" cy="4" r=".45" fill="#e9eef6" opacity=".05"/>
+              </pattern>
+              <linearGradient id="pSheen" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#aec6ee" stop-opacity=".09"/>
+                <stop offset="52%" stop-color="#ffffff" stop-opacity="0"/>
+                <stop offset="100%" stop-color="#ecc884" stop-opacity=".09"/>
+              </linearGradient>
+            </defs>
+
+            <rect width="520" height="720" fill="url(#pSky)"/>
+            <rect width="520" height="720" fill="url(#pSheen)"/>
+            <rect width="520" height="720" fill="url(#pGrain)"/>
+
+            <!-- 隧道的光 -->
+            <circle cx="216" cy="112" r="176" fill="url(#pGlow)"/>
+
+            <!-- 雪 -->
+            <g fill="#e9eef6" opacity=".42">
+              <circle cx="44" cy="72" r="1.7"/><circle cx="128" cy="40" r="1.3"/>
+              <circle cx="322" cy="66" r="1.6"/><circle cx="424" cy="118" r="1.4"/>
+              <circle cx="66" cy="196" r="1.5"/><circle cx="470" cy="238" r="1.6"/>
+              <circle cx="38" cy="330" r="1.4"/><circle cx="488" cy="392" r="1.5"/>
+              <circle cx="60" cy="474" r="1.6"/><circle cx="462" cy="530" r="1.4"/>
+              <circle cx="26" cy="606" r="1.7"/><circle cx="498" cy="648" r="1.5"/>
+              <circle cx="188" cy="122" r="1.2"/><circle cx="272" cy="84" r="1.1"/>
+            </g>
+
+            <!-- 便条纸（微倾） -->
+            <g transform="rotate(-2.2 224 372)">
+              <rect x="66" y="178" width="312" height="336" rx="1.5" fill="#03040a" opacity=".62" transform="translate(6,9)"/>
+              <rect x="66" y="178" width="312" height="336" rx="1.5" fill="url(#pPaper)"/>
+              <!-- 折痕 -->
+              <path d="M66 300 H378" stroke="#b8b1a0" stroke-width=".7" opacity=".55"/>
+              <path d="M66 396 H378" stroke="#b8b1a0" stroke-width=".5" opacity=".28"/>
+              <!-- 抬头 -->
+              <text x="86" y="204" font-family="SF Mono,Menlo,monospace" font-size="8.6" letter-spacing="1.6" fill="#5c7396">기억 기록 · MEMO</text>
+              <path d="M86 212 H358" stroke="#7fa2dd" stroke-width=".8" opacity=".55"/>
+              <!-- 手写字迹（以线的密度模拟） -->
+              <g stroke="#3f5273" stroke-linecap="round" fill="none">
+                <path d="M86 236 q16 -3 32 0 t34 0 t30 0 t26 0" stroke-width="2.4" opacity=".72"/>
+                <path d="M86 254 q18 -3 36 0 t34 0 t28 0" stroke-width="2.4" opacity=".62"/>
+                <path d="M86 272 q14 -3 30 0 t32 0 t30 0 t22 0 t18 0" stroke-width="2.4" opacity=".7"/>
+                <path d="M86 290 q20 -3 34 0 t30 0" stroke-width="2.4" opacity=".5"/>
+                <path d="M86 322 q16 -3 32 0 t34 0 t30 0 t24 0" stroke-width="2.4" opacity=".68"/>
+                <path d="M86 340 q18 -3 34 0 t30 0 t26 0" stroke-width="2.4" opacity=".56"/>
+                <path d="M86 358 q14 -3 30 0 t32 0 t28 0 t24 0 t16 0" stroke-width="2.4" opacity=".64"/>
+                <path d="M86 418 q18 -3 34 0 t32 0 t26 0" stroke-width="2.4" opacity=".6"/>
+                <path d="M86 436 q14 -3 30 0 t30 0 t26 0 t22 0" stroke-width="2.4" opacity=".5"/>
+                <path d="M86 454 q20 -3 34 0 t28 0" stroke-width="2.4" opacity=".54"/>
+              </g>
+              <!-- 被圈起来的一行 -->
+              <ellipse cx="150" cy="322" rx="66" ry="13" fill="none" stroke="#a8271c" stroke-width="1.5" opacity=".78"/>
+              <path d="M214 316 q10 -8 14 4" stroke="#a8271c" stroke-width="1.4" fill="none" opacity=".7"/>
+              <!-- 红色归档章 -->
+              <g transform="rotate(-11 314 480)" opacity=".82">
+                <rect x="270" y="462" width="88" height="34" rx="3" fill="none" stroke="#a8271c" stroke-width="1.6"/>
+                <text x="314" y="484" font-family="Songti SC,STSong,serif" font-size="14" letter-spacing="2" fill="#a8271c" text-anchor="middle">已核对</text>
+              </g>
+              <!-- 打孔 -->
+              <circle cx="86" cy="492" r="3.4" fill="#0a0b0e" opacity=".5"/>
+              <!-- 胶带 -->
+              <path d="M172 172 L256 166 L262 190 L178 196 Z" fill="#f5f2ea" opacity=".28"/>
+            </g>
+
+            <!-- 便条上夹着的那张照片 -->
+            <g transform="rotate(3.4 362 236)">
+              <rect x="300" y="186" width="124" height="94" rx="1" fill="#f2efe6" opacity=".95"/>
+              <rect x="306" y="192" width="112" height="82" fx="0" fill="url(#pPhoto)"/>
+              <rect x="306" y="192" width="112" height="82" fill="url(#pPhoto)"/>
+              <!-- 照片里：隧道 + 铁轨 + 一个身影 -->
+              <path d="M338 274 V254 A22 22 0 0 1 382 254 V274 Z" fill="#05060a"/>
+              <path d="M341 274 V255 A19 19 0 0 1 379 255 V274 Z" fill="url(#pGlow)" opacity=".9"/>
+              <path d="M359 252 L326 274" stroke="#7c8794" stroke-width="1.2" opacity=".7"/>
+              <path d="M361 252 L394 274" stroke="#7c8794" stroke-width="1.2" opacity=".7"/>
+              <ellipse cx="360" cy="276" rx="9" ry="2" fill="#03040a"/>
+              <g fill="#05070d">
+                <circle cx="360" cy="256" r="3"/>
+                <path d="M356 260 h8 l2 16 h-12 z"/>
+              </g>
+            </g>
+
+            <!-- 录音波形 -->
+            <g stroke="#e8e3d6" stroke-width="1.6" stroke-linecap="round" opacity=".38">
+              <path d="M64 604 v10"/><path d="M76 596 v26"/><path d="M88 588 v42"/><path d="M100 600 v18"/>
+              <path d="M112 578 v62"/><path d="M124 592 v34"/><path d="M136 600 v18"/><path d="M148 570 v78"/>
+              <path d="M160 590 v38"/><path d="M172 598 v22"/><path d="M184 582 v54"/><path d="M196 594 v30"/>
+              <path d="M208 602 v14"/><path d="M220 586 v46"/><path d="M232 596 v26"/><path d="M244 604 v10"/>
+              <path d="M256 592 v34"/><path d="M268 600 v18"/><path d="M280 584 v50"/><path d="M292 598 v22"/>
+              <path d="M304 604 v10"/><path d="M316 594 v30"/><path d="M328 602 v14"/><path d="M340 588 v44"/>
+              <path d="M352 600 v20"/><path d="M364 606 v8"/><path d="M376 596 v24"/><path d="M388 602 v12"/>
+            </g>
+            <path d="M64 612 H400" stroke="#e8e3d6" stroke-width=".8" opacity=".18"/>
+
+            <!-- 胶片齿孔条 -->
+            <g opacity=".5">
+              <rect x="0" y="648" width="520" height="16" fill="#0b0d12"/>
+              <g fill="#e8e3d6" opacity=".22">
+                <rect x="10" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="40" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="70" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="100" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="130" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="160" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="190" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="220" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="250" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="280" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="310" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="340" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="370" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="400" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="430" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="460" y="653" width="11" height="7" rx="1.6"/>
+                <rect x="490" y="653" width="11" height="7" rx="1.6"/>
+              </g>
+            </g>
+
+            <!-- 竖排片名 -->
+            <g fill="#f6f3ea">
+              <text x="440" y="104" font-family="Songti SC,STSong,serif" font-size="30" opacity=".96">杀</text>
+              <text x="440" y="146" font-family="Songti SC,STSong,serif" font-size="30" opacity=".96">人</text>
+              <text x="440" y="188" font-family="Songti SC,STSong,serif" font-size="30" opacity=".96">者</text>
+              <text x="440" y="230" font-family="Songti SC,STSong,serif" font-size="30" opacity=".96">的</text>
+              <text x="440" y="272" font-family="Songti SC,STSong,serif" font-size="30" opacity=".96">记</text>
+              <text x="440" y="314" font-family="Songti SC,STSong,serif" font-size="30" opacity=".96">忆</text>
+              <text x="440" y="356" font-family="Songti SC,STSong,serif" font-size="30" opacity=".96">法</text>
+            </g>
+            <path d="M440 386 H470" stroke="#a8271c" stroke-width="1.6" opacity=".8"/>
+            <g fill="#aec6ee" opacity=".9">
+              <text x="440" y="412" font-family="SF Mono,Menlo,monospace" font-size="9.5" letter-spacing="1.4">살인자의</text>
+              <text x="440" y="430" font-family="SF Mono,Menlo,monospace" font-size="9.5" letter-spacing="1.4">기억법</text>
+            </g>
+            <g fill="#ecc884" opacity=".82">
+              <text x="440" y="458" font-family="SF Mono,Menlo,monospace" font-size="8.6" letter-spacing="1">MEMOIR</text>
+              <text x="440" y="474" font-family="SF Mono,Menlo,monospace" font-size="8.6" letter-spacing="1">OF A</text>
+              <text x="440" y="490" font-family="SF Mono,Menlo,monospace" font-size="8.6" letter-spacing="1">MURDERER</text>
+            </g>
+            <g fill="#b6b1a6" opacity=".66">
+              <text x="440" y="518" font-family="SF Mono,Menlo,monospace" font-size="8.6" letter-spacing="1.2">2017</text>
+            </g>
+
+            <!-- 边框与角标 -->
+            <rect width="520" height="720" fill="none" stroke="#e8e3d6" stroke-opacity=".10" stroke-width="1"/>
+            <g stroke="#e8e3d6" stroke-opacity=".26" stroke-width="1">
+              <path d="M0 34 V0 H34"/><path d="M486 0 H520 V34"/>
+              <path d="M520 686 V720 H486"/><path d="M34 720 H0 V686"/>
+            </g>
+          </svg>
+        </div>
+        <p class="poster-cap">CONCEPT KEY ART · ILLUSTRATIVE, NOT THE OFFICIAL POSTER</p>
+      </div>
+
+      <ul class="reading reveal">
+        <li><b>一沓字条，而不是一把刀</b>全片最重要的"道具"是纸和笔。主角真正对抗的不是某个人，而是遗忘本身；海报上那张写满了字、还被人圈出一行的便条纸，就是他的战场。</li>
+        <li><b>被夹在字条里的那张照片</b>照片上是雪、铁轨和一个隧道口的微光，还有一个小小的背影。记忆会骗人，但被留下来的东西不会——这是整部片的情感坐标。</li>
+        <li><b>底部的录音波形</b>女儿给他的那支录音笔，是他对抗遗忘最笨、也最可靠的办法：把今天说给机器听。波形在画面下方铺开，像一条正在被读出来的证据链。</li>
+        <li><b>红色的一笔不是血</b>那个"已核对"的朱红印章与圈线，是全片最冷的地方：最可怕的事情，往往都被整整齐齐地记录在案。片名被竖排处理成一份卷宗的标签——这个人一生都在归档自己。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 档案 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">DOSSIER · 影片档案</div>
+      <h2 class="sec-title serif">关于这部片的十六件事</h2>
+    </div>
+
+    <dl class="facts reveal">
+      <div class="fact"><dt>中文片名</dt><dd>杀人者的记忆法<small>台译沿用同名片名</small></dd></div>
+      <div class="fact"><dt>韩文 / 英文</dt><dd>살인자의 기억법<br>Memoir of a Murderer</dd></div>
+      <div class="fact"><dt>年份</dt><dd>2017</dd></div>
+      <div class="fact accent"><dt>类型</dt><dd>犯罪 / 悬疑 / 惊悚</dd></div>
+
+      <div class="fact"><dt>导演</dt><dd>元新渊（元信延）<small>兼编剧；动作指导出身，前作《七天》《嫌疑人》</small></dd></div>
+      <div class="fact"><dt>编剧</dt><dd>黄肇允 · 元新渊<small>故事原著：金英夏</small></dd></div>
+      <div class="fact"><dt>原著</dt><dd>金英夏《살인자의 기억법》<small>2013 年出版的同名小说</small></dd></div>
+      <div class="fact"><dt>主演</dt><dd>薛景求 · 金南佶<br>金雪炫 · 吴达洙</dd></div>
+
+      <div class="fact"><dt>片长</dt><dd>118 分钟<small>另有 128 分钟导演剪辑版</small></dd></div>
+      <div class="fact"><dt>分级</dt><dd>韩国 15 岁以上观览可<small>北美上映定为 R 级</small></dd></div>
+      <div class="fact"><dt>上映</dt><dd>2017-09-06 韩国<small>中国台湾 2017-10-20</small></dd></div>
+      <div class="fact"><dt>制作 / 发行</dt><dd>W-Pictures · Showbox<small>Greenfish 等联合出品，Showbox 发行</small></dd></div>
+
+      <div class="fact"><dt>摄影 / 配乐 / 剪辑</dt><dd>崔英焕 / 金俊成 / 申敏璟</dd></div>
+      <div class="fact"><dt>制作成本</dt><dd>约 60 亿韩元</dd></div>
+      <div class="fact accent"><dt>韩国观影</dt><dd>265 万 8589 人次<small>1064 块银幕开画，上映 5 天破百万</small></dd></div>
+      <div class="fact accent"><dt>全球票房</dt><dd>约 1,900 万美元<small>另在北美、法、日、澳等地陆续上映</small></dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ================= 口碑 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">RECEPTION · 口碑与成绩</div>
+      <h2 class="sec-title serif">四项数据，一个漂亮的分歧</h2>
+      <p class="sec-note">同一部片，母语观众与海外观众给出的答案并不一样：中文与亚洲剧迷社区的评价明显高过英语世界。这种"内热外冷"，正是它作为一部高度依赖表演与叙事诡计的类型片最典型的反应。</p>
+    </div>
+
+    <div class="scores">
+      <div class="score reveal" style="--w:78%">
+        <div class="src">豆瓣 · 中国</div>
+        <div class="num">7.8<sup>/ 10</sup></div>
+        <div class="det">约 7.7 万人评分。不是在爽感上取胜的那一档，而是在技术层面最耐琢磨的一档。</div>
+        <div class="bar"><i></i></div>
+      </div>
+      <div class="score reveal" style="--w:83%">
+        <div class="src">MyDramaList · 亚洲剧迷</div>
+        <div class="num">8.3<sup>/ 10</sup></div>
+        <div class="det">约 5,000 人评分，明显高于 IMDb。亚洲观众对"不可靠叙述"这类叙事游戏的接受度更高。</div>
+        <div class="bar"><i></i></div>
+      </div>
+      <div class="score reveal" style="--w:72%">
+        <div class="src">IMDb · 全球</div>
+        <div class="num">7.2<sup>/ 10</sup></div>
+        <div class="det">1.5 万+ 票，分数稳定但不惊艳。海外观众更容易把它当成一部普通的追凶惊悚片。</div>
+        <div class="bar"><i></i></div>
+      </div>
+      <div class="score reveal" style="--w:77%">
+        <div class="src">Rotten Tomatoes</div>
+        <div class="num">77%<sup>新鲜度</sup></div>
+        <div class="det">注意：影评人样本只有 9 篇，参考价值有限——属于"评分看着还行、但请自行判断"的一档。</div>
+        <div class="bar"><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 时间线 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">TIME LINE · 从小说到银幕</div>
+      <h2 class="sec-title serif">一部小说的四年</h2>
+    </div>
+
+    <div class="tl reveal">
+      <div class="tl-item key"><div class="tl-y">2013</div><div class="tl-t">小说出版</div><div class="tl-d">金英夏的《살인자의 기억법》问世。一位以智性写作著称的纯文学作家认真写起了"犯罪小说"，用的却是第一人称的独白。</div></div>
+      <div class="tl-item"><div class="tl-y">2017.07.19</div><div class="tl-t">公布定档</div><div class="tl-d">片方正式公布上映日期。</div></div>
+      <div class="tl-item"><div class="tl-y">2017.08.01</div><div class="tl-t">主海报发布</div><div class="tl-d">一张瘦削、半边脸在抽动的面孔，成了那年韩国电影最有记忆点的海报之一。</div></div>
+      <div class="tl-item"><div class="tl-y">2017.08.08</div><div class="tl-t">首支预告片 · 制作发布会</div><div class="tl-d">同日在首尔江南区举行制作发布会。</div></div>
+      <div class="tl-item"><div class="tl-y">2017.09.04</div><div class="tl-t">首尔 VIP 试映会</div></div>
+      <div class="tl-item key"><div class="tl-y">2017.09.06</div><div class="tl-t">韩国上映</div><div class="tl-d">1064 块银幕开画，5 天观影人次破百万，首周累计约 860 万美元票房。</div></div>
+      <div class="tl-item"><div class="tl-y">2017.10</div><div class="tl-t">第 61 届伦敦国际电影节</div><div class="tl-d">入围影展的 Thriller 单元——韩国类型片被当作"惊悚工艺"输出的一次亮相。</div></div>
+      <div class="tl-item"><div class="tl-y">2017.10.20</div><div class="tl-t">中国台湾上映</div></div>
+      <div class="tl-item key"><div class="tl-y">2017</div><div class="tl-t">第 17 届 Director's Cut Awards</div><div class="tl-d">薛景求凭本片拿下年度最佳男演员——这是这部片在韩国本土最实的一座表演奖。</div></div>
+      <div class="tl-item"><div class="tl-y">2018</div><div class="tl-t">第 36 届布鲁塞尔国际奇幻电影节</div><div class="tl-d">获得惊悚片奖（Thriller Award）。</div></div>
+      <div class="tl-item"><div class="tl-y">2018</div><div class="tl-t">第 10 届博讷国际警匪片电影节</div><div class="tl-d">获得评审团奖。这部片的国际声誉，几乎全部来自类型电影节。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 荣誉 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">HONOURS · 荣誉与认可</div>
+      <h2 class="sec-title serif">它拿的不是最耀眼的奖，而是最对路的那几个</h2>
+      <p class="sec-note">这部片的分量不来自本土综合类大奖的红毯，而来自类型片圈子里最实在的那几个肯定——以及一座观众用脚投出来的票房。</p>
+    </div>
+
+    <div class="awards reveal">
+      <div class="aw"><div class="org">第 17 届 Director's Cut Awards<br>2017</div><div class="what"><b>年度最佳男演员获奖</b>（薛景求）——由韩国电影导演群体投票选出，含金量在"表演"这一项上格外直白</div></div>
+      <div class="aw"><div class="org">第 61 届伦敦国际电影节<br>2017</div><div class="what"><b>Thriller 单元 提名</b>，与当年的国际惊悚片同场竞技</div></div>
+      <div class="aw"><div class="org">第 36 届布鲁塞尔国际奇幻电影节<br>2018</div><div class="what"><b>惊悚片奖 获奖</b>——欧洲类型片影展的最高一档肯定之一</div></div>
+      <div class="aw"><div class="org">第 10 届博讷国际警匪片电影节<br>2018</div><div class="what"><b>评审团奖 获奖</b>。法国博讷是世界最老牌的警匪片专题影展</div></div>
+      <div class="aw"><div class="org">第 1 届首尔大赏<br>2017</div><div class="what"><b>电影部门最佳女主角 提名</b>（金雪炫）——那一年她还在偶像转型期，这个提名本身就是新闻</div></div>
+      <div class="aw"><div class="org">韩国本土市场<br>2017</div><div class="what"><b>265 万 8589 人次</b>观影，5 天破百万。对一部这样"不讨巧"的片子来说，这是最实在的成绩单</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 原著 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">THE NOVEL · 原著与改编</div>
+      <h2 class="sec-title serif">先有小说，才有这部片</h2>
+    </div>
+
+    <div class="novel">
+      <div class="bookcard reveal">
+        <div class="bk-rule"></div>
+        <h4 class="serif">《杀人者的记忆法》</h4>
+        <div class="bk-kr">살인자의 기억법 · 金英夏 · 2013</div>
+        <p>金英夏是韩国当代最具代表性的纯文学小说家之一，擅长用冷静、智性的语言处理暴力与自我。这部小说由"一个患阿尔茨海默症的前连环杀手"的第一人称独白写成：他一边记录，一边遗忘。</p>
+        <p>它篇幅不长、场面极少，却是"叙述者不可信"这一文学技巧在韩国当代小说里玩得最彻底的一次——读者永远无法确定，写下这些字的人，是记错了，还是在替自己开脱。</p>
+        <div class="bk-meta">
+          KIM YOUNG-HA · 1968<br>
+          英文版结集为<br>DIARY OF A MURDERER: AND OTHER STORIES
+        </div>
+      </div>
+
+      <div class="adapt reveal">
+        <div class="adcard">
+          <h4>一、把独白改成画面，而且不解释</h4>
+          <p>小说最强的是"心里话"；电影一旦照搬就会变成念白。影片的做法是反过来的——它让人物少说话，改用镜头、剪辑与声音让观众自己去怀疑。你看不懂的那些地方，多半是导演故意留白的。</p>
+        </div>
+        <div class="adcard">
+          <h4>二、它没有把暧昧收紧成答案</h4>
+          <p>这本小说最好的地方，是拒绝给出一个干净的解释。电影同样保留了这份不干净——这既是它最被称赞的一点，也是它让一部分观众"看得累"的原因。想看"一看就懂、爽完就完"的类型片，这部不是。</p>
+        </div>
+        <div class="adcard">
+          <h4>三、把父女关系写得更重</h4>
+          <p>电影把父亲与女儿之间那条线加厚了一层：遗忘不再是某一个人的病，而是一家人的处境。所有悬疑都建立在这条线上——主角之所以还要挣扎，是因为他还有一个人要守。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 六宫格 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">HIGHLIGHTS · 六处亮点</div>
+      <h2 class="sec-title serif">它凭什么被反复提起</h2>
+    </div>
+
+    <div class="grid6">
+      <div class="gcard reveal"><div class="idx">01</div><h4>追凶的人，自己就是凶手</h4><p>韩国犯罪片里少见的设定：主角既不是复仇者，也不是警察，而是一个正在丢失记忆的加害者。他一边想抓住别人，一边害怕抓到的那个其实是自己——这份双重焦虑，撑起了全片。</p></div>
+      <div class="gcard reveal"><div class="idx">02</div><h4>薛景求的表演：不化妆的衰老</h4><p>影评人注意到，他几乎不靠特效化妆去演一个阿尔茨海默症患者。眼神的涣散、半边脸的抽动、话说到一半断掉——全靠身体给出。正因为没有恐怖片的视觉刺激，那种不安反而更贴皮肤。</p></div>
+      <div class="gcard reveal"><div class="idx">03</div><h4>把悬疑从"情节问题"变成"认知问题"</h4><p>大多数犯罪片问你"谁是凶手"，这部片问你"你确定你记得吗"。观众和主角共享同一份残缺的信息——这是它被叫作"烧脑"的真正原因，也是它不该被边刷手机边看的原因。</p></div>
+      <div class="gcard reveal"><div class="idx">04</div><h4>一个反向的《记忆碎片》</h4><p>它常被拿来和诺兰的《记忆碎片》放在一起谈：同样是不可靠的记忆。区别在于，那部片是倒着讲，这部片是正着讲——然后让你一路怀疑每一格画面是不是真的发生过。</p></div>
+      <div class="gcard reveal"><div class="idx">05</div><h4>类型外壳里，是一部父女片</h4><p>把凶案线剥掉，它的内核其实非常小：一个父亲想在忘记之前，替女儿把一件事办完。片子里最动人的地方都长在这条线上，而不是长在追凶上。</p></div>
+      <div class="gcard reveal"><div class="idx">06</div><h4>纯文学与类型片的一次互相借力</h4><p>原著作者是纯文学一线作家，故事本身就在玩叙述的伎俩。电影没有把它简化成一部普通的连环凶案片，而是把那股"智性"留了下来——这在韩国类型片里并不多见。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 为什么值得看 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">WHY WATCH · 为什么值得看</div>
+      <h2 class="sec-title serif">三个理由，三个层次</h2>
+    </div>
+
+    <div class="why">
+      <div class="wcard reveal">
+        <h4>一、它把"不可靠叙述者"用进了类型片，而且没有作弊</h4>
+        <p>不可靠叙述在小说里是常规操作，在电影里却很容易变成"骗观众"——最后甩出一个反转，前面全是假的。这部片难得的地方在于：它从第一个镜头起就把规则摆在明面上，你不是被骗，你是被邀请一起怀疑。等真相浮出时，你会发现前面每一格都能自圆其说。</p>
+        <p>这也是它值回票价的原因：第二次看，体验和第一次完全不同。第一次看你在找凶手，第二次看你在看一个人怎么被自己的记忆背叛。</p>
+      </div>
+      <div class="wcard reveal">
+        <h4>二、一种罕见的表演样本：让观众看着一个人被拆掉</h4>
+        <p>薛景求是韩国演技派的代表人物之一，和宋康昊、崔岷植常被并列讨论。在这部片里他演的是一种"流失"——不是爆发式的崩溃，而是每天都在变薄一点。同一句台词说两遍，第二遍的力度、呼吸、眼神全都不同。</p>
+        <p>而他与金南佶的对峙戏是全片的引擎：一个已经不确定自己是谁的人，对上一个每句话都滴水不漏的人。两人的表演节奏完全不同，撞在一起时，观众会在同一个画面里同时相信两种解释。</p>
+      </div>
+      <div class="wcard reveal">
+        <h4>三、在"连环杀手"这个被拍烂的题材里，它换了一个提问的角度</h4>
+        <p>韩国拍过太多连环杀手：抓不到凶手的人、替凶手复仇的人、拿凶手当生意的人。这部片第一次认真去问加害者本身的问题——如果他忘了自己做过什么，忏悔还成立吗？如果他记得，他还能不能算一个只是想保住凶手的父亲？</p>
+        <p>它不给答案，也不试图让你舒服。这种"不肯站队"的姿态，正是它不容易过时的原因：十年后再看，情节你大概忘了，那个问题还在。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 观影提示 ================= -->
+<section style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-kicker">BEFORE YOU PRESS PLAY · 开播之前</div>
+      <h2 class="sec-title serif">三条必要提示</h2>
+    </div>
+    <div class="notice">
+      <dl class="ncard reveal">
+        <dt>分级</dt>
+        <dd>韩国 15 岁以上观览可（北美上映为 R 级）。请按当地可观看的版本与分级要求选择。</dd>
+      </dl>
+      <dl class="ncard reveal">
+        <dt>内容</dt>
+        <dd>涉及连环凶案、暴力场面，以及阿尔茨海默症这一疾病。本文不展开任何具体场面，也不描述任何一次冲突的结果。</dd>
+      </dl>
+      <dl class="ncard reveal">
+        <dt>观看建议</dt>
+        <dd>请留出完整的 118 分钟一次看完，中途不要刷手机。这类片的信息密度藏在眼神和台词里，一旦漏掉，后面会越看越乱——而那种"乱"是设计好的，别急着怪自己。</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 收尾 ================= -->
+<section class="ending">
+  <div class="wrap reveal">
+    <p class="quote serif">"记忆会骗人，习惯不会。<br>而习惯，是一个人最后剩下的自己。"</p>
+    <p class="fn">— 主题式表述，非片中台词</p>
+    <div class="endmarks"><i></i><i></i><i></i></div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>杀人者的记忆法 · 살인자의 기억법 · MEMOIR OF A MURDERER (2017) · DIR. WON SHIN-YUN</span>
+  <span>无剧透观影笔记 · 第 19 部 · 2026-09-29</span>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Hero Canvas：三层动画 ---------- */
+  var cvs = document.getElementById('heroCanvas');
+  var ctx = cvs.getContext('2d');
+  var W = 0, H = 0, dpr = 1, snow = [], scraps = [];
+  var paperA = function(a){ return 'rgba(232,227,214,' + a + ')'; };
+
+  function build(){
+    snow = [];
+    var n = Math.round(W / 13);
+    for (var i = 0; i < n; i++){
+      snow.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: 0.6 + Math.random() * 1.9,
+        sp: 0.28 + Math.random() * 0.95,
+        ph: Math.random() * Math.PI * 2,
+        amp: 8 + Math.random() * 26,
+        a: 0.06 + Math.random() * 0.26
+      });
+    }
+    scraps = [];
+    var m = Math.round(W / 46);
+    for (var j = 0; j < m; j++){
+      scraps.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        w: 5 + Math.random() * 12,
+        h: 4 + Math.random() * 9,
+        rot: Math.random() * Math.PI * 2,
+        vr: (Math.random() - 0.5) * 0.010,
+        sp: 0.16 + Math.random() * 0.46,
+        ph: Math.random() * Math.PI * 2,
+        amp: 12 + Math.random() * 34,
+        a: 0.05 + Math.random() * 0.11
+      });
+    }
+  }
+
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cvs.clientWidth || window.innerWidth;
+    H = cvs.clientHeight || window.innerHeight;
+    cvs.width = Math.round(W * dpr);
+    cvs.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    build();
+  }
+
+  function glowLayer(t){
+    /* 层 1：隧道暖光的缓慢呼吸 */
+    var k = (Math.sin(t / 7200 * Math.PI * 2) + 1) / 2;
+    var tx = W * 0.50, ty = H * 0.46;
+    var r = Math.max(W, H) * 0.42;
+    var g = ctx.createRadialGradient(tx, ty, 0, tx, ty, r);
+    g.addColorStop(0, 'rgba(244,223,174,' + (0.030 + 0.040 * k) + ')');
+    g.addColorStop(0.42, 'rgba(210,164,74,' + (0.010 + 0.018 * k) + ')');
+    g.addColorStop(1, 'rgba(210,164,74,0)');
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  function frame(t){
+    ctx.clearRect(0, 0, W, H);
+    glowLayer(t);
+
+    /* 层 2：飘落的记忆纸屑（带旋转） */
+    for (var j = 0; j < scraps.length; j++){
+      var s = scraps[j];
+      s.y += s.sp;
+      s.rot += s.vr;
+      if (s.y > H + 30){ s.y = -30; s.x = Math.random() * W; }
+      var sx = s.x + Math.sin(t / 3400 + s.ph) * s.amp;
+      ctx.save();
+      ctx.translate(sx, s.y);
+      ctx.rotate(s.rot);
+      ctx.fillStyle = paperA(s.a);
+      ctx.fillRect(-s.w / 2, -s.h / 2, s.w, s.h);
+      ctx.restore();
+    }
+
+    /* 层 3：落雪 */
+    for (var i = 0; i < snow.length; i++){
+      var d = snow[i];
+      d.y += d.sp;
+      if (d.y > H + 20){ d.y = -20; d.x = Math.random() * W; }
+      var sway = Math.sin(t / 2100 + d.ph) * d.amp;
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(233,238,246,' + d.a + ')';
+      ctx.arc(d.x + sway, d.y, d.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    raf = requestAnimationFrame(frame);
+  }
+
+  var raf = null;
+  resize();
+  window.addEventListener('resize', function(){
+    resize();
+    if (reduce){ drawStatic(); }
+  });
+
+  function drawStatic(){
+    ctx.clearRect(0, 0, W, H);
+    for (var j = 0; j < scraps.length; j++){
+      var s = scraps[j];
+      ctx.save();
+      ctx.translate(s.x, s.y);
+      ctx.rotate(s.rot);
+      ctx.fillStyle = paperA(s.a);
+      ctx.fillRect(-s.w / 2, -s.h / 2, s.w, s.h);
+      ctx.restore();
+    }
+    for (var i = 0; i < snow.length; i++){
+      var d = snow[i];
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(233,238,246,' + d.a + ')';
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  if (reduce){ drawStatic(); } else { raf = requestAnimationFrame(frame); }
+
+  document.addEventListener('visibilitychange', function(){
+    if (reduce) return;
+    if (document.hidden){ if (raf) cancelAnimationFrame(raf); raf = null; }
+    else if (!raf){ raf = requestAnimationFrame(frame); }
+  });
+
+  /* ---------- 滚动入场 ---------- */
+  var items = [].slice.call(document.querySelectorAll('.reveal'));
+  if (!('IntersectionObserver' in window) || reduce){
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      var batch = [];
+      entries.forEach(function(en){
+        if (en.isIntersecting) batch.push(en.target);
+      });
+      batch.forEach(function(el, idx){
+        setTimeout(function(){ el.classList.add('in'); }, idx * 90);
+        io.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---------- 记忆保持率 HUD ---------- */
+  var hud = document.getElementById('hud');
+  var hudBar = document.getElementById('hudBar');
+  var hudNum = document.getElementById('hudNum');
+  var hudTag = document.getElementById('hudTag');
+  var tags = ['RECORDING…', 'PARTIAL RECALL', 'ENTRY LOST', 'UNVERIFIED', 'SEEK HELP'];
+
+  function hudUpdate(){
+    if (!hud) return;
+    var doc = document.documentElement;
+    var max = (doc.scrollHeight - window.innerHeight) || 1;
+    var p = Math.min(1, Math.max(0, window.scrollY / max));
+    var keep = Math.round(100 - p * 54);
+    hudBar.style.width = keep + '%';
+    hudNum.textContent = keep + '%';
+    var ti = Math.min(tags.length - 1, Math.floor(p * tags.length));
+    hudTag.textContent = tags[ti];
+    hud.style.setProperty('--w0', keep + '%');
+  }
+
+  if (hud && !reduce){
+    hudUpdate();
+    var ticking = false;
