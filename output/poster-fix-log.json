@@ -1,62 +1,40 @@
 {
-  "at": "2026-09-28T09:20:12.928Z",
+  "at": "2026-09-30T04:05:48.097Z",
   "dryRun": false,
-  "targetCount": 2,
-  "fixedCount": 2,
+  "targetCount": 1,
+  "fixedCount": 1,
   "failureCount": 0,
   "changes": [
     {
-      "id": "20260921",
-      "zhTitle": "蒙太奇抓住那个家伙 · 模犯母亲",
+      "id": "20260930",
+      "zhTitle": "老手",
       "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/qhPtAc1TKbMPqNvcdXSOn9Bn7hZ.jpg",
-        "dims": "1400×2100",
+        "imageUrl": "https://img.goldposter.com/2025/03/i-the-executioner-2_poster_goldposter_com_17.jpg?x-oss-process=image/resize,m_fill,h_334,w_236/quality,q_80/format,webp",
+        "dims": "236×334",
         "status": "error",
         "issues": [
-          "identity_unverified"
+          "low_resolution",
+          "aggregator_host"
         ]
       },
       "after": {
-        "imageUrl": "posters/20260921.jpg",
-        "dims": "684×1027",
+        "imageUrl": "posters/20260930.jpg",
+        "dims": "579×749",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/zie6l0kKWfV30q1K4T9OPQPhXD0.jpg",
-        "title": "Montage (2013) - Posters — The Movie Database (TMDB)"
-      }
-    },
-    {
-      "id": "20260924",
-      "zhTitle": "走到尽头黑仔刑警 · 非常警探",
-      "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/6xbkuuHGUjb0efGmooCKL42f2lU.jpg",
-        "dims": "1433×2048",
-        "status": "error",
-        "issues": [
-          "identity_unverified"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20260924.jpg",
-        "dims": "2000×3000",
-        "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/aIkc5DwGPZIdImSudkUDQ799rq3.jpg",
-        "title": "A Hard Day (2014) | The Poster Database (TPDb)"
+        "url": "https://so1.360tres.com/t01ecb6af9a57a5ac6f.jpg",
+        "title": "老手图册_360百科"
       }
     }
   ],
   "failures": [],
   "recheck": [
     {
-      "id": "20260921",
-      "status": "ok",
-      "dims": "684×1027",
-      "issues": []
-    },
-    {
-      "id": "20260924",
-      "status": "ok",
-      "dims": "2000×3000",
-      "issues": []
+      "id": "20260930",
+      "status": "warn",
+      "dims": "579×749",
+      "issues": [
+        "untrusted_host"
+      ]
     }
   ]
 }

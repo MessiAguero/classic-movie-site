@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《老手》 베테랑 · Veteran (2015) — 韩国犯罪片经典推荐</title>
+<style>
+  :root{
+    --ink:#0b0d0e;
+    --ink-2:#111416;
+    --ink-3:#161a1c;
+    --concrete:#d8d4cc;
+    --concrete-dim:#a9a59d;
+    --ash:#8c8880;
+    --ash-dim:#5f5c57;
+    --sodium:#ff7a1a;
+    --sodium-soft:#c85c12;
+    --amber:#ffb44d;
+    --glass:#7fa8b8;
+    --glass-dim:#4a6672;
+    --champagne:#c3a25f;
+    --blood:#8f1f1a;
+    --line:rgba(216,212,204,.14);
+    --line-strong:rgba(216,212,204,.28);
+    --radius:2px;
+    --serif:"Georgia","Times New Roman","Songti SC","STSong",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ink);
+    color:var(--concrete);
+    font-family:var(--sans);
+    line-height:1.85;
+    font-size:16px;
+    letter-spacing:.01em;
+    overflow-x:hidden;
+  }
+  /* 噪点 + 暗角 全局叠层 */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:9;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='.5'/></svg>");
+    opacity:.055;mix-blend-mode:overlay;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:8;pointer-events:none;
+    background:radial-gradient(120% 90% at 50% 40%,transparent 42%,rgba(0,0,0,.55) 100%);
+  }
+  ::selection{background:var(--sodium);color:#0b0d0e}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;min-height:100vh;overflow:hidden;
+    display:flex;align-items:stretch;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  #heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;pointer-events:none}
+  .hero-scrim{
+    position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:
+      linear-gradient(180deg,rgba(11,13,14,.92) 0%,rgba(11,13,14,.62) 26%,rgba(11,13,14,.28) 52%,rgba(11,13,14,.72) 82%,rgba(11,13,14,.96) 100%),
+      radial-gradient(80% 60% at 22% 46%,rgba(11,13,14,.72) 0%,transparent 70%);
+  }
+  .hero-in{
+    position:relative;z-index:4;
+    width:100%;max-width:1160px;margin:0 auto;
+    padding:118px 28px 92px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--sodium);
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  }
+  .eyebrow::before{content:"";width:44px;height:1px;background:var(--sodium);opacity:.8;flex:0 0 auto}
+  .eyebrow span{color:var(--ash-dim);letter-spacing:.24em}
+  h1.title{
+    font-family:var(--serif);
+    font-size:clamp(58px,12vw,140px);
+    line-height:.92;
+    letter-spacing:.06em;
+    margin:22px 0 8px;
+    color:#f2efe9;
+    text-shadow:0 6px 40px rgba(0,0,0,.8);
+    font-weight:400;
+  }
+  .title-en{
+    font-family:var(--serif);font-size:clamp(15px,2.2vw,26px);
+    letter-spacing:.42em;color:var(--concrete-dim);
+    text-transform:uppercase;margin-bottom:6px;padding-left:3px;
+  }
+  .title-kr{
+    font-size:clamp(13px,1.6vw,17px);letter-spacing:.5em;color:var(--sodium-soft);
+    margin-bottom:26px;padding-left:3px;
+  }
+  .hero-sub{
+    max-width:640px;font-size:clamp(14px,1.6vw,17px);
+    color:var(--concrete-dim);line-height:1.95;
+    border-left:2px solid var(--sodium);padding-left:20px;
+  }
+  .hero-sub b{color:var(--concrete);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+  .chip{
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+    padding:6px 12px;border:1px solid var(--line-strong);
+    color:var(--concrete-dim);background:rgba(11,13,14,.42);
+    backdrop-filter:blur(3px);
+  }
+  .chip.hot{border-color:rgba(255,122,26,.55);color:var(--amber)}
+  .scroll-hint{
+    position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
+    z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.3em;
+    color:var(--ash-dim);display:flex;flex-direction:column;align-items:center;gap:9px;
+  }
+  .scroll-hint i{display:block;width:1px;height:36px;background:linear-gradient(180deg,var(--sodium),transparent);animation:drop 2.4s ease-in-out infinite}
+  @keyframes drop{0%,100%{opacity:.25;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
+
+  /* ============ LAYOUT ============ */
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+  section.band{padding:96px 0;position:relative;border-bottom:1px solid var(--line)}
+  section.band:last-of-type{border-bottom:0}
+  .sec-head{margin-bottom:52px;position:relative}
+  .sec-num{
+    font-family:var(--mono);font-size:10px;letter-spacing:.34em;color:var(--sodium);
+    text-transform:uppercase;display:block;margin-bottom:14px;
+  }
+  h2.sec-title{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(26px,3.6vw,44px);line-height:1.24;letter-spacing:.03em;color:#f0ede7;
+  }
+  h2.sec-title em{font-style:normal;color:var(--sodium)}
+  .sec-desc{margin-top:16px;max-width:720px;color:var(--ash);font-size:14.5px;line-height:1.9}
+
+  /* 无剧透提示条 */
+  .nospoil{
+    display:flex;gap:16px;align-items:flex-start;
+    border:1px solid rgba(255,122,26,.34);
+    background:linear-gradient(90deg,rgba(255,122,26,.09),rgba(255,122,26,.015) 62%,transparent);
+    padding:18px 22px;margin:0 0 64px;
+  }
+  .nospoil .mark{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--sodium);
+    border:1px solid rgba(255,122,26,.5);padding:3px 7px;flex:0 0 auto;margin-top:3px;
+  }
+  .nospoil p{font-size:13.5px;color:var(--concrete-dim);line-height:1.85}
+  .nospoil p b{color:var(--concrete)}
+
+  /* 两栏：速览 + 梗概 */
+  .duo{display:grid;grid-template-columns:300px minmax(0,1fr);gap:56px;align-items:start}
+  .glance{border:1px solid var(--line-strong);background:var(--ink-2);padding:26px 22px;position:sticky;top:28px}
+  .glance h3{
+    font-family:var(--mono);font-size:10px;letter-spacing:.28em;color:var(--sodium);
+    text-transform:uppercase;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line);
+  }
+  .glance dl{display:flex;flex-direction:column;gap:0}
+  .glance .row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(216,212,204,.09);font-size:12.5px}
+  .glance .row:last-child{border-bottom:0}
+  .glance dt{color:var(--ash-dim);flex:0 0 auto;letter-spacing:.06em}
+  .glance dd{color:var(--concrete);text-align:right;font-weight:500}
+  .glance .row.accent dd{color:var(--amber)}
+
+  .prose{font-size:16.5px;line-height:2.05;color:var(--concrete-dim)}
+  .prose p+p{margin-top:22px}
+  .prose b{color:var(--concrete);font-weight:600}
+  .prose .kr{color:var(--glass);font-family:var(--mono);font-size:14px}
+  .prose .zh{color:var(--sodium);font-family:var(--mono);font-size:14px}
+  .prose em{color:var(--amber);font-style:normal}
+  .drop::first-letter{
+    font-family:var(--serif);float:left;font-size:74px;line-height:.82;
+    padding:6px 14px 0 0;color:var(--sodium);font-weight:400;
+  }
+
+  /* ============ 概念海报 ============ */
+  .poster-grid{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:60px;align-items:start}
+  .poster-frame{
+    border:1px solid var(--line-strong);background:var(--ink-2);
+    padding:20px;position:relative;
+  }
+  .poster-frame::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+    background:repeating-linear-gradient(115deg,var(--sodium) 0 10px,transparent 10px 20px);opacity:.5;
+  }
+  .poster-frame svg{display:block;width:100%;height:auto}
+  .poster-cap{
+    font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--ash-dim);
+    margin-top:16px;text-transform:uppercase;
+  }
+  .notes{display:flex;flex-direction:column;gap:26px}
+  .note{border-left:1px solid var(--line-strong);padding-left:22px;position:relative}
+  .note::before{
+    content:"";position:absolute;left:-3px;top:9px;width:5px;height:5px;
+    background:var(--sodium);border-radius:50%;
+  }
+  .note h4{font-size:14.5px;letter-spacing:.14em;color:var(--concrete);font-weight:600;margin-bottom:8px}
+  .note p{font-size:14px;color:var(--ash);line-height:1.9}
+
+  /* ============ 档案格 ============ */
+  .file-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .file-cell{background:var(--ink-2);padding:20px 18px;min-height:96px;display:flex;flex-direction:column;gap:7px}
+  .file-cell dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--ash-dim);text-transform:uppercase}
+  .file-cell dd{font-size:14.5px;color:var(--concrete);line-height:1.55;font-weight:500}
+  .file-cell.wide{grid-column:span 2}
+  .file-cell.hot dd{color:var(--amber)}
+  .file-cell dd small{display:block;font-size:11.5px;color:var(--ash-dim);font-weight:400;letter-spacing:.04em;margin-top:3px}
+
+  /* ============ 口碑四卡 ============ */
+  .score-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+  .score{
+    border:1px solid var(--line-strong);background:linear-gradient(180deg,var(--ink-3),var(--ink-2));
+    padding:26px 22px 22px;position:relative;overflow:hidden;
+  }
+  .score::before{
+    content:"";position:absolute;top:0;left:0;width:100%;height:2px;
+    background:linear-gradient(90deg,var(--sodium),transparent 76%);
+  }
+  .score .plat{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--ash-dim);text-transform:uppercase}
+  .score .big{font-family:var(--serif);font-size:46px;line-height:1;color:#f2efe9;margin:14px 0 4px}
+  .score .big i{font-style:normal;font-size:16px;color:var(--ash-dim);letter-spacing:.06em;margin-left:4px}
+  .score .bar{height:3px;background:rgba(216,212,204,.13);margin:16px 0 12px;position:relative}
+  .score .bar span{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--sodium),var(--amber))}
+  .score .cap{font-size:12px;color:var(--ash-dim);line-height:1.75}
+  .score .cap b{color:var(--concrete-dim);font-weight:500}
+
+  /* ============ 时间线 ============ */
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,var(--sodium),rgba(216,212,204,.14) 40%,rgba(216,212,204,.14))}
+  .tl-item{position:relative;padding:0 0 34px 0}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-32px;top:9px;width:9px;height:9px;
+    border:1px solid var(--sodium);background:var(--ink);transform:rotate(45deg);
+  }
+  .tl-item.hot::before{background:var(--sodium);border-color:var(--sodium)}
+  .tl-year{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--sodium);margin-bottom:7px}
+  .tl-title{font-size:15.5px;color:var(--concrete);font-weight:600;letter-spacing:.03em;margin-bottom:6px}
+  .tl-desc{font-size:13.5px;color:var(--ash);line-height:1.85;max-width:760px}
+
+  /* ============ 荣誉 ============ */
+  .awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .aw{background:var(--ink-2);padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
+  .aw .yr{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ash-dim);flex:0 0 auto;padding-top:3px;width:38px}
+  .aw .bd{font-size:13.8px;color:var(--concrete-dim);line-height:1.8}
+  .aw .bd b{color:var(--concrete);font-weight:600;display:block;margin-bottom:3px;font-size:14.2px}
+  .aw .bd b em{font-style:normal;color:var(--amber)}
+
+  /* ============ 六宫格亮点 ============ */
+  .highlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .hl{background:var(--ink-2);padding:30px 26px 32px;position:relative;transition:background .5s ease}
+  .hl:hover{background:var(--ink-3)}
+  .hl .idx{
+    font-family:var(--serif);font-size:34px;color:rgba(216,212,204,.13);
+    line-height:1;margin-bottom:16px;letter-spacing:.02em;
+  }
+  .hl h4{font-size:16px;color:var(--concrete);font-weight:600;letter-spacing:.05em;margin-bottom:12px}
+  .hl h4 em{font-style:normal;color:var(--sodium)}
+  .hl p{font-size:13.6px;color:var(--ash);line-height:1.9}
+
+  /* ============ 为什么值得看 ============ */
+  .why{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .why-item{background:var(--ink-2);padding:40px 38px;display:grid;grid-template-columns:210px minmax(0,1fr);gap:40px;align-items:start}
+  .why-item h4{font-family:var(--serif);font-size:19px;color:var(--concrete);line-height:1.5;font-weight:400;letter-spacing:.04em}
+  .why-item h4 span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--sodium);margin-bottom:12px;text-transform:uppercase}
+  .why-item p{font-size:15px;color:var(--ash);line-height:2;max-width:760px}
+  .why-item p b{color:var(--concrete-dim);font-weight:600}
+
+  /* ============ 提示三格 ============ */
+  .warns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .warn{border:1px solid rgba(143,31,26,.5);background:linear-gradient(180deg,rgba(143,31,26,.13),rgba(143,31,26,.03));padding:24px 22px}
+  .warn .tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:#d4706a;text-transform:uppercase;margin-bottom:12px}
+  .warn p{font-size:13.5px;color:var(--concrete-dim);line-height:1.85}
+  .warn p b{color:var(--concrete)}
+
+  /* ============ 结尾 ============ */
+  .outro{border-top:1px solid var(--line);background:
+      linear-gradient(180deg,var(--ink),#0e1113);
+  }
+  .quote{max-width:820px}
+  .quote .q-mark{font-family:var(--serif);font-size:66px;color:var(--sodium);opacity:.55;line-height:.6}
+  .quote blockquote{
+    font-family:var(--serif);font-size:clamp(20px,2.6vw,30px);line-height:1.72;
+    color:#ece8e1;letter-spacing:.03em;margin:6px 0 22px;
+  }
+  .quote .attr{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--ash-dim);text-transform:uppercase}
+  .outro-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:60px;align-items:end;margin-top:16px}
+  .end-stamp{
+    border:1px solid var(--line-strong);padding:22px;text-align:center;
+  }
+  .end-stamp .no{font-family:var(--serif);font-size:56px;color:var(--sodium);line-height:1}
+  .end-stamp .lb{font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--ash-dim);margin-top:10px;text-transform:uppercase}
+  footer{
+    border-top:1px solid var(--line);padding:34px 0 54px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--ash-dim);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;text-transform:uppercase;
+  }
+
+  /* ============ 阶层刻度 HUD ============ */
+  #hud{
+    position:fixed;right:22px;bottom:24px;z-index:12;
+    border:1px solid var(--line-strong);background:rgba(11,13,14,.82);
+    backdrop-filter:blur(8px);padding:14px 16px 13px;min-width:196px;
+    display:none;
+  }
+  #hud .hud-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+  #hud .hud-top span{font-family:var(--mono);font-size:9px;letter-spacing:.24em;color:var(--ash-dim);text-transform:uppercase}
+  #hud .hud-top b{font-family:var(--mono);font-size:11px;color:var(--sodium);letter-spacing:.1em}
+  #hud .hud-track{height:2px;background:rgba(216,212,204,.14);position:relative}
+  #hud .hud-track i{position:absolute;top:-2px;left:0;width:6px;height:6px;background:var(--sodium);transform:translateX(-3px)}
+  #hud .hud-lb{font-size:11px;color:var(--concrete-dim);margin-top:9px;letter-spacing:.08em;font-family:var(--mono)}
+
+  /* ============ 入场动画 ============ */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.25,1),transform .9s cubic-bezier(.2,.7,.25,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1 !important;transform:none !important;transition:none !important}
+    html{scroll-behavior:auto}
+    .scroll-hint i{animation:none}
+  }
+
+  /* ============ 响应式 ============ */
+  @media (max-width:1080px){
+    .duo{grid-template-columns:1fr;gap:38px}
+    .glance{position:static}
+    .poster-grid{grid-template-columns:1fr;gap:40px}
+    .poster-frame{max-width:420px;margin:0 auto}
+    .score-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .file-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .highlights{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .outro-grid{grid-template-columns:1fr;gap:40px}
+  }
+  @media (max-width:760px){
+    body{font-size:15px}
+    section.band{padding:70px 0}
+    .wrap{padding:0 20px}
+    .hero-in{padding:104px 20px 88px}
+    .eyebrow{font-size:9.5px;letter-spacing:.24em;gap:10px}
+    .eyebrow::before{width:26px}
+    .eyebrow span{letter-spacing:.16em}
+    h1.title{letter-spacing:.04em;margin-top:16px}
+    .title-en{letter-spacing:.3em}
+    .title-kr{letter-spacing:.36em;margin-bottom:20px}
+    .hero-sub{padding-left:15px;font-size:14px}
+    .chips{gap:7px;margin-top:22px}
+    .chip{font-size:10px;padding:5px 9px;letter-spacing:.08em}
+    .file-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .file-cell.wide{grid-column:span 2}
+    .score-grid{grid-template-columns:1fr}
+    .highlights{grid-template-columns:1fr}
+    .awards{grid-template-columns:1fr}
+    .warns{grid-template-columns:1fr}
+    .why-item{grid-template-columns:1fr;gap:18px;padding:30px 24px}
+    .sec-head{margin-bottom:38px}
+    .nospoil{padding:15px 16px;gap:12px}
+    .nospoil .mark{font-size:9px}
+    .nospoil p{font-size:12.5px}
+    .drop::first-letter{font-size:56px;padding:4px 10px 0 0}
+  }
+  @media (min-width:981px){#hud{display:block}}
+</style>
+</head>
+<body>
+
+<div id="hud">
+  <div class="hud-top"><span>Level / 位置</span><b id="hudVal">00%</b></div>
+  <div class="hud-track"><i id="hudDot"></i></div>
+  <div class="hud-lb" id="hudLb">街面 · 案件发生</div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <svg class="hero-svg" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0a0c0d"/>
+        <stop offset="46%" stop-color="#141a1e"/>
+        <stop offset="72%" stop-color="#1d2327"/>
+        <stop offset="100%" stop-color="#0d1012"/>
+      </linearGradient>
+      <radialGradient id="glowSodium" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ff7a1a" stop-opacity=".55"/>
+        <stop offset="45%" stop-color="#ff7a1a" stop-opacity=".14"/>
+        <stop offset="100%" stop-color="#ff7a1a" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="glowGlass" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#9fc6d6" stop-opacity=".30"/>
+        <stop offset="100%" stop-color="#9fc6d6" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="towerGlass" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#2a3a44"/>
+        <stop offset="52%" stop-color="#1b272e"/>
+        <stop offset="100%" stop-color="#101a20"/>
+      </linearGradient>
+      <linearGradient id="roadG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1a1e21"/>
+        <stop offset="100%" stop-color="#08090a"/>
+      </linearGradient>
+      <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ff7a1a" stop-opacity="0"/>
+        <stop offset="100%" stop-color="#ff7a1a" stop-opacity=".12"/>
+      </linearGradient>
+    </defs>
+
+    <rect width="1440" height="760" fill="url(#sky)"/>
+
+    <!-- 远景天际线（自下而上的层叠剪影） -->
+    <g fill="#0d1418" opacity=".9">
+      <rect x="20" y="470" width="70" height="180"/>
+      <rect x="96" y="430" width="52" height="220"/>
+      <rect x="154" y="500" width="86" height="150"/>
+      <rect x="246" y="452" width="60" height="198"/>
+      <rect x="1050" y="446" width="64" height="204"/>
+      <rect x="1120" y="492" width="92" height="158"/>
+      <rect x="1218" y="428" width="56" height="222"/>
+      <rect x="1280" y="470" width="88" height="180"/>
+      <rect x="1374" y="440" width="66" height="210"/>
+    </g>
+
+    <!-- 财阀塔（右中偏，玻璃幕墙 + 冷金窗光） -->
+    <g>
+      <circle cx="900" cy="300" r="230" fill="url(#glowGlass)" opacity=".8"/>
+      <polygon points="846,640 854,196 946,196 954,640" fill="url(#towerGlass)"/>
+      <!-- 幕墙分格 -->
+      <g stroke="#2d4049" stroke-width="1" opacity=".75">
+        <line x1="848" y1="300" x2="952" y2="300"/>
+        <line x1="848" y1="392" x2="952" y2="392"/>
+        <line x1="848" y1="484" x2="952" y2="484"/>
+        <line x1="848" y1="576" x2="952" y2="576"/>
+        <line x1="874" y1="196" x2="870" y2="640"/>
+        <line x1="900" y1="196" x2="900" y2="640"/>
+        <line x1="926" y1="196" x2="930" y2="640"/>
+      </g>
+      <!-- 窗光：冷白与香槟金 */
+      <g>
+        <rect x="856" y="392" width="10" height="14" fill="#c3a25f" opacity=".72"/>
+        <rect x="880" y="300" width="10" height="14" fill="#8fbccd" opacity=".48"/>
+        <rect x="904" y="484" width="10" height="14" fill="#c3a25f" opacity=".58"/>
+        <rect x="930" y="392" width="10" height="14" fill="#8fbccd" opacity=".4"/>
+        <rect x="880" y="576" width="10" height="14" fill="#c3a25f" opacity=".5"/>
+        <rect x="906" y="196" width="10" height="12" fill="#8fbccd" opacity=".34"/>
+        <rect x="858" y="484" width="8" height="12" fill="#8fbccd" opacity=".3"/>
+        <rect x="932" y="576" width="8" height="12" fill="#8fbccd" opacity=".34"/>
+      </g>
+      <!-- 塔顶航空障碍灯 -->
+      <circle cx="900" cy="190" r="3.4" fill="#ff4d3d" opacity=".85">
+        <animate attributeName="opacity" values=".2;1;.2" dur="2.6s" repeatCount="indefinite"/>
+      </circle>
+      <!-- 直升机 -->
+      <g opacity=".5">
+        <ellipse cx="1032" cy="178" rx="20" ry="7" fill="#1b252b"/>
+        <rect x="1050" y="174" width="16" height="2.5" fill="#1b252b"/>
+        <line x1="1032" y1="171" x2="1032" y2="160" stroke="#243139" stroke-width="2"/>
+        <line x1="1010" y1="160" x2="1054" y2="160" stroke="#243139" stroke-width="1.6">
+          <animate attributeName="opacity" values=".35;.8;.35" dur=".28s" repeatCount="indefinite"/>
+        </line>
+      </g>
+    </g>
+
+    <!-- 中层办公楼群 -->
+    <g fill="#111a1f">
+      <rect x="560" y="520" width="120" height="130"/>
+      <rect x="692" y="486" width="88" height="164"/>
+      <rect x="972" y="506" width="110" height="144"/>
+      <rect x="470" y="548" width="80" height="102"/>
+    </g>
+    <g fill="#8fbccd" opacity=".22">
+      <rect x="582" y="546" width="9" height="12"/><rect x="608" y="546" width="9" height="12"/>
+      <rect x="634" y="576" width="9" height="12"/><rect x="712" y="512" width="9" height="12"/>
+      <rect x="738" y="542" width="9" height="12"/><rect x="996" y="532" width="9" height="12"/>
+      <rect x="1022" y="562" width="9" height="12"/><rect x="1048" y="532" width="9" height="12"/>
+      <rect x="492" y="576" width="9" height="12"/>
+    </g>
+
+    <!-- 钠灯橙地平线：暖带 -->
+    <rect x="0" y="596" width="1440" height="120" fill="url(#haze)"/>
+    <g opacity=".85">
+      <circle cx="140" cy="612" r="120" fill="url(#glowSodium)"/>
+      <circle cx="1250" cy="606" r="140" fill="url(#glowSodium)"/>
+    </g>
+
+    <!-- 街道层 -->
+    <rect x="0" y="640" width="1440" height="120" fill="url(#roadG)"/>
+    <!-- 中央虚线（近大远小） -->
+    <g fill="#c9c4ba" opacity=".3">
+      <rect x="716" y="646" width="8" height="3"/>
+      <rect x="716" y="660" width="9" height="3.5"/>
+      <rect x="715" y="676" width="10" height="4"/>
+      <rect x="714" y="694" width="12" height="5"/>
+      <rect x="712" y="716" width="15" height="6"/>
+      <rect x="710" y="742" width="19" height="7"/>
+    </g>
+    <!-- 路灯 ×2 -->
+    <g>
+      <line x1="330" y1="640" x2="330" y2="516" stroke="#1e262b" stroke-width="4"/>
+      <path d="M330 516 q0 -14 18 -14" stroke="#1e262b" stroke-width="4" fill="none"/>
+      <circle cx="352" cy="502" r="6" fill="#ffb44d"/>
+      <circle cx="352" cy="506" r="86" fill="url(#glowSodium)" opacity=".5"/>
+      <line x1="1096" y1="640" x2="1096" y2="536" stroke="#1e262b" stroke-width="3.4"/>
+      <path d="M1096 536 q0 -12 -16 -12" stroke="#1e262b" stroke-width="3.4" fill="none"/>
+      <circle cx="1076" cy="524" r="5" fill="#ffb44d"/>
+      <circle cx="1076" cy="528" r="72" fill="url(#glowSodium)" opacity=".42"/>
+    </g>
+    <!-- 卡车（讨薪的司机一家所在） -->
+    <g>
+      <rect x="404" y="600" width="112" height="42" fill="#1b2226"/>
+      <rect x="392" y="612" width="20" height="30" fill="#161d21"/>
+      <rect x="380" y="622" width="14" height="12" fill="#243036" opacity=".9"/>
+      <circle cx="424" cy="644" r="9" fill="#0d1114" stroke="#2a343a" stroke-width="2"/>
+      <circle cx="492" cy="644" r="9" fill="#0d1114" stroke="#2a343a" stroke-width="2"/>
+      <rect x="414" y="612" width="22" height="16" fill="#c3a25f" opacity=".18"/>
+    </g>
+    <!-- 老刑警 · 孤影（画面右侧偏中，符合窄屏裁切安全区） -->
+    <g>
+      <ellipse cx="806" cy="668" rx="26" ry="5.5" fill="#000" opacity=".5"/>
+      <path d="M806 592 q13 0 13 15 v22 h-26 v-22 q0 -15 13 -15z" fill="#080a0b"/>
+      <path d="M793 606 q-9 4 -9 16 v12 h7 v-13 q1 -9 6 -11z" fill="#080a0b"/>
+      <path d="M819 606 q9 4 9 16 v12 h-7 v-13 q-1 -9 -6 -11z" fill="#080a0b"/>
+      <rect x="798" y="628" width="7" height="38" fill="#080a0b"/>
+      <rect x="808" y="628" width="7" height="38" fill="#080a0b"/>
+      <circle cx="806" cy="584" r="9.5" fill="#080a0b"/>
+      <path d="M806 588 l-40 34" stroke="#080a0b" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+      <circle cx="830" cy="596" r="40" fill="url(#glowSodium)" opacity=".26"/>
+    </g>
+    <!-- 少年剪影（更小，站在卡车与街灯之间） -->
+    <g opacity=".9">
+      <ellipse cx="530" cy="666" rx="16" ry="4" fill="#000" opacity=".45"/>
+      <path d="M530 622 q8 0 8 10 v16 h-16 v-16 q0 -10 8 -10z" fill="#0a0d0e"/>
+      <rect x="524" y="648" width="5" height="20" fill="#0a0d0e"/>
+      <rect x="531" y="648" width="5" height="20" fill="#0a0d0e"/>
+      <circle cx="530" cy="616" r="6" fill="#0a0d0e"/>
+    </g>
+    <!-- 地面湿反光 -->
+    <g opacity=".3">
+      <ellipse cx="352" cy="646" rx="70" ry="5" fill="#ff7a1a"/>
+      <ellipse cx="806" cy="672" rx="34" ry="4" fill="#ffb44d"/>
+      <ellipse cx="1076" cy="650" rx="52" ry="4" fill="#ff7a1a"/>
+      <ellipse cx="900" cy="654" rx="60" ry="5" fill="#8fbccd" opacity=".35"/>
+    </g>
+  </svg>
+  <div class="hero-scrim"></div>
+  <canvas id="heroCanvas"></canvas>
+
+  <div class="hero-in">
+    <div class="eyebrow">韩国犯罪片 · 第 20 部 <span>Korean Crime Cinema / No.20</span></div>
+    <h1 class="title">老手</h1>
+    <div class="title-en">Veteran</div>
+    <div class="title-kr">베테랑 · 2015</div>
+    <p class="hero-sub">
+      一个靠直觉办案的老刑警，一桩被包装成「自杀」的伤人案，<br>
+      和一位笃定自己永远不会被追责的财阀三代。<b>这一次，追下去就是全部的办法。</b>
+    </p>
+    <div class="chips">
+      <span class="chip hot">2015 韩国年度票房冠军</span>
+      <span class="chip">1340 万观影人次</span>
+      <span class="chip">柳昇完 · 编导</span>
+      <span class="chip">黄政民 × 刘亚仁</span>
+      <span class="chip">124 分钟 · 15+</span>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>SCROLL</span><i></i></div>
+</header>
+
+<!-- ================= 01 梗概 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="nospoil reveal">
+      <span class="mark">NO&nbsp;SPOILER</span>
+      <p><b>全程不剧透。</b>下面所有内容只写到影片第一幕为止的公开设定——它是怎么开局的、对手是谁、这场追查为什么难。剧情走向、关键转折、人物结局一律不提。</p>
+    </div>
+
+    <div class="sec-head reveal">
+      <span class="sec-num">01 / Synopsis</span>
+      <h2 class="sec-title">一个不会松手的人，<em>对上一堵不会认错的墙</em></h2>
+    </div>
+
+    <div class="duo">
+      <aside class="glance reveal">
+        <h3>一眼速览</h3>
+        <dl>
+          <div class="row"><dt>片名</dt><dd>老手</dd></div>
+          <div class="row"><dt>原片名</dt><dd>베테랑</dd></div>
+          <div class="row"><dt>英文片名</dt><dd>Veteran</dd></div>
+          <div class="row"><dt>年份</dt><dd>2015</dd></div>
+          <div class="row"><dt>类型</dt><dd>犯罪 / 动作 / 剧情</dd></div>
+          <div class="row"><dt>导演 · 编剧</dt><dd>柳昇完</dd></div>
+          <div class="row"><dt>片长</dt><dd>124 分钟</dd></div>
+          <div class="row"><dt>分级</dt><dd>15 岁以上观览可</dd></div>
+          <div class="row accent"><dt>韩国观影</dt><dd>13,407,966 人次</dd></div>
+          <div class="row accent"><dt>豆瓣</dt><dd>7.7 / 10</dd></div>
+        </dl>
+      </aside>
+
+      <div class="prose reveal">
+        <p class="drop">
+          首尔广域搜查队有一组出了名的「老手」。带队的<em>徐道哲</em>不怎么讲程序，讲的是直觉和行动——别人还在写报告，他已经站到现场了。一次寻常的车辆盗窃案里，他认识了一对父子：开卡车的父亲，和一个还在念书的儿子。父亲在一家大集团门口，为了一笔迟迟拿不到的工资反复奔走。
+        </p>
+        <p>
+          然后，事情变了。司机在集团大楼前遭到暴力对待，重伤进了医院；而集团给出的说法，是一起「自杀」。没有目击者愿意开口，没有监控愿意拍下，没有哪一级愿意把这当回事。<b>徐道哲认定幕后是这家集团的继承人、财阀三代赵泰晤</b>——一个连道歉都懒得演、笃信规则不会落到自己头上的年轻人。
+        </p>
+        <p>
+          于是他带着那支老队伍开始追。路不难找，难的是每一步都被一层看不见的东西挡回来：<b>律师、媒体、检察机关、集团的钱，以及一句「你抓到我了又怎样」。</b>他要处理的从来不只是一个人，而是一整套替那个人兜底的结构。
+        </p>
+        <p>
+          至于这场追查最后落到了哪里、用什么方式落的——<b>这里一个字都不会说。</b>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 概念海报 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02 / Concept Poster</span>
+      <h2 class="sec-title">一张切开城市的剖面图</h2>
+      <p class="sec-desc">影片真正的对手从来不是某个人，而是一条水平线——线以上的人不必解释，线以下的人必须奔波。这张概念海报，把这座城市竖着切了一刀。</p>
+    </div>
+
+    <div class="poster-grid">
+      <figure class="poster-frame reveal">
+        <svg viewBox="0 0 400 600" aria-label="《老手》概念海报">
+          <defs>
+            <linearGradient id="pSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0a0d0f"/><stop offset="100%" stop-color="#101619"/>
+            </linearGradient>
+            <linearGradient id="pGlass" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#2b3c46"/><stop offset="60%" stop-color="#1a262d"/><stop offset="100%" stop-color="#0f191e"/>
+            </linearGradient>
+            <linearGradient id="pRoad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#191d20"/><stop offset="100%" stop-color="#07090a"/>
+            </linearGradient>
+            <radialGradient id="pSod" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ff7a1a" stop-opacity=".55"/><stop offset="100%" stop-color="#ff7a1a" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <rect width="400" height="600" fill="url(#pSky)"/>
+
+          <!-- 上半：塔 -->
+          <polygon points="168,300 176,54 244,54 252,300" fill="url(#pGlass)"/>
+          <g stroke="#2f4350" stroke-width="1" opacity=".8">
+            <line x1="170" y1="112" x2="250" y2="112"/>
+            <line x1="172" y1="170" x2="248" y2="170"/>
+            <line x1="173" y1="228" x2="247" y2="228"/>
+            <line x1="188" y1="54" x2="184" y2="300"/>
+            <line x1="210" y1="54" x2="210" y2="300"/>
+            <line x1="232" y1="54" x2="236" y2="300"/>
+          </g>
+          <g>
+            <rect x="176" y="112" width="8" height="11" fill="#c3a25f" opacity=".75"/>
+            <rect x="198" y="170" width="8" height="11" fill="#8fbccd" opacity=".45"/>
+            <rect x="220" y="112" width="8" height="11" fill="#8fbccd" opacity=".34"/>
+            <rect x="178" y="228" width="8" height="11" fill="#c3a25f" opacity=".55"/>
+            <rect x="222" y="228" width="8" height="11" fill="#8fbccd" opacity=".4"/>
+          </g>
+          <!-- 塔顶小人（俯瞰者） -->
+          <g fill="#05070a">
+            <rect x="204" y="42" width="6" height="12" rx="2.4"/>
+            <circle cx="207" cy="37" r="4.2"/>
+          </g>
+
+          <!-- 中层楼群 -->
+          <g fill="#0e161a">
+            <rect x="46" y="212" width="58" height="88"/>
+            <rect x="112" y="242" width="42" height="58"/>
+            <rect x="268" y="196" width="52" height="104"/>
+            <rect x="326" y="238" width="44" height="62"/>
+          </g>
+          <g fill="#8fbccd" opacity=".2">
+            <rect x="58" y="228" width="7" height="9"/><rect x="78" y="252" width="7" height="9"/>
+            <rect x="280" y="212" width="7" height="9"/><rect x="298" y="240" width="7" height="9"/>
+            <rect x="338" y="252" width="7" height="9"/>
+          </g>
+
+          <!-- 分界线：钠灯橙 -->
+          <rect x="0" y="298" width="400" height="2.4" fill="#ff7a1a" opacity=".85"/>
+          <circle cx="210" cy="299" r="128" fill="url(#pSod)" opacity=".5"/>
+
+          <!-- 下半：街道 -->
+          <rect x="0" y="300" width="400" height="300" fill="url(#pRoad)"/>
+          <g fill="#b9b4aa" opacity=".26">
+            <rect x="197" y="306" width="6" height="2.4"/>
+            <rect x="197" y="322" width="7" height="3"/>
+            <rect x="196" y="342" width="8" height="3.4"/>
+            <rect x="195" y="366" width="10" height="4"/>
+            <rect x="194" y="394" width="12" height="5"/>
+            <rect x="193" y="428" width="14" height="6"/>
+            <rect x="192" y="468" width="16" height="7"/>
+          </g>
+          <!-- 路灯 -->
+          <line x1="86" y1="300" x2="86" y2="196" stroke="#1b2328" stroke-width="3"/>
+          <path d="M86 196 q0 -11 14 -11" stroke="#1b2328" stroke-width="3" fill="none"/>
+          <circle cx="103" cy="185" r="4.6" fill="#ffb44d"/>
+          <circle cx="103" cy="188" r="66" fill="url(#pSod)" opacity=".45"/>
+          <!-- 卡车 -->
+          <g>
+            <rect x="122" y="330" width="76" height="30" fill="#1a2226"/>
+            <rect x="112" y="340" width="14" height="20" fill="#151c20"/>
+            <rect x="102" y="346" width="10" height="9" fill="#22303a"/>
+            <circle cx="136" cy="360" r="6.4" fill="#0b0f12" stroke="#28323a" stroke-width="1.6"/>
+            <circle cx="184" cy="360" r="6.4" fill="#0b0f12" stroke="#28323a" stroke-width="1.6"/>
+          </g>
+          <!-- 刑警剪影 -->
+          <g>
+            <ellipse cx="266" cy="372" rx="17" ry="3.6" fill="#000" opacity=".55"/>
+            <path d="M266 322 q9 0 9 11 v15 h-18 v-15 q0 -11 9 -11z" fill="#05070a"/>
+            <path d="M258 331 q-7 3 -7 11 v8 h5 v-9 q1 -6 4 -7z" fill="#05070a"/>
+            <path d="M274 331 q7 3 7 11 v8 h-5 v-9 q-1 -6 -4 -7z" fill="#05070a"/>
+            <rect x="260" y="347" width="5" height="26" fill="#05070a"/>
+            <rect x="268" y="347" width="5" height="26" fill="#05070a"/>
+            <circle cx="266" cy="316" r="6.6" fill="#05070a"/>
+            <path d="M266 320 l-27 23" stroke="#05070a" stroke-width="2.4" stroke-linecap="round" opacity=".85"/>
+            <circle cx="284" cy="330" r="28" fill="url(#pSod)" opacity=".3"/>
+          </g>
+          <!-- 地面反光 -->
+          <g opacity=".3">
+            <ellipse cx="103" cy="304" rx="46" ry="3.4" fill="#ff7a1a"/>
+            <ellipse cx="266" cy="376" rx="22" ry="3" fill="#ffb44d"/>
+          </g>
+
+          <!-- 竖排片名 -->
+          <g font-family="Georgia, Songti SC, serif" fill="#f0ece5">
+            <text x="348" y="88" font-size="46" text-anchor="middle" letter-spacing="4">老</text>
+            <text x="348" y="150" font-size="46" text-anchor="middle" letter-spacing="4">手</text>
+          </g>
+          <text x="348" y="184" font-size="11" text-anchor="middle" fill="#c3a25f" letter-spacing="4" font-family="monospace">베테랑</text>
+          <text x="348" y="206" font-size="10" text-anchor="middle" fill="#8c8880" letter-spacing="3" font-family="monospace">VETERAN</text>
+
+          <!-- 底部信息条 -->
+          <rect x="0" y="556" width="400" height="44" fill="#08090a" opacity=".9"/>
+          <text x="24" y="583" font-size="10.5" fill="#8c8880" letter-spacing="2.6" font-family="monospace">CLASS SECTION / SEOUL · 2015</text>
+          <text x="376" y="583" font-size="10.5" fill="#ff7a1a" text-anchor="end" letter-spacing="2.6" font-family="monospace">NO SPOILER</text>
+        </svg>
+        <figcaption class="poster-cap">Concept Poster / 概念示意 · 非官方海报</figcaption>
+      </figure>
+
+      <div class="notes reveal">
+        <div class="note">
+          <h4>为什么是「剖面」</h4>
+          <p>片名「老手」说的是经验，但影片真正在量的是高度——同一座城市里，有人在塔顶决定事情，有人在街面等一笔工资。一条水平线，把这两种生活切成两层。</p>
+        </div>
+        <div class="note">
+          <h4>橙色的那条线</h4>
+          <p>分界线上那道光用的是韩国街头最常见的高压钠灯颜色。它不是警灯，也不是霓虹——是普通街道入夜后的底色。冲突就发生在这样的光线下。</p>
+        </div>
+        <div class="note">
+          <h4>塔顶的小小剪影</h4>
+          <p>右上角那个站在楼顶向下看的人，连五官都不需要。它代表的是「不必解释」的那种视角——这也是整部影片想要戳的地方。</p>
+        </div>
+        <div class="note">
+          <h4>街面那把走路的手</h4>
+          <p>画面下方只有一个人、一盏灯、一辆卡车。他手里拿的不是枪，是随时准备甩出去的一条胳膊。这是本片动作戏的质感来源：笨、近、real。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 档案 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03 / Dossier</span>
+      <h2 class="sec-title">影片档案</h2>
+      <p class="sec-desc">一部 60 亿韩元成本、损益点仅 250 万人次的警匪片，最终走进了一千三百多万人的电影院。</p>
+    </div>
+
+    <div class="file-grid reveal">
+      <div class="file-cell"><dt>片名</dt><dd>老手<small>台译《辣手警探》/ 港译《燥底师兄生擒富二代》</small></dd></div>
+      <div class="file-cell"><dt>韩文 / 英文</dt><dd>베테랑 / Veteran</dd></div>
+      <div class="file-cell"><dt>年份 · 片长</dt><dd>2015 · 124 分钟</dd></div>
+      <div class="file-cell"><dt>类型</dt><dd>犯罪 · 动作 · 剧情</dd></div>
+      <div class="file-cell wide"><dt>导演 · 编剧</dt><dd>柳昇完 Ryoo Seung-wan<small>本系列首次采用；其作品以港式动作质感与社会批判并重著称</small></dd></div>
+      <div class="file-cell"><dt>分级</dt><dd>15 岁以上观览可</dd></div>
+      <div class="file-cell"><dt>上映日期</dt><dd>2015-08-05（韩国）</dd></div>
+      <div class="file-cell"><dt>主演</dt><dd>黄政民<small>饰 徐道哲 · 老刑警</small></dd></div>
+      <div class="file-cell"><dt>主演</dt><dd>刘亚仁<small>饰 赵泰晤 · 财阀三代</small></dd></div>
+      <div class="file-cell"><dt>主演</dt><dd>刘海镇 / 吴达洙<small>崔常务 / 吴队长</small></dd></div>
+      <div class="file-cell"><dt>配角</dt><dd>张允珠 · 陈庆 · 吴大焕 · 金时厚 · 郑满植</dd></div>
+      <div class="file-cell"><dt>摄影</dt><dd>崔英焕</dd></div>
+      <div class="file-cell"><dt>配乐</dt><dd>方俊锡</dd></div>
+      <div class="file-cell"><dt>动作指导</dt><dd>郑斗洪</dd></div>
+      <div class="file-cell"><dt>发行</dt><dd>CJ ENTERtainment</dd></div>
+      <div class="file-cell"><dt>制作成本</dt><dd>约 60 亿韩元<small>约合 510 万美元</small></dd></div>
+      <div class="file-cell hot"><dt>韩国观影人次</dt><dd>13,407,966<small>2015 年度韩国票房冠军 · 本土片影史前列</small></dd></div>
+      <div class="file-cell hot"><dt>全球票房</dt><dd>约 9,440 万美元</dd></div>
+      <div class="file-cell wide"><dt>荣誉总览</dt><dd>25 项获奖 · 45 项提名<small>青龙 / 百想 / 大钟 / 釜日 / 影评奖 / 锡切斯电影节</small></dd></div>
+      <div class="file-cell wide"><dt>影史延展</dt><dd>续集《老手 2》(2024) · 中国翻拍《「大」人物》(2019)<small>后者在中国内地取得约 3.8 亿人民币票房</small></dd></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 口碑 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04 / Reception</span>
+      <h2 class="sec-title">分数的两副面孔</h2>
+      <p class="sec-desc">这是一部「观众比影评人更爱它」的典型样本：在韩国门户网站上它一度冲进 9 分档，而在国际影评口径里它被当成一部被低估的类型片。两边都真实。</p>
+    </div>
+
+    <div class="score-grid">
+      <div class="score reveal">
+        <div class="plat">Douban 豆瓣</div>
+        <div class="big">7.7<i>/ 10</i></div>
+        <div class="bar"><span style="width:77%"></span></div>
+        <div class="cap"><b>约 13.9 万人</b>评价。中文观众口径的中上水准，动作与情绪两头都拿得住。</div>
+      </div>
+      <div class="score reveal">
+        <div class="plat">Naver · Daum 观众</div>
+        <div class="big">8.8<i>+ / 10</i></div>
+        <div class="bar"><span style="width:88%"></span></div>
+        <div class="cap"><b>韩国网民评分长期位于高 8 分档</b>。本国观众给的是「爽、解气、说到心里」。</div>
+      </div>
+      <div class="score reveal">
+        <div class="plat">IMDb</div>
+        <div class="big">7.0<i>/ 10</i></div>
+        <div class="bar"><span style="width:70%"></span></div>
+        <div class="cap"><b>约 9,100 人</b>评分。海外口碑明显保守——这类强地域性的社会讽刺，出了本地就少一层共鸣。</div>
+      </div>
+      <div class="score reveal">
+        <div class="plat">韩国票房</div>
+        <div class="big">1340<i>万人次</i></div>
+        <div class="bar"><span style="width:96%"></span></div>
+        <div class="cap"><b>2015 年票房冠军</b>，超过 1300 万观影人次，是「一部电影变成一次社会讨论」的量级。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 时间线 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">05 / Timeline</span>
+      <h2 class="sec-title">从一次封街，到十年后的续集</h2>
+      <p class="sec-desc">这部片的故事不止在银幕里。它从釜山港拍到明洞街心，又一路拍成了韩国最赚钱的警匪片 IP 之一。</p>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-year">2014.03</div>
+        <div class="tl-title">开机</div>
+        <div class="tl-desc">剧组在釜山港完成开场戏取景——为了在韩国最大的港口实拍，制作方提前提交了详细拍摄计划并取得现场支持。</div>
+      </div>
+      <div class="tl-item hot">
+        <div class="tl-year">2014 秋</div>
+        <div class="tl-title">明洞封街：韩国影史第一次</div>
+        <div class="tl-desc">高潮追车戏选在首尔最繁华、最复杂的明洞。剧组从企划阶段就开始与各方沟通，导演与主演亲自到辖区警署交涉，最终对明洞 <b>8 条车道实施全面交通管制</b>，连续 4 个夜晚、投入 80 余辆车完成拍摄——这是韩国电影首次得以在明洞中心拍摄。</div>
+      </div>
+      <div class="tl-item hot">
+        <div class="tl-year">2015.08.05</div>
+        <div class="tl-title">上映 · 成为年度现象</div>
+        <div class="tl-desc">首周末即登顶，放映期间连续多周占据票房榜首，最终拿下 <b>韩国年度票房冠军</b>。片中那句「我们财阀只能玩到这种程度」成为流行语，影院里外的讨论早已超出电影本身。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2015.11 — 2016.10</div>
+        <div class="tl-title">奖项季</div>
+        <div class="tl-desc">柳昇完凭本片拿下<b>第 36 届青龙电影奖最佳导演</b>与<b>第 52 届百想艺术大赏最佳导演</b>；影片获第 25 届釜日电影奖最优秀作品奖、第 35 届韩国影评奖最佳导演与年度十佳；吴达洙获第 52 届大钟奖最佳男配角。同时入围第 48 届锡切斯国际奇幻电影节并获亚洲最优秀作品奖。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2019.01</div>
+        <div class="tl-title">中国翻拍《「大」人物》上映</div>
+        <div class="tl-desc">王千源、包贝尔主演的翻拍版在中国内地上映，取得约 <b>3.8 亿人民币</b>票房。一个「小警察对抗大资本」的故事结构，被毫发无损地搬进了另一种语境。</div>
+      </div>
+      <div class="tl-item hot">
+        <div class="tl-year">2024.05</div>
+        <div class="tl-title">续集《老手 2》登陆戛纳</div>
+        <div class="tl-desc">《老手 2》(I, the Executioner) 入围第 77 届戛纳电影节午夜展映单元，放映后获得约 10 分钟起立鼓掌。黄政民回归饰演徐道哲，丁海寅加入出演新人警察。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2024.09</div>
+        <div class="tl-title">续集上映 · 752 万人次</div>
+        <div class="tl-desc">《老手 2》在韩国上映，累计观影 <b>7,525,339 人次</b>，位列 2024 年韩国年度票房第 4。距第一部上映九年，这个 IP 的号召力仍在。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 荣誉 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">06 / Awards</span>
+      <h2 class="sec-title">拿在手里的，是导演奖</h2>
+      <p class="sec-desc">影片的奖项集中在两个地方：导演，和配角。前者说明它「好看」不是意外，后者说明这部片的人物密度有多厚。</p>
+    </div>
+
+    <div class="awards reveal">
+      <div class="aw"><div class="yr">2015</div><div class="bd"><b>第 36 届青龙电影奖 · <em>最佳导演（柳昇完）</em></b>另获最佳影片、最佳剧本、最佳男主角（黄政民）等多项提名</div></div>
+      <div class="aw"><div class="yr">2016</div><div class="bd"><b>第 52 届百想艺术大赏 · <em>最佳导演（柳昇完）</em></b>电影部门导演奖获奖</div></div>
+      <div class="aw"><div class="yr">2015</div><div class="bd"><b>第 25 届釜日电影奖 · <em>最优秀作品奖</em></b>影片层面的最高认可</div></div>
+      <div class="aw"><div class="yr">2015</div><div class="bd"><b>第 52 届大钟奖 · <em>最佳男配角（吴达洙）</em></b>另获最佳影片、导演、男主角（刘亚仁）等提名</div></div>
+      <div class="aw"><div class="yr">2015</div><div class="bd"><b>第 35 届韩国影评奖 · <em>最佳导演 + 年度十佳</em></b>影评人一侧也给出了肯定的位置</div></div>
+      <div class="aw"><div class="yr">2015</div><div class="bd"><b>第 48 届锡切斯国际奇幻电影节 · <em>亚洲最优秀作品奖</em></b>类型片节展的国际认同</div></div>
+      <div class="aw"><div class="yr">2015</div><div class="bd"><b>第 40 届多伦多国际电影节 · 先锋单元</b>另被选为伦敦亚洲电影节开幕影片</div></div>
+      <div class="aw"><div class="yr">2015</div><div class="bd"><b>第 2 届韩国电影制作人协会奖 · 导演 / 摄影 / 剪辑 / 技术</b>技术侧的整体完成度</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 六宫格亮点 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">07 / Highlights</span>
+      <h2 class="sec-title">六个亮点</h2>
+    </div>
+
+    <div class="highlights reveal">
+      <div class="hl">
+        <div class="idx">01</div>
+        <h4>「老手」对上「雏儿」<em>的表演对撞</em></h4>
+        <p>黄政民演的是那种把袜子拿起来闻、随口骂人、却对案子一丝不肯松的市井刑警；刘亚仁演的是教养良好、笑容讲礼貌、底子里全是不耐烦的财阀少爷。两个人不在同一个世界里，却要在一个镜头里较劲——这是全片最大的看点。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">02</div>
+        <h4>拳头是<em>真的落在肉上的</em></h4>
+        <p>柳昇完从小看港片长大，动作指导郑斗洪又是韩国实战派代表。片中的打斗不飘逸、不帅气，是那种挨一下会疼、追一段会喘的笨办法——因为对手有钱有律师，他只能靠身体。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">03</div>
+        <h4>明洞街心，<em>一次性封掉八条车道</em></h4>
+        <p>高潮追车戏不是在摄影棚里拼出来的。剧组拿到明洞中心封街许可，连续四个夜晚、八十多辆车，把首尔最拥挤的商业街变成了赛道。这是韩国电影第一次做到这件事。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">04</div>
+        <h4>前半段让你笑，<em>后半段让你闭嘴</em></h4>
+        <p>开场是一串几乎喜剧化的警队日常，笑点密集到会让人误以为这是部轻喜剧。但当那个躺进医院的司机出现，调子会一点点沉下去——这个转折处理得非常干净，不喊口号。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">05</div>
+        <h4>它拍的不只是<em>一个坏人</em></h4>
+        <p>赵泰晤固然可恨，但影片真正让人不舒服的地方在于：他身后永远有人替他解释、替他遮盖、替他准备一份体面的说法。一个坏人不可怕，一整套默契才可怕。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">06</div>
+        <h4>一部可以被<em>全家人一起看完的犯罪片</em></h4>
+        <p>它被评为 15 岁以上观览可，暴力的尺度是有意收着的。它有类型片必须给的那口痛快气，也没有把观众按在座位上折磨——这在韩国犯罪片里其实相当罕见。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 08 为什么值得看 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">08 / Why It Matters</span>
+      <h2 class="sec-title">它为什么值得一看</h2>
+    </div>
+
+    <div class="why reveal">
+      <div class="why-item">
+        <h4><span>Reason 01</span>它把「好人打坏人」拍成了一件具体、疲惫、要靠死磕才能完成的事</h4>
+        <p>大多数类型片会让正义显得理所当然：主角一发力，坏人就倒了。这部电影偏偏不。徐道哲每一次推进都要付出代价——写不完的报告、挡回来的批文、被劝退的上司、家里那点被耽误的日子。他不是英雄，他是<b>一个不肯签字的公务员</b>。正因如此，当最后那口气终于松出来的时候，观众才会真的觉得痛快——因为那是用磨损换来的。</p>
+      </div>
+      <div class="why-item">
+        <h4><span>Reason 02</span>它是「社会批判」与「类型爽感」同时在场的一次示范</h4>
+        <p>批判现实的电影常常不好看，好看的类型片又常常没话说。这部片罕见地把两件事拧在了一起：一边是明确、快速、节奏紧凑的追捕与格斗，一边是对特权免责、媒体操弄、阶层倾斜这些议题毫不含糊的表态。它没有为了深刻牺牲掉娱乐性，也没有为了爽感把态度磨圆。<b>商业片可以拍得好看又快又有骨头，它给出了一份可用的答案。</b></p>
+      </div>
+      <div class="why-item">
+        <h4><span>Reason 03</span>它是一把理解韩国大众情绪的钥匙</h4>
+        <p>一千三百多万人走进影院看一个刑警死磕一个财阀三代——这个数字本身就是一次民意表达。影片上映的年份，韩国社会对特权与不公的疲惫感正处在高位。它之所以爆，不只是因为打得好，而是因为<b>它替很多人把一句说出口会被说「没用」的话，稳稳地说了出来</b>。想理解那几年的韩国，这部电影比很多评论都直接。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 提示 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">09 / Before You Watch</span>
+      <h2 class="sec-title">观影提示</h2>
+    </div>
+    <div class="warns reveal">
+      <div class="warn">
+        <div class="tag">分 级</div>
+        <p><b>15 岁以上观览可。</b>韩国本土分级为 15+，暴力的呈现有明确克制，属于「动作片尺度」而非「恐怖片尺度」。</p>
+      </div>
+      <div class="warn">
+        <div class="tag">题 材</div>
+        <p><b>包含暴力殴打、昏迷与重伤情节。</b>核心冲突围绕工伤讨薪与特权包庇展开，情绪偏压抑，观影前可先有个预期。</p>
+      </div>
+      <div class="warn">
+        <div class="tag">建 议</div>
+        <p><b>适合与家人一起看。</b>情节直白、节奏明快、无需背景知识；如果想看一部「能痛快看完、还能聊几句」的韩国犯罪片，它很合适。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 结尾 ================= -->
+<section class="band outro">
+  <div class="wrap">
+    <div class="outro-grid">
+      <div class="quote reveal">
+        <div class="q-mark">&ldquo;</div>
+        <blockquote>我们财阀，只能玩到这种程度。</blockquote>
+        <p style="font-size:13.5px;color:var(--ash);line-height:1.9;max-width:640px;margin-bottom:18px;">
+          这句台词之所以被记住，不是因为它嚣张，而是因为它出自一个真心这么想的人。整部电影要回答的，就是这句话对不对。
+        </p>
+        <div class="attr">台词引自影片 · 不涉剧情走向</div>
+      </div>
+      <div class="end-stamp reveal">
+        <div class="no">20</div>
+        <div class="lb">Korean Crime Cinema<br>Series · No.20</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;width:100%">
+    <span>老手 · 베테랑 · Veteran (2015)</span>
+    <span>No Spolier · 无剧透推荐</span>
+    <span>2026-09-30</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 分组错峰入场 ---------- */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var map = new Map();
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        var parent = el.parentElement;
+        var order = map.get(parent) || 0;
+        map.set(parent, order + 1);
+        el.style.transitionDelay = Math.min(order * 70, 420) + 'ms';
+        el.classList.add('in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---------- Hero Canvas：钠灯呼吸 + 雨丝 + 上浮微尘 ---------- */
+  var cv = document.getElementById('heroCanvas');
+  if (!cv) return;
+  var ctx = cv.getContext('2d');
+  var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var drops = [], motes = [], raf = null, last = 0, running = true;
+
+  function resize(){
+    var r = cv.getBoundingClientRect();
+    W = r.width; H = r.height;
+    cv.width = Math.max(1, Math.floor(W * DPR));
+    cv.height = Math.max(1, Math.floor(H * DPR));
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    build();
+  }
+
+  function build(){
+    drops = []; motes = [];
+    var dn = Math.round(W / 9);
+    for (var i = 0; i < dn; i++){
+      drops.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        len: 14 + Math.random() * 30,
+        sp: 1.6 + Math.random() * 3.4,
+        w: 0.6 + Math.random() * 0.9,
+        a: 0.05 + Math.random() * 0.20,
+        ph: Math.random() * Math.PI * 2,
+        am: 0.5 + Math.random() * 1.4
+      });
+    }
+    var mn = Math.round(W / 22);
+    for (var j = 0; j < mn; j++){
+      motes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: 0.5 + Math.random() * 1.9,
+        sp: 0.16 + Math.random() * 0.5,
+        a: 0.06 + Math.random() * 0.3,
+        ph: Math.random() * Math.PI * 2,
+        kind: Math.random() < 0.55 ? 'sod' : 'gold'
+      });
+    }
+  }
+
+  function glow(x, y, r, col, alpha){
+    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0, 'rgba(' + col + ',' + alpha + ')');
+    g.addColorStop(0.5, 'rgba(' + col + ',' + (alpha * 0.28) + ')');
+    g.addColorStop(1, 'rgba(' + col + ',0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+  }
+
+  function frame(t){
+    if (!running){ raf = null; return; }
+    if (!last) last = t;
+    var dt = Math.min((t - last) / 16.6667, 3);
+    last = t;
+    var time = t / 1000;
+
+    ctx.clearRect(0, 0, W, H);
+
+    /* 钠灯呼吸（两处，呼应 SVG 里的路灯位置） */
+    ctx.globalCompositeOperation = 'lighter';
+    glow(W * 0.245, H * 0.80, 150 + Math.sin(time * 0.9) * 16, '255,122,26', 0.13);
+    glow(W * 0.748, H * 0.82, 168 + Math.sin(time * 0.7 + 1.6) * 18, '255,122,26', 0.10);
+
+    /* 雨丝（带正弦横摆） */
+    ctx.lineCap = 'round';
+    for (var i = 0; i < drops.length; i++){
+      var d = drops[i];
+      d.y += d.sp * dt;
+      d.x += Math.sin(time * 0.8 + d.ph) * 0.28 * dt;
+      if (d.y > H + 40){ d.y = -40 - Math.random() * 60; d.x = Math.random() * W; }
+      ctx.strokeStyle = 'rgba(255,178,110,' + d.a + ')';
+      ctx.lineWidth = d.w;
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x - 1.4 * d.am, d.y - d.len);
+      ctx.stroke();
+    }
+
+    /* 上浮微尘 */
+    for (var j = 0; j < motes.length; j++){
+      var m = motes[j];
+      m.y -= m.sp * dt;
+      m.x += Math.sin(time * 0.5 + m.ph) * 0.22 * dt;
+      if (m.y < -12){ m.y = H + 12; m.x = Math.random() * W; }
+      var fade = Math.min(1, m.y / (H * 0.85));
+      var col = m.kind === 'sod' ? '255,150,60' : '195,162,95';
+      ctx.fillStyle = 'rgba(' + col + ',' + (m.a * fade) + ')';
+      ctx.beginPath(); ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+
+    raf = requestAnimationFrame(frame);
+  }
+
+  function start(){ if (!raf && !reduce){ last = 0; raf = requestAnimationFrame(frame); } }
+  function stop(){ if (raf){ cancelAnimationFrame(raf); raf = null; } }
+
+  resize();
+  window.addEventListener('resize', function(){ resize(); }, { passive: true });
+  if (reduce){
+    /* 静态降级：画一帧 */
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    glow(W * 0.245, H * 0.80, 150, '255,122,26', 0.13);
+    glow(W * 0.748, H * 0.82, 168, '255,122,26', 0.10);
+    ctx.globalCompositeOperation = 'source-over';
+  } else {
+    start();
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden){ running = false; stop(); }
+      else { running = true; start(); }
+    });
+  }
+
+  /* ---------- 阶层刻度 HUD ---------- */
+  var hud = document.getElementById('hud'),
+      hudVal = document.getElementById('hudVal'),
+      hudDot = document.getElementById('hudDot'),
+      hudLb = document.getElementById('hudLb');
+  var stages = [
+    [0,   '街面 · 案件发生'],
+    [24,  '支社 · 一层解释'],
+    [48,  '集团 · 十五层护栏'],
+    [72,  '顶层 · 不必解释'],
+    [92,  '地平线 · 只有一条']
+  ];
+  function onScroll(){
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    hudDot.style.left = (p * 100) + '%';
+    hudVal.textContent = String(Math.round(p * 100)).padStart(2, '0') + '%';
+    var label = stages[0][1];
+    for (var i = 0; i < stages.length; i++){ if (p * 100 >= stages[i][0]) label = stages[i][1]; }
+    hudLb.textContent = label;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>

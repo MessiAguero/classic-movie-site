@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-29T07:32:17.695Z",
+  "generatedAt": "2026-09-30T04:05:50.593Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,9 +8,9 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 115,
-  "ok": 113,
-  "warn": 2,
+  "total": 117,
+  "ok": 114,
+  "warn": 3,
   "error": 0,
   "entries": [
     {
@@ -502,6 +502,48 @@
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（jingdianmovie.com）"
+        }
+      ]
+    },
+    {
+      "id": "20260929",
+      "zhTitle": "杀人者的记忆法",
+      "year": "2017",
+      "source": "远程",
+      "imageUrl": "https://image.tmdb.org/t/p/w500/nnaBFDUCiv6BjWaVHNsIqsh4UCi.jpg",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "73KB",
+      "dims": "500×750",
+      "ratio": 1.5,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "id": "20260930",
+      "zhTitle": "老手",
+      "year": "2015",
+      "source": "本地",
+      "imageUrl": "posters/20260930.jpg",
+      "host": "so1.360tres.com",
+      "tier": "unknown",
+      "size": "79KB",
+      "dims": "579×749",
+      "ratio": 1.29,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（so1.360tres.com）"
         }
       ]
     },
