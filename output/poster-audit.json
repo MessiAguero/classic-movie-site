@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-04T01:50:26.213Z",
+  "generatedAt": "2026-10-04T04:05:50.954Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,9 +8,9 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 117,
+  "total": 119,
   "ok": 114,
-  "warn": 3,
+  "warn": 5,
   "error": 0,
   "entries": [
     {
@@ -544,6 +544,59 @@
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（so1.360tres.com）"
+        }
+      ]
+    },
+    {
+      "id": "20261004-green-fish",
+      "zhTitle": "绿鱼",
+      "year": "1997",
+      "source": "本地",
+      "imageUrl": "posters/20261004-green-fish.jpg",
+      "host": "photocdn.sohu.com",
+      "tier": "unknown",
+      "size": "63KB",
+      "dims": "404×600",
+      "ratio": 1.49,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "status": "warn",
+      "issues": [
+        {
+          "code": "low_resolution",
+          "severity": "warn",
+          "detail": "清晰度偏低 404×600"
+        },
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（photocdn.sohu.com）"
+        }
+      ]
+    },
+    {
+      "id": "20261004",
+      "zhTitle": "不可饶恕",
+      "year": "2010",
+      "source": "远程",
+      "imageUrl": "http://5b0988e595225.cdn.sohucs.com/images/20190831/079757f6d9de4057875cd76382d59502.jpeg",
+      "host": "5b0988e595225.cdn.sohucs.com",
+      "tier": "unknown",
+      "size": "338KB",
+      "dims": "1080×1578",
+      "ratio": 1.46,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（5b0988e595225.cdn.sohucs.com）"
         }
       ]
     },
@@ -1563,7 +1616,7 @@
       "imageUrl": "https://image.tmdb.org/t/p/original/qEVZeu6ODIpS3zwyhOxKEmvkDpH.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "130KB",
+      "size": "101KB",
       "dims": "600×900",
       "ratio": 1.5,
       "identityKind": "name",
@@ -2297,7 +2350,7 @@
       "imageUrl": "https://image.tmdb.org/t/p/original/wZOsxwQjTdtSki0MiPIy8Zu9lv1.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "768KB",
+      "size": "746KB",
       "dims": "2000×3000",
       "ratio": 1.5,
       "identityKind": "name",

@@ -1,38 +1,38 @@
 {
-  "at": "2026-09-30T04:05:48.097Z",
+  "at": "2026-10-04T04:05:49.663Z",
   "dryRun": false,
   "targetCount": 1,
   "fixedCount": 1,
   "failureCount": 0,
   "changes": [
     {
-      "id": "20260930",
-      "zhTitle": "老手",
+      "id": "20261004-green-fish",
+      "zhTitle": "绿鱼",
       "before": {
-        "imageUrl": "https://img.goldposter.com/2025/03/i-the-executioner-2_poster_goldposter_com_17.jpg?x-oss-process=image/resize,m_fill,h_334,w_236/quality,q_80/format,webp",
-        "dims": "236×334",
+        "imageUrl": "https://mdb.yuncongz.com/static/upload/large/72ff95f5c26740e282b3a452b07b2910.jpg",
+        "dims": "-",
         "status": "error",
         "issues": [
-          "low_resolution",
-          "aggregator_host"
+          "unreachable"
         ]
       },
       "after": {
-        "imageUrl": "posters/20260930.jpg",
-        "dims": "579×749",
+        "imageUrl": "posters/20261004-green-fish.jpg",
+        "dims": "404×600",
         "source": "bing",
-        "url": "https://so1.360tres.com/t01ecb6af9a57a5ac6f.jpg",
-        "title": "老手图册_360百科"
+        "url": "http://photocdn.sohu.com/20071204/Img253798750.jpg",
+        "title": "李沧东作品：《绿鱼》(1998)-搜狐娱乐"
       }
     }
   ],
   "failures": [],
   "recheck": [
     {
-      "id": "20260930",
+      "id": "20261004-green-fish",
       "status": "warn",
-      "dims": "579×749",
+      "dims": "404×600",
       "issues": [
+        "low_resolution",
         "untrusted_host"
       ]
     }

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《绿鱼》 초록물고기 · Green Fish (1997) — 韩国犯罪片经典推荐</title>
+<style>
+  :root{
+    --ink:#06110f;
+    --ink-2:#0a1a17;
+    --ink-3:#102623;
+    --mist:#dcefe6;
+    --mist-dim:#a3c1b7;
+    --ash:#6f8f86;
+    --ash-dim:#456058;
+    --fish:#45cf95;
+    --fish-soft:#2fa878;
+    --fish-light:#9df0c8;
+    --amber:#d9a94e;
+    --amber-dim:#93743a;
+    --concrete:#8d9d99;
+    --blood:#8e2a2c;
+    --line:rgba(220,239,230,.13);
+    --line-strong:rgba(220,239,230,.26);
+    --serif:"Georgia","Times New Roman","Songti SC","STSong",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ink);
+    color:var(--mist);
+    font-family:var(--sans);
+    line-height:1.85;
+    font-size:16px;
+    letter-spacing:.01em;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:9;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='.5'/></svg>");
+    opacity:.05;mix-blend-mode:overlay;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:8;pointer-events:none;
+    background:radial-gradient(122% 92% at 50% 38%,transparent 44%,rgba(0,0,0,.58) 100%);
+  }
+  ::selection{background:var(--fish);color:#06110f}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;min-height:100vh;overflow:hidden;
+    display:flex;align-items:stretch;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  #heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;pointer-events:none}
+  .hero-scrim{
+    position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:
+      linear-gradient(180deg,rgba(6,17,15,.90) 0%,rgba(6,17,15,.44) 22%,rgba(6,17,15,.10) 50%,rgba(6,17,15,.44) 78%,rgba(6,17,15,.92) 100%),
+      radial-gradient(92% 72% at 18% 42%,rgba(6,17,15,.68) 0%,transparent 74%);
+  }
+  .hero-in{
+    position:relative;z-index:4;
+    width:100%;max-width:1160px;margin:0 auto;
+    padding:118px 28px 92px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--fish);
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  }
+  .eyebrow::before{content:"";width:44px;height:1px;background:var(--fish);opacity:.85;flex:0 0 auto}
+  .eyebrow span{color:var(--ash-dim);letter-spacing:.24em}
+  h1.title{
+    font-family:var(--serif);
+    font-size:clamp(62px,13vw,152px);
+    line-height:.94;
+    letter-spacing:.08em;
+    margin:22px 0 8px;
+    color:#eff7f2;
+    text-shadow:0 6px 44px rgba(0,0,0,.85);
+    font-weight:400;
+  }
+  .title-en{
+    font-family:var(--serif);font-size:clamp(15px,2.2vw,26px);
+    letter-spacing:.42em;color:var(--mist-dim);
+    text-transform:uppercase;margin-bottom:6px;padding-left:3px;
+  }
+  .title-kr{
+    font-size:clamp(13px,1.6vw,17px);letter-spacing:.34em;color:var(--amber);
+    margin-bottom:26px;padding-left:3px;
+  }
+  .hero-sub{
+    max-width:660px;font-size:clamp(14px,1.6vw,17px);
+    color:var(--mist-dim);line-height:1.95;
+    border-left:2px solid var(--fish);padding-left:20px;
+  }
+  .hero-sub b{color:var(--mist);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+  .chip{
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+    padding:6px 12px;border:1px solid var(--line-strong);
+    color:var(--mist-dim);background:rgba(6,17,15,.44);
+    backdrop-filter:blur(3px);
+  }
+  .chip.hot{border-color:rgba(69,207,149,.55);color:var(--fish-light)}
+  .chip.tag{border-color:rgba(217,169,78,.48);color:var(--amber)}
+  .scroll-hint{
+    position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
+    z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.3em;
+    color:var(--ash-dim);display:flex;flex-direction:column;align-items:center;gap:9px;
+  }
+  .scroll-hint i{display:block;width:1px;height:36px;background:linear-gradient(180deg,var(--fish),transparent);animation:drop 2.4s ease-in-out infinite}
+  @keyframes drop{0%,100%{opacity:.25;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
+
+  /* ============ LAYOUT ============ */
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+  section.band{padding:96px 0;position:relative;border-bottom:1px solid var(--line)}
+  section.band:last-of-type{border-bottom:0}
+  .sec-head{margin-bottom:52px;position:relative}
+  .sec-num{
+    font-family:var(--mono);font-size:10px;letter-spacing:.34em;color:var(--fish);
+    text-transform:uppercase;display:block;margin-bottom:14px;
+  }
+  h2.sec-title{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(26px,3.6vw,44px);line-height:1.24;letter-spacing:.03em;color:#e9f4ee;
+  }
+  h2.sec-title em{font-style:normal;color:var(--fish)}
+  .sec-desc{margin-top:16px;max-width:760px;color:var(--ash);font-size:14.5px;line-height:1.9}
+
+  /* 无剧透提示条 */
+  .nospoil{
+    display:flex;gap:16px;align-items:flex-start;
+    border:1px solid rgba(69,207,149,.32);
+    background:linear-gradient(90deg,rgba(69,207,149,.09),rgba(69,207,149,.015) 62%,transparent);
+    padding:18px 22px;margin:0 0 64px;
+  }
+  .nospoil .mark{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--fish-light);
+    border:1px solid rgba(69,207,149,.5);padding:3px 7px;flex:0 0 auto;margin-top:3px;
+  }
+  .nospoil p{font-size:13.5px;color:var(--mist-dim);line-height:1.85}
+  .nospoil p b{color:var(--mist)}
+
+  /* 两栏：速览 + 梗概 */
+  .duo{display:grid;grid-template-columns:300px minmax(0,1fr);gap:56px;align-items:start}
+  .glance{border:1px solid var(--line-strong);background:var(--ink-2);padding:26px 22px;position:sticky;top:28px}
+  .glance h3{
+    font-family:var(--mono);font-size:10px;letter-spacing:.28em;color:var(--fish);
+    text-transform:uppercase;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line);
+  }
+  .glance dl{display:flex;flex-direction:column;gap:0}
+  .glance .row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(220,239,230,.09);font-size:12.5px}
+  .glance .row:last-child{border-bottom:0}
+  .glance dt{color:var(--ash-dim);flex:0 0 auto;letter-spacing:.06em}
+  .glance dd{color:var(--mist);text-align:right;font-weight:500}
+  .glance .row.accent dd{color:var(--fish-light)}
+  .glance .row.tagged dd{color:var(--amber)}
+
+  .prose{font-size:16.5px;line-height:2.05;color:var(--mist-dim)}
+  .prose p+p{margin-top:22px}
+  .prose b{color:var(--mist);font-weight:600}
+  .prose .kr{color:var(--amber);font-family:var(--mono);font-size:14px}
+  .prose em{color:var(--fish-light);font-style:normal}
+  .drop::first-letter{
+    font-family:var(--serif);float:left;font-size:74px;line-height:.82;
+    padding:6px 14px 0 0;color:var(--fish);font-weight:400;
+  }
+
+  /* 概念海报 */
+  .poster-grid{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:60px;align-items:start}
+  .poster-frame{
+    border:1px solid var(--line-strong);background:var(--ink-2);
+    padding:20px;position:relative;
+  }
+  .poster-frame::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+    background:repeating-linear-gradient(115deg,var(--fish) 0 10px,transparent 10px 20px);opacity:.45;
+  }
+  .poster-frame svg{display:block;width:100%;height:auto}
+  .poster-cap{
+    font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--ash-dim);
+    margin-top:16px;text-transform:uppercase;
+  }
+  .notes{display:flex;flex-direction:column;gap:26px}
+  .note{border-left:1px solid var(--line-strong);padding-left:22px;position:relative}
+  .note::before{
+    content:"";position:absolute;left:-3px;top:9px;width:5px;height:5px;
+    background:var(--fish);border-radius:50%;
+  }
+  .note h4{font-size:14.5px;letter-spacing:.14em;color:var(--mist);font-weight:600;margin-bottom:8px}
+  .note p{font-size:14px;color:var(--ash);line-height:1.9}
+
+  /* 档案格 */
+  .file-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .file-cell{background:var(--ink-2);padding:20px 18px;min-height:96px;display:flex;flex-direction:column;gap:7px}
+  .file-cell dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--ash-dim);text-transform:uppercase}
+  .file-cell dd{font-size:14.5px;color:var(--mist);line-height:1.55;font-weight:500}
+  .file-cell.wide{grid-column:span 2}
+  .file-cell.hot dd{color:var(--fish-light)}
+  .file-cell.tagged dd{color:var(--amber)}
+  .file-cell dd small{display:block;font-size:11.5px;color:var(--ash-dim);font-weight:400;letter-spacing:.04em;margin-top:3px}
+
+  /* 口碑四卡 */
+  .score-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+  .score{
+    border:1px solid var(--line-strong);background:linear-gradient(180deg,var(--ink-3),var(--ink-2));
+    padding:26px 22px 22px;position:relative;overflow:hidden;
+  }
+  .score::before{
+    content:"";position:absolute;top:0;left:0;width:100%;height:2px;
+    background:linear-gradient(90deg,var(--fish),transparent 76%);
+  }
+  .score .plat{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--ash-dim);text-transform:uppercase}
+  .score .big{font-family:var(--serif);font-size:46px;line-height:1;color:#eff7f2;margin:14px 0 4px}
+  .score .big i{font-style:normal;font-size:16px;color:var(--ash-dim);letter-spacing:.06em;margin-left:4px}
+  .score .bar{height:3px;background:rgba(220,239,230,.13);margin:16px 0 12px;position:relative}
+  .score .bar span{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--fish),var(--fish-light))}
+  .score .cap{font-size:12px;color:var(--ash-dim);line-height:1.75}
+  .score .cap b{color:var(--mist-dim);font-weight:500}
+
+  /* 时间线 */
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,var(--fish),rgba(220,239,230,.14) 40%,rgba(220,239,230,.14))}
+  .tl-item{position:relative;padding:0 0 34px 0}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-32px;top:9px;width:9px;height:9px;
+    border:1px solid var(--fish);background:var(--ink);transform:rotate(45deg);
+  }
+  .tl-item.hot::before{background:var(--fish);border-color:var(--fish)}
+  .tl-year{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--fish-light);margin-bottom:7px}
+  .tl-title{font-size:15.5px;color:var(--mist);font-weight:600;letter-spacing:.03em;margin-bottom:6px}
+  .tl-desc{font-size:13.5px;color:var(--ash);line-height:1.85;max-width:780px}
+
+  /* 荣誉 */
+  .awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .aw{background:var(--ink-2);padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
+  .aw .yr{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ash-dim);flex:0 0 auto;padding-top:3px;width:38px}
+  .aw .bd{font-size:13.8px;color:var(--mist-dim);line-height:1.8}
+  .aw .bd b{color:var(--mist);font-weight:600;display:block;margin-bottom:3px;font-size:14.2px}
+  .aw .bd b em{font-style:normal;color:var(--fish-light)}
+
+  /* 谱系坐标 */
+  .lineage{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .lg{background:var(--ink-2);padding:24px 20px;display:flex;flex-direction:column;gap:9px;position:relative}
+  .lg.now{background:linear-gradient(180deg,rgba(69,207,149,.14),var(--ink-2) 72%)}
+  .lg .lg-yr{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;color:var(--ash-dim)}
+  .lg .lg-tt{font-family:var(--serif);font-size:19px;color:var(--mist);line-height:1.3}
+  .lg .lg-dr{font-size:12.5px;color:var(--ash);line-height:1.7}
+  .lg .lg-wt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--fish);margin-top:auto;padding-top:10px}
+  .lg.now .lg-wt{color:var(--amber)}
+  .lineage-note{margin-top:26px;border-left:2px solid var(--fish);padding-left:20px;font-size:14.5px;color:var(--ash);line-height:1.95;max-width:840px}
+
+  /* 六宫格亮点 */
+  .highlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .hl{background:var(--ink-2);padding:30px 26px 32px;position:relative;transition:background .5s ease}
+  .hl:hover{background:var(--ink-3)}
+  .hl .idx{
+    font-family:var(--serif);font-size:34px;color:rgba(220,239,230,.13);
+    line-height:1;margin-bottom:16px;letter-spacing:.02em;
+  }
+  .hl h4{font-size:16px;color:var(--mist);font-weight:600;letter-spacing:.05em;margin-bottom:12px}
+  .hl h4 em{font-style:normal;color:var(--fish-light)}
+  .hl p{font-size:13.6px;color:var(--ash);line-height:1.9}
+
+  /* 为什么值得看 */
+  .why{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .why-item{background:var(--ink-2);padding:40px 38px;display:grid;grid-template-columns:210px minmax(0,1fr);gap:40px;align-items:start}
+  .why-item h4{font-family:var(--serif);font-size:19px;color:var(--mist);line-height:1.5;font-weight:400;letter-spacing:.04em}
+  .why-item h4 span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--fish);margin-bottom:12px;text-transform:uppercase}
+  .why-item p{font-size:15px;color:var(--ash);line-height:2;max-width:780px}
+  .why-item p b{color:var(--mist-dim);font-weight:600}
+
+  /* 提示三格 */
+  .warns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .warn{border:1px solid rgba(142,42,44,.5);background:linear-gradient(180deg,rgba(142,42,44,.13),rgba(142,42,44,.03));padding:24px 22px}
+  .warn .tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:#cf7a76;text-transform:uppercase;margin-bottom:12px}
+  .warn p{font-size:13.5px;color:var(--mist-dim);line-height:1.85}
+  .warn p b{color:var(--mist)}
+
+  /* 结尾 */
+  .outro{border-top:1px solid var(--line);background:linear-gradient(180deg,var(--ink),#08151a)}
+  .quote{max-width:860px}
+  .quote .q-mark{font-family:var(--serif);font-size:66px;color:var(--fish);opacity:.55;line-height:.6}
+  .quote blockquote{
+    font-family:var(--serif);font-size:clamp(19px,2.5vw,28px);line-height:1.72;
+    color:#e6f2eb;letter-spacing:.03em;margin:6px 0 22px;
+  }
+  .quote .attr{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--ash-dim);text-transform:uppercase}
+  .outro-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:60px;align-items:end;margin-top:16px}
+  .end-stamp{border:1px solid var(--line-strong);padding:22px;text-align:center}
+  .end-stamp .no{font-family:var(--serif);font-size:56px;color:var(--fish);line-height:1}
+  .end-stamp .lb{font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--ash-dim);margin-top:10px;text-transform:uppercase}
+  footer{
+    border-top:1px solid var(--line);padding:34px 0 54px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--ash-dim);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;text-transform:uppercase;
+  }
+
+  /* 水位 HUD */
+  #hud{
+    position:fixed;right:22px;bottom:24px;z-index:12;
+    border:1px solid var(--line-strong);background:rgba(6,17,15,.84);
+    backdrop-filter:blur(8px);padding:14px 16px 13px;min-width:218px;
+    display:none;
+  }
+  #hud .hud-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+  #hud .hud-top span{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--ash-dim);text-transform:uppercase}
+  #hud .hud-top b{font-family:var(--mono);font-size:11px;color:var(--fish-light);letter-spacing:.1em}
+  #hud .hud-track{height:2px;background:rgba(220,239,230,.14);position:relative}
+  #hud .hud-track i{position:absolute;top:-2px;left:0;width:6px;height:6px;background:var(--fish);transform:translateX(-3px)}
+  #hud .hud-lb{font-size:11px;color:var(--mist-dim);margin-top:9px;letter-spacing:.06em;font-family:var(--mono)}
+
+  /* 入场动画 */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.25,1),transform .9s cubic-bezier(.2,.7,.25,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1 !important;transform:none !important;transition:none !important}
+    html{scroll-behavior:auto}
+    .scroll-hint i{animation:none}
+  }
+
+  /* 响应式 */
+  @media (max-width:1080px){
+    .duo{grid-template-columns:1fr;gap:38px}
+    .glance{position:static}
+    .poster-grid{grid-template-columns:1fr;gap:40px}
+    .poster-frame{max-width:420px;margin:0 auto}
+    .score-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .file-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .lineage{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .highlights{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .outro-grid{grid-template-columns:1fr;gap:40px}
+  }
+  @media (max-width:760px){
+    body{font-size:15px}
+    section.band{padding:70px 0}
+    .wrap{padding:0 20px}
+    .hero-in{padding:104px 20px 88px}
+    .eyebrow{font-size:9.5px;letter-spacing:.22em;gap:10px}
+    .eyebrow::before{width:26px}
+    .eyebrow span{letter-spacing:.14em}
+    h1.title{letter-spacing:.06em;margin-top:16px}
+    .title-en{letter-spacing:.3em}
+    .title-kr{letter-spacing:.22em;margin-bottom:20px}
+    .hero-sub{padding-left:15px;font-size:14px}
+    .chips{gap:7px;margin-top:22px}
+    .chip{font-size:10px;padding:5px 9px;letter-spacing:.08em}
+    .file-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .file-cell.wide{grid-column:span 2}
+    .score-grid{grid-template-columns:1fr}
+    .lineage{grid-template-columns:1fr}
+    .highlights{grid-template-columns:1fr}
+    .awards{grid-template-columns:1fr}
+    .warns{grid-template-columns:1fr}
+    .why-item{grid-template-columns:1fr;gap:18px;padding:30px 24px}
+    .sec-head{margin-bottom:38px}
+    .nospoil{padding:15px 16px;gap:12px}
+    .nospoil .mark{font-size:9px}
+    .nospoil p{font-size:12.5px}
+    .drop::first-letter{font-size:56px;padding:4px 10px 0 0}
+  }
+  @media (min-width:981px){#hud{display:block}}
+</style>
+</head>
+<body>
+
+<div id="hud">
+  <div class="hud-top"><span>Waterline</span><b id="hudVal">00%</b></div>
+  <div class="hud-track"><i id="hudDot"></i></div>
+  <div class="hud-lb" id="hudLb">返乡 · 车窗外的田</div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#040d0c"/>
+        <stop offset="38%" stop-color="#081a18"/>
+        <stop offset="72%" stop-color="#12302b"/>
+        <stop offset="93%" stop-color="#28423a"/>
+        <stop offset="100%" stop-color="#4b4231"/>
+      </linearGradient>
+      <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0d1e1b"/>
+        <stop offset="42%" stop-color="#071310"/>
+        <stop offset="100%" stop-color="#030908"/>
+      </linearGradient>
+      <radialGradient id="hz" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#d9a94e" stop-opacity=".34"/>
+        <stop offset="46%" stop-color="#c99a45" stop-opacity=".10"/>
+        <stop offset="100%" stop-color="#c99a45" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="tankGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#45cf95" stop-opacity=".34"/>
+        <stop offset="52%" stop-color="#2fa878" stop-opacity=".10"/>
+        <stop offset="100%" stop-color="#2fa878" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="tankWater" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1e6350" stop-opacity=".58"/>
+        <stop offset="54%" stop-color="#134a3d" stop-opacity=".52"/>
+        <stop offset="100%" stop-color="#0a2b23" stop-opacity=".72"/>
+      </linearGradient>
+      <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#dcefe6" stop-opacity=".16"/>
+        <stop offset="46%" stop-color="#dcefe6" stop-opacity=".02"/>
+        <stop offset="100%" stop-color="#dcefe6" stop-opacity=".10"/>
+      </linearGradient>
+      <linearGradient id="rim" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#9df0c8" stop-opacity=".18"/>
+        <stop offset="26%" stop-color="#e8fff3" stop-opacity=".78"/>
+        <stop offset="62%" stop-color="#9df0c8" stop-opacity=".34"/>
+        <stop offset="100%" stop-color="#9df0c8" stop-opacity=".14"/>
+      </linearGradient>
+      <linearGradient id="plinth" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#183029"/>
+        <stop offset="100%" stop-color="#081614"/>
+      </linearGradient>
+    </defs>
+
+    <rect width="1440" height="900" fill="url(#sky)"/>
+
+    <!-- 地平线暖光（新城工地的钠灯与灯带） -->
+    <ellipse cx="720" cy="536" rx="900" ry="120" fill="url(#hz)" opacity=".85"/>
+    <ellipse cx="1060" cy="540" rx="360" ry="66" fill="url(#hz)" opacity=".6"/>
+
+    <!-- ===== 远处：正在长高的新区 ===== -->
+    <g fill="#04100e">
+      <rect x="40" y="470" width="86" height="70"/>
+      <rect x="136" y="440" width="62" height="100"/>
+      <rect x="208" y="486" width="104" height="54"/>
+      <rect x="322" y="452" width="54" height="88"/>
+      <rect x="386" y="500" width="120" height="40"/>
+      <rect x="506" y="470" width="92" height="70"/>
+      <rect x="692" y="486" width="88" height="54"/>
+      <rect x="792" y="452" width="66" height="88"/>
+      <rect x="870" y="492" width="82" height="48"/>
+      <rect x="952" y="496" width="112" height="44"/>
+      <rect x="1074" y="446" width="58" height="94"/>
+      <rect x="1142" y="482" width="98" height="58"/>
+      <rect x="1250" y="436" width="66" height="104"/>
+      <rect x="1326" y="478" width="80" height="62"/>
+    </g>
+    <!-- 未完工的楼体骨架（只有格，没有墙） -->
+    <g stroke="#0d2a25" stroke-width="1.6" fill="none">
+      <rect x="612" y="424" width="84" height="116"/>
+      <line x1="612" y1="452" x2="696" y2="452"/>
+      <line x1="612" y1="480" x2="696" y2="480"/>
+      <line x1="612" y1="508" x2="696" y2="508"/>
+      <line x1="640" y1="424" x2="640" y2="540"/>
+      <line x1="668" y1="424" x2="668" y2="540"/>
+    </g>
+    <!-- 楼顶受光边缘 -->
+    <g fill="#1e3a33" opacity=".8">
+      <rect x="136" y="440" width="62" height="1.6"/>
+      <rect x="322" y="452" width="54" height="1.6"/>
+      <rect x="792" y="452" width="66" height="1.6"/>
+      <rect x="1074" y="446" width="58" height="1.6"/>
+      <rect x="1250" y="436" width="66" height="1.6"/>
+      <rect x="40" y="470" width="86" height="1.4"/>
+      <rect x="506" y="470" width="92" height="1.4"/>
+    </g>
+    <!-- 窗光：琥珀与冷青 -->
+    <g fill="#d9a94e" opacity=".42">
+      <rect x="152" y="460" width="5" height="7"/>
+      <rect x="172" y="486" width="5" height="7"/>
+      <rect x="336" y="474" width="5" height="7"/>
+      <rect x="352" y="500" width="5" height="7"/>
+      <rect x="520" y="492" width="5" height="7"/>
+      <rect x="560" y="514" width="5" height="7"/>
+      <rect x="806" y="474" width="5" height="7"/>
+      <rect x="828" y="502" width="5" height="7"/>
+      <rect x="1088" y="468" width="5" height="7"/>
+      <rect x="1106" y="496" width="5" height="7"/>
+      <rect x="1264" y="458" width="5" height="7"/>
+      <rect x="1290" y="486" width="5" height="7"/>
+      <rect x="1158" y="506" width="5" height="7"/>
+      <rect x="972" y="516" width="5" height="7"/>
+      <rect x="712" y="508" width="5" height="7"/>
+      <rect x="404" y="520" width="5" height="7"/>
+    </g>
+    <g fill="#9df0c8" opacity=".26">
+      <rect x="236" y="502" width="4" height="6"/>
+      <rect x="262" y="512" width="4" height="6"/>
+      <rect x="640" y="440" width="4" height="6"/>
+      <rect x="676" y="468" width="4" height="6"/>
+      <rect x="902" y="506" width="4" height="6"/>
+      <rect x="1160" y="440" width="4" height="6"/>
+      <rect x="1338" y="500" width="4" height="6"/>
+    </g>
+
+    <!-- 三台塔吊 -->
+    <g stroke="#07201c" stroke-width="3" fill="none">
+      <line x1="470" y1="540" x2="470" y2="292"/>
+      <line x1="398" y1="292" x2="556" y2="292"/>
+      <line x1="470" y1="268" x2="398" y2="292"/>
+      <line x1="470" y1="268" x2="556" y2="292"/>
+      <line x1="536" y1="292" x2="536" y2="348"/>
+      <line x1="1002" y1="540" x2="1002" y2="310"/>
+      <line x1="936" y1="310" x2="1084" y2="310"/>
+      <line x1="1002" y1="286" x2="936" y2="310"/>
+      <line x1="1002" y1="286" x2="1084" y2="310"/>
+      <line x1="1066" y1="310" x2="1066" y2="360"/>
+      <line x1="1218" y1="540" x2="1218" y2="326"/>
+      <line x1="1150" y1="326" x2="1298" y2="326"/>
+      <line x1="1218" y1="302" x2="1150" y2="326"/>
+      <line x1="1218" y1="302" x2="1298" y2="326"/>
+      <line x1="1280" y1="326" x2="1280" y2="374"/>
+    </g>
+    <g fill="#07201c">
+      <rect x="452" y="288" width="22" height="14"/>
+      <rect x="530" y="344" width="13" height="10"/>
+      <rect x="984" y="306" width="22" height="14"/>
+      <rect x="1060" y="356" width="13" height="10"/>
+      <rect x="1200" y="322" width="22" height="14"/>
+      <rect x="1274" y="370" width="13" height="10"/>
+    </g>
+    <!-- 吊索 -->
+    <g stroke="#0a2420" stroke-width="1.4" fill="none" opacity=".9">
+      <line x1="470" y1="292" x2="436" y2="360"/>
+      <line x1="436" y1="360" x2="436" y2="392" stroke="#0d2a25"/>
+      <line x1="1002" y1="310" x2="1036" y2="372"/>
+      <line x1="1036" y1="372" x2="1036" y2="404" stroke="#0d2a25"/>
+    </g>
+
+    <!-- 地平线 -->
+    <line x1="0" y1="540" x2="1440" y2="540" stroke="#c99a45" stroke-width="1.2" opacity=".34"/>
+
+    <!-- ===== 地面 ===== -->
+    <rect x="0" y="540" width="1440" height="360" fill="url(#ground)"/>
+    <g opacity=".5">
+      <line x1="0" y1="556" x2="1440" y2="556" stroke="#16302a" stroke-width="1"/>
+      <line x1="0" y1="580" x2="1440" y2="580" stroke="#122822" stroke-width="1"/>
+      <line x1="0" y1="612" x2="1440" y2="612" stroke="#0e1f1c" stroke-width="1"/>
+    </g>
+    <ellipse cx="720" cy="566" rx="520" ry="20" fill="#d9a94e" opacity=".06"/>
+
+    <!-- ===== 前景：鱼缸 ===== -->
+    <ellipse cx="720" cy="800" rx="196" ry="14" fill="#45cf95" opacity=".10"/>
+    <ellipse cx="720" cy="798" rx="150" ry="9" fill="#000" opacity=".55"/>
+
+    <!-- 缸体 -->
+    <g>
+      <!-- 水 -->
+      <rect x="561" y="559" width="318" height="216" rx="3" fill="url(#tankWater)"/>
+      <!-- 缸内底部砂石 -->
+      <path d="M561 745 h318 v30 h-318 z" fill="#12322a"/>
+      <g fill="#1d4b3d" opacity=".9">
+        <circle cx="586" cy="760" r="3.4"/><circle cx="602" cy="768" r="2.6"/>
+        <circle cx="624" cy="757" r="2.9"/><circle cx="648" cy="769" r="3.2"/>
+        <circle cx="672" cy="758" r="2.4"/><circle cx="700" cy="770" r="3.1"/>
+        <circle cx="726" cy="759" r="2.7"/><circle cx="752" cy="769" r="3.3"/>
+        <circle cx="778" cy="757" r="2.5"/><circle cx="804" cy="768" r="3"/>
+        <circle cx="830" cy="760" r="2.8"/><circle cx="854" cy="770" r="2.4"/>
+      </g>
+      <g fill="#9df0c8" opacity=".22">
+        <circle cx="612" cy="762" r="1.5"/><circle cx="690" cy="764" r="1.4"/>
+        <circle cx="766" cy="762" r="1.5"/><circle cx="836" cy="765" r="1.3"/>
+      </g>
+      <!-- 水草 -->
+      <g stroke="#2fa878" stroke-width="2.6" fill="none" opacity=".55" stroke-linecap="round">
+        <path d="M596 748 q-10 -26 2 -46"/>
+        <path d="M604 748 q8 -22 -2 -40"/>
+        <path d="M840 748 q10 -24 -2 -42"/>
+        <path d="M848 748 q-8 -20 3 -36"/>
+      </g>
+      <!-- 水面线 -->
+      <line x1="561" y1="572" x2="879" y2="572" stroke="#9df0c8" stroke-width="1.6" opacity=".38"/>
+      <line x1="575" y1="576" x2="865" y2="576" stroke="#dcefe6" stroke-width="1" opacity=".14"/>
+      <!-- 玻璃反光 -->
+      <polygon points="612,559 690,559 616,775 561,775" fill="url(#glass)"/>
+      <polygon points="806,559 828,559 764,775 742,775" fill="#dcefe6" opacity=".045"/>
+      <!-- 玻璃框 -->
+      <rect x="559" y="557" width="322" height="220" rx="4" fill="none" stroke="#8ac9b4" stroke-width="2.4" opacity=".6"/>
+      <rect x="562" y="560" width="316" height="214" rx="3" fill="none" stroke="#04120f" stroke-width="1.4" opacity=".7"/>
+      <!-- 缸口高光 -->
+      <rect x="559" y="556" width="322" height="3.4" rx="1.6" fill="url(#rim)"/>
+      <!-- 水位刻度 -->
+      <g stroke="#9df0c8" stroke-width="1" opacity=".34">
+        <line x1="563" y1="600" x2="575" y2="600"/>
+        <line x1="563" y1="628" x2="571" y2="628"/>
+        <line x1="563" y1="656" x2="575" y2="656"/>
+        <line x1="563" y1="684" x2="571" y2="684"/>
+        <line x1="563" y1="712" x2="575" y2="712"/>
+      </g>
+      <!-- 角落吊牌 -->
+      <g>
+        <line x1="856" y1="558" x2="856" y2="584" stroke="#6f8f86" stroke-width="1"/>
+        <rect x="834" y="584" width="44" height="17" fill="#d9a94e" opacity=".82"/>
+        <text x="856" y="596" text-anchor="middle" font-family="monospace" font-size="8.6" fill="#2b2114" letter-spacing="1.2">NO.01</text>
+      </g>
+    </g>
+
+    <!-- 底座 -->
+    <g>
+      <rect x="536" y="777" width="368" height="18" fill="url(#plinth)"/>
+      <rect x="536" y="777" width="368" height="2.6" fill="#2c5348" opacity=".8"/>
+      <rect x="548" y="795" width="344" height="5" fill="#050f0d"/>
+    </g>
+  </svg>
+  <div class="hero-scrim"></div>
+  <canvas id="heroCanvas"></canvas>
+
+  <div class="hero-in">
+    <div class="eyebrow">韩国犯罪片 · 第 22 部 <span>Korean Crime Cinema / No.22</span></div>
+    <h1 class="title">绿鱼</h1>
+    <div class="title-en">Green Fish</div>
+    <div class="title-kr">초록물고기 · 1997</div>
+    <p class="hero-sub">
+      一个刚退伍的年轻人坐上返乡的列车，<br>
+      等他到家，记忆里那片田已经没了。<b>他只想找个能站住脚的地方，可这座正在长高的城市，从没打算给他留位置。</b>
+    </p>
+    <div class="chips">
+      <span class="chip hot">李沧东长片处女作 · 韩国新浪潮奠基作之一</span>
+      <span class="chip tag">第 18 届青龙奖 · 最佳影片</span>
+      <span class="chip">韩石圭 × 沈惠珍 × 文成根</span>
+      <span class="chip">宋康昊 出演</span>
+      <span class="chip">111 分钟 · 1997</span>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>SCROLL</span><i></i></div>
+</header>
+
+<!-- ================= 01 梗概 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="nospoil reveal">
+      <span class="mark">NO&nbsp;SPOILER</span>
+      <p><b>全程不剧透。</b>下面所有内容只写到影片第一幕为止的公开设定——他怎么回家、家变成了什么样、他把谁当成了自己人。至于他在这条路上走了多远、那个他当成「家」的东西最后把他带去了哪里，一个字都不提。</p>
+    </div>
+
+    <div class="sec-head reveal">
+      <span class="sec-num">01 / Synopsis</span>
+      <h2 class="sec-title">一个人回到家乡，<em>发现家乡已经被换掉了</em></h2>
+    </div>
+
+    <div class="duo">
+      <aside class="glance reveal">
+        <h3>一眼速览</h3>
+        <dl>
+          <div class="row"><dt>片名</dt><dd>绿鱼</dd></div>
+          <div class="row"><dt>韩文原片名</dt><dd>초록물고기</dd></div>
+          <div class="row"><dt>英文片名</dt><dd>Green Fish</dd></div>
+          <div class="row"><dt>其他译名</dt><dd>黑道初哥</dd></div>
+          <div class="row"><dt>年份</dt><dd>1997</dd></div>
+          <div class="row"><dt>类型</dt><dd>犯罪 / 剧情 / 黑帮</dd></div>
+          <div class="row"><dt>导演 · 编剧</dt><dd>李沧东</dd></div>
+          <div class="row"><dt>片长</dt><dd>111 分钟</dd></div>
+          <div class="row tagged"><dt>分级</dt><dd>18 岁以上观览可</dd></div>
+          <div class="row accent"><dt>豆瓣</dt><dd>7.8 / 10</dd></div>
+        </dl>
+      </aside>
+
+      <div class="prose reveal">
+        <p class="drop">
+          服完兵役的年轻人<em>莫东</em>，坐上了返乡的列车。他在车上遇见了<em>美爱</em>——一个被几个男人纠缠的女人。他替她解了围，把捡到的东西还回去。这是这趟旅程里，他唯一做成的一件事。
+        </p>
+        <p>
+          等他真的回到家，才发现记忆里的那个地方已经不在原地了。名字还是那个名字，地方却换了模样：脚手架、塔吊、一排排还没装窗户的新楼；原来住在那里的邻居，好像一夜之间就散掉了。家里也没好到哪里去——大哥病在床上，二哥每天喝得不省人事，妹妹在城里的酒店上班，母亲还在等一个能把这个家撑起来的人。<b>而他连一份工都没找到。</b>
+        </p>
+        <p>
+          走投无路的时候，他去找了美爱。美爱把他带进另一个「家」——一个讲辈分、讲义气、出手也大方的组织。老大<em>裴泰坤</em>赏识他，身边人喊他一声哥，他第一次有了能一起喝酒吃饭的「家里人」，也有了能拿回家的钱。
+        </p>
+        <p>
+          可这地方讲的规矩，和他心里想的并不一样。美爱是「大哥的女人」，他那点心思从第一眼起就放错了地方；而他这种从乡下进城、身后什么都没有的年轻人，在这套秩序里究竟算什么——<b>还没人告诉他，秩序也不需要告诉他。</b>
+        </p>
+        <p>
+          他以为自己终于站住了。至于他在这条路上走了多远、那尾一直被他当成「家」的东西最后把他带去了哪里——<b>这里一个字都不会说。</b>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 概念海报 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02 / Concept Poster</span>
+      <h2 class="sec-title">一尾被养在缸里的鱼，<em>抬头就是长高的城市</em></h2>
+      <p class="sec-desc">这张概念图把全片最重要的两个物件放在同一个画面里：一个装得下他的方缸，和一片装不下他的新城。鱼在缸里，城在天上，中间只隔一层玻璃。</p>
+    </div>
+
+    <div class="poster-grid">
+      <figure class="poster-frame reveal">
+        <svg viewBox="0 0 400 600" aria-label="《绿鱼》概念海报">
+          <defs>
+            <linearGradient id="pBg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#04100e"/>
+              <stop offset="58%" stop-color="#0b211d"/>
+              <stop offset="100%" stop-color="#061411"/>
+            </linearGradient>
+            <linearGradient id="pWater" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1e6350" stop-opacity=".62"/>
+              <stop offset="58%" stop-color="#124a3c" stop-opacity=".54"/>
+              <stop offset="100%" stop-color="#08251e" stop-opacity=".76"/>
+            </linearGradient>
+            <linearGradient id="pFish" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#9df0c8"/>
+              <stop offset="48%" stop-color="#45cf95"/>
+              <stop offset="100%" stop-color="#227c5c"/>
+            </linearGradient>
+            <linearGradient id="pGlass" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#dcefe6" stop-opacity=".14"/>
+              <stop offset="52%" stop-color="#dcefe6" stop-opacity=".015"/>
+              <stop offset="100%" stop-color="#dcefe6" stop-opacity=".09"/>
+            </linearGradient>
+            <radialGradient id="pGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#45cf95" stop-opacity=".3"/>
+              <stop offset="100%" stop-color="#45cf95" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="pHz" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#d9a94e" stop-opacity=".3"/>
+              <stop offset="100%" stop-color="#d9a94e" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <rect width="400" height="600" fill="url(#pBg)"/>
+
+          <!-- 地平线暖光 -->
+          <ellipse cx="200" cy="256" rx="240" ry="52" fill="url(#pHz)"/>
+
+          <!-- 远处的城 -->
+          <g fill="#03100d">
+            <rect x="14" y="212" width="44" height="48"/>
+            <rect x="66" y="190" width="30" height="70"/>
+            <rect x="104" y="224" width="50" height="36"/>
+            <rect x="252" y="218" width="46" height="42"/>
+            <rect x="306" y="188" width="30" height="72"/>
+            <rect x="344" y="216" width="42" height="44"/>
+          </g>
+          <g stroke="#0c2823" stroke-width="1.4" fill="none">
+            <rect x="164" y="176" width="42" height="84"/>
+            <line x1="164" y1="200" x2="206" y2="200"/>
+            <line x1="164" y1="224" x2="206" y2="224"/>
+            <line x1="178" y1="176" x2="178" y2="260"/>
+            <line x1="192" y1="176" x2="192" y2="260"/>
+          </g>
+          <g stroke="#061c18" stroke-width="2" fill="none">
+            <line x1="238" y1="260" x2="238" y2="128"/>
+            <line x1="206" y1="128" x2="286" y2="128"/>
+            <line x1="238" y1="112" x2="206" y2="128"/>
+            <line x1="238" y1="112" x2="286" y2="128"/>
+            <line x1="272" y1="128" x2="272" y2="164"/>
+          </g>
+          <g fill="#d9a94e" opacity=".45">
+            <rect x="24" y="226" width="4" height="6"/><rect x="76" y="208" width="4" height="6"/>
+            <rect x="118" y="238" width="4" height="6"/><rect x="262" y="234" width="4" height="6"/>
+            <rect x="316" y="210" width="4" height="6"/><rect x="356" y="230" width="4" height="6"/>
+          </g>
+          <g fill="#9df0c8" opacity=".26">
+            <rect x="138" y="240" width="3" height="5"/><rect x="330" y="244" width="3" height="5"/>
+          </g>
+          <line x1="0" y1="260" x2="400" y2="260" stroke="#c99a45" stroke-width="1" opacity=".3"/>
+
+          <!-- 缸底台面 -->
+          <rect x="0" y="470" width="400" height="130" fill="#050f0d"/>
+          <line x1="0" y1="470" x2="400" y2="470" stroke="#122a25" stroke-width="1"/>
+          <ellipse cx="200" cy="484" rx="176" ry="9" fill="#45cf95" opacity=".09"/>
+
+          <!-- 鱼缸 -->
+          <ellipse cx="200" cy="470" rx="230" ry="80" fill="url(#pGlow)" opacity=".5"/>
+          <g>
+            <rect x="58" y="286" width="284" height="176" rx="4" fill="url(#pWater)"/>
+            <path d="M58 428 h284 v34 h-284 z" fill="#12322a"/>
+            <g fill="#1d4b3d">
+              <circle cx="80" cy="446" r="3"/><circle cx="100" cy="452" r="2.4"/>
+              <circle cx="126" cy="443" r="2.6"/><circle cx="156" cy="453" r="3"/>
+              <circle cx="186" cy="444" r="2.3"/><circle cx="216" cy="452" r="2.9"/>
+              <circle cx="246" cy="443" r="2.5"/><circle cx="276" cy="453" r="3"/>
+              <circle cx="306" cy="445" r="2.4"/><circle cx="328" cy="451" r="2.2"/>
+            </g>
+            <g fill="#9df0c8" opacity=".22">
+              <circle cx="112" cy="448" r="1.4"/><circle cx="200" cy="449" r="1.3"/><circle cx="290" cy="448" r="1.4"/>
+            </g>
+            <g stroke="#2fa878" stroke-width="2.4" fill="none" opacity=".55" stroke-linecap="round">
+              <path d="M82 432 q-9 -24 2 -42"/>
+              <path d="M90 432 q8 -20 -2 -38"/>
+              <path d="M318 432 q9 -22 -2 -40"/>
+              <path d="M326 432 q-8 -18 3 -34"/>
+            </g>
+            <!-- 气泡 -->
+            <g fill="none" stroke="#9df0c8" opacity=".4">
+              <circle cx="252" cy="330" r="3.4"/>
+              <circle cx="262" cy="306" r="2.4"/>
+              <circle cx="256" cy="288" r="1.7"/>
+              <circle cx="126" cy="382" r="2.6"/>
+              <circle cx="132" cy="360" r="1.7"/>
+            </g>
+            <!-- 水面线 -->
+            <line x1="58" y1="300" x2="342" y2="300" stroke="#9df0c8" stroke-width="1.5" opacity=".38"/>
+            <!-- 绿鱼 -->
+            <g transform="translate(196,378)">
+              <path d="M-40 0 L-74 -26 L-58 0 L-74 26 Z" fill="#2fa878" opacity=".9"/>
+              <ellipse cx="0" cy="0" rx="46" ry="24" fill="url(#pFish)"/>
+              <path d="M-14 -21 L3 -42 L19 -19 Z" fill="#2fa878" opacity=".85"/>
+              <path d="M4 12 q14 12 27 6 q-11 2 -23 -12z" fill="#2fa878" opacity=".72"/>
+              <path d="M-30 -7 q30 -15 58 -3" stroke="#e8fff3" stroke-width="1.4" fill="none" opacity=".5"/>
+              <circle cx="30" cy="-6" r="4.6" fill="#04120f"/>
+              <circle cx="31.5" cy="-7.6" r="1.6" fill="#dcefe6" opacity=".9"/>
+            </g>
+            <!-- 玻璃反光 -->
+            <polygon points="92,286 148,286 76,462 58,462" fill="url(#pGlass)"/>
+            <polygon points="268,286 284,286 232,462 216,462" fill="#dcefe6" opacity=".04"/>
+            <!-- 缸框 -->
+            <rect x="56" y="284" width="288" height="180" rx="4" fill="none" stroke="#8ac9b4" stroke-width="2.2" opacity=".6"/>
+            <rect x="59" y="287" width="282" height="174" rx="3" fill="none" stroke="#04120f" stroke-width="1.2" opacity=".7"/>
+            <rect x="56" y="283" width="288" height="3
