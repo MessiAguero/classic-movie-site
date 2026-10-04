@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《不可饶恕》 용서는 없다 · No Mercy (2010) — 韩国犯罪片经典推荐</title>
+<style>
+  :root{
+    --ink:#08090f;
+    --ink-2:#0d1017;
+    --ink-3:#141826;
+    --steel:#e2eaf4;
+    --steel-dim:#a3b1c4;
+    --ash:#7c889c;
+    --ash-dim:#4e586a;
+    --uv:#8f7cff;
+    --uv-soft:#6d5ce0;
+    --uv-light:#c0b0ff;
+    --tag:#d3b478;
+    --tag-dim:#9c8551;
+    --blood:#8c1f2f;
+    --line:rgba(226,234,244,.13);
+    --line-strong:rgba(226,234,244,.26);
+    --serif:"Georgia","Times New Roman","Songti SC","STSong",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ink);
+    color:var(--steel);
+    font-family:var(--sans);
+    line-height:1.85;
+    font-size:16px;
+    letter-spacing:.01em;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:9;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='.5'/></svg>");
+    opacity:.05;mix-blend-mode:overlay;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:8;pointer-events:none;
+    background:radial-gradient(122% 92% at 50% 38%,transparent 44%,rgba(0,0,0,.58) 100%);
+  }
+  ::selection{background:var(--uv);color:#08090f}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;min-height:100vh;overflow:hidden;
+    display:flex;align-items:stretch;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  #heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;pointer-events:none}
+  .hero-scrim{
+    position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:
+      linear-gradient(180deg,rgba(8,9,15,.90) 0%,rgba(8,9,15,.46) 22%,rgba(8,9,15,.10) 50%,rgba(8,9,15,.44) 78%,rgba(8,9,15,.90) 100%),
+      radial-gradient(92% 72% at 18% 42%,rgba(8,9,15,.70) 0%,transparent 74%);
+  }
+  .hero-in{
+    position:relative;z-index:4;
+    width:100%;max-width:1160px;margin:0 auto;
+    padding:118px 28px 92px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--uv);
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  }
+  .eyebrow::before{content:"";width:44px;height:1px;background:var(--uv);opacity:.85;flex:0 0 auto}
+  .eyebrow span{color:var(--ash-dim);letter-spacing:.24em}
+  h1.title{
+    font-family:var(--serif);
+    font-size:clamp(50px,10.4vw,124px);
+    line-height:.94;
+    letter-spacing:.07em;
+    margin:22px 0 8px;
+    color:#f2f6fb;
+    text-shadow:0 6px 44px rgba(0,0,0,.85);
+    font-weight:400;
+  }
+  .title-en{
+    font-family:var(--serif);font-size:clamp(15px,2.2vw,26px);
+    letter-spacing:.42em;color:var(--steel-dim);
+    text-transform:uppercase;margin-bottom:6px;padding-left:3px;
+  }
+  .title-kr{
+    font-size:clamp(13px,1.6vw,17px);letter-spacing:.42em;color:var(--tag);
+    margin-bottom:26px;padding-left:3px;
+  }
+  .hero-sub{
+    max-width:648px;font-size:clamp(14px,1.6vw,17px);
+    color:var(--steel-dim);line-height:1.95;
+    border-left:2px solid var(--uv);padding-left:20px;
+  }
+  .hero-sub b{color:var(--steel);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+  .chip{
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+    padding:6px 12px;border:1px solid var(--line-strong);
+    color:var(--steel-dim);background:rgba(8,9,15,.44);
+    backdrop-filter:blur(3px);
+  }
+  .chip.hot{border-color:rgba(143,124,255,.55);color:var(--uv-light)}
+  .chip.tag{border-color:rgba(211,180,120,.45);color:var(--tag)}
+  .scroll-hint{
+    position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
+    z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.3em;
+    color:var(--ash-dim);display:flex;flex-direction:column;align-items:center;gap:9px;
+  }
+  .scroll-hint i{display:block;width:1px;height:36px;background:linear-gradient(180deg,var(--uv),transparent);animation:drop 2.4s ease-in-out infinite}
+  @keyframes drop{0%,100%{opacity:.25;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
+
+  /* ============ LAYOUT ============ */
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+  section.band{padding:96px 0;position:relative;border-bottom:1px solid var(--line)}
+  section.band:last-of-type{border-bottom:0}
+  .sec-head{margin-bottom:52px;position:relative}
+  .sec-num{
+    font-family:var(--mono);font-size:10px;letter-spacing:.34em;color:var(--uv);
+    text-transform:uppercase;display:block;margin-bottom:14px;
+  }
+  h2.sec-title{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(26px,3.6vw,44px);line-height:1.24;letter-spacing:.03em;color:#eef3f9;
+  }
+  h2.sec-title em{font-style:normal;color:var(--uv)}
+  .sec-desc{margin-top:16px;max-width:740px;color:var(--ash);font-size:14.5px;line-height:1.9}
+
+  /* 无剧透提示条 */
+  .nospoil{
+    display:flex;gap:16px;align-items:flex-start;
+    border:1px solid rgba(143,124,255,.32);
+    background:linear-gradient(90deg,rgba(143,124,255,.09),rgba(143,124,255,.015) 62%,transparent);
+    padding:18px 22px;margin:0 0 64px;
+  }
+  .nospoil .mark{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--uv-light);
+    border:1px solid rgba(143,124,255,.5);padding:3px 7px;flex:0 0 auto;margin-top:3px;
+  }
+  .nospoil p{font-size:13.5px;color:var(--steel-dim);line-height:1.85}
+  .nospoil p b{color:var(--steel)}
+
+  /* 两栏：速览 + 梗概 */
+  .duo{display:grid;grid-template-columns:300px minmax(0,1fr);gap:56px;align-items:start}
+  .glance{border:1px solid var(--line-strong);background:var(--ink-2);padding:26px 22px;position:sticky;top:28px}
+  .glance h3{
+    font-family:var(--mono);font-size:10px;letter-spacing:.28em;color:var(--uv);
+    text-transform:uppercase;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line);
+  }
+  .glance dl{display:flex;flex-direction:column;gap:0}
+  .glance .row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(226,234,244,.09);font-size:12.5px}
+  .glance .row:last-child{border-bottom:0}
+  .glance dt{color:var(--ash-dim);flex:0 0 auto;letter-spacing:.06em}
+  .glance dd{color:var(--steel);text-align:right;font-weight:500}
+  .glance .row.accent dd{color:var(--uv-light)}
+  .glance .row.tagged dd{color:var(--tag)}
+
+  .prose{font-size:16.5px;line-height:2.05;color:var(--steel-dim)}
+  .prose p+p{margin-top:22px}
+  .prose b{color:var(--steel);font-weight:600}
+  .prose .kr{color:var(--tag);font-family:var(--mono);font-size:14px}
+  .prose .zh{color:var(--uv-light);font-family:var(--mono);font-size:14px}
+  .prose em{color:var(--uv-light);font-style:normal}
+  .drop::first-letter{
+    font-family:var(--serif);float:left;font-size:74px;line-height:.82;
+    padding:6px 14px 0 0;color:var(--uv);font-weight:400;
+  }
+
+  /* 概念海报 */
+  .poster-grid{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:60px;align-items:start}
+  .poster-frame{
+    border:1px solid var(--line-strong);background:var(--ink-2);
+    padding:20px;position:relative;
+  }
+  .poster-frame::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+    background:repeating-linear-gradient(115deg,var(--uv) 0 10px,transparent 10px 20px);opacity:.45;
+  }
+  .poster-frame svg{display:block;width:100%;height:auto}
+  .poster-cap{
+    font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--ash-dim);
+    margin-top:16px;text-transform:uppercase;
+  }
+  .notes{display:flex;flex-direction:column;gap:26px}
+  .note{border-left:1px solid var(--line-strong);padding-left:22px;position:relative}
+  .note::before{
+    content:"";position:absolute;left:-3px;top:9px;width:5px;height:5px;
+    background:var(--uv);border-radius:50%;
+  }
+  .note h4{font-size:14.5px;letter-spacing:.14em;color:var(--steel);font-weight:600;margin-bottom:8px}
+  .note p{font-size:14px;color:var(--ash);line-height:1.9}
+
+  /* 档案格 */
+  .file-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .file-cell{background:var(--ink-2);padding:20px 18px;min-height:96px;display:flex;flex-direction:column;gap:7px}
+  .file-cell dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--ash-dim);text-transform:uppercase}
+  .file-cell dd{font-size:14.5px;color:var(--steel);line-height:1.55;font-weight:500}
+  .file-cell.wide{grid-column:span 2}
+  .file-cell.hot dd{color:var(--uv-light)}
+  .file-cell.tagged dd{color:var(--tag)}
+  .file-cell dd small{display:block;font-size:11.5px;color:var(--ash-dim);font-weight:400;letter-spacing:.04em;margin-top:3px}
+
+  /* 口碑四卡 */
+  .score-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+  .score{
+    border:1px solid var(--line-strong);background:linear-gradient(180deg,var(--ink-3),var(--ink-2));
+    padding:26px 22px 22px;position:relative;overflow:hidden;
+  }
+  .score::before{
+    content:"";position:absolute;top:0;left:0;width:100%;height:2px;
+    background:linear-gradient(90deg,var(--uv),transparent 76%);
+  }
+  .score .plat{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--ash-dim);text-transform:uppercase}
+  .score .big{font-family:var(--serif);font-size:46px;line-height:1;color:#f2f6fb;margin:14px 0 4px}
+  .score .big i{font-style:normal;font-size:16px;color:var(--ash-dim);letter-spacing:.06em;margin-left:4px}
+  .score .bar{height:3px;background:rgba(226,234,244,.13);margin:16px 0 12px;position:relative}
+  .score .bar span{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--uv),var(--uv-light))}
+  .score .cap{font-size:12px;color:var(--ash-dim);line-height:1.75}
+  .score .cap b{color:var(--steel-dim);font-weight:500}
+
+  /* 时间线 */
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,var(--uv),rgba(226,234,244,.14) 40%,rgba(226,234,244,.14))}
+  .tl-item{position:relative;padding:0 0 34px 0}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-32px;top:9px;width:9px;height:9px;
+    border:1px solid var(--uv);background:var(--ink);transform:rotate(45deg);
+  }
+  .tl-item.hot::before{background:var(--uv);border-color:var(--uv)}
+  .tl-year{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--uv-light);margin-bottom:7px}
+  .tl-title{font-size:15.5px;color:var(--steel);font-weight:600;letter-spacing:.03em;margin-bottom:6px}
+  .tl-desc{font-size:13.5px;color:var(--ash);line-height:1.85;max-width:770px}
+
+  /* 荣誉 */
+  .awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .aw{background:var(--ink-2);padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
+  .aw .yr{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ash-dim);flex:0 0 auto;padding-top:3px;width:38px}
+  .aw .bd{font-size:13.8px;color:var(--steel-dim);line-height:1.8}
+  .aw .bd b{color:var(--steel);font-weight:600;display:block;margin-bottom:3px;font-size:14.2px}
+  .aw .bd b em{font-style:normal;color:var(--uv-light)}
+
+  /* 谱系坐标 */
+  .lineage{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .lg{background:var(--ink-2);padding:24px 20px;display:flex;flex-direction:column;gap:9px;position:relative}
+  .lg.now{background:linear-gradient(180deg,rgba(143,124,255,.14),var(--ink-2) 72%)}
+  .lg .lg-yr{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;color:var(--ash-dim)}
+  .lg .lg-tt{font-family:var(--serif);font-size:19px;color:var(--steel);line-height:1.3}
+  .lg .lg-dr{font-size:12.5px;color:var(--ash);line-height:1.7}
+  .lg .lg-wt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--uv);margin-top:auto;padding-top:10px}
+  .lg.now .lg-wt{color:var(--tag)}
+  .lineage-note{margin-top:26px;border-left:2px solid var(--uv);padding-left:20px;font-size:14.5px;color:var(--ash);line-height:1.95;max-width:820px}
+
+  /* 六宫格亮点 */
+  .highlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .hl{background:var(--ink-2);padding:30px 26px 32px;position:relative;transition:background .5s ease}
+  .hl:hover{background:var(--ink-3)}
+  .hl .idx{
+    font-family:var(--serif);font-size:34px;color:rgba(226,234,244,.13);
+    line-height:1;margin-bottom:16px;letter-spacing:.02em;
+  }
+  .hl h4{font-size:16px;color:var(--steel);font-weight:600;letter-spacing:.05em;margin-bottom:12px}
+  .hl h4 em{font-style:normal;color:var(--uv-light)}
+  .hl p{font-size:13.6px;color:var(--ash);line-height:1.9}
+
+  /* 为什么值得看 */
+  .why{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .why-item{background:var(--ink-2);padding:40px 38px;display:grid;grid-template-columns:210px minmax(0,1fr);gap:40px;align-items:start}
+  .why-item h4{font-family:var(--serif);font-size:19px;color:var(--steel);line-height:1.5;font-weight:400;letter-spacing:.04em}
+  .why-item h4 span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--uv);margin-bottom:12px;text-transform:uppercase}
+  .why-item p{font-size:15px;color:var(--ash);line-height:2;max-width:770px}
+  .why-item p b{color:var(--steel-dim);font-weight:600}
+
+  /* 提示三格 */
+  .warns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .warn{border:1px solid rgba(140,31,47,.52);background:linear-gradient(180deg,rgba(140,31,47,.14),rgba(140,31,47,.03));padding:24px 22px}
+  .warn .tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:#d2707a;text-transform:uppercase;margin-bottom:12px}
+  .warn p{font-size:13.5px;color:var(--steel-dim);line-height:1.85}
+  .warn p b{color:var(--steel)}
+
+  /* 结尾 */
+  .outro{border-top:1px solid var(--line);background:linear-gradient(180deg,var(--ink),#0b0e17)}
+  .quote{max-width:840px}
+  .quote .q-mark{font-family:var(--serif);font-size:66px;color:var(--uv);opacity:.55;line-height:.6}
+  .quote blockquote{
+    font-family:var(--serif);font-size:clamp(20px,2.6vw,29px);line-height:1.72;
+    color:#eaeff7;letter-spacing:.03em;margin:6px 0 22px;
+  }
+  .quote .attr{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--ash-dim);text-transform:uppercase}
+  .outro-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:60px;align-items:end;margin-top:16px}
+  .end-stamp{border:1px solid var(--line-strong);padding:22px;text-align:center}
+  .end-stamp .no{font-family:var(--serif);font-size:56px;color:var(--uv);line-height:1}
+  .end-stamp .lb{font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--ash-dim);margin-top:10px;text-transform:uppercase}
+  footer{
+    border-top:1px solid var(--line);padding:34px 0 54px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--ash-dim);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;text-transform:uppercase;
+  }
+
+  /* 证据链 HUD */
+  #hud{
+    position:fixed;right:22px;bottom:24px;z-index:12;
+    border:1px solid var(--line-strong);background:rgba(8,9,15,.84);
+    backdrop-filter:blur(8px);padding:14px 16px 13px;min-width:212px;
+    display:none;
+  }
+  #hud .hud-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+  #hud .hud-top span{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--ash-dim);text-transform:uppercase}
+  #hud .hud-top b{font-family:var(--mono);font-size:11px;color:var(--uv-light);letter-spacing:.1em}
+  #hud .hud-track{height:2px;background:rgba(226,234,244,.14);position:relative}
+  #hud .hud-track i{position:absolute;top:-2px;left:0;width:6px;height:6px;background:var(--uv);transform:translateX(-3px)}
+  #hud .hud-lb{font-size:11px;color:var(--steel-dim);margin-top:9px;letter-spacing:.06em;font-family:var(--mono)}
+
+  /* 入场动画 */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.25,1),transform .9s cubic-bezier(.2,.7,.25,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1 !important;transform:none !important;transition:none !important}
+    html{scroll-behavior:auto}
+    .scroll-hint i{animation:none}
+  }
+
+  /* 响应式 */
+  @media (max-width:1080px){
+    .duo{grid-template-columns:1fr;gap:38px}
+    .glance{position:static}
+    .poster-grid{grid-template-columns:1fr;gap:40px}
+    .poster-frame{max-width:420px;margin:0 auto}
+    .score-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .file-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .lineage{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .highlights{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .outro-grid{grid-template-columns:1fr;gap:40px}
+  }
+  @media (max-width:760px){
+    body{font-size:15px}
+    section.band{padding:70px 0}
+    .wrap{padding:0 20px}
+    .hero-in{padding:104px 20px 88px}
+    .eyebrow{font-size:9.5px;letter-spacing:.22em;gap:10px}
+    .eyebrow::before{width:26px}
+    .eyebrow span{letter-spacing:.14em}
+    h1.title{letter-spacing:.05em;margin-top:16px}
+    .title-en{letter-spacing:.3em}
+    .title-kr{letter-spacing:.3em;margin-bottom:20px}
+    .hero-sub{padding-left:15px;font-size:14px}
+    .chips{gap:7px;margin-top:22px}
+    .chip{font-size:10px;padding:5px 9px;letter-spacing:.08em}
+    .file-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .file-cell.wide{grid-column:span 2}
+    .score-grid{grid-template-columns:1fr}
+    .lineage{grid-template-columns:1fr}
+    .highlights{grid-template-columns:1fr}
+    .awards{grid-template-columns:1fr}
+    .warns{grid-template-columns:1fr}
+    .why-item{grid-template-columns:1fr;gap:18px;padding:30px 24px}
+    .sec-head{margin-bottom:38px}
+    .nospoil{padding:15px 16px;gap:12px}
+    .nospoil .mark{font-size:9px}
+    .nospoil p{font-size:12.5px}
+    .drop::first-letter{font-size:56px;padding:4px 10px 0 0}
+  }
+  @media (min-width:981px){#hud{display:block}}
+</style>
+</head>
+<body>
+
+<div id="hud">
+  <div class="hud-top"><span>Chain of Custody</span><b id="hudVal">00%</b></div>
+  <div class="hud-track"><i id="hudDot"></i></div>
+  <div class="hud-lb" id="hudLb">现场 · 江边发现</div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <svg class="hero-svg" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#05060b"/>
+        <stop offset="34%" stop-color="#0c1018"/>
+        <stop offset="72%" stop-color="#161c28"/>
+        <stop offset="100%" stop-color="#0a0c12"/>
+      </linearGradient>
+      <pattern id="tile" width="80" height="60" patternUnits="userSpaceOnUse">
+        <path d="M80 0 V60 M0 60 H80" stroke="#2b3345" stroke-width="1" fill="none"/>
+      </pattern>
+      <linearGradient id="cone" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#e6eef9" stop-opacity=".30"/>
+        <stop offset="58%" stop-color="#cfe0f5" stop-opacity=".09"/>
+        <stop offset="100%" stop-color="#cfe0f5" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#f4f8ff" stop-opacity=".95"/>
+        <stop offset="34%" stop-color="#cfe0f5" stop-opacity=".26"/>
+        <stop offset="100%" stop-color="#cfe0f5" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="uvGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#8f7cff" stop-opacity=".82"/>
+        <stop offset="42%" stop-color="#8f7cff" stop-opacity=".22"/>
+        <stop offset="100%" stop-color="#8f7cff" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#5d6a80"/>
+        <stop offset="42%" stop-color="#3a4560"/>
+        <stop offset="100%" stop-color="#1b2130"/>
+      </linearGradient>
+      <linearGradient id="cab" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1e2634"/>
+        <stop offset="100%" stop-color="#0c1017"/>
+      </linearGradient>
+      <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1b212e"/>
+        <stop offset="100%" stop-color="#06070c"/>
+      </linearGradient>
+      <linearGradient id="uvBar" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#8f7cff" stop-opacity=".15"/>
+        <stop offset="50%" stop-color="#c0b0ff" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#8f7cff" stop-opacity=".15"/>
+      </linearGradient>
+    </defs>
+
+    <rect width="1440" height="760" fill="url(#wall)"/>
+
+    <!-- 瓷砖墙 -->
+    <rect x="0" y="62" width="1440" height="412" fill="url(#tile)" opacity=".38"/>
+
+    <!-- 天花板 -->
+    <rect x="0" y="0" width="1440" height="62" fill="#04050a"/>
+    <rect x="0" y="60" width="1440" height="3" fill="#232b3b" opacity=".85"/>
+
+    <!-- 顶部冷白灯管 -->
+    <g>
+      <rect x="150" y="88" width="320" height="6" fill="#6f819c" opacity=".45"/>
+      <rect x="150" y="88" width="320" height="2" fill="#e2eaf4" opacity=".55"/>
+      <ellipse cx="310" cy="94" rx="230" ry="52" fill="url(#lampGlow)" opacity=".28"/>
+    </g>
+
+    <!-- 墙面紫外灯管 -->
+    <g>
+      <rect x="960" y="266" width="252" height="5" rx="2.5" fill="url(#uvBar)"/>
+      <ellipse cx="1086" cy="284" rx="262" ry="126" fill="url(#uvGlow)" opacity=".6"/>
+    </g>
+
+    <!-- 左侧小窗（夜色） -->
+    <g>
+      <rect x="120" y="176" width="196" height="212" fill="#101827"/>
+      <g fill="#22304a" opacity=".8">
+        <rect x="128" y="184" width="82" height="90"/>
+        <rect x="226" y="184" width="82" height="90"/>
+        <rect x="128" y="290" width="82" height="90"/>
+        <rect x="226" y="290" width="82" height="90"/>
+      </g>
+      <g fill="#cfe0f5" opacity=".24">
+        <rect x="152" y="208" width="6" height="8"/>
+        <rect x="250" y="236" width="6" height="8"/>
+        <rect x="164" y="320" width="6" height="8"/>
+      </g>
+      <rect x="120" y="176" width="196" height="212" fill="none" stroke="#2f3a4e" stroke-width="3"/>
+      <line x1="218" y1="176" x2="218" y2="388" stroke="#2f3a4e" stroke-width="3"/>
+      <line x1="120" y1="282" x2="316" y2="282" stroke="#2f3a4e" stroke-width="3"/>
+    </g>
+
+    <!-- 不锈钢柜排 -->
+    <g>
+      <rect x="0" y="452" width="1440" height="150" fill="url(#cab)"/>
+      <line x1="0" y1="452" x2="1440" y2="452" stroke="#3c485e" stroke-width="1.6"/>
+      <g stroke="#2b3444" stroke-width="1.2">
+        <line x1="0" y1="506" x2="1440" y2="506"/>
+        <line x1="0" y1="556" x2="1440" y2="556"/>
+      </g>
+      <g stroke="#39455a" stroke-width="1.1" opacity=".9">
+        <line x1="180" y1="452" x2="180" y2="602"/>
+        <line x1="360" y1="452" x2="360" y2="602"/>
+        <line x1="540" y1="452" x2="540" y2="602"/>
+        <line x1="720" y1="452" x2="720" y2="602"/>
+        <line x1="900" y1="452" x2="900" y2="602"/>
+        <line x1="1080" y1="452" x2="1080" y2="602"/>
+        <line x1="1260" y1="452" x2="1260" y2="602"/>
+      </g>
+      <g fill="#7b8aa2" opacity=".55">
+        <rect x="86" y="478" width="26" height="3"/>
+        <rect x="266" y="478" width="26" height="3"/>
+        <rect x="446" y="478" width="26" height="3"/>
+        <rect x="626" y="478" width="26" height="3"/>
+        <rect x="806" y="478" width="26" height="3"/>
+        <rect x="986" y="478" width="26" height="3"/>
+        <rect x="1166" y="478" width="26" height="3"/>
+        <rect x="1346" y="478" width="26" height="3"/>
+      </g>
+      <g fill="#8f7cff" opacity=".42" font-family="monospace" font-size="9.5">
+        <text x="28" y="582">NO.014</text>
+        <text x="208" y="582">NO.015</text>
+        <text x="388" y="582">NO.016</text>
+        <text x="568" y="582">NO.017</text>
+        <text x="748" y="582">NO.018</text>
+        <text x="928" y="582">NO.019</text>
+        <text x="1108" y="582">NO.020</text>
+        <text x="1288" y="582">NO.021</text>
+      </g>
+    </g>
+
+    <!-- 地面前景 -->
+    <rect x="0" y="602" width="1440" height="158" fill="url(#floor)"/>
+
+    <!-- 无影灯（吊杆 + 灯盘 + 灯头） -->
+    <g>
+      <rect x="784" y="62" width="5" height="46" fill="#2b3549"/>
+      <ellipse cx="786" cy="120" rx="104" ry="30" fill="#1d2534"/>
+      <ellipse cx="786" cy="115" rx="104" ry="30" fill="#33405a"/>
+      <ellipse cx="786" cy="112" rx="96" ry="25" fill="#0e131d"/>
+      <g fill="#f0f6ff">
+        <ellipse cx="730" cy="112" rx="15" ry="10" opacity=".95"/>
+        <ellipse cx="762" cy="112" rx="15" ry="10" opacity=".95"/>
+        <ellipse cx="794" cy="112" rx="15" ry="10" opacity=".95"/>
+        <ellipse cx="826" cy="112" rx="15" ry="10" opacity=".95"/>
+        <ellipse cx="786" cy="106" rx="10" ry="7" opacity=".8"/>
+      </g>
+      <ellipse cx="786" cy="146" rx="196" ry="74" fill="url(#lampGlow)" opacity=".75"/>
+    </g>
+
+    <!-- 冷白光锥 -->
+    <polygon points="700,140 872,140 1024,646 552,646" fill="url(#cone)"/>
+
+    <!-- 远处人影（背对，站在柜前） -->
+    <g>
+      <ellipse cx="884" cy="604" rx="30" ry="6" fill="#000" opacity=".55"/>
+      <path d="M884 476 q15 0 15 17 v42 h-30 v-42 q0 -17 15 -17z" fill="#05070c"/>
+      <path d="M869 492 q-10 4 -10 17 v25 h8 v-26 q1 -11 7 -13z" fill="#05070c"/>
+      <path d="M899 492 q10 4 10 17 v25 h-8 v-26 q-1 -11 -7 -13z" fill="#05070c"/>
+      <rect x="874" y="533" width="8" height="71" fill="#05070c"/>
+      <rect x="886" y="533" width="8" height="71" fill="#05070c"/>
+      <circle cx="884" cy="466" r="10.5" fill="#05070c"/>
+      <path d="M872 486 q-2 9 -2 17 v42 h3" stroke="#cfe0f5" stroke-width="1.5" fill="none" opacity=".55"/>
+      <path d="M875 458 a10.5 10.5 0 0 0 -2 13" stroke="#cfe0f5" stroke-width="1.3" fill="none" opacity=".5"/>
+      <circle cx="884" cy="512" r="52" fill="url(#lampGlow)" opacity=".22"/>
+    </g>
+
+    <!-- 解剖台 -->
+    <g>
+      <rect x="548" y="634" width="486" height="20" fill="url(#steel)"/>
+      <rect x="548" y="634" width="486" height="3" fill="#cfe0f5" opacity=".5"/>
+      <rect x="548" y="654" width="486" height="13" fill="#161c28"/>
+      <rect x="598" y="667" width="18" height="60" fill="#1b2130"/>
+      <rect x="966" y="667" width="18" height="60" fill="#1b2130"/>
+      <rect x="598" y="700" width="386" height="8" fill="#171d29"/>
+      <rect x="548" y="728" width="486" height="6" fill="#0d1119"/>
+      <!-- 台面物件：卷宗（牛皮纸，斜放） -->
+      <g transform="rotate(-7 668 628)">
+        <rect x="596" y="616" width="144" height="24" fill="#c8ab72" opacity=".88"/>
+        <rect x="596" y="616" width="144" height="24" fill="none" stroke="#8f7a4d" stroke-width="1"/>
+        <line x1="612" y1="624" x2="700" y2="624" stroke="#6f5c37" stroke-width="1" opacity=".7"/>
+        <line x1="612" y1="632" x2="676" y2="632" stroke="#6f5c37" stroke-width="1" opacity=".55"/>
+      </g>
+      <!-- 证物袋 -->
+      <g>
+        <rect x="766" y="612" width="96" height="22" fill="#cfe0f5" opacity=".10"/>
+        <rect x="766" y="612" width="96" height="22" fill="none" stroke="#9fb4cf" stroke-width="1" opacity=".6"/>
+        <rect x="772" y="606" width="84" height="8" fill="#d3b478" opacity=".75"/>
+      </g>
+      <!-- 器械盘 -->
+      <g>
+        <rect x="880" y="618" width="118" height="15" fill="#48546c"/>
+        <rect x="880" y="618" width="118" height="3" fill="#9fb0c6" opacity=".7"/>
+        <line x1="898" y1="624" x2="952" y2="627" stroke="#d5e2f2" stroke-width="2" opacity=".8"/>
+        <line x1="906" y1="628" x2="964" y2="624" stroke="#d5e2f2" stroke-width="1.6" opacity=".65"/>
+      </g>
+      <!-- 台上冷反光 -->
+      <ellipse cx="790" cy="640" rx="196" ry="7" fill="#cfe0f5" opacity=".14"/>
+    </g>
+
+    <!-- 地面倒影与紫外落光 -->
+    <g opacity=".4">
+      <ellipse cx="790" cy="712" rx="230" ry="10" fill="#8fa8c6" opacity=".22"/>
+      <ellipse cx="1086" cy="690" rx="210" ry="12" fill="#8f7cff" opacity=".30"/>
+    </g>
+  </svg>
+  <div class="hero-scrim"></div>
+  <canvas id="heroCanvas"></canvas>
+
+  <div class="hero-in">
+    <div class="eyebrow">韩国犯罪片 · 第 21 部 <span>Korean Crime Cinema / No.21</span></div>
+    <h1 class="title">不可饶恕</h1>
+    <div class="title-en">No Mercy</div>
+    <div class="title-kr">용서는 없다 · 2010</div>
+    <p class="hero-sub">
+      一个做了半辈子尸检的法医，一桩手法干净的肢解案，<br>
+      和一个毫不犹豫就认罪的嫌疑人。<b>他要的从来不是脱罪，是让另一个人亲手写下自己最不想写的那份报告。</b>
+    </p>
+    <div class="chips">
+      <span class="chip hot">首部以韩国国立科学搜查研究所为背景的电影</span>
+      <span class="chip tag">19 禁</span>
+      <span class="chip">薛景求 × 柳承范</span>
+      <span class="chip">金亨俊 · 编导处女作</span>
+      <span class="chip">124 分钟 · 2010</span>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>SCROLL</span><i></i></div>
+</header>
+
+<!-- ================= 01 梗概 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="nospoil reveal">
+      <span class="mark">NO&nbsp;SPOILER</span>
+      <p><b>全程不剧透。</b>下面所有内容只写到影片第一幕为止的公开设定——案子怎么开、对手是谁、主角被逼到了哪个位置。它真正的转折、线索的归属、以及那个被反复讨论的收尾，一个字都不提。</p>
+    </div>
+
+    <div class="sec-head reveal">
+      <span class="sec-num">01 / Synopsis</span>
+      <h2 class="sec-title">一个连尸体都要讲规矩的人，<em>被要求改写规矩</em></h2>
+    </div>
+
+    <div class="duo">
+      <aside class="glance reveal">
+        <h3>一眼速览</h3>
+        <dl>
+          <div class="row"><dt>片名</dt><dd>不可饶恕</dd></div>
+          <div class="row"><dt>韩文原片名</dt><dd>용서는 없다</dd></div>
+          <div class="row"><dt>英文片名</dt><dd>No Mercy</dd></div>
+          <div class="row"><dt>年份</dt><dd>2010</dd></div>
+          <div class="row"><dt>类型</dt><dd>犯罪 / 惊悚 / 悬疑</dd></div>
+          <div class="row"><dt>导演 · 编剧</dt><dd>金亨俊</dd></div>
+          <div class="row"><dt>制片</dt><dd>康佑硕</dd></div>
+          <div class="row"><dt>片长</dt><dd>124 分钟</dd></div>
+          <div class="row tagged"><dt>分级</dt><dd>19 岁以上观览可</dd></div>
+          <div class="row accent"><dt>豆瓣</dt><dd>7.8 / 10</dd></div>
+        </dl>
+      </aside>
+
+      <div class="prose reveal">
+        <p class="drop">
+          韩国国立科学搜查研究所的法医<em>姜民浩</em>，几十年都在做同一件事：把尸体的每一处痕迹翻译成可以写进报告、可以站上法庭的句子。到这个岁数，他准备收尾了——国外治疗多年的女儿就要回来，他跟上司说好，办完手上这桩案子就休一段长假。
+        </p>
+        <p>
+          这桩案子不太好看。江边发现一具女尸，被切割之后又被人细心地缝合回去，手法干净、克制，现场几乎找不到多余的痕迹。姜民浩和年轻的刑警<em>闵瑞英</em>顺着抛尸的路径一路推，很快把嫌疑落到一个在当地很受敬重的男人身上——环保活动家<b>李圣浩</b>。
+        </p>
+        <p>
+          然后发生了一件让整个搜查组措手不及的事：李圣浩被捕之后，<b>没有任何辩解，直接承认自己就是凶手。</b>案子看起来结了。但姜民浩在尸体上读到的那些细节，一条一条地和他的口供对不上——那些矛盾不像失误，更像是有人故意留下的。
+        </p>
+        <p>
+          就在检方被这些矛盾拖住的时候，姜民浩在机场没能等到女儿。他收到一个信封，里面是照片。李圣浩给他的条件很简单也很清楚：<b>让他走出审讯室，女儿就能回来；</b>而这件事要靠谁去做，李圣浩比谁都明白。
+        </p>
+        <p>
+          一个一辈子只负责把事实写清楚的人，第一次被要求把事实写成另一个样子。至于他最后写下了什么、那双一直很稳的手有没有抖——<b>这里一个字都不会说。</b>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 概念海报 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02 / Concept Poster</span>
+      <h2 class="sec-title">一盏把阴影全部去掉的灯</h2>
+      <p class="sec-desc">无影灯是这个职业的核心意象：它存在的意义，就是不让任何一处痕迹躲在暗处。这张概念图把全片最重要的一张台子单独留了出来——台上是证据，台下是选择。</p>
+    </div>
+
+    <div class="poster-grid">
+      <figure class="poster-frame reveal">
+        <svg viewBox="0 0 400 600" aria-label="《不可饶恕》概念海报">
+          <defs>
+            <linearGradient id="pBg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#06070d"/><stop offset="70%" stop-color="#0f1420"/><stop offset="100%" stop-color="#080a11"/>
+            </linearGradient>
+            <linearGradient id="pCone" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#e6eef9" stop-opacity=".28"/>
+              <stop offset="100%" stop-color="#cfe0f5" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="pSteel" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#5d6a80"/><stop offset="100%" stop-color="#1b2130"/>
+            </linearGradient>
+            <radialGradient id="pLamp" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f4f8ff" stop-opacity=".9"/><stop offset="100%" stop-color="#cfe0f5" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="pUv" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#8f7cff" stop-opacity=".65"/><stop offset="100%" stop-color="#8f7cff" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <rect width="400" height="600" fill="url(#pBg)"/>
+
+          <!-- 无影灯 -->
+          <rect x="148" y="18" width="4" height="30" fill="#2b3549"/>
+          <ellipse cx="150" cy="62" rx="66" ry="19" fill="#33405a"/>
+          <ellipse cx="150" cy="58" rx="60" ry="16" fill="#0f141e"/>
+          <g fill="#f0f6ff">
+            <ellipse cx="116" cy="58" rx="9" ry="6" opacity=".95"/>
+            <ellipse cx="138" cy="58" rx="9" ry="6" opacity=".95"/>
+            <ellipse cx="160" cy="58" rx="9" ry="6" opacity=".95"/>
+            <ellipse cx="182" cy="58" rx="9" ry="6" opacity=".95"/>
+          </g>
+          <ellipse cx="150" cy="82" rx="120" ry="44" fill="url(#pLamp)" opacity=".7"/>
+
+          <!-- 光锥 -->
+          <polygon points="96,80 206,80 300,392 8,392" fill="url(#pCone)"/>
+
+          <!-- 紫外幽光（右下） -->
+          <ellipse cx="322" cy="330" rx="110" ry="150" fill="url(#pUv)" opacity=".5"/>
+          <rect x="256" y="212" width="126" height="4" rx="2" fill="#8f7cff" opacity=".8"/>
+
+          <!-- 解剖台 -->
+          <rect x="14" y="392" width="372" height="13" fill="url(#pSteel)"/>
+          <rect x="14" y="392" width="372" height="2.4" fill="#cfe0f5" opacity=".5"/>
+          <rect x="14" y="405" width="372" height="10" fill="#141a26"/>
+          <rect x="46" y="415" width="12" height="44" fill="#1b2130"/>
+          <rect x="342" y="415" width="12" height="44" fill="#1b2130"/>
+          <ellipse cx="200" cy="398" rx="150" ry="5" fill="#cfe0f5" opacity=".16"/>
+
+          <!-- 台上：器械盘 -->
+          <rect x="238" y="378" width="112" height="11" fill="#48546c"/>
+          <line x1="254" y1="383" x2="306" y2="386" stroke="#d5e2f2" stroke-width="1.8" opacity=".8"/>
+          <line x1="262" y1="387" x2="318" y2="383" stroke="#d5e2f2" stroke-width="1.4" opacity=".6"/>
+
+          <!-- 台上：卷宗（斜放） -->
+          <g transform="rotate(-6 96 380)">
+            <rect x="26" y="368" width="140" height="20" fill="#c8ab72" opacity=".9"/>
+            <line x1="40" y1="375" x2="126" y2="375" stroke="#6f5c37" stroke-width="1"/>
+            <line x1="40" y1="382" x2="102" y2="382" stroke="#6f5c37" stroke-width="1" opacity=".7"/>
+          </g>
+
+          <!-- 正中：物证编号牌 -->
+          <g>
+            <path d="M200 158 L246 158 L258 190 L246 222 L200 222 Z" fill="#d3b478"/>
+            <circle cx="212" cy="190" r="5" fill="#0f1420"/>
+            <text x="222" y="186" font-family="monospace" font-size="9" fill="#3d3222" letter-spacing="1">EVIDENCE</text>
+            <text x="222" y="198" font-family="monospace" font-size="9" fill="#3d3222" letter-spacing="1">NO. 001</text>
+            <path d="M206 158 C180 120 168 96 150 84" stroke="#9c8551" stroke-width="1.4" fill="none"/>
+            <path d="M212 158 C196 126 178 104 158 92" stroke="#9c8551" stroke-width="1.2" fill="none" opacity=".7"/>
+          </g>
+
+          <!-- 台前剪影（背对，站在光锥里） -->
+          <g>
+            <ellipse cx="118" cy="418" rx="30" ry="5" fill="#000" opacity=".6"/>
+            <path d="M118 300 q15 0 15 17 v46 h-30 v-46 q0 -17 15 -17z" fill="#04060b"/>
+            <path d="M103 316 q-10 4 -10 17 v26 h8 v-27 q1 -11 7 -13z" fill="#04060b"/>
+            <path d="M133 316 q10 4 10 17 v26 h-8 v-27 q-1 -11 -7 -13z" fill="#04060b"/>
+            <rect x="108" y="361" width="8" height="57" fill="#04060b"/>
+            <rect x="120" y="361" width="8" height="57" fill="#04060b"/>
+            <circle cx="118" cy="290" r="10.5" fill="#04060b"/>
+            <path d="M106 310 q-2 9 -2 17 v44 h3" stroke="#cfe0f5" stroke-width="1.4" fill="none" opacity=".6"/>
+            <path d="M109 282 a10.5 10.5 0 0 0 -2 13" stroke="#cfe0f5" stroke-width="1.2" fill="none" opacity=".5"/>
+            <path d="M130 322 l30 26" stroke="#04060b" stroke-width="3.4" stroke-linecap="round"/>
+            <path d="M160 348 l0 14" stroke="#04060b" stroke-width="6" stroke-linecap="round"/>
+          </g>
+
+          <!-- 竖排片名 -->
+          <g font-family="Georgia, Songti SC, serif" fill="#f0f4fa">
+            <text x="348" y="76" font-size="38" text-anchor="middle" letter-spacing="2">不</text>
+            <text x="348" y="124" font-size="38" text-anchor="middle" letter-spacing="2">可</text>
+            <text x="348" y="172" font-size="38" text-anchor="middle" letter-spacing="2">饶</text>
+            <text x="348" y="220" font-size="38" text-anchor="middle" letter-spacing="2">恕</text>
+          </g>
+          <text x="348" y="252" font-size="10" text-anchor="middle" fill="#d3b478" letter-spacing="3" font-family="monospace">용서는 없다</text>
+          <text x="348" y="272" font-size="9.5" text-anchor="middle" fill="#7c889c" letter-spacing="2.6" font-family="monospace">NO MERCY</text>
+
+          <!-- 底部信息条 -->
+          <rect x="0" y="556" width="400" height="44" fill="#07080e" opacity=".92"/>
+          <text x="24" y="583" font-size="10.5" fill="#7c889c" letter-spacing="2.4" font-family="monospace">FORENSIC LAB / KR · 2010</text>
+          <text x="376" y="583" font-size="10.5" fill="#8f7cff" text-anchor="end" letter-spacing="2.4" font-family="monospace">NO SPOILER</text>
+        </svg>
+        <figcaption class="poster-cap">Concept Poster / 概念示意 · 非官方海报</figcaption>
+      </figure>
+
+      <div class="notes reveal">
+        <div class="note">
+          <h4>为什么是「无影灯」</h4>
+          <p>无影灯的设计初衷不是照亮，而是<b>消除阴影</b>——让操作者在任何角度都看不到自己制造的暗处。片名里的「不可饶恕」，恰恰是一个人在暗处待得太久之后说出口的话。</p>
+        </div>
+        <div class="note">
+          <h4>那层紫色的光</h4>
+          <p>紫色不是影片里的道具，是这张概念图自己的语言。刑侦里有一条常识：最要紧的痕迹往往肉眼看不见，得换一种光才照得出来。整部电影就在赌这件事——<b>有些东西，换谁来看、用什么光看，结果完全不同。</b></p>
+        </div>
+        <div class="note">
+          <h4>为什么编号牌挂在正中</h4>
+          <p>片子真正的主题不是「谁是凶手」，而是<b>「证据」这件事本身</b>：它由谁写下、写给谁看、能不能被改写、改写之后还算不算数。编号牌上写的是 NO.001——一切都要从一个编号开始重新数。</p>
+        </div>
+        <div class="note">
+          <h4>台面为什么是空的</h4>
+          <p>为了不剧透，也因为这张台子才是全片被凝视最久的地方：一副手套、一支笔、一份卷宗。全片大部分的时间，都是一个人站在这张台子前面，决定要不要下笔。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 档案 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03 / Dossier</span>
+      <h2 class="sec-title">影片档案</h2>
+      <p class="sec-desc">一位新人导演的第一部长片，一位资深制片人做后盾，一个被准备了两年的专业背景。它不高调，但每一处都对得上。</p>
+    </div>
+
+    <div class="file-grid reveal">
+      <div class="file-cell"><dt>片名</dt><dd>不可饶恕<small>其他译名《无法原谅》</small></dd></div>
+      <div class="file-cell"><dt>韩文 / 英文</dt><dd>용서는 없다 / No Mercy</dd></div>
+      <div class="file-cell"><dt>年份 · 片长</dt><dd>2010 · 124 分钟</dd></div>
+      <div class="file-cell"><dt>类型</dt><dd>犯罪 · 惊悚 · 悬疑</dd></div>
+      <div class="file-cell wide"><dt>导演 · 编剧</dt><dd>金亨俊 Kim Hyeong-jun<small>本片为其长片处女作，自编自导；本系列首次采用</small></dd></div>
+      <div class="file-cell tagged"><dt>分级</dt><dd>19 岁以上观览可</dd></div>
+      <div class="file-cell"><dt>上映日期</dt><dd>2010-01-07（韩国）</dd></div>
+      <div class="file-cell wide"><dt>制片</dt><dd>康佑硕 Kang Woo-suk<small>《公共之敌》《实尾岛》导演，本片由其担任制片人</small></dd></div>
+      <div class="file-cell"><dt>主演</dt><dd>薛景求<small>饰 姜民浩 · 法医</small></dd></div>
+      <div class="file-cell"><dt>主演</dt><dd>柳承范<small>饰 李圣浩 · 嫌疑人</small></dd></div>
+      <div class="file-cell"><dt>主演</dt><dd>韩惠珍<small>饰 闵瑞英 · 刑警</small></dd></div>
+      <div class="file-cell"><dt>配角</dt><dd>成志娄 · 南庆邑 · 朴相旭 · 李廷宪</dd></div>
+      <div class="file-cell"><dt>摄影</dt><dd>金宇亨</dd></div>
+      <div class="file-cell"><dt>配乐</dt><dd>朴智晚</dd></div>
+      <div class="file-cell"><dt>剪辑</dt><dd>金鲜珉</dd></div>
+      <div class="file-cell"><dt>制作 · 发行</dt><dd>Cinema Service / The Dream Pictures · CJ Entertainment</dd></div>
+      <div class="file-cell hot"><dt>韩国观影人次</dt><dd>约 112.5 万<small>另有 114 万口径；类型片中的中等规模</small></dd></div>
+      <div class="file-cell hot"><dt>韩国票房</dt><dd>约 86 亿韩元<small>约合 758 万美元</small></dd></div>
+      <div class="file-cell wide"><dt>行业位置</dt><dd>韩国第一部以「国立科学搜查研究所」为背景的电影<small>前期筹备历时两年多，解剖检查室按接近真实的标准搭建，搜查程序参照研究所专家意见</small></dd></div>
+      <div class="file-cell wide"><dt>海外发行</dt><dd>2010-09 法国 L'Étrange Festival 展映 · 2010-11-17 法国公映<small>2012-07-31 由 CJ Entertainment America 发行美国版 DVD</small></dd></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 口碑 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04 / Reception</span>
+      <h2 class="sec-title">分数不高，但记得住的人很多</h2>
+      <p class="sec-desc">它不是榜单上的常客，却是被观众反复提起的那一类——因为它的收尾方式，看过的很难忘掉。口碑集中在两个地方：薛景求的表演，和最后那十分钟。</p>
+    </div>
+
+    <div class="score-grid">
+      <div class="score reveal">
+        <div class="plat">Douban 豆瓣</div>
+        <div class="big">7.8<i>/ 10</i></div>
+        <div class="bar"><span style="width:78%"></span></div>
+        <div class="cap"><b>约 9 万人</b>评价。中文影迷口径里的「暗黑型高分」——分数不算顶尖，但长期待在各类韩国犯罪片片单里。</div>
+      </div>
+      <div class="score reveal">
+        <div class="plat">IMDb</div>
+        <div class="big">7.4<i>/ 10</i></div>
+        <div class="bar"><span style="width:74%"></span></div>
+        <div class="cap"><b>约 1 万人</b>投票。海外观众主要肯定的是悬念编排与情绪强度，也有一部分声音认为它受了《老男孩》一脉的影响。</div>
+      </div>
+      <div class="score reveal">
+        <div class="plat">Rotten Tomatoes 观众</div>
+        <div class="big">80<i>%</i></div>
+        <div class="bar"><span style="width:80%"></span></div>
+        <div class="cap"><b>观众指数 80%</b>。海外公映规模很小、专业影评样本极少，这一栏更接近影迷的选择。</div>
+      </div>
+      <div class="score reveal">
+        <div class="plat">韩国票房</div>
+        <div class="big">112<i>万人次</i></div>
+        <div class="bar"><span style="width:56%"></span></div>
+        <div class="cap"><b>2010 年初上映</b>。同档期正面撞上贺岁档余温，成绩属于类型片里的中游——口碑靠的是后来。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 时间线 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">05 / Timeline</span>
+      <h2 class="sec-title">从一桩案子，到一个类型的窗口</h2>
+      <p class="sec-desc">这部片只在 2010 年那个窗口里才拍得出来：往前是《追击者》《母亲》，往后是《黄海》《看见恶魔》。它站在正中间。</p>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-year">2007 — 2009</div>
+        <div class="tl-title">两年多的资料筹备</div>
+        <div class="tl-desc">这是<b>韩国电影第一次以「国立科学搜查研究所」为背景</b>。剧组花了两年多时间做专业资料搜集，片中的解剖检查室按接近真实的标准搭建，搜查组的工作流程也严格参照研究所专家的意见。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2009.06</div>
+        <div class="tl-title">开机 · 约四个月拍摄</div>
+        <div class="tl-desc">主要取景横跨韩国多地，从法医检验到偏远的乡野段落。薛景求为这个角色<b>减掉接近 10 公斤体重</b>，并向解剖学专家请教；拍摄尸检场次时，他的动作一次 NG 都没有出现。</div>
+      </div>
+      <div class="tl-item hot">
+        <div class="tl-year">2010.01.07</div>
+        <div class="tl-title">韩国上映 · 19 禁</div>
+        <div class="tl-desc">因涉及肢解与强烈暴力，影片被定为<b>19 岁以上观览可</b>。开画首周即与上一年的贺岁档余温正面竞争，票房表现属于类型片的中游。</div>
+      </div>
+      <div class="tl-item hot">
+        <div class="tl-year">2010</div>
+        <div class="tl-title">第 18 届春史电影奖 · 最佳男演员</div>
+        <div class="tl-desc">薛景求凭姜民浩一角拿下春史电影奖最佳男演员。这是本片在表演层面收到的最高肯定——也解释了为什么多数评论会把这部片的第一句话留给他的表演。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2010.09 — 2010.11</div>
+        <div class="tl-title">走到海外 · 法国</div>
+        <div class="tl-desc">影片入选法国 <b>L'Étrange Festival</b>（奇幻电影节）展映，并于 11 月 17 日在法国正式公映。这一届节展此后成了韩国类型片在欧洲的重要入口之一。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2010.11.26</div>
+        <div class="tl-title">第 31 届青龙电影奖 · 双提名</div>
+        <div class="tl-desc">金亨俊入围<b>最佳新人导演</b>，韩惠珍入围<b>最佳新人女演员</b>。两个提名都落在「新人」这一栏，也说明业内当时正是把它当作一个新人导演的完成度来评价的。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2011</div>
+        <div class="tl-title">黄金摄影奖 · 银奖</div>
+        <div class="tl-desc">在技术奖项一侧拿到黄金摄影奖银奖。同年影片在多个海外类型片节展继续巡回。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2012.07.31</div>
+        <div class="tl-title">美国版 DVD 发行</div>
+        <div class="tl-desc">由 CJ Entertainment America 发行北美版 DVD，附薛景求与金亨俊的访谈及幕后花絮。此后十余年，它靠流媒体与片单在中文与欧美影迷之间持续获得新观众。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 荣誉 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">06 / Awards</span>
+      <h2 class="sec-title">一座影帝，两个新人提名</h2>
+      <p class="sec-desc">这是一部「奖项不多、但位置很清楚」的电影：表演一侧拿下了实质认可，导演一侧被归入新人序列。它的声望主要来自观众，不来自奖台。</p>
+    </div>
+
+    <div class="awards reveal">
+      <div class="aw"><div class="yr">2010</div><div class="bd"><b>第 18 届春史电影奖 · <em>最佳男演员（薛景求）</em></b>本片在表演层面拿到的最高认可</div></div>
+      <div class="aw"><div class="yr">2010</div><div class="bd"><b>第 31 届青龙电影奖 · 最佳新人导演（金亨俊）提名</b>长片处女作即入围，评的是完成度</div></div>
+      <div class="aw"><div class="yr">2010</div><div class="bd"><b>第 31 届青龙电影奖 · 最佳新人女演员（韩惠珍）提名</b>本片演员阵容一侧的另一项肯定</div></div>
+      <div class="aw"><div class="yr">2011</div><div class="bd"><b>黄金摄影奖 · <em>银奖</em></b>技术奖项一侧的确认</div></div>
+      <div class="aw"><div class="yr">2010</div><div class="bd"><b>法国 L'Étrange Festival · 官方展映</b>后于同年 11 月 17 日在法国公映</div></div>
+      <div class="aw"><div class="yr">2010</div><div class="bd"><b>韩国票房 · 约 112.5 万观影人次</b>类型片中等规模，口碑在后续十余年里持续累积</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 谱系坐标 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">07 / Lineage</span>
+      <h2 class="sec-title">它站在哪一格</h2>
+      <p class="sec-desc">2008 到 2010 这三年，韩国接连出现了一批把「追凶」拍成心理折磨的电影。它们共享同一套时代情绪，也各走了一条路。《不可饶恕》是其中最不求痛快、最往内收的一部。</p>
+    </div>
+
+    <div class="lineage reveal">
+      <div class="lg">
+        <div class="lg-yr">2008</div>
+        <div class="lg-tt">追击者</div>
+        <div class="lg-dr">罗泓轸 · 改编自真实连环案<br>把「抓到了也没用」拍成了窒息感</div>
+        <div class="lg-wt">本系列 No.04</div>
+      </div>
+      <div class="lg">
+        <div class="lg-yr">2009</div>
+        <div class="lg-tt">母亲</div>
+        <div class="lg-dr">奉俊昊 · 原创剧本<br>把母爱推到它的伦理边界之外</div>
+        <div class="lg-wt">本系列 No.08</div>
+      </div>
+      <div class="lg">
+        <div class="lg-yr">2010</div>
+        <div class="lg-tt">黄海</div>
+        <div class="lg-dr">罗泓轸 · 延边朝鲜族视角<br>把暴力拍成一种无处可去的疲惫</div>
+        <div class="lg-wt">本系列 No.05</div>
+      </div>
+      <div class="lg">
+        <div class="lg-yr">2010</div>
+        <div class="lg-tt">看见恶魔</div>
+        <div class="lg-dr">金知云 · 朴勋政编剧<br>把复仇的界线一路推到最后一步</div>
+        <div class="lg-wt">本系列 No.16</div>
+      </div>
+      <div class="lg now">
+        <div class="lg-yr">2010</div>
+        <div class="lg-tt">不可饶恕</div>
+        <div class="lg-dr">金亨俊 · 处女作<br>把复仇从「打」换成「算」：不流太多的血，只改写那张纸</div>
+        <div class="lg-wt">本系列 No.21 · 本期</div>
+      </div>
+    </div>
+
+    <p class="lineage-note reveal">
+      这一批片子的共同点是：<b>它们都不相信「抓到凶手」能解决问题</b>。不同的是，《追击者》《黄海》《看见恶魔》把答案写在身体上——《不可饶恕》把答案写在纸上。它几乎不靠动作场面推进，全片的压力来自一个很安静的动作：签字。
+    </p>
+  </div>
+</section>
+
+<!-- ================= 08 六宫格亮点 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">08 / Highlights</span>
+      <h2 class="sec-title">六个亮点</h2>
+    </div>
+
+    <div class="highlights reveal">
+      <div class="hl">
+        <div class="idx">01</div>
+        <h4>它敢在<em>三分之一处就交出凶手</em></h4>
+        <p>影片开始不到半小时，嫌犯就被抓了，而且毫不犹豫地认了罪。类型片敢把「谁是凶手」这个最大的钩子这么早松手，是需要底气的——因为它手里还有一张更大的牌，只是暂时不翻。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">02</div>
+        <h4>薛景求 × 柳承范，<em>两个人坐在一张桌子两边就够</em></h4>
+        <p>薛景求演的是一个把情绪压到最低的人，所有波动都收在眼角的抖动里；柳承范演的是从头到尾客气、礼貌、笃定的那种人。他们几乎不需要动手，审讯室里的一张桌子就足以让观众坐立不安。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">03</div>
+        <h4>全片真正的主角，<em>是「证据」</em></h4>
+        <p>尸检报告、物证编号、时间线、法医写下的每一句结论——这部片里的大部分暴力都发生在纸面上。它讨论的不是谁更狠，而是<b>谁能决定一份文件怎么写</b>。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">04</div>
+        <h4>首部以国立科学搜查研究所<em>为背景的韩国电影</em></h4>
+        <p>两年多的资料筹备不是宣传语。片中的解剖检查室接近真实规格，搜查组的工作程序也参照了研究所专家的意见。你能感觉到一种别人拍不出来的「专业质感」——它不炫耀，但一直在场。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">05</div>
+        <h4>新人导演的<em>结构控制力</em></h4>
+        <p>这是金亨俊自编自导的第一部长片。全片几乎没有废戏：前半段用案件推进，中段靠期限收紧，最后十几分钟一次性结清。一个新人能把结构收成这样，是它在影迷里被反复提起的另一个原因。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">06</div>
+        <h4>那十分钟，<em>这里一个字都不说</em></h4>
+        <p>它之所以被叫做「韩国影史最绝望的收尾之一」，就是因为那一段。它不靠血浆、不靠喊，靠的是把前面所有铺垫在一瞬间对齐。看之前请先做好心理准备，但不要提前去查。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 为什么值得看 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">09 / Why It Matters</span>
+      <h2 class="sec-title">它为什么值得一看</h2>
+    </div>
+
+    <div class="why reveal">
+      <div class="why-item">
+        <h4><span>Reason 01</span>它问的不是「谁有罪」，而是「凭什么由你来定性」</h4>
+        <p>绝大多数犯罪片把「真相」当成终点——找到它，故事就结束了。这部片把「真相」当成起点：真相早就摆在那里，问题在于它由谁写下来、写给谁看、能不能被改一个词。姜民浩这个角色的可怕之处，不在于他会不会犯罪，而在于他<b>比任何人都清楚一份报告能改变什么</b>。当一个人手里的笔足够重，底线也就不再是他一个人的事。这是这部片真正的议题，也是它比同期类型片更耐想的地方。</p>
+      </div>
+      <div class="why-item">
+        <h4><span>Reason 02</span>它把复仇片的重心从「打」挪到了「算」</h4>
+        <p>同一时期的韩国复仇片，几乎都在堆身体上的痛感。《不可饶恕》选了一条更难的路：<b>它让复仇变成一道题。</b>对手不追、不逃、不动手，他只是给出条件，然后耐心地等着对方一步步走到他自己不想去的位置。整部片最狠的动作是把一份文件递出去。这种「不流血的暴力」在类型片里非常罕见，也更难拍——因为它必须让观众相信，纸上的一个数字能比刀更疼。</p>
+      </div>
+      <div class="why-item">
+        <h4><span>Reason 03</span>它是一段类型史的中间站，也是薛景求的一次硬功夫</h4>
+        <p>放在 2008—2010 这个窗口里看，它一头连着《追击者》《母亲》对「体制失灵」的愤怒，一头连着后来那些更极端、更风格化的作品。想理解韩国犯罪片为什么会在那几年集体走向「绝望叙事」，它是个很好的切面。而薛景求在这部片里的表演更是硬功夫：他演的这个人几乎不喊、不哭、不崩溃，<b>你能看见的全部，只有一双手在慢慢变得不听使唤</b>。就为这一层，也值一次。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10 观影提示 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">10 / Before You Watch</span>
+      <h2 class="sec-title">观影提示</h2>
+    </div>
+    <div class="warns reveal">
+      <div class="warn">
+        <div class="tag">分 级</div>
+        <p><b>19 岁以上观览可。</b>韩国本土分级为青少年观览不可，主要原因是肢解与强烈暴力，以及持续的压迫性氛围。</p>
+      </div>
+      <div class="warn">
+        <div class="tag">题 材</div>
+        <p><b>包含尸体肢解、绑架与强烈心理压迫。</b>画面并非以血腥取胜，但压迫感贯穿全片，情绪偏沉重，不轻松的观影。</p>
+      </div>
+      <div class="warn">
+        <div class="tag">建 议</div>
+        <p><b>看之前不要查任何评价与解析。</b>它的价值有很大一部分落在结构上，一句剧透就会毁掉整部片的体验。请把它当成一次只发生一次的赌局。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 结尾 ================= -->
+<section class="band outro">
+  <div class="wrap">
+    <div class="outro-grid">
+      <div class="quote reveal">
+        <div class="q-mark">&ldquo;</div>
+        <blockquote>很多悲剧之所以发生，是因为有人站在自己的位置上，认定对方不可饶恕。</blockquote>
+        <p style="font-size:13.5px;color:var(--ash);line-height:1.9;max-width:660px;margin-bottom:18px;">
+          导演金亨俊谈片名时说过的意思：这个片名表达的其实是它的反面——如果愿意换到对方的立场上看一眼，很多事本来不必走到那一步。整部电影，就是在替这句话找一个最残酷的注脚。
+        </p>
+        <div class="attr">据公开访谈整理 · 非片中台词 · 不涉剧情走向</div>
+      </div>
+      <div class="end-stamp reveal">
+        <div class="no">21</div>
+        <div class="lb">Korean Crime Cinema<br>Series · No.21</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;width:100%">
+    <span>不可饶恕 · 용서는 없다 · No Mercy (2010)</span>
+    <span>No Spoiler · 无剧透推荐</span>
+    <span>2026-10-04</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 分组错峰入场 ---------- */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var map = new Map();
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        var parent = el.parentElement;
+        var order = map.get(parent) || 0;
+        map.set(parent, order + 1);
+        el.style.transitionDelay = Math.min(order * 70, 420) + 'ms';
+        el.classList.add('in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---------- Hero Canvas：无影灯呼吸 + 紫外幽光 + 冷白微尘 ---------- */
+  var cv = document.getElementById('heroCanvas');
+  if (!cv) return;
+  var ctx = cv.getContext('2d');
+  var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var motes = [], raf = null, last = 0, running = true;
+
+  function resize(){
+    var r = cv.getBoundingClientRect();
+    W = r.width; H = r.height;
+    cv.width = Math.max(1, Math.floor(W * DPR));
+    cv.height = Math.max(1, Math.floor(H * DPR));
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    build();
+  }
+
+  function build(){
+    motes = [];
+    var mn = Math.round(W / 20);
+    for (var j = 0; j < mn; j++){
+      motes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: 0.5 + Math.random() * 1.9,
+        sp: 0.14 + Math.random() * 0.46,
+        a: 0.06 + Math.random() * 0.3,
+        ph: Math.random() * Math.PI * 2,
+        kind: Math.random() < 0.6 ? 'cool' : 'uv'
+      });
+    }
+  }
+
+  function glow(x, y, r, col, alpha){
+    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0, 'rgba(' + col + ',' + alpha + ')');
+    g.addColorStop(0.5, 'rgba(' + col + ',' + (alpha * 0.26) + ')');
+    g.addColorStop(1, 'rgba(' + col + ',0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+  }
+
+  function frame(t){
+    if (!running){ raf = null; return; }
+    if (!last) last = t;
+    var dt = Math.min((t - last) / 16.6667, 3);
+    last = t;
+    var time = t / 1000;
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+
+    /* 无影灯呼吸（对应 SVG 灯盘位置） */
+    glow(W * 0.546, H * 0.166, 214 + Math.sin(time * 0.62) * 20, '226,238,249', 0.11);
+    glow(W * 0.546, H * 0.40, 320 + Math.sin(time * 0.44 + 1.1) * 26, '207,224,245', 0.055);
+
+    /* 紫外幽光呼吸（对应墙面紫外灯管位置） */
+    glow(W * 0.754, H * 0.375, 190 + Math.sin(time * 0.5 + 2.2) * 22, '143,124,255', 0.085);
+
+    /* 冷白 / 紫外微尘上浮 */
+    for (var j = 0; j < motes.length; j++){
+      var m = motes[j];
+      m.y -= m.sp * dt;
+      m.x += Math.sin(time * 0.5 + m.ph) * 0.22 * dt;
+      if (m.y < -12){ m.y = H + 12; m.x = Math.random() * W; }
+      var fade = Math.min(1, m.y / (H * 0.85));
+      var col = m.kind === 'cool' ? '226,238,249' : '178,160,255';
+      ctx.fillStyle = 'rgba(' + col + ',' + (m.a * fade) + ')';
+      ctx.beginPath(); ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+
+    raf = requestAnimationFrame(frame);
+  }
+
+  function start(){ if (!raf && !reduce){ last = 0; raf = requestAnimationFrame(frame); } }
+  function stop(){ if (raf){ cancelAnimationFrame(raf); raf = null; } }
+
+  resize();
+  window.addEventListener('resize', function(){ resize(); }, { passive: true });
+  if (reduce){
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    glow(W * 0.546, H * 0.166, 214, '226,238,249', 0.11);
+    glow(W * 0.546, H * 0.40, 320, '207,224,245', 0.055);
+    glow(W * 0.754, H * 0.375, 190, '143,124,255', 0.085);
+    ctx.globalCompositeOperation = 'source-over';
+  } else {
+    start();
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden){ running = false; stop(); }
+      else { running = true; start(); }
+    });
+  }
+
+  /* ---------- 证据链 HUD ---------- */
+  var hud = document.getElementById('hud'),
+      hudVal = document.getElementById('hudVal'),
+      hudDot = document.getElementById('hudDot'),
+      hudLb = document.getElementById('hudLb');
+  var stages = [
+    [0,   '现场 · 江边发现'],
+    [22,  '解剖台 · 第一层'],
+    [45,  '期限 · 三天'],
+    [68,  '线索 · 互相矛盾'],
+    [90,  '归档 · 由谁签字']
+  ];
+  function onScroll(){
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    hudDot.style.left = (p * 100) + '%';
+    hudVal.textContent = String(Math.round(p * 100)).padStart(2, '0') + '%';
+    var label = stages[0][1];
+    for (var i = 0; i < stages.length; i++){ if (p * 100 >= stages[i][0]) label = stages[i][1]; }
+    hudLb.textContent = label;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>

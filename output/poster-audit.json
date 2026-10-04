@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T04:05:50.593Z",
+  "generatedAt": "2026-10-04T01:50:26.213Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -1563,7 +1563,7 @@
       "imageUrl": "https://image.tmdb.org/t/p/original/qEVZeu6ODIpS3zwyhOxKEmvkDpH.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "101KB",
+      "size": "130KB",
       "dims": "600×900",
       "ratio": 1.5,
       "identityKind": "name",
@@ -2297,7 +2297,7 @@
       "imageUrl": "https://image.tmdb.org/t/p/original/wZOsxwQjTdtSki0MiPIy8Zu9lv1.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "746KB",
+      "size": "768KB",
       "dims": "2000×3000",
       "ratio": 1.5,
       "identityKind": "name",
