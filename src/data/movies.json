@@ -1735,6 +1735,102 @@
     "posterCaption": "Concept Poster / 概念示意 · 非官方海报"
   },
   {
+    "id": "20261005",
+    "date": "20261005",
+    "zhTitle": "王者",
+    "enTitle": "",
+    "year": "2017",
+    "tagline": "他花了半辈子，只想爬到一个能说话的位子上。 等他真的站上去才发现，这栋楼里的每一级台阶，都是踩着别人修起来的——而下面的位置，永远有人正在等。",
+    "meta": "",
+    "ratings": [],
+    "plot": [],
+    "spoilerNote": "",
+    "highlights": [],
+    "quotes": [],
+    "why": [],
+    "honors": [],
+    "archive": [],
+    "review": "这张概念图把主角放回他真正的处境里——不是英雄，也不是恶人，而是一份被登记、被评级、被盖章的档案。照片里他站在台阶上，卡片上有人替他写好了姓名与职级，右下角压着一枚钢印：他被系统承认了，代价是他从此只是一个编号。",
+    "reviewBy": "",
+    "reviewStars": 5,
+    "posterSvg": "<svg viewBox=\"0 0 400 600\" aria-label=\"《王者》概念海报：一张被归档的检察官证件卡\">\n          <defs>\n            <linearGradient id=\"pBg\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0%\" stop-color=\"#05070c\"></stop>\n              <stop offset=\"52%\" stop-color=\"#0a1019\"></stop>\n              <stop offset=\"100%\" stop-color=\"#05070c\"></stop>\n            </linearGradient>\n            <linearGradient id=\"pCard\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0%\" stop-color=\"#0d131d\"></stop>\n              <stop offset=\"100%\" stop-color=\"#080c14\"></stop>\n            </linearGradient>\n            <linearGradient id=\"pBar\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"0\">\n              <stop offset=\"0%\" stop-color=\"#c8a24a\" stop-opacity=\".38\"></stop>\n              <stop offset=\"100%\" stop-color=\"#c8a24a\" stop-opacity=\".1\"></stop>\n            </linearGradient>\n            <radialGradient id=\"pGlow\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n              <stop offset=\"0%\" stop-color=\"#c8a24a\" stop-opacity=\".26\"></stop>\n              <stop offset=\"100%\" stop-color=\"#c8a24a\" stop-opacity=\"0\"></stop>\n            </radialGradient>\n            <radialGradient id=\"pCold\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n              <stop offset=\"0%\" stop-color=\"#b9d2e8\" stop-opacity=\".26\"></stop>\n              <stop offset=\"100%\" stop-color=\"#b9d2e8\" stop-opacity=\"0\"></stop>\n            </radialGradient>\n          </defs>\n\n          <rect width=\"400\" height=\"600\" fill=\"url(#pBg)\"></rect>\n          <ellipse cx=\"200\" cy=\"150\" rx=\"220\" ry=\"160\" fill=\"url(#pGlow)\"></ellipse>\n\n          <text x=\"46\" y=\"40\" font-family=\"monospace\" font-size=\"8.4\" fill=\"#4c5b6c\" letter-spacing=\"2\">KOREAN CRIME CINEMA · NO.23</text>\n\n          <!-- 卡片 -->\n          <rect x=\"48\" y=\"56\" width=\"304\" height=\"340\" fill=\"url(#pCard)\" stroke=\"#c8a24a\" stroke-opacity=\".5\"></rect>\n          <rect x=\"55\" y=\"63\" width=\"290\" height=\"326\" fill=\"none\" stroke=\"#c8a24a\" stroke-opacity=\".16\"></rect>\n\n          <!-- 卡头 -->\n          <rect x=\"48\" y=\"56\" width=\"304\" height=\"30\" fill=\"#c8a24a\" fill-opacity=\".12\"></rect>\n          <line x1=\"48\" y1=\"86\" x2=\"352\" y2=\"86\" stroke=\"#c8a24a\" stroke-opacity=\".38\"></line>\n          <text x=\"64\" y=\"76\" font-family=\"monospace\" font-size=\"9.6\" fill=\"#e8c778\" letter-spacing=\"2.6\">검사 · PROSECUTOR</text>\n          <text x=\"336\" y=\"76\" text-anchor=\"end\" font-family=\"monospace\" font-size=\"9.6\" fill=\"#7c8da0\" letter-spacing=\"1.8\">NO.23</text>\n\n          <!-- 证件照：三级台阶与一个背影 -->\n          <rect x=\"68\" y=\"104\" width=\"104\" height=\"132\" fill=\"#0b111c\" stroke=\"#c8a24a\" stroke-opacity=\".34\"></rect>\n          <rect x=\"70\" y=\"106\" width=\"100\" height=\"2\" fill=\"#9fb8cf\" opacity=\".18\"></rect>\n          <rect x=\"82\" y=\"198\" width=\"76\" height=\"5\" fill=\"#182234\"></rect>\n          <rect x=\"76\" y=\"212\" width=\"88\" height=\"5\" fill=\"#141d2d\"></rect>\n          <rect x=\"70\" y=\"226\" width=\"100\" height=\"5\" fill=\"#111927\"></rect>\n          <rect x=\"68\" y=\"231\" width=\"104\" height=\"5\" fill=\"#070b12\"></rect>\n          <ellipse cx=\"120\" cy=\"198\" rx=\"13\" ry=\"2.8\" fill=\"#000\" opacity=\".5\"></ellipse>\n          <g>\n            <path d=\"M120 198 L110 198 L112 162 L114 154 L114 142 L112 136 L116 130 L124 130 L128 136 L126 142 L126 154 L128 162 L130 198 Z\" fill=\"#04070c\"></path>\n            <path d=\"M120 198 L110 198 L112 162 L114 154 L114 142 L112 136 L116 130\" fill=\"none\" stroke=\"#c8a24a\" stroke-width=\"1.1\" opacity=\".55\"></path>\n          </g>\n\n          <!-- 信息栏 -->\n          <text x=\"190\" y=\"128\" font-family=\"monospace\" font-size=\"7.6\" fill=\"#4c5b6c\" letter-spacing=\"1.8\">NAME</text>\n          <text x=\"190\" y=\"146\" font-family=\"'Songti SC','STSong',serif\" font-size=\"14\" fill=\"#e9eff6\" letter-spacing=\"3\">朴泰洙</text>\n          <text x=\"190\" y=\"174\" font-family=\"monospace\" font-size=\"7.6\" fill=\"#4c5b6c\" letter-spacing=\"1.8\">RANK</text>\n          <text x=\"190\" y=\"192\" font-family=\"'Songti SC','STSong',serif\" font-size=\"13\" fill=\"#cedaea\" letter-spacing=\"2.4\">检察官</text>\n          <text x=\"190\" y=\"220\" font-family=\"monospace\" font-size=\"7.6\" fill=\"#4c5b6c\" letter-spacing=\"1.8\">OFFICE</text>\n          <text x=\"190\" y=\"238\" font-family=\"'Songti SC','STSong',serif\" font-size=\"12\" fill=\"#7c8da0\" letter-spacing=\"2\">地方检察厅</text>\n\n          <!-- 条形码 -->\n          <g fill=\"url(#pBar)\">\n            <rect x=\"68\" y=\"258\" width=\"2\" height=\"22\"></rect>\n            <rect x=\"73\" y=\"258\" width=\"1\" height=\"22\"></rect>\n            <rect x=\"77\" y=\"258\" width=\"3\" height=\"22\"></rect>\n            <rect x=\"83\" y=\"258\" width=\"1\" height=\"22\"></rect>\n            <rect x=\"87\" y=\"258\" width=\"2\" height=\"22\"></rect>\n            <rect x=\"92\" y=\"258\" width=\"4\" height=\"22\"></rect>\n            <rect x=\"99\" y=\"258\" width=\"1\" height=\"22\"></rect>\n            <rect x=\"103\" y=\"258\" width=\"2\" height=\"22\"></rect>\n            <rect x=\"108\" y=\"258\" width=\"1\" height=\"22\"></rect>\n            <rect x=\"112\" y=\"258\" width=\"3\" height=\"22\"></rect>\n            <rect x=\"118\" y=\"258\" width=\"2\" height=\"22\"></rect>\n            <rect x=\"123\" y=\"258\" width=\"1\" height=\"22\"></rect>\n            <rect x=\"127\" y=\"258\" width=\"4\" height=\"22\"></rect>\n            <rect x=\"134\" y=\"258\" width=\"2\" height=\"22\"></rect>\n            <rect x=\"139\" y=\"258\" width=\"1\" height=\"22\"></rect>\n            <rect x=\"143\" y=\"258\" width=\"3\" height=\"22\"></rect>\n            <rect x=\"149\" y=\"258\" width=\"1\" height=\"22\"></rect>\n            <rect x=\"153\" y=\"258\" width=\"2\" height=\"22\"></rect>\n            <rect x=\"158\" y=\"258\" width=\"4\" height=\"22\"></rect>\n            <rect x=\"165\" y=\"258\" width=\"1\" height=\"22\"></rect>\n            <rect x=\"169\" y=\"258\" width=\"2\" height=\"22\"></rect>\n            <rect x=\"174\" y=\"258\" width=\"3\" height=\"22\"></rect>\n            <rect x=\"180\" y=\"258\" width=\"1\" height=\"22\"></rect>\n          </g>\n          <text x=\"68\" y=\"296\" font-family=\"monospace\" font-size=\"7.6\" fill=\"#4c5b6c\" letter-spacing=\"1.6\">FILE 023-2017-KR</text>\n\n          <!-- 钢印：天平 -->\n          <circle cx=\"288\" cy=\"302\" r=\"54\" fill=\"#c8a24a\" fill-opacity=\".05\"></circle>\n          <circle cx=\"288\" cy=\"302\" r=\"54\" fill=\"none\" stroke=\"#c8a24a\" stroke-opacity=\".48\" stroke-width=\"1.4\"></circle>\n          </svg>",
+    "posterCaption": ""
+  },
+  {
+    "id": "20261009",
+    "date": "20261009",
+    "zhTitle": "老千",
+    "enTitle": "",
+    "year": "2006",
+    "tagline": "他只想把输掉的钱赢回来，然后收手。 可他真正学会的，不是赢钱的办法——而是一张桌子是怎么运转的，以及一个人要在这张桌子边坐多久，才会变成这张桌子的一部分。",
+    "meta": "",
+    "ratings": [],
+    "plot": [],
+    "spoilerNote": "",
+    "highlights": [
+      {
+        "ic": "",
+        "title": "",
+        "body": "他在片子里最重要的表演器官不是眼睛，是手：洗牌、切牌、推牌、数筹码。从最开始握牌时会抖，到后来手腕落下毫不犹豫——导演把「学会」这件事拍成了一套可以看见的身体记忆。你能从动作里看出这个人走了多远。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "郑女士是九十年代韩国银幕上最难被简单归类的一个女性角色：她谈生意的语气和谈别的事情的语气一模一样，笑和不笑之间没有过渡。金惠秀凭这个角色拿下第 27 届青龙最佳女主角，此后「蛇蝎美人」在韩国影评里有了具体的脸。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "平京长是全片的笑点和重量所在。他教徒弟时讲的全是生活常识——怎么看出一个人紧张、什么时候该退、为什么赢了别笑。他把一个江湖人物的规矩讲得像父亲叮嘱，这也是「受辱—学艺—复仇」这套骨架能立住的原因。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "本片被公认为影史上最用心拍花图的电影：四十八张牌按月份分花，一月松、三月樱、八月月、十一月桐，每一张都长得对。演员开拍前跟着真实的职业老千练习手法，牌桌上的每一个动作都有出处——它不是把牌当道具，是把牌当语言。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "摄影崔英焕把大量赌戏压在手持特写上：翻牌的手、忍住不动的脸、桌面上的筹码堆。剪辑辛敏璟凭此连拿春史与韩国电影大赏两座剪辑奖。不靠音乐催，不靠慢镜渲染——靠的是切在别人抬眼的前一秒。"
+      },
+      {
+        "ic": "",
+        "title": "",
+        "body": "崔东勋把「受辱—学艺—复仇」这套最古典的叙事骨架，嫁接进了九十年代的韩国地下赌场，再用回忆拆分重组。它讲的是作弊，用的却是武侠片的章法：师父、绝技、出山、规矩、代价。形式上的古典，正是它耐看的原因。"
+      }
+    ],
+    "quotes": [
+      {
+        "text": "牌桌不看运气，只看人——而人，是可以被读出来的。",
+        "who": ""
+      }
+    ],
+    "why": [
+      {
+        "no": "",
+        "title": "One它把赌片从「看运气」改成了「看人",
+        "body": "别的赌片靠奇观：玄学手气、天降好牌、最后一秒翻盘。这部片子几乎相反——它让你一直盯着人看：谁在装赢、谁在装输、谁说这句话的时候手在桌下动了一下。当你开始读人的时候，牌面就不重要了。这种把技术活拍成心理战的思路，后来被无数韩国同类型作品借走。"
+      },
+      {
+        "no": "",
+        "title": "Two它是一部工业意义上的路标",
+        "body": "一本连载四年的国民漫画、一位刚拍完处女作的新导演、一位还没被大银幕验证过的男主角——这三样东西凑在一起，做出了 684 万人次、百想大赏、青龙影后。它证明了一件事：在韩国，类型片可以既卖钱，又被严肃对待。此后二十年，这条路被反复走。"
+      },
+      {
+        "no": "",
+        "title": "Three它到今天还在生长",
+        "body": "2014 年的《神之手》、2019 年的《独眼杰克》先后开机，同一套世界观被换了三拨人重讲；而几乎所有韩国「骗局 / 智斗」题材的片子，都要先跟它比一次。更难得的是它的生命力跨了代——一部成人级赌片，被今天的年轻观众当作\"最喜欢的电影\"记着。"
+      }
+    ],
+    "honors": [],
+    "archive": [],
+    "review": "不必提前了解花图规则，片子会替你讲清楚，而且讲得很好懂。唯一需要留意的是叙事结构——开头是倒着讲的，先把那条线记住，后面会一一对上。",
+    "reviewBy": "",
+    "reviewStars": 5,
+    "posterSvg": "<svg viewBox=\"0 0 400 600\" aria-label=\"《老千》概念海报：绒布桌上的一张花图牌、筹码与一支点着的烟\">\n          <defs>\n            <radialGradient id=\"pFelt\" cx=\"50%\" cy=\"42%\" r=\"72%\">\n              <stop offset=\"0%\" stop-color=\"#16432f\"></stop>\n              <stop offset=\"52%\" stop-color=\"#0c2619\"></stop>\n              <stop offset=\"100%\" stop-color=\"#050a07\"></stop>\n            </radialGradient>\n            <linearGradient id=\"pBack\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n              <stop offset=\"0%\" stop-color=\"#8c2431\"></stop>\n              <stop offset=\"100%\" stop-color=\"#5d1620\"></stop>\n            </linearGradient>\n            <radialGradient id=\"pLamp\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n              <stop offset=\"0%\" stop-color=\"#ffd79a\" stop-opacity=\".26\"></stop>\n              <stop offset=\"100%\" stop-color=\"#c69a4a\" stop-opacity=\"0\"></stop>\n            </radialGradient>\n            <radialGradient id=\"pEmber\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n              <stop offset=\"0%\" stop-color=\"#ffd08a\" stop-opacity=\".6\"></stop>\n              <stop offset=\"100%\" stop-color=\"#e07a2a\" stop-opacity=\"0\"></stop>\n            </radialGradient>\n            <pattern id=\"pSlat\" width=\"10\" height=\"13\" patternUnits=\"userSpaceOnUse\">\n              <rect width=\"10\" height=\"4.8\" fill=\"#c69a4a\" fill-opacity=\".16\"></rect>\n            </pattern>\n            <pattern id=\"pNub\" width=\"7\" height=\"7\" patternUnits=\"userSpaceOnUse\">\n              <circle cx=\"1.6\" cy=\"1.6\" r=\".7\" fill=\"#2f7a5b\" fill-opacity=\".22\"></circle>\n              <circle cx=\"5.2\" cy=\"5\" r=\".6\" fill=\"#2f7a5b\" fill-opacity=\".16\"></circle>\n            </pattern>\n          </defs>\n\n          <rect width=\"400\" height=\"600\" fill=\"url(#pFelt)\"></rect>\n          <rect width=\"400\" height=\"600\" fill=\"url(#pNub)\"></rect>\n          <ellipse cx=\"200\" cy=\"250\" rx=\"230\" ry=\"200\" fill=\"url(#pLamp)\"></ellipse>\n\n          <!-- 后墙百叶窗漏下的光 -->\n          <rect x=\"24\" y=\"52\" width=\"352\" height=\"96\" fill=\"url(#pSlat)\" opacity=\".85\"></rect>\n          <rect x=\"24\" y=\"52\" width=\"352\" height=\"96\" fill=\"#c69a4a\" opacity=\".04\"></rect>\n          <line x1=\"24\" y1=\"148\" x2=\"376\" y2=\"148\" stroke=\"#0a0705\" stroke-width=\"4\"></line>\n          <line x1=\"24\" y1=\"148\" x2=\"376\" y2=\"148\" stroke=\"#3a2c18\" stroke-width=\"1\" opacity=\".7\"></line>\n\n          <text x=\"40\" y=\"36\" font-family=\"monospace\" font-size=\"8.4\" fill=\"#6b5f4a\" letter-spacing=\"2\">KOREAN CRIME CINEMA · NO.24</text>\n\n          <!-- 一张扣着的牌（后面那层） -->\n          <g transform=\"rotate(-14 176 316)\">\n            <rect x=\"106\" y=\"212\" width=\"140\" height=\"208\" rx=\"7\" fill=\"url(#pBack)\"></rect>\n            <rect x=\"113\" y=\"219\" width=\"126\" height=\"194\" rx=\"5\" fill=\"none\" stroke=\"#e6bd76\" stroke-opacity=\".42\"></rect>\n            <rect x=\"119\" y=\"225\" width=\"114\" height=\"182\" rx=\"4\" fill=\"none\" stroke=\"#e6bd76\" stroke-opacity=\".16\"></rect>\n            <g fill=\"#e6bd76\" opacity=\".3\">\n              <circle cx=\"140\" cy=\"248\" r=\"3\"></circle>\n              <circle cx=\"176\" cy=\"248\" r=\"3\"></circle>\n              <circle cx=\"212\" cy=\"248\" r=\"3\"></circle>\n              <circle cx=\"140\" cy=\"284\" r=\"3\"></circle>\n              <circle cx=\"176\" cy=\"284\" r=\"3\"></circle>\n              <circle cx=\"212\" cy=\"284\" r=\"3\"></circle>\n              <circle cx=\"140\" cy=\"320\" r=\"3\"></circle>\n              <circle cx=\"176\" cy=\"320\" r=\"3\"></circle>\n              <circle cx=\"212\" cy=\"320\" r=\"3\"></circle>\n              <circle cx=\"140\" cy=\"356\" r=\"3\"></circle>\n              <circle cx=\"176\" cy=\"356\" r=\"3\"></circle>\n              <circle cx=\"212\" cy=\"356\" r=\"3\"></circle>\n            </g>\n            <circle cx=\"176\" cy=\"316\" r=\"46\" fill=\"none\" stroke=\"#e6bd76\" stroke-opacity=\".22\"></circle>\n            <ellipse cx=\"176\" cy=\"316\" rx=\"18\" ry=\"26\" fill=\"none\" stroke=\"#e6bd76\" stroke-opacity=\".3\"></ellipse>\n          </g>\n\n          <!-- 一张翻开的牌：三月的樱 -->\n          <g transform=\"rotate(-5 234 316)\">\n            <rect x=\"166\" y=\"206\" width=\"140\" height=\"208\" rx=\"7\" fill=\"#ece3d2\"></rect>\n            <rect x=\"166\" y=\"206\" width=\"140\" height=\"64\" fill=\"#cf3f55\"></rect>\n            <path d=\"M166 270 q23 13 46 0 q23 -13 47 0 q23 13 47 0 L306 280 q-23 13 -47 0 q-24 -13 -47 0 q-23 13 -46 0 Z\" fill=\"#f5ebd8\"></path>\n            <g fill=\"#b9304a\">\n              <circle cx=\"208\" cy=\"308\" r=\"10\"></circle>\n              <circle cx=\"199\" cy=\"299\" r=\"6.6\"></circle>\n              <circle cx=\"217\" cy=\"299\" r=\"6.6\"></circle>\n              <circle cx=\"199\" cy=\"317\" r=\"6.6\"></circle>\n              <circle cx=\"217\" cy=\"317\" r=\"6.6\"></circle>\n              <circle cx=\"268\" cy=\"338\" r=\"9\"></circle>\n              <circle cx=\"260\" cy=\"330\" r=\"6\"></circle>\n              <circle cx=\"276\" cy=\"330\" r=\"6\"></circle>\n              <circle cx=\"260\" cy=\"346\" r=\"6\"></circle>\n              <circle cx=\"276\" cy=\"346\" r=\"6\"></circle>\n              <circle cx=\"236\" cy=\"364\" r=\"7.4\"></circle>\n              <circle cx=\"229\" cy=\"357\" r=\"5\"></circle>\n              <circle cx=\"243\" cy=\"357\" r=\"5\"></circle>\n              <circle cx=\"229\" cy=\"371\" r=\"5\"></circle>\n              <circle cx=\"243\" cy=\"371\" r=\"5\"></circle>\n            </g>\n            <path d=\"M198 392 q30 -22 74 -12\" fill=\"none\" stroke=\"#8a7048\" stroke-width=\"1.6\"></path>\n            <path d=\"M204 372 q10 -12 24 -6\" fill=\"none\" stroke=\"#8a7048\" stroke-width=\"1.2\"></path>\n            <text x=\"182\" y=\"400\" font-family=\"monospace\" font-size=\"9\" fill=\"#8d2739\" letter-spacing=\"1.6\">三月 · 3월</text>\n            <rect x=\"166\" y=\"206\" width=\"140\" height=\"208\" rx=\"7\" fill=\"none\" stroke=\"#8a7048\" stroke-opacity=\".5\"></rect>\n          </g>\n\n          <!-- 桌上：筹码、硬币、烟 -->\n          <g>\n            <ellipse cx=\"106\" cy=\"452\" rx=\"40\" ry=\"12\" fill=\"#c69a4a\" opacity=\".85\"></ellipse>\n            <ellipse cx=\"106\" cy=\"444\" rx=\"40\" ry=\"12\" fill=\"#e6bd76\" opacity=\".8\"></ellipse>\n            <ellipse cx=\"106\" cy=\"436\" rx=\"40\" ry=\"12\" fill=\"#8d2739\" opacity=\".9\"></ellipse>\n            <ellipse cx=\"106\" cy=\"428\" rx=\"40\" ry=\"12\" fill=\"#cf3f55\" opacity=\".85\"></ellipse>\n            <ellipse cx=\"106\" cy=\"420\" rx=\"40\" ry=\"12\" fill=\"#e6bd76\" opacity=\".85\"></ellipse>\n            <ellipse cx=\"106\" cy=\"420\" rx=\"24\" ry=\"7\" fill=\"#8d2739\" opacity=\".5\"></ellipse>\n\n            <ellipse cx=\"172\" cy=\"470\" rx=\"26\" ry=\"8\" fill=\"#cf3f55\" opacity=\".8\"></ellipse>\n            <ellipse cx=\"172\" cy=\"463\" rx=\"26\" ry=\"8\" fill=\"#c69a4a\" opacity=\".8\"></ellipse>\n            <ellipse cx=\"214\" cy=\"484\" rx=\"22\" ry=\"7\" fill=\"#8d2739\" opacity=\".7\"></ellipse>\n            <ellipse cx=\"214\" cy=\"478\" rx=\"22\" ry=\"7\" fill=\"#e6bd76\" opacity=\".7\"></ellipse>\n            <ellipse cx=\"256\" cy=\"470\" rx=\"19\" ry=\"6\" fill=\"#cf3f55\" opacity=\".6\"></ellipse>\n            <ellipse cx=\"256\" cy=\"465\" rx=\"19\" ry=\"6\" fill=\"#c69a4a\" opacity=\".6\"></ellipse>\n\n            <ellipse cx=\"306\" cy=\"484\" rx=\"46\" ry=\"14\" fill=\"#161209\"></ellipse>\n            <ellipse cx=\"306\" cy=\"478\" rx=\"46\" ry=\"14\" fill=\"#251d10\"></ellipse>\n            <ellipse cx=\"306\" cy=\"478\" rx=\"33\" ry=\"9\" fill=\"#0d0a06\"></ellipse>\n            <g transform=\"rotate(-15 306 462)\">\n              <rect x=\"268\" y=\"458\" width=\"70\" height=\"9\" rx=\"4.5\" fill=\"#ece2cf\"></rect>\n              <rect x=\"268\" y=\"458\" width=\"18\" height=\"9\" rx=\"4.5\" fill=\"#c69a4a\" opacity=\".85\"></rect>\n            </g>\n            <ellipse cx=\"344\" cy=\"452\" rx=\"11\" ry=\"8\" fill=\"url(#pEmber)\"></ellipse>\n            <circle cx=\"344\" cy=\"452\" r=\"2.2\" fill=\"#ffd79a\"></circle>\n          </g>\n\n          <!-- 右上：一枚朱红印章 -->\n          <g>\n            <rect x=\"322\" y=\"176\" width=\"54\" height=\"54\" rx=\"4\" fill=\"#8d2739\" fill-opacity=\".16\"></rect>\n            <rect x=\"322\" y=\"176\" width=\"54\" height=\"54\" rx=\"4\" fill=\"none\" stroke=\"#cf3f55\" stroke-width=\"2\" stroke-opacity=\".8\"></rect>\n            <text x=\"349\" y=\"216\" text-anchor=\"middle\" font-family=\"'Songti SC','STSong',serif\" font-size=\"30\" fill=\"#ef8090\" letter-spacing=\"0\">千</text>\n          </g>\n\n          <!-- 片名 -->\n          <line x1=\"128\" y1=\"524\" x2=\"165\" y2=\"524\" stroke=\"#cf3f55\" stroke-opacity=\".5\"></line>\n          <line x1=\"236\" y1=\"524\" x2=\"273\" y2=\"524\" stroke=\"#cf3f55\" stroke-opacity=\".5\"></line>\n          <text x=\"200\" y=\"556\" text-anchor=\"middle\" font-family=\"'Songti SC','STSong',serif\" font-size=\"54\" fill=\"#faf4e9\" letter-spacing=\"16\">老千</text>\n          <text x=\"200\" y=\"580\" text-anchor=\"middle\" font-family=\"monospace\" font-size=\"9.6\" fill=\"#b6ab97\" letter-spacing=\"3\">타짜 · TAZZA THE HIGH ROLLERS · 2006</text>\n        </svg>",
+    "posterCaption": "Concept Key Art · 一张牌翻开着，一张扣着，第三样东西正在烧"
+  },
+  {
     "id": "20260427",
     "date": "20260427",
     "zhTitle": "辛 德 勒 的 名 单",

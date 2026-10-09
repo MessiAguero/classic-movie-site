@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《王者》 더 킹 · The King (2017) — 韩国犯罪片经典推荐</title>
+<style>
+  :root{
+    --ink:#05070c;
+    --ink-2:#0a0e16;
+    --ink-3:#111927;
+    --mist:#e9eff6;
+    --mist-dim:#b4c1d0;
+    --ash:#7c8da0;
+    --ash-dim:#4c5b6c;
+    --brass:#c8a24a;
+    --brass-light:#e8c778;
+    --brass-soft:#8f7431;
+    --paper:#e6e0d2;
+    --verm:#cf4536;
+    --blood:#8e2a2c;
+    --line:rgba(233,239,246,.12);
+    --line-strong:rgba(233,239,246,.24);
+    --serif:"Georgia","Times New Roman","Songti SC","STSong",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ink);
+    color:var(--mist);
+    font-family:var(--sans);
+    line-height:1.85;
+    font-size:16px;
+    letter-spacing:.01em;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:9;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='.5'/></svg>");
+    opacity:.05;mix-blend-mode:overlay;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:8;pointer-events:none;
+    background:radial-gradient(122% 92% at 50% 38%,transparent 44%,rgba(0,0,0,.58) 100%);
+  }
+  ::selection{background:var(--brass);color:#10130a}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;min-height:max(100vh,880px);overflow:hidden;
+    display:flex;align-items:stretch;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  #heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;pointer-events:none}
+  .hero-scrim{
+    position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:
+      repeating-linear-gradient(180deg,rgba(233,239,246,.028) 0 1px,transparent 1px 3px),
+      linear-gradient(180deg,rgba(5,7,12,.90) 0%,rgba(5,7,12,.42) 22%,rgba(5,7,12,.10) 50%,rgba(5,7,12,.42) 78%,rgba(5,7,12,.92) 100%),
+      radial-gradient(92% 72% at 16% 40%,rgba(5,7,12,.70) 0%,transparent 74%);
+  }
+  .hero-in{
+    position:relative;z-index:4;
+    width:100%;max-width:1160px;margin:0 auto;
+    padding:104px 28px 96px;
+    display:flex;flex-direction:column;justify-content:flex-start;
+  }
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--brass);
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  }
+  .eyebrow::before{content:"";width:44px;height:1px;background:var(--brass);opacity:.85;flex:0 0 auto}
+  .eyebrow span{color:var(--ash-dim);letter-spacing:.24em}
+  h1.title{
+    font-family:var(--serif);
+    font-size:clamp(62px,13vw,152px);
+    line-height:.94;
+    letter-spacing:.1em;
+    margin:22px 0 8px;
+    color:#f2f6fb;
+    text-shadow:0 6px 44px rgba(0,0,0,.85);
+    font-weight:400;
+  }
+  .title-en{
+    font-family:var(--serif);font-size:clamp(15px,2.2vw,26px);
+    letter-spacing:.42em;color:var(--mist-dim);
+    text-transform:uppercase;margin-bottom:6px;padding-left:3px;
+  }
+  .title-kr{
+    font-size:clamp(13px,1.6vw,17px);letter-spacing:.34em;color:var(--brass);
+    margin-bottom:26px;padding-left:3px;
+  }
+  .hero-sub{
+    max-width:660px;font-size:clamp(14px,1.6vw,17px);
+    color:var(--mist-dim);line-height:1.95;
+    border-left:2px solid var(--brass);padding-left:20px;
+  }
+  .hero-sub b{color:var(--mist);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+  .chip{
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+    padding:6px 12px;border:1px solid var(--line-strong);
+    color:var(--mist-dim);background:rgba(5,7,12,.46);
+    backdrop-filter:blur(3px);
+  }
+  .chip.hot{border-color:rgba(200,162,74,.55);color:var(--brass-light)}
+  .chip.tag{border-color:rgba(207,69,54,.46);color:#e08a80}
+  .scroll-hint{
+    position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
+    z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.3em;
+    color:var(--ash-dim);display:flex;flex-direction:column;align-items:center;gap:9px;
+  }
+  .scroll-hint i{display:block;width:1px;height:36px;background:linear-gradient(180deg,var(--brass),transparent);animation:drop 2.4s ease-in-out infinite}
+  @keyframes drop{0%,100%{opacity:.25;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
+
+  /* ============ LAYOUT ============ */
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+  section.band{padding:96px 0;position:relative;border-bottom:1px solid var(--line)}
+  section.band:last-of-type{border-bottom:0}
+  .sec-head{margin-bottom:52px;position:relative}
+  .sec-num{
+    font-family:var(--mono);font-size:10px;letter-spacing:.34em;color:var(--brass);
+    text-transform:uppercase;display:block;margin-bottom:14px;
+  }
+  h2.sec-title{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(26px,3.6vw,44px);line-height:1.24;letter-spacing:.03em;color:#eef4fa;
+  }
+  h2.sec-title em{font-style:normal;color:var(--brass-light)}
+  .sec-desc{margin-top:16px;max-width:760px;color:var(--ash);font-size:14.5px;line-height:1.9}
+
+  /* 无剧透提示条 */
+  .nospoil{
+    display:flex;gap:16px;align-items:flex-start;
+    border:1px solid rgba(200,162,74,.34);
+    background:linear-gradient(90deg,rgba(200,162,74,.10),rgba(200,162,74,.015) 62%,transparent);
+    padding:18px 22px;margin:0 0 64px;
+  }
+  .nospoil .mark{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--brass-light);
+    border:1px solid rgba(200,162,74,.5);padding:3px 7px;flex:0 0 auto;margin-top:3px;
+  }
+  .nospoil p{font-size:13.5px;color:var(--mist-dim);line-height:1.85}
+  .nospoil p b{color:var(--mist)}
+
+  /* 两栏：速览 + 梗概 */
+  .duo{display:grid;grid-template-columns:300px minmax(0,1fr);gap:56px;align-items:start}
+  .glance{border:1px solid var(--line-strong);background:var(--ink-2);padding:26px 22px;position:sticky;top:28px}
+  .glance h3{
+    font-family:var(--mono);font-size:10px;letter-spacing:.28em;color:var(--brass);
+    text-transform:uppercase;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line);
+  }
+  .glance dl{display:flex;flex-direction:column;gap:0}
+  .glance .row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(233,239,246,.09);font-size:12.5px}
+  .glance .row:last-child{border-bottom:0}
+  .glance dt{color:var(--ash-dim);flex:0 0 auto;letter-spacing:.06em}
+  .glance dd{color:var(--mist);text-align:right;font-weight:500}
+  .glance .row.accent dd{color:var(--brass-light)}
+  .glance .row.tagged dd{color:#e08a80}
+
+  .prose{font-size:16.5px;line-height:2.05;color:var(--mist-dim)}
+  .prose p+p{margin-top:22px}
+  .prose b{color:var(--mist);font-weight:600}
+  .prose em{color:var(--brass-light);font-style:normal}
+  .drop::first-letter{
+    font-family:var(--serif);float:left;font-size:74px;line-height:.82;
+    padding:6px 14px 0 0;color:var(--brass);font-weight:400;
+  }
+
+  /* 概念海报 */
+  .poster-grid{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:60px;align-items:start}
+  .poster-frame{
+    border:1px solid var(--line-strong);background:var(--ink-2);
+    padding:20px;position:relative;
+  }
+  .poster-frame::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+    background:repeating-linear-gradient(115deg,var(--brass) 0 10px,transparent 10px 20px);opacity:.42;
+  }
+  .poster-frame svg{display:block;width:100%;height:auto}
+  .poster-cap{
+    font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--ash-dim);
+    margin-top:16px;text-transform:uppercase;
+  }
+  .notes{display:flex;flex-direction:column;gap:26px}
+  .note{border-left:1px solid var(--line-strong);padding-left:22px;position:relative}
+  .note::before{
+    content:"";position:absolute;left:-3px;top:9px;width:5px;height:5px;
+    background:var(--brass);border-radius:50%;
+  }
+  .note h4{font-size:14.5px;letter-spacing:.14em;color:var(--mist);font-weight:600;margin-bottom:8px}
+  .note p{font-size:14px;color:var(--ash);line-height:1.9}
+
+  /* 档案格 */
+  .file-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .file-cell{background:var(--ink-2);padding:20px 18px;min-height:96px;display:flex;flex-direction:column;gap:7px}
+  .file-cell dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--ash-dim);text-transform:uppercase}
+  .file-cell dd{font-size:14.5px;color:var(--mist);line-height:1.55;font-weight:500}
+  .file-cell.wide{grid-column:span 2}
+  .file-cell.hot dd{color:var(--brass-light)}
+  .file-cell.tagged dd{color:#e08a80}
+  .file-cell dd small{display:block;font-size:11.5px;color:var(--ash-dim);font-weight:400;letter-spacing:.04em;margin-top:3px}
+
+  /* 口碑四卡 */
+  .score-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+  .score{
+    border:1px solid var(--line-strong);background:linear-gradient(180deg,var(--ink-3),var(--ink-2));
+    padding:26px 22px 22px;position:relative;overflow:hidden;
+  }
+  .score::before{
+    content:"";position:absolute;top:0;left:0;width:100%;height:2px;
+    background:linear-gradient(90deg,var(--brass),transparent 76%);
+  }
+  .score .plat{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--ash-dim);text-transform:uppercase}
+  .score .big{font-family:var(--serif);font-size:46px;line-height:1;color:#f2f6fb;margin:14px 0 4px}
+  .score .big i{font-style:normal;font-size:16px;color:var(--ash-dim);letter-spacing:.06em;margin-left:4px}
+  .score .bar{height:3px;background:rgba(233,239,246,.13);margin:16px 0 12px;position:relative}
+  .score .bar span{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--brass),var(--brass-light))}
+  .score .cap{font-size:12px;color:var(--ash-dim);line-height:1.75}
+  .score .cap b{color:var(--mist-dim);font-weight:500}
+
+  /* 时间线 */
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,var(--brass),rgba(233,239,246,.14) 40%,rgba(233,239,246,.14))}
+  .tl-item{position:relative;padding:0 0 34px 0}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-32px;top:9px;width:9px;height:9px;
+    border:1px solid var(--brass);background:var(--ink);transform:rotate(45deg);
+  }
+  .tl-item.hot::before{background:var(--brass);border-color:var(--brass)}
+  .tl-year{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--brass-light);margin-bottom:7px}
+  .tl-title{font-size:15.5px;color:var(--mist);font-weight:600;letter-spacing:.03em;margin-bottom:6px}
+  .tl-desc{font-size:13.5px;color:var(--ash);line-height:1.85;max-width:780px}
+
+  /* 荣誉 */
+  .awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .aw{background:var(--ink-2);padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
+  .aw .yr{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ash-dim);flex:0 0 auto;padding-top:3px;width:38px}
+  .aw .bd{font-size:13.8px;color:var(--mist-dim);line-height:1.8}
+  .aw .bd b{color:var(--mist);font-weight:600;display:block;margin-bottom:3px;font-size:14.2px}
+  .aw .bd b em{font-style:normal;color:var(--brass-light)}
+
+  /* 谱系坐标 */
+  .lineage{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .lg{background:var(--ink-2);padding:24px 20px;display:flex;flex-direction:column;gap:9px;position:relative}
+  .lg.now{background:linear-gradient(180deg,rgba(200,162,74,.15),var(--ink-2) 72%)}
+  .lg .lg-yr{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;color:var(--ash-dim)}
+  .lg .lg-tt{font-family:var(--serif);font-size:19px;color:var(--mist);line-height:1.3}
+  .lg .lg-dr{font-size:12.5px;color:var(--ash);line-height:1.7}
+  .lg .lg-wt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--brass);margin-top:auto;padding-top:10px}
+  .lg.now .lg-wt{color:#e08a80}
+  .lineage-note{margin-top:26px;border-left:2px solid var(--brass);padding-left:20px;font-size:14.5px;color:var(--ash);line-height:1.95;max-width:840px}
+
+  /* 六宫格亮点 */
+  .highlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .hl{background:var(--ink-2);padding:30px 26px 32px;position:relative;transition:background .5s ease}
+  .hl:hover{background:var(--ink-3)}
+  .hl .idx{
+    font-family:var(--serif);font-size:34px;color:rgba(233,239,246,.13);
+    line-height:1;margin-bottom:16px;letter-spacing:.02em;
+  }
+  .hl h4{font-size:16px;color:var(--mist);font-weight:600;letter-spacing:.05em;margin-bottom:12px}
+  .hl h4 em{font-style:normal;color:var(--brass-light)}
+  .hl p{font-size:13.6px;color:var(--ash);line-height:1.9}
+
+  /* 为什么值得看 */
+  .why{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .why-item{background:var(--ink-2);padding:40px 38px;display:grid;grid-template-columns:210px minmax(0,1fr);gap:40px;align-items:start}
+  .why-item h4{font-family:var(--serif);font-size:19px;color:var(--mist);line-height:1.5;font-weight:400;letter-spacing:.04em}
+  .why-item h4 span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--brass);margin-bottom:12px;text-transform:uppercase}
+  .why-item p{font-size:15px;color:var(--ash);line-height:2;max-width:780px}
+  .why-item p b{color:var(--mist-dim);font-weight:600}
+
+  /* 提示三格 */
+  .warns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .warn{border:1px solid rgba(142,42,44,.5);background:linear-gradient(180deg,rgba(142,42,44,.13),rgba(142,42,44,.03));padding:24px 22px}
+  .warn .tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:#cf7a76;text-transform:uppercase;margin-bottom:12px}
+  .warn p{font-size:13.5px;color:var(--mist-dim);line-height:1.85}
+  .warn p b{color:var(--mist)}
+
+  /* 结尾 */
+  .outro{border-top:1px solid var(--line);background:linear-gradient(180deg,var(--ink),#080c14)}
+  .quote{max-width:860px}
+  .quote .q-mark{font-family:var(--serif);font-size:66px;color:var(--brass);opacity:.55;line-height:.6}
+  .quote blockquote{
+    font-family:var(--serif);font-size:clamp(19px,2.5vw,28px);line-height:1.72;
+    color:#eaf1f8;letter-spacing:.03em;margin:6px 0 22px;
+  }
+  .quote .attr{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--ash-dim);text-transform:uppercase}
+  .outro-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:60px;align-items:end;margin-top:16px}
+  .end-stamp{border:1px solid var(--line-strong);padding:22px;text-align:center}
+  .end-stamp .no{font-family:var(--serif);font-size:56px;color:var(--brass);line-height:1}
+  .end-stamp .lb{font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--ash-dim);margin-top:10px;text-transform:uppercase}
+  footer{
+    border-top:1px solid var(--line);padding:34px 0 54px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--ash-dim);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;text-transform:uppercase;
+  }
+
+  /* 履历 HUD */
+  #hud{
+    position:fixed;right:22px;bottom:24px;z-index:12;
+    border:1px solid var(--line-strong);background:rgba(5,7,12,.86);
+    backdrop-filter:blur(8px);padding:14px 16px 13px;min-width:228px;
+    display:none;
+  }
+  #hud .hud-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+  #hud .hud-top span{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--ash-dim);text-transform:uppercase}
+  #hud .hud-top b{font-family:var(--mono);font-size:11px;color:var(--brass-light);letter-spacing:.1em}
+  #hud .hud-track{height:2px;background:rgba(233,239,246,.14);position:relative}
+  #hud .hud-track i{position:absolute;top:-2px;left:0;width:6px;height:6px;background:var(--brass);transform:translateX(-3px)}
+  #hud .hud-lb{font-size:11px;color:var(--mist-dim);margin-top:9px;letter-spacing:.06em;font-family:var(--mono)}
+
+  /* 入场动画 */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.25,1),transform .9s cubic-bezier(.2,.7,.25,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1 !important;transform:none !important;transition:none !important}
+    html{scroll-behavior:auto}
+    .scroll-hint i{animation:none}
+  }
+
+  /* 响应式 */
+  @media (max-width:1080px){
+    .duo{grid-template-columns:1fr;gap:38px}
+    .glance{position:static}
+    .poster-grid{grid-template-columns:1fr;gap:40px}
+    .poster-frame{max-width:420px;margin:0 auto}
+    .score-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .file-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .lineage{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .highlights{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .outro-grid{grid-template-columns:1fr;gap:40px}
+  }
+  @media (max-width:760px){
+    body{font-size:15px}
+    section.band{padding:70px 0}
+    .wrap{padding:0 20px}
+    .hero{min-height:max(100vh,740px)}
+    .hero-in{padding:70px 20px 66px}
+    .eyebrow{font-size:9.5px;letter-spacing:.22em;gap:10px}
+    .eyebrow::before{width:26px}
+    .eyebrow span{letter-spacing:.14em}
+    h1.title{font-size:clamp(52px,13vw,152px);letter-spacing:.07em;margin:14px 0 6px}
+    .title-en{letter-spacing:.3em}
+    .title-kr{letter-spacing:.22em;margin-bottom:18px}
+    .hero-sub{padding-left:15px;font-size:13.5px;line-height:1.75}
+    .chips{gap:7px;margin-top:16px}
+    .chip{font-size:10px;padding:5px 9px;letter-spacing:.08em}
+    .scroll-hint{bottom:10px;gap:6px}
+    .scroll-hint i{height:22px}
+    .file-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .file-cell.wide{grid-column:span 2}
+    .score-grid{grid-template-columns:1fr}
+    .lineage{grid-template-columns:1fr}
+    .highlights{grid-template-columns:1fr}
+    .awards{grid-template-columns:1fr}
+    .warns{grid-template-columns:1fr}
+    .why-item{grid-template-columns:1fr;gap:18px;padding:30px 24px}
+    .sec-head{margin-bottom:38px}
+    .nospoil{padding:15px 16px;gap:12px}
+    .nospoil .mark{font-size:9px}
+    .nospoil p{font-size:12.5px}
+    .drop::first-letter{font-size:56px;padding:4px 10px 0 0}
+  }
+  @media (min-width:981px){#hud{display:block}}
+</style>
+</head>
+<body>
+
+<div id="hud">
+  <div class="hud-top"><span>Dossier</span><b id="hudVal">00%</b></div>
+  <div class="hud-track"><i id="hudDot"></i></div>
+  <div class="hud-lb" id="hudLb">木浦 · 一间漏雨的屋</div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#04060b"/>
+        <stop offset="34%" stop-color="#080c14"/>
+        <stop offset="64%" stop-color="#101724"/>
+        <stop offset="86%" stop-color="#1a2231"/>
+        <stop offset="100%" stop-color="#2b2b28"/>
+      </linearGradient>
+      <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0c111a"/>
+        <stop offset="44%" stop-color="#070a10"/>
+        <stop offset="100%" stop-color="#03050a"/>
+      </linearGradient>
+      <radialGradient id="hz" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#c8a24a" stop-opacity=".30"/>
+        <stop offset="44%" stop-color="#a9863c" stop-opacity=".09"/>
+        <stop offset="100%" stop-color="#a9863c" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="cold" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#b9d2e8" stop-opacity=".20"/>
+        <stop offset="100%" stop-color="#b9d2e8" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="facade" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#0b1119"/>
+        <stop offset="52%" stop-color="#0e1622"/>
+        <stop offset="100%" stop-color="#080d15"/>
+      </linearGradient>
+      <linearGradient id="stepTop" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1b2534"/>
+        <stop offset="100%" stop-color="#131b27"/>
+      </linearGradient>
+      <linearGradient id="stepFace" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0d131d"/>
+        <stop offset="100%" stop-color="#080c13"/>
+      </linearGradient>
+      <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0e141d"/>
+        <stop offset="100%" stop-color="#070a10"/>
+      </linearGradient>
+    </defs>
+
+    <rect width="1440" height="900" fill="url(#sky)"/>
+
+    <!-- 地平线暖光：远处城市与楼里透出的灯 -->
+    <ellipse cx="880" cy="540" rx="700" ry="112" fill="url(#hz)" opacity=".86"/>
+    <ellipse cx="300" cy="548" rx="420" ry="70" fill="url(#hz)" opacity=".5"/>
+
+    <!-- ===== 远景城市天际线 ===== -->
+    <g fill="#060a11">
+      <rect x="20" y="470" width="92" height="98"/>
+      <rect x="120" y="440" width="66" height="128"/>
+      <rect x="194" y="486" width="108" height="82"/>
+      <rect x="310" y="452" width="58" height="116"/>
+      <rect x="376" y="498" width="126" height="70"/>
+      <rect x="512" y="472" width="96" height="96"/>
+      <rect x="616" y="500" width="126" height="68"/>
+      <rect x="972" y="474" width="86" height="94"/>
+      <rect x="1066" y="498" width="118" height="70"/>
+      <rect x="1196" y="446" width="70" height="122"/>
+      <rect x="1274" y="484" width="100" height="84"/>
+      <rect x="1382" y="462" width="48" height="106"/>
+    </g>
+    <!-- 楼顶受光边缘 -->
+    <g fill="#1a2331" opacity=".78">
+      <rect x="120" y="440" width="66" height="1.6"/>
+      <rect x="310" y="452" width="58" height="1.6"/>
+      <rect x="512" y="472" width="96" height="1.4"/>
+      <rect x="1196" y="446" width="70" height="1.6"/>
+      <rect x="194" y="486" width="108" height="1.4"/>
+      <rect x="1274" y="484" width="100" height="1.4"/>
+    </g>
+
+    <!-- ===== 主楼：一栋灯火通明的权力大楼 ===== -->
+    <g>
+      <rect x="806" y="318" width="140" height="250" fill="url(#facade)"/>
+      <!-- 檐口 -->
+      <rect x="798" y="308" width="156" height="12" fill="#0f1724"/>
+      <rect x="798" y="308" width="156" height="1.8" fill="#2b3a4e"/>
+      <!-- 竖向柱列 -->
+      <g stroke="#141d2b" stroke-width="1.1">
+        <line x1="818" y1="320" x2="818" y2="568"/>
+        <line x1="834" y1="320" x2="834" y2="568"/>
+        <line x1="850" y1="320" x2="850" y2="568"/>
+        <line x1="866" y1="320" x2="866" y2="568"/>
+        <line x1="882" y1="320" x2="882" y2="568"/>
+        <line x1="898" y1="320" x2="898" y2="568"/>
+        <line x1="914" y1="320" x2="914" y2="568"/>
+        <line x1="930" y1="320" x2="930" y2="568"/>
+      </g>
+      <!-- 楼层线 -->
+      <g stroke="#0f1723" stroke-width="1">
+        <line x1="806" y1="348" x2="946" y2="348"/>
+        <line x1="806" y1="368" x2="946" y2="368"/>
+        <line x1="806" y1="388" x2="946" y2="388"/>
+        <line x1="806" y1="408" x2="946" y2="408"/>
+        <line x1="806" y1="428" x2="946" y2="428"/>
+        <line x1="806" y1="448" x2="946" y2="448"/>
+        <line x1="806" y1="468" x2="946" y2="468"/>
+        <line x1="806" y1="488" x2="946" y2="488"/>
+        <line x1="806" y1="508" x2="946" y2="508"/>
+        <line x1="806" y1="528" x2="946" y2="528"/>
+        <line x1="806" y1="548" x2="946" y2="548"/>
+      </g>
+      <!-- 窗光：冷白（制度的灯） -->
+      <g fill="#cfe0f0" opacity=".30">
+        <rect x="812" y="332" width="5" height="10"/>
+        <rect x="828" y="332" width="5" height="10"/>
+        <rect x="860" y="332" width="5" height="10"/>
+        <rect x="892" y="332" width="5" height="10"/>
+        <rect x="908" y="352" width="5" height="10"/>
+        <rect x="924" y="352" width="5" height="10"/>
+        <rect x="812" y="392" width="5" height="10"/>
+        <rect x="844" y="392" width="5" height="10"/>
+        <rect x="876" y="412" width="5" height="10"/>
+        <rect x="908" y="412" width="5" height="10"/>
+        <rect x="828" y="432" width="5" height="10"/>
+        <rect x="860" y="452" width="5" height="10"/>
+        <rect x="892" y="472" width="5" height="10"/>
+        <rect x="924" y="492" width="5" height="10"/>
+        <rect x="844" y="512" width="5" height="10"/>
+        <rect x="876" y="532" width="5" height="10"/>
+      </g>
+      <!-- 窗光：黄铜（还在加班的那几间） -->
+      <g fill="#c8a24a" opacity=".46">
+        <rect x="844" y="332" width="5" height="10"/>
+        <rect x="876" y="332" width="5" height="10"/>
+        <rect x="924" y="332" width="5" height="10"/>
+        <rect x="812" y="352" width="5" height="10"/>
+        <rect x="844" y="352" width="5" height="10"/>
+        <rect x="876" y="352" width="5" height="10"/>
+        <rect x="828" y="392" width="5" height="10"/>
+        <rect x="892" y="392" width="5" height="10"/>
+        <rect x="924" y="412" width="5" height="10"/>
+        <rect x="844" y="432" width="5" height="10"/>
+        <rect x="908" y="452" width="5" height="10"/>
+        <rect x="828" y="472" width="5" height="10"/>
+        <rect x="860" y="492" width="5" height="10"/>
+        <rect x="892" y="512" width="5" height="10"/>
+        <rect x="876" y="552" width="5" height="10"/>
+      </g>
+      <!-- 楼前冷光晕 -->
+      <ellipse cx="876" cy="440" rx="150" ry="170" fill="url(#cold)"/>
+      <!-- 楼顶航空障碍灯 -->
+      <circle cx="876" cy="302" r="2.8" fill="#cf4536">
+        <animate attributeName="opacity" values=".18;1;.18" dur="2.6s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <!-- ===== 侧翼楼群 ===== -->
+    <g>
+      <rect x="466" y="398" width="78" height="170" fill="#070c13"/>
+      <rect x="462" y="392" width="86" height="7" fill="#0c131d"/>
+      <g fill="#cfe0f0" opacity=".22">
+        <rect x="476" y="412" width="5" height="9"/>
+        <rect x="492" y="412" width="5" height="9"/>
+        <rect x="524" y="432" width="5" height="9"/>
+        <rect x="476" y="452" width="5" height="9"/>
+        <rect x="508" y="472" width="5" height="9"/>
+        <rect x="524" y="492" width="5" height="9"/>
+      </g>
+      <g fill="#c8a24a" opacity=".34">
+        <rect x="508" y="412" width="5" height="9"/>
+        <rect x="492" y="452" width="5" height="9"/>
+        <rect x="476" y="492" width="5" height="9"/>
+      </g>
+      <rect x="1108" y="424" width="118" height="144" fill="#070c13"/>
+      <rect x="1102" y="418" width="130" height="7" fill="#0c131d"/>
+      <g fill="#cfe0f0" opacity=".2">
+        <rect x="1122" y="442" width="5" height="9"/>
+        <rect x="1150" y="442" width="5" height="9"/>
+        <rect x="1186" y="462" width="5" height="9"/>
+        <rect x="1136" y="482" width="5" height="9"/>
+        <rect x="1172" y="502" width="5" height="9"/>
+        <rect x="1200" y="522" width="5" height="9"/>
+      </g>
+      <g fill="#c8a24a" opacity=".3">
+        <rect x="1172" y="442" width="5" height="9"/>
+        <rect x="1200" y="482" width="5" height="9"/>
+        <rect x="1122" y="522" width="5" height="9"/>
+      </g>
+    </g>
+
+    <!-- ===== 街面 ===== -->
+    <rect x="0" y="568" width="1440" height="60" fill="url(#road)"/>
+    <line x1="0" y1="568" x2="1440" y2="568" stroke="#1c2734" stroke-width="1.2"/>
+    <line x1="0" y1="600" x2="1440" y2="600" stroke="#141c27" stroke-width="1" opacity=".8"/>
+
+    <!-- 路灯（冷白，与楼里的灯同一种光） -->
+    <g>
+      <line x1="392" y1="500" x2="392" y2="568" stroke="#1a2431" stroke-width="2.4"/>
+      <path d="M392 500 q0 -10 14 -10" stroke="#1a2431" stroke-width="2.4" fill="none"/>
+      <ellipse cx="410" cy="492" rx="9" ry="3.4" fill="#dbe8f4" opacity=".55"/>
+      <ellipse cx="410" cy="500" rx="46" ry="22" fill="url(#cold)" opacity=".7"/>
+      <line x1="1052" y1="500" x2="1052" y2="568" stroke="#1a2431" stroke-width="2.4"/>
+      <path d="M1052 500 q0 -10 -14 -10" stroke="#1a2431" stroke-width="2.4" fill="none"/>
+      <ellipse cx="1034" cy="492" rx="9" ry="3.4" fill="#dbe8f4" opacity=".55"/>
+      <ellipse cx="1034" cy="500" rx="46" ry="22" fill="url(#cold)" opacity=".7"/>
+    </g>
+
+    <!-- 停在路边的一辆车 -->
+    <g>
+      <path d="M1140 592 q10 -14 34 -14 h44 q22 0 30 14 z" fill="#050810"/>
+      <rect x="1136" y="590" width="118" height="12" rx="3" fill="#070b13"/>
+      <rect x="1150" y="592" width="26" height="7" fill="#0d141f"/>
+      <rect x="1184" y="592" width="26" height="7" fill="#0d141f"/>
+      <rect x="1140" y="598" width="6" height="3" fill="#b8342c" opacity=".85"/>
+      <rect x="1244" y="598" width="6" height="3" fill="#b8342c" opacity=".85"/>
+    </g>
+
+    <!-- ===== 台阶：他还没上去 ===== -->
+    <g>
+      <rect x="640" y="584" width="272" height="8" fill="url(#stepTop)"/>
+      <rect x="640" y="592" width="272" height="14" fill="url(#stepFace)"/>
+      <rect x="640" y="584" width="272" height="1.6" fill="#2d3c50"/>
+      <rect x="622" y="606" width="308" height="8" fill="url(#stepTop)"/>
+      <rect x="622" y="614" width="308" height="14" fill="url(#stepFace)"/>
+      <rect x="622" y="606" width="308" height="1.6" fill="#2d3c50"/>
+      <rect x="604" y="628" width="344" height="8" fill="url(#stepTop)"/>
+      <rect x="604" y="636" width="344" height="16" fill="url(#stepFace)"/>
+      <rect x="604" y="628" width="344" height="1.6" fill="#2d3c50"/>
+      <rect x="588" y="652" width="376" height="16" fill="#0a0f18"/>
+      <rect x="588" y="652" width="376" height="1.6" fill="#23303f"/>
+      <rect x="576" y="668" width="400" height="6" fill="#06090f"/>
+    </g>
+
+    <!-- ===== 一个人站在台阶下面 ===== -->
+    <g>
+      <ellipse cx="724" cy="749" rx="30" ry="6.4" fill="#000" opacity=".55"/>
+      <g transform="translate(724,0)">
+        <path d="M0 750 L-13 750 L-11 700 L-8 690 L-8 672 L-10 664 L-4 656 L4 656 L10 664 L8 672 L8 690 L11 700 L13 750 Z" fill="#04070c"/>
+        <path d="M0 750 L-13 750 L-11 700 L-8 690 L-8 672 L-10 664 L-4 656" fill="none" stroke="#a9863c" stroke-width="1.5" opacity=".55"/>
+        <rect x="-10" y="656" width="20" height="7" fill="#04070c"/>
+      </g>
+    </g>
+
+    <!-- ===== 底部：一条三十年的刻度 ===== -->
+    <g>
+      <line x1="180" y1="776" x2="1260" y2="776" stroke="#222d3b" stroke-width="1"/>
+      <g stroke="#38465a" stroke-width="1">
+        <line x1="180" y1="776" x2="180" y2="783"/>
+        <line x1="234" y1="776" x2="234" y2="781"/>
+        <line x1="288" y1="776" x2="288" y2="781"/>
+        <line x1="342" y1="776" x2="342" y2="781"/>
+        <line x1="396" y1="776" x2="396" y2="781"/>
+        <line x1="450" y1="776" x2="450" y2="781"/>
+        <line x1="504" y1="776" x2="504" y2="781"/>
+        <line x1="558" y1="776" x2="558" y2="783"/>
+        <line x1="612" y1="776" x2="612" y2="781"/>
+        <line x1="666" y1="776" x2="666" y2="781"/>
+        <line x1="720" y1="776" x2="720" y2="781"/>
+        <line x1="936" y1="776" x2="936" y2="783"/>
+        <line x1="990" y1="776" x2="990" y2="781"/>
+        <line x1="1044" y1="776" x2="1044" y2="781"/>
+        <line x1="1098" y1="776" x2="1098" y2="781"/>
+        <line x1="1152" y1="776" x2="1152" y2="781"/>
+        <line x1="1206" y1="776" x2="1206" y2="781"/>
+        <line x1="1260" y1="776" x2="1260" y2="783"/>
+      </g>
+      <g stroke="#c8a24a" stroke-width="1.6" opacity=".7">
+        <line x1="288" y1="774" x2="288" y2="783"/>
+        <line x1="720" y1="774" x2="720" y2="783"/>
+        <line x1="1152" y1="774" x2="1152" y2="783"/>
+      </g>
+      <text x="720" y="800" text-anchor="middle" font-family="monospace" font-size="9.4" fill="#5d6d80" letter-spacing="2.6">1980 — 2017 · THIRTY YEARS IN ONE LIFE</text>
+    </g>
+  </svg>
+  <div class="hero-scrim"></div>
+  <canvas id="heroCanvas"></canvas>
+
+  <div class="hero-in">
+    <div class="eyebrow">韩国犯罪片 · 第 23 部 <span>Korean Crime Cinema / No.23</span></div>
+    <h1 class="title">王者</h1>
+    <div class="title-en">The King</div>
+    <div class="title-kr">더 킹 · 2017</div>
+    <p class="hero-sub">
+      他花了半辈子，只想爬到一个能说话的位子上。<br>
+      等他真的站上去才发现，<b>这栋楼里的每一级台阶，都是踩着别人修起来的——而下面的位置，永远有人正在等。</b>
+    </p>
+    <div class="chips">
+      <span class="chip hot">韩在林 · 编剧＋导演</span>
+      <span class="chip tag">大钟奖 · 最佳剧本</span>
+      <span class="chip">赵寅成 · 郑雨盛</span>
+      <span class="chip">柳俊烈 · 裴晟祐 · 金素珍</span>
+      <span class="chip">531 万 观影人次</span>
+      <span class="chip">2017 · 134 分钟</span>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>SCROLL</span><i></i></div>
+</header>
+
+<!-- ================= 01 梗概 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="nospoil reveal">
+      <span class="mark">NO&nbsp;SPOILER</span>
+      <p><b>全程不剧透。</b>下面所有内容只写到影片第一幕为止的公开设定——一个少年怎么认定「权力」这两个字、他怎么挤进那扇门、以及门后面那个人给了他什么条件。至于这条路的尽头是什么、谁在半途掉下去、他最后站到了哪一格，一个字都不提。</p>
+    </div>
+
+    <div class="sec-head reveal">
+      <span class="sec-num">01 / Synopsis</span>
+      <h2 class="sec-title">他只想站到那个能说话的位子上，<em>却发现那不是一把椅子，而是一个房间</em></h2>
+    </div>
+
+    <div class="duo">
+      <aside class="glance reveal">
+        <h3>一眼速览</h3>
+        <dl>
+          <div class="row"><dt>片名</dt><dd>王者</dd></div>
+          <div class="row"><dt>韩文原片名</dt><dd>더 킹</dd></div>
+          <div class="row"><dt>英文片名</dt><dd>The King</dd></div>
+          <div class="row"><dt>其他译名</dt><dd>金权性内幕 / 金权黑幕</dd></div>
+          <div class="row"><dt>年份</dt><dd>2017</dd></div>
+          <div class="row"><dt>类型</dt><dd>犯罪 / 剧情 / 权力</dd></div>
+          <div class="row"><dt>导演 · 编剧</dt><dd>韩在林</dd></div>
+          <div class="row"><dt>片长</dt><dd>134 分钟</dd></div>
+          <div class="row tagged"><dt>观影建议</dt><dd>成年观众</dd></div>
+          <div class="row accent"><dt>豆瓣</dt><dd>7.8 / 10</dd></div>
+        </dl>
+      </aside>
+
+      <div class="prose reveal">
+        <p class="drop">
+          故事从<em>木浦</em>开始。一个在街上晃荡的少年，某天亲眼看见自己的父亲因为一点小事被人叫走——跪着、赔着、把话说尽。那一刻他懂了一件事：<b>拳头不算力气，能让别人低下头的那个东西，才算力气。</b>那个东西，别人管它叫权力。
+        </p>
+        <p>
+          于是他去念书。麻烦在于，他原本不是念书的料。可他偏偏在嘈杂里找到了一种把自己关进去的办法——名次一路往上走，最后考进法学院，穿上制服，成了一名检察官。他以为，门已经被自己推开了。
+        </p>
+        <p>
+          门后面的样子，跟他想的不一样。每天是处理不完的小案子、扯不清的琐事，连自己的位置都不稳。他渐渐看清：在这套体系里真正说得上话的，只有最顶上那百分之一；其余的人，都是在替这几个人跑腿、写报告、把麻烦按下去。
+        </p>
+        <p>
+          直到有一桩<em>本来绝不该被放过</em>的案子落到他手上，一位前辈把他带进了另一个地方——一间接待大人物的房间。房间里的那个人说话很好听，条件也很简单：<b>把手上的东西放下，你就可以往上走。</b>
+        </p>
+        <p>
+          他答应了。从那天起，他身边多了一个能左右这个国家的上司<em>韩强植</em>；也重新遇上了一个从少年时就认识、如今在街上混得很好的兄弟<em>崔斗日</em>。他以为自己两边都有。至于这两条线后来把他带去了哪里——<b>这里一个字都不会说。</b>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 概念海报 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02 / Concept Poster</span>
+      <h2 class="sec-title">一张被归档的证件卡：<em>编号写在姓名前面</em></h2>
+      <p class="sec-desc">这张概念图把主角放回他真正的处境里——不是英雄，也不是恶人，而是一份被登记、被评级、被盖章的档案。照片里他站在台阶上，卡片上有人替他写好了姓名与职级，右下角压着一枚钢印：他被系统承认了，代价是他从此只是一个编号。</p>
+    </div>
+
+    <div class="poster-grid">
+      <figure class="poster-frame reveal">
+        <svg viewBox="0 0 400 600" aria-label="《王者》概念海报：一张被归档的检察官证件卡">
+          <defs>
+            <linearGradient id="pBg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#05070c"/>
+              <stop offset="52%" stop-color="#0a1019"/>
+              <stop offset="100%" stop-color="#05070c"/>
+            </linearGradient>
+            <linearGradient id="pCard" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0d131d"/>
+              <stop offset="100%" stop-color="#080c14"/>
+            </linearGradient>
+            <linearGradient id="pBar" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#c8a24a" stop-opacity=".38"/>
+              <stop offset="100%" stop-color="#c8a24a" stop-opacity=".1"/>
+            </linearGradient>
+            <radialGradient id="pGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c8a24a" stop-opacity=".26"/>
+              <stop offset="100%" stop-color="#c8a24a" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="pCold" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#b9d2e8" stop-opacity=".26"/>
+              <stop offset="100%" stop-color="#b9d2e8" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <rect width="400" height="600" fill="url(#pBg)"/>
+          <ellipse cx="200" cy="150" rx="220" ry="160" fill="url(#pGlow)"/>
+
+          <text x="46" y="40" font-family="monospace" font-size="8.4" fill="#4c5b6c" letter-spacing="2">KOREAN CRIME CINEMA · NO.23</text>
+
+          <!-- 卡片 -->
+          <rect x="48" y="56" width="304" height="340" fill="url(#pCard)" stroke="#c8a24a" stroke-opacity=".5"/>
+          <rect x="55" y="63" width="290" height="326" fill="none" stroke="#c8a24a" stroke-opacity=".16"/>
+
+          <!-- 卡头 -->
+          <rect x="48" y="56" width="304" height="30" fill="#c8a24a" fill-opacity=".12"/>
+          <line x1="48" y1="86" x2="352" y2="86" stroke="#c8a24a" stroke-opacity=".38"/>
+          <text x="64" y="76" font-family="monospace" font-size="9.6" fill="#e8c778" letter-spacing="2.6">검사 · PROSECUTOR</text>
+          <text x="336" y="76" text-anchor="end" font-family="monospace" font-size="9.6" fill="#7c8da0" letter-spacing="1.8">NO.23</text>
+
+          <!-- 证件照：三级台阶与一个背影 -->
+          <rect x="68" y="104" width="104" height="132" fill="#0b111c" stroke="#c8a24a" stroke-opacity=".34"/>
+          <rect x="70" y="106" width="100" height="2" fill="#9fb8cf" opacity=".18"/>
+          <rect x="82" y="198" width="76" height="5" fill="#182234"/>
+          <rect x="76" y="212" width="88" height="5" fill="#141d2d"/>
+          <rect x="70" y="226" width="100" height="5" fill="#111927"/>
+          <rect x="68" y="231" width="104" height="5" fill="#070b12"/>
+          <ellipse cx="120" cy="198" rx="13" ry="2.8" fill="#000" opacity=".5"/>
+          <g>
+            <path d="M120 198 L110 198 L112 162 L114 154 L114 142 L112 136 L116 130 L124 130 L128 136 L126 142 L126 154 L128 162 L130 198 Z" fill="#04070c"/>
+            <path d="M120 198 L110 198 L112 162 L114 154 L114 142 L112 136 L116 130" fill="none" stroke="#c8a24a" stroke-width="1.1" opacity=".55"/>
+          </g>
+
+          <!-- 信息栏 -->
+          <text x="190" y="128" font-family="monospace" font-size="7.6" fill="#4c5b6c" letter-spacing="1.8">NAME</text>
+          <text x="190" y="146" font-family="'Songti SC','STSong',serif" font-size="14" fill="#e9eff6" letter-spacing="3">朴泰洙</text>
+          <text x="190" y="174" font-family="monospace" font-size="7.6" fill="#4c5b6c" letter-spacing="1.8">RANK</text>
+          <text x="190" y="192" font-family="'Songti SC','STSong',serif" font-size="13" fill="#cedaea" letter-spacing="2.4">检察官</text>
+          <text x="190" y="220" font-family="monospace" font-size="7.6" fill="#4c5b6c" letter-spacing="1.8">OFFICE</text>
+          <text x="190" y="238" font-family="'Songti SC','STSong',serif" font-size="12" fill="#7c8da0" letter-spacing="2">地方检察厅</text>
+
+          <!-- 条形码 -->
+          <g fill="url(#pBar)">
+            <rect x="68" y="258" width="2" height="22"/>
+            <rect x="73" y="258" width="1" height="22"/>
+            <rect x="77" y="258" width="3" height="22"/>
+            <rect x="83" y="258" width="1" height="22"/>
+            <rect x="87" y="258" width="2" height="22"/>
+            <rect x="92" y="258" width="4" height="22"/>
+            <rect x="99" y="258" width="1" height="22"/>
+            <rect x="103" y="258" width="2" height="22"/>
+            <rect x="108" y="258" width="1" height="22"/>
+            <rect x="112" y="258" width="3" height="22"/>
+            <rect x="118" y="258" width="2" height="22"/>
+            <rect x="123" y="258" width="1" height="22"/>
+            <rect x="127" y="258" width="4" height="22"/>
+            <rect x="134" y="258" width="2" height="22"/>
+            <rect x="139" y="258" width="1" height="22"/>
+            <rect x="143" y="258" width="3" height="22"/>
+            <rect x="149" y="258" width="1" height="22"/>
+            <rect x="153" y="258" width="2" height="22"/>
+            <rect x="158" y="258" width="4" height="22"/>
+            <rect x="165" y="258" width="1" height="22"/>
+            <rect x="169" y="258" width="2" height="22"/>
+            <rect x="174" y="258" width="3" height="22"/>
+            <rect x="180" y="258" width="1" height="22"/>
+          </g>
+          <text x="68" y="296" font-family="monospace" font-size="7.6" fill="#4c5b6c" letter-spacing="1.6">FILE 023-2017-KR</text>
+
+          <!-- 钢印：天平 -->
+          <circle cx="288" cy="302" r="54" fill="#c8a24a" fill-opacity=".05"/>
+          <circle cx="288" cy="302" r="54" fill="none" stroke="#c8a24a" stroke-opacity=".48" stroke-width="1.4"/>
+          <circle cx="288" cy="302" r="47" fill="none" stroke="#c8a24a" stroke-opacity=".26" stroke-width="1" stroke-dasharray="

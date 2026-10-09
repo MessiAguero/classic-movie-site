@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-04T04:05:50.954Z",
+  "generatedAt": "2026-10-09T09:33:45.959Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,9 +8,9 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 119,
-  "ok": 114,
-  "warn": 5,
+  "total": 121,
+  "ok": 109,
+  "warn": 12,
   "error": 0,
   "entries": [
     {
@@ -371,17 +371,16 @@
       "id": "20260918",
       "zhTitle": "金福南杀人事件始末",
       "year": "2010",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/zhmhZkCeCDNZf5smL83bNjOlOxW.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "144KB",
-      "dims": "837×1200",
-      "ratio": 1.43,
+      "source": "本地",
+      "imageUrl": "posters/20260918.jpg",
+      "host": "m.media-amazon.com",
+      "tier": "official",
+      "size": "79KB",
+      "dims": "675×1000",
+      "ratio": 1.48,
       "identityKind": "name",
       "identityHits": [
-        "英文关键词:bedevilled",
-        "年份"
+        "英文关键词:jang"
       ],
       "status": "ok",
       "issues": []
@@ -509,19 +508,31 @@
       "id": "20260929",
       "zhTitle": "杀人者的记忆法",
       "year": "2017",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/w500/nnaBFDUCiv6BjWaVHNsIqsh4UCi.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "73KB",
-      "dims": "500×750",
-      "ratio": 1.5,
+      "source": "本地",
+      "imageUrl": "posters/20260929.jpg",
+      "host": "www.gaobei.com",
+      "tier": "unknown",
+      "size": "105KB",
+      "dims": "499×716",
+      "ratio": 1.43,
       "identityKind": "name",
       "identityHits": [
-        "片名中文"
+        "片名中文",
+        "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "low_resolution",
+          "severity": "warn",
+          "detail": "清晰度偏低 499×716"
+        },
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（www.gaobei.com）"
+        }
+      ]
     },
     {
       "id": "20260930",
@@ -553,11 +564,11 @@
       "year": "1997",
       "source": "本地",
       "imageUrl": "posters/20261004-green-fish.jpg",
-      "host": "photocdn.sohu.com",
+      "host": "i-7.vcimg.com",
       "tier": "unknown",
-      "size": "63KB",
-      "dims": "404×600",
-      "ratio": 1.49,
+      "size": "47KB",
+      "dims": "357×500",
+      "ratio": 1.4,
       "identityKind": "name",
       "identityHits": [
         "片名中文"
@@ -567,12 +578,12 @@
         {
           "code": "low_resolution",
           "severity": "warn",
-          "detail": "清晰度偏低 404×600"
+          "detail": "清晰度偏低 357×500"
         },
         {
           "code": "untrusted_host",
           "severity": "warn",
-          "detail": "图源不在可信白名单（photocdn.sohu.com）"
+          "detail": "图源不在可信白名单（i-7.vcimg.com）"
         }
       ]
     },
@@ -587,6 +598,54 @@
       "size": "338KB",
       "dims": "1080×1578",
       "ratio": 1.46,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（5b0988e595225.cdn.sohucs.com）"
+        }
+      ]
+    },
+    {
+      "id": "20261005",
+      "zhTitle": "王者",
+      "year": "2017",
+      "source": "远程",
+      "imageUrl": "http://k.sinaimg.cn/n/sinakd20250416s/534/w1080h1854/20250416/f006-6f740fefc453551ce3576d1d50b0eadc.jpg/w700d1q75cms.jpg",
+      "host": "k.sinaimg.cn",
+      "tier": "unknown",
+      "size": "729KB",
+      "dims": "700×1202",
+      "ratio": 1.72,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（k.sinaimg.cn）"
+        }
+      ]
+    },
+    {
+      "id": "20261009",
+      "zhTitle": "老千",
+      "year": "2006",
+      "source": "远程",
+      "imageUrl": "http://5b0988e595225.cdn.sohucs.com/images/20200321/82eafee2a80a4d0eacf4d9c2015508d0.jpeg",
+      "host": "5b0988e595225.cdn.sohucs.com",
+      "tier": "unknown",
+      "size": "91KB",
+      "dims": "640×918",
+      "ratio": 1.43,
       "identityKind": "name",
       "identityHits": [
         "片名中文"
@@ -821,38 +880,42 @@
       "id": "20260513",
       "zhTitle": "霸王别姬",
       "year": "1993",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/qmTJGYcgSzokhsyhTUJMF6SWfFA.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "896KB",
-      "dims": "2000×3000",
-      "ratio": 1.5,
+      "source": "本地",
+      "imageUrl": "posters/20260513.jpg",
+      "host": "img.doooor.com",
+      "tier": "unknown",
+      "size": "723KB",
+      "dims": "1000×1449",
+      "ratio": 1.45,
       "identityKind": "name",
       "identityHits": [
         "片名中文",
         "别名:霸王别姬",
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（img.doooor.com）"
+        }
+      ]
     },
     {
       "id": "20260514",
       "zhTitle": "沉默的羔羊",
       "year": "1991",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/97HWc7WsIcPQDMsgLCl61g07gEy.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "484KB",
-      "dims": "1500×2250",
-      "ratio": 1.5,
+      "source": "本地",
+      "imageUrl": "posters/20260514.jpg",
+      "host": "m.media-amazon.com",
+      "tier": "official",
+      "size": "1695KB",
+      "dims": "2011×2968",
+      "ratio": 1.48,
       "identityKind": "name",
       "identityHits": [
-        "片名英文",
-        "别名:The Silence of the Lambs",
-        "年份"
+        "英文关键词:silence"
       ],
       "status": "ok",
       "issues": []
@@ -881,17 +944,17 @@
       "id": "20260518",
       "zhTitle": "霸王别姬",
       "year": "1993",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/qmTJGYcgSzokhsyhTUJMF6SWfFA.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "896KB",
-      "dims": "2000×3000",
-      "ratio": 1.5,
+      "source": "本地",
+      "imageUrl": "posters/20260518.jpg",
+      "host": "m.media-amazon.com",
+      "tier": "official",
+      "size": "115KB",
+      "dims": "1000×1638",
+      "ratio": 1.64,
       "identityKind": "name",
       "identityHits": [
-        "片名中文",
-        "别名:霸王别姬",
+        "片名英文",
+        "别名:Farewell My Concubine",
         "年份"
       ],
       "status": "ok",
@@ -1235,18 +1298,17 @@
       "id": "20260610",
       "zhTitle": "龙 猫",
       "year": "1988",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/b8YgXJLTDAlayqKR8Wb8lTXPUxo.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "964KB",
-      "dims": "2000×3000",
-      "ratio": 1.5,
+      "source": "本地",
+      "imageUrl": "posters/20260610.jpg",
+      "host": "m.media-amazon.com",
+      "tier": "official",
+      "size": "296KB",
+      "dims": "1323×2031",
+      "ratio": 1.54,
       "identityKind": "name",
       "identityHits": [
         "片名英文",
-        "别名:My Neighbor Totoro",
-        "年份"
+        "别名:My Neighbor Totoro"
       ],
       "status": "ok",
       "issues": []
@@ -1355,18 +1417,16 @@
       "id": "20260616-2",
       "zhTitle": "狮子王",
       "year": "1994",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/oFeQeeib9LqfeTHVqPJCwMZWMr4.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "113KB",
-      "dims": "600×800",
-      "ratio": 1.33,
+      "source": "本地",
+      "imageUrl": "posters/20260616-2.jpg",
+      "host": "m.media-amazon.com",
+      "tier": "official",
+      "size": "147KB",
+      "dims": "900×1139",
+      "ratio": 1.27,
       "identityKind": "name",
       "identityHits": [
-        "片名中文",
-        "别名:狮子王",
-        "年份"
+        "英文关键词:lion"
       ],
       "status": "ok",
       "issues": []
@@ -1592,17 +1652,17 @@
       "id": "20260630",
       "zhTitle": "霸王别姬",
       "year": "1993",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/qmTJGYcgSzokhsyhTUJMF6SWfFA.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "896KB",
-      "dims": "2000×3000",
-      "ratio": 1.5,
+      "source": "本地",
+      "imageUrl": "posters/20260630.jpg",
+      "host": "m.media-amazon.com",
+      "tier": "official",
+      "size": "115KB",
+      "dims": "1000×1638",
+      "ratio": 1.64,
       "identityKind": "name",
       "identityHits": [
-        "片名中文",
-        "别名:霸王别姬",
+        "片名英文",
+        "别名:Farewell My Concubine",
         "年份"
       ],
       "status": "ok",
@@ -1612,21 +1672,26 @@
       "id": "20260701-2",
       "zhTitle": "三傻大闹宝莱坞",
       "year": "2009",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/qEVZeu6ODIpS3zwyhOxKEmvkDpH.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "101KB",
-      "dims": "600×900",
-      "ratio": 1.5,
+      "source": "本地",
+      "imageUrl": "posters/20260701-2.jpg",
+      "host": "so1.360tres.com",
+      "tier": "unknown",
+      "size": "114KB",
+      "dims": "500×677",
+      "ratio": 1.35,
       "identityKind": "name",
       "identityHits": [
         "片名中文",
-        "别名:三傻大闹宝莱坞",
-        "年份"
+        "别名:三傻大闹宝莱坞"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（so1.360tres.com）"
+        }
+      ]
     },
     {
       "id": "20260701",
@@ -1850,12 +1915,12 @@
       "id": "20260712",
       "zhTitle": "勇敢的心",
       "year": "1995",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/bvdPq5pMB5fycE5m21sX1yzR9ga.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "1373KB",
-      "dims": "1975×2962",
+      "source": "本地",
+      "imageUrl": "posters/20260712.jpg",
+      "host": "images.theposterdb.com",
+      "tier": "unknown",
+      "size": "29KB",
+      "dims": "500×750",
       "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
@@ -1863,8 +1928,14 @@
         "别名:Braveheart",
         "年份"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（images.theposterdb.com）"
+        }
+      ]
     },
     {
       "id": "20260713-2",
@@ -1968,20 +2039,25 @@
       "id": "20260720",
       "zhTitle": "情书",
       "year": "1995",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/gnpkKnVqllXBSBOnbdQyaL6I5xs.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "315KB",
-      "dims": "973×1459",
-      "ratio": 1.5,
+      "source": "本地",
+      "imageUrl": "posters/20260720.jpg",
+      "host": "k.sinaimg.cn",
+      "tier": "unknown",
+      "size": "782KB",
+      "dims": "700×1006",
+      "ratio": 1.44,
       "identityKind": "name",
       "identityHits": [
-        "片名中文",
-        "年份"
+        "片名中文"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（k.sinaimg.cn）"
+        }
+      ]
     },
     {
       "id": "20260721-2",
@@ -2065,17 +2141,17 @@
       "id": "20260727",
       "zhTitle": "卧虎藏龙",
       "year": "2000",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/uGpoarcMIBuwmHLD9NEhQoxHrap.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "604KB",
-      "dims": "1122×1696",
-      "ratio": 1.51,
+      "source": "本地",
+      "imageUrl": "posters/20260727.jpg",
+      "host": "m.media-amazon.com",
+      "tier": "official",
+      "size": "118KB",
+      "dims": "1000×1500",
+      "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
-        "片名中文",
-        "别名:卧虎藏龙",
+        "片名英文",
+        "别名:Crouching Tiger, Hidden Dragon",
         "年份"
       ],
       "status": "ok",
@@ -2346,17 +2422,17 @@
       "id": "20260812",
       "zhTitle": "回到未来",
       "year": "1985",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/wZOsxwQjTdtSki0MiPIy8Zu9lv1.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "746KB",
-      "dims": "2000×3000",
-      "ratio": 1.5,
+      "source": "本地",
+      "imageUrl": "posters/20260812.jpg",
+      "host": "m.media-amazon.com",
+      "tier": "official",
+      "size": "2570KB",
+      "dims": "3240×4050",
+      "ratio": 1.25,
       "identityKind": "name",
       "identityHits": [
-        "片名中文",
-        "别名:回到未来",
+        "片名英文",
+        "别名:Back to the Future",
         "年份"
       ],
       "status": "ok",

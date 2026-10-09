@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《老千》타짜 · Tazza: The High Rollers (2006) — 韩国犯罪片经典推荐</title>
+<style>
+  :root{
+    --ink:#0a0806;
+    --ink-2:#110e0a;
+    --ink-3:#1a1510;
+    --ivory:#ece3d2;
+    --ivory-dim:#b6ab97;
+    --ash:#8b7f6b;
+    --ash-dim:#5c5344;
+    --cherry:#cf3f55;
+    --cherry-light:#ef8090;
+    --cherry-soft:#8d2739;
+    --baize:#14402f;
+    --baize-light:#2f7a5b;
+    --amber:#c69a4a;
+    --amber-light:#e6bd76;
+    --blood:#8a2b2f;
+    --steel:#8fa4ae;
+    --line:rgba(236,227,210,.12);
+    --line-strong:rgba(236,227,210,.24);
+    --serif:"Georgia","Times New Roman","Songti SC","STSong",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SFMono-Regular",Menlo,Consolas,"Courier New",monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ink);
+    color:var(--ivory);
+    font-family:var(--sans);
+    line-height:1.85;
+    font-size:16px;
+    letter-spacing:.01em;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:9;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='.5'/></svg>");
+    opacity:.055;mix-blend-mode:overlay;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:8;pointer-events:none;
+    background:radial-gradient(124% 94% at 50% 40%,transparent 42%,rgba(0,0,0,.60) 100%);
+  }
+  ::selection{background:var(--cherry);color:#fff5f2}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;min-height:max(100vh,880px);overflow:hidden;
+    display:flex;align-items:stretch;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  #heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;pointer-events:none}
+  .hero-scrim{
+    position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:
+      repeating-linear-gradient(180deg,rgba(236,227,210,.024) 0 1px,transparent 1px 3px),
+      linear-gradient(180deg,rgba(10,8,6,.90) 0%,rgba(10,8,6,.46) 22%,rgba(10,8,6,.10) 50%,rgba(10,8,6,.38) 78%,rgba(10,8,6,.90) 100%),
+      radial-gradient(92% 72% at 15% 40%,rgba(10,8,6,.68) 0%,transparent 74%);
+  }
+  .hero-in{
+    position:relative;z-index:4;
+    width:100%;max-width:1160px;margin:0 auto;
+    padding:104px 28px 96px;
+    display:flex;flex-direction:column;justify-content:flex-start;
+  }
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.34em;
+    text-transform:uppercase;color:var(--cherry);
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  }
+  .eyebrow::before{content:"";width:44px;height:1px;background:var(--cherry);opacity:.85;flex:0 0 auto}
+  .eyebrow span{color:var(--ash-dim);letter-spacing:.24em}
+  h1.title{
+    font-family:var(--serif);
+    font-size:clamp(62px,13vw,152px);
+    line-height:.94;
+    letter-spacing:.1em;
+    margin:22px 0 8px;
+    color:#faf4e9;
+    text-shadow:0 6px 46px rgba(0,0,0,.88);
+    font-weight:400;
+  }
+  .title-en{
+    font-family:var(--serif);font-size:clamp(15px,2.2vw,26px);
+    letter-spacing:.36em;color:var(--ivory-dim);
+    text-transform:uppercase;margin-bottom:6px;padding-left:3px;
+  }
+  .title-kr{
+    font-size:clamp(13px,1.6vw,17px);letter-spacing:.3em;color:var(--amber);
+    margin-bottom:26px;padding-left:3px;
+  }
+  .hero-sub{
+    max-width:660px;font-size:clamp(14px,1.6vw,17px);
+    color:var(--ivory-dim);line-height:1.95;
+    border-left:2px solid var(--cherry);padding-left:20px;
+  }
+  .hero-sub b{color:var(--ivory);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}
+  .chip{
+    font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+    padding:6px 12px;border:1px solid var(--line-strong);
+    color:var(--ivory-dim);background:rgba(10,8,6,.46);
+    backdrop-filter:blur(3px);
+  }
+  .chip.hot{border-color:rgba(207,63,85,.55);color:var(--cherry-light)}
+  .chip.tag{border-color:rgba(198,154,74,.5);color:var(--amber-light)}
+  .scroll-hint{
+    position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
+    z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.3em;
+    color:var(--ash-dim);display:flex;flex-direction:column;align-items:center;gap:9px;
+  }
+  .scroll-hint i{display:block;width:1px;height:36px;background:linear-gradient(180deg,var(--cherry),transparent);animation:drop 2.4s ease-in-out infinite}
+  @keyframes drop{0%,100%{opacity:.25;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
+  .beacon{animation:beacon 2.8s ease-in-out infinite}
+  @keyframes beacon{0%,100%{opacity:.2}50%{opacity:1}}
+
+  /* ============ LAYOUT ============ */
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+  section.band{padding:96px 0;position:relative;border-bottom:1px solid var(--line)}
+  section.band:last-of-type{border-bottom:0}
+  .sec-head{margin-bottom:52px;position:relative}
+  .sec-num{
+    font-family:var(--mono);font-size:10px;letter-spacing:.34em;color:var(--cherry);
+    text-transform:uppercase;display:block;margin-bottom:14px;
+  }
+  h2.sec-title{
+    font-family:var(--serif);font-weight:400;
+    font-size:clamp(26px,3.6vw,44px);line-height:1.24;letter-spacing:.03em;color:#f6efe3;
+  }
+  h2.sec-title em{font-style:normal;color:var(--cherry-light)}
+  .sec-desc{margin-top:16px;max-width:760px;color:var(--ash);font-size:14.5px;line-height:1.9}
+
+  /* 无剧透提示条 */
+  .nospoil{
+    display:flex;gap:16px;align-items:flex-start;
+    border:1px solid rgba(207,63,85,.34);
+    background:linear-gradient(90deg,rgba(207,63,85,.10),rgba(207,63,85,.015) 62%,transparent);
+    padding:18px 22px;margin:0 0 64px;
+  }
+  .nospoil .mark{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--cherry-light);
+    border:1px solid rgba(207,63,85,.5);padding:3px 7px;flex:0 0 auto;margin-top:3px;
+  }
+  .nospoil p{font-size:13.5px;color:var(--ivory-dim);line-height:1.85}
+  .nospoil p b{color:var(--ivory)}
+
+  /* 两栏：速览 + 梗概 */
+  .duo{display:grid;grid-template-columns:300px minmax(0,1fr);gap:56px;align-items:start}
+  .glance{border:1px solid var(--line-strong);background:var(--ink-2);padding:26px 22px;position:sticky;top:28px}
+  .glance h3{
+    font-family:var(--mono);font-size:10px;letter-spacing:.28em;color:var(--cherry);
+    text-transform:uppercase;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line);
+  }
+  .glance dl{display:flex;flex-direction:column;gap:0}
+  .glance .row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(236,227,210,.09);font-size:12.5px}
+  .glance .row:last-child{border-bottom:0}
+  .glance dt{color:var(--ash-dim);flex:0 0 auto;letter-spacing:.06em}
+  .glance dd{color:var(--ivory);text-align:right;font-weight:500}
+  .glance .row.accent dd{color:var(--cherry-light)}
+  .glance .row.gold dd{color:var(--amber-light)}
+  .glance .row.tagged dd{color:#d99a92}
+
+  .prose{font-size:16.5px;line-height:2.05;color:var(--ivory-dim)}
+  .prose p+p{margin-top:22px}
+  .prose b{color:var(--ivory);font-weight:600}
+  .prose em{color:var(--cherry-light);font-style:normal}
+  .drop::first-letter{
+    font-family:var(--serif);float:left;font-size:74px;line-height:.82;
+    padding:6px 14px 0 0;color:var(--cherry);font-weight:400;
+  }
+
+  /* 概念海报 */
+  .poster-grid{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:60px;align-items:start}
+  .poster-frame{
+    border:1px solid var(--line-strong);background:var(--ink-2);
+    padding:20px;position:relative;
+  }
+  .poster-frame::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+    background:repeating-linear-gradient(115deg,var(--cherry) 0 10px,transparent 10px 20px);opacity:.42;
+  }
+  .poster-frame svg{display:block;width:100%;height:auto}
+  .poster-cap{
+    font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--ash-dim);
+    margin-top:16px;text-transform:uppercase;
+  }
+  .notes{display:flex;flex-direction:column;gap:26px}
+  .note{border-left:1px solid var(--line-strong);padding-left:22px;position:relative}
+  .note::before{
+    content:"";position:absolute;left:-3px;top:9px;width:5px;height:5px;
+    background:var(--cherry);border-radius:50%;
+  }
+  .note h4{font-size:14.5px;letter-spacing:.14em;color:var(--ivory);font-weight:600;margin-bottom:8px}
+  .note p{font-size:14px;color:var(--ash);line-height:1.9}
+  .note p b{color:var(--ivory-dim)}
+
+  /* 档案格 */
+  .file-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .file-cell{background:var(--ink-2);padding:20px 18px;min-height:96px;display:flex;flex-direction:column;gap:7px}
+  .file-cell dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;color:var(--ash-dim);text-transform:uppercase}
+  .file-cell dd{font-size:14.5px;color:var(--ivory);line-height:1.55;font-weight:500}
+  .file-cell.wide{grid-column:span 2}
+  .file-cell.hot dd{color:var(--cherry-light)}
+  .file-cell.gold dd{color:var(--amber-light)}
+  .file-cell dd small{display:block;font-size:11.5px;color:var(--ash-dim);font-weight:400;letter-spacing:.04em;margin-top:3px}
+
+  /* 口碑四卡 */
+  .score-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+  .score{
+    border:1px solid var(--line-strong);background:linear-gradient(180deg,var(--ink-3),var(--ink-2));
+    padding:26px 22px 22px;position:relative;overflow:hidden;
+  }
+  .score::before{
+    content:"";position:absolute;top:0;left:0;width:100%;height:2px;
+    background:linear-gradient(90deg,var(--cherry),transparent 76%);
+  }
+  .score .plat{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--ash-dim);text-transform:uppercase}
+  .score .big{font-family:var(--serif);font-size:44px;line-height:1;color:#faf4e9;margin:14px 0 4px}
+  .score .big i{font-style:normal;font-size:15px;color:var(--ash-dim);letter-spacing:.06em;margin-left:4px}
+  .score .bar{height:3px;background:rgba(236,227,210,.13);margin:16px 0 12px;position:relative}
+  .score .bar span{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--cherry-soft),var(--cherry-light))}
+  .score .cap{font-size:12px;color:var(--ash-dim);line-height:1.75}
+  .score .cap b{color:var(--ivory-dim);font-weight:500}
+
+  /* 时间线 */
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,var(--cherry),rgba(236,227,210,.14) 40%,rgba(236,227,210,.14))}
+  .tl-item{position:relative;padding:0 0 34px 0}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-32px;top:9px;width:9px;height:9px;
+    border:1px solid var(--cherry);background:var(--ink);transform:rotate(45deg);
+  }
+  .tl-item.hot::before{background:var(--cherry);border-color:var(--cherry)}
+  .tl-year{font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--cherry-light);margin-bottom:7px}
+  .tl-title{font-size:15.5px;color:var(--ivory);font-weight:600;letter-spacing:.03em;margin-bottom:6px}
+  .tl-desc{font-size:13.5px;color:var(--ash);line-height:1.85;max-width:780px}
+
+  /* 荣誉 */
+  .awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .aw{background:var(--ink-2);padding:20px 22px;display:flex;gap:16px;align-items:flex-start}
+  .aw .yr{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ash-dim);flex:0 0 auto;padding-top:3px;width:38px}
+  .aw .bd{font-size:13.8px;color:var(--ivory-dim);line-height:1.8}
+  .aw .bd b{color:var(--ivory);font-weight:600;display:block;margin-bottom:3px;font-size:14.2px}
+  .aw .bd b em{font-style:normal;color:var(--cherry-light)}
+
+  /* 谱系坐标 */
+  .lineage{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .lg{background:var(--ink-2);padding:24px 20px;display:flex;flex-direction:column;gap:9px;position:relative}
+  .lg.now{background:linear-gradient(180deg,rgba(207,63,85,.15),var(--ink-2) 72%)}
+  .lg .lg-yr{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;color:var(--ash-dim)}
+  .lg .lg-tt{font-family:var(--serif);font-size:19px;color:var(--ivory);line-height:1.3}
+  .lg .lg-dr{font-size:12.5px;color:var(--ash);line-height:1.7}
+  .lg .lg-wt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--amber);margin-top:auto;padding-top:10px}
+  .lg.now .lg-wt{color:var(--cherry-light)}
+  .lineage-note{margin-top:26px;border-left:2px solid var(--cherry);padding-left:20px;font-size:14.5px;color:var(--ash);line-height:1.95;max-width:840px}
+  .lineage-note b{color:var(--ivory-dim)}
+
+  /* 六宫格亮点 */
+  .highlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .hl{background:var(--ink-2);padding:30px 26px 32px;position:relative;transition:background .5s ease}
+  .hl:hover{background:var(--ink-3)}
+  .hl .idx{
+    font-family:var(--serif);font-size:34px;color:rgba(236,227,210,.13);
+    line-height:1;margin-bottom:16px;letter-spacing:.02em;
+  }
+  .hl h4{font-size:16px;color:var(--ivory);font-weight:600;letter-spacing:.05em;margin-bottom:12px}
+  .hl h4 em{font-style:normal;color:var(--cherry-light)}
+  .hl p{font-size:13.6px;color:var(--ash);line-height:1.9}
+
+  /* 为什么值得看 */
+  .why{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .why-item{background:var(--ink-2);padding:40px 38px;display:grid;grid-template-columns:210px minmax(0,1fr);gap:40px;align-items:start}
+  .why-item h4{font-family:var(--serif);font-size:19px;color:var(--ivory);line-height:1.5;font-weight:400;letter-spacing:.04em}
+  .why-item h4 span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--cherry);margin-bottom:12px;text-transform:uppercase}
+  .why-item p{font-size:15px;color:var(--ash);line-height:2;max-width:780px}
+  .why-item p b{color:var(--ivory-dim);font-weight:600}
+
+  /* 提示三格 */
+  .warns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+  .warn{border:1px solid rgba(138,43,47,.5);background:linear-gradient(180deg,rgba(138,43,47,.13),rgba(138,43,47,.03));padding:24px 22px}
+  .warn .tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:#c9787a;text-transform:uppercase;margin-bottom:12px}
+  .warn p{font-size:13.5px;color:var(--ivory-dim);line-height:1.85}
+  .warn p b{color:var(--ivory)}
+
+  /* 结尾 */
+  .outro{border-top:1px solid var(--line);background:linear-gradient(180deg,var(--ink),#0d0a07)}
+  .quote{max-width:860px}
+  .quote .q-mark{font-family:var(--serif);font-size:66px;color:var(--cherry);opacity:.55;line-height:.6}
+  .quote blockquote{
+    font-family:var(--serif);font-size:clamp(19px,2.5vw,28px);line-height:1.72;
+    color:#f7f0e4;letter-spacing:.03em;margin:6px 0 22px;
+  }
+  .quote .attr{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--ash-dim);text-transform:uppercase}
+  .outro-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:60px;align-items:end;margin-top:16px}
+  .end-stamp{border:1px solid var(--line-strong);padding:22px;text-align:center}
+  .end-stamp .no{font-family:var(--serif);font-size:56px;color:var(--cherry);line-height:1}
+  .end-stamp .lb{font-family:var(--mono);font-size:10px;letter-spacing:.26em;color:var(--ash-dim);margin-top:10px;text-transform:uppercase}
+  footer{
+    border-top:1px solid var(--line);padding:34px 0 54px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--ash-dim);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;text-transform:uppercase;
+  }
+
+  /* 牌局 HUD */
+  #hud{
+    position:fixed;right:22px;bottom:24px;z-index:12;
+    border:1px solid var(--line-strong);background:rgba(10,8,6,.87);
+    backdrop-filter:blur(8px);padding:14px 16px 13px;min-width:236px;
+    display:none;
+  }
+  #hud .hud-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+  #hud .hud-top span{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--ash-dim);text-transform:uppercase}
+  #hud .hud-top b{font-family:var(--mono);font-size:11px;color:var(--cherry-light);letter-spacing:.1em}
+  #hud .hud-track{height:2px;background:rgba(236,227,210,.14);position:relative}
+  #hud .hud-track i{position:absolute;top:-2px;left:0;width:6px;height:6px;background:var(--cherry);transform:translateX(-3px)}
+  #hud .hud-lb{font-size:11px;color:var(--ivory-dim);margin-top:9px;letter-spacing:.06em;font-family:var(--mono)}
+
+  /* 入场动画 */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.25,1),transform .9s cubic-bezier(.2,.7,.25,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1 !important;transform:none !important;transition:none !important}
+    html{scroll-behavior:auto}
+    .scroll-hint i{animation:none}
+    .beacon{animation:none;opacity:.8}
+  }
+
+  /* 响应式 */
+  @media (max-width:1080px){
+    .duo{grid-template-columns:1fr;gap:38px}
+    .glance{position:static}
+    .poster-grid{grid-template-columns:1fr;gap:40px}
+    .poster-frame{max-width:420px;margin:0 auto}
+    .score-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .file-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .lineage{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .highlights{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .outro-grid{grid-template-columns:1fr;gap:40px}
+  }
+  @media (max-width:760px){
+    body{font-size:15px}
+    section.band{padding:70px 0}
+    .wrap{padding:0 20px}
+    .hero{min-height:max(100vh,740px)}
+    .hero-in{padding:70px 20px 66px}
+    .eyebrow{font-size:9.5px;letter-spacing:.22em;gap:10px}
+    .eyebrow::before{width:26px}
+    .eyebrow span{letter-spacing:.14em}
+    h1.title{font-size:clamp(52px,13vw,152px);letter-spacing:.07em;margin:14px 0 6px}
+    .title-en{letter-spacing:.26em}
+    .title-kr{letter-spacing:.2em;margin-bottom:18px}
+    .hero-sub{padding-left:15px;font-size:13.5px;line-height:1.75}
+    .chips{gap:7px;margin-top:16px}
+    .chip{font-size:10px;padding:5px 9px;letter-spacing:.08em}
+    .scroll-hint{bottom:10px;gap:6px}
+    .scroll-hint i{height:22px}
+    .file-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .file-cell.wide{grid-column:span 2}
+    .score-grid{grid-template-columns:1fr}
+    .lineage{grid-template-columns:1fr}
+    .highlights{grid-template-columns:1fr}
+    .awards{grid-template-columns:1fr}
+    .warns{grid-template-columns:1fr}
+    .why-item{grid-template-columns:1fr;gap:18px;padding:30px 24px}
+    .sec-head{margin-bottom:38px}
+    .nospoil{padding:15px 16px;gap:12px}
+    .nospoil .mark{font-size:9px}
+    .nospoil p{font-size:12.5px}
+    .drop::first-letter{font-size:56px;padding:4px 10px 0 0}
+  }
+  @media (min-width:981px){#hud{display:block}}
+</style>
+</head>
+<body>
+
+<div id="hud">
+  <div class="hud-top"><span>牌局 / The Hand</span><b id="hudVal">R1</b></div>
+  <div class="hud-track"><i id="hudDot"></i></div>
+  <div class="hud-lb" id="hudLb">家具厂 · 角落那一桌</div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#050403"/>
+        <stop offset="44%" stop-color="#0a0806"/>
+        <stop offset="74%" stop-color="#120d09"/>
+        <stop offset="100%" stop-color="#1a1309"/>
+      </linearGradient>
+      <linearGradient id="cloth" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1a4c38"/>
+        <stop offset="40%" stop-color="#123a2b"/>
+        <stop offset="100%" stop-color="#08180f"/>
+      </linearGradient>
+      <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#150f08"/>
+        <stop offset="100%" stop-color="#080604"/>
+      </linearGradient>
+      <radialGradient id="pool" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#eec480" stop-opacity=".22"/>
+        <stop offset="44%" stop-color="#c69a4a" stop-opacity=".075"/>
+        <stop offset="100%" stop-color="#c69a4a" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="cherryGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ef8090" stop-opacity=".20"/>
+        <stop offset="100%" stop-color="#cf3f55" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="ember" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#ffd08a" stop-opacity=".55"/>
+        <stop offset="100%" stop-color="#e07a2a" stop-opacity="0"/>
+      </radialGradient>
+      <pattern id="nub" width="7" height="7" patternUnits="userSpaceOnUse">
+        <circle cx="1.6" cy="1.6" r=".7" fill="#2f7a5b" fill-opacity=".16"/>
+        <circle cx="5.2" cy="5" r=".6" fill="#2f7a5b" fill-opacity=".11"/>
+      </pattern>
+      <pattern id="slat" width="10" height="13" patternUnits="userSpaceOnUse">
+        <rect width="10" height="4.8" fill="#c69a4a" fill-opacity=".14"/>
+      </pattern>
+    </defs>
+
+    <rect width="1440" height="900" fill="url(#wall)"/>
+
+    <!-- 右上：一副花图牌的极淡水印（装饰，永远在正文栏右侧之外） -->
+    <g opacity=".05" transform="rotate(-8 1140 270)">
+      <rect x="990" y="120" width="150" height="225" rx="5" fill="none" stroke="#c69a4a" stroke-width="2"/>
+      <rect x="1080" y="150" width="150" height="225" rx="5" fill="none" stroke="#cf3f55" stroke-width="2"/>
+      <rect x="1170" y="182" width="150" height="225" rx="5" fill="none" stroke="#c69a4a" stroke-width="2"/>
+      <circle cx="1065" cy="232" r="30" fill="none" stroke="#c69a4a" stroke-width="1.6"/>
+      <circle cx="1065" cy="203" r="30" fill="none" stroke="#c69a4a" stroke-width="1.6"/>
+      <circle cx="1096" cy="217" r="30" fill="none" stroke="#c69a4a" stroke-width="1.6"/>
+      <circle cx="1096" cy="247" r="30" fill="none" stroke="#c69a4a" stroke-width="1.6"/>
+      <circle cx="1065" cy="262" r="30" fill="none" stroke="#c69a4a" stroke-width="1.6"/>
+      <path d="M1035 250 q60 60 150 40" fill="none" stroke="#c69a4a" stroke-width="1.6"/>
+    </g>
+
+    <!-- 后墙：一排百叶窗漏进来的光 -->
+    <rect x="70" y="620" width="1300" height="62" fill="url(#slat)"/>
+    <rect x="70" y="620" width="1300" height="62" fill="#c69a4a" opacity=".035"/>
+    <rect x="0" y="682" width="1440" height="5" fill="#0a0705"/>
+    <rect x="0" y="682" width="1440" height="1.4" fill="#3a2c18" opacity=".7"/>
+
+    <!-- 墙脚的一线暖光 -->
+    <ellipse cx="720" cy="684" rx="740" ry="46" fill="url(#pool)" opacity=".8"/>
+
+    <!-- ===== 两张桌后的身影（第一幕的牌局） ===== -->
+    <g>
+      <ellipse cx="556" cy="690" rx="46" ry="7" fill="#000" opacity=".45"/>
+      <path d="M508 690 L508 672 Q516 654 540 652 L572 652 Q596 654 604 672 L604 690 Z" fill="#060504"/>
+      <circle cx="556" cy="641" r="16" fill="#060504"/>
+      <path d="M540 641 Q540 622 556 622 Q572 622 572 641" fill="none" stroke="#c69a4a" stroke-width="1.6" opacity=".40"/>
+      <path d="M540 641 Q540 626 556 626 L556 641" fill="none" stroke="#cf3f55" stroke-width="1.4" opacity=".34"/>
+      <path d="M604 672 L604 690 L596 690 L596 676" fill="none" stroke="#8fa4ae" stroke-width="1.1" opacity=".18"/>
+    </g>
+    <g>
+      <ellipse cx="902" cy="690" rx="48" ry="7" fill="#000" opacity=".45"/>
+      <path d="M852 690 L852 670 Q860 650 886 648 L920 648 Q946 650 954 670 L954 690 Z" fill="#060504"/>
+      <circle cx="902" cy="636" r="17" fill="#060504"/>
+      <path d="M885 636 Q885 616 902 616 Q919 616 919 636" fill="none" stroke="#c69a4a" stroke-width="1.6" opacity=".36"/>
+      <path d="M919 636 Q919 620 902 620 L902 636" fill="none" stroke="#8fa4ae" stroke-width="1.1" opacity=".2"/>
+      <ellipse cx="884" cy="662" rx="7" ry="5" fill="url(#ember)"/>
+      <circle cx="884" cy="662" r="1.7" fill="#ffce80" class="beacon"/>
+    </g>
+
+    <!-- ===== 赌桌：从画面底部推上来的一张台面 ===== -->
+    <path d="M300 690 L1140 690 L1580 900 L-140 900 Z" fill="url(#wood)"/>
+    <path d="M300 690 L1140 690 L1148 696 L292 696 Z" fill="#2a1e10" opacity=".8"/>
+    <path d="M336 700 L1104 700 L1490 900 L-50 900 Z" fill="url(#cloth)"/>
+    <path d="M336 700 L1104 700 L1490 900 L-50 900 Z" fill="url(#nub)"/>
+    <path d="M336 700 L1104 700 L1110 706 L330 706 Z" fill="#1f5c43" opacity=".7"/>
+
+    <!-- 台面上的灯光池 -->
+    <ellipse cx="700" cy="790" rx="560" ry="150" fill="url(#pool)"/>
+
+    <!-- ===== 桌面：散落的牌、筹码、酒杯、烟 ===== -->
+    <g>
+      <!-- 扣着的三张牌 -->
+      <g transform="rotate(-11 566 748)">
+        <rect x="538" y="712" width="58" height="84" rx="4" fill="#7c2029"/>
+        <rect x="542" y="716" width="50" height="76" rx="3" fill="none" stroke="#d9a15a" stroke-opacity=".38"/>
+        <circle cx="567" cy="754" r="13" fill="none" stroke="#d9a15a" stroke-opacity=".28"/>
+      </g>
+      <g transform="rotate(6 630 760)">
+        <rect x="602" y="724" width="58" height="84" rx="4" fill="#6d1c24"/>
+        <rect x="606" y="728" width="50" height="76" rx="3" fill="none" stroke="#d9a15a" stroke-opacity=".3"/>
+        <circle cx="631" cy="766" r="13" fill="none" stroke="#d9a15a" stroke-opacity=".22"/>
+      </g>
+      <g transform="rotate(-3 700 772)">
+        <rect x="672" y="736" width="58" height="84" rx="4" fill="#7c2029"/>
+        <rect x="676" y="740" width="50" height="76" rx="3" fill="none" stroke="#d9a15a" stroke-opacity=".3"/>
+        <circle cx="701" cy="778" r="13" fill="none" stroke="#d9a15a" stroke-opacity=".22"/>
+      </g>
+
+      <!-- 翻开的一张：三月的樱 -->
+      <g transform="rotate(-6 486 762)">
+        <rect x="452" y="716" width="66" height="96" rx="4" fill="#ece3d2"/>
+        <rect x="452" y="716" width="66" height="30" fill="#cf3f55"/>
+        <path d="M452 746 q16 8 33 0 q17 -8 33 0 L518 752 q-16 8 -33 0 q-17 -8 -33 0 Z" fill="#f3e8d5"/>
+        <g fill="#b9304a">
+          <circle cx="470" cy="766" r="5"/>
+          <circle cx="466" cy="762" r="3.4"/>
+          <circle cx="474" cy="762" r="3.4"/>
+          <circle cx="466" cy="770" r="3.4"/>
+          <circle cx="474" cy="770" r="3.4"/>
+          <circle cx="500" cy="784" r="4.4"/>
+          <circle cx="496" cy="780" r="3"/>
+          <circle cx="504" cy="780" r="3"/>
+          <circle cx="496" cy="788" r="3"/>
+          <circle cx="504" cy="788" r="3"/>
+        </g>
+        <path d="M462 790 q18 -14 42 -6" fill="none" stroke="#8a7048" stroke-width="1.4"/>
+        <text x="460" y="806" font-family="monospace" font-size="8" fill="#8d2739" letter-spacing="1.4">三月 · 3월</text>
+      </g>
+
+      <!-- 筹码 -->
+      <g>
+        <ellipse cx="880" cy="782" rx="30" ry="9" fill="#c69a4a" opacity=".9"/>
+        <ellipse cx="880" cy="776" rx="30" ry="9" fill="#e6bd76" opacity=".85"/>
+        <ellipse cx="880" cy="770" rx="30" ry="9" fill="#8d2739" opacity=".95"/>
+        <ellipse cx="880" cy="764" rx="30" ry="9" fill="#cf3f55" opacity=".9"/>
+        <ellipse cx="880" cy="758" rx="30" ry="9" fill="#e6bd76" opacity=".9"/>
+        <ellipse cx="930" cy="792" rx="26" ry="8" fill="#8d2739" opacity=".85"/>
+        <ellipse cx="930" cy="786" rx="26" ry="8" fill="#cf3f55" opacity=".8"/>
+        <ellipse cx="930" cy="780" rx="26" ry="8" fill="#c69a4a" opacity=".85"/>
+        <ellipse cx="838" cy="806" rx="22" ry="7" fill="#cf3f55" opacity=".7"/>
+        <ellipse cx="838" cy="800" rx="22" ry="7" fill="#e6bd76" opacity=".75"/>
+        <ellipse cx="798" cy="820" rx="19" ry="6" fill="#8d2739" opacity=".6"/>
+      </g>
+
+      <!-- 酒杯 -->
+      <g>
+        <path d="M1044 742 L1078 742 L1072 812 L1050 812 Z" fill="#c69a4a" opacity=".14"/>
+        <path d="M1048 776 L1074 776 L1071 810 L1051 810 Z" fill="#b0691f" opacity=".55"/>
+        <path d="M1044 742 L1078 742 L1072 812 L1050 812 Z" fill="none" stroke="#e6bd76" stroke-opacity=".42"/>
+        <ellipse cx="1061" cy="742" rx="17" ry="4.6" fill="none" stroke="#e6bd76" stroke-opacity=".45"/>
+        <ellipse cx="1061" cy="812" rx="14" ry="3.4" fill="#000" opacity=".45"/>
+      </g>
+
+      <!-- 烟灰缸与一支点着的烟 -->
+      <g>
+        <ellipse cx="348" cy="812" rx="52" ry="15" fill="#1a1510"/>
+        <ellipse cx="348" cy="806" rx="52" ry="15" fill="#2a2318"/>
+        <ellipse cx="348" cy="806" rx="38" ry="10" fill="#100c08"/>
+        <g transform="rotate(-14 348 796)">
+          <rect x="310" y="792" width="76" height="9" rx="4.5" fill="#ece2cf"/>
+          <rect x="310" y="792" width="20" height="9" rx="4.5" fill="#c69a4a" opacity=".85"/>
+        </g>
+        <ellipse cx="388" cy="788" rx="9" ry="7" fill="url(#ember)"/>
+        <circle cx="388" cy="788" r="2" fill="#ffd79a" class="beacon"/>
+      </g>
+    </g>
+
+    <!-- 台面边缘的一圈冷光：玻璃压边 -->
+    <path d="M336 700 L1104 700" stroke="#8fa4ae" stroke-opacity=".16" stroke-width="1"/>
+
+    <!-- 左下角：一枚几乎看不见的樱花印记 -->
+    <ellipse cx="700" cy="836" rx="150" ry="40" fill="url(#cherryGlow)" opacity=".55"/>
+  </svg>
+  <div class="hero-scrim"></div>
+  <canvas id="heroCanvas"></canvas>
+
+  <div class="hero-in">
+    <div class="eyebrow">韩国犯罪片 · 第 24 部 <span>Korean Crime Cinema / No.24</span></div>
+    <h1 class="title">老千</h1>
+    <div class="title-en">Tazza: The High Rollers</div>
+    <div class="title-kr">타짜 · 2006</div>
+    <p class="hero-sub">
+      他只想把输掉的钱赢回来，然后收手。<br>
+      可他真正学会的，不是赢钱的办法——<b>而是一张桌子是怎么运转的，以及一个人要在这张桌子边坐多久，才会变成这张桌子的一部分。</b>
+    </p>
+    <div class="chips">
+      <span class="chip hot">崔东勋 · 编剧＋导演</span>
+      <span class="chip tag">百想艺术大赏 · 电影部门大赏</span>
+      <span class="chip">曹承佑 · 金惠秀</span>
+      <span class="chip">白允植 · 柳海真 · 金允石</span>
+      <span class="chip">684 万 观影人次</span>
+      <span class="chip">2006 · 139 分钟</span>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>SCROLL</span><i></i></div>
+</header>
+
+<!-- ================= 01 梗概 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="nospoil reveal">
+      <span class="mark">NO&nbsp;SPOILER</span>
+      <p><b>全程不剧透。</b>下面所有内容只写到影片第一幕为止的公开设定——一个家具厂的工人怎么坐上那张桌子、怎么把本钱输光、又怎么求着别人教他。至于他学到的东西把他带去了哪里、谁在牌桌另一端等着他、他最后押上了什么，一个字都不提。</p>
+    </div>
+
+    <div class="sec-head reveal">
+      <span class="sec-num">01 / Synopsis</span>
+      <h2 class="sec-title">他以为这是一副牌的游戏，<em>直到有人告诉他：这是人的游戏</em></h2>
+    </div>
+
+    <div class="duo">
+      <aside class="glance reveal">
+        <h3>一眼速览</h3>
+        <dl>
+          <div class="row"><dt>片名</dt><dd>老千</dd></div>
+          <div class="row"><dt>韩文原片名</dt><dd>타짜</dd></div>
+          <div class="row"><dt>英文片名</dt><dd>Tazza: The High Rollers</dd></div>
+          <div class="row"><dt>其他译名</dt><dd>泰沙大豪客（港）</dd></div>
+          <div class="row"><dt>年份</dt><dd>2006</dd></div>
+          <div class="row"><dt>类型</dt><dd>犯罪 / 剧情 / 赌片</dd></div>
+          <div class="row"><dt>导演 · 编剧</dt><dd>崔东勋</dd></div>
+          <div class="row"><dt>片长</dt><dd>139 分钟</dd></div>
+          <div class="row tagged"><dt>观影建议</dt><dd>18 岁以上</dd></div>
+          <div class="row accent"><dt>豆瓣</dt><dd>7.6 / 10</dd></div>
+        </dl>
+      </aside>
+
+      <div class="prose reveal">
+        <p class="drop">
+          九十年代的韩国，一个叫<em>高尼</em>的年轻人，在家具厂里干活。工资只够糊口，可他偏偏是个心气很高的人——不甘心就这么过一辈子。某天下班，他看见厂子的角落里围着一圈人在玩牌。
+        </p>
+        <p>
+          他坐了下来。那天散场的时候，他攒了很久的积蓄没了，连姐姐托他保管的那笔钱也一并没了。也是在那之后他才明白：<b>桌上坐着的，大部分不是玩家，是老千。</b>
+        </p>
+        <p>
+          他咽不下这口气，跑去找人理论。结果没找到想找的人，却撞上了一位早年退出江湖的老手<em>平京长</em>——全国最有名的几个老千之一。他死缠烂打要拜师，理由是：<b>把输掉的赢回来。</b>他保证，赢够了本钱就收手，从此不碰牌。
+        </p>
+        <p>
+          师父教他的第一句话不是手法。是：<em>花图不是牌的游戏，是人的游戏。</em>牌只有那几十张，人却有几百种表情——谁在装赢、谁在装输、谁明明握着好牌却在看你，这些才是真正要读的东西。
+        </p>
+        <p>
+          他学得很快，出山也很快。牌桌上开始有人认得他的名字；一个身份说不清的女人<em>郑女士</em>也出现在他身边，谈生意的语气和谈别的事情的语气一模一样。当年赢光他的那个人，同样回来了。
+        </p>
+        <p>
+          到这儿打住。他能不能守住当初那句"赢回本就收手"——<b>这里一个字都不会说。</b>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 概念海报 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02 / Concept Poster</span>
+      <h2 class="sec-title">一张牌、一枚筹码、一支烟：<em>整部电影都压在这三样东西上</em></h2>
+      <p class="sec-desc">这张概念图没有人物，也没有牌局的高潮。它只摆出了牌桌的一角——因为《老千》最厉害的地方，恰恰是它让观众在一个静态的牌面上，读出一个人已经走到了哪一步。</p>
+    </div>
+
+    <div class="poster-grid">
+      <figure class="poster-frame reveal">
+        <svg viewBox="0 0 400 600" aria-label="《老千》概念海报：绒布桌上的一张花图牌、筹码与一支点着的烟">
+          <defs>
+            <radialGradient id="pFelt" cx="50%" cy="42%" r="72%">
+              <stop offset="0%" stop-color="#16432f"/>
+              <stop offset="52%" stop-color="#0c2619"/>
+              <stop offset="100%" stop-color="#050a07"/>
+            </radialGradient>
+            <linearGradient id="pBack" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#8c2431"/>
+              <stop offset="100%" stop-color="#5d1620"/>
+            </linearGradient>
+            <radialGradient id="pLamp" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffd79a" stop-opacity=".26"/>
+              <stop offset="100%" stop-color="#c69a4a" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="pEmber" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffd08a" stop-opacity=".6"/>
+              <stop offset="100%" stop-color="#e07a2a" stop-opacity="0"/>
+            </radialGradient>
+            <pattern id="pSlat" width="10" height="13" patternUnits="userSpaceOnUse">
+              <rect width="10" height="4.8" fill="#c69a4a" fill-opacity=".16"/>
+            </pattern>
+            <pattern id="pNub" width="7" height="7" patternUnits="userSpaceOnUse">
+              <circle cx="1.6" cy="1.6" r=".7" fill="#2f7a5b" fill-opacity=".22"/>
+              <circle cx="5.2" cy="5" r=".6" fill="#2f7a5b" fill-opacity=".16"/>
+            </pattern>
+          </defs>
+
+          <rect width="400" height="600" fill="url(#pFelt)"/>
+          <rect width="400" height="600" fill="url(#pNub)"/>
+          <ellipse cx="200" cy="250" rx="230" ry="200" fill="url(#pLamp)"/>
+
+          <!-- 后墙百叶窗漏下的光 -->
+          <rect x="24" y="52" width="352" height="96" fill="url(#pSlat)" opacity=".85"/>
+          <rect x="24" y="52" width="352" height="96" fill="#c69a4a" opacity=".04"/>
+          <line x1="24" y1="148" x2="376" y2="148" stroke="#0a0705" stroke-width="4"/>
+          <line x1="24" y1="148" x2="376" y2="148" stroke="#3a2c18" stroke-width="1" opacity=".7"/>
+
+          <text x="40" y="36" font-family="monospace" font-size="8.4" fill="#6b5f4a" letter-spacing="2">KOREAN CRIME CINEMA · NO.24</text>
+
+          <!-- 一张扣着的牌（后面那层） -->
+          <g transform="rotate(-14 176 316)">
+            <rect x="106" y="212" width="140" height="208" rx="7" fill="url(#pBack)"/>
+            <rect x="113" y="219" width="126" height="194" rx="5" fill="none" stroke="#e6bd76" stroke-opacity=".42"/>
+            <rect x="119" y="225" width="114" height="182" rx="4" fill="none" stroke="#e6bd76" stroke-opacity=".16"/>
+            <g fill="#e6bd76" opacity=".3">
+              <circle cx="140" cy="248" r="3"/>
+              <circle cx="176" cy="248" r="3"/>
+              <circle cx="212" cy="248" r="3"/>
+              <circle cx="140" cy="284" r="3"/>
+              <circle cx="176" cy="284" r="3"/>
+              <circle cx="212" cy="284" r="3"/>
+              <circle cx="140" cy="320" r="3"/>
+              <circle cx="176" cy="320" r="3"/>
+              <circle cx="212" cy="320" r="3"/>
+              <circle cx="140" cy="356" r="3"/>
+              <circle cx="176" cy="356" r="3"/>
+              <circle cx="212" cy="356" r="3"/>
+            </g>
+            <circle cx="176" cy="316" r="46" fill="none" stroke="#e6bd76" stroke-opacity=".22"/>
+            <ellipse cx="176" cy="316" rx="18" ry="26" fill="none" stroke="#e6bd76" stroke-opacity=".3"/>
+          </g>
+
+          <!-- 一张翻开的牌：三月的樱 -->
+          <g transform="rotate(-5 234 316)">
+            <rect x="166" y="206" width="140" height="208" rx="7" fill="#ece3d2"/>
+            <rect x="166" y="206" width="140" height="64" fill="#cf3f55"/>
+            <path d="M166 270 q23 13 46 0 q23 -13 47 0 q23 13 47 0 L306 280 q-23 13 -47 0 q-24 -13 -47 0 q-23 13 -46 0 Z" fill="#f5ebd8"/>
+            <g fill="#b9304a">
+              <circle cx="208" cy="308" r="10"/>
+              <circle cx="199" cy="299" r="6.6"/>
+              <circle cx="217" cy="299" r="6.6"/>
+              <circle cx="199" cy="317" r="6.6"/>
+              <circle cx="217" cy="317" r="6.6"/>
+              <circle cx="268" cy="338" r="9"/>
+              <circle cx="260" cy="330" r="6"/>
+              <circle cx="276" cy="330" r="6"/>
+              <circle cx="260" cy="346" r="6"/>
+              <circle cx="276" cy="346" r="6"/>
+              <circle cx="236" cy="364" r="7.4"/>
+              <circle cx="229" cy="357" r="5"/>
+              <circle cx="243" cy="357" r="5"/>
+              <circle cx="229" cy="371" r="5"/>
+              <circle cx="243" cy="371" r="5"/>
+            </g>
+            <path d="M198 392 q30 -22 74 -12" fill="none" stroke="#8a7048" stroke-width="1.6"/>
+            <path d="M204 372 q10 -12 24 -6" fill="none" stroke="#8a7048" stroke-width="1.2"/>
+            <text x="182" y="400" font-family="monospace" font-size="9" fill="#8d2739" letter-spacing="1.6">三月 · 3월</text>
+            <rect x="166" y="206" width="140" height="208" rx="7" fill="none" stroke="#8a7048" stroke-opacity=".5"/>
+          </g>
+
+          <!-- 桌上：筹码、硬币、烟 -->
+          <g>
+            <ellipse cx="106" cy="452" rx="40" ry="12" fill="#c69a4a" opacity=".85"/>
+            <ellipse cx="106" cy="444" rx="40" ry="12" fill="#e6bd76" opacity=".8"/>
+            <ellipse cx="106" cy="436" rx="40" ry="12" fill="#8d2739" opacity=".9"/>
+            <ellipse cx="106" cy="428" rx="40" ry="12" fill="#cf3f55" opacity=".85"/>
+            <ellipse cx="106" cy="420" rx="40" ry="12" fill="#e6bd76" opacity=".85"/>
+            <ellipse cx="106" cy="420" rx="24" ry="7" fill="#8d2739" opacity=".5"/>
+
+            <ellipse cx="172" cy="470" rx="26" ry="8" fill="#cf3f55" opacity=".8"/>
+            <ellipse cx="172" cy="463" rx="26" ry="8" fill="#c69a4a" opacity=".8"/>
+            <ellipse cx="214" cy="484" rx="22" ry="7" fill="#8d2739" opacity=".7"/>
+            <ellipse cx="214" cy="478" rx="22" ry="7" fill="#e6bd76" opacity=".7"/>
+            <ellipse cx="256" cy="470" rx="19" ry="6" fill="#cf3f55" opacity=".6"/>
+            <ellipse cx="256" cy="465" rx="19" ry="6" fill="#c69a4a" opacity=".6"/>
+
+            <ellipse cx="306" cy="484" rx="46" ry="14" fill="#161209"/>
+            <ellipse cx="306" cy="478" rx="46" ry="14" fill="#251d10"/>
+            <ellipse cx="306" cy="478" rx="33" ry="9" fill="#0d0a06"/>
+            <g transform="rotate(-15 306 462)">
+              <rect x="268" y="458" width="70" height="9" rx="4.5" fill="#ece2cf"/>
+              <rect x="268" y="458" width="18" height="9" rx="4.5" fill="#c69a4a" opacity=".85"/>
+            </g>
+            <ellipse cx="344" cy="452" rx="11" ry="8" fill="url(#pEmber)"/>
+            <circle cx="344" cy="452" r="2.2" fill="#ffd79a"/>
+          </g>
+
+          <!-- 右上：一枚朱红印章 -->
+          <g>
+            <rect x="322" y="176" width="54" height="54" rx="4" fill="#8d2739" fill-opacity=".16"/>
+            <rect x="322" y="176" width="54" height="54" rx="4" fill="none" stroke="#cf3f55" stroke-width="2" stroke-opacity=".8"/>
+            <text x="349" y="216" text-anchor="middle" font-family="'Songti SC','STSong',serif" font-size="30" fill="#ef8090" letter-spacing="0">千</text>
+          </g>
+
+          <!-- 片名 -->
+          <line x1="128" y1="524" x2="165" y2="524" stroke="#cf3f55" stroke-opacity=".5"/>
+          <line x1="236" y1="524" x2="273" y2="524" stroke="#cf3f55" stroke-opacity=".5"/>
+          <text x="200" y="556" text-anchor="middle" font-family="'Songti SC','STSong',serif" font-size="54" fill="#faf4e9" letter-spacing="16">老千</text>
+          <text x="200" y="580" text-anchor="middle" font-family="monospace" font-size="9.6" fill="#b6ab97" letter-spacing="3">타짜 · TAZZA THE HIGH ROLLERS · 2006</text>
+        </svg>
+        <figcaption class="poster-cap">Concept Key Art · 一张牌翻开着，一张扣着，第三样东西正在烧</figcaption>
+      </figure>
+
+      <div class="notes">
+        <div class="note reveal">
+          <h4>一 · 翻开着的那张牌，是三月的樱</h4>
+          <p>韩国花图（화투）一共四十八张，按月分花：一月松、三月樱、八月月、十一月桐。《老千》被公认为影史上最认真拍花图的一部电影——它没有把牌当道具糊弄过去，而是让每一张牌都长得对。<b>三月那张牌在牌桌上，等于一个具体的月份、一种具体的花色、一套具体的算法。</b></p>
+        </div>
+        <div class="note reveal">
+          <h4>二 · 扣着的那张牌，才是重点</h4>
+          <p>画面里三张牌，只有一张是翻开的，另外两张背面朝上。这正是整部片子的结构：<em>你永远只看得到一部分牌面，剩下的事，要靠读对面那个人的脸来补。</em>电影从第一分钟就在训练观众这件事——它不是让你猜牌，是让你猜人。</p>
+        </div>
+        <div class="note reveal">
+          <h4>三 · 筹码、酒杯、一支烧着的烟</h4>
+          <p>桌角的三样东西，是一个赌徒的时间刻度：筹码是他已经赢到的，酒是他已经喝下的，烟是他还没来得及抽完的。<b>烟最短，可它一直在燃。</b>这部片子的紧张感就长在这种地方——不是枪，是烟灰。</p>
+        </div>
+        <div class="note reveal">
+          <h4>四 · 右上角那枚「千」印</h4>
+          <p>中文里「老千」本是一个骂人的词，指以作弊为生的赌徒。但这部片子有意思的地方在于：它没有把这个人拍成反派，也没有把他拍成英雄，而是拍成一个<b>把手艺学得太好、把规矩学得太慢的年轻人</b>。印章盖在角落，不声张，也不赦免。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 档案 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03 / The File</span>
+      <h2 class="sec-title">影片档案：<em>一部从国民漫画里长出来的国民电影</em></h2>
+      <p class="sec-desc">改编自许英万与金世荣的同名漫画——那部作品在报纸上连载了四年，被称为「国民漫画」。电影把背景从漫画原作的年代挪到了九十年代，剧组搭了整整一年多的赌场布景，演员则在开拍前跟着真正的职业老千练手法。</p>
+    </div>
+
+    <dl class="file-grid reveal">
+      <div class="file-cell hot"><dt>片名</dt><dd>老千</dd></div>
+      <div class="file-cell"><dt>韩文原片名</dt><dd>타짜</dd></div>
+      <div class="file-cell"><dt>英文片名</dt><dd>Tazza: The High Rollers</dd></div>
+      <div class="file-cell"><dt>其他译名</dt><dd>泰沙大豪客（港）<small>The War of Flower</small></dd></div>
+      <div class="file-cell"><dt>年份 · 首映</dt><dd>2006 · 09.28<small>韩国本土上映</small></dd></div>
+      <div class="file-cell"><dt>类型</dt><dd>犯罪 / 剧情 / 赌片</dd></div>
+      <div class="file-cell"><dt>片长</dt><dd>139 分钟</dd></div>
+      <div class="file-cell hot"><dt>观影建议</dt><dd>18 岁以上观览可<small>赌博 · 暴力 · 性</small></dd></div>
+      <div class="file-cell hot"><dt>导演 · 编剧</dt><dd>崔东勋<small>与原著作者许英万共同编剧</small></dd></div>
+      <div class="file-cell"><dt>原著漫画</dt><dd>许英万 · 金世荣<small>1997 年起连载四年</small></dd></div>
+      <div class="file-cell"><dt>主演</dt><dd>曹承佑 · 金惠秀<small>白允植 · 柳海真 · 金允石</small></dd></div>
+      <div class="file-cell"><dt>配角阵容</dt><dd>李水京 · 金正兰 · 朱镇模<small>金相浩 · 金应洙</small></dd></div>
+      <div class="file-cell gold"><dt>摄影</dt><dd>崔英焕<small>凭本片获青龙最佳摄影</small></dd></div>
+      <div class="file-cell gold"><dt>剪辑</dt><dd>辛敏璟<small>春史 + 韩国电影大赏双奖</small></dd></div>
+      <div class="file-cell"><dt>音乐</dt><dd>张英圭 · Dalpalan<small>主题曲《Last Waltz》</small></dd></div>
+      <div class="file-cell"><dt>服装</dt><dd>曹相京<small>凭本片获大钟最佳服装</small></dd></div>
+      <div class="file-cell"><dt>出品 · 发行</dt><dd>Sidus FNH<small>发行 CJ Entertainment</small></dd></div>
+      <div class="file-cell"><dt>筹备</dt><dd>赌场布景耗时一年以上<small>演员受职业老千亲身训练</small></dd></div>
+      <div class="file-cell hot"><dt>韩国观影</dt><dd>684 万人次<small>2006 年度韩国票房前三</small></dd></div>
+      <div class="file-cell"><dt>系列位置</dt><dd>三部曲的起点<small>续作 2014 · 2019</small></dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ================= 04 口碑 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04 / Reception</span>
+      <h2 class="sec-title">口碑：<em>一半是观众给的热度，一半是奖项给的分量</em></h2>
+      <p class="sec-desc">这部片子的两个数字最有意思：豆瓣 7.6，在中文互联网上属于「好看但不神」的区间；可它在韩国本土拿走了第 43 届百想艺术大赏的电影部门大赏——那一年的对手里有《怪物》。</p>
+    </div>
+
+    <div class="score-grid reveal">
+      <div class="score">
+        <div class="plat">豆瓣 Douban</div>
+        <div class="big">7.6<i>/ 10</i></div>
+        <div class="bar"><span style="width:76%"></span></div>
+        <div class="cap"><b>约 5 万人评分。</b>中文观众口径。放在韩国赌片谱系里，它长年是那个「被反复提起、反复对比」的参照点。</div>
+      </div>
+      <div class="score">
+        <div class="plat">IMDb</div>
+        <div class="big">7.1<i>/ 10</i></div>
+        <div class="bar"><span style="width:71%"></span></div>
+        <div class="cap"><b>约 3,000 票。</b>海外评价稳而不高，但放映后长期保持在这个区间——对于一部极度依赖本土文化语境的赌片，这已经算体面。</div>
+      </div>
+      <div class="score">
+        <div class="plat">百想艺术大赏</div>
+        <div class="big">大赏<i>· 第 43 届</i></div>
+        <div class="bar"><span style="width:100%"></span></div>
+        <div class="cap"><b>电影部门大赏 ＋ 最佳导演。</b>韩国三大奖里最难拿的一座，被一部赌片拿走；同年《怪物》意外失手，媒体直接把这条写成标题。</div>
+      </div>
+      <div class="score">
+        <div class="plat">韩国票房</div>
+        <div class="big">684<i>万人次</i></div>
+        <div class="bar"><span style="width:46%"></span></div>
+        <div class="cap"><b>上映即连续两周票房冠军。</b>三周累计突破 400 万人次，最终位列当年的票房前三；在当时的韩国影史上，它也是最卖座的 18 岁以上级本土片之一。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 时间线 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">05 / Timeline</span>
+      <h2 class="sec-title">从一本国民漫画，<em>到一部国民电影，再到一个子类型</em></h2>
+      <p class="sec-desc">《老千》不是凭空出现的。它前面有一本连载四年的国民漫画，后面有三部曲与整整一代韩国「骗局片」。把这条线理出来，你会明白它为什么能在二十年里一直被叫回桌前。</p>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-year">1997 — 2001</div>
+        <div class="tl-title">漫画《타짜》在报纸上连载四年</div>
+        <div class="tl-desc">许英万与金世荣创作的《老千》在《体育朝鲜》上连载，讲的是一群以花图作弊为生的人。连载结束后被读者称为「国民漫画」——崔东勋后来重读它，才决定接下这个改编。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2004</div>
+        <div class="tl-title">崔东勋拍出《犯罪的再构成》</div>
+        <div class="tl-desc">一部多线并进、几乎人人都在互相算计的犯罪片。它让片方看见了一件事：这个新导演能把「骗」这件事拍得又清楚又好笑。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2006 · 筹备</div>
+        <div class="tl-title">他一开始拒绝了这部片</div>
+        <div class="tl-desc">崔东勋最初以「力不从心」为由推掉了邀请，重读漫画之后才被故事说服。剧本阶段他就把主角按曹承佑的形象来写——台词、性格、甚至连肢体习惯都是照着人量身定做的。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2006 · 拍摄</div>
+        <div class="tl-title">演员跟着真正的老千学手法</div>
+        <div class="tl-desc">为演好角色，曹承佑等人开拍前接受了真实老手的严格训练。片中几处主要赌场布景，制作组花了超过一年时间搭建与准备——这也是它能把牌桌拍得像牌桌的原因。</div>
+      </div>
+      <div class="tl-item hot">
+        <div class="tl-year">2006 · 09.28</div>
+        <div class="tl-title">上映，连续两周票房冠军</div>
+        <div class="tl-desc">开画即登顶，两周连冠；三周累计观影突破 418 万人次，成为当时韩国影史上第二卖座的成人级本土电影。</div>
+      </div>
+      <div class="tl-item hot">
+        <div class="tl-year">2006 — 2007</div>
+        <div class="tl-title">奖项季</div>
+        <div class="tl-desc">金惠秀凭「郑女士」拿下第 27 届青龙最佳女主角；影片随后在第 43 届百想艺术大赏拿下电影部门大赏与最佳导演；崔英焕、辛敏璟、金允石分别把摄影、剪辑、男配角奖带回剧组。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2014</div>
+        <div class="tl-title">《老千 2：神之手》</div>
+        <div class="tl-desc">由姜炯哲执导，柳海真与金允石回归出演同一批角色。八年后重开这张桌子，证明「老千」已经从一个故事变成了一门生意。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2019</div>
+        <div class="tl-title">《老千 3：独眼杰克》</div>
+        <div class="tl-desc">第三部换导演、换主角，只保留世界观。到这一步，「花图 + 骗局 + 复仇」已经成了韩国电影里一套可以反复使用的语法。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">后来</div>
+        <div class="tl-title">一个流传很广的彩蛋</div>
+        <div class="tl-desc">防弹少年团的 SUGA 曾多次在公开场合说，《老千》是他最喜欢的电影。一部 2006 年的 18 岁以上级赌片，能在一代年轻观众那里被这样记住，本身就是一种经典认证。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 荣誉 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">06 / Awards</span>
+      <h2 class="sec-title">荣誉：<em>一座大赏，一位影后，四座技术奖</em></h2>
+      <p class="sec-desc">注意奖项的分布：它拿下的不只是表演奖，还有摄影、剪辑、服装、剧本。这是一部类型片能拿到的最好的一种成绩单——从台前到幕后，整条生产线都被承认了。</p>
+    </div>
+
+    <div class="awards reveal">
+      <div class="aw"><span class="yr">2006</span><span class="bd"><b>第 2 届大韩民国大学电影节 · <em>最佳男主角 · 最佳女主角</em></b>曹承佑 · 金惠秀 双获奖</span></div>
+      <div class="aw"><span class="yr">2006</span><span class="bd"><b>第 14 届春史电影奖 · <em>最佳女主角 · 最佳剪辑</em></b>金惠秀 · 辛敏璟 获奖</span></div>
+      <div class="aw"><span class="yr">2006</span><span class="bd"><b>第 27 届青龙电影奖 · <em>最佳女主角</em></b>金惠秀 获奖（另获最佳摄影、人气明星奖；共 7 项提名）</span></div>
+      <div class="aw"><span class="yr">2007</span><span class="bd"><b>第 43 届百想艺术大赏 · <em>电影部门大赏</em></b>影片获奖</span></div>
+      <div class="aw"><span class="yr">2007</span><span class="bd"><b>第 43 届百想艺术大赏 · <em>最佳导演</em></b>崔东勋 获奖</span></div>
+      <div class="aw"><span class="yr">2007</span><span class="bd"><b>第 44 届大钟奖 · <em>最佳男配角 · 最佳服装</em></b>金允石 · 曹相京 获奖</span></div>
+      <div class="aw"><span class="yr">2007</span><span class="bd"><b>第 8 届釜山影评人协会奖 · <em>最佳剧本 · 最佳男配角</em></b>崔东勋 · 金允石 获奖</span></div>
+      <div class="aw"><span class="yr">2007</span><span class="bd"><b>第 8 届纽波特比奇电影节 · <em>最佳影片 · 最佳导演 · 最佳男/女主角</em></b>四项全中</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 谱系 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">07 / Lineage</span>
+      <h2 class="sec-title">它站在哪一格：<em>一条关于「入局」的纵轴</em></h2>
+      <p class="sec-desc">把本系列推荐过的几部片子按年份排开，会看到一条很清楚的线：主角都不是天生的坏人，而是被生活推进某个局里的人。区别只在于——那个局有多大。</p>
+    </div>
+
+    <div class="lineage reveal">
+      <div class="lg now">
+        <div class="lg-yr">2006</div>
+        <div class="lg-tt">老千</div>
+        <div class="lg-dr">入的是牌局：一张桌子，几十张牌，读的是对面那张脸。</div>
+        <div class="lg-wt">本期 · 第 24 部</div>
+      </div>
+      <div class="lg">
+        <div class="lg-yr">2010</div>
+        <div class="lg-tt">黄海</div>
+        <div class="lg-dr">入的是别人的买卖：为了还债接下的一趟差事，交割的是命。</div>
+        <div class="lg-wt">本系列 · 第 9 部</div>
+      </div>
+      <div class="lg">
+        <div class="lg-yr">2012</div>
+        <div class="lg-tt">与犯罪的战争</div>
+        <div class="lg-dr">入的是时代的账：黑帮、税务与检方在同一本账上签字。</div>
+        <div class="lg-wt">本系列 · 第 13 部</div>
+      </div>
+      <div class="lg">
+        <div class="lg-yr">2015</div>
+        <div class="lg-tt">局内人</div>
+        <div class="lg-dr">入的是权力的局：一间办公室，三个房间同时运转。</div>
+        <div class="lg-wt">本系列 · 第 11 部</div>
+      </div>
+      <div class="lg">
+        <div class="lg-yr">2017</div>
+        <div class="lg-tt">王者</div>
+        <div class="lg-dr">入的是制度本身：不是对抗系统，而是成为系统。</div>
+        <div class="lg-wt">本系列 · 第 23 部</div>
+      </div>
+    </div>
+
+    <p class="lineage-note reveal">这条线上的局，一部比一部大：从一张牌桌，到一趟跨国买卖，到一本时代账，到一间办公室，最后到整栋大楼。而《老千》是它们当中<b>最早、最小、也最像手艺</b>的那一个——它不讨论国家，不讨论体制，只讨论一个人能不能守住自己说过的一句话。正因为小，它才最锋利。</p>
+  </div>
+</section>
+
+<!-- ================= 08 亮点 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">08 / Highlights</span>
+      <h2 class="sec-title">六处亮点：<em>一部把「手」拍成主角的电影</em></h2>
+    </div>
+
+    <div class="highlights reveal">
+      <div class="hl">
+        <div class="idx">01</div>
+        <h4>曹承佑 · <em>从一双手开始演</em></h4>
+        <p>他在片子里最重要的表演器官不是眼睛，是手：洗牌、切牌、推牌、数筹码。从最开始握牌时会抖，到后来手腕落下毫不犹豫——导演把「学会」这件事拍成了一套可以看见的身体记忆。<b>你能从动作里看出这个人走了多远。</b></p>
+      </div>
+      <div class="hl">
+        <div class="idx">02</div>
+        <h4>金惠秀 · <em>一座青龙影后</em></h4>
+        <p>郑女士是九十年代韩国银幕上最难被简单归类的一个女性角色：她谈生意的语气和谈别的事情的语气一模一样，笑和不笑之间没有过渡。金惠秀凭这个角色拿下第 27 届青龙最佳女主角，此后「蛇蝎美人」在韩国影评里有了具体的脸。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">03</div>
+        <h4>白允植 · <em>把江湖话讲成家常话</em></h4>
+        <p>平京长是全片的笑点和重量所在。他教徒弟时讲的全是生活常识——怎么看出一个人紧张、什么时候该退、为什么赢了别笑。他把一个江湖人物的规矩讲得像父亲叮嘱，这也是「受辱—学艺—复仇」这套骨架能立住的原因。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">04</div>
+        <h4>花图 · <em>被拍得最认真的一种牌</em></h4>
+        <p>本片被公认为影史上最用心拍花图的电影：四十八张牌按月份分花，一月松、三月樱、八月月、十一月桐，每一张都长得对。演员开拍前跟着真实的职业老千练习手法，牌桌上的每一个动作都有出处——<b>它不是把牌当道具，是把牌当语言。</b></p>
+      </div>
+      <div class="hl">
+        <div class="idx">05</div>
+        <h4>摄影 · 剪辑 · <em>赌戏怎么拍才紧张</em></h4>
+        <p>摄影崔英焕把大量赌戏压在手持特写上：翻牌的手、忍住不动的脸、桌面上的筹码堆。剪辑辛敏璟凭此连拿春史与韩国电影大赏两座剪辑奖。<b>不靠音乐催，不靠慢镜渲染——靠的是切在别人抬眼的前一秒。</b></p>
+      </div>
+      <div class="hl">
+        <div class="idx">06</div>
+        <h4>剧本 · <em>一个武侠骨架，一副九十年代皮</em></h4>
+        <p>崔东勋把「受辱—学艺—复仇」这套最古典的叙事骨架，嫁接进了九十年代的韩国地下赌场，再用回忆拆分重组。它讲的是作弊，用的却是武侠片的章法：师父、绝技、出山、规矩、代价。<b>形式上的古典，正是它耐看的原因。</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 为什么值得看 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">09 / Why It Matters</span>
+      <h2 class="sec-title">为什么值得看：<em>三件事，够它进经典名单</em></h2>
+    </div>
+
+    <div class="why reveal">
+      <div class="why-item">
+        <h4><span>One</span>它把赌片从「看运气」改成了「看人」</h4>
+        <p>别的赌片靠奇观：玄学手气、天降好牌、最后一秒翻盘。这部片子几乎相反——它让你一直盯着人看：谁在装赢、谁在装输、谁说这句话的时候手在桌下动了一下。<b>当你开始读人的时候，牌面就不重要了。</b>这种把技术活拍成心理战的思路，后来被无数韩国同类型作品借走。</p>
+      </div>
+      <div class="why-item">
+        <h4><span>Two</span>它是一部工业意义上的路标</h4>
+        <p>一本连载四年的国民漫画、一位刚拍完处女作的新导演、一位还没被大银幕验证过的男主角——这三样东西凑在一起，做出了 684 万人次、百想大赏、青龙影后。<b>它证明了一件事：在韩国，类型片可以既卖钱，又被严肃对待。</b>此后二十年，这条路被反复走。</p>
+      </div>
+      <div class="why-item">
+        <h4><span>Three</span>它到今天还在生长</h4>
+        <p>2014 年的《神之手》、2019 年的《独眼杰克》先后开机，同一套世界观被换了三拨人重讲；而几乎所有韩国「骗局 / 智斗」题材的片子，都要先跟它比一次。更难得的是它的生命力跨了代——<b>一部成人级赌片，被今天的年轻观众当作"最喜欢的电影"记着。</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10 提示 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">10 / Advisory</span>
+      <h2 class="sec-title">观影提示</h2>
+    </div>
+    <div class="warns reveal">
+      <div class="warn">
+        <div class="tag">分级</div>
+        <p>韩国分级为 <b>18 岁以上观览可</b>，当年也是靠这个分级成为影史最卖座的成人级本土片之一。<b>请按成人内容的标准安排观看场合。</b></p>
+      </div>
+      <div class="warn">
+        <div class="tag">画面</div>
+        <p>含赌博、暴力打斗、性暗示与少量血腥镜头。<b>没有恐怖桥段，但人物的处境会让人不太舒服</b>——这部片子的温度不高。</p>
+      </div>
+      <div class="warn">
+        <div class="tag">建议</div>
+        <p>不必提前了解花图规则，片子会替你讲清楚，而且讲得很好懂。<b>唯一需要留意的是叙事结构</b>——开头是倒着讲的，先把那条线记住，后面会一一对上。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 11 收尾 ================= -->
+<section class="band outro">
+  <div class="wrap">
+    <div class="outro-grid">
+      <div class="quote reveal">
+        <div class="q-mark">&ldquo;</div>
+        <blockquote>牌桌不看运气，只看人——而人，是可以被读出来的。</blockquote>
+        <div class="attr">主题句 · 非片中台词 · 不涉剧情走向</div>
+      </div>
+      <div class="end-stamp reveal">
+        <div class="no">24</div>
+        <div class="lb">Korean Crime Cinema / No.24</div>
+      </div>
+    </div>
+    <footer>
+      <span>《老千》타짜 · TAZZA: THE HIGH ROLLERS · 2006 · DIR. CHOI DONG-HUN</span>
+      <span>全程无剧透 · 韩国犯罪片系列 · 第 24 部</span>
+    </footer>
+  </div>
+</section>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 分组错峰入场 ---------- */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var map = new Map();
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        var parent = el.parentElement;
+        var order = map.get(parent) || 0;
+        map.set(parent, order + 1);
+        el.style.transitionDelay = Math.min(order * 70, 420) + 'ms';
+        el.classList.add('in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---------- Hero Canvas：灯光呼吸 + 烟缕 + 上浮微尘 ---------- */
+  var cv = document.getElementById('heroCanvas');
+  if (!cv) return;
+  var ctx = cv.getContext('2d');
+  var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var VBW = 1440, VBH = 900, scale = 1, offX = 0, offY = 0;
+  var motes = [], wisps = [], raf = null, last = 0, running = true;
+  var EMBER = { x: 388, y: 788 };
+
+  function computeMap(){
+    scale = Math.max(W / VBW, H / VBH);
+    offX = (W - VBW * scale) / 2;
+    offY = H - VBH * scale;
+  }
+  function mx(x){ return offX + x * scale; }
+  function my(y){ return offY + y * scale; }
+
+  function resize(){
+    var r = cv.getBoundingClientRect();
+    W = r.width; H = r.height;
+    cv.width = Math.max(1, Math.floor(W * DPR));
+    cv.height = Math.max(1, Math.floor(H * DPR));
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    computeMap();
+    build();
+  }
+
+  function build(){
+    motes = [];
+    var mn = Math.round(W / 26);
+    for (var i = 0; i < mn; i++){
+      motes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: 0.5 + Math.random() * 1.7,
+        sp: 4 + Math.random() * 20,
+        a: 0.05 + Math.random() * 0.2,
+        ph: Math.random() * Math.PI * 2,
+        kind: Math.random() < 0.5 ? 'amber' : (Math.random() < 0.5 ? 'cherry' : 'cool')
+      });
+    }
+    wisps = [];
+    for (var k = 0; k < 4; k++){
+      wisps.push({ t: k / 4, len: 24 + Math.random() * 20, sp: 0.055 + Math.random() * 0.05, ph: Math.random() * Math.PI * 2 });
+    }
+  }
+
+  function glow(x, y, r, col, alpha){
+    if (r <= 0) return;
+    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0, 'rgba(' + col + ',' + alpha + ')');
+    g.addColorStop(0.5, 'rgba(' + col + ',' + (alpha * 0.26) + ')');
+    g.addColorStop(1, 'rgba(' + col + ',0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+  }
+
+  function lights(time){
+    glow(mx(700), my(790), 520 * scale, '198,150,74', 0.030 + Math.sin(time * 0.42) * 0.008);
+    glow(mx(700), my(700), 300 * scale, '238,196,128', 0.024 + Math.sin(time * 0.58 + 1.4) * 0.007);
+    glow(mx(388), my(788), 74 * scale, '255,190,110', 0.10 + Math.sin(time * 3.1) * 0.05);
+    glow(mx(884), my(662), 54 * scale, '255,190,110', 0.07 + Math.sin(time * 2.6 + 2) * 0.035);
+    glow(mx(486), my(764), 130 * scale, '207,63,85', 0.026);
+  }
+
+  function smoke(time){
+    ctx.lineCap = 'round';
+    for (var i = 0; i < wisps.length; i++){
+      var w = wisps[i];
+      w.t += w.sp * 0.016;
+      if (w.t > 1.25){ w.t = 0; w.len = 24 + Math.random() * 20; }
+      var p = w.t;
+      if (p < 0 || p > 1.25) continue;
+      ctx.beginPath();
+      for (var s = 0; s <= 16; s++){
+        var f = s / 16;
+        var rise = p * w.len;
+        var yy = my(EMBER.y) - rise * f * scale * (1.6 + p);
+        var xx = mx(EMBER.x) + Math.sin(time * 0.6 + w.ph + f * 3.1) * (5 + f * 22) * scale * (0.5 + p);
+        if (s === 0) ctx.moveTo(xx, yy); else ctx.lineTo(xx, yy);
+      }
+      var al = Math.max(0, (1 - p) * 0.16) * Math.min(1, p * 4);
+      ctx.strokeStyle = 'rgba(214,196,170,' + al + ')';
+      ctx.lineWidth = Math.max(0.7, (1.6 - p) * 1.5) * scale;
+      ctx.stroke();
+    }
+  }
+
+  function frame(t){
+    if (!running){ raf = null; return; }
+    if (!last) last = t;
+    var dt = Math.min((t - last) / 16.6667, 3);
+    last = t;
+    var time = t / 1000;
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+
+    lights(time);
+    smoke(time);
+
+    /* 上浮微尘 */
+    for (var i = 0; i < motes.length; i++){
+      var m = motes[i];
+      m.y -= m.sp * dt * 0.06;
+      m.x += Math.sin(time * 0.4 + m.ph) * 0.24 * dt;
+      if (m.y < -12){ m.y = H + 12; m.x = Math.random() * W; }
+      var fade = Math.min(1, m.y / (H * 0.9));
+      var col = m.kind === 'amber' ? '230,189,118' : (m.kind === 'cherry' ? '239,128,144' : '196,203,196');
+      ctx.fillStyle = 'rgba(' + col + ',' + (m.a * fade) + ')';
+      ctx.beginPath(); ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2); ctx.fill();
+    }
+
+    ctx.globalCompositeOperation = 'source-over';
+    raf = requestAnimationFrame(frame);
+  }
+
+  function start(){ if (!raf && !reduce){ last = 0; raf = requestAnimationFrame(frame); } }
+  function stop(){ if (raf){ cancelAnimationFrame(raf); raf = null; } }
+
+  resize();
+  window.addEventListener('resize', function(){ resize(); }, { passive: true });
+
+  if (reduce){
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    lights(0);
+    ctx.globalCompositeOperation = 'source-over';
+  } else {
+    start();
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden){ running = false; stop(); }
+      else { running = true; start(); }
+    });
+  }
+
+  /* ---------- 牌局 HUD ---------- */
+  var hudVal = document.getElementById('hudVal'),
+      hudDot = document.getElementById('hudDot'),
+      hudLb = document.getElementById('hudLb');
+  var stages = [
+    [0,  '家具厂 · 角落那一桌'],
+    [22, '拜师 · 手掌磨出茧'],
+    [46, '出山 · 赢回本钱就收手'],
+    [70, '郑女士的局 · 赌注开始涨价'],
+    [90, '最后一手 · 他押上的不止是钱']
+  ];
+  function onScroll(){
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    hudDot.style.left = (p * 100) + '%';
+    var idx = 1;
+    for (var i = 0; i < stages.length; i++){ if (p * 100 >= stages[i][0]) idx = i + 1; }
+    hudVal.textContent = 'R' + idx;
+    hudLb.textContent = stages[Math.min(idx - 1, stages.length - 1)][1];
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>

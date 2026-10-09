@@ -193,8 +193,10 @@
     "zhTitle": "金福南杀人事件始末",
     "enTitle": "Bedevilled · 2010 · 115 min · Jang Cheol-soo",
     "year": "2010",
-    "imageUrl": "https://image.tmdb.org/t/p/original/zhmhZkCeCDNZf5smL83bNjOlOxW.jpg",
-    "title": "Bedevilled (2010) - Posters — The Movie Database (TMDB)"
+    "imageUrl": "posters/20260918.jpg",
+    "title": "Poster De Jang Ok Jung",
+    "remoteUrl": "https://m.media-amazon.com/images/I/81Nkkk0yNXL._AC_UF894,1000_QL80_.jpg",
+    "hiRes": false
   },
   {
     "id": "20260920",
@@ -261,8 +263,10 @@
     "zhTitle": "杀人者的记忆法",
     "enTitle": "",
     "year": "2017",
-    "imageUrl": "https://image.tmdb.org/t/p/w500/nnaBFDUCiv6BjWaVHNsIqsh4UCi.jpg",
-    "title": "杀人者的记忆法 | 评分 7.7/10 | awwrated | 您的 Netflix 和 Disney+ 观影指南"
+    "imageUrl": "posters/20260929.jpg",
+    "title": "《杀人者的记忆法》夺得韩国周末票房冠军 观影人数突破100万-新闻资讯-高贝娱乐",
+    "remoteUrl": "http://www.gaobei.com/upload/10001/article/2017_09/11141351_b5zot7_b.jpg",
+    "hiRes": false
   },
   {
     "id": "20260930",
@@ -280,8 +284,8 @@
     "enTitle": "",
     "year": "1997",
     "imageUrl": "posters/20261004-green-fish.jpg",
-    "title": "李沧东作品：《绿鱼》(1998)-搜狐娱乐",
-    "remoteUrl": "http://photocdn.sohu.com/20071204/Img253798750.jpg",
+    "title": "绿鱼导演,绿鱼是啥鱼,绿鱼_文秘苑图库",
+    "remoteUrl": "http://i-7.vcimg.com/crop/b9b46c205fb4ccfdbc89a4dc79fc90b050645(600x)/thumb.jpg",
     "hiRes": false
   },
   {
@@ -291,6 +295,22 @@
     "year": "2010",
     "imageUrl": "http://5b0988e595225.cdn.sohucs.com/images/20190831/079757f6d9de4057875cd76382d59502.jpeg",
     "title": "不可饶恕海报,不可饶恕,不可饶恕图片_大山谷图库"
+  },
+  {
+    "id": "20261005",
+    "zhTitle": "王者",
+    "enTitle": "",
+    "year": "2017",
+    "imageUrl": "http://k.sinaimg.cn/n/sinakd20250416s/534/w1080h1854/20250416/f006-6f740fefc453551ce3576d1d50b0eadc.jpg/w700d1q75cms.jpg",
+    "title": "\"王吒\"出击!成都智造《王者荣耀》《哪吒2》官宣联动|电影海报|哪吒之魔童闹海|数字|票房|手游_新浪新闻"
+  },
+  {
+    "id": "20261009",
+    "zhTitle": "老千",
+    "enTitle": "",
+    "year": "2006",
+    "imageUrl": "http://5b0988e595225.cdn.sohucs.com/images/20200321/82eafee2a80a4d0eacf4d9c2015508d0.jpeg",
+    "title": "老千壁纸,老千2海报,老千海报_大山谷图库"
   },
   {
     "id": "20260427",
@@ -408,16 +428,20 @@
     "zhTitle": "霸王别姬",
     "enTitle": "",
     "year": "1993",
-    "imageUrl": "https://image.tmdb.org/t/p/original/qmTJGYcgSzokhsyhTUJMF6SWfFA.jpg",
-    "title": "霸王别姬 (1993) - 海报 — The Movie Database (TMDB)"
+    "imageUrl": "posters/20260513.jpg",
+    "title": "1993年张国荣《霸王别姬》电影海报欣赏 [46P] - 电影海报",
+    "remoteUrl": "http://img.doooor.com/img/forum/201706/19/221443mmhfzadtnkd3wg3c.jpg",
+    "hiRes": true
   },
   {
     "id": "20260514",
     "zhTitle": "沉默的羔羊",
     "enTitle": "The Silence of the Lambs",
     "year": "1991",
-    "imageUrl": "https://image.tmdb.org/t/p/original/97HWc7WsIcPQDMsgLCl61g07gEy.jpg",
-    "title": "The Silence of the Lambs (1991) - Posters — The Movie Database (TMDB)"
+    "imageUrl": "posters/20260514.jpg",
+    "title": "Silence Of The Lambs Poster",
+    "remoteUrl": "https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+    "hiRes": true
   },
   {
     "id": "20260517",
@@ -434,8 +458,10 @@
     "zhTitle": "霸王别姬",
     "enTitle": "Farewell My Concubine",
     "year": "1993",
-    "imageUrl": "https://image.tmdb.org/t/p/original/qmTJGYcgSzokhsyhTUJMF6SWfFA.jpg",
-    "title": "霸王别姬 (1993) - 海报 — The Movie Database (TMDB)"
+    "imageUrl": "posters/20260518.jpg",
+    "title": "Farewell My Concubine (1993)",
+    "remoteUrl": "https://m.media-amazon.com/images/M/MV5BMzg2NDI4MTM5OF5BMl5BanBnXkFtZTYwODU0ODU5._V1_FMjpg_UX1000_.jpg",
+    "hiRes": true
   },
   {
     "id": "20260519",
@@ -614,8 +640,10 @@
     "zhTitle": "龙 猫",
     "enTitle": "My Neighbor Totoro",
     "year": "1988",
-    "imageUrl": "https://image.tmdb.org/t/p/original/b8YgXJLTDAlayqKR8Wb8lTXPUxo.jpg",
-    "title": "My Neighbor Totoro (1988) - Posters — The Movie Database (TMDB)"
+    "imageUrl": "posters/20260610.jpg",
+    "title": "My Neighbor Totoro Poster",
+    "remoteUrl": "https://m.media-amazon.com/images/I/81Xqgmj-4TL.jpg",
+    "hiRes": true
   },
   {
     "id": "20260611-2",
@@ -672,8 +700,10 @@
     "zhTitle": "狮子王",
     "enTitle": "THE LION KING",
     "year": "1994",
-    "imageUrl": "https://image.tmdb.org/t/p/original/oFeQeeib9LqfeTHVqPJCwMZWMr4.jpg",
-    "title": "狮子王 (1994) - 海报 — The Movie Database (TMDB)"
+    "imageUrl": "posters/20260616-2.jpg",
+    "title": "Lion King Original Movie Poster",
+    "remoteUrl": "https://m.media-amazon.com/images/I/71FCGRLV2LL.jpg",
+    "hiRes": false
   },
   {
     "id": "20260616",
@@ -794,16 +824,20 @@
     "zhTitle": "霸王别姬",
     "enTitle": "FAREWELL MY CONCUBINE",
     "year": "1993",
-    "imageUrl": "https://image.tmdb.org/t/p/original/qmTJGYcgSzokhsyhTUJMF6SWfFA.jpg",
-    "title": "霸王别姬 (1993) - 海报 — The Movie Database (TMDB)"
+    "imageUrl": "posters/20260630.jpg",
+    "title": "Farewell My Concubine (1993)",
+    "remoteUrl": "https://m.media-amazon.com/images/M/MV5BMzg2NDI4MTM5OF5BMl5BanBnXkFtZTYwODU0ODU5._V1_FMjpg_UX1000_.jpg",
+    "hiRes": true
   },
   {
     "id": "20260701-2",
     "zhTitle": "三傻大闹宝莱坞",
     "enTitle": "",
     "year": "2009",
-    "imageUrl": "https://image.tmdb.org/t/p/original/qEVZeu6ODIpS3zwyhOxKEmvkDpH.jpg",
-    "title": "三傻大闹宝莱坞 (2009) - 海报 — The Movie Database (TMDB)"
+    "imageUrl": "posters/20260701-2.jpg",
+    "title": "三傻大闹宝莱坞图册_360百科",
+    "remoteUrl": "https://so1.360tres.com/t01a18136db14108a53.jpg",
+    "hiRes": false
   },
   {
     "id": "20260701",
@@ -920,8 +954,10 @@
     "zhTitle": "勇敢的心",
     "enTitle": "Braveheart",
     "year": "1995",
-    "imageUrl": "https://image.tmdb.org/t/p/original/bvdPq5pMB5fycE5m21sX1yzR9ga.jpg",
-    "title": "Braveheart (1995) - Posters — The Movie Database (TMDB)"
+    "imageUrl": "posters/20260712.jpg",
+    "title": "Braveheart (1995) - ALANGDS | The Poster Database (TPDb)",
+    "remoteUrl": "https://images.theposterdb.com/prod/public/images/posters/optimized/movies/49305/RwUj8jb06hh2AzdI4Dinhdb3MjMY262ewjjL0tlx.jpg",
+    "hiRes": false
   },
   {
     "id": "20260713-2",
@@ -981,8 +1017,10 @@
     "zhTitle": "情书",
     "enTitle": "",
     "year": "1995",
-    "imageUrl": "https://image.tmdb.org/t/p/original/gnpkKnVqllXBSBOnbdQyaL6I5xs.jpg",
-    "title": "情书 (1995) - 海报 — The Movie Database (TMDB)"
+    "imageUrl": "posters/20260720.jpg",
+    "title": "《情书》海报合集",
+    "remoteUrl": "https://k.sinaimg.cn/n/sinakd20115/232/w1080h1552/20211029/1e00-8956beceb201ada00d4302091fca982a.jpg/w700d1q75cms.jpg",
+    "hiRes": false
   },
   {
     "id": "20260721-2",
@@ -1028,8 +1066,10 @@
     "zhTitle": "卧虎藏龙",
     "enTitle": "CROUCHING TIGERHIDDEN DRAGON",
     "year": "2000",
-    "imageUrl": "https://image.tmdb.org/t/p/original/uGpoarcMIBuwmHLD9NEhQoxHrap.jpg",
-    "title": "卧虎藏龙 (2000) - 海报 — The Movie Database (TMDB)"
+    "imageUrl": "posters/20260727.jpg",
+    "title": "Crouching Tiger, Hidden Dragon (2000)",
+    "remoteUrl": "https://m.media-amazon.com/images/M/MV5BMTIwMDUwNDQxNF5BMl5BanBnXkFtZTYwNDI2MTk5._V1_FMjpg_UX1000_.jpg",
+    "hiRes": true
   },
   {
     "id": "20260728",
@@ -1170,8 +1210,10 @@
     "zhTitle": "回到未来",
     "enTitle": "BACK TO THE FUTURE",
     "year": "1985",
-    "imageUrl": "https://image.tmdb.org/t/p/original/wZOsxwQjTdtSki0MiPIy8Zu9lv1.jpg",
-    "title": "回到未来 (1985) - 海报 — The Movie Database (TMDB)"
+    "imageUrl": "posters/20260812.jpg",
+    "title": "Back to the Future (1985)",
+    "remoteUrl": "https://m.media-amazon.com/images/M/MV5BYTZlMWFlY2ItZjBlYi00MDNiLTg0ZDMtYWY3N2I2MGUwZThkXkEyXkFqcGc@._V1_.jpg",
+    "hiRes": true
   },
   {
     "id": "20260814",
