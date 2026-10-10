@@ -1,46 +1,28 @@
 {
-  "at": "2026-10-05T11:18:03.658Z",
+  "at": "2026-10-10T05:40:47.853Z",
   "dryRun": false,
-  "targetCount": 14,
-  "fixedCount": 14,
+  "targetCount": 3,
+  "fixedCount": 3,
   "failureCount": 0,
   "changes": [
-    {
-      "id": "20260918",
-      "zhTitle": "金福南杀人事件始末",
-      "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/zhmhZkCeCDNZf5smL83bNjOlOxW.jpg",
-        "dims": "-",
-        "status": "error",
-        "issues": [
-          "unreachable"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20260918.jpg",
-        "dims": "675×1000",
-        "source": "bing",
-        "url": "https://m.media-amazon.com/images/I/81Nkkk0yNXL._AC_UF894,1000_QL80_.jpg",
-        "title": "Poster De Jang Ok Jung"
-      }
-    },
     {
       "id": "20260929",
       "zhTitle": "杀人者的记忆法",
       "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/w500/nnaBFDUCiv6BjWaVHNsIqsh4UCi.jpg",
-        "dims": "-",
-        "status": "error",
+        "imageUrl": "posters/20260929.jpg",
+        "dims": "499×716",
+        "status": "warn",
         "issues": [
-          "unreachable"
+          "low_resolution",
+          "untrusted_host"
         ]
       },
       "after": {
         "imageUrl": "posters/20260929.jpg",
-        "dims": "499×716",
+        "dims": "1775×2536",
         "source": "bing",
-        "url": "http://www.gaobei.com/upload/10001/article/2017_09/11141351_b5zot7_b.jpg",
-        "title": "《杀人者的记忆法》夺得韩国周末票房冠军 观影人数突破100万-新闻资讯-高贝娱乐"
+        "url": "https://image.tmdb.org/t/p/original/o5IjjRnHDKVZPYQZYBny0FpV6xI.jpg",
+        "title": "杀人者的记忆法 (2017) - 海报 — The Movie Database (TMDB)"
       }
     },
     {
@@ -48,7 +30,7 @@
       "zhTitle": "绿鱼",
       "before": {
         "imageUrl": "posters/20261004-green-fish.jpg",
-        "dims": "404×600",
+        "dims": "357×500",
         "status": "warn",
         "issues": [
           "low_resolution",
@@ -57,320 +39,53 @@
       },
       "after": {
         "imageUrl": "posters/20261004-green-fish.jpg",
-        "dims": "357×500",
+        "dims": "720×1080",
         "source": "bing",
-        "url": "http://i-7.vcimg.com/crop/b9b46c205fb4ccfdbc89a4dc79fc90b050645(600x)/thumb.jpg",
-        "title": "绿鱼导演,绿鱼是啥鱼,绿鱼_文秘苑图库"
+        "url": "https://mdb.yuncongz.com/static/upload/large/72ff95f5c26740e282b3a452b07b2910.jpg",
+        "title": "绿鱼(1997) - 电影海报|电影台词 - 影库"
       }
     },
     {
-      "id": "20260513",
-      "zhTitle": "霸王别姬",
+      "id": "20261010",
+      "zhTitle": "釜山行",
       "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/qmTJGYcgSzokhsyhTUJMF6SWfFA.jpg",
-        "dims": "-",
+        "imageUrl": "https://i2.kknews.cc/MIX_ldU3VGWp9RAF5AVtlisfiS2-Cj2PPzt-Pw/0.jpg",
+        "dims": "640×495",
         "status": "error",
         "issues": [
-          "unreachable"
+          "landscape",
+          "untrusted_host"
         ]
       },
       "after": {
-        "imageUrl": "posters/20260513.jpg",
-        "dims": "1000×1449",
+        "imageUrl": "posters/20261010.jpg",
+        "dims": "646×913",
         "source": "bing",
-        "url": "http://img.doooor.com/img/forum/201706/19/221443mmhfzadtnkd3wg3c.jpg",
-        "title": "1993年张国荣《霸王别姬》电影海报欣赏 [46P] - 电影海报"
-      }
-    },
-    {
-      "id": "20260514",
-      "zhTitle": "沉默的羔羊",
-      "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/97HWc7WsIcPQDMsgLCl61g07gEy.jpg",
-        "dims": "-",
-        "status": "error",
-        "issues": [
-          "unreachable"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20260514.jpg",
-        "dims": "2011×2968",
-        "source": "bing",
-        "url": "https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
-        "title": "Silence Of The Lambs Poster"
-      }
-    },
-    {
-      "id": "20260518",
-      "zhTitle": "霸王别姬",
-      "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/qmTJGYcgSzokhsyhTUJMF6SWfFA.jpg",
-        "dims": "-",
-        "status": "error",
-        "issues": [
-          "unreachable"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20260518.jpg",
-        "dims": "1000×1638",
-        "source": "bing",
-        "url": "https://m.media-amazon.com/images/M/MV5BMzg2NDI4MTM5OF5BMl5BanBnXkFtZTYwODU0ODU5._V1_FMjpg_UX1000_.jpg",
-        "title": "Farewell My Concubine (1993)"
-      }
-    },
-    {
-      "id": "20260610",
-      "zhTitle": "龙 猫",
-      "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/b8YgXJLTDAlayqKR8Wb8lTXPUxo.jpg",
-        "dims": "-",
-        "status": "error",
-        "issues": [
-          "unreachable"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20260610.jpg",
-        "dims": "1323×2031",
-        "source": "bing",
-        "url": "https://m.media-amazon.com/images/I/81Xqgmj-4TL.jpg",
-        "title": "My Neighbor Totoro Poster"
-      }
-    },
-    {
-      "id": "20260616-2",
-      "zhTitle": "狮子王",
-      "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/oFeQeeib9LqfeTHVqPJCwMZWMr4.jpg",
-        "dims": "-",
-        "status": "error",
-        "issues": [
-          "unreachable"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20260616-2.jpg",
-        "dims": "900×1139",
-        "source": "bing",
-        "url": "https://m.media-amazon.com/images/I/71FCGRLV2LL.jpg",
-        "title": "Lion King Original Movie Poster"
-      }
-    },
-    {
-      "id": "20260630",
-      "zhTitle": "霸王别姬",
-      "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/qmTJGYcgSzokhsyhTUJMF6SWfFA.jpg",
-        "dims": "-",
-        "status": "error",
-        "issues": [
-          "unreachable"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20260630.jpg",
-        "dims": "1000×1638",
-        "source": "bing",
-        "url": "https://m.media-amazon.com/images/M/MV5BMzg2NDI4MTM5OF5BMl5BanBnXkFtZTYwODU0ODU5._V1_FMjpg_UX1000_.jpg",
-        "title": "Farewell My Concubine (1993)"
-      }
-    },
-    {
-      "id": "20260701-2",
-      "zhTitle": "三傻大闹宝莱坞",
-      "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/qEVZeu6ODIpS3zwyhOxKEmvkDpH.jpg",
-        "dims": "-",
-        "status": "error",
-        "issues": [
-          "unreachable"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20260701-2.jpg",
-        "dims": "500×677",
-        "source": "bing",
-        "url": "https://so1.360tres.com/t01a18136db14108a53.jpg",
-        "title": "三傻大闹宝莱坞图册_360百科"
-      }
-    },
-    {
-      "id": "20260712",
-      "zhTitle": "勇敢的心",
-      "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/bvdPq5pMB5fycE5m21sX1yzR9ga.jpg",
-        "dims": "-",
-        "status": "error",
-        "issues": [
-          "unreachable"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20260712.jpg",
-        "dims": "500×750",
-        "source": "bing",
-        "url": "https://images.theposterdb.com/prod/public/images/posters/optimized/movies/49305/RwUj8jb06hh2AzdI4Dinhdb3MjMY262ewjjL0tlx.jpg",
-        "title": "Braveheart (1995) - ALANGDS | The Poster Database (TPDb)"
-      }
-    },
-    {
-      "id": "20260720",
-      "zhTitle": "情书",
-      "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/gnpkKnVqllXBSBOnbdQyaL6I5xs.jpg",
-        "dims": "-",
-        "status": "error",
-        "issues": [
-          "unreachable"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20260720.jpg",
-        "dims": "700×1006",
-        "source": "bing",
-        "url": "https://k.sinaimg.cn/n/sinakd20115/232/w1080h1552/20211029/1e00-8956beceb201ada00d4302091fca982a.jpg/w700d1q75cms.jpg",
-        "title": "《情书》海报合集"
-      }
-    },
-    {
-      "id": "20260727",
-      "zhTitle": "卧虎藏龙",
-      "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/uGpoarcMIBuwmHLD9NEhQoxHrap.jpg",
-        "dims": "-",
-        "status": "error",
-        "issues": [
-          "unreachable"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20260727.jpg",
-        "dims": "1000×1500",
-        "source": "bing",
-        "url": "https://m.media-amazon.com/images/M/MV5BMTIwMDUwNDQxNF5BMl5BanBnXkFtZTYwNDI2MTk5._V1_FMjpg_UX1000_.jpg",
-        "title": "Crouching Tiger, Hidden Dragon (2000)"
-      }
-    },
-    {
-      "id": "20260812",
-      "zhTitle": "回到未来",
-      "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/wZOsxwQjTdtSki0MiPIy8Zu9lv1.jpg",
-        "dims": "-",
-        "status": "error",
-        "issues": [
-          "unreachable"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20260812.jpg",
-        "dims": "3240×4050",
-        "source": "bing",
-        "url": "https://m.media-amazon.com/images/M/MV5BYTZlMWFlY2ItZjBlYi00MDNiLTg0ZDMtYWY3N2I2MGUwZThkXkEyXkFqcGc@._V1_.jpg",
-        "title": "Back to the Future (1985)"
+        "url": "https://image.tmdb.org/t/p/original/kQXVgojZhJvmqQI4kasu65VqO6x.jpg",
+        "title": "釜山行 (2016) - 海报 — The Movie Database (TMDB)"
       }
     }
   ],
   "failures": [],
   "recheck": [
     {
-      "id": "20260918",
-      "status": "ok",
-      "dims": "675×1000",
-      "issues": []
-    },
-    {
       "id": "20260929",
-      "status": "warn",
-      "dims": "499×716",
-      "issues": [
-        "low_resolution",
-        "untrusted_host"
-      ]
+      "status": "ok",
+      "dims": "1775×2536",
+      "issues": []
     },
     {
       "id": "20261004-green-fish",
       "status": "warn",
-      "dims": "357×500",
-      "issues": [
-        "low_resolution",
-        "untrusted_host"
-      ]
-    },
-    {
-      "id": "20260513",
-      "status": "warn",
-      "dims": "1000×1449",
+      "dims": "720×1080",
       "issues": [
         "untrusted_host"
       ]
     },
     {
-      "id": "20260514",
+      "id": "20261010",
       "status": "ok",
-      "dims": "2011×2968",
-      "issues": []
-    },
-    {
-      "id": "20260518",
-      "status": "ok",
-      "dims": "1000×1638",
-      "issues": []
-    },
-    {
-      "id": "20260610",
-      "status": "ok",
-      "dims": "1323×2031",
-      "issues": []
-    },
-    {
-      "id": "20260616-2",
-      "status": "ok",
-      "dims": "900×1139",
-      "issues": []
-    },
-    {
-      "id": "20260630",
-      "status": "ok",
-      "dims": "1000×1638",
-      "issues": []
-    },
-    {
-      "id": "20260701-2",
-      "status": "warn",
-      "dims": "500×677",
-      "issues": [
-        "untrusted_host"
-      ]
-    },
-    {
-      "id": "20260712",
-      "status": "warn",
-      "dims": "500×750",
-      "issues": [
-        "untrusted_host"
-      ]
-    },
-    {
-      "id": "20260720",
-      "status": "warn",
-      "dims": "700×1006",
-      "issues": [
-        "untrusted_host"
-      ]
-    },
-    {
-      "id": "20260727",
-      "status": "ok",
-      "dims": "1000×1500",
-      "issues": []
-    },
-    {
-      "id": "20260812",
-      "status": "ok",
-      "dims": "3240×4050",
+      "dims": "646×913",
       "issues": []
     }
   ]

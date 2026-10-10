@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-09T09:44:01.616Z",
+  "generatedAt": "2026-10-10T05:40:48.679Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,8 +8,8 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 121,
-  "ok": 109,
+  "total": 123,
+  "ok": 111,
   "warn": 12,
   "error": 0,
   "entries": [
@@ -510,29 +510,18 @@
       "year": "2017",
       "source": "本地",
       "imageUrl": "posters/20260929.jpg",
-      "host": "www.gaobei.com",
-      "tier": "unknown",
-      "size": "105KB",
-      "dims": "499×716",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "760KB",
+      "dims": "1775×2536",
       "ratio": 1.43,
       "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
       ],
-      "status": "warn",
-      "issues": [
-        {
-          "code": "low_resolution",
-          "severity": "warn",
-          "detail": "清晰度偏低 499×716"
-        },
-        {
-          "code": "untrusted_host",
-          "severity": "warn",
-          "detail": "图源不在可信白名单（www.gaobei.com）"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260930",
@@ -564,26 +553,22 @@
       "year": "1997",
       "source": "本地",
       "imageUrl": "posters/20261004-green-fish.jpg",
-      "host": "i-7.vcimg.com",
+      "host": "mdb.yuncongz.com",
       "tier": "unknown",
-      "size": "47KB",
-      "dims": "357×500",
-      "ratio": 1.4,
+      "size": "93KB",
+      "dims": "720×1080",
+      "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
-        "片名中文"
+        "片名中文",
+        "年份"
       ],
       "status": "warn",
       "issues": [
         {
-          "code": "low_resolution",
-          "severity": "warn",
-          "detail": "清晰度偏低 357×500"
-        },
-        {
           "code": "untrusted_host",
           "severity": "warn",
-          "detail": "图源不在可信白名单（i-7.vcimg.com）"
+          "detail": "图源不在可信白名单（mdb.yuncongz.com）"
         }
       ]
     },
@@ -636,6 +621,31 @@
       ]
     },
     {
+      "id": "20261009-witness",
+      "zhTitle": "证人",
+      "year": "2019",
+      "source": "远程",
+      "imageUrl": "https://www.gaobei.com/upload/10001/article/2019_02/27193204_sfc0v9_b.jpg",
+      "host": "www.gaobei.com",
+      "tier": "unknown",
+      "size": "135KB",
+      "dims": "600×840",
+      "ratio": 1.4,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（www.gaobei.com）"
+        }
+      ]
+    },
+    {
       "id": "20261009",
       "zhTitle": "老千",
       "year": "2006",
@@ -658,6 +668,25 @@
           "detail": "图源不在可信白名单（5b0988e595225.cdn.sohucs.com）"
         }
       ]
+    },
+    {
+      "id": "20261010",
+      "zhTitle": "釜山行",
+      "year": "2016",
+      "source": "本地",
+      "imageUrl": "posters/20261010.jpg",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "126KB",
+      "dims": "646×913",
+      "ratio": 1.41,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260427",

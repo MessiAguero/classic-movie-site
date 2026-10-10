@@ -264,9 +264,9 @@
     "enTitle": "",
     "year": "2017",
     "imageUrl": "posters/20260929.jpg",
-    "title": "《杀人者的记忆法》夺得韩国周末票房冠军 观影人数突破100万-新闻资讯-高贝娱乐",
-    "remoteUrl": "http://www.gaobei.com/upload/10001/article/2017_09/11141351_b5zot7_b.jpg",
-    "hiRes": false
+    "title": "杀人者的记忆法 (2017) - 海报 — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/o5IjjRnHDKVZPYQZYBny0FpV6xI.jpg",
+    "hiRes": true
   },
   {
     "id": "20260930",
@@ -284,8 +284,8 @@
     "enTitle": "",
     "year": "1997",
     "imageUrl": "posters/20261004-green-fish.jpg",
-    "title": "绿鱼导演,绿鱼是啥鱼,绿鱼_文秘苑图库",
-    "remoteUrl": "http://i-7.vcimg.com/crop/b9b46c205fb4ccfdbc89a4dc79fc90b050645(600x)/thumb.jpg",
+    "title": "绿鱼(1997) - 电影海报|电影台词 - 影库",
+    "remoteUrl": "https://mdb.yuncongz.com/static/upload/large/72ff95f5c26740e282b3a452b07b2910.jpg",
     "hiRes": false
   },
   {
@@ -305,12 +305,30 @@
     "title": "\"王吒\"出击!成都智造《王者荣耀》《哪吒2》官宣联动|电影海报|哪吒之魔童闹海|数字|票房|手游_新浪新闻"
   },
   {
+    "id": "20261009-witness",
+    "zhTitle": "证人",
+    "enTitle": "",
+    "year": "2019",
+    "imageUrl": "https://www.gaobei.com/upload/10001/article/2019_02/27193204_sfc0v9_b.jpg",
+    "title": "《沉默的证人》曝光\"凝视\"版海报：上演\"惊魂一瞥\"引发诸多悬念迭起-新闻资讯-高贝娱乐"
+  },
+  {
     "id": "20261009",
     "zhTitle": "老千",
     "enTitle": "",
     "year": "2006",
     "imageUrl": "http://5b0988e595225.cdn.sohucs.com/images/20200321/82eafee2a80a4d0eacf4d9c2015508d0.jpeg",
     "title": "老千壁纸,老千2海报,老千海报_大山谷图库"
+  },
+  {
+    "id": "20261010",
+    "zhTitle": "釜山行",
+    "enTitle": "",
+    "year": "2016",
+    "imageUrl": "posters/20261010.jpg",
+    "title": "釜山行 (2016) - 海报 — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/kQXVgojZhJvmqQI4kasu65VqO6x.jpg",
+    "hiRes": false
   },
   {
     "id": "20260427",
