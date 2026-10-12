@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-12T00:39:13.222Z",
+  "generatedAt": "2026-10-12T04:06:30.992Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,8 +8,8 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 124,
-  "ok": 111,
+  "total": 125,
+  "ok": 112,
   "warn": 13,
   "error": 0,
   "entries": [
@@ -680,6 +680,25 @@
       "size": "126KB",
       "dims": "646×913",
       "ratio": 1.41,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "id": "20261012-the-way-home",
+      "zhTitle": "爱·回家",
+      "year": "2002",
+      "source": "本地",
+      "imageUrl": "posters/20261012-the-way-home.jpg",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "116KB",
+      "dims": "525×750",
+      "ratio": 1.43,
       "identityKind": "name",
       "identityHits": [
         "片名中文",

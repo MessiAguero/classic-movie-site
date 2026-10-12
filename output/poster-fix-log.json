@@ -1,91 +1,36 @@
 {
-  "at": "2026-10-10T05:40:47.853Z",
+  "at": "2026-10-12T04:06:29.655Z",
   "dryRun": false,
-  "targetCount": 3,
-  "fixedCount": 3,
+  "targetCount": 1,
+  "fixedCount": 1,
   "failureCount": 0,
   "changes": [
     {
-      "id": "20260929",
-      "zhTitle": "杀人者的记忆法",
+      "id": "20261012-the-way-home",
+      "zhTitle": "爱·回家",
       "before": {
-        "imageUrl": "posters/20260929.jpg",
-        "dims": "499×716",
-        "status": "warn",
-        "issues": [
-          "low_resolution",
-          "untrusted_host"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20260929.jpg",
-        "dims": "1775×2536",
-        "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/o5IjjRnHDKVZPYQZYBny0FpV6xI.jpg",
-        "title": "杀人者的记忆法 (2017) - 海报 — The Movie Database (TMDB)"
-      }
-    },
-    {
-      "id": "20261004-green-fish",
-      "zhTitle": "绿鱼",
-      "before": {
-        "imageUrl": "posters/20261004-green-fish.jpg",
-        "dims": "357×500",
-        "status": "warn",
-        "issues": [
-          "low_resolution",
-          "untrusted_host"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20261004-green-fish.jpg",
-        "dims": "720×1080",
-        "source": "bing",
-        "url": "https://mdb.yuncongz.com/static/upload/large/72ff95f5c26740e282b3a452b07b2910.jpg",
-        "title": "绿鱼(1997) - 电影海报|电影台词 - 影库"
-      }
-    },
-    {
-      "id": "20261010",
-      "zhTitle": "釜山行",
-      "before": {
-        "imageUrl": "https://i2.kknews.cc/MIX_ldU3VGWp9RAF5AVtlisfiS2-Cj2PPzt-Pw/0.jpg",
-        "dims": "640×495",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/zh/thumb/f/f4/The_Way_Home_2002.png/250px-The_Way_Home_2002.png",
+        "dims": "250×358",
         "status": "error",
         "issues": [
-          "landscape",
-          "untrusted_host"
+          "low_resolution"
         ]
       },
       "after": {
-        "imageUrl": "posters/20261010.jpg",
-        "dims": "646×913",
+        "imageUrl": "posters/20261012-the-way-home.jpg",
+        "dims": "525×750",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/kQXVgojZhJvmqQI4kasu65VqO6x.jpg",
-        "title": "釜山行 (2016) - 海报 — The Movie Database (TMDB)"
+        "url": "https://image.tmdb.org/t/p/original/q19bux2LPPdlB6R2ALHdhewCO27.jpg",
+        "title": "爱·回家 (2002) - 海报 — The Movie Database (TMDB)"
       }
     }
   ],
   "failures": [],
   "recheck": [
     {
-      "id": "20260929",
+      "id": "20261012-the-way-home",
       "status": "ok",
-      "dims": "1775×2536",
-      "issues": []
-    },
-    {
-      "id": "20261004-green-fish",
-      "status": "warn",
-      "dims": "720×1080",
-      "issues": [
-        "untrusted_host"
-      ]
-    },
-    {
-      "id": "20261010",
-      "status": "ok",
-      "dims": "646×913",
+      "dims": "525×750",
       "issues": []
     }
   ]
