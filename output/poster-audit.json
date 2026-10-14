@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T04:08:09.279Z",
+  "generatedAt": "2026-10-14T04:07:36.070Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,9 +8,9 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 126,
+  "total": 127,
   "ok": 113,
-  "warn": 13,
+  "warn": 14,
   "error": 0,
   "entries": [
     {
@@ -740,7 +740,7 @@
       "imageUrl": "https://media.themoviedb.org/t/p/w500/rtruPKyy8dzimyz7ooRC1c1GmHh.jpg",
       "host": "media.themoviedb.org",
       "tier": "tmdb",
-      "size": "95KB",
+      "size": "108KB",
       "dims": "500×750",
       "ratio": 1.5,
       "identityKind": "name",
@@ -750,6 +750,30 @@
       ],
       "status": "ok",
       "issues": []
+    },
+    {
+      "id": "20261014",
+      "zhTitle": "我爱你",
+      "year": "2011",
+      "source": "远程",
+      "imageUrl": "http://p1.qhimg.com/t01d563d5fbf379c1cb.jpg?3000*4200",
+      "host": "p1.qhimg.com",
+      "tier": "unknown",
+      "size": "967KB",
+      "dims": "3000×4200",
+      "ratio": 1.4,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（p1.qhimg.com）"
+        }
+      ]
     },
     {
       "id": "20260427",
