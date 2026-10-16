@@ -1,37 +1,66 @@
 {
-  "at": "2026-10-12T04:06:29.655Z",
+  "at": "2026-10-15T04:56:00.752Z",
   "dryRun": false,
-  "targetCount": 1,
-  "fixedCount": 1,
+  "targetCount": 2,
+  "fixedCount": 2,
   "failureCount": 0,
   "changes": [
     {
-      "id": "20261012-the-way-home",
-      "zhTitle": "爱·回家",
+      "id": "20261013-book-of-fish",
+      "zhTitle": "兹山鱼谱",
       "before": {
-        "imageUrl": "https://upload.wikimedia.org/wikipedia/zh/thumb/f/f4/The_Way_Home_2002.png/250px-The_Way_Home_2002.png",
-        "dims": "250×358",
+        "imageUrl": "https://media.themoviedb.org/t/p/w500/rtruPKyy8dzimyz7ooRC1c1GmHh.jpg",
+        "dims": "-",
         "status": "error",
         "issues": [
-          "low_resolution"
+          "unreachable"
         ]
       },
       "after": {
-        "imageUrl": "posters/20261012-the-way-home.jpg",
-        "dims": "525×750",
+        "imageUrl": "posters/20261013-book-of-fish.jpg",
+        "dims": "700×1031",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/q19bux2LPPdlB6R2ALHdhewCO27.jpg",
-        "title": "爱·回家 (2002) - 海报 — The Movie Database (TMDB)"
+        "url": "http://k.sinaimg.cn/n/sinakd20230522ac/271/w1080h1591/20230522/546e-75edda659d5affcb10691719c4f1971a.jpg/w700d1q75cms.jpg",
+        "title": "电影海报上的绿 💚 春江水暖 夏日之王 兹山鱼谱"
+      }
+    },
+    {
+      "id": "20261015-dignity",
+      "zhTitle": "82年生的金智英",
+      "before": {
+        "imageUrl": "https://image.tmdb.org/t/p/w500/89D7xqG3c3xV5KZr6gdeQyPnyA9.jpg",
+        "dims": "-",
+        "status": "error",
+        "issues": [
+          "unreachable"
+        ]
+      },
+      "after": {
+        "imageUrl": "posters/20261015-dignity.jpg",
+        "dims": "700×1005",
+        "source": "bing",
+        "url": "https://a.ksd-i.com/a/2019-09-21/120355-772750.jpg",
+        "title": "改编自同名小说的电影《82年生的金智英》将於下月（10月）上映！片方公开女主角郑裕美个人海报 - KSD 韩星网 (电影)"
       }
     }
   ],
   "failures": [],
   "recheck": [
     {
-      "id": "20261012-the-way-home",
-      "status": "ok",
-      "dims": "525×750",
-      "issues": []
+      "id": "20261013-book-of-fish",
+      "status": "warn",
+      "dims": "700×1031",
+      "issues": [
+        "untrusted_host"
+      ]
+    },
+    {
+      "id": "20261015-dignity",
+      "status": "warn",
+      "dims": "700×1005",
+      "issues": [
+        "untrusted_host"
+      ]
     }
   ]
 }

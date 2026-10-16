@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-14T04:07:36.070Z",
+  "generatedAt": "2026-10-16T04:09:17.749Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,9 +8,9 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 127,
-  "ok": 113,
-  "warn": 14,
+  "total": 129,
+  "ok": 112,
+  "warn": 17,
   "error": 0,
   "entries": [
     {
@@ -736,20 +736,25 @@
       "id": "20261013-book-of-fish",
       "zhTitle": "兹山鱼谱",
       "year": "2021",
-      "source": "远程",
-      "imageUrl": "https://media.themoviedb.org/t/p/w500/rtruPKyy8dzimyz7ooRC1c1GmHh.jpg",
-      "host": "media.themoviedb.org",
-      "tier": "tmdb",
-      "size": "108KB",
-      "dims": "500×750",
-      "ratio": 1.5,
+      "source": "本地",
+      "imageUrl": "posters/20261013-book-of-fish.jpg",
+      "host": "k.sinaimg.cn",
+      "tier": "unknown",
+      "size": "1174KB",
+      "dims": "700×1031",
+      "ratio": 1.47,
       "identityKind": "name",
       "identityHits": [
-        "片名中文",
-        "年份"
+        "片名中文"
       ],
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（k.sinaimg.cn）"
+        }
+      ]
     },
     {
       "id": "20261014",
@@ -772,6 +777,56 @@
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（p1.qhimg.com）"
+        }
+      ]
+    },
+    {
+      "id": "20261015-dignity",
+      "zhTitle": "82年生的金智英",
+      "year": "2019",
+      "source": "本地",
+      "imageUrl": "posters/20261015-dignity.jpg",
+      "host": "a.ksd-i.com",
+      "tier": "unknown",
+      "size": "90KB",
+      "dims": "700×1005",
+      "ratio": 1.44,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（a.ksd-i.com）"
+        }
+      ]
+    },
+    {
+      "id": "20261016-market",
+      "zhTitle": "国际市场",
+      "year": "2014",
+      "source": "远程",
+      "imageUrl": "http://n.sinaimg.cn/transform/20141016/avxeafr4114093.jpg",
+      "host": "n.sinaimg.cn",
+      "tier": "unknown",
+      "size": "108KB",
+      "dims": "550×781",
+      "ratio": 1.42,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（n.sinaimg.cn）"
         }
       ]
     },
