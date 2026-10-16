@@ -82,8 +82,12 @@ if [ "$COUNT_HTML" -ne "$COUNT_JSON" ]; then
 fi
 
 # 4) 同步新电影到 Supabase 云端（前端直接读云端数据）
+#    云端只是可选的增强数据源：前端在云端不可达时会自动回退到站内 JSON。
+#    因此这里失败绝不能中断下面的提交与推送，否则线上站点会直接停止更新。
 if [ -n "${SUPABASE_URL:-}" ] && [ -n "${SUPABASE_SERVICE_ROLE_KEY:-}" ]; then
-  npm run data:sync
+  if ! npm run data:sync; then
+    echo "!! 云端同步失败（Supabase 不可达或返回错误），已跳过；本次仍会提交并推送本地内容"
+  fi
 fi
 
 # 5) 提交并推送

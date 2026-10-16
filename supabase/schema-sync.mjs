@@ -25,6 +25,37 @@ const movies = JSON.parse(
   fs.readFileSync(path.join(__dirname, '..', 'src', 'data', 'movies.json'), 'utf8'),
 );
 
+const base = url.replace(/\/rest\/v1\/?$/, '').replace(/\/+$/, '');
+
+// 预检：云端不可达时直接退出。否则每部电影都要各自等一次超时，
+// 一次同步会卡十几分钟，还会占着 daily-sync 的锁阻塞后续任务。
+try {
+  const probe = await fetch(`${base}/rest/v1/movies?select=id&limit=1`, {
+    headers: { apikey: key, Authorization: `Bearer ${key}` },
+    signal: AbortSignal.timeout(10000),
+  });
+  if (probe.status >= 500) {
+    console.error(`✗ 云端预检失败：HTTP ${probe.status}，跳过本次云端同步`);
+    process.exit(1);
+  }
+} catch (e) {
+  console.error(`✗ 云端不可达（${e?.message || e}），跳过本次云端同步；本地内容不受影响`);
+  process.exit(1);
+}
+
+async function upsertWithRetry(table, row, options, attempts = 3) {
+  let lastError = null;
+  for (let i = 0; i < attempts; i++) {
+    const { error } = await supabase.from(table).upsert(row, options);
+    if (!error) return null;
+    lastError = error;
+    if (i < attempts - 1) {
+      await new Promise((resolve) => setTimeout(resolve, 500 * (i + 1)));
+    }
+  }
+  return lastError;
+}
+
 let ok = 0;
 for (const m of movies) {
   const row = {
@@ -52,13 +83,14 @@ for (const m of movies) {
     status: 'published',
     published_at: new Date().toISOString(),
   };
-  const { error } = await supabase.from('movies').upsert(row, { onConflict: 'id' });
+  const error = await upsertWithRetry('movies', row, { onConflict: 'id' });
   if (error) {
     console.error(`✗ ${m.id} ${m.zhTitle}: ${error.message}`);
   } else {
     ok++;
     for (const q of m.quotes || []) {
-      await supabase.from('quotes').upsert(
+      await upsertWithRetry(
+        'quotes',
         {
           movie_id: m.id,
           quote_zh: q.text,
