@@ -55,11 +55,38 @@ async function main() {
     warn: warnCount,
     error: errorCount,
     entries: results,
+    needsReview: results.filter(needsReview).map((r) => ({
+      id: r.id,
+      zhTitle: r.zhTitle,
+      year: r.year,
+      sourceTitle: r.sourceTitle,
+      imageUrl: r.imageUrl,
+      host: r.host,
+      dims: r.dims,
+      evidence: r.evidence,
+      verified: r.verified,
+      status: r.status,
+      issues: r.issues.map((i) => i.code),
+    })),
   };
 
   ensureDir(OUTPUT_DIR);
   fs.writeFileSync(path.join(OUTPUT_DIR, 'poster-audit.json'), JSON.stringify(report, null, 2), 'utf8');
   fs.writeFileSync(path.join(OUTPUT_DIR, 'poster-audit.md'), renderMarkdown(report), 'utf8');
+  fs.writeFileSync(
+    path.join(OUTPUT_DIR, 'poster-review.json'),
+    JSON.stringify(
+      {
+        generatedAt: report.generatedAt,
+        total: report.total,
+        reviewCount: report.needsReview.length,
+        entries: report.needsReview,
+      },
+      null,
+      2,
+    ),
+    'utf8',
+  );
   fs.appendFileSync(
     path.join(OUTPUT_DIR, 'poster-audit-history.jsonl'),
     JSON.stringify({
@@ -76,7 +103,9 @@ async function main() {
   if (JSON_ONLY) {
     process.stdout.write(JSON.stringify(report, null, 2) + '\n');
   } else if (QUIET) {
-    console.log(`海报自检：${report.total} 张 · 正常 ${report.ok} · 警告 ${report.warn} · 错误 ${report.error}`);
+    console.log(
+      `海报自检：${report.total} 张 · 正常 ${report.ok} · 警告 ${report.warn} · 错误 ${report.error} · 需人工核对 ${report.needsReview.length}`,
+    );
   } else {
     printConsole(report);
   }
@@ -104,8 +133,21 @@ function codeLabel(code) {
       identity_unverified: '无法核实（仅年份）',
       source_is_still: '误用剧照',
       duplicate_image: '跨片重复',
+      identity_conflict: '来源与影片不符',
+      identity_weak_evidence: '线索不足待核对',
     }[code] || code
   );
+}
+
+/**
+ * 需要人工过一眼的条目：有硬错误，或证据不足以确认「这张图确实是这部片」。
+ * 这一层不追求全自动判定——它的价值是把「机器不敢打包票」的图挑出来，
+ * 而不是让它们悄悄通过。
+ */
+function needsReview(r) {
+  if (r.verified) return false;
+  if (r.status === 'error') return true;
+  return r.evidence ? r.evidence.level !== 'strong' : true;
 }
 
 function printConsole(report) {
@@ -113,6 +155,9 @@ function printConsole(report) {
   console.log(`\n海报自检 · ${report.generatedAt}`);
   console.log(`${line}`);
   console.log(`总共 ${report.total} 张 → 正常 ${report.ok} · 警告 ${report.warn} · 错误 ${report.error}`);
+  if (report.needsReview.length) {
+    console.log(`其中 ${report.needsReview.length} 张证据不足或有疑点，建议人工核对（output/poster-review.json）`);
+  }
   console.log(`${line}`);
 
   const bad = report.entries.filter((e) => e.status !== 'ok');
@@ -147,7 +192,24 @@ function renderMarkdown(report) {
   L.push(`| 正常 | ${report.ok} |`);
   L.push(`| 警告 | ${report.warn} |`);
   L.push(`| 错误 | ${report.error} |`);
+  L.push(`| 需人工核对 | ${report.needsReview.length} |`);
   L.push('');
+
+  if (report.needsReview.length) {
+    L.push('## 需人工核对');
+    L.push('');
+    L.push('这些海报机器无法确认「确实是这部片」，不等于一定错，但值得过一眼：');
+    L.push('');
+    L.push('| 日期 ID | 片名 | 证据 | 疑点 |');
+    L.push('| --- | --- | --- | --- |');
+    for (const e of report.needsReview) {
+      const ev = e.evidence || {};
+      const reasons = (ev.reasons || []).join('、') || '无片名证据';
+      const conflicts = (ev.conflicts || []).join('；') || '-';
+      L.push(`| \`${e.id}\` | ${e.zhTitle} | ${ev.level || '-'}：${reasons} | ${conflicts} |`);
+    }
+    L.push('');
+  }
 
   const bad = report.entries.filter((e) => e.status !== 'ok');
   if (!bad.length) {

@@ -21,6 +21,8 @@
     "poster:fix": "node tools/fix-posters.mjs",
     "poster:aliases": "node tools/resolve-aliases.mjs",
     "poster:qa": "./tools/poster-qa.sh",
+    "poster:review": "node tools/poster-review.mjs",
+    "poster:set": "node tools/set-poster.mjs",
     "sync:check": "node tools/check-sync.mjs",
     "self:check": "./tools/self-check.sh"
   },

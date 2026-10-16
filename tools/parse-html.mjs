@@ -31,6 +31,57 @@ const txt = ($, el) => {
 
 const strip = (s) => (s || '').replace(/^[「『“”"'\s:：·\-—–]+|[」』“”"'\s:：·\-—–]+$/g, '').trim();
 
+/* ---------- 主创与别名 ----------
+ * 页面里的 <dt>导演</dt><dd>…</dd> / <dt>主演</dt><dd>…</dd> 是判断
+ * 「这张海报是不是这部片」的硬证据，解析出来供海报自检使用。 */
+const CREDIT_LABELS = {
+  directors: ['导演', '执导'],
+  cast: ['主演', '配角', '演员', '配音'],
+};
+const TITLE_LABELS = ['中文片名', '英文片名', '韩文原片名', '日文原片名', '外文片名', '韩文', '日文', '又译', '别名', '原名', '台译', '港译'];
+
+function splitNames(value) {
+  return value
+    .split(/[·、,，/|]+/)
+    .map((s) => s.trim())
+    .filter((s) => s && s.length >= 2 && s.length <= 20);
+}
+
+function parseCredits($) {
+  const directors = [];
+  const cast = [];
+  const altTitles = [];
+  const push = (arr, values) => {
+    for (const v of values) if (!arr.includes(v)) arr.push(v);
+  };
+
+  $('dt').each((_, el) => {
+    const label = txt($, $(el));
+    const $dd = $(el).next('dd');
+    if (!label || !$dd.length) return;
+    const clone = $dd.clone();
+    clone.find('small').remove();
+    const value = txt($, clone);
+    if (!value) return;
+
+    if (CREDIT_LABELS.directors.some((l) => label.includes(l))) {
+      push(directors, splitNames(value));
+    } else if (CREDIT_LABELS.cast.some((l) => label.includes(l))) {
+      push(cast, splitNames(value));
+    } else if (TITLE_LABELS.some((l) => label.includes(l))) {
+      push(
+        altTitles,
+        value
+          .split(/[·、,，/|]+/)
+          .map((s) => s.trim())
+          .filter((s) => s.length >= 2 && s.length <= 60),
+      );
+    }
+  });
+
+  return { credits: { directors, cast }, altTitles };
+}
+
 const firstNum = (s) => {
   const m = (s || '').match(/(19|20)\d{2}/);
   return m ? m[0] : '';
@@ -480,6 +531,7 @@ function parseFile(file) {
   const quotes = parseQuotes($);
   const review = parseReview($);
   const poster = parsePoster($);
+  const credits = parseCredits($);
 
   return {
     id,
@@ -497,6 +549,7 @@ function parseFile(file) {
     reviewBy: review.reviewBy,
     reviewStars: review.reviewStars,
     ...poster,
+    ...credits,
   };
 }
 

@@ -94,6 +94,8 @@ async function main() {
   log('▶ 巡检全站海报…');
   const audit = await runAudit(gallery, movies);
   const byResultId = new Map(audit.results.map((r) => [r.id, r]));
+  // 现用图片的字节：用来确保「换图」真的换了，而不是换回同一张
+  const fetchedById = new Map(gallery.map((g, i) => [g.id, audit.fetched[i]]));
 
   // 挑选修复目标
   let targets;
@@ -131,7 +133,14 @@ async function main() {
       continue;
     }
 
-    const found = await findReplacement(movie, { log: (m) => log(`   ${m}`) });
+    const found = await findReplacement(movie, {
+      log: (m) => log(`   ${m}`),
+      current: {
+        imageUrl: entry.imageUrl,
+        remoteUrl: entry.remoteUrl,
+        bytes: fetchedById.get(target.id)?.bytes,
+      },
+    });
     if (!found) {
       log(`   ✗ 没有找到通过校验的替代海报，保留原图`);
       failures.push({ id: target.id, reason: '没有可用的替代候选' });

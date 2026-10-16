@@ -28,6 +28,8 @@ public/daily/
 output/self-check.json
 output/self-check.md
 output/sync-audit.json
+output/poster-review.json
+output/poster-review.html
 
 # Editor directories and files
 .vscode/*

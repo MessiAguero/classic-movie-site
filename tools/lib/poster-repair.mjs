@@ -17,8 +17,10 @@ import {
   THRESHOLDS,
   UA,
   classifyHost,
+  identityEvidence,
   identityScore,
   loadAliases,
+  md5,
   normTitle,
   parseImageMeta,
   sleep,
@@ -80,7 +82,10 @@ function movieYear(movie) {
 
 /** 供检索使用的干净片名集合 */
 function searchNames(movie) {
-  const aliases = loadAliases().get(movie?.id) || [];
+  // 站内 enTitle 常年为空，别名表之外再叠加影片页里的「英文片名 / 韩文原片名」
+  const aliases = [...(loadAliases().get(movie?.id) || []), ...(movie?.altTitles || [])].filter(
+    (a, i, arr) => a && arr.indexOf(a) === i,
+  );
   // 站内 enTitle 常为空/脏数据，用可信别名（英文名）兜底，才能搜到国际版海报
   const aliasEn = aliases.find((a) => /^[\x20-\x7e]+$/.test(a) && a.length >= 3 && !/^\d/.test(a)) || '';
   const ownRaw = cleanSearchTitle(movie?.enTitle);
@@ -162,7 +167,9 @@ export async function validateCandidate(cand, movie, { timeoutMs = 25000 } = {})
   if (ratio < CANDIDATE_RULES.minRatio) return { ok: false, reason: `不是竖版海报（${w}×${h}）` };
   if (ratio > CANDIDATE_RULES.maxRatio) return { ok: false, reason: `比例异常（${w}×${h}）` };
 
-  // 权威来源（TMDB API 按 id 查询）豁免片名校验；其余候选必须有「片名」证据
+  // 权威来源（TMDB API 按 id 查询）豁免片名校验；其余候选必须有强证据。
+  // 门槛比自检更严：只对上片名（同名不同片的重灾区）不算数，必须再有
+  // 年份 / 主创 / 书名号精确片名，或者本身来自可信图源。
   if (!cand.authoritative) {
     const aliases = loadAliases();
     const idc = identityScore(candForMatch(cand), movie, aliases);
@@ -172,6 +179,14 @@ export async function validateCandidate(cand, movie, { timeoutMs = 25000 } = {})
         ok: false,
         reason: hasAliases ? '来源只有年份线索、对不上片名' : '来源与片名无从对应',
       };
+    }
+    const { tier } = classifyHost(cand.url);
+    const ev = identityEvidence(candForMatch(cand), movie, aliases, tier);
+    if (ev.conflicts.length) {
+      return { ok: false, reason: `候选来源指向别的作品：${ev.conflicts[0]}` };
+    }
+    if (ev.level !== 'strong') {
+      return { ok: false, reason: '候选证据不足（缺年份 / 主创佐证，无法排除同名不同片）' };
     }
   }
   if (/剧照|backdrop|\bstill\b/i.test(cand.title || '') && ratio < THRESHOLDS.minPortraitRatio) {
@@ -393,6 +408,54 @@ async function ddgCandidates(movie) {
 }
 
 /* ------------------------------------------------------------------ */
+/* 候选来源 5：百度图片（国内网络可达；TMDB / DuckDuckGo 被墙时的兜底） */
+/* ------------------------------------------------------------------ */
+async function baiduSearch(query, count = 30) {
+  try {
+    const url =
+      'https://image.baidu.com/search/acjson?tn=resultjson_com&ipn=rj&word=' +
+      encodeURIComponent(query) +
+      `&pn=0&rn=${count}`;
+    const r = await fetch(url, {
+      headers: {
+        'User-Agent': UA,
+        Referer: 'https://image.baidu.com/',
+        Accept: 'application/json, text/plain, */*',
+      },
+      signal: AbortSignal.timeout(20000),
+    });
+    if (!r.ok) return [];
+    const raw = await r.text();
+    // 百度返回的 JSON 偶有非法转义字符，先修再解析
+    const json = JSON.parse(raw.replace(/\\(?!["\\/bfnrtu])/g, '\\\\'));
+    return (json.data || [])
+      .filter(Boolean)
+      .map((x) => ({
+        // 优先原图地址；拿不到才退回被缩放过的中图
+        url: x.replaceUrl?.[0]?.ObjURL || x.middleURL || x.thumbURL || '',
+        title: String(x.fromPageTitleEnc || x.fromPageTitle || '').replace(/<[^>]*>/g, ''),
+        width: Number(x.width) || 0,
+        height: Number(x.height) || 0,
+        source: 'baidu',
+      }))
+      .filter((c) => c.url);
+  } catch {
+    return [];
+  }
+}
+
+async function baiduCandidates(movie) {
+  const { zh, en, year } = searchNames(movie);
+  const queries = [zh && `${zh} ${year} 电影海报`, en && `${en} ${year} movie poster`].filter(Boolean);
+  const out = [];
+  for (const q of queries) {
+    out.push(...(await baiduSearch(q)));
+    await sleep(400);
+  }
+  return out;
+}
+
+/* ------------------------------------------------------------------ */
 /* 主入口                                                              */
 /* ------------------------------------------------------------------ */
 
@@ -422,12 +485,20 @@ function dedupeAndRank(list, movie) {
  *
  * @returns {{cand:object, bytes:Buffer, meta:object}|null}
  */
-export async function findReplacement(movie, { log = () => {} } = {}) {
+export async function findReplacement(movie, { log = () => {}, current = null } = {}) {
+  // 换掉一张错图时，最怕「换上一张一模一样的」——搜索引擎经常把原图第一个返回。
+  // 这里按地址和内容双重排除现用的这张，保证「修复」真的换掉了东西。
+  const currentUrls = new Set(
+    [current?.imageUrl, current?.remoteUrl].filter(Boolean).map((u) => normalizeImageUrl(u)),
+  );
+  const currentHash = current?.bytes ? md5(current.bytes) : null;
+
   const stages = [
     ['TMDB API', tmdbCandidates],
     ['Bing 图片', bingCandidates],
     ['维基百科', wikiCandidates],
     ['DuckDuckGo', ddgCandidates],
+    ['百度图片', baiduCandidates],
   ];
 
   for (const [name, fetchStage] of stages) {
@@ -437,7 +508,9 @@ export async function findReplacement(movie, { log = () => {} } = {}) {
     } catch {
       cands = [];
     }
-    const ranked = dedupeAndRank(cands, movie);
+    const ranked = dedupeAndRank(cands, movie).filter(
+      (c) => !currentUrls.has(normalizeImageUrl(c.url || '')),
+    );
     if (!ranked.length) {
       log(`· ${name}：没有候选`);
       continue;
@@ -446,6 +519,10 @@ export async function findReplacement(movie, { log = () => {} } = {}) {
 
     for (const cand of ranked.slice(0, 8)) {
       const v = await validateCandidate(cand, movie);
+      if (v.ok && currentHash && md5(v.bytes) === currentHash) {
+        log(`    ✗ 与现用海报是同一张图，跳过 — ${String(cand.url).slice(0, 64)}`);
+        continue;
+      }
       if (v.ok) return { cand, bytes: v.bytes, meta: v.meta };
       log(`    ✗ ${v.reason} — ${String(cand.url).slice(0, 72)}`);
       await sleep(80);

@@ -270,6 +270,112 @@ export function movieIndex(movies) {
 }
 
 /* ------------------------------------------------------------------ */
+/* 身份证据：来源到底能不能证明「这张图是这部片的海报」                */
+/* ------------------------------------------------------------------ */
+export const VERIFIED_PATH = path.join(ROOT, 'src', 'data', 'poster-verified.json');
+
+let verifiedCache = null;
+
+/**
+ * 人工/智能体核对过、确认无误的海报登记表：id → { sha256, note, at }。
+ * 图片内容一旦变化（哈希不同）就重新走证据判定，登记不会「永久放行」。
+ */
+export function loadVerified({ fresh = false } = {}) {
+  if (verifiedCache && !fresh) return verifiedCache;
+  const map = new Map();
+  try {
+    const store = JSON.parse(fs.readFileSync(VERIFIED_PATH, 'utf8'));
+    for (const [id, v] of Object.entries(store.entries || {})) {
+      if (v?.sha256) map.set(id, v);
+    }
+  } catch {
+    /* 还没有登记表 */
+  }
+  verifiedCache = map;
+  return map;
+}
+
+/** 疑似「新片/档期」报道的措辞：老片条目用这种来源，多半是配错了同名新片 */
+const NEWS_MARKERS = /定档|上映|档期|首映|预告|曝.{0,4}海报|开画|票房|端午档|春节档|暑期档|贺岁档|官宣/;
+const EMOJI = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}]/u;
+
+/** 汇总一部片所有可用来认脸的写法：中文名、英文名、别名 */
+export function filmTitles(movie, aliases, id) {
+  const out = [];
+  const push = (text, kind) => {
+    const flat = normTitle(text);
+    if (flat.length >= 2 && !out.some((t) => t.flat === flat)) out.push({ text, flat, kind });
+  };
+  if (movie?.zhTitle) push(movie.zhTitle, 'zh');
+  if (movie?.enTitle) push(movie.enTitle, 'en');
+  for (const a of movie?.altTitles || []) push(a, 'altTitle');
+  for (const a of aliases?.get?.(id) || []) push(a, 'alias');
+  return out;
+}
+
+/**
+ * 判定海报来源的证据强度：
+ *   strong —— 来源明确指向这部片（书名号片名精确命中 / 片名+年份 / 主创命中）
+ *   medium —— 只有片名命中，缺年份与主创佐证，无法排除「同名不同片」
+ *   weak   —— 连片名都对不上
+ * conflicts 是反向证据：来源指向的是别的作品，或明显是另一部新片的报道。
+ */
+export function identityEvidence(entry, movie, aliases, tier) {
+  const reasons = [];
+  const conflicts = [];
+
+  const hay = [entry.title, entry.identityText, entry.sourceTitle, entry.remoteUrl, entry.imageUrl]
+    .filter(Boolean)
+    .join(' ');
+  const flatHay = normTitle(hay);
+  const titles = filmTitles(movie, aliases, entry.id);
+
+  const nameHit = titles.find((t) => flatHay.includes(t.flat)) || null;
+  const year = String(movie?.year || entry.year || '').match(/(?:19|20)\d{2}/)?.[0] || null;
+  const yearHit = !!(year && hay.includes(year));
+  const people = [...(movie?.credits?.directors || []), ...(movie?.credits?.cast || [])].filter(
+    (p) => p && p.length >= 2,
+  );
+  const peopleHit = people.find((p) => hay.includes(p)) || null;
+
+  const quoted = [...hay.matchAll(/[《【]([^》】]{1,40})[》】]/g)].map((m) => m[1].trim()).filter(Boolean);
+  const quotedExact = quoted.find((q) => titles.some((t) => normTitle(q) === t.flat)) || null;
+  const quotedOther = quoted.find((q) => {
+    const flat = normTitle(q);
+    return !titles.some((t) => t.flat === flat) && !!nameHit && flat.includes(nameHit.flat);
+  });
+
+  if (quotedOther) {
+    conflicts.push(`来源引用的是《${quotedOther}》，不是本站片名`);
+  }
+  if (!yearHit && year && NEWS_MARKERS.test(hay) && new Date().getFullYear() - Number(year) >= 5) {
+    conflicts.push(`来源带「新片 / 档期」措辞，与 ${year} 年的老片对不上`);
+  }
+  // 片名出现在很靠后的位置、还夹着表情符号：多半是「片单 / 合集」类帖子，图未必是这部片的
+  if (nameHit && entry.title && !quotedExact && !yearHit && !peopleHit) {
+    const raw = String(entry.title).replace(/\s+/g, '');
+    const pos = raw.indexOf(nameHit.text.replace(/\s+/g, ''));
+    if (EMOJI.test(raw) && pos > raw.length * 0.5) {
+      conflicts.push('来源标题像片单 / 合集帖（片名在末尾且带表情符号），图未必属于这部片');
+    }
+  }
+
+  let level = 'weak';
+  if (quotedExact || (nameHit && yearHit) || peopleHit) level = 'strong';
+  else if (nameHit) level = 'medium';
+  // 来自 TMDB / 维基 / 官方站的图，本身就是在该片的条目下取的，视为可信
+  if (TRUSTED_TIERS.has(tier) && level !== 'strong') level = 'strong';
+
+  if (nameHit) reasons.push(`片名命中「${nameHit.text}」`);
+  if (yearHit) reasons.push(`年份命中 ${year}`);
+  if (peopleHit) reasons.push(`主创命中「${peopleHit}」`);
+  if (quotedExact) reasons.push(`书名号片名命中「${quotedExact}」`);
+  if (TRUSTED_TIERS.has(tier)) reasons.push(`可信图源（${tier}）`);
+
+  return { level, reasons, conflicts, titleHit: nameHit?.text || null, yearHit, peopleHit: !!peopleHit };
+}
+
+/* ------------------------------------------------------------------ */
 /* 抓取                                                                */
 /* ------------------------------------------------------------------ */
 
@@ -392,19 +498,43 @@ export function auditEntry(entry, movie, fetched, ctx) {
 
   // 片名一致性：来源必须能对上「片名」，光对上年份不算数
   // （同一年的其它电影、榜单页标题、年份区间 "1999-2001" 都会误命中年份）
-  const idc = identityScore(entry, movie, ctx?.aliases);
-  if (idc.kind === 'none') {
-    issues.push(
-      issue('no_identity_signal', 'error', `海报来源与《${movie?.zhTitle || entry.zhTitle}》无任何匹配线索（来源：${entry.title || host}）`),
-    );
-  } else if (idc.kind === 'year') {
-    issues.push(
-      issue(
-        'identity_unverified',
-        'error',
-        `只对得上${idc.hits.join('、')}，没有任何片名证据，疑似配错图（来源：${entry.title || host}）`,
-      ),
-    );
+  // 已经在登记表里人工核对过、且内容没变的图，跳过重复判定。
+  const evidence = identityEvidence(entry, movie, ctx?.aliases, tier);
+  const verified = ctx?.isVerified?.(entry, fetched.bytes) === true;
+  if (!verified) {
+    const idc = identityScore(entry, movie, ctx?.aliases);
+    if (idc.kind === 'none') {
+      issues.push(
+        issue('no_identity_signal', 'error', `海报来源与《${movie?.zhTitle || entry.zhTitle}》无任何匹配线索（来源：${entry.title || host}）`),
+      );
+    } else if (idc.kind === 'year') {
+      issues.push(
+        issue(
+          'identity_unverified',
+          'error',
+          `只对得上${idc.hits.join('、')}，没有任何片名证据，疑似配错图（来源：${entry.title || host}）`,
+        ),
+      );
+    }
+
+    // 反向证据：来源其实在讲另一部作品（同名不同片、片单帖、新片报道）
+    if (evidence.conflicts.length) {
+      issues.push(
+        issue(
+          'identity_conflict',
+          'error',
+          `来源与本站影片对不上：${evidence.conflicts.join('；')}（来源：${entry.title || host}）`,
+        ),
+      );
+    } else if (evidence.level === 'medium') {
+      issues.push(
+        issue(
+          'identity_weak_evidence',
+          'warn',
+          `只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：${entry.title || host}）`,
+        ),
+      );
+    }
   }
 
   // 正在播放「剧照」却被当作海报
@@ -423,7 +553,7 @@ export function auditEntry(entry, movie, fetched, ctx) {
     }
   }
 
-  return { issues, host, tier, meta };
+  return { issues, host, tier, meta, evidence, verified };
 }
 
 export function severityOf(issues) {
@@ -447,6 +577,7 @@ export function shortUrl(u, n = 70) {
 }
 
 export const md5 = (buf) => crypto.createHash('md5').update(buf).digest('hex');
+export const sha256 = (buf) => crypto.createHash('sha256').update(buf).digest('hex');
 
 /** 简单并发池：按顺序保序执行，限制同时在跑的任务数 */
 export async function mapPool(items, limit, fn) {
@@ -492,15 +623,28 @@ export async function runAudit(gallery, movies, { concurrency = 6, timeoutMs = 2
     }
   });
 
-  const ctx = { hashes, identityById, hashOf: md5, aliases };
+  const verifiedMap = loadVerified();
+  const ctx = {
+    hashes,
+    identityById,
+    hashOf: md5,
+    aliases,
+    // 登记过、且图片内容没变 → 视为已核对过
+    isVerified: (entry, bytes) => {
+      const rec = verifiedMap.get(entry.id);
+      if (!rec || !bytes) return false;
+      return sha256(bytes) === rec.sha256;
+    },
+  };
   const results = gallery.map((entry, i) => {
     const movie = byId.get(entry.id);
     const f = fetched[i];
-    const { issues, host, tier, meta } = auditEntry(entry, movie, f, ctx);
+    const { issues, host, tier, meta, evidence, verified } = auditEntry(entry, movie, f, ctx);
     const idc = identityScore(entry, movie, aliases);
     return {
       id: entry.id,
       zhTitle: entry.zhTitle,
+      sourceTitle: entry.title || '',
       year: String(entry.year || movie?.year || '').match(/(?:19|20)\d{2}/)?.[0] || entry.year || '',
       source: /^https?:/i.test(entry.imageUrl || '') ? '远程' : '本地',
       imageUrl: entry.imageUrl,
@@ -511,6 +655,10 @@ export async function runAudit(gallery, movies, { concurrency = 6, timeoutMs = 2
       ratio: meta && meta.width ? +(meta.height / meta.width).toFixed(2) : null,
       identityKind: idc.kind,
       identityHits: idc.hits,
+      evidence: evidence
+        ? { level: evidence.level, reasons: evidence.reasons, conflicts: evidence.conflicts }
+        : null,
+      verified: !!verified,
       status: severityOf(issues),
       issues,
     };

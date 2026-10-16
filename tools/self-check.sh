@@ -165,6 +165,11 @@ else
   log "== $POSTER_ACTION"
 fi
 
+# 生成人工核对页：把「机器不敢打包票」的海报挑成一页，扫一眼就能发现配错图
+set +e
+node tools/poster-review.mjs
+set -e
+
 # 汇总：直接读两份巡检产物，避免在这里重复判断
 set +e
 MODE="$( [ "$CHECK_ONLY" -eq 1 ] && echo 'check-only' || echo 'repair' )" \
@@ -177,6 +182,7 @@ node -e '
 
   const sync = readJson("output/sync-audit.json");
   const poster = readJson("output/poster-audit.json");
+  const review = readJson("output/poster-review.json");
 
   const syncStale = sync ? sync.staleCount : -1;
   const posterError = poster ? poster.error : 0;
@@ -206,6 +212,7 @@ node -e '
           ok: poster.ok,
           warn: poster.warn,
           error: poster.error,
+          reviewCount: review ? review.reviewCount : 0,
           problems: poster.entries.filter((e) => e.status !== "ok").map((e) => ({
             id: e.id, zhTitle: e.zhTitle, status: e.status, dims: e.dims,
             host: e.host, issues: e.issues.map((i) => i.code),
@@ -247,6 +254,7 @@ node -e '
   L.push("");
   if (report.posters) {
     L.push(`- 总数 ${report.posters.total} · 正常 ${report.posters.ok} · 警告 ${report.posters.warn} · 错误 ${report.posters.error}`);
+    L.push(`- 需人工核对：${report.posters.reviewCount} 张（output/poster-review.html）`);
     L.push(`- 本次动作：${report.repair.posters}`);
     if (report.posters.problems.length) {
       L.push("");
@@ -271,6 +279,7 @@ node -e '
   console.log("─".repeat(72));
   console.log(`自检结论：${ok ? "✅ 全部正常" : "❌ 仍有未解决项"}`);
   console.log(`  同步：${syncStale === 0 ? "及时" : `未及时 ${syncStale} 项`} · 海报：${poster ? `错误 ${poster.error} / 警告 ${poster.warn}` : "未巡检"}`);
+  if (review && review.reviewCount) console.log(`  海报待人工核对：${review.reviewCount} 张 → output/poster-review.html`);
   console.log("  报告：output/self-check.md");
   console.log("─".repeat(72));
   process.exit(ok ? 0 : 1);
