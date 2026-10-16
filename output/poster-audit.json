@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T05:21:55.678Z",
+  "generatedAt": "2026-10-16T05:35:38.211Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -10,12 +10,13 @@
   },
   "total": 129,
   "ok": 112,
-  "warn": 17,
-  "error": 0,
+  "warn": 13,
+  "error": 4,
   "entries": [
     {
       "id": "20260817",
       "zhTitle": "第三人",
+      "sourceTitle": "The Third Man (1949) — The Movie Database (TMDB)",
       "year": "1949",
       "source": "本地",
       "imageUrl": "posters/20260817.jpg",
@@ -30,12 +31,23 @@
         "别名:The Third Man",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Third Man」",
+          "年份命中 1949",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260819",
       "zhTitle": "公寓春光",
+      "sourceTitle": "The Apartment (1960) — The Movie Database (TMDB)",
       "year": "1960",
       "source": "本地",
       "imageUrl": "posters/20260819.jpg",
@@ -49,12 +61,23 @@
         "片名英文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Apartment · 1960」",
+          "年份命中 1960",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260824",
       "zhTitle": "现代启示录",
+      "sourceTitle": "Apocalypse Now (1979) - Posters — The Movie Database (TMDB)",
       "year": "1979",
       "source": "本地",
       "imageUrl": "posters/20260824.jpg",
@@ -69,12 +92,23 @@
         "别名:Apocalypse Now",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Apocalypse Now」",
+          "年份命中 1979",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260826-north-by-northwest",
       "zhTitle": "西北偏北",
+      "sourceTitle": "North by Northwest (1959) - Posters — The Movie Database (TMDB)",
       "year": "1959",
       "source": "本地",
       "imageUrl": "posters/20260826-north-by-northwest.jpg",
@@ -88,12 +122,23 @@
         "别名:North by Northwest",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「North by Northwest」",
+          "年份命中 1959",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260826",
       "zhTitle": "罗马假日",
+      "sourceTitle": "罗马假日 (1953) - 海报 — The Movie Database (TMDB)",
       "year": "1953",
       "source": "本地",
       "imageUrl": "posters/20260826.jpg",
@@ -108,12 +153,23 @@
         "别名:罗马假日",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「罗马假日」",
+          "年份命中 1953",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260827",
       "zhTitle": "日落大道",
+      "sourceTitle": "Sunset Boulevard (1950) — The Movie Database (TMDB)",
       "year": "1950",
       "source": "本地",
       "imageUrl": "posters/20260827.jpg",
@@ -128,12 +184,23 @@
         "别名:Sunset Boulevard",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Sunset Boulevard」",
+          "年份命中 1950",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260831",
       "zhTitle": "Scent of a Woman",
+      "sourceTitle": "Scent of a Woman (1992) - Posters — The Movie Database (TMDB)",
       "year": "1992",
       "source": "本地",
       "imageUrl": "posters/20260831.jpg",
@@ -148,12 +215,23 @@
         "别名:ScentofaWoman",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Scent of a Woman」",
+          "年份命中 1992",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260901",
       "zhTitle": "杀人回忆 ·",
+      "sourceTitle": "杀人回忆 (2003) - 海报 — The Movie Database (TMDB)",
       "year": "2003",
       "source": "本地",
       "imageUrl": "posters/20260901.jpg",
@@ -168,12 +246,23 @@
         "别名:杀人回忆",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「杀人回忆」",
+          "年份命中 2003",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260907-new-world",
       "zhTitle": "新世界",
+      "sourceTitle": "New World (2013) - Posters — The Movie Database (TMDB)",
       "year": "2013",
       "source": "本地",
       "imageUrl": "posters/20260907-new-world.jpg",
@@ -188,12 +277,23 @@
         "别名:New World",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「NEW WORLD」",
+          "年份命中 2013",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260907",
       "zhTitle": "老男孩",
+      "sourceTitle": "Oldboy (2003) - Posters — The Movie Database (TMDB)",
       "year": "2003",
       "source": "本地",
       "imageUrl": "posters/20260907.jpg",
@@ -208,12 +308,23 @@
         "别名:Oldboy",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「OLDBOY」",
+          "年份命中 2003",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260908",
       "zhTitle": "追击者",
+      "sourceTitle": "The Chaser (2008) — The Movie Database (TMDB)",
       "year": "2008",
       "source": "本地",
       "imageUrl": "posters/20260908.jpg",
@@ -228,12 +339,23 @@
         "别名:The Chaser",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Chaser」",
+          "年份命中 2008",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260909",
       "zhTitle": "黄 海",
+      "sourceTitle": "The Yellow Sea (2010) — The Movie Database (TMDB)",
       "year": "2010",
       "source": "本地",
       "imageUrl": "posters/20260909.jpg",
@@ -247,12 +369,23 @@
         "别名:The Yellow Sea",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Yellow Sea」",
+          "年份命中 2010",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260910",
       "zhTitle": "孤胆特工",
+      "sourceTitle": "The Man from Nowhere (2010) — The Movie Database (TMDB)",
       "year": "2010",
       "source": "本地",
       "imageUrl": "posters/20260910.jpg",
@@ -266,12 +399,23 @@
         "片名英文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Man from Nowhere · 2010」",
+          "年份命中 2010",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260911",
       "zhTitle": "卑劣的街头",
+      "sourceTitle": "A Dirty Carnival (2006) — The Movie Database (TMDB)",
       "year": "2006",
       "source": "本地",
       "imageUrl": "posters/20260911.jpg",
@@ -285,12 +429,23 @@
         "别名:A Dirty Carnival",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「A Dirty Carnival」",
+          "年份命中 2006",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260914",
       "zhTitle": "母亲",
+      "sourceTitle": "Mother (2009) — The Movie Database (TMDB)",
       "year": "2009",
       "source": "本地",
       "imageUrl": "posters/20260914.jpg",
@@ -305,12 +460,23 @@
         "别名:Mother",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「MOTHER」",
+          "年份命中 2009",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260915",
       "zhTitle": "恐怖直播",
+      "sourceTitle": "The Terror Live (2013) — The Movie Database (TMDB)",
       "year": "2013",
       "source": "本地",
       "imageUrl": "posters/20260915.jpg",
@@ -324,12 +490,23 @@
         "别名:The Terror Live",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Terror Live」",
+          "年份命中 2013",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260916",
       "zhTitle": "共同警备区",
+      "sourceTitle": "共同警备区 (2000) - 海报 — The Movie Database (TMDB)",
       "year": "2000",
       "source": "本地",
       "imageUrl": "posters/20260916.jpg",
@@ -344,12 +521,23 @@
         "别名:共同警备区",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「共同警备区」",
+          "年份命中 2000",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260917",
       "zhTitle": "局内人",
+      "sourceTitle": "局内人 (2015) — The Movie Database (TMDB)",
       "year": "2015",
       "source": "本地",
       "imageUrl": "posters/20260917.jpg",
@@ -364,12 +552,23 @@
         "别名:局内人",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「局内人」",
+          "年份命中 2015",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260918",
       "zhTitle": "金福南杀人事件始末",
+      "sourceTitle": "Poster De Jang Ok Jung",
       "year": "2010",
       "source": "本地",
       "imageUrl": "posters/20260918.jpg",
@@ -382,12 +581,21 @@
       "identityHits": [
         "英文关键词:jang"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260920",
       "zhTitle": "与犯罪的战争坏家伙的全盛时代",
+      "sourceTitle": "Nameless Gangster (2012) - Posters — The Movie Database (TMDB)",
       "year": "1982",
       "source": "本地",
       "imageUrl": "posters/20260920.jpg",
@@ -400,12 +608,21 @@
       "identityHits": [
         "英文关键词:nameless"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260921",
       "zhTitle": "蒙太奇抓住那个家伙 · 模犯母亲",
+      "sourceTitle": "Montage (2013) - Posters — The Movie Database (TMDB)",
       "year": "2013",
       "source": "本地",
       "imageUrl": "posters/20260921.jpg",
@@ -419,12 +636,23 @@
         "别名:Montage",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Montage」",
+          "年份命中 2013",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260924",
       "zhTitle": "走到尽头黑仔刑警 · 非常警探",
+      "sourceTitle": "A Hard Day (2014) | The Poster Database (TPDb)",
       "year": "2014",
       "source": "本地",
       "imageUrl": "posters/20260924.jpg",
@@ -438,12 +666,23 @@
         "别名:A Hard Day",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「A Hard Day」",
+          "年份命中 2014",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260927-friend",
       "zhTitle": "朋友",
+      "sourceTitle": "Friend (2001) - Posters — The Movie Database (TMDB)",
       "year": "2001",
       "source": "本地",
       "imageUrl": "posters/20260927-friend.jpg",
@@ -457,12 +696,23 @@
         "别名:Friend",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Friend」",
+          "年份命中 2001",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260927",
       "zhTitle": "看见恶魔",
+      "sourceTitle": "I Saw the Devil (2010) - Posters — The Movie Database (TMDB)",
       "year": "2010",
       "source": "本地",
       "imageUrl": "posters/20260927.jpg",
@@ -476,12 +726,22 @@
         "英文关键词:devil",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "年份命中 2010",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260928",
       "zhTitle": "恶人传",
+      "sourceTitle": "恶人传（2019）｜剧情｜动作｜犯罪 - 经典电影全集",
       "year": "2019",
       "source": "本地",
       "imageUrl": "posters/20260928.webp",
@@ -495,6 +755,15 @@
         "片名中文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「恶人传」",
+          "年份命中 2019"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "warn",
       "issues": [
         {
@@ -507,6 +776,7 @@
     {
       "id": "20260929",
       "zhTitle": "杀人者的记忆法",
+      "sourceTitle": "杀人者的记忆法 (2017) - 海报 — The Movie Database (TMDB)",
       "year": "2017",
       "source": "本地",
       "imageUrl": "posters/20260929.jpg",
@@ -520,12 +790,23 @@
         "片名中文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「杀人者的记忆法」",
+          "年份命中 2017",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260930",
       "zhTitle": "老手",
+      "sourceTitle": "老手图册_360百科",
       "year": "2015",
       "source": "本地",
       "imageUrl": "posters/20260930.jpg",
@@ -538,18 +819,32 @@
       "identityHits": [
         "片名中文"
       ],
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「老手」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "warn",
       "issues": [
         {
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（so1.360tres.com）"
+        },
+        {
+          "code": "identity_weak_evidence",
+          "severity": "warn",
+          "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：老手图册_360百科）"
         }
       ]
     },
     {
       "id": "20261004-green-fish",
       "zhTitle": "绿鱼",
+      "sourceTitle": "绿鱼(1997) - 电影海报|电影台词 - 影库",
       "year": "1997",
       "source": "本地",
       "imageUrl": "posters/20261004-green-fish.jpg",
@@ -563,6 +858,15 @@
         "片名中文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「绿鱼」",
+          "年份命中 1997"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "warn",
       "issues": [
         {
@@ -575,6 +879,7 @@
     {
       "id": "20261004",
       "zhTitle": "不可饶恕",
+      "sourceTitle": "不可饶恕海报,不可饶恕,不可饶恕图片_大山谷图库",
       "year": "2010",
       "source": "远程",
       "imageUrl": "http://5b0988e595225.cdn.sohucs.com/images/20190831/079757f6d9de4057875cd76382d59502.jpeg",
@@ -587,18 +892,32 @@
       "identityHits": [
         "片名中文"
       ],
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「不可饶恕」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "warn",
       "issues": [
         {
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（5b0988e595225.cdn.sohucs.com）"
+        },
+        {
+          "code": "identity_weak_evidence",
+          "severity": "warn",
+          "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：不可饶恕海报,不可饶恕,不可饶恕图片_大山谷图库）"
         }
       ]
     },
     {
       "id": "20261005",
       "zhTitle": "王者",
+      "sourceTitle": "\"王吒\"出击!成都智造《王者荣耀》《哪吒2》官宣联动|电影海报|哪吒之魔童闹海|数字|票房|手游_新浪新闻",
       "year": "2017",
       "source": "远程",
       "imageUrl": "http://k.sinaimg.cn/n/sinakd20250416s/534/w1080h1854/20250416/f006-6f740fefc453551ce3576d1d50b0eadc.jpg/w700d1q75cms.jpg",
@@ -611,18 +930,35 @@
       "identityHits": [
         "片名中文"
       ],
-      "status": "warn",
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「王者」"
+        ],
+        "conflicts": [
+          "来源引用的是《王者荣耀》，不是本站片名",
+          "来源带「新片 / 档期」措辞，与 2017 年的老片对不上"
+        ]
+      },
+      "verified": false,
+      "status": "error",
       "issues": [
         {
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（k.sinaimg.cn）"
+        },
+        {
+          "code": "identity_conflict",
+          "severity": "error",
+          "detail": "来源与本站影片对不上：来源引用的是《王者荣耀》，不是本站片名；来源带「新片 / 档期」措辞，与 2017 年的老片对不上（来源：\"王吒\"出击!成都智造《王者荣耀》《哪吒2》官宣联动|电影海报|哪吒之魔童闹海|数字|票房|手游_新浪新闻）"
         }
       ]
     },
     {
       "id": "20261009-witness",
       "zhTitle": "证人",
+      "sourceTitle": "《沉默的证人》曝光\"凝视\"版海报：上演\"惊魂一瞥\"引发诸多悬念迭起-新闻资讯-高贝娱乐",
       "year": "2019",
       "source": "远程",
       "imageUrl": "https://www.gaobei.com/upload/10001/article/2019_02/27193204_sfc0v9_b.jpg",
@@ -636,18 +972,35 @@
         "片名中文",
         "年份"
       ],
-      "status": "warn",
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「证人」",
+          "年份命中 2019"
+        ],
+        "conflicts": [
+          "来源引用的是《沉默的证人》，不是本站片名"
+        ]
+      },
+      "verified": false,
+      "status": "error",
       "issues": [
         {
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（www.gaobei.com）"
+        },
+        {
+          "code": "identity_conflict",
+          "severity": "error",
+          "detail": "来源与本站影片对不上：来源引用的是《沉默的证人》，不是本站片名（来源：《沉默的证人》曝光\"凝视\"版海报：上演\"惊魂一瞥\"引发诸多悬念迭起-新闻资讯-高贝娱乐）"
         }
       ]
     },
     {
       "id": "20261009",
       "zhTitle": "老千",
+      "sourceTitle": "老千壁纸,老千2海报,老千海报_大山谷图库",
       "year": "2006",
       "source": "远程",
       "imageUrl": "http://5b0988e595225.cdn.sohucs.com/images/20200321/82eafee2a80a4d0eacf4d9c2015508d0.jpeg",
@@ -660,18 +1013,32 @@
       "identityHits": [
         "片名中文"
       ],
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「老千」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "warn",
       "issues": [
         {
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（5b0988e595225.cdn.sohucs.com）"
+        },
+        {
+          "code": "identity_weak_evidence",
+          "severity": "warn",
+          "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：老千壁纸,老千2海报,老千海报_大山谷图库）"
         }
       ]
     },
     {
       "id": "20261010",
       "zhTitle": "釜山行",
+      "sourceTitle": "釜山行 (2016) - 海报 — The Movie Database (TMDB)",
       "year": "2016",
       "source": "本地",
       "imageUrl": "posters/20261010.jpg",
@@ -685,12 +1052,23 @@
         "片名中文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「釜山行」",
+          "年份命中 2016",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20261012-the-way-home",
       "zhTitle": "爱·回家",
+      "sourceTitle": "爱·回家 (2002) - 海报 — The Movie Database (TMDB)",
       "year": "2002",
       "source": "本地",
       "imageUrl": "posters/20261012-the-way-home.jpg",
@@ -704,12 +1082,23 @@
         "片名中文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「爱·回家」",
+          "年份命中 2002",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20261012",
       "zhTitle": "阳光姐妹淘",
+      "sourceTitle": "阳光姐妹淘(2011) - 电影海报|电影台词 - 影库",
       "year": "2011",
       "source": "远程",
       "imageUrl": "https://mdb.yuncongz.com/static/upload/raw/f6e1a1b2b8d84497994af63193c4981e.jpg",
@@ -723,6 +1112,15 @@
         "片名中文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「阳光姐妹淘」",
+          "年份命中 2011"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "warn",
       "issues": [
         {
@@ -735,6 +1133,7 @@
     {
       "id": "20261013-book-of-fish",
       "zhTitle": "兹山鱼谱",
+      "sourceTitle": "电影海报上的绿 💚 春江水暖 夏日之王 兹山鱼谱",
       "year": "2021",
       "source": "本地",
       "imageUrl": "posters/20261013-book-of-fish.jpg",
@@ -747,18 +1146,34 @@
       "identityHits": [
         "片名中文"
       ],
-      "status": "warn",
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「兹山鱼谱」"
+        ],
+        "conflicts": [
+          "来源标题像片单 / 合集帖（片名在末尾且带表情符号），图未必属于这部片"
+        ]
+      },
+      "verified": false,
+      "status": "error",
       "issues": [
         {
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（k.sinaimg.cn）"
+        },
+        {
+          "code": "identity_conflict",
+          "severity": "error",
+          "detail": "来源与本站影片对不上：来源标题像片单 / 合集帖（片名在末尾且带表情符号），图未必属于这部片（来源：电影海报上的绿 💚 春江水暖 夏日之王 兹山鱼谱）"
         }
       ]
     },
     {
       "id": "20261014",
       "zhTitle": "我爱你",
+      "sourceTitle": "端午档电影《我爱你!》曝全新海报 倪大红惠英红梁家辉叶童紧紧相拥共赴白头 - 360娱乐，你开心就好",
       "year": "2011",
       "source": "远程",
       "imageUrl": "http://p1.qhimg.com/t01d563d5fbf379c1cb.jpg?3000*4200",
@@ -771,18 +1186,35 @@
       "identityHits": [
         "片名中文"
       ],
-      "status": "warn",
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「我爱你」",
+          "书名号片名命中「我爱你!」"
+        ],
+        "conflicts": [
+          "来源带「新片 / 档期」措辞，与 2011 年的老片对不上"
+        ]
+      },
+      "verified": false,
+      "status": "error",
       "issues": [
         {
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（p1.qhimg.com）"
+        },
+        {
+          "code": "identity_conflict",
+          "severity": "error",
+          "detail": "来源与本站影片对不上：来源带「新片 / 档期」措辞，与 2011 年的老片对不上（来源：端午档电影《我爱你!》曝全新海报 倪大红惠英红梁家辉叶童紧紧相拥共赴白头 - 360娱乐，你开心就好）"
         }
       ]
     },
     {
       "id": "20261015-dignity",
       "zhTitle": "82年生的金智英",
+      "sourceTitle": "改编自同名小说的电影《82年生的金智英》将於下月（10月）上映！片方公开女主角郑裕美个人海报 - KSD 韩星网 (电影)",
       "year": "2019",
       "source": "本地",
       "imageUrl": "posters/20261015-dignity.jpg",
@@ -796,6 +1228,17 @@
         "片名中文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「82年生的金智英」",
+          "年份命中 2019",
+          "主创命中「郑裕美」",
+          "书名号片名命中「82年生的金智英」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "warn",
       "issues": [
         {
@@ -808,6 +1251,7 @@
     {
       "id": "20261016-market",
       "zhTitle": "国际市场",
+      "sourceTitle": "《国际市场》海报公开 黄正民展谜样微笑|国际市场|海报|黄正民_新浪娱乐_新浪网",
       "year": "2014",
       "source": "远程",
       "imageUrl": "http://n.sinaimg.cn/transform/20141016/avxeafr4114093.jpg",
@@ -821,6 +1265,16 @@
         "片名中文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「国际市场」",
+          "年份命中 2014",
+          "书名号片名命中「国际市场」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "warn",
       "issues": [
         {
@@ -833,6 +1287,7 @@
     {
       "id": "20260427",
       "zhTitle": "辛 德 勒 的 名 单",
+      "sourceTitle": "Schindler&#39;s List (1993) — The Movie Database (TMDB)",
       "year": "1993",
       "source": "本地",
       "imageUrl": "posters/20260427.jpg",
@@ -846,12 +1301,22 @@
         "英文关键词:schindler",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "年份命中 1993",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260428",
       "zhTitle": "千与千寻 2001 ·",
+      "sourceTitle": "千と千尋の神隠し (2001) - ポスター画像 — The Movie Database (TMDB)",
       "year": "2001",
       "source": "本地",
       "imageUrl": "posters/20260428.jpg",
@@ -865,12 +1330,23 @@
         "别名:千と千尋の神隠し",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「千と千尋の神隠し」",
+          "年份命中 2001",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260429",
       "zhTitle": "2001太空漫游",
+      "sourceTitle": "2001太空漫游 (1968) - 海报 — The Movie Database (TMDB)",
       "year": "1968",
       "source": "本地",
       "imageUrl": "posters/20260429.jpg",
@@ -884,12 +1360,23 @@
         "片名中文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「2001太空漫游」",
+          "年份命中 1968",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260430",
       "zhTitle": "搏击俱乐部",
+      "sourceTitle": "搏击俱乐部 (1999) - 海报 — The Movie Database (TMDB)",
       "year": "1999",
       "source": "本地",
       "imageUrl": "posters/20260430.jpg",
@@ -904,12 +1391,23 @@
         "别名:搏击俱乐部",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「搏击俱乐部」",
+          "年份命中 1999",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260505",
       "zhTitle": "教 父",
+      "sourceTitle": "The Godfather (1972) - Posters — The Movie Database (TMDB)",
       "year": "1972",
       "source": "本地",
       "imageUrl": "posters/20260505.jpg",
@@ -924,12 +1422,23 @@
         "别名:The Godfather",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Godfather」",
+          "年份命中 1972",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260506",
       "zhTitle": "肖申克的救赎",
+      "sourceTitle": "肖申克的救赎 (1994) - 海报 — The Movie Database (TMDB)",
       "year": "1994",
       "source": "本地",
       "imageUrl": "posters/20260506.jpg",
@@ -944,12 +1453,23 @@
         "别名:肖申克的救赎",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「肖申克的救赎」",
+          "年份命中 1994",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260508",
       "zhTitle": "黑客帝国",
+      "sourceTitle": "黑客帝国 (1999) - 海报 — The Movie Database (TMDB)",
       "year": "1999",
       "source": "本地",
       "imageUrl": "posters/20260508.jpg",
@@ -964,12 +1484,23 @@
         "别名:黑客帝国",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「黑客帝国」",
+          "年份命中 1999",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260509",
       "zhTitle": "公 民 凯 恩",
+      "sourceTitle": "Citizen Kane (1941) - Posters — The Movie Database (TMDb)",
       "year": "1941",
       "source": "本地",
       "imageUrl": "posters/20260509.jpg",
@@ -984,12 +1515,23 @@
         "别名:Citizen Kane",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Citizen Kane」",
+          "年份命中 1941",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260510",
       "zhTitle": "美丽人生",
+      "sourceTitle": "美丽人生 (1997) - 海报 — The Movie Database (TMDB)",
       "year": "1997",
       "source": "本地",
       "imageUrl": "posters/20260510.jpg",
@@ -1004,12 +1546,23 @@
         "别名:美丽人生",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「美丽人生」",
+          "年份命中 1997",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260511",
       "zhTitle": "阿甘正传",
+      "sourceTitle": "阿甘正传 (1994) - 海报 — The Movie Database (TMDB)",
       "year": "1994",
       "source": "本地",
       "imageUrl": "posters/20260511.jpg",
@@ -1024,12 +1577,23 @@
         "别名:阿甘正传",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「阿甘正传」",
+          "年份命中 1994",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260512",
       "zhTitle": "星际穿越",
+      "sourceTitle": "星际穿越中的科学 (2014) - 海报 — The Movie Database (TMDB)",
       "year": "2014",
       "source": "本地",
       "imageUrl": "posters/20260512.jpg",
@@ -1044,12 +1608,23 @@
         "别名:星际穿越",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「星际穿越」",
+          "年份命中 2014",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260513",
       "zhTitle": "霸王别姬",
+      "sourceTitle": "1993年张国荣《霸王别姬》电影海报欣赏 [46P] - 电影海报",
       "year": "1993",
       "source": "本地",
       "imageUrl": "posters/20260513.jpg",
@@ -1064,6 +1639,16 @@
         "别名:霸王别姬",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「霸王别姬」",
+          "年份命中 1993",
+          "书名号片名命中「霸王别姬」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "warn",
       "issues": [
         {
@@ -1076,6 +1661,7 @@
     {
       "id": "20260514",
       "zhTitle": "沉默的羔羊",
+      "sourceTitle": "Silence Of The Lambs Poster",
       "year": "1991",
       "source": "本地",
       "imageUrl": "posters/20260514.jpg",
@@ -1088,12 +1674,21 @@
       "identityHits": [
         "英文关键词:silence"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260517",
       "zhTitle": "闻香识女人",
+      "sourceTitle": "闻香识女人 (1992) - 海报 — The Movie Database (TMDB)",
       "year": "1992",
       "source": "本地",
       "imageUrl": "posters/20260517.jpg",
@@ -1108,12 +1703,23 @@
         "别名:闻香识女人",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「闻香识女人」",
+          "年份命中 1992",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260518",
       "zhTitle": "霸王别姬",
+      "sourceTitle": "Farewell My Concubine (1993)",
       "year": "1993",
       "source": "本地",
       "imageUrl": "posters/20260518.jpg",
@@ -1128,12 +1734,23 @@
         "别名:Farewell My Concubine",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Farewell My Concubine」",
+          "年份命中 1993",
+          "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260519",
       "zhTitle": "美国往事",
+      "sourceTitle": "美国往事 (1984) - 海报 — The Movie Database (TMDB)",
       "year": "1984",
       "source": "本地",
       "imageUrl": "posters/20260519.jpg",
@@ -1148,12 +1765,23 @@
         "别名:美国往事",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「美国往事」",
+          "年份命中 1984",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260520",
       "zhTitle": "卡萨布兰卡",
+      "sourceTitle": "Casablanca (1942) - IMDb",
       "year": "1942",
       "source": "本地",
       "imageUrl": "posters/20260520.jpg",
@@ -1167,12 +1795,23 @@
         "别名:Casablanca",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Casablanca」",
+          "年份命中 1942",
+          "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260521",
       "zhTitle": "飞越疯人院",
+      "sourceTitle": "One Flew Over the Cuckoo&#39;s Nest (1975) — The Movie Database (TMDB)",
       "year": "1975",
       "source": "本地",
       "imageUrl": "posters/20260521.jpg",
@@ -1186,12 +1825,22 @@
         "英文关键词:flew",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "年份命中 1975",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260523",
       "zhTitle": "低俗小说",
+      "sourceTitle": "低俗小说 (1994) - 海报 — The Movie Database (TMDB)",
       "year": "1994",
       "source": "本地",
       "imageUrl": "posters/20260523.jpg",
@@ -1206,12 +1855,23 @@
         "别名:低俗小说",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「低俗小说」",
+          "年份命中 1994",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260525",
       "zhTitle": "七武士",
+      "sourceTitle": "七武士 (1954) - 海报 — The Movie Database (TMDB)",
       "year": "1954",
       "source": "本地",
       "imageUrl": "posters/20260525.jpg",
@@ -1226,12 +1886,23 @@
         "别名:七武士",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「七武士」",
+          "年份命中 1954",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260526",
       "zhTitle": "天堂电影院",
+      "sourceTitle": "天堂电影院 (1988) - 海报 — The Movie Database (TMDB)",
       "year": "1988",
       "source": "本地",
       "imageUrl": "posters/20260526.jpg",
@@ -1246,12 +1917,23 @@
         "别名:天堂电影院",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「天堂电影院」",
+          "年份命中 1988",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260527",
       "zhTitle": "好 家 伙",
+      "sourceTitle": "GoodFellas (1990) - Posters — The Movie Database (TMDB)",
       "year": "1990",
       "source": "本地",
       "imageUrl": "posters/20260527.jpg",
@@ -1266,12 +1948,23 @@
         "别名:GoodFellas",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Goodfellas」",
+          "年份命中 1990",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260528",
       "zhTitle": "泰坦尼克号",
+      "sourceTitle": "泰坦尼克号 (1997) - 海报 — The Movie Database (TMDB)",
       "year": "1997",
       "source": "本地",
       "imageUrl": "posters/20260528.jpg",
@@ -1286,12 +1979,23 @@
         "别名:泰坦尼克号",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「泰坦尼克号」",
+          "年份命中 1997",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260529",
       "zhTitle": "十二怒汉",
+      "sourceTitle": "12 Angry Men (1957) - Posters — The Movie Database (TMDB)",
       "year": "1957",
       "source": "本地",
       "imageUrl": "posters/20260529.jpg",
@@ -1306,12 +2010,23 @@
         "别名:12 Angry Men",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「12 Angry Men」",
+          "年份命中 1957",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260530",
       "zhTitle": "活 着",
+      "sourceTitle": "活着 (1994) - 海报 — The Movie Database (TMDB)",
       "year": "1994",
       "source": "本地",
       "imageUrl": "posters/20260530.jpg",
@@ -1325,12 +2040,23 @@
         "片名中文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「活 着」",
+          "年份命中 1994",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260531",
       "zhTitle": "放牛班的春天",
+      "sourceTitle": "The Chorus (2004) — The Movie Database (TMDB)",
       "year": "2004",
       "source": "本地",
       "imageUrl": "posters/20260531.jpg",
@@ -1344,12 +2070,23 @@
         "别名:The Chorus",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Chorus」",
+          "年份命中 2004",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260602",
       "zhTitle": "绿里奇迹",
+      "sourceTitle": "The Green Mile (1999) - TMDB",
       "year": "1999",
       "source": "本地",
       "imageUrl": "posters/20260602.jpg",
@@ -1364,12 +2101,23 @@
         "别名:The Green Mile",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Green Mile」",
+          "年份命中 1999",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260604",
       "zhTitle": "银 翼 杀 手",
+      "sourceTitle": "Blade Runner (1982) - Posters — The Movie Database (TMDb)",
       "year": "1982",
       "source": "本地",
       "imageUrl": "posters/20260604.jpg",
@@ -1384,12 +2132,23 @@
         "别名:Blade Runner",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Blade Runner」",
+          "年份命中 1982",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260606",
       "zhTitle": "控方证人",
+      "sourceTitle": "Witness for the Prosecution (1957) - Posters — The Movie Database (TMDB)",
       "year": "1957",
       "source": "本地",
       "imageUrl": "posters/20260606.jpg",
@@ -1404,12 +2163,23 @@
         "别名:Witness for the Prosecution",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Witness for the Prosecution」",
+          "年份命中 1957",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260607",
       "zhTitle": "窃听风暴 ·",
+      "sourceTitle": "The Lives of Others (2006) — The Movie Database (TMDB)",
       "year": "2006",
       "source": "本地",
       "imageUrl": "posters/20260607.jpg",
@@ -1423,12 +2193,23 @@
         "别名:The Lives of Others",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Lives of Others」",
+          "年份命中 2006",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260608",
       "zhTitle": "天使爱美丽",
+      "sourceTitle": "天使爱美丽 (2001) - 海报 — The Movie Database (TMDB)",
       "year": "2001",
       "source": "本地",
       "imageUrl": "posters/20260608.jpg",
@@ -1442,12 +2223,23 @@
         "片名中文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「天使爱美丽」",
+          "年份命中 2001",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260609",
       "zhTitle": "寄生虫",
+      "sourceTitle": "Parasite (2019) - TMDB",
       "year": "2019",
       "source": "本地",
       "imageUrl": "posters/20260609.jpg",
@@ -1462,12 +2254,23 @@
         "别名:Parasite",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Parasite」",
+          "年份命中 2019",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260610",
       "zhTitle": "龙 猫",
+      "sourceTitle": "My Neighbor Totoro Poster",
       "year": "1988",
       "source": "本地",
       "imageUrl": "posters/20260610.jpg",
@@ -1481,12 +2284,22 @@
         "片名英文",
         "别名:My Neighbor Totoro"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「My Neighbor Totoro」",
+          "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260611-2",
       "zhTitle": "龙 猫",
+      "sourceTitle": "My Neighbor Totoro (1988) - Posters — The Movie Database (TMDB)",
       "year": "1988",
       "source": "本地",
       "imageUrl": "posters/20260611-2.jpg",
@@ -1501,12 +2314,23 @@
         "别名:My Neighbor Totoro",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「My Neighbor Totoro」",
+          "年份命中 1988",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260611",
       "zhTitle": "花样年华",
+      "sourceTitle": "花样年华 (2000) - 海报 — The Movie Database (TMDB)",
       "year": "2000",
       "source": "本地",
       "imageUrl": "posters/20260611.jpg",
@@ -1521,12 +2345,23 @@
         "别名:花样年华",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「花样年华」",
+          "年份命中 2000",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260612",
       "zhTitle": "机器人总动员",
+      "sourceTitle": "机器人总动员 (2008) - 海报 — The Movie Database (TMDB)",
       "year": "2008",
       "source": "本地",
       "imageUrl": "posters/20260612.jpg",
@@ -1541,12 +2376,23 @@
         "别名:机器人总动员",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「机器人总动员」",
+          "年份命中 2008",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260614",
       "zhTitle": "当幸福来敲门",
+      "sourceTitle": "当幸福来敲门 (2006) - 海报 — The Movie Database (TMDB)",
       "year": "2006",
       "source": "本地",
       "imageUrl": "posters/20260614.jpg",
@@ -1561,12 +2407,23 @@
         "别名:当幸福来敲门",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「当幸福来敲门」",
+          "年份命中 2006",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260615",
       "zhTitle": "布达佩斯大饭店",
+      "sourceTitle": "布达佩斯大饭店 (2014) - 海报 — The Movie Database (TMDB)",
       "year": "2014",
       "source": "本地",
       "imageUrl": "posters/20260615.jpg",
@@ -1581,12 +2438,23 @@
         "别名:布达佩斯大饭店",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「布达佩斯大饭店」",
+          "年份命中 2014",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260616-2",
       "zhTitle": "狮子王",
+      "sourceTitle": "Lion King Original Movie Poster",
       "year": "1994",
       "source": "本地",
       "imageUrl": "posters/20260616-2.jpg",
@@ -1599,12 +2467,21 @@
       "identityHits": [
         "英文关键词:lion"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260616",
       "zhTitle": "寻梦环游记",
+      "sourceTitle": "寻梦环游记 (2017) - 海报 — The Movie Database (TMDB)",
       "year": "2017",
       "source": "本地",
       "imageUrl": "posters/20260616.jpg",
@@ -1619,12 +2496,23 @@
         "别名:寻梦环游记",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「寻梦环游记」",
+          "年份命中 2017",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260617",
       "zhTitle": "钢琴家",
+      "sourceTitle": "The Pianist (2002) — The Movie Database (TMDB)",
       "year": "2002",
       "source": "本地",
       "imageUrl": "posters/20260617.jpg",
@@ -1639,12 +2527,23 @@
         "别名:The Pianist",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Pianist」",
+          "年份命中 2002",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260618",
       "zhTitle": "狮子王",
+      "sourceTitle": "狮子王 (1994) - 海报 — The Movie Database (TMDB)",
       "year": "1994",
       "source": "本地",
       "imageUrl": "posters/20260618.jpg",
@@ -1659,12 +2558,23 @@
         "别名:狮子王",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「狮子王」",
+          "年份命中 1994",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260622",
       "zhTitle": "拯 救 大 兵 瑞 恩",
+      "sourceTitle": "Saving Private Ryan (1998) - Posters — The Movie Database (TMDB)",
       "year": "1998",
       "source": "本地",
       "imageUrl": "posters/20260622.jpg",
@@ -1679,12 +2589,23 @@
         "别名:Saving Private Ryan",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Saving Private Ryan」",
+          "年份命中 1998",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260623",
       "zhTitle": "致命魔术",
+      "sourceTitle": "The Prestige (2006) — The Movie Database (TMDB)",
       "year": "2006",
       "source": "本地",
       "imageUrl": "posters/20260623.jpg",
@@ -1698,12 +2619,23 @@
         "别名:The Prestige",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Prestige」",
+          "年份命中 2006",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260624",
       "zhTitle": "天空之城",
+      "sourceTitle": "天空之城 (1986) - 海报 — The Movie Database (TMDB)",
       "year": "1986",
       "source": "本地",
       "imageUrl": "posters/20260624.jpg",
@@ -1718,12 +2650,23 @@
         "别名:天空之城",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「天空之城」",
+          "年份命中 1986",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260626-2",
       "zhTitle": "末代皇帝",
+      "sourceTitle": "The Last Emperor (1987) - Posters — The Movie Database (TMDB)",
       "year": "1987",
       "source": "本地",
       "imageUrl": "posters/20260626-2.jpg",
@@ -1737,12 +2680,23 @@
         "别名:The Last Emperor",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Last Emperor」",
+          "年份命中 1987",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260626",
       "zhTitle": "触不可及",
+      "sourceTitle": "触不可及 (2011) - 海报 — The Movie Database (TMDB)",
       "year": "2011",
       "source": "本地",
       "imageUrl": "posters/20260626.jpg",
@@ -1757,12 +2711,23 @@
         "别名:触不可及",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「触不可及」",
+          "年份命中 2011",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260627",
       "zhTitle": "末代皇帝",
+      "sourceTitle": "The Last Emperor (1987) — The Movie Database (TMDB)",
       "year": "1987",
       "source": "本地",
       "imageUrl": "posters/20260627.jpg",
@@ -1776,12 +2741,23 @@
         "别名:The Last Emperor",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Last Emperor」",
+          "年份命中 1987",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260628",
       "zhTitle": "你的名字。",
+      "sourceTitle": "Your Name. (2016) — The Movie Database (TMDB)",
       "year": "2016",
       "source": "本地",
       "imageUrl": "posters/20260628.jpg",
@@ -1796,12 +2772,23 @@
         "别名:Your Name.",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Your Name.」",
+          "年份命中 2016",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260629",
       "zhTitle": "阿 凡 达",
+      "sourceTitle": "Avatar (2009) - Posters — The Movie Database (TMDB)",
       "year": "2009",
       "source": "本地",
       "imageUrl": "posters/20260629.jpg",
@@ -1816,12 +2803,23 @@
         "别名:Avatar",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「AVATAR」",
+          "年份命中 2009",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260630",
       "zhTitle": "霸王别姬",
+      "sourceTitle": "Farewell My Concubine (1993)",
       "year": "1993",
       "source": "本地",
       "imageUrl": "posters/20260630.jpg",
@@ -1836,12 +2834,23 @@
         "别名:Farewell My Concubine",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「FAREWELL MY CONCUBINE」",
+          "年份命中 1993",
+          "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260701-2",
       "zhTitle": "三傻大闹宝莱坞",
+      "sourceTitle": "三傻大闹宝莱坞图册_360百科",
       "year": "2009",
       "source": "本地",
       "imageUrl": "posters/20260701-2.jpg",
@@ -1855,18 +2864,32 @@
         "片名中文",
         "别名:三傻大闹宝莱坞"
       ],
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「三傻大闹宝莱坞」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "warn",
       "issues": [
         {
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（so1.360tres.com）"
+        },
+        {
+          "code": "identity_weak_evidence",
+          "severity": "warn",
+          "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：三傻大闹宝莱坞图册_360百科）"
         }
       ]
     },
     {
       "id": "20260701",
       "zhTitle": "让子弹飞",
+      "sourceTitle": "Let the Bullets Fly (2010) - Posters — The Movie Database (TMDB)",
       "year": "2010",
       "source": "本地",
       "imageUrl": "posters/20260701.jpg",
@@ -1881,12 +2904,23 @@
         "别名:Let the Bullets Fly",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Let the Bullets Fly」",
+          "年份命中 2010",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260702",
       "zhTitle": "摩登时代",
+      "sourceTitle": "摩登时代 (1936) - TMDB",
       "year": "1936",
       "source": "本地",
       "imageUrl": "posters/20260702.jpg",
@@ -1901,12 +2935,23 @@
         "别名:摩登时代",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「摩登时代」",
+          "年份命中 1936",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260703",
       "zhTitle": "乱世佳人",
+      "sourceTitle": "乱世佳人 (1939) - 海报 — The Movie Database (TMDB)",
       "year": "1939",
       "source": "本地",
       "imageUrl": "posters/20260703.jpg",
@@ -1921,12 +2966,23 @@
         "别名:乱世佳人",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「乱世佳人」",
+          "年份命中 1939",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260704",
       "zhTitle": "三傻大闹宝莱坞",
+      "sourceTitle": "三傻大闹宝莱坞 (2009) - 海报 — The Movie Database (TMDB)",
       "year": "2009",
       "source": "本地",
       "imageUrl": "posters/20260704.jpg",
@@ -1941,12 +2997,23 @@
         "别名:三傻大闹宝莱坞",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「三傻大闹宝莱坞」",
+          "年份命中 2009",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260705",
       "zhTitle": "哈尔的移动城堡",
+      "sourceTitle": "哈尔的移动城堡 (2004) - 海报 — The Movie Database (TMDB)",
       "year": "2004",
       "source": "本地",
       "imageUrl": "posters/20260705.jpg",
@@ -1961,12 +3028,23 @@
         "别名:哈尔的移动城堡",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「哈尔的移动城堡」",
+          "年份命中 2004",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260706",
       "zhTitle": "The Lord of the RingsThe Fellowship of the Ring",
+      "sourceTitle": "The Lord of the Rings: The Fellowship of the Ring (2001) — The Movie Database (TMDB)",
       "year": "2001",
       "source": "本地",
       "imageUrl": "posters/20260706.jpg",
@@ -1981,12 +3059,23 @@
         "别名:TheLordoftheRingsTheFellowshipoftheRing",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Lord of the RingsThe Fellowship of the Ring」",
+          "年份命中 2001",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260707",
       "zhTitle": "Se7en",
+      "sourceTitle": "七宗罪 (1995) - 海报 — The Movie Database (TMDB)",
       "year": "1995",
       "source": "本地",
       "imageUrl": "posters/20260707.jpg",
@@ -2000,12 +3089,23 @@
         "别名:七宗罪",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「七 宗 罪」",
+          "年份命中 1995",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260708",
       "zhTitle": "飞屋环游记",
+      "sourceTitle": "Up (2009) - IMDb",
       "year": "2009",
       "source": "本地",
       "imageUrl": "posters/20260708.jpg",
@@ -2019,12 +3119,23 @@
         "别名:Up (2009)",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Up」",
+          "年份命中 2009",
+          "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260709",
       "zhTitle": "黄金三镖客 ,",
+      "sourceTitle": "黄金三镖客 (1966) - 海报 — The Movie Database (TMDB)",
       "year": "1966",
       "source": "本地",
       "imageUrl": "posters/20260709.jpg",
@@ -2039,12 +3150,23 @@
         "别名:黄金三镖客",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「黄金三镖客」",
+          "年份命中 1966",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260710",
       "zhTitle": "雨中曲",
+      "sourceTitle": "Singin' in the Rain (1952) - Posters — The Movie Database (TMDB)",
       "year": "1952",
       "source": "本地",
       "imageUrl": "posters/20260710.jpg",
@@ -2059,12 +3181,23 @@
         "别名:Singin' in the Rain",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Singin' in the Rain」",
+          "年份命中 1952",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260711",
       "zhTitle": "终结者2：审判日",
+      "sourceTitle": "终结者2：审判日 (1991) - 海报 — The Movie Database (TMDB)",
       "year": "1991",
       "source": "本地",
       "imageUrl": "posters/20260711.jpg",
@@ -2079,12 +3212,23 @@
         "别名:终结者2：审判日",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「终结者2：审判日」",
+          "年份命中 1991",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260712",
       "zhTitle": "勇敢的心",
+      "sourceTitle": "Braveheart (1995) - ALANGDS | The Poster Database (TPDb)",
       "year": "1995",
       "source": "本地",
       "imageUrl": "posters/20260712.jpg",
@@ -2099,6 +3243,15 @@
         "别名:Braveheart",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Braveheart」",
+          "年份命中 1995"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "warn",
       "issues": [
         {
@@ -2111,6 +3264,7 @@
     {
       "id": "20260713-2",
       "zhTitle": "勇敢的心",
+      "sourceTitle": "Braveheart (1995) - Posters — The Movie Database (TMDB)",
       "year": "1995",
       "source": "本地",
       "imageUrl": "posters/20260713-2.jpg",
@@ -2125,12 +3279,23 @@
         "别名:Braveheart",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Braveheart」",
+          "年份命中 1995",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260713",
       "zhTitle": "怦然心动",
+      "sourceTitle": "Flipped (2010) — The Movie Database (TMDB)",
       "year": "2010",
       "source": "本地",
       "imageUrl": "posters/20260713.jpg",
@@ -2145,12 +3310,23 @@
         "别名:Flipped",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Flipped」",
+          "年份命中 2010",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260714",
       "zhTitle": "STAR WARS",
+      "sourceTitle": "星球大战4：新希望 (1977) - 海报 — The Movie Database (TMDB)",
       "year": "1977",
       "source": "本地",
       "imageUrl": "posters/20260714.jpg",
@@ -2164,12 +3340,23 @@
         "别名:星球大战4：新希望",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「星球大战4：新希望」",
+          "年份命中 1977",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260715",
       "zhTitle": "美丽心灵",
+      "sourceTitle": "A Beautiful Mind (2001) — The Movie Database (TMDB)",
       "year": "2001",
       "source": "本地",
       "imageUrl": "posters/20260715.jpg",
@@ -2183,12 +3370,23 @@
         "别名:A Beautiful Mind",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「A Beautiful Mind」",
+          "年份命中 2001",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260716",
       "zhTitle": "VERTIGO",
+      "sourceTitle": "Vertigo (1958) — The Movie Database (TMDB)",
       "year": "1958",
       "source": "本地",
       "imageUrl": "posters/20260716.jpg",
@@ -2203,12 +3401,23 @@
         "别名:VERTIGO",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「VERTIGO」",
+          "年份命中 1958",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260720",
       "zhTitle": "情书",
+      "sourceTitle": "《情书》海报合集",
       "year": "1995",
       "source": "本地",
       "imageUrl": "posters/20260720.jpg",
@@ -2221,6 +3430,15 @@
       "identityHits": [
         "片名中文"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「情书」",
+          "书名号片名命中「情书」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "warn",
       "issues": [
         {
@@ -2233,6 +3451,7 @@
     {
       "id": "20260721-2",
       "zhTitle": "情书",
+      "sourceTitle": "Love Letter (1995) - IMDb",
       "year": "1995",
       "source": "本地",
       "imageUrl": "posters/20260721-2.jpg",
@@ -2246,12 +3465,23 @@
         "别名:Love Letter",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Love Letter」",
+          "年份命中 1995",
+          "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260721",
       "zhTitle": "死亡诗社",
+      "sourceTitle": "死亡诗社 (1989) - 海报 — The Movie Database (TMDB)",
       "year": "1989",
       "source": "本地",
       "imageUrl": "posters/20260721.jpg",
@@ -2265,12 +3495,23 @@
         "片名中文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「死亡诗社」",
+          "年份命中 1989",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260723",
       "zhTitle": "罗生门",
+      "sourceTitle": "Rashomon (1950) - TMDB",
       "year": "1950",
       "source": "本地",
       "imageUrl": "posters/20260723.jpg",
@@ -2285,12 +3526,23 @@
         "别名:Rashomon",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Rashomon」",
+          "年份命中 1950",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260724",
       "zhTitle": "阿拉伯的劳伦斯",
+      "sourceTitle": "Lawrence of Arabia (1962) - Posters — The Movie Database (TMDB)",
       "year": "1962",
       "source": "本地",
       "imageUrl": "posters/20260724.jpg",
@@ -2305,12 +3557,23 @@
         "别名:Lawrence of Arabia",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「LAWRENCE OF ARABIA」",
+          "年份命中 1962",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260727",
       "zhTitle": "卧虎藏龙",
+      "sourceTitle": "Crouching Tiger, Hidden Dragon (2000)",
       "year": "2000",
       "source": "本地",
       "imageUrl": "posters/20260727.jpg",
@@ -2325,12 +3588,23 @@
         "别名:Crouching Tiger, Hidden Dragon",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「CROUCHING TIGERHIDDEN DRAGON」",
+          "年份命中 2000",
+          "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260728",
       "zhTitle": "东京物语",
+      "sourceTitle": "Tokyo Story (1953) - Posters — The Movie Database (TMDB)",
       "year": "1953",
       "source": "本地",
       "imageUrl": "posters/20260728.jpg",
@@ -2345,12 +3619,23 @@
         "别名:Tokyo Story",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Tokyo Story」",
+          "年份命中 1953",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260729-2",
       "zhTitle": "卧虎藏龙",
+      "sourceTitle": "卧虎藏龙 (2000) - 海报 — The Movie Database (TMDB)",
       "year": "2000",
       "source": "本地",
       "imageUrl": "posters/20260729-2.jpg",
@@ -2365,12 +3650,23 @@
         "别名:卧虎藏龙",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「卧虎藏龙」",
+          "年份命中 2000",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260729",
       "zhTitle": "第七封印",
+      "sourceTitle": "The Seventh Seal (1957) - Posters — The Movie Database (TMDB)",
       "year": "1957",
       "source": "本地",
       "imageUrl": "posters/20260729.jpg",
@@ -2385,12 +3681,23 @@
         "别名:The Seventh Seal",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「THE SEVENTH SEAL」",
+          "年份命中 1957",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260731",
       "zhTitle": "THE GODFATHER PART II",
+      "sourceTitle": "The Godfather Part II (1974) — The Movie Database (TMDB)",
       "year": "1974",
       "source": "本地",
       "imageUrl": "posters/20260731.jpg",
@@ -2404,12 +3711,23 @@
         "片名中文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「THE GODFATHER PART II」",
+          "年份命中 1974",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260803",
       "zhTitle": "后 窗",
+      "sourceTitle": "Rear Window (1954) - Posters — The Movie Database (TMDB)",
       "year": "1954",
       "source": "本地",
       "imageUrl": "posters/20260803.jpg",
@@ -2423,12 +3741,23 @@
         "别名:Rear Window",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Rear Window」",
+          "年份命中 1954",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260805",
       "zhTitle": "杀死一只知更鸟",
+      "sourceTitle": "To Kill a Mockingbird (1962) - Posters — The Movie Database (TMDB)",
       "year": "1962",
       "source": "本地",
       "imageUrl": "posters/20260805.jpg",
@@ -2443,12 +3772,23 @@
         "别名:To Kill a Mockingbird",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「To Kill a Mockingbird」",
+          "年份命中 1962",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260806-2",
       "zhTitle": "莫 扎 特 传",
+      "sourceTitle": "莫扎特传(1984) - 电影海报|电影台词 - 影库",
       "year": "1984",
       "source": "本地",
       "imageUrl": "posters/20260806-2.jpg",
@@ -2462,6 +3802,15 @@
         "片名中文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「莫 扎 特 传」",
+          "年份命中 1984"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "warn",
       "issues": [
         {
@@ -2474,6 +3823,7 @@
     {
       "id": "20260806",
       "zhTitle": "西部往事",
+      "sourceTitle": "Once Upon a Time in the West (1968) — The Movie Database (TMDB)",
       "year": "1968",
       "source": "本地",
       "imageUrl": "posters/20260806.jpg",
@@ -2487,12 +3837,22 @@
         "英文关键词:west",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "年份命中 1968",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260807",
       "zhTitle": "霸王别姬",
+      "sourceTitle": "Farewell My Concubine (1993) - Posters — The Movie Database (TMDB)",
       "year": "1993",
       "source": "本地",
       "imageUrl": "posters/20260807.jpg",
@@ -2507,12 +3867,23 @@
         "别名:Farewell My Concubine",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Farewell My Concubine」",
+          "年份命中 1993",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260808",
       "zhTitle": "莫 扎 特 传",
+      "sourceTitle": "Amadeus (1984) — The Movie Database (TMDB)",
       "year": "1984",
       "source": "本地",
       "imageUrl": "posters/20260808.jpg",
@@ -2526,12 +3897,23 @@
         "别名:Amadeus",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Amadeus」",
+          "年份命中 1984",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260809",
       "zhTitle": "沉默的羔羊",
+      "sourceTitle": "The Silence of the Lambs (1991) — The Movie Database (TMDB)",
       "year": "1991",
       "source": "本地",
       "imageUrl": "posters/20260809.jpg",
@@ -2546,12 +3928,23 @@
         "别名:The Silence of the Lambs",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「The Silence of the Lambs」",
+          "年份命中 1991",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260811",
       "zhTitle": "重庆森林",
+      "sourceTitle": "重庆森林 (1994) - 海报 — The Movie Database (TMDB)",
       "year": "1994",
       "source": "本地",
       "imageUrl": "posters/20260811.jpg",
@@ -2566,12 +3959,23 @@
         "别名:重庆森林",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「重庆森林」",
+          "年份命中 1994",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260812-bttf",
       "zhTitle": "回到未来",
+      "sourceTitle": "Back to the Future (1985) - Posters — The Movie Database (TMDB)",
       "year": "1985",
       "source": "本地",
       "imageUrl": "posters/20260812-bttf.jpg",
@@ -2586,12 +3990,23 @@
         "别名:Back to the Future",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「BACK TO THE FUTURE」",
+          "年份命中 1985",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260812",
       "zhTitle": "回到未来",
+      "sourceTitle": "Back to the Future (1985)",
       "year": "1985",
       "source": "本地",
       "imageUrl": "posters/20260812.jpg",
@@ -2606,12 +4021,23 @@
         "别名:Back to the Future",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「BACK TO THE FUTURE」",
+          "年份命中 1985",
+          "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
     },
     {
       "id": "20260814",
       "zhTitle": "大话西游",
+      "sourceTitle": "A Chinese Odyssey Part Two: Cinderella (1995) — The Movie Database (TMDB)",
       "year": "1995",
       "source": "本地",
       "imageUrl": "posters/20260814.jpg",
@@ -2625,8 +4051,207 @@
         "片名英文",
         "年份"
       ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「A Chinese Odyssey」",
+          "年份命中 1995",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
       "status": "ok",
       "issues": []
+    }
+  ],
+  "needsReview": [
+    {
+      "id": "20260930",
+      "zhTitle": "老手",
+      "year": "2015",
+      "sourceTitle": "老手图册_360百科",
+      "imageUrl": "posters/20260930.jpg",
+      "host": "so1.360tres.com",
+      "dims": "579×749",
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「老手」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        "untrusted_host",
+        "identity_weak_evidence"
+      ]
+    },
+    {
+      "id": "20261004",
+      "zhTitle": "不可饶恕",
+      "year": "2010",
+      "sourceTitle": "不可饶恕海报,不可饶恕,不可饶恕图片_大山谷图库",
+      "imageUrl": "http://5b0988e595225.cdn.sohucs.com/images/20190831/079757f6d9de4057875cd76382d59502.jpeg",
+      "host": "5b0988e595225.cdn.sohucs.com",
+      "dims": "1080×1578",
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「不可饶恕」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        "untrusted_host",
+        "identity_weak_evidence"
+      ]
+    },
+    {
+      "id": "20261005",
+      "zhTitle": "王者",
+      "year": "2017",
+      "sourceTitle": "\"王吒\"出击!成都智造《王者荣耀》《哪吒2》官宣联动|电影海报|哪吒之魔童闹海|数字|票房|手游_新浪新闻",
+      "imageUrl": "http://k.sinaimg.cn/n/sinakd20250416s/534/w1080h1854/20250416/f006-6f740fefc453551ce3576d1d50b0eadc.jpg/w700d1q75cms.jpg",
+      "host": "k.sinaimg.cn",
+      "dims": "700×1202",
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「王者」"
+        ],
+        "conflicts": [
+          "来源引用的是《王者荣耀》，不是本站片名",
+          "来源带「新片 / 档期」措辞，与 2017 年的老片对不上"
+        ]
+      },
+      "verified": false,
+      "status": "error",
+      "issues": [
+        "untrusted_host",
+        "identity_conflict"
+      ]
+    },
+    {
+      "id": "20261009-witness",
+      "zhTitle": "证人",
+      "year": "2019",
+      "sourceTitle": "《沉默的证人》曝光\"凝视\"版海报：上演\"惊魂一瞥\"引发诸多悬念迭起-新闻资讯-高贝娱乐",
+      "imageUrl": "https://www.gaobei.com/upload/10001/article/2019_02/27193204_sfc0v9_b.jpg",
+      "host": "www.gaobei.com",
+      "dims": "600×840",
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「证人」",
+          "年份命中 2019"
+        ],
+        "conflicts": [
+          "来源引用的是《沉默的证人》，不是本站片名"
+        ]
+      },
+      "verified": false,
+      "status": "error",
+      "issues": [
+        "untrusted_host",
+        "identity_conflict"
+      ]
+    },
+    {
+      "id": "20261009",
+      "zhTitle": "老千",
+      "year": "2006",
+      "sourceTitle": "老千壁纸,老千2海报,老千海报_大山谷图库",
+      "imageUrl": "http://5b0988e595225.cdn.sohucs.com/images/20200321/82eafee2a80a4d0eacf4d9c2015508d0.jpeg",
+      "host": "5b0988e595225.cdn.sohucs.com",
+      "dims": "640×918",
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「老千」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        "untrusted_host",
+        "identity_weak_evidence"
+      ]
+    },
+    {
+      "id": "20261013-book-of-fish",
+      "zhTitle": "兹山鱼谱",
+      "year": "2021",
+      "sourceTitle": "电影海报上的绿 💚 春江水暖 夏日之王 兹山鱼谱",
+      "imageUrl": "posters/20261013-book-of-fish.jpg",
+      "host": "k.sinaimg.cn",
+      "dims": "700×1031",
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「兹山鱼谱」"
+        ],
+        "conflicts": [
+          "来源标题像片单 / 合集帖（片名在末尾且带表情符号），图未必属于这部片"
+        ]
+      },
+      "verified": false,
+      "status": "error",
+      "issues": [
+        "untrusted_host",
+        "identity_conflict"
+      ]
+    },
+    {
+      "id": "20261014",
+      "zhTitle": "我爱你",
+      "year": "2011",
+      "sourceTitle": "端午档电影《我爱你!》曝全新海报 倪大红惠英红梁家辉叶童紧紧相拥共赴白头 - 360娱乐，你开心就好",
+      "imageUrl": "http://p1.qhimg.com/t01d563d5fbf379c1cb.jpg?3000*4200",
+      "host": "p1.qhimg.com",
+      "dims": "3000×4200",
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「我爱你」",
+          "书名号片名命中「我爱你!」"
+        ],
+        "conflicts": [
+          "来源带「新片 / 档期」措辞，与 2011 年的老片对不上"
+        ]
+      },
+      "verified": false,
+      "status": "error",
+      "issues": [
+        "untrusted_host",
+        "identity_conflict"
+      ]
+    },
+    {
+      "id": "20260701-2",
+      "zhTitle": "三傻大闹宝莱坞",
+      "year": "2009",
+      "sourceTitle": "三傻大闹宝莱坞图册_360百科",
+      "imageUrl": "posters/20260701-2.jpg",
+      "host": "so1.360tres.com",
+      "dims": "500×677",
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「三傻大闹宝莱坞」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        "untrusted_host",
+        "identity_weak_evidence"
+      ]
     }
   ]
 }
