@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-16T05:35:38.211Z",
+  "generatedAt": "2026-10-16T05:48:56.045Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -9,9 +9,9 @@
     "minBytes": 8192
   },
   "total": 129,
-  "ok": 112,
+  "ok": 116,
   "warn": 13,
-  "error": 4,
+  "error": 0,
   "entries": [
     {
       "id": "20260817",
@@ -881,13 +881,13 @@
       "zhTitle": "不可饶恕",
       "sourceTitle": "不可饶恕海报,不可饶恕,不可饶恕图片_大山谷图库",
       "year": "2010",
-      "source": "远程",
-      "imageUrl": "http://5b0988e595225.cdn.sohucs.com/images/20190831/079757f6d9de4057875cd76382d59502.jpeg",
-      "host": "5b0988e595225.cdn.sohucs.com",
-      "tier": "unknown",
-      "size": "338KB",
-      "dims": "1080×1578",
-      "ratio": 1.46,
+      "source": "本地",
+      "imageUrl": "posters/20261004.jpg",
+      "host": "",
+      "tier": "local",
+      "size": "172KB",
+      "dims": "1080×1528",
+      "ratio": 1.41,
       "identityKind": "name",
       "identityHits": [
         "片名中文"
@@ -899,33 +899,22 @@
         ],
         "conflicts": []
       },
-      "verified": false,
-      "status": "warn",
-      "issues": [
-        {
-          "code": "untrusted_host",
-          "severity": "warn",
-          "detail": "图源不在可信白名单（5b0988e595225.cdn.sohucs.com）"
-        },
-        {
-          "code": "identity_weak_evidence",
-          "severity": "warn",
-          "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：不可饶恕海报,不可饶恕,不可饶恕图片_大山谷图库）"
-        }
-      ]
+      "verified": true,
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20261005",
       "zhTitle": "王者",
       "sourceTitle": "\"王吒\"出击!成都智造《王者荣耀》《哪吒2》官宣联动|电影海报|哪吒之魔童闹海|数字|票房|手游_新浪新闻",
       "year": "2017",
-      "source": "远程",
-      "imageUrl": "http://k.sinaimg.cn/n/sinakd20250416s/534/w1080h1854/20250416/f006-6f740fefc453551ce3576d1d50b0eadc.jpg/w700d1q75cms.jpg",
-      "host": "k.sinaimg.cn",
-      "tier": "unknown",
-      "size": "729KB",
-      "dims": "700×1202",
-      "ratio": 1.72,
+      "source": "本地",
+      "imageUrl": "posters/20261005.jpg",
+      "host": "",
+      "tier": "local",
+      "size": "215KB",
+      "dims": "1280×1677",
+      "ratio": 1.31,
       "identityKind": "name",
       "identityHits": [
         "片名中文"
@@ -940,62 +929,38 @@
           "来源带「新片 / 档期」措辞，与 2017 年的老片对不上"
         ]
       },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        {
-          "code": "untrusted_host",
-          "severity": "warn",
-          "detail": "图源不在可信白名单（k.sinaimg.cn）"
-        },
-        {
-          "code": "identity_conflict",
-          "severity": "error",
-          "detail": "来源与本站影片对不上：来源引用的是《王者荣耀》，不是本站片名；来源带「新片 / 档期」措辞，与 2017 年的老片对不上（来源：\"王吒\"出击!成都智造《王者荣耀》《哪吒2》官宣联动|电影海报|哪吒之魔童闹海|数字|票房|手游_新浪新闻）"
-        }
-      ]
+      "verified": true,
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20261009-witness",
       "zhTitle": "证人",
       "sourceTitle": "《沉默的证人》曝光\"凝视\"版海报：上演\"惊魂一瞥\"引发诸多悬念迭起-新闻资讯-高贝娱乐",
       "year": "2019",
-      "source": "远程",
-      "imageUrl": "https://www.gaobei.com/upload/10001/article/2019_02/27193204_sfc0v9_b.jpg",
-      "host": "www.gaobei.com",
-      "tier": "unknown",
-      "size": "135KB",
-      "dims": "600×840",
-      "ratio": 1.4,
+      "source": "本地",
+      "imageUrl": "posters/20261009-witness.jpg",
+      "host": "",
+      "tier": "local",
+      "size": "236KB",
+      "dims": "1080×1440",
+      "ratio": 1.33,
       "identityKind": "name",
       "identityHits": [
-        "片名中文",
-        "年份"
+        "片名中文"
       ],
       "evidence": {
-        "level": "strong",
+        "level": "medium",
         "reasons": [
-          "片名命中「证人」",
-          "年份命中 2019"
+          "片名命中「证人」"
         ],
         "conflicts": [
           "来源引用的是《沉默的证人》，不是本站片名"
         ]
       },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        {
-          "code": "untrusted_host",
-          "severity": "warn",
-          "detail": "图源不在可信白名单（www.gaobei.com）"
-        },
-        {
-          "code": "identity_conflict",
-          "severity": "error",
-          "detail": "来源与本站影片对不上：来源引用的是《沉默的证人》，不是本站片名（来源：《沉默的证人》曝光\"凝视\"版海报：上演\"惊魂一瞥\"引发诸多悬念迭起-新闻资讯-高贝娱乐）"
-        }
-      ]
+      "verified": true,
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20261009",
@@ -1139,9 +1104,9 @@
       "imageUrl": "posters/20261013-book-of-fish.jpg",
       "host": "k.sinaimg.cn",
       "tier": "unknown",
-      "size": "1174KB",
-      "dims": "700×1031",
-      "ratio": 1.47,
+      "size": "3092KB",
+      "dims": "2000×2866",
+      "ratio": 1.43,
       "identityKind": "name",
       "identityHits": [
         "片名中文"
@@ -1155,18 +1120,13 @@
           "来源标题像片单 / 合集帖（片名在末尾且带表情符号），图未必属于这部片"
         ]
       },
-      "verified": false,
-      "status": "error",
+      "verified": true,
+      "status": "warn",
       "issues": [
         {
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（k.sinaimg.cn）"
-        },
-        {
-          "code": "identity_conflict",
-          "severity": "error",
-          "detail": "来源与本站影片对不上：来源标题像片单 / 合集帖（片名在末尾且带表情符号），图未必属于这部片（来源：电影海报上的绿 💚 春江水暖 夏日之王 兹山鱼谱）"
         }
       ]
     },
@@ -1175,13 +1135,13 @@
       "zhTitle": "我爱你",
       "sourceTitle": "端午档电影《我爱你!》曝全新海报 倪大红惠英红梁家辉叶童紧紧相拥共赴白头 - 360娱乐，你开心就好",
       "year": "2011",
-      "source": "远程",
-      "imageUrl": "http://p1.qhimg.com/t01d563d5fbf379c1cb.jpg?3000*4200",
-      "host": "p1.qhimg.com",
-      "tier": "unknown",
-      "size": "967KB",
-      "dims": "3000×4200",
-      "ratio": 1.4,
+      "source": "本地",
+      "imageUrl": "posters/20261014.png",
+      "host": "",
+      "tier": "local",
+      "size": "857KB",
+      "dims": "718×994",
+      "ratio": 1.38,
       "identityKind": "name",
       "identityHits": [
         "片名中文"
@@ -1196,20 +1156,9 @@
           "来源带「新片 / 档期」措辞，与 2011 年的老片对不上"
         ]
       },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        {
-          "code": "untrusted_host",
-          "severity": "warn",
-          "detail": "图源不在可信白名单（p1.qhimg.com）"
-        },
-        {
-          "code": "identity_conflict",
-          "severity": "error",
-          "detail": "来源与本站影片对不上：来源带「新片 / 档期」措辞，与 2011 年的老片对不上（来源：端午档电影《我爱你!》曝全新海报 倪大红惠英红梁家辉叶童紧紧相拥共赴白头 - 360娱乐，你开心就好）"
-        }
-      ]
+      "verified": true,
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20261015-dignity",
@@ -4089,78 +4038,6 @@
       ]
     },
     {
-      "id": "20261004",
-      "zhTitle": "不可饶恕",
-      "year": "2010",
-      "sourceTitle": "不可饶恕海报,不可饶恕,不可饶恕图片_大山谷图库",
-      "imageUrl": "http://5b0988e595225.cdn.sohucs.com/images/20190831/079757f6d9de4057875cd76382d59502.jpeg",
-      "host": "5b0988e595225.cdn.sohucs.com",
-      "dims": "1080×1578",
-      "evidence": {
-        "level": "medium",
-        "reasons": [
-          "片名命中「不可饶恕」"
-        ],
-        "conflicts": []
-      },
-      "verified": false,
-      "status": "warn",
-      "issues": [
-        "untrusted_host",
-        "identity_weak_evidence"
-      ]
-    },
-    {
-      "id": "20261005",
-      "zhTitle": "王者",
-      "year": "2017",
-      "sourceTitle": "\"王吒\"出击!成都智造《王者荣耀》《哪吒2》官宣联动|电影海报|哪吒之魔童闹海|数字|票房|手游_新浪新闻",
-      "imageUrl": "http://k.sinaimg.cn/n/sinakd20250416s/534/w1080h1854/20250416/f006-6f740fefc453551ce3576d1d50b0eadc.jpg/w700d1q75cms.jpg",
-      "host": "k.sinaimg.cn",
-      "dims": "700×1202",
-      "evidence": {
-        "level": "medium",
-        "reasons": [
-          "片名命中「王者」"
-        ],
-        "conflicts": [
-          "来源引用的是《王者荣耀》，不是本站片名",
-          "来源带「新片 / 档期」措辞，与 2017 年的老片对不上"
-        ]
-      },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        "untrusted_host",
-        "identity_conflict"
-      ]
-    },
-    {
-      "id": "20261009-witness",
-      "zhTitle": "证人",
-      "year": "2019",
-      "sourceTitle": "《沉默的证人》曝光\"凝视\"版海报：上演\"惊魂一瞥\"引发诸多悬念迭起-新闻资讯-高贝娱乐",
-      "imageUrl": "https://www.gaobei.com/upload/10001/article/2019_02/27193204_sfc0v9_b.jpg",
-      "host": "www.gaobei.com",
-      "dims": "600×840",
-      "evidence": {
-        "level": "strong",
-        "reasons": [
-          "片名命中「证人」",
-          "年份命中 2019"
-        ],
-        "conflicts": [
-          "来源引用的是《沉默的证人》，不是本站片名"
-        ]
-      },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        "untrusted_host",
-        "identity_conflict"
-      ]
-    },
-    {
       "id": "20261009",
       "zhTitle": "老千",
       "year": "2006",
@@ -4180,55 +4057,6 @@
       "issues": [
         "untrusted_host",
         "identity_weak_evidence"
-      ]
-    },
-    {
-      "id": "20261013-book-of-fish",
-      "zhTitle": "兹山鱼谱",
-      "year": "2021",
-      "sourceTitle": "电影海报上的绿 💚 春江水暖 夏日之王 兹山鱼谱",
-      "imageUrl": "posters/20261013-book-of-fish.jpg",
-      "host": "k.sinaimg.cn",
-      "dims": "700×1031",
-      "evidence": {
-        "level": "medium",
-        "reasons": [
-          "片名命中「兹山鱼谱」"
-        ],
-        "conflicts": [
-          "来源标题像片单 / 合集帖（片名在末尾且带表情符号），图未必属于这部片"
-        ]
-      },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        "untrusted_host",
-        "identity_conflict"
-      ]
-    },
-    {
-      "id": "20261014",
-      "zhTitle": "我爱你",
-      "year": "2011",
-      "sourceTitle": "端午档电影《我爱你!》曝全新海报 倪大红惠英红梁家辉叶童紧紧相拥共赴白头 - 360娱乐，你开心就好",
-      "imageUrl": "http://p1.qhimg.com/t01d563d5fbf379c1cb.jpg?3000*4200",
-      "host": "p1.qhimg.com",
-      "dims": "3000×4200",
-      "evidence": {
-        "level": "strong",
-        "reasons": [
-          "片名命中「我爱你」",
-          "书名号片名命中「我爱你!」"
-        ],
-        "conflicts": [
-          "来源带「新片 / 档期」措辞，与 2011 年的老片对不上"
-        ]
-      },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        "untrusted_host",
-        "identity_conflict"
       ]
     },
     {

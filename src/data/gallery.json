@@ -293,24 +293,30 @@
     "zhTitle": "不可饶恕",
     "enTitle": "",
     "year": "2010",
-    "imageUrl": "http://5b0988e595225.cdn.sohucs.com/images/20190831/079757f6d9de4057875cd76382d59502.jpeg",
-    "title": "不可饶恕海报,不可饶恕,不可饶恕图片_大山谷图库"
+    "imageUrl": "posters/20261004.jpg",
+    "title": "不可饶恕海报,不可饶恕,不可饶恕图片_大山谷图库",
+    "hiRes": true,
+    "sourceNote": "人工核对为韩国《不可饶恕》No Mercy 2010 海报（原图为 1992 年《不可饶恕》）"
   },
   {
     "id": "20261005",
     "zhTitle": "王者",
     "enTitle": "",
     "year": "2017",
-    "imageUrl": "http://k.sinaimg.cn/n/sinakd20250416s/534/w1080h1854/20250416/f006-6f740fefc453551ce3576d1d50b0eadc.jpg/w700d1q75cms.jpg",
-    "title": "\"王吒\"出击!成都智造《王者荣耀》《哪吒2》官宣联动|电影海报|哪吒之魔童闹海|数字|票房|手游_新浪新闻"
+    "imageUrl": "posters/20261005.jpg",
+    "title": "\"王吒\"出击!成都智造《王者荣耀》《哪吒2》官宣联动|电影海报|哪吒之魔童闹海|数字|票房|手游_新浪新闻",
+    "hiRes": true,
+    "sourceNote": "人工核对为韩国《王者》The King 2017 海报（原图为王者荣耀联动图）"
   },
   {
     "id": "20261009-witness",
     "zhTitle": "证人",
     "enTitle": "",
     "year": "2019",
-    "imageUrl": "https://www.gaobei.com/upload/10001/article/2019_02/27193204_sfc0v9_b.jpg",
-    "title": "《沉默的证人》曝光\"凝视\"版海报：上演\"惊魂一瞥\"引发诸多悬念迭起-新闻资讯-高贝娱乐"
+    "imageUrl": "posters/20261009-witness.jpg",
+    "title": "《沉默的证人》曝光\"凝视\"版海报：上演\"惊魂一瞥\"引发诸多悬念迭起-新闻资讯-高贝娱乐",
+    "hiRes": true,
+    "sourceNote": "人工核对为韩国《证人》Innocent Witness 2019 海报（原图为华语片《沉默的证人》）"
   },
   {
     "id": "20261009",
@@ -356,16 +362,18 @@
     "imageUrl": "posters/20261013-book-of-fish.jpg",
     "title": "电影海报上的绿 💚 春江水暖 夏日之王 兹山鱼谱",
     "remoteUrl": "http://k.sinaimg.cn/n/sinakd20230522ac/271/w1080h1591/20230522/546e-75edda659d5affcb10691719c4f1971a.jpg/w700d1q75cms.jpg",
-    "hiRes": false,
-    "sourceNote": "百度图片检索，人工核对为《兹山鱼谱》官方海报"
+    "hiRes": true,
+    "sourceNote": "人工核对为《兹山鱼谱》官方海报（原图为《小伟》）"
   },
   {
     "id": "20261014",
     "zhTitle": "我爱你",
     "enTitle": "",
     "year": "2011",
-    "imageUrl": "http://p1.qhimg.com/t01d563d5fbf379c1cb.jpg?3000*4200",
-    "title": "端午档电影《我爱你!》曝全新海报 倪大红惠英红梁家辉叶童紧紧相拥共赴白头 - 360娱乐，你开心就好"
+    "imageUrl": "posters/20261014.png",
+    "title": "端午档电影《我爱你!》曝全新海报 倪大红惠英红梁家辉叶童紧紧相拥共赴白头 - 360娱乐，你开心就好",
+    "hiRes": false,
+    "sourceNote": "人工核对为韩国《我爱你》Late Blossom 2011 海报（原图为 2023 年《我爱你！》）"
   },
   {
     "id": "20261015-dignity",
