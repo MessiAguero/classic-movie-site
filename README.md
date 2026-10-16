@@ -162,6 +162,12 @@ GitHub Actions（deploy.yml）自动构建部署到 Pages
 ```bash
 cp deploy/com.classicmovie.daily-sync.plist ~/Library/LaunchAgents/
 launchctl load ~/Library/LaunchAgents/com.classicmovie.daily-sync.plist
+
+cp deploy/com.classicmovie.self-check.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.classicmovie.self-check.plist
+
+cp deploy/com.classicmovie.poster-qa.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.classicmovie.poster-qa.plist
 ```
 
 每天 00:10 / 06:00 / 12:00 / 18:00 自动检查并同步，日志在
@@ -173,6 +179,24 @@ DRY_RUN=1 ./tools/daily-sync.sh # 只同步不推送
 ```
 
 说明：首页日期按当天匹配，某天没有新文件时自动显示最近一部，不会报错。
+
+### 自检与自动修复
+
+同步这一步失败过就没人发现，是这条链路最脆的地方。`tools/self-check.sh`
+每小时（以及 WorkBuddy 生成新页面时）自检一次：
+
+```bash
+npm run self:check                  # 自检 + 自动修复
+npm run self:check -- --check-only  # 只自检，不改动任何东西
+npm run sync:check                  # 只查同步时效
+```
+
+1. **同步时效自检**：沿 WorkBuddy → `source-html/` → `movies.json` → 提交 →
+   推送 → 线上站点逐段核对，发现卡住就自动补齐并复核；
+2. **海报自检**：检查错误搭配、横版剧照、缩略图、重复图，发现即自动换图并复检。
+
+报告写入 `output/self-check.md`，日志在 `/tmp/classicmovie-selfcheck.log`。
+细节见 [docs/自检机制.md](docs/自检机制.md)。
 
 ## 海报自检（每天自动校验并纠错）
 

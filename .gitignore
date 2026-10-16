@@ -24,6 +24,11 @@ backend/*/__pycache__/
 # 原版页面（构建时从 source-html 自动生成）
 public/daily/
 
+# 自检报告（每次巡检都会重写，留在本地查看即可，不进仓库）
+output/self-check.json
+output/self-check.md
+output/sync-audit.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

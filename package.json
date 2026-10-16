@@ -20,7 +20,9 @@
     "poster:check": "node tools/check-posters.mjs",
     "poster:fix": "node tools/fix-posters.mjs",
     "poster:aliases": "node tools/resolve-aliases.mjs",
-    "poster:qa": "./tools/poster-qa.sh"
+    "poster:qa": "./tools/poster-qa.sh",
+    "sync:check": "node tools/check-sync.mjs",
+    "self:check": "./tools/self-check.sh"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.1",
