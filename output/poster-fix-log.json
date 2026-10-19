@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-19T04:11:34.259Z",
+  "at": "2026-10-19T04:16:33.412Z",
   "dryRun": false,
   "targetCount": 2,
   "fixedCount": 2,
@@ -10,7 +10,7 @@
       "zhTitle": "假如爱有天意",
       "before": {
         "imageUrl": "posters/20261018-classic.jpg",
-        "dims": "1000×1426",
+        "dims": "2000×3000",
         "status": "error",
         "issues": [
           "identity_unverified"
@@ -18,10 +18,10 @@
       },
       "after": {
         "imageUrl": "posters/20261018-classic.jpg",
-        "dims": "2000×3000",
+        "dims": "1000×1426",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/sNe23Tsia9usMBN5TW2KXPJdq2K.jpg",
-        "title": "The Classic (2003) - Posters — The Movie Database (TMDB)"
+        "url": "https://image.tmdb.org/t/p/original/9eyqhS9MKBQqQJdGmWjKLH396gJ.jpg",
+        "title": "Oldboy (2003) - Posters — The Movie Database (TMDb)"
       }
     },
     {
@@ -29,7 +29,7 @@
       "zhTitle": "开心家族",
       "before": {
         "imageUrl": "posters/20261019.jpg",
-        "dims": "700×1050",
+        "dims": "1000×1498",
         "status": "error",
         "issues": [
           "identity_unverified"
@@ -37,10 +37,10 @@
       },
       "after": {
         "imageUrl": "posters/20261019.jpg",
-        "dims": "1000×1498",
+        "dims": "700×1050",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/eABJoKMxXky1R13aR2E9It90Djm.jpg",
-        "title": "Hello Ghost (2010) - Posters — The Movie Database (TMDB)"
+        "url": "https://image.tmdb.org/t/p/original/mjjZ0p8wIKaRZHbDFjceWN5Tjtk.jpg",
+        "title": "헬로우 고스트 (2010) - 포스터 — The Movie Database (TMDB)"
       }
     }
   ],
@@ -49,7 +49,7 @@
     {
       "id": "20261018-classic",
       "status": "error",
-      "dims": "2000×3000",
+      "dims": "1000×1426",
       "issues": [
         "identity_unverified"
       ]
@@ -57,7 +57,7 @@
     {
       "id": "20261019",
       "status": "error",
-      "dims": "1000×1498",
+      "dims": "700×1050",
       "issues": [
         "identity_unverified"
       ]
