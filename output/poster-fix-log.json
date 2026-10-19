@@ -1,47 +1,70 @@
 {
-  "at": "2026-10-16T05:38:57.160Z",
-  "dryRun": true,
-  "targetCount": 5,
-  "fixedCount": 1,
-  "failureCount": 4,
+  "at": "2026-10-19T04:05:37.457Z",
+  "dryRun": false,
+  "targetCount": 2,
+  "fixedCount": 2,
+  "failureCount": 0,
   "changes": [
     {
-      "id": "20261005",
-      "zhTitle": "王者",
+      "id": "20261018-classic",
+      "zhTitle": "假如爱有天意",
       "before": {
-        "imageUrl": "http://k.sinaimg.cn/n/sinakd20250416s/534/w1080h1854/20250416/f006-6f740fefc453551ce3576d1d50b0eadc.jpg/w700d1q75cms.jpg",
-        "dims": "700×1202",
+        "imageUrl": "https://k.sinaimg.cn/n/sinakd20240523s/200/w640h360/20240523/0ba7-60a751ca308e042d9fba676548c7bb3d.jpg/w700d1q75cms.jpg?by=cms_fixed_width",
+        "dims": "640×360",
         "status": "error",
         "issues": [
-          "untrusted_host",
-          "identity_conflict"
+          "low_resolution",
+          "landscape",
+          "untrusted_host"
         ]
       },
       "after": {
+        "imageUrl": "posters/20261018-classic.jpg",
         "dims": "2000×3000",
-        "source": "ddg",
-        "url": "https://image.tmdb.org/t/p/original/97UeWeCYcK9gkiZLPNJIj0JDRFi.jpg"
+        "source": "bing",
+        "url": "https://image.tmdb.org/t/p/original/sNe23Tsia9usMBN5TW2KXPJdq2K.jpg",
+        "title": "The Classic (2003) - Posters — The Movie Database (TMDB)"
+      }
+    },
+    {
+      "id": "20261019",
+      "zhTitle": "开心家族",
+      "before": {
+        "imageUrl": "https://image.tmdb.org/t/p/original/5KtV4hNjgBgmMStxxgSbVzDk7Sr.jpg",
+        "dims": "1329×748",
+        "status": "error",
+        "issues": [
+          "landscape",
+          "identity_unverified",
+          "source_is_still"
+        ]
       },
-      "dryRun": true
+      "after": {
+        "imageUrl": "posters/20261019.jpg",
+        "dims": "1000×1498",
+        "source": "bing",
+        "url": "https://image.tmdb.org/t/p/original/eABJoKMxXky1R13aR2E9It90Djm.jpg",
+        "title": "Hello Ghost (2010) - Posters — The Movie Database (TMDB)"
+      }
     }
   ],
-  "failures": [
+  "failures": [],
+  "recheck": [
     {
-      "id": "20261009-witness",
-      "reason": "没有可用的替代候选"
+      "id": "20261018-classic",
+      "status": "error",
+      "dims": "2000×3000",
+      "issues": [
+        "identity_unverified"
+      ]
     },
     {
-      "id": "20261013-book-of-fish",
-      "reason": "没有可用的替代候选"
-    },
-    {
-      "id": "20261014",
-      "reason": "没有可用的替代候选"
-    },
-    {
-      "id": "20261004",
-      "reason": "没有可用的替代候选"
+      "id": "20261019",
+      "status": "error",
+      "dims": "1000×1498",
+      "issues": [
+        "identity_unverified"
+      ]
     }
-  ],
-  "recheck": []
+  ]
 }
