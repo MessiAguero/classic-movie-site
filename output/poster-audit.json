@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T06:22:36.203Z",
+  "generatedAt": "2026-10-19T07:23:17.247Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -1226,15 +1226,15 @@
     {
       "id": "20261018-classic",
       "zhTitle": "假如爱有天意",
-      "sourceTitle": "The Classic (2003) - Posters — The Movie Database (TMDB)",
+      "sourceTitle": "Oldboy (2003) - Posters — The Movie Database (TMDb)",
       "year": "2003",
       "source": "本地",
       "imageUrl": "posters/20261018-classic.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "460KB",
-      "dims": "2000×3000",
-      "ratio": 1.5,
+      "size": "427KB",
+      "dims": "1000×1426",
+      "ratio": 1.43,
       "identityKind": "year",
       "identityHits": [
         "年份"
@@ -1242,7 +1242,6 @@
       "evidence": {
         "level": "strong",
         "reasons": [
-          "片名命中「The Classic」",
           "年份命中 2003",
           "可信图源（tmdb）"
         ],
@@ -1254,21 +1253,21 @@
         {
           "code": "identity_unverified",
           "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：The Classic (2003) - Posters — The Movie Database (TMDB)）"
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Oldboy (2003) - Posters — The Movie Database (TMDb)）"
         }
       ]
     },
     {
       "id": "20261019",
       "zhTitle": "开心家族",
-      "sourceTitle": "Hello Ghost (2010) - Posters — The Movie Database (TMDB)",
+      "sourceTitle": "헬로우 고스트 (2010) - 포스터 — The Movie Database (TMDB)",
       "year": "2010",
       "source": "本地",
       "imageUrl": "posters/20261019.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "383KB",
-      "dims": "1000×1498",
+      "size": "162KB",
+      "dims": "700×1050",
       "ratio": 1.5,
       "identityKind": "year",
       "identityHits": [
@@ -1277,6 +1276,7 @@
       "evidence": {
         "level": "strong",
         "reasons": [
+          "片名命中「헬로우 고스트」",
           "年份命中 2010",
           "可信图源（tmdb）"
         ],
@@ -1288,7 +1288,7 @@
         {
           "code": "identity_unverified",
           "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Hello Ghost (2010) - Posters — The Movie Database (TMDB)）"
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：헬로우 고스트 (2010) - 포스터 — The Movie Database (TMDB)）"
         }
       ]
     },
@@ -4073,14 +4073,13 @@
       "id": "20261018-classic",
       "zhTitle": "假如爱有天意",
       "year": "2003",
-      "sourceTitle": "The Classic (2003) - Posters — The Movie Database (TMDB)",
+      "sourceTitle": "Oldboy (2003) - Posters — The Movie Database (TMDb)",
       "imageUrl": "posters/20261018-classic.jpg",
       "host": "image.tmdb.org",
-      "dims": "2000×3000",
+      "dims": "1000×1426",
       "evidence": {
         "level": "strong",
         "reasons": [
-          "片名命中「The Classic」",
           "年份命中 2003",
           "可信图源（tmdb）"
         ],
@@ -4096,13 +4095,14 @@
       "id": "20261019",
       "zhTitle": "开心家族",
       "year": "2010",
-      "sourceTitle": "Hello Ghost (2010) - Posters — The Movie Database (TMDB)",
+      "sourceTitle": "헬로우 고스트 (2010) - 포스터 — The Movie Database (TMDB)",
       "imageUrl": "posters/20261019.jpg",
       "host": "image.tmdb.org",
-      "dims": "1000×1498",
+      "dims": "700×1050",
       "evidence": {
         "level": "strong",
         "reasons": [
+          "片名命中「헬로우 고스트」",
           "年份命中 2010",
           "可信图源（tmdb）"
         ],
