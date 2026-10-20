@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-19T09:24:21.926Z",
+  "generatedAt": "2026-10-20T00:17:05.197Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -10,8 +10,8 @@
   },
   "total": 131,
   "ok": 116,
-  "warn": 13,
-  "error": 2,
+  "warn": 15,
+  "error": 0,
   "entries": [
     {
       "id": "20260817",
@@ -1226,69 +1226,69 @@
     {
       "id": "20261018-classic",
       "zhTitle": "假如爱有天意",
-      "sourceTitle": "Oldboy (2003) - Posters — The Movie Database (TMDb)",
+      "sourceTitle": "我是从《假如爱有天意》开始喜欢上孙艺珍的.",
       "year": "2003",
       "source": "本地",
       "imageUrl": "posters/20261018-classic.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "427KB",
-      "dims": "1000×1426",
-      "ratio": 1.43,
-      "identityKind": "year",
+      "host": "pic.rmb.bdstatic.com",
+      "tier": "unknown",
+      "size": "393KB",
+      "dims": "1490×1966",
+      "ratio": 1.32,
+      "identityKind": "name",
       "identityHits": [
-        "年份"
+        "片名中文"
       ],
       "evidence": {
         "level": "strong",
         "reasons": [
-          "年份命中 2003",
-          "可信图源（tmdb）"
+          "片名命中「假如爱有天意」",
+          "主创命中「孙艺珍」",
+          "书名号片名命中「假如爱有天意」"
         ],
         "conflicts": []
       },
       "verified": false,
-      "status": "error",
+      "status": "warn",
       "issues": [
         {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Oldboy (2003) - Posters — The Movie Database (TMDb)）"
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（pic.rmb.bdstatic.com）"
         }
       ]
     },
     {
       "id": "20261019",
       "zhTitle": "开心家族",
-      "sourceTitle": "헬로우 고스트 (2010) - 포스터 — The Movie Database (TMDB)",
+      "sourceTitle": "《开心家族》:鬼魂缠身的孤独青.@法典解读家的动态",
       "year": "2010",
       "source": "本地",
       "imageUrl": "posters/20261019.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "162KB",
-      "dims": "700×1050",
-      "ratio": 1.5,
-      "identityKind": "year",
+      "host": "bj.bcebos.com",
+      "tier": "unknown",
+      "size": "117KB",
+      "dims": "678×910",
+      "ratio": 1.34,
+      "identityKind": "name",
       "identityHits": [
-        "年份"
+        "片名中文"
       ],
       "evidence": {
         "level": "strong",
         "reasons": [
-          "片名命中「헬로우 고스트」",
-          "年份命中 2010",
-          "可信图源（tmdb）"
+          "片名命中「开心家族」",
+          "书名号片名命中「开心家族」"
         ],
         "conflicts": []
       },
       "verified": false,
-      "status": "error",
+      "status": "warn",
       "issues": [
         {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：헬로우 고스트 (2010) - 포스터 — The Movie Database (TMDB)）"
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（bj.bcebos.com）"
         }
       ]
     },
@@ -4068,51 +4068,5 @@
       "issues": []
     }
   ],
-  "needsReview": [
-    {
-      "id": "20261018-classic",
-      "zhTitle": "假如爱有天意",
-      "year": "2003",
-      "sourceTitle": "Oldboy (2003) - Posters — The Movie Database (TMDb)",
-      "imageUrl": "posters/20261018-classic.jpg",
-      "host": "image.tmdb.org",
-      "dims": "1000×1426",
-      "evidence": {
-        "level": "strong",
-        "reasons": [
-          "年份命中 2003",
-          "可信图源（tmdb）"
-        ],
-        "conflicts": []
-      },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        "identity_unverified"
-      ]
-    },
-    {
-      "id": "20261019",
-      "zhTitle": "开心家族",
-      "year": "2010",
-      "sourceTitle": "헬로우 고스트 (2010) - 포스터 — The Movie Database (TMDB)",
-      "imageUrl": "posters/20261019.jpg",
-      "host": "image.tmdb.org",
-      "dims": "700×1050",
-      "evidence": {
-        "level": "strong",
-        "reasons": [
-          "片名命中「헬로우 고스트」",
-          "年份命中 2010",
-          "可信图源（tmdb）"
-        ],
-        "conflicts": []
-      },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        "identity_unverified"
-      ]
-    }
-  ]
+  "needsReview": []
 }
