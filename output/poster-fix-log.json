@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-21T04:07:02.582Z",
+  "at": "2026-10-21T04:09:24.961Z",
   "dryRun": false,
   "targetCount": 2,
   "fixedCount": 2,
@@ -9,39 +9,37 @@
       "id": "20261020-harmony",
       "zhTitle": "和声",
       "before": {
-        "imageUrl": "https://img.goldposter.com/2017/11/harmony-2_poster_goldposter_com_1.jpg?x-oss-process=image/resize,m_fill,h_800,w_562/quality,q_80",
-        "dims": "562×800",
-        "status": "warn",
+        "imageUrl": "posters/20261020-harmony.jpg",
+        "dims": "1175×1763",
+        "status": "error",
         "issues": [
-          "aggregator_host",
-          "identity_weak_evidence"
+          "identity_unverified"
         ]
       },
       "after": {
         "imageUrl": "posters/20261020-harmony.jpg",
-        "dims": "1175×1763",
+        "dims": "2000×3000",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/A9mIMRw3jydJifcuNh09mzVqQUc.jpg",
-        "title": "Harmony (2010) - Posters — The Movie Database (TMDB)"
+        "url": "https://image.tmdb.org/t/p/original/wzOevQ3GLsKUt4BxXisXSNX1J2o.jpg",
+        "title": "Implied Harmonies (2010) - Posters — The Movie Database (TMDB)"
       }
     },
     {
       "id": "20261021-marathon",
       "zhTitle": "马拉松",
       "before": {
-        "imageUrl": "http://img2.mtime.com/pi/d/2005/12/200531710250.8716618_o.jpg",
-        "dims": "1280×960",
+        "imageUrl": "posters/20261021-marathon.jpg",
+        "dims": "900×1285",
         "status": "error",
         "issues": [
-          "landscape",
-          "untrusted_host"
+          "identity_unverified"
         ]
       },
       "after": {
         "imageUrl": "posters/20261021-marathon.jpg",
-        "dims": "900×1285",
+        "dims": "590×885",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/lvHr4iSzpqHYki4Lcj8WkVrotJM.jpg",
+        "url": "https://image.tmdb.org/t/p/original/fA2DS3fEFg5KxySQuYyUCCDjMra.jpg",
         "title": "Marathon (2005) - Posters — The Movie Database (TMDB)"
       }
     }
@@ -51,7 +49,7 @@
     {
       "id": "20261020-harmony",
       "status": "error",
-      "dims": "1175×1763",
+      "dims": "2000×3000",
       "issues": [
         "identity_unverified"
       ]
@@ -59,7 +57,7 @@
     {
       "id": "20261021-marathon",
       "status": "error",
-      "dims": "900×1285",
+      "dims": "590×885",
       "issues": [
         "identity_unverified"
       ]
