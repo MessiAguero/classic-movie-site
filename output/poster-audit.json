@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T19:44:46.498Z",
+  "generatedAt": "2026-10-21T04:07:05.039Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,10 +8,10 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 132,
+  "total": 133,
   "ok": 116,
-  "warn": 16,
-  "error": 0,
+  "warn": 15,
+  "error": 2,
   "entries": [
     {
       "id": "20260817",
@@ -1295,38 +1295,70 @@
     {
       "id": "20261020-harmony",
       "zhTitle": "和声",
-      "sourceTitle": "和声海报 1 | 金海报-GoldPoster",
+      "sourceTitle": "Harmony (2010) - Posters — The Movie Database (TMDB)",
       "year": "2010",
-      "source": "远程",
-      "imageUrl": "https://img.goldposter.com/2017/11/harmony-2_poster_goldposter_com_1.jpg?x-oss-process=image/resize,m_fill,h_800,w_562/quality,q_80",
-      "host": "img.goldposter.com",
-      "tier": "aggregator",
-      "size": "120KB",
-      "dims": "562×800",
-      "ratio": 1.42,
-      "identityKind": "name",
+      "source": "本地",
+      "imageUrl": "posters/20261020-harmony.jpg",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "360KB",
+      "dims": "1175×1763",
+      "ratio": 1.5,
+      "identityKind": "year",
       "identityHits": [
-        "片名中文"
+        "年份"
       ],
       "evidence": {
-        "level": "medium",
+        "level": "strong",
         "reasons": [
-          "片名命中「和声」"
+          "片名命中「Harmony」",
+          "年份命中 2010",
+          "可信图源（tmdb）"
         ],
         "conflicts": []
       },
       "verified": false,
-      "status": "warn",
+      "status": "error",
       "issues": [
         {
-          "code": "aggregator_host",
-          "severity": "warn",
-          "detail": "图源为聚合站（img.goldposter.com），建议换用官方图源"
-        },
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Harmony (2010) - Posters — The Movie Database (TMDB)）"
+        }
+      ]
+    },
+    {
+      "id": "20261021-marathon",
+      "zhTitle": "马拉松",
+      "sourceTitle": "Marathon (2005) - Posters — The Movie Database (TMDB)",
+      "year": "2005",
+      "source": "本地",
+      "imageUrl": "posters/20261021-marathon.jpg",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "399KB",
+      "dims": "900×1285",
+      "ratio": 1.43,
+      "identityKind": "year",
+      "identityHits": [
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Marathon」",
+          "年份命中 2005",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "error",
+      "issues": [
         {
-          "code": "identity_weak_evidence",
-          "severity": "warn",
-          "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：和声海报 1 | 金海报-GoldPoster）"
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Marathon (2005) - Posters — The Movie Database (TMDB)）"
         }
       ]
     },
@@ -4111,22 +4143,46 @@
       "id": "20261020-harmony",
       "zhTitle": "和声",
       "year": "2010",
-      "sourceTitle": "和声海报 1 | 金海报-GoldPoster",
-      "imageUrl": "https://img.goldposter.com/2017/11/harmony-2_poster_goldposter_com_1.jpg?x-oss-process=image/resize,m_fill,h_800,w_562/quality,q_80",
-      "host": "img.goldposter.com",
-      "dims": "562×800",
+      "sourceTitle": "Harmony (2010) - Posters — The Movie Database (TMDB)",
+      "imageUrl": "posters/20261020-harmony.jpg",
+      "host": "image.tmdb.org",
+      "dims": "1175×1763",
       "evidence": {
-        "level": "medium",
+        "level": "strong",
         "reasons": [
-          "片名命中「和声」"
+          "片名命中「Harmony」",
+          "年份命中 2010",
+          "可信图源（tmdb）"
         ],
         "conflicts": []
       },
       "verified": false,
-      "status": "warn",
+      "status": "error",
       "issues": [
-        "aggregator_host",
-        "identity_weak_evidence"
+        "identity_unverified"
+      ]
+    },
+    {
+      "id": "20261021-marathon",
+      "zhTitle": "马拉松",
+      "year": "2005",
+      "sourceTitle": "Marathon (2005) - Posters — The Movie Database (TMDB)",
+      "imageUrl": "posters/20261021-marathon.jpg",
+      "host": "image.tmdb.org",
+      "dims": "900×1285",
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Marathon」",
+          "年份命中 2005",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "error",
+      "issues": [
+        "identity_unverified"
       ]
     }
   ]

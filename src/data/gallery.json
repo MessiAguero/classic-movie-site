@@ -418,8 +418,20 @@
     "zhTitle": "和声",
     "enTitle": "",
     "year": "2010",
-    "imageUrl": "https://img.goldposter.com/2017/11/harmony-2_poster_goldposter_com_1.jpg?x-oss-process=image/resize,m_fill,h_800,w_562/quality,q_80",
-    "title": "和声海报 1 | 金海报-GoldPoster"
+    "imageUrl": "posters/20261020-harmony.jpg",
+    "title": "Harmony (2010) - Posters — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/A9mIMRw3jydJifcuNh09mzVqQUc.jpg",
+    "hiRes": true
+  },
+  {
+    "id": "20261021-marathon",
+    "zhTitle": "马拉松",
+    "enTitle": "",
+    "year": "2005",
+    "imageUrl": "posters/20261021-marathon.jpg",
+    "title": "Marathon (2005) - Posters — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/lvHr4iSzpqHYki4Lcj8WkVrotJM.jpg",
+    "hiRes": false
   },
   {
     "id": "20260427",

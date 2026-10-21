@@ -1,65 +1,67 @@
 {
-  "at": "2026-10-20T00:17:04.487Z",
+  "at": "2026-10-21T04:07:02.582Z",
   "dryRun": false,
   "targetCount": 2,
   "fixedCount": 2,
   "failureCount": 0,
   "changes": [
     {
-      "id": "20261018-classic",
-      "zhTitle": "假如爱有天意",
+      "id": "20261020-harmony",
+      "zhTitle": "和声",
       "before": {
-        "imageUrl": "posters/20261018-classic.jpg",
-        "dims": "1000×1426",
-        "status": "error",
+        "imageUrl": "https://img.goldposter.com/2017/11/harmony-2_poster_goldposter_com_1.jpg?x-oss-process=image/resize,m_fill,h_800,w_562/quality,q_80",
+        "dims": "562×800",
+        "status": "warn",
         "issues": [
-          "identity_unverified"
+          "aggregator_host",
+          "identity_weak_evidence"
         ]
       },
       "after": {
-        "imageUrl": "posters/20261018-classic.jpg",
-        "dims": "1490×1966",
-        "source": "baidu",
-        "url": "https://pic.rmb.bdstatic.com/bjh/events/d4898699a9b856d79bb2f266d373e0342460.jpeg",
-        "title": "我是从《假如爱有天意》开始喜欢上孙艺珍的."
+        "imageUrl": "posters/20261020-harmony.jpg",
+        "dims": "1175×1763",
+        "source": "bing",
+        "url": "https://image.tmdb.org/t/p/original/A9mIMRw3jydJifcuNh09mzVqQUc.jpg",
+        "title": "Harmony (2010) - Posters — The Movie Database (TMDB)"
       }
     },
     {
-      "id": "20261019",
-      "zhTitle": "开心家族",
+      "id": "20261021-marathon",
+      "zhTitle": "马拉松",
       "before": {
-        "imageUrl": "posters/20261019.jpg",
-        "dims": "700×1050",
+        "imageUrl": "http://img2.mtime.com/pi/d/2005/12/200531710250.8716618_o.jpg",
+        "dims": "1280×960",
         "status": "error",
         "issues": [
-          "identity_unverified"
+          "landscape",
+          "untrusted_host"
         ]
       },
       "after": {
-        "imageUrl": "posters/20261019.jpg",
-        "dims": "678×910",
-        "source": "baidu",
-        "url": "https://bj.bcebos.com/bjh-pixel/1704515329899026253_0_ainote_new.jpg?x-bce-process=image/auto-orient,o_1/watermark,image_NDU0ZjAyZDU5YjQ1LnBuZw==,bucket_searchbox,w_20,text_QOazleWFuOino-ivu-Wutg==,type_RlpMYW5UaW5nSGVp,size_20,x_14,y_14,interval_4,color_FFFFFF,effect_softoutline,shc_000000,blr_2,align_1&for=bg",
-        "title": "《开心家族》:鬼魂缠身的孤独青.@法典解读家的动态"
+        "imageUrl": "posters/20261021-marathon.jpg",
+        "dims": "900×1285",
+        "source": "bing",
+        "url": "https://image.tmdb.org/t/p/original/lvHr4iSzpqHYki4Lcj8WkVrotJM.jpg",
+        "title": "Marathon (2005) - Posters — The Movie Database (TMDB)"
       }
     }
   ],
   "failures": [],
   "recheck": [
     {
-      "id": "20261018-classic",
-      "status": "warn",
-      "dims": "1490×1966",
+      "id": "20261020-harmony",
+      "status": "error",
+      "dims": "1175×1763",
       "issues": [
-        "untrusted_host"
+        "identity_unverified"
       ]
     },
     {
-      "id": "20261019",
-      "status": "warn",
-      "dims": "678×910",
+      "id": "20261021-marathon",
+      "status": "error",
+      "dims": "900×1285",
       "issues": [
-        "untrusted_host"
+        "identity_unverified"
       ]
     }
   ]
