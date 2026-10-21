@@ -1,8 +1,8 @@
 {
-  "at": "2026-10-21T04:15:51.164Z",
+  "at": "2026-10-21T04:21:53.152Z",
   "dryRun": false,
-  "targetCount": 2,
-  "fixedCount": 2,
+  "targetCount": 3,
+  "fixedCount": 3,
   "failureCount": 0,
   "changes": [
     {
@@ -10,7 +10,7 @@
       "zhTitle": "和声",
       "before": {
         "imageUrl": "posters/20261020-harmony.jpg",
-        "dims": "2000×3000",
+        "dims": "1175×1763",
         "status": "error",
         "issues": [
           "identity_unverified"
@@ -18,10 +18,10 @@
       },
       "after": {
         "imageUrl": "posters/20261020-harmony.jpg",
-        "dims": "1175×1763",
+        "dims": "2000×3000",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/A9mIMRw3jydJifcuNh09mzVqQUc.jpg",
-        "title": "Harmony (2010) - Posters — The Movie Database (TMDB)"
+        "url": "https://image.tmdb.org/t/p/original/wzOevQ3GLsKUt4BxXisXSNX1J2o.jpg",
+        "title": "Implied Harmonies (2010) - Posters — The Movie Database (TMDB)"
       }
     },
     {
@@ -29,7 +29,7 @@
       "zhTitle": "马拉松",
       "before": {
         "imageUrl": "posters/20261021-marathon.jpg",
-        "dims": "590×885",
+        "dims": "900×1285",
         "status": "error",
         "issues": [
           "identity_unverified"
@@ -37,10 +37,30 @@
       },
       "after": {
         "imageUrl": "posters/20261021-marathon.jpg",
-        "dims": "900×1285",
+        "dims": "590×885",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/lvHr4iSzpqHYki4Lcj8WkVrotJM.jpg",
+        "url": "https://image.tmdb.org/t/p/original/fA2DS3fEFg5KxySQuYyUCCDjMra.jpg",
         "title": "Marathon (2005) - Posters — The Movie Database (TMDB)"
+      }
+    },
+    {
+      "id": "20261021-seasons",
+      "zhTitle": "春夏秋冬又一春",
+      "before": {
+        "imageUrl": "https://image.tmdb.org/t/p/original/bsJqE2BcdOWVnVgTGw6Fqwh0N1L.jpg",
+        "dims": "1920×1080",
+        "status": "error",
+        "issues": [
+          "landscape",
+          "source_is_still"
+        ]
+      },
+      "after": {
+        "imageUrl": "posters/20261021-seasons.jpg",
+        "dims": "2000×3000",
+        "source": "bing",
+        "url": "https://image.tmdb.org/t/p/original/xw8aVnN6j5zMJSurOI8CEmZZqhU.jpg",
+        "title": "Spring, Summer, Fall, Winter... and Spring (2003) - Posters — The Movie ..."
       }
     }
   ],
@@ -49,7 +69,7 @@
     {
       "id": "20261020-harmony",
       "status": "error",
-      "dims": "1175×1763",
+      "dims": "2000×3000",
       "issues": [
         "identity_unverified"
       ]
@@ -57,7 +77,15 @@
     {
       "id": "20261021-marathon",
       "status": "error",
-      "dims": "900×1285",
+      "dims": "590×885",
+      "issues": [
+        "identity_unverified"
+      ]
+    },
+    {
+      "id": "20261021-seasons",
+      "status": "error",
+      "dims": "2000×3000",
       "issues": [
         "identity_unverified"
       ]

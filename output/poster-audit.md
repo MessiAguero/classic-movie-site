@@ -1,14 +1,14 @@
 # 海报自检报告
 
-生成时间：2026-10-21T04:15:52.364Z
+生成时间：2026-10-21T04:21:54.632Z
 
 | 项目 | 数量 |
 | --- | --- |
-| 海报总数 | 133 |
+| 海报总数 | 134 |
 | 正常 | 116 |
 | 警告 | 15 |
-| 错误 | 2 |
-| 需人工核对 | 2 |
+| 错误 | 3 |
+| 需人工核对 | 3 |
 
 ## 需人工核对
 
@@ -18,6 +18,7 @@
 | --- | --- | --- | --- |
 | `20261020-harmony` | 和声 | strong：片名命中「Harmony」、年份命中 2010、可信图源（tmdb） | - |
 | `20261021-marathon` | 马拉松 | strong：片名命中「Marathon」、年份命中 2005、可信图源（tmdb） | - |
+| `20261021-seasons` | 春夏秋冬又一春 | strong：片名命中「Spring」、年份命中 2003、可信图源（tmdb） | - |
 
 ## 需要处理的条目
 
@@ -33,8 +34,9 @@
 | ⚠️ 警告 | `20261016-market` | 国际市场 | 2014 | 550×781 | n.sinaimg.cn | 非白名单图源（图源不在可信白名单（n.sinaimg.cn）） |
 | ⚠️ 警告 | `20261018-classic` | 假如爱有天意 | 2003 | 1490×1966 | pic.rmb.bdstatic.com | 非白名单图源（图源不在可信白名单（pic.rmb.bdstatic.com）） |
 | ⚠️ 警告 | `20261019` | 开心家族 | 2010 | 678×910 | bj.bcebos.com | 非白名单图源（图源不在可信白名单（bj.bcebos.com）） |
-| ❌ 错误 | `20261020-harmony` | 和声 | 2010 | 1175×1763 | image.tmdb.org | 无法核实（仅年份）（只对得上年份，没有任何片名证据，疑似配错图（来源：Harmony (2010) - Posters — The Movie Database (TMDB)）） |
-| ❌ 错误 | `20261021-marathon` | 马拉松 | 2005 | 900×1285 | image.tmdb.org | 无法核实（仅年份）（只对得上年份，没有任何片名证据，疑似配错图（来源：Marathon (2005) - Posters — The Movie Database (TMDB)）） |
+| ❌ 错误 | `20261020-harmony` | 和声 | 2010 | 2000×3000 | image.tmdb.org | 无法核实（仅年份）（只对得上年份，没有任何片名证据，疑似配错图（来源：Implied Harmonies (2010) - Posters — The Movie Database (TMDB)）） |
+| ❌ 错误 | `20261021-marathon` | 马拉松 | 2005 | 590×885 | image.tmdb.org | 无法核实（仅年份）（只对得上年份，没有任何片名证据，疑似配错图（来源：Marathon (2005) - Posters — The Movie Database (TMDB)）） |
+| ❌ 错误 | `20261021-seasons` | 春夏秋冬又一春 | 2003 | 2000×3000 | image.tmdb.org | 无法核实（仅年份）（只对得上年份，没有任何片名证据，疑似配错图（来源：Spring, Summer, Fall, Winter... and Spring (2003) - Posters — The Movie ...）） |
 | ⚠️ 警告 | `20260513` | 霸王别姬 | 1993 | 1000×1449 | img.doooor.com | 非白名单图源（图源不在可信白名单（img.doooor.com）） |
 | ⚠️ 警告 | `20260701-2` | 三傻大闹宝莱坞 | 2009 | 500×677 | so1.360tres.com | 非白名单图源（图源不在可信白名单（so1.360tres.com）） |
 | ⚠️ 警告 | `20260712` | 勇敢的心 | 1995 | 500×750 | images.theposterdb.com | 非白名单图源（图源不在可信白名单（images.theposterdb.com）） |
