@@ -1,8 +1,8 @@
 {
-  "at": "2026-10-22T09:37:25.717Z",
+  "at": "2026-10-22T23:55:04.392Z",
   "dryRun": false,
-  "targetCount": 4,
-  "fixedCount": 4,
+  "targetCount": 5,
+  "fixedCount": 5,
   "failureCount": 0,
   "changes": [
     {
@@ -10,7 +10,7 @@
       "zhTitle": "老千",
       "before": {
         "imageUrl": "posters/20261009.jpg",
-        "dims": "733×1100",
+        "dims": "2000×3000",
         "status": "error",
         "issues": [
           "identity_unverified"
@@ -18,10 +18,10 @@
       },
       "after": {
         "imageUrl": "posters/20261009.jpg",
-        "dims": "2000×3000",
-        "source": "ddg",
-        "url": "https://image.tmdb.org/t/p/original/kgzWuDeTig1lOWsjlWq4y8nKYwU.jpg",
-        "title": "Tazza: The High Rollers (2006) - Posters — The Movie Database (TMDB)"
+        "dims": "1067×1590",
+        "source": "bing",
+        "url": "https://image.tmdb.org/t/p/original/7kFEOEM28XLmGHetKa5d22KXnWU.jpg",
+        "title": "타짜 (2006) - 포스터 — The Movie Database (TMDB)"
       }
     },
     {
@@ -29,7 +29,7 @@
       "zhTitle": "和声",
       "before": {
         "imageUrl": "posters/20261020-harmony.jpg",
-        "dims": "1175×1763",
+        "dims": "2000×3000",
         "status": "error",
         "issues": [
           "identity_unverified"
@@ -37,10 +37,10 @@
       },
       "after": {
         "imageUrl": "posters/20261020-harmony.jpg",
-        "dims": "2000×3000",
+        "dims": "1175×1763",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/wzOevQ3GLsKUt4BxXisXSNX1J2o.jpg",
-        "title": "Implied Harmonies (2010) - Posters — The Movie Database (TMDB)"
+        "url": "https://image.tmdb.org/t/p/original/A9mIMRw3jydJifcuNh09mzVqQUc.jpg",
+        "title": "Harmony (2010) - Posters — The Movie Database (TMDB)"
       }
     },
     {
@@ -48,7 +48,7 @@
       "zhTitle": "马拉松",
       "before": {
         "imageUrl": "posters/20261021-marathon.jpg",
-        "dims": "900×1285",
+        "dims": "590×885",
         "status": "error",
         "issues": [
           "identity_unverified"
@@ -56,10 +56,10 @@
       },
       "after": {
         "imageUrl": "posters/20261021-marathon.jpg",
-        "dims": "590×885",
+        "dims": "1000×1426",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/fA2DS3fEFg5KxySQuYyUCCDjMra.jpg",
-        "title": "Marathon (2005) - Posters — The Movie Database (TMDB)"
+        "url": "https://image.tmdb.org/t/p/original/95qIQMldTxUZjoMKQ7kmP4OpkMY.jpg",
+        "title": "2005 Movie Posters"
       }
     },
     {
@@ -67,7 +67,7 @@
       "zhTitle": "春夏秋冬又一春",
       "before": {
         "imageUrl": "posters/20261021-seasons.jpg",
-        "dims": "2000×3000",
+        "dims": "800×1200",
         "status": "error",
         "issues": [
           "identity_unverified"
@@ -75,10 +75,29 @@
       },
       "after": {
         "imageUrl": "posters/20261021-seasons.jpg",
-        "dims": "800×1200",
+        "dims": "2000×3000",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/fnSjw4XYKJ7aa4LrCtZJQRKqB3a.jpg",
+        "url": "https://image.tmdb.org/t/p/original/xw8aVnN6j5zMJSurOI8CEmZZqhU.jpg",
         "title": "Spring, Summer, Fall, Winter... and Spring (2003) - Posters — The Movie ..."
+      }
+    },
+    {
+      "id": "20261022-dress",
+      "zhTitle": "结婚礼服",
+      "before": {
+        "imageUrl": "https://image.tmdb.org/t/p/original/1HysT6bJnGU8FZQaFZWYoRLaOhu.jpg",
+        "dims": "-",
+        "status": "error",
+        "issues": [
+          "unreachable"
+        ]
+      },
+      "after": {
+        "imageUrl": "posters/20261022-dress.jpg",
+        "dims": "1242×1660",
+        "source": "baidu",
+        "url": "https://pic.rmb.bdstatic.com/bjh/240330/events/6f967f04aa6e225308cb73185f9c43134852.jpeg",
+        "title": "《结婚礼服》封面海报图结婚礼服电影海报感人催泪电影婚纱韩国电影"
       }
     }
   ],
@@ -87,7 +106,7 @@
     {
       "id": "20261009",
       "status": "error",
-      "dims": "2000×3000",
+      "dims": "1067×1590",
       "issues": [
         "identity_unverified"
       ]
@@ -95,7 +114,7 @@
     {
       "id": "20261020-harmony",
       "status": "error",
-      "dims": "2000×3000",
+      "dims": "1175×1763",
       "issues": [
         "identity_unverified"
       ]
@@ -103,7 +122,7 @@
     {
       "id": "20261021-marathon",
       "status": "error",
-      "dims": "590×885",
+      "dims": "1000×1426",
       "issues": [
         "identity_unverified"
       ]
@@ -111,9 +130,17 @@
     {
       "id": "20261021-seasons",
       "status": "error",
-      "dims": "800×1200",
+      "dims": "2000×3000",
       "issues": [
         "identity_unverified"
+      ]
+    },
+    {
+      "id": "20261022-dress",
+      "status": "warn",
+      "dims": "1242×1660",
+      "issues": [
+        "untrusted_host"
       ]
     }
   ]
