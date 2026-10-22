@@ -1,16 +1,35 @@
 {
-  "at": "2026-10-22T05:15:51.373Z",
+  "at": "2026-10-22T05:21:59.464Z",
   "dryRun": false,
-  "targetCount": 3,
-  "fixedCount": 3,
+  "targetCount": 4,
+  "fixedCount": 4,
   "failureCount": 0,
   "changes": [
+    {
+      "id": "20261009",
+      "zhTitle": "老千",
+      "before": {
+        "imageUrl": "http://5b0988e595225.cdn.sohucs.com/images/20200321/82eafee2a80a4d0eacf4d9c2015508d0.jpeg",
+        "dims": "-",
+        "status": "error",
+        "issues": [
+          "unreachable"
+        ]
+      },
+      "after": {
+        "imageUrl": "posters/20261009.jpg",
+        "dims": "2000×3000",
+        "source": "ddg",
+        "url": "https://image.tmdb.org/t/p/original/kgzWuDeTig1lOWsjlWq4y8nKYwU.jpg",
+        "title": "Tazza: The High Rollers (2006) - Posters — The Movie Database (TMDB)"
+      }
+    },
     {
       "id": "20261020-harmony",
       "zhTitle": "和声",
       "before": {
         "imageUrl": "posters/20261020-harmony.jpg",
-        "dims": "1175×1763",
+        "dims": "1000×1400",
         "status": "error",
         "issues": [
           "identity_unverified"
@@ -18,10 +37,10 @@
       },
       "after": {
         "imageUrl": "posters/20261020-harmony.jpg",
-        "dims": "1000×1400",
+        "dims": "1175×1763",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/2SoVNRNC9VMwkXEbHZythl0JbLz.jpg",
-        "title": "Implied Harmonies (2010) | The Poster Database (TPDb)"
+        "url": "https://image.tmdb.org/t/p/original/A9mIMRw3jydJifcuNh09mzVqQUc.jpg",
+        "title": "Harmony (2010) - Posters — The Movie Database (TMDB)"
       }
     },
     {
@@ -29,7 +48,7 @@
       "zhTitle": "马拉松",
       "before": {
         "imageUrl": "posters/20261021-marathon.jpg",
-        "dims": "900×1285",
+        "dims": "590×885",
         "status": "error",
         "issues": [
           "identity_unverified"
@@ -37,9 +56,9 @@
       },
       "after": {
         "imageUrl": "posters/20261021-marathon.jpg",
-        "dims": "590×885",
+        "dims": "900×1285",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/fA2DS3fEFg5KxySQuYyUCCDjMra.jpg",
+        "url": "https://image.tmdb.org/t/p/original/lvHr4iSzpqHYki4Lcj8WkVrotJM.jpg",
         "title": "Marathon (2005) - Posters — The Movie Database (TMDB)"
       }
     },
@@ -48,7 +67,7 @@
       "zhTitle": "春夏秋冬又一春",
       "before": {
         "imageUrl": "posters/20261021-seasons.jpg",
-        "dims": "2000×3000",
+        "dims": "800×1200",
         "status": "error",
         "issues": [
           "identity_unverified"
@@ -56,9 +75,9 @@
       },
       "after": {
         "imageUrl": "posters/20261021-seasons.jpg",
-        "dims": "800×1200",
+        "dims": "2000×3000",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/fnSjw4XYKJ7aa4LrCtZJQRKqB3a.jpg",
+        "url": "https://image.tmdb.org/t/p/original/xw8aVnN6j5zMJSurOI8CEmZZqhU.jpg",
         "title": "Spring, Summer, Fall, Winter... and Spring (2003) - Posters — The Movie ..."
       }
     }
@@ -66,9 +85,17 @@
   "failures": [],
   "recheck": [
     {
+      "id": "20261009",
+      "status": "error",
+      "dims": "2000×3000",
+      "issues": [
+        "identity_unverified"
+      ]
+    },
+    {
       "id": "20261020-harmony",
       "status": "error",
-      "dims": "1000×1400",
+      "dims": "1175×1763",
       "issues": [
         "identity_unverified"
       ]
@@ -76,7 +103,7 @@
     {
       "id": "20261021-marathon",
       "status": "error",
-      "dims": "590×885",
+      "dims": "900×1285",
       "issues": [
         "identity_unverified"
       ]
@@ -84,7 +111,7 @@
     {
       "id": "20261021-seasons",
       "status": "error",
-      "dims": "800×1200",
+      "dims": "2000×3000",
       "issues": [
         "identity_unverified"
       ]
