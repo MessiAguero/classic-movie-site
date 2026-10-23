@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T23:55:05.011Z",
+  "generatedAt": "2026-10-23T01:14:53.867Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -960,15 +960,15 @@
     {
       "id": "20261009",
       "zhTitle": "老千",
-      "sourceTitle": "타짜 (2006) - 포스터 — The Movie Database (TMDB)",
+      "sourceTitle": "Tazza: The High Rollers (2006) - Posters — The Movie Database (TMDB)",
       "year": "2006",
       "source": "本地",
       "imageUrl": "posters/20261009.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "521KB",
-      "dims": "1067×1590",
-      "ratio": 1.49,
+      "size": "1689KB",
+      "dims": "2000×3000",
+      "ratio": 1.5,
       "identityKind": "year",
       "identityHits": [
         "年份"
@@ -976,7 +976,7 @@
       "evidence": {
         "level": "strong",
         "reasons": [
-          "片名命中「타짜」",
+          "片名命中「Tazza: The High Rollers」",
           "年份命中 2006",
           "可信图源（tmdb）"
         ],
@@ -988,7 +988,7 @@
         {
           "code": "identity_unverified",
           "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：타짜 (2006) - 포스터 — The Movie Database (TMDB)）"
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Tazza: The High Rollers (2006) - Posters — The Movie Database (TMDB)）"
         }
       ]
     },
@@ -1297,14 +1297,14 @@
     {
       "id": "20261020-harmony",
       "zhTitle": "和声",
-      "sourceTitle": "Harmony (2010) - Posters — The Movie Database (TMDB)",
+      "sourceTitle": "Implied Harmonies (2010) - Posters — The Movie Database (TMDB)",
       "year": "2010",
       "source": "本地",
       "imageUrl": "posters/20261020-harmony.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "360KB",
-      "dims": "1175×1763",
+      "size": "356KB",
+      "dims": "2000×3000",
       "ratio": 1.5,
       "identityKind": "year",
       "identityHits": [
@@ -1325,21 +1325,21 @@
         {
           "code": "identity_unverified",
           "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Harmony (2010) - Posters — The Movie Database (TMDB)）"
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Implied Harmonies (2010) - Posters — The Movie Database (TMDB)）"
         }
       ]
     },
     {
       "id": "20261021-marathon",
       "zhTitle": "马拉松",
-      "sourceTitle": "2005 Movie Posters",
+      "sourceTitle": "Marathon (2005) - Posters — The Movie Database (TMDB)",
       "year": "2005",
       "source": "本地",
       "imageUrl": "posters/20261021-marathon.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "209KB",
-      "dims": "1000×1426",
+      "size": "399KB",
+      "dims": "900×1285",
       "ratio": 1.43,
       "identityKind": "year",
       "identityHits": [
@@ -1360,7 +1360,7 @@
         {
           "code": "identity_unverified",
           "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：2005 Movie Posters）"
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Marathon (2005) - Posters — The Movie Database (TMDB)）"
         }
       ]
     },
@@ -1373,8 +1373,8 @@
       "imageUrl": "posters/20261021-seasons.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "736KB",
-      "dims": "2000×3000",
+      "size": "272KB",
+      "dims": "800×1200",
       "ratio": 1.5,
       "identityKind": "year",
       "identityHits": [
@@ -4214,14 +4214,14 @@
       "id": "20261009",
       "zhTitle": "老千",
       "year": "2006",
-      "sourceTitle": "타짜 (2006) - 포스터 — The Movie Database (TMDB)",
+      "sourceTitle": "Tazza: The High Rollers (2006) - Posters — The Movie Database (TMDB)",
       "imageUrl": "posters/20261009.jpg",
       "host": "image.tmdb.org",
-      "dims": "1067×1590",
+      "dims": "2000×3000",
       "evidence": {
         "level": "strong",
         "reasons": [
-          "片名命中「타짜」",
+          "片名命中「Tazza: The High Rollers」",
           "年份命中 2006",
           "可信图源（tmdb）"
         ],
@@ -4237,10 +4237,10 @@
       "id": "20261020-harmony",
       "zhTitle": "和声",
       "year": "2010",
-      "sourceTitle": "Harmony (2010) - Posters — The Movie Database (TMDB)",
+      "sourceTitle": "Implied Harmonies (2010) - Posters — The Movie Database (TMDB)",
       "imageUrl": "posters/20261020-harmony.jpg",
       "host": "image.tmdb.org",
-      "dims": "1175×1763",
+      "dims": "2000×3000",
       "evidence": {
         "level": "strong",
         "reasons": [
@@ -4260,10 +4260,10 @@
       "id": "20261021-marathon",
       "zhTitle": "马拉松",
       "year": "2005",
-      "sourceTitle": "2005 Movie Posters",
+      "sourceTitle": "Marathon (2005) - Posters — The Movie Database (TMDB)",
       "imageUrl": "posters/20261021-marathon.jpg",
       "host": "image.tmdb.org",
-      "dims": "1000×1426",
+      "dims": "900×1285",
       "evidence": {
         "level": "strong",
         "reasons": [
@@ -4286,7 +4286,7 @@
       "sourceTitle": "Spring, Summer, Fall, Winter... and Spring (2003) - Posters — The Movie ...",
       "imageUrl": "posters/20261021-seasons.jpg",
       "host": "image.tmdb.org",
-      "dims": "2000×3000",
+      "dims": "800×1200",
       "evidence": {
         "level": "strong",
         "reasons": [
