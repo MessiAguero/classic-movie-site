@@ -103,6 +103,7 @@ function searchNames(movie) {
 /** 把候选整理成 identityScore() 需要的形状 */
 function candForMatch(cand) {
   return {
+    id: cand.movieId,
     title: cand.title,
     identityText: cand.identityText,
     imageUrl: cand.url,
@@ -181,9 +182,12 @@ export async function validateCandidate(cand, movie, { timeoutMs = 25000 } = {})
       };
     }
     const { tier } = classifyHost(cand.url);
-    const ev = identityEvidence(candForMatch(cand), movie, aliases, tier);
+    const ev = identityEvidence(candForMatch({ ...cand, movieId: movie?.id }), movie, aliases, tier);
     if (ev.conflicts.length) {
       return { ok: false, reason: `候选来源指向别的作品：${ev.conflicts[0]}` };
+    }
+    if (!ev.titleHit) {
+      return { ok: false, reason: '候选来源没有明确片名线索，不能只凭年份或图源域名替换' };
     }
     if (ev.level !== 'strong') {
       return { ok: false, reason: '候选证据不足（缺年份 / 主创佐证，无法排除同名不同片）' };

@@ -325,8 +325,9 @@
     "year": "2006",
     "imageUrl": "posters/20261009.jpg",
     "title": "短剧《老千》:角色背后的人性迷宫",
-    "remoteUrl": "https://q4.itc.cn/q_70/images01/20250126/3fccb3317e184042a932fe10d18b06a5.jpeg",
-    "hiRes": false
+    "remoteUrl": "https://m.media-amazon.com/images/M/MV5BMTU1MjQ0ODMzMF5BMl5BanBnXkFtZTgwNjI5ODc1MjE@._V1_.jpg",
+    "hiRes": true,
+    "sourceNote": "人眼核对：Tazza: The High Rollers (2006) 正式竖版海报"
   },
   {
     "id": "20261010",
@@ -422,8 +423,9 @@
     "year": "2010",
     "imageUrl": "posters/20261020-harmony.jpg",
     "title": "Implied Harmonies (2010) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/original/wzOevQ3GLsKUt4BxXisXSNX1J2o.jpg",
-    "hiRes": true
+    "remoteUrl": "https://m.media-amazon.com/images/M/MV5BMjA3MzM2NzYyOV5BMl5BanBnXkFtZTgwODg4MDE0MjE@._V1_FMjpg_UX1000_.jpg",
+    "hiRes": true,
+    "sourceNote": "人眼核对：Harmony (2010) 正式竖版海报"
   },
   {
     "id": "20261021-marathon",
@@ -432,8 +434,9 @@
     "year": "2005",
     "imageUrl": "posters/20261021-marathon.jpg",
     "title": "Acteur Les 4 Fantastiques 2005 - JRXE",
-    "remoteUrl": "https://image.tmdb.org/t/p/original/gdIgTOZe7CBJIe5blPlg2ueX4rA.jpg",
-    "hiRes": true
+    "remoteUrl": "https://m.media-amazon.com/images/M/MV5BNTBiZTBhNDEtM2RlMS00OWI0LWEzODEtZmI1OWVjZTcxNzBkXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_.jpg",
+    "hiRes": false,
+    "sourceNote": "人眼核对：말아톤 / Marathon (2005) 正式竖版海报"
   },
   {
     "id": "20261021-seasons",
@@ -442,8 +445,9 @@
     "year": "2003",
     "imageUrl": "posters/20261021-seasons.jpg",
     "title": "Hope Springs (2003) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/original/oqYtfJYApyVHzFwS5YCPpRBTZs4.jpg",
-    "hiRes": true
+    "remoteUrl": "https://m.media-amazon.com/images/M/MV5BZGYxOTRlM2MtNWRjZS00NDk2LWExM2EtMDFiYTgyMGJkZGYyXkEyXkFqcGdeQXVyMTA1NTM1NDI2._V1_.jpg",
+    "hiRes": false,
+    "sourceNote": "人眼核对：Spring, Summer, Fall, Winter... and Spring (2003) 正式竖版海报"
   },
   {
     "id": "20261022-dress",
@@ -462,16 +466,20 @@
     "year": "2016",
     "imageUrl": "posters/20261023-canola.jpg",
     "title": "金高银这部电影真的太感动了我爆哭  片名:《季春奶奶》  首播:于2016",
-    "remoteUrl": "https://pic.rmb.bdstatic.com/bjh/240317/2a5fbc987d3aba3922b1216627803d149128.jpeg",
-    "hiRes": true
+    "remoteUrl": "https://m.media-amazon.com/images/M/MV5BOTI2ODkxNzItZGI5ZS00ZGI3LTgzZTYtODZkMDUyZDNmODJlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    "hiRes": true,
+    "sourceNote": "人眼核对：계춘할망 / Canola (2016) 正式竖版海报"
   },
   {
     "id": "20261024-departures",
     "zhTitle": "入殓师",
     "enTitle": "",
     "year": "2008",
-    "imageUrl": "https://img.win3000.com/m00/1e/4d/bea5a888fdce8f33c3bc5f7c3f035c28.jpg",
-    "title": "入殓师图片_电影入殓师海报图片 - 三千图片网"
+    "imageUrl": "posters/20261024-departures.jpg",
+    "title": "入殓师图片_电影入殓师海报图片 - 三千图片网",
+    "remoteUrl": "https://img.win3000.com/m00/1e/4d/bea5a888fdce8f33c3bc5f7c3f035c28.jpg",
+    "hiRes": true,
+    "sourceNote": "人眼核对：おくりびと / Departures (2008) 正式日版海报，泷田洋二郎导演、本木雅弘主演"
   },
   {
     "id": "20261024-twisted",

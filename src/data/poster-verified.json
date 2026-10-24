@@ -20,10 +20,10 @@
       "source": "local-file"
     },
     "20261009": {
-      "sha256": "4a52b59b8792f15a6204848e9752a8ce7ddcbee3e3ab755eb83692b5116640d2",
-      "note": "人工核对：타짜(老千 2006) 官方海报，无误",
-      "at": "2026-10-16T05:49:19.067Z",
-      "source": "existing"
+      "sha256": "8a62751b3a5beab2cb36f1798bb8c4e0587f7811867a0dc41f86a3eb3fe41419",
+      "note": "人眼核对：Tazza: The High Rollers (2006) 正式竖版海报",
+      "at": "2026-10-24T09:42:41.361Z",
+      "source": "https://m.media-amazon.com/images/M/MV5BMTU1MjQ0ODMzMF5BMl5BanBnXkFtZTgwNjI5ODc1MjE@._V1_.jpg"
     },
     "20261014": {
       "sha256": "ec0954546d6a7d9b3e7e9739cef60ff1d292cfd3685f1ad0cc1a99b055c8a9f8",
@@ -48,6 +48,42 @@
       "note": "人工核对：3 Idiots(三傻大闹宝莱坞 2009) 官方海报，无误",
       "at": "2026-10-16T05:49:20.434Z",
       "source": "existing"
+    },
+    "20261020-harmony": {
+      "sha256": "9fb28c208fbf086971e00a6ccc3f9d00f3bdc85e2195e01cd577e2f5e7c66fe4",
+      "note": "人眼核对：Harmony (2010) 正式竖版海报",
+      "at": "2026-10-24T09:42:50.410Z",
+      "source": "https://m.media-amazon.com/images/M/MV5BMjA3MzM2NzYyOV5BMl5BanBnXkFtZTgwODg4MDE0MjE@._V1_FMjpg_UX1000_.jpg"
+    },
+    "20261021-marathon": {
+      "sha256": "53bde2c80d2c70144279ba8b3605df047580312b4cdc61de1a1ab32598201935",
+      "note": "人眼核对：말아톤 / Marathon (2005) 正式竖版海报",
+      "at": "2026-10-24T09:42:56.624Z",
+      "source": "https://m.media-amazon.com/images/M/MV5BNTBiZTBhNDEtM2RlMS00OWI0LWEzODEtZmI1OWVjZTcxNzBkXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_.jpg"
+    },
+    "20261021-seasons": {
+      "sha256": "8c3c0ef263220ec1c7ed4627c5f74b40cf9768b2e5f80127b37238440f132287",
+      "note": "人眼核对：Spring, Summer, Fall, Winter... and Spring (2003) 正式竖版海报",
+      "at": "2026-10-24T09:43:02.912Z",
+      "source": "https://m.media-amazon.com/images/M/MV5BZGYxOTRlM2MtNWRjZS00NDk2LWExM2EtMDFiYTgyMGJkZGYyXkEyXkFqcGdeQXVyMTA1NTM1NDI2._V1_.jpg"
+    },
+    "20261023-canola": {
+      "sha256": "1e30fa8e131de10b1ffa85d5004f3d0262d029121187e4fb9138c160b70137b3",
+      "note": "人眼核对：계춘할망 / Canola (2016) 正式竖版海报",
+      "at": "2026-10-24T09:43:10.385Z",
+      "source": "https://m.media-amazon.com/images/M/MV5BOTI2ODkxNzItZGI5ZS00ZGI3LTgzZTYtODZkMDUyZDNmODJlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    },
+    "20261024-twisted": {
+      "sha256": "61c437ee3802e4434dfcf00a70f85de09b70855fd419ef0890fd6af55092495a",
+      "note": "人眼核对：Our Twisted Hero (1992) 正式海报，英文片名与影片一致",
+      "at": "2026-10-24T09:43:17.297Z",
+      "source": "existing"
+    },
+    "20261024-departures": {
+      "sha256": "b7cdb54ca7877db2fbc7e988a67cf0fbd718724979b1f7ea9dae480052aac864",
+      "note": "人眼核对：おくりびと / Departures (2008) 正式日版海报，泷田洋二郎导演、本木雅弘主演",
+      "at": "2026-10-24T09:43:24.972Z",
+      "source": "https://img.win3000.com/m00/1e/4d/bea5a888fdce8f33c3bc5f7c3f035c28.jpg"
     }
   }
 }

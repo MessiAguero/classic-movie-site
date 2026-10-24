@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T09:38:48.783Z",
+  "generatedAt": "2026-10-24T09:44:35.673Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -9,9 +9,9 @@
     "minBytes": 8192
   },
   "total": 138,
-  "ok": 116,
-  "warn": 18,
-  "error": 4,
+  "ok": 121,
+  "warn": 17,
+  "error": 0,
   "entries": [
     {
       "id": "20260817",
@@ -582,7 +582,7 @@
         "英文关键词:jang"
       ],
       "evidence": {
-        "level": "strong",
+        "level": "weak",
         "reasons": [
           "可信图源（official）"
         ],
@@ -609,7 +609,7 @@
         "英文关键词:nameless"
       ],
       "evidence": {
-        "level": "strong",
+        "level": "weak",
         "reasons": [
           "可信图源（tmdb）"
         ],
@@ -727,7 +727,7 @@
         "年份"
       ],
       "evidence": {
-        "level": "strong",
+        "level": "weak",
         "reasons": [
           "年份命中 2010",
           "可信图源（tmdb）"
@@ -964,11 +964,11 @@
       "year": "2006",
       "source": "本地",
       "imageUrl": "posters/20261009.jpg",
-      "host": "q4.itc.cn",
-      "tier": "unknown",
-      "size": "39KB",
-      "dims": "540×924",
-      "ratio": 1.71,
+      "host": "m.media-amazon.com",
+      "tier": "official",
+      "size": "389KB",
+      "dims": "1181×1693",
+      "ratio": 1.43,
       "identityKind": "name",
       "identityHits": [
         "片名中文"
@@ -977,19 +977,14 @@
         "level": "strong",
         "reasons": [
           "片名命中「老千」",
-          "书名号片名命中「老千」"
+          "书名号片名命中「老千」",
+          "可信图源（official）"
         ],
         "conflicts": []
       },
-      "verified": false,
-      "status": "warn",
-      "issues": [
-        {
-          "code": "untrusted_host",
-          "severity": "warn",
-          "detail": "图源不在可信白名单（q4.itc.cn）"
-        }
-      ]
+      "verified": true,
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20261010",
@@ -1300,11 +1295,11 @@
       "year": "2010",
       "source": "本地",
       "imageUrl": "posters/20261020-harmony.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "356KB",
-      "dims": "2000×3000",
-      "ratio": 1.5,
+      "host": "m.media-amazon.com",
+      "tier": "official",
+      "size": "202KB",
+      "dims": "1000×1429",
+      "ratio": 1.43,
       "identityKind": "year",
       "identityHits": [
         "年份"
@@ -1314,19 +1309,13 @@
         "reasons": [
           "片名命中「Harmony」",
           "年份命中 2010",
-          "可信图源（tmdb）"
+          "可信图源（official）"
         ],
         "conflicts": []
       },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Implied Harmonies (2010) - Posters — The Movie Database (TMDB)）"
-        }
-      ]
+      "verified": true,
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20261021-marathon",
@@ -1335,11 +1324,11 @@
       "year": "2005",
       "source": "本地",
       "imageUrl": "posters/20261021-marathon.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "2099KB",
-      "dims": "2000×3000",
-      "ratio": 1.5,
+      "host": "m.media-amazon.com",
+      "tier": "official",
+      "size": "215KB",
+      "dims": "631×900",
+      "ratio": 1.43,
       "identityKind": "year",
       "identityHits": [
         "年份"
@@ -1349,19 +1338,13 @@
         "reasons": [
           "片名命中「Marathon」",
           "年份命中 2005",
-          "可信图源（tmdb）"
+          "可信图源（official）"
         ],
         "conflicts": []
       },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Acteur Les 4 Fantastiques 2005 - JRXE）"
-        }
-      ]
+      "verified": true,
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20261021-seasons",
@@ -1370,11 +1353,11 @@
       "year": "2003",
       "source": "本地",
       "imageUrl": "posters/20261021-seasons.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "180KB",
-      "dims": "1000×1500",
-      "ratio": 1.5,
+      "host": "m.media-amazon.com",
+      "tier": "official",
+      "size": "165KB",
+      "dims": "800×1142",
+      "ratio": 1.43,
       "identityKind": "year",
       "identityHits": [
         "年份"
@@ -1384,19 +1367,13 @@
         "reasons": [
           "片名命中「Spring」",
           "年份命中 2003",
-          "可信图源（tmdb）"
+          "可信图源（official）"
         ],
         "conflicts": []
       },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Hope Springs (2003) - Posters — The Movie Database (TMDB)）"
-        }
-      ]
+      "verified": true,
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20261022-dress",
@@ -1439,11 +1416,11 @@
       "year": "2016",
       "source": "本地",
       "imageUrl": "posters/20261023-canola.jpg",
-      "host": "pic.rmb.bdstatic.com",
-      "tier": "unknown",
-      "size": "4236KB",
-      "dims": "3072×4096",
-      "ratio": 1.33,
+      "host": "m.media-amazon.com",
+      "tier": "official",
+      "size": "180KB",
+      "dims": "1000×1432",
+      "ratio": 1.43,
       "identityKind": "name",
       "identityHits": [
         "片名中文",
@@ -1455,27 +1432,22 @@
           "片名命中「季春奶奶」",
           "年份命中 2016",
           "主创命中「金高银」",
-          "书名号片名命中「季春奶奶」"
+          "书名号片名命中「季春奶奶」",
+          "可信图源（official）"
         ],
         "conflicts": []
       },
-      "verified": false,
-      "status": "warn",
-      "issues": [
-        {
-          "code": "untrusted_host",
-          "severity": "warn",
-          "detail": "图源不在可信白名单（pic.rmb.bdstatic.com）"
-        }
-      ]
+      "verified": true,
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20261024-departures",
       "zhTitle": "入殓师",
       "sourceTitle": "入殓师图片_电影入殓师海报图片 - 三千图片网",
       "year": "2008",
-      "source": "远程",
-      "imageUrl": "https://img.win3000.com/m00/1e/4d/bea5a888fdce8f33c3bc5f7c3f035c28.jpg",
+      "source": "本地",
+      "imageUrl": "posters/20261024-departures.jpg",
       "host": "img.win3000.com",
       "tier": "unknown",
       "size": "866KB",
@@ -1492,18 +1464,13 @@
         ],
         "conflicts": []
       },
-      "verified": false,
+      "verified": true,
       "status": "warn",
       "issues": [
         {
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（img.win3000.com）"
-        },
-        {
-          "code": "identity_weak_evidence",
-          "severity": "warn",
-          "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：入殓师图片_电影入殓师海报图片 - 三千图片网）"
         }
       ]
     },
@@ -1532,15 +1499,9 @@
         ],
         "conflicts": []
       },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Our Twisted Hero (1992) - Posters — The Movie Database (TMDB)）"
-        }
-      ]
+      "verified": true,
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260427",
@@ -1560,7 +1521,7 @@
         "年份"
       ],
       "evidence": {
-        "level": "strong",
+        "level": "weak",
         "reasons": [
           "年份命中 1993",
           "可信图源（tmdb）"
@@ -1933,7 +1894,7 @@
         "英文关键词:silence"
       ],
       "evidence": {
-        "level": "strong",
+        "level": "weak",
         "reasons": [
           "可信图源（official）"
         ],
@@ -2084,7 +2045,7 @@
         "年份"
       ],
       "evidence": {
-        "level": "strong",
+        "level": "weak",
         "reasons": [
           "年份命中 1975",
           "可信图源（tmdb）"
@@ -2543,7 +2504,7 @@
         "别名:My Neighbor Totoro"
       ],
       "evidence": {
-        "level": "strong",
+        "level": "medium",
         "reasons": [
           "片名命中「My Neighbor Totoro」",
           "可信图源（official）"
@@ -2551,8 +2512,14 @@
         "conflicts": []
       },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "identity_weak_evidence",
+          "severity": "warn",
+          "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：My Neighbor Totoro Poster）"
+        }
+      ]
     },
     {
       "id": "20260611-2",
@@ -2726,7 +2693,7 @@
         "英文关键词:lion"
       ],
       "evidence": {
-        "level": "strong",
+        "level": "weak",
         "reasons": [
           "可信图源（official）"
         ],
@@ -4091,7 +4058,7 @@
         "年份"
       ],
       "evidence": {
-        "level": "strong",
+        "level": "weak",
         "reasons": [
           "年份命中 1968",
           "可信图源（tmdb）"
@@ -4320,118 +4287,182 @@
   ],
   "needsReview": [
     {
-      "id": "20261020-harmony",
-      "zhTitle": "和声",
+      "id": "20260918",
+      "zhTitle": "金福南杀人事件始末",
       "year": "2010",
-      "sourceTitle": "Implied Harmonies (2010) - Posters — The Movie Database (TMDB)",
-      "imageUrl": "posters/20261020-harmony.jpg",
+      "sourceTitle": "Poster De Jang Ok Jung",
+      "imageUrl": "posters/20260918.jpg",
+      "host": "m.media-amazon.com",
+      "dims": "675×1000",
+      "evidence": {
+        "level": "weak",
+        "reasons": [
+          "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "id": "20260920",
+      "zhTitle": "与犯罪的战争坏家伙的全盛时代",
+      "year": "1982",
+      "sourceTitle": "Nameless Gangster (2012) - Posters — The Movie Database (TMDB)",
+      "imageUrl": "posters/20260920.jpg",
+      "host": "image.tmdb.org",
+      "dims": "1280×1920",
+      "evidence": {
+        "level": "weak",
+        "reasons": [
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "id": "20260927",
+      "zhTitle": "看见恶魔",
+      "year": "2010",
+      "sourceTitle": "I Saw the Devil (2010) - Posters — The Movie Database (TMDB)",
+      "imageUrl": "posters/20260927.jpg",
       "host": "image.tmdb.org",
       "dims": "2000×3000",
       "evidence": {
-        "level": "strong",
+        "level": "weak",
         "reasons": [
-          "片名命中「Harmony」",
           "年份命中 2010",
           "可信图源（tmdb）"
         ],
         "conflicts": []
       },
       "verified": false,
-      "status": "error",
-      "issues": [
-        "identity_unverified"
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
-      "id": "20261021-marathon",
-      "zhTitle": "马拉松",
-      "year": "2005",
-      "sourceTitle": "Acteur Les 4 Fantastiques 2005 - JRXE",
-      "imageUrl": "posters/20261021-marathon.jpg",
-      "host": "image.tmdb.org",
-      "dims": "2000×3000",
-      "evidence": {
-        "level": "strong",
-        "reasons": [
-          "片名命中「Marathon」",
-          "年份命中 2005",
-          "可信图源（tmdb）"
-        ],
-        "conflicts": []
-      },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        "identity_unverified"
-      ]
-    },
-    {
-      "id": "20261021-seasons",
-      "zhTitle": "春夏秋冬又一春",
-      "year": "2003",
-      "sourceTitle": "Hope Springs (2003) - Posters — The Movie Database (TMDB)",
-      "imageUrl": "posters/20261021-seasons.jpg",
+      "id": "20260427",
+      "zhTitle": "辛 德 勒 的 名 单",
+      "year": "1993",
+      "sourceTitle": "Schindler&#39;s List (1993) — The Movie Database (TMDB)",
+      "imageUrl": "posters/20260427.jpg",
       "host": "image.tmdb.org",
       "dims": "1000×1500",
       "evidence": {
-        "level": "strong",
+        "level": "weak",
         "reasons": [
-          "片名命中「Spring」",
-          "年份命中 2003",
+          "年份命中 1993",
           "可信图源（tmdb）"
         ],
         "conflicts": []
       },
       "verified": false,
-      "status": "error",
-      "issues": [
-        "identity_unverified"
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
-      "id": "20261024-departures",
-      "zhTitle": "入殓师",
-      "year": "2008",
-      "sourceTitle": "入殓师图片_电影入殓师海报图片 - 三千图片网",
-      "imageUrl": "https://img.win3000.com/m00/1e/4d/bea5a888fdce8f33c3bc5f7c3f035c28.jpg",
-      "host": "img.win3000.com",
-      "dims": "1080×1488",
+      "id": "20260514",
+      "zhTitle": "沉默的羔羊",
+      "year": "1991",
+      "sourceTitle": "Silence Of The Lambs Poster",
+      "imageUrl": "posters/20260514.jpg",
+      "host": "m.media-amazon.com",
+      "dims": "2011×2968",
+      "evidence": {
+        "level": "weak",
+        "reasons": [
+          "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "id": "20260521",
+      "zhTitle": "飞越疯人院",
+      "year": "1975",
+      "sourceTitle": "One Flew Over the Cuckoo&#39;s Nest (1975) — The Movie Database (TMDB)",
+      "imageUrl": "posters/20260521.jpg",
+      "host": "image.tmdb.org",
+      "dims": "1000×1500",
+      "evidence": {
+        "level": "weak",
+        "reasons": [
+          "年份命中 1975",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "id": "20260610",
+      "zhTitle": "龙 猫",
+      "year": "1988",
+      "sourceTitle": "My Neighbor Totoro Poster",
+      "imageUrl": "posters/20260610.jpg",
+      "host": "m.media-amazon.com",
+      "dims": "1323×2031",
       "evidence": {
         "level": "medium",
         "reasons": [
-          "片名命中「入殓师」"
+          "片名命中「My Neighbor Totoro」",
+          "可信图源（official）"
         ],
         "conflicts": []
       },
       "verified": false,
       "status": "warn",
       "issues": [
-        "untrusted_host",
         "identity_weak_evidence"
       ]
     },
     {
-      "id": "20261024-twisted",
-      "zhTitle": "小校风云",
-      "year": "1992",
-      "sourceTitle": "Our Twisted Hero (1992) - Posters — The Movie Database (TMDB)",
-      "imageUrl": "posters/20261024-twisted.jpg",
-      "host": "image.tmdb.org",
-      "dims": "2000×3000",
+      "id": "20260616-2",
+      "zhTitle": "狮子王",
+      "year": "1994",
+      "sourceTitle": "Lion King Original Movie Poster",
+      "imageUrl": "posters/20260616-2.jpg",
+      "host": "m.media-amazon.com",
+      "dims": "900×1139",
       "evidence": {
-        "level": "strong",
+        "level": "weak",
         "reasons": [
-          "片名命中「Our Twisted Hero」",
-          "年份命中 1992",
+          "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "id": "20260806",
+      "zhTitle": "西部往事",
+      "year": "1968",
+      "sourceTitle": "Once Upon a Time in the West (1968) — The Movie Database (TMDB)",
+      "imageUrl": "posters/20260806.jpg",
+      "host": "image.tmdb.org",
+      "dims": "1600×2400",
+      "evidence": {
+        "level": "weak",
+        "reasons": [
+          "年份命中 1968",
           "可信图源（tmdb）"
         ],
         "conflicts": []
       },
       "verified": false,
-      "status": "error",
-      "issues": [
-        "identity_unverified"
-      ]
+      "status": "ok",
+      "issues": []
     }
   ]
 }

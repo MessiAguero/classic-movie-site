@@ -363,8 +363,8 @@ export function identityEvidence(entry, movie, aliases, tier) {
   let level = 'weak';
   if (quotedExact || (nameHit && yearHit) || peopleHit) level = 'strong';
   else if (nameHit) level = 'medium';
-  // 来自 TMDB / 维基 / 官方站的图，本身就是在该片的条目下取的，视为可信
-  if (TRUSTED_TIERS.has(tier) && level !== 'strong') level = 'strong';
+  // 图源域名只能证明图片托管在哪里，不能证明搜索结果属于这部片。
+  // 必须由片名、年份或主创提供身份证据，避免把同年的另一部电影当成候选。
 
   if (nameHit) reasons.push(`片名命中「${nameHit.text}」`);
   if (yearHit) reasons.push(`年份命中 ${year}`);
