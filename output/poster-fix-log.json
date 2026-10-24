@@ -1,16 +1,16 @@
 {
-  "at": "2026-10-23T03:19:23.745Z",
+  "at": "2026-10-24T09:38:47.839Z",
   "dryRun": false,
-  "targetCount": 4,
-  "fixedCount": 4,
-  "failureCount": 0,
+  "targetCount": 6,
+  "fixedCount": 5,
+  "failureCount": 1,
   "changes": [
     {
       "id": "20261009",
       "zhTitle": "老千",
       "before": {
         "imageUrl": "posters/20261009.jpg",
-        "dims": "859×1289",
+        "dims": "2000×3000",
         "status": "error",
         "issues": [
           "identity_unverified"
@@ -18,29 +18,10 @@
       },
       "after": {
         "imageUrl": "posters/20261009.jpg",
-        "dims": "2000×3000",
-        "source": "ddg",
-        "url": "https://image.tmdb.org/t/p/original/kgzWuDeTig1lOWsjlWq4y8nKYwU.jpg",
-        "title": "Tazza: The High Rollers (2006) - Posters — The Movie Database (TMDB)"
-      }
-    },
-    {
-      "id": "20261020-harmony",
-      "zhTitle": "和声",
-      "before": {
-        "imageUrl": "posters/20261020-harmony.jpg",
-        "dims": "1175×1763",
-        "status": "error",
-        "issues": [
-          "identity_unverified"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20261020-harmony.jpg",
-        "dims": "2000×3000",
-        "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/wzOevQ3GLsKUt4BxXisXSNX1J2o.jpg",
-        "title": "Implied Harmonies (2010) - Posters — The Movie Database (TMDB)"
+        "dims": "540×924",
+        "source": "baidu",
+        "url": "https://q4.itc.cn/q_70/images01/20250126/3fccb3317e184042a932fe10d18b06a5.jpeg",
+        "title": "短剧《老千》:角色背后的人性迷宫"
       }
     },
     {
@@ -48,7 +29,7 @@
       "zhTitle": "马拉松",
       "before": {
         "imageUrl": "posters/20261021-marathon.jpg",
-        "dims": "590×885",
+        "dims": "2000×3000",
         "status": "error",
         "issues": [
           "identity_unverified"
@@ -58,8 +39,8 @@
         "imageUrl": "posters/20261021-marathon.jpg",
         "dims": "2000×3000",
         "source": "ddg",
-        "url": "https://image.tmdb.org/t/p/original/g0HLEZfqJp5dRxMzkgZwW9puP7N.jpg",
-        "title": "Zathura: A Space Adventure (2005) - Posters — The Movie Database (TMDB)"
+        "url": "https://image.tmdb.org/t/p/original/gdIgTOZe7CBJIe5blPlg2ueX4rA.jpg",
+        "title": "Acteur Les 4 Fantastiques 2005 - JRXE"
       }
     },
     {
@@ -67,7 +48,7 @@
       "zhTitle": "春夏秋冬又一春",
       "before": {
         "imageUrl": "posters/20261021-seasons.jpg",
-        "dims": "947×1421",
+        "dims": "2000×3000",
         "status": "error",
         "issues": [
           "identity_unverified"
@@ -75,29 +56,65 @@
       },
       "after": {
         "imageUrl": "posters/20261021-seasons.jpg",
+        "dims": "1000×1500",
+        "source": "bing",
+        "url": "https://image.tmdb.org/t/p/original/oqYtfJYApyVHzFwS5YCPpRBTZs4.jpg",
+        "title": "Hope Springs (2003) - Posters — The Movie Database (TMDB)"
+      }
+    },
+    {
+      "id": "20261023-canola",
+      "zhTitle": "季春奶奶",
+      "before": {
+        "imageUrl": "https://www.gaobei.com/upload/10001/article/2016_03/14140647_hwn1vt.jpg",
+        "dims": "490×700",
+        "status": "warn",
+        "issues": [
+          "low_resolution",
+          "untrusted_host"
+        ]
+      },
+      "after": {
+        "imageUrl": "posters/20261023-canola.jpg",
+        "dims": "3072×4096",
+        "source": "baidu",
+        "url": "https://pic.rmb.bdstatic.com/bjh/240317/2a5fbc987d3aba3922b1216627803d149128.jpeg",
+        "title": "金高银这部电影真的太感动了我爆哭  片名:《季春奶奶》  首播:于2016"
+      }
+    },
+    {
+      "id": "20261024-twisted",
+      "zhTitle": "小校风云",
+      "before": {
+        "imageUrl": "https://image.tmdb.org/t/p/original/s9FpJe6uvKule3hxlwFtp9oKtq4.jpg",
+        "dims": "-",
+        "status": "error",
+        "issues": [
+          "unreachable"
+        ]
+      },
+      "after": {
+        "imageUrl": "posters/20261024-twisted.jpg",
         "dims": "2000×3000",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/xw8aVnN6j5zMJSurOI8CEmZZqhU.jpg",
-        "title": "Spring, Summer, Fall, Winter... and Spring (2003) - Posters — The Movie ..."
+        "url": "https://image.tmdb.org/t/p/original/2tRFNoitdFi8RL8gCHzwOiyK6bW.jpg",
+        "title": "Our Twisted Hero (1992) - Posters — The Movie Database (TMDB)"
       }
     }
   ],
-  "failures": [],
+  "failures": [
+    {
+      "id": "20261020-harmony",
+      "reason": "没有可用的替代候选"
+    }
+  ],
   "recheck": [
     {
       "id": "20261009",
-      "status": "error",
-      "dims": "2000×3000",
+      "status": "warn",
+      "dims": "540×924",
       "issues": [
-        "identity_unverified"
-      ]
-    },
-    {
-      "id": "20261020-harmony",
-      "status": "error",
-      "dims": "2000×3000",
-      "issues": [
-        "identity_unverified"
+        "untrusted_host"
       ]
     },
     {
@@ -110,6 +127,22 @@
     },
     {
       "id": "20261021-seasons",
+      "status": "error",
+      "dims": "1000×1500",
+      "issues": [
+        "identity_unverified"
+      ]
+    },
+    {
+      "id": "20261023-canola",
+      "status": "warn",
+      "dims": "3072×4096",
+      "issues": [
+        "untrusted_host"
+      ]
+    },
+    {
+      "id": "20261024-twisted",
       "status": "error",
       "dims": "2000×3000",
       "issues": [

@@ -324,9 +324,9 @@
     "enTitle": "",
     "year": "2006",
     "imageUrl": "posters/20261009.jpg",
-    "title": "Tazza: The High Rollers (2006) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/original/kgzWuDeTig1lOWsjlWq4y8nKYwU.jpg",
-    "hiRes": true
+    "title": "短剧《老千》:角色背后的人性迷宫",
+    "remoteUrl": "https://q4.itc.cn/q_70/images01/20250126/3fccb3317e184042a932fe10d18b06a5.jpeg",
+    "hiRes": false
   },
   {
     "id": "20261010",
@@ -431,8 +431,8 @@
     "enTitle": "",
     "year": "2005",
     "imageUrl": "posters/20261021-marathon.jpg",
-    "title": "Zathura: A Space Adventure (2005) - Posters — The Movie Database (TMDB)",
-    "remoteUrl": "https://image.tmdb.org/t/p/original/g0HLEZfqJp5dRxMzkgZwW9puP7N.jpg",
+    "title": "Acteur Les 4 Fantastiques 2005 - JRXE",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/gdIgTOZe7CBJIe5blPlg2ueX4rA.jpg",
     "hiRes": true
   },
   {
@@ -441,8 +441,8 @@
     "enTitle": "",
     "year": "2003",
     "imageUrl": "posters/20261021-seasons.jpg",
-    "title": "Spring, Summer, Fall, Winter... and Spring (2003) - Posters — The Movie ...",
-    "remoteUrl": "https://image.tmdb.org/t/p/original/xw8aVnN6j5zMJSurOI8CEmZZqhU.jpg",
+    "title": "Hope Springs (2003) - Posters — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/oqYtfJYApyVHzFwS5YCPpRBTZs4.jpg",
     "hiRes": true
   },
   {
@@ -453,6 +453,34 @@
     "imageUrl": "posters/20261022-dress.jpg",
     "title": "《结婚礼服》封面海报图结婚礼服电影海报感人催泪电影婚纱韩国电影",
     "remoteUrl": "https://pic.rmb.bdstatic.com/bjh/240330/events/6f967f04aa6e225308cb73185f9c43134852.jpeg",
+    "hiRes": true
+  },
+  {
+    "id": "20261023-canola",
+    "zhTitle": "季春奶奶",
+    "enTitle": "",
+    "year": "2016",
+    "imageUrl": "posters/20261023-canola.jpg",
+    "title": "金高银这部电影真的太感动了我爆哭  片名:《季春奶奶》  首播:于2016",
+    "remoteUrl": "https://pic.rmb.bdstatic.com/bjh/240317/2a5fbc987d3aba3922b1216627803d149128.jpeg",
+    "hiRes": true
+  },
+  {
+    "id": "20261024-departures",
+    "zhTitle": "入殓师",
+    "enTitle": "",
+    "year": "2008",
+    "imageUrl": "https://img.win3000.com/m00/1e/4d/bea5a888fdce8f33c3bc5f7c3f035c28.jpg",
+    "title": "入殓师图片_电影入殓师海报图片 - 三千图片网"
+  },
+  {
+    "id": "20261024-twisted",
+    "zhTitle": "小校风云",
+    "enTitle": "",
+    "year": "1992",
+    "imageUrl": "posters/20261024-twisted.jpg",
+    "title": "Our Twisted Hero (1992) - Posters — The Movie Database (TMDB)",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/2tRFNoitdFi8RL8gCHzwOiyK6bW.jpg",
     "hiRes": true
   },
   {

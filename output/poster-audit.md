@@ -1,14 +1,14 @@
 # 海报自检报告
 
-生成时间：2026-10-23T03:19:26.315Z
+生成时间：2026-10-24T09:38:48.783Z
 
 | 项目 | 数量 |
 | --- | --- |
-| 海报总数 | 135 |
+| 海报总数 | 138 |
 | 正常 | 116 |
-| 警告 | 15 |
+| 警告 | 18 |
 | 错误 | 4 |
-| 需人工核对 | 4 |
+| 需人工核对 | 5 |
 
 ## 需人工核对
 
@@ -16,10 +16,11 @@
 
 | 日期 ID | 片名 | 证据 | 疑点 |
 | --- | --- | --- | --- |
-| `20261009` | 老千 | strong：片名命中「Tazza: The High Rollers」、年份命中 2006、可信图源（tmdb） | - |
 | `20261020-harmony` | 和声 | strong：片名命中「Harmony」、年份命中 2010、可信图源（tmdb） | - |
 | `20261021-marathon` | 马拉松 | strong：片名命中「Marathon」、年份命中 2005、可信图源（tmdb） | - |
 | `20261021-seasons` | 春夏秋冬又一春 | strong：片名命中「Spring」、年份命中 2003、可信图源（tmdb） | - |
+| `20261024-departures` | 入殓师 | medium：片名命中「入殓师」 | - |
+| `20261024-twisted` | 小校风云 | strong：片名命中「Our Twisted Hero」、年份命中 1992、可信图源（tmdb） | - |
 
 ## 需要处理的条目
 
@@ -28,7 +29,7 @@
 | ⚠️ 警告 | `20260928` | 恶人传 | 2019 | 767×1024 | jingdianmovie.com | 非白名单图源（图源不在可信白名单（jingdianmovie.com）） |
 | ⚠️ 警告 | `20260930` | 老手 | 2015 | 579×749 | so1.360tres.com | 非白名单图源（图源不在可信白名单（so1.360tres.com）） |
 | ⚠️ 警告 | `20261004-green-fish` | 绿鱼 | 1997 | 720×1080 | mdb.yuncongz.com | 非白名单图源（图源不在可信白名单（mdb.yuncongz.com）） |
-| ❌ 错误 | `20261009` | 老千 | 2006 | 2000×3000 | image.tmdb.org | 无法核实（仅年份）（只对得上年份，没有任何片名证据，疑似配错图（来源：Tazza: The High Rollers (2006) - Posters — The Movie Database (TMDB)）） |
+| ⚠️ 警告 | `20261009` | 老千 | 2006 | 540×924 | q4.itc.cn | 非白名单图源（图源不在可信白名单（q4.itc.cn）） |
 | ⚠️ 警告 | `20261012` | 阳光姐妹淘 | 2011 | 1000×1500 | mdb.yuncongz.com | 非白名单图源（图源不在可信白名单（mdb.yuncongz.com）） |
 | ⚠️ 警告 | `20261013-book-of-fish` | 兹山鱼谱 | 2021 | 2000×2866 | k.sinaimg.cn | 非白名单图源（图源不在可信白名单（k.sinaimg.cn）） |
 | ⚠️ 警告 | `20261015-dignity` | 82年生的金智英 | 2019 | 700×1005 | a.ksd-i.com | 非白名单图源（图源不在可信白名单（a.ksd-i.com）） |
@@ -36,9 +37,12 @@
 | ⚠️ 警告 | `20261018-classic` | 假如爱有天意 | 2003 | 1490×1966 | pic.rmb.bdstatic.com | 非白名单图源（图源不在可信白名单（pic.rmb.bdstatic.com）） |
 | ⚠️ 警告 | `20261019` | 开心家族 | 2010 | 678×910 | bj.bcebos.com | 非白名单图源（图源不在可信白名单（bj.bcebos.com）） |
 | ❌ 错误 | `20261020-harmony` | 和声 | 2010 | 2000×3000 | image.tmdb.org | 无法核实（仅年份）（只对得上年份，没有任何片名证据，疑似配错图（来源：Implied Harmonies (2010) - Posters — The Movie Database (TMDB)）） |
-| ❌ 错误 | `20261021-marathon` | 马拉松 | 2005 | 2000×3000 | image.tmdb.org | 无法核实（仅年份）（只对得上年份，没有任何片名证据，疑似配错图（来源：Zathura: A Space Adventure (2005) - Posters — The Movie Database (TMDB)）） |
-| ❌ 错误 | `20261021-seasons` | 春夏秋冬又一春 | 2003 | 2000×3000 | image.tmdb.org | 无法核实（仅年份）（只对得上年份，没有任何片名证据，疑似配错图（来源：Spring, Summer, Fall, Winter... and Spring (2003) - Posters — The Movie ...）） |
+| ❌ 错误 | `20261021-marathon` | 马拉松 | 2005 | 2000×3000 | image.tmdb.org | 无法核实（仅年份）（只对得上年份，没有任何片名证据，疑似配错图（来源：Acteur Les 4 Fantastiques 2005 - JRXE）） |
+| ❌ 错误 | `20261021-seasons` | 春夏秋冬又一春 | 2003 | 1000×1500 | image.tmdb.org | 无法核实（仅年份）（只对得上年份，没有任何片名证据，疑似配错图（来源：Hope Springs (2003) - Posters — The Movie Database (TMDB)）） |
 | ⚠️ 警告 | `20261022-dress` | 结婚礼服 | 2010 | 1242×1660 | pic.rmb.bdstatic.com | 非白名单图源（图源不在可信白名单（pic.rmb.bdstatic.com）） |
+| ⚠️ 警告 | `20261023-canola` | 季春奶奶 | 2016 | 3072×4096 | pic.rmb.bdstatic.com | 非白名单图源（图源不在可信白名单（pic.rmb.bdstatic.com）） |
+| ⚠️ 警告 | `20261024-departures` | 入殓师 | 2008 | 1080×1488 | img.win3000.com | 非白名单图源（图源不在可信白名单（img.win3000.com））<br>线索不足待核对（只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：入殓师图片_电影入殓师海报图片 - 三千图片网）） |
+| ❌ 错误 | `20261024-twisted` | 小校风云 | 1992 | 2000×3000 | image.tmdb.org | 无法核实（仅年份）（只对得上年份，没有任何片名证据，疑似配错图（来源：Our Twisted Hero (1992) - Posters — The Movie Database (TMDB)）） |
 | ⚠️ 警告 | `20260513` | 霸王别姬 | 1993 | 1000×1449 | img.doooor.com | 非白名单图源（图源不在可信白名单（img.doooor.com）） |
 | ⚠️ 警告 | `20260701-2` | 三傻大闹宝莱坞 | 2009 | 500×677 | so1.360tres.com | 非白名单图源（图源不在可信白名单（so1.360tres.com）） |
 | ⚠️ 警告 | `20260712` | 勇敢的心 | 1995 | 500×750 | images.theposterdb.com | 非白名单图源（图源不在可信白名单（images.theposterdb.com）） |

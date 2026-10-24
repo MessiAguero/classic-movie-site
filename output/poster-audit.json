@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-23T03:19:26.315Z",
+  "generatedAt": "2026-10-24T09:38:48.783Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,9 +8,9 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 135,
+  "total": 138,
   "ok": 116,
-  "warn": 15,
+  "warn": 18,
   "error": 4,
   "entries": [
     {
@@ -960,35 +960,34 @@
     {
       "id": "20261009",
       "zhTitle": "老千",
-      "sourceTitle": "Tazza: The High Rollers (2006) - Posters — The Movie Database (TMDB)",
+      "sourceTitle": "短剧《老千》:角色背后的人性迷宫",
       "year": "2006",
       "source": "本地",
       "imageUrl": "posters/20261009.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "1689KB",
-      "dims": "2000×3000",
-      "ratio": 1.5,
-      "identityKind": "year",
+      "host": "q4.itc.cn",
+      "tier": "unknown",
+      "size": "39KB",
+      "dims": "540×924",
+      "ratio": 1.71,
+      "identityKind": "name",
       "identityHits": [
-        "年份"
+        "片名中文"
       ],
       "evidence": {
         "level": "strong",
         "reasons": [
-          "片名命中「Tazza: The High Rollers」",
-          "年份命中 2006",
-          "可信图源（tmdb）"
+          "片名命中「老千」",
+          "书名号片名命中「老千」"
         ],
         "conflicts": []
       },
       "verified": false,
-      "status": "error",
+      "status": "warn",
       "issues": [
         {
-          "code": "identity_unverified",
-          "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Tazza: The High Rollers (2006) - Posters — The Movie Database (TMDB)）"
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（q4.itc.cn）"
         }
       ]
     },
@@ -1332,13 +1331,13 @@
     {
       "id": "20261021-marathon",
       "zhTitle": "马拉松",
-      "sourceTitle": "Zathura: A Space Adventure (2005) - Posters — The Movie Database (TMDB)",
+      "sourceTitle": "Acteur Les 4 Fantastiques 2005 - JRXE",
       "year": "2005",
       "source": "本地",
       "imageUrl": "posters/20261021-marathon.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "1308KB",
+      "size": "2099KB",
       "dims": "2000×3000",
       "ratio": 1.5,
       "identityKind": "year",
@@ -1360,21 +1359,21 @@
         {
           "code": "identity_unverified",
           "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Zathura: A Space Adventure (2005) - Posters — The Movie Database (TMDB)）"
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Acteur Les 4 Fantastiques 2005 - JRXE）"
         }
       ]
     },
     {
       "id": "20261021-seasons",
       "zhTitle": "春夏秋冬又一春",
-      "sourceTitle": "Spring, Summer, Fall, Winter... and Spring (2003) - Posters — The Movie ...",
+      "sourceTitle": "Hope Springs (2003) - Posters — The Movie Database (TMDB)",
       "year": "2003",
       "source": "本地",
       "imageUrl": "posters/20261021-seasons.jpg",
       "host": "image.tmdb.org",
       "tier": "tmdb",
-      "size": "736KB",
-      "dims": "2000×3000",
+      "size": "180KB",
+      "dims": "1000×1500",
       "ratio": 1.5,
       "identityKind": "year",
       "identityHits": [
@@ -1395,7 +1394,7 @@
         {
           "code": "identity_unverified",
           "severity": "error",
-          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Spring, Summer, Fall, Winter... and Spring (2003) - Posters — The Movie ...）"
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Hope Springs (2003) - Posters — The Movie Database (TMDB)）"
         }
       ]
     },
@@ -1430,6 +1429,116 @@
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（pic.rmb.bdstatic.com）"
+        }
+      ]
+    },
+    {
+      "id": "20261023-canola",
+      "zhTitle": "季春奶奶",
+      "sourceTitle": "金高银这部电影真的太感动了我爆哭  片名:《季春奶奶》  首播:于2016",
+      "year": "2016",
+      "source": "本地",
+      "imageUrl": "posters/20261023-canola.jpg",
+      "host": "pic.rmb.bdstatic.com",
+      "tier": "unknown",
+      "size": "4236KB",
+      "dims": "3072×4096",
+      "ratio": 1.33,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「季春奶奶」",
+          "年份命中 2016",
+          "主创命中「金高银」",
+          "书名号片名命中「季春奶奶」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（pic.rmb.bdstatic.com）"
+        }
+      ]
+    },
+    {
+      "id": "20261024-departures",
+      "zhTitle": "入殓师",
+      "sourceTitle": "入殓师图片_电影入殓师海报图片 - 三千图片网",
+      "year": "2008",
+      "source": "远程",
+      "imageUrl": "https://img.win3000.com/m00/1e/4d/bea5a888fdce8f33c3bc5f7c3f035c28.jpg",
+      "host": "img.win3000.com",
+      "tier": "unknown",
+      "size": "866KB",
+      "dims": "1080×1488",
+      "ratio": 1.38,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「入殓师」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（img.win3000.com）"
+        },
+        {
+          "code": "identity_weak_evidence",
+          "severity": "warn",
+          "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：入殓师图片_电影入殓师海报图片 - 三千图片网）"
+        }
+      ]
+    },
+    {
+      "id": "20261024-twisted",
+      "zhTitle": "小校风云",
+      "sourceTitle": "Our Twisted Hero (1992) - Posters — The Movie Database (TMDB)",
+      "year": "1992",
+      "source": "本地",
+      "imageUrl": "posters/20261024-twisted.jpg",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "362KB",
+      "dims": "2000×3000",
+      "ratio": 1.5,
+      "identityKind": "year",
+      "identityHits": [
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Our Twisted Hero」",
+          "年份命中 1992",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "error",
+      "issues": [
+        {
+          "code": "identity_unverified",
+          "severity": "error",
+          "detail": "只对得上年份，没有任何片名证据，疑似配错图（来源：Our Twisted Hero (1992) - Posters — The Movie Database (TMDB)）"
         }
       ]
     },
@@ -4211,29 +4320,6 @@
   ],
   "needsReview": [
     {
-      "id": "20261009",
-      "zhTitle": "老千",
-      "year": "2006",
-      "sourceTitle": "Tazza: The High Rollers (2006) - Posters — The Movie Database (TMDB)",
-      "imageUrl": "posters/20261009.jpg",
-      "host": "image.tmdb.org",
-      "dims": "2000×3000",
-      "evidence": {
-        "level": "strong",
-        "reasons": [
-          "片名命中「Tazza: The High Rollers」",
-          "年份命中 2006",
-          "可信图源（tmdb）"
-        ],
-        "conflicts": []
-      },
-      "verified": false,
-      "status": "error",
-      "issues": [
-        "identity_unverified"
-      ]
-    },
-    {
       "id": "20261020-harmony",
       "zhTitle": "和声",
       "year": "2010",
@@ -4260,7 +4346,7 @@
       "id": "20261021-marathon",
       "zhTitle": "马拉松",
       "year": "2005",
-      "sourceTitle": "Zathura: A Space Adventure (2005) - Posters — The Movie Database (TMDB)",
+      "sourceTitle": "Acteur Les 4 Fantastiques 2005 - JRXE",
       "imageUrl": "posters/20261021-marathon.jpg",
       "host": "image.tmdb.org",
       "dims": "2000×3000",
@@ -4283,15 +4369,60 @@
       "id": "20261021-seasons",
       "zhTitle": "春夏秋冬又一春",
       "year": "2003",
-      "sourceTitle": "Spring, Summer, Fall, Winter... and Spring (2003) - Posters — The Movie ...",
+      "sourceTitle": "Hope Springs (2003) - Posters — The Movie Database (TMDB)",
       "imageUrl": "posters/20261021-seasons.jpg",
       "host": "image.tmdb.org",
-      "dims": "2000×3000",
+      "dims": "1000×1500",
       "evidence": {
         "level": "strong",
         "reasons": [
           "片名命中「Spring」",
           "年份命中 2003",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "error",
+      "issues": [
+        "identity_unverified"
+      ]
+    },
+    {
+      "id": "20261024-departures",
+      "zhTitle": "入殓师",
+      "year": "2008",
+      "sourceTitle": "入殓师图片_电影入殓师海报图片 - 三千图片网",
+      "imageUrl": "https://img.win3000.com/m00/1e/4d/bea5a888fdce8f33c3bc5f7c3f035c28.jpg",
+      "host": "img.win3000.com",
+      "dims": "1080×1488",
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「入殓师」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        "untrusted_host",
+        "identity_weak_evidence"
+      ]
+    },
+    {
+      "id": "20261024-twisted",
+      "zhTitle": "小校风云",
+      "year": "1992",
+      "sourceTitle": "Our Twisted Hero (1992) - Posters — The Movie Database (TMDB)",
+      "imageUrl": "posters/20261024-twisted.jpg",
+      "host": "image.tmdb.org",
+      "dims": "2000×3000",
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「Our Twisted Hero」",
+          "年份命中 1992",
           "可信图源（tmdb）"
         ],
         "conflicts": []
