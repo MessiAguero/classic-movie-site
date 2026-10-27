@@ -1,92 +1,15 @@
 {
-  "at": "2026-10-24T09:38:47.839Z",
+  "at": "2026-10-27T03:27:33.263Z",
   "dryRun": false,
-  "targetCount": 6,
-  "fixedCount": 5,
-  "failureCount": 1,
+  "targetCount": 1,
+  "fixedCount": 1,
+  "failureCount": 0,
   "changes": [
     {
-      "id": "20261009",
-      "zhTitle": "老千",
+      "id": "20261026-millennium",
+      "zhTitle": "千年女优",
       "before": {
-        "imageUrl": "posters/20261009.jpg",
-        "dims": "2000×3000",
-        "status": "error",
-        "issues": [
-          "identity_unverified"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20261009.jpg",
-        "dims": "540×924",
-        "source": "baidu",
-        "url": "https://q4.itc.cn/q_70/images01/20250126/3fccb3317e184042a932fe10d18b06a5.jpeg",
-        "title": "短剧《老千》:角色背后的人性迷宫"
-      }
-    },
-    {
-      "id": "20261021-marathon",
-      "zhTitle": "马拉松",
-      "before": {
-        "imageUrl": "posters/20261021-marathon.jpg",
-        "dims": "2000×3000",
-        "status": "error",
-        "issues": [
-          "identity_unverified"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20261021-marathon.jpg",
-        "dims": "2000×3000",
-        "source": "ddg",
-        "url": "https://image.tmdb.org/t/p/original/gdIgTOZe7CBJIe5blPlg2ueX4rA.jpg",
-        "title": "Acteur Les 4 Fantastiques 2005 - JRXE"
-      }
-    },
-    {
-      "id": "20261021-seasons",
-      "zhTitle": "春夏秋冬又一春",
-      "before": {
-        "imageUrl": "posters/20261021-seasons.jpg",
-        "dims": "2000×3000",
-        "status": "error",
-        "issues": [
-          "identity_unverified"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20261021-seasons.jpg",
-        "dims": "1000×1500",
-        "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/oqYtfJYApyVHzFwS5YCPpRBTZs4.jpg",
-        "title": "Hope Springs (2003) - Posters — The Movie Database (TMDB)"
-      }
-    },
-    {
-      "id": "20261023-canola",
-      "zhTitle": "季春奶奶",
-      "before": {
-        "imageUrl": "https://www.gaobei.com/upload/10001/article/2016_03/14140647_hwn1vt.jpg",
-        "dims": "490×700",
-        "status": "warn",
-        "issues": [
-          "low_resolution",
-          "untrusted_host"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20261023-canola.jpg",
-        "dims": "3072×4096",
-        "source": "baidu",
-        "url": "https://pic.rmb.bdstatic.com/bjh/240317/2a5fbc987d3aba3922b1216627803d149128.jpeg",
-        "title": "金高银这部电影真的太感动了我爆哭  片名:《季春奶奶》  首播:于2016"
-      }
-    },
-    {
-      "id": "20261024-twisted",
-      "zhTitle": "小校风云",
-      "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/s9FpJe6uvKule3hxlwFtp9oKtq4.jpg",
+        "imageUrl": "https://image.tmdb.org/t/p/original/DapAI24FrLj2TdwA1TUVtTkkl3.jpg",
         "dims": "-",
         "status": "error",
         "issues": [
@@ -94,59 +17,22 @@
         ]
       },
       "after": {
-        "imageUrl": "posters/20261024-twisted.jpg",
-        "dims": "2000×3000",
+        "imageUrl": "posters/20261026-millennium.jpg",
+        "dims": "720×1080",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/2tRFNoitdFi8RL8gCHzwOiyK6bW.jpg",
-        "title": "Our Twisted Hero (1992) - Posters — The Movie Database (TMDB)"
+        "url": "https://mdb.yuncongz.com/static/upload/large/31b8bee8a6c443aca0c999d769c11645.jpg",
+        "title": "千年女优(2001) - 电影海报|电影台词 - 影库"
       }
     }
   ],
-  "failures": [
-    {
-      "id": "20261020-harmony",
-      "reason": "没有可用的替代候选"
-    }
-  ],
+  "failures": [],
   "recheck": [
     {
-      "id": "20261009",
+      "id": "20261026-millennium",
       "status": "warn",
-      "dims": "540×924",
+      "dims": "720×1080",
       "issues": [
         "untrusted_host"
-      ]
-    },
-    {
-      "id": "20261021-marathon",
-      "status": "error",
-      "dims": "2000×3000",
-      "issues": [
-        "identity_unverified"
-      ]
-    },
-    {
-      "id": "20261021-seasons",
-      "status": "error",
-      "dims": "1000×1500",
-      "issues": [
-        "identity_unverified"
-      ]
-    },
-    {
-      "id": "20261023-canola",
-      "status": "warn",
-      "dims": "3072×4096",
-      "issues": [
-        "untrusted_host"
-      ]
-    },
-    {
-      "id": "20261024-twisted",
-      "status": "error",
-      "dims": "2000×3000",
-      "issues": [
-        "identity_unverified"
       ]
     }
   ]

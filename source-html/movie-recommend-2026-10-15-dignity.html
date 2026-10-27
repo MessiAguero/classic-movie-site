@@ -573,8 +573,8 @@
     </g>
     <rect x="0" y="726" width="1440" height="1.6" fill="#e8ddf6" opacity="0.22"/>
 
-    <!-- 人行道与候车亭（左中景） -->
-    <g>
+    <!-- 人行道与候车亭（左中景）；整组右移 40，避免 768 档 slice 裁切后暖窗只剩硬边一条 -->
+    <g transform="translate(40 0)">
       <path d="M296 730 L296 646 L470 646 L470 730" fill="none" stroke="#0e0c17" stroke-width="3.2"/>
       <path d="M280 648 L486 648 L486 640 L280 640 Z" fill="#0e0c17"/>
       <rect x="352" y="690" width="54" height="40" fill="#0e0c17"/>
@@ -589,11 +589,11 @@
 
     <!-- 行道树三棵 -->
     <g stroke="#08060e" fill="none" stroke-linecap="round">
-      <path d="M545 730 L545 640" stroke-width="4.6"/>
-      <path d="M545 690 Q526 678 518 660" stroke-width="2.2"/>
-      <path d="M545 700 Q564 690 572 672" stroke-width="2"/>
-      <path d="M545 660 Q534 646 532 630" stroke-width="1.7"/>
-      <path d="M545 664 Q557 652 562 636" stroke-width="1.6"/>
+      <path d="M570 730 L570 640" stroke-width="4.6"/>
+      <path d="M570 690 Q526 678 518 660" stroke-width="2.2"/>
+      <path d="M570 700 Q564 690 572 672" stroke-width="2"/>
+      <path d="M570 660 Q534 646 532 630" stroke-width="1.7"/>
+      <path d="M570 664 Q557 652 562 636" stroke-width="1.6"/>
       <path d="M1150 730 L1150 626" stroke-width="5.4"/>
       <path d="M1150 686 Q1122 672 1110 650" stroke-width="2.6"/>
       <path d="M1150 698 Q1180 684 1192 660" stroke-width="2.4"/>
@@ -605,7 +605,7 @@
       <path d="M1345 672 Q1330 660 1326 644" stroke-width="1.6"/>
       <path d="M1345 676 Q1358 664 1362 650" stroke-width="1.5"/>
     </g>
-    <path d="M545 730 L545 640" stroke="#c4b6ea" fill="none" stroke-width="0.8" opacity="0.1"/>
+    <path d="M570 730 L570 640" stroke="#c4b6ea" fill="none" stroke-width="0.8" opacity="0.1"/>
     <path d="M1150 730 L1150 626" stroke="#c4b6ea" fill="none" stroke-width="0.8" opacity="0.11"/>
     <path d="M1345 730 L1345 648" stroke="#c4b6ea" fill="none" stroke-width="0.8" opacity="0.1"/>
 
@@ -617,69 +617,97 @@
     <path d="M-40 840 Q400 798 760 804 Q1120 810 1480 848" fill="none" stroke="#b6a7d6" stroke-width="1" opacity="0.04"/>
 
     <!-- 主体：推着婴儿车往前走的一个背影（站在低位光带里的逆光剪影） -->
-    <g transform="translate(-45 0)">
-      <ellipse cx="726" cy="749" rx="86" ry="3.4" fill="#000" opacity="0.46"/>
+    <g>
+      <!-- 落影 -->
+      <ellipse cx="650" cy="748" rx="32" ry="3.4" fill="#000" opacity="0.44"/>
+      <ellipse cx="741" cy="748" rx="49" ry="3.4" fill="#000" opacity="0.42"/>
 
       <!-- 婴儿车 -->
       <g>
-        <circle cx="766" cy="730" r="16" fill="none" stroke="#06050b" stroke-width="3.2"/>
-        <g stroke="#06050b" stroke-width="1.3">
-          <path d="M766 714 L766 746"/>
-          <path d="M752 730 L780 730"/>
-          <path d="M756.6 720.6 L775.4 739.4"/>
-          <path d="M775.4 720.6 L756.6 739.4"/>
-        </g>
-        <circle cx="766" cy="730" r="2.6" fill="#06050b"/>
-        <circle cx="822" cy="736" r="10" fill="none" stroke="#06050b" stroke-width="2.6"/>
+        <!-- 后大轮 -->
+        <circle cx="724" cy="737" r="11" fill="none" stroke="#06050b" stroke-width="2.8"/>
         <g stroke="#06050b" stroke-width="1.1">
-          <path d="M822 726 L822 746"/>
-          <path d="M812 736 L832 736"/>
-          <path d="M815 729 L829 743"/>
+          <path d="M724 726 L724 748"/>
+          <path d="M713 737 L735 737"/>
+          <path d="M716.2 729.2 L731.8 744.8"/>
+          <path d="M731.8 729.2 L716.2 744.8"/>
         </g>
-        <circle cx="822" cy="736" r="1.8" fill="#06050b"/>
-        <path d="M742 706 L768 726" stroke="#06050b" stroke-width="3.4" stroke-linecap="round" fill="none"/>
-        <path d="M748 700 L816 732" stroke="#06050b" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <path d="M730 694 L786 694 L782 716 L734 716 Z" fill="#06050b"/>
-        <path d="M726 694 L726 678 C726 662 740 652 758 652 C776 652 788 662 788 678 L788 694 Z" fill="#06050b"/>
-        <g fill="none" stroke="#ded2f2" stroke-width="0.9" opacity="0.3">
-          <path d="M737 655 C731 668 730 682 730 694"/>
-          <path d="M757 652 C753 666 753 682 753 694"/>
-          <path d="M726 678 C740 670 774 670 788 678"/>
+        <circle cx="724" cy="737" r="2.1" fill="#06050b"/>
+        <!-- 前小轮 -->
+        <circle cx="772" cy="741" r="7" fill="none" stroke="#06050b" stroke-width="2.2"/>
+        <g stroke="#06050b" stroke-width="1">
+          <path d="M772 734 L772 748"/>
+          <path d="M765 741 L779 741"/>
         </g>
-        <path d="M722 694 L736 666" stroke="#06050b" stroke-width="3.2" stroke-linecap="round" fill="none"/>
-        <path d="M730 664 L748 660" stroke="#06050b" stroke-width="3.6" stroke-linecap="round" fill="none"/>
-        <path d="M726 694 L726 678 C726 662 740 652 758 652 C776 652 788 662 788 678 L788 694 Z" fill="none" stroke="#ded2f2" stroke-width="1.5" opacity="0.34"/>
-        <path d="M730 694 L786 694 L782 716 L734 716 Z" fill="none" stroke="#ded2f2" stroke-width="1.2" opacity="0.26"/>
-        <path d="M726 694 L726 678 C726 662 740 652 758 652 C776 652 788 662 788 678" fill="none" stroke="#ded2f2" stroke-width="2.4" opacity="0.16"/>
-        <path d="M730 664 L748 660" fill="none" stroke="#ded2f2" stroke-width="1.3" opacity="0.34"/>
+        <circle cx="772" cy="741" r="1.5" fill="#06050b"/>
+        <!-- 车架 -->
+        <path d="M708 714 L724 733" stroke="#06050b" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+        <path d="M712 708 L768 738" stroke="#06050b" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+        <!-- 座篮 -->
+        <path d="M700 700 L756 700 L752 718 L704 718 Z" fill="#06050b"/>
+        <!-- 车篷 -->
+        <path d="M698 700 L698 691 C698 680 708 674 718 674 C729 674 738 680 738 691 L738 700 Z" fill="#06050b"/>
+        <!-- 车底篮 -->
+        <path d="M706 718 L748 718 L744 731 L710 731 Z" fill="#06050b"/>
+        <path d="M706 718 L748 718 L744 731 L710 731 Z" fill="none" stroke="#f2ecf6" stroke-width="0.9" opacity="0.2"/>
+        <!-- 推手 -->
+        <path d="M700 703 L683 680" stroke="#06050b" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+        <path d="M671 681 L691 678" stroke="#06050b" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+        <!-- 车篷缝合线 -->
+        <g fill="none" stroke="#ded2f2" stroke-width="0.8" opacity="0.2">
+          <path d="M719 674 C716 682 715 690 715 700"/>
+          <path d="M727 675 C726 683 726 691 726 700"/>
+        </g>
+        <!-- 轮廓光 -->
+        <path d="M698 700 L698 691 C698 680 708 674 718 674 C729 674 738 680 738 691 L738 700" fill="none" stroke="#f2ecf6" stroke-width="4.6" opacity="0.06"/>
+        <path d="M700 700 L756 700 L752 718 L704 718 Z" fill="none" stroke="#f2ecf6" stroke-width="4.2" opacity="0.055"/>
+        <path d="M698 700 L698 691 C698 680 708 674 718 674 C729 674 738 680 738 691 L738 700" fill="none" stroke="#f2ecf6" stroke-width="1.4" opacity="0.42"/>
+        <path d="M700 700 L756 700 L752 718 L704 718 Z" fill="none" stroke="#f2ecf6" stroke-width="1.1" opacity="0.26"/>
+        <path d="M671 681 L691 678" fill="none" stroke="#f2ecf6" stroke-width="1.1" opacity="0.34"/>
+        <circle cx="724" cy="737" r="11" fill="none" stroke="#f2ecf6" stroke-width="1.2" opacity="0.36"/>
+        <circle cx="772" cy="741" r="7" fill="none" stroke="#f2ecf6" stroke-width="1" opacity="0.3"/>
       </g>
 
       <!-- 推车的人（背影，面向右） -->
       <g>
-        <path d="M676.4 684 C676.4 679.4 679.6 677 684 677 L696 677 C700.4 677 703.6 679.4 703.6 684 L706 714 L708.4 730 L671.6 730 L674 714 Z" fill="#06050b"/>
-        <path d="M690 658.6 C692.4 658.6 694.2 660 695.1 662.2 C696.6 661.2 698.6 662.4 698.6 664.4 C698.6 666.2 697.2 667.4 695.4 667.5 C695.8 669.3 695.8 670.4 695.8 671.7 C695.5 672.8 693.2 673.6 690 673.6 C685.9 673.6 683.8 671.7 683.8 668.3 C683.8 662.9 686.2 658.6 690 658.6 Z" fill="#06050b"/>
-        <path d="M679 722 L679 746 L685.4 746 L690 733 L694.6 746 L701 746 L701 722 Z" fill="#06050b"/>
-        <path d="M703 690 Q722 682 734 674 L736.4 683 Q722 690 703 700 Z" fill="#06050b"/>
-        <path d="M676.4 684 C676.4 679.4 679.6 677 684 677 L696 677 C700.4 677 703.6 679.4 703.6 684 L706 714 L708.4 730 L671.6 730 L674 714 Z" fill="none" stroke="#f2ecf6" stroke-width="7" opacity="0.08"/>
-        <path d="M679 722 L679 746 L701 746 L701 722" fill="none" stroke="#f2ecf6" stroke-width="6" opacity="0.07"/>
-        <path d="M676.4 684 C676.4 679.4 679.6 677 684 677 L696 677 C700.4 677 703.6 679.4 703.6 684 L706 714 L708.4 730 L671.6 730 L674 714 Z" fill="none" stroke="#f2ecf6" stroke-width="1.8" opacity="0.42"/>
-        <path d="M690 658.6 C692.4 658.6 694.2 660 695.1 662.2 C696.6 661.2 698.6 662.4 698.6 664.4 C698.6 666.2 697.2 667.4 695.4 667.5 C695.8 669.3 695.8 670.4 695.8 671.7 C695.5 672.8 693.2 673.6 690 673.6 C685.9 673.6 683.8 671.7 683.8 668.3 C683.8 662.9 686.2 658.6 690 658.6 Z" fill="none" stroke="#f2ecf6" stroke-width="1.8" opacity="0.42"/>
-        <path d="M690 658.6 C692.4 658.6 694.2 660 695.1 662.2 C696.6 661.2 698.6 662.4 698.6 664.4 C698.6 666.2 697.2 667.4 695.4 667.5" fill="none" stroke="#f2ecf6" stroke-width="2.3" opacity="0.48"/>
-        <path d="M679 722 L679 746 L685.4 746 L690 733 L694.6 746 L701 746 L701 722" fill="none" stroke="#f2ecf6" stroke-width="1.4" opacity="0.28"/>
-        <path d="M703 690 Q722 682 734 674" fill="none" stroke="#f2ecf6" stroke-width="1.2" opacity="0.28"/>
+        <!-- 大衣 -->
+        <path d="M635.4 678 C635.4 673 639 670.4 644 670.4 L656 670.4 C661 670.4 664.6 673 664.6 678 L667.6 706 L670 730 L630 730 L632.4 706 Z" fill="#06050b"/>
+        <!-- 脖子（把头和肩分开） -->
+        <path d="M646 660 L654 660 L654 672 L646 672 Z" fill="#06050b"/>
+        <!-- 头 -->
+        <ellipse cx="650" cy="656" rx="7" ry="8.2" fill="#06050b"/>
+        <!-- 低马尾 -->
+        <path d="M643 660 Q636 667 634.4 676 Q640 674 642.6 668 Z" fill="#06050b"/>
+        <!-- 腿（带 V 缺口，只描外轮廓） -->
+        <path d="M637.5 726 L637.5 748 L644 748 L650 735.5 L656 748 L662.5 748 L662.5 726 Z" fill="#06050b"/>
+        <!-- 前伸的手臂与手 -->
+        <path d="M658 688 L663 700 L685 686 L683 676 Z" fill="#06050b"/>
+        <circle cx="684" cy="682" r="3.2" fill="#06050b"/>
+
+        <!-- 外发光（大） + 边缘光（细） -->
+        <path d="M635.4 678 C635.4 673 639 670.4 644 670.4 L656 670.4 C661 670.4 664.6 673 664.6 678 L667.6 706 L670 730 L630 730 L632.4 706 Z" fill="none" stroke="#f2ecf6" stroke-width="6.5" opacity="0.07"/>
+        <path d="M637.5 726 L637.5 748 L662.5 748 L662.5 726" fill="none" stroke="#f2ecf6" stroke-width="5.5" opacity="0.06"/>
+        <ellipse cx="650" cy="656" rx="7" ry="8.2" fill="none" stroke="#f2ecf6" stroke-width="6" opacity="0.07"/>
+        <path d="M635.4 678 C635.4 673 639 670.4 644 670.4 L656 670.4 C661 670.4 664.6 673 664.6 678 L667.6 706 L670 730 L630 730 L632.4 706 Z" fill="none" stroke="#f2ecf6" stroke-width="1.7" opacity="0.42"/>
+        <path d="M637.5 726 L637.5 748 L644 748 L650 735.5 L656 748 L662.5 748 L662.5 726" fill="none" stroke="#f2ecf6" stroke-width="1.3" opacity="0.3"/>
+        <ellipse cx="650" cy="656" rx="7" ry="8.2" fill="none" stroke="#f2ecf6" stroke-width="1.7" opacity="0.44"/>
+        <path d="M643 660 Q636 667 634.4 676" fill="none" stroke="#f2ecf6" stroke-width="1.3" opacity="0.4"/>
+        <path d="M646 661 L646 671" stroke="#f2ecf6" stroke-width="1" opacity="0.18"/>
+        <path d="M658 688 L683 676" fill="none" stroke="#f2ecf6" stroke-width="1.2" opacity="0.3"/>
+        <circle cx="684" cy="682" r="3.2" fill="none" stroke="#f2ecf6" stroke-width="1.1" opacity="0.34"/>
       </g>
     </g>
 
     <!-- 近景：几片落叶与两道水痕 -->
     <g fill="#c4b6ea" opacity="0.13">
-      <path d="M556 774 q6 -5 11 0 q-6 5 -11 0 Z"/>
-      <path d="M604 758 q5 -4 9 0 q-5 4 -9 0 Z"/>
-      <path d="M868 766 q6 -5 11 0 q-6 5 -11 0 Z"/>
-      <path d="M918 782 q5 -4 9 0 q-5 4 -9 0 Z"/>
-      <path d="M498 762 q5 -4 9 0 q-5 4 -9 0 Z"/>
+      <path d="M556 762 q6 -5 11 0 q-6 5 -11 0 Z"/>
+      <path d="M604 748 q5 -4 9 0 q-5 4 -9 0 Z"/>
+      <path d="M868 756 q6 -5 11 0 q-6 5 -11 0 Z"/>
+      <path d="M918 744 q5 -4 9 0 q-5 4 -9 0 Z"/>
+      <path d="M498 754 q5 -4 9 0 q-5 4 -9 0 Z"/>
     </g>
-    <path d="M380 776 Q620 764 880 770" fill="none" stroke="#ded2f2" stroke-width="1.2" opacity="0.07"/>
-    <path d="M646 756 Q840 748 1040 758" fill="none" stroke="#ded2f2" stroke-width="1" opacity="0.055"/>
+    <path d="M380 760 Q620 748 880 754" fill="none" stroke="#ded2f2" stroke-width="1.2" opacity="0.07"/>
+    <path d="M646 744 Q840 736 1040 746" fill="none" stroke="#ded2f2" stroke-width="1" opacity="0.055"/>
   </svg>
 
   <div class="hero-scrim"></div>
@@ -723,7 +751,7 @@
 
     <div class="nospoil reveal">
       <span class="mark">NO SPOILER</span>
-      <p>本页<b>全程不剧透</b>。梗概只写到影片公开的第一幕设定为止（她的处境、她的家人、她开始出现的变化）；所有解读只谈主题、表演与手法，<b>不提结局、不提转折、不提任何一个人的去向</b>。收尾引语为主题句，非片中台词。</p>
+      <p>本页<b>全程不剧透</b>。梗概只写到影片公开的第一幕设定为止（她的处境、她的家人、她开始出现的变化）；所有解读只谈主题、表演与手法，<b>不谈影片后半程的任何走向，不谈转折，也不谈任何一个人的去处</b>。收尾引语为主题句，非片中台词。</p>
     </div>
 
     <div class="editor reveal">
@@ -762,195 +790,160 @@
 </section>
 
 <!-- ================= 02 概念海报 ================= -->
-<section class="band">
+<section class="band" id="keyvisual">
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="sec-num">02 / Key Visual</span>
-      <h2 class="sec-title">一辆停在玄关的<em>婴儿车</em></h2>
-      <p class="sec-desc">这一页的概念海报：把这部电影的全部气质，收进一辆车把上挂满东西的婴儿车里。</p>
+      <h2 class="sec-title">一张深夜的料理台，和一个人的<em>全部家当</em></h2>
+      <p class="sec-desc">这一页的概念海报：把这部电影的全部气质，收进一张凌晨的厨房台面——她从夜里忙到天亮的那个位置。</p>
     </div>
 
     <div class="poster-grid">
       <div>
         <div class="poster-frame reveal">
-          <svg viewBox="0 0 430 560" aria-label="概念海报：一间公寓玄关里停着一辆婴儿车，车把上挂着布袋与半杯咖啡，座篮里放着没织完的毛线">
+          <svg viewBox="0 0 430 560" aria-label="概念海报：深夜厨房的料理台上一字摆着一只奶瓶、一只成人用的马克杯、一副折叠眼镜、一台屏幕朝下扣着的手机，以及一张写了一半的便利贴">
             <defs>
-              <linearGradient id="pWall" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="392">
-                <stop offset="0" stop-color="#1a1626"/>
-                <stop offset="0.62" stop-color="#15121f"/>
-                <stop offset="1" stop-color="#100d18"/>
+              <linearGradient id="pWall" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="290">
+                <stop offset="0" stop-color="#1e1a2b"/>
+                <stop offset="0.56" stop-color="#16121f"/>
+                <stop offset="1" stop-color="#0e0c16"/>
               </linearGradient>
-              <linearGradient id="pFloor" gradientUnits="userSpaceOnUse" x1="0" y1="402" x2="0" y2="560">
-                <stop offset="0" stop-color="#171320"/>
-                <stop offset="0.5" stop-color="#110e19"/>
-                <stop offset="1" stop-color="#0c0a12"/>
+              <linearGradient id="pCounter" gradientUnits="userSpaceOnUse" x1="0" y1="290" x2="0" y2="560">
+                <stop offset="0" stop-color="#241e3a"/>
+                <stop offset="0.30" stop-color="#161222"/>
+                <stop offset="1" stop-color="#0b0912"/>
               </linearGradient>
-              <linearGradient id="pCanopy" gradientUnits="userSpaceOnUse" x1="0" y1="300" x2="0" y2="400">
-                <stop offset="0" stop-color="#3b3550"/>
-                <stop offset="1" stop-color="#262138"/>
+              <linearGradient id="pBottle" gradientUnits="userSpaceOnUse" x1="50" y1="0" x2="100" y2="0">
+                <stop offset="0" stop-color="#8f88a4"/>
+                <stop offset="0.32" stop-color="#f1ecf6"/>
+                <stop offset="0.72" stop-color="#d3cadd"/>
+                <stop offset="1" stop-color="#7b7490"/>
               </linearGradient>
-              <linearGradient id="pSeat" gradientUnits="userSpaceOnUse" x1="0" y1="376" x2="0" y2="440">
-                <stop offset="0" stop-color="#2e2942"/>
-                <stop offset="1" stop-color="#211d31"/>
-              </linearGradient>
-              <linearGradient id="pFrame" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#8f83b4"/>
-                <stop offset="0.5" stop-color="#d6cbe4"/>
-                <stop offset="1" stop-color="#7d7199"/>
+              <linearGradient id="pMug" gradientUnits="userSpaceOnUse" x1="146" y1="0" x2="214" y2="0">
+                <stop offset="0" stop-color="#584f72"/>
+                <stop offset="0.38" stop-color="#9d90bc"/>
+                <stop offset="1" stop-color="#524a6b"/>
               </linearGradient>
               <radialGradient id="pLampWarm">
-                <stop offset="0" stop-color="#d9b258" stop-opacity="0.24"/>
+                <stop offset="0" stop-color="#d9b258" stop-opacity="0.32"/>
                 <stop offset="1" stop-color="#d9b258" stop-opacity="0"/>
               </radialGradient>
             </defs>
 
-            <rect x="0" y="0" width="430" height="392" fill="url(#pWall)"/>
-            <rect x="0" y="392" width="430" height="12" fill="#100d18"/>
-            <rect x="0" y="404" width="430" height="156" fill="url(#pFloor)"/>
-            <path d="M0 392 H430" stroke="#c4b6ea" stroke-width="0.9" opacity="0.16"/>
-            <!-- 墙面竖纹与地板缝 -->
-            <g stroke="#c4b6ea" stroke-width="0.7" opacity="0.045">
-              <path d="M64 0 V392"/><path d="M168 0 V392"/><path d="M272 0 V392"/><path d="M376 0 V392"/>
+            <!-- 墙（贴砖） -->
+            <rect x="0" y="0" width="430" height="290" fill="url(#pWall)"/>
+            <g stroke="#c4b6ea" stroke-width="0.8" opacity="0.036">
+              <path d="M0 72 H430"/><path d="M0 145 H430"/><path d="M0 218 H430"/>
+              <path d="M86 0 V290"/><path d="M172 0 V290"/><path d="M258 0 V290"/><path d="M344 0 V290"/>
             </g>
-            <g stroke="#c4b6ea" stroke-width="0.7" opacity="0.05">
-              <path d="M0 436 H430"/><path d="M0 486 H430"/><path d="M0 540 H430"/>
+            <circle cx="104" cy="40" r="178" fill="url(#pLampWarm)"/>
+
+            <!-- 台面 -->
+            <rect x="0" y="290" width="430" height="270" fill="url(#pCounter)"/>
+            <path d="M0 290 H430" stroke="#ded2f2" stroke-width="1.4" opacity="0.26"/>
+            <g stroke="#c4b6ea" stroke-width="0.8" opacity="0.035">
+              <path d="M0 346 H430"/><path d="M0 402 H430"/><path d="M0 458 H430"/>
             </g>
+            <rect x="0" y="290" width="430" height="56" fill="url(#pLampWarm)" opacity="0.5"/>
 
-            <!-- 墙上的灯（从画外漏进来的暖光） -->
-            <circle cx="382" cy="96" r="152" fill="url(#pLampWarm)"/>
+            <!-- 片名与竖排小注 -->
+            <text x="34" y="60" fill="#ece5d8" font-family="Georgia,STSong,serif" font-size="15" letter-spacing="1.6">82年生的金智英</text>
+            <text x="34" y="80" fill="#8d86a0" font-family="Georgia,STSong,serif" font-size="9.5" letter-spacing="1.2">82년생 김지영</text>
+            <text x="394" y="50" fill="#a99ad6" font-family="Georgia,STSong,serif" font-size="11" letter-spacing="1">二<tspan x="394" dy="14">〇</tspan><tspan x="394" dy="14">一</tspan><tspan x="394" dy="14">九</tspan><tspan x="394" dy="14">·</tspan><tspan x="394" dy="14">金</tspan><tspan x="394" dy="14">度</tspan><tspan x="394" dy="14">英</tspan></text>
 
-            <!-- 片名（横排）与竖排小注 -->
-            <text x="34" y="66" fill="#ece5d8" font-family="Georgia,STSong,serif" font-size="15" letter-spacing="1.6">82年生的金智英</text>
-            <text x="34" y="86" fill="#8d86a0" font-family="Georgia,STSong,serif" font-size="9.5" letter-spacing="1.2">82년생 김지영</text>
-            <text x="394" y="56" fill="#a99ad6" font-family="Georgia,STSong,serif" font-size="11" letter-spacing="1">二<tspan x="394" dy="14">〇</tspan><tspan x="394" dy="14">一</tspan><tspan x="394" dy="14">九</tspan><tspan x="394" dy="14">·</tspan><tspan x="394" dy="14">金</tspan><tspan x="394" dy="14">度</tspan><tspan x="394" dy="14">英</tspan></text>
-
-            <!-- 地面影子 -->
-            <ellipse cx="216" cy="504" rx="136" ry="14" fill="#000" opacity="0.5"/>
-
-            <!-- 婴儿车 -->
+            <!-- 奶瓶（窄口） -->
             <g>
-              <!-- 后大轮 -->
-              <circle cx="150" cy="452" r="44" fill="none" stroke="#d6cbe4" stroke-width="2.6" opacity="0.72"/>
-              <circle cx="150" cy="452" r="39" fill="none" stroke="#8f83b4" stroke-width="1.2" opacity="0.5"/>
-              <g stroke="#c3b8dd" stroke-width="1.5" opacity="0.62">
-                <path d="M150 413 L150 491"/>
-                <path d="M111 452 L189 452"/>
-                <path d="M122 424 L178 480"/>
-                <path d="M178 424 L122 480"/>
-                <path d="M124 439 L176 465"/>
-                <path d="M176 439 L124 465"/>
+              <ellipse cx="75" cy="304" rx="38" ry="8" fill="#000" opacity="0.46"/>
+              <path d="M66 160 Q75 150 84 160 Q88 170 87 179 L63 179 Q62 170 66 160 Z" fill="#f0eaf4"/>
+              <path d="M66 160 Q75 150 84 160 Q88 170 87 179 L63 179 Q62 170 66 160 Z" fill="none" stroke="#f2ecf6" stroke-width="0.9" opacity="0.5"/>
+              <path d="M62 176 L88 176 L89 187 L61 187 Z" fill="#cfc6bb"/>
+              <path d="M62 176 L88 176 L89 187 L61 187 Z" fill="none" stroke="#f2ecf6" stroke-width="0.8" opacity="0.42"/>
+              <path d="M64 184 L86 184 L89 202 L61 202 Z" fill="url(#pBottle)"/>
+              <path d="M61 198 L89 198 L100 218 L50 218 Z" fill="url(#pBottle)"/>
+              <path d="M50 216 L100 216 L98 288 Q75 302 52 288 Z" fill="url(#pBottle)"/>
+              <path d="M50 216 L100 216 L98 288 Q75 302 52 288 Z" fill="none" stroke="#f2ecf6" stroke-width="1" opacity="0.4"/>
+              <path d="M61 198 L89 198 L100 218" fill="none" stroke="#f2ecf6" stroke-width="1" opacity="0.4"/>
+              <g stroke="#8a83a0" stroke-width="0.9" opacity="0.5">
+                <path d="M57 232 H93"/><path d="M57 252 H87"/><path d="M57 272 H93"/><path d="M57 290 H87"/>
               </g>
-              <circle cx="150" cy="452" r="7" fill="#d6cbe4" opacity="0.8"/>
-              <circle cx="150" cy="452" r="3" fill="#15121f"/>
+              <path d="M59 226 L57 284" stroke="#ffffff" stroke-width="4" opacity="0.2"/>
+            </g>
 
-              <!-- 前小轮 -->
-              <circle cx="300" cy="474" r="26" fill="none" stroke="#d6cbe4" stroke-width="2.2" opacity="0.66"/>
-              <circle cx="300" cy="474" r="22" fill="none" stroke="#8f83b4" stroke-width="1" opacity="0.46"/>
-              <g stroke="#c3b8dd" stroke-width="1.3" opacity="0.56">
-                <path d="M300 452 L300 496"/>
-                <path d="M278 474 L322 474"/>
-                <path d="M286 460 L314 488"/>
-                <path d="M314 460 L286 488"/>
-              </g>
-              <circle cx="300" cy="474" r="4.6" fill="#d6cbe4" opacity="0.76"/>
-              <circle cx="300" cy="474" r="2" fill="#15121f"/>
+            <!-- 马克杯 -->
+            <g>
+              <ellipse cx="181" cy="308" rx="44" ry="8" fill="#000" opacity="0.46"/>
+              <path d="M214 246 C246 242 248 282 214 290" fill="none" stroke="#6a6184" stroke-width="7"/>
+              <path d="M214 246 C246 242 248 282 214 290" fill="none" stroke="#c4b6ea" stroke-width="1.8" opacity="0.42"/>
+              <path d="M146 226 L214 226 L208 292 Q178 304 152 292 Z" fill="url(#pMug)"/>
+              <path d="M146 226 L214 226 L208 292 Q178 304 152 292 Z" fill="none" stroke="#f2ecf6" stroke-width="1" opacity="0.38"/>
+              <path d="M143 222 L217 222 L214 235 L146 235 Z" fill="#cdc3ee" opacity="0.8"/>
+              <path d="M159 246 L158 288" stroke="#ffffff" stroke-width="4" opacity="0.18"/>
+            </g>
 
-              <!-- 车架 -->
-              <path d="M150 452 L196 372" stroke="url(#pFrame)" stroke-width="5" stroke-linecap="round" fill="none"/>
-              <path d="M300 474 L200 386" stroke="url(#pFrame)" stroke-width="4.4" stroke-linecap="round" fill="none"/>
-              <path d="M166 424 L288 452" stroke="url(#pFrame)" stroke-width="3.4" stroke-linecap="round" fill="none"/>
-              <path d="M150 452 L166 424" stroke="#8f83b4" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <!-- 折叠眼镜 -->
+            <g>
+              <ellipse cx="120" cy="384" rx="94" ry="13" fill="#000" opacity="0.32"/>
+              <rect x="40" y="330" width="58" height="42" rx="12" fill="none" stroke="#c4b6ea" stroke-width="2.4"/>
+              <rect x="118" y="330" width="58" height="42" rx="12" fill="none" stroke="#c4b6ea" stroke-width="2.4"/>
+              <path d="M98 344 Q108 334 118 344" fill="none" stroke="#c4b6ea" stroke-width="2.4"/>
+              <path d="M176 346 L206 354" stroke="#c4b6ea" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M206 354 L200 370" stroke="#c4b6ea" stroke-width="2" stroke-linecap="round"/>
+              <path d="M40 346 L18 354" stroke="#c4b6ea" stroke-width="1.8" stroke-linecap="round" opacity="0.8"/>
+            </g>
 
-              <!-- 座篮 -->
-              <path d="M188 372 L312 372 L304 412 L196 412 Z" fill="url(#pSeat)"/>
-              <path d="M188 372 L312 372 L304 412 L196 412 Z" fill="none" stroke="#c4b6ea" stroke-width="1.1" opacity="0.42"/>
-              <path d="M190 384 L310 384" stroke="#c4b6ea" stroke-width="0.8" opacity="0.2"/>
-              <path d="M192 398 L308 398" stroke="#c4b6ea" stroke-width="0.8" opacity="0.16"/>
+            <!-- 扣着的手机 -->
+            <g>
+              <rect x="228" y="329" width="84" height="58" rx="12" fill="#000" opacity="0.34"/>
+              <rect x="224" y="324" width="84" height="58" rx="12" fill="#282242"/>
+              <rect x="224" y="324" width="84" height="58" rx="12" fill="none" stroke="#c4b6ea" stroke-width="1.3" opacity="0.44"/>
+              <rect x="234" y="334" width="26" height="26" rx="7" fill="#171325"/>
+              <rect x="234" y="334" width="26" height="26" rx="7" fill="none" stroke="#c4b6ea" stroke-width="0.9" opacity="0.32"/>
+              <circle cx="243" cy="343" r="4" fill="#c4b6ea" opacity="0.5"/>
+              <circle cx="252" cy="352" r="3.2" fill="#c4b6ea" opacity="0.34"/>
+            </g>
 
-              <!-- 座篮里的毛线球与两根针 -->
-              <g>
-                <circle cx="240" cy="372" r="13" fill="#a9455c"/>
-                <path d="M229 368 q11 -5 22 1" fill="none" stroke="#d3788c" stroke-width="1" opacity="0.7"/>
-                <path d="M231 377 q11 -5 21 1" fill="none" stroke="#d3788c" stroke-width="1" opacity="0.6"/>
-                <path d="M250 364 L288 340" stroke="#e4dccb" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M252 372 L292 356" stroke="#e4dccb" stroke-width="1.6" stroke-linecap="round"/>
-              </g>
-
-              <!-- 车篷（从座篮后部拱起来） -->
-              <path d="M188 372 L188 330 C188 298 220 278 250 278 C286 278 312 300 312 330 L312 372 Z" fill="url(#pCanopy)"/>
-              <path d="M188 372 L188 330 C188 298 220 278 250 278 C286 278 312 300 312 330 L312 372" fill="none" stroke="#c4b6ea" stroke-width="1.6" opacity="0.46"/>
-              <g fill="none" stroke="#c4b6ea" stroke-width="0.9" opacity="0.2">
-                <path d="M216 284 C205 306 202 340 202 372"/>
-                <path d="M252 279 C246 304 244 340 244 372"/>
-                <path d="M288 296 C284 318 283 346 283 372"/>
-              </g>
-              <path d="M188 340 C226 326 278 326 312 340" fill="none" stroke="#c4b6ea" stroke-width="1.1" opacity="0.24"/>
-
-              <!-- 推手（把手） -->
-              <path d="M166 424 L158 316" stroke="url(#pFrame)" stroke-width="5.4" stroke-linecap="round" fill="none"/>
-              <path d="M138 310 L182 306" stroke="#d6cbe4" stroke-width="6" stroke-linecap="round"/>
-              <path d="M138 310 L182 306" stroke="#7d7199" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-
-              <!-- 车把上挂着的布袋 -->
-              <g>
-                <path d="M132 314 L152 314 L156 322 L128 322 Z" fill="#3b3550"/>
-                <path d="M128 322 L156 322 L160 392 Q144 400 124 392 Z" fill="#4a4460"/>
-                <path d="M128 322 L156 322 L160 392 Q144 400 124 392 Z" fill="none" stroke="#c4b6ea" stroke-width="1" opacity="0.34"/>
-                <path d="M132 322 L132 390" stroke="#c4b6ea" stroke-width="0.8" opacity="0.18"/>
-                <path d="M152 322 L152 390" stroke="#c4b6ea" stroke-width="0.8" opacity="0.18"/>
-                <!-- 露出来的法棍与青菜 -->
-                <path d="M126 316 Q122 288 140 274 Q148 288 144 316 Z" fill="#8c6f45"/>
-                <path d="M126 316 Q122 288 140 274 Q148 288 144 316 Z" fill="none" stroke="#c9a86c" stroke-width="1" opacity="0.55"/>
-                <g fill="none" stroke="#c9a86c" stroke-width="0.9" opacity="0.5">
-                  <path d="M130 306 L138 296"/><path d="M133 296 L141 287"/>
-                </g>
-                <path d="M150 320 Q170 306 168 288 Q154 292 148 310 Z" fill="#4f7d68"/>
-                <path d="M148 320 Q168 310 176 296 Q160 296 146 312 Z" fill="#3f6b58"/>
-              </g>
-
-              <!-- 挂在车把上的半杯咖啡 -->
-              <g>
-                <path d="M186 320 L218 320 L214 358 Q202 364 190 358 Z" fill="#e6ddcb"/>
-                <path d="M186 320 L218 320 L217 330 L187 330 Z" fill="#f2ecdd"/>
-                <path d="M186 320 L218 320 L214 358 Q202 364 190 358 Z" fill="none" stroke="#b9b0a2" stroke-width="1" opacity="0.7"/>
-                <path d="M184 316 L220 316 L218 324 L186 324 Z" fill="#8b8398"/>
-                <path d="M184 316 L220 316 L218 324 L186 324 Z" fill="none" stroke="#cfc6bb" stroke-width="0.9" opacity="0.6"/>
-                <path d="M187 338 L217 338 L215 356 Q202 361 189 356 Z" fill="#7b5a3c" opacity="0.55"/>
-                <path d="M188 340 L216 340" stroke="#d3b48a" stroke-width="1" opacity="0.5"/>
-              </g>
-
-              <!-- 篮底下一只掉出来的小袜子 -->
-              <g>
-                <path d="M356 468 Q372 462 378 470 Q384 478 374 482 L358 486 Q346 482 348 474 Z" fill="#c7bcd8" opacity="0.72"/>
-                <path d="M356 468 Q372 462 378 470 Q384 478 374 482 L358 486 Q346 482 348 474 Z" fill="none" stroke="#eae3d6" stroke-width="0.8" opacity="0.42"/>
+            <!-- 写了一半的便利贴 -->
+            <g>
+              <ellipse cx="372" cy="402" rx="52" ry="12" fill="#000" opacity="0.32"/>
+              <path d="M330 318 L414 318 L414 396 L330 396 Z" fill="#d9b258"/>
+              <path d="M388 396 L414 396 L414 362 Z" fill="#ae8d3d"/>
+              <path d="M330 318 L414 318 L414 396 L330 396 Z" fill="none" stroke="#eccf8b" stroke-width="1" opacity="0.5"/>
+              <g stroke="#5f4c1c" stroke-width="1.9" stroke-linecap="round" opacity="0.52">
+                <path d="M342 340 H400"/>
+                <path d="M342 358 H378"/>
+                <path d="M342 376 H392"/>
               </g>
             </g>
+
+            <!-- 台面上的杯痕 -->
+            <ellipse cx="252" cy="432" rx="32" ry="14" fill="none" stroke="#c4b6ea" stroke-width="1.2" opacity="0.13"/>
+            <ellipse cx="252" cy="432" rx="27" ry="11" fill="none" stroke="#c4b6ea" stroke-width="0.8" opacity="0.08"/>
 
             <!-- 底部信息条 -->
-            <path d="M34 520 H396" stroke="#c4b6ea" stroke-width="0.8" opacity="0.26"/>
-            <text x="34" y="540" fill="#8d86a0" font-family="Helvetica,Arial,sans-serif" font-size="9.5" letter-spacing="1.5">KIM JI-YOUNG, BORN 1982</text>
-            <text x="396" y="540" text-anchor="end" fill="#8d86a0" font-family="Helvetica,Arial,sans-serif" font-size="9.5" letter-spacing="1.5">KR 2019 · NO SPOILER</text>
+            <path d="M34 496 H396" stroke="#c4b6ea" stroke-width="0.8" opacity="0.26"/>
+            <text x="34" y="516" fill="#8d86a0" font-family="Helvetica,Arial,sans-serif" font-size="9.5" letter-spacing="1.5">KIM JI-YOUNG, BORN 1982</text>
+            <text x="396" y="516" text-anchor="end" fill="#8d86a0" font-family="Helvetica,Arial,sans-serif" font-size="9.5" letter-spacing="1.5">KR 2019 · NO SPOILER</text>
           </svg>
         </div>
-        <p class="poster-cap">概念海报 &middot; 一间公寓的玄关，和一辆装着一整天的车</p>
+        <p class="poster-cap">概念海报 &middot; 深夜的料理台，和一个人的全部家当</p>
       </div>
 
       <div class="reads">
         <div class="read reveal">
-          <h4>Read 01 — 一辆车，装着她的一整天</h4>
-          <p>把手上挂着的布袋、喝了一半的咖啡、座篮里没织完的毛线和两根针、车底掉出来的一只小袜子——一个人的一天，被折叠进这么小的一块空间里。这部电影也是这么拍的：<b>不靠旁白，只靠她身上带着的东西说话</b>。</p>
+          <h4>Read 01 — 一张台面，装着她的一整天</h4>
+          <p>一只凌晨四点泡好的奶瓶、一只成年人用的马克杯、一副折叠着的眼镜、一台屏幕朝下扣着的手机、一张写了一半的便利贴——一个人的一天，被摊平在这么小的一块台面上。这部电影也是这么拍的：<b>不靠旁白，只靠她身上带着的东西说话</b>。</p>
         </div>
         <div class="read reveal">
           <h4>Read 02 — 画面上没有人，是故意的</h4>
-          <p>海报里没有出现她的脸。这不是遗漏，而是这部片子最聪明的一处设计：<b>先让你看清她被什么围住，再让你去看她本人</b>。玄关、拖鞋、婴儿车、门口的钥匙——她每天就是从这些东西之间穿过去的。</p>
+          <p>海报里没有出现她的脸。这不是遗漏，而是这部片子最聪明的一处设计：<b>先让你看清她被什么围住，再让你去看她本人</b>。台面上这几样东西，每一样都在等她回到这个位置。</p>
         </div>
         <div class="read reveal">
-          <h4>Read 03 — 灰紫、米白，和一点毛线的颜色</h4>
-          <p>全片的色彩都是低饱和的：窗帘、毛衣、厨房的瓷砖、办公室的隔板，基本只有灰与米白。整部电影里最鲜艳的东西，是一个孩子手里的蜡笔。这张海报沿用了这套配色，<b>只给毛线球留了一点点红</b>。</p>
+          <h4>Read 03 — 灰紫、米白，和一张便利贴的黄</h4>
+          <p>全片的色彩都是低饱和的：窗帘、毛衣、厨房的瓷砖、办公室的隔板，基本只有灰与米白。整部电影里最鲜艳的东西，是一个孩子手里的蜡笔。这张海报沿用了这套配色，<b>只给那张便利贴留了一点点黄</b>。</p>
         </div>
         <div class="read reveal">
           <h4>Read 04 — 它很轻，也很重</h4>
-          <p>一辆婴儿车只装得下一个孩子；可它占掉的时间，是一个成年人的全部。这张海报想说的就是这部电影的分量——<b>最重的东西，往往是用最轻的物件拎着的</b>。</p>
+          <p>一只奶瓶只装得下一个孩子的口粮，可它占掉的时间，是一个成年人的全部。这张海报想说的就是这部电影的分量——<b>最重的东西，往往是用最轻的物件拎着的</b>。</p>
         </div>
       </div>
     </div>
@@ -1004,7 +997,7 @@
         <div class="num">8.6<small>/10</small></div>
         <div class="den">约 38 万人参与评分</div>
         <div class="bar"><i style="width:86%"></i></div>
-        <p class="note">在本系列已推荐的 31 部中属于第一梯队；2019 年豆瓣年度榜单上，它曾是与《寄生虫》分差最小的一部韩国电影。</p>
+        <p class="note">在本系列已推荐的 31 部中属于第一梯队。放在 2019 年的韩国电影里，它的分数也在最靠前的几部之中。</p>
       </div>
       <div class="score g2 reveal">
         <div class="src">IMDb</div>
@@ -1018,14 +1011,14 @@
         <div class="num">9.39<small>/10</small></div>
         <div class="den">韩国最大电影网站观众评分</div>
         <div class="bar"><i style="width:94%"></i></div>
-        <p class="note">CGV 观众满足度 96%；同期的爱心数一度超过《寄生虫》。而在未观影人群里，男性网友的平均分只有 1.7 分。</p>
+        <p class="note">CGV 观众满足度约 96%，爱心数一度冲到 2.7 万颗以上。而在这部片子的“未观影”评分里，男性网友的平均分只有 1.7 分，女性网友却是 9.45 分。</p>
       </div>
       <div class="score g4 reveal">
         <div class="src">韩国观影</div>
         <div class="num">367<small>万人次</small></div>
         <div class="den">损益平衡点为 160 万人次</div>
         <div class="bar"><i style="width:81%"></i></div>
-        <p class="note">上映首日即登上票房冠军；第 4 天破 100 万、第 11 天破 200 万、第 18 天破 300 万。以一部小成本剧情片来说，这是现象级的成绩。</p>
+        <p class="note">上映首日即登上票房冠军，当天压过同期上映的《小丑》与《沉睡魔咒 2》；上映第 18 天，观影人次突破 300 万。以一部小成本剧情片来说，这是现象级的成绩。</p>
       </div>
     </div>
   </div>
@@ -1206,7 +1199,7 @@
       <div class="g6 reveal">
         <span class="idx">06</span>
         <h4>她只回了一句话</h4>
-        <p>郑裕美接演之前承受了大量恶评，社交账号掉了十几万粉丝。有人夸她勇敢，她的回应是：“<b>接一部电影，算得上什么勇气。</b>”</p>
+        <p>郑裕美接演之前承受了大量恶评，社交账号掉了十万粉丝。有人夸她勇敢，她的回应是：“<b>这算得上是什么勇气。</b>”</p>
       </div>
     </div>
   </div>

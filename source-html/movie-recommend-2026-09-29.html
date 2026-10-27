@@ -74,8 +74,8 @@
   .hero-scrim{
     position:absolute;inset:0;z-index:1;
     background:
-      radial-gradient(84% 62% at 24% 58%,rgba(8,9,12,.82),rgba(8,9,12,.20) 58%,transparent 84%),
-      linear-gradient(180deg,rgba(8,9,12,.60) 0%,transparent 24%,transparent 60%,rgba(8,9,12,.95) 100%);
+      linear-gradient(180deg,rgba(4,5,9,.52) 0%,transparent 20%,transparent 54%,rgba(4,5,9,.30) 74%,rgba(4,5,9,.86) 100%),
+      radial-gradient(64% 56% at 22% 30%,rgba(4,5,9,.66),rgba(4,5,9,.12) 62%,transparent 88%);
   }
   #heroCanvas{position:absolute;inset:0;z-index:2;width:100%;height:100%;display:block}
   .hero-in{position:relative;z-index:4;width:100%;padding:120px 28px 96px}
@@ -101,7 +101,7 @@
   }
   .tagline{
     font-family:var(--serif);font-size:clamp(17px,2.35vw,24px);line-height:1.75;
-    color:var(--text);max-width:680px;margin-top:22px;
+    color:var(--text);max-width:640px;margin-top:22px;
   }
   .tagline em{font-style:normal;color:var(--amber-2);border-bottom:1px solid rgba(210,164,74,.42)}
   .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:34px}
@@ -177,7 +177,7 @@
 
   .glance{
     border:1px solid var(--line);background:linear-gradient(180deg,var(--panel-2),var(--panel));
-    border-radius:3px;padding:26px 24px;position:sticky;top:26px;position:relative;overflow:hidden;
+    border-radius:3px;padding:26px 24px;position:sticky;top:26px;overflow:hidden;
   }
   .glance::before{
     content:"";position:absolute;left:0;top:0;width:100%;height:3px;
@@ -379,133 +379,148 @@
     <svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
       <defs>
         <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#05060a"/>
-          <stop offset="30%" stop-color="#0a0c12"/>
-          <stop offset="56%" stop-color="#111520"/>
-          <stop offset="70%" stop-color="#151a24"/>
-          <stop offset="100%" stop-color="#05060a"/>
+          <stop offset="0%" stop-color="#04050a"/>
+          <stop offset="34%" stop-color="#070910"/>
+          <stop offset="62%" stop-color="#0c101a"/>
+          <stop offset="78%" stop-color="#121826"/>
+          <stop offset="100%" stop-color="#05070c"/>
         </linearGradient>
         <radialGradient id="tunnelGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#f4dfae" stop-opacity=".78"/>
-          <stop offset="26%" stop-color="#ecc884" stop-opacity=".34"/>
-          <stop offset="58%" stop-color="#d2a44a" stop-opacity=".13"/>
+          <stop offset="0%" stop-color="#f7e6bb" stop-opacity=".82"/>
+          <stop offset="24%" stop-color="#ecc884" stop-opacity=".36"/>
+          <stop offset="56%" stop-color="#d2a44a" stop-opacity=".13"/>
           <stop offset="100%" stop-color="#d2a44a" stop-opacity="0"/>
         </radialGradient>
         <radialGradient id="coldGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#aec6ee" stop-opacity=".26"/>
-          <stop offset="46%" stop-color="#7fa2dd" stop-opacity=".09"/>
+          <stop offset="0%" stop-color="#aec6ee" stop-opacity=".22"/>
+          <stop offset="46%" stop-color="#7fa2dd" stop-opacity=".075"/>
           <stop offset="100%" stop-color="#7fa2dd" stop-opacity="0"/>
         </radialGradient>
         <linearGradient id="snowGround" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#151a24"/>
-          <stop offset="34%" stop-color="#0d1016"/>
+          <stop offset="0%" stop-color="#1b2231"/>
+          <stop offset="26%" stop-color="#111726"/>
+          <stop offset="62%" stop-color="#0a0e18"/>
           <stop offset="100%" stop-color="#05060a"/>
         </linearGradient>
         <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#ecc884" stop-opacity=".62"/>
-          <stop offset="100%" stop-color="#ecc884" stop-opacity="0"/>
+          <stop offset="0%" stop-color="#f2d9a2" stop-opacity=".66"/>
+          <stop offset="100%" stop-color="#f2d9a2" stop-opacity="0"/>
         </linearGradient>
-        <radialGradient id="vig" cx="50%" cy="46%" r="72%">
+        <linearGradient id="railTop" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f2d9a2" stop-opacity=".55"/>
+          <stop offset="100%" stop-color="#f2d9a2" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="vig" cx="50%" cy="50%" r="74%">
           <stop offset="0%" stop-color="#000" stop-opacity="0"/>
-          <stop offset="66%" stop-color="#000" stop-opacity=".28"/>
-          <stop offset="100%" stop-color="#000" stop-opacity=".82"/>
+          <stop offset="62%" stop-color="#000" stop-opacity=".30"/>
+          <stop offset="100%" stop-color="#000" stop-opacity=".86"/>
         </radialGradient>
       </defs>
 
       <rect x="0" y="0" width="1440" height="900" fill="url(#sky)"/>
 
-      <!-- 远处山脊两层 -->
-      <path d="M0 470 L150 440 L292 462 L430 428 L560 460 L700 434 L840 458 L980 432 L1130 462 L1280 438 L1440 466 V560 H0 Z" fill="#0b0e15" opacity=".9"/>
-      <path d="M0 500 L180 478 L330 498 L500 470 L660 496 L820 472 L1000 498 L1180 474 L1340 498 L1440 482 V560 H0 Z" fill="#080a10" opacity=".95"/>
+      <!-- 远处雪原山脊（两层） -->
+      <path d="M0 700 L160 668 L330 690 L500 656 L690 686 L880 654 L1080 688 L1270 660 L1440 692 V760 H0 Z" fill="#0d121d" opacity=".95"/>
+      <path d="M0 726 L200 704 L400 722 L620 698 L840 724 L1060 700 L1280 724 L1440 706 V760 H0 Z" fill="#080b14"/>
 
-      <!-- 隧道口（暖光的唯一来源） -->
+      <!-- 冷调补光（夜空的一角） -->
+      <circle cx="1230" cy="250" r="330" fill="url(#coldGlow)"/>
+      <circle cx="196" cy="150" r="260" fill="url(#coldGlow)" opacity=".55"/>
+
+      <!-- 隧道口：全片唯一的光源 -->
       <g>
-        <path d="M596 560 V494 A124 124 0 0 1 844 494 V560 Z" fill="#05060a"/>
-        <path d="M604 560 V496 A116 116 0 0 1 836 496 V560 Z" fill="url(#tunnelGlow)" opacity=".92"/>
-        <path d="M628 560 V500 A92 92 0 0 1 812 500 V560 Z" fill="#ecc884" opacity=".22"/>
-        <circle cx="720" cy="516" r="250" fill="url(#tunnelGlow)"/>
+        <path d="M760 740 V690 A90 90 0 0 1 940 690 V740 Z" fill="#04050a"/>
+        <path d="M766 740 V692 A84 84 0 0 1 934 692 V740 Z" fill="url(#tunnelGlow)"/>
+        <path d="M782 740 V696 A68 68 0 0 1 918 696 V740 Z" fill="#f7e6bb" opacity=".26"/>
+        <circle cx="850" cy="672" r="232" fill="url(#tunnelGlow)"/>
       </g>
 
       <!-- 雪地（透视平面） -->
-      <path d="M0 900 L596 560 L844 560 L1440 900 Z" fill="url(#snowGround)"/>
-      <!-- 雪地反光 -->
-      <g opacity=".5">
-        <rect x="700" y="562" width="40" height="336" fill="#ecc884" opacity=".07"/>
-        <rect x="660" y="640" width="120" height="260" fill="#aec6ee" opacity=".035"/>
+      <path d="M0 900 L760 740 L940 740 L1440 900 Z" fill="url(#snowGround)"/>
+      <!-- 雪面反光 -->
+      <g opacity=".55">
+        <path d="M850 742 L900 900" stroke="#f2d9a2" stroke-width="46" opacity=".05" fill="none"/>
+        <path d="M850 742 L790 900" stroke="#f2d9a2" stroke-width="34" opacity=".04" fill="none"/>
+        <ellipse cx="850" cy="792" rx="230" ry="58" fill="#f2d9a2" opacity=".035"/>
       </g>
 
       <!-- 枕木（近大远小） -->
-      <g fill="#171b21" opacity=".85">
-        <rect x="676" y="576" width="88" height="7"/>
-        <rect x="620" y="614" width="212" height="9"/>
-        <rect x="537" y="662" width="378" height="12"/>
-        <rect x="437" y="722" width="578" height="16"/>
-        <rect x="316" y="794" width="820" height="21"/>
-        <rect x="183" y="874" width="1086" height="26"/>
+      <g fill="#1c222d" opacity=".92">
+        <rect x="832" y="748" width="36" height="4" rx="1"/>
+        <rect x="826" y="754" width="48" height="6" rx="1"/>
+        <rect x="786" y="786" width="128" height="9" rx="1.5"/>
+        <rect x="738" y="826" width="224" height="13" rx="2"/>
+        <rect x="691" y="866" width="318" height="17" rx="2"/>
+        <rect x="659" y="898" width="384" height="21" rx="2"/>
+      </g>
+      <g fill="#2b3440" opacity=".5">
+        <rect x="786" y="786" width="128" height="2.4" rx="1"/>
+        <rect x="738" y="826" width="224" height="3.2" rx="1"/>
+        <rect x="691" y="866" width="318" height="4" rx="1"/>
       </g>
 
       <!-- 铁轨 -->
-      <g stroke="#6f7783" stroke-width="3.4" fill="none" opacity=".62">
-        <path d="M713 556 L176 900"/>
-        <path d="M727 556 L1264 900"/>
+      <g stroke="#848d9b" stroke-width="3.6" fill="none" opacity=".7">
+        <path d="M846 736 L661 900"/>
+        <path d="M854 736 L1039 900"/>
       </g>
-      <g stroke="#ecc884" stroke-width="1.2" fill="none" opacity=".30">
-        <path d="M714 556 L182 900"/>
-        <path d="M726 556 L1258 900"/>
+      <g stroke="url(#railTop)" stroke-width="1.6" fill="none" opacity=".9">
+        <path d="M845 736 L657 900"/>
+        <path d="M855 736 L1043 900"/>
+      </g>
+
+      <!-- 雪原上的枯树 -->
+      <g stroke="#080b12" stroke-width="4" fill="none" stroke-linecap="round">
+        <path d="M96 900 V772"/>
+        <path d="M96 812 L64 780"/><path d="M96 796 L124 764"/><path d="M96 838 L70 818"/>
+        <path d="M330 900 V782"/>
+        <path d="M330 824 L300 794"/><path d="M330 806 L362 776"/><path d="M330 852 L306 834"/>
+        <path d="M172 900 V830"/><path d="M172 856 L152 838"/>
       </g>
 
       <!-- 电线杆 + 电线 -->
-      <g fill="#0a0c11">
-        <rect x="466" y="452" width="9" height="176"/>
-        <rect x="446" y="470" width="49" height="5"/>
-        <rect x="246" y="486" width="10" height="220"/>
-        <rect x="224" y="506" width="54" height="6"/>
-        <rect x="58" y="520" width="12" height="284"/>
-        <rect x="32" y="544" width="64" height="7"/>
-        <rect x="1008" y="466" width="9" height="176"/>
-        <rect x="990" y="486" width="46" height="5"/>
-        <rect x="1226" y="500" width="10" height="222"/>
-        <rect x="1204" y="522" width="54" height="6"/>
-        <rect x="1396" y="530" width="12" height="278"/>
-        <rect x="1370" y="556" width="66" height="7"/>
+      <g fill="#080b12">
+        <rect x="516" y="640" width="11" height="248"/>
+        <rect x="494" y="660" width="56" height="6"/>
+        <rect x="246" y="690" width="12" height="210"/>
+        <rect x="224" y="712" width="58" height="6"/>
+        <rect x="1176" y="662" width="11" height="238"/>
+        <rect x="1154" y="682" width="56" height="6"/>
+        <rect x="1382" y="700" width="12" height="200"/>
+        <rect x="1360" y="722" width="58" height="6"/>
       </g>
-      <g stroke="#141922" stroke-width="1.6" fill="none" opacity=".9">
-        <path d="M470 470 Q300 512 251 508"/>
-        <path d="M251 508 Q150 540 64 548"/>
-        <path d="M1012 488 Q1180 528 1231 524"/>
-        <path d="M1231 524 Q1330 558 1402 560"/>
-        <path d="M470 470 Q620 500 1012 488" opacity=".55"/>
+      <g stroke="#131a26" stroke-width="1.8" fill="none" opacity=".95">
+        <path d="M520 662 Q380 700 252 712"/>
+        <path d="M520 662 Q840 640 1180 684"/>
+        <path d="M1180 684 Q1290 700 1388 722"/>
       </g>
-      <g opacity=".85">
-        <circle cx="470" cy="470" r="3" fill="#ecc884"/>
-        <circle cx="251" cy="508" r="2.6" fill="#ecc884"/>
-        <circle cx="1012" cy="488" r="3" fill="#ecc884"/>
-        <circle cx="1231" cy="524" r="2.6" fill="#ecc884"/>
+      <g opacity=".9">
+        <circle cx="520" cy="662" r="3.2" fill="#ecc884"/>
+        <circle cx="252" cy="712" r="2.8" fill="#ecc884"/>
+        <circle cx="1180" cy="684" r="3.2" fill="#ecc884"/>
+        <circle cx="1388" cy="722" r="2.8" fill="#ecc884"/>
       </g>
-
-      <!-- 冷调补光（右侧·雪夜的蓝） -->
-      <circle cx="1200" cy="330" r="300" fill="url(#coldGlow)"/>
 
       <!-- 孤影落影 -->
-      <ellipse cx="716" cy="708" rx="44" ry="9" fill="#03040a" opacity=".7"/>
+      <ellipse cx="850" cy="848" rx="42" ry="8" fill="#02030a" opacity=".72"/>
 
-      <!-- 孤影：背对镜头，站在两轨之间，被隧道的光打出轮廓 -->
+      <!-- 孤影：站在两轨之间，背对镜头，被隧道的光描出轮廓 -->
       <g fill="#03040a">
-        <circle cx="716" cy="628" r="13.5"/>
-        <path d="M-18 646 h36 l9 62 h-54 z" transform="translate(716,0)"/>
-        <path d="M-18 650 l-14 40 h10 l11 -33z" transform="translate(716,0)"/>
-        <path d="M18 650 l14 40 h-10 l-11 -33z" transform="translate(716,0)"/>
-        <rect x="702" y="704" width="11" height="6"/>
-        <rect x="719" y="704" width="11" height="6"/>
+        <circle cx="850" cy="762" r="13"/>
+        <path d="M-17 780 h34 l9 60 h-52 z" transform="translate(850,0)"/>
+        <path d="M-17 784 l-13 38 h9 l10 -31z" transform="translate(850,0)"/>
+        <path d="M17 784 l13 38 h-9 l-10 -31z" transform="translate(850,0)"/>
+        <rect x="836" y="836" width="11" height="6"/>
+        <rect x="853" y="836" width="11" height="6"/>
       </g>
       <!-- 轮廓光 -->
-      <g stroke="url(#rim)" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".85">
-        <path d="M729 616 v30"/>
-        <path d="M729 650 v56"/>
-        <path d="M722 700 v12"/>
+      <g stroke="url(#rim)" stroke-width="1.7" fill="none" stroke-linecap="round" opacity=".9">
+        <path d="M862 752 v26"/>
+        <path d="M862 784 v52"/>
+        <path d="M856 830 v12"/>
       </g>
 
-      <!-- 静态雪（近处较大的雪片） -->
+      <!-- 静态雪 -->
       <g fill="#e9eef6" opacity=".5">
         <circle cx="120" cy="180" r="2.1"/><circle cx="284" cy="96" r="1.5"/>
         <circle cx="392" cy="268" r="1.8"/><circle cx="516" cy="140" r="1.4"/>
@@ -513,7 +528,13 @@
         <circle cx="988" cy="300" r="2.2"/><circle cx="1128" cy="168" r="1.5"/>
         <circle cx="1296" cy="356" r="1.8"/><circle cx="1388" cy="220" r="1.4"/>
         <circle cx="208" cy="392" r="1.7"/><circle cx="780" cy="228" r="1.3"/>
+        <circle cx="1080" cy="430" r="1.6"/><circle cx="470" cy="470" r="1.5"/>
+        <circle cx="1420" cy="500" r="1.4"/><circle cx="60" cy="560" r="1.6"/>
+        <circle cx="960" cy="520" r="1.3"/><circle cx="1310" cy="600" r="1.5"/>
       </g>
+
+      <!-- 地平线附近的一线冷雾 -->
+      <ellipse cx="1050" cy="738" rx="500" ry="20" fill="#aec6ee" opacity=".05"/>
 
       <rect x="0" y="0" width="1440" height="900" fill="url(#vig)"/>
     </svg>
@@ -531,7 +552,6 @@
       <span class="chip">片长 118 分钟</span>
       <span class="chip">韩国 15+</span>
       <span class="chip">265.9 万观影人次</span>
-      <span class="chip">第 61 届伦敦国际电影节 惊悚单元</span>
       <span class="chip">改编自金英夏同名小说</span>
     </div>
   </div>
@@ -702,7 +722,6 @@
             <!-- 便条上夹着的那张照片 -->
             <g transform="rotate(3.4 362 236)">
               <rect x="300" y="186" width="124" height="94" rx="1" fill="#f2efe6" opacity=".95"/>
-              <rect x="306" y="192" width="112" height="82" fx="0" fill="url(#pPhoto)"/>
               <rect x="306" y="192" width="112" height="82" fill="url(#pPhoto)"/>
               <!-- 照片里：隧道 + 铁轨 + 一个身影 -->
               <path d="M338 274 V254 A22 22 0 0 1 382 254 V274 Z" fill="#05060a"/>
@@ -1090,8 +1109,8 @@
   function glowLayer(t){
     /* 层 1：隧道暖光的缓慢呼吸 */
     var k = (Math.sin(t / 7200 * Math.PI * 2) + 1) / 2;
-    var tx = W * 0.50, ty = H * 0.46;
-    var r = Math.max(W, H) * 0.42;
+    var tx = W * 0.59, ty = H * 0.745;
+    var r = Math.max(W, H) * 0.34;
     var g = ctx.createRadialGradient(tx, ty, 0, tx, ty, r);
     g.addColorStop(0, 'rgba(244,223,174,' + (0.030 + 0.040 * k) + ')');
     g.addColorStop(0.42, 'rgba(210,164,74,' + (0.010 + 0.018 * k) + ')');
@@ -1212,3 +1231,20 @@
   if (hud && !reduce){
     hudUpdate();
     var ticking = false;
+    window.addEventListener('scroll', function(){
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        hudUpdate();
+        ticking = false;
+      });
+    }, { passive: true });
+    window.addEventListener('resize', hudUpdate);
+  }
+  window.addEventListener('load', function(){
+    if (hud && !reduce) hudUpdate();
+  });
+})();
+</script>
+</body>
+</html>

@@ -18,7 +18,6 @@
     --fish-light:#9df0c8;
     --amber:#d9a94e;
     --amber-dim:#93743a;
-    --concrete:#8d9d99;
     --blood:#8e2a2c;
     --line:rgba(220,239,230,.13);
     --line-strong:rgba(220,239,230,.26);
@@ -50,7 +49,7 @@
 
   /* ============ HERO ============ */
   .hero{
-    position:relative;min-height:100vh;overflow:hidden;
+    position:relative;min-height:max(100vh,880px);overflow:hidden;
     display:flex;align-items:stretch;
     border-bottom:1px solid var(--line);
   }
@@ -65,8 +64,8 @@
   .hero-in{
     position:relative;z-index:4;
     width:100%;max-width:1160px;margin:0 auto;
-    padding:118px 28px 92px;
-    display:flex;flex-direction:column;justify-content:center;
+    padding:104px 28px 96px;
+    display:flex;flex-direction:column;justify-content:flex-start;
   }
   .eyebrow{
     font-family:var(--mono);font-size:11px;letter-spacing:.34em;
@@ -165,7 +164,6 @@
   .prose{font-size:16.5px;line-height:2.05;color:var(--mist-dim)}
   .prose p+p{margin-top:22px}
   .prose b{color:var(--mist);font-weight:600}
-  .prose .kr{color:var(--amber);font-family:var(--mono);font-size:14px}
   .prose em{color:var(--fish-light);font-style:normal}
   .drop::first-letter{
     font-family:var(--serif);float:left;font-size:74px;line-height:.82;
@@ -342,16 +340,19 @@
     body{font-size:15px}
     section.band{padding:70px 0}
     .wrap{padding:0 20px}
-    .hero-in{padding:104px 20px 88px}
+    .hero{min-height:max(100vh,740px)}
+    .hero-in{padding:70px 20px 66px}
     .eyebrow{font-size:9.5px;letter-spacing:.22em;gap:10px}
     .eyebrow::before{width:26px}
     .eyebrow span{letter-spacing:.14em}
-    h1.title{letter-spacing:.06em;margin-top:16px}
+    h1.title{font-size:clamp(52px,13vw,152px);letter-spacing:.06em;margin:14px 0 6px}
     .title-en{letter-spacing:.3em}
-    .title-kr{letter-spacing:.22em;margin-bottom:20px}
-    .hero-sub{padding-left:15px;font-size:14px}
-    .chips{gap:7px;margin-top:22px}
+    .title-kr{letter-spacing:.22em;margin-bottom:18px}
+    .hero-sub{padding-left:15px;font-size:13.5px;line-height:1.75}
+    .chips{gap:7px;margin-top:16px}
     .chip{font-size:10px;padding:5px 9px;letter-spacing:.08em}
+    .scroll-hint{bottom:10px;gap:6px}
+    .scroll-hint i{height:22px}
     .file-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .file-cell.wide{grid-column:span 2}
     .score-grid{grid-template-columns:1fr}
@@ -397,11 +398,6 @@
         <stop offset="0%" stop-color="#d9a94e" stop-opacity=".34"/>
         <stop offset="46%" stop-color="#c99a45" stop-opacity=".10"/>
         <stop offset="100%" stop-color="#c99a45" stop-opacity="0"/>
-      </radialGradient>
-      <radialGradient id="tankGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#45cf95" stop-opacity=".34"/>
-        <stop offset="52%" stop-color="#2fa878" stop-opacity=".10"/>
-        <stop offset="100%" stop-color="#2fa878" stop-opacity="0"/>
       </radialGradient>
       <linearGradient id="tankWater" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="#1e6350" stop-opacity=".58"/>
@@ -522,12 +518,11 @@
       <rect x="1200" y="322" width="22" height="14"/>
       <rect x="1274" y="370" width="13" height="10"/>
     </g>
-    <!-- 吊索 -->
     <g stroke="#0a2420" stroke-width="1.4" fill="none" opacity=".9">
       <line x1="470" y1="292" x2="436" y2="360"/>
-      <line x1="436" y1="360" x2="436" y2="392" stroke="#0d2a25"/>
+      <line x1="436" y1="360" x2="436" y2="392"/>
       <line x1="1002" y1="310" x2="1036" y2="372"/>
-      <line x1="1036" y1="372" x2="1036" y2="404" stroke="#0d2a25"/>
+      <line x1="1036" y1="372" x2="1036" y2="404"/>
     </g>
 
     <!-- 地平线 -->
@@ -546,63 +541,53 @@
     <ellipse cx="720" cy="800" rx="196" ry="14" fill="#45cf95" opacity=".10"/>
     <ellipse cx="720" cy="798" rx="150" ry="9" fill="#000" opacity=".55"/>
 
-    <!-- 缸体 -->
     <g>
-      <!-- 水 -->
-      <rect x="561" y="559" width="318" height="216" rx="3" fill="url(#tankWater)"/>
-      <!-- 缸内底部砂石 -->
-      <path d="M561 745 h318 v30 h-318 z" fill="#12322a"/>
+      <rect x="559" y="623" width="322" height="158" rx="3" fill="url(#tankWater)"/>
+      <path d="M559 744 h322 v37 h-322 z" fill="#12322a"/>
       <g fill="#1d4b3d" opacity=".9">
-        <circle cx="586" cy="760" r="3.4"/><circle cx="602" cy="768" r="2.6"/>
-        <circle cx="624" cy="757" r="2.9"/><circle cx="648" cy="769" r="3.2"/>
-        <circle cx="672" cy="758" r="2.4"/><circle cx="700" cy="770" r="3.1"/>
-        <circle cx="726" cy="759" r="2.7"/><circle cx="752" cy="769" r="3.3"/>
-        <circle cx="778" cy="757" r="2.5"/><circle cx="804" cy="768" r="3"/>
-        <circle cx="830" cy="760" r="2.8"/><circle cx="854" cy="770" r="2.4"/>
+        <circle cx="582" cy="757" r="3.2"/><circle cx="598" cy="764" r="2.5"/>
+        <circle cx="618" cy="754" r="2.8"/><circle cx="640" cy="765" r="3.1"/>
+        <circle cx="662" cy="755" r="2.3"/><circle cx="688" cy="766" r="3"/>
+        <circle cx="712" cy="756" r="2.6"/><circle cx="738" cy="765" r="3.2"/>
+        <circle cx="762" cy="754" r="2.4"/><circle cx="786" cy="765" r="2.9"/>
+        <circle cx="812" cy="756" r="2.7"/><circle cx="836" cy="766" r="2.3"/>
       </g>
       <g fill="#9df0c8" opacity=".22">
-        <circle cx="612" cy="762" r="1.5"/><circle cx="690" cy="764" r="1.4"/>
-        <circle cx="766" cy="762" r="1.5"/><circle cx="836" cy="765" r="1.3"/>
+        <circle cx="606" cy="758" r="1.4"/><circle cx="676" cy="760" r="1.3"/>
+        <circle cx="748" cy="758" r="1.4"/><circle cx="820" cy="761" r="1.2"/>
       </g>
-      <!-- 水草 -->
       <g stroke="#2fa878" stroke-width="2.6" fill="none" opacity=".55" stroke-linecap="round">
-        <path d="M596 748 q-10 -26 2 -46"/>
-        <path d="M604 748 q8 -22 -2 -40"/>
-        <path d="M840 748 q10 -24 -2 -42"/>
-        <path d="M848 748 q-8 -20 3 -36"/>
+        <path d="M592 742 q-10 -24 2 -42"/>
+        <path d="M600 742 q8 -20 -2 -36"/>
+        <path d="M836 742 q10 -22 -2 -38"/>
+        <path d="M844 742 q-8 -18 3 -32"/>
       </g>
-      <!-- 水面线 -->
-      <line x1="561" y1="572" x2="879" y2="572" stroke="#9df0c8" stroke-width="1.6" opacity=".38"/>
-      <line x1="575" y1="576" x2="865" y2="576" stroke="#dcefe6" stroke-width="1" opacity=".14"/>
-      <!-- 玻璃反光 -->
-      <polygon points="612,559 690,559 616,775 561,775" fill="url(#glass)"/>
-      <polygon points="806,559 828,559 764,775 742,775" fill="#dcefe6" opacity=".045"/>
-      <!-- 玻璃框 -->
-      <rect x="559" y="557" width="322" height="220" rx="4" fill="none" stroke="#8ac9b4" stroke-width="2.4" opacity=".6"/>
-      <rect x="562" y="560" width="316" height="214" rx="3" fill="none" stroke="#04120f" stroke-width="1.4" opacity=".7"/>
-      <!-- 缸口高光 -->
-      <rect x="559" y="556" width="322" height="3.4" rx="1.6" fill="url(#rim)"/>
-      <!-- 水位刻度 -->
+      <line x1="559" y1="636" x2="881" y2="636" stroke="#9df0c8" stroke-width="1.6" opacity=".38"/>
+      <line x1="572" y1="640" x2="868" y2="640" stroke="#dcefe6" stroke-width="1" opacity=".14"/>
+      <polygon points="608,623 686,623 612,781 557,781" fill="url(#glass)"/>
+      <polygon points="812,623 834,623 770,781 748,781" fill="#dcefe6" opacity=".045"/>
+      <rect x="554" y="618" width="332" height="168" rx="4" fill="none" stroke="#8ac9b4" stroke-width="2.4" opacity=".6"/>
+      <rect x="557" y="621" width="326" height="162" rx="3" fill="none" stroke="#04120f" stroke-width="1.4" opacity=".7"/>
+      <rect x="554" y="617" width="332" height="3.2" rx="1.5" fill="url(#rim)"/>
       <g stroke="#9df0c8" stroke-width="1" opacity=".34">
-        <line x1="563" y1="600" x2="575" y2="600"/>
-        <line x1="563" y1="628" x2="571" y2="628"/>
-        <line x1="563" y1="656" x2="575" y2="656"/>
-        <line x1="563" y1="684" x2="571" y2="684"/>
-        <line x1="563" y1="712" x2="575" y2="712"/>
+        <line x1="561" y1="650" x2="573" y2="650"/>
+        <line x1="561" y1="670" x2="569" y2="670"/>
+        <line x1="561" y1="690" x2="573" y2="690"/>
+        <line x1="561" y1="710" x2="569" y2="710"/>
+        <line x1="561" y1="730" x2="573" y2="730"/>
       </g>
-      <!-- 角落吊牌 -->
       <g>
-        <line x1="856" y1="558" x2="856" y2="584" stroke="#6f8f86" stroke-width="1"/>
-        <rect x="834" y="584" width="44" height="17" fill="#d9a94e" opacity=".82"/>
-        <text x="856" y="596" text-anchor="middle" font-family="monospace" font-size="8.6" fill="#2b2114" letter-spacing="1.2">NO.01</text>
+        <line x1="860" y1="620" x2="860" y2="644" stroke="#6f8f86" stroke-width="1"/>
+        <rect x="838" y="644" width="44" height="17" fill="#d9a94e" opacity=".82"/>
+        <text x="860" y="656" text-anchor="middle" font-family="monospace" font-size="8.6" fill="#2b2114" letter-spacing="1.2">NO.01</text>
       </g>
     </g>
 
     <!-- 底座 -->
     <g>
-      <rect x="536" y="777" width="368" height="18" fill="url(#plinth)"/>
-      <rect x="536" y="777" width="368" height="2.6" fill="#2c5348" opacity=".8"/>
-      <rect x="548" y="795" width="344" height="5" fill="#050f0d"/>
+      <rect x="532" y="784" width="376" height="16" fill="url(#plinth)"/>
+      <rect x="532" y="784" width="376" height="2.6" fill="#2c5348" opacity=".8"/>
+      <rect x="544" y="800" width="352" height="5" fill="#050f0d"/>
     </g>
   </svg>
   <div class="hero-scrim"></div>
@@ -618,11 +603,11 @@
       等他到家，记忆里那片田已经没了。<b>他只想找个能站住脚的地方，可这座正在长高的城市，从没打算给他留位置。</b>
     </p>
     <div class="chips">
-      <span class="chip hot">李沧东长片处女作 · 韩国新浪潮奠基作之一</span>
-      <span class="chip tag">第 18 届青龙奖 · 最佳影片</span>
-      <span class="chip">韩石圭 × 沈惠珍 × 文成根</span>
+      <span class="chip hot">李沧东 · 长片处女作</span>
+      <span class="chip tag">青龙奖 · 最佳影片</span>
+      <span class="chip">韩石圭 · 沈惠珍 · 文成根</span>
       <span class="chip">宋康昊 出演</span>
-      <span class="chip">111 分钟 · 1997</span>
+      <span class="chip">1997 · 111 分钟</span>
     </div>
   </div>
   <div class="scroll-hint"><span>SCROLL</span><i></i></div>
@@ -633,7 +618,7 @@
   <div class="wrap">
     <div class="nospoil reveal">
       <span class="mark">NO&nbsp;SPOILER</span>
-      <p><b>全程不剧透。</b>下面所有内容只写到影片第一幕为止的公开设定——他怎么回家、家变成了什么样、他把谁当成了自己人。至于他在这条路上走了多远、那个他当成「家」的东西最后把他带去了哪里，一个字都不提。</p>
+      <p><b>全程不剧透。</b>下面所有内容只写到影片第一幕为止的公开设定——他怎么回家、家变成了什么样、他把谁当成了自己人。至于他在这条路上走了多远、那个被他当成「家」的东西最后把他带去了哪里，一个字都不提。</p>
     </div>
 
     <div class="sec-head reveal">
@@ -660,16 +645,16 @@
 
       <div class="prose reveal">
         <p class="drop">
-          服完兵役的年轻人<em>莫东</em>，坐上了返乡的列车。他在车上遇见了<em>美爱</em>——一个被几个男人纠缠的女人。他替她解了围，把捡到的东西还回去。这是这趟旅程里，他唯一做成的一件事。
+          服完兵役的年轻人<em>莫东</em>，坐上了返乡的列车。他在车上遇见了<em>美爱</em>——一个被几个男人纠缠的女人。他替她解了围，把捡到的东西还了回去。这是这趟旅程里，他唯一做成的一件事。
         </p>
         <p>
-          等他真的回到家，才发现记忆里的那个地方已经不在原地了。名字还是那个名字，地方却换了模样：脚手架、塔吊、一排排还没装窗户的新楼；原来住在那里的邻居，好像一夜之间就散掉了。家里也没好到哪里去——大哥病在床上，二哥每天喝得不省人事，妹妹在城里的酒店上班，母亲还在等一个能把这个家撑起来的人。<b>而他连一份工都没找到。</b>
+          等他真的回到家，才发现记忆里那个地方已经不在原地了。名字还是那个名字，地方却换了模样：脚手架、塔吊、一排排还没装上窗户的新楼；原来住在那里的邻居，好像一夜之间就散掉了。家里也没好到哪里去——大哥病在床上，二哥每天喝得不省人事，妹妹在城里的酒店上班，母亲还在等一个能把这个家撑起来的人。<b>而他连一份工都没找到。</b>
         </p>
         <p>
           走投无路的时候，他去找了美爱。美爱把他带进另一个「家」——一个讲辈分、讲义气、出手也大方的组织。老大<em>裴泰坤</em>赏识他，身边人喊他一声哥，他第一次有了能一起喝酒吃饭的「家里人」，也有了能拿回家的钱。
         </p>
         <p>
-          可这地方讲的规矩，和他心里想的并不一样。美爱是「大哥的女人」，他那点心思从第一眼起就放错了地方；而他这种从乡下进城、身后什么都没有的年轻人，在这套秩序里究竟算什么——<b>还没人告诉他，秩序也不需要告诉他。</b>
+          可这地方讲的规矩，和他心里想的并不一样。美爱是「大哥的女人」，他那点心思从第一眼起就放错了地方；而他这种从乡下进城、身后什么都没有的年轻人，在这套秩序里究竟算什么——<b>还没人告诉他，这套秩序也不需要告诉他。</b>
         </p>
         <p>
           他以为自己终于站住了。至于他在这条路上走了多远、那尾一直被他当成「家」的东西最后把他带去了哪里——<b>这里一个字都不会说。</b>
@@ -685,7 +670,7 @@
     <div class="sec-head reveal">
       <span class="sec-num">02 / Concept Poster</span>
       <h2 class="sec-title">一尾被养在缸里的鱼，<em>抬头就是长高的城市</em></h2>
-      <p class="sec-desc">这张概念图把全片最重要的两个物件放在同一个画面里：一个装得下他的方缸，和一片装不下他的新城。鱼在缸里，城在天上，中间只隔一层玻璃。</p>
+      <p class="sec-desc">这张概念图把全片最重要的两个物件放进同一个画面：一个装得下他的方缸，和一片装不下他的新城。鱼在缸里，城在天上，中间只隔着一层玻璃。</p>
     </div>
 
     <div class="poster-grid">
@@ -724,10 +709,8 @@
 
           <rect width="400" height="600" fill="url(#pBg)"/>
 
-          <!-- 地平线暖光 -->
           <ellipse cx="200" cy="256" rx="240" ry="52" fill="url(#pHz)"/>
 
-          <!-- 远处的城 -->
           <g fill="#03100d">
             <rect x="14" y="212" width="44" height="48"/>
             <rect x="66" y="190" width="30" height="70"/>
@@ -760,12 +743,10 @@
           </g>
           <line x1="0" y1="260" x2="400" y2="260" stroke="#c99a45" stroke-width="1" opacity=".3"/>
 
-          <!-- 缸底台面 -->
           <rect x="0" y="470" width="400" height="130" fill="#050f0d"/>
           <line x1="0" y1="470" x2="400" y2="470" stroke="#122a25" stroke-width="1"/>
           <ellipse cx="200" cy="484" rx="176" ry="9" fill="#45cf95" opacity=".09"/>
 
-          <!-- 鱼缸 -->
           <ellipse cx="200" cy="470" rx="230" ry="80" fill="url(#pGlow)" opacity=".5"/>
           <g>
             <rect x="58" y="286" width="284" height="176" rx="4" fill="url(#pWater)"/>
@@ -786,7 +767,6 @@
               <path d="M318 432 q9 -22 -2 -40"/>
               <path d="M326 432 q-8 -18 3 -34"/>
             </g>
-            <!-- 气泡 -->
             <g fill="none" stroke="#9df0c8" opacity=".4">
               <circle cx="252" cy="330" r="3.4"/>
               <circle cx="262" cy="306" r="2.4"/>
@@ -794,9 +774,7 @@
               <circle cx="126" cy="382" r="2.6"/>
               <circle cx="132" cy="360" r="1.7"/>
             </g>
-            <!-- 水面线 -->
             <line x1="58" y1="300" x2="342" y2="300" stroke="#9df0c8" stroke-width="1.5" opacity=".38"/>
-            <!-- 绿鱼 -->
             <g transform="translate(196,378)">
               <path d="M-40 0 L-74 -26 L-58 0 L-74 26 Z" fill="#2fa878" opacity=".9"/>
               <ellipse cx="0" cy="0" rx="46" ry="24" fill="url(#pFish)"/>
@@ -806,10 +784,656 @@
               <circle cx="30" cy="-6" r="4.6" fill="#04120f"/>
               <circle cx="31.5" cy="-7.6" r="1.6" fill="#dcefe6" opacity=".9"/>
             </g>
-            <!-- 玻璃反光 -->
             <polygon points="92,286 148,286 76,462 58,462" fill="url(#pGlass)"/>
             <polygon points="268,286 284,286 232,462 216,462" fill="#dcefe6" opacity=".04"/>
-            <!-- 缸框 -->
             <rect x="56" y="284" width="288" height="180" rx="4" fill="none" stroke="#8ac9b4" stroke-width="2.2" opacity=".6"/>
             <rect x="59" y="287" width="282" height="174" rx="3" fill="none" stroke="#04120f" stroke-width="1.2" opacity=".7"/>
-            <rect x="56" y="283" width="288" height="3
+            <rect x="56" y="283" width="288" height="3" rx="1.4" fill="#e8fff3" opacity=".55"/>
+          </g>
+
+          <rect x="42" y="464" width="316" height="14" fill="#0f2521"/>
+          <rect x="42" y="464" width="316" height="2.2" fill="#2c5348" opacity=".8"/>
+
+          <g font-family="Georgia, Songti SC, serif" fill="#f2f9f5">
+            <text x="344" y="74" font-size="40" text-anchor="middle" letter-spacing="2">绿</text>
+            <text x="344" y="124" font-size="40" text-anchor="middle" letter-spacing="2">鱼</text>
+          </g>
+          <text x="344" y="152" font-size="10" text-anchor="middle" fill="#d9a94e" letter-spacing="2.4" font-family="monospace">초록물고기</text>
+          <text x="344" y="172" font-size="9.5" text-anchor="middle" fill="#6f8f86" letter-spacing="2.4" font-family="monospace">GREEN FISH</text>
+
+          <g>
+            <text x="200" y="504" text-anchor="middle" font-family="monospace" font-size="9" fill="#9df0c8" opacity=".5" letter-spacing="3">A FISH, REFRACTED</text>
+          </g>
+
+          <rect x="0" y="552" width="400" height="48" fill="#03100d" opacity=".94"/>
+          <text x="22" y="580" font-size="9.5" fill="#6f8f86" letter-spacing="1.6" font-family="monospace">A TANK IN A GROWING CITY</text>
+          <text x="378" y="580" font-size="9.5" fill="#45cf95" text-anchor="end" letter-spacing="1.6" font-family="monospace">KR 1997 · NO SPOILER</text>
+        </svg>
+        <figcaption class="poster-cap">Concept Poster / 概念示意 · 非官方海报</figcaption>
+      </figure>
+
+      <div class="notes reveal">
+        <div class="note">
+          <h4>为什么是一尾「鱼」</h4>
+          <p>李沧东自己讲过：<b>「绿鱼」这种东西其实并不存在</b>，只是主角小时候觉得鱼受光线折射会变绿，很神奇。它象征的是那些我们没意识到、却已经为变化付出的代价——每个人身上都有一条自己的「绿鱼」，只是有人当它要紧，有人当它一文不值。</p>
+        </div>
+        <div class="note">
+          <h4>为什么缸是方的，天在长高</h4>
+          <p>李沧东的起点是一个疑问：新区规划把一整片菜地推平，楼房很快立起来——<b>那原本住在这里的人，去哪了？</b>这张图把两件事叠在一起：缸是方的、有限的、装得下的；城是不断往上长的、不断往外扩的、装不下的。</p>
+        </div>
+        <div class="note">
+          <h4>绿在这个故事里不是希望</h4>
+          <p>它更像「还没被水弄浑的那一小块」：一点笨拙的真心、一句没必要的义气、一个从乡下带来的旧规矩。它在缸里是亮的，出了缸就什么也不是。</p>
+        </div>
+        <div class="note">
+          <h4>那行小字为什么写在鱼的上方</h4>
+          <p>A FISH, REFRACTED——「被折射过的鱼」。这不是片中台词，是这张图自己的注解：鱼没有变绿，是光变了；而把一个人的路改掉的，往往也不是他自己。看完全片再回头看这行字，意思会更清楚。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 档案 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03 / Dossier</span>
+      <h2 class="sec-title">影片档案</h2>
+      <p class="sec-desc">一位 42 岁才第一次喊「开机」的小说家，一个从白菜地里长出来的剧本，一群当时还没成名的人。它在最不起眼的配置下，拿下了那一年的最佳影片。</p>
+    </div>
+
+    <div class="file-grid reveal">
+      <div class="file-cell"><dt>片名</dt><dd>绿鱼<small>港译《黑道初哥》</small></dd></div>
+      <div class="file-cell"><dt>韩文 / 英文</dt><dd>초록물고기 / Green Fish</dd></div>
+      <div class="file-cell"><dt>年份 · 片长</dt><dd>1997 · 111 分钟<small>另有 114 / 115 分钟版本</small></dd></div>
+      <div class="file-cell"><dt>类型</dt><dd>犯罪 · 剧情 · 黑帮</dd></div>
+      <div class="file-cell wide"><dt>导演 · 编剧</dt><dd>李沧东 Lee Chang-dong<small>与吴尚奥合编；本片为其长片处女作，本系列首次采用</small></dd></div>
+      <div class="file-cell tagged"><dt>分级</dt><dd>18 岁以上观览可</dd></div>
+      <div class="file-cell"><dt>上映日期</dt><dd>1997-02-07（韩国）</dd></div>
+      <div class="file-cell wide"><dt>制片</dt><dd>明启南 · 吕钧东<small>出品 East Film Company</small></dd></div>
+      <div class="file-cell"><dt>主演</dt><dd>韩石圭<small>饰 莫东 · 退伍青年</small></dd></div>
+      <div class="file-cell"><dt>主演</dt><dd>沈惠珍<small>饰 美爱</small></dd></div>
+      <div class="file-cell"><dt>主演</dt><dd>文成根<small>饰 裴泰坤 · 组织老大</small></dd></div>
+      <div class="file-cell"><dt>出演</dt><dd>宋康昊<small>饰 潘洙 · 当年的小角色</small></dd></div>
+      <div class="file-cell"><dt>出演</dt><dd>明启南 · 郑镇荣 · 李文植 · 郑在泳</dd></div>
+      <div class="file-cell"><dt>音乐</dt><dd>李东俊<small>大钟奖音乐奖获奖</small></dd></div>
+      <div class="file-cell"><dt>剧本</dt><dd>李沧东 · 吴尚奥</dd></div>
+      <div class="file-cell hot"><dt>奖项 · 1997</dt><dd>四大电影奖<small>青龙 · 大钟 · 百想 · 影评人协会</small></dd></div>
+      <div class="file-cell hot"><dt>系列位置</dt><dd>本系列最早的<br>一部电影<small>比《朋友》(2001) 早四年</small></dd></div>
+      <div class="file-cell wide"><dt>剧本起点</dt><dd>从一片白菜田开始<small>李沧东当时住在一山（日山）附近：政府规划在此建新城，菜地上要盖高楼；1990 年代首尔大洪水后开坝分洪，当地居民一夜之间被迫离开。他把这个疑问写成了电影。</small></dd></div>
+      <div class="file-cell wide"><dt>影史位置</dt><dd>韩国新浪潮奠基作之一 · 常与贾樟柯《小武》并提<small>同为两位作者的剧情长片首作，同为 1997 年温哥华国际影展「龙虎奖」得主</small></dd></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 口碑 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04 / Reception</span>
+      <h2 class="sec-title">按今天的标准，分数不算高；<em>按 1997 年的标准，它扫空了奖台</em></h2>
+      <p class="sec-desc">豆瓣 7.8、IMDb 7.0——放在今天的打分习惯里只是中上。但把时间拨回那一年：青龙奖最佳影片、最佳导演、最佳男演员、最佳技术；大钟奖评审团特别奖；百想艺术大赏作品奖；韩国影评人协会奖最佳作品。分数是后来的人给的，奖座是当时的人给的。</p>
+    </div>
+
+    <div class="score-grid">
+      <div class="score reveal">
+        <div class="plat">Douban 豆瓣</div>
+        <div class="big">7.8<i>/ 10</i></div>
+        <div class="bar"><span style="width:78%"></span></div>
+        <div class="cap"><b>约 2.3 万人</b>评价。中文影迷口径里长期被低估的一部——很多人点进去是冲着「李沧东第一部」，出来时记住了那尾鱼。</div>
+      </div>
+      <div class="score reveal">
+        <div class="plat">IMDb</div>
+        <div class="big">7.0<i>/ 10</i></div>
+        <div class="bar"><span style="width:70%"></span></div>
+        <div class="cap"><b>评分基数很小</b>（约两千余票）。海外观众的共识是：这不像一部「黑帮片」，更像是后来那些作品的序章。</div>
+      </div>
+      <div class="score reveal">
+        <div class="plat">Maoyan 猫眼</div>
+        <div class="big">7.6<i>/ 10</i></div>
+        <div class="bar"><span style="width:76%"></span></div>
+        <div class="cap"><b>国内口径</b>。类型栏被标成「剧情」，也说明它的重点从来不在案子本身，而在案子外面那整座城市。</div>
+      </div>
+      <div class="score reveal">
+        <div class="plat">Korean Awards 1997</div>
+        <div class="big">4<i>大电影奖</i></div>
+        <div class="bar"><span style="width:100%"></span></div>
+        <div class="cap"><b>青龙 · 大钟 · 百想 · 影评人协会</b>——同年四大电影奖的「最佳影片级」肯定，它一个都没落下。这是本片最硬的底牌。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 时间线 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">05 / Timeline</span>
+      <h2 class="sec-title">从一尾鱼，到一个导演的三十年</h2>
+      <p class="sec-desc">《绿鱼》不是一部孤立的作品，它是一条线的起点。往后看三十年，李沧东的每一部电影，都还在这部处女作提出的那个问题上打转。</p>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-year">1954</div>
+        <div class="tl-title">出生 · 小说家出身</div>
+        <div class="tl-desc">李沧东出生于大邱，早年从事剧场工作，后转写小说。他后来说，自己从没想过会跟电影有什么关系——直到看了侯孝贤的《风柜来的人》，受到极大冲击。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1992 — 1993</div>
+        <div class="tl-title">从文坛走进剧组</div>
+        <div class="tl-desc">1992 年凭小说创作获《韩国日报》创作文学奖。1993 年，他受邀为朴光洙导演的《想去那座岛》写剧本，又因第一助理导演缺席临时顶上——他的电影生涯就是这样开始的。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1995 — 1996</div>
+        <div class="tl-title">住在「正在被换掉」的地方</div>
+        <div class="tl-desc">他当时住在一山（日山）附近：原本是种白菜的田地，政府规划在这里建新都市，菜地上要起高楼；首尔一场大洪水后开坝分洪，居民一夜之间被迫离开。<b>《绿鱼》的剧本就从这里长出来。</b></div>
+      </div>
+      <div class="tl-item hot">
+        <div class="tl-year">1997.02.07</div>
+        <div class="tl-title">《绿鱼》上映 · 42 岁的第一部</div>
+        <div class="tl-desc">李沧东的长片处女作正式上映。他后来坦言，自己想拍的是一部「犯罪类型的暴力美学电影」——只是他真正写进去的，是城市化的代价。</div>
+      </div>
+      <div class="tl-item hot">
+        <div class="tl-year">1997.12.12</div>
+        <div class="tl-title">第 18 届青龙电影奖 · 四奖入袋</div>
+        <div class="tl-desc">最佳影片、最佳导演（李沧东）、最佳男演员（韩石圭）、最佳技术——一部处女作拿下了那一年的最高奖。同一年，大钟奖、百想艺术大赏、韩国影评人协会奖也先后给了它「最佳影片级」的肯定。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1997</div>
+        <div class="tl-title">温哥华国际影展 · 龙虎奖</div>
+        <div class="tl-desc">它与贾樟柯的《小武》同年拿到这个奖。两部剧情长片首作、同一个奖、同一种写实——「韩国新浪潮奠基作之一」的说法，就是从这时候开始的。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2000 · 2002</div>
+        <div class="tl-title">「绿色三部曲」完成</div>
+        <div class="tl-desc">《薄荷糖》(2000) 与《绿洲》(2002) 相继上映，与《绿鱼》一起被合称为他的「绿色三部曲」。《绿洲》为他拿下威尼斯电影节最佳导演——从一尾鱼到一座金狮，只用了五年。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2007 · 2010</div>
+        <div class="tl-title">戛纳的两次肯定</div>
+        <div class="tl-desc">《密阳》(2007) 把全度妍送上戛纳影后宝座；《诗》(2010) 为他拿下戛纳最佳编剧。他当年在一山田埂上提出的那个疑问，被一路带到了世界的另一端。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2018</div>
+        <div class="tl-title">《燃烧》· 金棕榈提名</div>
+        <div class="tl-desc">《燃烧》入围戛纳主竞赛并获金棕榈提名，成为他国际声誉的顶点，也是无数观众回头补《绿鱼》的理由。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2023</div>
+        <div class="tl-title">4K 修复 · 重新被看见</div>
+        <div class="tl-desc">影片经过修复后重登各地影展与艺术院线。二十六年后再看，那尾鱼仍然在缸里，城仍然在天上长高。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 荣誉 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">06 / Awards</span>
+      <h2 class="sec-title">那一年，它几乎扫空了奖台</h2>
+      <p class="sec-desc">这是本系列推过的 22 部里，奖项「命中率」最高的一部：同一部处女作，在同一年被韩国四大电影奖同时认下。</p>
+    </div>
+
+    <div class="awards reveal">
+      <div class="aw"><div class="yr">1997</div><div class="bd"><b>第 18 届青龙电影奖 · <em>最佳影片</em></b>与最佳技术奖一并拿下，是那一年的最高荣誉</div></div>
+      <div class="aw"><div class="yr">1997</div><div class="bd"><b>第 18 届青龙电影奖 · <em>最佳导演（李沧东）</em></b>长片处女作即拿下导演奖，极为罕见</div></div>
+      <div class="aw"><div class="yr">1997</div><div class="bd"><b>第 18 届青龙电影奖 · <em>最佳男演员（韩石圭）</em></b>他在同一年凭本片连下三大奖的影帝</div></div>
+      <div class="aw"><div class="yr">1997</div><div class="bd"><b>第 18 届青龙电影奖 · 最佳技术</b>技术一侧的确认</div></div>
+      <div class="aw"><div class="yr">1997</div><div class="bd"><b>第 35 届大钟奖 · <em>评审团特别奖</em></b>同届还拿下剧本奖、最佳男主角（韩石圭）、最佳女主角（沈惠珍）、音乐奖</div></div>
+      <div class="aw"><div class="yr">1997</div><div class="bd"><b>第 33 届百想艺术大赏 · <em>电影部门作品奖</em></b>另获男演员、女演员、剧本、新人导演四项</div></div>
+      <div class="aw"><div class="yr">1997</div><div class="bd"><b>第 17 届韩国电影评论家协会奖 · <em>最佳作品</em></b>另获新人导演、男子演技、剧本三项</div></div>
+      <div class="aw"><div class="yr">1997</div><div class="bd"><b>温哥华国际影展 · <em>龙虎奖</em></b>与贾樟柯《小武》同年同奖，两部首作在此并置</div></div>
+      <div class="aw"><div class="yr">1997</div><div class="bd"><b>第 2 届釜山国际电影节 · 新浪潮奖 提名</b>韩国本土影展一侧的早期注目</div></div>
+      <div class="aw"><div class="yr">1997</div><div class="bd"><b>系列内参照 · 本片为 No.22</b>在本系列已推的 22 部里，它是年代最早、奖项最集中的一部</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 谱系坐标 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">07 / Lineage</span>
+      <h2 class="sec-title">它站在哪一格</h2>
+      <p class="sec-desc">如果只看韩国黑帮片的「家谱」，这一部是起点。后面那些被反复使用的零件——兄弟、义气、上位、被替换——在这里都还是生的、没有被打磨过的。</p>
+    </div>
+
+    <div class="lineage reveal">
+      <div class="lg now">
+        <div class="lg-yr">1997</div>
+        <div class="lg-tt">绿鱼</div>
+        <div class="lg-dr">李沧东 · 处女作<br>把黑帮套路写成一首被时代遗弃的小人物哀歌</div>
+        <div class="lg-wt">本系列 No.22 · 本期</div>
+      </div>
+      <div class="lg">
+        <div class="lg-yr">2001</div>
+        <div class="lg-tt">朋友</div>
+        <div class="lg-dr">郭景泽 · 半自传<br>把「四个人怎么走散」拍成一代人的集体记忆</div>
+        <div class="lg-wt">本系列 No.17</div>
+      </div>
+      <div class="lg">
+        <div class="lg-yr">2006</div>
+        <div class="lg-tt">卑劣的街头</div>
+        <div class="lg-dr">柳河 · 暴力三部曲<br>把「干掉别人—替代别人—被别人干掉」说穿</div>
+        <div class="lg-wt">本系列 No.11</div>
+      </div>
+      <div class="lg">
+        <div class="lg-yr">2013</div>
+        <div class="lg-tt">新世界</div>
+        <div class="lg-dr">朴勋政 · 原创剧本<br>把「谁是卧底」反过来问成「谁还想回去」</div>
+        <div class="lg-wt">本系列 No.03</div>
+      </div>
+      <div class="lg">
+        <div class="lg-yr">2019</div>
+        <div class="lg-tt">恶人传</div>
+        <div class="lg-dr">李元泰 · 类型混血<br>把黑帮、警察、凶手放进同一个雨夜</div>
+        <div class="lg-wt">本系列 No.18</div>
+      </div>
+    </div>
+
+    <p class="lineage-note reveal">
+      这一条线上，只有《绿鱼》不打算让你「爽」。<b>它问的不是「谁背叛了谁」，而是「那个把所有人推上这条路的东西，是从哪一天开始长出来的」。</b>从它往后，韩国黑帮片越来越工整、越来越锋利；而往回看，你会发现那些锋利的东西，最早都长在一片被推平的菜地上。
+    </p>
+  </div>
+</section>
+
+<!-- ================= 08 六宫格亮点 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">08 / Highlights</span>
+      <h2 class="sec-title">六个亮点</h2>
+    </div>
+
+    <div class="highlights reveal">
+      <div class="hl">
+        <div class="idx">01</div>
+        <h4>披着类型片的外壳，<em>装的是一份社会调查</em></h4>
+        <p>李沧东想拍的本来是「犯罪类型的暴力美学电影」，最后拍出来的却是一部关于城市化的电影。他对取景的要求很具体：同一个画面里，后面必须有高层大厦，前面必须是还没拆掉的老屋。<b>他关心的不是江湖，是江湖是怎么长出来的。</b></p>
+      </div>
+      <div class="hl">
+        <div class="idx">02</div>
+        <h4>韩石圭，<em>凭一部片拿下三大奖影帝</em></h4>
+        <p>他没有把莫东演成一个狠角色，而是一个<em>笨拙又真诚</em>的人：会为一句好话就掏心掏肺，会在不该讲义气的时候讲义气。同一年，他凭这个角色连下青龙、大钟、百想的最佳男主角。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">03</div>
+        <h4>宋康昊<em>还只是个小配角</em></h4>
+        <p>片中那个不起眼的小混混「潘洙」，由一个当年还没成名的演员扮演。多年后他成了《杀人回忆》《寄生虫》的脸——而如果你先看《绿鱼》，会提前看到那张脸最早的笨拙。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">04</div>
+        <h4>剧本是<em>在实景里长出来的</em></h4>
+        <p>不是先有故事再找景，而是先看见那片被推平的菜地，再去找人。他后来解释：一瞬拆掉一个村子、在很短的时间里建起一座新城，这个过程本身就是暴力。莫东是从这个疑问里走出来的。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">05</div>
+        <h4>一个作者导演的<em>第一笔</em></h4>
+        <p>他 39 岁才进电影行业，42 岁才拍第一部长片。此后三十年，从《薄荷糖》《绿洲》到《密阳》《诗》《燃烧》，他每一部都在切开韩国社会的表皮——《绿鱼》就是那把刀第一次落下去的地方。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">06</div>
+        <h4>那首歌、那尾鱼，<em>和一个不存在的比喻</em></h4>
+        <p>片名来自片中反复出现的一首歌；而「绿鱼」本身并不真的存在。李沧东说，它象征的是那些我们没意识到、却已经为变化付出的代价。<b>这个比喻全片没有解释过一次</b>——你自己看出来的时候，才是它真正生效的时候。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 为什么值得看 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">09 / Why It Matters</span>
+      <h2 class="sec-title">它为什么值得一看</h2>
+    </div>
+
+    <div class="why reveal">
+      <div class="why-item">
+        <h4><span>Reason 01</span>它把「黑帮片」当成了一把手术刀</h4>
+        <p>绝大多数同类片子关心的是江湖内部的规矩：谁上位、谁背叛、谁最后站着。《绿鱼》几乎不关心这些——<b>它把一个刚从部队回来、既没背景也没手艺的年轻人，直接扔进一座正在被换掉的城市里</b>，然后诚实地回答一个问题：这样的人，能去哪里？黑帮只是他能找到的、唯一还在招人的地方。这种「先有社会、再有类型」的写法，让它在二十多年后依然不显旧，因为被推平的菜地和长高的楼盘，从来不只是一国的事。</p>
+      </div>
+      <div class="why-item">
+        <h4><span>Reason 02</span>它是韩国犯罪片的一条「源代码」</h4>
+        <p>如果你已经看过《朋友》《卑劣的街头》《新世界》，回头看这一部会有一种翻家谱的感觉：兄弟、义气、上位、被替换——<b>所有零件都在，但还没有人把它们装配成套路的形状。</b>它是所有这些电影之前的那一版，更慢、更土、更笨，也更像真人。想理解韩国黑帮片为什么会长成后来的样子，它比任何一部「集大成之作」都更有用。</p>
+      </div>
+      <div class="why-item">
+        <h4><span>Reason 03</span>没有英雄，也没有真正的反派——这才是最难受的地方</h4>
+        <p>这部片子里没有一个「坏到底」的人：老大对他确实有知遇之恩，美爱也并非冷漠，兄弟们曾经真的在替他挡事。<b>可所有人都没有错，事情还是走到了那一步。</b>这种「无人可怪」的叙事，是李沧东一生都在写的东西：把道德的账算到最后，会发现真正该负责的那个东西，根本不坐在桌子旁边。他这部长片首作就把这件事做到了，而且此后三十年都没有失手过。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10 观影提示 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">10 / Before You Watch</span>
+      <h2 class="sec-title">观影提示</h2>
+    </div>
+    <div class="warns reveal">
+      <div class="warn">
+        <div class="tag">分 级</div>
+        <p><b>18 岁以上观览可（韩国）。</b>含帮派暴力、斗殴与成人题材，画面不算血腥，但冲突来得突然。</p>
+      </div>
+      <div class="warn">
+        <div class="tag">题 材</div>
+        <p><b>情绪是「哀」，不是「爽」。</b>主人公的路一路往下，全片不给任何出口式的安慰。请按一部文艺气质很重的黑帮片来看，而不是按动作片。</p>
+      </div>
+      <div class="warn">
+        <div class="tag">建 议</div>
+        <p><b>把它当成一部 1997 年的老片。</b>节奏比今天慢，镜头爱停在人和环境上。另外：片名里的「绿鱼」不怕剧透也无人能剧透——它是个比喻，看完全片自然明白。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 结尾 ================= -->
+<section class="band outro">
+  <div class="wrap">
+    <div class="outro-grid">
+      <div class="quote reveal">
+        <div class="q-mark">&ldquo;</div>
+        <blockquote>绿鱼这种东西原本并不存在，只是主角小时候觉得鱼受光线折射会变绿，很神奇。它也可能象征着我们未曾意识到的、那些为变化所付出的代价。每个人都有一条属于自己的「绿鱼」，只不过它对有些人来说很重要，对有些人来说一文不值。</blockquote>
+        <p style="font-size:13.5px;color:var(--ash);line-height:1.9;max-width:700px;margin-bottom:18px;">
+          导演李沧东谈片名的意思：这条鱼不是情节，是账。一座城市往前长的时候，它总要留下点什么，而那些东西很少被写进任何一份报告里。整部电影，就是在替这笔账找一个还愿意记得的人。
+        </p>
+        <div class="attr">据李沧东映后谈整理 · 非片中台词 · 不涉剧情走向</div>
+      </div>
+      <div class="end-stamp reveal">
+        <div class="no">22</div>
+        <div class="lb">Korean Crime Cinema<br>Series · No.22</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;width:100%">
+    <span>绿鱼 · 초록물고기 · Green Fish (1997)</span>
+    <span>No Spoiler · 无剧透推荐</span>
+    <span>2026-10-04</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 分组错峰入场 ---------- */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var map = new Map();
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        var parent = el.parentElement;
+        var order = map.get(parent) || 0;
+        map.set(parent, order + 1);
+        el.style.transitionDelay = Math.min(order * 70, 420) + 'ms';
+        el.classList.add('in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---------- Hero Canvas：鱼缸气泡 + 一尾游动的绿鱼 + 新城暖光 ---------- */
+  var cv = document.getElementById('heroCanvas');
+  if (!cv) return;
+  var ctx = cv.getContext('2d');
+  var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var VBW = 1440, VBH = 900, scale = 1, offX = 0, offY = 0;
+  var bubbles = [], motes = [], raf = null, last = 0, running = true;
+
+  /* 鱼缸在 viewBox 坐标系中的内壁 */
+  var TANK = { x0: 559, y0: 623, x1: 881, y1: 781 };
+
+  function computeMap(){
+    scale = Math.max(W / VBW, H / VBH);
+    offX = (W - VBW * scale) / 2;
+    offY = H - VBH * scale;
+  }
+  function mx(x){ return offX + x * scale; }
+  function my(y){ return offY + y * scale; }
+
+  function resize(){
+    var r = cv.getBoundingClientRect();
+    W = r.width; H = r.height;
+    cv.width = Math.max(1, Math.floor(W * DPR));
+    cv.height = Math.max(1, Math.floor(H * DPR));
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    computeMap();
+    build();
+  }
+
+  function build(){
+    bubbles = [];
+    var bn = 16;
+    for (var i = 0; i < bn; i++){
+      bubbles.push({
+        x: TANK.x0 + 12 + Math.random() * (TANK.x1 - TANK.x0 - 24),
+        y: TANK.y0 + 10 + Math.random() * (TANK.y1 - TANK.y0 - 20),
+        r: 1.2 + Math.random() * 3.4,
+        sp: 12 + Math.random() * 26,
+        ph: Math.random() * Math.PI * 2,
+        a: 0.14 + Math.random() * 0.34
+      });
+    }
+    motes = [];
+    var mn = Math.round(W / 26);
+    for (var j = 0; j < mn; j++){
+      motes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: 0.5 + Math.random() * 1.7,
+        sp: 6 + Math.random() * 20,
+        a: 0.05 + Math.random() * 0.22,
+        ph: Math.random() * Math.PI * 2,
+        kind: Math.random() < 0.62 ? 'fish' : 'amber'
+      });
+    }
+  }
+
+  function glow(x, y, r, col, alpha){
+    if (r <= 0) return;
+    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0, 'rgba(' + col + ',' + alpha + ')');
+    g.addColorStop(0.5, 'rgba(' + col + ',' + (alpha * 0.26) + ')');
+    g.addColorStop(1, 'rgba(' + col + ',0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+  }
+
+  /* 鱼在缸内的巡游路径 */
+  function fishAt(t){
+    var cx = (TANK.x0 + TANK.x1) / 2;
+    var cy = TANK.y0 + (TANK.y1 - TANK.y0) * 0.42;
+    var rx = (TANK.x1 - TANK.x0) * 0.30;
+    var ry = (TANK.y1 - TANK.y0) * 0.19;
+    return {
+      x: cx + Math.sin(t * 0.33) * rx,
+      y: cy + Math.sin(t * 0.51 + 1.25) * ry
+    };
+  }
+
+  function drawFish(x, y, ang, size, t){
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(ang);
+    var wag = Math.sin(t * 6.2) * 0.42;
+    /* 尾 */
+    ctx.save();
+    ctx.translate(-size * 0.5, 0);
+    ctx.rotate(wag);
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(-size * 0.66, -size * 0.48);
+    ctx.lineTo(-size * 0.46, 0);
+    ctx.lineTo(-size * 0.66, size * 0.48);
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(58,182,132,.66)';
+    ctx.fill();
+    ctx.restore();
+    /* 背鳍 */
+    ctx.beginPath();
+    ctx.moveTo(-size * 0.16, -size * 0.36);
+    ctx.lineTo(size * 0.06, -size * 0.74);
+    ctx.lineTo(size * 0.30, -size * 0.30);
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(47,168,120,.68)';
+    ctx.fill();
+    /* 身体 */
+    ctx.beginPath();
+    ctx.ellipse(0, 0, size * 0.72, size * 0.40, 0, 0, Math.PI * 2);
+    var g = ctx.createLinearGradient(0, -size * 0.40, 0, size * 0.40);
+    g.addColorStop(0, 'rgba(157,240,200,.92)');
+    g.addColorStop(0.5, 'rgba(69,207,149,.88)');
+    g.addColorStop(1, 'rgba(34,124,92,.76)');
+    ctx.fillStyle = g;
+    ctx.fill();
+    /* 胸鳍 */
+    ctx.beginPath();
+    ctx.moveTo(size * 0.08, size * 0.16);
+    ctx.lineTo(size * 0.30, size * 0.54);
+    ctx.lineTo(size * 0.36, size * 0.14);
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(47,168,120,.5)';
+    ctx.fill();
+    /* 眼 */
+    ctx.beginPath(); ctx.arc(size * 0.46, -size * 0.08, size * 0.085, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(4,16,13,.92)'; ctx.fill();
+    ctx.beginPath(); ctx.arc(size * 0.48, -size * 0.115, size * 0.03, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(220,239,230,.85)'; ctx.fill();
+    ctx.restore();
+  }
+
+  function frame(t){
+    if (!running){ raf = null; return; }
+    if (!last) last = t;
+    var dt = Math.min((t - last) / 16.6667, 3);
+    last = t;
+    var time = t / 1000;
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+
+    /* 新城工地的暖光呼吸 */
+    glow(mx(720), my(536), 560 * scale, '217,169,78', 0.055 + Math.sin(time * 0.42) * 0.012);
+    glow(mx(1060), my(540), 260 * scale, '217,169,78', 0.04);
+
+    /* 缸内水光呼吸 */
+    var inner = (TANK.x0 + TANK.x1) / 2;
+    var cyw = TANK.y0 + (TANK.y1 - TANK.y0) * 0.5;
+    glow(mx(inner), my(cyw), 176 * scale + Math.sin(time * 0.55) * 16 * scale, '69,207,149', 0.09);
+
+    /* 缸内：气泡 + 绿鱼 */
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(mx(TANK.x0), my(TANK.y0), (TANK.x1 - TANK.x0) * scale, (TANK.y1 - TANK.y0) * scale);
+    ctx.clip();
+
+    for (var k = 0; k < bubbles.length; k++){
+      var b = bubbles[k];
+      b.y -= b.sp * dt * 0.06;
+      var sway = Math.sin(time * 0.9 + b.ph) * 4;
+      if (b.y < TANK.y0 + 8){ b.y = TANK.y1 - 4; b.x = TANK.x0 + 12 + Math.random() * (TANK.x1 - TANK.x0 - 24); }
+      var bx = mx(b.x + sway), by = my(b.y);
+      ctx.beginPath();
+      ctx.arc(bx, by, Math.max(0.6, b.r * scale), 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(157,240,200,' + (b.a * 0.9) + ')';
+      ctx.lineWidth = Math.max(0.5, 0.9 * scale);
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(220,239,230,' + (b.a * 0.22) + ')';
+      ctx.fill();
+    }
+
+    var p0 = fishAt(time), p1 = fishAt(time + 0.03);
+    var ang = Math.atan2(p1.y - p0.y, p1.x - p0.x);
+    var size = 40 * scale;
+    glow(mx(p0.x), my(p0.y), size * 2.6, '69,207,149', 0.10);
+    ctx.globalCompositeOperation = 'source-over';
+    drawFish(mx(p0.x), my(p0.y), ang, size, time);
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.restore();
+
+    /* 空中微尘 */
+    for (var m2 = 0; m2 < motes.length; m2++){
+      var mt = motes[m2];
+      mt.y -= mt.sp * dt * 0.06;
+      mt.x += Math.sin(time * 0.45 + mt.ph) * 0.22 * dt;
+      if (mt.y < -12){ mt.y = H + 12; mt.x = Math.random() * W; }
+      var fade = Math.min(1, mt.y / (H * 0.9));
+      var col = mt.kind === 'fish' ? '157,240,200' : '217,169,78';
+      ctx.fillStyle = 'rgba(' + col + ',' + (mt.a * fade) + ')';
+      ctx.beginPath(); ctx.arc(mt.x, mt.y, mt.r, 0, Math.PI * 2); ctx.fill();
+    }
+
+    ctx.globalCompositeOperation = 'source-over';
+    raf = requestAnimationFrame(frame);
+  }
+
+  function start(){ if (!raf && !reduce){ last = 0; raf = requestAnimationFrame(frame); } }
+  function stop(){ if (raf){ cancelAnimationFrame(raf); raf = null; } }
+
+  resize();
+  window.addEventListener('resize', function(){ resize(); }, { passive: true });
+
+  if (reduce){
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    glow(mx(720), my(536), 560 * scale, '217,169,78', 0.055);
+    glow(mx(1060), my(540), 260 * scale, '217,169,78', 0.04);
+    glow(mx((TANK.x0 + TANK.x1) / 2), my(TANK.y0 + (TANK.y1 - TANK.y0) * 0.5), 176 * scale, '69,207,149', 0.09);
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(mx(TANK.x0), my(TANK.y0), (TANK.x1 - TANK.x0) * scale, (TANK.y1 - TANK.y0) * scale);
+    ctx.clip();
+    var fp = fishAt(0.4);
+    glow(mx(fp.x), my(fp.y), 40 * scale * 2.6, '69,207,149', 0.10);
+    ctx.globalCompositeOperation = 'source-over';
+    drawFish(mx(fp.x), my(fp.y), 0, 40 * scale, 0);
+    ctx.restore();
+    ctx.globalCompositeOperation = 'source-over';
+  } else {
+    start();
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden){ running = false; stop(); }
+      else { running = true; start(); }
+    });
+  }
+
+  /* ---------- 水位 HUD ---------- */
+  var hudVal = document.getElementById('hudVal'),
+      hudDot = document.getElementById('hudDot'),
+      hudLb = document.getElementById('hudLb');
+  var stages = [
+    [0,  '返乡 · 车窗外的田'],
+    [24, '到家 · 田已经没了'],
+    [48, '入伙 · 有人喊他兄弟'],
+    [72, '深水 · 声音开始听不清'],
+    [90, '水面 · 他想浮上去']
+  ];
+  function onScroll(){
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    hudDot.style.left = (p * 100) + '%';
+    hudVal.textContent = String(Math.round(p * 100)).padStart(2, '0') + '%';
+    var label = stages[0][1];
+    for (var i = 0; i < stages.length; i++){ if (p * 100 >= stages[i][0]) label = stages[i][1]; }
+    hudLb.textContent = label;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>

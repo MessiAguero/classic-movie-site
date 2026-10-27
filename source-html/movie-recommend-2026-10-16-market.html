@@ -350,7 +350,7 @@
     transition:border-color .3s,transform .3s;
   }
   .kin:hover{border-color:var(--line-strong);transform:translateY(-3px)}
-  .kin .t{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ash-dim)}
+  .kin .t{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--ash-dim);padding-right:44px}
   .kin .n{font-family:var(--serif);font-size:22px;color:var(--paper);margin:10px 0 3px;line-height:1.3}
   .kin .d{font-size:12.5px;color:var(--ash);line-height:1.75}
   .kin .no{
@@ -713,31 +713,27 @@
         <path d="M660 752 H698" stroke="#f2f6ee" stroke-width="0.9" opacity="0.24"/>
       </g>
 
-      <!-- 大衣：直筒微放摆，不收腰 -->
-      <path d="M703 712 C703 706 708 703 714 703 L726 703 C732 703 737 706 737 712 L741 752 L699 752 L703 712 Z" fill="#040a09"/>
+      <!-- 大衣：平肩线（明显比头宽），两侧近乎垂直，不收腰 -->
+      <path d="M715 698 L725 698 L725 702 L736 705 L736 752 L704 752 L704 705 L715 702 Z" fill="#040a09"/>
       <!-- 头与鸭舌帽：一条联合路径，只描一次边 -->
-      <path d="M708 700 C708 688 713 682 720 682 C727 682 732 688 732 700 C732 704 730 706 726 706 L714 706 C710 706 708 704 708 700 Z M733 694 L744 697 L744 702 L733 702 Z" fill="#040a09"/>
-      <!-- 脖子 -->
-      <path d="M716 702 L724 702 L724 714 L716 714 Z" fill="#040a09"/>
+      <path d="M711 698 C711 686 714 679 720 679 C726 679 729 686 729 698 L729 702 L711 702 Z M727 688 L745 692 L745 698 L727 698 Z" fill="#040a09"/>
       <!-- 两段腿：带 V 形缺口的单路径，只描外轮廓 -->
-      <path d="M705 748 L705 776 L714 776 L720 758 L726 776 L735 776 L735 748 Z" fill="#040a09"/>
-      <!-- 垂下的手臂 -->
-      <path d="M706 718 L702 744 L709 746 L712 720 Z" fill="#040a09"/>
+      <path d="M706 750 L706 778 L715 778 L720 762 L725 778 L734 778 L734 750 Z" fill="#040a09"/>
 
       <!-- 外发光（大） -->
-      <path d="M703 712 C703 706 708 703 714 703 L726 703 C732 703 737 706 737 712 L741 752 L699 752 L703 712 Z" fill="none" stroke="#f2f6ee" stroke-width="6.5" opacity="0.065"/>
-      <path d="M708 700 C708 688 713 682 720 682 C727 682 732 688 732 700 C732 704 730 706 726 706 L714 706 C710 706 708 704 708 700 Z" fill="none" stroke="#f2f6ee" stroke-width="6" opacity="0.07"/>
-      <path d="M705 748 L705 776 L714 776 L720 758 L726 776 L735 776 L735 748" fill="none" stroke="#f2f6ee" stroke-width="5.5" opacity="0.055"/>
+      <path d="M715 698 L725 698 L725 702 L736 705 L736 752 L704 752 L704 705 L715 702 Z" fill="none" stroke="#f2f6ee" stroke-width="6.5" opacity="0.06"/>
+      <path d="M711 698 C711 686 714 679 720 679 C726 679 729 686 729 698 L729 702 L711 702 Z" fill="none" stroke="#f2f6ee" stroke-width="6" opacity="0.07"/>
+      <path d="M706 750 L706 778 L715 778 L720 762 L725 778 L734 778 L734 750" fill="none" stroke="#f2f6ee" stroke-width="5.5" opacity="0.05"/>
       <!-- 边缘光（细，叠两次） -->
-      <path d="M703 712 C703 706 708 703 714 703 L726 703 C732 703 737 706 737 712 L741 752 L699 752 L703 712 Z" fill="none" stroke="#f2f6ee" stroke-width="2.0" opacity="0.4"/>
-      <path d="M703 712 C703 706 708 703 714 703 L726 703 C732 703 737 706 737 712 L741 752 L699 752 L703 712 Z" fill="none" stroke="#f2f6ee" stroke-width="2.0" opacity="0.3"/>
-      <path d="M708 700 C708 688 713 682 720 682 C727 682 732 688 732 700 C732 704 730 706 726 706 L714 706 C710 706 708 704 708 700 Z" fill="none" stroke="#f2f6ee" stroke-width="2.1" opacity="0.44"/>
-      <path d="M708 700 C708 688 713 682 720 682 C727 682 732 688 732 700 C732 704 730 706 726 706 L714 706 C710 706 708 704 708 700 Z" fill="none" stroke="#f2f6ee" stroke-width="2.1" opacity="0.3"/>
-      <path d="M733 694 L744 697 L744 702 L733 702" fill="none" stroke="#f2f6ee" stroke-width="1.3" opacity="0.4"/>
-      <path d="M705 748 L705 776 L714 776 L720 758 L726 776 L735 776 L735 748" fill="none" stroke="#f2f6ee" stroke-width="2.0" opacity="0.34"/>
-      <path d="M705 748 L705 776 L714 776 L720 758 L726 776 L735 776 L735 748" fill="none" stroke="#f2f6ee" stroke-width="2.0" opacity="0.24"/>
-      <path d="M716 703 L716 713" stroke="#f2f6ee" stroke-width="1" opacity="0.16"/>
-      <path d="M706 720 L703 742" fill="none" stroke="#f2f6ee" stroke-width="1.2" opacity="0.3"/>
+      <path d="M715 698 L725 698 L725 702 L736 705 L736 752 L704 752 L704 705 L715 702 Z" fill="none" stroke="#f2f6ee" stroke-width="2.0" opacity="0.4"/>
+      <path d="M715 698 L725 698 L725 702 L736 705 L736 752 L704 752 L704 705 L715 702 Z" fill="none" stroke="#f2f6ee" stroke-width="2.0" opacity="0.3"/>
+      <path d="M711 698 C711 686 714 679 720 679 C726 679 729 686 729 698 L729 702 L711 702 Z" fill="none" stroke="#f2f6ee" stroke-width="2.1" opacity="0.44"/>
+      <path d="M711 698 C711 686 714 679 720 679 C726 679 729 686 729 698 L729 702 L711 702 Z" fill="none" stroke="#f2f6ee" stroke-width="2.1" opacity="0.3"/>
+      <path d="M727 688 L745 692 L745 698 L727 698" fill="none" stroke="#f2f6ee" stroke-width="1.3" opacity="0.4"/>
+      <path d="M706 750 L706 778 L715 778 L720 762 L725 778 L734 778 L734 750" fill="none" stroke="#f2f6ee" stroke-width="2.0" opacity="0.34"/>
+      <path d="M706 750 L706 778 L715 778 L720 762 L725 778 L734 778 L734 750" fill="none" stroke="#f2f6ee" stroke-width="2.0" opacity="0.24"/>
+      <path d="M709 708 L709 744" stroke="#f2f6ee" stroke-width="0.9" opacity="0.13"/>
+      <path d="M731 708 L731 744" stroke="#f2f6ee" stroke-width="0.9" opacity="0.13"/>
     </g>
 
     <!-- 近景：地上的纸片与水痕 -->
@@ -977,15 +973,18 @@
               <path d="M262 486 L268 496 L274 486" stroke="#8a8474" stroke-width="0.9" fill="none" opacity="0.44"/>
             </g>
 
-            <!-- 旧鸭舌帽（压在相册角上，跨出书页边缘） -->
+            <!-- 旧鸭舌帽（压在相册页上，帽檐朝左前方，跨出书页边缘） -->
             <g>
-              <ellipse cx="76" cy="504" rx="46" ry="10" fill="#000" opacity="0.42"/>
-              <path d="M48 470 C48 456 58 448 70 448 C82 448 92 456 92 470 L92 482 L48 482 Z" fill="#141a16"/>
-              <path d="M48 470 C48 456 58 448 70 448 C82 448 92 456 92 470 L92 482 L48 482 Z" fill="none" stroke="#f2f6ee" stroke-width="1.1" opacity="0.32"/>
-              <path d="M46 478 L20 486 L24 494 L48 488 Z" fill="#0d120e"/>
-              <path d="M46 478 L20 486 L24 494 L48 488 Z" fill="none" stroke="#f2f6ee" stroke-width="1" opacity="0.28"/>
-              <path d="M50 476 L90 476" stroke="#e9bf8d" stroke-width="1" opacity="0.26"/>
-              <path d="M70 450 L70 470" stroke="#f2f6ee" stroke-width="0.8" opacity="0.16"/>
+              <ellipse cx="70" cy="500" rx="46" ry="10" fill="#000" opacity="0.42"/>
+              <!-- 帽檐：扁平的板状，从帽身内部水平伸出 -->
+              <path d="M50 476 C34 475 20 478 8 483 L8 492 C20 488 36 486 50 486 Z" fill="#0d120e"/>
+              <path d="M50 476 C34 475 20 478 8 483 L8 492 C20 488 36 486 50 486 Z" fill="none" stroke="#f2f6ee" stroke-width="1" opacity="0.3"/>
+              <!-- 帽身：比高更宽的圆顶，底边平直 -->
+              <path d="M38 490 C38 468 48 460 66 460 C84 460 94 468 94 490 L94 493 L38 493 Z" fill="#141a16"/>
+              <path d="M38 490 C38 468 48 460 66 460 C84 460 94 468 94 490 L94 493 L38 493 Z" fill="none" stroke="#f2f6ee" stroke-width="1.1" opacity="0.34"/>
+              <!-- 帽檐与帽身的接缝 -->
+              <path d="M40 487 L92 487" stroke="#e9bf8d" stroke-width="1.1" opacity="0.24"/>
+              <path d="M66 462 L66 480" stroke="#f2f6ee" stroke-width="0.8" opacity="0.14"/>
             </g>
 
             <!-- 搪瓷缸 -->

@@ -116,6 +116,8 @@
   }
   .scroll-hint i{display:block;width:1px;height:36px;background:linear-gradient(180deg,var(--brass),transparent);animation:drop 2.4s ease-in-out infinite}
   @keyframes drop{0%,100%{opacity:.25;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
+  .beacon{animation:beacon 2.6s ease-in-out infinite}
+  @keyframes beacon{0%,100%{opacity:.18}50%{opacity:1}}
 
   /* ============ LAYOUT ============ */
   .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
@@ -323,6 +325,7 @@
     .reveal{opacity:1 !important;transform:none !important;transition:none !important}
     html{scroll-behavior:auto}
     .scroll-hint i{animation:none}
+    .beacon{animation:none;opacity:.8}
   }
 
   /* 响应式 */
@@ -385,267 +388,212 @@
     <defs>
       <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="#04060b"/>
-        <stop offset="34%" stop-color="#080c14"/>
-        <stop offset="64%" stop-color="#101724"/>
-        <stop offset="86%" stop-color="#1a2231"/>
-        <stop offset="100%" stop-color="#2b2b28"/>
+        <stop offset="38%" stop-color="#070b13"/>
+        <stop offset="68%" stop-color="#0d131e"/>
+        <stop offset="86%" stop-color="#131a26"/>
+        <stop offset="100%" stop-color="#1c2331"/>
       </linearGradient>
-      <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#0c111a"/>
-        <stop offset="44%" stop-color="#070a10"/>
-        <stop offset="100%" stop-color="#03050a"/>
-      </linearGradient>
-      <radialGradient id="hz" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#c8a24a" stop-opacity=".30"/>
-        <stop offset="44%" stop-color="#a9863c" stop-opacity=".09"/>
-        <stop offset="100%" stop-color="#a9863c" stop-opacity="0"/>
-      </radialGradient>
-      <radialGradient id="cold" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#b9d2e8" stop-opacity=".20"/>
-        <stop offset="100%" stop-color="#b9d2e8" stop-opacity="0"/>
-      </radialGradient>
-      <linearGradient id="facade" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stop-color="#0b1119"/>
-        <stop offset="52%" stop-color="#0e1622"/>
-        <stop offset="100%" stop-color="#080d15"/>
+      <linearGradient id="facade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0a1018"/>
+        <stop offset="100%" stop-color="#06090f"/>
       </linearGradient>
       <linearGradient id="stepTop" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#1b2534"/>
-        <stop offset="100%" stop-color="#131b27"/>
+        <stop offset="0%" stop-color="#1c2634"/>
+        <stop offset="100%" stop-color="#141c28"/>
       </linearGradient>
       <linearGradient id="stepFace" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="#0d131d"/>
-        <stop offset="100%" stop-color="#080c13"/>
+        <stop offset="100%" stop-color="#070b11"/>
       </linearGradient>
-      <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#0e141d"/>
-        <stop offset="100%" stop-color="#070a10"/>
+      <linearGradient id="plaza" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0b1017"/>
+        <stop offset="100%" stop-color="#04060a"/>
       </linearGradient>
+      <linearGradient id="shaft" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0%" stop-color="#cfe0f0" stop-opacity=".07"/>
+        <stop offset="42%" stop-color="#c8a24a" stop-opacity=".03"/>
+        <stop offset="100%" stop-color="#c8a24a" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="hz" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#c8a24a" stop-opacity=".26"/>
+        <stop offset="46%" stop-color="#a9863c" stop-opacity=".07"/>
+        <stop offset="100%" stop-color="#a9863c" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="cold" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#dbe8f4" stop-opacity=".34"/>
+        <stop offset="100%" stop-color="#b9d2e8" stop-opacity="0"/>
+      </radialGradient>
+      <pattern id="mull" width="22" height="44" patternUnits="userSpaceOnUse">
+        <rect width="22" height="44" fill="#cfe0f0" fill-opacity=".045"/>
+        <line x1="21" y1="0" x2="21" y2="44" stroke="#080d15" stroke-width="2"/>
+      </pattern>
     </defs>
 
     <rect width="1440" height="900" fill="url(#sky)"/>
 
-    <!-- 地平线暖光：远处城市与楼里透出的灯 -->
-    <ellipse cx="880" cy="540" rx="700" ry="112" fill="url(#hz)" opacity=".86"/>
-    <ellipse cx="300" cy="548" rx="420" ry="70" fill="url(#hz)" opacity=".5"/>
-
-    <!-- ===== 远景城市天际线 ===== -->
-    <g fill="#060a11">
-      <rect x="20" y="470" width="92" height="98"/>
-      <rect x="120" y="440" width="66" height="128"/>
-      <rect x="194" y="486" width="108" height="82"/>
-      <rect x="310" y="452" width="58" height="116"/>
-      <rect x="376" y="498" width="126" height="70"/>
-      <rect x="512" y="472" width="96" height="96"/>
-      <rect x="616" y="500" width="126" height="68"/>
-      <rect x="972" y="474" width="86" height="94"/>
-      <rect x="1066" y="498" width="118" height="70"/>
-      <rect x="1196" y="446" width="70" height="122"/>
-      <rect x="1274" y="484" width="100" height="84"/>
-      <rect x="1382" y="462" width="48" height="106"/>
-    </g>
-    <!-- 楼顶受光边缘 -->
-    <g fill="#1a2331" opacity=".78">
-      <rect x="120" y="440" width="66" height="1.6"/>
-      <rect x="310" y="452" width="58" height="1.6"/>
-      <rect x="512" y="472" width="96" height="1.4"/>
-      <rect x="1196" y="446" width="70" height="1.6"/>
-      <rect x="194" y="486" width="108" height="1.4"/>
-      <rect x="1274" y="484" width="100" height="1.4"/>
+    <!-- 天空深处：一枚几乎看不清的印记 -->
+    <g fill="none" stroke="#c8a24a">
+      <circle cx="980" cy="192" r="190" stroke-opacity=".05" stroke-width="1" stroke-dasharray="2 10"/>
+      <circle cx="980" cy="192" r="152" stroke-opacity=".085" stroke-width="1.2"/>
+      <circle cx="980" cy="192" r="124" stroke-opacity=".045" stroke-width="1"/>
     </g>
 
-    <!-- ===== 主楼：一栋灯火通明的权力大楼 ===== -->
+    <!-- 从门里漏出来的一道光 -->
+    <path d="M660 700 L786 700 L946 146 L616 146 Z" fill="url(#shaft)"/>
+
+    <!-- 地平线暖光 -->
+    <ellipse cx="723" cy="552" rx="820" ry="86" fill="url(#hz)" opacity=".9"/>
+
+    <!-- ===== 建筑正立面：一道横贯画面的墙 ===== -->
     <g>
-      <rect x="806" y="318" width="140" height="250" fill="url(#facade)"/>
-      <!-- 檐口 -->
-      <rect x="798" y="308" width="156" height="12" fill="#0f1724"/>
-      <rect x="798" y="308" width="156" height="1.8" fill="#2b3a4e"/>
-      <!-- 竖向柱列 -->
-      <g stroke="#141d2b" stroke-width="1.1">
-        <line x1="818" y1="320" x2="818" y2="568"/>
-        <line x1="834" y1="320" x2="834" y2="568"/>
-        <line x1="850" y1="320" x2="850" y2="568"/>
-        <line x1="866" y1="320" x2="866" y2="568"/>
-        <line x1="882" y1="320" x2="882" y2="568"/>
-        <line x1="898" y1="320" x2="898" y2="568"/>
-        <line x1="914" y1="320" x2="914" y2="568"/>
-        <line x1="930" y1="320" x2="930" y2="568"/>
-      </g>
-      <!-- 楼层线 -->
-      <g stroke="#0f1723" stroke-width="1">
-        <line x1="806" y1="348" x2="946" y2="348"/>
-        <line x1="806" y1="368" x2="946" y2="368"/>
-        <line x1="806" y1="388" x2="946" y2="388"/>
-        <line x1="806" y1="408" x2="946" y2="408"/>
-        <line x1="806" y1="428" x2="946" y2="428"/>
-        <line x1="806" y1="448" x2="946" y2="448"/>
-        <line x1="806" y1="468" x2="946" y2="468"/>
-        <line x1="806" y1="488" x2="946" y2="488"/>
-        <line x1="806" y1="508" x2="946" y2="508"/>
-        <line x1="806" y1="528" x2="946" y2="528"/>
-        <line x1="806" y1="548" x2="946" y2="548"/>
-      </g>
-      <!-- 窗光：冷白（制度的灯） -->
-      <g fill="#cfe0f0" opacity=".30">
-        <rect x="812" y="332" width="5" height="10"/>
-        <rect x="828" y="332" width="5" height="10"/>
-        <rect x="860" y="332" width="5" height="10"/>
-        <rect x="892" y="332" width="5" height="10"/>
-        <rect x="908" y="352" width="5" height="10"/>
-        <rect x="924" y="352" width="5" height="10"/>
-        <rect x="812" y="392" width="5" height="10"/>
-        <rect x="844" y="392" width="5" height="10"/>
-        <rect x="876" y="412" width="5" height="10"/>
-        <rect x="908" y="412" width="5" height="10"/>
-        <rect x="828" y="432" width="5" height="10"/>
-        <rect x="860" y="452" width="5" height="10"/>
-        <rect x="892" y="472" width="5" height="10"/>
-        <rect x="924" y="492" width="5" height="10"/>
-        <rect x="844" y="512" width="5" height="10"/>
-        <rect x="876" y="532" width="5" height="10"/>
-      </g>
-      <!-- 窗光：黄铜（还在加班的那几间） -->
-      <g fill="#c8a24a" opacity=".46">
-        <rect x="844" y="332" width="5" height="10"/>
-        <rect x="876" y="332" width="5" height="10"/>
-        <rect x="924" y="332" width="5" height="10"/>
-        <rect x="812" y="352" width="5" height="10"/>
-        <rect x="844" y="352" width="5" height="10"/>
-        <rect x="876" y="352" width="5" height="10"/>
-        <rect x="828" y="392" width="5" height="10"/>
-        <rect x="892" y="392" width="5" height="10"/>
-        <rect x="924" y="412" width="5" height="10"/>
-        <rect x="844" y="432" width="5" height="10"/>
-        <rect x="908" y="452" width="5" height="10"/>
-        <rect x="828" y="472" width="5" height="10"/>
-        <rect x="860" y="492" width="5" height="10"/>
-        <rect x="892" y="512" width="5" height="10"/>
-        <rect x="876" y="552" width="5" height="10"/>
-      </g>
-      <!-- 楼前冷光晕 -->
-      <ellipse cx="876" cy="440" rx="150" ry="170" fill="url(#cold)"/>
-      <!-- 楼顶航空障碍灯 -->
-      <circle cx="876" cy="302" r="2.8" fill="#cf4536">
-        <animate attributeName="opacity" values=".18;1;.18" dur="2.6s" repeatCount="indefinite"/>
-      </circle>
-    </g>
+      <rect x="0" y="552" width="1440" height="150" fill="url(#facade)"/>
+      <rect x="0" y="546" width="1440" height="6" fill="#0a111a"/>
+      <rect x="0" y="546" width="1440" height="1.4" fill="#1b2534"/>
+      <rect x="0" y="700" width="1440" height="4" fill="#050810"/>
 
-    <!-- ===== 侧翼楼群 ===== -->
-    <g>
-      <rect x="466" y="398" width="78" height="170" fill="#070c13"/>
-      <rect x="462" y="392" width="86" height="7" fill="#0c131d"/>
-      <g fill="#cfe0f0" opacity=".22">
-        <rect x="476" y="412" width="5" height="9"/>
-        <rect x="492" y="412" width="5" height="9"/>
-        <rect x="524" y="432" width="5" height="9"/>
-        <rect x="476" y="452" width="5" height="9"/>
-        <rect x="508" y="472" width="5" height="9"/>
-        <rect x="524" y="492" width="5" height="9"/>
-      </g>
-      <g fill="#c8a24a" opacity=".34">
-        <rect x="508" y="412" width="5" height="9"/>
-        <rect x="492" y="452" width="5" height="9"/>
-        <rect x="476" y="492" width="5" height="9"/>
-      </g>
-      <rect x="1108" y="424" width="118" height="144" fill="#070c13"/>
-      <rect x="1102" y="418" width="130" height="7" fill="#0c131d"/>
-      <g fill="#cfe0f0" opacity=".2">
-        <rect x="1122" y="442" width="5" height="9"/>
-        <rect x="1150" y="442" width="5" height="9"/>
-        <rect x="1186" y="462" width="5" height="9"/>
-        <rect x="1136" y="482" width="5" height="9"/>
-        <rect x="1172" y="502" width="5" height="9"/>
-        <rect x="1200" y="522" width="5" height="9"/>
-      </g>
-      <g fill="#c8a24a" opacity=".3">
-        <rect x="1172" y="442" width="5" height="9"/>
-        <rect x="1200" y="482" width="5" height="9"/>
-        <rect x="1122" y="522" width="5" height="9"/>
-      </g>
-    </g>
+      <!-- 幕墙玻璃带：低对比，靠竖梃切出窗格 -->
+      <rect x="58" y="598" width="1324" height="44" fill="url(#mull)"/>
+      <rect x="58" y="598" width="1324" height="1.2" fill="#2a3a4d" opacity=".45"/>
+      <rect x="58" y="641" width="1324" height="1" fill="#16202c" opacity=".7"/>
 
-    <!-- ===== 街面 ===== -->
-    <rect x="0" y="568" width="1440" height="60" fill="url(#road)"/>
-    <line x1="0" y1="568" x2="1440" y2="568" stroke="#1c2734" stroke-width="1.2"/>
-    <line x1="0" y1="600" x2="1440" y2="600" stroke="#141c27" stroke-width="1" opacity=".8"/>
+      <!-- 还亮着的几间 -->
+      <g fill="#c8a24a" opacity=".17">
+        <rect x="162" y="606" width="18" height="28"/>
+        <rect x="426" y="606" width="18" height="28"/>
+        <rect x="890" y="606" width="18" height="28"/>
+        <rect x="1154" y="606" width="18" height="28"/>
+      </g>
+      <g fill="#cfe0f0" opacity=".12">
+        <rect x="74" y="606" width="18" height="28"/>
+        <rect x="250" y="606" width="18" height="28"/>
+        <rect x="602" y="606" width="18" height="28"/>
+        <rect x="978" y="606" width="18" height="28"/>
+        <rect x="1242" y="606" width="18" height="28"/>
+      </g>
+      <g fill="#cfe0f0" opacity=".06">
+        <rect x="338" y="606" width="18" height="28"/>
+        <rect x="514" y="606" width="18" height="28"/>
+        <rect x="1066" y="606" width="18" height="28"/>
+        <rect x="1330" y="606" width="18" height="28"/>
+      </g>
 
-    <!-- 路灯（冷白，与楼里的灯同一种光） -->
-    <g>
-      <line x1="392" y1="500" x2="392" y2="568" stroke="#1a2431" stroke-width="2.4"/>
-      <path d="M392 500 q0 -10 14 -10" stroke="#1a2431" stroke-width="2.4" fill="none"/>
-      <ellipse cx="410" cy="492" rx="9" ry="3.4" fill="#dbe8f4" opacity=".55"/>
-      <ellipse cx="410" cy="500" rx="46" ry="22" fill="url(#cold)" opacity=".7"/>
-      <line x1="1052" y1="500" x2="1052" y2="568" stroke="#1a2431" stroke-width="2.4"/>
-      <path d="M1052 500 q0 -10 -14 -10" stroke="#1a2431" stroke-width="2.4" fill="none"/>
-      <ellipse cx="1034" cy="492" rx="9" ry="3.4" fill="#dbe8f4" opacity=".55"/>
-      <ellipse cx="1034" cy="500" rx="46" ry="22" fill="url(#cold)" opacity=".7"/>
-    </g>
+      <!-- 柱列 -->
+      <g>
+        <rect x="40" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="40" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="128" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="128" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="216" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="216" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="304" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="304" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="392" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="392" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="480" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="480" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="568" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="568" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="656" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="656" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="772" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="772" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="860" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="860" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="948" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="948" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="1036" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="1036" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="1124" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="1124" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="1212" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="1212" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="1300" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="1300" y="552" width="1.6" height="150" fill="#1a2431"/>
+        <rect x="1388" y="552" width="18" height="150" fill="#0a1018"/>
+        <rect x="1388" y="552" width="1.6" height="150" fill="#1a2431"/>
+      </g>
 
-    <!-- 停在路边的一辆车 -->
-    <g>
-      <path d="M1140 592 q10 -14 34 -14 h44 q22 0 30 14 z" fill="#050810"/>
-      <rect x="1136" y="590" width="118" height="12" rx="3" fill="#070b13"/>
-      <rect x="1150" y="592" width="26" height="7" fill="#0d141f"/>
-      <rect x="1184" y="592" width="26" height="7" fill="#0d141f"/>
-      <rect x="1140" y="598" width="6" height="3" fill="#b8342c" opacity=".85"/>
-      <rect x="1244" y="598" width="6" height="3" fill="#b8342c" opacity=".85"/>
+      <!-- 入口：雨棚 + 门厅 -->
+      <rect x="636" y="614" width="174" height="9" fill="#0c131d"/>
+      <rect x="636" y="614" width="174" height="1.4" fill="#26364a"/>
+      <rect x="636" y="623" width="174" height="2" fill="#cfe0f0" opacity=".13"/>
+      <rect x="678" y="628" width="90" height="74" fill="#0b1320"/>
+      <rect x="678" y="628" width="90" height="74" fill="none" stroke="#c8a24a" stroke-opacity=".32"/>
+      <rect x="686" y="638" width="74" height="64" fill="#cfe0f0" opacity=".115"/>
+      <rect x="686" y="638" width="74" height="64" fill="#c8a24a" opacity=".05"/>
+      <line x1="723" y1="628" x2="723" y2="702" stroke="#c8a24a" stroke-opacity=".2"/>
+      <ellipse cx="662" cy="650" rx="18" ry="34" fill="url(#cold)" opacity=".5"/>
+      <rect x="658" y="646" width="7" height="10" fill="#dbe8f4" opacity=".38"/>
+      <ellipse cx="784" cy="650" rx="18" ry="34" fill="url(#cold)" opacity=".5"/>
+      <rect x="780" y="646" width="7" height="10" fill="#dbe8f4" opacity=".38"/>
     </g>
 
     <!-- ===== 台阶：他还没上去 ===== -->
     <g>
-      <rect x="640" y="584" width="272" height="8" fill="url(#stepTop)"/>
-      <rect x="640" y="592" width="272" height="14" fill="url(#stepFace)"/>
-      <rect x="640" y="584" width="272" height="1.6" fill="#2d3c50"/>
-      <rect x="622" y="606" width="308" height="8" fill="url(#stepTop)"/>
-      <rect x="622" y="614" width="308" height="14" fill="url(#stepFace)"/>
-      <rect x="622" y="606" width="308" height="1.6" fill="#2d3c50"/>
-      <rect x="604" y="628" width="344" height="8" fill="url(#stepTop)"/>
-      <rect x="604" y="636" width="344" height="16" fill="url(#stepFace)"/>
-      <rect x="604" y="628" width="344" height="1.6" fill="#2d3c50"/>
-      <rect x="588" y="652" width="376" height="16" fill="#0a0f18"/>
-      <rect x="588" y="652" width="376" height="1.6" fill="#23303f"/>
-      <rect x="576" y="668" width="400" height="6" fill="#06090f"/>
+      <rect x="626" y="702" width="194" height="24" fill="url(#stepFace)"/>
+      <rect x="626" y="702" width="194" height="8" fill="url(#stepTop)"/>
+      <rect x="626" y="702" width="194" height="1.6" fill="#33445a"/>
+      <rect x="598" y="726" width="250" height="24" fill="url(#stepFace)"/>
+      <rect x="598" y="726" width="250" height="8" fill="url(#stepTop)"/>
+      <rect x="598" y="726" width="250" height="1.6" fill="#33445a"/>
+      <rect x="570" y="750" width="306" height="26" fill="url(#stepFace)"/>
+      <rect x="570" y="750" width="306" height="8" fill="url(#stepTop)"/>
+      <rect x="570" y="750" width="306" height="1.6" fill="#33445a"/>
+    </g>
+
+    <!-- ===== 广场 ===== -->
+    <rect x="0" y="776" width="1440" height="124" fill="url(#plaza)"/>
+    <line x1="0" y1="776" x2="1440" y2="776" stroke="#18222f" stroke-width="1.2"/>
+    <ellipse cx="723" cy="782" rx="330" ry="34" fill="url(#cold)" opacity=".3"/>
+
+    <!-- 广场两侧的路灯（冷的，和楼里的灯同一种光） -->
+    <g>
+      <line x1="300" y1="658" x2="300" y2="776" stroke="#161e29" stroke-width="2.4"/>
+      <path d="M300 658 q0 -13 17 -13" stroke="#161e29" stroke-width="2.4" fill="none"/>
+      <ellipse cx="319" cy="646" rx="9.5" ry="3.4" fill="#dbe8f4" opacity=".5"/>
+      <ellipse cx="319" cy="660" rx="54" ry="28" fill="url(#cold)" opacity=".6"/>
+      <line x1="1146" y1="658" x2="1146" y2="776" stroke="#161e29" stroke-width="2.4"/>
+      <path d="M1146 658 q0 -13 -17 -13" stroke="#161e29" stroke-width="2.4" fill="none"/>
+      <ellipse cx="1127" cy="646" rx="9.5" ry="3.4" fill="#dbe8f4" opacity=".5"/>
+      <ellipse cx="1127" cy="660" rx="54" ry="28" fill="url(#cold)" opacity=".6"/>
     </g>
 
     <!-- ===== 一个人站在台阶下面 ===== -->
     <g>
-      <ellipse cx="724" cy="749" rx="30" ry="6.4" fill="#000" opacity=".55"/>
-      <g transform="translate(724,0)">
-        <path d="M0 750 L-13 750 L-11 700 L-8 690 L-8 672 L-10 664 L-4 656 L4 656 L10 664 L8 672 L8 690 L11 700 L13 750 Z" fill="#04070c"/>
-        <path d="M0 750 L-13 750 L-11 700 L-8 690 L-8 672 L-10 664 L-4 656" fill="none" stroke="#a9863c" stroke-width="1.5" opacity=".55"/>
-        <rect x="-10" y="656" width="20" height="7" fill="#04070c"/>
+      <ellipse cx="723" cy="776" rx="34" ry="7" fill="#000" opacity=".5"/>
+      <g transform="translate(723,0)">
+        <path d="M0 776 L-15 776 L-13 716 L-10 704 L-10 686 L-12 674 L-5 664 L5 664 L12 674 L10 686 L10 704 L13 716 L15 776 Z" fill="#080c14"/>
+        <path d="M0 776 L-15 776 L-13 716 L-10 704 L-10 686 L-12 674 L-5 664" fill="none" stroke="#c8a24a" stroke-width="1.5" opacity=".44"/>
+        <path d="M5 664 L12 674 L10 686 L10 704 L13 716 L15 776" fill="none" stroke="#9fb8cf" stroke-width="1.1" opacity=".26"/>
+        <path d="M-5 666 L5 666" stroke="#c8a24a" stroke-width="1.1" opacity=".24"/>
       </g>
     </g>
 
     <!-- ===== 底部：一条三十年的刻度 ===== -->
     <g>
-      <line x1="180" y1="776" x2="1260" y2="776" stroke="#222d3b" stroke-width="1"/>
-      <g stroke="#38465a" stroke-width="1">
-        <line x1="180" y1="776" x2="180" y2="783"/>
-        <line x1="234" y1="776" x2="234" y2="781"/>
-        <line x1="288" y1="776" x2="288" y2="781"/>
-        <line x1="342" y1="776" x2="342" y2="781"/>
-        <line x1="396" y1="776" x2="396" y2="781"/>
-        <line x1="450" y1="776" x2="450" y2="781"/>
-        <line x1="504" y1="776" x2="504" y2="781"/>
-        <line x1="558" y1="776" x2="558" y2="783"/>
-        <line x1="612" y1="776" x2="612" y2="781"/>
-        <line x1="666" y1="776" x2="666" y2="781"/>
-        <line x1="720" y1="776" x2="720" y2="781"/>
-        <line x1="936" y1="776" x2="936" y2="783"/>
-        <line x1="990" y1="776" x2="990" y2="781"/>
-        <line x1="1044" y1="776" x2="1044" y2="781"/>
-        <line x1="1098" y1="776" x2="1098" y2="781"/>
-        <line x1="1152" y1="776" x2="1152" y2="781"/>
-        <line x1="1206" y1="776" x2="1206" y2="781"/>
-        <line x1="1260" y1="776" x2="1260" y2="783"/>
+      <line x1="240" y1="790" x2="1200" y2="790" stroke="#1c2634" stroke-width="1"/>
+      <g stroke="#33404f" stroke-width="1">
+        <line x1="304" y1="790" x2="304" y2="795"/>
+        <line x1="368" y1="790" x2="368" y2="795"/>
+        <line x1="432" y1="790" x2="432" y2="795"/>
+        <line x1="496" y1="790" x2="496" y2="795"/>
+        <line x1="560" y1="790" x2="560" y2="795"/>
+        <line x1="624" y1="790" x2="624" y2="795"/>
+        <line x1="688" y1="790" x2="688" y2="795"/>
+        <line x1="816" y1="790" x2="816" y2="795"/>
+        <line x1="880" y1="790" x2="880" y2="795"/>
+        <line x1="944" y1="790" x2="944" y2="795"/>
+        <line x1="1008" y1="790" x2="1008" y2="795"/>
+        <line x1="1072" y1="790" x2="1072" y2="795"/>
+        <line x1="1136" y1="790" x2="1136" y2="795"/>
       </g>
-      <g stroke="#c8a24a" stroke-width="1.6" opacity=".7">
-        <line x1="288" y1="774" x2="288" y2="783"/>
-        <line x1="720" y1="774" x2="720" y2="783"/>
-        <line x1="1152" y1="774" x2="1152" y2="783"/>
+      <g stroke="#8f7431" stroke-width="1.6" opacity=".8">
+        <line x1="240" y1="788" x2="240" y2="797"/>
+        <line x1="720" y1="788" x2="720" y2="797"/>
       </g>
-      <text x="720" y="800" text-anchor="middle" font-family="monospace" font-size="9.4" fill="#5d6d80" letter-spacing="2.6">1980 — 2017 · THIRTY YEARS IN ONE LIFE</text>
+      <line x1="1200" y1="787" x2="1200" y2="797" stroke="#c8a24a" stroke-width="1.8"/>
+      <text x="240" y="786" font-family="monospace" font-size="9.4" fill="#5d6d80" letter-spacing="2.2">1980</text>
+      <text x="1200" y="786" text-anchor="end" font-family="monospace" font-size="9.4" fill="#a9863c" letter-spacing="2.2">2017</text>
     </g>
   </svg>
   <div class="hero-scrim"></div>
@@ -775,16 +723,16 @@
           <text x="336" y="76" text-anchor="end" font-family="monospace" font-size="9.6" fill="#7c8da0" letter-spacing="1.8">NO.23</text>
 
           <!-- 证件照：三级台阶与一个背影 -->
-          <rect x="68" y="104" width="104" height="132" fill="#0b111c" stroke="#c8a24a" stroke-opacity=".34"/>
+          <rect x="68" y="104" width="104" height="132" fill="#0f1725" stroke="#c8a24a" stroke-opacity=".34"/>
           <rect x="70" y="106" width="100" height="2" fill="#9fb8cf" opacity=".18"/>
-          <rect x="82" y="198" width="76" height="5" fill="#182234"/>
-          <rect x="76" y="212" width="88" height="5" fill="#141d2d"/>
-          <rect x="70" y="226" width="100" height="5" fill="#111927"/>
+          <rect x="82" y="198" width="76" height="5" fill="#1f2b3f"/>
+          <rect x="76" y="212" width="88" height="5" fill="#1a2434"/>
+          <rect x="70" y="226" width="100" height="5" fill="#151d2b"/>
           <rect x="68" y="231" width="104" height="5" fill="#070b12"/>
           <ellipse cx="120" cy="198" rx="13" ry="2.8" fill="#000" opacity=".5"/>
           <g>
             <path d="M120 198 L110 198 L112 162 L114 154 L114 142 L112 136 L116 130 L124 130 L128 136 L126 142 L126 154 L128 162 L130 198 Z" fill="#04070c"/>
-            <path d="M120 198 L110 198 L112 162 L114 154 L114 142 L112 136 L116 130" fill="none" stroke="#c8a24a" stroke-width="1.1" opacity=".55"/>
+            <path d="M120 198 L110 198 L112 162 L114 154 L114 142 L112 136 L116 130" fill="none" stroke="#c8a24a" stroke-width="1.3" opacity=".78"/>
           </g>
 
           <!-- 信息栏 -->
@@ -826,4 +774,550 @@
           <!-- 钢印：天平 -->
           <circle cx="288" cy="302" r="54" fill="#c8a24a" fill-opacity=".05"/>
           <circle cx="288" cy="302" r="54" fill="none" stroke="#c8a24a" stroke-opacity=".48" stroke-width="1.4"/>
-          <circle cx="288" cy="302" r="47" fill="none" stroke="#c8a24a" stroke-opacity=".26" stroke-width="1" stroke-dasharray="
+          <circle cx="288" cy="302" r="47" fill="none" stroke="#c8a24a" stroke-opacity=".26" stroke-width="1" stroke-dasharray="3 4"/>
+          <circle cx="288" cy="302" r="40" fill="none" stroke="#c8a24a" stroke-opacity=".16"/>
+          <g stroke="#c8a24a" stroke-opacity=".72" stroke-width="1.8" fill="none">
+            <line x1="288" y1="276" x2="288" y2="326"/>
+            <line x1="258" y1="282" x2="318" y2="282"/>
+            <line x1="258" y1="282" x2="252" y2="296"/>
+            <line x1="258" y1="282" x2="264" y2="296"/>
+            <line x1="318" y1="282" x2="312" y2="296"/>
+            <line x1="318" y1="282" x2="324" y2="296"/>
+            <path d="M247 296 Q258 307 269 296"/>
+            <path d="M307 296 Q318 307 329 296"/>
+          </g>
+          <circle cx="288" cy="274" r="2.8" fill="#c8a24a" fill-opacity=".8"/>
+          <path d="M272 330 L304 330 L299 323 L277 323 Z" fill="#c8a24a" fill-opacity=".45"/>
+
+          <!-- 片名 -->
+          <line x1="118" y1="452" x2="152" y2="452" stroke="#c8a24a" stroke-opacity=".45"/>
+          <line x1="248" y1="452" x2="282" y2="452" stroke="#c8a24a" stroke-opacity=".45"/>
+          <text x="192" y="484" text-anchor="middle" font-family="'Songti SC','STSong',serif" font-size="54" fill="#f2f6fb" letter-spacing="16">王者</text>
+          <text x="200" y="514" text-anchor="middle" font-family="monospace" font-size="9.8" fill="#7c8da0" letter-spacing="3.4">더 킹 · THE KING · 2017</text>
+
+          <!-- 年份刻度 -->
+          <line x1="70" y1="546" x2="330" y2="546" stroke="#222d3b"/>
+          <g stroke="#38465a">
+            <line x1="70" y1="546" x2="70" y2="551"/>
+            <line x1="135" y1="546" x2="135" y2="550"/>
+            <line x1="200" y1="546" x2="200" y2="550"/>
+            <line x1="265" y1="546" x2="265" y2="550"/>
+          </g>
+          <line x1="330" y1="544" x2="330" y2="551" stroke="#c8a24a" stroke-opacity=".8" stroke-width="1.4"/>
+          <text x="200" y="562" text-anchor="middle" font-family="monospace" font-size="7.6" fill="#4c5b6c" letter-spacing="1.8">1980 — 2017</text>
+
+          <!-- 底部信息条 -->
+          <line x1="46" y1="570" x2="354" y2="570" stroke="#c8a24a" stroke-opacity=".18"/>
+          <text x="46" y="586" font-family="monospace" font-size="8.4" fill="#4c5b6c" letter-spacing="1.5">POWER IS A LADDER</text>
+          <text x="354" y="586" text-anchor="end" font-family="monospace" font-size="8.4" fill="#4c5b6c" letter-spacing="1.5">KR 2017 · NO SPOILER</text>
+        </svg>
+        <figcaption class="poster-cap">Concept Key Art · 编号先于姓名，台阶先于能力</figcaption>
+      </figure>
+
+      <div class="notes">
+        <div class="note reveal">
+          <h4>一 · 编号写在姓名前面</h4>
+          <p>卡的抬头是「检察官」，右上角是「NO.23」，姓名反而排在中间偏下。这张卡想说的是：在这套系统里，你先是被登记的那一个，其次才是有名有姓的那一个。主角半辈子想得到的，其实就是这张卡。</p>
+        </div>
+        <div class="note reveal">
+          <h4>二 · 照片里的三级台阶</h4>
+          <p>证件照没有拍脸，只拍了一个背影，站在三级台阶上。这既是影片的地理，也是影片的语法：一个人从街面走上台阶，再从台阶走进大楼，每一步都有人在上面等着拉一把，也有人在下面等着把他拽下来。</p>
+        </div>
+        <div class="note reveal">
+          <h4>三 · 右下角那枚钢印</h4>
+          <p>天平压在卡片的右下角，是整个画面里唯一的「制度符号」。它盖下去的那一刻，人被承认了，也被固定住了。影片最有意思的地方，是它从头到尾都在问：<b>一个人被制度承认之后，还剩下多少是自己？</b></p>
+        </div>
+        <div class="note reveal">
+          <h4>四 · 底部那道三十年刻度</h4>
+          <p>从 1980 到 2017，一条刻度尺压在画面最下方。它提醒你这不是一个人的道德故事，而是一代人的成长背景——影片把虚构人物的半生，缝进了几十年的时代影像里，让他的每一次选择都带着时代的重量。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 档案 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03 / The File</span>
+      <h2 class="sec-title">影片档案：<em>一部把「上位」拍成工业流程的电影</em></h2>
+      <p class="sec-desc">134 分钟，一条从木浦到首尔的上升曲线。剧组按年代重新制作镜头、搭建了 280 处场景，连道具里的旧杂志与旧电视画面都按年份找齐——所以你看得见时间，而不是听到时间。</p>
+    </div>
+
+    <dl class="file-grid reveal">
+      <div class="file-cell hot"><dt>片名</dt><dd>王者</dd></div>
+      <div class="file-cell"><dt>韩文原片名</dt><dd>더 킹</dd></div>
+      <div class="file-cell"><dt>英文片名</dt><dd>The King</dd></div>
+      <div class="file-cell"><dt>其他译名</dt><dd>金权性内幕 / 金权黑幕</dd></div>
+      <div class="file-cell"><dt>年份 · 首映</dt><dd>2017 · 01.18<small>韩国本土上映</small></dd></div>
+      <div class="file-cell"><dt>类型</dt><dd>犯罪 / 剧情 / 权力</dd></div>
+      <div class="file-cell"><dt>片长</dt><dd>134 分钟</dd></div>
+      <div class="file-cell tagged"><dt>观影建议</dt><dd>成年观众<small>暴力 · 性暗示 · 公权腐败</small></dd></div>
+      <div class="file-cell hot"><dt>导演 · 编剧</dt><dd>韩在林<small>一人身兼编剧与导演</small></dd></div>
+      <div class="file-cell"><dt>主演</dt><dd>赵寅成 · 郑雨盛<small>裴晟祐 · 金雅中 · 柳俊烈</small></dd></div>
+      <div class="file-cell"><dt>配角阵容</dt><dd>金素珍 · 金义城<small>郑恩彩 · 宋永彰 · 高我星</small></dd></div>
+      <div class="file-cell"><dt>摄影</dt><dd>金宇亨<small>《暗杀》《不可饶恕》</small></dd></div>
+      <div class="file-cell"><dt>剪辑</dt><dd>辛玟暻<small>本片连夺三座剪辑奖</small></dd></div>
+      <div class="file-cell"><dt>服装</dt><dd>宋恩珠<small>《国际市场》班底</small></dd></div>
+      <div class="file-cell"><dt>美术 · 布景</dt><dd>280 处场景<small>按年代收集道具与刊物</small></dd></div>
+      <div class="file-cell"><dt>出品 · 发行</dt><dd>Next Entertainment World</dd></div>
+      <div class="file-cell"><dt>拍摄期</dt><dd>2016.02 — 07.03<small>首尔 · 釜山 · 大田</small></dd></div>
+      <div class="file-cell hot"><dt>韩国观影</dt><dd>531 万人次</dd></div>
+      <div class="file-cell"><dt>全球票房</dt><dd>约 3,789 万美元</dd></div>
+      <div class="file-cell"><dt>开画成绩</dt><dd>首周末 131 万 1,889 人次<small>当周韩国票房第一</small></dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ================= 04 口碑 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04 / Reception</span>
+      <h2 class="sec-title">口碑：<em>一边倒的韩国观众，与明显保守的海外影评</em></h2>
+      <p class="sec-desc">这部片子是「本国更买账」的典型。它讲的是韩国检察体系里那套具体到发丝的操作逻辑——出了这个语境，很多机锋会被看成夸张。所以看分数时，最好把它拆成两个口径读。</p>
+    </div>
+
+    <div class="score-grid reveal">
+      <div class="score">
+        <div class="plat">豆瓣 Douban</div>
+        <div class="big">7.8<i>/ 10</i></div>
+        <div class="bar"><span style="width:78%"></span></div>
+        <div class="cap"><b>约 8 万人评分。</b>中文观众口径，稳定落在韩国犯罪片的主流区间上沿；讨论热度集中在两位主演的对手戏。</div>
+      </div>
+      <div class="score">
+        <div class="plat">IMDb</div>
+        <div class="big">6.8<i>/ 10</i></div>
+        <div class="bar"><span style="width:68%"></span></div>
+        <div class="cap"><b>约 2.7 万票。</b>海外口碑明显保守——权力结构的细节太本地化，跨语境传播时会掉一截分。</div>
+      </div>
+      <div class="score">
+        <div class="plat">Rotten Tomatoes</div>
+        <div class="big">86<i>% 新鲜度</i></div>
+        <div class="bar"><span style="width:86%"></span></div>
+        <div class="cap"><b>影评人样本。</b>反向印证上一句：比起普通观众，专业评论对它的结构与时代表达评价更高。</div>
+      </div>
+      <div class="score">
+        <div class="plat">韩国票房 KOFIC</div>
+        <div class="big">531<i>万人次</i></div>
+        <div class="bar"><span style="width:45%"></span></div>
+        <div class="cap"><b>本土实打实的成绩。</b>首周末即 131 万 1,889 人次登顶当周，最终累计约 531 万人次。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 时间线 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">05 / Timeline</span>
+      <h2 class="sec-title">从《优雅的世界》到《王者》：<em>一个导演对「体制里的人」的十年观察</em></h2>
+      <p class="sec-desc">韩在林不是拍爽片的人。十年前他就在用一部黑帮喜剧拍一个中层男人的体面与狼狈；十年后他把镜头挪进了检察厅，拍的是同一件事——人在结构里，怎么一点点变成结构的一部分。</p>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-year">2007</div>
+        <div class="tl-title">《优雅的世界》</div>
+        <div class="tl-desc">韩在林用一部黑帮喜剧拍了一个夹在中间的男人：上面要交代，下面要摆平，家里还有一笔算不清的账。这是他第一次把镜头对准「体系里的人」，而不是体系外的人。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2016 · 01</div>
+        <div class="tl-title">剧本围读，两位主演第一次同框读本</div>
+        <div class="tl-desc">赵寅成是导演最早定下的演员，郑雨盛则推掉了别的档期进组。两人的第一个共同看点不在片场，而是围读会上：一个负责问，一个负责答。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2016 · 02 — 07.03</div>
+        <div class="tl-title">开机与杀青</div>
+        <div class="tl-desc">在首尔、釜山、大田三地取景。为了拍出不同年代的差别，剧组按年代重新制作镜头，美术搭建了 280 处场景，连道具里的旧杂志、旧电视剧画面都按年份找齐。</div>
+      </div>
+      <div class="tl-item hot">
+        <div class="tl-year">2017 · 01.18</div>
+        <div class="tl-title">上映，首周末登顶</div>
+        <div class="tl-desc">开画首周末观影 131 万 1,889 人次，当周韩国票房第一，把同期对手甩在后面。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2017 · 05</div>
+        <div class="tl-title">第 53 届百想艺术大赏</div>
+        <div class="tl-desc">金素珍拿下最佳女配角，柳俊烈拿下最佳新人男演员——一部群像戏，先把配角推到了台前。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2017 · 秋</div>
+        <div class="tl-title">第 54 届大钟奖</div>
+        <div class="tl-desc">韩在林（最佳剧本）、辛玟暻（最佳剪辑）、裴晟祐（最佳男配角）三线开花；影片共获 14 项提名。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2017 · 冬</div>
+        <div class="tl-title">第 38 届青龙电影奖</div>
+        <div class="tl-desc">再收最佳剪辑一座，另获 9 项提名，是当届提名片单里最"全能"的一部。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2018</div>
+        <div class="tl-title">第 12 届亚洲电影大奖</div>
+        <div class="tl-desc">辛玟暻的剪辑第三次获奖——同一部片、同一把剪刀，横扫韩国三大奖与亚洲电影大奖。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2022</div>
+        <div class="tl-title">导演把镜头挪出了检察厅</div>
+        <div class="tl-desc">韩在林推出《非常宣言》，把一群人关进一架无法降落的客机里。换了个封闭空间，问的还是同一句话：谁有权决定别人的命。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 荣誉 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">06 / Awards</span>
+      <h2 class="sec-title">荣誉：<em>剧本、剪辑、配角，三处最难的地方</em></h2>
+      <p class="sec-desc">奖项的分布本身就说明了这部片的强项：它拿的不是「人气」，而是剧本、剪辑、配角——刚好是一部群像权谋片最见功力的三件事。</p>
+    </div>
+
+    <div class="awards reveal">
+      <div class="aw"><span class="yr">2017</span><span class="bd"><b>第 53 届百想艺术大赏 · <em>最佳女配角</em></b>金素珍 获奖</span></div>
+      <div class="aw"><span class="yr">2017</span><span class="bd"><b>第 53 届百想艺术大赏 · <em>最佳新人男演员</em></b>柳俊烈 获奖</span></div>
+      <div class="aw"><span class="yr">2017</span><span class="bd"><b>第 54 届大钟奖 · <em>最佳剧本</em></b>韩在林 获奖（全片 14 项提名）</span></div>
+      <div class="aw"><span class="yr">2017</span><span class="bd"><b>第 54 届大钟奖 · <em>最佳剪辑</em></b>辛玟暻 获奖</span></div>
+      <div class="aw"><span class="yr">2017</span><span class="bd"><b>第 54 届大钟奖 · <em>最佳男配角</em></b>裴晟祐 获奖</span></div>
+      <div class="aw"><span class="yr">2017</span><span class="bd"><b>第 38 届青龙电影奖 · <em>最佳剪辑</em></b>辛玟暻 获奖（全片 9 项提名）</span></div>
+      <div class="aw"><span class="yr">2017</span><span class="bd"><b>第 1 届首尔大奖 · <em>最佳新人男演员</em></b>柳俊烈 获奖</span></div>
+      <div class="aw"><span class="yr">2018</span><span class="bd"><b>第 12 届亚洲电影大奖 · <em>最佳剪辑</em></b>辛玟暻 获奖</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 谱系 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">07 / Lineage</span>
+      <h2 class="sec-title">它站在哪一格：<em>韩国「权力犯罪片」的一条纵轴</em></h2>
+      <p class="sec-desc">把本系列已经推荐过的几部片子按年份排开，就能看出《王者》的位置——它接的不是黑帮的班，而是把镜头继续往里推，一直推到权力机关的最里面。</p>
+    </div>
+
+    <div class="lineage reveal">
+      <div class="lg">
+        <div class="lg-yr">2012</div>
+        <div class="lg-tt">与犯罪的战争</div>
+        <div class="lg-dr">时代的账本：黑帮、税务与检方在同一条桌上算账。</div>
+        <div class="lg-wt">本系列 · 第 13 部</div>
+      </div>
+      <div class="lg">
+        <div class="lg-yr">2013</div>
+        <div class="lg-tt">新世界</div>
+        <div class="lg-dr">黑帮的接班：组织内部的秩序如何吃掉个人。</div>
+        <div class="lg-wt">本系列 · 第 3 部</div>
+      </div>
+      <div class="lg">
+        <div class="lg-yr">2015</div>
+        <div class="lg-tt">局内人</div>
+        <div class="lg-dr">政商媒的合谋：权力在三个房间里同时运转。</div>
+        <div class="lg-wt">本系列 · 第 11 部</div>
+      </div>
+      <div class="lg">
+        <div class="lg-yr">2015</div>
+        <div class="lg-tt">老手</div>
+        <div class="lg-dr">财阀与刑警：一个在楼顶，一个在街面，同一座城市。</div>
+        <div class="lg-wt">本系列 · 第 20 部</div>
+      </div>
+      <div class="lg now">
+        <div class="lg-yr">2017</div>
+        <div class="lg-tt">王者</div>
+        <div class="lg-dr">权力机关的内部：不是对抗系统，而是成为系统。</div>
+        <div class="lg-wt">本期 · 第 23 部</div>
+      </div>
+    </div>
+
+    <p class="lineage-note reveal">这条纵轴上的五部片子有一个共同点：坏人从来不是一个人，而是一套能运转的秩序。《王者》往前多走了一步——它不让主角站在秩序外面骂它，而是让他走进去、穿好制服、坐在桌子后面，然后让观众自己看清一件事：<b>坐上那个位子的人，和原本坐在那里的人，说话的方式会越来越像。</b></p>
+  </div>
+</section>
+
+<!-- ================= 08 亮点 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">08 / Highlights</span>
+      <h2 class="sec-title">六处亮点：<em>一场关于「怎么说话」的表演课</em></h2>
+    </div>
+
+    <div class="highlights reveal">
+      <div class="hl">
+        <div class="idx">01</div>
+        <h4>韩强植 · <em>郑雨盛</em></h4>
+        <p>他大概是这十年韩国银幕上最有说服力的「权力掮客」：全程在笑，全程在让，全程都在把你往他想要的位置上推。他不吼、不砸东西，只在你犹豫的那一秒，替你把话说完整——这才是最让人后背发凉的地方。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">02</div>
+        <h4>朴泰洙 · <em>赵寅成</em></h4>
+        <p>这是赵寅成阔别大银幕九年后的回归。他从一个高中生演到四十多岁，不靠特效、不靠厚妆，全靠肩背、步态和眼神里的那点松动来交代时间。你会清楚地看到，一个人是怎么从「我不服」变成「我懂规矩」的。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">03</div>
+        <h4>剧本 · <em>把半生缝进三十年</em></h4>
+        <p>韩在林自编自导。影片把一个人的成长线，和几十年的时代影像剪在一起——同一张脸在变，背后的画面也在换。它不是传记片，却有一种传记的重量：每一次选择都发生在具体的年份里。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">04</div>
+        <h4>摄影 · <em>按年代换镜头</em></h4>
+        <p>摄影金宇亨（《暗杀》《不可饶恕》，也是本系列第 21 部那部法医片的掌机）为了让每个年代看起来真的不一样，按时期重新制作了镜头。画面因此带着一种古典的颗粒感，西装是新的，光却是旧的。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">05</div>
+        <h4>剪辑 · <em>一把剪刀三座奖</em></h4>
+        <p>辛玟暻的剪辑连拿大钟、青龙、亚洲电影大奖。134 分钟里塞了三十年的信息，却几乎没有一个多余的转场——权谋片的节奏感，一半是写出来的，一半是剪出来的。</p>
+      </div>
+      <div class="hl">
+        <div class="idx">06</div>
+        <h4>群像 · <em>柳俊烈 · 裴晟祐 · 金素珍</em></h4>
+        <p>崔斗日（柳俊烈）是这条上升曲线旁边唯一不上台阶的人，也是全片唯一还在讲旧规矩的人；裴晟祐与金素珍一个在门里、一个在门外，把「体系」两个字演成了两张具体的脸。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 为什么值得看 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">09 / Why It Matters</span>
+      <h2 class="sec-title">为什么值得看：<em>三件事，够它进经典名单</em></h2>
+    </div>
+
+    <div class="why reveal">
+      <div class="why-item">
+        <h4><span>One</span>它是一部关于「上位」的恐怖片</h4>
+        <p>绝大多数黑帮片讲的是「进来」和「出不去」，这部片子讲的是另一件事：<b>你每往上走一级，都要在某个地方让出一点自己</b>。影片把这种交换拍得极其具体——一顿酒、一张照片、一句没说出口的话。恐怖感不来自暴力，来自那种「让一点也没关系吧」的瞬间，一个接一个。</p>
+      </div>
+      <div class="why-item">
+        <h4><span>Two</span>它把类型片的爽感，焊在了真实的结构上</h4>
+        <p>它没有孤胆英雄，也没有最后一分钟的翻盘式正义。整部片子更像一份操作说明书：谁介绍谁认识谁、哪句话该在哪个场合说、麻烦发生了该先找谁。<b>当一部犯罪片开始讲流程，它就从娱乐变成了观察</b>——而它依然好看。</p>
+      </div>
+      <div class="why-item">
+        <h4><span>Three</span>它有近十年最好看的一对对手戏</h4>
+        <p>郑雨盛与赵寅成，一个好整以暇，一个咬牙硬撑。他们之间几乎没有大吼大叫的场面，全靠敬语、称谓和停顿在过招。<b>看两个人互相客气，比看两个人互相挥拳更紧张</b>——这是本片最贵的地方，也是它最值得在大屏上看一遍的原因。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10 提示 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">10 / Advisory</span>
+      <h2 class="sec-title">观影提示</h2>
+    </div>
+    <div class="warns reveal">
+      <div class="warn">
+        <div class="tag">题材</div>
+        <p>权力腐败与政商关系是主线，片中大量篇幅发生在检察机关内部。<b>它不提供简单的道德快感</b>，主角本人也并不无辜。</p>
+      </div>
+      <div class="warn">
+        <div class="tag">画面</div>
+        <p>含暴力打斗、性暗示与少量血腥镜头。<b>建议成年观众观看</b>；如有家人同看，请自行斟酌。</p>
+      </div>
+      <div class="warn">
+        <div class="tag">建议</div>
+        <p>请留意前二十分钟的旁白与时间跳跃，它们是全片的地基。<b>看到一半如果觉得冷，那是对的</b>——这部片子的温度本来就低。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 11 收尾 ================= -->
+<section class="band outro">
+  <div class="wrap">
+    <div class="outro-grid">
+      <div class="quote reveal">
+        <div class="q-mark">&ldquo;</div>
+        <blockquote>权力不是一把椅子。它是一栋楼——你爬上去的每一级，都有人正在往下掉。</blockquote>
+        <div class="attr">主题句 · 非片中台词 · 不涉剧情走向</div>
+      </div>
+      <div class="end-stamp reveal">
+        <div class="no">23</div>
+        <div class="lb">Korean Crime Cinema / No.23</div>
+      </div>
+    </div>
+    <footer>
+      <span>《王者》더 킹 · THE KING · 2017 · DIR. HAN JAE-RIM</span>
+      <span>全程无剧透 · 韩国犯罪片系列 · 第 23 部</span>
+    </footer>
+  </div>
+</section>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 分组错峰入场 ---------- */
+  var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var map = new Map();
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var el = en.target;
+        var parent = el.parentElement;
+        var order = map.get(parent) || 0;
+        map.set(parent, order + 1);
+        el.style.transitionDelay = Math.min(order * 70, 420) + 'ms';
+        el.classList.add('in');
+        io.unobserve(el);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---------- Hero Canvas：楼里的灯呼吸 + 微尘上浮 + 扫描光带 ---------- */
+  var cv = document.getElementById('heroCanvas');
+  if (!cv) return;
+  var ctx = cv.getContext('2d');
+  var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var VBW = 1440, VBH = 900, scale = 1, offX = 0, offY = 0;
+  var motes = [], raf = null, last = 0, running = true;
+
+  function computeMap(){
+    scale = Math.max(W / VBW, H / VBH);
+    offX = (W - VBW * scale) / 2;
+    offY = H - VBH * scale;
+  }
+  function mx(x){ return offX + x * scale; }
+  function my(y){ return offY + y * scale; }
+
+  function resize(){
+    var r = cv.getBoundingClientRect();
+    W = r.width; H = r.height;
+    cv.width = Math.max(1, Math.floor(W * DPR));
+    cv.height = Math.max(1, Math.floor(H * DPR));
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    computeMap();
+    build();
+  }
+
+  function build(){
+    motes = [];
+    var mn = Math.round(W / 26);
+    for (var i = 0; i < mn; i++){
+      motes.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: 0.5 + Math.random() * 1.6,
+        sp: 5 + Math.random() * 19,
+        a: 0.05 + Math.random() * 0.2,
+        ph: Math.random() * Math.PI * 2,
+        kind: Math.random() < 0.6 ? 'brass' : 'cold'
+      });
+    }
+  }
+
+  function glow(x, y, r, col, alpha){
+    if (r <= 0) return;
+    var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+    g.addColorStop(0, 'rgba(' + col + ',' + alpha + ')');
+    g.addColorStop(0.5, 'rgba(' + col + ',' + (alpha * 0.26) + ')');
+    g.addColorStop(1, 'rgba(' + col + ',0)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill();
+  }
+
+  /* 灯光的呼吸：门厅 + 两盏路灯 + 台阶前的地面反光 + 天上那枚印记 */
+  function lights(time){
+    glow(mx(862), my(262), 420 * scale, '200,162,74', 0.022);
+    glow(mx(723), my(654), 190 * scale, '219,232,244', 0.07 + Math.sin(time * 0.46) * 0.012);
+    glow(mx(723), my(660), 640 * scale, '200,162,74', 0.032);
+    glow(mx(319), my(656), 120 * scale, '219,232,244', 0.05);
+    glow(mx(1127), my(656), 120 * scale, '219,232,244', 0.05);
+    glow(mx(723), my(776), 156 * scale, '200,162,74', 0.042 + Math.sin(time * 0.5 + 2.2) * 0.008);
+  }
+
+  function frame(t){
+    if (!running){ raf = null; return; }
+    if (!last) last = t;
+    var dt = Math.min((t - last) / 16.6667, 3);
+    last = t;
+    var time = t / 1000;
+
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+
+    lights(time);
+
+    /* 缓慢横扫的扫描光带 */
+    var span = W + 520;
+    var sx = (time * 34) % span - 260;
+    var lg = ctx.createLinearGradient(sx - 150, 0, sx + 150, 0);
+    lg.addColorStop(0, 'rgba(200,162,74,0)');
+    lg.addColorStop(0.5, 'rgba(200,162,74,.032)');
+    lg.addColorStop(1, 'rgba(200,162,74,0)');
+    ctx.fillStyle = lg;
+    ctx.fillRect(sx - 150, 0, 300, H);
+
+    /* 上浮微尘 */
+    for (var i = 0; i < motes.length; i++){
+      var m = motes[i];
+      m.y -= m.sp * dt * 0.06;
+      m.x += Math.sin(time * 0.42 + m.ph) * 0.22 * dt;
+      if (m.y < -12){ m.y = H + 12; m.x = Math.random() * W; }
+      var fade = Math.min(1, m.y / (H * 0.9));
+      var col = m.kind === 'brass' ? '232,199,120' : '205,228,244';
+      ctx.fillStyle = 'rgba(' + col + ',' + (m.a * fade) + ')';
+      ctx.beginPath(); ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2); ctx.fill();
+    }
+
+    ctx.globalCompositeOperation = 'source-over';
+    raf = requestAnimationFrame(frame);
+  }
+
+  function start(){ if (!raf && !reduce){ last = 0; raf = requestAnimationFrame(frame); } }
+  function stop(){ if (raf){ cancelAnimationFrame(raf); raf = null; } }
+
+  resize();
+  window.addEventListener('resize', function(){ resize(); }, { passive: true });
+
+  if (reduce){
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    lights(0);
+    ctx.globalCompositeOperation = 'source-over';
+  } else {
+    start();
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden){ running = false; stop(); }
+      else { running = true; start(); }
+    });
+  }
+
+  /* ---------- 履历 HUD ---------- */
+  var hudVal = document.getElementById('hudVal'),
+      hudDot = document.getElementById('hudDot'),
+      hudLb = document.getElementById('hudLb');
+  var stages = [
+    [0,  '木浦 · 一间漏雨的屋'],
+    [22, '首尔 · 法学院的灯还亮着'],
+    [46, '检察厅 · 小案子处理不完'],
+    [70, '那个房间 · 桌上摆着条件'],
+    [90, '高处 · 门后面还有门']
+  ];
+  function onScroll(){
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    hudDot.style.left = (p * 100) + '%';
+    hudVal.textContent = String(Math.round(p * 100)).padStart(2, '0') + '%';
+    var label = stages[0][1];
+    for (var i = 0; i < stages.length; i++){ if (p * 100 >= stages[i][0]) label = stages[i][1]; }
+    hudLb.textContent = label;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>
+
+
+

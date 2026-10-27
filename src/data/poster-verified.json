@@ -84,6 +84,18 @@
       "note": "人眼核对：おくりびと / Departures (2008) 正式日版海报，泷田洋二郎导演、本木雅弘主演",
       "at": "2026-10-24T09:43:24.972Z",
       "source": "https://img.win3000.com/m00/1e/4d/bea5a888fdce8f33c3bc5f7c3f035c28.jpg"
+    },
+    "20261025-harakiri": {
+      "sha256": "9c68a81ab4fa0d38d024c5cee4e1e6ff9c0508113351853d8d255bb6c1b1a57f",
+      "note": "人眼核对：切腹 Harakiri 1962 官方极简版海报，片名与年份一致",
+      "at": "2026-10-27T03:31:38.559Z",
+      "source": "local-file"
+    },
+    "20261026-millennium": {
+      "sha256": "6790110c3ef729e734ac66ee483542fa3a97e3b91eede63bc043c79a83449eca",
+      "note": "人眼核对：千年女优 2001 官方日版海报，片名、年份与角色一致",
+      "at": "2026-10-27T03:32:09.524Z",
+      "source": "existing"
     }
   }
 }

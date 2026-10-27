@@ -302,6 +302,11 @@
     .wrap{padding:0 20px}
     section{padding:70px 0}
     .hero-in{padding:96px 20px 84px}
+    .eyebrow{font-size:9.5px;letter-spacing:.14em;padding:6px 10px;line-height:1.6;gap:8px}
+    .sub{font-size:10px;letter-spacing:.12em;line-height:1.9}
+    .tagline{margin-top:18px}
+    .chips{margin-top:26px;gap:7px}
+    .chip{font-size:10px;padding:5px 9px;letter-spacing:.08em}
     .scroll-cue{left:20px;bottom:20px}
     .facts{grid-template-columns:1fr}
     .scores{grid-template-columns:1fr}
@@ -436,6 +441,13 @@
         <circle cx="495" cy="618" r="30" fill="url(#redGlow)"/>
       </g>
 
+      <!-- 三个落影（把人钉在地面上） -->
+      <g opacity=".55">
+        <ellipse cx="408" cy="812" rx="62" ry="12" fill="#03050a"/>
+        <ellipse cx="676" cy="632" rx="30" ry="6" fill="#03050a"/>
+        <ellipse cx="996" cy="726" rx="44" ry="9" fill="#03050a"/>
+      </g>
+
       <!-- 三个人影：黑帮（左·宽肩） / 杀手（中后·兜帽） / 刑警（右·微躬） -->
       <g fill="#04060a">
         <g transform="translate(408,0)">
@@ -444,11 +456,11 @@
           <path d="M-30 658 l-19 92 h13 l15 -78z"/>
           <path d="M30 658 l20 92 h-13 l-16 -78z"/>
         </g>
-        <g transform="translate(700,0)">
-          <circle cx="0" cy="566" r="13"/>
-          <path d="M-15 588 h30 l5 66 h-40 z"/>
-          <path d="M-15 592 l-9 44 h7 l8 -36z"/>
-          <path d="M15 592 l9 44 h-7 l-8 -36z"/>
+        <g transform="translate(676,0)">
+          <circle cx="0" cy="580" r="10"/>
+          <path d="M-12 598 h24 l4 54 h-32 z"/>
+          <path d="M-12 601 l-7 34 h5 l6 -28z"/>
+          <path d="M12 601 l7 34 h-5 l-6 -28z"/>
         </g>
         <g transform="translate(996,0)">
           <circle cx="0" cy="604" r="14"/>
@@ -460,14 +472,14 @@
       <!-- 轮廓光（三色） -->
       <g stroke-width="1.8" fill="none" stroke-linecap="round">
         <path d="M378 626 v168" stroke="#d8a63f" stroke-opacity=".34"/>
-        <path d="M685 564 v88" stroke="#d4483a" stroke-opacity=".34"/>
+        <path d="M665 578 v72" stroke="#d4483a" stroke-opacity=".34"/>
         <path d="M976 602 v112" stroke="#83e7dd" stroke-opacity=".32"/>
       </g>
       <!-- 地面倒影 -->
-      <g opacity=".14">
-        <rect x="392" y="806" width="10" height="60" fill="#d8a63f"/>
-        <rect x="694" y="660" width="7" height="40" fill="#d4483a"/>
-        <rect x="988" y="722" width="9" height="52" fill="#83e7dd"/>
+      <g opacity=".16">
+        <rect x="392" y="812" width="10" height="62" fill="#d8a63f"/>
+        <rect x="672" y="632" width="6" height="34" fill="#d4483a"/>
+        <rect x="988" y="728" width="9" height="56" fill="#83e7dd"/>
       </g>
 
       <!-- 底部暗角 -->
@@ -632,51 +644,58 @@
             </g>
 
             <!-- 三个方向的暗示光 -->
-            <ellipse cx="120" cy="430" rx="120" ry="90" fill="url(#pGold)"/>
-            <ellipse cx="264" cy="336" rx="110" ry="86" fill="url(#pRed)"/>
-            <ellipse cx="408" cy="420" rx="120" ry="90" fill="url(#pNeon)"/>
+            <ellipse cx="96" cy="430" rx="104" ry="84" fill="url(#pGold)"/>
+            <ellipse cx="224" cy="336" rx="86" ry="74" fill="url(#pRed)"/>
+            <ellipse cx="312" cy="424" rx="100" ry="84" fill="url(#pNeon)"/>
+
+            <!-- 落影 -->
+            <g opacity=".6">
+              <ellipse cx="96" cy="574" rx="46" ry="9" fill="#03050a"/>
+              <ellipse cx="224" cy="416" rx="26" ry="5" fill="#03050a"/>
+              <ellipse cx="312" cy="494" rx="34" ry="7" fill="#03050a"/>
+            </g>
 
             <!-- 三个剪影：左＝黑帮（宽肩） 中后＝杀手（兜帽·小） 右＝刑警 -->
             <g fill="#04060a">
-              <g transform="translate(120,0)">
+              <g transform="translate(96,0)">
                 <circle cx="0" cy="400" r="15"/>
                 <path d="M-27 422 h54 l10 150 h-74 z"/>
                 <path d="M-27 428 l-17 88 h12 l14 -74z"/>
                 <path d="M27 428 l18 88 h-12 l-15 -74z"/>
               </g>
-              <g transform="translate(264,0)">
+              <g transform="translate(224,0)">
                 <circle cx="0" cy="332" r="11"/>
                 <path d="M-13 352 h26 l4 62 h-34 z"/>
                 <path d="M-13 356 l-8 40 h6 l7 -33z"/>
                 <path d="M13 356 l8 40 h-6 l-7 -33z"/>
               </g>
-              <g transform="translate(408,0)">
-                <circle cx="0" cy="386" r="13"/>
-                <path d="M-18 404 h36 l7 88 h-50 z"/>
-                <path d="M-18 408 l-14 50 h9 l11 -41z"/>
-                <path d="M18 408 l14 50 h-9 l-11 -41z"/>
+              <g transform="translate(312,0)">
+                <circle cx="0" cy="388" r="12"/>
+                <path d="M-17 405 h34 l7 86 h-48 z"/>
+                <path d="M-17 409 l-13 48 h8 l10 -39z"/>
+                <path d="M17 409 l13 48 h-8 l-10 -39z"/>
               </g>
             </g>
             <!-- 轮廓光 -->
             <g stroke-width="1.8" fill="none" stroke-linecap="round">
-              <path d="M93 398 v174" stroke="#d8a63f" stroke-opacity=".38"/>
-              <path d="M252 330 v84" stroke="#d4483a" stroke-opacity=".40"/>
-              <path d="M390 384 v108" stroke="#83e7dd" stroke-opacity=".36"/>
+              <path d="M69 398 v174" stroke="#d8a63f" stroke-opacity=".38"/>
+              <path d="M212 330 v84" stroke="#d4483a" stroke-opacity=".40"/>
+              <path d="M295 386 v104" stroke="#83e7dd" stroke-opacity=".36"/>
             </g>
 
             <!-- 中心：插在地面的刀 -->
             <g opacity=".95">
-              <path d="M260 636 L262 540 L264 636 Z" fill="#c9d4dd"/>
-              <path d="M262 540 L262 512" stroke="#e9eff5" stroke-width="2"/>
-              <path d="M244 634 L280 634" stroke="#8b98a5" stroke-width="3.4"/>
-              <path d="M262 636 L262 660" stroke="#8b98a5" stroke-width="3"/>
-              <circle cx="262" cy="560" r="58" fill="url(#pRed)" opacity=".5"/>
+              <path d="M259 640 L261 526 L263 640 Z" fill="#c9d4dd"/>
+              <path d="M261 526 L261 494" stroke="#e9eff5" stroke-width="2.2"/>
+              <path d="M239 638 L283 638" stroke="#8b98a5" stroke-width="3.6"/>
+              <path d="M261 640 L261 668" stroke="#8b98a5" stroke-width="3"/>
+              <circle cx="261" cy="556" r="64" fill="url(#pRed)" opacity=".55"/>
             </g>
             <!-- 三道指向中心的细线 -->
             <g stroke-width="1" opacity=".38" stroke-dasharray="4 6">
-              <path d="M132 560 L250 622" stroke="#d8a63f"/>
-              <path d="M262 404 L262 508" stroke="#d4483a"/>
-              <path d="M394 552 L276 622" stroke="#37c8bd"/>
+              <path d="M108 566 L248 626" stroke="#d8a63f"/>
+              <path d="M224 420 L258 508" stroke="#d4483a"/>
+              <path d="M300 556 L276 626" stroke="#37c8bd"/>
             </g>
 
             <!-- 边框与角标 -->
@@ -800,7 +819,7 @@
 
     <div class="tl reveal">
       <div class="tl-item"><div class="tl-y">2019.05.15</div><div class="tl-t">韩国上映</div><div class="tl-d">上映当天即登上票房榜首，并连续多日领跑同期影片。</div></div>
-      <div class="tl-item key"><div class="tl-y">2019.05.22</div><div class="tl-t">第 72 届戛纳 · 午夜展映</div><div class="tl-d">放映结束观众起立鼓掌约 4 分钟。戛纳艺术总监弗雷莫公开表示现场反响"极其热烈"；昆汀·塔伦蒂诺一句"这是我在这届戛纳唯一想看的电影"，让它成为当年最出圈的午夜场。</div></div>
+      <div class="tl-item key"><div class="tl-y">2019.05.22</div><div class="tl-t">第 72 届戛纳 · 午夜展映</div><div class="tl-d">放映结束，全场观众起立鼓掌约 4 分钟。昆汀·塔伦蒂诺把它称作"我在这届戛纳唯一想看的电影"——正是这句话，让它成了当年最出圈的午夜场。</div></div>
       <div class="tl-item"><div class="tl-y">2019</div><div class="tl-t">售出约 104 个国家和地区</div><div class="tl-d">韩国犯罪片的海外版权销售，在这部片上又向前挪了一格。</div></div>
       <div class="tl-item key"><div class="tl-y">2019</div><div class="tl-t">本土票房收官</div><div class="tl-d">336 万观影人次，进入 2019 年韩国本土电影票房前十，也是当年最卖座的韩国犯罪片之一。</div></div>
       <div class="tl-item"><div class="tl-y">2019.11</div><div class="tl-t">第 56 届大钟奖</div><div class="tl-d">饰演连环杀手的金成圭入围最佳男配角——影片在韩国三大奖中最受认可的一项表演类提名。</div></div>

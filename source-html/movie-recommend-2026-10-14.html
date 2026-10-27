@@ -139,6 +139,9 @@
   #hud{
     position:fixed;left:50%;transform:translateX(-50%);bottom:22px;z-index:20;
     width:min(510px,calc(100% - 44px));display:none;
+    opacity:0;pointer-events:none;
+    transform:translateX(-50%) translateY(12px);
+    transition:opacity .5s ease,transform .5s ease;
     padding:14px 18px 12px;
     background:rgba(11,10,17,.8);
     backdrop-filter:blur(12px);
@@ -276,7 +279,7 @@
   .spec dd .k{color:var(--bottle-light)}
   .spec dd .r{color:var(--lamp-light)}
   .spec dd .p{color:var(--milk-dim)}
-  .spec .cell.wide{grid-column:span 2}
+  .spec .cell.wide{grid-column:1/-1}
 
   /* 口碑卡 */
   .scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(212px,1fr));gap:18px}
@@ -420,6 +423,7 @@
     .why .n{font-size:34px}
   }
   @media (min-width:981px){#hud{display:block}}
+  #hud.show{opacity:1;transform:translateX(-50%) translateY(0)}
   @media (max-width:760px){
     .grid6{grid-template-columns:minmax(0,1fr)}
     body{font-size:15.4px}
@@ -473,8 +477,8 @@
         <stop offset="0" stop-color="#05050a"/>
         <stop offset="0.46" stop-color="#0a0a13"/>
         <stop offset="0.76" stop-color="#121322"/>
-        <stop offset="0.92" stop-color="#1e2136"/>
-        <stop offset="1" stop-color="#2b3049"/>
+        <stop offset="0.92" stop-color="#232842"/>
+        <stop offset="1" stop-color="#343b5a"/>
       </linearGradient>
       <linearGradient id="gGround" gradientUnits="userSpaceOnUse" x1="0" y1="682" x2="0" y2="900">
         <stop offset="0" stop-color="#272c42"/>
@@ -483,7 +487,7 @@
         <stop offset="1" stop-color="#050509"/>
       </linearGradient>
       <radialGradient id="gGlow">
-        <stop offset="0" stop-color="#f2ead9" stop-opacity="0.42"/>
+        <stop offset="0" stop-color="#f2ead9" stop-opacity="0.5"/>
         <stop offset="0.42" stop-color="#d8d3c4" stop-opacity="0.16"/>
         <stop offset="1" stop-color="#d8d3c4" stop-opacity="0"/>
       </radialGradient>
@@ -495,6 +499,13 @@
         <stop offset="0" stop-color="#e9b45c" stop-opacity="0.55"/>
         <stop offset="1" stop-color="#e9b45c" stop-opacity="0"/>
       </radialGradient>
+      <linearGradient id="gHaze" gradientUnits="userSpaceOnUse" x1="0" y1="606" x2="0" y2="760">
+        <stop offset="0" stop-color="#e8e6dc" stop-opacity="0"/>
+        <stop offset="0.3" stop-color="#eeeade" stop-opacity="0.2"/>
+        <stop offset="0.6" stop-color="#f2ead9" stop-opacity="0.27"/>
+        <stop offset="0.86" stop-color="#e2dccb" stop-opacity="0.15"/>
+        <stop offset="1" stop-color="#d8d3c4" stop-opacity="0"/>
+      </linearGradient>
       <radialGradient id="gBeam">
         <stop offset="0" stop-color="#f4e6c4" stop-opacity="0.34"/>
         <stop offset="1" stop-color="#f4e6c4" stop-opacity="0"/>
@@ -540,8 +551,9 @@
     <rect x="1022" y="664" width="6" height="8" fill="#e9b45c" opacity="0.46"/>
 
     <!-- 晨光带（最亮区，顶缘 y=626） -->
-    <ellipse cx="720" cy="682" rx="1180" ry="56" fill="url(#gGlow)"/>
-    <rect x="0" y="680" width="1440" height="1.6" fill="#f4ecdd" opacity="0.17"/>
+    <ellipse cx="720" cy="696" rx="1200" ry="86" fill="url(#gGlow)"/>
+    <rect x="0" y="606" width="1440" height="152" fill="url(#gHaze)"/>
+    <rect x="0" y="694" width="1440" height="1.8" fill="#f4ecdd" opacity="0.22"/>
 
     <!-- 路灯两盏 -->
     <circle cx="282" cy="648" r="42" fill="url(#gLamp)"/>
@@ -568,95 +580,71 @@
     <path d="M126 812 L126 404" stroke="#c3d6e8" stroke-width="0.7" opacity="0.14"/>
 
     <!-- 路面（上坡） -->
-    <path d="M-40 900 L-40 818 Q420 784 860 792 Q1180 798 1480 812 L1480 900 Z" fill="#0a0b12"/>
-    <path d="M-40 818 Q420 784 860 792 Q1180 798 1480 812" fill="none" stroke="#c9d3e2" stroke-width="1.5" opacity="0.16"/>
-    <path d="M-40 856 Q420 822 860 830 Q1180 836 1480 852" fill="none" stroke="#b3bfd0" stroke-width="1" opacity="0.07"/>
-    <path d="M-40 890 Q420 858 860 866 Q1180 872 1480 890" fill="none" stroke="#b3bfd0" stroke-width="1" opacity="0.045"/>
+    <path d="M-40 900 L-40 756 Q420 722 860 730 Q1180 736 1480 750 L1480 900 Z" fill="#0a0b12"/>
+    <rect x="0" y="726" width="1440" height="74" fill="url(#gRoad)"/>
+    <path d="M-40 756 Q420 722 860 730 Q1180 736 1480 750" fill="none" stroke="#c9d3e2" stroke-width="1.6" opacity="0.26"/>
+    <path d="M-40 794 Q420 760 860 768 Q1180 774 1480 790" fill="none" stroke="#b3bfd0" stroke-width="1" opacity="0.07"/>
+    <path d="M-40 828 Q420 796 860 804 Q1180 810 1480 828" fill="none" stroke="#b3bfd0" stroke-width="1" opacity="0.045"/>
 
-    <!-- 右侧树 -->
-    <g>
-      <path d="M1330 812 L1330 700" stroke="#07080e" stroke-width="5" stroke-linecap="round"/>
-      <path d="M1330 726 Q1300 716 1286 700" fill="none" stroke="#07080e" stroke-width="2.4"/>
-      <path d="M1330 748 Q1360 738 1378 720" fill="none" stroke="#07080e" stroke-width="2.2"/>
-      <ellipse cx="1332" cy="676" rx="66" ry="34" fill="#07080e"/>
-      <ellipse cx="1294" cy="694" rx="34" ry="20" fill="#07080e"/>
-      <ellipse cx="1372" cy="692" rx="32" ry="19" fill="#07080e"/>
-      <path d="M1272 662 Q1332 646 1392 664" fill="none" stroke="#c3d6e8" stroke-width="1" opacity="0.14"/>
+    <!-- 右侧：一棵冬季的枯树 -->
+    <g stroke="#07080e" fill="none" stroke-linecap="round">
+      <path d="M1330 812 L1330 660" stroke-width="5.6"/>
+      <path d="M1330 704 Q1300 688 1282 666" stroke-width="2.7"/>
+      <path d="M1330 720 Q1362 706 1378 684" stroke-width="2.5"/>
+      <path d="M1310 690 Q1298 678 1294 662" stroke-width="1.7"/>
+      <path d="M1352 698 Q1364 686 1370 672" stroke-width="1.6"/>
+      <path d="M1330 668 L1323 640" stroke-width="1.9"/>
+      <path d="M1330 674 L1339 648" stroke-width="1.7"/>
+      <path d="M1284 670 L1276 656" stroke-width="1.3"/>
+      <path d="M1376 690 L1386 678" stroke-width="1.3"/>
     </g>
+    <path d="M1330 812 L1330 660" stroke="#c3d6e8" fill="none" stroke-width="0.8" opacity="0.12"/>
 
-    <!-- 主体一：送奶的摩托车与骑车人 -->
+    <!-- 主体：坡道上相向而立的两个人（站在岭线上的逆光剪影） -->
     <g>
-      <ellipse cx="612" cy="790" rx="24" ry="5" fill="#000" opacity="0.5"/>
-      <ellipse cx="702" cy="790" rx="24" ry="5" fill="#000" opacity="0.5"/>
-      <!-- 车轮 -->
-      <circle cx="612" cy="768" r="18" fill="none" stroke="#06070c" stroke-width="5.4"/>
-      <circle cx="702" cy="768" r="18" fill="none" stroke="#06070c" stroke-width="5.4"/>
-      <circle cx="612" cy="768" r="5" fill="none" stroke="#06070c" stroke-width="2"/>
-      <circle cx="702" cy="768" r="5" fill="none" stroke="#06070c" stroke-width="2"/>
-      <path d="M612 783 A18 18 0 0 1 626 754" fill="none" stroke="#c3d6e8" stroke-width="1.6" opacity="0.3"/>
-      <path d="M702 783 A18 18 0 0 1 716 754" fill="none" stroke="#c3d6e8" stroke-width="1.6" opacity="0.28"/>
-      <!-- 车架 -->
-      <path d="M612 768 L646 748 L690 748 L702 768" fill="none" stroke="#06070c" stroke-width="5" stroke-linecap="round"/>
-      <path d="M646 748 L640 730 L678 726" fill="none" stroke="#06070c" stroke-width="4.4" stroke-linecap="round"/>
-      <path d="M690 748 L694 706 L678 700" fill="none" stroke="#06070c" stroke-width="3.4" stroke-linecap="round"/>
-      <path d="M660 700 L700 700" stroke="#06070c" stroke-width="6" stroke-linecap="round"/>
-      <!-- 送奶箱 -->
-      <rect x="654" y="716" width="46" height="30" rx="3" fill="#06070c"/>
-      <path d="M654 716 L700 716" stroke="#a5cbea" stroke-width="1.5" opacity="0.34"/>
-      <path d="M654 716 L654 746" stroke="#a5cbea" stroke-width="1.5" opacity="0.2"/>
-      <rect x="662" y="726" width="30" height="1.4" fill="#06070c"/>
-      <!-- 车灯与前叉 -->
-      <path d="M700 700 L712 692" stroke="#06070c" stroke-width="3.4" stroke-linecap="round"/>
-      <circle cx="716" cy="690" r="6" fill="url(#gBeam)"/>
-      <path d="M714 690 L742 676" stroke="#f4e6c4" stroke-width="1.6" opacity="0.24"/>
-      <!-- 骑车人 -->
-      <path d="M646 700 C638 698 633 692 633 684 L631 664 C631 656 636 650 643 648 L653 646 C661 645 667 650 668 658 L669 680 C669 690 664 697 655 699 Z" fill="#06070c"/>
-      <circle cx="651" cy="636" r="11.5" fill="#06070c"/>
-      <path d="M641 632 Q651 621 661 631 Z" fill="#06070c"/>
-      <path d="M648 662 L638 690" stroke="#06070c" stroke-width="6" stroke-linecap="round"/>
-      <path d="M665 656 L686 664 L700 684" fill="none" stroke="#06070c" stroke-width="5.4" stroke-linecap="round"/>
-      <path d="M646 700 L638 726 L626 742" fill="none" stroke="#06070c" stroke-width="6.6" stroke-linecap="round"/>
-      <path d="M658 702 L664 726 L652 744" fill="none" stroke="#06070c" stroke-width="6.4" stroke-linecap="round"/>
-      <!-- 轮廓光 -->
-      <path d="M646 700 C638 698 633 692 633 684 L631 664 C631 656 636 650 643 648 L653 646 C661 645 667 650 668 658 L669 680 C669 690 664 697 655 699 Z" fill="none" stroke="#c3d6e8" stroke-width="2.1" opacity="0.3"/>
-      <path d="M646 700 C638 698 633 692 633 684 L631 664 C631 656 636 650 643 648 L653 646 C661 645 667 650 668 658 L669 680 C669 690 664 697 655 699 Z" fill="none" stroke="#f4ecdd" stroke-width="2.0" opacity="0.42"/>
-      <circle cx="651" cy="636" r="11.5" fill="none" stroke="#f4ecdd" stroke-width="2.1" opacity="0.46"/>
-      <path d="M641 632 Q651 621 661 631" fill="none" stroke="#f4ecdd" stroke-width="2" opacity="0.4"/>
-      <path d="M665 656 L686 664 L700 684" fill="none" stroke="#f4ecdd" stroke-width="1.6" opacity="0.3"/>
-      <path d="M660 700 L700 700" stroke="#a5cbea" stroke-width="1.4" opacity="0.3"/>
-    </g>
+      <!-- 左：他（戴鸭舌帽，面向右侧） -->
+      <ellipse cx="690" cy="728.6" rx="11" ry="2.2" fill="#000" opacity="0.5"/>
+      <g>
+        <path d="M681.4 665 C681.4 661.6 683.8 660 687 660 L693 660 C696.2 660 698.6 661.6 698.6 665 L699.4 694 L700.4 714 L679.6 714 L680.6 694 Z" fill="#06070c"/>
+        <ellipse cx="690" cy="656" rx="5.8" ry="6.6" fill="#06070c"/>
+        <path d="M684.4 652.4 Q690 640 695.6 652.4" fill="none" stroke="#06070c" stroke-width="3.2" stroke-linecap="round"/>
+        <path d="M694.6 650 L701.6 652.4 L694.6 654.6 Z" fill="#06070c"/>
+        <path d="M683.8 711 L683.8 728 L688.8 728 L690.2 717.5 L691.6 728 L696.6 728 L696.6 711 Z" fill="#06070c"/>
+        <path d="M681.4 665 C681.4 661.6 683.8 660 687 660 L693 660 C696.2 660 698.6 661.6 698.6 665 L699.4 694 L700.4 714 L679.6 714 L680.6 694 Z" fill="none" stroke="#f4ecdd" stroke-width="7" opacity="0.09"/>
+        <path d="M683.8 711 L683.8 728 L696.6 728 L696.6 711" fill="none" stroke="#f4ecdd" stroke-width="6" opacity="0.08"/>
+        <path d="M681.4 665 C681.4 661.6 683.8 660 687 660 L693 660 C696.2 660 698.6 661.6 698.6 665 L699.4 694 L700.4 714 L679.6 714 L680.6 694 Z" fill="none" stroke="#f4ecdd" stroke-width="1.7" opacity="0.44"/>
+        <ellipse cx="690" cy="656" rx="5.8" ry="6.6" fill="none" stroke="#f4ecdd" stroke-width="1.7" opacity="0.46"/>
+        <path d="M684.4 652.4 Q690 640 695.6 652.4" fill="none" stroke="#f4ecdd" stroke-width="1.3" opacity="0.44"/>
+        <path d="M694.6 650 L701.6 652.4 L694.6 654.6 Z" fill="none" stroke="#f4ecdd" stroke-width="1.1" opacity="0.44"/>
+        <path d="M690.2 717.5 L690.2 728" stroke="#f4ecdd" stroke-width="1" opacity="0.16"/>
+        <path d="M683.8 711 L683.8 728 L696.6 728 L696.6 711" fill="none" stroke="#f4ecdd" stroke-width="1.3" opacity="0.3"/>
+      </g>
 
-    <!-- 主体二：推手推车的人 -->
-    <g>
-      <ellipse cx="906" cy="790" rx="22" ry="5" fill="#000" opacity="0.5"/>
-      <ellipse cx="976" cy="790" rx="22" ry="5" fill="#000" opacity="0.5"/>
-      <!-- 手推车 -->
-      <path d="M862 786 L1022 786 L1012 748 L872 748 Z" fill="#06070c"/>
-      <path d="M862 786 L1022 786" stroke="#c3d6e8" stroke-width="1.4" opacity="0.22"/>
-      <circle cx="888" cy="784" r="14" fill="none" stroke="#06070c" stroke-width="4.6"/>
-      <circle cx="1002" cy="784" r="14" fill="none" stroke="#06070c" stroke-width="4.6"/>
-      <!-- 车上捆好的废纸堆 -->
-      <rect x="878" y="712" width="118" height="36" fill="#06070c"/>
-      <path d="M878 712 L996 712" stroke="#cbd5e2" stroke-width="1.2" opacity="0.2"/>
-      <path d="M886 726 L990 726" stroke="#cbd5e2" stroke-width="1" opacity="0.14"/>
-      <path d="M920 712 L920 748" stroke="#06070c" stroke-width="3.6"/>
-      <path d="M954 712 L954 748" stroke="#06070c" stroke-width="3.6"/>
-      <path d="M884 716 L992 740" stroke="#06070c" stroke-width="2.2"/>
-      <!-- 推车的老人 -->
-      <path d="M1052 790 C1044 788 1039 782 1039 774 L1036 732 C1036 722 1042 715 1051 713 L1065 711 C1075 710 1082 717 1082 727 L1083 776 C1083 784 1078 789 1070 790 Z" fill="#06070c"/>
-      <circle cx="1060" cy="694" r="12" fill="#06070c"/>
-      <path d="M1048 690 Q1060 676 1072 689 Z" fill="#06070c"/>
-      <path d="M1054 718 L1030 736 L1010 748" fill="none" stroke="#06070c" stroke-width="6.2" stroke-linecap="round"/>
-      <path d="M1066 722 L1046 740 L1024 750" fill="none" stroke="#06070c" stroke-width="5.8" stroke-linecap="round"/>
-      <path d="M1052 790 L1044 790" stroke="#06070c" stroke-width="8" stroke-linecap="round"/>
-      <path d="M1060 790 L1072 790" stroke="#06070c" stroke-width="8" stroke-linecap="round"/>
-      <!-- 轮廓光 -->
-      <path d="M1052 790 C1044 788 1039 782 1039 774 L1036 732 C1036 722 1042 715 1051 713 L1065 711 C1075 710 1082 717 1082 727 L1083 776 C1083 784 1078 789 1070 790 Z" fill="none" stroke="#c3d6e8" stroke-width="2.1" opacity="0.28"/>
-      <path d="M1052 790 C1044 788 1039 782 1039 774 L1036 732 C1036 722 1042 715 1051 713 L1065 711 C1075 710 1082 717 1082 727 L1083 776 C1083 784 1078 789 1070 790 Z" fill="none" stroke="#f4ecdd" stroke-width="2.0" opacity="0.4"/>
-      <circle cx="1060" cy="694" r="12" fill="none" stroke="#f4ecdd" stroke-width="2.1" opacity="0.44"/>
-      <path d="M1048 690 Q1060 676 1072 689" fill="none" stroke="#f4ecdd" stroke-width="2" opacity="0.38"/>
-      <path d="M1054 718 L1030 736 L1010 748" fill="none" stroke="#f4ecdd" stroke-width="1.6" opacity="0.28"/>
-      <path d="M862 786 L1022 786" stroke="#f4ecdd" stroke-width="0.9" opacity="0.12"/>
+      <!-- 右：她（挽发，面向左侧） -->
+      <ellipse cx="752" cy="728.6" rx="11.5" ry="2.2" fill="#000" opacity="0.5"/>
+      <g>
+        <path d="M744 668 C744 664.8 746.2 663.2 749.2 663.2 L754.8 663.2 C757.8 663.2 760 664.8 760 668 L761.6 700 L763.6 720 L740.4 720 L742.4 700 Z" fill="#06070c"/>
+        <path d="M752 650.6 C754.3 650.6 756 651.9 756.9 653.8 C758.3 652.9 760.2 654 760.2 655.9 C760.2 657.6 758.9 658.7 757.2 658.8 C757.6 660.4 757.6 661.4 757.6 662.6 C757.3 663.6 755.2 664.4 752 664.4 C748.1 664.4 746.2 662.6 746.2 659.4 C746.2 654.2 748.4 650.6 752 650.6 Z" fill="#06070c"/>
+        <path d="M746.9 716 L746.9 728 L751.2 728 L752 719.5 L752.8 728 L757.1 728 L757.1 716 Z" fill="#06070c"/>
+        <path d="M744 668 C744 664.8 746.2 663.2 749.2 663.2 L754.8 663.2 C757.8 663.2 760 664.8 760 668 L761.6 700 L763.6 720 L740.4 720 L742.4 700 Z" fill="none" stroke="#f4ecdd" stroke-width="7" opacity="0.09"/>
+        <path d="M746.9 716 L746.9 728 L757.1 728 L757.1 716" fill="none" stroke="#f4ecdd" stroke-width="6" opacity="0.08"/>
+        <path d="M744 668 C744 664.8 746.2 663.2 749.2 663.2 L754.8 663.2 C757.8 663.2 760 664.8 760 668 L761.6 700 L763.6 720 L740.4 720 L742.4 700 Z" fill="none" stroke="#f4ecdd" stroke-width="1.7" opacity="0.44"/>
+        <path d="M752 650.6 C754.3 650.6 756 651.9 756.9 653.8 C758.3 652.9 760.2 654 760.2 655.9 C760.2 657.6 758.9 658.7 757.2 658.8 C757.6 660.4 757.6 661.4 757.6 662.6 C757.3 663.6 755.2 664.4 752 664.4 C748.1 664.4 746.2 662.6 746.2 659.4 C746.2 654.2 748.4 650.6 752 650.6 Z" fill="none" stroke="#f4ecdd" stroke-width="1.7" opacity="0.44"/>
+        <path d="M752 650.6 C754.3 650.6 756 651.9 756.9 653.8 C758.5 653.4 760.2 654.4 760.2 655.9 C760.2 657.4 758.8 658.6 757.2 658.8" fill="none" stroke="#f4ecdd" stroke-width="2.2" opacity="0.5"/>
+        <path d="M752 719.5 L752 728" stroke="#f4ecdd" stroke-width="1" opacity="0.16"/>
+        <path d="M746.9 716 L746.9 728 L757.1 728 L757.1 716" fill="none" stroke="#f4ecdd" stroke-width="1.3" opacity="0.3"/>
+      </g>
+
+      <!-- 两人之间、岭线上的那瓶牛奶 -->
+      <g>
+        <ellipse cx="721" cy="728.6" rx="6" ry="1.6" fill="#000" opacity="0.5"/>
+        <rect x="716.5" y="715" width="9" height="13" rx="1.6" fill="#0d1218"/>
+        <rect x="718.6" y="707.6" width="4.8" height="7.6" rx="0.9" fill="#0d1218"/>
+        <rect x="716.9" y="705.9" width="8.2" height="1.8" fill="#0d1218"/>
+        <rect x="716.5" y="715" width="9" height="13" rx="1.6" fill="none" stroke="#f4ecdd" stroke-width="1.2" opacity="0.5"/>
+        <rect x="718.6" y="707.6" width="4.8" height="7.6" rx="0.9" fill="none" stroke="#f4ecdd" stroke-width="1" opacity="0.44"/>
+        <ellipse cx="721" cy="705.9" rx="4.1" ry="1" fill="#f4ecdd" opacity="0.5"/>
+      </g>
     </g>
   </svg>
 
@@ -751,24 +739,32 @@
     <div class="poster-grid">
       <div class="reveal">
         <div class="poster-frame">
-          <svg viewBox="0 0 430 560" role="img" aria-label="概念海报：深色石板地上放着一个蓝色牛奶箱，箱里四瓶牛奶，箱上压着一张手写便条，旁边有一副旧棉手套和一片落叶">
+          <svg viewBox="0 0 430 560" role="img" aria-label="概念海报：深色石板地上放着敞口的蓝色牛奶箱，箱里并排立着四瓶牛奶，箱面上压着一张手写便条，左下角有一副旧棉手套，右侧有一片落叶">
             <defs>
               <linearGradient id="pSlab" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="560">
                 <stop offset="0" stop-color="#100f18"/>
                 <stop offset="0.5" stop-color="#0b0a12"/>
                 <stop offset="1" stop-color="#06060a"/>
               </linearGradient>
-              <linearGradient id="pCrate" gradientUnits="userSpaceOnUse" x1="120" y1="300" x2="330" y2="470">
+              <linearGradient id="pCrate" gradientUnits="userSpaceOnUse" x1="110" y1="320" x2="340" y2="400">
                 <stop offset="0" stop-color="#4a7ba8"/>
                 <stop offset="0.5" stop-color="#39648d"/>
                 <stop offset="1" stop-color="#26486a"/>
+              </linearGradient>
+              <linearGradient id="pWallL" gradientUnits="userSpaceOnUse" x1="100" y1="288" x2="134" y2="468">
+                <stop offset="0" stop-color="#2f5473"/>
+                <stop offset="1" stop-color="#1b3550"/>
+              </linearGradient>
+              <linearGradient id="pWallR" gradientUnits="userSpaceOnUse" x1="318" y1="288" x2="352" y2="468">
+                <stop offset="0" stop-color="#24455f"/>
+                <stop offset="1" stop-color="#132c42"/>
               </linearGradient>
               <linearGradient id="pBottle" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0" stop-color="#f6f1e4"/>
                 <stop offset="0.62" stop-color="#efe8d8"/>
                 <stop offset="1" stop-color="#cfc6b2"/>
               </linearGradient>
-              <linearGradient id="pNote" gradientUnits="userSpaceOnUse" x1="150" y1="330" x2="300" y2="430">
+              <linearGradient id="pNote" gradientUnits="userSpaceOnUse" x1="140" y1="310" x2="280" y2="400">
                 <stop offset="0" stop-color="#f1e7d0"/>
                 <stop offset="1" stop-color="#ded1b4"/>
               </linearGradient>
@@ -777,6 +773,11 @@
                 <stop offset="0.5" stop-color="#c98a3c" stop-opacity="0.12"/>
                 <stop offset="1" stop-color="#c98a3c" stop-opacity="0"/>
               </radialGradient>
+              <linearGradient id="pMist" gradientUnits="userSpaceOnUse" x1="0" y1="34" x2="0" y2="238">
+                <stop offset="0" stop-color="#9fb6cf" stop-opacity="0"/>
+                <stop offset="0.52" stop-color="#aec2d6" stop-opacity="0.1"/>
+                <stop offset="1" stop-color="#9fb6cf" stop-opacity="0"/>
+              </linearGradient>
               <radialGradient id="pVig">
                 <stop offset="0.5" stop-color="#000" stop-opacity="0"/>
                 <stop offset="1" stop-color="#000" stop-opacity="0.72"/>
@@ -794,6 +795,8 @@
             </g>
             <!-- 路灯从画面外漏进来的光 -->
             <circle cx="42" cy="248" r="190" fill="url(#pLamp)"/>
+            <!-- 高处的一层晨雾（通幅渐变，不留可见边缘） -->
+            <rect x="0" y="34" width="430" height="204" fill="url(#pMist)"/>
 
             <!-- 地面上的霜点 -->
             <g fill="#c3d6e8" opacity="0.16">
@@ -803,103 +806,105 @@
               <circle cx="206" cy="540" r="1.1"/><circle cx="382" cy="524" r="1.3"/>
             </g>
 
-            <!-- 奶箱 -->
+            <!-- 奶箱：敞口方箱，箱口低于瓶身 -->
             <g>
-              <ellipse cx="222" cy="472" rx="118" ry="11" fill="#000" opacity="0.55"/>
-              <path d="M120 300 L330 300 L338 458 L112 458 Z" fill="url(#pCrate)"/>
-              <path d="M120 300 L330 300 L330 312 L120 312 Z" fill="#5d8fbd" opacity="0.6"/>
-              <!-- 格栅 -->
-              <g fill="#16283a" opacity="0.55">
-                <rect x="134" y="330" width="18" height="20" rx="2"/><rect x="162" y="330" width="18" height="20" rx="2"/>
-                <rect x="190" y="330" width="18" height="20" rx="2"/><rect x="218" y="330" width="18" height="20" rx="2"/>
-                <rect x="246" y="330" width="18" height="20" rx="2"/><rect x="274" y="330" width="18" height="20" rx="2"/>
-                <rect x="302" y="330" width="18" height="20" rx="2"/>
-                <rect x="134" y="362" width="18" height="20" rx="2"/><rect x="162" y="362" width="18" height="20" rx="2"/>
-                <rect x="190" y="362" width="18" height="20" rx="2"/><rect x="218" y="362" width="18" height="20" rx="2"/>
-                <rect x="246" y="362" width="18" height="20" rx="2"/><rect x="274" y="362" width="18" height="20" rx="2"/>
-                <rect x="302" y="362" width="18" height="20" rx="2"/>
-                <rect x="134" y="394" width="18" height="20" rx="2"/><rect x="162" y="394" width="18" height="20" rx="2"/>
-                <rect x="190" y="394" width="18" height="20" rx="2"/><rect x="218" y="394" width="18" height="20" rx="2"/>
-                <rect x="246" y="394" width="18" height="20" rx="2"/><rect x="274" y="394" width="18" height="20" rx="2"/>
-                <rect x="302" y="394" width="18" height="20" rx="2"/>
-                <rect x="134" y="426" width="18" height="20" rx="2"/><rect x="162" y="426" width="18" height="20" rx="2"/>
-                <rect x="190" y="426" width="18" height="20" rx="2"/><rect x="218" y="426" width="18" height="20" rx="2"/>
-                <rect x="246" y="426" width="18" height="20" rx="2"/><rect x="274" y="426" width="18" height="20" rx="2"/>
-                <rect x="302" y="426" width="18" height="20" rx="2"/>
+              <ellipse cx="226" cy="410" rx="126" ry="13" fill="#000" opacity="0.55"/>
+              <!-- 箱口内侧 -->
+              <path d="M134 288 L318 288 L344 320 L108 320 Z" fill="#0d1926"/>
+              <!-- 左右侧壁 -->
+              <path d="M134 288 L108 320 L100 400 L126 372 Z" fill="url(#pWallL)"/>
+              <path d="M318 288 L344 320 L352 400 L326 372 Z" fill="url(#pWallR)"/>
+
+              <!-- 四瓶牛奶（下半截被箱壁挡住） -->
+              <g>
+                <g>
+                  <rect x="137" y="295" width="38" height="101" rx="4" fill="url(#pBottle)"/>
+                  <rect x="144" y="276" width="24" height="21" rx="2" fill="#e8e1d0"/>
+                  <rect x="142" y="268" width="28" height="9" rx="1.8" fill="#c9ccd2"/>
+                  <rect x="142" y="268" width="28" height="9" rx="1.8" fill="none" stroke="#eeeadf" stroke-width="0.8" opacity="0.7"/>
+                  <rect x="142" y="330" width="28" height="26" rx="2" fill="#fff" opacity="0.24"/>
+                </g>
+                <g>
+                  <rect x="191" y="291" width="38" height="105" rx="4" fill="url(#pBottle)"/>
+                  <rect x="198" y="272" width="24" height="21" rx="2" fill="#e8e1d0"/>
+                  <rect x="196" y="264" width="28" height="9" rx="1.8" fill="#c9ccd2"/>
+                  <rect x="196" y="264" width="28" height="9" rx="1.8" fill="none" stroke="#eeeadf" stroke-width="0.8" opacity="0.7"/>
+                  <rect x="196" y="326" width="28" height="26" rx="2" fill="#fff" opacity="0.24"/>
+                </g>
+                <g>
+                  <rect x="245" y="297" width="38" height="99" rx="4" fill="url(#pBottle)"/>
+                  <rect x="252" y="278" width="24" height="21" rx="2" fill="#e8e1d0"/>
+                  <rect x="250" y="270" width="28" height="9" rx="1.8" fill="#c9ccd2"/>
+                  <rect x="250" y="270" width="28" height="9" rx="1.8" fill="none" stroke="#eeeadf" stroke-width="0.8" opacity="0.7"/>
+                  <rect x="250" y="332" width="28" height="26" rx="2" fill="#fff" opacity="0.24"/>
+                </g>
+                <g>
+                  <rect x="299" y="293" width="38" height="103" rx="4" fill="url(#pBottle)"/>
+                  <rect x="306" y="274" width="24" height="21" rx="2" fill="#e8e1d0"/>
+                  <rect x="304" y="266" width="28" height="9" rx="1.8" fill="#c9ccd2"/>
+                  <rect x="304" y="266" width="28" height="9" rx="1.8" fill="none" stroke="#eeeadf" stroke-width="0.8" opacity="0.7"/>
+                  <rect x="304" y="328" width="28" height="26" rx="2" fill="#fff" opacity="0.24"/>
+                </g>
               </g>
-              <path d="M120 300 L330 300 L338 458 L112 458 Z" fill="none" stroke="#a5cbea" stroke-width="1.1" opacity="0.34"/>
-              <path d="M112 458 L338 458" stroke="#a5cbea" stroke-width="1.4" opacity="0.4"/>
-              <!-- 提手 -->
-              <path d="M158 300 L158 286 L286 286 L286 300" fill="none" stroke="#2f5678" stroke-width="5.2" stroke-linejoin="round"/>
-              <path d="M158 300 L158 286 L286 286 L286 300" fill="none" stroke="#a5cbea" stroke-width="1" opacity="0.32"/>
+
+              <!-- 前壁（遮住瓶身下半截） -->
+              <path d="M108 320 L344 320 L352 400 L100 400 Z" fill="url(#pCrate)"/>
+              <g fill="#10202e" opacity="0.58">
+                <rect x="116" y="330" width="16" height="26" rx="2"/><rect x="140" y="330" width="16" height="26" rx="2"/>
+                <rect x="164" y="330" width="16" height="26" rx="2"/><rect x="188" y="330" width="16" height="26" rx="2"/>
+                <rect x="212" y="330" width="16" height="26" rx="2"/><rect x="236" y="330" width="16" height="26" rx="2"/>
+                <rect x="260" y="330" width="16" height="26" rx="2"/><rect x="284" y="330" width="16" height="26" rx="2"/>
+                <rect x="308" y="330" width="16" height="26" rx="2"/><rect x="332" y="330" width="16" height="26" rx="2"/>
+                <rect x="120" y="362" width="16" height="26" rx="2"/><rect x="144" y="362" width="16" height="26" rx="2"/>
+                <rect x="168" y="362" width="16" height="26" rx="2"/><rect x="192" y="362" width="16" height="26" rx="2"/>
+                <rect x="216" y="362" width="16" height="26" rx="2"/><rect x="240" y="362" width="16" height="26" rx="2"/>
+                <rect x="264" y="362" width="16" height="26" rx="2"/><rect x="288" y="362" width="16" height="26" rx="2"/>
+                <rect x="312" y="362" width="16" height="26" rx="2"/><rect x="336" y="362" width="16" height="26" rx="2"/>
+              </g>
+              <!-- 箱口边缘的亮线 -->
+              <path d="M108 320 L344 320" stroke="#a5cbea" stroke-width="1.6" opacity="0.46"/>
+              <path d="M134 288 L318 288" stroke="#a5cbea" stroke-width="1.2" opacity="0.3"/>
+              <path d="M134 288 L108 320" stroke="#a5cbea" stroke-width="1.1" opacity="0.26"/>
+              <path d="M318 288 L344 320" stroke="#a5cbea" stroke-width="1.1" opacity="0.26"/>
+              <path d="M108 320 L100 400" stroke="#a5cbea" stroke-width="1" opacity="0.2"/>
+              <path d="M344 320 L352 400" stroke="#a5cbea" stroke-width="1" opacity="0.2"/>
+              <path d="M100 400 L352 400" stroke="#a5cbea" stroke-width="1.4" opacity="0.34"/>
             </g>
 
-            <!-- 四瓶牛奶 -->
-            <g>
-              <g>
-                <rect x="146" y="238" width="34" height="64" rx="4" fill="url(#pBottle)"/>
-                <rect x="152" y="222" width="22" height="19" rx="2" fill="#e8e1d0"/>
-                <rect x="150" y="216" width="26" height="8" rx="1.6" fill="#c9ccd2"/>
-                <rect x="150" y="216" width="26" height="8" rx="1.6" fill="none" stroke="#eeeadf" stroke-width="0.8" opacity="0.7"/>
-                <rect x="150" y="258" width="26" height="20" fill="#d9d1bd" opacity="0.5"/>
-              </g>
-              <g>
-                <rect x="188" y="232" width="34" height="70" rx="4" fill="url(#pBottle)"/>
-                <rect x="194" y="215" width="22" height="19" rx="2" fill="#e8e1d0"/>
-                <rect x="192" y="209" width="26" height="8" rx="1.6" fill="#c9ccd2"/>
-                <rect x="192" y="209" width="26" height="8" rx="1.6" fill="none" stroke="#eeeadf" stroke-width="0.8" opacity="0.7"/>
-                <rect x="192" y="254" width="26" height="22" fill="#d9d1bd" opacity="0.5"/>
-              </g>
-              <g>
-                <rect x="230" y="240" width="34" height="62" rx="4" fill="url(#pBottle)"/>
-                <rect x="236" y="224" width="22" height="19" rx="2" fill="#e8e1d0"/>
-                <rect x="234" y="218" width="26" height="8" rx="1.6" fill="#c9ccd2"/>
-                <rect x="234" y="218" width="26" height="8" rx="1.6" fill="none" stroke="#eeeadf" stroke-width="0.8" opacity="0.7"/>
-                <rect x="234" y="260" width="26" height="20" fill="#d9d1bd" opacity="0.5"/>
-              </g>
-              <g>
-                <rect x="272" y="236" width="34" height="66" rx="4" fill="url(#pBottle)"/>
-                <rect x="278" y="219" width="22" height="19" rx="2" fill="#e8e1d0"/>
-                <rect x="276" y="213" width="26" height="8" rx="1.6" fill="#c9ccd2"/>
-                <rect x="276" y="213" width="26" height="8" rx="1.6" fill="none" stroke="#eeeadf" stroke-width="0.8" opacity="0.7"/>
-                <rect x="276" y="258" width="26" height="22" fill="#d9d1bd" opacity="0.5"/>
-              </g>
-            </g>
-            <!-- 瓶子在箱口投下的浅影 -->
-            <g fill="#0d1a26" opacity="0.35">
-              <ellipse cx="163" cy="302" rx="19" ry="3"/><ellipse cx="205" cy="302" rx="19" ry="3"/>
-              <ellipse cx="247" cy="302" rx="19" ry="3"/><ellipse cx="289" cy="302" rx="19" ry="3"/>
-            </g>
-
-            <!-- 压在箱口的便条 -->
-            <g transform="rotate(-5 215 372)">
-              <path d="M150 336 L282 330 L292 424 L158 432 Z" fill="url(#pNote)"/>
-              <path d="M150 336 L282 330 L292 424 L158 432 Z" fill="none" stroke="#f7f1e2" stroke-width="0.8" opacity="0.5"/>
+            <!-- 压在箱面上的便条 -->
+            <g transform="rotate(-4 198 354)">
+              <path d="M134 322 L252 316 L262 386 L146 392 Z" fill="url(#pNote)"/>
+              <path d="M134 322 L252 316 L262 386 L146 392 Z" fill="none" stroke="#f7f1e2" stroke-width="0.8" opacity="0.5"/>
+              <path d="M136 326 L252 320" stroke="#b8ab8e" stroke-width="0.9" opacity="0.55"/>
               <g fill="none" stroke="#6b6350" stroke-width="1.2" stroke-linecap="round">
-                <path d="M166 356 H262"/>
-                <path d="M166 372 H250"/>
-                <path d="M166 388 H256"/>
-                <path d="M166 404 H212"/>
+                <path d="M150 340 H240"/>
+                <path d="M150 354 H228"/>
+                <path d="M150 368 H234"/>
+                <path d="M150 382 H190"/>
               </g>
-              <g fill="#4a4436" font-family="Georgia,Songti SC,serif" font-size="9">
-                <text x="220" y="416" font-family="Georgia,STSong,serif">오늘도</text>
+              <g fill="#4a4436" font-family="Georgia,STSong,serif" font-size="9">
+                <text x="196" y="380">오늘도</text>
               </g>
-              <g stroke="#6b6350" stroke-width="0.9" fill="none" opacity="0.55">
-                <path d="M232 402 q8 -6 14 0"/>
-              </g>
+              <path d="M222 370 q7 -6 13 0" fill="none" stroke="#6b6350" stroke-width="0.9" opacity="0.55"/>
             </g>
 
-            <!-- 旧棉手套（压在箱边、一半落在石板上） -->
-            <g transform="translate(86 396) rotate(-16)">
-              <ellipse cx="34" cy="46" rx="42" ry="8" fill="#000" opacity="0.45"/>
-              <path d="M-6 6 C18 -4 56 -2 72 12 C80 20 78 34 66 40 C50 48 12 48 -2 40 C-12 34 -14 14 -6 6 Z" fill="#a04f47"/>
-              <path d="M-6 6 C18 -4 56 -2 72 12 C78 18 78 26 72 32 C52 26 18 24 -6 30 C-13 22 -13 12 -6 6 Z" fill="#bd5f56" opacity="0.62"/>
-              <path d="M10 10 C28 4 52 6 64 14" fill="none" stroke="#e8b9b2" stroke-width="0.9" opacity="0.4"/>
-              <path d="M54 44 L74 52" stroke="#8d443d" stroke-width="5.6" stroke-linecap="round"/>
+            <!-- 旧棉手套（一半压在箱边、一半落在石板上） -->
+            <g transform="translate(48 368) rotate(-16)">
+              <ellipse cx="38" cy="74" rx="42" ry="7" fill="#000" opacity="0.45"/>
+              <path d="M10 58 L10 28 C10 12 24 4 38 4 C54 4 66 14 66 30 L66 58 Z" fill="#a04f47"/>
+              <path d="M60 36 C74 32 82 41 79 51 C76 60 66 63 60 58 Z" fill="#9c4c45"/>
+              <path d="M6 56 L70 56 L70 70 C70 76 65 80 58 80 L18 80 C11 80 6 76 6 70 Z" fill="#8d443d"/>
+              <g stroke="#c9746a" stroke-width="1.1" opacity="0.45">
+                <path d="M15 58 L15 79"/><path d="M23 58 L23 79"/><path d="M31 58 L31 79"/>
+                <path d="M39 58 L39 79"/><path d="M47 58 L47 79"/><path d="M55 58 L55 79"/><path d="M63 58 L63 79"/>
+              </g>
+              <path d="M14 26 C14 14 24 8 38 8" fill="none" stroke="#e8b9b2" stroke-width="1.5" opacity="0.34"/>
+              <path d="M12 34 C26 28 50 28 64 34" fill="none" stroke="#c9746a" stroke-width="1" opacity="0.38"/>
+              <path d="M60 36 C74 32 82 41 79 51 C76 60 66 63 60 58 Z" fill="none" stroke="#e0a79f" stroke-width="0.9" opacity="0.34"/>
             </g>
 
             <!-- 一片落叶 -->
-            <g transform="translate(336 424) rotate(-24)">
+            <g transform="translate(344 428) rotate(-24)">
               <path d="M0 0 C14 -10 36 -12 50 -2 C40 14 18 18 0 0 Z" fill="#b08a44" opacity="0.9"/>
               <path d="M0 0 C16 -4 34 -4 50 -2" fill="none" stroke="#e2c48a" stroke-width="0.9" opacity="0.6"/>
               <path d="M0 0 L-8 6" stroke="#8e6c31" stroke-width="1.4" stroke-linecap="round"/>
@@ -910,7 +915,7 @@
             <text x="34" y="548" fill="#727480" font-family="SFMono-Regular,Menlo,monospace" font-size="9.5" letter-spacing="1.6">LATE BLOSSOM &middot; 2011</text>
             <text x="398" y="548" text-anchor="end" fill="#727480" font-family="SFMono-Regular,Menlo,monospace" font-size="9.5" letter-spacing="1.6">KR &middot; 118 MIN</text>
           </svg>
-          <div class="poster-cap">概念海报 · 一个奶箱 / 四瓶牛奶 / 一张压在上面的纸</div>
+          <div class="poster-cap">概念海报 · 一个敞口的奶箱 / 四瓶牛奶立在箱里 / 一张压在箱面的纸</div>
         </div>
       </div>
 
@@ -924,7 +929,7 @@
           <p>片中是四位老人：两个在上坡路上，两个在停车场里。海报上这四个瓶子谁也不比谁高——<b>这部片子从头到尾没有给任何一个人更多同情。</b></p>
         </div>
         <div class="read">
-          <h4>03 &nbsp;/&nbsp; 压在箱口的那张纸</h4>
+          <h4>03 &nbsp;/&nbsp; 压在箱面的那张纸</h4>
           <p>片子里有一段几乎全靠一张纸完成的转折。字写得不好看，句子也不长，还被箱子硌出了折痕。<b>它要说的东西，比一整段对白都多。</b></p>
         </div>
         <div class="read">
@@ -961,6 +966,7 @@
       <div class="cell"><dt>剪辑</dt><dd>秋昌民 &middot; 高娥模</dd></div>
       <div class="cell"><dt>配乐</dt><dd>李尚顺</dd></div>
       <div class="cell"><dt>制作费</dt><dd><span class="p">约 10 亿韩元</span><small>约 90 万美元；另投 11 亿韩元做宣发</small></dd></div>
+      <div class="cell"><dt>发行</dt><dd>NEW<small>Next Entertainment World</small></dd></div>
       <div class="cell"><dt>韩国观影</dt><dd><span class="r">1,645,505 人次</span><small>上映第 32 天突破 100 万</small></dd></div>
       <div class="cell"><dt>韩国票房</dt><dd>约 819 万美元<small>几周内收回约四倍成本</small></dd></div>
       <div class="cell"><dt>豆瓣</dt><dd>9.0 / 10<small>本系列 30 部中的第一梯队</small></dd></div>
@@ -1047,12 +1053,12 @@
         <p class="txt">口碑开始发酵。<b>上映第 32 天突破 100 万观影人次</b>，并在数周之内收回了约四倍成本。最终累计 <b>1,645,505 人次</b>——一部零宣发的小成本片，就这样被观众一传十、十传百地抬了起来。</p>
       </div>
       <div class="item">
-        <span class="yr">2011 · 11</span>
-        <p class="txt">第 32 届青龙电影奖：<b>金秀美凭本片获最佳女配角</b>。同届的表演类提名里，这部片子是被提到最多的名字之一。</p>
-      </div>
-      <div class="item">
         <span class="yr">2011 · 10</span>
         <p class="txt">中国金鸡百花电影节：<b>李顺载获国际影片类最佳男演员</b>。这是他从业六十余年来，第一次以电影男主角的身份在海外获奖。</p>
+      </div>
+      <div class="item">
+        <span class="yr">2011 · 11</span>
+        <p class="txt">第 32 届青龙电影奖：<b>金秀美凭本片获最佳女配角</b>。同届的表演类提名里，这部片子是被提到最多的名字之一。</p>
       </div>
       <div class="item">
         <span class="yr">2012</span>
@@ -1124,7 +1130,7 @@
       </div>
       <div class="kin now">
         <span class="no">NO.30</span>
-        <div class="t">2011</div>
+        <div class="t">本期 &middot; 2011</div>
         <div class="n">我爱你</div>
         <div class="d">本期。隔着整整一辈子——他们把该做的事都做完了，才敢开口。</div>
       </div>
@@ -1225,7 +1231,7 @@
       </div>
       <div class="tip">
         <h5>内容提示</h5>
-        <p>片中有一条线涉及 <b>临终照护与告别</b>，处理得非常克制，但看完之后会留在心里很久。另外全片对白密度不高，节奏慢，需要一点耐心。</p>
+        <p>片中有一条线写的是<b>长年照护一位患病的家人</b>，处理得非常克制，但看完之后会留在心里很久。另外全片对白密度不高，节奏偏慢，需要一点耐心。</p>
       </div>
       <div class="tip">
         <h5>观看建议</h5>
@@ -1282,7 +1288,10 @@
     { at:0.88, v:'06 : 50', lb:'天亮 · 最后一瓶牛奶，和一个天亮之后的选择', stop:4 }
   ];
 
+  var hudEl = document.getElementById('hud');
+
   function updHud(){
+    if (hudEl) hudEl.classList.toggle('show', window.pageYOffset > window.innerHeight * 0.5);
     var doc = document.documentElement;
     var max = doc.scrollHeight - window.innerHeight;
     var p = max > 0 ? Math.min(1, Math.max(0, window.pageYOffset / max)) : 0;

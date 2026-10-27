@@ -534,14 +534,19 @@
         <stop offset="0%" stop-color="#38443d"/>
         <stop offset="100%" stop-color="#1d2622"/>
       </linearGradient>
+      <radialGradient id="pool" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#e8b47a" stop-opacity=".34"/>
+        <stop offset="52%" stop-color="#c08a5c" stop-opacity=".12"/>
+        <stop offset="100%" stop-color="#c08a5c" stop-opacity="0"/>
+      </radialGradient>
       <radialGradient id="shadow" cx="50%" cy="50%" r="50%">
         <stop offset="0%" stop-color="#050808" stop-opacity=".8"/>
         <stop offset="100%" stop-color="#050808" stop-opacity="0"/>
       </radialGradient>
       <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#dfeade" stop-opacity=".85"/>
-        <stop offset="60%" stop-color="#c9dbc6" stop-opacity=".3"/>
-        <stop offset="100%" stop-color="#c9dbc6" stop-opacity="0"/>
+        <stop offset="0%" stop-color="#f2f8ee" stop-opacity=".95"/>
+        <stop offset="58%" stop-color="#d6e5cf" stop-opacity=".4"/>
+        <stop offset="100%" stop-color="#d6e5cf" stop-opacity="0"/>
       </linearGradient>
 
       <g id="granny">
@@ -552,7 +557,7 @@
         <ellipse cx="-1" cy="-59" rx="7.8" ry="7.2" fill="#070b0a"/>
         <path d="M-9.6,-62 Q-11.6,-53 -8.6,-47 Q-6,-52 -5.6,-58 Z" fill="#070b0a"/>
       </g>
-      <g id="grannyRim" fill="none" stroke="url(#rim)" stroke-width="1.5">
+      <g id="grannyRim" fill="none" stroke="url(#rim)" stroke-width="2.1">
         <path d="M-7.6,-61.4 Q-9.4,-53 -7.6,-46"/>
         <path d="M-7.4,-33 L-8.8,-3"/>
         <path d="M-6,-52 q-4.4,-3 -6,-7.6"/>
@@ -566,7 +571,7 @@
         <ellipse cx="0" cy="-49.5" rx="6" ry="6.4" fill="#070b0a"/>
         <path d="M-6.2,-51.5 q6.2,-5 12.4,0 l-.6,-3 q-5.6,-4.4 -11.2,0 Z" fill="#070b0a"/>
       </g>
-      <g id="boyRim" fill="none" stroke="url(#rim)" stroke-width="1.4">
+      <g id="boyRim" fill="none" stroke="url(#rim)" stroke-width="1.9">
         <path d="M-6,-42.6 L-5.4,-20"/>
         <path d="M-4.6,-52.4 Q0,-56 4.6,-52.4"/>
         <path d="M-5.6,-40.6 L-9,-31.4"/>
@@ -581,9 +586,10 @@
     <!-- 天幕 -->
     <rect x="0" y="0" width="1440" height="900" fill="url(#sky)"/>
 
-    <!-- 晨雾光带（最亮区，顶边 y=608） -->
-    <ellipse cx="716" cy="664" rx="880" ry="56" fill="url(#mistGlow)" opacity=".82"/>
-    <ellipse cx="716" cy="666" rx="420" ry="40" fill="url(#mistGlow)" opacity=".62"/>
+    <!-- 晨雾光带（最亮区，顶边 y=626） -->
+    <ellipse cx="716" cy="678" rx="900" ry="54" fill="url(#mistGlow)" opacity=".9"/>
+    <ellipse cx="700" cy="682" rx="520" ry="42" fill="url(#mistGlow)" opacity=".78"/>
+    <ellipse cx="706" cy="686" rx="250" ry="30" fill="url(#mistGlow)" opacity=".72"/>
 
     <!-- 远山（雾中） -->
     <path d="M0,646 L0,614 L86,592 L168,608 L246,578 L336,602 L412,566 L508,596 L586,570 L664,592 L742,556 L826,588 L902,562 L986,594 L1062,570 L1146,598 L1226,574 L1310,600 L1392,582 L1440,596 L1440,700 L0,700 Z" fill="url(#farRidge)" opacity=".58"/>
@@ -593,8 +599,8 @@
     <path d="M0,700 L0,682 L112,668 L214,684 L318,662 L428,686 L536,660 L648,684 L756,658 L868,682 L978,660 L1092,686 L1204,664 L1320,688 L1440,668 L1440,760 L0,760 Z" fill="url(#nearRidge)"/>
 
     <!-- 山腰薄雾（前景） -->
-    <path d="M-40,658 Q300,640 640,660 Q1000,682 1480,652 L1480,690 Q1020,716 640,694 Q300,672 -40,694 Z" fill="url(#mistBand)" opacity=".85"/>
-    <path d="M-40,696 Q340,680 700,700 Q1060,720 1480,694 L1480,726 Q1040,750 700,730 Q340,710 -40,728 Z" fill="url(#mistBand)" opacity=".55"/>
+    <path d="M-40,658 Q300,640 640,660 Q1000,682 1480,652 L1480,690 Q1020,716 640,694 Q300,672 -40,694 Z" fill="url(#mistBand)" opacity=".95"/>
+    <path d="M-40,696 Q340,680 700,700 Q1060,720 1480,694 L1480,726 Q1040,750 700,730 Q340,710 -40,728 Z" fill="url(#mistBand)" opacity=".68"/>
 
     <!-- 地面 -->
     <rect x="0" y="700" width="1440" height="200" fill="url(#ground)"/>
@@ -608,54 +614,66 @@
       <ellipse cx="1188" cy="710" rx="42" ry="19"/>
     </g>
 
-    <!-- 篱笆与柴垛（桌面端） -->
-    <g stroke="#1d2622" stroke-width="3" opacity=".8">
-      <path d="M980,760 L980,712 M1012,762 L1012,714 M1044,764 L1044,716"/>
-      <path d="M972,726 L1052,730 M972,748 L1052,752"/>
+    <!-- 屋前光池 -->
+    <ellipse cx="804" cy="714" rx="126" ry="24" fill="url(#pool)" opacity=".85"/>
+
+    <!-- 右侧篱笆（桌面端） -->
+    <g stroke="#1d2622" stroke-width="3" opacity=".7">
+      <path d="M968,766 L968,718 M1000,768 L1000,720 M1032,770 L1032,722"/>
+      <path d="M960,732 L1040,736 M960,754 L1040,758"/>
     </g>
-    <g fill="#141c1a" opacity=".85">
-      <path d="M320,712 L332,762 L300,762 Z"/>
-      <path d="M336,710 L350,762 L318,762 Z"/>
-      <path d="M352,712 L364,762 L332,762 Z"/>
+    <!-- 左侧菜畦 -->
+    <g stroke="#233029" stroke-opacity=".85" fill="none" stroke-width="7" stroke-linecap="round">
+      <path d="M340,746 H556"/>
+      <path d="M332,764 H562"/>
+      <path d="M326,780 H566"/>
+    </g>
+    <g stroke="#31402f" stroke-opacity=".5" fill="none" stroke-width="2" stroke-linecap="round">
+      <path d="M380,740 q3,-9 0,-14 M412,740 q3,-9 0,-14 M444,740 q3,-9 0,-14 M476,740 q3,-9 0,-14 M508,740 q3,-9 0,-14 M540,740 q3,-9 0,-14"/>
+      <path d="M374,758 q3,-9 0,-14 M406,758 q3,-9 0,-14 M438,758 q3,-9 0,-14 M470,758 q3,-9 0,-14 M502,758 q3,-9 0,-14 M534,758 q3,-9 0,-14"/>
     </g>
 
     <!-- 山路：从画面下方蜿蜒到屋前 -->
-    <path d="M644,900 Q676,824 706,780 Q736,738 760,706" stroke="url(#pathG)" stroke-width="46" fill="none" stroke-linecap="round"/>
-    <path d="M644,900 Q676,824 706,780 Q736,738 760,706" stroke="#b9cbb8" stroke-opacity=".16" stroke-width="1.6" fill="none"/>
-    <g stroke="#1a2421" fill="none" stroke-linecap="round" stroke-width="2.6" opacity=".9">
-      <path d="M686,796 q-16,-3 -28,2"/>
-      <path d="M712,758 q16,-2 27,3"/>
-      <path d="M736,722 q-15,-2 -26,3"/>
+    <path d="M766,900 Q716,820 700,772 Q686,736 700,706" stroke="url(#pathG)" stroke-width="54" fill="none" stroke-linecap="round"/>
+    <path d="M766,900 Q716,820 700,772 Q686,736 700,706" stroke="#b9cbb8" stroke-opacity=".2" stroke-width="1.6" fill="none"/>
+    <g stroke="#1a2421" fill="none" stroke-linecap="round" stroke-width="2.8" opacity=".9">
+      <path d="M674,802 q-17,-3 -30,2"/>
+      <path d="M690,762 q17,-2 29,3"/>
+      <path d="M706,726 q-16,-2 -28,3"/>
     </g>
 
-    <!-- 酱缸台：陶罐 -->
+    <!-- 酱缸台：陶罐（左侧院角） -->
     <g>
-      <rect x="546" y="756" width="76" height="6" rx="2" fill="#161f1c"/>
-      <use href="#jar" transform="translate(562,756) scale(.86)"/>
-      <use href="#jar" transform="translate(586,757) scale(1.0)"/>
-      <use href="#jar" transform="translate(610,756) scale(.8)"/>
+      <rect x="196" y="772" width="96" height="7" rx="2" fill="#161f1c"/>
+      <use href="#jar" transform="translate(218,772) scale(.92)"/>
+      <use href="#jar" transform="translate(248,773) scale(1.08)"/>
+      <use href="#jar" transform="translate(278,772) scale(.86)"/>
     </g>
 
     <!-- 柿子树的落影 -->
-    <ellipse cx="634" cy="732" rx="86" ry="14" fill="url(#shadow)" opacity=".85"/>
+    <ellipse cx="570" cy="720" rx="80" ry="13" fill="url(#shadow)" opacity=".8"/>
     <!-- 柿子树 -->
     <g>
-      <path d="M634,730 L634,650" stroke="#0d1413" stroke-width="8.4" stroke-linecap="round"/>
-      <path d="M634,668 q-26,-20 -40,-48 M634,682 q24,-18 38,-44 M634,700 q-30,-12 -46,-30 M634,708 q28,-6 46,-24" stroke="#0d1413" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <path d="M634,656 q-24,-22 -36,-50 M634,692 q26,-14 40,-38" stroke="#0d1413" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-      <ellipse cx="634" cy="662" rx="76" ry="20" fill="#0c1211" opacity=".5"/>
+      <path d="M570,720 L570,656" stroke="#0b1211" stroke-width="8.4" stroke-linecap="round"/>
+      <path d="M570,664 q-26,-16 -42,-40 M570,672 q26,-14 42,-36" stroke="#0b1211" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M570,652 q-20,-22 -30,-46 M570,660 q20,-20 30,-44" stroke="#0b1211" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+      <ellipse cx="540" cy="626" rx="42" ry="30" fill="#0b1211"/>
+      <ellipse cx="604" cy="620" rx="40" ry="28" fill="#0b1211"/>
+      <ellipse cx="572" cy="598" rx="46" ry="30" fill="#0b1211"/>
+      <ellipse cx="570" cy="644" rx="52" ry="24" fill="#0b1211"/>
       <g fill="#cf5f37">
-        <circle cx="596" cy="646" r="4.6"/>
-        <circle cx="612" cy="628" r="4.2"/>
-        <circle cx="654" cy="624" r="4.8"/>
-        <circle cx="676" cy="644" r="4.4"/>
-        <circle cx="630" cy="608" r="4"/>
-        <circle cx="668" cy="606" r="3.8"/>
+        <circle cx="520" cy="620" r="4.6"/>
+        <circle cx="530" cy="648" r="4.2"/>
+        <circle cx="622" cy="608" r="4.8"/>
+        <circle cx="618" cy="636" r="4.4"/>
+        <circle cx="574" cy="572" r="4"/>
+        <circle cx="548" cy="590" r="4.2"/>
+        <circle cx="592" cy="586" r="3.8"/>
       </g>
-      <g fill="#ee8f63" opacity=".75">
-        <circle cx="597.6" cy="644.6" r="1.5"/>
-        <circle cx="655.6" cy="622.6" r="1.6"/>
-        <circle cx="677.4" cy="642.6" r="1.5"/>
+      <g fill="#ee8f63" opacity=".7">
+        <circle cx="521.6" cy="618.6" r="1.5"/>
+        <circle cx="623.6" cy="606.6" r="1.6"/>
+        <circle cx="575.6" cy="570.6" r="1.3"/>
       </g>
     </g>
 
@@ -682,19 +700,21 @@
       </g>
     </g>
 
-    <!-- 两个人：外婆在前，男孩在后 -->
+    <!-- 两个人：外婆在前，男孩在后，逆着山腰的雾光 -->
     <g>
-      <ellipse cx="700" cy="766" rx="34" ry="8" fill="url(#shadow)" opacity=".95"/>
-      <use href="#granny" transform="translate(700,764) scale(1.02)"/>
-      <use href="#grannyRim" transform="translate(700,764) scale(1.02)"/>
-      <ellipse cx="742" cy="770" rx="26" ry="6.4" fill="url(#shadow)" opacity=".95"/>
-      <use href="#boy" transform="translate(742,768) scale(.94)"/>
-      <use href="#boyRim" transform="translate(742,768) scale(.94)"/>
+      <ellipse cx="672" cy="710" rx="37" ry="8" fill="url(#shadow)" opacity=".95"/>
+      <use href="#granny" transform="translate(672,707) scale(1.1)"/>
+      <use href="#grannyRim" transform="translate(672,707) scale(1.1)"/>
+      <use href="#grannyRim" transform="translate(672,707) scale(1.1)"/>
+      <ellipse cx="709" cy="713" rx="27" ry="6.6" fill="url(#shadow)" opacity=".95"/>
+      <use href="#boy" transform="translate(709,709) scale(1.0)"/>
+      <use href="#boyRim" transform="translate(709,709) scale(1.0)"/>
+      <use href="#boyRim" transform="translate(709,709) scale(1.0)"/>
     </g>
 
     <!-- 近景草叶 -->
-    <g stroke="#18211d" stroke-opacity=".6" fill="none" stroke-linecap="round">
-      <path d="M562,772 q5,-15 1,-24 M574,774 q-4,-13 -9,-19 M916,766 q5,-14 2,-22 M928,768 q-4,-12 -9,-18 M654,778 q4,-13 1,-21 M666,780 q-3,-11 -8,-17"/>
+    <g stroke="#18211d" stroke-opacity=".65" fill="none" stroke-linecap="round">
+      <path d="M630,774 q5,-15 1,-24 M642,776 q-4,-13 -9,-19 M856,768 q5,-14 2,-22 M868,770 q-4,-12 -9,-18 M760,780 q4,-13 1,-21 M772,780 q-3,-11 -8,-17"/>
     </g>
 
     <!-- 飞鸟（桌面端） -->
@@ -900,12 +920,13 @@
               <rect x="236" y="431" width="10" height="6" rx="2" fill="#6d675a"/>
             </g>
 
-            <!-- 银头簪 -->
-            <g transform="rotate(-16 292 366)">
-              <path d="M258,376 Q292,360 330,368" stroke="#c8cdc6" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <ellipse cx="332" cy="368" rx="8" ry="6" fill="#dfe4dd"/>
-              <ellipse cx="332" cy="368" rx="4" ry="3" fill="#9aa39c"/>
-              <path d="M262,377 Q292,362 326,369" stroke="#f3f7f2" stroke-opacity=".65" stroke-width="1.2" fill="none"/>
+            <!-- 银头簪（躺在桌上） -->
+            <g transform="rotate(-6 172 496)">
+              <ellipse cx="172" cy="504" rx="46" ry="5" fill="#080b0b" opacity=".5"/>
+              <path d="M130,500 Q170,488 206,494" stroke="#c8cdc6" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <ellipse cx="208" cy="494" rx="8" ry="6" fill="#dfe4dd"/>
+              <ellipse cx="208" cy="494" rx="4" ry="3" fill="#9aa39c"/>
+              <path d="M134,501 Q170,490 202,495" stroke="#f3f7f2" stroke-opacity=".6" stroke-width="1.2" fill="none"/>
             </g>
 
             <!-- 一篮柿子 -->
@@ -934,17 +955,15 @@
             <!-- 竖排片名 -->
             <g>
               <path d="M392,66 V300" stroke="#e7eee7" stroke-opacity=".16" stroke-width="1"/>
-              <g font-family="Georgia,serif" font-size="25" fill="#f3f7f2" letter-spacing="0">
-                <text x="378" y="104">爱</text>
-                <text x="378" y="146">·</text>
-                <text x="378" y="188">回</text>
-                <text x="378" y="230">家</text>
+              <g font-family="Georgia,serif" font-size="25" fill="#f3f7f2">
+                <text x="352" y="104">爱</text>
+                <text x="352" y="146">·</text>
+                <text x="352" y="188">回</text>
+                <text x="352" y="230">家</text>
               </g>
-              <text x="378" y="264" text-anchor="start" font-family="Georgia,serif" font-size="12" letter-spacing="1.5" fill="#c07a48">집으로…</text>
-              <text x="378" y="290" text-anchor="start" font-family="SFMono-Regular,Menlo,monospace" font-size="8" letter-spacing="1.6" fill="#7e8f88">2002</text>
+              <text x="408" y="264" text-anchor="end" font-family="Georgia,serif" font-size="12" letter-spacing="1.5" fill="#c07a48">집으로…</text>
+              <text x="408" y="288" text-anchor="end" font-family="SFMono-Regular,Menlo,monospace" font-size="8" letter-spacing="1.6" fill="#7e8f88">2002</text>
             </g>
-
-            <text x="0" y="40" font-family="SFMono-Regular,Menlo,monospace" font-size="9" letter-spacing="3.4" fill="#7e8f88">TWO GENERATIONS</text>
 
             <text x="18" y="546" font-family="SFMono-Regular,Menlo,monospace" font-size="9.5" letter-spacing="2.6" fill="#8f8371">TWO GENERATIONS</text>
             <text x="402" y="546" text-anchor="end" font-family="SFMono-Regular,Menlo,monospace" font-size="9.5" letter-spacing="2.6" fill="#8f8371">KR 2002 · NO SPOILER</text>

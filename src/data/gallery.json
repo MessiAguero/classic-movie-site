@@ -492,6 +492,26 @@
     "hiRes": true
   },
   {
+    "id": "20261025-harakiri",
+    "zhTitle": "切腹",
+    "enTitle": "",
+    "year": "1962",
+    "imageUrl": "posters/20261025-harakiri.jpg",
+    "title": "切腹 (1962) - ポスター画像 — The Movie Database (TMDB)",
+    "hiRes": true,
+    "sourceNote": "人眼核对：切腹 Harakiri 1962 官方极简版海报，片名与年份一致"
+  },
+  {
+    "id": "20261026-millennium",
+    "zhTitle": "千年女优",
+    "enTitle": "",
+    "year": "2001",
+    "imageUrl": "posters/20261026-millennium.jpg",
+    "title": "千年女优(2001) - 电影海报|电影台词 - 影库",
+    "remoteUrl": "https://mdb.yuncongz.com/static/upload/large/31b8bee8a6c443aca0c999d769c11645.jpg",
+    "hiRes": false
+  },
+  {
     "id": "20260427",
     "zhTitle": "辛 德 勒 的 名 单",
     "enTitle": "Schindler's List",

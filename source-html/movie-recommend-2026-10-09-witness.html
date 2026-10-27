@@ -359,6 +359,7 @@
     .title-en{letter-spacing:.24em}
     .title-kr{letter-spacing:.2em;margin-bottom:18px}
     .hero-sub{padding-left:15px;font-size:13.5px;line-height:1.75}
+    .br-wide{display:none}
     .chips{gap:7px;margin-top:16px}
     .chip{font-size:10px;padding:5px 9px;letter-spacing:.08em}
     .scroll-hint{bottom:10px;gap:6px}
@@ -518,26 +519,29 @@
 
     <!-- ===== 证人：一个只露出头与肩的小小剪影，坐在台后 ===== -->
     <g>
+      <!-- 主体背光：把焦点从大片暗墙里托出来 -->
+      <ellipse cx="766" cy="676" rx="128" ry="72" fill="url(#jadeGlow)" opacity=".5"/>
+      <ellipse cx="712" cy="694" rx="120" ry="66" fill="url(#lampGlow)" opacity=".55"/>
       <path d="M736 700 Q736 672 766 668 Q796 672 796 700 Z" fill="#04070a"/>
       <circle cx="766" cy="658" r="17" fill="#04070a"/>
       <path d="M750 650 Q754 638 766 637 Q778 638 782 650" fill="none" stroke="#04070a" stroke-width="7" stroke-linecap="round"/>
       <!-- 灯的轮廓光（左暖右冷） -->
-      <path d="M752 646 Q757 638 766 637" fill="none" stroke="#f2d29a" stroke-width="1.5" stroke-opacity=".62"/>
-      <path d="M780 648 Q784 640 780 634" fill="none" stroke="#74ded0" stroke-width="1.3" stroke-opacity=".48"/>
-      <path d="M740 694 Q740 674 754 670" fill="none" stroke="#f2d29a" stroke-width="1.4" stroke-opacity=".4"/>
-      <path d="M794 694 Q794 676 780 671" fill="none" stroke="#74ded0" stroke-width="1.2" stroke-opacity=".3"/>
+      <path d="M750 648 Q753 638 766 636" fill="none" stroke="#f7dfb4" stroke-width="1.8" stroke-opacity=".82"/>
+      <path d="M779 650 Q784 641 781 633" fill="none" stroke="#8ff0e2" stroke-width="1.5" stroke-opacity=".62"/>
+      <path d="M740 694 Q740 673 754 669" fill="none" stroke="#f2d29a" stroke-width="1.6" stroke-opacity=".55"/>
+      <path d="M794 694 Q794 675 780 670" fill="none" stroke="#74ded0" stroke-width="1.3" stroke-opacity=".4"/>
     </g>
 
     <!-- ===== 话筒：证人席上那一支 ===== -->
     <g>
-      <path d="M852 700 L852 664" stroke="#2a343a" stroke-width="2.4"/>
-      <circle cx="852" cy="658" r="7" fill="#131a1f"/>
-      <circle cx="852" cy="658" r="7" fill="none" stroke="#8fa4ae" stroke-opacity=".5"/>
-      <circle cx="852" cy="658" r="3" fill="#74ded0" class="beacon"/>
+      <path d="M852 700 L852 676" stroke="#2a343a" stroke-width="2.4"/>
+      <circle cx="852" cy="670" r="7" fill="#131a1f"/>
+      <circle cx="852" cy="670" r="7" fill="none" stroke="#8fa4ae" stroke-opacity=".5"/>
+      <circle cx="852" cy="670" r="3" fill="#74ded0" class="beacon"/>
       <!-- 声波环 -->
-      <circle cx="852" cy="660" r="20" fill="none" stroke="#74ded0" stroke-width="1.1" stroke-opacity=".34"/>
-      <circle cx="852" cy="660" r="34" fill="none" stroke="#74ded0" stroke-width="1" stroke-opacity=".2"/>
-      <circle cx="852" cy="660" r="48" fill="none" stroke="#74ded0" stroke-width="1" stroke-opacity=".11"/>
+      <circle cx="852" cy="670" r="18" fill="none" stroke="#74ded0" stroke-width="1.1" stroke-opacity=".34"/>
+      <circle cx="852" cy="670" r="30" fill="none" stroke="#74ded0" stroke-width="1" stroke-opacity=".2"/>
+      <circle cx="852" cy="670" r="42" fill="none" stroke="#74ded0" stroke-width="1" stroke-opacity=".11"/>
     </g>
 
     <!-- 台灯：左侧那盏亮着的灯 -->
@@ -563,7 +567,7 @@
     <div class="title-en">Innocent Witness</div>
     <div class="title-kr">증인 · 2019</div>
     <p class="hero-sub">
-      一个只想把案子打赢的律师，撞上了这桩案子里唯一的目击者——<br>
+      一个只想把案子打赢的律师，撞上了这桩案子里唯一的目击者——<br class="br-wide">
       一个患有自闭症、却<b>从不说谎</b>的少女。他要她开口，可她开口的方式，和整个法庭都不一样。
     </p>
     <div class="chips">

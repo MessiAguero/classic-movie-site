@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-24T09:44:35.673Z",
+  "generatedAt": "2026-10-27T03:27:35.526Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,10 +8,10 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 138,
+  "total": 140,
   "ok": 121,
-  "warn": 17,
-  "error": 0,
+  "warn": 18,
+  "error": 1,
   "entries": [
     {
       "id": "20260817",
@@ -1502,6 +1502,69 @@
       "verified": true,
       "status": "ok",
       "issues": []
+    },
+    {
+      "id": "20261025-harakiri",
+      "zhTitle": "切腹",
+      "sourceTitle": "切腹 (1962) - ポスター画像 — The Movie Database (TMDB)",
+      "year": "1962",
+      "source": "远程",
+      "imageUrl": "https://image.tmdb.org/t/p/original/zEbXzxlc2c5QQ0PqppDzSxnCTGA.jpg",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "-",
+      "dims": "-",
+      "ratio": null,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "evidence": null,
+      "verified": false,
+      "status": "error",
+      "issues": [
+        {
+          "code": "unreachable",
+          "severity": "error",
+          "detail": "请求失败: fetch failed"
+        }
+      ]
+    },
+    {
+      "id": "20261026-millennium",
+      "zhTitle": "千年女优",
+      "sourceTitle": "千年女优(2001) - 电影海报|电影台词 - 影库",
+      "year": "2001",
+      "source": "本地",
+      "imageUrl": "posters/20261026-millennium.jpg",
+      "host": "mdb.yuncongz.com",
+      "tier": "unknown",
+      "size": "195KB",
+      "dims": "720×1080",
+      "ratio": 1.5,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「千年女优」",
+          "年份命中 2001"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（mdb.yuncongz.com）"
+        }
+      ]
     },
     {
       "id": "20260427",
@@ -4237,14 +4300,13 @@
       "ratio": 1.25,
       "identityKind": "name",
       "identityHits": [
-        "片名英文",
         "别名:Back to the Future",
         "年份"
       ],
       "evidence": {
         "level": "strong",
         "reasons": [
-          "片名命中「BACK TO THE FUTURE」",
+          "片名命中「Back to the Future」",
           "年份命中 1985",
           "可信图源（official）"
         ],
@@ -4343,6 +4405,21 @@
       "verified": false,
       "status": "ok",
       "issues": []
+    },
+    {
+      "id": "20261025-harakiri",
+      "zhTitle": "切腹",
+      "year": "1962",
+      "sourceTitle": "切腹 (1962) - ポスター画像 — The Movie Database (TMDB)",
+      "imageUrl": "https://image.tmdb.org/t/p/original/zEbXzxlc2c5QQ0PqppDzSxnCTGA.jpg",
+      "host": "image.tmdb.org",
+      "dims": "-",
+      "evidence": null,
+      "verified": false,
+      "status": "error",
+      "issues": [
+        "unreachable"
+      ]
     },
     {
       "id": "20260427",

@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《切腹》切腹 · Harakiri (1962) — 日本电影经典推荐 · 第 02 部</title>
+<meta name="description" content="日本电影经典系列第 02 部：《切腹》(1962)，小林正树导演，仲代达矢、三国连太郎主演，桥本忍编剧，武满彻配乐。豆瓣 9.4 / IMDb 8.6 / 1963 戛纳评审团特别奖。一个浪人走到藩主宅门前，说要借这块地方切腹。全程不剧透。">
+<style>
+  :root{
+    /* 墨与骨：全片黑白，页面只用「纸白 / 墨黑 / 石灰 / 一盏灯黄 / 一点朱」 */
+    --ink:#0a0908;
+    --ink-2:#100e0c;
+    --ink-3:#17130f;
+    --paper:#e8e1d2;
+    --paper-dim:#bcb3a2;
+    --ash:#8d8476;
+    --ash-dim:#5c554a;
+    --wall:#c9c0ad;
+    --wall-light:#e2dac6;
+    --bone:#efe8d8;
+    --lamp:#c9a168;
+    --lamp-light:#e8c894;
+    --vermil:#9c3a2b;
+    --vermil-light:#cd7a64;
+    /* 兼容旧类名：frost = 石白，amber = 灯黄，seal = 朱 */
+    --frost:#a9a08c;
+    --frost-light:#ded5c2;
+    --snow:#cfc6b2;
+    --snow-light:#f6f0e2;
+    --wood:#6b5a41;
+    --wood-light:#a88a5c;
+    --amber:#a8834a;
+    --amber-light:#d9b47e;
+    --seal:#9c3a2b;
+    --seal-light:#cd7a64;
+    --line:rgba(232,225,210,.10);
+    --line-strong:rgba(232,225,210,.21);
+    --serif:"Georgia","Times New Roman","Songti SC","STSong",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ink);color:var(--paper);font-family:var(--sans);
+    line-height:1.85;font-size:16px;letter-spacing:.01em;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:9;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='.5'/></svg>");
+    opacity:.05;mix-blend-mode:overlay;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:8;pointer-events:none;
+    background:radial-gradient(126% 96% at 50% 42%,transparent 58%,rgba(0,0,0,.52) 100%);
+  }
+  ::selection{background:var(--wall);color:#0a0908}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;min-height:max(100vh,880px);overflow:hidden;display:flex;align-items:stretch;border-bottom:1px solid var(--line)}
+  .hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-scrim{
+    position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:
+      linear-gradient(180deg,rgba(10,9,8,.95) 0%,rgba(10,9,8,.62) 15%,rgba(10,9,8,.10) 38%,rgba(10,9,8,.04) 60%,rgba(10,9,8,.09) 73%,rgba(10,9,8,.33) 86%,rgba(10,9,8,.70) 95%,rgba(10,9,8,.95) 100%),
+      radial-gradient(88% 68% at 22% 24%,rgba(10,9,8,.66) 0%,transparent 76%);
+  }
+  #heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;pointer-events:none}
+  .hero-in{position:relative;z-index:4;width:100%;max-width:1160px;margin:0 auto;padding:104px 28px 96px;display:flex;flex-direction:column;justify-content:flex-start}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--paper-dim);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .eyebrow::before{content:"";width:44px;height:1px;background:var(--wall);opacity:.85;flex:0 0 auto}
+  .eyebrow span{color:var(--ash-dim);letter-spacing:.24em}
+  h1.title{font-family:var(--serif);font-size:clamp(34px,5.6vw,74px);line-height:1.1;letter-spacing:.14em;margin:22px 0 10px;color:#fbf7ec;text-shadow:0 6px 44px rgba(0,0,0,.94),0 0 90px rgba(232,200,148,.10);font-weight:400}
+  .title-en{font-family:var(--serif);font-size:clamp(13px,1.7vw,19px);letter-spacing:.26em;color:var(--lamp-light);text-transform:uppercase;margin-bottom:8px;padding-left:3px;line-height:1.7}
+  .title-jp{font-size:clamp(12px,1.5vw,15px);letter-spacing:.16em;color:var(--paper-dim);margin-bottom:24px;padding-left:3px}
+  .title-jp b{color:var(--wall-light);font-weight:400}
+  .hero-sub{max-width:720px;font-size:clamp(14px,1.6vw,17px);color:var(--paper-dim);line-height:1.95;border-left:2px solid var(--wall);padding-left:20px}
+  .hero-sub b{color:var(--paper);font-weight:600}
+  .hero-sub .hl{color:var(--lamp-light)}
+  .hero-sub .wg{color:var(--wall-light)}
+  .hero-sub .cred{display:inline}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+  .chip{font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:6px 12px;border:1px solid var(--line-strong);color:var(--paper-dim);background:rgba(10,9,8,.58);backdrop-filter:blur(3px)}
+  .chip.hot{border-color:rgba(222,213,194,.66);color:var(--wall-light)}
+  .chip.tag{border-color:rgba(232,200,148,.58);color:var(--lamp-light)}
+  .chip.ink{border-color:rgba(232,225,210,.30);color:var(--paper)}
+  .chip.cool{border-color:rgba(156,58,43,.60);color:var(--vermil-light)}
+  .scroll-hint{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--ash-dim);display:flex;flex-direction:column;align-items:center;gap:9px}
+  .scroll-hint i{display:block;width:1px;height:36px;background:linear-gradient(180deg,var(--wall),transparent);animation:drop 2.6s ease-in-out infinite}
+  @keyframes drop{0%,100%{opacity:.25;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
+  .rec{position:absolute;top:96px;right:28px;z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(232,225,210,.46);display:flex;align-items:center;gap:9px;pointer-events:none}
+  .rec b{font-weight:400;color:var(--vermil-light);display:flex;align-items:center;gap:6px}
+  .rec b::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--seal);box-shadow:0 0 10px rgba(156,58,43,.9);animation:blink 2.1s steps(1,end) infinite}
+  @keyframes blink{0%,58%{opacity:1}59%,100%{opacity:.12}}
+
+  /* ============ HUD ============ */
+  #hud{
+    position:fixed;left:50%;bottom:22px;z-index:20;width:min(520px,calc(100% - 44px));
+    display:none;opacity:0;pointer-events:none;transform:translateX(-50%) translateY(12px);
+    transition:opacity .5s ease,transform .5s ease;padding:14px 18px 12px;
+    background:rgba(16,14,12,.9);backdrop-filter:blur(12px);
+    border:1px solid var(--line-strong);box-shadow:0 20px 54px rgba(0,0,0,.66);
+  }
+  #hud .hud-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+  #hud .hud-top span{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--ash-dim);text-transform:uppercase}
+  #hud .hud-top b{font-family:var(--mono);font-size:11px;color:var(--wall-light);letter-spacing:.1em;font-weight:400}
+  #hud .hud-leg{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  #hud .leg-ic{width:30px;height:26px;flex:0 0 auto;position:relative}
+  #hud .leg-ic::before{
+    content:"";position:absolute;left:2px;top:11px;width:4px;height:4px;border-radius:50%;
+    background:var(--wall);box-shadow:0 0 9px rgba(222,213,194,.95),6.6px 0 0 rgba(232,200,148,.44),13.2px 0 0 rgba(232,200,148,.30),19.8px 0 0 rgba(156,58,43,.34);
+  }
+  #hud .leg-line{flex:1 1 auto;height:1px;background:linear-gradient(90deg,rgba(222,213,194,.5),rgba(232,200,148,.30))}
+  #hud .leg-txt{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--ash-dim)}
+  #hud .hud-track{height:2px;background:rgba(232,225,210,.12);position:relative}
+  #hud .hud-track i{position:absolute;top:-3px;left:0;width:8px;height:8px;border-radius:50%;background:var(--lamp-light);transform:translateX(-4px);box-shadow:0 0 10px rgba(232,200,148,.85)}
+  #hud .hud-stops{display:flex;justify-content:space-between;margin-top:8px}
+  #hud .hud-stops em{font-family:var(--mono);font-size:8px;letter-spacing:.06em;color:#423c33;font-style:normal}
+  #hud .hud-stops em.on{color:var(--paper)}
+  #hud .hud-lb{font-size:11px;color:var(--paper-dim);margin-top:9px;letter-spacing:.04em;font-family:var(--mono)}
+
+  /* ============ LAYOUT ============ */
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+  section.band{padding:96px 0;position:relative;border-bottom:1px solid var(--line)}
+  section.band:last-of-type{border-bottom:0}
+  .sec-head{margin-bottom:52px;position:relative}
+  .sec-num{font-family:var(--mono);font-size:10px;letter-spacing:.34em;color:var(--wall-light);text-transform:uppercase;display:block;margin-bottom:14px}
+  h2.sec-title{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.6vw,44px);line-height:1.26;letter-spacing:.03em;color:#fbf7ec}
+  h2.sec-title em{font-style:normal;color:var(--lamp-light)}
+  h2.sec-title i{font-style:normal;color:var(--wall-light)}
+  .sec-desc{margin-top:16px;max-width:820px;color:var(--ash);font-size:14.5px;line-height:1.9}
+  .nospoil{display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(156,58,43,.36);background:linear-gradient(90deg,rgba(156,58,43,.10),rgba(156,58,43,.012) 62%,transparent);padding:18px 22px;margin:0 0 22px}
+  .nospoil .mark{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--vermil-light);border:1px solid rgba(156,58,43,.52);padding:3px 7px;flex:0 0 auto;margin-top:3px}
+  .nospoil p{font-size:13.5px;color:var(--paper-dim);line-height:1.85}
+  .nospoil p b{color:var(--paper)}
+  .editor{display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(222,213,194,.24);background:linear-gradient(90deg,rgba(222,213,194,.08),transparent 66%);padding:16px 22px;margin:0 0 64px}
+  .editor .mark{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--wall-light);border:1px solid rgba(222,213,194,.44);padding:3px 7px;flex:0 0 auto;margin-top:3px}
+  .editor p{font-size:13px;color:var(--ash);line-height:1.85}
+  .editor p b{color:var(--paper-dim)}
+  .duo{display:grid;grid-template-columns:302px minmax(0,1fr);gap:56px;align-items:start}
+  .glance{border:1px solid var(--line-strong);background:var(--ink-2);padding:26px 22px;position:sticky;top:28px}
+  .glance h3{font-family:var(--mono);font-size:10px;letter-spacing:.28em;color:var(--wall-light);text-transform:uppercase;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  .glance .row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(232,225,210,.08);font-size:12.5px}
+  .glance .row:last-child{border-bottom:0}
+  .glance dt{color:#7d7566;flex:0 0 auto;letter-spacing:.06em}
+  .glance dd{color:var(--paper);text-align:right;font-weight:500;font-size:12px;letter-spacing:0}
+  .glance .row.accent dd{color:var(--wall-light)}
+  .glance .row.cel dd{color:var(--lamp-light)}
+  .glance .row.stone dd{color:var(--paper-dim)}
+  .glance .row.cool dd{color:var(--vermil-light)}
+  .prose{font-size:16.5px;line-height:2.05;color:var(--paper-dim)}
+  .prose p+p{margin-top:22px}
+  .prose b{color:var(--paper);font-weight:600}
+  .prose em{color:var(--lamp-light);font-style:normal}
+  .prose .gr{color:var(--wall-light)}
+  .prose .bl{color:var(--vermil-light)}
+  .drop::first-letter{font-family:var(--serif);float:left;font-size:66px;line-height:.84;padding:7px 13px 0 0;color:var(--wall-light);font-weight:400}
+  .pullquote{margin-top:30px;border-left:2px solid var(--amber);padding:4px 0 4px 20px;color:var(--lamp-light);font-size:15px;line-height:1.9;font-style:italic}
+  .poster-grid{display:grid;grid-template-columns:minmax(0,432px) minmax(0,1fr);gap:60px;align-items:start}
+  .poster-frame{border:1px solid var(--line-strong);background:var(--ink-2);padding:20px;position:relative}
+  .poster-frame::after{content:"";position:absolute;inset:20px;pointer-events:none;box-shadow:inset 0 0 70px rgba(0,0,0,.5)}
+  .poster-frame svg{display:block;width:100%;height:auto;position:relative;z-index:2}
+  .poster-cap{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--ash-dim);text-align:center;margin-top:14px}
+  .reads{display:flex;flex-direction:column;gap:26px}
+  .read{border-left:2px solid var(--line-strong);padding-left:20px}
+  .read h4{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--wall-light);text-transform:uppercase;margin-bottom:9px;font-weight:400}
+  .read p{font-size:14.5px;color:var(--paper-dim);line-height:1.92}
+  .read p b{color:var(--paper)}
+  .spec{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .spec .cell{background:var(--ink-2);padding:17px 19px}
+  .spec .cell.wide{grid-column:1/-1}
+  .spec dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--ash-dim);text-transform:uppercase;margin-bottom:7px}
+  .spec dd{font-size:14px;color:var(--paper);line-height:1.6}
+  .spec dd small{display:block;font-size:11.5px;color:var(--ash);margin-top:4px;letter-spacing:.02em}
+  .spec dd .k{color:var(--wall-light)}
+  .spec dd .r{color:var(--lamp-light)}
+  .spec dd .p{color:var(--paper-dim)}
+  .spec dd .j{color:var(--vermil-light)}
+  .scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:18px}
+  .score{border:1px solid var(--line-strong);background:linear-gradient(180deg,rgba(23,19,15,.9),rgba(16,14,12,.9));padding:24px 22px 22px;position:relative;overflow:hidden}
+  .score .src{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;color:var(--ash-dim);text-transform:uppercase}
+  .score .num{font-family:var(--serif);font-size:clamp(38px,5vw,52px);line-height:1.1;color:var(--wall-light);margin:10px 0 2px;font-weight:400}
+  .score .num small{font-size:15px;color:var(--ash);letter-spacing:.06em;margin-left:4px}
+  .score .den{font-size:11.5px;color:var(--ash);letter-spacing:.06em}
+  .score .bar{height:3px;background:rgba(232,225,210,.10);margin:16px 0 12px;position:relative}
+  .score .bar i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--frost),var(--frost-light))}
+  .score .note{font-size:12px;color:var(--ash);line-height:1.7}
+  .score.g2 .num{color:var(--paper)}
+  .score.g2 .bar i{background:linear-gradient(90deg,var(--paper-dim),var(--paper))}
+  .score.g3 .num{color:var(--lamp-light)}
+  .score.g3 .bar i{background:linear-gradient(90deg,var(--amber),var(--amber-light))}
+  .score.g4 .num{color:var(--vermil-light)}
+  .score.g4 .bar i{background:linear-gradient(90deg,var(--seal),var(--seal-light))}
+  .score-note{margin-top:18px;font-size:12.5px;color:var(--ash);line-height:1.85;border-left:2px solid rgba(222,213,194,.5);padding-left:16px}
+  .score-note b{color:var(--paper-dim)}
+  .grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .g6{background:var(--ink-2);padding:26px 24px}
+  .g6 .idx{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;color:var(--wall-light);margin-bottom:12px;display:block}
+  .g6 h4{font-family:var(--serif);font-size:19px;font-weight:400;color:#fbf7ec;margin-bottom:11px;line-height:1.4}
+  .g6 p{font-size:13.5px;color:var(--ash);line-height:1.9}
+  .g6 p b{color:var(--paper-dim)}
+  .awards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(420px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .award{background:var(--ink-2);padding:19px 21px;display:flex;gap:14px;align-items:flex-start}
+  .award .badge{font-family:var(--mono);font-size:9px;letter-spacing:.14em;padding:3px 7px;flex:0 0 auto;margin-top:2px;border:1px solid var(--line-strong);color:var(--ash)}
+  .award.win .badge{border-color:rgba(222,213,194,.66);color:var(--wall-light)}
+  .award.wide{grid-column:1/-1}
+  .award .body{font-size:13.5px;color:var(--paper-dim);line-height:1.75}
+  .award .body b{color:var(--paper)}
+  .award .body small{display:block;color:var(--ash);font-size:11.5px;margin-top:4px}
+  .award-note{margin-top:18px;font-size:12.5px;color:var(--ash);line-height:1.85;border-left:2px solid rgba(232,200,148,.5);padding-left:16px}
+  .award-note b{color:var(--paper-dim)}
+  .acts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .act{background:var(--ink-2);padding:24px 20px}
+  .act .n{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;color:var(--amber);display:block;margin-bottom:12px}
+  .act h4{font-family:var(--serif);font-size:20px;font-weight:400;color:#fbf7ec;margin-bottom:10px;line-height:1.35}
+  .act p{font-size:13px;color:var(--ash);line-height:1.88}
+  .act p b{color:var(--paper-dim)}
+  .people{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(330px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .person{background:var(--ink-2);padding:26px 24px 24px;position:relative}
+  .person .role{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--vermil-light);margin-bottom:9px;display:block}
+  .person h4{font-family:var(--serif);font-size:21px;font-weight:400;color:#fbf7ec;margin-bottom:4px;line-height:1.35}
+  .person .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--ash-dim);margin-bottom:13px}
+  .person p{font-size:13.5px;color:var(--ash);line-height:1.9}
+  .person p b{color:var(--paper-dim)}
+  .person .line{display:block;margin-top:12px;font-size:12.5px;color:var(--wall-light);font-style:italic;line-height:1.8}
+  .lineage{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(196px,100%),1fr));gap:16px}
+  .kin{border:1px solid var(--line);background:var(--ink-2);padding:22px 20px;position:relative;transition:border-color .3s,transform .3s}
+  .kin:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+  .kin .t{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--ash-dim);padding-right:44px}
+  .kin .n{font-family:var(--serif);font-size:22px;color:var(--paper);margin:10px 0 3px;line-height:1.3}
+  .kin .d{font-size:12.5px;color:var(--ash);line-height:1.75}
+  .kin .no{position:absolute;top:20px;right:20px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ash-dim)}
+  .kin.now{border-color:rgba(232,200,148,.5);background:linear-gradient(180deg,rgba(232,200,148,.09),rgba(16,14,12,.9))}
+  .kin.now .n{color:var(--lamp-light)}
+  .kin.now .no{color:var(--amber)}
+  .why{display:flex;flex-direction:column;gap:40px}
+  .why .blk{display:grid;grid-template-columns:64px minmax(0,1fr);gap:26px;align-items:start}
+  .why .n{font-family:var(--serif);font-size:44px;line-height:1;color:rgba(222,213,194,.55);font-weight:400}
+  .why h4{font-family:var(--serif);font-size:22px;font-weight:400;color:#fbf7ec;margin-bottom:12px;line-height:1.42}
+  .why p{font-size:14.5px;color:var(--paper-dim);line-height:1.95;max-width:860px}
+  .why p b{color:var(--paper)}
+  .tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px}
+  .tip{border:1px solid var(--line);background:var(--ink-2);padding:22px 22px}
+  .tip h5{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;color:var(--wall-light);text-transform:uppercase;margin-bottom:12px;font-weight:400}
+  .tip p{font-size:13.5px;color:var(--ash);line-height:1.88}
+  .tip p b{color:var(--paper-dim)}
+  .outro{padding:120px 0 108px;text-align:center;position:relative}
+  .outro .q{font-family:var(--serif);font-size:clamp(21px,3vw,34px);line-height:1.66;color:#fbf7ec;max-width:920px;margin:0 auto;letter-spacing:.02em}
+  .outro .q em{font-style:normal;color:var(--wall-light)}
+  .outro .src{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--ash-dim);margin-top:26px}
+  .outro .seal{width:70px;height:70px;margin:44px auto 0;border:1px solid rgba(205,122,100,.78);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#e2a08c;font-family:var(--mono);font-size:9px;letter-spacing:.14em;transform:rotate(-6deg);background:rgba(156,58,43,.06)}
+  .outro .seal b{font-size:15px;letter-spacing:.08em;font-weight:400;margin-top:2px}
+  footer{border-top:1px solid var(--line);padding:34px 0 180px}
+  footer .fwrap{max-width:1160px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ash-dim)}
+  footer .fwrap em{font-style:normal;color:var(--ash)}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .scroll-hint i{animation:none}
+    .rec b::before{animation:none}
+  }
+  @media (max-width:980px){
+    .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .duo{grid-template-columns:minmax(0,1fr);gap:40px}
+    .glance{position:static}
+    .poster-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+    .why .blk{grid-template-columns:44px minmax(0,1fr);gap:18px}
+    .why .n{font-size:34px}
+    .acts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (min-width:981px){#hud{display:block}}
+  #hud.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media (max-width:760px){
+    .grid6{grid-template-columns:minmax(0,1fr)}
+    body{font-size:15.4px}
+    .hero{min-height:max(100vh,740px)}
+    .wrap{padding:0 20px}
+    .hero-in{padding:70px 20px 66px}
+    .eyebrow{font-size:9.5px;letter-spacing:.22em;gap:9px}
+    .eyebrow::before{width:26px}
+    .eyebrow span{display:none}
+    h1.title{font-size:clamp(30px,9.4vw,48px);letter-spacing:.1em;margin:16px 0 8px}
+    .title-en{font-size:12px;letter-spacing:.16em;line-height:1.8}
+    .title-jp{font-size:11px;letter-spacing:.04em;margin-bottom:18px;line-height:1.8}
+    .hero-sub{font-size:13.4px;line-height:1.78;padding-left:14px}
+    .hero-sub .br-lg{display:none}
+    .hero-sub .cred{display:block;margin-top:2px}
+    .hero-sub .sep{display:none}
+    .chips{gap:7px;margin-top:22px}
+    .chip{font-size:10px;padding:5px 9px;letter-spacing:.08em}
+    .chip.long{display:none}
+    .rec{display:none}
+    .scroll-hint{bottom:10px;gap:6px}
+    .scroll-hint i{height:22px}
+    section.band{padding:66px 0}
+    .sec-head{margin-bottom:34px}
+    .outro{padding:80px 0 72px}
+    .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .spec .cell{padding:14px 15px}
+    .spec dt{font-size:8.8px;letter-spacing:.14em}
+    .spec dd{font-size:12.8px}
+    .spec dd small{font-size:11px}
+    .acts{grid-template-columns:minmax(0,1fr)}
+    footer .fwrap{padding:0 20px}
+  }
+  @media (max-width:380px){
+    .hero-in{padding-top:56px}
+    .title-jp{margin-bottom:14px}
+    .hero-sub{font-size:12.9px;line-height:1.72}
+    .chips{margin-top:10px;gap:6px}
+    .chip{font-size:9.4px;padding:4px 8px}
+    h1.title{font-size:28px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HUD ================= -->
+<div id="hud">
+  <div class="hud-top"><span>井伊家 &middot; 一日</span><b id="hudVal">门前</b></div>
+  <div class="hud-leg">
+    <span class="leg-ic"></span>
+    <span class="leg-line"></span>
+    <span class="leg-txt">切腹 &middot; 1962</span>
+  </div>
+  <div class="hud-track"><i id="hudDot"></i></div>
+  <div class="hud-stops"><em>门前</em><em>玄关</em><em>座敷</em><em>庭</em><em>日暮</em></div>
+  <div class="hud-lb" id="hudLb">门前 &middot; 宽永七年五月十三日，申时</div>
+</div>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+<svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="skyG" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="600">
+      <stop offset="0" stop-color="#040404"/>
+      <stop offset="0.3" stop-color="#070707"/>
+      <stop offset="0.55" stop-color="#101010"/>
+      <stop offset="0.8" stop-color="#1b1a18"/>
+      <stop offset="1" stop-color="#25241f"/>
+    </linearGradient>
+    <linearGradient id="wallG" gradientUnits="userSpaceOnUse" x1="0" y1="558" x2="0" y2="702">
+      <stop offset="0" stop-color="#c2bbaa"/>
+      <stop offset="0.1" stop-color="#b6af9d"/>
+      <stop offset="0.4" stop-color="#9b9484"/>
+      <stop offset="0.68" stop-color="#787264"/>
+      <stop offset="0.9" stop-color="#615c51"/>
+      <stop offset="1" stop-color="#4e4a41"/>
+    </linearGradient>
+    <linearGradient id="wallSide" gradientUnits="userSpaceOnUse" x1="624" y1="0" x2="1440" y2="0">
+      <stop offset="0" stop-color="#f2ece0" stop-opacity="0.10"/>
+      <stop offset="0.28" stop-color="#f2ece0" stop-opacity="0.035"/>
+      <stop offset="0.62" stop-color="#000000" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.20"/>
+    </linearGradient>
+    <linearGradient id="wallTop" gradientUnits="userSpaceOnUse" x1="0" y1="558" x2="0" y2="600">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="copingG" gradientUnits="userSpaceOnUse" x1="0" y1="522" x2="0" y2="558">
+      <stop offset="0" stop-color="#55524a"/>
+      <stop offset="0.35" stop-color="#37352f"/>
+      <stop offset="1" stop-color="#1a1917"/>
+    </linearGradient>
+    <linearGradient id="roofG" gradientUnits="userSpaceOnUse" x1="0" y1="456" x2="0" y2="544">
+      <stop offset="0" stop-color="#6e6a5e"/>
+      <stop offset="0.22" stop-color="#565247"/>
+      <stop offset="0.62" stop-color="#3a3730"/>
+      <stop offset="1" stop-color="#232119"/>
+    </linearGradient>
+    <linearGradient id="doorG" gradientUnits="userSpaceOnUse" x1="0" y1="570" x2="0" y2="718">
+      <stop offset="0" stop-color="#2a241d"/>
+      <stop offset="0.4" stop-color="#1d1813"/>
+      <stop offset="1" stop-color="#0e0c0a"/>
+    </linearGradient>
+    <linearGradient id="groundG" gradientUnits="userSpaceOnUse" x1="0" y1="718" x2="0" y2="900">
+      <stop offset="0" stop-color="#454138"/>
+      <stop offset="0.05" stop-color="#332f28"/>
+      <stop offset="0.18" stop-color="#211e19"/>
+      <stop offset="0.45" stop-color="#141210"/>
+      <stop offset="0.74" stop-color="#0b0a09"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="lampG" gradientUnits="userSpaceOnUse" cx="592" cy="640" r="170">
+      <stop offset="0" stop-color="#ffe3b4" stop-opacity="0.52"/>
+      <stop offset="0.24" stop-color="#e6bd88" stop-opacity="0.22"/>
+      <stop offset="0.55" stop-color="#c99c62" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#a8834a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lampSpill" gradientUnits="userSpaceOnUse" x1="0" y1="718" x2="0" y2="850">
+      <stop offset="0" stop-color="#eccb98" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#eccb98" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="duskG" gradientUnits="userSpaceOnUse" x1="0" y1="430" x2="0" y2="565">
+      <stop offset="0" stop-color="#cfc9b8" stop-opacity="0"/>
+      <stop offset="0.7" stop-color="#cfc9b8" stop-opacity="0.07"/>
+      <stop offset="1" stop-color="#cfc9b8" stop-opacity="0.16"/>
+    </linearGradient>
+    <pattern id="rainA" width="23" height="62" patternUnits="userSpaceOnUse" patternTransform="skewX(-5)">
+      <path d="M3 2 V 26" stroke="#e8e3d6" stroke-width="0.7" opacity="0.42"/>
+      <path d="M13 34 V 48" stroke="#e8e3d6" stroke-width="0.55" opacity="0.28"/>
+    </pattern>
+    <pattern id="rainB" width="37" height="98" patternUnits="userSpaceOnUse" patternTransform="skewX(-5)">
+      <path d="M8 10 V 48" stroke="#f2ece0" stroke-width="1" opacity="0.34"/>
+      <path d="M26 60 V 90" stroke="#f2ece0" stroke-width="0.8" opacity="0.24"/>
+    </pattern>
+    <filter id="b2" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2"/></filter>
+    <filter id="b5" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="5"/></filter>
+    <filter id="b12" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="12"/></filter>
+    <filter id="b24" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="24"/></filter>
+    <filter id="b40" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="40"/></filter>
+  </defs>
+
+  <!-- ============ 天 ============ -->
+  <rect x="0" y="0" width="1440" height="900" fill="url(#skyG)"/>
+  <rect x="0" y="430" width="1440" height="135" fill="url(#duskG)"/>
+  <g opacity="0.55" filter="url(#b40)">
+    <path d="M0 268 Q 240 256 480 264 T 940 258 T 1440 268 L1440 292 Q 1100 282 860 288 T 360 286 T 0 292 Z" fill="#22221f" opacity="0.7"/>
+    <path d="M0 392 Q 280 380 560 390 T 1040 384 T 1440 394 L1440 408 Q 1090 398 810 402 T 250 400 T 0 406 Z" fill="#33322c" opacity="0.4"/>
+  </g>
+
+  <!-- 墙后的树冠（只露出顶） -->
+  <g fill="#0a0a09" opacity="0.9">
+    <path d="M980 560 C 992 536 1016 522 1046 520 C 1072 518 1090 528 1100 544 C 1112 524 1140 514 1166 520 C 1190 526 1202 542 1204 560 Z"/>
+    <path d="M1180 560 C 1194 538 1222 526 1252 528 C 1278 530 1294 542 1302 558 Z"/>
+    <path d="M1290 560 C 1306 540 1334 530 1362 534 C 1386 538 1398 548 1404 560 Z"/>
+    <path d="M620 560 C 632 542 654 532 678 534 C 698 536 710 546 716 558 Z"/>
+  </g>
+
+  <!-- 门前庭院暗部（压掉墙外的天空色块） -->
+  <rect x="0" y="556" width="624" height="164" fill="#0c0b09"/>
+  <rect x="0" y="556" width="624" height="20" fill="#050504" opacity="0.7" filter="url(#b12)"/>
+
+  <!-- ============ 白壁 ============ -->
+  <g>
+    <rect x="624" y="558" width="816" height="144" fill="url(#wallG)"/>
+    <rect x="624" y="558" width="816" height="144" fill="url(#wallSide)"/>
+    <rect x="624" y="558" width="816" height="42" fill="url(#wallTop)"/>
+    <rect x="624" y="558" width="816" height="2.2" fill="#f0ebdd" opacity="0.30"/>
+    <!-- 抹灰的斑驳（只留柔和的深浅，不留横线） -->
+    <g filter="url(#b24)" opacity="0.5">
+      <ellipse cx="760" cy="616" rx="120" ry="30" fill="#6b6559" opacity="0.26"/>
+      <ellipse cx="1050" cy="652" rx="160" ry="34" fill="#5c5749" opacity="0.22"/>
+      <ellipse cx="1300" cy="604" rx="120" ry="24" fill="#6b6559" opacity="0.20"/>
+      <ellipse cx="900" cy="684" rx="200" ry="24" fill="#3f3b32" opacity="0.28"/>
+      <ellipse cx="1150" cy="588" rx="220" ry="18" fill="#8d8778" opacity="0.14"/>
+    </g>
+    <!-- 雨痕 -->
+    <g filter="url(#b5)" fill="#4a463c">
+      <rect x="650" y="562" width="4" height="118" opacity="0.14"/>
+      <rect x="702" y="568" width="3" height="90" opacity="0.10"/>
+      <rect x="742" y="564" width="5.4" height="126" opacity="0.13"/>
+      <rect x="906" y="562" width="4" height="120" opacity="0.12"/>
+      <rect x="1002" y="570" width="3.4" height="86" opacity="0.10"/>
+      <rect x="1156" y="564" width="5" height="128" opacity="0.12"/>
+      <rect x="1290" y="566" width="3.6" height="100" opacity="0.10"/>
+      <rect x="1382" y="572" width="4.4" height="84" opacity="0.09"/>
+    </g>
+    <!-- 墙脚返潮 -->
+    <rect x="624" y="664" width="816" height="44" fill="#2a2720" opacity="0.40" filter="url(#b12)"/>
+    <rect x="624" y="696" width="816" height="8" fill="#3a362d"/>
+    <rect x="624" y="696" width="816" height="1.2" fill="#b6b0a0" opacity="0.14"/>
+
+    <!-- 瓦帽 -->
+    <rect x="616" y="522" width="824" height="34" fill="url(#copingG)"/>
+    <rect x="616" y="520" width="824" height="3" fill="#8d8778" opacity="0.36"/>
+    <g fill="#141311">
+      <circle cx="630" cy="558" r="4.6"/><circle cx="648" cy="558" r="4.6"/><circle cx="666" cy="558" r="4.6"/>
+      <circle cx="684" cy="558" r="4.6"/><circle cx="702" cy="558" r="4.6"/><circle cx="720" cy="558" r="4.6"/>
+      <circle cx="738" cy="558" r="4.6"/><circle cx="756" cy="558" r="4.6"/><circle cx="774" cy="558" r="4.6"/>
+      <circle cx="792" cy="558" r="4.6"/><circle cx="810" cy="558" r="4.6"/><circle cx="828" cy="558" r="4.6"/>
+      <circle cx="846" cy="558" r="4.6"/><circle cx="864" cy="558" r="4.6"/><circle cx="882" cy="558" r="4.6"/>
+      <circle cx="900" cy="558" r="4.6"/><circle cx="918" cy="558" r="4.6"/><circle cx="936" cy="558" r="4.6"/>
+      <circle cx="954" cy="558" r="4.6"/><circle cx="972" cy="558" r="4.6"/><circle cx="990" cy="558" r="4.6"/>
+      <circle cx="1008" cy="558" r="4.6"/><circle cx="1026" cy="558" r="4.6"/><circle cx="1044" cy="558" r="4.6"/>
+      <circle cx="1062" cy="558" r="4.6"/><circle cx="1080" cy="558" r="4.6"/><circle cx="1098" cy="558" r="4.6"/>
+      <circle cx="1116" cy="558" r="4.6"/><circle cx="1134" cy="558" r="4.6"/><circle cx="1152" cy="558" r="4.6"/>
+      <circle cx="1170" cy="558" r="4.6"/><circle cx="1188" cy="558" r="4.6"/><circle cx="1206" cy="558" r="4.6"/>
+      <circle cx="1224" cy="558" r="4.6"/><circle cx="1242" cy="558" r="4.6"/><circle cx="1260" cy="558" r="4.6"/>
+      <circle cx="1278" cy="558" r="4.6"/><circle cx="1296" cy="558" r="4.6"/><circle cx="1314" cy="558" r="4.6"/>
+      <circle cx="1332" cy="558" r="4.6"/><circle cx="1350" cy="558" r="4.6"/><circle cx="1368" cy="558" r="4.6"/>
+      <circle cx="1386" cy="558" r="4.6"/><circle cx="1404" cy="558" r="4.6"/><circle cx="1422" cy="558" r="4.6"/>
+    </g>
+    <g fill="#9a9484" opacity="0.22">
+      <circle cx="629" cy="556" r="1.6"/><circle cx="647" cy="556" r="1.6"/><circle cx="665" cy="556" r="1.6"/>
+      <circle cx="683" cy="556" r="1.6"/><circle cx="701" cy="556" r="1.6"/><circle cx="719" cy="556" r="1.6"/>
+      <circle cx="773" cy="556" r="1.6"/><circle cx="827" cy="556" r="1.6"/><circle cx="899" cy="556" r="1.6"/>
+      <circle cx="953" cy="556" r="1.6"/><circle cx="1025" cy="556" r="1.6"/><circle cx="1097" cy="556" r="1.6"/>
+      <circle cx="1169" cy="556" r="1.6"/><circle cx="1241" cy="556" r="1.6"/><circle cx="1313" cy="556" r="1.6"/>
+      <circle cx="1385" cy="556" r="1.6"/>
+    </g>
+    <g stroke="#0f0e0c" stroke-width="0.9" opacity="0.30">
+      <path d="M636 524 L636 558"/><path d="M708 524 L708 558"/><path d="M780 524 L780 558"/>
+      <path d="M852 524 L852 558"/><path d="M924 524 L924 558"/><path d="M996 524 L996 558"/>
+      <path d="M1068 524 L1068 558"/><path d="M1140 524 L1140 558"/><path d="M1212 524 L1212 558"/>
+      <path d="M1284 524 L1284 558"/><path d="M1356 524 L1356 558"/><path d="M1428 524 L1428 558"/>
+    </g>
+  </g>
+
+  <!-- 石基 -->
+  <g>
+    <rect x="616" y="700" width="824" height="20" fill="#23201b"/>
+    <rect x="616" y="700" width="824" height="1" fill="#8d8778" opacity="0.16"/>
+    <g stroke="#0b0a08" stroke-width="1.1" opacity="0.65">
+      <path d="M616 710 L1440 710"/>
+      <path d="M700 700 L700 710"/><path d="M790 700 L790 710"/><path d="M884 700 L884 710"/>
+      <path d="M978 700 L978 710"/><path d="M1070 700 L1070 710"/><path d="M1164 700 L1164 710"/>
+      <path d="M1258 700 L1258 710"/><path d="M1352 700 L1352 710"/>
+      <path d="M656 710 L656 720"/><path d="M744 710 L744 720"/><path d="M838 710 L838 720"/>
+      <path d="M930 710 L930 720"/><path d="M1024 710 L1024 720"/><path d="M1118 710 L1118 720"/>
+      <path d="M1212 710 L1212 720"/><path d="M1306 710 L1306 720"/>
+    </g>
+    <g fill="#3a352c" opacity="0.5">
+      <rect x="704" y="701" width="84" height="1.4"/><rect x="888" y="701" width="88" height="1.4"/>
+      <rect x="1074" y="701" width="86" height="1.4"/><rect x="1262" y="701" width="88" height="1.4"/>
+    </g>
+  </g>
+
+  <!-- ============ 大门 ============ -->
+  <g>
+    <ellipse cx="470" cy="722" rx="250" ry="16" fill="#000" opacity="0.6" filter="url(#b12)"/>
+
+    <!-- 屋顶：与门身对齐，两侧出檐等宽，檐口几乎平 -->
+    <path d="M298 486 L606 486 L700 542 L204 542 Z" fill="url(#roofG)"/>
+    <path d="M292 485 L612 485" stroke="#5c584e" stroke-width="5" opacity="0.6"/>
+    <path d="M294 481 L610 481" stroke="#c9c2b0" stroke-width="1.2" opacity="0.34"/>
+    <path d="M282 478 L294 472 L296 494 L284 496 Z" fill="#302d27"/>
+    <path d="M610 478 L622 472 L624 494 L612 496 Z" fill="#302d27"/>
+    <!-- 左端妻壁 -->
+    <path d="M300 488 L204 542 L204 566 L324 566 L294 494 Z" fill="#2b2721"/>
+    <path d="M300 488 L204 542" stroke="#1c1916" stroke-width="1.6" opacity="0.85"/>
+    <path d="M244 518 L244 566 M276 502 L276 566" stroke="#141210" stroke-width="1" opacity="0.45"/>
+    <!-- 瓦垄 -->
+    <g stroke="#1a1917" stroke-width="1.8" opacity="0.7">
+      <path d="M322 490 L262 540"/><path d="M360 490 L318 541"/><path d="M398 490 L374 542"/>
+      <path d="M436 490 L430 542"/><path d="M474 490 L486 542"/><path d="M512 490 L542 541"/>
+      <path d="M550 490 L598 540"/><path d="M588 490 L654 538"/>
+    </g>
+    <g stroke="#c9c2b0" stroke-width="0.9" opacity="0.24">
+      <path d="M324 490 L266 540"/><path d="M438 490 L432 542"/><path d="M552 490 L600 540"/>
+    </g>
+    <!-- 檐口 -->
+    <rect x="204" y="540" width="496" height="10" fill="#141311"/>
+    <path d="M204 540 L700 540" stroke="#a49e8e" stroke-width="1.3" opacity="0.34"/>
+    <!-- 瓦当 -->
+    <g fill="#24211c">
+      <circle cx="222" cy="546" r="3.6"/><circle cx="248" cy="550" r="3.6"/><circle cx="274" cy="552.5" r="3.6"/>
+      <circle cx="300" cy="554.5" r="3.6"/><circle cx="326" cy="555.5" r="3.6"/><circle cx="352" cy="556" r="3.6"/>
+      <circle cx="378" cy="556" r="3.6"/><circle cx="404" cy="556" r="3.6"/><circle cx="430" cy="556" r="3.6"/>
+      <circle cx="456" cy="556" r="3.6"/><circle cx="482" cy="556" r="3.6"/><circle cx="508" cy="556" r="3.6"/>
+      <circle cx="534" cy="556" r="3.6"/><circle cx="560" cy="555.5" r="3.6"/><circle cx="586" cy="554.5" r="3.6"/>
+      <circle cx="612" cy="552.5" r="3.6"/><circle cx="638" cy="550" r="3.6"/><circle cx="664" cy="546" r="3.6"/>
+    </g>
+    <rect x="228" y="552" width="424" height="18" fill="#040404" opacity="0.75" filter="url(#b5)"/>
+
+    <!-- 门柱 -->
+    <rect x="300" y="552" width="30" height="166" fill="#1c1712"/>
+    <rect x="300" y="552" width="30" height="2.4" fill="#8d8778" opacity="0.26"/>
+    <rect x="304" y="552" width="3" height="166" fill="#000" opacity="0.5"/>
+    <rect x="610" y="552" width="30" height="166" fill="#1c1712"/>
+    <rect x="610" y="552" width="30" height="2.4" fill="#8d8778" opacity="0.26"/>
+    <rect x="633" y="552" width="3" height="166" fill="#000" opacity="0.5"/>
+
+    <!-- 冠木 -->
+    <rect x="286" y="556" width="368" height="16" fill="#241e17"/>
+    <rect x="286" y="556" width="368" height="2" fill="#9a9484" opacity="0.24"/>
+    <rect x="286" y="570" width="368" height="2" fill="#000" opacity="0.5"/>
+
+    <!-- 门扉 -->
+    <path d="M330 572 L610 572 L610 718 L330 718 Z" fill="url(#doorG)"/>
+    <g stroke="#050505" stroke-width="1.3" opacity="0.5">
+      <path d="M354 572 L354 718"/><path d="M378 572 L378 718"/><path d="M402 572 L402 718"/>
+      <path d="M426 572 L426 718"/><path d="M450 572 L450 718"/><path d="M474 572 L474 718"/>
+      <path d="M498 572 L498 718"/><path d="M522 572 L522 718"/><path d="M546 572 L546 718"/>
+      <path d="M570 572 L570 718"/><path d="M594 572 L594 718"/>
+    </g>
+    <g stroke="#a49e8e" stroke-width="0.6" opacity="0.10">
+      <path d="M355 572 L355 718"/><path d="M403 572 L403 718"/><path d="M451 572 L451 718"/>
+      <path d="M499 572 L499 718"/><path d="M547 572 L547 718"/><path d="M595 572 L595 718"/>
+    </g>
+    <path d="M470 572 L470 718" stroke="#000" stroke-width="2.6" opacity="0.85"/>
+    <!-- 铁箍与门钉 -->
+    <rect x="330" y="600" width="280" height="7" fill="#2a251e"/>
+    <rect x="330" y="600" width="280" height="1.2" fill="#9a9484" opacity="0.20"/>
+    <rect x="330" y="676" width="280" height="7" fill="#2a251e"/>
+    <rect x="330" y="676" width="280" height="1.2" fill="#9a9484" opacity="0.16"/>
+    <g fill="#3a342a" opacity="0.9">
+      <circle cx="360" cy="626" r="3.2"/><circle cx="392" cy="626" r="3.2"/><circle cx="424" cy="626" r="3.2"/>
+      <circle cx="456" cy="626" r="3.2"/><circle cx="488" cy="626" r="3.2"/><circle cx="520" cy="626" r="3.2"/>
+      <circle cx="552" cy="626" r="3.2"/><circle cx="584" cy="626" r="3.2"/>
+      <circle cx="360" cy="654" r="3.2"/><circle cx="392" cy="654" r="3.2"/><circle cx="424" cy="654" r="3.2"/>
+      <circle cx="456" cy="654" r="3.2"/><circle cx="488" cy="654" r="3.2"/><circle cx="520" cy="654" r="3.2"/>
+      <circle cx="552" cy="654" r="3.2"/><circle cx="584" cy="654" r="3.2"/>
+    </g>
+    <!-- 门环 -->
+    <circle cx="450" cy="638" r="10" fill="none" stroke="#332d24" stroke-width="3.4"/>
+    <circle cx="490" cy="638" r="10" fill="none" stroke="#332d24" stroke-width="3.4"/>
+
+    <!-- 表札 -->
+    <rect x="276" y="592" width="18" height="52" fill="#100d0a" stroke="#332d24" stroke-width="0.8"/>
+    <g fill="#c9c2b0" opacity="0.55" font-family="'Yu Mincho','Hiragino Mincho ProN','Songti SC',serif" font-size="13">
+      <text x="285" y="610" text-anchor="middle">井</text>
+      <text x="285" y="628" text-anchor="middle">伊</text>
+      <text x="285" y="646" text-anchor="middle">家</text>
+    </g>
+
+    <!-- 灯笼（挂在冠木下） -->
+    <g transform="translate(-26,0)">
+    <!-- 灯笼（挂在冠木下） -->
+    <ellipse cx="592" cy="642" rx="170" ry="165" fill="url(#lampG)"/>
+    <path d="M596 572 L596 612" stroke="#2a2620" stroke-width="1.6"/>
+    <path d="M588 610 L604 610" stroke="#2a2620" stroke-width="2.2"/>
+    <rect x="576" y="612" width="40" height="58" rx="4" fill="#f0c894" opacity="0.96"/>
+    <rect x="576" y="612" width="40" height="58" rx="4" fill="#fff2d6" opacity="0.28"/>
+    <g stroke="#4a3a26" stroke-width="1" opacity="0.5">
+      <path d="M576 624 L616 624"/><path d="M576 636 L616 636"/><path d="M576 648 L616 648"/><path d="M576 660 L616 660"/>
+    </g>
+    <rect x="572" y="608" width="48" height="7" rx="2" fill="#221d17"/>
+    <rect x="572" y="668" width="48" height="6" rx="2" fill="#221d17"/>
+    <text x="596" y="644" text-anchor="middle" font-family="'Yu Mincho','Hiragino Mincho ProN','Songti SC',serif" font-size="14" fill="#3d2f1e" opacity="0.8">切</text>
+    <path d="M568 718 L624 718 L664 830 L528 830 Z" fill="url(#lampSpill)" filter="url(#b5)"/>
+    </g>
+  </g>
+
+  <!-- ============ 地面 ============ -->
+  <rect x="0" y="718" width="1440" height="182" fill="url(#groundG)"/>
+  <path d="M0 718 Q 480 714 900 718 T 1440 716 L1440 724 L0 726 Z" fill="#5c584e" opacity="0.26"/>
+  <g stroke="#000" stroke-width="1" opacity="0.26">
+    <path d="M0 764 Q 360 760 720 764 T 1440 762"/>
+    <path d="M0 818 Q 380 814 760 818 T 1440 816"/>
+    <path d="M196 718 L192 900"/><path d="M524 718 L520 900"/><path d="M868 718 L864 900"/><path d="M1214 718 L1210 900"/>
+  </g>
+  <g stroke="#9a9484" stroke-width="0.7" opacity="0.09">
+    <path d="M0 763 Q 360 759 720 763 T 1440 761"/>
+    <path d="M197 718 L193 900"/>
+  </g>
+  <!-- 湿反光：墙与灯在水面上的倒影 -->
+  <g filter="url(#b12)">
+    <rect x="700" y="718" width="300" height="46" fill="#d6d0c0" opacity="0.055"/>
+    <rect x="560" y="718" width="76" height="112" fill="#eccb98" opacity="0.10"/>
+    <rect x="1040" y="718" width="260" height="38" fill="#d6d0c0" opacity="0.04"/>
+  </g>
+  <g filter="url(#b12)" opacity="0.5">
+    <rect x="856" y="718" width="7" height="52" fill="#0a0908"/>
+    <rect x="868" y="718" width="5" height="38" fill="#0a0908"/>
+  </g>
+  <!-- 水洼 -->
+  <g fill="#0e0d0b" opacity="0.45">
+    <ellipse cx="300" cy="790" rx="102" ry="10"/>
+    <ellipse cx="1150" cy="812" rx="126" ry="12"/>
+    <ellipse cx="740" cy="872" rx="158" ry="14"/>
+  </g>
+  <g fill="#d6d0c0" opacity="0.045">
+    <ellipse cx="300" cy="786" rx="88" ry="4"/>
+    <ellipse cx="1150" cy="808" rx="108" ry="5"/>
+  </g>
+
+  <!-- ============ 主角 ============ -->
+  <!-- 人物在墙上的投影 -->
+  <g filter="url(#b24)" fill="#000">
+    <ellipse cx="892" cy="682" rx="76" ry="62" opacity="0.34"/>
+    <ellipse cx="866" cy="706" rx="42" ry="20" opacity="0.30"/>
+  </g>
+  <g transform="translate(848,598) scale(0.92)">
+    <ellipse cx="0" cy="131" rx="26" ry="3.4" fill="#000" opacity="0.5" filter="url(#b5)"/>
+    <ellipse cx="1" cy="129.6" rx="19" ry="2.4" fill="#000" opacity="0.62" filter="url(#b2)"/>
+    <!-- 发髻 -->
+    <path d="M-4.6 6.6 C -5.2 3.6 -3 1.2 -0.4 1 C 2.2 0.8 4.4 2.4 4.8 5 C 3 3.4 0.4 3 -1.4 4 C -3 4.9 -3.9 5.7 -4.6 6.6 Z" fill="#050404"/>
+    <!-- 头 + 颈（一条联合路径） -->
+    <path d="M0 2 C -4.2 2 -6.9 4.8 -7.2 8.6 C -7.6 12.4 -6.6 15.6 -4.4 17.6 C -3.2 18.8 -1.9 19.5 -0.5 19.7 L 0.9 19.7 C 3 19.3 5 18 6 16 C 7.2 13.8 7.4 10.6 6.8 7.8 C 6 4.6 3.2 2 0 2 Z" fill="#050404"/>
+    <path d="M-3.7 17.4 L-3.2 26.6 L3.6 26.6 L3.6 17.4 Z" fill="#050404"/>
+    <!-- 身体与袴：直肩、微外扩的袖、平直下摆 -->
+    <path d="M0 25.2 C -6.4 25.2 -14.6 26.4 -18 29 C -20 34 -20.8 46 -21 60 C -21.2 70 -20.6 82 -20.4 96 L -20.2 126 L -2.6 126 L -2.6 115 L 1.8 115 L 1.8 126 L 20.2 126 L 20.4 96 C 20.6 82 21.2 70 21 60 C 20.8 46 20 34 18 29 C 14.6 26.4 6.4 25.2 0 25.2 Z" fill="#050404"/>
+    <!-- 袖缝（极淡，只为把一整块黑分开） -->
+    <path d="M-14.6 34 C -15 54 -15 78 -14.8 100" stroke="#1d1913" stroke-width="1" fill="none" opacity="0.85"/>
+    <path d="M14.6 34 C 15 54 15 78 14.8 100" stroke="#1d1913" stroke-width="1" fill="none" opacity="0.85"/>
+    <!-- 腰带 -->
+    <path d="M-20.8 73.6 L20.8 73.6 L20.7 82.4 L-20.7 82.4 Z" fill="#211d17"/>
+    <!-- 刀：只画露在身体两侧的两截 -->
+    <path d="M-20 80 L-31.6 77.2 L-32.1 80.2 L-20.5 83 Z" fill="#464034"/>
+    <path d="M-20.2 80.4 L-31.2 77.7" stroke="#c9c2b0" stroke-width="0.7" opacity="0.38"/>
+    <path d="M14 81.6 L21.6 83.4 L21.2 86.4 L13.6 84.6 Z" fill="#39342c"/>
+    <path d="M14 82 L21.4 83.8" stroke="#d6d0c0" stroke-width="0.7" opacity="0.28"/>
+    <ellipse cx="-19.4" cy="81" rx="2.2" ry="4.4" transform="rotate(76 -19.4 81)" fill="#2a251e"/>
+    <!-- 轮廓光（只描右侧） -->
+    <path d="M18 29 C 20 34 20.8 46 21 60 C 21.2 70 20.6 82 20.4 96 L 20.2 126" stroke="#f2ece0" stroke-width="1.3" opacity="0.46" fill="none" filter="url(#b2)"/>
+    <path d="M6.4 7.4 C 7.2 10.4 7.2 13.4 6.2 15.8" stroke="#f2ece0" stroke-width="1" opacity="0.40" fill="none" filter="url(#b2)"/>
+    <path d="M-18 29 C -20 34 -20.8 46 -21 60" stroke="#f2ece0" stroke-width="0.9" opacity="0.20" fill="none" filter="url(#b2)"/>
+  </g>
+
+  <!-- ============ 雨 ============ -->
+  <rect x="0" y="0" width="1440" height="900" fill="url(#rainA)" opacity="0.14"/>
+  <rect x="0" y="0" width="1440" height="900" fill="url(#rainB)" opacity="0.09"/>
+  <g stroke="#f2ece0" stroke-width="0.9" opacity="0.10" stroke-linecap="round">
+    <path d="M186 120 L182 214"/><path d="M424 60 L420 138"/><path d="M664 190 L660 282"/>
+    <path d="M984 90 L980 176"/><path d="M1224 240 L1220 330"/><path d="M304 380 L300 470"/>
+    <path d="M884 420 L880 512"/><path d="M1144 500 L1140 590"/><path d="M204 640 L200 730"/>
+    <path d="M1362 640 L1358 742"/><path d="M544 780 L540 880"/><path d="M1062 800 L1058 900"/>
+  </g>
+  <g fill="#f2ece0" opacity="0.11">
+    <circle cx="644" cy="746" r="1.4"/><circle cx="704" cy="772" r="1.1"/><circle cx="784" cy="740" r="1.2"/>
+    <circle cx="884" cy="796" r="1.4"/><circle cx="964" cy="752" r="1"/><circle cx="1104" cy="774" r="1.3"/>
+    <circle cx="304" cy="764" r="1.2"/><circle cx="424" cy="804" r="1"/><circle cx="1244" cy="748" r="1.1"/>
+  </g>
+
+  <!-- 前景石阶（被画幅底边裁切，用来撑开纵深） -->
+  <g>
+    <path d="M0 868 Q 320 861 760 865 T 1440 861 L1440 900 L0 900 Z" fill="#070706" opacity="0.94"/>
+    <path d="M0 867 Q 320 860 760 864 T 1440 860" stroke="#c9c2b0" stroke-width="2" opacity="0.09" filter="url(#b2)"/>
+    <path d="M0 878 Q 320 871 760 875 T 1440 871" stroke="#c9c2b0" stroke-width="0.9" opacity="0.06"/>
+  </g>
+
+  <rect x="0" y="836" width="1440" height="64" fill="#000" opacity="0.46" filter="url(#b12)"/>
+</svg>
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+
+<div class="hero-in">
+  <div class="eyebrow">日本电影经典 &middot; 第 02 部 <span>Japanese Classics / No.02</span></div>
+  <h1 class="title">切腹</h1>
+  <div class="title-en">Seppuku &middot; Harakiri</div>
+  <div class="title-jp"><b>切腹</b> &nbsp;1962 &nbsp;|&nbsp; 小林正树 导演 &nbsp;|&nbsp; 133 分钟 &nbsp;|&nbsp; 黑白</div>
+  <div class="hero-sub">
+    宽永七年，幕府把天下捏稳了，几十万武士忽然没有了主家。他们身上只剩一把刀，而刀不能吃。<b>于是有人走到大藩门前，说要借这块地方切腹。</b>门里的人一听就懂：这是讨钱的。<br class="br-lg">
+    <span class="wg">豆瓣 9.4</span><span class="sep"> &nbsp;/&nbsp; </span><span class="hl">1963 戛纳评审团特别奖</span><span class="sep"> &nbsp;/&nbsp; </span><span class="cred">全程不剧透</span>
+  </div>
+  <div class="chips">
+    <span class="chip hot">豆瓣 9.4</span>
+    <span class="chip tag">戛纳评审团特别奖</span>
+    <span class="chip ink">桥本忍 编剧</span>
+    <span class="chip">133 min</span>
+    <span class="chip cool">黑白 &middot; 宽银幕</span>
+    <span class="chip long">松竹 &middot; 1962</span>
+  </div>
+</div>
+
+<div class="rec"><b>REC</b> 35mm &middot; 1962</div>
+<div class="scroll-hint">SCROLL<i></i></div>
+</div>
+
+<!-- ================= 01 梗概 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="nospoil reveal">
+      <span class="mark">NO SPOILER</span>
+      <p><b>本页不剧透。</b>梗概止于第一幕的转折：他说出自己为什么来，这户人家坐了下来，准备听。至于他讲了什么、那三个人为什么都不在、最后一个镜头落在哪里，本页一个字都不写。</p>
+    </div>
+    <div class="editor reveal">
+      <span class="mark">编辑说明</span>
+      <p>这是「日本电影经典」系列的第二部。上一部《入殓师》讲的是有人替死者保住体面；这一部讲的是<b>活人怎样拿「体面」两个字当武器</b>——方向正好相反，所以放在一起看很有意思。系列此前的片单里出现过《七武士》《罗生门》《影武者》等日本片，本片不在其中，导演小林正树也是第一次出现。</p>
+    </div>
+
+    <div class="sec-head reveal">
+      <span class="sec-num">01 &nbsp;/&nbsp; Synopsis</span>
+      <h2 class="sec-title">一个人上门来借死，<em>主人却在跟他讲规矩</em></h2>
+      <p class="sec-desc">这不是一部打打杀杀的武士片。它更像一场庭审：一间屋子、几张席子、一个人在说话，越说越冷。</p>
+    </div>
+
+    <div class="duo">
+      <aside class="glance reveal">
+        <h3>一眼速览</h3>
+        <dl>
+          <div class="row cel"><dt>片名</dt><dd>切腹</dd></div>
+          <div class="row"><dt>原名</dt><dd>切腹</dd></div>
+          <div class="row"><dt>英文名</dt><dd>Harakiri / Seppuku</dd></div>
+          <div class="row accent"><dt>导演</dt><dd>小林正树</dd></div>
+          <div class="row"><dt>编剧</dt><dd>桥本忍</dd></div>
+          <div class="row"><dt>原作</dt><dd>泷口康彦</dd></div>
+          <div class="row"><dt>主演</dt><dd>仲代达矢</dd></div>
+          <div class="row stone"><dt>共演</dt><dd>三国连太郎 / 石浜朗</dd></div>
+          <div class="row"><dt>配乐</dt><dd>武满彻</dd></div>
+          <div class="row"><dt>片长</dt><dd>133 分钟</dd></div>
+          <div class="row"><dt>上映</dt><dd>1962-09-16</dd></div>
+          <div class="row accent"><dt>豆瓣</dt><dd>9.4</dd></div>
+          <div class="row cool"><dt>分级</dt><dd>未定级</dd></div>
+          <div class="row cel"><dt>本页</dt><dd>不剧透</dd></div>
+        </dl>
+      </aside>
+
+      <div class="prose reveal">
+        <p class="drop">宽永七年，公元 1630 年。德川家已经把天下攥在手里二十多年，仗打完了，藩被削了，几十万武士一夜之间失去了主家，成了浪人。他们没有封地，没有俸禄，只有一身练了半辈子的本事和一把刀——而刀不能吃。</p>
+        <p>井伊家是彦根的大藩，宅邸的门每天有人来。来的不都是求见。按武士的规矩，一个走投无路的浪人站在门前提出「借贵处切腹」，主人不能拒绝：要么给他一块干净的地方，让他死得像个体面人；要么拿钱把他打发走。于是这成了一条活路，也成了一门生意——<b>浪人上门，藩里出钱，双方都绕开那个「死」字不提。</b></p>
+        <p>那年五月的一个下午，又来了一个。津云半四郎，五十岁上下，衣服洗得发白，草鞋是新的。他说想借井伊家的庭院一用。家老斋藤勘解由接待了他，态度好得出奇，好得像在谈一笔已经谈过很多次的买卖。<em>他没有直接答应，也没有直接拒绝，而是先讲了一个故事。</em></p>
+        <p>几个月前，也有一个年轻浪人上门，说出同样的话。他叫千千岩求女。藩里的人验过他的刀，是竹子做的——按当时的规矩，带竹刀来切腹，等于当场承认自己是来讹钱的。勘解由没有把他赶出去。他很客气地请这位年轻人履行自己刚才提出的请求，就用那把竹刀。</p>
+        <p>求女死了。死得很慢，也很难看。讲完这段，勘解由看着半四郎，意思很清楚：你还要继续吗？</p>
+        <p>半四郎说，要继续。但他有一个请求——在动手之前，请让他把自己这辈子的讲完。他说，那个用竹刀死掉的年轻人，<b class="bl">他认识。那是他的女婿。</b></p>
+        <div class="pullquote">「规矩本来是用来给人留体面的。可当规矩只剩下体面，它就不管人了。」<br><span style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--ash-dim);font-style:normal">——编辑部概述，非片中台词</span></div>
+        <p>屋里的人坐了下来。庭院那方木台还没有铺白布，蝉声很响，天色一点点往西边沉。接下来的时间里，一个浪人开始讲他这一生——而这户人家引以为傲的那套说法，即将被一件一件地拆开。<span class="gr">本页到此为止。</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 海报 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02 &nbsp;/&nbsp; Key Visual</span>
+      <h2 class="sec-title">一张布，一把刀，<em>和一句没说的话</em></h2>
+      <p class="sec-desc">概念海报不是原版海报，也没有画人。俯视的一块白布、一柄收在鞘里的短刀、一根红绳——这部片子最锋利的东西，全在「还没开始」这四个字里。</p>
+    </div>
+
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+          <svg viewBox="0 0 430 640" role="img" aria-label="概念海报：深色木台上铺着一方白布，白布上横放一柄入鞘的短刀，柄端系一根红线；左上竖排小字标注宽永七年五月十三日，底部为英文片名与年份">
+            <defs>
+              <linearGradient id="pBg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="430" y2="640">
+                <stop offset="0" stop-color="#12100d"/>
+                <stop offset="0.5" stop-color="#0b0a08"/>
+                <stop offset="1" stop-color="#060605"/>
+              </linearGradient>
+              <linearGradient id="pWood" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="430" y2="640">
+                <stop offset="0" stop-color="#8a7150" stop-opacity="0.10"/>
+                <stop offset="0.5" stop-color="#8a7150" stop-opacity="0.03"/>
+                <stop offset="1" stop-color="#8a7150" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="pCloth" gradientUnits="userSpaceOnUse" x1="62" y1="212" x2="396" y2="484">
+                <stop offset="0" stop-color="#ded5be"/>
+                <stop offset="0.34" stop-color="#cfc5ac"/>
+                <stop offset="0.72" stop-color="#b6ab92"/>
+                <stop offset="1" stop-color="#968c76"/>
+              </linearGradient>
+              <linearGradient id="pShade" gradientUnits="userSpaceOnUse" x1="62" y1="212" x2="396" y2="484">
+                <stop offset="0" stop-color="#f7f1e2" stop-opacity="0.28"/>
+                <stop offset="0.42" stop-color="#f7f1e2" stop-opacity="0"/>
+                <stop offset="0.72" stop-color="#4a453c" stop-opacity="0.10"/>
+                <stop offset="1" stop-color="#3a362d" stop-opacity="0.22"/>
+              </linearGradient>
+              <linearGradient id="pBlade" gradientUnits="userSpaceOnUse" x1="178" y1="392" x2="330" y2="268">
+                <stop offset="0" stop-color="#f6f0e0"/>
+                <stop offset="0.55" stop-color="#ebe3d0"/>
+                <stop offset="1" stop-color="#d8cfb8"/>
+              </linearGradient>
+              <radialGradient id="pVig" gradientUnits="userSpaceOnUse" cx="215" cy="330" r="360">
+                <stop offset="0.38" stop-color="#000" stop-opacity="0"/>
+                <stop offset="1" stop-color="#000" stop-opacity="0.78"/>
+              </radialGradient>
+              <filter id="pB3" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3"/></filter>
+              <filter id="pB9" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="9"/></filter>
+              <filter id="pB20" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="20"/></filter>
+            </defs>
+
+            <rect width="430" height="640" fill="url(#pBg)"/>
+            <rect width="430" height="640" fill="url(#pWood)"/>
+
+            <!-- 木台纹理 -->
+            <g stroke="#a08c6a" stroke-width="0.8" opacity="0.07">
+              <path d="M28 0 Q 34 220 26 640"/><path d="M74 0 Q 82 240 72 640"/>
+              <path d="M116 0 Q 122 260 112 640"/><path d="M162 0 Q 168 240 158 640"/>
+              <path d="M206 0 Q 214 280 204 640"/><path d="M252 0 Q 258 240 248 640"/>
+              <path d="M296 0 Q 304 260 294 640"/><path d="M342 0 Q 348 240 338 640"/>
+              <path d="M386 0 Q 394 280 384 640"/>
+            </g>
+
+            <!-- 布下的投影 -->
+            <path d="M70 250 L376 220 L402 452 L96 490 Z" fill="#000" opacity="0.55" filter="url(#pB9)"/>
+
+            <!-- 白布 -->
+            <path d="M62 244 L370 212 L396 448 L88 484 Z" fill="url(#pCloth)"/>
+            <!-- 折痕：暗线旁配一条亮线，布才有厚度 -->
+            <g filter="url(#pB3)">
+              <path d="M104 248 L128 482" stroke="#8a8069" stroke-width="9" opacity="0.18" fill="none"/>
+              <path d="M114 248 L138 481" stroke="#f4edda" stroke-width="4" opacity="0.16" fill="none"/>
+              <path d="M296 218 L326 452" stroke="#7d7359" stroke-width="11" opacity="0.16" fill="none"/>
+              <path d="M306 218 L336 451" stroke="#f4edda" stroke-width="4.5" opacity="0.14" fill="none"/>
+              <path d="M196 228 L208 470" stroke="#f2ebd8" stroke-width="7" opacity="0.18" fill="none"/>
+            </g>
+            <!-- 布的垂坠与边角暗部 -->
+            <path d="M62 244 L370 212 L396 448 L88 484 Z" fill="url(#pShade)"/>
+            <path d="M62 244 L88 484 L118 486 L92 246 Z" fill="#6b6355" opacity="0.16" filter="url(#pB3)"/>
+            <path d="M370 212 L396 448 L372 450 L346 214 Z" fill="#5c554a" opacity="0.14" filter="url(#pB3)"/>
+            <!-- 布边高光 -->
+            <path d="M62 244 L370 212" stroke="#f7f1e2" stroke-width="1.1" opacity="0.34" fill="none"/>
+            <path d="M370 212 L396 448" stroke="#f7f1e2" stroke-width="0.9" opacity="0.16" fill="none"/>
+
+            <!-- 短刀：柄 -->
+            <path d="M124.5 427.7 L170.5 391.7 L177.5 399.7 L131.5 435.7 Z" fill="#1a1611"/>
+            <g stroke="#453c30" stroke-width="1.1" opacity="0.85">
+              <path d="M132 423 L140 431"/><path d="M140 417 L148 425"/><path d="M148 411 L156 419"/>
+              <path d="M156 405 L164 413"/><path d="M164 399 L172 407"/>
+            </g>
+            <!-- 鍔 -->
+            <ellipse cx="176" cy="393" rx="11" ry="3.4" transform="rotate(51 176 393)" fill="#131110"/>
+            <ellipse cx="176" cy="392" rx="9" ry="1.2" transform="rotate(51 176 393)" fill="#6b6355" opacity="0.5"/>
+
+            <!-- 短刀：鞘 -->
+            <path d="M174.7 388 L326.7 264 L333.3 272 L181.3 396 Z" fill="url(#pBlade)"/>
+            <path d="M178 394.4 L330 270.4 L331.8 272.4 L179.8 396.4 Z" fill="#a89f8a" opacity="0.34"/>
+            <path d="M176 390 L328 266" stroke="#fffaf0" stroke-width="1.1" opacity="0.6"/>
+            <path d="M180.4 392.6 L332.4 268.6" stroke="#8d8476" stroke-width="0.7" opacity="0.45"/>
+            <path d="M180 394.6 L331 270.6" stroke="#5c554a" stroke-width="0.9" opacity="0.35"/>
+            <!-- 鞘尻 -->
+            <path d="M320 264 L333.3 272 L329 276 L315.6 268 Z" fill="#2b251d"/>
+
+            <!-- 下緒（红线） -->
+            <g fill="none" stroke="#9c3a2b" stroke-width="2">
+              <path d="M126 434 C 108 448 100 466 110 476 C 120 486 138 478 134 466 C 131 456 116 456 112 466"/>
+              <path d="M138 440 C 132 456 138 470 150 474"/>
+            </g>
+            <circle cx="112" cy="466" r="1.6" fill="#cd7a64" opacity="0.6"/>
+
+            <!-- 左上竖排日期 -->
+            <g fill="#bcb3a2" opacity="0.62" font-family="'Yu Mincho','Hiragino Mincho ProN','Songti SC',serif" font-size="15">
+              <text x="36" y="42">
+                <tspan x="36" dy="0">寛</tspan>
+                <tspan x="36" dy="19">永</tspan>
+                <tspan x="36" dy="19">七</tspan>
+                <tspan x="36" dy="19">年</tspan>
+              </text>
+            </g>
+            <g fill="#8d8476" opacity="0.72" font-family="'Yu Mincho','Hiragino Mincho ProN','Songti SC',serif" font-size="8.4">
+              <text x="38" y="132">
+                <tspan x="38" dy="0">五</tspan>
+                <tspan x="38" dy="12">月</tspan>
+                <tspan x="38" dy="12">十</tspan>
+                <tspan x="38" dy="12">三</tspan>
+                <tspan x="38" dy="12">日</tspan>
+              </text>
+            </g>
+            <text x="38" y="196" font-family="'Yu Mincho','Hiragino Mincho ProN','Songti SC',serif" font-size="7.6" fill="#6b6355" opacity="0.8">申ノ刻</text>
+
+            <!-- 底部英文 -->
+            <path d="M36 508 L396 508" stroke="#efe8d8" stroke-width="0.7" opacity="0.11"/>
+            <text x="36" y="538" font-family="Georgia,serif" font-size="11" letter-spacing="5.2" fill="#e2dac6" opacity="0.88">HARAKIRI</text>
+            <text x="36" y="560" font-family="Georgia,serif" font-size="7" letter-spacing="2.6" fill="#8d8476" opacity="0.86">SEPPUKU &middot; A FILM BY MASAKI KOBAYASHI</text>
+            <text x="36" y="580" font-family="Georgia,serif" font-size="7" letter-spacing="2.6" fill="#5c554a" opacity="0.9">1962 &middot; 133 MIN &middot; JAPAN &middot; B&amp;W</text>
+
+            <rect width="430" height="640" fill="url(#pVig)"/>
+            <rect x="14" y="14" width="402" height="612" fill="none" stroke="#e8e1d2" stroke-width="0.6" opacity="0.08"/>
+          </svg>
+        </div>
+        <div class="poster-cap">CONCEPT POSTER &middot; 非官方 &middot; SVG 重绘</div>
+      </div>
+
+      <div class="reads reveal">
+        <div class="read">
+          <h4>01 &nbsp;/&nbsp; 为什么布是斜的</h4>
+          <p>切腹要铺一方白布，为的是血不溅在席子上，也为了让这件事看起来干净。<b>布一定要铺平，因为它是给活着的人看的。</b>海报把布放斜了两三度——不整齐，才像真的铺上去，而不是画上去的。</p>
+        </div>
+        <div class="read">
+          <h4>02 &nbsp;/&nbsp; 刀为什么收在鞘里</h4>
+          <p>全片最狠的一刀，是<b>没有拔出来的那一刀</b>。一把入鞘的刀摆在白布上，什么都没发生，但你已经知道下一步会发生什么。这张海报的全部力气都在这个「还没开始」上——比画一摊血干净得多，也重得多。</p>
+        </div>
+        <div class="read">
+          <h4>03 &nbsp;/&nbsp; 柄上那根红线</h4>
+          <p>日本刀的下緒是系在刀鞘上的绳，颜色多半素净，偶尔有一根红的。<b>这是整张海报唯一的颜色。</b>不画红，这张图就是一件标本；有这一根，它才是一件还带着人的体温的东西。</p>
+        </div>
+        <div class="read">
+          <h4>04 &nbsp;/&nbsp; 上下三分之二的暗</h4>
+          <p>上面是屋顶，下面是地板，中间才是那方布。<b>这部片子的场景也差不多是这样：一间屋子，四周是墙，人坐在中间，没有地方可以退。</b>留白不空，它替你把门关上了。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 档案 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03 &nbsp;/&nbsp; Credits</span>
+      <h2 class="sec-title">影片档案</h2>
+      <p class="sec-desc">所有数字回到原始出处；口径不一致的地方，两个都写出来。</p>
+    </div>
+    <dl class="spec reveal">
+      <div class="cell"><dt>中文片名</dt><dd>切腹<small>又名《剖腹》</small></dd></div>
+      <div class="cell"><dt>原片名</dt><dd>切腹<small>Seppuku（日方正式英文名）</small></dd></div>
+      <div class="cell"><dt>国际片名</dt><dd>Harakiri<small>海外发行与影展通用名</small></dd></div>
+      <div class="cell"><dt>年份 / 片长</dt><dd>1962 &middot; 133 分钟<small>另见「口径」一节</small></dd></div>
+      <div class="cell"><dt>导演</dt><dd><span class="k">小林正树</span><small>Masaki Kobayashi</small></dd></div>
+      <div class="cell"><dt>编剧</dt><dd>桥本忍<small>《罗生门》《七武士》剧本执笔</small></dd></div>
+      <div class="cell"><dt>原作</dt><dd>泷口康彦《异闻浪人记》<small>Yasuhiko Takiguchi</small></dd></div>
+      <div class="cell"><dt>主演</dt><dd><span class="r">仲代达矢</span><small>饰 津云半四郎</small></dd></div>
+      <div class="cell"><dt>共演</dt><dd>三国连太郎 / 石浜朗<small>岩下志麻 / 丹波哲郎 / 三岛雅夫</small></dd></div>
+      <div class="cell"><dt>摄影</dt><dd>宫岛义勇<small>黑白 &middot; 松竹 GrandScope 宽银幕（2.35:1）</small></dd></div>
+      <div class="cell"><dt>音乐</dt><dd><span class="r">武满彻</span><small>尺八、琵琶与打击乐为主，几乎不铺弦乐</small></dd></div>
+      <div class="cell"><dt>剪辑 / 美术</dt><dd>相良久 / 大角纯一 &middot; 户田重昌</dd></div>
+      <div class="cell"><dt>制片</dt><dd>细谷辰雄<small>松竹京都</small></dd></div>
+      <div class="cell"><dt>日本上映</dt><dd>1962-09-16</dd></div>
+      <div class="cell"><dt>戛纳</dt><dd><span class="r">1963 评审团特别奖</span><small>第 16 届，与捷克《当猫到来时》并列</small></dd></div>
+      <div class="cell"><dt>每日电影奖</dt><dd>1963 最佳影片</dd></div>
+      <div class="cell"><dt>蓝丝带奖</dt><dd>最佳男主角 / 最佳剧本</dd></div>
+      <div class="cell"><dt>豆瓣</dt><dd><span class="k">9.4</span><small>61,575 人评价</small></dd></div>
+      <div class="cell"><dt>IMDb</dt><dd><span class="k">8.6</span><small>94,706 票</small></dd></div>
+      <div class="cell"><dt>分级</dt><dd>未定级<small>含切腹场面，不建议低龄观看</small></dd></div>
+      <div class="cell wide"><dt>一句话</dt><dd>一个没有主家的浪人走到大藩门前，请求借一块地方切腹。<span class="p">门里的人以为他跟别人一样是来讨钱的——直到他开口，讲起一个已经死掉的年轻人。</span></dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ================= 04 口碑 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04 &nbsp;/&nbsp; Reception</span>
+      <h2 class="sec-title">六十年过去，<em>分数还在往上走</em></h2>
+      <p class="sec-desc">1962 年的黑白片，在今天的中文互联网上仍然是 9.4。这不是情怀分——是每一代新观众自己打出来的。</p>
+    </div>
+
+    <div class="scores reveal">
+      <div class="score">
+        <div class="src">豆瓣 Douban</div>
+        <div class="num">9.4<small>/ 10</small></div>
+        <div class="den">61,575 人评价</div>
+        <div class="bar"><i style="width:94%"></i></div>
+        <div class="note">在豆瓣的日本真人电影里属于最高一档，9 分以上的作品本就屈指可数。</div>
+      </div>
+      <div class="score g2">
+        <div class="src">IMDb</div>
+        <div class="num">8.6<small>/ 10</small></div>
+        <div class="den">94,706 票</div>
+        <div class="bar"><i style="width:86%"></i></div>
+        <div class="note">1960 年代非英语片里票数最厚的一批之一。</div>
+      </div>
+      <div class="score g3">
+        <div class="src">Rotten Tomatoes</div>
+        <div class="num">100<small>%</small></div>
+        <div class="den">Tomatometer &middot; Metacritic 85</div>
+        <div class="bar"><i style="width:100%"></i></div>
+        <div class="note">英美影评人至今没有给出「烂」的评价。</div>
+      </div>
+      <div class="score g3">
+        <div class="src">电影旬报</div>
+        <div class="num">3<small>位</small></div>
+        <div class="den">1962 年度十佳</div>
+        <div class="bar"><i style="width:90%"></i></div>
+        <div class="note">日本最老的电影杂志的年度榜，本国评价的硬指标。</div>
+      </div>
+      <div class="score g4">
+        <div class="src">戛纳电影节</div>
+        <div class="num">1<small>座</small></div>
+        <div class="den">1963 评审团特别奖</div>
+        <div class="bar"><i style="width:100%"></i></div>
+        <div class="note">那年金棕榈给了维斯康蒂的《豹》。</div>
+      </div>
+      <div class="score g4">
+        <div class="src">每日电影奖</div>
+        <div class="num">1<small>座</small></div>
+        <div class="den">1963 最佳影片</div>
+        <div class="bar"><i style="width:100%"></i></div>
+        <div class="note">同届蓝丝带奖给了仲代达矢最佳男主角、桥本忍最佳剧本。</div>
+      </div>
+    </div>
+    <p class="score-note reveal"><b>口径提示：</b>①「烂番茄 100%」是影评人新鲜度，不是观众评分，样本也不大，别当成「零差评」四处引用。② 1963 年戛纳的评审团特别奖是<b>并列</b>，另一部是捷克《当猫到来时》。③ 片长常见两个数字：133 分钟与 135 分钟，属不同拷贝与帧率口径，本页取 133。④「影史最佳武士片」这类排名各榜单口径不同，本页不做此断言，只摆分数。</p>
+  </div>
+</section>
+
+<!-- ================= 05 人物 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">05 &nbsp;/&nbsp; Characters</span>
+      <h2 class="sec-title">这屋子里没有恶人，<em>只有一套不肯松口的规矩</em></h2>
+      <p class="sec-desc">所有人的动机都站得住，所以冲突才无解。真正动手的那一方，从来不是某个坏人，是制度本身。</p>
+    </div>
+
+    <div class="people reveal">
+      <div class="person">
+        <span class="role">主角 / 浪人</span>
+        <h4>津云半四郎</h4>
+        <div class="who">仲代达矢 饰</div>
+        <p>五十岁上下，没有主家，也没有钱。他走进这扇门的时候姿态极低，低到对方以为他随时会跪下。<b>但他从进门起就在做一件事：让对方把话说满，把规矩摆齐。</b>他说得越客气，屋子里的空气就越紧。</p>
+        <span class="line">他不是来求死的，他是来要一个说法的。</span>
+      </div>
+      <div class="person">
+        <span class="role">井伊家 家老</span>
+        <h4>斋藤勘解由</h4>
+        <div class="who">三国连太郎 饰</div>
+        <p>管着这一藩的家务事，说话慢、礼数周全、从不动怒。他真心认为自己在保护这户人家——<b>在他的逻辑里，把闹事的人处理掉，就是尽责。</b>他不是坏人，他是那种最难对付的人：他相信自己做的一切都是为了大局。</p>
+        <span class="line">他讲规矩的时候，语气像在念一份公文。</span>
+      </div>
+      <div class="person">
+        <span class="role">另一个上门的浪人</span>
+        <h4>千千岩求女</h4>
+        <div class="who">石浜朗 饰</div>
+        <p>年轻，瘦，进门时连话都说不利索。他提出的请求和半四郎一模一样，但他身上有一个致命的破绽——<b>他的刀是竹子做的。</b>这个细节在片中只交代了几个字，却决定了整部电影的走向。</p>
+        <span class="line">他出现在片名之后不到半小时，但全片都在讲他。</span>
+      </div>
+      <div class="person">
+        <span class="role">半四郎之女</span>
+        <h4>美保</h4>
+        <div class="who">岩下志麻 饰</div>
+        <p>话不多，戏份也不算多，但她是这部电影的秤砣。<b>她的存在决定了半四郎讲的每一句话为什么必须是真的。</b>岩下志麻拍这部片时二十出头，此后成了小林正树与筱田正浩的常客。</p>
+        <span class="line">她让「体面」这个词，从抽象变成了可以摸到的东西。</span>
+      </div>
+      <div class="person">
+        <span class="role">井伊家 剑术指南</span>
+        <h4>泽泻彦九郎</h4>
+        <div class="who">丹波哲郎 饰</div>
+        <p>藩里的剑术教头，也是这套规矩的武力保障。<b>他的作用是让「体面」这两个字背后始终站着一个能拔刀的人。</b>有意思的是，全片最关键的时刻，他和另外两位高手都不在场——理由各有一套，且都挑不出错。</p>
+        <span class="line">规矩最诚实的时候，是它开始找借口的时候。</span>
+      </div>
+      <div class="person">
+        <span class="role">叙述者 / 制度</span>
+        <h4>井伊家与那本记录</h4>
+        <div class="who">全片真正的「第一人称」</div>
+        <p>电影的开场不是画面，是一份摊开的家史：某年某月某日某时，一个浪人出现在门前。画外音平静地念下去。<b>也就是说，这个故事是从「官方的说法」开始讲的</b>——而接下来两个小时，就是一个人在跟这份记录较劲。</p>
+        <span class="line">谁在写这件事，比这件事本身更值得追问。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 五件道具 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">06 &nbsp;/&nbsp; The Objects</span>
+      <h2 class="sec-title">五件道具，<em>撑起整部电影</em></h2>
+      <p class="sec-desc">这部片几乎没有外景，也不靠打斗撑场面。它靠的是五样东西——每一样都比台词说得更多。</p>
+    </div>
+    <div class="acts reveal">
+      <div class="act">
+        <span class="n">OBJ 01</span>
+        <h4>竹刀</h4>
+        <p>竹条捆成的练习刀，轻，脆，砍不伤人。用它切腹根本不可能一刀了事。<b>一个人带它上门，等于把自己的处境写在脸上。</b>全片所有冲突都从这根竹子开始。</p>
+      </div>
+      <div class="act">
+        <span class="n">OBJ 02</span>
+        <h4>白砂庭</h4>
+        <p>井伊家的院子，一面白砂，几块石头，没有任何可以躲的地方。小林正树把镜头压得很低，<b>让这片白砂看起来像一张铺好的纸</b>——等着有人在上面写字。</p>
+      </div>
+      <div class="act">
+        <span class="n">OBJ 03</span>
+        <h4>白布与木台</h4>
+        <p>切腹要在一块垫高的木台上铺白布，四角压平。这个动作在全片出现两次：<b>第一次是给别人铺的，第二次是给自己铺的。</b>两次之间，隔着一整部电影。</p>
+      </div>
+      <div class="act">
+        <span class="n">OBJ 04</span>
+        <h4>家史记录</h4>
+        <p>一本摊开的册子，写着某日某时某人的来访。它是这部电影的叙述者，也是它的对手。<b>纸上的字一旦写定，就很难再改；而人的一生，偏偏不是几行字能写完的。</b></p>
+      </div>
+      <div class="act">
+        <span class="n">OBJ 05</span>
+        <h4>蝉</h4>
+        <p>全片最响的声音不是刀，是蝉。屋子越静，蝉越吵。<b>武满彻的配乐稀疏到近乎缺席，把这份噪音全留给了夏天。</b>你会在某个瞬间发现，自己一直在听蝉，而不是听人说话。</p>
+      </div>
+    </div>
+    <p class="award-note reveal"><b>为什么把这五样单列：</b>大多数武士片靠「打」推进，这部片靠「摆」。导演把每个物件都摆在它该在的位置上，然后让镜头停住——<b>观众自己会算出接下来要发生什么，而这份「自己算出来」的恐惧，比任何血浆都有效。</b></p>
+  </div>
+</section>
+
+<!-- ================= 07 荣誉 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">07 &nbsp;/&nbsp; Awards</span>
+      <h2 class="sec-title">先在国外被认出来，<em>再回头成为本国的坐标</em></h2>
+      <p class="sec-desc">1963 年它去了戛纳，拿了评审团特别奖。此后的六十年里，它从一部「影展片」慢慢变成了一把尺子。</p>
+    </div>
+    <div class="awards reveal">
+      <div class="award win">
+        <span class="badge">1963</span>
+        <div class="body"><b>第 16 届戛纳电影节 &middot; 评审团特别奖</b><small>与捷克《当猫到来时》并列；同年金棕榈为维斯康蒂《豹》</small></div>
+      </div>
+      <div class="award win">
+        <span class="badge">1963</span>
+        <div class="body"><b>每日电影奖 &middot; 最佳影片</b><small>日本历史最久的电影奖之一，由《每日新闻》主办</small></div>
+      </div>
+      <div class="award win">
+        <span class="badge">1963</span>
+        <div class="body"><b>蓝丝带奖 &middot; 最佳男主角 / 最佳剧本</b><small>仲代达矢 / 桥本忍。蓝丝带由东京七大报影评记者投票产生</small></div>
+      </div>
+      <div class="award">
+        <span class="badge">1962</span>
+        <div class="body"><b>《电影旬报》年度十佳 &middot; 第三位</b><small>该榜由日本影评人投票，被视为本国评价最硬的一把尺</small></div>
+      </div>
+      <div class="award wide">
+        <span class="badge">NOTE</span>
+        <div class="body"><b>它被重拍过，也被修过一次。</b>2011 年，三池崇史把它重拍成《一命》，用 3D 拍摄，是影史少见的「同一个故事、两个时代、两种技术」的对照实验。Criterion 出过修复版蓝光，是目前画质最好的一版。<small>重拍版更暖、更抒情；原版更冷、更硬。看完任意一版，你都会想去看另一版——但顺序最好是先看 1962 年这一版。</small></div>
+      </div>
+    </div>
+    <p class="award-note reveal"><b>一句提醒：</b>这部片常被写成「日本武士片的巅峰」。这个说法在各类榜单里都出现过，但它本质上是<b>一部反武士片的武士片</b>——它拆的正是「巅峰」那套东西。带着这个前提看，你才不会把它当成一部热血片。</p>
+  </div>
+</section>
+
+<!-- ================= 08 谱系 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">08 &nbsp;/&nbsp; Lineage</span>
+      <h2 class="sec-title">一条线，<em>从「武士很帅」走到「武士很难」</em></h2>
+      <p class="sec-desc">五部片子，六十年。日本导演处理「刀」这个题材，走的方向几乎是一条单行道：越来越不英雄。</p>
+    </div>
+    <div class="lineage reveal">
+      <div class="kin">
+        <div class="t">1954 &middot; 黑泽明</div>
+        <div class="n">七武士</div>
+        <div class="d">七个武士替农民打仗，打完还是被农民怕着。英雄的落寞，从这儿开始。</div>
+        <div class="no">01</div>
+      </div>
+      <div class="kin now">
+        <div class="t">1962 &middot; 小林正树</div>
+        <div class="n">切腹</div>
+        <div class="d">一个浪人上门求死，把一整套规矩逼到了墙角。</div>
+        <div class="no">本期</div>
+      </div>
+      <div class="kin">
+        <div class="t">1967 &middot; 小林正树</div>
+        <div class="n">夺命剑</div>
+        <div class="d">一个武士为了不肯休妻，跟整个藩翻了脸。同一导演的下一刀。</div>
+        <div class="no">03</div>
+      </div>
+      <div class="kin">
+        <div class="t">1980 &middot; 黑泽明</div>
+        <div class="n">影武者</div>
+        <div class="d">一个人替另一个人活着，替到最后连自己都没了。</div>
+        <div class="no">04</div>
+      </div>
+      <div class="kin">
+        <div class="t">2011 &middot; 三池崇史</div>
+        <div class="n">一命</div>
+        <div class="d">同一个故事，换成了 3D、彩色，和更愿意哭的镜头。</div>
+        <div class="no">05</div>
+      </div>
+    </div>
+    <p class="award-note reveal">排序按年份。除本片与《一命》外，另外三部都在系列此前的片单里出现过；放在一条线上只为看清一件事：<b>日本导演拍武士，最后几乎都拍成了「一个人跟一整套体制作对」。</b>刀是道具，体制才是主角。</p>
+  </div>
+</section>
+
+<!-- ================= 09 六宫格 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">09 &nbsp;/&nbsp; Six Frames</span>
+      <h2 class="sec-title">六个值得记住的<em>画面</em></h2>
+      <p class="sec-desc">只讲镜头怎么拍、声音怎么用，不讲发生了什么。</p>
+    </div>
+    <div class="grid6 reveal">
+      <div class="g6">
+        <span class="idx">01 / OPENING</span>
+        <h4>一张摊开的纸</h4>
+        <p>开场没有人物，只有一份摊开的家史，画外音报出时间、地点、来者姓名。<b>全片的第一句话不是人说的，是档案说的。</b>这个选择定下了两个小时的敌我关系。</p>
+      </div>
+      <div class="g6">
+        <span class="idx">02 / THE GATE</span>
+        <h4>门框把画面切两半</h4>
+        <p>2.35:1 的宽银幕，被门柱、拉门、屏风反复分割。<b>人永远坐在一个框里</b>，框比人窄。看久了会有一种轻微的被关起来的感觉——那是故意的。</p>
+      </div>
+      <div class="g6">
+        <span class="idx">03 / LOW ANGLE</span>
+        <h4>镜头压到席子高度</h4>
+        <p>大量镜头贴着榻榻米拍，人物变成坐在地上的一团黑。天花板压下来，空间变矮。<b>这是能剧的机位</b>：观众看的不是动作，是姿态。</p>
+      </div>
+      <div class="g6">
+        <span class="idx">04 / THE CLOTH</span>
+        <h4>铺布的那双手</h4>
+        <p>白布展开、压平、四角对齐，全程一个长镜头，没有台词。<b>小林正树把「准备」拍得比「发生」还慢</b>，慢到你的心跳会跟着那只手走。</p>
+      </div>
+      <div class="g6">
+        <span class="idx">05 / SILENCE</span>
+        <h4>蝉，和突然的安静</h4>
+        <p>蝉声几乎铺满整部片子，响到让人烦躁。然后在某一刻，它停了——<b>停的那一秒，比之前所有的声音都响。</b>武满彻用「不写音乐」完成了这部片最重要的一次配乐。</p>
+      </div>
+      <div class="g6">
+        <span class="idx">06 / LAST SHOT</span>
+        <h4>最后一个镜头</h4>
+        <p>它非常静，静到很多人以为片子还没放完。镜头里剩下的东西不多，但你会在走出去很久之后才想起它。<b>具体是什么，本页不写。</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10 为何值得看 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">10 &nbsp;/&nbsp; Why It Matters</span>
+      <h2 class="sec-title">为什么值得看，<em>而且值得现在看</em></h2>
+    </div>
+    <div class="why reveal">
+      <div class="blk">
+        <div class="n">01</div>
+        <div>
+          <h4>它把「体面」这两个字拆开，让你看清里面是什么</h4>
+          <p>我们平时说一个人体面，指的是他做事有分寸、不失礼。这部片说：<b>当「体面」变成一套必须执行的程序，它就不再保护人，而是修理人。</b>一个年轻人拿不出体面的刀，这套程序就把他碾了过去，而且全程合乎规矩、无可指摘。真正的恐怖不在刀上，在「我们只是按规矩办」这句话里。</p>
+        </div>
+      </div>
+      <div class="blk">
+        <div class="n">02</div>
+        <div>
+          <h4>剧本是三层套起来的，而且每一层都在推翻上一层</h4>
+          <p>桥本忍写过《罗生门》和《七武士》，这部是他结构上最狠的一次：<b>官方的记录是一层，家老的讲述是一层，浪人自己的讲述是第三层。</b>三层不是并列，是依次拆台。你会在中段突然意识到，前面半小时听到的「事实」，是被整理过的版本——这种被欺骗感，是这部电影最锋利的体验。</p>
+        </div>
+      </div>
+      <div class="blk">
+        <div class="n">03</div>
+        <div>
+          <h4>黑白宽银幕，每一帧都像能剧舞台</h4>
+          <p>1962 年的松竹 GrandScope，2.35:1，纯黑白。没有色彩可依靠，导演只能靠构图和光：<b>白砂、黑瓦、灰墙、一张脸。</b>大量对称、正面、静止的画面，人物像被供在台上。这种「不动」会逼着你看细节——手指、衣角、谁先低头。看惯快剪的人，前二十分钟会不适应，之后会上瘾。</p>
+        </div>
+      </div>
+      <div class="blk">
+        <div class="n">04</div>
+        <div>
+          <h4>武满彻的配乐，是一门「减法」的手艺</h4>
+          <p>这是他早期最重要的电影配乐之一：<b>没有大乐队，只有尺八、琵琶和零星的打击。</b>该响的时候不响，该停的时候偏要多停两秒。他后来成了日本现代音乐最重要的人物，而这部片里，你已经能听见他那种「用沉默配乐」的方法——声音不是用来煽情的，是用来量空间的。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 11 观影提示 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">11 &nbsp;/&nbsp; Before You Watch</span>
+      <h2 class="sec-title">观影提示</h2>
+      <p class="sec-desc">不是警告，是让你带着正确的预期进去。</p>
+    </div>
+    <div class="tips reveal">
+      <div class="tip">
+        <h5>心理准备</h5>
+        <p>全片有一场切腹戏，拍得<b>直接、漫长、不闪躲</b>。没有夸张的血浆，但那种「一个人被规矩慢慢磨死」的过程，比血腥更难受。这场戏是全片的道德核心，不是猎奇，但它确实不好看。</p>
+      </div>
+      <div class="tip">
+        <h5>画幅</h5>
+        <p>务必找 <b>2.35:1</b> 的版本。很多平台会把它裁成 16:9，一裁，导演精心排的左右对称就全废了——这部片的构图是横向展开的，裁掉两边等于砍掉一半台词。</p>
+      </div>
+      <div class="tip">
+        <h5>节奏</h5>
+        <p>133 分钟，前四十分钟基本全在一个房间里说话。<b>不要快进，也不要一边刷手机一边看</b>——它的信息全在对话的次序里，错过一句，后面那层「推翻」就接不上。</p>
+      </div>
+      <div class="tip">
+        <h5>术语</h5>
+        <p>会频繁出现「家老」「浪人」「介错」「上屋敷」。<b>不认识也不影响，但知道两个词会好看很多：</b>「家老」是藩里管事的重臣；「介错」是切腹时站在旁边、负责补上最后一刀的人。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OUTRO ================= -->
+<div class="outro">
+  <div class="wrap">
+    <p class="q reveal">他们守的从来不是道，<br>是<em>门面</em>。<br>而门面，是要有人站在外面才成立的。</p>
+    <div class="src reveal">编辑部主题句 &middot; 非片中台词</div>
+    <div class="seal reveal"><span>JAPAN</span><b>NO.02</b></div>
+  </div>
+</div>
+
+<footer>
+  <div class="fwrap">
+    <span>日本电影经典 &middot; 第 02 部 &nbsp;/&nbsp; <em>切腹 Harakiri</em></span>
+    <span>数据：豆瓣 &middot; IMDb / OMDb &middot; 戛纳电影节档案 &middot; 每日电影奖 / 蓝丝带奖记录</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.06});
+  for(var i=0;i<els.length;i++){ io.observe(els[i]); }
+
+  /* ---------- HUD ---------- */
+  var hud = document.getElementById('hud');
+  var dot = document.getElementById('hudDot');
+  var val = document.getElementById('hudVal');
+  var lb  = document.getElementById('hudLb');
+  var stops = document.querySelectorAll('#hud .hud-stops em');
+  var labels = ['门前','玄关','座敷','庭','日暮'];
+  var lines = [
+    '门前 · 宽永七年五月十三日，申时',
+    '玄关 · 家老出面，先讲了一个故事',
+    '座敷 · 他要求讲完自己的事，再动手',
+    '庭 · 白砂、木台、还没铺开的布',
+    '日暮 · 庭院里的人，一个都没有走'
+  ];
+  function onScroll(){
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    if(y > window.innerHeight*0.55){ hud.classList.add('show'); } else { hud.classList.remove('show'); }
+    var max = document.body.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, y/max) : 0;
+    dot.style.left = (p*100).toFixed(2) + '%';
+    var k = Math.min(4, Math.floor(p*5));
+    if(val.textContent !== labels[k]){
+      val.textContent = labels[k];
+      lb.textContent = lines[k];
+      for(var j=0;j<stops.length;j++){
+        if(j===k){ stops[j].classList.add('on'); } else { stops[j].classList.remove('on'); }
+      }
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- rain ---------- */
+  var cv = document.getElementById('heroCanvas');
+  if(cv && cv.getContext){
+    var ctx = cv.getContext('2d');
+    var W=0,H=0,DPR=Math.min(2, window.devicePixelRatio||1);
+    var drops=[];
+    function size(){
+      var r = cv.getBoundingClientRect();
+      W=r.width; H=r.height;
+      cv.width = Math.round(W*DPR); cv.height = Math.round(H*DPR);
+      ctx.setTransform(DPR,0,0,DPR,0,0);
+    }
+    function init(){
+      drops = [];
+      var n = Math.round(W/9);
+      for(var i=0;i<n;i++){
+        drops.push({
+          x: Math.random()*W,
+          y: Math.random()*H,
+          l: 9 + Math.random()*20,
+          v: 4.2 + Math.random()*7,
+          d: 0.8 + Math.random()*0.9,
+          a: 0.05 + Math.random()*0.13
+        });
+      }
+    }
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<drops.length;i++){
+        var f=drops[i];
+        f.y += f.v; f.x += f.d;
+        if(f.y > H+30){ f.y = -30; f.x = Math.random()*W; }
+        if(f.x > W+10) f.x = -10;
+        ctx.beginPath();
+        ctx.moveTo(f.x, f.y);
+        ctx.lineTo(f.x - f.l*0.13, f.y + f.l);
+        ctx.strokeStyle = 'rgba(232,225,210,'+f.a.toFixed(3)+')';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+      requestAnimationFrame(draw);
+    }
+    size(); init(); draw();
+    window.addEventListener('resize', function(){ size(); init(); });
+  }
+})();
+</script>
+</body>
+</html>

@@ -431,10 +431,10 @@
         <stop offset="100%" stop-color="#080b12"/>
       </linearGradient>
       <linearGradient id="train" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#2b3949"/>
-        <stop offset="34%" stop-color="#1a2431"/>
-        <stop offset="72%" stop-color="#0d141e"/>
-        <stop offset="100%" stop-color="#080c14"/>
+        <stop offset="0%" stop-color="#1d2836"/>
+        <stop offset="30%" stop-color="#131b27"/>
+        <stop offset="68%" stop-color="#0a1017"/>
+        <stop offset="100%" stop-color="#06090f"/>
       </linearGradient>
       <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="#cfdae6" stop-opacity="0"/>
@@ -559,7 +559,8 @@
     <g>
       <!-- 车体 -->
       <path d="M384 646 L1058 646 Q1122 648 1158 672 Q1178 686 1178 704 L1178 712 L384 712 Z" fill="url(#train)"/>
-      <path d="M384 648 L1058 648 Q1120 650 1156 672" fill="none" stroke="#7b93aa" stroke-width="1.8" stroke-opacity=".5"/>
+      <path d="M384 648 L1058 648 Q1120 650 1156 672" fill="none" stroke="#a8c0d2" stroke-width="1.8" stroke-opacity=".58"/>
+      <path d="M384 712 L1178 712" stroke="#05080d" stroke-width="3" stroke-opacity=".9"/>
       <path d="M384 710 L1176 710" stroke="#e34a3d" stroke-width="1" stroke-opacity=".2"/>
       <!-- 车门缝 -->
       <g stroke="#131c28" stroke-width="2">
@@ -569,31 +570,43 @@
       </g>
       <!-- 车窗带 -->
       <rect x="404" y="662" width="648" height="32" rx="2" fill="#070b12"/>
+      <!-- 车窗带的光晕（先铺光，再压窗格） -->
+      <ellipse cx="560" cy="678" rx="300" ry="46" fill="url(#winCold)" opacity=".52"/>
+      <ellipse cx="520" cy="680" rx="250" ry="38" fill="url(#winWarm)" opacity=".34"/>
+      <ellipse cx="1000" cy="678" rx="220" ry="38" fill="url(#winCold)" opacity=".34"/>
       <g>
         <rect x="412" y="666" width="28" height="24" rx="2" fill="#161f2b"/>
-        <rect x="448" y="666" width="28" height="24" rx="2" fill="#cfe6f0" opacity=".72"/>
+        <rect x="448" y="666" width="28" height="24" rx="2" fill="#e8f5fc" opacity=".92"/>
         <rect x="484" y="666" width="28" height="24" rx="2" fill="#161f2b"/>
-        <rect x="520" y="666" width="28" height="24" rx="2" fill="#e8c98e" opacity=".62"/>
+        <rect x="520" y="666" width="28" height="24" rx="2" fill="#f4d9a4" opacity=".86"/>
         <rect x="556" y="666" width="28" height="24" rx="2" fill="#161f2b"/>
-        <rect x="592" y="666" width="28" height="24" rx="2" fill="#161f2b"/>
-        <rect x="628" y="666" width="28" height="24" rx="2" fill="#cfe6f0" opacity=".55"/>
+        <rect x="592" y="666" width="28" height="24" rx="2" fill="#1b2634"/>
+        <rect x="628" y="666" width="28" height="24" rx="2" fill="#e2f1fa" opacity=".8"/>
         <rect x="664" y="666" width="28" height="24" rx="2" fill="#161f2b"/>
         <rect x="700" y="666" width="28" height="24" rx="2" fill="#161f2b"/>
-        <rect x="736" y="666" width="28" height="24" rx="2" fill="#e8c98e" opacity=".5"/>
+        <rect x="736" y="666" width="28" height="24" rx="2" fill="#f0d097" opacity=".74"/>
         <rect x="772" y="666" width="28" height="24" rx="2" fill="#161f2b"/>
-        <rect x="808" y="666" width="28" height="24" rx="2" fill="#cfe6f0" opacity=".6"/>
+        <rect x="808" y="666" width="28" height="24" rx="2" fill="#e8f5fc" opacity=".84"/>
         <rect x="844" y="666" width="28" height="24" rx="2" fill="#161f2b"/>
-        <rect x="880" y="666" width="28" height="24" rx="2" fill="#161f2b"/>
+        <rect x="880" y="666" width="28" height="24" rx="2" fill="#191f2c"/>
         <rect x="916" y="666" width="28" height="24" rx="2" fill="#161f2b"/>
-        <rect x="952" y="666" width="28" height="24" rx="2" fill="#cfe6f0" opacity=".45"/>
+        <rect x="952" y="666" width="28" height="24" rx="2" fill="#dceaf4" opacity=".62"/>
         <rect x="988" y="666" width="28" height="24" rx="2" fill="#161f2b"/>
       </g>
-      <ellipse cx="600" cy="678" rx="330" ry="42" fill="url(#winCold)" opacity=".34"/>
-      <ellipse cx="500" cy="678" rx="260" ry="34" fill="url(#winWarm)" opacity=".22"/>
+      <!-- 玻璃反光 -->
+      <g stroke="#ffffff" stroke-opacity=".16" stroke-width="1">
+        <line x1="452" y1="668" x2="452" y2="688"/>
+        <line x1="524" y1="668" x2="524" y2="688"/>
+        <line x1="812" y1="668" x2="812" y2="688"/>
+      </g>
       <!-- 驾驶室风挡 -->
       <path d="M1080 660 L1146 672 L1152 698 L1080 698 Z" fill="#0a1119"/>
-      <path d="M1084 662 L1144 673 L1150 696 L1084 696 Z" fill="#dceef6" opacity=".5"/>
-      <ellipse cx="1116" cy="682" rx="120" ry="52" fill="url(#winCold)" opacity=".46"/>
+      <path d="M1084 662 L1144 673 L1150 696 L1084 696 Z" fill="#e6f2f9" opacity=".72"/>
+      <ellipse cx="1116" cy="682" rx="132" ry="56" fill="url(#winCold)" opacity=".62"/>
+      <!-- 车头轮廓光 -->
+      <path d="M1058 646 Q1122 648 1158 672 Q1178 686 1178 704" fill="none" stroke="#cbd9e2" stroke-opacity=".42" stroke-width="2"/>
+      <!-- 前照灯外泄光 -->
+      <path d="M1178 700 L1440 646 L1440 758 Z" fill="url(#head)" opacity=".3"/>
       <!-- 车灯：前照 + 尾灯 -->
       <ellipse cx="1170" cy="700" rx="58" ry="34" fill="url(#head)"/>
       <circle cx="1170" cy="700" r="4" fill="#fff6e2" class="beacon"/>

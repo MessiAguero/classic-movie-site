@@ -114,7 +114,6 @@
   .chip.hot{border-color:rgba(191,63,39,.6);color:var(--cinnabar-light)}
   .chip.tag{border-color:rgba(169,202,209,.5);color:var(--celadon-light)}
   .chip.ink{border-color:rgba(236,225,200,.34);color:var(--paper)}
-  .chip.long{}
   .scroll-hint{
     position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
     z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.3em;
@@ -728,8 +727,12 @@
               <rect x="26" y="96" width="189" height="374" fill="url(#pLeft)"/>
               <rect x="215" y="96" width="189" height="374" fill="url(#pRight)"/>
               <rect x="196" y="96" width="40" height="374" fill="url(#pGutter)"/>
+              <!-- 界行（古抄本的行格） -->
+              <g stroke="#b3a888" stroke-width="0.6" opacity="0.2">
+                <path d="M32 112 V456"/><path d="M54 112 V456"/><path d="M76 112 V456"/><path d="M98 112 V456"/><path d="M120 112 V456"/><path d="M142 112 V456"/><path d="M164 112 V456"/><path d="M186 112 V456"/><path d="M208 112 V456"/>
+                <path d="M230 112 V456"/><path d="M252 112 V456"/><path d="M274 112 V456"/><path d="M296 112 V456"/><path d="M318 112 V456"/><path d="M340 112 V456"/><path d="M362 112 V456"/><path d="M384 112 V456"/>
+              </g>
               <rect x="26" y="96" width="378" height="374" fill="none" stroke="#f2ead6" stroke-width="0.9" opacity="0.34"/>
-              <rect x="26" y="96" width="189" height="374" fill="none" stroke="#8f8straight" stroke-width="0"/>
             </g>
 
             <!-- 右页：竖排题名 -->
@@ -740,36 +743,20 @@
               <text x="368" y="224" fill="#22262b" font-family="Georgia,Songti SC,STSong,serif" font-size="30" letter-spacing="4">魚</text>
               <text x="368" y="266" fill="#22262b" font-family="Georgia,STSong,serif" font-size="30" letter-spacing="4">譜</text>
 
-              <!-- 序文（示意小字） -->
-              <g fill="#5c5747" font-family="Georgia,Songti SC,serif" font-size="7.6" letter-spacing="1.2">
-                <text x="336" y="152">兹山者黑山也宋公</text>
-                <text x="336" y="166">谪黑山家人书辄称</text>
-                <text x="336" y="180">兹山兹亦黑也海中</text>
-                <text x="336" y="194">鱼族极繁而知名者</text>
-                <text x="336" y="208">鲜博物者所宜察也</text>
-                <text x="312" y="152">余乃博访于岛人意</text>
-                <text x="312" y="166">欲成谱而人各异言</text>
-                <text x="312" y="180">莫可适从岛中有张</text>
-                <text x="312" y="194">德顺昌大者杜门谢</text>
-                <text x="312" y="208">客笃好古书性恬静</text>
-                <text x="288" y="152">精密凡草木鸟鱼接</text>
-                <text x="288" y="166">于耳目者皆细察而</text>
-                <text x="288" y="180">沉思得其性理故其</text>
-                <text x="288" y="194">言为可信余遂邀而</text>
-                <text x="288" y="208">馆之与之讲究序次</text>
-                <text x="264" y="152">成编名之曰兹山鱼</text>
-                <text x="264" y="166">谱旁及于海禽海菜</text>
-                <text x="264" y="180">以资后人之考验嘉</text>
-                <text x="264" y="194">庆甲戌冽水丁若铨</text>
-                <text x="264" y="208">书</text>
-                <text x="240" y="152">三卷其一</text>
+              <!-- 序文（竖排小字，取自本片序文前五十字） -->
+              <g fill="#5c5747" font-family="Georgia,Songti SC,serif" font-size="7.6">
+                <text x="340" y="150">兹<tspan x="340" dy="14">山</tspan><tspan x="340" dy="14">者</tspan><tspan x="340" dy="14">黑</tspan><tspan x="340" dy="14">山</tspan><tspan x="340" dy="14">也</tspan><tspan x="340" dy="14">余</tspan><tspan x="340" dy="14">谪</tspan><tspan x="340" dy="14">黑</tspan><tspan x="340" dy="14">山</tspan></text>
+                <text x="318" y="150">黑<tspan x="318" dy="14">山</tspan><tspan x="318" dy="14">之</tspan><tspan x="318" dy="14">名</tspan><tspan x="318" dy="14">幽</tspan><tspan x="318" dy="14">晦</tspan><tspan x="318" dy="14">可</tspan><tspan x="318" dy="14">怖</tspan><tspan x="318" dy="14">家</tspan><tspan x="318" dy="14">人</tspan></text>
+                <text x="296" y="150">书<tspan x="296" dy="14">辄</tspan><tspan x="296" dy="14">称</tspan><tspan x="296" dy="14">兹</tspan><tspan x="296" dy="14">山</tspan><tspan x="296" dy="14">兹</tspan><tspan x="296" dy="14">亦</tspan><tspan x="296" dy="14">黑</tspan><tspan x="296" dy="14">也</tspan><tspan x="296" dy="14">兹</tspan></text>
+                <text x="274" y="150">山<tspan x="274" dy="14">海</tspan><tspan x="274" dy="14">中</tspan><tspan x="274" dy="14">鱼</tspan><tspan x="274" dy="14">族</tspan><tspan x="274" dy="14">极</tspan><tspan x="274" dy="14">繁</tspan><tspan x="274" dy="14">而</tspan><tspan x="274" dy="14">知</tspan><tspan x="274" dy="14">名</tspan></text>
+                <text x="252" y="150">者<tspan x="252" dy="14">鲜</tspan><tspan x="252" dy="14">博</tspan><tspan x="252" dy="14">物</tspan><tspan x="252" dy="14">者</tspan><tspan x="252" dy="14">所</tspan><tspan x="252" dy="14">宜</tspan><tspan x="252" dy="14">察</tspan><tspan x="252" dy="14">也</tspan><tspan x="252" dy="14">余</tspan></text>
               </g>
 
               <!-- 朱印 -->
-              <g transform="translate(240 236)">
-                <rect x="0" y="0" width="26" height="26" fill="#b8402c" opacity="0.9"/>
-                <text x="6" y="18" fill="#f4e9d8" font-family="Georgia,Songti SC,serif" font-size="13">巽</text>
-                <text x="6" y="0" fill="none" font-size="0">印</text>
+              <g transform="translate(250 302)">
+                <rect x="0" y="0" width="27" height="27" fill="#b8402c" opacity="0.88"/>
+                <text x="13.5" y="12" text-anchor="middle" fill="#f4e9d8" font-family="Georgia,Songti SC,serif" font-size="10.5">巽</text>
+                <text x="13.5" y="23" text-anchor="middle" fill="#f4e9d8" font-family="Georgia,Songti SC,serif" font-size="10.5">庵</text>
               </g>
             </g>
 
@@ -793,17 +780,17 @@
               <circle cx="92" cy="22" r="2" fill="#3a3f45" stroke="none"/>
               <path d="M34 44 L30 58"/><path d="M54 6 L56 -8"/>
             </g>
-            <g transform="rotate(-1.6 215 283)" fill="#5c5747" font-family="Georgia,Songti SC,serif" font-size="7.4" letter-spacing="1.4">
+            <g transform="rotate(-1.6 215 283)" fill="#5c5747" font-family="Georgia,Songti SC,serif" font-size="7.4">
               <text x="182" y="168">斑</text><text x="182" y="180">鳐</text>
               <text x="196" y="272">黃</text><text x="196" y="284">姑</text>
               <text x="196" y="296">魚</text>
               <text x="30" y="358">靑</text><text x="30" y="370">魚</text>
-              <text x="40" y="434" fill="#6a6553" font-size="7">岛中张德顺昌大杜门谢客笃好古书</text>
-              <text x="40" y="446" fill="#6a6553" font-size="7">性恬静精密凡草木鸟鱼皆细察之</text>
+              <text x="150" y="392">博<tspan x="150" dy="12">访</tspan><tspan x="150" dy="12">于</tspan><tspan x="150" dy="12">岛</tspan><tspan x="150" dy="12">人</tspan></text>
+              <text x="170" y="392">细<tspan x="170" dy="12">察</tspan><tspan x="170" dy="12">得</tspan><tspan x="170" dy="12">其</tspan><tspan x="170" dy="12">理</tspan></text>
             </g>
 
             <!-- 桌面物件：灯 -->
-            <circle cx="58" cy="486" r="66" fill="url(#pLamp)"/>
+            <circle cx="58" cy="486" r="78" fill="url(#pLamp)"/>
             <path d="M34 502 L82 502 L74 516 L42 516 Z" fill="#2b2b30"/>
             <path d="M58 502 L58 494" stroke="#2b2b30" stroke-width="2.4"/>
             <path d="M58 490 C54 482 56 474 60 468 C62 474 63 482 58 490 Z" fill="#e8a468" opacity="0.95"/>
@@ -819,9 +806,13 @@
               <path d="M286 502 L299 498 L293 506 Z" fill="#15181c"/>
             </g>
 
-            <!-- 铜镇纸 -->
-            <rect x="34" y="452" width="86" height="9" rx="3" fill="#3c382f"/>
-            <rect x="34" y="452" width="86" height="3" rx="1.5" fill="#575144" opacity="0.7"/>
+            <!-- 镇纸（压在页边的一块石头） -->
+            <g>
+              <ellipse cx="58" cy="468" rx="52" ry="6" fill="#000" opacity="0.46"/>
+              <path d="M4 442 L104 440 L110 452 L102 461 L12 462 L2 452 Z" fill="#3a362e"/>
+              <path d="M4 442 L104 440 L110 452 L102 454 L6 456 Z" fill="#5b5546" opacity="0.5"/>
+              <path d="M30 448 L92 447" stroke="#6f6857" stroke-width="1" opacity="0.4"/>
+            </g>
 
             <rect x="0" y="0" width="430" height="560" fill="url(#pVig)" pointer-events="none"/>
 
@@ -839,7 +830,7 @@
         </div>
         <div class="read">
           <h4>02 &nbsp;/&nbsp; 一页纸上的几百个名字</h4>
-          <p>左页上那几条鱼不是装饰——它们就是这部电影的内容本身。<b>这部片子最动人的地方，是它相信"给一样东西取对名字"值得用一辈子去做。</b></p>
+          <p>左页上那几条鱼不是装饰——它们就是这部电影的内容本身。<b>这部片子最动人的地方，是它相信“给一样东西取对名字”值得用一辈子去做。</b></p>
         </div>
         <div class="read">
           <h4>03 &nbsp;/&nbsp; 一枚朱印，是这本书唯一的署名</h4>
@@ -1074,27 +1065,27 @@
       <div class="g6">
         <span class="idx">02</span>
         <h4>薛景求第一次演古装</h4>
-        <p>这位韩国影帝此前从未拍过历史题材。据片方与媒体记述，他与卞约汉为配合预算主动下调了片酬。<b>最终他把这个角色演到了青龙奖影帝</b>——而且是那一届男主角奖项五位入围者里唯一获奖的人。</p>
+        <p>这位韩国影帝此前从未拍过历史题材。据片方与媒体记述，他与卞约汉为配合预算主动下调了片酬。<b>他也凭这个角色成为那一届青龙奖的五位影帝入围者里，唯一把奖杯带走的人。</b></p>
       </div>
       <div class="g6">
         <span class="idx">03</span>
         <h4>两种知识的等价交换</h4>
-        <p>全片最动人的结构不是"老师教学生"：他教《论语》，对方教他潮汐、鱼汛和几百个鱼名。<b>这是一种把"士"与"民"的等级打平的知识交换</b>，也是这部电影真正的题眼。</p>
+        <p>全片最动人的结构不是“老师教学生”：他教《论语》，对方教他潮汐、鱼汛和几百个鱼名。<b>这是一种把“士”与“民”的等级打平的知识交换</b>，也是这部电影真正的题眼。</p>
       </div>
       <div class="g6">
         <span class="idx">04</span>
         <h4>它有一个真实的手稿做底本</h4>
-        <p>影片的起点是《兹山鱼谱》的序文。那篇序里，作者写了大量"我去问岛上的人，各说各话，没法统一"的句子，也真的写下了那个年轻人的名字。<b>这段一百多字的序，撑起了整部电影。</b></p>
+        <p>影片的起点是《兹山鱼谱》的序文。那篇序里，作者写了大量“我去问岛上的人，各说各话，没法统一”的句子，也真的写下了那个年轻人的名字。<b>这段一百多字的序，撑起了整部电影。</b></p>
       </div>
       <div class="g6">
         <span class="idx">05</span>
         <h4>声音是它的第二主角</h4>
-        <p>海浪、橹声、翻纸、抄写、风过屋瓦——方俊锡的配乐并不抢戏，而是贴着这些环境声走。<b>该片拿下青龙最佳音乐，靠的不是旋律，是"安静得体"。</b></p>
+        <p>海浪、橹声、翻纸、抄写、风过屋瓦——方俊锡的配乐并不抢戏，而是贴着这些环境声走。<b>该片拿下青龙最佳音乐，靠的不是旋律，是“安静得体”。</b></p>
       </div>
       <div class="g6">
         <span class="idx">06</span>
         <h4>李濬益一直在拍同一种人</h4>
-        <p>从《王的男人》《思悼》《东柱》到这部，他反复拍的是<b>"被时代推到边缘之后，人还剩什么"</b>。《兹山鱼谱》给出的答案最朴素也最难：剩下一件可以每天做下去的小事。</p>
+        <p>从《王的男人》《思悼》《东柱》到这部，他反复拍的是<b>“被时代推到边缘之后，人还剩什么”</b>。《兹山鱼谱》给出的答案最朴素也最难：剩下一件可以每天做下去的小事。</p>
       </div>
     </div>
   </div>
@@ -1105,7 +1096,7 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="sec-num">09 / Why Watch</span>
-      <h2 class="sec-title">为什么值得一看：<em>它好，但不好"消费"</em></h2>
+      <h2 class="sec-title">为什么值得一看：<em>它好，但不好“消费”</em></h2>
     </div>
 
     <div class="why reveal">

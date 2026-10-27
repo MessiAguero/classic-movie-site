@@ -117,7 +117,7 @@
   .chip.ink{border-color:rgba(236,230,220,.32);color:var(--paper)}
   .chip.sage{border-color:rgba(126,156,180,.55);color:var(--slate-light)}
   .scroll-hint{
-    position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
+    position:absolute;left:50%;bottom:18px;transform:translateX(-50%);
     z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.3em;
     color:var(--ash-dim);display:flex;flex-direction:column;align-items:center;gap:9px;
   }
@@ -164,9 +164,8 @@
     box-shadow:0 0 12px rgba(217,154,154,.42);
   }
   #hud .leg-ic::after{
-    content:"";position:absolute;left:4px;top:17px;width:18px;height:4px;
-    border-radius:50%;background:rgba(126,156,180,.55);
-    box-shadow:0 0 10px rgba(126,156,180,.3);
+    content:"";position:absolute;left:4px;top:19px;width:16px;height:1.4px;
+    border-radius:1px;background:linear-gradient(90deg,transparent,rgba(126,156,180,.62),transparent);
   }
   #hud .leg-line{flex:1 1 auto;height:1px;background:linear-gradient(90deg,rgba(217,154,154,.5),rgba(126,156,180,.34))}
   #hud .leg-txt{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--ash-dim)}
@@ -343,6 +342,7 @@
     border:1px solid var(--line-strong);color:var(--ash);
   }
   .award.win .badge{border-color:rgba(201,160,106,.62);color:var(--brass-light)}
+  .award.wide{grid-column:1/-1}
   .award .body{font-size:13.5px;color:var(--paper-dim);line-height:1.75}
   .award .body b{color:var(--paper)}
   .award .body small{display:block;color:var(--ash);font-size:11.5px;margin-top:4px}
@@ -380,7 +380,7 @@
   .why .blk{display:grid;grid-template-columns:64px minmax(0,1fr);gap:26px;align-items:start}
   .why .n{font-family:var(--serif);font-size:44px;line-height:1;color:rgba(217,154,154,.55);font-weight:400}
   .why h4{font-family:var(--serif);font-size:22px;font-weight:400;color:#f7f3ea;margin-bottom:12px;line-height:1.42}
-  .why p{font-size:14.5px;color:var(--paper-dim);line-height:1.95}
+  .why p{font-size:14.5px;color:var(--paper-dim);line-height:1.95;max-width:860px}
   .why p b{color:var(--paper)}
 
   /* 提示三格 */
@@ -439,6 +439,12 @@
   }
   @media (min-width:981px){#hud{display:block}}
   #hud.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media (max-width:380px){
+    .hero-sub{font-size:12.9px;line-height:1.72}
+    .chips{margin-top:16px;gap:6px}
+    .chip{font-size:9.4px;padding:4px 8px}
+    h1.title{font-size:31px}
+  }
   @media (max-width:760px){
     .grid6{grid-template-columns:minmax(0,1fr)}
     body{font-size:15.4px}
@@ -450,7 +456,7 @@
     .eyebrow span{display:none}
     h1.title{font-size:clamp(32px,10.4vw,52px);letter-spacing:.04em;margin:16px 0 8px}
     .title-en{font-size:13px;letter-spacing:.22em}
-    .title-kr{font-size:12px;letter-spacing:.11em;margin-bottom:18px}
+    .title-kr{font-size:11.2px;letter-spacing:.05em;margin-bottom:18px;line-height:1.8}
     .hero-sub{font-size:13.4px;line-height:1.78;padding-left:14px}
     .hero-sub .br-lg{display:none}
     .chips{gap:7px;margin-top:22px}
@@ -462,6 +468,11 @@
     section.band{padding:66px 0}
     .sec-head{margin-bottom:34px}
     .outro{padding:80px 0 72px}
+    .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .spec .cell{padding:14px 15px}
+    .spec dt{font-size:8.8px;letter-spacing:.14em}
+    .spec dd{font-size:12.8px}
+    .spec dd small{font-size:11px}
     footer .fwrap{padding:0 20px}
   }
 </style>
@@ -487,45 +498,50 @@
 <div class="hero">
   <svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
     <defs>
-      <linearGradient id="gSky" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="690">
+      <linearGradient id="gSky" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="700">
         <stop offset="0" stop-color="#04060c"/>
-        <stop offset="0.34" stop-color="#070c16"/>
-        <stop offset="0.56" stop-color="#0e1524"/>
-        <stop offset="0.74" stop-color="#18202f"/>
-        <stop offset="0.87" stop-color="#2b2f42"/>
-        <stop offset="0.95" stop-color="#403a4c"/>
-        <stop offset="1" stop-color="#574452"/>
+        <stop offset="0.30" stop-color="#060a13"/>
+        <stop offset="0.52" stop-color="#0b111c"/>
+        <stop offset="0.70" stop-color="#141b29"/>
+        <stop offset="0.82" stop-color="#222738"/>
+        <stop offset="0.91" stop-color="#373448"/>
+        <stop offset="0.97" stop-color="#4f4151"/>
+        <stop offset="1" stop-color="#634d57"/>
       </linearGradient>
-      <linearGradient id="gRiver" gradientUnits="userSpaceOnUse" x1="0" y1="688" x2="0" y2="770">
-        <stop offset="0" stop-color="#3a3947"/>
-        <stop offset="0.16" stop-color="#262a38"/>
-        <stop offset="0.48" stop-color="#151a26"/>
-        <stop offset="0.78" stop-color="#0c1018"/>
-        <stop offset="1" stop-color="#070a11"/>
+      <linearGradient id="gWater" gradientUnits="userSpaceOnUse" x1="0" y1="698" x2="0" y2="792">
+        <stop offset="0" stop-color="#7d6f74"/>
+        <stop offset="0.08" stop-color="#6a5f68"/>
+        <stop offset="0.24" stop-color="#565260"/>
+        <stop offset="0.48" stop-color="#414150"/>
+        <stop offset="0.72" stop-color="#2c3140"/>
+        <stop offset="0.90" stop-color="#1b2130"/>
+        <stop offset="1" stop-color="#101623"/>
       </linearGradient>
-      <linearGradient id="gBank" gradientUnits="userSpaceOnUse" x1="0" y1="764" x2="0" y2="900">
-        <stop offset="0" stop-color="#0d131d"/>
-        <stop offset="0.28" stop-color="#080c13"/>
-        <stop offset="0.66" stop-color="#04070c"/>
-        <stop offset="1" stop-color="#020408"/>
+      <linearGradient id="gBank" gradientUnits="userSpaceOnUse" x1="0" y1="786" x2="0" y2="900">
+        <stop offset="0" stop-color="#111825"/>
+        <stop offset="0.22" stop-color="#0a0f18"/>
+        <stop offset="0.60" stop-color="#05080e"/>
+        <stop offset="1" stop-color="#020409"/>
       </linearGradient>
-      <linearGradient id="gGlowV" gradientUnits="userSpaceOnUse" x1="0" y1="596" x2="0" y2="760">
+      <linearGradient id="gBandV" gradientUnits="userSpaceOnUse" x1="0" y1="646" x2="0" y2="772">
         <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
-        <stop offset="0.28" stop-color="#ffffff" stop-opacity="0.82"/>
-        <stop offset="0.58" stop-color="#ffffff" stop-opacity="0.5"/>
+        <stop offset="0.24" stop-color="#ffffff" stop-opacity="0.72"/>
+        <stop offset="0.52" stop-color="#ffffff" stop-opacity="0.55"/>
+        <stop offset="0.80" stop-color="#ffffff" stop-opacity="0.12"/>
         <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
       </linearGradient>
-      <linearGradient id="gGlowH" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1440" y2="0">
+      <linearGradient id="gBandH" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1440" y2="0">
         <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
-        <stop offset="0.26" stop-color="#ffffff" stop-opacity="1"/>
-        <stop offset="0.74" stop-color="#ffffff" stop-opacity="1"/>
+        <stop offset="0.22" stop-color="#ffffff" stop-opacity="0.92"/>
+        <stop offset="0.50" stop-color="#ffffff" stop-opacity="1"/>
+        <stop offset="0.78" stop-color="#ffffff" stop-opacity="0.92"/>
         <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
       </linearGradient>
-      <mask id="mGlowV"><rect x="0" y="596" width="1440" height="164" fill="url(#gGlowV)"/></mask>
-      <mask id="mGlowH"><rect x="0" y="0" width="1440" height="900" fill="url(#gGlowH)"/></mask>
-      <linearGradient id="gWet" gradientUnits="userSpaceOnUse" x1="0" y1="768" x2="0" y2="900">
-        <stop offset="0" stop-color="#ded6d6" stop-opacity="0.13"/>
-        <stop offset="0.34" stop-color="#9fb0c2" stop-opacity="0.05"/>
+      <mask id="mBandV"><rect x="0" y="646" width="1440" height="126" fill="url(#gBandV)"/></mask>
+      <mask id="mBandH"><rect x="0" y="0" width="1440" height="900" fill="url(#gBandH)"/></mask>
+      <linearGradient id="gWet" gradientUnits="userSpaceOnUse" x1="0" y1="788" x2="0" y2="900">
+        <stop offset="0" stop-color="#f0dcd2" stop-opacity="0.30"/>
+        <stop offset="0.32" stop-color="#b6bec8" stop-opacity="0.10"/>
         <stop offset="1" stop-color="#7e9cb4" stop-opacity="0"/>
       </linearGradient>
       <pattern id="pRain" width="96" height="132" patternUnits="userSpaceOnUse" patternTransform="rotate(7)">
@@ -535,204 +551,223 @@
         <line x1="26" y1="108" x2="26" y2="124" stroke="#cfd9e6" stroke-width="0.7" opacity="0.09"/>
       </pattern>
       <linearGradient id="gRainFade" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="800">
-        <stop offset="0" stop-color="#ffffff" stop-opacity="0.55"/>
-        <stop offset="0.55" stop-color="#ffffff" stop-opacity="1"/>
-        <stop offset="0.82" stop-color="#ffffff" stop-opacity="0.5"/>
-        <stop offset="1" stop-color="#ffffff" stop-opacity="0.08"/>
+        <stop offset="0" stop-color="#ffffff" stop-opacity="0.5"/>
+        <stop offset="0.52" stop-color="#ffffff" stop-opacity="1"/>
+        <stop offset="0.84" stop-color="#ffffff" stop-opacity="0.42"/>
+        <stop offset="1" stop-color="#ffffff" stop-opacity="0.06"/>
       </linearGradient>
       <mask id="mRain"><rect x="0" y="0" width="1440" height="800" fill="url(#gRainFade)"/></mask>
-      <radialGradient id="gBoatGlow">
-        <stop offset="0" stop-color="#f0d4c4" stop-opacity="0.20"/>
-        <stop offset="1" stop-color="#f0d4c4" stop-opacity="0"/>
+      <linearGradient id="gColH" gradientUnits="userSpaceOnUse" x1="660" y1="0" x2="960" y2="0">
+        <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+        <stop offset="0.34" stop-color="#ffffff" stop-opacity="1"/>
+        <stop offset="0.66" stop-color="#ffffff" stop-opacity="1"/>
+        <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="gColV" gradientUnits="userSpaceOnUse" x1="0" y1="692" x2="0" y2="838">
+        <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+        <stop offset="0.35" stop-color="#ffffff" stop-opacity="0.8"/>
+        <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+      </linearGradient>
+      <mask id="mColH"><rect x="660" y="0" width="300" height="900" fill="url(#gColH)"/></mask>
+      <mask id="mColV"><rect x="660" y="692" width="300" height="146" fill="url(#gColV)"/></mask>
+      <radialGradient id="gHalo">
+        <stop offset="0" stop-color="#ffe6d4" stop-opacity="0.30"/>
+        <stop offset="1" stop-color="#f0c4b4" stop-opacity="0"/>
       </radialGradient>
     </defs>
 
     <!-- 天空 -->
-    <rect x="0" y="0" width="1440" height="692" fill="url(#gSky)"/>
-    <!-- 天空极淡的层积云带 -->
-    <rect x="0" y="470" width="1440" height="34" fill="#d99a9a" opacity="0.05"/>
-    <rect x="0" y="524" width="1440" height="26" fill="#e0b6ae" opacity="0.06"/>
-    <rect x="0" y="576" width="1440" height="22" fill="#f0c4c1" opacity="0.05"/>
-    <rect x="0" y="236" width="1440" height="1" fill="#b3c9d8" opacity="0.03"/>
-    <rect x="0" y="352" width="1440" height="1" fill="#b3c9d8" opacity="0.035"/>
+    <rect x="0" y="0" width="1440" height="702" fill="url(#gSky)"/>
+    <rect x="0" y="238" width="1440" height="1" fill="#b3c9d8" opacity="0.028"/>
+    <rect x="0" y="366" width="1440" height="1" fill="#b3c9d8" opacity="0.032"/>
+    <!-- 积雨云带（全宽 rect，两端与上下透明） -->
+    <g mask="url(#mBandH)">
+      <rect x="0" y="512" width="1440" height="44" fill="#c88c92" opacity="0.055"/>
+      <rect x="0" y="566" width="1440" height="38" fill="#d99a9a" opacity="0.07"/>
+      <rect x="0" y="612" width="1440" height="32" fill="#eab9ae" opacity="0.075"/>
+      <rect x="0" y="650" width="1440" height="26" fill="#f6d3c0" opacity="0.06"/>
+    </g>
 
-    <!-- 远山三层 -->
-    <path d="M-20 692 L96 648 L176 668 L268 640 L352 664 L444 636 L540 662 L636 642 L724 666 L812 638 L904 662 L996 636 L1092 660 L1188 634 L1288 658 L1372 638 L1460 656 L1460 694 L-20 694 Z" fill="#131a26" opacity="0.9"/>
-    <path d="M-20 694 L84 674 L190 686 L288 668 L392 684 L496 666 L604 682 L712 664 L820 680 L928 662 L1040 678 L1148 660 L1256 676 L1364 658 L1460 672 L1460 696 L-20 696 Z" fill="#0d141f"/>
-    <!-- 对岸的树线 -->
-    <g fill="#080d16">
-      <path d="M-20 692 L-20 684 Q30 676 70 684 Q112 674 150 684 Q196 676 236 684 Q286 675 330 684 Q382 676 424 684 Q476 675 520 684 Q572 676 616 683 Q668 675 712 683 Q764 676 808 683 Q860 675 904 683 Q956 676 1000 683 Q1052 675 1096 683 Q1148 676 1192 683 Q1244 675 1288 683 Q1340 676 1384 683 Q1432 677 1460 684 L1460 694 L-20 694 Z"/>
+    <!-- 对岸：低矮树线（柔和起伏，不用尖三角） -->
+    <path d="M-20 702 L-20 692 Q26 684 62 690 Q96 682 132 689 Q168 681 204 690 Q240 683 278 689 Q316 681 354 690 Q392 683 430 690 Q468 682 506 689 Q544 681 582 690 Q620 683 658 689 Q696 682 734 690 Q772 683 810 689 Q848 681 886 690 Q924 683 962 689 Q1000 681 1038 690 Q1076 683 1114 689 Q1152 681 1190 690 Q1228 683 1266 689 Q1304 681 1342 690 Q1382 683 1420 690 Q1442 686 1460 690 L1460 704 L-20 704 Z" fill="#080d15"/>
+    <path d="M-20 704 L-20 698 Q80 692 180 698 Q300 693 420 698 Q560 693 700 698 Q840 693 980 698 Q1120 693 1260 698 Q1380 694 1460 698 L1460 706 L-20 706 Z" fill="#060a11"/>
+    <!-- 对岸零星灯火 -->
+    <g fill="#f0d6a8">
+      <circle cx="246" cy="690" r="1.5" opacity="0.62"/>
+      <circle cx="262" cy="688" r="1.2" opacity="0.44"/>
+      <circle cx="318" cy="691" r="1.3" opacity="0.5"/>
+      <circle cx="1188" cy="689" r="1.4" opacity="0.55"/>
+      <circle cx="1206" cy="691" r="1.1" opacity="0.38"/>
+      <circle cx="1258" cy="690" r="1.5" opacity="0.48"/>
+      <circle cx="986" cy="691" r="1.2" opacity="0.34"/>
+    </g>
+
+    <!-- 远处的雨雾：柔化对岸与水面交界 -->
+    <g mask="url(#mBandH)">
+      <rect x="0" y="686" width="1440" height="22" fill="#e8c4bb" opacity="0.16"/>
+      <rect x="0" y="700" width="1440" height="14" fill="#f2d6c8" opacity="0.13"/>
     </g>
 
     <!-- 河面 -->
-    <rect x="0" y="690" width="1440" height="82" fill="url(#gRiver)"/>
-    <!-- 水面反光（最亮区，顶缘 690） -->
-    <g mask="url(#mGlowH)">
-      <rect x="0" y="690" width="1440" height="46" fill="#f0c4c1" opacity="0.16"/>
-      <rect x="0" y="690" width="1440" height="14" fill="#f6ded0" opacity="0.13"/>
-    </g>
-    <rect x="0" y="690" width="1440" height="1.4" fill="#f8e6da" opacity="0.2"/>
-    <!-- 水面波纹（横向短线） -->
-    <g stroke="#e6cfc8" fill="none" stroke-linecap="round">
-      <path d="M64 704 H188" stroke-width="1.2" opacity="0.16"/>
-      <path d="M232 712 H318" stroke-width="1" opacity="0.11"/>
-      <path d="M394 700 H470" stroke-width="1" opacity="0.13"/>
-      <path d="M508 716 H596" stroke-width="0.9" opacity="0.09"/>
-      <path d="M878 703 H962" stroke-width="1.1" opacity="0.14"/>
-      <path d="M1012 714 H1096" stroke-width="0.9" opacity="0.09"/>
-      <path d="M1150 701 H1258" stroke-width="1.1" opacity="0.12"/>
-      <path d="M1298 718 H1376" stroke-width="0.9" opacity="0.08"/>
-      <path d="M120 726 H214" stroke-width="0.9" opacity="0.07"/>
-      <path d="M920 730 H1010" stroke-width="0.9" opacity="0.06"/>
-    </g>
+    <rect x="0" y="700" width="1440" height="94" fill="url(#gWater)"/>
 
-    <!-- 一叶小舟（远处，非主体） -->
+    <!-- 最亮区：水面反光带（顶缘 655） -->
+    <g mask="url(#mBandV)">
+      <g mask="url(#mBandH)">
+        <rect x="0" y="646" width="1440" height="128" fill="#ffcdaa" opacity="0.40"/>
+        <rect x="0" y="682" width="1440" height="28" fill="#fff4e2" opacity="0.30"/>
+      </g>
+    </g>
+    <g mask="url(#mBandH)"><rect x="0" y="700" width="1440" height="1.4" fill="#fff4e6" opacity="0.26"/></g>
+
+    <!-- 主体身后的暖光晕（让人从水面里"浮"出来） -->
+    <ellipse cx="806" cy="742" rx="126" ry="86" fill="url(#gHalo)"/>
+
+    <!-- 水面波纹 -->
+    <g stroke="#f2dbd0" fill="none" stroke-linecap="round">
+      <path d="M60 716 H196" stroke-width="1.4" opacity="0.20"/>
+      <path d="M244 726 H346" stroke-width="1.1" opacity="0.14"/>
+      <path d="M418 712 H512" stroke-width="1.2" opacity="0.17"/>
+      <path d="M540 730 H640" stroke-width="1" opacity="0.11"/>
+      <path d="M640 708 H742" stroke-width="1.2" opacity="0.16"/>
+      <path d="M880 714 H968" stroke-width="1.3" opacity="0.19"/>
+      <path d="M1014 728 H1116" stroke-width="1" opacity="0.12"/>
+      <path d="M1160 710 H1272" stroke-width="1.2" opacity="0.16"/>
+      <path d="M1300 732 H1392" stroke-width="0.9" opacity="0.10"/>
+      <path d="M140 742 H250" stroke-width="0.9" opacity="0.08"/>
+      <path d="M420 756 H520" stroke-width="0.9" opacity="0.07"/>
+      <path d="M900 750 H1010" stroke-width="0.9" opacity="0.07"/>
+      <path d="M1230 756 H1330" stroke-width="0.8" opacity="0.06"/>
+    </g>
+    <!-- 主体脚下的水面倒影 -->
     <g>
-      <ellipse cx="628" cy="712" rx="66" ry="12" fill="url(#gBoatGlow)"/>
-      <path d="M584 710 Q628 724 672 710 L666 716 Q628 726 590 716 Z" fill="#05090f"/>
-      <path d="M596 709 Q628 700 660 709" fill="none" stroke="#05090f" stroke-width="1.6"/>
-      <path d="M626 706 L626 690" stroke="#05090f" stroke-width="1.6"/>
-      <path d="M612 692 Q626 684 640 692" fill="none" stroke="#05090f" stroke-width="1.5"/>
-      <path d="M584 710 Q628 724 672 710" fill="none" stroke="#f8e6da" stroke-width="1" opacity="0.24"/>
+      <path d="M778 792 L778 830" stroke="#c9a2a0" stroke-width="6" opacity="0.07"/>
+      <path d="M806 792 L806 838" stroke="#e0bcb4" stroke-width="8" opacity="0.08"/>
+      <path d="M838 792 L838 828" stroke="#c9a2a0" stroke-width="5" opacity="0.06"/>
+      <path d="M762 806 Q806 800 852 806" stroke="#e6c4bc" stroke-width="1" opacity="0.10" fill="none"/>
     </g>
-
-    <!-- 水中木桩 -->
-    <g fill="#05090f">
-      <rect x="944" y="694" width="7" height="30"/>
-      <rect x="998" y="698" width="6" height="26"/>
-      <rect x="1052" y="692" width="7" height="32"/>
-      <rect x="1104" y="700" width="6" height="24"/>
-    </g>
-    <g stroke="#f8e6da" stroke-width="0.9" opacity="0.16" fill="none">
-      <path d="M944 694 L944 724"/><path d="M998 698 L998 724"/>
-      <path d="M1052 692 L1052 724"/><path d="M1104 700 L1104 724"/>
-    </g>
-    <path d="M938 694 H1110" stroke="#05090f" stroke-width="2.4"/>
-    <path d="M938 694 H1110" stroke="#f8e6da" stroke-width="1" opacity="0.13"/>
 
     <!-- 堤岸 -->
-    <path d="M-40 900 L-40 770 Q340 762 720 766 Q1100 770 1480 764 L1480 900 Z" fill="url(#gBank)"/>
-    <rect x="0" y="766" width="1440" height="134" fill="url(#gWet)"/>
-    <path d="M-40 770 Q340 762 720 766 Q1100 770 1480 764" fill="none" stroke="#f4e6e0" stroke-width="1.5" opacity="0.19"/>
-    <path d="M-40 818 Q340 810 720 814 Q1100 818 1480 812" fill="none" stroke="#b3c9d8" stroke-width="1" opacity="0.05"/>
-    <path d="M-40 862 Q340 854 720 858 Q1100 862 1480 856" fill="none" stroke="#b3c9d8" stroke-width="1" opacity="0.04"/>
-    <ellipse cx="812" cy="778" rx="150" ry="16" fill="#ded6d6" opacity="0.03"/>
+    <path d="M-40 900 L-40 790 Q340 782 720 786 Q1100 790 1480 784 L1480 900 Z" fill="url(#gBank)"/>
+    <rect x="0" y="788" width="1440" height="112" fill="url(#gWet)"/>
+    <path d="M-40 790 Q340 782 720 786 Q1100 790 1480 784" fill="none" stroke="#fbeade" stroke-width="1.6" opacity="0.34"/>
+    <path d="M-40 838 Q340 830 720 834 Q1100 838 1480 832" fill="none" stroke="#b3c9d8" stroke-width="1" opacity="0.05"/>
+    <path d="M-40 876 Q340 868 720 872 Q1100 876 1480 870" fill="none" stroke="#b3c9d8" stroke-width="1" opacity="0.04"/>
 
     <!-- 主体：并排站在堤线上的两个人，一把伞 -->
     <g>
       <!-- 落影 -->
-      <ellipse cx="800" cy="769" rx="30" ry="3.2" fill="#000" opacity="0.44"/>
-      <ellipse cx="836" cy="769" rx="24" ry="3" fill="#000" opacity="0.4"/>
+      <ellipse cx="788" cy="789" rx="30" ry="3.4" fill="#000" opacity="0.4"/>
+      <ellipse cx="832" cy="789" rx="23" ry="3" fill="#000" opacity="0.34"/>
 
-      <!-- 伞面 -->
-      <path d="M748 678 Q806 630 864 678 L864 678 Q835 671 806 674 Q777 671 748 678 Z" fill="#04070c"/>
-      <path d="M748 678 Q806 630 864 678 Q835 671 806 674 Q777 671 748 678 Z" fill="none" stroke="#f8e6da" stroke-width="2.1" opacity="0.44"/>
-      <path d="M748 678 Q806 630 864 678 Q835 671 806 674 Q777 671 748 678 Z" fill="none" stroke="#f8e6da" stroke-width="2.1" opacity="0.3"/>
-      <path d="M748 678 Q806 630 864 678 Q835 671 806 674 Q777 671 748 678 Z" fill="none" stroke="#f8e6da" stroke-width="7" opacity="0.05"/>
-      <!-- 伞骨 -->
-      <g stroke="#f8e6da" fill="none" stroke-width="0.8" opacity="0.16">
-        <path d="M806 636 L748 678"/><path d="M806 636 L777 674"/>
-        <path d="M806 636 L806 674"/><path d="M806 636 L835 674"/>
-        <path d="M806 636 L864 678"/>
+      <!-- 伞：实心伞面 + 扇贝形下缘 -->
+      <path d="M742 692 Q792 634 868 692 Q845 682 820 686 Q804 688 790 686 Q766 682 742 692 Z" fill="#04070c"/>
+      <path d="M742 692 Q792 634 868 692" fill="none" stroke="#ffe4d2" stroke-width="2.1" opacity="0.55"/>
+      <path d="M742 692 Q792 634 868 692" fill="none" stroke="#ffe4d2" stroke-width="8" opacity="0.07"/>
+      <g stroke="#ffe4d2" fill="none" stroke-width="0.7" opacity="0.1">
+        <path d="M805 644 L742 692"/><path d="M805 644 L773 686"/>
+        <path d="M805 644 L805 688"/><path d="M805 644 L837 686"/>
+        <path d="M805 644 L868 692"/>
       </g>
-      <!-- 伞杆与伞顶 -->
-      <path d="M806 636 L806 724" stroke="#04070c" stroke-width="3.6"/>
-      <path d="M806 636 L806 724" stroke="#f8e6da" stroke-width="1" opacity="0.3"/>
-      <path d="M806 626 L806 636" stroke="#04070c" stroke-width="2.6"/>
-      <path d="M812 716 L806 724" stroke="#04070c" stroke-width="3" stroke-linecap="round"/>
+      <path d="M805 632 L805 645" stroke="#04070c" stroke-width="3.4"/>
+      <path d="M797 650 L797 752" stroke="#04070c" stroke-width="3"/>
 
-      <!-- 左侧：男性背影（平肩直筒，不收腰） -->
-      <path d="M793 706 L807 706 L807 709 L813 712 L813 754 L787 754 L787 712 L793 709 Z" fill="#04070c"/>
-      <path d="M791 706 C791 693 794 686 800 686 C806 686 809 693 809 706 L809 709 L791 709 Z" fill="#04070c"/>
-      <path d="M788 752 L788 768 L797 768 L800 759 L803 768 L812 768 L812 752 Z" fill="#04070c"/>
+      <!-- 男性背影：头直接坐在宽肩上，直筒大衣，下摆露出两段腿 -->
+      <g fill="#04070c">
+        <ellipse cx="788" cy="704" rx="7.5" ry="9"/>
+        <rect x="784" y="711" width="8" height="8"/>
+        <path d="M783 717 L793 717 L793 720 L805 726 L805 764 L771 764 L771 726 L783 720 Z"/>
+        <path d="M771 762 L771 790 L781 790 L788 778 L795 790 L805 790 L805 762 Z"/>
+      </g>
+      <g fill="none" stroke="#ffe8d6" stroke-linecap="round">
+        <ellipse cx="788" cy="704" rx="7.5" ry="9" stroke-width="1.5" opacity="0.5"/>
+        <ellipse cx="788" cy="704" rx="7.5" ry="9" stroke-width="4.5" opacity="0.09"/>
+        <path d="M783 719 L771 726 L771 763" stroke-width="1.5" opacity="0.32"/>
+        <path d="M793 719 L805 726 L805 763" stroke-width="1.2" opacity="0.18"/>
+        <path d="M771 763 L771 789" stroke-width="1.2" opacity="0.24"/>
+        <path d="M781 764 L781 789" stroke-width="1" opacity="0.13"/>
+        <path d="M795 764 L795 789" stroke-width="0.9" opacity="0.1"/>
+      </g>
 
-      <path d="M793 706 L807 706 L807 709 L813 712 L813 754 L787 754 L787 712 L793 709 Z" fill="none" stroke="#f8e6da" stroke-width="2.1" opacity="0.42"/>
-      <path d="M793 706 L807 706 L807 709 L813 712 L813 754 L787 754 L787 712 L793 709 Z" fill="none" stroke="#f8e6da" stroke-width="2.1" opacity="0.28"/>
-      <path d="M791 706 C791 693 794 686 800 686 C806 686 809 693 809 706 L809 709 L791 709 Z" fill="none" stroke="#f8e6da" stroke-width="2.2" opacity="0.46"/>
-      <path d="M791 706 C791 693 794 686 800 686 C806 686 809 693 809 706 L809 709 L791 709 Z" fill="none" stroke="#f8e6da" stroke-width="2.2" opacity="0.3"/>
-      <path d="M788 752 L788 768 L797 768 L800 759 L803 768 L812 768 L812 752" fill="none" stroke="#f8e6da" stroke-width="2" opacity="0.32"/>
-      <path d="M788 752 L788 768 L797 768 L800 759 L803 768 L812 768 L812 752" fill="none" stroke="#f8e6da" stroke-width="2" opacity="0.22"/>
-      <path d="M792 714 L792 748" stroke="#f8e6da" stroke-width="0.9" opacity="0.12"/>
-      <path d="M808 714 L808 748" stroke="#f8e6da" stroke-width="0.9" opacity="0.12"/>
-
-      <!-- 右侧：女性背影（及肩短发、直筒衣身） -->
-      <path d="M824 712 L844 712 L844 715 L848 718 L848 750 L820 750 L820 718 L824 715 Z" fill="#04070c"/>
-      <path d="M822 712 C822 700 825 694 834 694 C843 694 846 700 846 712 L846 716 L822 716 Z" fill="#04070c"/>
-      <path d="M821 714 Q818 726 820 736 L824 736 Q822 724 825 714 Z" fill="#04070c"/>
-      <path d="M847 714 Q850 726 848 736 L844 736 Q846 724 843 714 Z" fill="#04070c"/>
-      <path d="M822 750 L822 768 L829 768 L832 760 L835 768 L843 768 L843 750 Z" fill="#04070c"/>
-
-      <path d="M824 712 L844 712 L844 715 L848 718 L848 750 L820 750 L820 718 L824 715 Z" fill="none" stroke="#f8e6da" stroke-width="2" opacity="0.4"/>
-      <path d="M824 712 L844 712 L844 715 L848 718 L848 750 L820 750 L820 718 L824 715 Z" fill="none" stroke="#f8e6da" stroke-width="2" opacity="0.26"/>
-      <path d="M822 712 C822 700 825 694 834 694 C843 694 846 700 846 712 L846 716 L822 716 Z" fill="none" stroke="#f8e6da" stroke-width="2.1" opacity="0.44"/>
-      <path d="M822 712 C822 700 825 694 834 694 C843 694 846 700 846 712 L846 716 L822 716 Z" fill="none" stroke="#f8e6da" stroke-width="2.1" opacity="0.28"/>
-      <path d="M822 750 L822 768 L829 768 L832 760 L835 768 L843 768 L843 750" fill="none" stroke="#f8e6da" stroke-width="1.9" opacity="0.3"/>
-      <path d="M822 750 L822 768 L829 768 L832 760 L835 768 L843 768 L843 750" fill="none" stroke="#f8e6da" stroke-width="1.9" opacity="0.2"/>
-      <path d="M826 720 L826 744" stroke="#f8e6da" stroke-width="0.8" opacity="0.11"/>
-      <path d="M842 720 L842 744" stroke="#f8e6da" stroke-width="0.8" opacity="0.11"/>
+      <!-- 女性背影：及肩短发、肩略窄、身形略矮 -->
+      <g fill="#04070c">
+        <ellipse cx="834" cy="710" rx="6.5" ry="8"/>
+        <path d="M827 710 Q823 720 825 729 L831 729 Q829 720 830 710 Z"/>
+        <path d="M841 710 Q845 720 843 729 L837 729 Q839 720 838 710 Z"/>
+        <rect x="830" y="716" width="8" height="7"/>
+        <path d="M824 722 L844 722 L844 725 L849 731 L849 766 L819 766 L819 731 L824 725 Z"/>
+        <path d="M819 764 L819 790 L827 790 L833 780 L839 790 L849 790 L849 764 Z"/>
+      </g>
+      <g fill="none" stroke="#ffe8d6" stroke-linecap="round">
+        <ellipse cx="834" cy="710" rx="6.5" ry="8" stroke-width="1.4" opacity="0.46"/>
+        <ellipse cx="834" cy="710" rx="6.5" ry="8" stroke-width="4" opacity="0.08"/>
+        <path d="M824 724 L819 731 L819 765" stroke-width="1.4" opacity="0.28"/>
+        <path d="M819 765 L819 789" stroke-width="1.1" opacity="0.2"/>
+        <path d="M827 766 L827 789" stroke-width="0.9" opacity="0.11"/>
+      </g>
     </g>
 
     <!-- 左前景：芦苇丛 -->
     <g stroke="#05090f" fill="none" stroke-linecap="round">
-      <path d="M118 800 C112 754 106 716 96 680" stroke-width="2.4"/>
-      <path d="M138 802 C136 758 134 722 128 686" stroke-width="2.2"/>
-      <path d="M158 800 C160 760 164 726 172 692" stroke-width="2.2"/>
-      <path d="M178 802 C184 764 192 730 204 700" stroke-width="2"/>
-      <path d="M202 800 C210 766 220 736 234 710" stroke-width="1.9"/>
-      <path d="M228 802 C238 772 248 746 262 722" stroke-width="1.8"/>
-      <path d="M256 800 C266 774 278 752 292 732" stroke-width="1.7"/>
-      <path d="M286 802 C296 778 306 760 320 744" stroke-width="1.6"/>
-      <path d="M316 800 C324 782 332 768 344 756" stroke-width="1.5"/>
-      <path d="M92 800 C84 762 76 730 64 702" stroke-width="2"/>
-      <path d="M352 800 C356 786 362 776 372 768" stroke-width="1.4"/>
+      <path d="M118 794 C112 752 106 716 96 682" stroke-width="2.4"/>
+      <path d="M138 794 C136 752 134 720 128 688" stroke-width="2.2"/>
+      <path d="M158 794 C160 756 164 724 172 694" stroke-width="2.2"/>
+      <path d="M178 794 C184 760 192 728 204 702" stroke-width="2"/>
+      <path d="M202 794 C210 762 220 734 234 712" stroke-width="1.9"/>
+      <path d="M228 794 C238 768 248 744 262 724" stroke-width="1.8"/>
+      <path d="M256 794 C266 770 278 750 292 734" stroke-width="1.7"/>
+      <path d="M286 794 C296 776 306 760 320 746" stroke-width="1.6"/>
+      <path d="M316 794 C324 780 332 768 344 758" stroke-width="1.5"/>
+      <path d="M92 794 C84 758 76 728 64 704" stroke-width="2"/>
+      <path d="M352 794 C356 782 362 774 372 768" stroke-width="1.4"/>
     </g>
-    <!-- 芦花 -->
-    <g fill="#e8d4d0" opacity="0.16">
-      <ellipse cx="95" cy="676" rx="3.4" ry="9" transform="rotate(-14 95 676)"/>
-      <ellipse cx="127" cy="682" rx="3" ry="8.4" transform="rotate(-8 127 682)"/>
-      <ellipse cx="173" cy="689" rx="3" ry="8" transform="rotate(10 173 689)"/>
-      <ellipse cx="205" cy="697" rx="2.6" ry="7.4" transform="rotate(14 205 697)"/>
-      <ellipse cx="235" cy="707" rx="2.4" ry="7" transform="rotate(16 235 707)"/>
-      <ellipse cx="263" cy="719" rx="2.2" ry="6.4" transform="rotate(18 263 719)"/>
-      <ellipse cx="293" cy="730" rx="2" ry="5.8" transform="rotate(20 293 730)"/>
-      <ellipse cx="63" cy="699" rx="3" ry="8.6" transform="rotate(-18 63 699)"/>
+    <g fill="#f2ded8" opacity="0.17">
+      <ellipse cx="95" cy="678" rx="3.4" ry="9" transform="rotate(-14 95 678)"/>
+      <ellipse cx="127" cy="684" rx="3" ry="8.4" transform="rotate(-8 127 684)"/>
+      <ellipse cx="173" cy="691" rx="3" ry="8" transform="rotate(10 173 691)"/>
+      <ellipse cx="205" cy="699" rx="2.6" ry="7.4" transform="rotate(14 205 699)"/>
+      <ellipse cx="235" cy="709" rx="2.4" ry="7" transform="rotate(16 235 709)"/>
+      <ellipse cx="263" cy="721" rx="2.2" ry="6.4" transform="rotate(18 263 721)"/>
+      <ellipse cx="293" cy="732" rx="2" ry="5.8" transform="rotate(20 293 732)"/>
+      <ellipse cx="63" cy="701" rx="3" ry="8.6" transform="rotate(-18 63 701)"/>
     </g>
-    <g stroke="#f4e6e0" fill="none" stroke-width="1" opacity="0.08">
-      <path d="M96 680 C100 700 104 730 106 756"/>
-      <path d="M172 692 C168 720 164 748 160 772"/>
-      <path d="M262 722 C254 744 246 766 240 786"/>
+    <g stroke="#fbeade" fill="none" stroke-width="1.1" opacity="0.12">
+      <path d="M96 682 C100 702 104 732 106 758"/>
+      <path d="M172 694 C168 722 164 750 160 772"/>
+      <path d="M262 724 C254 746 246 768 240 786"/>
     </g>
 
-    <!-- 右前景：低矮草丛 -->
+    <!-- 右前景：草丛 -->
     <g stroke="#05090f" fill="none" stroke-linecap="round">
-      <path d="M1268 800 C1262 780 1256 766 1246 756" stroke-width="2"/>
-      <path d="M1290 802 C1288 780 1286 768 1282 758" stroke-width="1.9"/>
-      <path d="M1312 800 C1316 780 1322 768 1330 760" stroke-width="1.8"/>
-      <path d="M1336 802 C1344 782 1352 772 1364 766" stroke-width="1.7"/>
-      <path d="M1360 800 C1368 786 1376 778 1388 774" stroke-width="1.6"/>
-      <path d="M1404 802 C1410 790 1418 784 1428 780" stroke-width="1.5"/>
-      <path d="M1238 800 C1232 786 1226 778 1216 772" stroke-width="1.6"/>
+      <path d="M1268 794 C1262 776 1256 764 1246 754" stroke-width="2"/>
+      <path d="M1290 794 C1288 774 1286 764 1282 754" stroke-width="1.9"/>
+      <path d="M1312 794 C1316 774 1322 764 1330 756" stroke-width="1.8"/>
+      <path d="M1336 794 C1344 776 1352 768 1364 762" stroke-width="1.7"/>
+      <path d="M1360 794 C1368 780 1376 774 1388 770" stroke-width="1.6"/>
+      <path d="M1404 794 C1410 784 1418 778 1428 774" stroke-width="1.5"/>
+      <path d="M1238 794 C1232 782 1226 774 1216 768" stroke-width="1.6"/>
     </g>
-    <g stroke="#f4e6e0" fill="none" stroke-width="0.9" opacity="0.07">
-      <path d="M1246 756 C1252 774 1258 788 1262 798"/>
-      <path d="M1330 760 C1326 776 1320 790 1316 798"/>
+    <g stroke="#fbeade" fill="none" stroke-width="1" opacity="0.1">
+      <path d="M1246 754 C1252 772 1258 786 1262 792"/>
+      <path d="M1330 756 C1326 772 1320 786 1316 792"/>
     </g>
 
-    <!-- 雨（平铺 pattern，整幅叠加） -->
+    <!-- 雨 -->
     <g mask="url(#mRain)">
       <rect x="-40" y="-40" width="1520" height="860" fill="url(#pRain)"/>
     </g>
 
-    <!-- 近景水面溅点 -->
-    <g fill="#e8d4d0" opacity="0.13">
-      <ellipse cx="486" cy="774" rx="9" ry="1.5"/>
-      <ellipse cx="588" cy="782" rx="7" ry="1.3"/>
-      <ellipse cx="700" cy="776" rx="10" ry="1.6"/>
-      <ellipse cx="916" cy="784" rx="8" ry="1.4"/>
-      <ellipse cx="1050" cy="776" rx="9" ry="1.5"/>
-      <ellipse cx="1188" cy="782" rx="7" ry="1.3"/>
+    <!-- 近景地面溅点 -->
+    <g fill="#f2ded8" opacity="0.14">
+      <ellipse cx="470" cy="812" rx="9" ry="1.5"/>
+      <ellipse cx="596" cy="820" rx="7" ry="1.3"/>
+      <ellipse cx="712" cy="814" rx="10" ry="1.6"/>
+      <ellipse cx="910" cy="822" rx="8" ry="1.4"/>
+      <ellipse cx="1064" cy="814" rx="9" ry="1.5"/>
+      <ellipse cx="1198" cy="820" rx="7" ry="1.3"/>
     </g>
   </svg>
+
 
   <div class="hero-scrim"></div>
   <canvas id="heroCanvas"></canvas>
@@ -802,7 +837,7 @@
       </aside>
 
       <div class="prose reveal">
-        <p class="drop">二〇〇三年，汉城。念大学的女孩子叫智希，父亲早逝，和母亲两个人过。她的好朋友秀景喜欢戏剧社的一个男生，却写不出一封像样的信——于是把这件事交给了她：你替我写，署我的名字。</p>
+        <p class="drop">汉城，二〇〇三年。念大学的女孩子叫智希，父亲早逝，和母亲两个人过。她的好朋友秀景喜欢戏剧社的一个男生，却写不出一封像样的信——于是把这件事交给了她：你替我写，署我的名字。</p>
         <p>智希写了，而且写得很认真，认真到把自己心里的话也一并写了进去。信寄出去，收到的人叫尚民；而每一封信的末尾，落款都是<span class="bl">另一个人的名字</span>。</p>
         <p>也是在那个夏天，她在储物间最里面翻出一只旧木箱。箱子很旧，但没有锁。里面是母亲年轻时的日记、一叠用绳捆着的信，和一张照片——照片上的女孩，和她长得几乎一模一样。</p>
         <p>日记从一九六八年的夏天开始。那一年，一个叫俊河的男孩到乡下的伯父家过暑假，在河边遇见了一个从汉城回来的女孩，珠喜。她家教极严，那天却央他带她去看河对岸那栋没人住的房子。回来的路上起了暴雨，船被冲走，她的脚也伤了。他背着她，沿着湖走回去。</p>
@@ -923,16 +958,25 @@
                 <path d="M118 379 H288"/>
               </g>
               <!-- 手写（示意笔迹，不可读） -->
-              <g stroke="#3f3a3f" fill="none" stroke-width="1.2" stroke-linecap="round" opacity="0.5">
-                <path d="M122 186 q6 -4 11 0 t10 0 t9 1 t11 -1 t9 1 t10 0 t8 1"/>
-                <path d="M122 207 q7 -3 13 0 t11 1 t9 -1 t12 0 t10 1 t9 -1"/>
-                <path d="M122 228 q5 -4 10 0 t11 0 t8 1 t12 -1 t10 0"/>
-                <path d="M122 249 q8 -3 14 0 t10 1 t11 -1 t9 0 t12 1 t8 -1"/>
-                <path d="M122 270 q6 -4 12 0 t9 1 t11 -1 t10 0"/>
-                <path d="M122 291 q7 -3 13 0 t11 0 t9 1 t12 -1 t10 0 t9 1"/>
-                <path d="M122 312 q5 -4 11 0 t10 1 t9 -1 t12 0"/>
-                <path d="M122 333 q8 -3 13 0 t10 0 t11 1 t9 -1"/>
-                <path d="M122 354 q6 -4 12 0 t10 1 t9 -1 t11 0"/>
+              <g stroke="#3a3539" fill="none" stroke-width="1.1" stroke-linecap="round" opacity="0.44">
+                <path d="M122 186q4 -4 7 0q4 -4 8 2q2 4 4 0q3 3 6 2q4 4 7 0q3 -5 6 -1q4 -5 7 1q3 -5 6 0q4 -5 8 0q3 -2 6 0q4 -4 8 1q2 -2 4 -1q4 -5 9 2c1 -3 2 -7 4 -8 c2 1 3 5 2 8q4 -5 7 -1q4 -4 9 0q2 3 5 0"/>
+                <path d="M122 207q2 3 4 2q4 3 9 0q4 -3 9 0q3 -3 6 0q4 -4 8 -1c1 -3 2 -7 4 -8 c2 1 3 5 2 8q2 -2 5 2q4 -5 7 1q4 -5 7 0q2 5 4 1q4 -5 9 2q4 -3 9 2q4 -2 9 1q4 -5 9 2q4 -3 9 0q4 -2 7 0q4 -4 8 0q4 -2 8 0q4 4 7 -1"/>
+                <path d="M122 228q3 -4 6 2q4 -5 9 2q4 5 9 0q2 3 4 2q2 4 4 0q4 -4 9 -1q4 -3 8 0q4 -3 7 0q4 -2 8 1q2 -4 5 0q2 4 5 -1q3 -4 6 -1q4 -4 7 -1q2 -4 5 2q3 -3 6 0q4 -2 9 0q3 5 6 0q2 -2 5 -1q2 3 5 1q2 3 5 1q3 -3 6 0"/>
+                <path d="M122 249q4 5 7 0c1 -3 2 -7 4 -8 c2 1 3 5 2 8q2 3 5 1q3 -4 6 0q4 -2 9 -1q4 4 7 2q2 3 5 0q4 -3 7 1q4 3 7 2q2 -3 5 2q4 -2 7 -1q3 3 6 0q2 3 4 0q2 -5 4 2c1 -3 2 -7 4 -8 c2 1 3 5 2 8q4 3 7 0q4 -4 7 1q4 -5 8 0q2 -2 5 0q4 4 9 -1q2 -5 5 2q4 4 8 -1q4 -2 7 0q4 -5 9 -1"/>
+                <path d="M122 270q2 -2 4 1q2 3 4 0q4 -5 7 1q4 5 9 1q4 -4 8 1q3 -3 6 0q4 4 9 -1q3 -3 6 0q4 -5 7 1q2 3 4 -1q2 3 5 0q4 5 8 2q2 -5 4 -1q2 -5 4 0q4 -4 7 1q4 5 9 0q4 5 8 2q4 5 7 2q4 -3 9 2q4 -2 9 -1q2 -5 4 0q2 -5 5 1"/>
+                <path d="M122 291q4 -4 7 1q4 -2 8 0q3 4 6 2q2 -2 4 1q3 -5 6 2q4 5 9 -1q4 -3 9 1q3 5 6 2q2 -5 4 -1q4 -5 7 -1q2 -5 4 0q4 -3 8 0q4 -3 9 0q2 -4 4 -1q4 5 9 0q4 -5 9 0q4 -2 8 2q4 -5 7 1q4 4 9 1"/>
+                <path d="M122 312q2 -2 4 2q3 5 6 0q4 5 7 -1q4 -3 8 2q3 4 6 1q2 4 5 1q3 4 6 -1q4 5 7 1q3 4 6 0q4 5 9 1q4 -2 9 1q2 -5 4 0q4 -2 7 2q4 3 7 1q4 4 9 -1q4 -3 8 0q2 -4 4 2q4 -4 8 -1q3 -3 6 0q4 3 7 0q4 -3 7 -1c1 -3 2 -7 4 -8 c2 1 3 5 2 8q4 -4 8 1q4 5 8 0"/>
+                <path d="M122 333q2 5 4 -1q2 4 4 0q4 -2 8 1q4 -3 9 2q3 -3 6 1q4 4 8 0q4 5 9 1q2 3 5 2q4 3 7 0q2 3 5 1q4 -4 9 2q2 -5 5 2q2 4 5 1q2 4 5 -1q4 -4 9 0q3 5 6 0q4 -5 7 1q2 -2 4 -1q2 -5 5 1q4 -5 8 -1q2 -3 5 2q4 3 9 0"/>
+                <path d="M122 354q3 -5 6 -1q2 -4 4 1q4 -3 8 1c1 -3 2 -7 4 -8 c2 1 3 5 2 8q4 4 9 -1q4 5 9 0c1 -3 2 -7 4 -8 c2 1 3 5 2 8q4 -3 7 2q3 -3 6 0q4 3 9 0q4 3 7 0q3 3 6 -1q2 3 5 -1q4 -2 8 1q4 -2 9 0"/>
+              </g>
+              <g opacity="0.4">
+                <circle cx="244" cy="175" r="0.9" fill="#3a3539" stroke="none"/>
+                <circle cx="170" cy="196" r="0.9" fill="#3a3539" stroke="none"/>
+                <circle cx="134" cy="238" r="0.9" fill="#3a3539" stroke="none"/>
+                <circle cx="212" cy="238" r="0.9" fill="#3a3539" stroke="none"/>
+                <circle cx="272" cy="301" r="0.9" fill="#3a3539" stroke="none"/>
+                <circle cx="145" cy="343" r="0.9" fill="#3a3539" stroke="none"/>
+                <circle cx="169" cy="343" r="0.9" fill="#3a3539" stroke="none"/>
               </g>
               <!-- 落款 -->
               <path d="M232 392 q7 -4 13 0 t10 1 t12 -1 t9 0" stroke="#3f3a3f" fill="none" stroke-width="1.2" opacity="0.42"/>
@@ -986,8 +1030,13 @@
               </g>
               <!-- 捆绳 -->
               <path d="M164 452 C162 480 162 512 166 540" stroke="#8d7a5c" stroke-width="2.4" fill="none" opacity="0.9"/>
-              <path d="M150 470 C168 462 184 462 200 470" stroke="#8d7a5c" stroke-width="2" fill="none" opacity="0.85"/>
-              <path d="M176 468 C186 474 190 486 184 496 C178 488 174 478 176 468 Z" fill="#8d7a5c" opacity="0.85"/>
+              <path d="M120 476 C142 468 160 470 176 478 C192 470 210 468 232 476" stroke="#8d7a5c" stroke-width="2" fill="none" opacity="0.8"/>
+              <g stroke="#8d7a5c" stroke-width="2" fill="none" opacity="0.85">
+                <path d="M176 478 C164 470 158 478 162 486 C166 493 174 489 176 478 Z"/>
+                <path d="M176 478 C188 470 194 478 190 486 C186 493 178 489 176 478 Z"/>
+                <path d="M176 480 C171 490 166 497 161 502"/>
+                <path d="M176 480 C181 490 186 497 191 502"/>
+              </g>
             </g>
 
             <!-- 钢笔 -->
@@ -1216,7 +1265,7 @@
         <span class="badge">NOM</span>
         <div class="body"><b>第 23 届香港电影金像奖</b> 最佳亚洲电影<small>2004 年</small></div>
       </div>
-      <div class="award win">
+      <div class="award win wide">
         <span class="badge">WIN</span>
         <div class="body"><b>第 10 届中国电影华表奖</b> 外国影片优秀译制奖<small>2004 年，正式引进译制公映</small></div>
       </div>
@@ -1341,7 +1390,7 @@
         <div class="n">03</div>
         <div>
           <h4>它经得起重看</h4>
-          <p>第一次看，你在追两条线各自的结局；第二次看，你会开始注意那些<b>「交接」</b>——某样东西从谁手里到了谁手里，某句话在另一条线里被谁重复了一遍。二十多年过去，这部片子最耐看的地方，恰恰是第一次看时完全漏掉的那些镜头。</p>
+          <p>第一次看，你在追两条线各自会走到哪里；第二次看，你会开始注意那些<b>「交接」</b>——某样东西从谁手里到了谁手里，某句话在另一条线里被谁重复了一遍。二十多年过去，这部片子最耐看的地方，恰恰是第一次看时完全漏掉的那些镜头。</p>
         </div>
       </div>
     </div>
