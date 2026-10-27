@@ -332,58 +332,72 @@
 <div class="hero">
 <svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
   <defs>
-    <linearGradient id="skyG" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="710">
-      <stop offset="0" stop-color="#050d10"/>
-      <stop offset="0.46" stop-color="#091a1a"/>
-      <stop offset="0.78" stop-color="#0f2420"/>
-      <stop offset="1" stop-color="#0a1513"/>
+    <linearGradient id="skyG" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="700">
+      <stop offset="0" stop-color="#09161a"/>
+      <stop offset="0.4" stop-color="#0f2524"/>
+      <stop offset="0.72" stop-color="#183630"/>
+      <stop offset="1" stop-color="#12403a"/>
     </linearGradient>
     <linearGradient id="roadG" gradientUnits="userSpaceOnUse" x1="0" y1="706" x2="0" y2="900">
-      <stop offset="0" stop-color="#2b3532"/>
-      <stop offset="0.3" stop-color="#1b2523"/>
-      <stop offset="0.7" stop-color="#121a19"/>
-      <stop offset="1" stop-color="#080f0f"/>
+      <stop offset="0" stop-color="#3e4b45"/>
+      <stop offset="0.22" stop-color="#2b3532"/>
+      <stop offset="0.55" stop-color="#1b2422"/>
+      <stop offset="1" stop-color="#0a1110"/>
     </linearGradient>
-    <linearGradient id="lwallG" gradientUnits="userSpaceOnUse" x1="0" y1="230" x2="0" y2="707">
-      <stop offset="0" stop-color="#0d1a1a"/>
-      <stop offset="0.5" stop-color="#101f1e"/>
-      <stop offset="1" stop-color="#0a1413"/>
+    <linearGradient id="lwallG" gradientUnits="userSpaceOnUse" x1="0" y1="210" x2="340" y2="720">
+      <stop offset="0" stop-color="#1a2b28"/>
+      <stop offset="0.45" stop-color="#22332e"/>
+      <stop offset="1" stop-color="#131f1d"/>
     </linearGradient>
-    <linearGradient id="rwallG" gradientUnits="userSpaceOnUse" x1="0" y1="296" x2="0" y2="707">
-      <stop offset="0" stop-color="#0f1c1c"/>
-      <stop offset="0.6" stop-color="#0b1616"/>
-      <stop offset="1" stop-color="#070f0f"/>
+    <linearGradient id="rwallG" gradientUnits="userSpaceOnUse" x1="1440" y1="250" x2="1200" y2="720">
+      <stop offset="0" stop-color="#1c2c29"/>
+      <stop offset="0.5" stop-color="#16231f"/>
+      <stop offset="1" stop-color="#0d1715"/>
+    </linearGradient>
+    <linearGradient id="brickG" gradientUnits="userSpaceOnUse" x1="0" y1="512" x2="0" y2="707">
+      <stop offset="0" stop-color="#2a3c36"/>
+      <stop offset="0.55" stop-color="#21301f"/>
+      <stop offset="1" stop-color="#16211d"/>
     </linearGradient>
     <radialGradient id="bulbG" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#ffe0b0" stop-opacity="0.92"/>
-      <stop offset="0.28" stop-color="#e8b273" stop-opacity="0.34"/>
+      <stop offset="0" stop-color="#ffe4b6" stop-opacity="0.95"/>
+      <stop offset="0.26" stop-color="#f0b877" stop-opacity="0.36"/>
       <stop offset="1" stop-color="#c99350" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="winG" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#e0b076" stop-opacity="0.40"/>
-      <stop offset="0.55" stop-color="#c99456" stop-opacity="0.11"/>
-      <stop offset="1" stop-color="#c99456" stop-opacity="0"/>
+      <stop offset="0" stop-color="#e8bc84" stop-opacity="0.42"/>
+      <stop offset="0.5" stop-color="#cf9c5e" stop-opacity="0.13"/>
+      <stop offset="1" stop-color="#cf9c5e" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="bandG" gradientUnits="userSpaceOnUse" x1="360" y1="0" x2="1440" y2="0">
+    <radialGradient id="vendG" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#bfe6d8" stop-opacity="0.30"/>
+      <stop offset="0.5" stop-color="#7fbfa8" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#7fbfa8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bandG" gradientUnits="userSpaceOnUse" x1="300" y1="0" x2="1440" y2="0">
       <stop offset="0" stop-color="#f0cb92" stop-opacity="0"/>
-      <stop offset="0.34" stop-color="#f0cb92" stop-opacity="0.16"/>
-      <stop offset="0.56" stop-color="#f0cb92" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#f0cb92" stop-opacity="0.05"/>
+      <stop offset="0.28" stop-color="#f0cb92" stop-opacity="0.30"/>
+      <stop offset="0.58" stop-color="#f0cb92" stop-opacity="0.44"/>
+      <stop offset="1" stop-color="#f0cb92" stop-opacity="0.16"/>
     </linearGradient>
-    <linearGradient id="rimG" gradientUnits="userSpaceOnUse" x1="18" y1="0" x2="-14" y2="0">
-      <stop offset="0" stop-color="#f6d9ac" stop-opacity="0.62"/>
-      <stop offset="0.46" stop-color="#f6d9ac" stop-opacity="0.20"/>
-      <stop offset="1" stop-color="#f6d9ac" stop-opacity="0"/>
+    <linearGradient id="rimG" gradientUnits="userSpaceOnUse" x1="20" y1="0" x2="-16" y2="0">
+      <stop offset="0" stop-color="#f8ddb2" stop-opacity="0.70"/>
+      <stop offset="0.44" stop-color="#f8ddb2" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#f8ddb2" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="rimL" gradientUnits="userSpaceOnUse" x1="-18" y1="0" x2="10" y2="0">
-      <stop offset="0" stop-color="#9fc9b4" stop-opacity="0.40"/>
-      <stop offset="1" stop-color="#9fc9b4" stop-opacity="0"/>
+    <linearGradient id="rimL" gradientUnits="userSpaceOnUse" x1="-20" y1="0" x2="12" y2="0">
+      <stop offset="0" stop-color="#a9d3bd" stop-opacity="0.44"/>
+      <stop offset="1" stop-color="#a9d3bd" stop-opacity="0"/>
     </linearGradient>
-    <radialGradient id="vigG" cx="0.5" cy="0.44" r="0.76">
-      <stop offset="0.42" stop-color="#04090a" stop-opacity="0"/>
-      <stop offset="1" stop-color="#04090a" stop-opacity="0.82"/>
+    <linearGradient id="eaveG" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2c403a"/>
+      <stop offset="1" stop-color="#0a1212"/>
+    </linearGradient>
+    <radialGradient id="vigG" cx="0.5" cy="0.44" r="0.78">
+      <stop offset="0.40" stop-color="#03080a" stop-opacity="0"/>
+      <stop offset="1" stop-color="#03080a" stop-opacity="0.84"/>
     </radialGradient>
-    <filter id="b24"><feGaussianBlur stdDeviation="24"/></filter>
+    <filter id="b26"><feGaussianBlur stdDeviation="26"/></filter>
     <filter id="b14"><feGaussianBlur stdDeviation="14"/></filter>
     <filter id="b7"><feGaussianBlur stdDeviation="7"/></filter>
     <filter id="b3"><feGaussianBlur stdDeviation="3"/></filter>
@@ -392,320 +406,559 @@
   <!-- 01 夜空 -->
   <rect width="1440" height="900" fill="url(#skyG)"/>
 
-  <!-- 02 远处团地 -->
+  <!-- 02 远处公寓楼的顶部（只露上半截） -->
   <g>
-    <rect x="386" y="470" width="196" height="237" fill="#081213"/>
-    <rect x="386" y="470" width="196" height="1.6" fill="#263834" fill-opacity="0.55"/>
-    <rect x="600" y="500" width="150" height="207" fill="#071011"/>
-    <rect x="600" y="500" width="150" height="1.4" fill="#22322f" fill-opacity="0.45"/>
-    <rect x="900" y="446" width="238" height="261" fill="#081314"/>
-    <rect x="900" y="446" width="238" height="1.6" fill="#2a3d38" fill-opacity="0.5"/>
-    <rect x="1120" y="494" width="60" height="213" fill="#060e0f"/>
-    <!-- 楼道口 -->
-    <rect x="940" y="392" width="58" height="54" fill="#0a1617"/>
-    <rect x="944" y="396" width="50" height="46" fill="#111f1d"/>
-    <g fill="#d9a668">
-      <rect x="420" y="492" width="9" height="12" fill-opacity="0.30"/>
-      <rect x="452" y="492" width="9" height="12" fill-opacity="0.16"/>
-      <rect x="516" y="528" width="9" height="12" fill-opacity="0.24"/>
-      <rect x="420" y="560" width="9" height="12" fill-opacity="0.14"/>
-      <rect x="484" y="560" width="9" height="12" fill-opacity="0.20"/>
-      <rect x="548" y="596" width="9" height="12" fill-opacity="0.12"/>
-      <rect x="628" y="522" width="9" height="12" fill-opacity="0.22"/>
-      <rect x="692" y="558" width="9" height="12" fill-opacity="0.15"/>
-      <rect x="628" y="594" width="9" height="12" fill-opacity="0.12"/>
-      <rect x="932" y="470" width="9" height="12" fill-opacity="0.26"/>
-      <rect x="996" y="470" width="9" height="12" fill-opacity="0.14"/>
-      <rect x="1060" y="508" width="9" height="12" fill-opacity="0.20"/>
-      <rect x="932" y="544" width="9" height="12" fill-opacity="0.12"/>
-      <rect x="1044" y="580" width="9" height="12" fill-opacity="0.16"/>
-      <rect x="1108" y="544" width="9" height="12" fill-opacity="0.11"/>
+    <rect x="418" y="392" width="176" height="130" fill="#0e2220"/>
+    <rect x="418" y="392" width="176" height="2" fill="#3a544c" fill-opacity="0.7"/>
+    <rect x="622" y="446" width="132" height="76" fill="#0c1d1c"/>
+    <rect x="622" y="446" width="132" height="1.8" fill="#33493f" fill-opacity="0.55"/>
+    <rect x="880" y="410" width="220" height="112" fill="#0f2321"/>
+    <rect x="880" y="410" width="220" height="2" fill="#3d5850" fill-opacity="0.7"/>
+    <rect x="936" y="366" width="52" height="46" fill="#112624"/>
+    <g fill="#e8bc84">
+      <rect x="436" y="414" width="11" height="14" fill-opacity="0.42"/>
+      <rect x="472" y="414" width="11" height="14" fill-opacity="0.22"/>
+      <rect x="544" y="446" width="11" height="14" fill-opacity="0.30"/>
+      <rect x="436" y="472" width="11" height="14" fill-opacity="0.18"/>
+      <rect x="508" y="472" width="11" height="14" fill-opacity="0.26"/>
+      <rect x="644" y="464" width="11" height="14" fill-opacity="0.30"/>
+      <rect x="700" y="490" width="11" height="14" fill-opacity="0.18"/>
+      <rect x="900" y="432" width="11" height="14" fill-opacity="0.34"/>
+      <rect x="964" y="432" width="11" height="14" fill-opacity="0.18"/>
+      <rect x="1028" y="470" width="11" height="14" fill-opacity="0.26"/>
+      <rect x="900" y="490" width="11" height="14" fill-opacity="0.16"/>
+      <rect x="1060" y="432" width="11" height="14" fill-opacity="0.14"/>
     </g>
   </g>
 
-  <!-- 03 巷尾的一点光 -->
-  <ellipse cx="872" cy="660" rx="96" ry="112" fill="#e8bd7e" fill-opacity="0.10" filter="url(#b24)"/>
-  <rect x="800" y="560" width="70" height="147" fill="#1b2a24" fill-opacity="0.5"/>
+  <!-- 03 巷尾的砖墙 -->
+  <g>
+    <rect x="376" y="512" width="768" height="196" fill="url(#brickG)"/>
+    <g stroke="#3a5048" stroke-opacity="0.42" stroke-width="1">
+      <line x1="376" y1="526" x2="1144" y2="526"/>
+      <line x1="376" y1="540" x2="1144" y2="540"/>
+      <line x1="376" y1="554" x2="1144" y2="554"/>
+      <line x1="376" y1="568" x2="1144" y2="568"/>
+      <line x1="376" y1="582" x2="1144" y2="582"/>
+      <line x1="376" y1="596" x2="1144" y2="596"/>
+      <line x1="376" y1="610" x2="1144" y2="610"/>
+      <line x1="376" y1="624" x2="1144" y2="624"/>
+      <line x1="376" y1="638" x2="1144" y2="638"/>
+      <line x1="376" y1="652" x2="1144" y2="652"/>
+      <line x1="376" y1="666" x2="1144" y2="666"/>
+      <line x1="376" y1="680" x2="1144" y2="680"/>
+      <line x1="376" y1="694" x2="1144" y2="694"/>
+    </g>
+    <g stroke="#334842" stroke-opacity="0.34" stroke-width="1">
+      <line x1="404" y1="512" x2="404" y2="526"/>
+      <line x1="452" y1="512" x2="452" y2="526"/>
+      <line x1="500" y1="512" x2="500" y2="526"/>
+      <line x1="548" y1="512" x2="548" y2="526"/>
+      <line x1="596" y1="512" x2="596" y2="526"/>
+      <line x1="644" y1="512" x2="644" y2="526"/>
+      <line x1="692" y1="512" x2="692" y2="526"/>
+      <line x1="740" y1="512" x2="740" y2="526"/>
+      <line x1="788" y1="512" x2="788" y2="526"/>
+      <line x1="836" y1="512" x2="836" y2="526"/>
+      <line x1="884" y1="512" x2="884" y2="526"/>
+      <line x1="932" y1="512" x2="932" y2="526"/>
+      <line x1="980" y1="512" x2="980" y2="526"/>
+      <line x1="1028" y1="512" x2="1028" y2="526"/>
+      <line x1="1076" y1="512" x2="1076" y2="526"/>
+      <line x1="1124" y1="512" x2="1124" y2="526"/>
+      <line x1="428" y1="526" x2="428" y2="540"/>
+      <line x1="476" y1="526" x2="476" y2="540"/>
+      <line x1="524" y1="526" x2="524" y2="540"/>
+      <line x1="572" y1="526" x2="572" y2="540"/>
+      <line x1="620" y1="526" x2="620" y2="540"/>
+      <line x1="668" y1="526" x2="668" y2="540"/>
+      <line x1="716" y1="526" x2="716" y2="540"/>
+      <line x1="764" y1="526" x2="764" y2="540"/>
+      <line x1="812" y1="526" x2="812" y2="540"/>
+      <line x1="860" y1="526" x2="860" y2="540"/>
+      <line x1="908" y1="526" x2="908" y2="540"/>
+      <line x1="956" y1="526" x2="956" y2="540"/>
+      <line x1="1004" y1="526" x2="1004" y2="540"/>
+      <line x1="1052" y1="526" x2="1052" y2="540"/>
+      <line x1="1100" y1="526" x2="1100" y2="540"/>
+      <line x1="404" y1="540" x2="404" y2="554"/>
+      <line x1="500" y1="540" x2="500" y2="554"/>
+      <line x1="596" y1="540" x2="596" y2="554"/>
+      <line x1="692" y1="540" x2="692" y2="554"/>
+      <line x1="788" y1="540" x2="788" y2="554"/>
+      <line x1="884" y1="540" x2="884" y2="554"/>
+      <line x1="980" y1="540" x2="980" y2="554"/>
+      <line x1="1076" y1="540" x2="1076" y2="554"/>
+      <line x1="428" y1="554" x2="428" y2="568"/>
+      <line x1="524" y1="554" x2="524" y2="568"/>
+      <line x1="620" y1="554" x2="620" y2="568"/>
+      <line x1="716" y1="554" x2="716" y2="568"/>
+      <line x1="812" y1="554" x2="812" y2="568"/>
+      <line x1="908" y1="554" x2="908" y2="568"/>
+      <line x1="1004" y1="554" x2="1004" y2="568"/>
+      <line x1="1100" y1="554" x2="1100" y2="568"/>
+      <line x1="404" y1="568" x2="404" y2="582"/>
+      <line x1="500" y1="568" x2="500" y2="582"/>
+      <line x1="596" y1="568" x2="596" y2="582"/>
+      <line x1="692" y1="568" x2="692" y2="582"/>
+      <line x1="788" y1="568" x2="788" y2="582"/>
+      <line x1="884" y1="568" x2="884" y2="582"/>
+      <line x1="980" y1="568" x2="980" y2="582"/>
+      <line x1="1076" y1="568" x2="1076" y2="582"/>
+      <line x1="428" y1="582" x2="428" y2="596"/>
+      <line x1="524" y1="582" x2="524" y2="596"/>
+      <line x1="620" y1="582" x2="620" y2="596"/>
+      <line x1="716" y1="582" x2="716" y2="596"/>
+      <line x1="812" y1="582" x2="812" y2="596"/>
+      <line x1="908" y1="582" x2="908" y2="596"/>
+      <line x1="1004" y1="582" x2="1004" y2="596"/>
+      <line x1="1100" y1="582" x2="1100" y2="596"/>
+      <line x1="404" y1="596" x2="404" y2="610"/>
+      <line x1="500" y1="596" x2="500" y2="610"/>
+      <line x1="596" y1="596" x2="596" y2="610"/>
+      <line x1="692" y1="596" x2="692" y2="610"/>
+      <line x1="788" y1="596" x2="788" y2="610"/>
+      <line x1="884" y1="596" x2="884" y2="610"/>
+      <line x1="980" y1="596" x2="980" y2="610"/>
+      <line x1="1076" y1="596" x2="1076" y2="610"/>
+      <line x1="428" y1="610" x2="428" y2="624"/>
+      <line x1="524" y1="610" x2="524" y2="624"/>
+      <line x1="620" y1="610" x2="620" y2="624"/>
+      <line x1="716" y1="610" x2="716" y2="624"/>
+      <line x1="812" y1="610" x2="812" y2="624"/>
+      <line x1="908" y1="610" x2="908" y2="624"/>
+      <line x1="1004" y1="610" x2="1004" y2="624"/>
+      <line x1="1100" y1="610" x2="1100" y2="624"/>
+      <line x1="404" y1="624" x2="404" y2="638"/>
+      <line x1="500" y1="624" x2="500" y2="638"/>
+      <line x1="596" y1="624" x2="596" y2="638"/>
+      <line x1="692" y1="624" x2="692" y2="638"/>
+      <line x1="788" y1="624" x2="788" y2="638"/>
+      <line x1="884" y1="624" x2="884" y2="638"/>
+      <line x1="980" y1="624" x2="980" y2="638"/>
+      <line x1="1076" y1="624" x2="1076" y2="638"/>
+      <line x1="428" y1="638" x2="428" y2="652"/>
+      <line x1="524" y1="638" x2="524" y2="652"/>
+      <line x1="620" y1="638" x2="620" y2="652"/>
+      <line x1="716" y1="638" x2="716" y2="652"/>
+      <line x1="812" y1="638" x2="812" y2="652"/>
+      <line x1="908" y1="638" x2="908" y2="652"/>
+      <line x1="1004" y1="638" x2="1004" y2="652"/>
+      <line x1="1100" y1="638" x2="1100" y2="652"/>
+      <line x1="404" y1="652" x2="404" y2="666"/>
+      <line x1="500" y1="652" x2="500" y2="666"/>
+      <line x1="596" y1="652" x2="596" y2="666"/>
+      <line x1="692" y1="652" x2="692" y2="666"/>
+      <line x1="788" y1="652" x2="788" y2="666"/>
+      <line x1="884" y1="652" x2="884" y2="666"/>
+      <line x1="980" y1="652" x2="980" y2="666"/>
+      <line x1="1076" y1="652" x2="1076" y2="666"/>
+    </g>
+    <rect x="368" y="500" width="784" height="14" fill="#0d1918"/>
+    <rect x="368" y="500" width="784" height="2" fill="#44604f" fill-opacity="0.55"/>
+    <g fill="#0a1413">
+      <circle cx="384" cy="504" r="3.6"/>
+      <circle cx="420" cy="504" r="3.6"/>
+      <circle cx="456" cy="504" r="3.6"/>
+      <circle cx="492" cy="504" r="3.6"/>
+      <circle cx="528" cy="504" r="3.6"/>
+      <circle cx="564" cy="504" r="3.6"/>
+      <circle cx="600" cy="504" r="3.6"/>
+      <circle cx="636" cy="504" r="3.6"/>
+      <circle cx="672" cy="504" r="3.6"/>
+      <circle cx="708" cy="504" r="3.6"/>
+      <circle cx="744" cy="504" r="3.6"/>
+      <circle cx="780" cy="504" r="3.6"/>
+      <circle cx="816" cy="504" r="3.6"/>
+      <circle cx="852" cy="504" r="3.6"/>
+      <circle cx="888" cy="504" r="3.6"/>
+      <circle cx="924" cy="504" r="3.6"/>
+      <circle cx="960" cy="504" r="3.6"/>
+      <circle cx="996" cy="504" r="3.6"/>
+      <circle cx="1032" cy="504" r="3.6"/>
+      <circle cx="1068" cy="504" r="3.6"/>
+      <circle cx="1104" cy="504" r="3.6"/>
+      <circle cx="1140" cy="504" r="3.6"/>
+    </g>
+    <!-- 墙上的木门 -->
+    <rect x="986" y="592" width="76" height="115" fill="#0b1514"/>
+    <rect x="986" y="592" width="76" height="115" fill="none" stroke="#3b544a" stroke-opacity="0.55" stroke-width="1.4"/>
+    <g stroke="#2e453d" stroke-opacity="0.5" stroke-width="1">
+      <line x1="1010" y1="592" x2="1010" y2="707"/>
+      <line x1="1036" y1="592" x2="1036" y2="707"/>
+    </g>
+    <rect x="1000" y="628" width="12" height="5" rx="1" fill="#6d8577" fill-opacity="0.5"/>
+    <!-- 墙上的告示 -->
+    <rect x="630" y="556" width="62" height="46" fill="#2c443c" fill-opacity="0.55"/>
+    <rect x="630" y="556" width="62" height="46" fill="none" stroke="#4a6459" stroke-opacity="0.4" stroke-width="1"/>
+    <g stroke="#8fa89a" stroke-opacity="0.30" stroke-width="1.6">
+      <line x1="638" y1="568" x2="684" y2="568"/>
+      <line x1="638" y1="578" x2="676" y2="578"/>
+      <line x1="638" y1="588" x2="682" y2="588"/>
+      <line x1="638" y1="596" x2="664" y2="596"/>
+    </g>
+    <rect x="376" y="694" width="768" height="13" fill="#050b0a" fill-opacity="0.8"/>
+  </g>
 
   <!-- 04 电线杆与电线 -->
   <g>
-    <rect x="1126" y="118" width="15" height="589" fill="#080f11"/>
-    <rect x="1126" y="118" width="2" height="589" fill="#33443f" fill-opacity="0.45"/>
-    <rect x="1082" y="176" width="104" height="7" fill="#080f11"/>
-    <rect x="1082" y="206" width="88" height="6" fill="#080f11"/>
-    <g fill="#0a1213">
-      <rect x="1084" y="168" width="5" height="9"/>
-      <rect x="1104" y="168" width="5" height="9"/>
-      <rect x="1160" y="168" width="5" height="9"/>
-      <rect x="1178" y="168" width="5" height="9"/>
+    <rect x="1102" y="92" width="16" height="615" fill="#0a1413"/>
+    <rect x="1102" y="92" width="2.4" height="615" fill="#40574e" fill-opacity="0.5"/>
+    <rect x="1056" y="146" width="106" height="7" fill="#0a1413"/>
+    <rect x="1056" y="176" width="92" height="6" fill="#0a1413"/>
+    <g fill="#0b1514">
+      <rect x="1058" y="138" width="5" height="9"/>
+      <rect x="1080" y="138" width="5" height="9"/>
+      <rect x="1136" y="138" width="5" height="9"/>
+      <rect x="1154" y="138" width="5" height="9"/>
     </g>
-    <g fill="none" stroke="#1b2b28" stroke-width="1.5" stroke-opacity="0.75">
-      <path d="M1086,171 Q560,206 0,196"/>
-      <path d="M1106,171 Q580,228 0,222"/>
-      <path d="M1162,171 Q900,196 700,198"/>
-      <path d="M1180,171 Q940,206 780,210"/>
+    <g fill="none" stroke="#243833" stroke-width="1.6" stroke-opacity="0.85">
+      <path d="M1060,140 Q700,182 300,168"/>
+      <path d="M1082,140 Q740,200 380,192"/>
+      <path d="M1138,140 Q1330,168 1440,164"/>
+      <path d="M1156,140 Q1360,180 1440,180"/>
     </g>
-    <g fill="none" stroke="#16241f" stroke-width="1.1" stroke-opacity="0.6">
-      <path d="M1090,210 Q820,238 660,244"/>
-      <path d="M1120,210 Q900,236 800,242"/>
+    <g fill="none" stroke="#1f302b" stroke-width="1.1" stroke-opacity="0.7">
+      <path d="M1064,178 Q820,206 620,214"/>
+      <path d="M1090,178 Q860,204 700,208"/>
     </g>
-    <rect x="1158" y="300" width="34" height="26" rx="3" fill="#0c1617"/>
-    <rect x="1158" y="300" width="34" height="1.4" fill="#33443f" fill-opacity="0.4"/>
+    <!-- 灯臂与灯泡 -->
+    <path d="M1112,296 C1084,292 1058,294 1046,296" fill="none" stroke="#0d1817" stroke-width="7" stroke-linecap="round"/>
+    <path d="M1112,296 C1084,292 1058,294 1046,296" fill="none" stroke="#3d554b" stroke-width="1" stroke-opacity="0.5"/>
+    <path d="M1038,296 L1054,296 L1050,312 L1042,312 Z" fill="#1a2724"/>
+    <ellipse cx="1046" cy="313" rx="4.4" ry="2.6" fill="#ffe4b6"/>
+    <circle cx="1046" cy="310" r="46" fill="url(#bulbG)" filter="url(#b14)"/>
+    <circle cx="1046" cy="310" r="120" fill="url(#bulbG)" filter="url(#b26)" opacity="0.7"/>
   </g>
 
   <!-- 05 左屋 -->
   <g>
-    <rect x="0" y="236" width="392" height="471" fill="url(#lwallG)"/>
-    <g stroke="#1d2e2b" stroke-opacity="0.34" stroke-width="1.2">
-      <line x1="22" y1="246" x2="22" y2="704"/>
-      <line x1="64" y1="246" x2="64" y2="704"/>
-      <line x1="106" y1="246" x2="106" y2="704"/>
-      <line x1="148" y1="246" x2="148" y2="704"/>
-      <line x1="190" y1="246" x2="190" y2="704"/>
-      <line x1="232" y1="246" x2="232" y2="704"/>
-      <line x1="274" y1="246" x2="274" y2="704"/>
-      <line x1="316" y1="246" x2="316" y2="704"/>
-      <line x1="358" y1="246" x2="358" y2="704"/>
+    <rect x="0" y="212" width="384" height="495" fill="url(#lwallG)"/>
+    <g stroke="#3b5249" stroke-opacity="0.30" stroke-width="1.2">
+      <line x1="0" y1="238" x2="384" y2="238"/>
+      <line x1="0" y1="260" x2="384" y2="260"/>
+      <line x1="0" y1="282" x2="384" y2="282"/>
+      <line x1="0" y1="304" x2="384" y2="304"/>
+      <line x1="0" y1="326" x2="384" y2="326"/>
+      <line x1="0" y1="348" x2="384" y2="348"/>
+      <line x1="0" y1="370" x2="384" y2="370"/>
+      <line x1="0" y1="392" x2="384" y2="392"/>
+      <line x1="0" y1="414" x2="384" y2="414"/>
+      <line x1="0" y1="436" x2="384" y2="436"/>
+      <line x1="0" y1="458" x2="384" y2="458"/>
+      <line x1="0" y1="480" x2="384" y2="480"/>
+      <line x1="0" y1="502" x2="384" y2="502"/>
+      <line x1="0" y1="524" x2="384" y2="524"/>
+      <line x1="0" y1="546" x2="384" y2="546"/>
+      <line x1="0" y1="568" x2="384" y2="568"/>
+      <line x1="0" y1="590" x2="384" y2="590"/>
+      <line x1="0" y1="612" x2="384" y2="612"/>
+      <line x1="0" y1="634" x2="384" y2="634"/>
+      <line x1="0" y1="656" x2="384" y2="656"/>
+      <line x1="0" y1="678" x2="384" y2="678"/>
+      <line x1="0" y1="700" x2="384" y2="700"/>
     </g>
-    <rect x="0" y="216" width="404" height="22" fill="#080e10"/>
-    <rect x="0" y="216" width="404" height="1.6" fill="#3a4c46" fill-opacity="0.45"/>
-    <g fill="#0a1213">
-      <circle cx="10" cy="219" r="3.4"/>
-      <circle cx="38" cy="219" r="3.4"/>
-      <circle cx="66" cy="219" r="3.4"/>
-      <circle cx="94" cy="219" r="3.4"/>
-      <circle cx="122" cy="219" r="3.4"/>
-      <circle cx="150" cy="219" r="3.4"/>
-      <circle cx="178" cy="219" r="3.4"/>
-      <circle cx="206" cy="219" r="3.4"/>
-      <circle cx="234" cy="219" r="3.4"/>
-      <circle cx="262" cy="219" r="3.4"/>
-      <circle cx="290" cy="219" r="3.4"/>
-      <circle cx="318" cy="219" r="3.4"/>
-      <circle cx="346" cy="219" r="3.4"/>
-      <circle cx="374" cy="219" r="3.4"/>
+    <g stroke="#22342f" stroke-opacity="0.45" stroke-width="1.4">
+      <line x1="96" y1="212" x2="96" y2="707"/>
+      <line x1="238" y1="212" x2="238" y2="707"/>
+      <line x1="344" y1="212" x2="344" y2="707"/>
+    </g>
+    <!-- 屋檐（底边见瓦当） -->
+    <rect x="0" y="186" width="396" height="28" fill="url(#eaveG)"/>
+    <rect x="0" y="186" width="396" height="2.4" fill="#5a7365" fill-opacity="0.6"/>
+    <g fill="#0b1514">
+      <circle cx="12" cy="208" r="4.6"/>
+      <circle cx="46" cy="208" r="4.6"/>
+      <circle cx="80" cy="208" r="4.6"/>
+      <circle cx="114" cy="208" r="4.6"/>
+      <circle cx="148" cy="208" r="4.6"/>
+      <circle cx="182" cy="208" r="4.6"/>
+      <circle cx="216" cy="208" r="4.6"/>
+      <circle cx="250" cy="208" r="4.6"/>
+      <circle cx="284" cy="208" r="4.6"/>
+      <circle cx="318" cy="208" r="4.6"/>
+      <circle cx="352" cy="208" r="4.6"/>
+      <circle cx="386" cy="208" r="4.6"/>
     </g>
     <!-- 窗 -->
-    <rect x="116" y="392" width="102" height="84" fill="#0a1213"/>
-    <rect x="120" y="396" width="94" height="76" fill="#cfa269" fill-opacity="0.30"/>
-    <rect x="120" y="396" width="94" height="76" fill="none" stroke="#2b3d38" stroke-width="1.4"/>
-    <line x1="167" y1="396" x2="167" y2="472" stroke="#0d1a19" stroke-width="3"/>
-    <line x1="120" y1="434" x2="214" y2="434" stroke="#0d1a19" stroke-width="3"/>
-    <rect x="124" y="400" width="39" height="30" fill="#e6bc84" fill-opacity="0.16"/>
-    <ellipse cx="167" cy="434" rx="96" ry="88" fill="url(#winG)"/>
+    <rect x="110" y="374" width="112" height="94" fill="#0b1514"/>
+    <rect x="114" y="378" width="104" height="86" fill="#d8a96b" fill-opacity="0.42"/>
+    <rect x="114" y="378" width="104" height="86" fill="none" stroke="#40584e" stroke-width="1.6"/>
+    <rect x="117" y="381" width="42" height="34" fill="#f0c68c" fill-opacity="0.26"/>
+    <line x1="166" y1="378" x2="166" y2="464" stroke="#101d1a" stroke-width="3.4"/>
+    <line x1="114" y1="421" x2="218" y2="421" stroke="#101d1a" stroke-width="3.4"/>
+    <ellipse cx="166" cy="421" rx="112" ry="104" fill="url(#winG)"/>
+    <!-- 电表箱 -->
+    <rect x="26" y="330" width="42" height="52" rx="2" fill="#14201e"/>
+    <rect x="26" y="330" width="42" height="1.6" fill="#40584e" fill-opacity="0.45"/>
+    <rect x="32" y="340" width="30" height="20" fill="#0d1917"/>
+    <!-- 落水管 -->
+    <rect x="352" y="212" width="11" height="495" fill="#151f1d"/>
+    <rect x="352" y="212" width="2" height="495" fill="#445c52" fill-opacity="0.5"/>
     <!-- 空调外机 -->
     <g>
-      <rect x="252" y="556" width="86" height="78" rx="3" fill="#0b1516"/>
-      <rect x="252" y="556" width="86" height="1.4" fill="#2f4240" fill-opacity="0.4"/>
-      <circle cx="295" cy="595" r="26" fill="#0e1b1a"/>
-      <circle cx="295" cy="595" r="26" fill="none" stroke="#22332f" stroke-width="1.2"/>
-      <g stroke="#1d2e2b" stroke-width="1.6">
-        <line x1="295" y1="571" x2="295" y2="619"/>
-        <line x1="273" y1="583" x2="317" y2="607"/>
-        <line x1="273" y1="607" x2="317" y2="583"/>
+      <rect x="248" y="540" width="92" height="84" rx="3" fill="#14201e"/>
+      <rect x="248" y="540" width="92" height="1.8" fill="#4a6558" fill-opacity="0.5"/>
+      <circle cx="294" cy="584" r="27" fill="#1b2a26"/>
+      <circle cx="294" cy="584" r="27" fill="none" stroke="#3d574c" stroke-width="1.4"/>
+      <g stroke="#2a3f38" stroke-width="1.8">
+        <line x1="294" y1="559" x2="294" y2="609"/>
+        <line x1="271" y1="571" x2="317" y2="597"/>
+        <line x1="271" y1="597" x2="317" y2="571"/>
       </g>
-      <circle cx="295" cy="595" r="5" fill="#111e1d"/>
-      <g stroke="#0a1213" stroke-width="4">
-        <line x1="258" y1="636" x2="258" y2="700"/>
-        <line x1="332" y1="636" x2="332" y2="700"/>
+      <circle cx="294" cy="584" r="5" fill="#16241f"/>
+      <g stroke="#0d1817" stroke-width="4.4">
+        <line x1="254" y1="624" x2="254" y2="700"/>
+        <line x1="334" y1="624" x2="334" y2="700"/>
       </g>
     </g>
-    <rect x="0" y="686" width="392" height="21" fill="#050b0c" fill-opacity="0.7"/>
+    <!-- 墙根的盆栽 -->
+    <g>
+      <path d="M44,700 L44,676 L96,676 L96,700 Z" fill="#16241f"/>
+      <path d="M44,676 L96,676" stroke="#4a6558" stroke-opacity="0.5" stroke-width="1.6"/>
+      <path d="M70,676 C62,660 50,652 40,650" fill="none" stroke="#20332c" stroke-width="3" stroke-linecap="round"/>
+      <path d="M70,676 C72,656 82,644 94,640" fill="none" stroke="#20332c" stroke-width="3" stroke-linecap="round"/>
+      <path d="M70,676 C68,658 66,648 68,634" fill="none" stroke="#20332c" stroke-width="3" stroke-linecap="round"/>
+      <ellipse cx="40" cy="648" rx="9" ry="5" fill="#1b2c26" transform="rotate(-18 40 648)"/>
+      <ellipse cx="95" cy="638" rx="9" ry="5" fill="#1b2c26" transform="rotate(14 95 638)"/>
+      <ellipse cx="68" cy="632" rx="8" ry="5" fill="#1b2c26" transform="rotate(-6 68 632)"/>
+    </g>
+    <rect x="0" y="686" width="384" height="21" fill="#070d0c" fill-opacity="0.65"/>
   </g>
 
   <!-- 06 右屋 -->
   <g>
-    <rect x="1140" y="296" width="300" height="411" fill="url(#rwallG)"/>
-    <g stroke="#16241f" stroke-opacity="0.55" stroke-width="1.4">
-      <line x1="1160" y1="300" x2="1160" y2="704"/>
-      <line x1="1174" y1="300" x2="1174" y2="704"/>
-      <line x1="1188" y1="300" x2="1188" y2="704"/>
-      <line x1="1202" y1="300" x2="1202" y2="704"/>
-      <line x1="1216" y1="300" x2="1216" y2="704"/>
-      <line x1="1230" y1="300" x2="1230" y2="704"/>
-      <line x1="1244" y1="300" x2="1244" y2="704"/>
-      <line x1="1258" y1="300" x2="1258" y2="704"/>
-      <line x1="1272" y1="300" x2="1272" y2="704"/>
-      <line x1="1286" y1="300" x2="1286" y2="704"/>
-      <line x1="1300" y1="300" x2="1300" y2="704"/>
-      <line x1="1314" y1="300" x2="1314" y2="704"/>
-      <line x1="1328" y1="300" x2="1328" y2="704"/>
-      <line x1="1342" y1="300" x2="1342" y2="704"/>
-      <line x1="1356" y1="300" x2="1356" y2="704"/>
-      <line x1="1370" y1="300" x2="1370" y2="704"/>
-      <line x1="1384" y1="300" x2="1384" y2="704"/>
-      <line x1="1398" y1="300" x2="1398" y2="704"/>
-      <line x1="1412" y1="300" x2="1412" y2="704"/>
-      <line x1="1426" y1="300" x2="1426" y2="704"/>
+    <rect x="1136" y="254" width="304" height="453" fill="url(#rwallG)"/>
+    <g stroke="#2a403a" stroke-opacity="0.55" stroke-width="1.6">
+      <line x1="1150" y1="258" x2="1150" y2="704"/>
+      <line x1="1164" y1="258" x2="1164" y2="704"/>
+      <line x1="1178" y1="258" x2="1178" y2="704"/>
+      <line x1="1192" y1="258" x2="1192" y2="704"/>
+      <line x1="1206" y1="258" x2="1206" y2="704"/>
+      <line x1="1220" y1="258" x2="1220" y2="704"/>
+      <line x1="1234" y1="258" x2="1234" y2="704"/>
+      <line x1="1248" y1="258" x2="1248" y2="704"/>
+      <line x1="1262" y1="258" x2="1262" y2="704"/>
+      <line x1="1276" y1="258" x2="1276" y2="704"/>
+      <line x1="1290" y1="258" x2="1290" y2="704"/>
+      <line x1="1304" y1="258" x2="1304" y2="704"/>
+      <line x1="1318" y1="258" x2="1318" y2="704"/>
+      <line x1="1332" y1="258" x2="1332" y2="704"/>
+      <line x1="1346" y1="258" x2="1346" y2="704"/>
+      <line x1="1360" y1="258" x2="1360" y2="704"/>
+      <line x1="1374" y1="258" x2="1374" y2="704"/>
+      <line x1="1388" y1="258" x2="1388" y2="704"/>
+      <line x1="1402" y1="258" x2="1402" y2="704"/>
+      <line x1="1416" y1="258" x2="1416" y2="704"/>
+      <line x1="1430" y1="258" x2="1430" y2="704"/>
     </g>
-    <rect x="1132" y="288" width="308" height="14" fill="#080f11"/>
-    <rect x="1132" y="288" width="308" height="1.4" fill="#3a4c46" fill-opacity="0.4"/>
-    <rect x="1294" y="392" width="82" height="72" fill="#0a1415"/>
-    <rect x="1294" y="392" width="82" height="72" fill="none" stroke="#22332f" stroke-width="1.2"/>
-    <rect x="1300" y="398" width="70" height="60" fill="#c59258" fill-opacity="0.07"/>
-    <rect x="1150" y="296" width="12" height="411" fill="#0b1617"/>
-    <rect x="1150" y="296" width="1.6" height="411" fill="#33443f" fill-opacity="0.35"/>
-    <!-- 檐下小灯 -->
-    <rect x="1130" y="352" width="26" height="7" rx="2" fill="#0c1617"/>
-    <path d="M1136,359 L1148,359 L1151,372 L1133,372 Z" fill="#1a2622"/>
-    <ellipse cx="1142" cy="374" rx="4.6" ry="2.6" fill="#ffe0b0" fill-opacity="0.95"/>
-    <circle cx="1142" cy="372" r="52" fill="url(#bulbG)" filter="url(#b14)"/>
+    <rect x="1128" y="242" width="312" height="16" fill="#0a1413"/>
+    <rect x="1128" y="242" width="312" height="2" fill="#4a6558" fill-opacity="0.45"/>
+    <g fill="#0b1514">
+      <circle cx="1144" cy="250" r="4.2"/>
+      <circle cx="1176" cy="250" r="4.2"/>
+      <circle cx="1208" cy="250" r="4.2"/>
+      <circle cx="1240" cy="250" r="4.2"/>
+      <circle cx="1272" cy="250" r="4.2"/>
+      <circle cx="1304" cy="250" r="4.2"/>
+      <circle cx="1336" cy="250" r="4.2"/>
+      <circle cx="1368" cy="250" r="4.2"/>
+      <circle cx="1400" cy="250" r="4.2"/>
+      <circle cx="1432" cy="250" r="4.2"/>
+    </g>
+    <rect x="1196" y="336" width="78" height="70" fill="#0c1715"/>
+    <rect x="1196" y="336" width="78" height="70" fill="none" stroke="#3a5249" stroke-width="1.4"/>
+    <rect x="1201" y="341" width="68" height="60" fill="#c29460" fill-opacity="0.10"/>
   </g>
 
-  <!-- 07 左墙根的垃圾袋 -->
+  <!-- 07 自动贩卖机（靠右缘，被画幅裁掉） -->
   <g>
-    <path d="M340,700 C336,684 342,668 356,664 C372,660 388,668 390,684 C392,694 388,700 384,702 Z" fill="#0d1918"/>
-    <path d="M352,664 L349,656 L357,662 Z" fill="#0d1918"/>
-    <path d="M356,664 C366,660 380,666 384,678" fill="none" stroke="#2b3d38" stroke-opacity="0.5" stroke-width="1.2"/>
-    <path d="M386,702 C384,690 390,678 402,676 C414,674 424,684 424,694 C424,700 420,703 416,704 Z" fill="#0b1516"/>
-    <path d="M396,676 L394,668 L402,674 Z" fill="#0b1516"/>
+    <ellipse cx="1382" cy="470" rx="130" ry="150" fill="url(#vendG)" filter="url(#b26)"/>
+    <rect x="1300" y="418" width="140" height="289" fill="#1b2c2a"/>
+    <rect x="1300" y="418" width="140" height="2.2" fill="#63a08c" fill-opacity="0.5"/>
+    <rect x="1308" y="426" width="124" height="42" fill="#d8f0e4" fill-opacity="0.16"/>
+    <rect x="1308" y="426" width="124" height="42" fill="none" stroke="#5f9a86" stroke-opacity="0.4" stroke-width="1"/>
+    <g fill="#e3f4ea" fill-opacity="0.18">
+      <rect x="1316" y="434" width="22" height="26"/>
+      <rect x="1344" y="434" width="22" height="26"/>
+      <rect x="1372" y="434" width="22" height="26"/>
+      <rect x="1400" y="434" width="22" height="26"/>
+    </g>
+    <rect x="1308" y="478" width="124" height="150" fill="#cfe8dd" fill-opacity="0.13"/>
+    <g fill="#a9d3bd" fill-opacity="0.22">
+      <rect x="1315" y="488" width="16" height="30"/>
+      <rect x="1337" y="488" width="16" height="30"/>
+      <rect x="1359" y="488" width="16" height="30"/>
+      <rect x="1381" y="488" width="16" height="30"/>
+      <rect x="1403" y="488" width="16" height="30"/>
+      <rect x="1315" y="528" width="16" height="30"/>
+      <rect x="1337" y="528" width="16" height="30"/>
+      <rect x="1359" y="528" width="16" height="30"/>
+      <rect x="1381" y="528" width="16" height="30"/>
+      <rect x="1403" y="528" width="16" height="30"/>
+      <rect x="1315" y="568" width="16" height="30"/>
+      <rect x="1337" y="568" width="16" height="30"/>
+      <rect x="1359" y="568" width="16" height="30"/>
+      <rect x="1381" y="568" width="16" height="30"/>
+      <rect x="1403" y="568" width="16" height="30"/>
+    </g>
+    <rect x="1312" y="642" width="52" height="20" rx="2" fill="#0e1a18"/>
+    <rect x="1358" y="646" width="16" height="6" rx="1" fill="#7fbfa8" fill-opacity="0.29"/>
+    <rect x="1298" y="692" width="142" height="15" fill="#0a1413"/>
+    <rect x="1300" y="418" width="140" height="289" fill="none" stroke="#3f6055" stroke-opacity="0.45" stroke-width="1.4"/>
   </g>
 
   <!-- 08 地面 -->
   <rect y="706" width="1440" height="194" fill="url(#roadG)"/>
-  <g stroke="#37433f" stroke-opacity="0.30" stroke-width="1">
-    <line x1="0" y1="722" x2="1440" y2="722"/>
-    <line x1="0" y1="748" x2="1440" y2="748"/>
-    <line x1="0" y1="788" x2="1440" y2="788"/>
-    <line x1="0" y1="842" x2="1440" y2="842"/>
+  <g stroke="#4a5a52" stroke-opacity="0.24" stroke-width="1">
+    <line x1="0" y1="718" x2="1440" y2="718"/>
+    <line x1="0" y1="742" x2="1440" y2="742"/>
+    <line x1="0" y1="778" x2="1440" y2="778"/>
+    <line x1="0" y1="828" x2="1440" y2="828"/>
+    <line x1="0" y1="884" x2="1440" y2="884"/>
   </g>
-  <g stroke="#2f3b37" stroke-opacity="0.26" stroke-width="1">
-    <line x1="120" y1="706" x2="80" y2="900"/>
-    <line x1="486" y1="706" x2="470" y2="900"/>
-    <line x1="700" y1="706" x2="694" y2="900"/>
-    <line x1="1030" y1="706" x2="1046" y2="900"/>
-    <line x1="1310" y1="706" x2="1352" y2="900"/>
+  <g stroke="#42524a" stroke-opacity="0.22" stroke-width="1">
+    <line x1="120" y1="706" x2="70" y2="900"/>
+    <line x1="470" y1="706" x2="452" y2="900"/>
+    <line x1="700" y1="706" x2="692" y2="900"/>
+    <line x1="1040" y1="706" x2="1058" y2="900"/>
+    <line x1="1320" y1="706" x2="1364" y2="900"/>
+  </g>
+  <!-- 排水沟 -->
+  <path d="M0,762 L560,752 L560,776 L0,790 Z" fill="#0e1917" fill-opacity="0.85"/>
+  <path d="M0,762 L560,752" stroke="#5b7268" stroke-opacity="0.34" stroke-width="1.6"/>
+  <g stroke="#3d5148" stroke-opacity="0.4" stroke-width="1.6">
+    <line x1="24" y1="761" x2="24" y2="789"/>
+    <line x1="72" y1="760" x2="72" y2="788"/>
+    <line x1="120" y1="759" x2="120" y2="787"/>
+    <line x1="168" y1="758" x2="168" y2="785"/>
+    <line x1="216" y1="757" x2="216" y2="784"/>
+    <line x1="264" y1="757" x2="264" y2="782"/>
+    <line x1="312" y1="756" x2="312" y2="781"/>
+    <line x1="360" y1="755" x2="360" y2="779"/>
+    <line x1="408" y1="754" x2="408" y2="778"/>
+    <line x1="456" y1="753" x2="456" y2="776"/>
+    <line x1="504" y1="753" x2="504" y2="775"/>
   </g>
 
   <!-- 09 地面的亮带与湿反光 -->
-  <rect x="360" y="694" width="1080" height="16" fill="url(#bandG)"/>
-  <ellipse cx="906" cy="712" rx="286" ry="26" fill="#f0cb92" fill-opacity="0.16" filter="url(#b14)"/>
+  <rect x="300" y="692" width="1140" height="17" fill="url(#bandG)"/>
+  <ellipse cx="1006" cy="716" rx="300" ry="30" fill="#f0cb92" fill-opacity="0.30" filter="url(#b14)"/>
+  <ellipse cx="1006" cy="708" rx="150" ry="14" fill="#ffe0b0" fill-opacity="0.20" filter="url(#b7)"/>
   <g filter="url(#b7)">
-    <rect x="1136" y="718" width="9" height="86" fill="#f0cb92" fill-opacity="0.16"/>
-    <rect x="1156" y="718" width="5" height="112" fill="#f0cb92" fill-opacity="0.11"/>
-    <rect x="1112" y="718" width="6" height="64" fill="#f0cb92" fill-opacity="0.09"/>
+    <rect x="1036" y="722" width="12" height="120" fill="#f0cb92" fill-opacity="0.22"/>
+    <rect x="1062" y="722" width="7" height="150" fill="#f0cb92" fill-opacity="0.15"/>
+    <rect x="1010" y="722" width="6" height="86" fill="#f0cb92" fill-opacity="0.13"/>
+    <rect x="1330" y="722" width="14" height="140" fill="#a9d3bd" fill-opacity="0.13"/>
+    <rect x="1372" y="722" width="8" height="96" fill="#a9d3bd" fill-opacity="0.10"/>
   </g>
-  <ellipse cx="826" cy="742" rx="132" ry="14" fill="#8dbaa6" fill-opacity="0.055" filter="url(#b14)"/>
+  <ellipse cx="820" cy="748" rx="150" ry="16" fill="#8dbaa6" fill-opacity="0.07" filter="url(#b14)"/>
 
   <!-- 10 人物背后的逆光 -->
-  <ellipse cx="834" cy="646" rx="150" ry="118" fill="#e8bd7e" fill-opacity="0.14" filter="url(#b24)"/>
-  <ellipse cx="852" cy="612" rx="82" ry="86" fill="#f3d6a6" fill-opacity="0.07" filter="url(#b24)"/>
+  <ellipse cx="836" cy="642" rx="158" ry="120" fill="#e8bd7e" fill-opacity="0.16" filter="url(#b26)"/>
+  <ellipse cx="852" cy="608" rx="86" ry="88" fill="#f8ddb2" fill-opacity="0.08" filter="url(#b26)"/>
 
   <!-- 11 投影 -->
-  <ellipse cx="806" cy="710" rx="78" ry="9" fill="#000000" fill-opacity="0.58" filter="url(#b7)"/>
-  <ellipse cx="868" cy="712" rx="48" ry="6" fill="#000000" fill-opacity="0.46" filter="url(#b7)"/>
+  <ellipse cx="808" cy="710" rx="80" ry="9" fill="#000000" fill-opacity="0.55" filter="url(#b7)"/>
+  <ellipse cx="870" cy="712" rx="50" ry="6" fill="#000000" fill-opacity="0.45" filter="url(#b7)"/>
 
-  <!-- 12 大人（背影，拎着袋子） -->
+  <!-- 12 大人（背影，手里拎着袋子） -->
   <g transform="translate(796,707)">
-    <path d="M-4.8,-144.4
-      C-12.4,-143.6 -19.9,-137.8 -23.2,-128.4
-      C-24.6,-122.4 -24.5,-115.6 -23.9,-109.4
-      C-23.1,-100.4 -22.3,-91 -22.1,-83.2
-      C-22,-80.6 -21.9,-78.4 -21.8,-76.6
-      L-21.4,-70.4
-      C-21.1,-63.2 -20.5,-55.4 -19.9,-47.6
-      C-19.3,-38.4 -18.7,-25.6 -18.4,-15.2
-      L-18.3,-5.4
-      C-18.3,-1.8 -19.3,0 -21,0
-      L-6.2,0
-      C-5.1,0 -4.4,-1.4 -4.4,-3.4
-      L-4.2,-15.2
-      C-3.9,-27 -3,-40.4 -2.2,-50.4
-      C-1.7,-57.6 -1.5,-63.6 -1.5,-68.6
-      L-1.5,-70.4
-      L1.5,-70.4
-      L1.5,-68.6
-      C1.5,-63.6 1.7,-57.6 2.2,-50.4
-      C3,-40.4 3.9,-27 4.2,-15.2
-      L4.4,-3.4
-      C4.4,-1.4 5.1,0 6.2,0
-      L21,0
-      C19.3,0 18.3,-1.8 18.3,-5.4
-      L18.4,-15.2
-      C18.7,-25.6 19.3,-38.4 19.9,-47.6
-      C20.5,-55.4 21.1,-63.2 21.4,-70.4
-      L21.8,-76.6
-      C21.9,-78.4 22,-80.6 22.1,-83.2
-      C22.3,-91 23.1,-100.4 23.9,-109.4
-      C24.5,-115.6 24.6,-122.4 23.2,-128.4
-      C19.9,-137.8 12.4,-143.6 4.8,-144.4
-      Z" fill="#080c0d"/>
-    <path d="M-4.6,-145
-      C-5,-149.4 -6.4,-153.4 -8.6,-156.8
-      C-11.6,-161.4 -8.8,-168.4 0,-168.5
-      C8.8,-168.4 11.6,-161.4 8.6,-156.8
-      C6.4,-153.4 5,-149.4 4.6,-145
-      Z" fill="#080c0d"/>
-    <path d="M-23.2,-128.4 C-21.6,-136.4 -13,-142.6 -4.8,-144.4" fill="none" stroke="url(#rimG)" stroke-width="2.2" stroke-opacity="0.55"/>
-    <path d="M-23.9,-109.4 C-22.4,-96 -22.1,-88 -22.1,-76.6" fill="none" stroke="url(#rimG)" stroke-width="1.9" stroke-opacity="0.4"/>
-    <path d="M-21.4,-70.4 C-20.6,-58 -19.6,-36 -18.4,-15.2" fill="none" stroke="url(#rimL)" stroke-width="1.6" stroke-opacity="0.34"/>
-    <path d="M-9,-160.4 C-11.4,-156 -10.4,-150.6 -6.2,-147.4" fill="none" stroke="#f6d9ac" stroke-opacity="0.26" stroke-width="1.5"/>
-    <path d="M-7.6,-146.6 C-3.4,-143.2 3.4,-143.2 7.6,-146.6" fill="none" stroke="#2c3b38" stroke-opacity="0.55" stroke-width="1.8"/>
-    <path d="M-21.6,-74.6 L-21.6,-46" stroke="#16211f" stroke-width="1" stroke-opacity="0.5"/>
-    <path d="M21.6,-74.6 L21.6,-46" stroke="#16211f" stroke-width="1" stroke-opacity="0.5"/>
-    <!-- 手里的塑料袋 -->
-    <g transform="translate(26,-40)">
-      <path d="M-2,-10 C4,-16 14,-16 18,-9 L22,-1 C25,6 24,14 22,20 C20,26 14,29 8,29 C2,29 -3,25 -5,18 C-7,11 -7,3 -4,-4 Z" fill="#0d1717"/>
-      <path d="M-2,-10 C4,-16 14,-16 18,-9" fill="none" stroke="#3c4f49" stroke-opacity="0.55" stroke-width="1.4"/>
-      <path d="M-1,-11 C2,-22 15,-22 18,-11" fill="none" stroke="#20302d" stroke-width="2"/>
-      <path d="M8,29 C14,22 20,12 19,0" fill="none" stroke="#1d2b28" stroke-width="1.2"/>
+    <path d="M-4.8,-144
+      C-13.2,-143.4 -20.4,-137.2 -23,-129.2
+      C-24.4,-123 -24.6,-114.6 -24.2,-107
+      C-23.8,-98 -23.2,-86.6 -22.4,-77
+      C-21.6,-71 -20.6,-69.4 -19.6,-69
+      C-19.2,-58 -18.8,-44 -18.4,-32
+      C-18,-20 -17.8,-9 -17.8,-4
+      C-17.8,-1.2 -19.2,0 -21.2,0
+      L-4.6,0
+      C-3.6,0 -3.2,-1.4 -3.2,-4
+      C-2.8,-22 -1.8,-46 0,-68
+      C1.8,-46 2.8,-22 3.2,-4
+      C3.2,-1.4 3.6,0 4.6,0
+      L21.2,0
+      C19.2,0 17.8,-1.2 17.8,-4
+      C17.8,-9 18,-20 18.4,-32
+      C18.8,-44 19.2,-58 19.6,-69
+      C20.6,-69.4 21.6,-71 22.4,-77
+      C23.2,-86.6 23.8,-98 24.2,-107
+      C24.6,-114.6 24.4,-123 23,-129.2
+      C20.4,-137.2 13.2,-143.4 4.8,-144
+      Z" fill="#070b0c"/>
+    <path d="M-4.6,-145.4
+      C-5,-149.8 -6.4,-153.8 -8.6,-157.2
+      C-11.6,-161.8 -8.8,-168.4 0,-168.5
+      C8.8,-168.4 11.6,-161.8 8.6,-157.2
+      C6.4,-153.8 5,-149.8 4.6,-145.4
+      Z" fill="#070b0c"/>
+    <path d="M-23,-129.2 C-21.2,-136.6 -13.2,-142.6 -4.8,-144" fill="none" stroke="url(#rimG)" stroke-width="2.4" stroke-opacity="0.62"/>
+    <path d="M-24.2,-107 C-23.4,-92 -22.6,-80 -22.4,-77" fill="none" stroke="url(#rimG)" stroke-width="2" stroke-opacity="0.46"/>
+    <path d="M-19.6,-69 C-19,-52 -18.4,-30 -17.8,-4" fill="none" stroke="url(#rimL)" stroke-width="1.8" stroke-opacity="0.38"/>
+    <path d="M-18.2,-8 C-16,-6 -8,-5 -4,-5" fill="none" stroke="#33473f" stroke-opacity="0.35" stroke-width="1.2"/>
+    <path d="M-9,-160.6 C-11.6,-156 -10.6,-150.6 -6.4,-147.4" fill="none" stroke="#f8ddb2" stroke-opacity="0.30" stroke-width="1.6"/>
+    <path d="M-7.8,-146.6 C-3.4,-143 3.4,-143 7.8,-146.6" fill="none" stroke="#2f423b" stroke-opacity="0.6" stroke-width="1.8"/>
+    <path d="M-22.2,-70 L-22.2,-40" stroke="#1a2a26" stroke-width="1.1" stroke-opacity="0.55"/>
+    <path d="M22.2,-70 L22.2,-40" stroke="#1a2a26" stroke-width="1.1" stroke-opacity="0.55"/>
+    <path d="M-1.6,-64 L-1.6,-40" stroke="#1a2a26" stroke-width="1" stroke-opacity="0.4"/>
+    <path d="M1.6,-64 L1.6,-40" stroke="#1a2a26" stroke-width="1" stroke-opacity="0.4"/>
+    <g transform="translate(28,-34)">
+      <path d="M-2,-12 C4,-18 14,-18 18,-11 L23,-2 C26,6 25,15 23,21 C21,28 14,31 7,31 C0,31 -4,26 -6,18 C-8,10 -8,2 -4,-6 Z" fill="#0a1312"/>
+      <path d="M-2,-12 C4,-18 14,-18 18,-11" fill="none" stroke="#4a6558" stroke-opacity="0.6" stroke-width="1.5"/>
+      <path d="M-1,-13 C2,-25 15,-25 18,-13" fill="none" stroke="#2b403a" stroke-width="2.2"/>
+      <path d="M7,31 C14,24 21,13 20,0" fill="none" stroke="#243832" stroke-width="1.3"/>
+      <path d="M18,-10 C21,-2 22,8 21,16" fill="none" stroke="#6d8577" stroke-opacity="0.30" stroke-width="1.2"/>
     </g>
   </g>
 
   <!-- 13 小孩（背影） -->
-  <g transform="translate(872,707)">
-    <path d="M-4.2,-101
-      C-11,-100.4 -16.6,-95.6 -18.4,-88.4
-      C-19.2,-84 -19.2,-79.4 -19,-75.6
-      C-18.6,-70 -18.2,-64.6 -18,-61
-      L-17.8,-56
-      C-17.6,-51 -17.2,-44 -16.8,-36.6
-      C-16.4,-30 -16,-20 -15.8,-12.4
-      L-15.7,-4.4
-      C-15.7,-1.4 -16.4,0 -17.8,0
-      L-5.4,0
-      C-4.5,0 -3.9,-1.2 -3.9,-2.8
-      L-3.8,-12.4
-      C-3.6,-21 -3,-30.6 -2.4,-37.6
-      C-2,-42.6 -1.8,-47 -1.8,-50.4
-      L-1.8,-52
-      L1.8,-52
-      L1.8,-50.4
-      C1.8,-47 2,-42.6 2.4,-37.6
-      C3,-30.6 3.6,-21 3.8,-12.4
-      L3.9,-2.8
-      C3.9,-1.2 4.5,0 5.4,0
-      L17.8,0
-      C16.4,0 15.7,-1.4 15.7,-4.4
-      L15.8,-12.4
-      C16,-20 16.4,-30 16.8,-36.6
-      C17.2,-44 17.6,-51 17.8,-56
-      L18,-61
-      C18.2,-64.6 18.6,-70 19,-75.6
-      C19.2,-79.4 19.2,-84 18.4,-88.4
-      C16.6,-95.6 11,-100.4 4.2,-101
-      Z" fill="#070b0c"/>
-    <path d="M-4.2,-101.4
-      C-4.6,-104.6 -5.6,-107.4 -7.2,-110
-      C-9.6,-113.8 -7.4,-118.4 0,-118.5
-      C7.4,-118.4 9.6,-113.8 7.2,-110
-      C5.6,-107.4 4.6,-104.6 4.2,-101.4
-      Z" fill="#070b0c"/>
-    <path d="M-18.4,-88.4 C-16.6,-95.4 -11,-100.2 -4.2,-101" fill="none" stroke="url(#rimG)" stroke-width="2" stroke-opacity="0.5"/>
-    <path d="M-18,-61 C-17.4,-53 -16.6,-40 -15.8,-12.4" fill="none" stroke="url(#rimL)" stroke-width="1.5" stroke-opacity="0.3"/>
-    <path d="M-7.4,-112.4 C-9.2,-109 -8.4,-104.6 -5.2,-102" fill="none" stroke="#f6d9ac" stroke-opacity="0.24" stroke-width="1.4"/>
-    <path d="M-6.6,-102.4 C-3,-99.8 3,-99.8 6.6,-102.4" fill="none" stroke="#2c3b38" stroke-opacity="0.5" stroke-width="1.6"/>
+  <g transform="translate(868,707)">
+    <path d="M-4.4,-100.6
+      C-11,-100 -16.6,-95.2 -18.4,-88
+      C-19.2,-83.6 -19.2,-78.6 -19,-74.6
+      C-18.6,-68.6 -18,-61.6 -17.6,-55
+      C-17.2,-49 -16.8,-43 -16.4,-36
+      C-16,-28 -15.8,-18 -15.8,-10
+      C-15.8,-4 -16,-1.2 -17.4,0
+      L-3.8,0
+      C-3,0 -2.8,-1.2 -2.8,-3.2
+      C-2.6,-18 -1.6,-36 0,-50
+      C1.6,-36 2.6,-18 2.8,-3.2
+      C2.8,-1.2 3,0 3.8,0
+      L17.4,0
+      C16,-1.2 15.8,-4 15.8,-10
+      C15.8,-18 16,-28 16.4,-36
+      C16.8,-43 17.2,-49 17.6,-55
+      C18,-61.6 18.6,-68.6 19,-74.6
+      C19.2,-78.6 19.2,-83.6 18.4,-88
+      C16.6,-95.2 11,-100 4.4,-100.6
+      Z" fill="#060a0b"/>
+    <path d="M-4.4,-101.8
+      C-4.8,-105 -5.8,-107.8 -7.4,-110.4
+      C-9.8,-114.2 -7.6,-118.5 0,-118.6
+      C7.6,-118.5 9.8,-114.2 7.4,-110.4
+      C5.8,-107.8 4.8,-105 4.4,-101.8
+      Z" fill="#060a0b"/>
+    <path d="M-18.4,-88 C-16.6,-94.8 -11,-99.8 -4.4,-100.6" fill="none" stroke="url(#rimG)" stroke-width="2.1" stroke-opacity="0.55"/>
+    <path d="M-17.6,-55 C-17,-46 -16.4,-30 -15.8,-10" fill="none" stroke="url(#rimL)" stroke-width="1.6" stroke-opacity="0.32"/>
+    <path d="M-7.6,-112.6 C-9.4,-109 -8.6,-104.6 -5.4,-102" fill="none" stroke="#f8ddb2" stroke-opacity="0.28" stroke-width="1.5"/>
+    <path d="M-6.8,-102.6 C-3,-100 3,-100 6.8,-102.6" fill="none" stroke="#2f423b" stroke-opacity="0.55" stroke-width="1.6"/>
+    <path d="M-16.2,-74 L-16.2,-52" stroke="#1a2a26" stroke-width="1" stroke-opacity="0.45"/>
+    <path d="M16.2,-74 L16.2,-52" stroke="#1a2a26" stroke-width="1" stroke-opacity="0.45"/>
   </g>
 
   <!-- 14 前景：井盖与地面裂缝 -->
   <g>
-    <ellipse cx="560" cy="836" rx="52" ry="15" fill="#0d1514" fill-opacity="0.9"/>
-    <ellipse cx="560" cy="836" rx="52" ry="15" fill="none" stroke="#3a4743" stroke-opacity="0.35" stroke-width="1.2"/>
-    <g stroke="#33403c" stroke-opacity="0.3" stroke-width="1">
-      <line x1="524" y1="836" x2="596" y2="836"/>
-      <line x1="560" y1="821" x2="560" y2="851"/>
+    <ellipse cx="520" cy="846" rx="58" ry="17" fill="#0f1a18" fill-opacity="0.92"/>
+    <ellipse cx="520" cy="846" rx="58" ry="17" fill="none" stroke="#5b7268" stroke-opacity="0.30" stroke-width="1.4"/>
+    <g stroke="#4a5f56" stroke-opacity="0.26" stroke-width="1">
+      <line x1="478" y1="846" x2="562" y2="846"/>
+      <line x1="520" y1="829" x2="520" y2="863"/>
+      <line x1="492" y1="835" x2="548" y2="857"/>
+      <line x1="492" y1="857" x2="548" y2="835"/>
     </g>
-    <path d="M1088,806 C1120,812 1152,820 1196,826" fill="none" stroke="#0a1212" stroke-width="2.4" stroke-opacity="0.8"/>
+    <path d="M1104,806 C1140,814 1176,822 1220,830" fill="none" stroke="#0b1514" stroke-width="2.6" stroke-opacity="0.85"/>
+    <path d="M180,880 C240,872 300,884 360,878" fill="none" stroke="#0b1514" stroke-width="2" stroke-opacity="0.6"/>
   </g>
 
   <!-- 15 暗角 -->
