@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T03:57:12.393Z",
+  "generatedAt": "2026-10-27T04:08:43.579Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 140,
+  "total": 141,
   "ok": 85,
-  "warn": 55,
+  "warn": 56,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 124,
+    "checked": 125,
     "skippedVerified": 16,
     "error": null
   },
@@ -2118,6 +2118,55 @@
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（mdb.yuncongz.com）"
+        }
+      ]
+    },
+    {
+      "id": "20261027-shoplifters",
+      "zhTitle": "小偷家族",
+      "sourceTitle": "电影小偷家族海报设计",
+      "year": "2018",
+      "source": "本地",
+      "imageUrl": "posters/20261027-shoplifters.jpg",
+      "host": "img.doooor.com",
+      "tier": "unknown",
+      "size": "1428KB",
+      "dims": "1000×1778",
+      "ratio": 1.78,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「小偷家族」",
+          "年份命中 2018"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "小偷家族",
+        "yearMatch": true,
+        "years": [
+          "2018"
+        ],
+        "dominantText": "8月3日 全国上映",
+        "reasons": [
+          "图片文字命中片名「小偷家族」",
+          "图片文字命中上映年份 2018"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（img.doooor.com）"
         }
       ]
     },

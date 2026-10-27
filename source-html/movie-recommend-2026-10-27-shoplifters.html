@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《小偷家族》万引き家族 · Shoplifters (2018) — 日本电影经典推荐 · 第 04 部</title>
+<meta name="description" content="日本电影经典系列第 04 部：《小偷家族》(2018)，是枝裕和导演，中川雅也 / 安藤樱 / 树木希林主演，第 71 届戛纳金棕榈。豆瓣 8.7 / IMDb 7.9 / 烂番茄 99% / Metacritic 93。一间老房子里六个人，没有一个人是户口本上的。全程不剧透。">
+<style>
+  :root{
+    /* 夏夜的路地：近黑夜青为底，洗旧米白为主字，钨丝灯黄为光，一点铜绿与铁锈红做重音 */
+    --ink:#070e0f;
+    --ink-2:#0c1617;
+    --ink-3:#111e1f;
+    --paper:#e9e3d4;
+    --paper-dim:#bdb6a6;
+    --ash:#8a887c;
+    --ash-dim:#4f5349;
+    --lamp:#cf9c56;
+    --lamp-light:#f0cb92;
+    --verde:#4d7d6e;
+    --verde-light:#8dbaa6;
+    --rust:#9d4636;
+    --rust-light:#cf8070;
+    /* 兼容旧类名 */
+    --wall:#8dbaa6;
+    --wall-light:#c3dbd0;
+    --frost:#8dbaa6;
+    --frost-light:#c3dbd0;
+    --amber:#b98a4a;
+    --amber-light:#e6c186;
+    --seal:#9d4636;
+    --seal-light:#cf8070;
+    --vermil:#9d4636;
+    --vermil-light:#cf8070;
+    --line:rgba(233,227,212,.10);
+    --line-strong:rgba(233,227,212,.21);
+    --serif:"Georgia","Times New Roman","Songti SC","STSong",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ink);color:var(--paper);font-family:var(--sans);
+    line-height:1.85;font-size:16px;letter-spacing:.01em;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:9;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='.5'/></svg>");
+    opacity:.05;mix-blend-mode:overlay;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:8;pointer-events:none;
+    background:radial-gradient(126% 96% at 50% 42%,transparent 58%,rgba(0,0,0,.52) 100%);
+  }
+  ::selection{background:var(--verde-light);color:#070e0f}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;min-height:max(100vh,880px);overflow:hidden;display:flex;align-items:stretch;border-bottom:1px solid var(--line)}
+  .hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-scrim{
+    position:absolute;inset:0;z-index:2;pointer-events:none;
+    background:
+      linear-gradient(180deg,rgba(7,14,15,.95) 0%,rgba(7,14,15,.62) 15%,rgba(7,14,15,.10) 38%,rgba(7,14,15,.04) 60%,rgba(7,14,15,.09) 73%,rgba(7,14,15,.33) 86%,rgba(7,14,15,.70) 95%,rgba(7,14,15,.95) 100%),
+      radial-gradient(88% 68% at 20% 24%,rgba(7,14,15,.68) 0%,transparent 76%);
+  }
+  #heroCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;pointer-events:none}
+  .hero-in{position:relative;z-index:4;width:100%;max-width:1160px;margin:0 auto;padding:104px 28px 96px;display:flex;flex-direction:column;justify-content:flex-start}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--paper-dim);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .eyebrow::before{content:"";width:44px;height:1px;background:var(--verde-light);opacity:.8;flex:0 0 auto}
+  .eyebrow span{color:var(--ash-dim);letter-spacing:.24em}
+  h1.title{font-family:var(--serif);font-size:clamp(34px,5.6vw,74px);line-height:1.1;letter-spacing:.14em;margin:22px 0 10px;color:#fbf8ef;text-shadow:0 6px 44px rgba(0,0,0,.94),0 0 90px rgba(240,203,146,.10);font-weight:400}
+  .title-en{font-family:var(--serif);font-size:clamp(13px,1.7vw,19px);letter-spacing:.26em;color:var(--lamp-light);text-transform:uppercase;margin-bottom:8px;padding-left:3px;line-height:1.7}
+  .title-jp{font-size:clamp(12px,1.5vw,15px);letter-spacing:.16em;color:var(--paper-dim);margin-bottom:24px;padding-left:3px}
+  .title-jp b{color:var(--verde-light);font-weight:400}
+  .hero-sub{max-width:720px;font-size:clamp(14px,1.6vw,17px);color:var(--paper-dim);line-height:1.95;border-left:2px solid var(--verde-light);padding-left:20px}
+  .hero-sub b{color:var(--paper);font-weight:600}
+  .hero-sub .hl{color:var(--lamp-light)}
+  .hero-sub .wg{color:var(--verde-light)}
+  .hero-sub .cred{display:inline}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+  .chip{font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:6px 12px;border:1px solid var(--line-strong);color:var(--paper-dim);background:rgba(7,14,15,.58);backdrop-filter:blur(3px)}
+  .chip.hot{border-color:rgba(195,219,208,.66);color:var(--verde-light)}
+  .chip.tag{border-color:rgba(240,203,146,.58);color:var(--lamp-light)}
+  .chip.ink{border-color:rgba(233,227,212,.30);color:var(--paper)}
+  .chip.cool{border-color:rgba(157,70,54,.60);color:var(--rust-light)}
+  .scroll-hint{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--ash-dim);display:flex;flex-direction:column;align-items:center;gap:9px}
+  .scroll-hint i{display:block;width:1px;height:36px;background:linear-gradient(180deg,var(--verde-light),transparent);animation:drop 2.6s ease-in-out infinite}
+  @keyframes drop{0%,100%{opacity:.25;transform:scaleY(.5)}50%{opacity:1;transform:scaleY(1)}}
+  .rec{position:absolute;top:96px;right:28px;z-index:5;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(233,227,212,.46);display:flex;align-items:center;gap:9px;pointer-events:none}
+  .rec b{font-weight:400;color:var(--rust-light);display:flex;align-items:center;gap:6px}
+  .rec b::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--seal);box-shadow:0 0 10px rgba(157,70,54,.9);animation:blink 2.1s steps(1,end) infinite}
+  @keyframes blink{0%,58%{opacity:1}59%,100%{opacity:.12}}
+
+  /* ============ HUD ============ */
+  #hud{
+    position:fixed;left:50%;bottom:22px;z-index:20;width:min(520px,calc(100% - 44px));
+    display:none;opacity:0;pointer-events:none;transform:translateX(-50%) translateY(12px);
+    transition:opacity .5s ease,transform .5s ease;padding:14px 18px 12px;
+    background:rgba(12,22,23,.9);backdrop-filter:blur(12px);
+    border:1px solid var(--line-strong);box-shadow:0 20px 54px rgba(0,0,0,.66);
+  }
+  #hud .hud-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:12px}
+  #hud .hud-top span{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--ash-dim);text-transform:uppercase}
+  #hud .hud-top b{font-family:var(--mono);font-size:11px;color:var(--verde-light);letter-spacing:.1em;font-weight:400}
+  #hud .hud-leg{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+  #hud .leg-ic{width:30px;height:26px;flex:0 0 auto;position:relative}
+  #hud .leg-ic::before{
+    content:"";position:absolute;left:2px;top:11px;width:4px;height:4px;border-radius:50%;
+    background:var(--verde-light);box-shadow:0 0 9px rgba(195,219,208,.95),6.6px 0 0 rgba(240,203,146,.44),13.2px 0 0 rgba(240,203,146,.30),19.8px 0 0 rgba(157,70,54,.34);
+  }
+  #hud .leg-line{flex:1 1 auto;height:1px;background:linear-gradient(90deg,rgba(195,219,208,.5),rgba(240,203,146,.30))}
+  #hud .leg-txt{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--ash-dim)}
+  #hud .hud-track{height:2px;background:rgba(233,227,212,.12);position:relative}
+  #hud .hud-track i{position:absolute;top:-3px;left:0;width:8px;height:8px;border-radius:50%;background:var(--lamp-light);transform:translateX(-4px);box-shadow:0 0 10px rgba(240,203,146,.85)}
+  #hud .hud-stops{display:flex;justify-content:space-between;margin-top:8px}
+  #hud .hud-stops em{font-family:var(--mono);font-size:8px;letter-spacing:.06em;color:#3d4540;font-style:normal}
+  #hud .hud-stops em.on{color:var(--paper)}
+  #hud .hud-lb{font-size:11px;color:var(--paper-dim);margin-top:9px;letter-spacing:.04em;font-family:var(--mono)}
+  #hud.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* ============ LAYOUT ============ */
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+  section.band{padding:96px 0;position:relative;border-bottom:1px solid var(--line)}
+  section.band:last-of-type{border-bottom:0}
+  .sec-head{margin-bottom:52px;position:relative}
+  .sec-num{font-family:var(--mono);font-size:10px;letter-spacing:.34em;color:var(--verde-light);text-transform:uppercase;display:block;margin-bottom:14px}
+  h2.sec-title{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.6vw,44px);line-height:1.26;letter-spacing:.03em;color:#fbf8ef}
+  h2.sec-title em{font-style:normal;color:var(--lamp-light)}
+  h2.sec-title i{font-style:normal;color:var(--verde-light)}
+  .sec-desc{margin-top:16px;max-width:820px;color:var(--ash);font-size:14.5px;line-height:1.9}
+  .nospoil{display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(157,70,54,.36);background:linear-gradient(90deg,rgba(157,70,54,.10),rgba(157,70,54,.012) 62%,transparent);padding:18px 22px;margin:0 0 22px}
+  .nospoil .mark{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--rust-light);border:1px solid rgba(157,70,54,.52);padding:3px 7px;flex:0 0 auto;margin-top:3px}
+  .nospoil p{font-size:13.5px;color:var(--paper-dim);line-height:1.85}
+  .nospoil p b{color:var(--paper)}
+  .editor{display:flex;gap:16px;align-items:flex-start;border:1px solid rgba(195,219,208,.24);background:linear-gradient(90deg,rgba(195,219,208,.08),transparent 66%);padding:16px 22px;margin:0 0 64px}
+  .editor .mark{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--verde-light);border:1px solid rgba(195,219,208,.44);padding:3px 7px;flex:0 0 auto;margin-top:3px}
+  .editor p{font-size:13px;color:var(--ash);line-height:1.85}
+  .editor p b{color:var(--paper-dim)}
+  .duo{display:grid;grid-template-columns:302px minmax(0,1fr);gap:56px;align-items:start}
+  .glance{border:1px solid var(--line-strong);background:var(--ink-2);padding:26px 22px;position:sticky;top:28px}
+  .glance h3{font-family:var(--mono);font-size:10px;letter-spacing:.28em;color:var(--verde-light);text-transform:uppercase;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  .glance .row{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(233,227,212,.08);font-size:12.5px}
+  .glance .row:last-child{border-bottom:0}
+  .glance dt{color:#767a70;flex:0 0 auto;letter-spacing:.06em}
+  .glance dd{color:var(--paper);text-align:right;font-weight:500;font-size:12px;letter-spacing:0}
+  .glance .row.accent dd{color:var(--verde-light)}
+  .glance .row.cel dd{color:var(--lamp-light)}
+  .glance .row.stone dd{color:var(--paper-dim)}
+  .glance .row.cool dd{color:var(--rust-light)}
+  .prose{font-size:16.5px;line-height:2.05;color:var(--paper-dim)}
+  .prose p+p{margin-top:22px}
+  .prose b{color:var(--paper);font-weight:600}
+  .prose em{color:var(--lamp-light);font-style:normal}
+  .prose .gr{color:var(--verde-light)}
+  .prose .bl{color:var(--rust-light)}
+  .drop::first-letter{font-family:var(--serif);float:left;font-size:66px;line-height:.84;padding:7px 13px 0 0;color:var(--verde-light);font-weight:400}
+  .pullquote{margin-top:30px;border-left:2px solid var(--amber);padding:4px 0 4px 20px;color:var(--lamp-light);font-size:15px;line-height:1.9;font-style:italic}
+  .poster-grid{display:grid;grid-template-columns:minmax(0,432px) minmax(0,1fr);gap:60px;align-items:start}
+  .poster-frame{border:1px solid var(--line-strong);background:var(--ink-2);padding:20px;position:relative}
+  .poster-frame::after{content:"";position:absolute;inset:20px;pointer-events:none;box-shadow:inset 0 0 70px rgba(0,0,0,.5)}
+  .poster-frame svg{display:block;width:100%;height:auto;position:relative;z-index:2}
+  .poster-cap{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--ash-dim);text-align:center;margin-top:14px}
+  .reads{display:flex;flex-direction:column;gap:26px}
+  .read{border-left:2px solid var(--line-strong);padding-left:20px}
+  .read h4{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--verde-light);text-transform:uppercase;margin-bottom:9px;font-weight:400}
+  .read p{font-size:14.5px;color:var(--paper-dim);line-height:1.92}
+  .read p b{color:var(--paper)}
+  .spec{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .spec .cell{background:var(--ink-2);padding:17px 19px}
+  .spec .cell.wide{grid-column:1/-1}
+  .spec dt{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--ash-dim);text-transform:uppercase;margin-bottom:7px}
+  .spec dd{font-size:14px;color:var(--paper);line-height:1.6}
+  .spec dd small{display:block;font-size:11.5px;color:var(--ash);margin-top:4px;letter-spacing:.02em}
+  .spec dd .k{color:var(--verde-light)}
+  .spec dd .r{color:var(--lamp-light)}
+  .spec dd .p{color:var(--paper-dim)}
+  .spec dd .j{color:var(--rust-light)}
+  .scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(500px,100%),1fr));gap:18px}
+  .score{border:1px solid var(--line-strong);background:linear-gradient(180deg,rgba(17,30,31,.9),rgba(12,22,23,.9));padding:24px 22px 22px;position:relative;overflow:hidden}
+  .score .src{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;color:var(--ash-dim);text-transform:uppercase}
+  .score .num{font-family:var(--serif);font-size:clamp(38px,5vw,52px);line-height:1.1;color:var(--verde-light);margin:10px 0 2px;font-weight:400}
+  .score .num small{font-size:15px;color:var(--ash);letter-spacing:.06em;margin-left:4px}
+  .score .den{font-size:11.5px;color:var(--ash);letter-spacing:.06em}
+  .score .bar{height:3px;background:rgba(233,227,212,.10);margin:16px 0 12px;position:relative}
+  .score .bar i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--verde),var(--verde-light))}
+  .score .note{font-size:12px;color:var(--ash);line-height:1.7}
+  .score.g2 .num{color:var(--paper)}
+  .score.g2 .bar i{background:linear-gradient(90deg,var(--paper-dim),var(--paper))}
+  .score.g3 .num{color:var(--lamp-light)}
+  .score.g3 .bar i{background:linear-gradient(90deg,var(--amber),var(--amber-light))}
+  .score.g4 .num{color:var(--rust-light)}
+  .score.g4 .bar i{background:linear-gradient(90deg,var(--seal),var(--seal-light))}
+  .score-note{margin-top:18px;font-size:12.5px;color:var(--ash);line-height:1.85;border-left:2px solid rgba(141,186,166,.5);padding-left:16px}
+  .score-note b{color:var(--paper-dim)}
+  .grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .g6{background:var(--ink-2);padding:26px 24px}
+  .g6 .idx{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;color:var(--verde-light);margin-bottom:12px;display:block}
+  .g6 h4{font-family:var(--serif);font-size:19px;font-weight:400;color:#fbf8ef;margin-bottom:11px;line-height:1.4}
+  .g6 p{font-size:13.5px;color:var(--ash);line-height:1.9}
+  .g6 p b{color:var(--paper-dim)}
+  .awards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(420px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .award{background:var(--ink-2);padding:19px 21px;display:flex;gap:14px;align-items:flex-start}
+  .award .badge{font-family:var(--mono);font-size:9px;letter-spacing:.14em;padding:3px 7px;flex:0 0 auto;margin-top:2px;border:1px solid var(--line-strong);color:var(--ash)}
+  .award.win .badge{border-color:rgba(195,219,208,.66);color:var(--verde-light)}
+  .award.wide{grid-column:1/-1}
+  .award .body{font-size:13.5px;color:var(--paper-dim);line-height:1.75}
+  .award .body b{color:var(--paper)}
+  .award .body small{display:block;color:var(--ash);font-size:11.5px;margin-top:4px}
+  .award-note{margin-top:18px;font-size:12.5px;color:var(--ash);line-height:1.85;border-left:2px solid rgba(240,203,146,.5);padding-left:16px}
+  .award-note b{color:var(--paper-dim)}
+  .acts{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .act{background:var(--ink-2);padding:24px 20px}
+  .act .n{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;color:var(--amber);display:block;margin-bottom:12px}
+  .act h4{font-family:var(--serif);font-size:20px;font-weight:400;color:#fbf8ef;margin-bottom:10px;line-height:1.35}
+  .act p{font-size:13px;color:var(--ash);line-height:1.88}
+  .act p b{color:var(--paper-dim)}
+  .people{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(330px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .person{background:var(--ink-2);padding:26px 24px 24px;position:relative}
+  .person .role{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:var(--rust-light);margin-bottom:9px;display:block}
+  .person h4{font-family:var(--serif);font-size:21px;font-weight:400;color:#fbf8ef;margin-bottom:4px;line-height:1.35}
+  .person .who{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--ash-dim);margin-bottom:13px}
+  .person p{font-size:13.5px;color:var(--ash);line-height:1.9}
+  .person p b{color:var(--paper-dim)}
+  .person .line{display:block;margin-top:12px;font-size:12.5px;color:var(--verde-light);font-style:italic;line-height:1.8}
+  .lineage{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(196px,100%),1fr));gap:16px}
+  .kin{border:1px solid var(--line);background:var(--ink-2);padding:22px 20px;position:relative;transition:border-color .3s,transform .3s}
+  .kin:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+  .kin .t{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--ash-dim);padding-right:44px}
+  .kin .n{font-family:var(--serif);font-size:22px;color:var(--paper);margin:10px 0 3px;line-height:1.3}
+  .kin .d{font-size:12.5px;color:var(--ash);line-height:1.75}
+  .kin .no{position:absolute;top:20px;right:20px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ash-dim)}
+  .kin.now{border-color:rgba(240,203,146,.5);background:linear-gradient(180deg,rgba(240,203,146,.09),rgba(12,22,23,.9))}
+  .kin.now .n{color:var(--lamp-light)}
+  .kin.now .no{color:var(--amber)}
+  .why{display:flex;flex-direction:column;gap:40px}
+  .why .blk{display:grid;grid-template-columns:64px minmax(0,1fr);gap:26px;align-items:start}
+  .why .n{font-family:var(--serif);font-size:44px;line-height:1;color:rgba(141,186,166,.55);font-weight:400}
+  .why h4{font-family:var(--serif);font-size:22px;font-weight:400;color:#fbf8ef;margin-bottom:12px;line-height:1.42}
+  .why p{font-size:14.5px;color:var(--paper-dim);line-height:1.95;max-width:860px}
+  .why p b{color:var(--paper)}
+  .tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px}
+  .tip{border:1px solid var(--line);background:var(--ink-2);padding:22px 22px}
+  .tip h5{font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;color:var(--verde-light);text-transform:uppercase;margin-bottom:12px;font-weight:400}
+  .tip p{font-size:13.5px;color:var(--ash);line-height:1.88}
+  .tip p b{color:var(--paper-dim)}
+  .outro{padding:120px 0 108px;text-align:center;position:relative}
+  .outro .q{font-family:var(--serif);font-size:clamp(21px,3vw,34px);line-height:1.66;color:#fbf8ef;max-width:920px;margin:0 auto;letter-spacing:.02em}
+  .outro .q em{font-style:normal;color:var(--lamp-light)}
+  .outro .src{font-family:var(--mono);font-size:10px;letter-spacing:.24em;color:var(--ash-dim);margin-top:26px}
+  .outro .seal{width:70px;height:70px;margin:44px auto 0;border:1px solid rgba(207,128,112,.78);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#dfa295;font-family:var(--mono);font-size:9px;letter-spacing:.14em;transform:rotate(-6deg);background:rgba(157,70,54,.06)}
+  .outro .seal b{font-size:15px;letter-spacing:.08em;font-weight:400;margin-top:2px}
+  footer{border-top:1px solid var(--line);padding:34px 0 180px}
+  footer .fwrap{max-width:1160px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ash-dim)}
+  footer .fwrap em{font-style:normal;color:var(--ash)}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .scroll-hint i{animation:none}
+    .rec b::before{animation:none}
+  }
+  @media (max-width:980px){
+    .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .duo{grid-template-columns:minmax(0,1fr);gap:40px}
+    .glance{position:static}
+    .poster-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+    .why .blk{grid-template-columns:44px minmax(0,1fr);gap:18px}
+    .why .n{font-size:34px}
+    .acts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media (min-width:981px){#hud{display:block}}
+  @media (max-width:760px){
+    .grid6{grid-template-columns:minmax(0,1fr)}
+    body{font-size:15.4px}
+    .hero{min-height:max(100vh,740px)}
+    .wrap{padding:0 20px}
+    .hero-in{padding:70px 20px 66px}
+    .eyebrow{font-size:9.5px;letter-spacing:.22em;gap:9px}
+    .eyebrow::before{width:26px}
+    .eyebrow span{display:none}
+    h1.title{font-size:clamp(30px,9.4vw,48px);letter-spacing:.1em;margin:16px 0 8px}
+    .title-en{font-size:12px;letter-spacing:.16em;line-height:1.8}
+    .title-jp{font-size:11px;letter-spacing:.04em;margin-bottom:18px;line-height:1.8}
+    .hero-sub{font-size:13.4px;line-height:1.78;padding-left:14px}
+    .hero-sub .br-lg{display:none}
+    .hero-sub .cred{display:block;margin-top:2px}
+    .hero-sub .sep{display:none}
+    .chips{gap:7px;margin-top:22px}
+    .chip{font-size:10px;padding:5px 9px;letter-spacing:.08em}
+    .chip.long{display:none}
+    .rec{display:none}
+    .scroll-hint{bottom:10px;gap:6px}
+    .scroll-hint i{height:22px}
+    section.band{padding:66px 0}
+    .sec-head{margin-bottom:34px}
+    .outro{padding:80px 0 72px}
+    .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .spec .cell{padding:14px 15px}
+    .spec dt{font-size:8.8px;letter-spacing:.14em}
+    .spec dd{font-size:12.8px}
+    .spec dd small{font-size:11px}
+    .acts{grid-template-columns:minmax(0,1fr)}
+    footer .fwrap{padding:0 20px}
+  }
+  @media (max-width:380px){
+    .hero-in{padding-top:56px}
+    .title-jp{margin-bottom:14px}
+    .hero-sub{font-size:12.9px;line-height:1.72}
+    .chips{margin-top:10px;gap:6px}
+    .chip{font-size:9.4px;padding:4px 8px}
+    h1.title{font-size:28px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HUD ================= -->
+<div id="hud">
+  <div class="hud-top"><span>家 &middot; 五口</span><b id="hudVal">治</b></div>
+  <div class="hud-leg">
+    <span class="leg-ic"></span>
+    <span class="leg-line"></span>
+    <span class="leg-txt">万引き家族 &middot; 2018</span>
+  </div>
+  <div class="hud-track"><i id="hudDot"></i></div>
+  <div class="hud-stops"><em>治</em><em>信代</em><em>初枝</em><em>亚纪</em><em>祥太</em></div>
+  <div class="hud-lb" id="hudLb">治 &middot; 工地零工，脚踝有旧伤</div>
+</div>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+<svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="skyG" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="710">
+      <stop offset="0" stop-color="#050d10"/>
+      <stop offset="0.46" stop-color="#091a1a"/>
+      <stop offset="0.78" stop-color="#0f2420"/>
+      <stop offset="1" stop-color="#0a1513"/>
+    </linearGradient>
+    <linearGradient id="roadG" gradientUnits="userSpaceOnUse" x1="0" y1="706" x2="0" y2="900">
+      <stop offset="0" stop-color="#2b3532"/>
+      <stop offset="0.3" stop-color="#1b2523"/>
+      <stop offset="0.7" stop-color="#121a19"/>
+      <stop offset="1" stop-color="#080f0f"/>
+    </linearGradient>
+    <linearGradient id="lwallG" gradientUnits="userSpaceOnUse" x1="0" y1="230" x2="0" y2="707">
+      <stop offset="0" stop-color="#0d1a1a"/>
+      <stop offset="0.5" stop-color="#101f1e"/>
+      <stop offset="1" stop-color="#0a1413"/>
+    </linearGradient>
+    <linearGradient id="rwallG" gradientUnits="userSpaceOnUse" x1="0" y1="296" x2="0" y2="707">
+      <stop offset="0" stop-color="#0f1c1c"/>
+      <stop offset="0.6" stop-color="#0b1616"/>
+      <stop offset="1" stop-color="#070f0f"/>
+    </linearGradient>
+    <radialGradient id="bulbG" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffe0b0" stop-opacity="0.92"/>
+      <stop offset="0.28" stop-color="#e8b273" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#c99350" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="winG" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#e0b076" stop-opacity="0.40"/>
+      <stop offset="0.55" stop-color="#c99456" stop-opacity="0.11"/>
+      <stop offset="1" stop-color="#c99456" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bandG" gradientUnits="userSpaceOnUse" x1="360" y1="0" x2="1440" y2="0">
+      <stop offset="0" stop-color="#f0cb92" stop-opacity="0"/>
+      <stop offset="0.34" stop-color="#f0cb92" stop-opacity="0.16"/>
+      <stop offset="0.56" stop-color="#f0cb92" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#f0cb92" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="rimG" gradientUnits="userSpaceOnUse" x1="18" y1="0" x2="-14" y2="0">
+      <stop offset="0" stop-color="#f6d9ac" stop-opacity="0.62"/>
+      <stop offset="0.46" stop-color="#f6d9ac" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#f6d9ac" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rimL" gradientUnits="userSpaceOnUse" x1="-18" y1="0" x2="10" y2="0">
+      <stop offset="0" stop-color="#9fc9b4" stop-opacity="0.40"/>
+      <stop offset="1" stop-color="#9fc9b4" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="vigG" cx="0.5" cy="0.44" r="0.76">
+      <stop offset="0.42" stop-color="#04090a" stop-opacity="0"/>
+      <stop offset="1" stop-color="#04090a" stop-opacity="0.82"/>
+    </radialGradient>
+    <filter id="b24"><feGaussianBlur stdDeviation="24"/></filter>
+    <filter id="b14"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="b7"><feGaussianBlur stdDeviation="7"/></filter>
+    <filter id="b3"><feGaussianBlur stdDeviation="3"/></filter>
+  </defs>
+
+  <!-- 01 夜空 -->
+  <rect width="1440" height="900" fill="url(#skyG)"/>
+
+  <!-- 02 远处团地 -->
+  <g>
+    <rect x="386" y="470" width="196" height="237" fill="#081213"/>
+    <rect x="386" y="470" width="196" height="1.6" fill="#263834" fill-opacity="0.55"/>
+    <rect x="600" y="500" width="150" height="207" fill="#071011"/>
+    <rect x="600" y="500" width="150" height="1.4" fill="#22322f" fill-opacity="0.45"/>
+    <rect x="900" y="446" width="238" height="261" fill="#081314"/>
+    <rect x="900" y="446" width="238" height="1.6" fill="#2a3d38" fill-opacity="0.5"/>
+    <rect x="1120" y="494" width="60" height="213" fill="#060e0f"/>
+    <!-- 楼道口 -->
+    <rect x="940" y="392" width="58" height="54" fill="#0a1617"/>
+    <rect x="944" y="396" width="50" height="46" fill="#111f1d"/>
+    <g fill="#d9a668">
+      <rect x="420" y="492" width="9" height="12" fill-opacity="0.30"/>
+      <rect x="452" y="492" width="9" height="12" fill-opacity="0.16"/>
+      <rect x="516" y="528" width="9" height="12" fill-opacity="0.24"/>
+      <rect x="420" y="560" width="9" height="12" fill-opacity="0.14"/>
+      <rect x="484" y="560" width="9" height="12" fill-opacity="0.20"/>
+      <rect x="548" y="596" width="9" height="12" fill-opacity="0.12"/>
+      <rect x="628" y="522" width="9" height="12" fill-opacity="0.22"/>
+      <rect x="692" y="558" width="9" height="12" fill-opacity="0.15"/>
+      <rect x="628" y="594" width="9" height="12" fill-opacity="0.12"/>
+      <rect x="932" y="470" width="9" height="12" fill-opacity="0.26"/>
+      <rect x="996" y="470" width="9" height="12" fill-opacity="0.14"/>
+      <rect x="1060" y="508" width="9" height="12" fill-opacity="0.20"/>
+      <rect x="932" y="544" width="9" height="12" fill-opacity="0.12"/>
+      <rect x="1044" y="580" width="9" height="12" fill-opacity="0.16"/>
+      <rect x="1108" y="544" width="9" height="12" fill-opacity="0.11"/>
+    </g>
+  </g>
+
+  <!-- 03 巷尾的一点光 -->
+  <ellipse cx="872" cy="660" rx="96" ry="112" fill="#e8bd7e" fill-opacity="0.10" filter="url(#b24)"/>
+  <rect x="800" y="560" width="70" height="147" fill="#1b2a24" fill-opacity="0.5"/>
+
+  <!-- 04 电线杆与电线 -->
+  <g>
+    <rect x="1126" y="118" width="15" height="589" fill="#080f11"/>
+    <rect x="1126" y="118" width="2" height="589" fill="#33443f" fill-opacity="0.45"/>
+    <rect x="1082" y="176" width="104" height="7" fill="#080f11"/>
+    <rect x="1082" y="206" width="88" height="6" fill="#080f11"/>
+    <g fill="#0a1213">
+      <rect x="1084" y="168" width="5" height="9"/>
+      <rect x="1104" y="168" width="5" height="9"/>
+      <rect x="1160" y="168" width="5" height="9"/>
+      <rect x="1178" y="168" width="5" height="9"/>
+    </g>
+    <g fill="none" stroke="#1b2b28" stroke-width="1.5" stroke-opacity="0.75">
+      <path d="M1086,171 Q560,206 0,196"/>
+      <path d="M1106,171 Q580,228 0,222"/>
+      <path d="M1162,171 Q900,196 700,198"/>
+      <path d="M1180,171 Q940,206 780,210"/>
+    </g>
+    <g fill="none" stroke="#16241f" stroke-width="1.1" stroke-opacity="0.6">
+      <path d="M1090,210 Q820,238 660,244"/>
+      <path d="M1120,210 Q900,236 800,242"/>
+    </g>
+    <rect x="1158" y="300" width="34" height="26" rx="3" fill="#0c1617"/>
+    <rect x="1158" y="300" width="34" height="1.4" fill="#33443f" fill-opacity="0.4"/>
+  </g>
+
+  <!-- 05 左屋 -->
+  <g>
+    <rect x="0" y="236" width="392" height="471" fill="url(#lwallG)"/>
+    <g stroke="#1d2e2b" stroke-opacity="0.34" stroke-width="1.2">
+      <line x1="22" y1="246" x2="22" y2="704"/>
+      <line x1="64" y1="246" x2="64" y2="704"/>
+      <line x1="106" y1="246" x2="106" y2="704"/>
+      <line x1="148" y1="246" x2="148" y2="704"/>
+      <line x1="190" y1="246" x2="190" y2="704"/>
+      <line x1="232" y1="246" x2="232" y2="704"/>
+      <line x1="274" y1="246" x2="274" y2="704"/>
+      <line x1="316" y1="246" x2="316" y2="704"/>
+      <line x1="358" y1="246" x2="358" y2="704"/>
+    </g>
+    <rect x="0" y="216" width="404" height="22" fill="#080e10"/>
+    <rect x="0" y="216" width="404" height="1.6" fill="#3a4c46" fill-opacity="0.45"/>
+    <g fill="#0a1213">
+      <circle cx="10" cy="219" r="3.4"/>
+      <circle cx="38" cy="219" r="3.4"/>
+      <circle cx="66" cy="219" r="3.4"/>
+      <circle cx="94" cy="219" r="3.4"/>
+      <circle cx="122" cy="219" r="3.4"/>
+      <circle cx="150" cy="219" r="3.4"/>
+      <circle cx="178" cy="219" r="3.4"/>
+      <circle cx="206" cy="219" r="3.4"/>
+      <circle cx="234" cy="219" r="3.4"/>
+      <circle cx="262" cy="219" r="3.4"/>
+      <circle cx="290" cy="219" r="3.4"/>
+      <circle cx="318" cy="219" r="3.4"/>
+      <circle cx="346" cy="219" r="3.4"/>
+      <circle cx="374" cy="219" r="3.4"/>
+    </g>
+    <!-- 窗 -->
+    <rect x="116" y="392" width="102" height="84" fill="#0a1213"/>
+    <rect x="120" y="396" width="94" height="76" fill="#cfa269" fill-opacity="0.30"/>
+    <rect x="120" y="396" width="94" height="76" fill="none" stroke="#2b3d38" stroke-width="1.4"/>
+    <line x1="167" y1="396" x2="167" y2="472" stroke="#0d1a19" stroke-width="3"/>
+    <line x1="120" y1="434" x2="214" y2="434" stroke="#0d1a19" stroke-width="3"/>
+    <rect x="124" y="400" width="39" height="30" fill="#e6bc84" fill-opacity="0.16"/>
+    <ellipse cx="167" cy="434" rx="96" ry="88" fill="url(#winG)"/>
+    <!-- 空调外机 -->
+    <g>
+      <rect x="252" y="556" width="86" height="78" rx="3" fill="#0b1516"/>
+      <rect x="252" y="556" width="86" height="1.4" fill="#2f4240" fill-opacity="0.4"/>
+      <circle cx="295" cy="595" r="26" fill="#0e1b1a"/>
+      <circle cx="295" cy="595" r="26" fill="none" stroke="#22332f" stroke-width="1.2"/>
+      <g stroke="#1d2e2b" stroke-width="1.6">
+        <line x1="295" y1="571" x2="295" y2="619"/>
+        <line x1="273" y1="583" x2="317" y2="607"/>
+        <line x1="273" y1="607" x2="317" y2="583"/>
+      </g>
+      <circle cx="295" cy="595" r="5" fill="#111e1d"/>
+      <g stroke="#0a1213" stroke-width="4">
+        <line x1="258" y1="636" x2="258" y2="700"/>
+        <line x1="332" y1="636" x2="332" y2="700"/>
+      </g>
+    </g>
+    <rect x="0" y="686" width="392" height="21" fill="#050b0c" fill-opacity="0.7"/>
+  </g>
+
+  <!-- 06 右屋 -->
+  <g>
+    <rect x="1140" y="296" width="300" height="411" fill="url(#rwallG)"/>
+    <g stroke="#16241f" stroke-opacity="0.55" stroke-width="1.4">
+      <line x1="1160" y1="300" x2="1160" y2="704"/>
+      <line x1="1174" y1="300" x2="1174" y2="704"/>
+      <line x1="1188" y1="300" x2="1188" y2="704"/>
+      <line x1="1202" y1="300" x2="1202" y2="704"/>
+      <line x1="1216" y1="300" x2="1216" y2="704"/>
+      <line x1="1230" y1="300" x2="1230" y2="704"/>
+      <line x1="1244" y1="300" x2="1244" y2="704"/>
+      <line x1="1258" y1="300" x2="1258" y2="704"/>
+      <line x1="1272" y1="300" x2="1272" y2="704"/>
+      <line x1="1286" y1="300" x2="1286" y2="704"/>
+      <line x1="1300" y1="300" x2="1300" y2="704"/>
+      <line x1="1314" y1="300" x2="1314" y2="704"/>
+      <line x1="1328" y1="300" x2="1328" y2="704"/>
+      <line x1="1342" y1="300" x2="1342" y2="704"/>
+      <line x1="1356" y1="300" x2="1356" y2="704"/>
+      <line x1="1370" y1="300" x2="1370" y2="704"/>
+      <line x1="1384" y1="300" x2="1384" y2="704"/>
+      <line x1="1398" y1="300" x2="1398" y2="704"/>
+      <line x1="1412" y1="300" x2="1412" y2="704"/>
+      <line x1="1426" y1="300" x2="1426" y2="704"/>
+    </g>
+    <rect x="1132" y="288" width="308" height="14" fill="#080f11"/>
+    <rect x="1132" y="288" width="308" height="1.4" fill="#3a4c46" fill-opacity="0.4"/>
+    <rect x="1294" y="392" width="82" height="72" fill="#0a1415"/>
+    <rect x="1294" y="392" width="82" height="72" fill="none" stroke="#22332f" stroke-width="1.2"/>
+    <rect x="1300" y="398" width="70" height="60" fill="#c59258" fill-opacity="0.07"/>
+    <rect x="1150" y="296" width="12" height="411" fill="#0b1617"/>
+    <rect x="1150" y="296" width="1.6" height="411" fill="#33443f" fill-opacity="0.35"/>
+    <!-- 檐下小灯 -->
+    <rect x="1130" y="352" width="26" height="7" rx="2" fill="#0c1617"/>
+    <path d="M1136,359 L1148,359 L1151,372 L1133,372 Z" fill="#1a2622"/>
+    <ellipse cx="1142" cy="374" rx="4.6" ry="2.6" fill="#ffe0b0" fill-opacity="0.95"/>
+    <circle cx="1142" cy="372" r="52" fill="url(#bulbG)" filter="url(#b14)"/>
+  </g>
+
+  <!-- 07 左墙根的垃圾袋 -->
+  <g>
+    <path d="M340,700 C336,684 342,668 356,664 C372,660 388,668 390,684 C392,694 388,700 384,702 Z" fill="#0d1918"/>
+    <path d="M352,664 L349,656 L357,662 Z" fill="#0d1918"/>
+    <path d="M356,664 C366,660 380,666 384,678" fill="none" stroke="#2b3d38" stroke-opacity="0.5" stroke-width="1.2"/>
+    <path d="M386,702 C384,690 390,678 402,676 C414,674 424,684 424,694 C424,700 420,703 416,704 Z" fill="#0b1516"/>
+    <path d="M396,676 L394,668 L402,674 Z" fill="#0b1516"/>
+  </g>
+
+  <!-- 08 地面 -->
+  <rect y="706" width="1440" height="194" fill="url(#roadG)"/>
+  <g stroke="#37433f" stroke-opacity="0.30" stroke-width="1">
+    <line x1="0" y1="722" x2="1440" y2="722"/>
+    <line x1="0" y1="748" x2="1440" y2="748"/>
+    <line x1="0" y1="788" x2="1440" y2="788"/>
+    <line x1="0" y1="842" x2="1440" y2="842"/>
+  </g>
+  <g stroke="#2f3b37" stroke-opacity="0.26" stroke-width="1">
+    <line x1="120" y1="706" x2="80" y2="900"/>
+    <line x1="486" y1="706" x2="470" y2="900"/>
+    <line x1="700" y1="706" x2="694" y2="900"/>
+    <line x1="1030" y1="706" x2="1046" y2="900"/>
+    <line x1="1310" y1="706" x2="1352" y2="900"/>
+  </g>
+
+  <!-- 09 地面的亮带与湿反光 -->
+  <rect x="360" y="694" width="1080" height="16" fill="url(#bandG)"/>
+  <ellipse cx="906" cy="712" rx="286" ry="26" fill="#f0cb92" fill-opacity="0.16" filter="url(#b14)"/>
+  <g filter="url(#b7)">
+    <rect x="1136" y="718" width="9" height="86" fill="#f0cb92" fill-opacity="0.16"/>
+    <rect x="1156" y="718" width="5" height="112" fill="#f0cb92" fill-opacity="0.11"/>
+    <rect x="1112" y="718" width="6" height="64" fill="#f0cb92" fill-opacity="0.09"/>
+  </g>
+  <ellipse cx="826" cy="742" rx="132" ry="14" fill="#8dbaa6" fill-opacity="0.055" filter="url(#b14)"/>
+
+  <!-- 10 人物背后的逆光 -->
+  <ellipse cx="834" cy="646" rx="150" ry="118" fill="#e8bd7e" fill-opacity="0.14" filter="url(#b24)"/>
+  <ellipse cx="852" cy="612" rx="82" ry="86" fill="#f3d6a6" fill-opacity="0.07" filter="url(#b24)"/>
+
+  <!-- 11 投影 -->
+  <ellipse cx="806" cy="710" rx="78" ry="9" fill="#000000" fill-opacity="0.58" filter="url(#b7)"/>
+  <ellipse cx="868" cy="712" rx="48" ry="6" fill="#000000" fill-opacity="0.46" filter="url(#b7)"/>
+
+  <!-- 12 大人（背影，拎着袋子） -->
+  <g transform="translate(796,707)">
+    <path d="M-4.8,-144.4
+      C-12.4,-143.6 -19.9,-137.8 -23.2,-128.4
+      C-24.6,-122.4 -24.5,-115.6 -23.9,-109.4
+      C-23.1,-100.4 -22.3,-91 -22.1,-83.2
+      C-22,-80.6 -21.9,-78.4 -21.8,-76.6
+      L-21.4,-70.4
+      C-21.1,-63.2 -20.5,-55.4 -19.9,-47.6
+      C-19.3,-38.4 -18.7,-25.6 -18.4,-15.2
+      L-18.3,-5.4
+      C-18.3,-1.8 -19.3,0 -21,0
+      L-6.2,0
+      C-5.1,0 -4.4,-1.4 -4.4,-3.4
+      L-4.2,-15.2
+      C-3.9,-27 -3,-40.4 -2.2,-50.4
+      C-1.7,-57.6 -1.5,-63.6 -1.5,-68.6
+      L-1.5,-70.4
+      L1.5,-70.4
+      L1.5,-68.6
+      C1.5,-63.6 1.7,-57.6 2.2,-50.4
+      C3,-40.4 3.9,-27 4.2,-15.2
+      L4.4,-3.4
+      C4.4,-1.4 5.1,0 6.2,0
+      L21,0
+      C19.3,0 18.3,-1.8 18.3,-5.4
+      L18.4,-15.2
+      C18.7,-25.6 19.3,-38.4 19.9,-47.6
+      C20.5,-55.4 21.1,-63.2 21.4,-70.4
+      L21.8,-76.6
+      C21.9,-78.4 22,-80.6 22.1,-83.2
+      C22.3,-91 23.1,-100.4 23.9,-109.4
+      C24.5,-115.6 24.6,-122.4 23.2,-128.4
+      C19.9,-137.8 12.4,-143.6 4.8,-144.4
+      Z" fill="#080c0d"/>
+    <path d="M-4.6,-145
+      C-5,-149.4 -6.4,-153.4 -8.6,-156.8
+      C-11.6,-161.4 -8.8,-168.4 0,-168.5
+      C8.8,-168.4 11.6,-161.4 8.6,-156.8
+      C6.4,-153.4 5,-149.4 4.6,-145
+      Z" fill="#080c0d"/>
+    <path d="M-23.2,-128.4 C-21.6,-136.4 -13,-142.6 -4.8,-144.4" fill="none" stroke="url(#rimG)" stroke-width="2.2" stroke-opacity="0.55"/>
+    <path d="M-23.9,-109.4 C-22.4,-96 -22.1,-88 -22.1,-76.6" fill="none" stroke="url(#rimG)" stroke-width="1.9" stroke-opacity="0.4"/>
+    <path d="M-21.4,-70.4 C-20.6,-58 -19.6,-36 -18.4,-15.2" fill="none" stroke="url(#rimL)" stroke-width="1.6" stroke-opacity="0.34"/>
+    <path d="M-9,-160.4 C-11.4,-156 -10.4,-150.6 -6.2,-147.4" fill="none" stroke="#f6d9ac" stroke-opacity="0.26" stroke-width="1.5"/>
+    <path d="M-7.6,-146.6 C-3.4,-143.2 3.4,-143.2 7.6,-146.6" fill="none" stroke="#2c3b38" stroke-opacity="0.55" stroke-width="1.8"/>
+    <path d="M-21.6,-74.6 L-21.6,-46" stroke="#16211f" stroke-width="1" stroke-opacity="0.5"/>
+    <path d="M21.6,-74.6 L21.6,-46" stroke="#16211f" stroke-width="1" stroke-opacity="0.5"/>
+    <!-- 手里的塑料袋 -->
+    <g transform="translate(26,-40)">
+      <path d="M-2,-10 C4,-16 14,-16 18,-9 L22,-1 C25,6 24,14 22,20 C20,26 14,29 8,29 C2,29 -3,25 -5,18 C-7,11 -7,3 -4,-4 Z" fill="#0d1717"/>
+      <path d="M-2,-10 C4,-16 14,-16 18,-9" fill="none" stroke="#3c4f49" stroke-opacity="0.55" stroke-width="1.4"/>
+      <path d="M-1,-11 C2,-22 15,-22 18,-11" fill="none" stroke="#20302d" stroke-width="2"/>
+      <path d="M8,29 C14,22 20,12 19,0" fill="none" stroke="#1d2b28" stroke-width="1.2"/>
+    </g>
+  </g>
+
+  <!-- 13 小孩（背影） -->
+  <g transform="translate(872,707)">
+    <path d="M-4.2,-101
+      C-11,-100.4 -16.6,-95.6 -18.4,-88.4
+      C-19.2,-84 -19.2,-79.4 -19,-75.6
+      C-18.6,-70 -18.2,-64.6 -18,-61
+      L-17.8,-56
+      C-17.6,-51 -17.2,-44 -16.8,-36.6
+      C-16.4,-30 -16,-20 -15.8,-12.4
+      L-15.7,-4.4
+      C-15.7,-1.4 -16.4,0 -17.8,0
+      L-5.4,0
+      C-4.5,0 -3.9,-1.2 -3.9,-2.8
+      L-3.8,-12.4
+      C-3.6,-21 -3,-30.6 -2.4,-37.6
+      C-2,-42.6 -1.8,-47 -1.8,-50.4
+      L-1.8,-52
+      L1.8,-52
+      L1.8,-50.4
+      C1.8,-47 2,-42.6 2.4,-37.6
+      C3,-30.6 3.6,-21 3.8,-12.4
+      L3.9,-2.8
+      C3.9,-1.2 4.5,0 5.4,0
+      L17.8,0
+      C16.4,0 15.7,-1.4 15.7,-4.4
+      L15.8,-12.4
+      C16,-20 16.4,-30 16.8,-36.6
+      C17.2,-44 17.6,-51 17.8,-56
+      L18,-61
+      C18.2,-64.6 18.6,-70 19,-75.6
+      C19.2,-79.4 19.2,-84 18.4,-88.4
+      C16.6,-95.6 11,-100.4 4.2,-101
+      Z" fill="#070b0c"/>
+    <path d="M-4.2,-101.4
+      C-4.6,-104.6 -5.6,-107.4 -7.2,-110
+      C-9.6,-113.8 -7.4,-118.4 0,-118.5
+      C7.4,-118.4 9.6,-113.8 7.2,-110
+      C5.6,-107.4 4.6,-104.6 4.2,-101.4
+      Z" fill="#070b0c"/>
+    <path d="M-18.4,-88.4 C-16.6,-95.4 -11,-100.2 -4.2,-101" fill="none" stroke="url(#rimG)" stroke-width="2" stroke-opacity="0.5"/>
+    <path d="M-18,-61 C-17.4,-53 -16.6,-40 -15.8,-12.4" fill="none" stroke="url(#rimL)" stroke-width="1.5" stroke-opacity="0.3"/>
+    <path d="M-7.4,-112.4 C-9.2,-109 -8.4,-104.6 -5.2,-102" fill="none" stroke="#f6d9ac" stroke-opacity="0.24" stroke-width="1.4"/>
+    <path d="M-6.6,-102.4 C-3,-99.8 3,-99.8 6.6,-102.4" fill="none" stroke="#2c3b38" stroke-opacity="0.5" stroke-width="1.6"/>
+  </g>
+
+  <!-- 14 前景：井盖与地面裂缝 -->
+  <g>
+    <ellipse cx="560" cy="836" rx="52" ry="15" fill="#0d1514" fill-opacity="0.9"/>
+    <ellipse cx="560" cy="836" rx="52" ry="15" fill="none" stroke="#3a4743" stroke-opacity="0.35" stroke-width="1.2"/>
+    <g stroke="#33403c" stroke-opacity="0.3" stroke-width="1">
+      <line x1="524" y1="836" x2="596" y2="836"/>
+      <line x1="560" y1="821" x2="560" y2="851"/>
+    </g>
+    <path d="M1088,806 C1120,812 1152,820 1196,826" fill="none" stroke="#0a1212" stroke-width="2.4" stroke-opacity="0.8"/>
+  </g>
+
+  <!-- 15 暗角 -->
+  <rect width="1440" height="900" fill="url(#vigG)"/>
+</svg>
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+
+<div class="hero-in">
+  <div class="eyebrow">Japan Classics <span>&middot; No.04 &middot; Live Action</span></div>
+  <h1 class="title">小偷家族</h1>
+  <div class="title-en">Shoplifters</div>
+  <div class="title-jp"><b>万引き家族</b> &nbsp;2018 &nbsp;&middot;&nbsp; 是枝裕和 監督 &nbsp;&middot;&nbsp; 121 分钟</div>
+  <p class="hero-sub">六个人住在一间快塌的老房子里。他们互相叫爸爸、妈妈、奶奶、姐姐——<br class="br-lg"><span class="hl">但户口本上，一个都对不上</span>。<br class="br-lg"><span class="cred">全程不剧透 —— 第二幕发生了什么，本页一个字都不写。</span></p>
+  <div class="chips">
+    <span class="chip hot">豆瓣 8.7</span>
+    <span class="chip">IMDb 7.9</span>
+    <span class="chip">烂番茄 99%</span>
+    <span class="chip">Metacritic 93</span>
+    <span class="chip tag">戛纳 金棕榈</span>
+    <span class="chip ink long">是枝裕和 &middot; 2018</span>
+  </div>
+</div>
+<div class="rec">REC <b></b> <span>SCENE 04 / TAKE 07</span></div>
+<div class="scroll-hint"><span>SCROLL</span><i></i></div>
+</div>
+
+<!-- ================= 01 梗概 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">01 &nbsp;/&nbsp; The Story</span>
+      <h2 class="sec-title">一间挤着六个人的老房子，<i>和一个被捡回来的孩子</i></h2>
+      <p class="sec-desc">这一段只讲第一幕。写到那个电视画面，就停手。</p>
+    </div>
+
+    <div class="nospoil reveal">
+      <span class="mark">NO SPOILER</span>
+      <p>本页<b>不写</b>这一家人后来出了什么事、不写那个秘密是什么、不写谁进了哪里、不写最后一句台词、不写结尾最后一个镜头。梗概止于<b>第一幕的转折</b>，剩下的一百分钟，一个字都不写。人物卡也只写「故事开始时他是什么人」。</p>
+    </div>
+
+    <div class="editor reveal">
+      <span class="mark">EDITOR</span>
+      <p>第 04 部从武士的宅门、从动画的摄影棚，回到最普通的地方：<b>东京一间住着六个人的老房子</b>。这是这个系列第一部<b>当代现实题材</b>——没有年代戏，没有类型片的外壳，全部重量压在日常上。它也是第一部拿过金棕榈的。</p>
+    </div>
+
+    <div class="duo">
+      <aside class="glance reveal">
+        <h3>一眼速览</h3>
+        <div class="row accent"><dt>片名</dt><dd>小偷家族</dd></div>
+        <div class="row stone"><dt>原名</dt><dd>万引き家族</dd></div>
+        <div class="row"><dt>年份</dt><dd>2018</dd></div>
+        <div class="row"><dt>国别</dt><dd>日本</dd></div>
+        <div class="row cel"><dt>导演</dt><dd>是枝裕和</dd></div>
+        <div class="row"><dt>片长</dt><dd>121 分钟</dd></div>
+        <div class="row"><dt>分级</dt><dd>R（美国）/ PG12</dd></div>
+        <div class="row"><dt>类型</dt><dd>剧情 / 家庭 / 犯罪</dd></div>
+        <div class="row accent"><dt>豆瓣</dt><dd>8.7</dd></div>
+        <div class="row"><dt>IMDb</dt><dd>7.9</dd></div>
+        <div class="row cool"><dt>最高奖</dt><dd>戛纳 金棕榈</dd></div>
+      </aside>
+
+      <div class="prose">
+        <p class="drop">东京，荒川区，一条高架线旁边的老平房。屋顶是铁皮的，墙是木头的，冬天漏风，夏天闷得像蒸笼。这里住着六个人：一个在工地打零工的男人，一个在洗衣厂上班的女人，一个老太太，一个在夜店陪聊的姑娘，一个十岁上下、不上学的男孩——还有一条不太听话的狗都算不上的东西，就是穷。</p>
+        <p>男人叫柴田治。他脚踝有旧伤，重活干不长，工钱断断续续。男孩叫祥太，管他叫「爸爸」，但两个人心里都清楚这不是真的。<em>他们有一套手艺</em>：在超市里，一个人站在货架这头挡住店员的视线，另一个人在那头把东西塞进包里。手势是练过的，一高一低，隔着两排货架也能对上。</p>
+        <p>一个很冷的晚上，两个人「干完活」往家走，路过一栋公寓，看见二楼阳台上坐着一个小女孩。他们见过她好几次了，每次都一个人在阳台上，不哭也不闹。这次实在太冷。</p>
+        <p>治把她带回了家。女人叫信代，第一反应是不同意——家里多一张嘴，账就彻底算不过来了。但那天晚上她给女孩擦身子的时候，看见了她胳膊上的伤。她没有再说什么。</p>
+        <p>女孩叫由里，五岁。她留下来吃了一碗面，然后又留了一天，然后又留了很久。她开始学这个家的规矩：<span class="gr">东西不用买；叫「爸爸」的人不一定是爸爸；晚上睡觉要挨着人，因为屋里真的很冷。</span></p>
+        <p class="pullquote">第一幕结束在一个电视画面上。晚间新闻里，播音员在念一条寻人启事——失踪的女孩，五岁，名字、年龄、照片，全都对得上。一家人围着矮桌坐着，电视在说话，没有人换台，也没有人开口。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 海报 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02 &nbsp;/&nbsp; The Poster</span>
+      <h2 class="sec-title">门口两双凉鞋，<i>和一盆洗过东西的水</i></h2>
+      <p class="sec-desc">为这一期画的概念海报：不画人，只画一个夏天傍晚的玄关。</p>
+    </div>
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+          <svg viewBox="0 0 430 640" role="img" aria-label="概念海报：昏暗的水泥玄关，地面上一大一小两双塑料凉鞋并排放着，右侧一只搪瓷盆，盆里有水，映着一点灯光；左侧墙面竖排写着小偷家族四个字">
+            <defs>
+              <linearGradient id="qBg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="640">
+                <stop offset="0" stop-color="#0a1415"/>
+                <stop offset="0.5" stop-color="#081011"/>
+                <stop offset="1" stop-color="#050b0c"/>
+              </linearGradient>
+              <linearGradient id="qWall" gradientUnits="userSpaceOnUse" x1="40" y1="0" x2="390" y2="400">
+                <stop offset="0" stop-color="#0b1718"/>
+                <stop offset="0.6" stop-color="#0d1a1a"/>
+                <stop offset="1" stop-color="#122020"/>
+              </linearGradient>
+              <linearGradient id="qFloor" gradientUnits="userSpaceOnUse" x1="0" y1="402" x2="0" y2="640">
+                <stop offset="0" stop-color="#1e2926"/>
+                <stop offset="0.3" stop-color="#16211f"/>
+                <stop offset="1" stop-color="#080e0f"/>
+              </linearGradient>
+              <radialGradient id="qLight" cx="0.5" cy="0.5" r="0.5">
+                <stop offset="0" stop-color="#ffdcaa" stop-opacity="0.34"/>
+                <stop offset="0.42" stop-color="#e8b273" stop-opacity="0.10"/>
+                <stop offset="1" stop-color="#c99350" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="qSole" gradientUnits="userSpaceOnUse" x1="0" y1="470" x2="0" y2="560">
+                <stop offset="0" stop-color="#2a3633"/>
+                <stop offset="0.4" stop-color="#1a2422"/>
+                <stop offset="1" stop-color="#0d1515"/>
+              </linearGradient>
+              <linearGradient id="qWater" gradientUnits="userSpaceOnUse" x1="300" y1="520" x2="370" y2="560">
+                <stop offset="0" stop-color="#c9a06a"/>
+                <stop offset="0.5" stop-color="#6f7f72"/>
+                <stop offset="1" stop-color="#2a3a36"/>
+              </linearGradient>
+              <filter id="qS"><feGaussianBlur stdDeviation="8"/></filter>
+              <filter id="qM"><feGaussianBlur stdDeviation="3"/></filter>
+            </defs>
+
+            <rect width="430" height="640" fill="url(#qBg)"/>
+            <rect x="0" y="0" width="430" height="404" fill="url(#qWall)"/>
+            <g stroke="#1b2a28" stroke-opacity="0.45" stroke-width="1">
+              <line x1="0" y1="86" x2="430" y2="86"/>
+              <line x1="0" y1="176" x2="430" y2="176"/>
+              <line x1="0" y1="266" x2="430" y2="266"/>
+              <line x1="0" y1="356" x2="430" y2="356"/>
+            </g>
+            <ellipse cx="356" cy="52" rx="150" ry="130" fill="url(#qLight)"/>
+            <g stroke="#22322f" stroke-opacity="0.35" stroke-width="1">
+              <path d="M0,340 C60,332 110,344 168,338 C230,332 300,346 430,336"/>
+            </g>
+            <ellipse cx="206" cy="336" rx="120" ry="9" fill="#c9a06a" fill-opacity="0.05" filter="url(#qS)"/>
+
+            <rect x="0" y="392" width="430" height="13" fill="#0a1213"/>
+            <rect x="0" y="392" width="430" height="1.6" fill="#3d4d48" fill-opacity="0.45"/>
+            <rect x="0" y="405" width="430" height="235" fill="url(#qFloor)"/>
+
+            <ellipse cx="210" cy="418" rx="176" ry="10" fill="#f0cb92" fill-opacity="0.07" filter="url(#qS)"/>
+
+            <ellipse cx="152" cy="548" rx="74" ry="9" fill="#000000" fill-opacity="0.55" filter="url(#qM)"/>
+            <g transform="translate(148,508) rotate(-3)">
+              <path d="M-44,-8 C-46,-20 -38,-30 -24,-32 C-6,-34 16,-34 34,-31 C45,-29 49,-21 48,-10 C47,2 40,8 28,9 C8,11 -18,11 -32,9 C-41,8 -43,2 -44,-8 Z" fill="url(#qSole)"/>
+              <path d="M-44,-8 C-46,-20 -38,-30 -24,-32 C-6,-34 16,-34 34,-31 C45,-29 49,-21 48,-10" fill="none" stroke="#5a6b62" stroke-opacity="0.42" stroke-width="1.4"/>
+              <path d="M-32,-10 C-20,-22 12,-24 30,-12" fill="none" stroke="#3a4a45" stroke-width="3.4"/>
+              <path d="M-32,-10 C-20,-22 12,-24 30,-12" fill="none" stroke="#79897f" stroke-opacity="0.34" stroke-width="0.9"/>
+              <path d="M-2,-22 L-2,-4" stroke="#33433e" stroke-width="2.6"/>
+              <path d="M-30,-2 C-14,-6 14,-6 30,-2" fill="none" stroke="#0a1112" stroke-width="1.2" stroke-opacity="0.7"/>
+              <ellipse cx="0" cy="-16" rx="30" ry="9" fill="#f0cb92" fill-opacity="0.045"/>
+            </g>
+
+            <ellipse cx="262" cy="558" rx="48" ry="6" fill="#000000" fill-opacity="0.5" filter="url(#qM)"/>
+            <g transform="translate(258,530) rotate(4)">
+              <path d="M-28,-6 C-29,-14 -23,-21 -14,-22 C-2,-23 12,-23 22,-21 C29,-19 31,-13 30,-6 C29,2 24,6 16,6 C2,8 -12,8 -20,6 C-25,5 -27,1 -28,-6 Z" fill="url(#qSole)"/>
+              <path d="M-28,-6 C-29,-14 -23,-21 -14,-22 C-2,-23 12,-23 22,-21 C29,-19 31,-13 30,-6" fill="none" stroke="#5a6b62" stroke-opacity="0.38" stroke-width="1.2"/>
+              <path d="M-20,-8 C-12,-16 8,-18 19,-9" fill="none" stroke="#3a4a45" stroke-width="2.6"/>
+              <path d="M-1,-16 L-1,-4" stroke="#33433e" stroke-width="2"/>
+            </g>
+
+            <ellipse cx="330" cy="592" rx="62" ry="10" fill="#000000" fill-opacity="0.6" filter="url(#qM)"/>
+            <g transform="translate(324,552)">
+              <path d="M-58,-14 C-58,14 -40,30 -2,30 C36,30 56,14 56,-14 Z" fill="#1b2724"/>
+              <path d="M-58,-14 C-58,14 -40,30 -2,30 C36,30 56,14 56,-14 Z" fill="none" stroke="#55675e" stroke-opacity="0.38" stroke-width="1.2"/>
+              <path d="M-58,-14 C-58,14 -40,30 -2,30 C36,30 56,14 56,-14" fill="none" stroke="#0a1112" stroke-width="1" stroke-opacity="0.5"/>
+              <ellipse cx="0" cy="-14" rx="58" ry="16" fill="#22302c"/>
+              <ellipse cx="0" cy="-14" rx="58" ry="16" fill="none" stroke="#66786e" stroke-opacity="0.42" stroke-width="1.2"/>
+              <ellipse cx="0" cy="-12" rx="50" ry="12.5" fill="url(#qWater)"/>
+              <ellipse cx="0" cy="-12" rx="50" ry="12.5" fill="none" stroke="#0c1415" stroke-opacity="0.45" stroke-width="1"/>
+              <path d="M-34,-16 C-18,-20 6,-20 22,-17" fill="none" stroke="#ffe0b0" stroke-opacity="0.30" stroke-width="3" filter="url(#qM)"/>
+              <ellipse cx="-6" cy="-56" rx="46" ry="34" fill="#f0cb92" fill-opacity="0.05" filter="url(#qS)"/>
+              <path d="M-40,-20 C-44,-8 -42,6 -34,14" fill="none" stroke="#4a5c53" stroke-opacity="0.3" stroke-width="1"/>
+            </g>
+
+            <g font-family="Songti SC,Hiragino Mincho ProN,serif" font-size="23" fill="#e9e3d4" fill-opacity="0.52" letter-spacing="3">
+              <text x="46" y="112">小</text>
+              <text x="46" y="150">偷</text>
+              <text x="46" y="188">家</text>
+              <text x="46" y="226">族</text>
+            </g>
+            <line x1="46" y1="248" x2="46" y2="292" stroke="#cf9c56" stroke-opacity="0.5" stroke-width="1"/>
+            <text x="46" y="316" font-family="SFMono-Regular,Menlo,monospace" font-size="8" letter-spacing="2" fill="#8dbaa6" fill-opacity="0.5">MANBIKI KAZOKU</text>
+
+            <line x1="32" y1="576" x2="398" y2="576" stroke="#e9e3d4" stroke-opacity="0.10" stroke-width="1"/>
+            <text x="32" y="600" font-family="SFMono-Regular,Menlo,monospace" font-size="9.5" letter-spacing="3.2" fill="#e9e3d4" fill-opacity="0.62">SHOPLIFTERS</text>
+            <text x="32" y="618" font-family="SFMono-Regular,Menlo,monospace" font-size="8" letter-spacing="2.4" fill="#8dbaa6" fill-opacity="0.36">2018 &middot; KORE-EDA</text>
+            <text x="398" y="600" text-anchor="end" font-family="SFMono-Regular,Menlo,monospace" font-size="8.6" letter-spacing="1.6" fill="#8dbaa6" fill-opacity="0.32">万引き家族</text>
+          </svg>
+          <div class="poster-cap">CONCEPT POSTER &middot; 430 &times; 640</div>
+        </div>
+      </div>
+
+      <div class="reads">
+        <div class="read reveal">
+          <h4>01 &nbsp;两双凉鞋</h4>
+          <p>一双大，一双小，摆在同一个门口。它们是不是一家人的，<b>从画面上看不出来</b>——这正好是这部电影要问的事。</p>
+        </div>
+        <div class="read reveal">
+          <h4>02 &nbsp;门槛</h4>
+          <p>横在中间的那道水泥条。这个家从头到尾都在处理同一件事：<b>谁能进来，谁必须出去</b>。门槛是这间屋子里最重要的家具。</p>
+        </div>
+        <div class="read reveal">
+          <h4>03 &nbsp;一盆水</h4>
+          <p>夏天最便宜的东西。孩子玩一下午，大人拿它洗衣服、洗菜、擦身子。<b>用得起的东西，就是他们的好东西。</b>水面上那点亮，是屋里唯一一盏灯。</p>
+        </div>
+        <div class="read reveal">
+          <h4>04 &nbsp;画外的灯</h4>
+          <p>全片的光都是「便宜的」：裸灯泡、便利店的白光、走廊的日光灯。<b>没有一处是从天上打下来的。</b>这部片没有一个镜头在美化穷，但它把穷拍得很暖。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 档案 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03 &nbsp;/&nbsp; The File</span>
+      <h2 class="sec-title">影片档案</h2>
+      <p class="sec-desc">二十格硬信息，外加一行判词。各库口径不一致的地方，格子里会直接标出来。</p>
+    </div>
+    <dl class="spec reveal">
+      <div class="cell"><dt>原名</dt><dd>万引き家族</dd></div>
+      <div class="cell"><dt>英文名</dt><dd>Shoplifters</dd></div>
+      <div class="cell"><dt>导演</dt><dd class="k">是枝裕和<span style="font-size:11px;color:#8a887c"> &nbsp;1962–</span></dd></div>
+      <div class="cell"><dt>编剧</dt><dd class="p">是枝裕和（原创剧本）</dd></div>
+      <div class="cell"><dt>摄影</dt><dd class="r">近藤龙人</dd></div>
+      <div class="cell"><dt>音乐</dt><dd class="r">细野晴臣</dd></div>
+      <div class="cell"><dt>剪辑</dt><dd class="p">是枝裕和</dd></div>
+      <div class="cell"><dt>制片</dt><dd class="p">松崎薰 / 代情明彦 / 田口圣</dd></div>
+      <div class="cell"><dt>制作</dt><dd class="p">富士电视台 / AOI Pro.</dd></div>
+      <div class="cell"><dt>发行</dt><dd class="p">GAGA</dd></div>
+      <div class="cell"><dt>柴田治</dt><dd>中川雅也（Lily Franky）</dd></div>
+      <div class="cell"><dt>柴田信代</dt><dd>安藤樱</dd></div>
+      <div class="cell"><dt>柴田初枝</dt><dd>树木希林</dd></div>
+      <div class="cell"><dt>柴田亚纪</dt><dd>松冈茉优</dd></div>
+      <div class="cell"><dt>柴田祥太</dt><dd>城桧吏</dd></div>
+      <div class="cell"><dt>由里</dt><dd>佐佐木美结</dd></div>
+      <div class="cell"><dt>片长</dt><dd class="k">121 分钟<small>中国大陆公映版 117 分钟</small></dd></div>
+      <div class="cell"><dt>上映</dt><dd class="p">2018-05-13 戛纳<small>06-08 日本 / 08-03 中国大陆</small></dd></div>
+      <div class="cell"><dt>分级</dt><dd class="p">R（美国）<small>日本：PG12</small></dd></div>
+      <div class="cell"><dt>全球票房</dt><dd class="p">约 7,300 万美元<small>各口径 6,800–7,700 万</small></dd></div>
+      <div class="cell wide"><dt>一句话</dt><dd class="r">一个靠偷东西过日子的家，最后被证明不是家——而这句话，恰恰是它最像家的时候说出来的。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ================= 04 口碑 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04 &nbsp;/&nbsp; The Numbers</span>
+      <h2 class="sec-title">四个分数，<i>这次难得意见一致</i></h2>
+      <p class="sec-desc">前几期总有一两个分数要解释半天。这一部不用。</p>
+    </div>
+    <div class="scores reveal">
+      <div class="score">
+        <div class="src">豆瓣 Douban</div>
+        <div class="num">8.7<small>/ 10</small></div>
+        <div class="den">909,357 人评分 &middot; Top 250 第 195 位</div>
+        <div class="bar"><i style="width:87%"></i></div>
+        <div class="note">打分的人里 89.7% 给了四星以上，一星只有 0.2%。这是「几乎没有争议的喜欢」，不是「两极分化里赢的那一边」。</div>
+      </div>
+      <div class="score g2">
+        <div class="src">IMDb</div>
+        <div class="num">7.9<small>/ 10</small></div>
+        <div class="den">约 94,000 票 &middot; Metascore 93</div>
+        <div class="bar"><i style="width:79%"></i></div>
+        <div class="note">7.9 在 IMDb 是一个很微妙的位置：够高，但不足以进 Top 250 前排。原因很实在——它慢，而且不给爽点。</div>
+      </div>
+      <div class="score g3">
+        <div class="src">Rotten Tomatoes</div>
+        <div class="num">99<small>%</small></div>
+        <div class="den">230 篇影评 &middot; 均分 8.8/10 &middot; 观众 91%</div>
+        <div class="bar"><i style="width:99%"></i></div>
+        <div class="note">230 篇里只有两篇差评。这个量级的影评数还能守住 99%，是枝裕和之前没有过、之后也未必再有。</div>
+      </div>
+      <div class="score g4">
+        <div class="src">Metacritic</div>
+        <div class="num">93<small>/ 100</small></div>
+        <div class="den">40 篇影评 &middot; 标注「必看」</div>
+        <div class="bar"><i style="width:93%"></i></div>
+        <div class="note">四个分数里最狠的一个。MC 90 以上在日语片里屈指可数，93 意味着英美主流影评人集体给了它年度前十的位置。</div>
+      </div>
+    </div>
+    <p class="score-note reveal"><b>口径提示：</b>① 豆瓣 8.7 与 IMDb 7.9 差 0.8 分，属于两地评分习惯差异（豆瓣对家庭题材更宽容），两个数都照实写；② 烂番茄 99% 是「正面影评占比」，不是百分制得分，它旁边那个 8.8/10 才是均分，两者别混；③ 片长有 120 / 121 两种记法（中文维基记 120，IMDb 与豆瓣记 121），本页取 121；④ 全球票房各口径在 6,800–7,700 万美元之间浮动，汇率与统计范围不同，故写「约 7,300 万」。</p>
+  </div>
+</section>
+
+<!-- ================= 05 人物 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">05 &nbsp;/&nbsp; The People</span>
+      <h2 class="sec-title">六个人，<i>六种「不成立」的亲属关系</i></h2>
+      <p class="sec-desc">这里只写他们在故事开始时是什么人。谁后来做了什么，一个字不写。</p>
+    </div>
+    <div class="people reveal">
+      <div class="person">
+        <span class="role">FATHER &middot; 治</span>
+        <h4>柴田治</h4>
+        <div class="who">中川雅也（Lily Franky）</div>
+        <p>四十多岁，工地临时工。脚踝有旧伤，所以活总干不长，工钱也总接不上。他教祥太偷东西，还教他一套道理：<b>摆在店里的东西，还没有主人</b>。他自己大概也信这套。</p>
+        <span class="line">他一直想听祥太叫他一声「爸爸」，一直没听到。</span>
+      </div>
+      <div class="person">
+        <span class="role">MOTHER &middot; 信代</span>
+        <h4>柴田信代</h4>
+        <div class="who">安藤樱</div>
+        <p>洗衣厂女工，家里真正管事的那个人。她的狠和她的软长在同一张脸上，而且切换得极快——上一秒还在骂人，下一秒已经在给人擦头发。<b>她不信任何人，除了这个拼起来家。</b></p>
+        <span class="line">她抱人的方式，比她说的话诚实得多。</span>
+      </div>
+      <div class="person">
+        <span class="role">GRANDMOTHER &middot; 初枝</span>
+        <h4>柴田初枝</h4>
+        <div class="who">树木希林</div>
+        <p>老太太。房子是她的，全家唯一稳定的现金收入也是她的——亡夫的养老金。她每个月出门一趟，去一个地方拿一笔钱，回来的时候脸上什么表情都没有。<b>她坐到廊下的时间，比谁都长。</b></p>
+        <span class="line">她是这个家的地基，也是这个家最说不清的一块。</span>
+      </div>
+      <div class="person">
+        <span class="role">SISTER &middot; 亚纪</span>
+        <h4>柴田亚纪</h4>
+        <div class="who">松冈茉优</div>
+        <p>二十出头，在夜店陪聊——只陪聊。她是这个家里唯一还在意外面世界怎么看她的人：会挑衣服，会藏起自己的来处，会在客人面前把自己讲成另一个人。<b>她很擅长扮演「过得很好」。</b></p>
+        <span class="line">她管初枝叫「奶奶」，但她们之间那笔账，比这复杂得多。</span>
+      </div>
+      <div class="person">
+        <span class="role">SON &middot; 祥太</span>
+        <h4>柴田祥太</h4>
+        <div class="who">城桧吏</div>
+        <p>十岁上下，不上学——因为上学要户口。他知道治不是亲爸爸，也知道自己在做什么，但他从来不问。<b>他把这套手艺学得很好，好到开始自己判断什么时候该用。</b></p>
+        <span class="line">他是这个家里唯一一个开始怀疑的人。</span>
+      </div>
+      <div class="person">
+        <span class="role">THE GIRL &middot; 由里</span>
+        <h4>由里（树里）</h4>
+        <div class="who">佐佐木美结</div>
+        <p>五岁。被捡回来的那个。她几乎不主动说话，但学东西极快：怎么吃饭不出声、怎么在超市里站住不动、怎么在被问起来的时候低头。<b>她胳膊上有几处伤。</b>谁弄的，片子不急着说。</p>
+        <span class="line">她进这个家的第一件事，是学会不再道歉。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 五件不拍的事 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">06 &nbsp;/&nbsp; The Omissions</span>
+      <h2 class="sec-title">五件它<i>偏偏不拍</i>的事</h2>
+      <p class="sec-desc">这部片的力量，一半来自它拍了什么，另一半来自它拒绝拍什么。</p>
+    </div>
+    <div class="acts reveal">
+      <div class="act">
+        <span class="n">01 / NO TRIAL</span>
+        <h4>没有一场审判</h4>
+        <p>全片没有法庭，没有律师，没有判决书。<b>它从不判谁对谁错</b>——每个人都做了不该做的事，每个人也都有一整套理由。片子把这两样同时摆在你面前，然后闭嘴。</p>
+      </div>
+      <div class="act">
+        <span class="n">02 / NO CRY</span>
+        <h4>最难的那场戏，人在笑</h4>
+        <p>全片情绪最重的地方，最难过的那个人在笑，而且是真的在笑，不是硬撑。<b>它不给你哭的许可</b>——所以那一场，观众比角色先崩。</p>
+      </div>
+      <div class="act">
+        <span class="n">03 / NO VILLAIN</span>
+        <h4>没有反派</h4>
+        <p>连那个最该被恨的人，片子也留了一个能解释他的镜头。<b>它不原谅，但它解释。</b>这是是枝裕和最不肯让步的一点：理解一个人，不等于同意他。</p>
+      </div>
+      <div class="act">
+        <span class="n">04 / NO EXPLAIN</span>
+        <h4>不解释</h4>
+        <p>几件关键的事，一句台词都没交代，全靠后一场戏里的一个道具、一个眼神补上。<b>你漏看一分钟，就会觉得「这里没讲清楚」</b>——其实讲了，只是没说出来。</p>
+      </div>
+      <div class="act">
+        <span class="n">05 / NO SCORE</span>
+        <h4>几乎没有配乐</h4>
+        <p>大多数时候你听到的是蝉、冰箱的嗡鸣、洗衣机、筷子碰碗、隔壁的电视。<b>细野晴臣的音乐只在两个地方真正进来</b>，所以每次进来都像有人按住了你的肩膀。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 荣誉 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">07 &nbsp;/&nbsp; The Honours</span>
+      <h2 class="sec-title">荣誉，<i>和一次迟到的追授</i></h2>
+      <p class="sec-desc">这一页最该读的是下面那条注。</p>
+    </div>
+    <div class="awards reveal">
+      <div class="award win">
+        <span class="badge">2018</span>
+        <div class="body"><b>第 71 届戛纳电影节 &middot; 金棕榈（最高奖）</b><small>是枝裕和第五次入围主竞赛，第一次拿到。评审团主席凯特&middot;布兰切特领衔的九人评审团一致给出。</small></div>
+      </div>
+      <div class="award win">
+        <span class="badge">2019</span>
+        <div class="body"><b>第 42 回日本电影学院奖 &middot; 最优秀作品赏等 8 项</b><small>作品 / 导演 / 剧本 / 主演女优（安藤樱）/ 女配角（树木希林）/ 音乐 / 摄影 / 照明。12 项提名，拿下 8 项，是当年最大赢家。</small></div>
+      </div>
+      <div class="award win">
+        <span class="badge">2019</span>
+        <div class="body"><b>第 92 回电影旬报十佳 &middot; 日本电影第 1 位</b><small>同时拿下主演女优赏（安藤樱）。旬报是日本影评人体系里最老也最硬的一张榜，它把年度第一给了这部片。</small></div>
+      </div>
+      <div class="award win">
+        <span class="badge">2019</span>
+        <div class="body"><b>第 73 回每日电影奖 &middot; 日本电影大赏</b><small>另获最佳女演员、最佳女配角等奖项。每日电影奖由每日新闻主办，是日本三大电影奖之一。</small></div>
+      </div>
+      <div class="award win">
+        <span class="badge">2018</span>
+        <div class="body"><b>亚太电影大奖 &middot; 最佳影片</b><small>亚太地区最高级别的电影奖项之一。同年前后还拿下第 44 回凯撒奖最佳外国片（法国）。</small></div>
+      </div>
+      <div class="award">
+        <span class="badge">2019</span>
+        <div class="body"><b>第 91 届奥斯卡 &middot; 最佳外语片提名</b><small>代表日本参赛，最终未获奖。同年金球奖最佳外语片提名。</small></div>
+      </div>
+      <div class="award wide">
+        <span class="badge">NOTE</span>
+        <div class="body"><b>树木希林没有等到这座奖</b><small>2018 年 9 月 15 日，树木希林去世，距离这部片在日本公映（6 月 8 日）只过了三个月。第二年第 42 回日本电影学院奖把最优秀女配角给了她——那是追授。同一届的「会长特别奖」名单里也有她的名字。<b>她与是枝裕和合作过很多次，这是最后一次。</b></small></div>
+      </div>
+    </div>
+    <p class="award-note reveal"><b>一件必须写进来的事：</b>日本导演拿到金棕榈的，此前只有三位——衣笠贞之助（1953《地狱门》）、黑泽明（1980《影武者》）、今村昌平（1983《楢山节考》、1997《鳗鱼》）。是枝裕和是第四位，距离上一座隔了 <b>21 年</b>。<br><b>另：</b>奖项名目以主办单位公告为准。中文资料对个别奖项的届次偶有出入，本页只列可交叉印证的项目，有争议的一律不写。</p>
+  </div>
+</section>
+
+<!-- ================= 08 谱系 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">08 &nbsp;/&nbsp; The Lineage</span>
+      <h2 class="sec-title">日本电影里的「家」，<i>有五种写法</i></h2>
+      <p class="sec-desc">按年份排。这条线上，每一部解决的是不同的问题。</p>
+    </div>
+    <div class="lineage reveal">
+      <div class="kin">
+        <span class="no">1953</span>
+        <div class="t">小津安二郎</div>
+        <div class="n">东京物语</div>
+        <div class="d">家会散。孩子长大，父母就成了客人。</div>
+      </div>
+      <div class="kin">
+        <span class="no">1983</span>
+        <div class="t">森田芳光</div>
+        <div class="n">家族游戏</div>
+        <div class="d">家可以被一个外人重新装一遍，装完就散架。</div>
+      </div>
+      <div class="kin">
+        <span class="no">2008</span>
+        <div class="t">是枝裕和</div>
+        <div class="n">步履不停</div>
+        <div class="d">家是一年聚一次的地方，聚的时候都在说废话。</div>
+      </div>
+      <div class="kin">
+        <span class="no">2015</span>
+        <div class="t">是枝裕和</div>
+        <div class="n">海街日记</div>
+        <div class="d">家可以扩编。多一个人，多一双筷子。</div>
+      </div>
+      <div class="kin now">
+        <span class="no">2018</span>
+        <div class="t">是枝裕和 &middot; 本期</div>
+        <div class="n">小偷家族</div>
+        <div class="d">家可以自己选。选完，还得自己扛。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 六宫格 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">09 &nbsp;/&nbsp; Six Frames</span>
+      <h2 class="sec-title">六个值得留意的瞬间</h2>
+      <p class="sec-desc">不剧透，只指路。看到这些地方，把手机放下。</p>
+    </div>
+    <div class="grid6 reveal">
+      <div class="g6">
+        <span class="idx">01 / 开场</span>
+        <h4>货架两头的两只手</h4>
+        <p>一高一低，隔着两排货架打暗号。<b>没有一句台词</b>，你就知道这两个人是干什么的，也知道他们配合了很多年。</p>
+      </div>
+      <div class="g6">
+        <span class="idx">02 / 第一顿饭</span>
+        <h4>有人给她夹了一筷子东西</h4>
+        <p>小女孩第一次坐在那张矮桌前。有人往她碗里放了一样东西，说了一句「烫」。<b>这个家里所有的爱，都是用这种句子说的。</b></p>
+      </div>
+      <div class="g6">
+        <span class="idx">03 / 夏天</span>
+        <h4>廊下抬头的那个瞬间</h4>
+        <p>一家人挤在檐廊下，头都朝着同一个方向。画面上什么都没有，<b>声音里有</b>。这一幕是本片最著名的一张剧照。</p>
+      </div>
+      <div class="g6">
+        <span class="idx">04 / 声音</span>
+        <h4>蝉</h4>
+        <p>这部片最响的东西是蝉。夏天那几场戏一开场，蝉声压过所有对白。<b>它是这个家唯一不缺的东西。</b></p>
+      </div>
+      <div class="g6">
+        <span class="idx">05 / 物件</span>
+        <h4>一件旧 T 恤</h4>
+        <p>谁穿都行，穿在谁身上都看不出是谁的。这个家里很多东西都是这样来的——<b>包括他们的身份</b>。</p>
+      </div>
+      <div class="g6">
+        <span class="idx">06 / 结尾</span>
+        <h4>最后那几个镜头</h4>
+        <p>全片评价最高的一段，也是本页<b>一个字都不写</b>的一段。只说一句：它发生在白天，很安静，而且没有人说话。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10 为何值得看 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">10 &nbsp;/&nbsp; Why It Matters</span>
+      <h2 class="sec-title">为什么值得看</h2>
+      <p class="sec-desc">三条。都不是「因为它是金棕榈」这种废话。</p>
+    </div>
+    <div class="why">
+      <div class="blk reveal">
+        <div class="n">01</div>
+        <div>
+          <h4>它把「穷」拍成了日子，不是苦难展览</h4>
+          <p>大多数讲穷的电影，穷是一个布景。这一部的穷是具体的：账算不过来、暖气不敢开、洗发水兑水、超市的价签要看两遍、一件衣服全家轮着穿。<b>它不控诉，也不美化，只是让你在这个家里住两个小时。</b>住完之后你会发现，最难受的不是他们穷，是他们穷得这么有办法。</p>
+        </div>
+      </div>
+      <div class="blk reveal">
+        <div class="n">02</div>
+        <div>
+          <h4>它问了一个所有人都在回避的问题</h4>
+          <p>血缘到底是什么？如果一个人从小被捡回来、被养大、被教着叫爸爸、被骂过也被抱过，那这个「爸爸」算不算数？<b>这部片从头到尾不给答案，但它把这个问题问到你不能躲。</b>更狠的是，它连「爱」这个东西都不肯说满——它让你自己判断，那份感情是真的，还是也是偷来的。</p>
+        </div>
+      </div>
+      <div class="blk reveal">
+        <div class="n">03</div>
+        <div>
+          <h4>它是表演与调度的一次集体高分</h4>
+          <p>安藤樱、树木希林、中川雅也、松冈茉优，四个人的表演在同一条水平线上，而且全是「低音量」的演法——不喊，不哭，不给你台阶。<b>再加上是枝裕和的固定机位与长镜头</b>：摄影机几乎从不推近，情绪全靠演员在画框里自己走出来。这是最难的一种拍法，因为它不给导演留任何后路。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 11 观影提示 ================= -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">11 &nbsp;/&nbsp; Before You Watch</span>
+      <h2 class="sec-title">观影提示</h2>
+      <p class="sec-desc">不是警告，是让你带着正确的预期进去。</p>
+    </div>
+    <div class="tips reveal">
+      <div class="tip">
+        <h5>节奏</h5>
+        <p><b>前四十分钟没有「事件」，只有日子。</b>它在攒东西——攒到你觉得这不过是一部温情片的时候，一秒钟就能把你按住。别急着等转折。</p>
+      </div>
+      <div class="tip">
+        <h5>声音</h5>
+        <p><b>音量开大一点。</b>蝉、冰箱、洗衣机、隔壁的电视、水龙头没关紧。这些声音是这部片的另一半台词，手机外放会全部丢掉。</p>
+      </div>
+      <div class="tip">
+        <h5>版本</h5>
+        <p><b>尽量看 121 分钟的完整版。</b>中国大陆公映版 117 分钟，删掉的四分钟里有几处是这个家的日常逻辑，少了会让人觉得某些关系接不上。</p>
+      </div>
+      <div class="tip">
+        <h5>剧透</h5>
+        <p><b>别看平台简介。</b>大部分中文简介把第二幕的转折直接写在第一段，看完等于把一次抽牌提前翻开了。先看片，再读影评。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OUTRO ================= -->
+<div class="outro">
+  <div class="wrap">
+    <p class="q reveal">血缘是天给的。<br>家，是一天一天过出来的。<br><em>过不下去的时候，它也不算数。</em></p>
+    <div class="src reveal">编辑部主题句 &middot; 非片中台词</div>
+    <div class="seal reveal"><span>JAPAN</span><b>NO.04</b></div>
+  </div>
+</div>
+
+<footer>
+  <div class="fwrap">
+    <span>日本电影经典 &middot; 第 04 部 &nbsp;/&nbsp; <em>小偷家族 Shoplifters</em></span>
+    <span>数据：豆瓣 &middot; IMDb / OMDb &middot; 烂番茄 &middot; Metacritic &middot; 戛纳电影节档案</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.06});
+  for(var i = 0; i < els.length; i++){ io.observe(els[i]); }
+
+  /* ---------- HUD ---------- */
+  var hud = document.getElementById('hud');
+  var dot = document.getElementById('hudDot');
+  var val = document.getElementById('hudVal');
+  var lb  = document.getElementById('hudLb');
+  var stops = document.querySelectorAll('#hud .hud-stops em');
+  var labels = ['治','信代','初枝','亚纪','祥太'];
+  var lines = [
+    '治 · 工地零工，脚踝有旧伤',
+    '信代 · 洗衣厂，家里管事的人',
+    '初枝 · 房子和养老金都是她的',
+    '亚纪 · 夜店上班，唯一在意别人眼光的人',
+    '祥太 · 不上学，唯一开始怀疑的人'
+  ];
+  function onScroll(){
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    if(y > window.innerHeight*0.55){ hud.classList.add('show'); } else { hud.classList.remove('show'); }
+    var max = document.body.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, y/max) : 0;
+    dot.style.left = (p*100).toFixed(2) + '%';
+    var k = Math.min(4, Math.floor(p*5));
+    if(val.textContent !== labels[k]){
+      val.textContent = labels[k];
+      lb.textContent = lines[k];
+      for(var j = 0; j < stops.length; j++){
+        if(j === k){ stops[j].classList.add('on'); } else { stops[j].classList.remove('on'); }
+      }
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- 灯下的飞尘 ---------- */
+  var cv = document.getElementById('heroCanvas');
+  if(cv && cv.getContext){
+    var ctx = cv.getContext('2d');
+    var W=0,H=0,DPR=Math.min(2, window.devicePixelRatio||1);
+    var motes=[];
+    var t=0;
+    function init(){
+      motes=[];
+      var n = Math.round(W/17);
+      for(var i=0;i<n;i++){
+        motes.push({
+          x:Math.random()*W, y:Math.random()*H,
+          r:0.5+Math.random()*1.5,
+          vy:-0.06-Math.random()*0.30,
+          vx:-0.12+Math.random()*0.24,
+          a:0.08+Math.random()*0.30,
+          ph:Math.random()*6.283
+        });
+      }
+    }
+    function size(){
+      var r = cv.getBoundingClientRect();
+      W = r.width; H = r.height;
+      cv.width = Math.round(W*DPR); cv.height = Math.round(H*DPR);
+      ctx.setTransform(DPR,0,0,DPR,0,0);
+      init();
+    }
+    function loop(){
+      t += 0.016;
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<motes.length;i++){
+        var f = motes[i];
+        f.y += f.vy; f.x += f.vx + Math.sin(t*0.7 + f.ph)*0.20;
+        if(f.y < -8){ f.y = H+8; f.x = Math.random()*W; }
+        if(f.x < -8){ f.x = W+8; } else if(f.x > W+8){ f.x = -8; }
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, f.r, 0, 6.2832);
+        ctx.fillStyle = 'rgba(240,203,146,' + f.a.toFixed(3) + ')';
+        ctx.fill();
+      }
+      requestAnimationFrame(loop);
+    }
+    size();
+    window.addEventListener('resize', size);
+    loop();
+  }
+})();
+</script>
+</body>
+</html>
