@@ -7,25 +7,29 @@
 	<key>ProgramArguments</key>
 	<array>
 		<string>/bin/bash</string>
-		<string>/Users/admin/codex/0806/classic-movie-site/tools/daily-sync.sh</string>
+		<string>@@ROOT@@/tools/daily-sync.sh</string>
 	</array>
+	<key>WorkingDirectory</key>
+	<string>@@ROOT@@</string>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PATH</key>
+		<string>@@PATH@@</string>
+		<key>GIT_TERMINAL_PROMPT</key>
+		<string>0</string>
+	</dict>
 	<key>RunAtLoad</key>
 	<true/>
 	<key>StandardErrorPath</key>
-	<string>/tmp/classicmovie-sync.err.log</string>
+	<string>@@HOME@@/Library/Logs/classic-movie-site/sync.err.log</string>
 	<key>StandardOutPath</key>
-	<string>/tmp/classicmovie-sync.log</string>
-	<!-- 每 3 小时检查一次（10800 秒），避免睡眠错过固定时刻 -->
+	<string>@@HOME@@/Library/Logs/classic-movie-site/sync.log</string>
 	<key>StartInterval</key>
 	<integer>900</integer>
-
-	<!-- WorkBuddy 生成新页面时立即触发同步（准实时） -->
 	<key>WatchPaths</key>
 	<array>
-		<string>/Users/admin/WorkBuddy/automation-20260423112820</string>
+		<string>@@SRC@@</string>
 	</array>
-
-	<!-- 两次触发的最小间隔，避免频繁抖动 -->
 	<key>ThrottleInterval</key>
 	<integer>60</integer>
 </dict>

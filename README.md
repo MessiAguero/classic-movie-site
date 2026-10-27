@@ -160,18 +160,14 @@ GitHub Actions（deploy.yml）自动构建部署到 Pages
 ### 安装定时任务（macOS）
 
 ```bash
-cp deploy/com.classicmovie.daily-sync.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.classicmovie.daily-sync.plist
-
-cp deploy/com.classicmovie.self-check.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.classicmovie.self-check.plist
-
-cp deploy/com.classicmovie.poster-qa.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.classicmovie.poster-qa.plist
+npm run automation:install
+npm run automation:check
 ```
 
 每天 00:10 / 06:00 / 12:00 / 18:00 自动检查并同步，日志在
-`/tmp/classicmovie-sync.log`。也可以手动执行：
+`~/Library/Logs/classic-movie-site/`。安装脚本会按当前仓库路径生成
+LaunchAgent；仓库移动后重新运行 `npm run automation:install` 即可。
+也可以手动执行：
 
 ```bash
 ./tools/daily-sync.sh           # 同步 + 推送
@@ -231,8 +227,8 @@ npm run poster:aliases   # 解析/补充可信片名别名
 定时巡检（每天 03:30）：
 
 ```bash
-cp deploy/com.classicmovie.poster-qa.plist ~/Library/LaunchAgents/
-launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.classicmovie.poster-qa.plist
+npm run automation:install
+npm run automation:check
 ```
 
 ## 目录结构

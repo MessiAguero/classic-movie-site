@@ -103,9 +103,39 @@ log "模式：$([ "$CHECK_ONLY" -eq 1 ] && echo '只自检（不修改）' || ec
 BEFORE_HEAD="$(git rev-parse HEAD)"
 CONTENT_CHANGED=0
 SYNC_REPAIR="未需要"
+AUTOMATION_REPAIR="未需要"
 
 log ""
-log "-- 1/2 同步时效自检 --"
+log "-- 1/3 定时任务健康检查 --"
+set +e
+node tools/check-automation.mjs
+AUTOMATION_RC=$?
+set -e
+if [ "$AUTOMATION_RC" -eq 0 ]; then
+  log "✅ 定时任务正常"
+elif [ "$CHECK_ONLY" -eq 1 ]; then
+  log "!! 定时任务配置异常（只自检模式，不自动修复）"
+elif [ -n "${XPC_SERVICE_NAME:-}" ]; then
+  log "!! 定时任务配置异常；请先手动运行 npm run automation:install"
+else
+  log "▶ 定时任务配置异常，正在按当前仓库路径重新安装…"
+  set +e
+  "$ROOT/tools/install-launchd.sh"
+  rc=$?
+  set -e
+  if [ "$rc" -eq 0 ]; then
+    AUTOMATION_REPAIR="已重新安装 launchd 任务"
+    set +e
+    node tools/check-automation.mjs
+    AUTOMATION_RC=$?
+    set -e
+  else
+    log "!! launchd 重装失败，退出码 $rc"
+  fi
+fi
+
+log ""
+log "-- 2/3 同步时效自检 --"
 set +e
 node tools/check-sync.mjs "${SYNC_ARGS[@]+"${SYNC_ARGS[@]}"}"
 SYNC_RC=$?
@@ -142,7 +172,7 @@ else
 fi
 
 log ""
-log "-- 2/2 海报自检 --"
+log "-- 3/3 海报自检 --"
 POSTER_ACTION="跳过（无新内容且距上次巡检不足 24 小时）"
 if should_run_posters; then
   if [ "$CHECK_ONLY" -eq 1 ]; then
@@ -175,6 +205,7 @@ set +e
 MODE="$( [ "$CHECK_ONLY" -eq 1 ] && echo 'check-only' || echo 'repair' )" \
 POSTER_ACTION="$POSTER_ACTION" \
 SYNC_REPAIR="$SYNC_REPAIR" \
+AUTOMATION_REPAIR="$AUTOMATION_REPAIR" \
 POSTER_MODE="$POSTERS" \
 node -e '
   const fs = require("fs");
@@ -183,16 +214,33 @@ node -e '
   const sync = readJson("output/sync-audit.json");
   const poster = readJson("output/poster-audit.json");
   const review = readJson("output/poster-review.json");
+  const automation = readJson("output/automation-audit.json");
 
   const syncStale = sync ? sync.staleCount : -1;
   const posterError = poster ? poster.error : 0;
-  const ok = syncStale === 0 && posterError === 0;
+  const automationFailed = automation && automation.ok ? 0 : -1;
+  const ok = automationFailed === 0 && syncStale === 0 && posterError === 0;
 
   const report = {
     at: new Date().toISOString(),
     mode: process.env.MODE,
     result: ok ? "ok" : "unresolved",
-    repair: { sync: process.env.SYNC_REPAIR, posters: process.env.POSTER_ACTION },
+    repair: {
+      automation: process.env.AUTOMATION_REPAIR,
+      sync: process.env.SYNC_REPAIR,
+      posters: process.env.POSTER_ACTION,
+    },
+    automation: automation
+      ? {
+          ok: automation.ok,
+          root: automation.root,
+          sourceDir: automation.sourceDir,
+          failedServices: automation.services.filter((s) => s.issues.length).map((s) => ({
+            label: s.label,
+            issues: s.issues,
+          })),
+        }
+      : null,
     sync: sync
       ? {
           staleCount: sync.staleCount,
@@ -227,6 +275,21 @@ node -e '
   L.push("");
   L.push(`生成时间：${report.at}`);
   L.push(`结论：${ok ? "✅ 正常" : "❌ 仍有未解决项"}`);
+  L.push("");
+  L.push("## 定时任务");
+  L.push("");
+  if (report.automation) {
+    L.push(`- 结论：${report.automation.ok ? "正常" : "异常"}`);
+    L.push(`- 仓库路径：${report.automation.root}`);
+    L.push(`- 内容源：${report.automation.sourceDir}`);
+    if (report.automation.failedServices.length) {
+      for (const service of report.automation.failedServices) {
+        L.push(`- ❌ ${service.label}：${service.issues.join("；")}`);
+      }
+    }
+  } else {
+    L.push("- 没有读到 output/automation-audit.json");
+  }
   L.push("");
   L.push("## 同步链路");
   L.push("");
@@ -270,6 +333,7 @@ node -e '
   L.push("");
   L.push("## 本次修复动作");
   L.push("");
+  L.push(`- 定时任务：${report.repair.automation}`);
   L.push(`- 同步补齐：${report.repair.sync}`);
   L.push(`- 海报巡检：${report.repair.posters}`);
   L.push("");
@@ -278,6 +342,7 @@ node -e '
   console.log("");
   console.log("─".repeat(72));
   console.log(`自检结论：${ok ? "✅ 全部正常" : "❌ 仍有未解决项"}`);
+  console.log(`  定时任务：${automationFailed === 0 ? "正常" : "异常"}`);
   console.log(`  同步：${syncStale === 0 ? "及时" : `未及时 ${syncStale} 项`} · 海报：${poster ? `错误 ${poster.error} / 警告 ${poster.warn}` : "未巡检"}`);
   if (review && review.reviewCount) console.log(`  海报待人工核对：${review.reviewCount} 张 → output/poster-review.html`);
   console.log("  报告：output/self-check.md");

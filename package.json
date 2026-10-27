@@ -24,6 +24,8 @@
     "poster:review": "node tools/poster-review.mjs",
     "poster:set": "node tools/set-poster.mjs",
     "sync:check": "node tools/check-sync.mjs",
+    "automation:check": "node tools/check-automation.mjs",
+    "automation:install": "./tools/install-launchd.sh",
     "self:check": "./tools/self-check.sh"
   },
   "dependencies": {

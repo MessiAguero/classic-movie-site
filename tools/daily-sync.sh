@@ -27,6 +27,24 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SRC="${DAILY_SRC:-/Users/admin/WorkBuddy/automation-20260423112820}"
 cd "$ROOT"
 
+push_with_retry() {
+  local branch="$1"
+  local attempt
+  for attempt in 1 2 3; do
+    if git push origin HEAD; then
+      git fetch origin "$branch" --quiet
+      if [ "$(git rev-parse HEAD)" = "$(git rev-parse "origin/$branch")" ]; then
+        return 0
+      fi
+      echo "!! 推送后远端 HEAD 与本地不一致（第 $attempt 次）"
+    else
+      echo "!! git push 失败（第 $attempt 次）"
+    fi
+    if [ "$attempt" -lt 3 ]; then sleep $((attempt * 5)); fi
+  done
+  return 1
+}
+
 echo "== $(date '+%F %T') 开始同步 =="
 
 # 加载 Supabase 凭据（可选，用于同步新电影到云端）
@@ -39,7 +57,7 @@ fi
 
 mkdir -p source-html
 
-# 1) 复制新 HTML
+# 1) 复制新增或被重新生成的 HTML
 count=0
 for f in "$SRC"/movie-recommend-*.html; do
   [ -e "$f" ] || continue
@@ -48,9 +66,13 @@ for f in "$SRC"/movie-recommend-*.html; do
     cp "$f" "source-html/$base"
     count=$((count + 1))
     echo "新增: $base"
+  elif ! cmp -s "$f" "source-html/$base"; then
+    cp "$f" "source-html/$base"
+    count=$((count + 1))
+    echo "更新: $base"
   fi
 done
-echo "== 新增 $count 份 HTML（共 $(ls source-html | wc -l | tr -d ' ') 份）"
+echo "== 新增/更新 $count 份 HTML（共 $(find source-html -maxdepth 1 -type f -name '*.html' | wc -l | tr -d ' ') 份）"
 
 # 没有任何新文件、且工作区无改动时直接退出（让高频检查几乎零开销）
 if [ "$count" -eq 0 ] && [ -z "$(git status --porcelain)" ]; then
@@ -74,7 +96,7 @@ if [ "$count" -gt 0 ]; then
   "$ROOT/tools/poster-qa.sh" --no-commit || echo "!! 海报自检异常，详见 output/poster-audit.md"
 fi
 
-COUNT_HTML=$(ls source-html | wc -l | tr -d ' ')
+COUNT_HTML=$(find source-html -maxdepth 1 -type f -name '*.html' | wc -l | tr -d ' ')
 COUNT_JSON=$(node -e "console.log(require('./src/data/movies.json').length)")
 echo "== HTML $COUNT_HTML 份 / 解析 $COUNT_JSON 条"
 if [ "$COUNT_HTML" -ne "$COUNT_JSON" ]; then
@@ -109,7 +131,11 @@ else
 fi
 
 if git remote -v | grep -q push; then
-  git push origin HEAD
+  branch="$(git rev-parse --abbrev-ref HEAD)"
+  if ! push_with_retry "$branch"; then
+    echo "!! 推送重试 3 次后仍失败，本次同步未完成" >&2
+    exit 1
+  fi
   echo "== 已推送到远程，GitHub Actions 将自动构建部署"
 else
   echo "!! 未配置 git 远程仓库，请先：git remote add origin <仓库地址> && git push -u origin main"

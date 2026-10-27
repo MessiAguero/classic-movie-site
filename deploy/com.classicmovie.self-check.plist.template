@@ -7,24 +7,28 @@
 	<key>ProgramArguments</key>
 	<array>
 		<string>/bin/bash</string>
-		<string>/Users/admin/codex/0806/classic-movie-site/tools/self-check.sh</string>
+		<string>@@ROOT@@/tools/self-check.sh</string>
 	</array>
-	<!-- 开机后先自检一次，把停机期间积压的内容补上 -->
+	<key>WorkingDirectory</key>
+	<string>@@ROOT@@</string>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>PATH</key>
+		<string>@@PATH@@</string>
+		<key>GIT_TERMINAL_PROMPT</key>
+		<string>0</string>
+	</dict>
 	<key>RunAtLoad</key>
 	<true/>
 	<key>StandardErrorPath</key>
-	<string>/tmp/classicmovie-selfcheck.err.log</string>
+	<string>@@HOME@@/Library/Logs/classic-movie-site/self-check.err.log</string>
 	<key>StandardOutPath</key>
-	<string>/tmp/classicmovie-selfcheck.log</string>
-
-	<!-- 每小时自检一次：同步是否及时、海报是否出错 -->
+	<string>@@HOME@@/Library/Logs/classic-movie-site/self-check.log</string>
 	<key>StartInterval</key>
 	<integer>3600</integer>
-
-	<!-- WorkBuddy 生成新页面时也自检一次：万一同步那一步失败，自检会兜住并补上 -->
 	<key>WatchPaths</key>
 	<array>
-		<string>/Users/admin/WorkBuddy/automation-20260423112820</string>
+		<string>@@SRC@@</string>
 	</array>
 	<key>ThrottleInterval</key>
 	<integer>300</integer>
