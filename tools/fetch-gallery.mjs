@@ -7,12 +7,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { UA, parseImageMeta, THRESHOLDS } from './lib/poster-audit.mjs';
+import { savePoster } from './lib/poster-repair.mjs';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const MOVIES_FILE = path.join(__dirname, '..', 'src', 'data', 'movies.json');
 const OUT_FILE = path.join(__dirname, '..', 'src', 'data', 'gallery.json');
-const UA =
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36';
-
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function getVqd(query) {
@@ -66,25 +66,50 @@ function score(item, movie) {
   return s;
 }
 
-async function findImage(movie) {
+async function findImages(movie) {
   const queries = [
     `${movie.zhTitle} ${movie.year || ''} 电影 海报`,
     movie.enTitle ? `${movie.enTitle} ${movie.year || ''} movie poster` : '',
   ].filter(Boolean);
 
-  let best = [];
+  const byUrl = new Map();
   for (const q of queries) {
     try {
       const items = await imageSearch(q);
-      if (items.length > best.length) best = items;
+      for (const item of items) if (!byUrl.has(item.image)) byUrl.set(item.image, item);
     } catch {
       /* 继续 */
     }
     await sleep(350);
   }
-  if (!best.length) return null;
-  best.sort((a, b) => score(b, movie) - score(a, movie));
-  return best[0];
+  return [...byUrl.values()].sort((a, b) => score(b, movie) - score(a, movie));
+}
+
+async function downloadImage(movie, item) {
+  let response;
+  try {
+    response = await fetch(item.image, {
+      headers: { 'User-Agent': UA, Accept: 'image/*,*/*;q=0.8' },
+      redirect: 'follow',
+      signal: AbortSignal.timeout(30000),
+    });
+  } catch {
+    return null;
+  }
+  if (!response.ok) return null;
+  const bytes = Buffer.from(await response.arrayBuffer());
+  const meta = parseImageMeta(bytes);
+  if (!meta?.width || !meta?.height) return null;
+  if (meta.width < THRESHOLDS.minWidth || meta.height < THRESHOLDS.minHeight) return null;
+  if (bytes.length < THRESHOLDS.minBytes) return null;
+  const ratio = meta.height / meta.width;
+  if (ratio < THRESHOLDS.minPortraitRatio || ratio > THRESHOLDS.maxPortraitRatio) return null;
+  return {
+    imageUrl: savePoster(movie.id, bytes, meta),
+    remoteUrl: item.image,
+    width: meta.width,
+    height: meta.height,
+  };
 }
 
 const movies = JSON.parse(fs.readFileSync(MOVIES_FILE, 'utf8'));
@@ -100,15 +125,27 @@ try {
 for (const m of movies) {
   if (existingIds.has(m.id)) continue;
   process.stdout.write(`[${ok}/${movies.length}] ${m.zhTitle} … `);
-  const img = await findImage(m);
-  if (img) {
+  const candidates = await findImages(m);
+  let img = null;
+  let source = null;
+  for (const candidate of candidates.slice(0, 12)) {
+    const local = await downloadImage(m, candidate);
+    if (local) {
+      img = local;
+      source = candidate;
+      break;
+    }
+  }
+  if (img && source) {
     results.push({
       id: m.id,
       zhTitle: m.zhTitle,
       enTitle: m.enTitle || '',
       year: m.year || '',
-      imageUrl: img.image,
-      title: img.title,
+      imageUrl: img.imageUrl,
+      remoteUrl: img.remoteUrl,
+      title: source.title,
+      hiRes: img.width >= 1000,
     });
     ok++;
     console.log('✓');

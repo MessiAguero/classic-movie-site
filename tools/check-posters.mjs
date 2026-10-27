@@ -43,7 +43,7 @@ async function main() {
   const gallery = loadGallery();
   const movies = loadMovies();
 
-  const { results, errorCount, warnCount, okCount } = await runAudit(gallery, movies);
+  const { results, errorCount, warnCount, okCount, ocrStatus } = await runAudit(gallery, movies);
 
   const errors = results.filter((r) => r.status === 'error');
 
@@ -54,6 +54,7 @@ async function main() {
     ok: okCount,
     warn: warnCount,
     error: errorCount,
+    ocr: ocrStatus,
     entries: results,
     needsReview: results.filter(needsReview).map((r) => ({
       id: r.id,
@@ -135,6 +136,8 @@ function codeLabel(code) {
       duplicate_image: '跨片重复',
       identity_conflict: '来源与影片不符',
       identity_weak_evidence: '线索不足待核对',
+      visual_identity_conflict: '图片内容与影片不符',
+      visual_title_unverified: '图片文字未能确认片名',
     }[code] || code
   );
 }
@@ -155,6 +158,13 @@ function printConsole(report) {
   console.log(`\n海报自检 · ${report.generatedAt}`);
   console.log(`${line}`);
   console.log(`总共 ${report.total} 张 → 正常 ${report.ok} · 警告 ${report.warn} · 错误 ${report.error}`);
+  if (report.ocr?.available) {
+    console.log(
+      `Vision OCR：检查 ${report.ocr.checked} 张 · 人工哈希已核对跳过 ${report.ocr.skippedVerified} 张`,
+    );
+  } else if (report.ocr?.error) {
+    console.log(`⚠️  Vision OCR 暂不可用：${String(report.ocr.error).split('\n')[0]}`);
+  }
   if (report.needsReview.length) {
     console.log(`其中 ${report.needsReview.length} 张证据不足或有疑点，建议人工核对（output/poster-review.json）`);
   }

@@ -22,9 +22,11 @@ import {
   loadAliases,
   md5,
   normTitle,
+  ocrEvidence,
   parseImageMeta,
   sleep,
 } from './poster-audit.mjs';
+import { recognizePosterBytes } from './ocr-posters.mjs';
 
 /* ------------------------------------------------------------------ */
 /* 候选校验：比自检更严格的准入门槛                                    */
@@ -197,6 +199,25 @@ export async function validateCandidate(cand, movie, { timeoutMs = 25000 } = {})
     return { ok: false, reason: '来源是剧照而非海报' };
   }
 
+  // Search metadata can be right while the downloaded picture is a remake,
+  // sequel, or another film's poster. Reject only explicit contradictions
+  // that can be read in the pixels; unreadable stylised text is not a failure.
+  if (process.env.POSTER_OCR !== '0') {
+    const recognized = recognizePosterBytes(
+      [{ id: `candidate-${movie?.id || 'movie'}`, bytes, meta }],
+      { timeoutMs: 90000 },
+    );
+    const imageEvidence = ocrEvidence(
+      { id: movie?.id, year: movie?.year },
+      movie,
+      loadAliases(),
+      recognized.byIndex.get(0),
+    );
+    if (imageEvidence.conflicts.length) {
+      return { ok: false, reason: `候选图片内容冲突：${imageEvidence.conflicts[0]}` };
+    }
+  }
+
   return { ok: true, bytes, meta, width: w, height: h };
 }
 
@@ -211,7 +232,10 @@ async function tmdbCandidates(movie) {
   const headers = { 'User-Agent': UA, Accept: 'application/json' };
   if (isToken) headers.Authorization = `Bearer ${apiKey}`;
 
-  const { zh, en, year } = searchNames(movie);
+  const { zh, en, year, aliases } = searchNames(movie);
+  const expectedNames = new Set(
+    [zh, en, ...aliases].map((name) => normTitle(cleanSearchTitle(name))).filter(Boolean),
+  );
   const queries = [en, zh].filter(Boolean);
   const out = [];
 
@@ -229,6 +253,13 @@ async function tmdbCandidates(movie) {
     }
     for (const m of (json.results || []).slice(0, 3)) {
       if (!m.poster_path) continue;
+      const releaseYear = String(m.release_date || '').match(/(?:19|20)\d{2}/)?.[0] || '';
+      const resultNames = [m.title, m.original_title].map((name) => normTitle(name)).filter(Boolean);
+      const exactTitle = resultNames.some((name) => expectedNames.has(name));
+      // Search results are suggestions, not proof. Only an exact title and
+      // matching release year earn the authority bypass in validateCandidate;
+      // everything else must pass the same source/metadata/OCR checks.
+      if (!exactTitle || (year && releaseYear !== year)) continue;
       out.push({
         url: `https://image.tmdb.org/t/p/original${m.poster_path}`,
         title: `${m.title || m.original_title} (${(m.release_date || '').slice(0, 4)})`,

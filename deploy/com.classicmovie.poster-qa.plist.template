@@ -19,7 +19,7 @@
 		<string>0</string>
 	</dict>
 	<key>RunAtLoad</key>
-	<false/>
+	<true/>
 	<key>StandardErrorPath</key>
 	<string>@@HOME@@/Library/Logs/classic-movie-site/poster-qa.err.log</string>
 	<key>StandardOutPath</key>

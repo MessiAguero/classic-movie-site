@@ -53,11 +53,12 @@ const HTML_FILE_RE = /^movie-recommend-(\d{8}|\d{4}-\d{2}-\d{2})(-[A-Za-z0-9-]+)
 const norm = (s) => String(s || '').replace(/\s+/g, '').toLowerCase();
 const min = (n) => Math.round(n / 60000);
 
-function git(args, { allowFail = true } = {}) {
+function git(args, { allowFail = true, timeoutMs = 30000 } = {}) {
   try {
     return execFileSync('git', ['-C', ROOT, ...args], {
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'ignore'],
+      timeout: timeoutMs,
     }).trim();
   } catch (e) {
     if (allowFail) return null;
@@ -205,7 +206,6 @@ async function collect() {
 
   /* ---------- 4. 本地提交与远程仓库 ---------- */
   const branch = git(['rev-parse', '--abbrev-ref', 'HEAD']) || 'main';
-  const head = git(['rev-parse', 'HEAD']);
   const status = git(['status', '--porcelain']) || '';
   const dirtyContent = status
     .split('\n')
@@ -230,12 +230,17 @@ async function collect() {
   let ahead = 0;
   let behind = 0;
   let remoteChecked = false;
+  let head = git(['rev-parse', 'HEAD']);
   if (!OFFLINE) {
-    git(['fetch', 'origin', '--quiet']);
+    git(['fetch', 'origin', '--quiet'], { timeoutMs: 30000 });
+    // Read HEAD and the remote ref after fetch, then compare those exact
+    // snapshots. This prevents facts from combining an old HEAD with a newer
+    // origin ref (or vice versa) when another process commits concurrently.
+    head = git(['rev-parse', 'HEAD']);
     remoteRef = git(['rev-parse', `origin/${branch}`]);
     if (remoteRef) {
       remoteChecked = true;
-      const counts = git(['rev-list', '--left-right', '--count', `HEAD...origin/${branch}`]);
+      const counts = git(['rev-list', '--left-right', '--count', `${head}...${remoteRef}`]);
       if (counts) {
         const [a, b] = counts.split(/\s+/).map(Number);
         ahead = a;

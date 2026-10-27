@@ -20,6 +20,11 @@ export PATH="/Users/admin/.local/bin:/Users/admin/.hermes/node/bin:/opt/homebrew
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
+# shellcheck source=tools/lib/lock.sh
+source "$ROOT/tools/lib/lock.sh"
+# shellcheck source=tools/lib/git-sync.sh
+source "$ROOT/tools/lib/git-sync.sh"
+
 NO_COMMIT=0
 CHECK_ONLY=0
 for arg in "$@"; do
@@ -30,18 +35,27 @@ for arg in "$@"; do
   esac
 done
 
-# 防并发：与 daily-sync.sh、launchd 定时任务共用一个锁
-LOCK="/tmp/classicmovie-posterqa.lock"
-if ! mkdir "$LOCK" 2>/dev/null; then
-  echo "== $(date '+%F %T') 已有海报巡检任务在运行，跳过本次"
+# 防并发：与 daily-sync.sh、self-check.sh 共用可重入维护锁
+LOCK="${MAINTENANCE_LOCK_DIR:-/tmp/classicmovie-maintenance.lock}"
+if ! acquire_lock "$LOCK"; then
+  echo "== $(date '+%F %T') 已有维护任务在运行，跳过本次"
   exit 0
 fi
-trap 'rmdir "$LOCK" 2>/dev/null || true' EXIT
+trap 'rc=$?; release_lock "$LOCK"; exit "$rc"' EXIT
+trap 'exit 143' TERM INT HUP
 
 echo "== $(date '+%F %T') 开始海报自检 =="
 
+# 远程图先无损落地，再检查内容。失败仅代表当前网络不可达，
+# 后续任务会重试；它不会触发换图，也不会把站点内容卡住。
+if [ "$CHECK_ONLY" -eq 0 ]; then
+  if ! node tools/run-with-timeout.mjs "${POSTER_MIGRATE_TIMEOUT_MS:-120000}" node tools/fix-posters.mjs --self-host-all; then
+    echo "!! 部分远程海报暂时无法自托管，保留原引用并继续巡检"
+  fi
+fi
+
 set +e
-node tools/check-posters.mjs
+node tools/run-with-timeout.mjs "${POSTER_CHECK_TIMEOUT_MS:-240000}" node tools/check-posters.mjs
 CHECK=$?
 set -e
 
@@ -52,17 +66,28 @@ elif [ "$CHECK_ONLY" -eq 1 ]; then
   exit 1
 else
   echo "== 发现错误海报，开始自动纠错"
-  # 纠错失败不阻断流程：保留原图，下次巡检继续尝试
-  node tools/fix-posters.mjs || echo "!! 部分海报未能自动修复，详见 output/poster-fix-log.json"
-
-  set +e
-  node tools/check-posters.mjs
-  RECHECK=$?
-  set -e
-  if [ "$RECHECK" -eq 0 ]; then
-    echo "== 纠错完成，复检通过"
-  else
-    echo "!! 复检仍有未通过项，详见 output/poster-audit.md（下次巡检会继续尝试）"
+  # 图片 CDN 偶发超时会让不同条目轮流失败；复检两轮，
+  # 每轮只修当前仍报错的条目，避免一次网络抖动把错误带上线。
+  RECHECK=1
+  for attempt in 1 2 3; do
+    node tools/run-with-timeout.mjs "${POSTER_FIX_TIMEOUT_MS:-360000}" node tools/fix-posters.mjs \
+      || echo "!! 第 $attempt 轮部分海报未能自动修复，详见 output/poster-fix-log.json"
+    set +e
+    node tools/run-with-timeout.mjs "${POSTER_CHECK_TIMEOUT_MS:-240000}" node tools/check-posters.mjs
+    RECHECK=$?
+    set -e
+    if [ "$RECHECK" -eq 0 ]; then
+      echo "== 纠错完成，复检通过"
+      break
+    fi
+    if [ "$attempt" -lt 3 ]; then
+      echo "== 仍有错误，2 秒后继续第 $((attempt + 1)) 轮纠错"
+      sleep 2
+    fi
+  done
+  if [ "$RECHECK" -ne 0 ]; then
+    echo "!! 三轮复检仍有未通过项，详见 output/poster-audit.md（下次巡检会继续尝试）"
+    exit 1
   fi
 fi
 
@@ -86,10 +111,16 @@ if git diff --cached --quiet; then
 else
   git commit -m "海报自检：$(date +%F) 自动校验并纠错" >/dev/null
   echo "== 已提交海报变更"
-  if git remote -v | grep -q push; then
-    git push origin HEAD && echo "== 已推送到远程，GitHub Actions 将自动部署"
+  if git_has_push_remote; then
+    if git_push_if_ahead; then
+      echo "== 已推送到远程，GitHub Actions 将自动部署"
+    else
+      echo "!! 海报提交已生成，但推送失败" >&2
+      exit 1
+    fi
   else
-    echo "!! 未配置 git 远程仓库，跳过推送"
+    echo "!! 未配置 git 远程仓库，无法发布海报变更" >&2
+    exit 1
   fi
 fi
 

@@ -10,6 +10,8 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
+import { recognizePosterBytes } from './ocr-posters.mjs';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.resolve(__dirname, '..', '..');
 export const MOVIES_PATH = path.join(ROOT, 'src', 'data', 'movies.json');
@@ -298,6 +300,7 @@ export function loadVerified({ fresh = false } = {}) {
 /** 疑似「新片/档期」报道的措辞：老片条目用这种来源，多半是配错了同名新片 */
 const NEWS_MARKERS = /定档|上映|档期|首映|预告|曝.{0,4}海报|开画|票房|端午档|春节档|暑期档|贺岁档|官宣/;
 const EMOJI = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}]/u;
+const OCR_CACHE = new Map();
 
 /** 汇总一部片所有可用来认脸的写法：中文名、英文名、别名 */
 export function filmTitles(movie, aliases, id) {
@@ -311,6 +314,183 @@ export function filmTitles(movie, aliases, id) {
   for (const a of movie?.altTitles || []) push(a, 'altTitle');
   for (const a of aliases?.get?.(id) || []) push(a, 'alias');
   return out;
+}
+
+function cleanOcrName(value) {
+  return String(value || '')
+    .replace(/^(?:领衔主演|主演|特别演出|特別演出|导演|執導|监督|監督)[:：\s]*/u, '')
+    .replace(/(?:作品|执导|執導|监督|監督)$/u, '')
+    .replace(/[《》<>【】「」『』:：,，。.!！?？\s]/g, '')
+    .trim();
+}
+
+function knownCredit(text, credits) {
+  const flat = normTitle(text);
+  if (!flat) return false;
+  return credits.some((name) => {
+    const expected = normTitle(cleanOcrName(name));
+    if (expected.length < 2) return false;
+    return flat.includes(expected) || (flat.length >= 2 && expected.includes(flat));
+  });
+}
+
+function titleAppearsInText(title, text) {
+  if (!title || !text) return false;
+  if (!/^[a-z0-9]+$/i.test(title)) return text.includes(title);
+  const escaped = title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`(?:^|[^a-z0-9])${escaped}(?:$|[^a-z0-9])`, 'i').test(text);
+}
+
+function crossTitleConflict(movie, aliases, text, lines, crossTitles) {
+  if (!crossTitles?.size) return null;
+  const currentTitles = filmTitles(movie, aliases, movie?.id);
+  const currentIds = new Set([movie?.id]);
+  for (const title of currentTitles) {
+    const record = crossTitles.get(title.flat);
+    for (const id of record?.ids || []) currentIds.add(id);
+  }
+  const maxHeight = Math.max(0, ...(lines || []).map((line) => Number(line.height) || 0));
+  const candidates = (lines || []).filter((line) => {
+    const confidence = Number(line.confidence) || 0;
+    const height = Number(line.height) || 0;
+    return confidence >= 0.4 && (height >= maxHeight * 0.45 || confidence >= 0.8);
+  });
+  for (const line of candidates) {
+    const flat = normTitle(line.text);
+    for (const [title, record] of crossTitles) {
+      const minLength = /^[a-z0-9]+$/i.test(title) ? 5 : 3;
+      if (title.length < minLength || record.ids.size !== 1 || currentIds.has(record.ids.values().next().value)) continue;
+      if (titleAppearsInText(title, flat)) {
+        const otherId = record.ids.values().next().value;
+        return { title: record.label || title, id: otherId, text: line.text };
+      }
+    }
+  }
+  // Also catch an exact alternate title split across OCR lines.
+  const flatText = normTitle(text);
+  for (const [title, record] of crossTitles) {
+    const minLength = /^[a-z0-9]+$/i.test(title) ? 5 : 4;
+    if (title.length < minLength || record.ids.size !== 1 || currentIds.has(record.ids.values().next().value)) continue;
+    if (titleAppearsInText(title, flatText)) {
+      return { title: record.label || title, id: record.ids.values().next().value, text: '' };
+    }
+  }
+  return null;
+}
+
+/**
+ * Read identity evidence from pixels instead of trusting search metadata.
+ * Explicit contradictions (another title, creator, original-title field, or
+ * release year) become errors. Missing OCR text stays "unverified", because
+ * stylised poster lettering and foreign-language editions are common.
+ */
+export function ocrEvidence(entry, movie, aliases, ocr, context = {}) {
+  const text = String(ocr?.text || '').replace(/\r/g, '').trim();
+  const lines = Array.isArray(ocr?.lines) ? ocr.lines : [];
+  const flat = normTitle(text);
+  const titles = filmTitles(movie, aliases, entry?.id);
+  const currentTitle = titles.find((title) => title.flat.length >= 2 && flat.includes(title.flat)) || null;
+  const expectedYear = String(movie?.year || entry?.year || '').match(/(?:19|20)\d{2}/)?.[0] || null;
+  const years = [...new Set((text.match(/(?:19|20)\d{2}/g) || []))];
+  const yearMatch = !!expectedYear && years.some((year) => Math.abs(Number(year) - Number(expectedYear)) <= 1);
+  const directors = [...(movie?.credits?.directors || [])].map(cleanOcrName).filter((name) => name.length >= 2);
+  const cast = [...(movie?.credits?.cast || [])].map(cleanOcrName).filter((name) => name.length >= 2);
+  const conflicts = [];
+  const reasons = [];
+
+  if (!ocr?.ok || !text) {
+    return {
+      available: !!ocr?.available,
+      ok: !!ocr?.ok,
+      textLength: text.length,
+      titleHit: null,
+      years,
+      conflicts,
+      reasons,
+      dominantText: '',
+    };
+  }
+
+  if (currentTitle) reasons.push(`图片文字命中片名「${currentTitle.text}」`);
+  if (yearMatch) reasons.push(`图片文字命中上映年份 ${expectedYear}`);
+
+  const originalTitlePatterns = [
+    /(?:原名|又名|原題|原题|original\s*title)\s*[:：]?\s*[《<【]?([^》>】\n]{2,36})/giu,
+  ];
+  for (const pattern of originalTitlePatterns) {
+    for (const match of text.matchAll(pattern)) {
+      const captured = cleanOcrName(match[1]);
+      if (captured.length < 2) continue;
+      if (titles.some((title) => normTitle(captured).includes(title.flat) || title.flat.includes(normTitle(captured)))) continue;
+      conflicts.push(`图片“原名/又名”写的是《${match[1].trim()}》，不是本站影片`);
+    }
+  }
+
+  const directorHits = [];
+  for (const match of text.matchAll(/([\p{Script=Han}A-Za-z·]{2,16})\s*(?:导演|執導|监督|監督)(?:作品)?/gu)) {
+    const name = cleanOcrName(match[1]);
+    if (name.length < 2 || /^(?:总|执行|副|联合|原创|本片)$/u.test(name)) continue;
+    directorHits.push(name);
+  }
+  for (const match of text.matchAll(/(?:导演|執導|监督|監督)\s*[:：]\s*([\p{Script=Han}A-Za-z·]{2,16})/gu)) {
+    const name = cleanOcrName(match[1]);
+    if (name.length >= 2) directorHits.push(name);
+  }
+  const uniqueDirectors = [...new Set(directorHits)];
+  if (
+    uniqueDirectors.length &&
+    directors.length &&
+    !uniqueDirectors.some((name) => knownCredit(name, directors))
+  ) {
+    conflicts.push(`图片标注导演为“${uniqueDirectors.join('、')}”，不是本站记录的“${directors.join('、')}”`);
+  }
+
+  const castBlock = text.match(/(?:领衔主演|主演|特别演出|特別演出|starring)\s*[:：]?\s*([^\n]{2,100})/iu)?.[1] || '';
+  const currentCastVisible = castBlock && knownCredit(castBlock, cast);
+  if (currentCastVisible) reasons.push('图片演职员与本片记录一致');
+
+  const otherTitle = crossTitleConflict(movie, aliases, text, lines, context.crossTitles);
+  if (otherTitle) {
+    conflicts.push(`图片主标题更像另一部站内影片《${otherTitle.title}》`);
+  }
+
+  if (currentTitle && years.length && expectedYear && !yearMatch && years.some((year) => Math.abs(Number(year) - Number(expectedYear)) >= 5)) {
+    const explicitRelease = /(?:上映|公映|release|released|in cinemas)/iu.test(text);
+    const dominantHeight = Math.max(0, ...lines.map((line) => Number(line.height) || 0));
+    const yearIsProminent = lines.some(
+      (line) =>
+        /(?:19|20)\d{2}/u.test(line.text || '') &&
+        (Number(line.height) || 0) >= dominantHeight * 0.5,
+    );
+    if (explicitRelease || yearIsProminent) {
+      conflicts.push(`图片片名相同，但标注年份为 ${years.join('/')}，本片是 ${expectedYear}`);
+    }
+  }
+
+  const dominant = [...lines]
+    .filter((line) => (Number(line.confidence) || 0) >= 0.4 && normTitle(line.text).length >= 2)
+    .sort((a, b) => (Number(b.height) || 0) - (Number(a.height) || 0))[0];
+  const dominantText = String(dominant?.text || '').trim();
+  const dominantLooksLikeTitle =
+    dominant &&
+    normTitle(dominantText).length >= 2 &&
+    normTitle(dominantText).length <= 24 &&
+    !/^[\d\s.:/年月日-]+$/u.test(dominantText);
+  if (!currentTitle && dominantLooksLikeTitle && !otherTitle) {
+    reasons.push(`图片最大文字为“${dominantText}”，未能与片名直接对应`);
+  }
+
+  return {
+    available: true,
+    ok: true,
+    textLength: text.length,
+    titleHit: currentTitle?.text || null,
+    yearMatch,
+    years,
+    conflicts,
+    reasons,
+    dominantText,
+  };
 }
 
 /**
@@ -448,7 +628,14 @@ export function auditEntry(entry, movie, fetched, ctx) {
   }
 
   if (!fetched.ok) {
-    issues.push(issue(entry.imageUrl.startsWith('http') ? 'unreachable' : 'missing_file', 'error', fetched.error));
+    if (entry.imageUrl.startsWith('http')) {
+      // A remote CDN timeout is not proof that the image is wrong. Mark it as
+      // a warning so a transient outage cannot replace an otherwise good
+      // poster; daily repair will self-host it as soon as it is reachable.
+      issues.push(issue('unreachable', 'warn', `远程图片暂时不可达：${fetched.error}`));
+    } else {
+      issues.push(issue('missing_file', 'error', fetched.error));
+    }
     return { issues, host, tier, meta: null };
   }
 
@@ -501,6 +688,9 @@ export function auditEntry(entry, movie, fetched, ctx) {
   // 已经在登记表里人工核对过、且内容没变的图，跳过重复判定。
   const evidence = identityEvidence(entry, movie, ctx?.aliases, tier);
   const verified = ctx?.isVerified?.(entry, fetched.bytes) === true;
+  const imageEvidence = ocrEvidence(entry, movie, ctx?.aliases, ctx?.ocrById?.get(entry.id), {
+    crossTitles: ctx?.crossTitles,
+  });
   if (!verified) {
     const idc = identityScore(entry, movie, ctx?.aliases);
     if (idc.kind === 'none') {
@@ -535,6 +725,29 @@ export function auditEntry(entry, movie, fetched, ctx) {
         ),
       );
     }
+
+    if (imageEvidence.conflicts.length) {
+      issues.push(
+        issue(
+          'visual_identity_conflict',
+          'error',
+          `图片内容与本站影片冲突：${imageEvidence.conflicts.join('；')}`,
+        ),
+      );
+    } else if (
+      imageEvidence.ok &&
+      imageEvidence.textLength >= 8 &&
+      !imageEvidence.titleHit &&
+      imageEvidence.reasons.some((reason) => reason.startsWith('图片最大文字'))
+    ) {
+      issues.push(
+        issue(
+          'visual_title_unverified',
+          'warn',
+          `图片能读到文字，但最大文字“${imageEvidence.dominantText}”没有对上片名，建议核对`,
+        ),
+      );
+    }
   }
 
   // 正在播放「剧照」却被当作海报
@@ -553,7 +766,7 @@ export function auditEntry(entry, movie, fetched, ctx) {
     }
   }
 
-  return { issues, host, tier, meta, evidence, verified };
+  return { issues, host, tier, meta, evidence, imageEvidence, verified };
 }
 
 export function severityOf(issues) {
@@ -608,27 +821,82 @@ export async function runAudit(gallery, movies, { concurrency = 6, timeoutMs = 2
   const byId = movieIndex(movies);
   const aliases = loadAliases();
   const fetched = await mapPool(gallery, concurrency, (entry) => readPoster(entry, { timeoutMs }));
+  const verifiedMap = loadVerified();
 
   // 先算内容哈希，才能识别「两部电影共用同一张图」
   const hashes = new Map();
   const identityById = new Map();
+  const fetchedHashes = new Array(gallery.length);
   gallery.forEach((entry, i) => {
     const movie = byId.get(entry.id);
     identityById.set(entry.id, movie ? movieIdentity(movie) : `raw:${entry.id}`);
     const f = fetched[i];
     if (f?.ok && f.bytes) {
       const key = md5(f.bytes);
+      fetchedHashes[i] = sha256(f.bytes);
       if (!hashes.has(key)) hashes.set(key, []);
       hashes.get(key).push({ id: entry.id, zhTitle: entry.zhTitle });
     }
   });
 
-  const verifiedMap = loadVerified();
+  const crossTitles = new Map();
+  for (const movie of movies) {
+    const titles = [
+      movie?.zhTitle,
+      ...(movie?.altTitles || []),
+      ...(aliases.get(movie?.id) || []),
+    ].filter(Boolean);
+    for (const title of titles) {
+      const flat = normTitle(title);
+      if (flat.length < 2) continue;
+      const record = crossTitles.get(flat) || { ids: new Set(), label: movie.zhTitle || title };
+      record.ids.add(movie.id);
+      crossTitles.set(flat, record);
+    }
+  }
+
+  // OCR is the expensive part. Reuse results by content hash, and trust a
+  // manual verification only while the exact image bytes remain unchanged.
+  const ocrById = new Map();
+  const missingOcr = [];
+  let skippedVerified = 0;
+  gallery.forEach((entry, i) => {
+    const f = fetched[i];
+    const hash = fetchedHashes[i];
+    if (!f?.ok || !f.meta || !hash) return;
+    const rec = verifiedMap.get(entry.id);
+    if (rec?.sha256 === hash) {
+      skippedVerified++;
+      return;
+    }
+    if (OCR_CACHE.has(hash)) {
+      ocrById.set(entry.id, OCR_CACHE.get(hash));
+      return;
+    }
+    missingOcr.push({ id: entry.id, bytes: f.bytes, meta: f.meta, hash });
+  });
+  const recognized = recognizePosterBytes(missingOcr);
+  for (let index = 0; index < missingOcr.length; index++) {
+    const item = missingOcr[index];
+    const ocr = recognized.byIndex.get(index);
+    if (!ocr) continue;
+    OCR_CACHE.set(item.hash, { ...ocr, available: recognized.available });
+    ocrById.set(item.id, { ...ocr, available: recognized.available });
+  }
+  const ocrStatus = {
+    available: recognized.available,
+    checked: ocrById.size,
+    skippedVerified,
+    error: recognized.error,
+  };
+
   const ctx = {
     hashes,
     identityById,
     hashOf: md5,
     aliases,
+    crossTitles,
+    ocrById,
     // 登记过、且图片内容没变 → 视为已核对过
     isVerified: (entry, bytes) => {
       const rec = verifiedMap.get(entry.id);
@@ -639,7 +907,7 @@ export async function runAudit(gallery, movies, { concurrency = 6, timeoutMs = 2
   const results = gallery.map((entry, i) => {
     const movie = byId.get(entry.id);
     const f = fetched[i];
-    const { issues, host, tier, meta, evidence, verified } = auditEntry(entry, movie, f, ctx);
+    const { issues, host, tier, meta, evidence, imageEvidence, verified } = auditEntry(entry, movie, f, ctx);
     const idc = identityScore(entry, movie, aliases);
     return {
       id: entry.id,
@@ -658,6 +926,17 @@ export async function runAudit(gallery, movies, { concurrency = 6, timeoutMs = 2
       evidence: evidence
         ? { level: evidence.level, reasons: evidence.reasons, conflicts: evidence.conflicts }
         : null,
+      imageEvidence: imageEvidence
+        ? {
+            available: imageEvidence.available,
+            titleHit: imageEvidence.titleHit,
+            yearMatch: imageEvidence.yearMatch,
+            years: imageEvidence.years,
+            dominantText: imageEvidence.dominantText,
+            reasons: imageEvidence.reasons,
+            conflicts: imageEvidence.conflicts,
+          }
+        : null,
       verified: !!verified,
       status: severityOf(issues),
       issues,
@@ -668,6 +947,7 @@ export async function runAudit(gallery, movies, { concurrency = 6, timeoutMs = 2
     results,
     byId,
     fetched,
+    ocrStatus,
     errorCount: results.filter((r) => r.status === 'error').length,
     warnCount: results.filter((r) => r.status === 'warn').length,
     okCount: results.filter((r) => r.status === 'ok').length,

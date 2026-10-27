@@ -91,6 +91,8 @@ const results = SERVICES.map((service) => {
   const runtime = printService(service.label);
   if (!runtime.loaded) {
     issues.push(runtime.error || 'launchd 状态不可用');
+  } else if (runtime.runs === 0 && runtime.state !== 'running') {
+    issues.push('定时任务尚未成功启动过');
   } else if (runtime.lastExitCode !== 0 && runtime.state !== 'running') {
     issues.push(`上次退出码为 ${runtime.lastExitCode}，定时任务执行失败`);
   }

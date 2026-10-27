@@ -24,6 +24,11 @@ export PATH="/Users/admin/.local/bin:/Users/admin/.hermes/node/bin:/opt/homebrew
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
+# shellcheck source=tools/lib/lock.sh
+source "$ROOT/tools/lib/lock.sh"
+# shellcheck source=tools/lib/git-sync.sh
+source "$ROOT/tools/lib/git-sync.sh"
+
 CHECK_ONLY=0
 POSTERS="auto"
 SYNC_ARGS=()
@@ -41,43 +46,22 @@ case "$POSTERS" in
   *) echo "未知 --posters 取值：$POSTERS（可选 auto/always/never）"; exit 2 ;;
 esac
 
-# 防并发：同一时间只允许一个自检任务
-LOCK="/tmp/classicmovie-selfcheck.lock"
-if ! mkdir "$LOCK" 2>/dev/null; then
-  echo "== $(date '+%F %T') 已有自检任务在运行，跳过本次"
+# 防并发：同步、海报巡检、全站自检共用一把可重入维护锁。自检会先等正在
+# 收尾的维护任务，再持有锁完成整轮检查，避免读到跨提交的中间状态。
+LOCK="${MAINTENANCE_LOCK_DIR:-/tmp/classicmovie-maintenance.lock}"
+WAITED=0
+while lock_is_active "$LOCK" && [ "$WAITED" -lt 300 ]; do
+  sleep 10
+  WAITED=$((WAITED + 10))
+done
+if ! acquire_lock "$LOCK"; then
+  echo "== $(date '+%F %T') 已有维护任务在运行，本轮自检让路"
   exit 0
 fi
-trap 'rmdir "$LOCK" 2>/dev/null || true' EXIT
+trap 'rc=$?; release_lock "$LOCK"; exit "$rc"' EXIT
+trap 'exit 143' TERM INT HUP
 
 log() { echo "$@"; }
-
-# 同步脚本自己有锁：正在同步时先等它跑完，避免自检读到中间状态
-wait_for_sync_lock() {
-  local waited=0
-  while [ -d /tmp/classicmovie-sync.lock ] && [ "$waited" -lt 600 ]; do
-    sleep 10
-    waited=$((waited + 10))
-  done
-  if [ "$waited" -ge 600 ]; then
-    log "!! 等待同步任务超过 10 分钟，仍继续自检"
-  fi
-}
-
-push_if_ahead() {
-  local branch ahead rc
-  branch="$(git rev-parse --abbrev-ref HEAD)"
-  ahead="$(git rev-list --count "origin/$branch..HEAD" 2>/dev/null || echo 0)"
-  if [ "${ahead:-0}" -gt 0 ]; then
-    log "▶ 有 ${ahead} 个提交未推送，正在推送…"
-    set +e
-    git push origin HEAD
-    rc=$?
-    set -e
-    if [ "$rc" -ne 0 ]; then
-      log "!! 推送失败，请检查网络与 git 凭据"
-    fi
-  fi
-}
 
 # 海报是否要跑：有新内容，或距上次巡检超过 24 小时，或上次有错误
 should_run_posters() {
@@ -102,6 +86,7 @@ log "模式：$([ "$CHECK_ONLY" -eq 1 ] && echo '只自检（不修改）' || ec
 
 BEFORE_HEAD="$(git rev-parse HEAD)"
 CONTENT_CHANGED=0
+if git_content_dirty; then CONTENT_CHANGED=1; fi
 SYNC_REPAIR="未需要"
 AUTOMATION_REPAIR="未需要"
 
@@ -116,7 +101,20 @@ if [ "$AUTOMATION_RC" -eq 0 ]; then
 elif [ "$CHECK_ONLY" -eq 1 ]; then
   log "!! 定时任务配置异常（只自检模式，不自动修复）"
 elif [ -n "${XPC_SERVICE_NAME:-}" ]; then
-  log "!! 定时任务配置异常；请先手动运行 npm run automation:install"
+  log "▶ 定时任务有缺失，尝试只补装缺失项（不重启当前自检）"
+  set +e
+  "$ROOT/tools/install-launchd.sh" --missing-only
+  rc=$?
+  set -e
+  if [ "$rc" -eq 0 ]; then
+    AUTOMATION_REPAIR="已补装缺失的 launchd 任务"
+    set +e
+    node tools/check-automation.mjs
+    AUTOMATION_RC=$?
+    set -e
+  else
+    log "!! launchd 补装失败，退出码 $rc"
+  fi
 else
   log "▶ 定时任务配置异常，正在按当前仓库路径重新安装…"
   set +e
@@ -147,7 +145,6 @@ elif [ "$CHECK_ONLY" -eq 1 ]; then
   log "!! 存在未及时同步的内容（只自检模式，不自动修复）"
 else
   log "▶ 存在未及时同步的内容，开始自动补齐…"
-  wait_for_sync_lock
   set +e
   "$ROOT/tools/daily-sync.sh"
   rc=$?
@@ -156,8 +153,15 @@ else
     log "!! daily-sync.sh 退出码 $rc，继续复核"
   fi
   SYNC_REPAIR="已执行 daily-sync.sh"
-
-  push_if_ahead
+  if git_has_push_remote; then
+    set +e
+    git_push_if_ahead
+    rc=$?
+    set -e
+    if [ "$rc" -ne 0 ]; then
+      log "!! 补齐后仍有提交无法推送，请检查网络与 git 凭据"
+    fi
+  fi
   AFTER_HEAD="$(git rev-parse HEAD)"
   if [ "$AFTER_HEAD" != "$BEFORE_HEAD" ]; then
     CONTENT_CHANGED=1
