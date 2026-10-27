@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T03:27:35.526Z",
+  "generatedAt": "2026-10-27T03:55:12.634Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -9,9 +9,15 @@
     "minBytes": 8192
   },
   "total": 140,
-  "ok": 121,
-  "warn": 18,
-  "error": 1,
+  "ok": 85,
+  "warn": 55,
+  "error": 0,
+  "ocr": {
+    "available": true,
+    "checked": 124,
+    "skippedVerified": 16,
+    "error": null
+  },
   "entries": [
     {
       "id": "20260817",
@@ -38,6 +44,15 @@
           "年份命中 1949",
           "可信图源（tmdb）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -70,9 +85,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "THE APARTMIENT",
+        "reasons": [
+          "图片最大文字为“THE APARTMIENT”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“THE APARTMIENT”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260824",
@@ -99,6 +131,14 @@
           "年份命中 1979",
           "可信图源（tmdb）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -131,9 +171,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "JAMES MASON",
+        "reasons": [
+          "图片最大文字为“JAMES MASON”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“JAMES MASON”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260826",
@@ -160,6 +217,15 @@
           "年份命中 1953",
           "可信图源（tmdb）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -190,6 +256,17 @@
           "片名命中「Sunset Boulevard」",
           "年份命中 1950",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Sunset Boulevard",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "BOULEVARD",
+        "reasons": [
+          "图片文字命中片名「Sunset Boulevard」"
         ],
         "conflicts": []
       },
@@ -224,6 +301,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Scent of a Woman",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "SCENT",
+        "reasons": [
+          "图片文字命中片名「Scent of a Woman」"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -255,9 +343,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "殺人回憶",
+        "reasons": [
+          "图片最大文字为“殺人回憶”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“殺人回憶”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260907-new-world",
@@ -284,6 +389,15 @@
           "年份命中 2013",
           "可信图源（tmdb）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -317,9 +431,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "PUB",
+        "reasons": [
+          "图片最大文字为“PUB”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“PUB”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260908",
@@ -346,6 +477,14 @@
           "年份命中 2008",
           "可信图源（tmdb）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -378,6 +517,15 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -408,9 +556,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "NOWHERE",
+        "reasons": [
+          "图片最大文字为“NOWHERE”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“NOWHERE”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260911",
@@ -436,6 +601,15 @@
           "年份命中 2006",
           "可信图源（tmdb）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -469,6 +643,15 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -496,6 +679,17 @@
           "片名命中「The Terror Live」",
           "年份命中 2013",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "The Terror Live",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "TERROR，",
+        "reasons": [
+          "图片文字命中片名「The Terror Live」"
         ],
         "conflicts": []
       },
@@ -530,9 +724,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "安全地帶",
+        "reasons": [
+          "图片最大文字为“安全地帶”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“安全地帶”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260917",
@@ -558,6 +769,17 @@
           "片名命中「局内人」",
           "年份命中 2015",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "局内人",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "Mースー",
+        "reasons": [
+          "图片文字命中片名「局内人」"
         ],
         "conflicts": []
       },
@@ -588,6 +810,15 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -615,9 +846,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "NAMELESS",
+        "reasons": [
+          "图片最大文字为“NAMELESS”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“NAMELESS”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260921",
@@ -643,6 +891,15 @@
           "年份命中 2013",
           "可信图源（tmdb）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -675,9 +932,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "HARD",
+        "reasons": [
+          "图片最大文字为“HARD”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“HARD”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260927-friend",
@@ -703,6 +977,15 @@
           "年份命中 2001",
           "可信图源（tmdb）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -734,6 +1017,14 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -760,6 +1051,17 @@
         "reasons": [
           "片名命中「恶人传」",
           "年份命中 2019"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "The Cop",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "GANGSTER",
+        "reasons": [
+          "图片文字命中片名「The Cop」"
         ],
         "conflicts": []
       },
@@ -799,9 +1101,28 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [
+          "1970"
+        ],
+        "dominantText": "記憶法",
+        "reasons": [
+          "图片最大文字为“記憶法”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“記憶法”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260930",
@@ -824,6 +1145,14 @@
         "reasons": [
           "片名命中「老手」"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": true,
@@ -861,6 +1190,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "本写号ユフ",
+        "reasons": [
+          "图片最大文字为“本写号ユフ”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "warn",
       "issues": [
@@ -894,6 +1234,14 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": true,
       "status": "ok",
       "issues": []
@@ -924,6 +1272,14 @@
           "来源带「新片 / 档期」措辞，与 2017 年的老片对不上"
         ]
       },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": true,
       "status": "ok",
       "issues": []
@@ -953,6 +1309,14 @@
           "来源引用的是《沉默的证人》，不是本站片名"
         ]
       },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": true,
       "status": "ok",
       "issues": []
@@ -980,6 +1344,14 @@
           "书名号片名命中「老千」",
           "可信图源（official）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": true,
@@ -1012,6 +1384,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Train to Busan",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "DUT OF COMPETITION",
+        "reasons": [
+          "图片文字命中片名「Train to Busan」"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -1031,6 +1414,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:The Way Home",
         "年份"
       ],
       "evidence": {
@@ -1039,6 +1423,17 @@
           "片名命中「爱·回家」",
           "年份命中 2002",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "有你真好",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "有你真好",
+        "reasons": [
+          "图片文字命中片名「有你真好」"
         ],
         "conflicts": []
       },
@@ -1051,8 +1446,8 @@
       "zhTitle": "阳光姐妹淘",
       "sourceTitle": "阳光姐妹淘(2011) - 电影海报|电影台词 - 影库",
       "year": "2011",
-      "source": "远程",
-      "imageUrl": "https://mdb.yuncongz.com/static/upload/raw/f6e1a1b2b8d84497994af63193c4981e.jpg",
+      "source": "本地",
+      "imageUrl": "posters/20261012.jpg",
       "host": "mdb.yuncongz.com",
       "tier": "unknown",
       "size": "232KB",
@@ -1068,6 +1463,17 @@
         "reasons": [
           "片名命中「阳光姐妹淘」",
           "年份命中 2011"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Sunny",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "SUNNY",
+        "reasons": [
+          "图片文字命中片名「Sunny」"
         ],
         "conflicts": []
       },
@@ -1106,6 +1512,14 @@
           "来源标题像片单 / 合集帖（片名在末尾且带表情符号），图未必属于这部片"
         ]
       },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": true,
       "status": "warn",
       "issues": [
@@ -1142,6 +1556,14 @@
           "来源带「新片 / 档期」措辞，与 2011 年的老片对不上"
         ]
       },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": true,
       "status": "ok",
       "issues": []
@@ -1173,6 +1595,14 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "warn",
       "issues": [
@@ -1188,8 +1618,8 @@
       "zhTitle": "国际市场",
       "sourceTitle": "《国际市场》海报公开 黄正民展谜样微笑|国际市场|海报|黄正民_新浪娱乐_新浪网",
       "year": "2014",
-      "source": "远程",
-      "imageUrl": "http://n.sinaimg.cn/transform/20141016/avxeafr4114093.jpg",
+      "source": "本地",
+      "imageUrl": "posters/20261016-market.jpg",
       "host": "n.sinaimg.cn",
       "tier": "unknown",
       "size": "108KB",
@@ -1209,6 +1639,20 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": true,
+        "years": [
+          "2014"
+        ],
+        "dominantText": "三大ビ",
+        "reasons": [
+          "图片文字命中上映年份 2014",
+          "图片最大文字为“三大ビ”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "warn",
       "issues": [
@@ -1216,6 +1660,11 @@
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（n.sinaimg.cn）"
+        },
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“三大ビ”没有对上片名，建议核对"
         }
       ]
     },
@@ -1244,6 +1693,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "我们决定去妈妈回忆中那条河",
+        "reasons": [
+          "图片最大文字为“我们决定去妈妈回忆中那条河”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "warn",
       "issues": [
@@ -1251,6 +1711,11 @@
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（pic.rmb.bdstatic.com）"
+        },
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“我们决定去妈妈回忆中那条河”没有对上片名，建议核对"
         }
       ]
     },
@@ -1276,6 +1741,15 @@
           "片名命中「开心家族」",
           "书名号片名命中「开心家族」"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -1313,6 +1787,14 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": true,
       "status": "ok",
       "issues": []
@@ -1340,6 +1822,14 @@
           "年份命中 2005",
           "可信图源（official）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": true,
@@ -1371,6 +1861,14 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": true,
       "status": "ok",
       "issues": []
@@ -1399,6 +1897,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "生しHコ全エスプGOプト",
+        "reasons": [
+          "图片最大文字为“生しHコ全エスプGOプト”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "warn",
       "issues": [
@@ -1406,6 +1915,11 @@
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（pic.rmb.bdstatic.com）"
+        },
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“生しHコ全エスプGOプト”没有对上片名，建议核对"
         }
       ]
     },
@@ -1437,6 +1951,14 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": true,
       "status": "ok",
       "issues": []
@@ -1462,6 +1984,14 @@
         "reasons": [
           "片名命中「入殓师」"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": true,
@@ -1499,6 +2029,14 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": true,
       "status": "ok",
       "issues": []
@@ -1508,28 +2046,37 @@
       "zhTitle": "切腹",
       "sourceTitle": "切腹 (1962) - ポスター画像 — The Movie Database (TMDB)",
       "year": "1962",
-      "source": "远程",
-      "imageUrl": "https://image.tmdb.org/t/p/original/zEbXzxlc2c5QQ0PqppDzSxnCTGA.jpg",
-      "host": "image.tmdb.org",
-      "tier": "tmdb",
-      "size": "-",
-      "dims": "-",
-      "ratio": null,
+      "source": "本地",
+      "imageUrl": "posters/20261025-harakiri.jpg",
+      "host": "",
+      "tier": "local",
+      "size": "83KB",
+      "dims": "1400×2100",
+      "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
         "片名中文",
         "年份"
       ],
-      "evidence": null,
-      "verified": false,
-      "status": "error",
-      "issues": [
-        {
-          "code": "unreachable",
-          "severity": "error",
-          "detail": "请求失败: fetch failed"
-        }
-      ]
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「切腹」",
+          "年份命中 1962"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
+      "verified": true,
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20261026-millennium",
@@ -1556,7 +2103,15 @@
         ],
         "conflicts": []
       },
-      "verified": false,
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
+      "verified": true,
       "status": "warn",
       "issues": [
         {
@@ -1591,6 +2146,15 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -1618,6 +2182,17 @@
           "片名命中「千と千尋の神隠し」",
           "年份命中 2001",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Spirited Away",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "SPIRITED AWAY",
+        "reasons": [
+          "图片文字命中片名「Spirited Away」"
         ],
         "conflicts": []
       },
@@ -1651,9 +2226,28 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [
+          "2001"
+        ],
+        "dominantText": "2001太空漫遊",
+        "reasons": [
+          "图片最大文字为“2001太空漫遊”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“2001太空漫遊”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260430",
@@ -1679,6 +2273,20 @@
           "片名命中「搏击俱乐部」",
           "年份命中 1999",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Fight Club",
+        "yearMatch": true,
+        "years": [
+          "2000"
+        ],
+        "dominantText": "9.22 要打趁現在",
+        "reasons": [
+          "图片文字命中片名「Fight Club」",
+          "图片文字命中上映年份 1999"
         ],
         "conflicts": []
       },
@@ -1713,6 +2321,15 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -1744,9 +2361,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "DIEVERURTELLTEN",
+        "reasons": [
+          "图片最大文字为“DIEVERURTELLTEN”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“DIEVERURTELLTEN”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260508",
@@ -1772,6 +2406,17 @@
           "片名命中「黑客帝国」",
           "年份命中 1999",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "黑客帝国",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "黑客帝国",
+        "reasons": [
+          "图片文字命中片名「黑客帝国」"
         ],
         "conflicts": []
       },
@@ -1806,9 +2451,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "アス",
+        "reasons": [
+          "图片最大文字为“アス”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“アス”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260510",
@@ -1835,6 +2497,15 @@
           "年份命中 1997",
           "可信图源（tmdb）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "繼〈星光伴我心〉〈事先張揚的求愛事件〉笑中有淚妙不可言的佳作",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -1865,6 +2536,17 @@
           "片名命中「阿甘正传」",
           "年份命中 1994",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Forrest Gump",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "阿甘正傳",
+        "reasons": [
+          "图片文字命中片名「Forrest Gump」"
         ],
         "conflicts": []
       },
@@ -1899,6 +2581,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "星际穿越",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "星际穿越中的科学",
+        "reasons": [
+          "图片文字命中片名「星际穿越」"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -1930,6 +2623,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "霸王別姬",
+        "reasons": [
+          "图片最大文字为“霸王別姬”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "warn",
       "issues": [
@@ -1937,6 +2641,11 @@
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（img.doooor.com）"
+        },
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“霸王別姬”没有对上片名，建议核对"
         }
       ]
     },
@@ -1961,6 +2670,15 @@
         "reasons": [
           "可信图源（official）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "from the terrifying best seller",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -1991,6 +2709,17 @@
           "片名命中「闻香识女人」",
           "年份命中 1992",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "闻香识女人",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "闻香识女人",
+        "reasons": [
+          "图片文字命中片名「闻香识女人」"
         ],
         "conflicts": []
       },
@@ -2025,6 +2754,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Farewell My Concubine",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "Farewell My",
+        "reasons": [
+          "图片文字命中片名「Farewell My Concubine」"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -2054,6 +2794,15 @@
           "年份命中 1984",
           "可信图源（tmdb）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -2086,9 +2835,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "rougo-rough",
+        "reasons": [
+          "图片最大文字为“rougo-rough”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“rougo-rough”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260521",
@@ -2115,9 +2881,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "THE CUCKCSSNEST",
+        "reasons": [
+          "图片最大文字为“THE CUCKCSSNEST”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“THE CUCKCSSNEST”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260523",
@@ -2146,9 +2929,29 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": true,
+        "years": [
+          "1994"
+        ],
+        "dominantText": "低俗小ん兌",
+        "reasons": [
+          "图片文字命中上映年份 1994",
+          "图片最大文字为“低俗小ん兌”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“低俗小ん兌”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260525",
@@ -2177,9 +2980,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "-コ二發取幸",
+        "reasons": [
+          "图片最大文字为“-コ二發取幸”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“-コ二發取幸”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260526",
@@ -2205,6 +3025,17 @@
           "片名命中「天堂电影院」",
           "年份命中 1988",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "天堂电影院",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "天堂电影院",
+        "reasons": [
+          "图片文字命中片名「天堂电影院」"
         ],
         "conflicts": []
       },
@@ -2239,9 +3070,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "Goodrellas",
+        "reasons": [
+          "图片最大文字为“Goodrellas”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“Goodrellas”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260528",
@@ -2267,6 +3115,17 @@
           "片名命中「泰坦尼克号」",
           "年份命中 1997",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "泰坦尼克号",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "泰坦尼克号",
+        "reasons": [
+          "图片文字命中片名「泰坦尼克号」"
         ],
         "conflicts": []
       },
@@ -2301,9 +3160,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "MEN",
+        "reasons": [
+          "图片最大文字为“MEN”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“MEN”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260530",
@@ -2329,6 +3205,14 @@
           "年份命中 1994",
           "可信图源（tmdb）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -2361,9 +3245,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "CHORUS",
+        "reasons": [
+          "图片最大文字为“CHORUS”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“CHORUS”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260602",
@@ -2389,6 +3290,17 @@
           "片名命中「The Green Mile」",
           "年份命中 1999",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "The Green Mile",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "GREEN MILE",
+        "reasons": [
+          "图片文字命中片名「The Green Mile」"
         ],
         "conflicts": []
       },
@@ -2423,6 +3335,15 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -2451,6 +3372,17 @@
           "片名命中「Witness for the Prosecution」",
           "年份命中 1957",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Witness for the Prosecution",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "POWER",
+        "reasons": [
+          "图片文字命中片名「Witness for the Prosecution」"
         ],
         "conflicts": []
       },
@@ -2484,6 +3416,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "The Lives of Others",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [
+          "图片文字命中片名「The Lives of Others」"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -2511,6 +3454,17 @@
           "片名命中「天使爱美丽」",
           "年份命中 2001",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "天使爱美丽",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "天使爱美丽",
+        "reasons": [
+          "图片文字命中片名「天使爱美丽」"
         ],
         "conflicts": []
       },
@@ -2545,9 +3499,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "プ 香",
+        "reasons": [
+          "图片最大文字为“プ 香”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“プ 香”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260610",
@@ -2574,6 +3545,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "となりのトトロ",
+        "reasons": [
+          "图片最大文字为“となりのトトロ”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "warn",
       "issues": [
@@ -2581,6 +3563,11 @@
           "code": "identity_weak_evidence",
           "severity": "warn",
           "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：My Neighbor Totoro Poster）"
+        },
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“となりのトトロ”没有对上片名，建议核对"
         }
       ]
     },
@@ -2608,6 +3595,17 @@
           "片名命中「My Neighbor Totoro」",
           "年份命中 1988",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "My Neighbor Totoro",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "50\"Street",
+        "reasons": [
+          "图片文字命中片名「My Neighbor Totoro」"
         ],
         "conflicts": []
       },
@@ -2642,6 +3640,14 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -2670,6 +3676,17 @@
           "片名命中「机器人总动员」",
           "年份命中 2008",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "WALL·E",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "WALL・E",
+        "reasons": [
+          "图片文字命中片名「WALL·E」"
         ],
         "conflicts": []
       },
@@ -2704,9 +3721,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "APROCURAda",
+        "reasons": [
+          "图片最大文字为“APROCURAda”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“APROCURAda”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260615",
@@ -2735,6 +3769,15 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -2759,6 +3802,19 @@
         "level": "weak",
         "reasons": [
           "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "THE LION KING",
+        "yearMatch": false,
+        "years": [
+          "2019"
+        ],
+        "dominantText": "DiNざ",
+        "reasons": [
+          "图片文字命中片名「THE LION KING」"
         ],
         "conflicts": []
       },
@@ -2793,6 +3849,15 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -2821,6 +3886,17 @@
           "片名命中「The Pianist」",
           "年份命中 2002",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "The Pianist",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "PIANIST",
+        "reasons": [
+          "图片文字命中片名「The Pianist」"
         ],
         "conflicts": []
       },
@@ -2855,9 +3931,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "獅子王",
+        "reasons": [
+          "图片最大文字为“獅子王”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“獅子王”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260622",
@@ -2886,9 +3979,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "saving pnvate ryan",
+        "reasons": [
+          "图片最大文字为“saving pnvate ryan”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“saving pnvate ryan”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260623",
@@ -2913,6 +4023,17 @@
           "片名命中「The Prestige」",
           "年份命中 2006",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "The Prestige",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "THEPRESTIGE",
+        "reasons": [
+          "图片文字命中片名「The Prestige」"
         ],
         "conflicts": []
       },
@@ -2947,9 +4068,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "DANS LE CIEL",
+        "reasons": [
+          "图片最大文字为“DANS LE CIEL”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“DANS LE CIEL”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260626-2",
@@ -2977,9 +4115,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "IHE",
+        "reasons": [
+          "图片最大文字为“IHE”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“IHE”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260626",
@@ -3005,6 +4160,20 @@
           "片名命中「触不可及」",
           "年份命中 2011",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "触不可及",
+        "yearMatch": true,
+        "years": [
+          "2011"
+        ],
+        "dominantText": "11ー02",
+        "reasons": [
+          "图片文字命中片名「触不可及」",
+          "图片文字命中上映年份 2011"
         ],
         "conflicts": []
       },
@@ -3038,9 +4207,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "LASTEMDEROR",
+        "reasons": [
+          "图片最大文字为“LASTEMDEROR”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“LASTEMDEROR”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260628",
@@ -3067,6 +4253,15 @@
           "年份命中 2016",
           "可信图源（tmdb）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -3097,6 +4292,17 @@
           "片名命中「AVATAR」",
           "年份命中 2009",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "AVATAR",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "AVATAR",
+        "reasons": [
+          "图片文字命中片名「AVATAR」"
         ],
         "conflicts": []
       },
@@ -3131,6 +4337,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "FAREWELL MY CONCUBINE",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "Farewell My",
+        "reasons": [
+          "图片文字命中片名「FAREWELL MY CONCUBINE」"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -3157,6 +4374,14 @@
         "reasons": [
           "片名命中「三傻大闹宝莱坞」"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": false,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": true,
@@ -3196,6 +4421,15 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -3227,6 +4461,14 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -3255,6 +4497,19 @@
           "片名命中「乱世佳人」",
           "年份命中 1939",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Gone with the Wind",
+        "yearMatch": false,
+        "years": [
+          "2021"
+        ],
+        "dominantText": "2021.04.28",
+        "reasons": [
+          "图片文字命中片名「Gone with the Wind」"
         ],
         "conflicts": []
       },
@@ -3289,6 +4544,15 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -3320,9 +4584,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "ハ功L鄄婷",
+        "reasons": [
+          "图片最大文字为“ハ功L鄄婷”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“ハ功L鄄婷”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260706",
@@ -3351,9 +4632,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "THE FELLOWSHIP OF THE RING",
+        "reasons": [
+          "图片最大文字为“THE FELLOWSHIP OF THE RING”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“THE FELLOWSHIP OF THE RING”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260707",
@@ -3381,9 +4679,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "wealth，",
+        "reasons": [
+          "图片最大文字为“wealth，”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“wealth，”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260708",
@@ -3409,6 +4724,14 @@
           "年份命中 2009",
           "可信图源（official）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -3442,9 +4765,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "Dirigida por：",
+        "reasons": [
+          "图片最大文字为“Dirigida por：”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“Dirigida por：”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260710",
@@ -3470,6 +4810,17 @@
           "片名命中「Singin' in the Rain」",
           "年份命中 1952",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Singin' in the Rain",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "SINGIN",
+        "reasons": [
+          "图片文字命中片名「Singin' in the Rain」"
         ],
         "conflicts": []
       },
@@ -3504,6 +4855,14 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -3531,6 +4890,17 @@
         "reasons": [
           "片名命中「Braveheart」",
           "年份命中 1995"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Braveheart",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "BRAVEHEART",
+        "reasons": [
+          "图片文字命中片名「Braveheart」"
         ],
         "conflicts": []
       },
@@ -3571,6 +4941,20 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Braveheart",
+        "yearMatch": true,
+        "years": [
+          "1995"
+        ],
+        "dominantText": "BRAVEHEART",
+        "reasons": [
+          "图片文字命中片名「Braveheart」",
+          "图片文字命中上映年份 1995"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -3600,6 +4984,15 @@
           "年份命中 2010",
           "可信图源（tmdb）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -3632,9 +5025,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "EINE NEUE HOFFNUNG",
+        "reasons": [
+          "图片最大文字为“EINE NEUE HOFFNUNG”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“EINE NEUE HOFFNUNG”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260715",
@@ -3662,9 +5072,28 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [
+          "1911"
+        ],
+        "dominantText": "やの「かゃ）",
+        "reasons": [
+          "图片最大文字为“やの「かゃ）”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“やの「かゃ）”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260716",
@@ -3693,6 +5122,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "VERTIGO",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "VERTIGO",
+        "reasons": [
+          "图片文字命中片名「VERTIGO」"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -3718,6 +5158,17 @@
         "reasons": [
           "片名命中「情书」",
           "书名号片名命中「情书」"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "情书",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "情书",
+        "reasons": [
+          "图片文字命中片名「情书」"
         ],
         "conflicts": []
       },
@@ -3757,6 +5208,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Love Letter",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "MIHO NAKAYAMA /ETSUSHI TOYOKAWA",
+        "reasons": [
+          "图片文字命中片名「Love Letter」"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -3787,9 +5249,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "HIOETIB",
+        "reasons": [
+          "图片最大文字为“HIOETIB”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“HIOETIB”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260723",
@@ -3816,6 +5295,15 @@
           "年份命中 1950",
           "可信图源（tmdb）"
         ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
@@ -3849,9 +5337,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "ARABIA",
+        "reasons": [
+          "图片最大文字为“ARABIA”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“ARABIA”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260727",
@@ -3877,6 +5382,17 @@
           "片名命中「CROUCHING TIGERHIDDEN DRAGON」",
           "年份命中 2000",
           "可信图源（official）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "CROUCHING TIGERHIDDEN DRAGON",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [
+          "图片文字命中片名「CROUCHING TIGERHIDDEN DRAGON」"
         ],
         "conflicts": []
       },
@@ -3911,6 +5427,22 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Tokyo Story",
+        "yearMatch": true,
+        "years": [
+          "2012",
+          "1953",
+          "2011"
+        ],
+        "dominantText": "No.1",
+        "reasons": [
+          "图片文字命中片名「Tokyo Story」",
+          "图片文字命中上映年份 1953"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -3939,6 +5471,17 @@
           "片名命中「卧虎藏龙」",
           "年份命中 2000",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "CROUCHING TIGERHIDDEN DRAGON",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "CROUCHING TIGER HIDDEN DRAGON",
+        "reasons": [
+          "图片文字命中片名「CROUCHING TIGERHIDDEN DRAGON」"
         ],
         "conflicts": []
       },
@@ -3973,6 +5516,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "THE SEVENTH SEAL",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "SEVENTH",
+        "reasons": [
+          "图片文字命中片名「THE SEVENTH SEAL」"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -4003,6 +5557,15 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -4030,6 +5593,17 @@
           "片名命中「Rear Window」",
           "年份命中 1954",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Rear Window",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "WINDOW",
+        "reasons": [
+          "图片文字命中片名「Rear Window」"
         ],
         "conflicts": []
       },
@@ -4064,6 +5638,17 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "To Kill a Mockingbird",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "TO KILL",
+        "reasons": [
+          "图片文字命中片名「To Kill a Mockingbird」"
+        ],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -4090,6 +5675,17 @@
         "reasons": [
           "片名命中「莫 扎 特 传」",
           "年份命中 1984"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "AMADEUS",
+        "reasons": [
+          "图片最大文字为“AMADEUS”，未能与片名直接对应"
         ],
         "conflicts": []
       },
@@ -4128,9 +5724,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "WEST",
+        "reasons": [
+          "图片最大文字为“WEST”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“WEST”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260807",
@@ -4156,6 +5769,17 @@
           "片名命中「Farewell My Concubine」",
           "年份命中 1993",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Farewell My Concubine",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "FAREWELL MY CONCUBINE",
+        "reasons": [
+          "图片文字命中片名「Farewell My Concubine」"
         ],
         "conflicts": []
       },
@@ -4186,6 +5810,17 @@
           "片名命中「Amadeus」",
           "年份命中 1984",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "Amadeus",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "AMADEUS",
+        "reasons": [
+          "图片文字命中片名「Amadeus」"
         ],
         "conflicts": []
       },
@@ -4220,6 +5855,15 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -4248,6 +5892,20 @@
           "片名命中「重庆森林」",
           "年份命中 1994",
           "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": true,
+        "years": [
+          "1994",
+          "2019"
+        ],
+        "dominantText": "4/22",
+        "reasons": [
+          "图片文字命中上映年份 1994"
         ],
         "conflicts": []
       },
@@ -4282,6 +5940,15 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
       "verified": false,
       "status": "ok",
       "issues": []
@@ -4312,9 +5979,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "SAVE THE CLOCK",
+        "reasons": [
+          "图片最大文字为“SAVE THE CLOCK”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“SAVE THE CLOCK”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260814",
@@ -4342,9 +6026,26 @@
         ],
         "conflicts": []
       },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "A Chinese Odysscy",
+        "reasons": [
+          "图片最大文字为“A Chinese Odysscy”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“A Chinese Odysscy”没有对上片名，建议核对"
+        }
+      ]
     }
   ],
   "needsReview": [
@@ -4383,8 +6084,10 @@
         "conflicts": []
       },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        "visual_title_unverified"
+      ]
     },
     {
       "id": "20260927",
@@ -4405,21 +6108,6 @@
       "verified": false,
       "status": "ok",
       "issues": []
-    },
-    {
-      "id": "20261025-harakiri",
-      "zhTitle": "切腹",
-      "year": "1962",
-      "sourceTitle": "切腹 (1962) - ポスター画像 — The Movie Database (TMDB)",
-      "imageUrl": "https://image.tmdb.org/t/p/original/zEbXzxlc2c5QQ0PqppDzSxnCTGA.jpg",
-      "host": "image.tmdb.org",
-      "dims": "-",
-      "evidence": null,
-      "verified": false,
-      "status": "error",
-      "issues": [
-        "unreachable"
-      ]
     },
     {
       "id": "20260427",
@@ -4477,8 +6165,10 @@
         "conflicts": []
       },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        "visual_title_unverified"
+      ]
     },
     {
       "id": "20260610",
@@ -4499,7 +6189,8 @@
       "verified": false,
       "status": "warn",
       "issues": [
-        "identity_weak_evidence"
+        "identity_weak_evidence",
+        "visual_title_unverified"
       ]
     },
     {
@@ -4538,8 +6229,10 @@
         "conflicts": []
       },
       "verified": false,
-      "status": "ok",
-      "issues": []
+      "status": "warn",
+      "issues": [
+        "visual_title_unverified"
+      ]
     }
   ]
 }
