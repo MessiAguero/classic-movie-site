@@ -354,11 +354,16 @@
       <stop offset="0.5" stop-color="#16231f"/>
       <stop offset="1" stop-color="#0d1715"/>
     </linearGradient>
-    <linearGradient id="brickG" gradientUnits="userSpaceOnUse" x1="0" y1="512" x2="0" y2="707">
-      <stop offset="0" stop-color="#2a3c36"/>
-      <stop offset="0.55" stop-color="#21301f"/>
-      <stop offset="1" stop-color="#16211d"/>
+    <linearGradient id="brickG" gradientUnits="userSpaceOnUse" x1="0" y1="500" x2="0" y2="707">
+      <stop offset="0" stop-color="#3d5349"/>
+      <stop offset="0.42" stop-color="#33453c"/>
+      <stop offset="1" stop-color="#1d2a25"/>
     </linearGradient>
+    <radialGradient id="wallPoolG" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f0cb92" stop-opacity="0.20"/>
+      <stop offset="0.55" stop-color="#e8b273" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#c99350" stop-opacity="0"/>
+    </radialGradient>
     <radialGradient id="bulbG" cx="0.5" cy="0.5" r="0.5">
       <stop offset="0" stop-color="#ffe4b6" stop-opacity="0.95"/>
       <stop offset="0.26" stop-color="#f0b877" stop-opacity="0.36"/>
@@ -434,7 +439,9 @@
   <!-- 03 巷尾的砖墙 -->
   <g>
     <rect x="376" y="512" width="768" height="196" fill="url(#brickG)"/>
-    <g stroke="#3a5048" stroke-opacity="0.42" stroke-width="1">
+    <ellipse cx="1010" cy="600" rx="330" ry="150" fill="url(#wallPoolG)"/>
+    <ellipse cx="640" cy="640" rx="180" ry="120" fill="#a9c4b4" fill-opacity="0.035"/>
+    <g stroke="#5c7768" stroke-opacity="0.34" stroke-width="1">
       <line x1="376" y1="526" x2="1144" y2="526"/>
       <line x1="376" y1="540" x2="1144" y2="540"/>
       <line x1="376" y1="554" x2="1144" y2="554"/>
@@ -449,7 +456,7 @@
       <line x1="376" y1="680" x2="1144" y2="680"/>
       <line x1="376" y1="694" x2="1144" y2="694"/>
     </g>
-    <g stroke="#334842" stroke-opacity="0.34" stroke-width="1">
+    <g stroke="#51695c" stroke-opacity="0.28" stroke-width="1">
       <line x1="404" y1="512" x2="404" y2="526"/>
       <line x1="452" y1="512" x2="452" y2="526"/>
       <line x1="500" y1="512" x2="500" y2="526"/>
@@ -772,7 +779,7 @@
   </g>
 
   <!-- 07 自动贩卖机（靠右缘，被画幅裁掉） -->
-  <g>
+  <g transform="translate(1352,528) scale(0.6) translate(-1300,-418)">
     <ellipse cx="1382" cy="470" rx="130" ry="150" fill="url(#vendG)" filter="url(#b26)"/>
     <rect x="1300" y="418" width="140" height="289" fill="#1b2c2a"/>
     <rect x="1300" y="418" width="140" height="2.2" fill="#63a08c" fill-opacity="0.5"/>
@@ -938,6 +945,14 @@
     <path d="M-13.8,-49.4 C-13.6,-44 -13,-26 -13,-4.6" fill="none" stroke="url(#rimL)" stroke-width="1.7" stroke-opacity="0.28"/>
     <path d="M-14.2,-75.4 C-14.1,-68 -14.3,-58 -14.4,-55" fill="none" stroke="#26382f" stroke-width="1.1" stroke-opacity="0.4"/>
     <path d="M-6.2,-117.6 C-7.7,-114.6 -8.1,-111 -7.1,-108" fill="none" stroke="#f8ddb2" stroke-opacity="0.20" stroke-width="1.2"/>
+  </g>
+
+  <!-- 13.5 前景水洼 -->
+  <g>
+    <ellipse cx="330" cy="812" rx="150" ry="26" fill="#101c1a" fill-opacity="0.85" filter="url(#b7)"/>
+    <ellipse cx="330" cy="810" rx="132" ry="19" fill="#20302c" fill-opacity="0.55"/>
+    <ellipse cx="286" cy="806" rx="46" ry="7" fill="#e8bc84" fill-opacity="0.12" filter="url(#b7)"/>
+    <ellipse cx="386" cy="814" rx="28" ry="5" fill="#a9d3bd" fill-opacity="0.09" filter="url(#b7)"/>
   </g>
 
   <!-- 14 前景：井盖与地面裂缝 -->
