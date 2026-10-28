@@ -343,7 +343,8 @@
     .hero-in{padding:8vh 22px 0}
     h1{font-size:clamp(38px,10vw,54px);line-height:1.14}
     .h1-ja{font-size:13px;letter-spacing:.4em}
-    .h1-en{font-size:9.5px;letter-spacing:.3em}
+    .h1-en{font-size:9.5px;letter-spacing:.26em}
+    .h1-en .dm{display:none}
     .hero-line{font-size:14.5px;line-height:1.95;max-width:none;padding-left:15px;margin-top:20px}
     .chips{gap:7px;margin-top:26px;max-width:none}
     .chip{font-size:10.5px;padding:5px 9px}
@@ -463,7 +464,7 @@
       <rect x="1298" y="614" width="44" height="86"/><rect x="1346" y="582" width="32" height="118"/>
       <rect x="1382" y="604" width="58" height="96"/>
     </g>
-    <g fill="url(#win)" opacity=".22">
+    <g fill="url(#win)" opacity=".38">
       <rect x="88" y="568" width="52" height="132"/><rect x="270" y="576" width="36" height="124"/>
       <rect x="482" y="560" width="50" height="140"/><rect x="656" y="566" width="46" height="134"/>
       <rect x="824" y="570" width="48" height="130"/><rect x="998" y="574" width="34" height="126"/>
@@ -483,7 +484,7 @@
       <rect x="1302" y="424" width="86" height="276"/>
       <rect x="1392" y="470" width="48" height="230"/>
     </g>
-    <g fill="url(#win)" opacity=".30">
+    <g fill="url(#win)" opacity=".44">
       <rect x="0" y="352" width="112" height="348"/><rect x="206" y="318" width="96" height="382"/>
       <rect x="1194" y="344" width="104" height="356"/><rect x="1302" y="424" width="86" height="276"/>
     </g>
@@ -539,12 +540,17 @@
       <rect x="1206" y="704" width="9" height="112" fill="#c33a6b" opacity=".13"/>
     </g>
 
+    <!-- 地面湿光 -->
+    <ellipse cx="820" cy="716" rx="330" ry="40" fill="url(#warm)" filter="url(#b24)" opacity=".26"/>
+    <ellipse cx="420" cy="742" rx="260" ry="26" fill="#3ecfc4" opacity=".05" filter="url(#b24)"/>
+    <ellipse cx="1180" cy="734" rx="240" ry="24" fill="#c33a6b" opacity=".05" filter="url(#b24)"/>
+
     <!-- 人物：逆光池 -->
     <ellipse cx="820" cy="668" rx="132" ry="108" fill="url(#warm)" filter="url(#b24)" opacity=".42"/>
     <ellipse cx="820" cy="702" rx="196" ry="26" fill="url(#warm)" filter="url(#b14)" opacity=".46"/>
 
     <g id="figWrap">
-      <g id="figBody" fill="none">
+      <g id="figBody">
         <ellipse cx="820" cy="578" rx="9.6" ry="11.6"/>
         <path d="M810.4,569 C811.4,562.4 828.6,562.4 829.6,569 C830.8,576 830.2,584 828.6,588.6 L811.4,588.6 C809.8,584 809.2,576 810.4,569 Z"/>
         <rect x="816.4" y="585" width="7.2" height="11"/>
@@ -560,6 +566,7 @@
       <use href="#figBody" fill="#02050a"/>
       <use href="#figBody" fill="none" stroke="url(#rim)" stroke-width="1.1" stroke-opacity=".45"/>
     </g>
+    <use href="#figBody" transform="translate(0,1414) scale(1,-1)" fill="#0a1a1c" opacity=".16" filter="url(#figsoft)"/>
     <ellipse cx="820" cy="707" rx="24" ry="4.4" fill="#010304" opacity=".55" filter="url(#b6)"/>
 
     <!-- 竖排霓虹：只放在画幅两侧，绝不进文字栏 -->
@@ -583,7 +590,7 @@
     <div class="kicker">日本电影经典 · <span>第 05 部</span> &nbsp;/&nbsp; Japan Classics</div>
     <h1>攻壳机动队</h1>
     <div class="h1-ja">攻殻機動隊</div>
-    <div class="h1-en">Ghost in the Shell &nbsp;·&nbsp; 1995 &nbsp;·&nbsp; Mamoru Oshii</div>
+    <div class="h1-en">Ghost in the Shell &nbsp;·&nbsp; 1995<span class="dm"> &nbsp;·&nbsp; Mamoru Oshii</span></div>
     <p class="hero-line">2029 年，人的身体可以整件换掉，只剩脑子还是自己的。<br>那么<em>「你」</em>到底是指哪一部分？</p>
     <div class="chips">
       <span class="chip"><b>9.0</b>豆瓣 · 227,593 人</span>
@@ -730,8 +737,22 @@
               <circle cx="292" cy="652" r="5.5"/><circle cx="368" cy="652" r="5.5"/>
               <circle cx="330" cy="356" r="2.4" fill="#c33a6b" stroke="none"/>
             </g>
+            <!-- 头部准星 -->
+            <g stroke="#3ecfc4" stroke-width=".55" stroke-opacity=".35">
+              <line x1="330" y1="256" x2="330" y2="316"/>
+              <line x1="300" y1="286" x2="360" y2="286"/>
+            </g>
+            <circle cx="330" cy="286" r="3" fill="none" stroke="#3ecfc4" stroke-width=".6" stroke-opacity=".45"/>
             <!-- 颈部接口 -->
             <rect x="326" y="334" width="8" height="4" fill="#c33a6b"/>
+
+            <!-- 总高标注 -->
+            <g stroke="#7c8a8d" stroke-width=".6" stroke-opacity=".5">
+              <line x1="126" y1="250" x2="126" y2="790"/>
+              <line x1="121" y1="250" x2="131" y2="250"/>
+              <line x1="121" y1="790" x2="131" y2="790"/>
+            </g>
+            <text x="118" y="520" font-family="'SFMono-Regular',Menlo,monospace" font-size="8.5" fill="#7c8a8d" fill-opacity=".8" letter-spacing="1.6" text-anchor="middle" transform="rotate(-90 118 520)">7.5 HEAD / TOTAL 540</text>
 
             <!-- 引线 -->
             <g stroke="#dfe7e9" stroke-width=".6" stroke-opacity=".28">
