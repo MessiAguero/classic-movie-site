@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《攻壳机动队》攻殻機動隊 · Ghost in the Shell (1995) — 日本电影经典推荐 · 第 05 部</title>
+<meta name="description" content="日本电影经典系列第 05 部：《攻壳机动队》(1995)，押井守导演，Production I.G 制作，川井宪次配乐。豆瓣 9.0 / IMDb 7.9 / 烂番茄 95% / Metacritic 76。2029 年的新港市，一具全身义体的女警在追查一个叫「傀儡师」的东西。全程不剧透。">
+<style>
+  :root{
+    /* 夜里的新港市：石墨黑打底，冷白写字，电子青是光，品红只用来扎一下 */
+    --ink:#06080a;
+    --ink-2:#0a1113;
+    --ink-3:#0f191b;
+    --paper:#dfe7e9;
+    --paper-dim:#aebbbe;
+    --ash:#7c8a8d;
+    --ash-dim:#4a5658;
+    --cyan:#3ecfc4;
+    --cyan-light:#8ff0e6;
+    --cyan-dim:#1f6f6b;
+    --magenta:#c33a6b;
+    --magenta-light:#e884a4;
+    --amber:#c9974f;
+    --amber-light:#e8c48d;
+    --line:rgba(223,231,233,.09);
+    --line-strong:rgba(223,231,233,.19);
+    --serif:"Georgia","Times New Roman","Songti SC","STSong",serif;
+    --jp:"Hiragino Mincho ProN","Yu Mincho","Songti SC",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--ink);color:var(--paper);font-family:var(--sans);
+    line-height:1.85;font-size:16px;letter-spacing:.01em;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:9;pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='180' height='180' filter='url(%23n)' opacity='.5'/></svg>");
+    opacity:.05;mix-blend-mode:overlay;
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:8;pointer-events:none;
+    background:radial-gradient(126% 96% at 50% 42%,transparent 58%,rgba(0,0,0,.52) 100%);
+  }
+  ::selection{background:var(--cyan);color:#06080a}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;min-height:max(100vh,880px);overflow:hidden;display:flex;align-items:stretch;border-bottom:1px solid var(--line)}
+  .hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-scrim{
+    position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(to bottom,
+      rgba(6,8,10,.92) 0%,
+      rgba(6,8,10,.62) 16%,
+      rgba(6,8,10,.10) 40%,
+      rgba(6,8,10,.08) 60%,
+      rgba(6,8,10,.60) 86%,
+      rgba(6,8,10,.95) 100%);
+  }
+  #heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+  .hero-in{
+    position:relative;z-index:3;width:100%;max-width:1240px;margin:0 auto;
+    padding:12vh 40px 0;display:flex;flex-direction:column;justify-content:flex-start;
+  }
+  .spoiler{
+    display:inline-flex;align-items:center;gap:9px;align-self:flex-start;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--cyan);border:1px solid rgba(62,207,196,.34);padding:6px 12px;
+    background:rgba(62,207,196,.06);
+  }
+  .spoiler i{width:5px;height:5px;background:var(--cyan);border-radius:50%;box-shadow:0 0 8px var(--cyan);animation:pulseDot 2.4s ease-in-out infinite}
+  @keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.25}}
+  .kicker{
+    margin-top:34px;font-family:var(--mono);font-size:11px;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--ash);
+  }
+  .kicker span{color:var(--cyan)}
+  h1{
+    margin-top:16px;font-family:var(--jp);font-weight:600;
+    font-size:clamp(50px,6.2vw,88px);line-height:1.06;letter-spacing:.04em;
+    color:#f2f8f8;text-shadow:0 0 44px rgba(62,207,196,.22);
+  }
+  .h1-ja{
+    margin-top:14px;font-family:var(--jp);font-size:clamp(15px,1.5vw,19px);
+    letter-spacing:.52em;color:var(--cyan);opacity:.86;
+  }
+  .h1-en{
+    margin-top:12px;font-family:var(--mono);font-size:11px;letter-spacing:.42em;
+    text-transform:uppercase;color:var(--ash);
+  }
+  .hero-line{
+    margin-top:26px;max-width:520px;font-size:16.5px;line-height:2;color:var(--paper-dim);
+    border-left:1px solid rgba(62,207,196,.4);padding-left:20px;
+  }
+  .hero-line em{font-style:normal;color:var(--cyan-light)}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:36px;max-width:660px}
+  .chip{
+    display:inline-flex;align-items:baseline;gap:7px;
+    border:1px solid var(--line-strong);padding:6px 12px;
+    font-size:11.5px;letter-spacing:.05em;color:var(--paper-dim);
+    background:rgba(6,8,10,.5);
+  }
+  .chip b{font-family:var(--mono);font-size:12.5px;color:var(--cyan);font-weight:600}
+  .chip.m b{color:var(--magenta-light)}
+  .scroll-hint{
+    position:absolute;left:50%;transform:translateX(-50%);bottom:30px;z-index:4;
+    display:flex;flex-direction:column;align-items:center;gap:9px;
+    font-family:var(--mono);font-size:9px;letter-spacing:.34em;color:var(--ash-dim);
+  }
+  .scroll-hint i{width:1px;height:44px;background:linear-gradient(to bottom,var(--cyan),transparent);opacity:.7}
+
+  /* ============ HUD ============ */
+  .motif{
+    position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:7;
+    opacity:0;pointer-events:none;transition:opacity .9s ease;
+    text-align:right;font-family:var(--mono);
+  }
+  .motif.on{opacity:1}
+  .motif .mh{font-size:9px;letter-spacing:.3em;color:var(--ash-dim);margin-bottom:14px}
+  .motif ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .motif li{
+    font-size:10px;letter-spacing:.18em;color:var(--ash-dim);
+    transition:color .5s ease;position:relative;padding-right:13px;
+  }
+  .motif li::after{
+    content:"";position:absolute;right:0;top:50%;width:4px;height:1px;
+    background:currentColor;opacity:.5;
+  }
+  .motif li.a{color:var(--cyan)}
+  .motif li.a::after{width:11px;height:1px;opacity:1;box-shadow:0 0 7px var(--cyan)}
+
+  /* ============ BANDS ============ */
+  .band{padding:118px 0;border-bottom:1px solid var(--line);position:relative}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+  .sec-head{max-width:820px;margin-bottom:56px}
+  .sec-num{
+    display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.26em;
+    text-transform:uppercase;color:var(--cyan-dim);margin-bottom:18px;
+  }
+  .sec-title{
+    font-family:var(--serif);font-size:clamp(26px,3.1vw,38px);line-height:1.4;
+    font-weight:400;letter-spacing:.02em;color:#eef5f5;
+  }
+  .sec-title i{font-style:normal;color:var(--cyan);display:block}
+  .sec-desc{margin-top:18px;font-size:14.5px;color:var(--ash);line-height:1.95;max-width:640px}
+
+  /* ---- 01 梗概 ---- */
+  .lede{display:grid;grid-template-columns:1.6fr .85fr;gap:66px;align-items:start}
+  .lede .body p{font-size:16.5px;line-height:2.1;color:var(--paper-dim);margin-bottom:22px}
+  .lede .body p strong{color:var(--paper);font-weight:600}
+  .lede .body p:first-of-type::first-letter{
+    float:left;font-family:var(--serif);font-size:76px;line-height:.8;
+    padding:8px 14px 0 0;color:var(--cyan);
+  }
+  .glance{border-top:1px solid var(--line-strong);padding-top:22px}
+  .glance h3{
+    font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--cyan);margin-bottom:20px;
+  }
+  .glance dl{display:grid;grid-template-columns:74px 1fr;gap:13px 14px;font-size:12.5px}
+  .glance dt{color:var(--ash-dim);letter-spacing:.04em}
+  .glance dd{color:var(--paper-dim);line-height:1.7}
+  .glance dd small{display:block;font-size:11px;color:var(--ash-dim);margin-top:2px}
+  .glance .gnote{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ash-dim);line-height:1.9}
+
+  /* ---- 02 海报 ---- */
+  .poster-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+  .poster-frame{
+    position:relative;background:#070a0c;border:1px solid var(--line-strong);
+    padding:14px;box-shadow:0 40px 90px -40px rgba(0,0,0,.9),0 0 0 1px rgba(62,207,196,.05) inset;
+  }
+  .poster-frame svg{display:block;width:100%;height:auto}
+  .poster-cap{
+    margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+    color:var(--ash-dim);text-align:center;
+  }
+  .pnotes{display:flex;flex-direction:column;gap:0}
+  .pnote{padding:24px 0;border-bottom:1px solid var(--line)}
+  .pnote:first-child{padding-top:0}
+  .pnote:last-child{border-bottom:0}
+  .pnote .pn{
+    font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--magenta);margin-bottom:9px;
+  }
+  .pnote h4{font-size:16px;font-weight:600;color:var(--paper);margin-bottom:8px;letter-spacing:.01em}
+  .pnote p{font-size:13.5px;color:var(--ash);line-height:1.95}
+
+  /* ---- 03 档案 ---- */
+  .spec{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .spec>div{background:var(--ink);padding:20px 18px;min-height:92px}
+  .spec dt{
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ash-dim);margin-bottom:8px;
+  }
+  .spec dd{font-size:13.5px;color:var(--paper-dim);line-height:1.65}
+  .spec dd b{color:var(--paper);font-weight:600}
+  .spec dd small{display:block;font-size:11px;color:var(--ash-dim);margin-top:3px;line-height:1.6}
+  .spec .wide{grid-column:1/-1;min-height:auto;background:linear-gradient(90deg,rgba(62,207,196,.07),rgba(195,58,107,.05) 70%,transparent)}
+  .spec .wide dd{font-family:var(--serif);font-size:17px;color:var(--paper);letter-spacing:.02em}
+
+  /* ---- 04 口碑 ---- */
+  .scores{display:grid;grid-template-columns:repeat(2,minmax(min(500px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .score{background:var(--ink);padding:32px 30px}
+  .score .src{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ash-dim)}
+  .score .num{
+    font-family:var(--serif);font-size:52px;line-height:1.1;color:var(--cyan);margin:10px 0 4px;
+    letter-spacing:-.01em;
+  }
+  .score .num span{font-size:19px;color:var(--ash);margin-left:5px}
+  .score .tail{font-size:12.5px;color:var(--ash);line-height:1.8}
+  .note{
+    margin-top:34px;border-left:2px solid var(--magenta);padding:6px 0 6px 22px;
+    font-size:13px;color:var(--ash);line-height:2;
+  }
+  .note b{color:var(--paper-dim);font-weight:600}
+  .note .nt{
+    display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;
+    color:var(--magenta);margin-bottom:8px;
+  }
+
+  /* ---- 05 人物 ---- */
+  .people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .person{background:var(--ink);padding:28px 26px}
+  .person .idx{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--cyan-dim)}
+  .person h4{font-size:19px;font-weight:600;margin:9px 0 3px;color:#eef5f5;letter-spacing:.02em}
+  .person .jp{font-family:var(--jp);font-size:11.5px;letter-spacing:.14em;color:var(--ash-dim);margin-bottom:15px}
+  .person p{font-size:13px;color:var(--ash);line-height:1.95}
+  .person .want{
+    margin-top:15px;padding-top:13px;border-top:1px solid var(--line);
+    font-size:11.5px;color:var(--paper-dim);line-height:1.8;
+  }
+  .person .want b{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--magenta);display:block;margin-bottom:4px}
+
+  /* ---- 06 镜头 ---- */
+  .moves{display:flex;flex-direction:column}
+  .move{
+    display:grid;grid-template-columns:96px 1fr;gap:28px;
+    padding:30px 0;border-top:1px solid var(--line);align-items:start;
+  }
+  .move:last-child{border-bottom:1px solid var(--line)}
+  .move .no{
+    font-family:var(--serif);font-size:38px;line-height:1;color:var(--cyan-dim);letter-spacing:-.02em;
+  }
+  .move h4{font-size:17px;font-weight:600;color:var(--paper);margin-bottom:7px}
+  .move h4 em{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ash-dim);margin-left:12px}
+  .move p{font-size:13.5px;color:var(--ash);line-height:2;max-width:760px}
+
+  /* ---- 07 荣誉 ---- */
+  .awards{display:grid;grid-template-columns:repeat(2,minmax(min(500px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .award{background:var(--ink);padding:26px 26px}
+  .award .yr{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--magenta)}
+  .award h4{font-size:15.5px;font-weight:600;color:var(--paper);margin:9px 0 6px;line-height:1.6}
+  .award p{font-size:12.5px;color:var(--ash);line-height:1.85}
+
+  /* ---- 08 谱系 ---- */
+  .lineage{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;position:relative;margin-top:8px}
+  .lineage::before{
+    content:"";position:absolute;left:0;right:0;top:7px;height:1px;
+    background:linear-gradient(90deg,rgba(62,207,196,.1),rgba(62,207,196,.5),rgba(195,58,107,.4));
+  }
+  .lnode{padding:0 18px 0 0;position:relative}
+  .lnode .dot{
+    width:15px;height:15px;border:1px solid var(--cyan-dim);background:var(--ink);
+    position:relative;z-index:2;margin-bottom:20px;
+  }
+  .lnode.now .dot{background:var(--cyan);border-color:var(--cyan);box-shadow:0 0 16px rgba(62,207,196,.6)}
+  .lnode .y{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--cyan-dim);margin-bottom:6px}
+  .lnode.now .y{color:var(--cyan)}
+  .lnode h5{font-size:14px;font-weight:600;color:var(--paper-dim);line-height:1.6;margin-bottom:7px}
+  .lnode.now h5{color:#eef5f5}
+  .lnode p{font-size:11.5px;color:var(--ash-dim);line-height:1.8}
+
+  /* ---- 09 六宫格 ---- */
+  .grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .cell{background:var(--ink);padding:28px 26px;min-height:172px}
+  .cell .cn{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--magenta)}
+  .cell h4{font-size:16.5px;font-weight:600;color:var(--paper);margin:10px 0 8px}
+  .cell p{font-size:12.8px;color:var(--ash);line-height:1.95}
+
+  /* ---- 10 为何值得看 ---- */
+  .why{display:flex;flex-direction:column;gap:44px;max-width:860px}
+  .wh{display:grid;grid-template-columns:56px 1fr;gap:24px;align-items:start}
+  .wh .wn{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--cyan);padding-top:8px}
+  .wh h4{font-family:var(--serif);font-size:21px;font-weight:400;color:#eef5f5;margin-bottom:11px;line-height:1.6}
+  .wh p{font-size:14.5px;color:var(--ash);line-height:2.1}
+
+  /* ---- 11 观影提示 ---- */
+  .tips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+  .tip{border-top:1px solid var(--line-strong);padding-top:20px}
+  .tip .tt{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--cyan);margin-bottom:12px}
+  .tip h4{font-size:15px;font-weight:600;color:var(--paper);margin-bottom:9px;line-height:1.6}
+  .tip p{font-size:12.8px;color:var(--ash);line-height:1.95}
+
+  /* ---- 结语 ---- */
+  .verdict{padding:130px 0 0;text-align:center;position:relative}
+  .verdict .vq{
+    font-family:var(--serif);font-size:clamp(21px,2.7vw,32px);line-height:1.85;
+    color:#f0f7f7;max-width:860px;margin:0 auto;letter-spacing:.02em;
+  }
+  .verdict .vq em{font-style:normal;color:var(--cyan)}
+  .verdict .vsrc{
+    margin-top:26px;font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;
+    color:var(--ash-dim);text-transform:uppercase;
+  }
+  .vseal{
+    width:88px;height:88px;margin:56px auto 0;border:1px solid rgba(195,58,107,.55);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:var(--magenta);transform:rotate(-3deg);
+  }
+  .vseal b{font-family:var(--jp);font-size:30px;line-height:1;letter-spacing:.06em}
+  .vseal span{font-family:var(--mono);font-size:9px;letter-spacing:.18em;margin-top:6px;opacity:.8}
+
+  .foot{
+    max-width:1180px;margin:0 auto;padding:64px 40px 180px;
+    display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--ash-dim);
+    line-height:2;border-top:1px solid var(--line);
+  }
+  .foot span{max-width:520px}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity 1s ease,transform 1s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:1080px){
+    .motif{display:none}
+    .lede{grid-template-columns:1fr;gap:44px}
+    .poster-grid{grid-template-columns:1fr;gap:44px}
+    .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .lineage{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 0}
+    .lineage::before{display:none}
+    .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .tips{grid-template-columns:1fr;gap:22px}
+  }
+  @media (max-width:760px){
+    body{font-size:15px}
+    .hero{min-height:740px}
+    .hero-in{padding:11vh 22px 0}
+    h1{font-size:clamp(38px,10vw,54px);line-height:1.14}
+    .h1-ja{font-size:13px;letter-spacing:.4em}
+    .h1-en{font-size:9.5px;letter-spacing:.3em}
+    .hero-line{font-size:14.5px;line-height:1.95;max-width:none;padding-left:15px;margin-top:20px}
+    .chips{gap:7px;margin-top:26px;max-width:none}
+    .chip{font-size:10.5px;padding:5px 9px}
+    .chip b{font-size:11px}
+    .kicker{font-size:9.5px;letter-spacing:.22em;margin-top:26px}
+    .spoiler{font-size:9px;letter-spacing:.12em;padding:5px 9px}
+    .scroll-hint{bottom:20px;font-size:8px}
+    .scroll-hint i{height:34px}
+    .band{padding:74px 0}
+    .wrap{padding:0 22px}
+    .sec-head{margin-bottom:38px}
+    .sec-desc{font-size:13.5px}
+    .lede .body p{font-size:15px;line-height:2.05}
+    .score{padding:24px 20px}
+    .score .num{font-size:42px}
+    .person{padding:22px 20px}
+    .person h4{font-size:17px}
+    .move{grid-template-columns:52px 1fr;gap:16px;padding:24px 0}
+    .move .no{font-size:28px}
+    .cell{padding:22px 20px;min-height:auto}
+    .foot{padding:44px 22px 150px;flex-direction:column;gap:12px}
+    .verdict{padding:88px 0 0}
+    .spec{grid-template-columns:1fr}
+    .people{grid-template-columns:1fr}
+    .grid6{grid-template-columns:1fr}
+    .lineage{grid-template-columns:1fr;gap:26px}
+    .lnode{border-left:1px solid var(--line);padding-left:18px;padding-right:0}
+    .lnode .dot{position:absolute;left:-8px;top:2px;margin-bottom:0;width:13px;height:13px}
+    .lnode .y{margin-top:0}
+    .poster-frame{padding:9px}
+    .verdict .vq{font-size:19px;line-height:1.9}
+    .vseal{width:74px;height:74px;margin-top:40px}
+    .vseal b{font-size:25px}
+  }
+  @media (max-width:760px) and (max-height:700px){
+    .hero{min-height:100vh}
+  }
+  @media (max-width:380px){
+    .hero-in{padding:9vh 16px 0}
+    .wrap{padding:0 16px}
+    h1{font-size:34px}
+    .chips{gap:6px}
+    .chip{font-size:10px;padding:4px 7px}
+    .hero-line{font-size:13.5px}
+    .band{padding:60px 0}
+    .score .num{font-size:36px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-label="夜里的新港市：密集的高楼、竖排霓虹、湿漉漉的街道，一个背影站在街心">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#04070a"/>
+        <stop offset=".46" stop-color="#061114"/>
+        <stop offset=".74" stop-color="#0b1e21"/>
+        <stop offset="1" stop-color="#0e262a"/>
+      </linearGradient>
+      <radialGradient id="hglow" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#3ecfc4" stop-opacity=".30"/>
+        <stop offset=".55" stop-color="#2b9a95" stop-opacity=".12"/>
+        <stop offset="1" stop-color="#3ecfc4" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="warm" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#e8c48d" stop-opacity=".55"/>
+        <stop offset=".55" stop-color="#c9974f" stop-opacity=".22"/>
+        <stop offset="1" stop-color="#c9974f" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="gnd" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a1a1c"/>
+        <stop offset=".35" stop-color="#061012"/>
+        <stop offset="1" stop-color="#030708"/>
+      </linearGradient>
+      <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#a8ece2" stop-opacity=".95"/>
+        <stop offset=".55" stop-color="#5fd8cd" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#a8ece2" stop-opacity=".08"/>
+      </linearGradient>
+      <pattern id="win" width="15" height="19" patternUnits="userSpaceOnUse">
+        <rect x="2" y="3" width="3" height="4" fill="#bfe2dd" opacity=".55"/>
+        <rect x="9" y="11" width="2.4" height="3" fill="#3ecfc4" opacity=".40"/>
+        <rect x="10" y="3" width="2.4" height="3" fill="#e8c48d" opacity=".26"/>
+      </pattern>
+      <filter id="b6" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="6"/></filter>
+      <filter id="b14" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>
+      <filter id="b24" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="24"/></filter>
+      <filter id="figsoft" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="3.4"/></filter>
+    </defs>
+
+    <!-- 天空 -->
+    <rect width="1440" height="900" fill="url(#sky)"/>
+    <ellipse cx="850" cy="690" rx="620" ry="330" fill="url(#hglow)"/>
+
+    <!-- 远景天际线 -->
+    <g fill="#0b1a1d">
+      <rect x="0" y="556" width="54" height="160"/>
+      <rect x="58" y="592" width="40" height="124"/>
+      <rect x="102" y="520" width="46" height="196"/>
+      <rect x="152" y="600" width="36" height="116"/>
+      <rect x="192" y="548" width="52" height="168"/>
+      <rect x="248" y="612" width="30" height="104"/>
+      <rect x="282" y="568" width="48" height="148"/>
+      <rect x="334" y="596" width="42" height="120"/>
+      <rect x="380" y="540" width="34" height="176"/>
+      <rect x="418" y="616" width="56" height="100"/>
+      <rect x="478" y="584" width="38" height="132"/>
+      <rect x="520" y="556" width="44" height="160"/>
+      <rect x="568" y="604" width="32" height="112"/>
+      <rect x="604" y="572" width="50" height="144"/>
+      <rect x="658" y="620" width="36" height="96"/>
+      <rect x="698" y="588" width="46" height="128"/>
+      <rect x="748" y="552" width="40" height="164"/>
+      <rect x="792" y="610" width="34" height="106"/>
+      <rect x="828" y="578" width="44" height="138"/>
+      <rect x="876" y="600" width="38" height="116"/>
+      <rect x="918" y="546" width="52" height="170"/>
+      <rect x="974" y="606" width="36" height="110"/>
+      <rect x="1014" y="570" width="44" height="146"/>
+      <rect x="1062" y="596" width="34" height="120"/>
+      <rect x="1100" y="556" width="48" height="160"/>
+      <rect x="1152" y="612" width="40" height="104"/>
+      <rect x="1196" y="580" width="52" height="136"/>
+      <rect x="1252" y="600" width="36" height="116"/>
+      <rect x="1292" y="548" width="44" height="168"/>
+      <rect x="1340" y="588" width="54" height="128"/>
+      <rect x="1398" y="566" width="42" height="150"/>
+    </g>
+    <g fill="url(#win)" opacity=".5">
+      <rect x="0" y="556" width="54" height="160"/><rect x="102" y="520" width="46" height="196"/>
+      <rect x="192" y="548" width="52" height="168"/><rect x="282" y="568" width="48" height="148"/>
+      <rect x="380" y="540" width="34" height="176"/><rect x="520" y="556" width="44" height="160"/>
+      <rect x="604" y="572" width="50" height="144"/><rect x="748" y="552" width="40" height="164"/>
+      <rect x="918" y="546" width="52" height="170"/><rect x="1014" y="570" width="44" height="146"/>
+      <rect x="1100" y="556" width="48" height="160"/><rect x="1196" y="580" width="52" height="136"/>
+      <rect x="1340" y="588" width="54" height="128"/>
+    </g>
+
+    <!-- 远处的高架：一条被车灯划过的横带 -->
+    <g opacity=".85">
+      <rect x="0" y="474" width="1440" height="15" fill="#061012"/>
+      <rect x="0" y="473" width="1440" height="1" fill="#1f6f6b" opacity=".55"/>
+      <g fill="#e8c48d" opacity=".85">
+        <rect x="132" y="478" width="5" height="1.6"/><rect x="196" y="478" width="5" height="1.6"/>
+        <rect x="268" y="478" width="5" height="1.6"/><rect x="352" y="478" width="5" height="1.6"/>
+        <rect x="446" y="478" width="5" height="1.6"/><rect x="534" y="478" width="5" height="1.6"/>
+        <rect x="640" y="478" width="5" height="1.6"/><rect x="726" y="478" width="5" height="1.6"/>
+        <rect x="812" y="478" width="5" height="1.6"/><rect x="902" y="478" width="5" height="1.6"/>
+        <rect x="988" y="478" width="5" height="1.6"/><rect x="1082" y="478" width="5" height="1.6"/>
+        <rect x="1188" y="478" width="5" height="1.6"/><rect x="1290" y="478" width="5" height="1.6"/>
+      </g>
+      <g fill="#e0725f" opacity=".7">
+        <rect x="164" y="485" width="4" height="1.4"/><rect x="302" y="485" width="4" height="1.4"/>
+        <rect x="492" y="485" width="4" height="1.4"/><rect x="686" y="485" width="4" height="1.4"/>
+        <rect x="856" y="485" width="4" height="1.4"/><rect x="1034" y="485" width="4" height="1.4"/>
+        <rect x="1232" y="485" width="4" height="1.4"/><rect x="1352" y="485" width="4" height="1.4"/>
+      </g>
+    </g>
+
+    <!-- 中央塔 -->
+    <g>
+      <rect x="888" y="150" width="68" height="560" fill="#081517"/>
+      <rect x="888" y="150" width="68" height="560" fill="url(#win)" opacity=".55"/>
+      <g stroke="#1f6f6b" stroke-width=".7" opacity=".38" fill="none">
+        <line x1="906" y1="150" x2="906" y2="710"/>
+        <line x1="922" y1="150" x2="922" y2="710"/>
+        <line x1="938" y1="150" x2="938" y2="710"/>
+        <line x1="888" y1="230" x2="956" y2="230"/>
+        <line x1="888" y1="330" x2="956" y2="330"/>
+        <line x1="888" y1="440" x2="956" y2="440"/>
+        <line x1="888" y1="560" x2="956" y2="560"/>
+      </g>
+      <rect x="918" y="96" width="2.4" height="56" fill="#123033"/>
+      <circle cx="919.2" cy="95" r="3" fill="#e0725f" opacity=".95"/>
+      <circle cx="919.2" cy="95" r="9" fill="#e0725f" opacity=".28" filter="url(#b6)"/>
+      <rect x="888" y="686" width="68" height="26" fill="#0b1e21" opacity=".7"/>
+    </g>
+
+    <!-- 中景楼群 -->
+    <g fill="#071113">
+      <rect x="0" y="340" width="122" height="380"/>
+      <rect x="126" y="430" width="92" height="290"/>
+      <rect x="220" y="300" width="112" height="420"/>
+      <rect x="334" y="470" width="86" height="250"/>
+      <rect x="422" y="392" width="108" height="328"/>
+      <rect x="1058" y="416" width="96" height="304"/>
+      <rect x="1156" y="330" width="122" height="390"/>
+      <rect x="1280" y="452" width="86" height="268"/>
+      <rect x="1368" y="372" width="72" height="348"/>
+    </g>
+    <g fill="url(#win)" opacity=".34">
+      <rect x="0" y="340" width="122" height="380"/><rect x="220" y="300" width="112" height="420"/>
+      <rect x="422" y="392" width="108" height="328"/><rect x="1058" y="416" width="96" height="304"/>
+      <rect x="1156" y="330" width="122" height="390"/><rect x="1368" y="372" width="72" height="348"/>
+    </g>
+
+    <!-- 竖排霓虹 -->
+    <g font-family="'Hiragino Mincho ProN','Songti SC',serif" font-size="17" letter-spacing="4">
+      <g fill="#c33a6b" opacity=".9">
+        <text x="52" y="392" writing-mode="tb">電脳</text>
+      </g>
+      <rect x="46" y="368" width="20" height="76" fill="none" stroke="#c33a6b" stroke-width=".8" opacity=".55"/>
+      <g fill="#3ecfc4" opacity=".85">
+        <text x="252" y="342" writing-mode="tb">義体</text>
+      </g>
+      <rect x="246" y="320" width="20" height="76" fill="none" stroke="#3ecfc4" stroke-width=".8" opacity=".5"/>
+      <g fill="#e8c48d" opacity=".7">
+        <text x="452" y="440" writing-mode="tb">新港</text>
+      </g>
+      <g fill="#c33a6b" opacity=".8">
+        <text x="1196" y="372" writing-mode="tb">電脳</text>
+      </g>
+      <rect x="1190" y="350" width="20" height="76" fill="none" stroke="#c33a6b" stroke-width=".8" opacity=".5"/>
+    </g>
+    <g filter="url(#b14)" opacity=".55">
+      <rect x="52" y="372" width="9" height="70" fill="#c33a6b" opacity=".55"/>
+      <rect x="252" y="324" width="9" height="70" fill="#3ecfc4" opacity=".55"/>
+    </g>
+
+    <!-- 地面 -->
+    <rect x="0" y="700" width="1440" height="200" fill="url(#gnd)"/>
+    <rect x="0" y="699" width="1440" height="1" fill="#2f8f8a" opacity=".34"/>
+
+    <!-- 湿地反光 -->
+    <g filter="url(#b14)" opacity=".5">
+      <rect x="48" y="704" width="14" height="120" fill="#c33a6b" opacity=".30"/>
+      <rect x="248" y="704" width="12" height="104" fill="#3ecfc4" opacity=".26"/>
+      <rect x="442" y="704" width="10" height="86" fill="#e8c48d" opacity=".18"/>
+      <rect x="900" y="704" width="16" height="130" fill="#3ecfc4" opacity=".16"/>
+      <rect x="1192" y="704" width="12" height="96" fill="#c33a6b" opacity=".24"/>
+    </g>
+
+    <!-- 人物背后的暖色柔光池 -->
+    <ellipse cx="820" cy="672" rx="168" ry="96" fill="url(#warm)" filter="url(#b24)" opacity=".55"/>
+    <ellipse cx="820" cy="700" rx="210" ry="30" fill="url(#warm)" filter="url(#b14)" opacity=".5"/>
+
+    <!-- 人物 -->
+    <g id="figWrap">
+      <g id="figBody" fill="none">
+        <ellipse cx="820" cy="578" rx="9.6" ry="11.6"/>
+        <rect x="816.4" y="585" width="7.2" height="11"/>
+        <path d="M798,606 C798,599.5 804.5,596 820,596 C835.5,596 842,599.5 842,606 L844.5,639 L795.5,639 Z"/>
+        <path d="M798.6,606.5 L792.4,646 L799.6,646 L804.6,610 Z"/>
+        <path d="M841.4,606.5 L847.6,646 L840.4,646 L835.4,610 Z"/>
+        <path d="M803.6,637 L802.4,674 L802,700 L810.8,700 L811.8,672 L812.6,637 Z"/>
+        <path d="M836.4,637 L837.6,674 L838,700 L829.2,700 L828.2,672 L827.4,637 Z"/>
+        <rect x="799" y="699" width="14" height="6"/>
+        <rect x="827" y="699" width="14" height="6"/>
+        <path d="M810.4,568 C812,562 828,562 829.6,568 C831,575 830,584 828.6,588 L811.4,588 C810,584 809,575 810.4,568 Z"/>
+      </g>
+      <use href="#figBody" fill="none" stroke="#a8ece2" stroke-width="2.6" stroke-opacity=".26" filter="url(#figsoft)"/>
+      <use href="#figBody" fill="none" stroke="url(#rim)" stroke-width="1.3" stroke-opacity=".5"/>
+      <use href="#figBody" fill="#04070a"/>
+      <ellipse cx="812" cy="548" rx="9" ry="4" fill="#e8c48d" opacity=".16" filter="url(#b6)"/>
+    </g>
+    <ellipse cx="820" cy="707" rx="26" ry="5" fill="#010304" opacity=".5" filter="url(#b6)"/>
+  </svg>
+
+  <div class="hero-scrim"></div>
+  <canvas id="heroCanvas"></canvas>
+
+  <div class="hero-in">
+    <div class="spoiler"><i></i>全程不剧透 · 梗概止于第一幕</div>
+    <div class="kicker">日本电影经典 · <span>第 05 部</span> &nbsp;/&nbsp; Japan Classics</div>
+    <h1>攻壳机动队</h1>
+    <div class="h1-ja">攻殻機動隊</div>
+    <div class="h1-en">Ghost in the Shell &nbsp;·&nbsp; 1995 &nbsp;·&nbsp; Mamoru Oshii</div>
+    <p class="hero-line">2029 年，人的身体可以整件换掉，只剩脑子还是自己的。<br>那么<em>「你」</em>到底是指哪一部分？</p>
+    <div class="chips">
+      <span class="chip"><b>9.0</b>豆瓣 · 227,593 人</span>
+      <span class="chip"><b>7.9</b>IMDb</span>
+      <span class="chip m"><b>95%</b>烂番茄新鲜度</span>
+      <span class="chip"><b>76</b>Metacritic</span>
+      <span class="chip"><b>83</b>分钟</span>
+      <span class="chip">押井守 · Production I.G</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint"><span>SCROLL</span><i></i></div>
+</header>
+
+<nav class="motif" id="motif">
+  <div class="mh">殻 · The Shell</div>
+  <ul>
+    <li>義体</li>
+    <li>記憶</li>
+    <li>傀儡</li>
+    <li>潜航</li>
+    <li>殻</li>
+  </ul>
+</nav>
+<!-- ============ 01 故事 ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">01 &nbsp;/&nbsp; The Story</span>
+      <h2 class="sec-title">一具不属于任何人的义体，<i>在雨里跑了出来</i></h2>
+      <p class="sec-desc">这一段只讲到第一幕结束。后面发生了什么、那个东西到底是什么，一个字不写。</p>
+    </div>
+
+    <div class="lede">
+      <div class="body reveal">
+        <p>西历 2029 年，日本。城市叫新港市，海是填出来的，楼是往上长出来的。这个年份里最普通的一件事，是身体可以换：换一条腿、换一双手、换整张脸，都不算手术，算保养。人的神经被接进网络，脖子后面留一个接口，闭上眼睛就能下潜到别处去。</p>
+        <p>草薙素子属于换得最彻底的那一类。她只剩脑和一小段脊髓还是出生时带来的，其余全部是义体——<strong>一具按规格制造、可维修、可升级的壳</strong>。她的力气、视力、反应速度都远超常人，代价是她已经很久没有确认过：脑子里那些记忆，究竟是她自己活出来的，还是被别人写进去的。</p>
+        <p>她带的是公安九课，一个不写在任何公开编制里的部门。别的部门管治安，九课管的是另一种犯罪：有人能钻进别人的脑子，把一段根本不存在的经历装进去，让受害者坚信自己有过一个妻子、一个女儿、一段人生。这种事在 2029 年有一个专门的词，叫「ghost hack」——入侵的不是账户，是灵魂。</p>
+        <p>案子从一位外务省要员的翻译开始。她被人从内部改写了，说的话不是她自己要说的。九课顺着线摸过去，抓到一个在垃圾回收车上作业的中年男人。审到一半，事情开始不对：这个男人确实干了，但他不记得自己为什么要干；他记得自己有一个妻子和一个女儿，可档案里查不到这两个人——<strong>从来没有过。他为一个不存在的家，做了一件真实的事。</strong></p>
+        <p>与此同时，另一条线在城市的另一头悄悄接上。某家义体工厂的车间里，一具成品在没有任何订单的情况下被组装完成，然后在雨夜自己走了出去。它走上马路，被一辆卡车撞倒，拖回来的时候外壳还完好，编号查不到，审批记录是空的。九课把它接了下来，摆上解剖台。</p>
+        <p>巴特站在那具义体前面，说了一句让整个房间安静下来的话：这里面<strong>没有一颗脑细胞</strong>。全身都是机器，连一丝生物组织都没有。可是仪器显示，这具壳里有一个 ghost。</p>
+      </div>
+
+      <aside class="glance reveal">
+        <h3>一眼速览</h3>
+        <dl>
+          <dt>原名</dt><dd>攻殻機動隊<small>GHOST IN THE SHELL</small></dd>
+          <dt>导演</dt><dd>押井守<small>Mamoru Oshii</small></dd>
+          <dt>编剧</dt><dd>伊藤和典</dd>
+          <dt>原作</dt><dd>士郎正宗<small>1989 年起连载</small></dd>
+          <dt>制作</dt><dd>Production I.G</dd>
+          <dt>音乐</dt><dd>川井宪次</dd>
+          <dt>片长</dt><dd>83 分钟</dd>
+          <dt>公映</dt><dd>1995-11-18（日本）</dd>
+          <dt>分级</dt><dd>建议 15 岁以上<small>暴力、裸露的义体、密集的设定台词</small></dd>
+        </dl>
+        <p class="gnote">改编自士郎正宗 1989 年开始连载的漫画。押井守把原作里的插科打诨、技术解说和大量旁白几乎全删了，只留下一条冷的侦探线，和一条更冷的追问。</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 海报 ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02 &nbsp;/&nbsp; The Poster</span>
+      <h2 class="sec-title">这一期的概念海报，<i>是一张义体规格表</i></h2>
+      <p class="sec-desc">为这部片画的海报：不画脸，不画动作，只把「人」当成一件可以量产的工业品，摊在图纸上。</p>
+    </div>
+
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+          <svg viewBox="0 0 760 1040" role="img" aria-label="概念海报：一张全身义体的规格图纸，细线画出人体正视图、测量线与编号，右侧竖排片名">
+            <defs>
+              <pattern id="pgrid" width="38" height="38" patternUnits="userSpaceOnUse">
+                <path d="M38 0 L0 0 0 38" fill="none" stroke="#3ecfc4" stroke-width=".5" opacity=".09"/>
+              </pattern>
+              <linearGradient id="pfade" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#3ecfc4" stop-opacity=".16"/>
+                <stop offset="1" stop-color="#3ecfc4" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <rect width="760" height="1040" fill="#070a0c"/>
+            <rect width="760" height="1040" fill="url(#pgrid)"/>
+            <rect x="26" y="26" width="708" height="988" fill="none" stroke="#dfe7e9" stroke-opacity=".13"/>
+            <g stroke="#dfe7e9" stroke-opacity=".3" stroke-width="1">
+              <path d="M26 60 L26 26 L60 26"/><path d="M700 26 L734 26 L734 60"/>
+              <path d="M734 980 L734 1014 L700 1014"/><path d="M60 1014 L26 1014 L26 980"/>
+            </g>
+
+            <text x="60" y="88" font-family="'SFMono-Regular',Menlo,monospace" font-size="11.5" letter-spacing="5" fill="#3ecfc4" opacity=".85">GHOST IN THE SHELL</text>
+            <text x="60" y="112" font-family="'SFMono-Regular',Menlo,monospace" font-size="9" letter-spacing="3" fill="#7c8a8d">SHELL SPECIFICATION / TYPE-2501 / REV.05</text>
+            <line x1="60" y1="132" x2="300" y2="132" stroke="#3ecfc4" stroke-opacity=".35"/>
+
+            <!-- 竖排片名 -->
+            <g font-family="'Hiragino Mincho ProN','Songti SC',serif" font-size="47" fill="#eef5f5" letter-spacing="2">
+              <text x="646" y="186">攻</text>
+              <text x="646" y="244">殻</text>
+              <text x="646" y="302">機</text>
+              <text x="646" y="360">動</text>
+              <text x="646" y="418">隊</text>
+            </g>
+            <line x1="624" y1="160" x2="624" y2="440" stroke="#3ecfc4" stroke-opacity=".28"/>
+            <text x="600" y="470" font-family="'SFMono-Regular',Menlo,monospace" font-size="8.5" letter-spacing="2.6" fill="#7c8a8d" transform="rotate(90 600 470)">FULL-BODY PROSTHESIS</text>
+
+            <!-- 测量线 -->
+            <g stroke="#c33a6b" stroke-width=".7" stroke-opacity=".55">
+              <line x1="176" y1="250" x2="330" y2="250"/>
+              <line x1="176" y1="356" x2="330" y2="356"/>
+              <line x1="176" y1="468" x2="330" y2="468"/>
+              <line x1="176" y1="520" x2="330" y2="520"/>
+              <line x1="176" y1="652" x2="330" y2="652"/>
+              <line x1="176" y1="790" x2="330" y2="790"/>
+              <line x1="176" y1="246" x2="176" y2="254"/><line x1="176" y1="352" x2="176" y2="360"/>
+              <line x1="176" y1="464" x2="176" y2="472"/><line x1="176" y1="516" x2="176" y2="524"/>
+              <line x1="176" y1="648" x2="176" y2="656"/><line x1="176" y1="786" x2="176" y2="794"/>
+            </g>
+            <g font-family="'SFMono-Regular',Menlo,monospace" font-size="9" fill="#c33a6b" fill-opacity=".8" text-anchor="end">
+              <text x="166" y="254">01</text><text x="166" y="360">02</text><text x="166" y="472">03</text>
+              <text x="166" y="524">04</text><text x="166" y="656">05</text><text x="166" y="794">06</text>
+            </g>
+
+            <!-- 中轴 -->
+            <line x1="330" y1="228" x2="330" y2="806" stroke="#3ecfc4" stroke-width=".7" stroke-opacity=".22" stroke-dasharray="7 9"/>
+
+            <!-- 人体正视图 -->
+            <g fill="none" stroke="#3ecfc4" stroke-width="1.25" stroke-opacity=".8" stroke-linecap="round">
+              <ellipse cx="330" cy="286" rx="30" ry="36"/>
+              <path d="M316 318 L316 342 L344 342 L344 318"/>
+              <path d="M268 356 L392 356 L374 468 L384 520 L276 520 L286 468 Z"/>
+              <path d="M268 360 L248 452 L240 548"/>
+              <path d="M392 360 L412 452 L420 548"/>
+              <path d="M296 520 L292 652 L288 780"/>
+              <path d="M364 520 L368 652 L372 780"/>
+              <path d="M288 780 L272 792"/>
+              <path d="M372 780 L388 792"/>
+            </g>
+            <g fill="#070a0c" stroke="#3ecfc4" stroke-width="1.15" stroke-opacity=".8">
+              <circle cx="268" cy="356" r="6"/><circle cx="392" cy="356" r="6"/>
+              <circle cx="248" cy="452" r="5"/><circle cx="412" cy="452" r="5"/>
+              <circle cx="240" cy="548" r="5"/><circle cx="420" cy="548" r="5"/>
+              <circle cx="292" cy="652" r="5.5"/><circle cx="368" cy="652" r="5.5"/>
+              <circle cx="330" cy="356" r="2.4" fill="#c33a6b" stroke="none"/>
+            </g>
+            <!-- 颈部接口 -->
+            <rect x="326" y="334" width="8" height="4" fill="#c33a6b"/>
+
+            <!-- 引线 -->
+            <g stroke="#dfe7e9" stroke-width=".6" stroke-opacity=".28">
+              <path d="M362 286 L500 268 L556 268"/>
+              <path d="M394 404 L500 404 L556 404"/>
+              <path d="M374 656 L500 676 L556 676"/>
+            </g>
+            <g font-family="'Hiragino Mincho ProN','Songti SC',serif" font-size="10.5" fill="#aebbbe" fill-opacity=".8">
+              <text x="562" y="272">脳・脊髄のみ生体</text>
+              <text x="562" y="408">全身義体／交換可能</text>
+              <text x="562" y="680">関節／規格品</text>
+            </g>
+
+            <!-- 品红细线 -->
+            <line x1="60" y1="520" x2="330" y2="520" stroke="#c33a6b" stroke-width="1.2" stroke-opacity=".75"/>
+            <circle cx="60" cy="520" r="2.6" fill="#c33a6b"/>
+
+            <!-- 底部 -->
+            <line x1="60" y1="858" x2="500" y2="858" stroke="#dfe7e9" stroke-opacity=".16"/>
+            <g font-family="'SFMono-Regular',Menlo,monospace" font-size="9" letter-spacing="2.4" fill="#7c8a8d">
+              <text x="60" y="882">UNIT: STANDARD / MASS: UNLISTED</text>
+              <text x="60" y="902">MEMORY: UNVERIFIED SOURCE</text>
+            </g>
+            <g fill="#dfe7e9" fill-opacity=".5">
+              <rect x="60" y="922" width="2" height="30"/><rect x="65" y="922" width="5" height="30"/>
+              <rect x="73" y="922" width="1.5" height="30"/><rect x="78" y="922" width="3" height="30"/>
+              <rect x="84" y="922" width="6" height="30"/><rect x="93" y="922" width="1.5" height="30"/>
+              <rect x="98" y="922" width="4" height="30"/><rect x="105" y="922" width="2" height="30"/>
+              <rect x="110" y="922" width="5" height="30"/><rect x="118" y="922" width="1.5" height="30"/>
+              <rect x="123" y="922" width="3" height="30"/><rect x="129" y="922" width="6" height="30"/>
+              <rect x="138" y="922" width="2" height="30"/>
+            </g>
+
+            <!-- 印章 -->
+            <g transform="translate(612,880)">
+              <rect x="0" y="0" width="66" height="66" fill="none" stroke="#c33a6b" stroke-width="1.4" stroke-opacity=".75"/>
+              <text x="33" y="46" font-family="'Hiragino Mincho ProN','Songti SC',serif" font-size="36" fill="#c33a6b" fill-opacity=".9" text-anchor="middle">殻</text>
+            </g>
+          </svg>
+        </div>
+        <p class="poster-cap">CONCEPT POSTER · NO.05 · 760 × 1040</p>
+      </div>
+
+      <div class="pnotes reveal">
+        <div class="pnote">
+          <div class="pn">READING 01</div>
+          <h4>为什么没有脸</h4>
+          <p>规格图上的人形，五官位置是空的。这不是省事——在这部片的设定里，脸和手脚一样，是可选配件。不画脸，等于把「这个人是谁」这个问题直接留白。</p>
+        </div>
+        <div class="pnote">
+          <div class="pn">READING 02</div>
+          <h4>六条横线，量的不是身材</h4>
+          <p>01 到 06 从头顶量到脚底：头、肩、腰、髋、膝、地。工业图纸量的是公差，不是美。把人量成六个数字，是这部片最客气的一种残忍。</p>
+        </div>
+        <div class="pnote">
+          <div class="pn">READING 03</div>
+          <h4>整张图只有一处彩色</h4>
+          <p>青是机器的颜色，白是纸的颜色。品红只出现在三个地方：腰线那道横线、脖子后面的接口、右下角的印章。三处都是「从这里开始，人和壳分不清」的位置。</p>
+        </div>
+        <div class="pnote">
+          <div class="pn">READING 04</div>
+          <h4>片名竖着压在右边</h4>
+          <p>五个字从上往下排，像贴在电线杆上的招租广告，也像一列往下掉的坐标。它不解释任何东西，只负责让这张图纸看起来像一件已经出厂、正在等人认领的东西。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 档案 ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03 &nbsp;/&nbsp; The File</span>
+      <h2 class="sec-title">影片档案</h2>
+      <p class="sec-desc">二十格硬信息，外加一行判词。各库口径不一致的地方，格子里直接标出来。</p>
+    </div>
+
+    <dl class="spec reveal">
+      <div><dt>Original</dt><dd><b>攻殻機動隊</b><small>GHOST IN THE SHELL / Kôkaku Kidôtai</small></dd></div>
+      <div><dt>中文名</dt><dd><b>攻壳机动队</b><small>港译《攻壳机动队》，台译《攻壳机动队》</small></dd></div>
+      <div><dt>年份</dt><dd><b>1995</b><small>日本平成七年</small></dd></div>
+      <div><dt>导演</dt><dd><b>押井守</b><small>Mamoru Oshii</small></dd></div>
+      <div><dt>编剧</dt><dd><b>伊藤和典</b><small>改编自士郎正宗同名漫画</small></dd></div>
+      <div><dt>原作</dt><dd><b>士郎正宗</b><small>1989 年讲谈社《Young Magazine》</small></dd></div>
+      <div><dt>动画制作</dt><dd><b>Production I.G</b><small>押井守的长期合作方</small></dd></div>
+      <div><dt>制片</dt><dd><b>水尾芳正 / 松本健</b><small>弥富健一 / 石川光久</small></dd></div>
+      <div><dt>音乐</dt><dd><b>川井宪次</b><small>《七剑》《午夜凶铃》配乐</small></dd></div>
+      <div><dt>角色设计</dt><dd><b>冲浦启之</b><small>兼作画监督；后执导《给小桃的信》</small></dd></div>
+      <div><dt>美术监督</dt><dd><b>小仓宏昌</b><small>新港市的城市质感由他定调</small></dd></div>
+      <div><dt>摄影</dt><dd><b>白井久男</b><small>Hisao Shirai</small></dd></div>
+      <div><dt>剪辑</dt><dd><b>挂须秀一</b><small>Shuichi Kakesu</small></dd></div>
+      <div><dt>配音</dt><dd><b>田中敦子 / 大塚明夫</b><small>山寺宏一 / 大木民夫 / 家弓家正</small></dd></div>
+      <div><dt>片长</dt><dd><b>83 分钟</b><small>另有 82 分钟口径；2.0 版 85 分钟</small></dd></div>
+      <div><dt>日本公映</dt><dd><b>1995-11-18</b><small>松竹发行</small></dd></div>
+      <div><dt>首映</dt><dd><b>1995-09</b><small>东京国际电影节</small></dd></div>
+      <div><dt>中国大陆</dt><dd><b>2025-05-10</b><small>4K 修复版，首次院线公映</small></dd></div>
+      <div><dt>北美发行</dt><dd><b>1996-02</b><small>Manga Entertainment</small></dd></div>
+      <div><dt>续作</dt><dd><b>《无罪》2004</b><small>同一导演，戛纳主竞赛</small></dd></div>
+      <div class="wide"><dt>一句话</dt><dd>它不是一部关于机器的电影，是一部关于「记忆算不算我」的电影。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ 04 口碑 ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04 &nbsp;/&nbsp; The Numbers</span>
+      <h2 class="sec-title">四个分数，<i>和四处需要说明的地方</i></h2>
+      <p class="sec-desc">分数都很高，但每一个背后都有一点容易被读错的东西。下面逐条标出来。</p>
+    </div>
+
+    <div class="scores reveal">
+      <div class="score">
+        <div class="src">豆瓣 / Douban</div>
+        <div class="num">9.0<span>/ 10</span></div>
+        <div class="tail">227,593 人评价 · 五星 60.4%<br>豆瓣电影 Top 250 第 244 位（名次会浮动）</div>
+      </div>
+      <div class="score">
+        <div class="src">IMDb</div>
+        <div class="num">7.9<span>/ 10</span></div>
+        <div class="tail">约 17.4 万票<br>在 IMDb 的动画长片里属于高位，但不是榜首</div>
+      </div>
+      <div class="score">
+        <div class="src">Rotten Tomatoes</div>
+        <div class="num">95<span>%</span></div>
+        <div class="tail">影评人新鲜度<br>这是「好评比例」，不是百分制得分</div>
+      </div>
+      <div class="score">
+        <div class="src">Metacritic</div>
+        <div class="num">76<span>/ 100</span></div>
+        <div class="tail">专业影评加权均分<br>在 1995 年的动画片里属于相当高的一档</div>
+      </div>
+    </div>
+
+    <div class="note reveal">
+      <span class="nt">口径提示 · READ BEFORE QUOTING</span>
+      <b>一、安妮奖五项提名，零获奖。</b>1996 年第 24 届安妮奖，它拿到最佳动画长片、导演、制片、美术设计、编剧五项提名，五项全败给《玩具总动员》。同一年、同一个奖、两种完全不同的动画。<br>
+      <b>二、它在日本国内没拿学院奖。</b>日本电影学院奖当年把最佳影片给了真人片，这部动画连提名都没有出现在主要奖项里。它后来的地位，是海外给的。<br>
+      <b>三、片长有三个数。</b>82 分钟、83 分钟都有人用（差在片头厂标算不算）；2008 年的 2.0 版是 85 分钟。<br>
+      <b>四、制作费和票房的公开口径互相打架。</b>有 3 亿日元、300 万美元、1000 万美元几种说法，彼此差着一个量级。所以本页不给单一数字——它本来也不是靠院线赚钱的片子，它的钱是从录像带里回来的。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 人物 ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">05 &nbsp;/&nbsp; The People</span>
+      <h2 class="sec-title">六个人，<i>和六种「我还是不是我」的程度</i></h2>
+      <p class="sec-desc">这里只写他们在故事开始时是什么人、想要什么。谁后来做了什么，一个字不写。</p>
+    </div>
+
+    <div class="people reveal">
+      <div class="person">
+        <div class="idx">01 / SECTION 9</div>
+        <h4>草薙素子</h4>
+        <div class="jp">草薙素子 / Motoko Kusanagi</div>
+        <p>公安九课队长。全身义体，只剩脑和一小段脊髓是生体。力气、反应、视力都远超人类，代价是她对自己身体的每一寸都没有感觉——除了脑子里的记忆。</p>
+        <div class="want"><b>她要什么</b>一个能证明「这些记忆确实是我活过的」的证据。</div>
+      </div>
+      <div class="person">
+        <div class="idx">02 / SECTION 9</div>
+        <h4>巴特</h4>
+        <div class="jp">バトー / Batou</div>
+        <p>素子的搭档，也是九课里最像「老兵」的人。同样重度义体化，但他保留了更多属于自己的东西——包括一副自己挑的军用义眼，和一条每天喂的狗。</p>
+        <div class="want"><b>他要什么</b>把活干完，然后把搭档完整地带回来。</div>
+      </div>
+      <div class="person">
+        <div class="idx">03 / SECTION 9</div>
+        <h4>托古萨</h4>
+        <div class="jp">トグサ / Togusa</div>
+        <p>九课里几乎没做过改造的人，脑子还是原装的，配枪是一把老式左轮。他被选进这支队伍的理由，素子当面跟他讲过：全都一样，就等于只有一种看法。</p>
+        <div class="want"><b>他要什么</b>证明自己这个「没升级过的人」还有用。</div>
+      </div>
+      <div class="person">
+        <div class="idx">04 / SECTION 9</div>
+        <h4>荒卷大辅</h4>
+        <div class="jp">荒巻大輔 / Daisuke Aramaki</div>
+        <p>九课部长。一个几乎没改造过的老头，在一屋子义体人中间坐着，靠的不是武力，是对官僚系统每一条缝的熟悉。他护着素子，也管着她。</p>
+        <div class="want"><b>他要什么</b>让九课活下去，别被别的部门吃掉。</div>
+      </div>
+      <div class="person">
+        <div class="idx">05 / UNKNOWN</div>
+        <h4>傀儡师</h4>
+        <div class="jp">人形使い / The Puppet Master</div>
+        <p>九课在追的那个东西。它不进系统偷数据，它进人的脑子改记忆，让受害者替它做事而毫不知情。手法干净，动机不明，看上去不像一个人。</p>
+        <div class="want"><b>它要什么</b>它没有提过要求。这才是最麻烦的部分。</div>
+      </div>
+      <div class="person">
+        <div class="idx">06 / SECTION 6</div>
+        <h4>中村</h4>
+        <div class="jp">ナカムラ / Nakamura</div>
+        <p>公安六课的人，管外务省那条线。他不算反派，他只是另一个部门——同样在办案，同样要立功，同样觉得九课碍事。官僚系统在这部片里比黑客更难缠。</p>
+        <div class="want"><b>他要什么</b>把案子收回到六课名下，顺手把九课踢出去。</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ 06 镜头 ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">06 &nbsp;/&nbsp; The Shots</span>
+      <h2 class="sec-title">五个镜头，<i>把这片的野心全暴露了</i></h2>
+      <p class="sec-desc">这五段都发生在影片前段或属于形式层面，写出来不影响你看第一遍。真正的转折，一处都没碰。</p>
+    </div>
+
+    <div class="moves reveal">
+      <div class="move">
+        <div class="no">01</div>
+        <div>
+          <h4>开场：一具身体被造出来<em>ASSEMBLY</em></h4>
+          <p>没有对白，没有字幕交代背景。先出现骨架，然后是肌肉纤维，然后是皮肤，最后一双眼睛睁开。整个过程像一条生产线，也像一次外科手术，背景里是川井宪次那段像诵经一样的合唱。全片最著名的一段，也是它最不客气的一次表态：这个人，是从流水线上下来的。</p>
+        </div>
+      </div>
+      <div class="move">
+        <div class="no">02</div>
+        <div>
+          <h4>城市蒙太奇：三分钟不说一句话<em>CITY</em></h4>
+          <p>雨、招牌、水面、玻璃上的反光、船从桥下过。整整一段只有音乐和画面，没有任何人开口。押井守在这里做的不是铺垫，是宣告：这座城市才是真正的主角，人物只是它的一个零件。</p>
+        </div>
+      </div>
+      <div class="move">
+        <div class="no">03</div>
+        <div>
+          <h4>潜水之后：一段浮在水面上的对话<em>DIALOGUE</em></h4>
+          <p>素子潜到海里，巴特在船上等。义体的密度比水大，理论上她不该下水——这段对话就是从这里开始的。全片最重要的一次自我追问，不是说给观众听的独白，是两个人在等船回去的时候，随口聊出来的。</p>
+        </div>
+      </div>
+      <div class="move">
+        <div class="no">04</div>
+        <div>
+          <h4>光学迷彩：看不见的人在打<em>CAMOUFLAGE</em></h4>
+          <p>九课的标配是热光学迷彩，启动之后人几乎完全透明，只剩下空气被挤压时的一点扭曲。动作戏在全片里占比很小，但每一场都用「看不见」这件事在讲主题：一个看不见的人，怎么证明自己在这儿。</p>
+        </div>
+      </div>
+      <div class="move">
+        <div class="no">05</div>
+        <div>
+          <h4>最后一镜：它没有用爆炸收尾<em>LAST FRAME</em></h4>
+          <p>这里一个字都不能写。只能告诉你它的形状：不是胜利，不是牺牲，不是解释。是一个很静的画面，配一句问句，而那句问句的主语不是「人类」，是「我」。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 荣誉 ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">07 &nbsp;/&nbsp; The Honours</span>
+      <h2 class="sec-title">奖拿得不多，<i>位置却站得很稳</i></h2>
+      <p class="sec-desc">它在自己的国家没被奖项接住，是海外先认了它。这一段最该读的是下面那条注。</p>
+    </div>
+
+    <div class="awards reveal">
+      <div class="award">
+        <div class="yr">1996</div>
+        <h4>横滨电影节 · 最佳剧本</h4>
+        <p>伊藤和典。把一部设定密集的漫画改成一条干净的侦探线，靠的就是这个剧本。</p>
+      </div>
+      <div class="award">
+        <div class="yr">1997</div>
+        <h4>World Animation Celebration · 最佳剧场动画 + 最佳导演</h4>
+        <p>两项最高奖同时拿到。这个奖今天知道的人不多，但在当年是北美动画工业对它的正式承认。</p>
+      </div>
+      <div class="award">
+        <div class="yr">1997</div>
+        <h4>Fantasporto · 国际奖特别提及</h4>
+        <p>葡萄牙波尔图的奇幻影展。它从这里开始进入欧洲艺术院线的视野。</p>
+      </div>
+      <div class="award">
+        <div class="yr">1996</div>
+        <h4>第 24 届安妮奖 · 五项提名</h4>
+        <p>最佳动画长片、导演、制片、美术设计、编剧。五项全败给《玩具总动员》——同一年的两种动画，后来的三十年各走了一条路。</p>
+      </div>
+    </div>
+
+    <div class="note reveal">
+      <span class="nt">它真正的奖杯 · THE REAL LEGACY</span>
+      <b>1996 年 8 月，它成了第一部登顶 Billboard 录像带销量榜的日本电影</b>，VHS 卖出二十多万盒。到 2002 年，全球家庭录像累计超过 160 万份，其中美国超过 100 万——一部院线票房不高的动画，是从客厅里被看见的。<br>
+      然后是它留下的东西：沃卓斯基姐妹把这部片放给制片人看，说要「把这个拍成真的」，《黑客帝国》里从后颈接入、绿色的数据雨，都能在这里找到原型；卡梅隆在多个场合谈过它对《阿凡达》的影响。今天所有关于「意识能不能上传」的电影，都在这条线上。
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 谱系 ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">08 &nbsp;/&nbsp; The Lineage</span>
+      <h2 class="sec-title">从雨夜的城市，<i>到雨夜里的一个「我」</i></h2>
+      <p class="sec-desc">按年份排。这条线上，每一部解决的是不同的问题——前两部问世界，这一部开始问自己。</p>
+    </div>
+
+    <div class="lineage reveal">
+      <div class="lnode">
+        <div class="dot"></div>
+        <div class="y">1982</div>
+        <h5>银翼杀手</h5>
+        <p>雨、霓虹、永远不天亮的城市。它给了赛博朋克一套视觉，也第一次问了「人造的东西算不算人」。</p>
+      </div>
+      <div class="lnode">
+        <div class="dot"></div>
+        <div class="y">1988</div>
+        <h5>阿基拉</h5>
+        <p>手绘动画的体力极限。东京在画面里一块一块塌下去，证明动画可以拍出真人拍不出的规模。</p>
+      </div>
+      <div class="lnode now">
+        <div class="dot"></div>
+        <div class="y">1995</div>
+        <h5>攻壳机动队</h5>
+        <p>把问题从「世界会变成什么样」换成「我会变成什么样」。从此科幻片的主角不再是城市，是意识。</p>
+      </div>
+      <div class="lnode">
+        <div class="dot"></div>
+        <div class="y">1999</div>
+        <h5>黑客帝国</h5>
+        <p>把它变成真人电影，也把它变成大众商品。后颈接口和数据雨，几乎是逐帧的致敬。</p>
+      </div>
+      <div class="lnode">
+        <div class="dot"></div>
+        <div class="y">2004</div>
+        <h5>无罪</h5>
+        <p>同一个导演的续作，主角换成巴特。第一部入围戛纳主竞赛的日本动画长片。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 六宫格 ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">09 &nbsp;/&nbsp; Six Things</span>
+      <h2 class="sec-title">六个具体的看点</h2>
+      <p class="sec-desc">不涉及情节走向，只讲它由什么构成。</p>
+    </div>
+
+    <div class="grid6 reveal">
+      <div class="cell">
+        <div class="cn">01</div>
+        <h4>义体</h4>
+        <p>全身替换在片子里不是奇观，是日常。人们讨论换手换眼像讨论换手机，只有素子一个人在为「换到什么程度就不算我」发愁。</p>
+      </div>
+      <div class="cell">
+        <div class="cn">02</div>
+        <h4>光学迷彩</h4>
+        <p>透明的不是人，是光。片子里最好的动作场面都发生在「看不见对手」的前提下，镜头因此必须比观众更清楚——它偏不。</p>
+      </div>
+      <div class="cell">
+        <div class="cn">03</div>
+        <h4>新港市</h4>
+        <p>一座填海造出来的城市，河道、高架、密集的招牌、永远在下雨。它不是未来感，是「再发展二十年就会变成这样」的香港。</p>
+      </div>
+      <div class="cell">
+        <div class="cn">04</div>
+        <h4>Ghost</h4>
+        <p>这部片里最重要的一个词，也是最难翻译的一个词。它不是灵魂，不是意识，更像是「使这具壳成为某个特定个体的那一小团东西」。</p>
+      </div>
+      <div class="cell">
+        <div class="cn">05</div>
+        <h4>川井宪次的合唱</h4>
+        <p>主题曲不是电子乐，是一段仿古语的男声合唱，像诵经，也像民谣。放在赛博城市上，古今错位得让人发凉。</p>
+      </div>
+      <div class="cell">
+        <div class="cn">06</div>
+        <h4>83 分钟</h4>
+        <p>今天一部科幻片要两个半小时才敢把话说完。这部片子用 83 分钟讲完了一个案件的全程，还留出了发呆的时间。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 为何值得看 ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">10 &nbsp;/&nbsp; Why It Matters</span>
+      <h2 class="sec-title">为什么今天还值得看</h2>
+    </div>
+
+    <div class="why">
+      <div class="wh reveal">
+        <div class="wn">01</div>
+        <div>
+          <h4>因为它比今天大多数「AI 电影」早问了三十年</h4>
+          <p>现在的科幻片多半在问：机器会不会害我们。这部片在 1995 年问的是另一个方向的问题——如果机器已经足够像人，那么「人」这个身份还剩什么用？它不给答案，也不打算给。你看完会发现自己其实一直在替素子回答这个问题，而且答不上来。</p>
+        </div>
+      </div>
+      <div class="wh reveal">
+        <div class="wn">02</div>
+        <div>
+          <h4>因为它是手绘动画最后的技术极限之一</h4>
+          <p>赛璐珞上色、光学合成、少量刚刚可用的 CGI——这三样东西在这部片里第一次被捏在了一起，而且没有一处露怯。城市的光、水面的反射、义体皮肤上的湿气，全是人手一张一张画出来的。再过五年，这套工艺就消失了。</p>
+        </div>
+      </div>
+      <div class="wh reveal">
+        <div class="wn">03</div>
+        <div>
+          <h4>因为 83 分钟里没有一个过场镜头</h4>
+          <p>它没有为了让你放松而安排的打斗，没有为了交代设定而安排的旁白，也没有为了讨好谁而安排的爱情线。每一分钟都在推进案件或者推进那个问题，有时候两件事同时推进。这种密度在今天几乎是奢侈的。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11 观影提示 ============ -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">11 &nbsp;/&nbsp; Before You Watch</span>
+      <h2 class="sec-title">看之前，三件事</h2>
+    </div>
+
+    <div class="tips reveal">
+      <div class="tip">
+        <div class="tt">VERSION</div>
+        <h4>先看 1995 原版，不看 2.0</h4>
+        <p>2008 年的《2.0》把部分镜头换成了全 CGI、重新配了音、片长变 85 分钟，画面更亮更锐，但原来那种胶片的脏和闷没了。第一次看，选原版。</p>
+      </div>
+      <div class="tip">
+        <div class="tt">SOUND</div>
+        <h4>用好一点的设备，别用手机外放</h4>
+        <p>这部片的对白很少，声音承担了一半的叙事。川井宪次那段合唱如果被压成手机喇叭里的背景音，整部片会掉一个档。</p>
+      </div>
+      <div class="tip">
+        <div class="tt">PATIENCE</div>
+        <h4>前二十分钟别暂停查设定</h4>
+        <p>它不解释术语，只让你跟着走。第一遍看不懂的地方，第二遍会自己接上——这部片是少数「看第二遍才完整」的电影，而且第二遍不比第一遍差。</p>
+      </div>
+    </div>
+
+    <div class="verdict reveal">
+      <p class="vq">它问的不是「机器会不会变成人」，<br>而是<em>「人把自己换成机器之后，凭什么还说自己是人」</em>。<br>这个问题，1995 年问出来，今天还没有答案。</p>
+      <div class="vsrc">本页判词 · 非片中台词</div>
+      <div class="vseal"><b>攻殻</b><span>NO.05</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <span>日本电影经典推荐 · 第 05 部<br>《攻壳机动队》攻殻機動隊 / Ghost in the Shell（1995）</span>
+  <span>数据核对于 2026-10-28：豆瓣 9.0（227,593 人）/ IMDb 7.9 / 烂番茄 95% / Metacritic 76<br>本页全程不剧透，梗概止于第一幕。</span>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- 雨 ---- */
+  var cv = document.getElementById('heroCanvas');
+  if (cv && !reduce) {
+    var ctx = cv.getContext('2d'), W = 0, H = 0, DPR = 1, drops = [];
+    function resize(){
+      DPR = Math.min(window.devicePixelRatio || 1, 2);
+      W = cv.clientWidth; H = cv.clientHeight;
+      cv.width = Math.floor(W * DPR); cv.height = Math.floor(H * DPR);
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      var n = Math.round(W * H / 9200);
+      if (n > 260) n = 260;
+      drops = [];
+      for (var i = 0; i < n; i++) {
+        drops.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          len: 7 + Math.random() * 20,
+          sp: 1.5 + Math.random() * 3.4,
+          o: 0.05 + Math.random() * 0.15
+        });
+      }
+    }
+    function tick(){
+      ctx.clearRect(0, 0, W, H);
+      ctx.lineCap = 'round';
+      for (var i = 0; i < drops.length; i++) {
+        var d = drops[i];
+        ctx.strokeStyle = 'rgba(196,238,232,' + d.o + ')';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(d.x, d.y);
+        ctx.lineTo(d.x - 2.4, d.y + d.len);
+        ctx.stroke();
+        d.y += d.sp; d.x -= 0.55;
+        if (d.y > H + 40) { d.y = -40; d.x = Math.random() * W; }
+        if (d.x < -20) { d.x = W + 10; }
+      }
+      requestAnimationFrame(tick);
+    }
+    resize();
+    tick();
+    window.addEventListener('resize', resize);
+  }
+
+  /* ---- 入场 ---- */
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.06 });
+    items.forEach(function(el){ io.observe(el); });
+  } else {
+    items.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---- HUD ---- */
+  var motif = document.getElementById('motif');
+  var marks = motif ? motif.querySelectorAll('li') : [];
+  var ticking = false;
+  function paint(){
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    var ih = window.innerHeight;
+    if (motif) {
+      if (y > ih * 0.5) { motif.classList.add('on'); } else { motif.classList.remove('on'); }
+    }
+    var total = document.body.scrollHeight - ih;
+    var p = total > 0 ? y / total : 0;
+    if (p < 0) p = 0; if (p > 1) p = 1;
+    var idx = Math.floor(p * marks.length);
+    if (idx > marks.length - 1) idx = marks.length - 1;
+    marks.forEach(function(el, i){ el.classList.toggle('a', i === idx); });
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if (!ticking) { ticking = true; requestAnimationFrame(paint); }
+  }, { passive: true });
+  paint();
+})();
+</script>
+</body>
+</html>

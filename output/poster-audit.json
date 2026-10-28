@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T04:23:45.425Z",
+  "generatedAt": "2026-10-28T04:08:10.980Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 141,
+  "total": 142,
   "ok": 85,
-  "warn": 56,
+  "warn": 57,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 125,
+    "checked": 126,
     "skippedVerified": 16,
     "error": null
   },
@@ -2167,6 +2167,57 @@
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（img.doooor.com）"
+        }
+      ]
+    },
+    {
+      "id": "20261028-gits",
+      "zhTitle": "攻壳机动队",
+      "sourceTitle": "攻壳机动队(1995) - 电影海报|电影台词 - 影库",
+      "year": "1995",
+      "source": "本地",
+      "imageUrl": "posters/20261028-gits.jpg",
+      "host": "mdb.yuncongz.com",
+      "tier": "unknown",
+      "size": "149KB",
+      "dims": "720×1066",
+      "ratio": 1.48,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「攻壳机动队」",
+          "年份命中 1995"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "GHOST金 SHELL",
+        "reasons": [
+          "图片最大文字为“GHOST金 SHELL”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（mdb.yuncongz.com）"
+        },
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“GHOST金 SHELL”没有对上片名，建议核对"
         }
       ]
     },
