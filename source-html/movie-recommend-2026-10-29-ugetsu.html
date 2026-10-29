@@ -698,6 +698,10 @@
                 <stop offset=".6" stop-color="#8d8570" stop-opacity="0"/>
                 <stop offset="1" stop-color="#8d8570" stop-opacity=".26"/>
               </radialGradient>
+              <linearGradient id="lakefade" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2b342d" stop-opacity=".22"/>
+                <stop offset="1" stop-color="#2b342d" stop-opacity="0"/>
+              </linearGradient>
               <radialGradient id="plamp" cx="50%" cy="50%" r="50%">
                 <stop offset="0" stop-color="#e8b469" stop-opacity=".55"/>
                 <stop offset=".55" stop-color="#d79a4d" stop-opacity=".16"/>
@@ -729,47 +733,56 @@
             <rect x="18" y="18" width="724" height="1004" fill="none" stroke="#3a4038" stroke-opacity=".22"/>
             <rect x="34" y="34" width="692" height="972" fill="none" stroke="#3a4038" stroke-opacity=".40"/>
 
-            <!-- 淡墨：远山三层 -->
-            <g filter="url(#wash2)">
-              <path d="M34,486 L118,452 L182,470 L246,438 L318,472 L386,448 L452,478 L520,458 L586,482 L656,464 L726,484 L726,512 L34,512 Z" fill="#3f4a44" opacity=".13"/>
+            <!-- 淡墨：远山三层，越近越深，底边化进水里 -->
+            <g filter="url(#wash2)" opacity=".55">
+              <path d="M34,492 L96,470 L150,484 L196,456 L248,478 L286,448 L342,476 L396,452 L446,480 L508,458 L560,482 L616,462 L672,486 L726,470 L726,520 L34,520 Z" fill="#59645a" opacity=".22"/>
             </g>
             <g filter="url(#wash)">
-              <path d="M34,512 L120,480 L196,502 L268,474 L340,506 L412,482 L488,510 L560,490 L632,512 L726,496 L726,540 L34,540 Z" fill="#2f3a35" opacity=".20"/>
+              <path d="M34,518 L88,498 L140,512 L186,486 L236,508 L276,480 L330,506 L382,484 L434,510 L492,490 L546,512 L604,494 L660,514 L726,500 L726,548 L34,548 Z" fill="#3f4a42" opacity=".26"/>
             </g>
             <g filter="url(#wash)">
-              <path d="M34,540 L138,520 L232,536 L318,518 L402,540 L492,522 L578,542 L660,526 L726,538 L726,560 L34,560 Z" fill="#2a342f" opacity=".26"/>
+              <path d="M34,546 L110,530 L168,542 L210,520 L262,540 L312,522 L362,544 L420,528 L470,548 L530,532 L588,550 L648,536 L726,548 L726,566 L34,566 Z" fill="#2b342d" opacity=".30"/>
             </g>
+            <path d="M34,546 L110,530 L168,542 L210,520 L262,540 L312,522 L362,544 L420,528 L470,548 L530,532 L588,550 L648,536 L726,548" fill="none" stroke="#2b342d" stroke-width="1.1" opacity=".26"/>
+            <rect x="34" y="548" width="692" height="22" fill="url(#lakefade)"/>
 
             <!-- 湖面 -->
-            <rect x="34" y="558" width="692" height="448" fill="url(#lake)"/>
-            <g stroke="#3f4a44" stroke-linecap="round" opacity=".16">
-              <line x1="76" y1="596" x2="196" y2="596" stroke-width=".8"/>
-              <line x1="252" y1="614" x2="410" y2="614" stroke-width=".7"/>
-              <line x1="470" y1="600" x2="626" y2="600" stroke-width=".8"/>
-              <line x1="96" y1="640" x2="286" y2="640" stroke-width=".9"/>
-              <line x1="540" y1="636" x2="690" y2="636" stroke-width=".8"/>
-              <line x1="60" y1="682" x2="200" y2="682" stroke-width=".8"/>
-              <line x1="600" y1="690" x2="700" y2="690" stroke-width=".7"/>
-              <line x1="120" y1="818" x2="300" y2="818" stroke-width=".9"/>
-              <line x1="470" y1="842" x2="660" y2="842" stroke-width=".8"/>
+            <rect x="34" y="562" width="692" height="444" fill="url(#lake)"/>
+            <g stroke="#3f4a44" stroke-linecap="round" opacity=".14">
+              <line x1="86" y1="604" x2="188" y2="604" stroke-width=".7"/>
+              <line x1="268" y1="622" x2="396" y2="622" stroke-width=".6"/>
+              <line x1="486" y1="608" x2="606" y2="608" stroke-width=".7"/>
+              <line x1="108" y1="648" x2="264" y2="648" stroke-width=".8"/>
+              <line x1="556" y1="644" x2="678" y2="644" stroke-width=".7"/>
+              <line x1="66" y1="690" x2="182" y2="690" stroke-width=".7"/>
+              <line x1="612" y1="698" x2="700" y2="698" stroke-width=".6"/>
+              <line x1="132" y1="836" x2="292" y2="836" stroke-width=".8"/>
+              <line x1="486" y1="858" x2="648" y2="858" stroke-width=".7"/>
             </g>
 
-            <!-- 船：小，且是画面里唯一的重色 -->
+            <!-- 船：小，是画面里唯一的重色 -->
             <g>
-              <ellipse cx="352" cy="762" rx="70" ry="6" fill="#3f4a44" opacity=".18" filter="url(#pblur)"/>
-              <path d="M286,726 C314,722 388,722 414,725 C408,739 376,747 338,747 C302,747 278,739 282,728 Z" fill="#20261f" opacity=".88"/>
-              <path d="M412,725 L427,717 L429,721 L414,727 Z" fill="#20261f" opacity=".9"/>
-              <path d="M288,727 C316,723 386,723 412,726" fill="none" stroke="#5d6a5c" stroke-width=".9" opacity=".5"/>
-              <g stroke="#20261f" stroke-width="1.5" fill="none" opacity=".7">
-                <path d="M436,742 C444,730 448,720 446,708"/>
-              </g>
-              <circle cx="446" cy="706" r="26" fill="url(#plamp)"/>
-              <rect x="441" y="700" width="9" height="1.6" fill="#3a4038"/>
-              <rect x="438.5" y="703" width="14" height="11" rx="1.6" fill="#d99b4c" opacity=".92"/>
-              <rect x="436.5" y="700.5" width="18" height="2.4" fill="#3a4038"/>
-              <rect x="437.5" y="713.5" width="16" height="2" fill="#3a4038"/>
-              <ellipse cx="445.5" cy="708.5" rx="3.4" ry="4.4" fill="#fdf0d2" opacity=".5"/>
-              <ellipse cx="446" cy="770" rx="7" ry="20" fill="#d79a4d" opacity=".13" filter="url(#pblur2)"/>
+              <ellipse cx="352" cy="744" rx="66" ry="5" fill="#3f4a44" opacity=".16" filter="url(#pblur)"/>
+              <!-- 舱内：比船身高一档，才读得出「船」不是「叶」 -->
+              <path d="M300,712 C334,705 390,703 414,708 C386,717 334,719 300,712 Z" fill="#5b6658" opacity=".55"/>
+              <!-- 船体 -->
+              <path d="M296,711 C300,725 336,734 362,734 C390,734 407,721 414,708 C403,717 372,720 360,720 C334,720 308,718 296,711 Z" fill="#1d241e" opacity=".92"/>
+              <!-- 船舷一道纸白，把船从水里剥出来 -->
+              <path d="M296,711 C330,718 380,717 414,708" fill="none" stroke="#efeade" stroke-width=".9" stroke-opacity=".65"/>
+              <!-- 船尾方框 / 船首立柱 -->
+              <path d="M296,710 L296,722" stroke="#1d241e" stroke-width="2"/>
+              <path d="M413,709 L416,701" stroke="#1d241e" stroke-width="2"/>
+              <!-- 横板一道 -->
+              <path d="M344,708 L345,716" stroke="#3a4438" stroke-width="1.4" opacity=".45"/>
+
+              <!-- 灯：立在船头 -->
+              <rect x="404" y="694" width="1.6" height="15" fill="#2b3229"/>
+              <circle cx="405" cy="700" r="24" fill="url(#plamp)"/>
+              <rect x="400" y="690" width="11" height="2" fill="#2b3229"/>
+              <rect x="399" y="692" width="13" height="10" rx="1.4" fill="#e0a55a" opacity=".95"/>
+              <rect x="398" y="701.4" width="15" height="1.8" fill="#2b3229"/>
+              <ellipse cx="405.5" cy="697" rx="2.6" ry="3.4" fill="#fdf3dd" opacity=".6"/>
+              <ellipse cx="405" cy="748" rx="6" ry="18" fill="#d79a4d" opacity=".12" filter="url(#pblur2)"/>
             </g>
 
             <!-- 芦苇：左下 -->
