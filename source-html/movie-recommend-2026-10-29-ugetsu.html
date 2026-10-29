@@ -699,7 +699,8 @@
                 <stop offset="1" stop-color="#8d8570" stop-opacity=".26"/>
               </radialGradient>
               <linearGradient id="lakefade" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#2b342d" stop-opacity=".22"/>
+                <stop offset="0" stop-color="#2b342d" stop-opacity=".17"/>
+                <stop offset=".55" stop-color="#2b342d" stop-opacity=".06"/>
                 <stop offset="1" stop-color="#2b342d" stop-opacity="0"/>
               </linearGradient>
               <radialGradient id="plamp" cx="50%" cy="50%" r="50%">
@@ -740,15 +741,14 @@
             <g filter="url(#wash)">
               <path d="M34,518 L88,498 L140,512 L186,486 L236,508 L276,480 L330,506 L382,484 L434,510 L492,490 L546,512 L604,494 L660,514 L726,500 L726,548 L34,548 Z" fill="#3f4a42" opacity=".26"/>
             </g>
-            <g filter="url(#wash)">
-              <path d="M34,546 L110,530 L168,542 L210,520 L262,540 L312,522 L362,544 L420,528 L470,548 L530,532 L588,550 L648,536 L726,548 L726,566 L34,566 Z" fill="#2b342d" opacity=".30"/>
+            <g filter="url(#wash2)">
+              <path d="M34,552 L104,538 L162,548 L206,532 L258,546 L310,534 L360,548 L418,538 L468,552 L528,540 L586,554 L646,542 L726,552 L726,576 L34,576 Z" fill="#2b342d" opacity=".24"/>
             </g>
-            <path d="M34,546 L110,530 L168,542 L210,520 L262,540 L312,522 L362,544 L420,528 L470,548 L530,532 L588,550 L648,536 L726,548" fill="none" stroke="#2b342d" stroke-width="1.1" opacity=".26"/>
-            <rect x="34" y="548" width="692" height="22" fill="url(#lakefade)"/>
+            <rect x="34" y="548" width="692" height="46" fill="url(#lakefade)"/>
 
             <!-- 湖面 -->
             <rect x="34" y="562" width="692" height="444" fill="url(#lake)"/>
-            <g stroke="#3f4a44" stroke-linecap="round" opacity=".14">
+            <g stroke="#3f4a44" stroke-linecap="round" opacity=".10">
               <line x1="86" y1="604" x2="188" y2="604" stroke-width=".7"/>
               <line x1="268" y1="622" x2="396" y2="622" stroke-width=".6"/>
               <line x1="486" y1="608" x2="606" y2="608" stroke-width=".7"/>
@@ -756,7 +756,6 @@
               <line x1="556" y1="644" x2="678" y2="644" stroke-width=".7"/>
               <line x1="66" y1="690" x2="182" y2="690" stroke-width=".7"/>
               <line x1="612" y1="698" x2="700" y2="698" stroke-width=".6"/>
-              <line x1="132" y1="836" x2="292" y2="836" stroke-width=".8"/>
               <line x1="486" y1="858" x2="648" y2="858" stroke-width=".7"/>
             </g>
 
@@ -785,16 +784,11 @@
               <ellipse cx="405" cy="748" rx="6" ry="18" fill="#d79a4d" opacity=".12" filter="url(#pblur2)"/>
             </g>
 
-            <!-- 芦苇：左下 -->
-            <g stroke="#26302a" fill="none" stroke-width="1.6" stroke-linecap="round" opacity=".55">
-              <path d="M74,952 C70,900 80,860 72,812"/>
-              <path d="M104,952 C100,912 110,878 104,844"/>
-              <path d="M136,952 C132,922 142,894 138,868"/>
-            </g>
-            <g fill="#26302a" opacity=".55">
-              <path d="M72,814 C67,804 67,794 72,788 C77,794 77,804 72,814 Z"/>
-              <path d="M104,846 C100,838 100,830 104,825 C108,830 108,838 104,846 Z"/>
-              <path d="M138,870 C134,862 134,854 138,849 C142,854 142,862 138,870 Z"/>
+            <!-- 云气：上半幅一点点淡墨，免得留白变成空矩形 -->
+            <g filter="url(#pblur)" opacity=".5">
+              <ellipse cx="210" cy="196" rx="190" ry="46" fill="#59645a" opacity=".07"/>
+              <ellipse cx="330" cy="270" rx="150" ry="34" fill="#59645a" opacity=".05"/>
+              <ellipse cx="120" cy="330" rx="120" ry="30" fill="#59645a" opacity=".045"/>
             </g>
 
             <!-- 雾：横着抹过船与水面的交界 -->
