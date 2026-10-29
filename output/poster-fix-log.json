@@ -1,36 +1,37 @@
 {
-  "at": "2026-10-27T03:27:33.263Z",
+  "at": "2026-10-29T04:09:48.832Z",
   "dryRun": false,
   "targetCount": 1,
   "fixedCount": 1,
   "failureCount": 0,
   "changes": [
     {
-      "id": "20261026-millennium",
-      "zhTitle": "千年女优",
+      "id": "20261029-ugetsu",
+      "zhTitle": "雨月物语",
       "before": {
-        "imageUrl": "https://image.tmdb.org/t/p/original/DapAI24FrLj2TdwA1TUVtTkkl3.jpg",
-        "dims": "-",
+        "imageUrl": "posters/20261029-ugetsu.jpg",
+        "dims": "910×1280",
         "status": "error",
         "issues": [
-          "unreachable"
+          "untrusted_host",
+          "visual_identity_conflict"
         ]
       },
       "after": {
-        "imageUrl": "posters/20261026-millennium.jpg",
-        "dims": "720×1080",
-        "source": "bing",
-        "url": "https://mdb.yuncongz.com/static/upload/large/31b8bee8a6c443aca0c999d769c11645.jpg",
-        "title": "千年女优(2001) - 电影海报|电影台词 - 影库"
+        "imageUrl": "posters/20261029-ugetsu.jpg",
+        "dims": "640×961",
+        "source": "ddg",
+        "url": "https://pic1.zhimg.com/50/v2-2eb5be4d3e824c2529911b22c6d09a08_720w.jpg?source=1def8aca",
+        "title": "如何评价电影《雨月物语》？ - 知乎"
       }
     }
   ],
   "failures": [],
   "recheck": [
     {
-      "id": "20261026-millennium",
+      "id": "20261029-ugetsu",
       "status": "warn",
-      "dims": "720×1080",
+      "dims": "640×961",
       "issues": [
         "untrusted_host"
       ]

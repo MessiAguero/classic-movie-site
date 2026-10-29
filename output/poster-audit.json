@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T04:15:13.619Z",
+  "generatedAt": "2026-10-29T04:10:15.538Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 142,
+  "total": 143,
   "ok": 85,
-  "warn": 57,
+  "warn": 58,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 126,
+    "checked": 127,
     "skippedVerified": 16,
     "error": null
   },
@@ -2218,6 +2218,49 @@
           "code": "visual_title_unverified",
           "severity": "warn",
           "detail": "图片能读到文字，但最大文字“GHOST金 SHELL”没有对上片名，建议核对"
+        }
+      ]
+    },
+    {
+      "id": "20261029-ugetsu",
+      "zhTitle": "雨月物语",
+      "sourceTitle": "如何评价电影《雨月物语》？ - 知乎",
+      "year": "1953",
+      "source": "本地",
+      "imageUrl": "posters/20261029-ugetsu.jpg",
+      "host": "pic1.zhimg.com",
+      "tier": "unknown",
+      "size": "37KB",
+      "dims": "640×961",
+      "ratio": 1.5,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「雨月物语」",
+          "书名号片名命中「雨月物语」"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（pic1.zhimg.com）"
         }
       ]
     },
