@@ -380,10 +380,14 @@
     .vseal{width:74px;height:74px;margin-top:40px}
     .vseal b{font-size:25px}
   }
+  @media (max-width:760px){
+    #boat,#halo{transform:translateY(34px) scale(.86);transform-origin:820px 660px}
+  }
   @media (max-width:760px) and (max-height:700px){
     .hero{min-height:100vh}
   }
   @media (max-width:380px){
+    #boat,#halo{transform:translateY(54px) scale(.82);transform-origin:820px 660px}
     .hero-in{padding:9vh 16px 0}
     .wrap{padding:0 16px}
     h1{font-size:34px}
@@ -482,56 +486,66 @@
       <rect x="240" y="812" width="300" height="1.4" opacity=".04"/>
     </g>
 
-    <!-- 船：一只，灯一盏 -->
-    <g id="boat">
-      <!-- 倒影 -->
-      <g transform="translate(0,1358) scale(1,-1)" opacity=".22" filter="url(#b10)">
-        <path d="M712,650 C760,644 866,644 910,648 C902,668 858,678 806,678 C752,678 714,668 706,652 Z" fill="#0a1416"/>
-      </g>
-      <!-- 船体 -->
-      <path d="M712,650 C760,644 866,644 910,648 C902,668 858,678 806,678 C752,678 714,668 706,652 Z" fill="#030708"/>
-      <path d="M712,650 C760,644 866,644 910,648 C902,668 858,678 806,678 C752,678 714,668 706,652 Z" fill="none" stroke="#6f8f8d" stroke-width=".8" stroke-opacity=".22"/>
-      <!-- 船头翘起 -->
-      <path d="M908,648 L928,636 L931,641 L911,651 Z" fill="#030708"/>
-      <path d="M908,648 L928,636" stroke="#8aa9a4" stroke-width=".8" stroke-opacity=".30"/>
-      <!-- 船舷 -->
-      <path d="M716,651 C762,646 866,646 906,650" fill="none" stroke="#9dbab5" stroke-width="1.1" stroke-opacity=".26"/>
-      <!-- 舱内的暗 -->
-      <path d="M722,653 C764,649 860,649 900,652 L898,656 C858,653 764,653 724,657 Z" fill="#000" opacity=".55"/>
-      <!-- 桨 -->
-      <g transform="rotate(-6 780 646)">
-        <rect x="716" y="644" width="96" height="3" rx="1.5" fill="#0a1214"/>
-        <rect x="716" y="644" width="96" height="1" fill="#7d9c97" opacity=".18"/>
-        <path d="M806,643 L822,641 L822,650 L806,648 Z" fill="#0a1214"/>
-      </g>
-      <!-- 陶壶：两件，被灯照到一点边 -->
-      <g fill="#060d0f" stroke="#a2bdb6" stroke-width=".7" stroke-opacity=".30">
-        <path d="M762,668 C754,668 751,658 757,654 L758,649 L770,649 L771,654 C777,658 774,668 766,668 Z"/>
-        <path d="M790,668 C784,668 782,661 786,658 L787,654 L797,654 L798,658 C802,661 800,668 794,668 Z"/>
-      </g>
-      <path d="M758,652 L758,649 L770,649 L770,652" fill="none" stroke="#d9a869" stroke-width=".7" stroke-opacity=".5"/>
-
-      <!-- 灯：挂在船头短杆上 -->
-      <rect x="888" y="596" width="2.4" height="54" fill="#111a1b"/>
-      <rect x="881" y="593" width="17" height="2.4" fill="#111a1b"/>
-      <circle cx="892" cy="612" r="96" fill="url(#lampGlow)" opacity=".9"/>
-      <ellipse cx="892" cy="612" rx="42" ry="38" fill="url(#lampGlow)" opacity=".55"/>
-      <rect x="878" y="596" width="28" height="33" rx="4" fill="#efcb92" opacity=".93"/>
-      <g stroke="#a9762f" stroke-width=".7" stroke-opacity=".55">
-        <line x1="878" y1="606" x2="906" y2="606"/>
-        <line x1="878" y1="615" x2="906" y2="615"/>
-        <line x1="878" y1="624" x2="906" y2="624"/>
-      </g>
-      <rect x="874" y="591" width="36" height="5.4" rx="1.5" fill="#1c2524"/>
-      <rect x="876" y="628" width="32" height="4.4" rx="1.2" fill="#1c2524"/>
-      <ellipse cx="892" cy="613" rx="6" ry="9" fill="#fdf0d2" opacity=".35" filter="url(#b4)"/>
-      <!-- 灯的倒影 -->
-      <g opacity=".55">
-        <ellipse cx="892" cy="712" rx="15" ry="52" fill="#e3b678" opacity=".16" filter="url(#b10)"/>
-        <ellipse cx="892" cy="694" rx="5" ry="22" fill="#f6d9a8" opacity=".26" filter="url(#b4)"/>
-      </g>
+    <!-- 灯光：先铺在半空里，再画船，灯才不会被光晕糊掉 -->
+    <g id="halo">
+      <circle cx="897" cy="624" r="92" fill="url(#lampGlow)" opacity=".82"/>
+      <ellipse cx="897" cy="626" rx="40" ry="36" fill="url(#lampGlow)" opacity=".48"/>
+      <ellipse cx="897" cy="722" rx="16" ry="54" fill="#e3b678" opacity=".15" filter="url(#b10)"/>
+      <ellipse cx="897" cy="702" rx="5" ry="24" fill="#f6d9a8" opacity=".24" filter="url(#b4)"/>
     </g>
 
+    <!-- 船：一只，灯一盏 -->
+    <g id="boat">
+      <!-- 倒影：整条船翻过来，压在水里 -->
+      <g transform="translate(0,1312) scale(1,-1)" opacity=".20" filter="url(#b10)">
+        <path d="M700,646 C704,664 756,678 810,678 C866,678 908,660 917,640 C860,650 760,652 700,646 Z" fill="#0c1a1c"/>
+      </g>
+
+      <!-- 船舱内壁：被灯照到，是全船唯一比水亮的地方 -->
+      <path d="M706,644 C760,635 866,631 913,636 C868,650 760,655 706,644 Z" fill="#14100c" opacity=".92"/>
+
+      <!-- 船体近侧 -->
+      <path d="M700,646 C704,664 756,678 810,678 C866,678 908,660 917,640 C906,650 860,653 810,653 C756,653 712,650 700,646 Z" fill="#02060a"/>
+      <!-- 龙骨反光 -->
+      <path d="M706,660 C742,674 786,678 812,678 C852,678 892,664 911,646" fill="none" stroke="#6f8f8d" stroke-width=".9" stroke-opacity=".20"/>
+      <!-- 船尾方框 -->
+      <path d="M700,646 L700,664 L706,667 L706,647 Z" fill="#02060a"/>
+      <path d="M700,644.6 L700,664.6" stroke="#7f9a96" stroke-width="1.4" stroke-opacity=".28"/>
+      <!-- 船首立柱 -->
+      <path d="M916,638 L921,628 L924,629.5 L918,641 Z" fill="#02060a"/>
+      <path d="M921,628 L924,629.5" stroke="#8aa9a4" stroke-width=".8" stroke-opacity=".34"/>
+
+      <!-- 两舷：远舷高、近舷低，中间就是舱口 -->
+      <path d="M706,644 C760,635 866,631 913,636" fill="none" stroke="#8fada7" stroke-width="1.2" stroke-opacity=".30"/>
+      <path d="M700,646 C756,652 810,653 862,651 C890,649 906,646 917,640" fill="none" stroke="#a3bcb6" stroke-width="1.2" stroke-opacity=".27"/>
+
+      <!-- 横板两道 -->
+      <path d="M764,639 L766,650" stroke="#6f8a84" stroke-width="2" stroke-opacity=".26"/>
+      <path d="M846,635 L847,648" stroke="#6f8a84" stroke-width="2" stroke-opacity=".24"/>
+
+      <!-- 两件瓷器，坐在舱里 -->
+      <g>
+        <path d="M790,650 C782,650 779,641 784,637 L785,633 L795,632 L796,637 C801,641 798,650 790,650 Z" fill="#0a1012"/>
+        <path d="M795,637 L796,632 L795,632 M797,640 C799,643 799,647 797,649" fill="none" stroke="#d9a869" stroke-width=".9" stroke-opacity=".45"/>
+        <path d="M818,648 C811,648 809,640 813,636 L814,632 L822,631 L823,636 C827,640 825,648 818,648 Z" fill="#0a1012"/>
+        <path d="M823,636 L822,631 M824,639 C826,642 826,645 824,647" fill="none" stroke="#d9a869" stroke-width=".8" stroke-opacity=".35"/>
+      </g>
+
+      <!-- 灯：立在船头的短杆上，不是浮在半空 -->
+      <rect x="896" y="608" width="3" height="42" fill="#0b1214"/>
+      <rect x="896" y="608" width="1" height="42" fill="#a3bcb6" opacity=".22"/>
+      <rect x="882" y="604" width="31" height="4.6" rx="1.2" fill="#161d1c"/>
+      <rect x="884" y="608" width="27" height="31" rx="3" fill="#f0cd96" opacity=".95"/>
+      <g stroke="#a9762f" stroke-width=".7" stroke-opacity=".5">
+        <line x1="884" y1="617" x2="911" y2="617"/>
+        <line x1="884" y1="626" x2="911" y2="626"/>
+        <line x1="884" y1="635" x2="911" y2="635"/>
+      </g>
+      <rect x="885" y="637" width="25" height="3.4" rx="1" fill="#161d1c"/>
+      <ellipse cx="897.5" cy="623" rx="6" ry="9" fill="#fdf0d2" opacity=".30" filter="url(#b4)"/>
+      <!-- 灯落在船舷上的一小片暖光 -->
+      <ellipse cx="890" cy="650" rx="46" ry="7" fill="#d9a869" opacity=".14" filter="url(#b4)"/>
+    </g>
     <!-- 水面上的一层薄雾：横着压过船底 -->
     <g filter="url(#b22)">
       <ellipse cx="800" cy="676" rx="330" ry="17" fill="#9dbab9" opacity=".10"/>
@@ -560,20 +574,20 @@
       <path d="M266,846 C262,837 262,828 266,823 C270,828 270,837 266,846 Z"/>
     </g>
 
-    <!-- 前景芦苇：右，出画一半 -->
-    <g fill="#030607" stroke="#030607" stroke-width="2.4" stroke-linecap="round">
-      <path d="M1424,900 C1420,830 1432,776 1424,712" fill="none"/>
-      <path d="M1372,900 C1368,844 1380,798 1372,748" fill="none"/>
-      <path d="M1320,900 C1316,858 1328,820 1320,780" fill="none"/>
-      <path d="M1272,900 C1268,868 1280,840 1274,808" fill="none"/>
-      <path d="M1230,900 C1226,876 1238,854 1232,830" fill="none"/>
-    </g>
-    <g fill="#030607">
-      <path d="M1424,714 C1417,700 1417,686 1424,678 C1431,686 1431,700 1424,714 Z"/>
-      <path d="M1372,750 C1365,736 1365,722 1372,714 C1379,722 1379,736 1372,750 Z"/>
-      <path d="M1320,782 C1314,770 1314,758 1320,751 C1326,758 1326,770 1320,782 Z"/>
-      <path d="M1274,810 C1268,798 1268,786 1274,779 C1280,786 1280,798 1274,810 Z"/>
-      <path d="M1232,832 C1227,822 1227,812 1232,806 C1237,812 1237,822 1232,832 Z"/>
+    <!-- 前景芦苇：右下角，虚焦，只当一层纵深 -->
+    <g filter="url(#b4)" opacity=".92">
+      <g fill="none" stroke="#02050a" stroke-linecap="round">
+        <path d="M1436,902 C1424,808 1438,720 1418,626" stroke-width="9"/>
+        <path d="M1352,902 C1340,824 1352,758 1336,690" stroke-width="6.5"/>
+        <path d="M1288,902 C1280,848 1292,806 1282,760" stroke-width="4.6"/>
+        <path d="M1246,902 C1240,870 1250,844 1242,816" stroke-width="3.4"/>
+      </g>
+      <g fill="#02050a">
+        <path d="M1418,628 C1404,600 1404,566 1418,540 C1432,566 1432,600 1418,628 Z"/>
+        <path d="M1336,692 C1324,668 1324,640 1336,618 C1348,640 1348,668 1336,692 Z"/>
+        <path d="M1282,762 C1272,742 1272,718 1282,700 C1292,718 1292,742 1282,762 Z"/>
+        <path d="M1242,818 C1234,802 1234,784 1242,770 C1250,784 1250,802 1242,818 Z"/>
+      </g>
     </g>
 
     <!-- 最前一层：虚焦的雾 -->
