@@ -439,6 +439,11 @@
         <stop offset=".42" stop-color="#16282a"/>
         <stop offset="1" stop-color="#0a1618"/>
       </linearGradient>
+      <linearGradient id="mound" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2b2418"/>
+        <stop offset=".38" stop-color="#1c1810"/>
+        <stop offset="1" stop-color="#0c0b08"/>
+      </linearGradient>
       <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0" stop-color="#221e17"/>
         <stop offset=".35" stop-color="#15130e"/>
@@ -583,6 +588,10 @@
     <ellipse cx="780" cy="762" rx="560" ry="66" fill="#2b2519" opacity=".42" filter="url(#b40)"/>
     <rect x="0" y="704" width="1440" height="1.6" fill="url(#rimline)" filter="url(#b3)"/>
 
+    <!-- 分校所在的小坡：从岸边隆起的土丘，校舍踩在丘顶 -->
+    <path d="M 806,838 C 836,742 862,676 894,663 L 1216,660 C 1248,674 1262,738 1268,838 Z" fill="url(#mound)"/>
+    <ellipse cx="1035" cy="668" rx="150" ry="9" fill="#05080a" opacity=".45" filter="url(#b8)"/>
+
     <!-- 分校：立在坡上，窗和门都朝海 -->
     <g id="schoolWrap">
       <rect x="896" y="648" width="278" height="14" fill="#100e0a"/>
@@ -626,26 +635,24 @@
 
     <!-- 落地影：单独一组，不进被测范围 -->
     <g id="shadows" filter="url(#bs)" opacity=".5" fill="#04070a">
-      <ellipse cx="780" cy="707" rx="32" ry="5.5"/>
-      <ellipse cx="828" cy="707" rx="20" ry="4"/>
-      <ellipse cx="732" cy="707" rx="19" ry="4"/>
+      <ellipse cx="780" cy="707" rx="30" ry="5.5"/>
+      <ellipse cx="838" cy="707" rx="19" ry="4"/>
+      <ellipse cx="722" cy="707" rx="18" ry="4"/>
     </g>
 
     <!-- 三个人：老师牵着两个孩子 -->
     <g id="subject">
-      <g transform="translate(828,707)">
-        <use href="#cGirl" fill="none" stroke="url(#rimfig)" stroke-opacity=".34" stroke-width="2.4" filter="url(#b3)"/>
-        <use href="#cGirl" fill="#03080a"/>
+      <g transform="translate(838,707)">
+        <use href="#gRim" fill="none" stroke="url(#rimfig)" stroke-opacity=".36" stroke-width="2.2" stroke-linecap="round" filter="url(#b3)"/>
+        <use href="#gFill" fill="#03080a"/>
       </g>
-      <g transform="translate(732,707)">
-        <use href="#cBoy" fill="none" stroke="url(#rimfig)" stroke-opacity=".34" stroke-width="2.4" filter="url(#b3)"/>
-        <use href="#cBoy" fill="#03080a"/>
+      <g transform="translate(722,707)">
+        <use href="#bRim" fill="none" stroke="url(#rimfig)" stroke-opacity=".36" stroke-width="2.2" stroke-linecap="round" filter="url(#b3)"/>
+        <use href="#bFill" fill="#03080a"/>
       </g>
       <g transform="translate(780,707)">
-        <use href="#tBody" fill="none" stroke="url(#rimfig)" stroke-opacity=".30" stroke-width="2.8" filter="url(#b3)"/>
-        <use href="#tBody" fill="#02060a"/>
-        <use href="#tHead" fill="none" stroke="url(#rimfig)" stroke-opacity=".34" stroke-width="2.6" filter="url(#b3)"/>
-        <use href="#tHead" fill="#02060a"/>
+        <use href="#tRim" fill="none" stroke="url(#rimfig)" stroke-opacity=".32" stroke-width="2.6" stroke-linecap="round" filter="url(#b3)"/>
+        <use href="#tFill" fill="#02060a"/>
       </g>
     </g>
 
@@ -894,33 +901,47 @@
             </g>
 
             <!-- 十二颗小石子：一颗，一个孩子 -->
+            <g fill="#3f392f" opacity=".55">
+              <ellipse cx="201" cy="640" rx="11" ry="2.4"/>
+              <ellipse cx="233" cy="640" rx="11" ry="2.4"/>
+              <ellipse cx="266" cy="640" rx="11" ry="2.4"/>
+              <ellipse cx="298" cy="640" rx="11" ry="2.4"/>
+              <ellipse cx="331" cy="640" rx="11" ry="2.4"/>
+              <ellipse cx="363" cy="640" rx="11" ry="2.4"/>
+              <ellipse cx="396" cy="640" rx="11" ry="2.4"/>
+              <ellipse cx="428" cy="640" rx="11" ry="2.4"/>
+              <ellipse cx="461" cy="640" rx="11" ry="2.4"/>
+              <ellipse cx="493" cy="640" rx="11" ry="2.4"/>
+              <ellipse cx="526" cy="640" rx="11" ry="2.4"/>
+              <ellipse cx="558" cy="640" rx="11" ry="2.4"/>
+            </g>
             <g>
-              <ellipse cx="200" cy="632" rx="12" ry="7.6" fill="#6e6a5e"/>
-              <ellipse cx="232" cy="632.5" rx="12" ry="7.6" fill="#7d786c"/>
-              <ellipse cx="265" cy="632" rx="12" ry="7.6" fill="#6b6759"/>
-              <ellipse cx="297" cy="632.5" rx="12" ry="7.6" fill="#807a6d"/>
-              <ellipse cx="330" cy="632" rx="12" ry="7.6" fill="#6e6a5e"/>
-              <ellipse cx="362" cy="632.5" rx="12" ry="7.6" fill="#787366"/>
-              <ellipse cx="395" cy="632" rx="12" ry="7.6" fill="#6b6759"/>
-              <ellipse cx="427" cy="632.5" rx="12" ry="7.6" fill="#807a6d"/>
-              <ellipse cx="460" cy="632" rx="12" ry="7.6" fill="#6e6a5e"/>
-              <ellipse cx="492" cy="632.5" rx="12" ry="7.6" fill="#7d786c"/>
-              <ellipse cx="525" cy="632" rx="12" ry="7.6" fill="#6b6759"/>
-              <ellipse cx="557" cy="632.5" rx="12" ry="7.6" fill="#787366"/>
+              <ellipse cx="200" cy="631" rx="11.4" ry="7.2" fill="#57534a"/>
+              <ellipse cx="232" cy="631.5" rx="12.4" ry="7.8" fill="#635e52"/>
+              <ellipse cx="265" cy="630.5" rx="11" ry="7" fill="#4f4c43"/>
+              <ellipse cx="297" cy="631.5" rx="12.6" ry="7.8" fill="#6a6558"/>
+              <ellipse cx="330" cy="631" rx="11.6" ry="7.2" fill="#57534a"/>
+              <ellipse cx="362" cy="631.5" rx="11.2" ry="7.4" fill="#5e594e"/>
+              <ellipse cx="395" cy="630.5" rx="12" ry="7.1" fill="#4f4c43"/>
+              <ellipse cx="427" cy="631.5" rx="11.4" ry="7.7" fill="#6a6558"/>
+              <ellipse cx="460" cy="631" rx="11.8" ry="7.2" fill="#57534a"/>
+              <ellipse cx="492" cy="631.5" rx="12.2" ry="7.8" fill="#635e52"/>
+              <ellipse cx="525" cy="630.5" rx="11" ry="7" fill="#4f4c43"/>
+              <ellipse cx="557" cy="631.5" rx="11.6" ry="7.4" fill="#5e594e"/>
             </g>
             <g fill="#cfc8b4" opacity=".34">
-              <ellipse cx="196" cy="629" rx="4" ry="1.5"/>
-              <ellipse cx="228" cy="629.5" rx="4" ry="1.5"/>
-              <ellipse cx="261" cy="629" rx="4" ry="1.5"/>
-              <ellipse cx="293" cy="629.5" rx="4" ry="1.5"/>
-              <ellipse cx="326" cy="629" rx="4" ry="1.5"/>
-              <ellipse cx="358" cy="629.5" rx="4" ry="1.5"/>
-              <ellipse cx="391" cy="629" rx="4" ry="1.5"/>
-              <ellipse cx="423" cy="629.5" rx="4" ry="1.5"/>
-              <ellipse cx="456" cy="629" rx="4" ry="1.5"/>
-              <ellipse cx="488" cy="629.5" rx="4" ry="1.5"/>
-              <ellipse cx="521" cy="629" rx="4" ry="1.5"/>
-              <ellipse cx="553" cy="629.5" rx="4" ry="1.5"/>
+              <ellipse cx="196" cy="628" rx="3.6" ry="1.3"/>
+              <ellipse cx="228" cy="628.5" rx="3.6" ry="1.3"/>
+              <ellipse cx="261" cy="627.5" rx="3.6" ry="1.3"/>
+              <ellipse cx="293" cy="628.5" rx="3.6" ry="1.3"/>
+              <ellipse cx="326" cy="628" rx="3.6" ry="1.3"/>
+              <ellipse cx="358" cy="628.5" rx="3.6" ry="1.3"/>
+              <ellipse cx="391" cy="627.5" rx="3.6" ry="1.3"/>
+              <ellipse cx="423" cy="628.5" rx="3.6" ry="1.3"/>
+              <ellipse cx="456" cy="628" rx="3.6" ry="1.3"/>
+              <ellipse cx="488" cy="628.5" rx="3.6" ry="1.3"/>
+              <ellipse cx="521" cy="627.5" rx="3.6" ry="1.3"/>
+              <ellipse cx="553" cy="628.5" rx="3.6" ry="1.3"/>
             </g>
 
             <!-- 石板与石笔：教室里的另一件东西 -->
@@ -941,12 +962,12 @@
             </g>
 
             <!-- 竖排片名 -->
-            <text x="628" y="762" font-family="Hiragino Mincho ProN, Yu Mincho, Songti SC, serif" font-size="52" fill="#eee9dc">
-              <tspan x="628" dy="0">二</tspan>
-              <tspan x="628" dy="58">十</tspan>
-              <tspan x="628" dy="58">四</tspan>
-              <tspan x="628" dy="58">の</tspan>
-              <tspan x="628" dy="58">瞳</tspan>
+            <text x="662" y="748" font-family="Hiragino Mincho ProN, Yu Mincho, Songti SC, serif" font-size="50" fill="#eee9dc">
+              <tspan x="662" dy="0">二</tspan>
+              <tspan x="662" dy="56">十</tspan>
+              <tspan x="662" dy="56">四</tspan>
+              <tspan x="662" dy="56">の</tspan>
+              <tspan x="662" dy="56">瞳</tspan>
             </text>
 
             <!-- 朱印 -->
@@ -955,8 +976,8 @@
               <text x="83" y="775" text-anchor="middle" font-family="Hiragino Mincho ProN, Yu Mincho, Songti SC, serif" font-size="24" fill="#efeade">瞳</text>
             </g>
 
-            <text x="60" y="1004" font-family="Menlo, Consolas, monospace" font-size="10" letter-spacing="2.4" fill="#6d6455">TWENTY-FOUR EYES · 1954</text>
-            <text x="700" y="1004" text-anchor="end" font-family="Menlo, Consolas, monospace" font-size="10" letter-spacing="2.4" fill="#6d6455">KEISUKE KINOSHITA</text>
+            <text x="60" y="980" font-family="Menlo, Consolas, monospace" font-size="10" letter-spacing="2.6" fill="#6d6455">TWENTY-FOUR EYES</text>
+            <text x="60" y="1000" font-family="Menlo, Consolas, monospace" font-size="10" letter-spacing="2.2" fill="#554e42">1954 · KEISUKE KINOSHITA</text>
 
             <rect x="16" y="16" width="728" height="1008" fill="none" stroke="#3a4038" stroke-opacity=".26"/>
           </svg>
