@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>《二十四只眼睛》二十四の瞳 · Twenty-Four Eyes (1954) — 日本电影经典推荐 · 第 07 部</title>
-<meta name="description" content="日本电影经典系列第 07 部：《二十四只眼睛》(1954)，木下惠介导演，高峰秀子主演，松竹出品。豆瓣 8.5 / IMDb 8.0，1954 年《电影旬报》年度十佳第一名、第 12 届金球奖最佳外语片。濑户内海小豆岛，一位女教师和她的十二个学生。全程不剧透。">
+<meta name="description" content="日本电影经典系列第 07 部：《二十四只眼睛》(1954)，木下惠介导演，高峰秀子主演，松竹出品。豆瓣 8.5 / IMDb 8.0，1954 年《电影旬报》年度十佳第一名、第 12 届金球奖最佳外语片。濑户内海小豆岛，一位女老师和她的十二个学生。全程不剧透。">
 <style>
   :root{
     /* 清晨的濑户内海：近黑打底，旧纸白写字，海青是天光，木褐是唯一的热，朱只留一方印 */
@@ -169,7 +169,7 @@
 
   /* ---- 三段时间轮廓 ---- */
   .tl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:64px;border-top:1px solid var(--line-strong)}
-  .tln{padding:26px 30px 0 0;border-right:1px solid var(--line);position:relative}
+  .tln{padding:26px 30px 0 0;border-right:1px solid var(--line)}
   .tln:last-child{border-right:0;padding-right:0}
   .tln .ty{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--wood-light);margin-bottom:8px}
   .tln h5{font-size:16px;font-weight:600;color:var(--paper);margin-bottom:9px;letter-spacing:.01em}
@@ -400,13 +400,13 @@
     .vseal b{font-size:25px}
   }
   @media (max-width:760px){
-    #subject,#schoolWrap{transform:translateY(36px) scale(.84);transform-origin:800px 707px}
+    #subject,#rim,#shadows{transform:translateY(36px) scale(.84);transform-origin:800px 707px}
   }
   @media (max-width:760px) and (max-height:700px){
     .hero{min-height:100vh}
   }
   @media (max-width:380px){
-    #subject,#schoolWrap{transform:translateY(54px) scale(.80);transform-origin:800px 707px}
+    #subject,#rim,#shadows{transform:translateY(54px) scale(.80);transform-origin:800px 707px}
     .hero-in{padding:9vh 16px 0}
     .wrap{padding:0 16px}
     h1{font-size:34px}
@@ -507,7 +507,7 @@
 
     <rect width="1440" height="900" fill="url(#sky)"/>
 
-    <!-- 破晓：太阳压在海平面上，逆光从这里来 -->
+    <!-- 破晓：太阳压在海面上，逆光从这里来 -->
     <g id="sun">
       <circle cx="636" cy="574" r="180" fill="url(#sunGlow)"/>
       <circle cx="636" cy="574" r="62" fill="#f7e3b8" opacity=".24" filter="url(#b14)"/>
@@ -515,18 +515,18 @@
       <circle cx="636" cy="574" r="19" fill="#fff6e2" opacity=".42" filter="url(#b3)"/>
     </g>
 
-    <!-- 对岸的岛：濑户内海是内海，岛比山矮 -->
-    <g filter="url(#b8)" opacity=".62">
+    <!-- 对岸的岛：内海的岛比山矮，也碎 -->
+    <g filter="url(#b8)" opacity=".6">
       <path d="M120,590 L150,580 L186,584 L214,576 L252,588 L286,582 L318,590 L318,596 L120,596 Z" fill="#0d1a1e"/>
       <path d="M980,590 L1014,578 L1050,586 L1082,574 L1120,588 L1156,580 L1196,590 L1196,596 L980,596 Z" fill="#0d1a1e"/>
       <path d="M1240,592 L1288,580 L1330,590 L1380,582 L1440,592 L1440,596 L1240,596 Z" fill="#0b171a"/>
     </g>
-    <g opacity=".92">
+    <g opacity=".9">
       <path d="M420,592 L458,582 L500,590 L540,584 L588,592 L588,596 L420,596 Z" fill="#081215"/>
       <path d="M700,592 L742,584 L786,591 L826,586 L870,592 L870,596 L700,596 Z" fill="#081215"/>
     </g>
 
-    <!-- 海：亮带一直铺到近岸，岸线用羽化暗带糊掉 -->
+    <!-- 海：亮带铺到近岸，岸线用羽化暗带糊掉 -->
     <rect x="0" y="590" width="1440" height="180" fill="url(#sea)"/>
     <g filter="url(#b22)" opacity=".55">
       <rect x="600" y="590" width="76" height="150" fill="#e8c184" opacity=".16"/>
@@ -554,7 +554,7 @@
     <ellipse cx="780" cy="762" rx="560" ry="66" fill="#2b2519" opacity=".42" filter="url(#b40)"/>
     <rect x="0" y="704" width="1440" height="1.6" fill="url(#rimline)" filter="url(#b3)"/>
 
-    <!-- 分校：立在坡上，门与窗都朝海 -->
+    <!-- 分校：立在坡上，窗和门都朝海 -->
     <g id="schoolWrap">
       <rect x="896" y="648" width="278" height="14" fill="#100e0a"/>
       <rect x="900" y="556" width="270" height="94" fill="#171310"/>
@@ -564,15 +564,13 @@
         <line x1="900" y1="614" x2="1170" y2="614"/>
         <line x1="900" y1="634" x2="1170" y2="634"/>
       </g>
-      <g>
-        <rect x="914" y="578" width="80" height="50" fill="#0b1416"/>
-        <rect x="1014" y="578" width="80" height="50" fill="#0b1416"/>
-        <g stroke="#2f261c" stroke-width="2.4" opacity=".85">
-          <line x1="940" y1="578" x2="940" y2="628"/>
-          <line x1="1040" y1="578" x2="1040" y2="628"/>
-          <line x1="914" y1="600" x2="994" y2="600"/>
-          <line x1="1014" y1="600" x2="1094" y2="600"/>
-        </g>
+      <rect x="914" y="578" width="80" height="50" fill="#0b1416"/>
+      <rect x="1014" y="578" width="80" height="50" fill="#0b1416"/>
+      <g stroke="#2f261c" stroke-width="2.4" opacity=".85">
+        <line x1="940" y1="578" x2="940" y2="628"/>
+        <line x1="1040" y1="578" x2="1040" y2="628"/>
+        <line x1="914" y1="600" x2="994" y2="600"/>
+        <line x1="1014" y1="600" x2="1094" y2="600"/>
       </g>
       <rect x="1114" y="580" width="42" height="72" fill="#0e0b08"/>
       <rect x="1114" y="580" width="42" height="3" fill="#332a1f" opacity=".7"/>
@@ -591,7 +589,7 @@
       <rect x="884" y="558" width="312" height="2.4" fill="#3a2f22" opacity=".5"/>
     </g>
 
-    <!-- 人物逆光侧的整体底光：垫在剪影后面，人才能从背景里剥出来 -->
+    <!-- 逆光垫底：把人从背景里剥出来，靠加光不靠加亮人物 -->
     <g id="rim">
       <ellipse cx="782" cy="600" rx="196" ry="150" fill="url(#rimGlow)"/>
       <ellipse cx="782" cy="628" rx="118" ry="96" fill="url(#rimGlow)" opacity=".7"/>
@@ -622,7 +620,7 @@
       </g>
     </g>
 
-    <!-- 前景：坡上的草与碎石，压住画面底边 -->
+    <!-- 前景：坡上的草与碎石，压住画幅底边 -->
     <g fill="#04070a" opacity=".9">
       <path d="M96,900 L104,846 L110,878 L118,838 L124,880 L132,852 L140,900 Z"/>
       <path d="M1268,900 L1276,850 L1282,882 L1290,842 L1296,884 L1304,856 L1312,900 Z"/>
@@ -683,9 +681,9 @@
         <p>昭和三年（1928）四月四日，濑户内海上有个叫小豆岛的地方。岛不大，绕一圈用不了一天，可岛上的孩子要上学，得先翻一道坡，再走八里山路。山那边有总校，坡这边只有一间分教场——一间木房子，一个班，一本书教到底。</p>
         <p>被派去分教场的，是刚从师范毕业的<strong>大石久子</strong>。她来的那天是骑自行车来的，还穿了一身西装。在这个男人出海、女人下地的村子里，这两样东西都太扎眼，扎眼到村民先看见的是衣服，不是人。有人绕着她走，有人在背后说：这样的老师，教得好个什么。</p>
         <p>她的班上有十二个一年级学生。十二个孩子，二十四只眼睛——这就是片名的全部来处。孩子们不关心西装，也不关心自行车，他们只觉得这个老师个子矮矮的，笑起来好看。因为姓「大石」，个头又小，他们给她起了个绰号，叫<strong>「小石先生」</strong>。她听见了，没生气，应了下来。</p>
-        <p>她教他们的第一件事不是识字，是唱歌。教室里那台风琴一响，十二个声音跟着跑调，跑得乱七八糟，然后是笑。她带他们到坡上去、到海边去，让他们看船、看山、看对岸的岛。她对他们说的第一句正经话，是让他们把眼睛睁大一点——外面的东西看得越清楚，心里越不容易糊涂。</p>
+        <p>她教他们的第一件事不是识字，是唱歌。教室里那台风琴一响，十二个声音跟着跑调，跑得乱七八糟，然后是笑。她带他们到坡上去、到海边去，让他们看船、看山、看对岸的岛。她对他们说的第一句正经话，是要他们把眼睛睁大一点——外面的东西看得越清楚，心里越不容易糊涂。</p>
         <p>开学没多久，孩子们在海边挖了个坑，想跟她开玩笑。她一脚踩空，摔伤了脚，走不了路，只能回家休养。分教场来了个代课老师，规矩，也严厉，孩子们不喜欢。他们想念的是那个个子矮矮、会带他们唱歌的人。</p>
-        <p>于是十二个孩子做了一件事：<strong>瞒着家里，走了八公里路去看她。</strong>路上有人把鞋走掉了，有人被石头绊倒，最小的那个落在最后边，一路小跑跟着。到了镇上，他们在一辆公共汽车上看见了老师，隔着窗喊她。那一天他们在老师家吃了一顿饭，吃得很响，也很饱。</p>
+        <p>于是十二个孩子做了一件事：<strong>瞒着家里，走了八公里路去看她。</strong>路上有人把鞋走掉了，有人被石头绊倒，最小的那个落在最后边，一路小跑跟着。到了镇上，他们在一辆公共汽车上看见了老师，隔着车窗喊她。那一天他们在老师家吃了一顿饭，吃得很响，也很饱。</p>
         <p>饭后有人提议拍照。孩子们在门口站成两排，前排蹲着，后排站着，老师坐在中间。快门按下去的那一瞬间，十二双眼睛都对着镜头睁得很大——<strong>那张照片后来成了整部电影最要紧的东西。</strong></p>
         <p>因为脚伤，她再也骑不了车，被调去了山那边的总校。分教场交给了别人。她走的那天，孩子们送到坡口，站成一排。到这一幕结束为止，这还是一个关于「一个好老师」的故事；往后二十年，它会变成另一件事。</p>
       </div>
@@ -701,7 +699,7 @@
           <dt>音乐</dt><dd>木下忠司<small>导演之弟</small></dd>
           <dt>出品</dt><dd>松竹</dd>
           <dt>片长</dt><dd>154 分钟<small>松竹记为 156 分钟</small></dd>
-          <dt>公映</dt><dd>1954-09-15（日本）</dd>
+          <dt>公映</dt><dd>1954-09-15（日本）<small>豆瓣记为 09-14</small></dd>
           <dt>建议</dt><dd>12 岁以上<small>无血腥；有战争后果与生离</small></dd>
         </dl>
         <p class="gnote">原著是壶井荣 1952 年出版的同名小说，作者本人就是小豆岛人。木下惠介把它搬上银幕时，把时间跨度拉到了二十年——书里有，但电影把它拍成了看得见的。</p>
@@ -722,7 +720,7 @@
       <div class="tln">
         <div class="ty">战后 &nbsp;昭和二十年前后</div>
         <h5>回到讲坛</h5>
-        <p>她重新站上讲台，台下坐着新一届的孩子。二十年前那十二双眼睛去了哪里，电影留到最后才说。</p>
+        <p>她重新站上讲台，台下坐着新一届的孩子。二十年前那十二双眼睛后来去了哪里，电影留到最后才说。</p>
       </div>
     </div>
 
@@ -731,267 +729,4 @@
     </div>
   </div>
 </section>
-
-<!-- ============ 02 海报 ============ -->
-<section class="band">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-num">02 &nbsp;/&nbsp; The Poster</span>
-      <h2 class="sec-title">这一期的概念海报，<i>是教室里的那扇窗</i></h2>
-      <p class="sec-desc">窗外是濑户内海，窗台上摆着十二颗小石子——一颗不多，一颗不少。这是这个系列第一次做「窗」。</p>
-    </div>
-
-    <div class="poster-grid">
-      <div class="reveal">
-        <div class="poster-frame">
-          <svg viewBox="0 0 760 1040" role="img" aria-label="概念海报：一扇教室的木格窗，窗外是清晨的濑户内海与几座小岛，窗台上并排摆着十二颗小石子，左边一只插着草花的玻璃瓶，下方暗墙上竖排片名与一方朱印">
-            <defs>
-              <linearGradient id="ppaper" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#efeade"/>
-                <stop offset=".55" stop-color="#e9e4d6"/>
-                <stop offset="1" stop-color="#e0dac9"/>
-              </linearGradient>
-              <linearGradient id="psky" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#c3d2ce"/>
-                <stop offset=".55" stop-color="#dcdcd0"/>
-                <stop offset="1" stop-color="#f0e2c2"/>
-              </linearGradient>
-              <linearGradient id="psea" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#a8beb9"/>
-                <stop offset=".22" stop-color="#84a2a0"/>
-                <stop offset=".62" stop-color="#5c7675"/>
-                <stop offset="1" stop-color="#43595a"/>
-              </linearGradient>
-              <linearGradient id="pwall" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#232624"/>
-                <stop offset="1" stop-color="#121514"/>
-              </linearGradient>
-              <linearGradient id="psill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#9b7d59"/>
-                <stop offset=".18" stop-color="#7d6244"/>
-                <stop offset="1" stop-color="#4f3d2b"/>
-              </linearGradient>
-              <linearGradient id="pglass" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#ffffff" stop-opacity=".16"/>
-                <stop offset=".42" stop-color="#ffffff" stop-opacity="0"/>
-                <stop offset="1" stop-color="#ffffff" stop-opacity=".07"/>
-              </linearGradient>
-              <radialGradient id="pedge" cx="50%" cy="50%" r="72%">
-                <stop offset=".62" stop-color="#8d8570" stop-opacity="0"/>
-                <stop offset="1" stop-color="#8d8570" stop-opacity=".24"/>
-              </radialGradient>
-              <radialGradient id="psun" cx="50%" cy="50%" r="50%">
-                <stop offset="0" stop-color="#f8ead0" stop-opacity=".72"/>
-                <stop offset=".55" stop-color="#e2bd80" stop-opacity=".20"/>
-                <stop offset="1" stop-color="#e2bd80" stop-opacity="0"/>
-              </radialGradient>
-              <filter id="pfibre">
-                <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="4" stitchTiles="stitch"/>
-                <feColorMatrix type="saturate" values="0"/>
-              </filter>
-              <filter id="pblur"><feGaussianBlur stdDeviation="9"/></filter>
-              <filter id="pblur2"><feGaussianBlur stdDeviation="3"/></filter>
-              <filter id="pblur3"><feGaussianBlur stdDeviation="1.6"/></filter>
-              <clipPath id="pane">
-                <rect x="74" y="62" width="612" height="572"/>
-              </clipPath>
-            </defs>
-
-            <rect width="760" height="1040" fill="url(#ppaper)"/>
-            <rect width="760" height="1040" filter="url(#pfibre)" opacity=".09" style="mix-blend-mode:multiply"/>
-            <rect width="760" height="1040" fill="url(#pedge)"/>
-
-            <!-- 窗外：清晨的内海，光亮得刚好 -->
-            <g clip-path="url(#pane)">
-              <rect x="74" y="62" width="612" height="280" fill="url(#psky)"/>
-              <rect x="74" y="330" width="612" height="304" fill="url(#psea)"/>
-              <circle cx="252" cy="316" r="86" fill="url(#psun)" opacity=".55"/>
-              <circle cx="252" cy="316" r="20" fill="#fbf1da" opacity=".42" filter="url(#pblur3)"/>
-              <g fill="#5f7370" opacity=".5">
-                <path d="M74,332 L104,322 L136,330 L168,324 L204,332 L204,338 L74,338 Z"/>
-                <path d="M486,332 L516,320 L550,330 L586,326 L620,332 L620,338 L486,338 Z"/>
-              </g>
-              <g fill="#42585a" opacity=".72">
-                <path d="M300,336 L326,328 L354,335 L382,330 L410,336 L410,340 L300,340 Z"/>
-                <path d="M596,336 L628,327 L660,336 L686,332 L686,340 L596,340 Z"/>
-              </g>
-              <g fill="#cfe0d8">
-                <rect x="150" y="352" width="96" height="1" opacity=".22"/>
-                <rect x="392" y="366" width="128" height="1.1" opacity=".18"/>
-                <rect x="118" y="396" width="164" height="1.2" opacity=".14"/>
-                <rect x="430" y="424" width="142" height="1.2" opacity=".11"/>
-                <rect x="196" y="470" width="188" height="1.3" opacity=".08"/>
-                <rect x="470" y="520" width="150" height="1.3" opacity=".07"/>
-                <rect x="150" y="576" width="220" height="1.4" opacity=".06"/>
-              </g>
-              <rect x="74" y="600" width="612" height="34" fill="#33484a" opacity=".22" filter="url(#pblur2)"/>
-            </g>
-
-            <!-- 玻璃反光：斜的一道光，说明玻璃在那里 -->
-            <path d="M74,300 L300,62 L392,62 L74,392 Z" fill="url(#pglass)"/>
-
-            <!-- 窗框：外框包住，竖挺三根，横挺一根 -->
-            <g fill="none" stroke="#3b3128">
-              <rect x="60" y="48" width="640" height="600" stroke-width="15"/>
-              <rect x="227" y="62" width="10" height="572" stroke-width="0" fill="#3b3128"/>
-              <rect x="380" y="62" width="10" height="572" stroke-width="0" fill="#3b3128"/>
-              <rect x="533" y="62" width="10" height="572" stroke-width="0" fill="#3b3128"/>
-              <rect x="74" y="300" width="612" height="10" stroke-width="0" fill="#3b3128"/>
-            </g>
-            <rect x="60" y="48" width="640" height="600" fill="none" stroke="#241c15" stroke-width="1.2" opacity=".6"/>
-
-            <!-- 窗台：木条，顶面有一道光 -->
-            <rect x="44" y="634" width="672" height="48" fill="url(#psill)"/>
-            <rect x="44" y="634" width="672" height="7" fill="#b08e64"/>
-            <rect x="44" y="682" width="672" height="11" fill="#43342４" opacity="0"/>
-            <rect x="44" y="682" width="672" height="11" fill="#3f3122"/>
-            <g stroke="#6b5439" stroke-width="1" opacity=".35">
-              <line x1="44" y1="654" x2="716" y2="654"/>
-              <line x1="44" y1="668" x2="716" y2="668"/>
-            </g>
-
-            <!-- 瓶与草花：岛上随手折的，插在清水里 -->
-            <g>
-              <g stroke="#7d8a72" stroke-width="1.6" fill="none" opacity=".92" stroke-linecap="round">
-                <path d="M126,572 C124,548 118,528 106,510"/>
-                <path d="M126,572 C130,552 138,534 148,518"/>
-                <path d="M126,572 C126,556 126,542 126,528"/>
-              </g>
-              <g fill="#ded6c2">
-                <circle cx="106" cy="508" r="5"/>
-                <circle cx="148" cy="516" r="4.4"/>
-                <circle cx="126" cy="526" r="4"/>
-                <circle cx="115" cy="532" r="3.2"/>
-              </g>
-              <path d="M108,634 L108,596 C108,586 116,580 121,573 L121,567 L131,567 L131,573 C136,580 144,586 144,596 L144,634 Z" fill="#b9c6c2" opacity=".42"/>
-              <path d="M108,634 L108,596 C108,586 116,580 121,573 L121,567 L131,567 L131,573 C136,580 144,586 144,596 L144,634 Z" fill="none" stroke="#5f716e" stroke-width="2" opacity=".7"/>
-              <rect x="109" y="600" width="34" height="30" fill="#8fa8a4" opacity=".28"/>
-              <rect x="109" y="612" width="34" height="1" fill="#e6e0cf" opacity=".35"/>
-            </g>
-
-            <!-- 十二颗小石子：一颗一个孩子 -->
-            <g>
-              <ellipse cx="200" cy="632" rx="12" ry="7.6" fill="#6e6a5e"/>
-              <ellipse cx="232" cy="632.5" rx="12" ry="7.6" fill="#7d786c"/>
-              <ellipse cx="265" cy="632" rx="12" ry="7.6" fill="#6b6759"/>
-              <ellipse cx="297" cy="632.5" rx="12" ry="7.6" fill="#807a6d"/>
-              <ellipse cx="330" cy="632" rx="12" ry="7.6" fill="#6e6a5e"/>
-              <ellipse cx="362" cy="632.5" rx="12" ry="7.6" fill="#78736 6" opacity="0"/>
-              <ellipse cx="362" cy="632.5" rx="12" ry="7.6" fill="#787366"/>
-              <ellipse cx="395" cy="632" rx="12" ry="7.6" fill="#6b6759"/>
-              <ellipse cx="427" cy="632.5" rx="12" ry="7.6" fill="#807a6d"/>
-              <ellipse cx="460" cy="632" rx="12" ry="7.6" fill="#6e6a5e"/>
-              <ellipse cx="492" cy="632.5" rx="12" ry="7.6" fill="#7d786c"/>
-              <ellipse cx="525" cy="632" rx="12" ry="7.6" fill="#6b6759"/>
-              <ellipse cx="557" cy="632.5" rx="12" ry="7.6" fill="#787366"/>
-              <g fill="#cfc8b4" opacity=".34">
-                <ellipse cx="196" cy="629" rx="4" ry="1.5"/>
-                <ellipse cx="228" cy="629.5" rx="4" ry="1.5"/>
-                <ellipse cx="261" cy="629" rx="4" ry="1.5"/>
-                <ellipse cx="293" cy="629.5" rx="4" ry="1.5"/>
-                <ellipse cx="326" cy="629" rx="4" ry="1.5"/>
-                <ellipse cx="358" cy="629.5" rx="4" ry="1.5"/>
-                <ellipse cx="391" cy="629" rx="4" ry="1.5"/>
-                <ellipse cx="423" cy="629.5" rx="4" ry="1.5"/>
-                <ellipse cx="456" cy="629" rx="4" ry="1.5"/>
-                <ellipse cx="488" cy="629.5" rx="4" ry="1.5"/>
-                <ellipse cx="521" cy="629" rx="4" ry="1.5"/>
-                <ellipse cx="553" cy="629.5" rx="4" ry="1.5"/>
-              </g>
-            </g>
-
-            <!-- 石板与石笔：教室里的另一件东西 -->
-            <g>
-              <rect x="606" y="598" width="56" height="42" fill="#2b312e"/>
-              <rect x="606" y="598" width="56" height="42" fill="none" stroke="#4b4034" stroke-width="4"/>
-              <rect x="610" y="602" width="48" height="34" fill="#3a423e"/>
-              <rect x="628" y="586" width="5" height="30" fill="#cfd6cf" transform="rotate(24,630,601)"/>
-            </g>
-
-            <!-- 室内墙：窗以下就暗下来了 -->
-            <rect x="0" y="693" width="760" height="347" fill="url(#pwall)"/>
-            <g stroke="#2e332f" stroke-width="1" opacity=".5">
-              <line x1="96" y1="693" x2="96" y2="1040"/>
-              <line x1="248" y1="693" x2="248" y2="1040"/>
-              <line x1="400" y1="693" x2="400" y2="1040"/>
-              <line x1="552" y1="693" x2="552" y2="1040"/>
-            </g>
-
-            <!-- 竖排片名 -->
-            <text x="628" y="762" font-family="Hiragino Mincho ProN, Yu Mincho, Songti SC, serif" font-size="52" fill="#eee9dc" letter-spacing="0">
-              <tspan x="628" dy="0">二</tspan>
-              <tspan x="628" dy="58">十</tspan>
-              <tspan x="628" dy="58">四</tspan>
-              <tspan x="628" dy="58">の</tspan>
-              <tspan x="628" dy="58">瞳</tspan>
-            </text>
-
-            <!-- 朱印 -->
-            <g>
-              <rect x="60" y="742" width="46" height="46" fill="#a03e33"/>
-              <text x="83" y="774" text-anchor="middle" font-family="Hiragino Mincho ProN, Yu Mincho, Songti SC, serif" font-size="24" fill="#efeade">瞳</text>
-            </g>
-
-            <text x="60" y="1004" font-family="Menlo, Consolas, monospace" font-size="10" letter-spacing="2.4" fill="#6d6455">TWENTY-FOUR EYES · 1954</text>
-            <text x="700" y="1004" text-anchor="end" font-family="Menlo, Consolas, monospace" font-size="10" letter-spacing="2.4" fill="#6d6455">KEISUKE KINOSHITA</text>
-
-            <rect x="16" y="16" width="728" height="1008" fill="none" stroke="#3a4038" stroke-opacity=".26"/>
-          </svg>
-        </div>
-        <div class="poster-cap">CONCEPT POSTER · 教室的窗 · NO.07</div>
-      </div>
-
-      <div class="pnotes reveal">
-        <div class="pnote">
-          <div class="pn">01 / THE WINDOW</div>
-          <h4>先看见海，才看见教室</h4>
-          <p>这扇窗是整部片的取景框：木下惠介几乎每一场室外戏，都让角色身后留着一小块海。它提醒你这些人住在岛上——风景很好，出去很难。海报把画框反过来，让你站在教室里往外看。</p>
-        </div>
-        <div class="pnote">
-          <div class="pn">02 / TWELVE STONES</div>
-          <h4>十二颗石子，一颗不多</h4>
-          <p>「大石」被孩子们叫成「小石」，石子就成了她的替身。窗台上排着的十二颗，是十二个一年级生，也是十二双当时还清澈的眼睛。它们没有表情，也不会长大——这正是这部片最让人难受的地方。</p>
-        </div>
-        <div class="pnote">
-          <div class="pn">03 / THE BOTTLE</div>
-          <h4>一只插着野花的玻璃瓶</h4>
-          <p>不是摆设。教室里有瓶花，说明有人愿意为一间木房子多花一分钟。后来这间教室还在，花有没有人换，成了电影里最轻也最狠的一处细节。</p>
-        </div>
-        <div class="pnote">
-          <div class="pn">04 / THE SEAL</div>
-          <h4>一方朱印，压在暗墙上</h4>
-          <p>全片黑白，页面上只留这一点红。木下惠介拍的是「抒情」——不喊口号，不塑英雄，把哭的权利留给观众。朱红只用在印章和角标上，其余全部交给黑白灰。</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 03 档案 ============ -->
-<section class="band">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="sec-num">03 &nbsp;/&nbsp; The Dossier</span>
-      <h2 class="sec-title">档案</h2>
-      <p class="sec-desc">1954 年，松竹。导演兼编剧一人完成，主演一个人演满二十年。</p>
-    </div>
-
-    <div class="spec reveal">
-      <div><dt>原名</dt><dd><b>二十四の瞳</b><small>NIJÛSHI NO HITOMI</small></dd></div>
-      <div><dt>中文名</dt><dd>二十四只眼睛<small>又名《24 只眼睛》</small></dd></div>
-      <div><dt>英文名</dt><dd>Twenty-Four Eyes</dd></div>
-      <div><dt>导演</dt><dd><b>木下惠介</b><small>Keisuke Kinoshita</small></dd></div>
-      <div><dt>编剧</dt><dd>木下惠介<small>一人完成剧本</small></dd></div>
-      <div><dt>原作</dt><dd>壶井荣《二十四の瞳》<small>1952 年出版</small></dd></div>
-      <div><dt>主演</dt><dd><b>高峰秀子</b><small>饰 大石久子</small></dd></div>
-      <div><dt>共演</dt><dd>田村高广 / 笠智众<small>月丘梦路 · 夏川静江</small></dd></div>
-      <div><dt>摄影</dt><dd>楠田浩之<small>Hiroshi Kusuda</small></dd></div>
-      <div><dt>剪辑</dt><dd>杉原よし<small>Yoshi Sugihara</small></dd></div>
-      <div><dt>音乐</dt><dd>木下忠司<small>导演之弟</small></dd></div>
-      <div><dt>制片</dt><dd>桑田良太郎<small>Ryotaro Kuwata</small></dd></div>
-      <div><dt>出品</dt><dd><b>松竹</b><small>松竹映画</small></dd></div>
-      <div><dt>片长</dt><dd>154 分钟<small>松竹官方记为 156 分钟</small></dd></div>
-      <div><dt>公映</dt><dd>1954-09-15（日本）<small>豆瓣记为 09-14</small></dd></div>
-      <div><dt>规格</dt><dd>黑白 · 单声道</dd></div>
-      <div><dt>语言</dt><dd>日语</dd></div>
-      <div><dt>拍摄地</dt><dd>香川县 小豆
+WBEOF_PART_A
