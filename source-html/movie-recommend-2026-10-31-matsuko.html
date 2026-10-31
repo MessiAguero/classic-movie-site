@@ -409,6 +409,9 @@
   @media (max-width:760px) and (max-height:700px){
     .hero{min-height:100vh}
   }
+  @media (max-width:560px){
+    #wheel,#wheelBulbs,#cabinLights{transform:translateX(340px)}
+  }
   @media (max-width:380px){
     #subject,#rim,#shadows{transform:translateY(52px) scale(.82);transform-origin:800px 707px}
     .hero-in{padding:9vh 16px 0}
@@ -646,7 +649,7 @@
       <circle cx="1369.3" cy="349.3" r="2.6"/>
     </g>
     <!-- 吊舱里的灯 -->
-    <g fill="#ffcf96" opacity=".55">
+    <g id="cabinLights" fill="#ffcf96" opacity=".55">
       <circle cx="1180" cy="218" r="2.4"/>
       <circle cx="1353" cy="318" r="2.4"/>
       <circle cx="1380" cy="418" r="2.4"/>
