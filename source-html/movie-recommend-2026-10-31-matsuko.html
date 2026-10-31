@@ -540,59 +540,122 @@
 
     <!-- 摩天轮：屋顶游园地的那一座 -->
     <g id="wheel">
-      <g stroke="#3d1c22" stroke-width="5" opacity=".9">
-        <line x1="1180" y1="400" x2="1108" y2="710"/>
-        <line x1="1180" y1="400" x2="1252" y2="710"/>
-        <line x1="1132" y1="570" x2="1228" y2="570"/>
+      <!-- 支架：A 字架 + 横撑，落到屋顶上 -->
+      <g stroke="#421e25" stroke-width="7" opacity=".95">
+        <line x1="1180" y1="400" x2="1088" y2="702"/>
+        <line x1="1180" y1="400" x2="1272" y2="702"/>
       </g>
-      <g stroke="#4a2229" stroke-width="1.6" opacity=".55">
+      <g stroke="#3a1a20" stroke-width="3" opacity=".85">
+        <line x1="1132" y1="556" x2="1228" y2="556"/>
+        <line x1="1126" y1="580" x2="1234" y2="580"/>
+        <line x1="1117" y1="628" x2="1243" y2="628"/>
+        <line x1="1108" y1="676" x2="1252" y2="676"/>
+      </g>
+      <rect x="1062" y="698" width="236" height="10" fill="#2e151b"/>
+
+      <!-- 轮辐：12 根，从轮毂到轮缘 -->
+      <g stroke="#52262d" stroke-width="2.2" opacity=".75">
         <line x1="1180" y1="400" x2="1180" y2="200"/>
-        <line x1="1180" y1="400" x2="1180" y2="600"/>
-        <line x1="1180" y1="400" x2="980" y2="400"/>
+        <line x1="1180" y1="400" x2="1353.2" y2="300"/>
         <line x1="1180" y1="400" x2="1380" y2="400"/>
-        <line x1="1180" y1="400" x2="1038.6" y2="258.6"/>
-        <line x1="1180" y1="400" x2="1321.4" y2="258.6"/>
-        <line x1="1180" y1="400" x2="1038.6" y2="541.4"/>
-        <line x1="1180" y1="400" x2="1321.4" y2="541.4"/>
-        <line x1="1180" y1="400" x2="1109.8" y2="227.5"/>
-        <line x1="1180" y1="400" x2="1250.2" y2="227.5"/>
-        <line x1="1180" y1="400" x2="1109.8" y2="572.5"/>
-        <line x1="1180" y1="400" x2="1250.2" y2="572.5"/>
+        <line x1="1180" y1="400" x2="1353.2" y2="500"/>
+        <line x1="1180" y1="400" x2="1280" y2="573.2"/>
+        <line x1="1180" y1="400" x2="1180" y2="600"/>
+        <line x1="1180" y1="400" x2="1080" y2="573.2"/>
+        <line x1="1180" y1="400" x2="1006.8" y2="500"/>
+        <line x1="1180" y1="400" x2="980" y2="400"/>
+        <line x1="1180" y1="400" x2="1006.8" y2="300"/>
+        <line x1="1180" y1="400" x2="1080" y2="226.8"/>
+        <line x1="1180" y1="400" x2="1180" y2="200"/>
       </g>
-      <circle cx="1180" cy="400" r="200" fill="none" stroke="#4d2429" stroke-width="5"/>
-      <circle cx="1180" cy="400" r="192" fill="none" stroke="#6b3238" stroke-width="1.4" opacity=".6"/>
-      <circle cx="1180" cy="400" r="152" fill="none" stroke="#4d2429" stroke-width="1.6" opacity=".45"/>
-      <circle cx="1180" cy="400" r="17" fill="#2b1419" stroke="#6b3238" stroke-width="2"/>
-      <!-- 吊舱：挂在轮缘上，不能歪 -->
-      <g fill="#33161d" stroke="#6b3238" stroke-width="1.1">
-        <rect x="1172" y="606" width="16" height="13" rx="2"/>
-        <rect x="1172" y="181" width="16" height="13" rx="2"/>
-        <rect x="972" y="394" width="16" height="13" rx="2"/>
-        <rect x="1372" y="394" width="16" height="13" rx="2"/>
-        <rect x="1030.6" y="252.6" width="16" height="13" rx="2"/>
-        <rect x="1313.4" y="252.6" width="16" height="13" rx="2"/>
-        <rect x="1030.6" y="535.4" width="16" height="13" rx="2"/>
-        <rect x="1313.4" y="535.4" width="16" height="13" rx="2"/>
-        <rect x="1101.8" y="221.5" width="16" height="13" rx="2"/>
-        <rect x="1242.2" y="221.5" width="16" height="13" rx="2"/>
-        <rect x="1101.8" y="566.5" width="16" height="13" rx="2"/>
-        <rect x="1242.2" y="566.5" width="16" height="13" rx="2"/>
+      <!-- 内圈：斜撑，让轮子读成桁架而不是自行车轮 -->
+      <g stroke="#4a2129" stroke-width="1.2" opacity=".5">
+        <line x1="1180" y1="200" x2="1353.2" y2="300"/>
+        <line x1="1353.2" y1="300" x2="1380" y2="400"/>
+        <line x1="1380" y1="400" x2="1353.2" y2="500"/>
+        <line x1="1353.2" y1="500" x2="1280" y2="573.2"/>
+        <line x1="1280" y1="573.2" x2="1180" y2="600"/>
+        <line x1="1180" y1="600" x2="1080" y2="573.2"/>
+        <line x1="1080" y1="573.2" x2="1006.8" y2="500"/>
+        <line x1="1006.8" y1="500" x2="980" y2="400"/>
+        <line x1="980" y1="400" x2="1006.8" y2="300"/>
+        <line x1="1006.8" y1="300" x2="1080" y2="226.8"/>
+        <line x1="1080" y1="226.8" x2="1180" y2="200"/>
+      </g>
+      <circle cx="1180" cy="400" r="160" fill="none" stroke="#4a2129" stroke-width="1.3" opacity=".4"/>
+
+      <!-- 双轮缘 + 桁架短杆 -->
+      <circle cx="1180" cy="400" r="200" fill="none" stroke="#582a31" stroke-width="4.6"/>
+      <circle cx="1180" cy="400" r="188" fill="none" stroke="#582a31" stroke-width="3.4"/>
+      <g stroke="#4a2129" stroke-width="1.1" opacity=".55">
+        <line x1="1180" y1="200" x2="1180" y2="212"/>
+        <line x1="1353.2" y1="300" x2="1342.8" y2="306"/>
+        <line x1="1380" y1="400" x2="1368" y2="400"/>
+        <line x1="1353.2" y1="500" x2="1342.8" y2="494"/>
+        <line x1="1280" y1="573.2" x2="1273.6" y2="563.8"/>
+        <line x1="1180" y1="600" x2="1180" y2="588"/>
+        <line x1="1080" y1="573.2" x2="1086.4" y2="563.8"/>
+        <line x1="1006.8" y1="500" x2="1017.2" y2="494"/>
+        <line x1="980" y1="400" x2="992" y2="400"/>
+        <line x1="1006.8" y1="300" x2="1017.2" y2="306"/>
+        <line x1="1080" y1="226.8" x2="1086.4" y2="236.2"/>
+        <line x1="1180" y1="200" x2="1180" y2="212"/>
+      </g>
+      <circle cx="1180" cy="400" r="16" fill="#2b1419" stroke="#6b3238" stroke-width="2.4"/>
+      <circle cx="1180" cy="400" r="5" fill="#7a3a42"/>
+
+      <!-- 吊舱：挂在轮缘下，永远垂着 -->
+      <g fill="#33161d" stroke="#6b3238" stroke-width="1.2">
+        <line x1="1180" y1="200" x2="1180" y2="208" stroke-width="1.4"/>
+        <rect x="1167" y="208" width="26" height="21" rx="3"/>
+        <line x1="1353.2" y1="300" x2="1353.2" y2="308" stroke-width="1.4"/>
+        <rect x="1340" y="308" width="26" height="21" rx="3"/>
+        <line x1="1380" y1="400" x2="1380" y2="408" stroke-width="1.4"/>
+        <rect x="1367" y="408" width="26" height="21" rx="3"/>
+        <line x1="1353.2" y1="500" x2="1353.2" y2="508" stroke-width="1.4"/>
+        <rect x="1340" y="508" width="26" height="21" rx="3"/>
+        <line x1="1280" y1="573.2" x2="1280" y2="581" stroke-width="1.4"/>
+        <rect x="1267" y="581" width="26" height="21" rx="3"/>
+        <line x1="1180" y1="600" x2="1180" y2="608" stroke-width="1.4"/>
+        <rect x="1167" y="608" width="26" height="21" rx="3"/>
+        <line x1="1080" y1="573.2" x2="1080" y2="581" stroke-width="1.4"/>
+        <rect x="1067" y="581" width="26" height="21" rx="3"/>
+        <line x1="1006.8" y1="500" x2="1006.8" y2="508" stroke-width="1.4"/>
+        <rect x="993.8" y="508" width="26" height="21" rx="3"/>
+        <line x1="980" y1="400" x2="980" y2="408" stroke-width="1.4"/>
+        <rect x="967" y="408" width="26" height="21" rx="3"/>
+        <line x1="1006.8" y1="300" x2="1006.8" y2="308" stroke-width="1.4"/>
+        <rect x="993.8" y="308" width="26" height="21" rx="3"/>
+        <line x1="1080" y1="226.8" x2="1080" y2="234.8" stroke-width="1.4"/>
+        <rect x="1067" y="234.8" width="26" height="21" rx="3"/>
       </g>
     </g>
     <!-- 轮缘上的小灯泡 -->
     <g id="wheelBulbs" fill="#ffd79c">
-      <circle cx="1180" cy="200" r="2.2"/>
-      <circle cx="1321.4" cy="258.6" r="2.2"/>
-      <circle cx="1380" cy="400" r="2.2"/>
-      <circle cx="1321.4" cy="541.4" r="2.2"/>
-      <circle cx="1180" cy="600" r="2.2"/>
-      <circle cx="1038.6" cy="541.4" r="2.2"/>
-      <circle cx="980" cy="400" r="2.2"/>
-      <circle cx="1038.6" cy="258.6" r="2.2"/>
-      <circle cx="1250.2" cy="227.5" r="1.8"/>
-      <circle cx="1350" cy="470" r="1.8"/>
-      <circle cx="1109.8" cy="572.5" r="1.8"/>
-      <circle cx="1010" cy="330" r="1.8"/>
+      <circle cx="1180" cy="196" r="2.6"/>
+      <circle cx="1290" cy="212" r="2.6"/>
+      <circle cx="1366" cy="296" r="2.6"/>
+      <circle cx="1388" cy="400" r="2.6"/>
+      <circle cx="1366" cy="504" r="2.6"/>
+      <circle cx="1290" cy="588" r="2.6"/>
+      <circle cx="1180" cy="604" r="2.6"/>
+      <circle cx="1070" cy="588" r="2.6"/>
+      <circle cx="994" cy="504" r="2.6"/>
+      <circle cx="972" cy="400" r="2.6"/>
+      <circle cx="994" cy="296" r="2.6"/>
+      <circle cx="1070" cy="212" r="2.6"/>
+    </g>
+    <!-- 吊舱里的灯 -->
+    <g fill="#ffcf96" opacity=".55">
+      <circle cx="1180" cy="218" r="2.4"/>
+      <circle cx="1353" cy="318" r="2.4"/>
+      <circle cx="1380" cy="418" r="2.4"/>
+      <circle cx="1353" cy="518" r="2.4"/>
+      <circle cx="1280" cy="591" r="2.4"/>
+      <circle cx="1080" cy="591" r="2.4"/>
+      <circle cx="1007" cy="518" r="2.4"/>
+      <circle cx="980" cy="418" r="2.4"/>
+      <circle cx="1007" cy="318" r="2.4"/>
     </g>
     <g id="bulbs" fill="#ffdca8">
       <!-- 一串彩灯，只走右半边，避开文字 -->
