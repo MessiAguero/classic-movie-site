@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-30T04:32:46.295Z",
+  "generatedAt": "2026-10-31T04:08:15.263Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 144,
+  "total": 145,
   "ok": 85,
-  "warn": 59,
+  "warn": 60,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 128,
+    "checked": 129,
     "skippedVerified": 16,
     "error": null
   },
@@ -2311,6 +2311,53 @@
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（image.xb1.com）"
+        }
+      ]
+    },
+    {
+      "id": "20261031-matsuko",
+      "zhTitle": "被嫌弃的松子的一生",
+      "sourceTitle": "被嫌弃的松子的一生 (2006) - 海报 — The Movie Database (TMDB)",
+      "year": "2006",
+      "source": "本地",
+      "imageUrl": "posters/20261031-matsuko.jpg",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "280KB",
+      "dims": "1000×1426",
+      "ratio": 1.43,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「被嫌弃的松子的一生」",
+          "年份命中 2006",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "松子一生",
+        "reasons": [
+          "图片最大文字为“松子一生”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“松子一生”没有对上片名，建议核对"
         }
       ]
     },
