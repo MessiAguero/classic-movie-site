@@ -899,6 +899,15 @@
                 <stop offset=".7" stop-color="#360b15"/>
                 <stop offset="1" stop-color="#4a1020"/>
               </linearGradient>
+              <radialGradient id="pfloorV" cx="50%" cy="30%" r="62%">
+                <stop offset="0" stop-color="#2a0910" stop-opacity="0"/>
+                <stop offset=".62" stop-color="#2a0910" stop-opacity=".18"/>
+                <stop offset="1" stop-color="#2a0910" stop-opacity=".72"/>
+              </radialGradient>
+              <linearGradient id="pcast" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#300b14" stop-opacity=".85"/>
+                <stop offset="1" stop-color="#300b14" stop-opacity="0"/>
+              </linearGradient>
               <radialGradient id="ppool" cx="50%" cy="50%" r="50%">
                 <stop offset="0" stop-color="#fff3d4" stop-opacity=".55"/>
                 <stop offset=".5" stop-color="#f4dcae" stop-opacity=".2"/>
@@ -1034,6 +1043,7 @@
 
                 <!-- 舞台地板 -->
                 <rect x="40" y="492" width="520" height="108" fill="url(#pfloor)"/>
+                <rect x="40" y="492" width="520" height="34" fill="url(#pcast)"/>
                 <ellipse cx="300" cy="512" rx="150" ry="42" fill="url(#ppool)"/>
                 <g stroke="#8a6a4a" stroke-width="1" opacity=".26">
                   <line x1="40" y1="524" x2="560" y2="524"/>
@@ -1056,6 +1066,9 @@
                   <line x1="287" y1="306" x2="313" y2="306"/>
                   <line x1="288" y1="313" x2="312" y2="313"/>
                 </g>
+
+                <!-- 舞台地板的四周收暗：中间亮、两边沉 -->
+                <rect x="40" y="492" width="520" height="108" fill="url(#pfloorV)"/>
 
                 <!-- 脚灯：一排五个，立在台唇最前沿 -->
                 <g>
