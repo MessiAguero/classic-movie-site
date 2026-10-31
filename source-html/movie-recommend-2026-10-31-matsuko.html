@@ -632,18 +632,18 @@
     </g>
     <!-- 轮缘上的小灯泡 -->
     <g id="wheelBulbs" fill="#ffd79c">
-      <circle cx="1180" cy="196" r="2.6"/>
-      <circle cx="1290" cy="212" r="2.6"/>
-      <circle cx="1366" cy="296" r="2.6"/>
-      <circle cx="1388" cy="400" r="2.6"/>
-      <circle cx="1366" cy="504" r="2.6"/>
-      <circle cx="1290" cy="588" r="2.6"/>
-      <circle cx="1180" cy="604" r="2.6"/>
-      <circle cx="1070" cy="588" r="2.6"/>
-      <circle cx="994" cy="504" r="2.6"/>
-      <circle cx="972" cy="400" r="2.6"/>
-      <circle cx="994" cy="296" r="2.6"/>
-      <circle cx="1070" cy="212" r="2.6"/>
+      <circle cx="1369.3" cy="450.7" r="2.6"/>
+      <circle cx="1318.6" cy="538.6" r="2.6"/>
+      <circle cx="1230.7" cy="589.3" r="2.6"/>
+      <circle cx="1129.3" cy="589.3" r="2.6"/>
+      <circle cx="1041.4" cy="538.6" r="2.6"/>
+      <circle cx="990.7" cy="450.7" r="2.6"/>
+      <circle cx="990.7" cy="349.3" r="2.6"/>
+      <circle cx="1041.4" cy="261.4" r="2.6"/>
+      <circle cx="1129.3" cy="210.7" r="2.6"/>
+      <circle cx="1230.7" cy="210.7" r="2.6"/>
+      <circle cx="1318.6" cy="261.4" r="2.6"/>
+      <circle cx="1369.3" cy="349.3" r="2.6"/>
     </g>
     <!-- 吊舱里的灯 -->
     <g fill="#ffcf96" opacity=".55">
@@ -674,9 +674,28 @@
       <circle cx="1372" cy="226" r="26"/>
     </g>
 
+    <!-- 屋顶上的小东西：水箱、天线、广告塔，让轮廓不至于是一条折线 -->
+    <g fill="#1c0d13">
+      <rect x="286" y="654" width="26" height="14" rx="1"/>
+      <rect x="288" y="648" width="22" height="7" rx="3"/>
+      <line x1="299" y1="648" x2="299" y2="632" stroke="#1c0d13" stroke-width="2"/>
+      <line x1="299" y1="636" x2="312" y2="640" stroke="#1c0d13" stroke-width="1.6"/>
+      <line x1="560" y1="686" x2="560" y2="662" stroke="#1c0d13" stroke-width="1.8"/>
+      <line x1="560" y1="668" x2="574" y2="672" stroke="#1c0d13" stroke-width="1.4"/>
+      <rect x="880" y="680" width="22" height="12" rx="1"/>
+      <line x1="936" y1="682" x2="936" y2="660" stroke="#1c0d13" stroke-width="1.8"/>
+      <rect x="1256" y="694" width="30" height="12" rx="1"/>
+    </g>
+
     <!-- 屋顶边缘：一道被夕照打亮的台唇 -->
     <rect x="0" y="700" width="1600" height="8" fill="url(#deckEdge)"/>
     <rect x="0" y="708" width="1600" height="192" fill="url(#deck)"/>
+    <!-- 台唇下方的一点反光：让地面不是一块死黑 -->
+    <g opacity=".5">
+      <ellipse cx="800" cy="726" rx="300" ry="26" fill="#b8683e" opacity=".16" filter="url(#b4)"/>
+      <ellipse cx="1180" cy="742" rx="240" ry="30" fill="#c9873f" opacity=".1" filter="url(#b4)"/>
+      <ellipse cx="380" cy="760" rx="220" ry="26" fill="#8a4a30" opacity=".09" filter="url(#b4)"/>
+    </g>
 
     <!-- 铁栏杆：顶栏、下栏、立柱；栏杆在她身后 -->
     <g id="rail">
@@ -711,7 +730,7 @@
 
     <!-- 她：背影，站在栏杆前，望着城外的方向 -->
     <g id="subject">
-      <g transform="translate(800,707)">
+      <g transform="translate(800,707) scale(1.12)">
         <path d="M-24.5,-130 C-24.5,-135 -19,-139 -13,-140.5 L-3.5,-140.5" fill="none" stroke="url(#figRim)" stroke-width="2.4" stroke-linecap="round" filter="url(#b1)"/>
         <path d="M24.5,-130 C24.5,-135 19,-139 13,-140.5 L3.5,-140.5" fill="none" stroke="url(#figRim)" stroke-width="2.4" stroke-linecap="round" filter="url(#b1)"/>
         <path d="M-11,-171 C-19,-169 -24,-162 -24.2,-153" fill="none" stroke="url(#figRim)" stroke-width="2" stroke-linecap="round" filter="url(#b1)"/>
@@ -864,6 +883,32 @@
         <div class="poster-frame">
           <svg viewBox="0 0 760 1040" role="img" aria-label="概念海报：一张昭和风格的黑胶唱片封套，封套上印着深酒红色的空舞台、两侧垂落的幕布、一排脚灯，以及舞台正中一束由纸白留出的追光和一支立式麦克风；唱片从封套右侧抽出，露出半圈纹路与红色标签；下方是唱片编号、英文片名与竖排日文片名">
             <defs>
+              <linearGradient id="pcurL" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#330b14"/>
+                <stop offset=".45" stop-color="#5a1524"/>
+                <stop offset="1" stop-color="#420e1a"/>
+              </linearGradient>
+              <linearGradient id="pcurR" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#420e1a"/>
+                <stop offset=".6" stop-color="#571422"/>
+                <stop offset="1" stop-color="#2c0912"/>
+              </linearGradient>
+              <linearGradient id="pvalance" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#2a0910"/>
+                <stop offset=".7" stop-color="#360b15"/>
+                <stop offset="1" stop-color="#4a1020"/>
+              </linearGradient>
+              <radialGradient id="ppool" cx="50%" cy="50%" r="50%">
+                <stop offset="0" stop-color="#fff3d4" stop-opacity=".55"/>
+                <stop offset=".5" stop-color="#f4dcae" stop-opacity=".2"/>
+                <stop offset="1" stop-color="#e8c88e" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="pinner" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#1a0409" stop-opacity=".5"/>
+                <stop offset=".28" stop-color="#1a0409" stop-opacity="0"/>
+                <stop offset=".74" stop-color="#1a0409" stop-opacity="0"/>
+                <stop offset="1" stop-color="#1a0409" stop-opacity=".45"/>
+              </linearGradient>
               <linearGradient id="pbg" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0" stop-color="#f0e3c4"/>
                 <stop offset=".5" stop-color="#e9dab6"/>
@@ -955,8 +1000,8 @@
               <rect x="40" y="80" width="520" height="520" fill="url(#pstage)"/>
               <g clip-path="url(#sleeveClip)">
                 <!-- 顶帷幔：下缘是波浪，说明这是台口 -->
-                <rect x="40" y="80" width="520" height="76" fill="#3d0e19"/>
-                <path d="M40,150 q32.5,26 65,0 q32.5,26 65,0 q32.5,26 65,0 q32.5,26 65,0 q32.5,26 65,0 q32.5,26 65,0 q32.5,26 65,0 q32.5,26 65,0 L560,80 L40,80 Z" fill="#3d0e19"/>
+                <rect x="40" y="80" width="520" height="76" fill="url(#pvalance)"/>
+                <path d="M40,150 q32.5,26 65,0 q32.5,26 65,0 q32.5,26 65,0 q32.5,26 65,0 q32.5,26 65,0 q32.5,26 65,0 q32.5,26 65,0 q32.5,26 65,0 L560,80 L40,80 Z" fill="url(#pvalance)"/>
                 <g stroke="#5a1622" stroke-width="1.1" opacity=".7">
                   <line x1="86" y1="80" x2="86" y2="146"/>
                   <line x1="150" y1="80" x2="150" y2="158"/>
@@ -969,8 +1014,8 @@
                 </g>
 
                 <!-- 两侧垂幕：竖向褶皱 -->
-                <rect x="40" y="140" width="86" height="400" fill="#47101c"/>
-                <rect x="474" y="140" width="86" height="400" fill="#3f0d18"/>
+                <rect x="40" y="140" width="86" height="400" fill="url(#pcurL)"/>
+                <rect x="474" y="140" width="86" height="400" fill="url(#pcurR)"/>
                 <g stroke="#6b2030" stroke-width="1.2" opacity=".55" fill="none">
                   <path d="M58,140 C54,250 56,360 52,540"/>
                   <path d="M78,140 C74,250 76,360 72,540"/>
@@ -983,16 +1028,18 @@
                 </g>
 
                 <!-- 追光：最亮的地方是没上色的纸 -->
-                <path d="M292,146 L212,540 L388,540 L308,146 Z" fill="url(#pbeam)"/>
-                <path d="M296,146 L264,540 L336,540 L304,146 Z" fill="#fdf3d8" opacity=".13"/>
+                <path d="M292,146 L204,540 L396,540 L308,146 Z" fill="url(#pbeam)" filter="url(#pblur2)"/>
+                <path d="M296,150 L268,540 L332,540 L304,150 Z" fill="#fdf3d8" opacity=".14" filter="url(#pblur2)"/>
 
                 <!-- 舞台地板 -->
                 <rect x="40" y="492" width="520" height="108" fill="url(#pfloor)"/>
-                <rect x="40" y="492" width="520" height="3" fill="#f6e8c6" opacity=".42"/>
-                <g stroke="#8a6a4a" stroke-width="1" opacity=".28">
-                  <line x1="40" y1="522" x2="560" y2="522"/>
-                  <line x1="40" y1="556" x2="560" y2="556"/>
+                <ellipse cx="300" cy="512" rx="150" ry="42" fill="url(#ppool)"/>
+                <g stroke="#8a6a4a" stroke-width="1" opacity=".26">
+                  <line x1="40" y1="524" x2="560" y2="524"/>
+                  <line x1="40" y1="558" x2="560" y2="558"/>
                 </g>
+                <rect x="40" y="580" width="520" height="20" fill="#7c6047" opacity=".5"/>
+                <rect x="40" y="488" width="520" height="4" fill="#2d0b13" opacity=".7"/>
 
                 <!-- 麦克风：立在中轴，由头挡住杆的上端 -->
                 <g stroke="#241014" fill="none">
@@ -1009,25 +1056,30 @@
                   <line x1="288" y1="313" x2="312" y2="313"/>
                 </g>
 
-                <!-- 脚灯：一排，把台唇照亮 -->
+                <!-- 脚灯：一排五个，立在台唇最前沿 -->
                 <g>
-                  <circle cx="300" cy="486" r="34" fill="url(#pfoot)" opacity=".8"/>
-                  <circle cx="150" cy="486" r="26" fill="url(#pfoot)" opacity=".5"/>
-                  <circle cx="450" cy="486" r="26" fill="url(#pfoot)" opacity=".5"/>
+                  <circle cx="120" cy="578" r="30" fill="url(#pfoot)" opacity=".55"/>
+                  <circle cx="210" cy="578" r="30" fill="url(#pfoot)" opacity=".55"/>
+                  <circle cx="300" cy="578" r="36" fill="url(#pfoot)" opacity=".8"/>
+                  <circle cx="390" cy="578" r="30" fill="url(#pfoot)" opacity=".55"/>
+                  <circle cx="480" cy="578" r="30" fill="url(#pfoot)" opacity=".55"/>
                 </g>
                 <g fill="#fbeac4">
-                  <circle cx="150" cy="488" r="5.4"/>
-                  <circle cx="225" cy="488" r="5.4"/>
-                  <circle cx="300" cy="488" r="5.8"/>
-                  <circle cx="375" cy="488" r="5.4"/>
-                  <circle cx="450" cy="488" r="5.4"/>
+                  <circle cx="120" cy="586" r="4.6"/>
+                  <circle cx="210" cy="586" r="4.6"/>
+                  <circle cx="300" cy="586" r="5.2"/>
+                  <circle cx="390" cy="586" r="4.6"/>
+                  <circle cx="480" cy="586" r="4.6"/>
                 </g>
 
                 <!-- 舞台地面上的两道反光 -->
-                <g fill="#fdf1d2" opacity=".2">
-                  <ellipse cx="300" cy="514" rx="46" ry="5"/>
-                  <ellipse cx="300" cy="534" rx="30" ry="4" opacity=".7"/>
+                <g fill="#fdf1d2" opacity=".22">
+                  <ellipse cx="300" cy="512" rx="44" ry="5"/>
+                  <ellipse cx="300" cy="530" rx="26" ry="3.4" opacity=".7"/>
                 </g>
+
+                <!-- 封套内侧压暗 -->
+                <rect x="40" y="80" width="520" height="520" fill="url(#pinner)"/>
               </g>
 
               <!-- 封套外框：双线，一条细金 -->
