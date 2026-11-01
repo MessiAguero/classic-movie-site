@@ -566,6 +566,16 @@
     "hiRes": true
   },
   {
+    "id": "20261101-hanabi",
+    "zhTitle": "花火",
+    "enTitle": "",
+    "year": "1997",
+    "imageUrl": "posters/20261101-hanabi.jpg",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/mQ9OLnOg3Wyv7G6jSXX1nW6wJTE.jpg",
+    "title": "花火 (1997) - 海报 — The Movie Database (TMDB)",
+    "hiRes": false
+  },
+  {
     "id": "20260427",
     "zhTitle": "辛 德 勒 的 名 单",
     "enTitle": "Schindler's List",

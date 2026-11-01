@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T09:24:52.293Z",
+  "generatedAt": "2026-11-01T10:26:29.124Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 145,
+  "total": 146,
   "ok": 85,
-  "warn": 60,
+  "warn": 61,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 129,
+    "checked": 130,
     "skippedVerified": 16,
     "error": null
   },
@@ -2358,6 +2358,53 @@
           "code": "visual_title_unverified",
           "severity": "warn",
           "detail": "图片能读到文字，但最大文字“松子一生”没有对上片名，建议核对"
+        }
+      ]
+    },
+    {
+      "id": "20261101-hanabi",
+      "zhTitle": "花火",
+      "sourceTitle": "花火 (1997) - 海报 — The Movie Database (TMDB)",
+      "year": "1997",
+      "source": "本地",
+      "imageUrl": "posters/20261101-hanabi.jpg",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "259KB",
+      "dims": "800×1200",
+      "ratio": 1.5,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「花火」",
+          "年份命中 1997",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "PEEPBEPK",
+        "reasons": [
+          "图片最大文字为“PEEPBEPK”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“PEEPBEPK”没有对上片名，建议核对"
         }
       ]
     },
