@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-01T10:27:30.626Z",
+  "generatedAt": "2026-11-02T04:08:32.969Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 146,
-  "ok": 85,
+  "total": 147,
+  "ok": 86,
   "warn": 61,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 130,
+    "checked": 131,
     "skippedVerified": 16,
     "error": null
   },
@@ -2407,6 +2407,49 @@
           "detail": "图片能读到文字，但最大文字“PEEPBEPK”没有对上片名，建议核对"
         }
       ]
+    },
+    {
+      "id": "20261102-narayama",
+      "zhTitle": "楢山节考",
+      "sourceTitle": "楢山节考 (1983) - 海报 — The Movie Database (TMDB)",
+      "year": "1983",
+      "source": "本地",
+      "imageUrl": "posters/20261102-narayama.jpg",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "251KB",
+      "dims": "1000×1429",
+      "ratio": 1.43,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「楢山节考」",
+          "年份命中 1983",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": true,
+        "years": [
+          "1983"
+        ],
+        "dominantText": "8.30",
+        "reasons": [
+          "图片文字命中上映年份 1983"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260427",
