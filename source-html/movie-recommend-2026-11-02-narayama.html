@@ -142,7 +142,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(64px,9.6vw,116px);li
 
 /* ---------- 06 conflicts ---------- */
 .conflicts{display:grid;gap:0;border-top:1px solid var(--line)}
-.cf{display:grid;grid-template-columns:158px minmax(0,1fr);gap:36px;padding:34px 0;border-bottom:1px solid var(--line2)}
+.cf{display:grid;grid-template-columns:158px minmax(0,1fr);gap:36px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line2)}
 .cf h4{margin:0;font-family:var(--serif);font-weight:400;font-size:17px;color:#f7f2e6;letter-spacing:.04em;line-height:1.6}
 .cf h4 i{display:block;font-family:var(--latin);font-style:normal;font-size:9.5px;letter-spacing:.26em;
   color:var(--ochre);opacity:.8;margin-bottom:8px}
@@ -215,7 +215,7 @@ footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
 footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
 
 /* ---------- HUD ---------- */
-#hud{position:fixed;right:34px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
+#hud{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
   opacity:0;transition:opacity .7s ease;pointer-events:none}
 #hud.on{opacity:1}
 #hud b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:13px;
@@ -229,6 +229,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 .reveal.in{opacity:1;transform:none}
 
 /* ---------- responsive ---------- */
+@media (max-width:1380px){#hud{display:none}}
 @media (max-width:1000px){
   .intro{grid-template-columns:1fr;gap:48px}
   .poster-grid{grid-template-columns:1fr;gap:46px}
