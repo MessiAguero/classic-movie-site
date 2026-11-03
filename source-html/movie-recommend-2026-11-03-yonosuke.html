@@ -324,6 +324,11 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 <linearGradient id="nearG" x1="0" y1="0" x2=".2" y2="1">
   <stop offset="0" stop-color="#1c1224"/><stop offset="1" stop-color="#0c0812"/>
 </linearGradient>
+<linearGradient id="groundFade" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#0a0710" stop-opacity="0"/>
+  <stop offset=".55" stop-color="#0a0710" stop-opacity=".55"/>
+  <stop offset="1" stop-color="#0a0710" stop-opacity=".96"/>
+</linearGradient>
 <radialGradient id="vig"><stop offset=".5" stop-color="#000" stop-opacity="0"/>
   <stop offset="1" stop-color="#000" stop-opacity=".5"/></radialGradient>
 <filter id="b2" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2"/></filter>
@@ -361,6 +366,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
     <path d="M488 622 L722 622 L710 614 L500 614 Z" fill="#1a1120"/>
     <path d="M482 622 L728 622 L605 582 Z" fill="#2f2134"/>
     <path d="M482 622 L728 622 L605 596 Z" fill="#241731"/>
+    <path d="M482 622 L605 588" stroke="#8a5a58" stroke-width="1.2" opacity=".35" fill="none"/>
     <rect x="516" y="640" width="26" height="18" fill="#e9a878" opacity=".32"/>
     <rect x="556" y="640" width="26" height="18" fill="#33253c"/>
     <rect x="516" y="676" width="38" height="16" fill="#33253c"/>
@@ -370,6 +376,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
     <path d="M616 606 L736 606 L724 598 L628 598 Z" fill="#1a1120"/>
     <path d="M610 606 L742 606 L676 566 Z" fill="#2f2134"/>
     <path d="M610 606 L742 606 L676 580 Z" fill="#241731"/>
+    <path d="M610 606 L676 572" stroke="#8a5a58" stroke-width="1.2" opacity=".35" fill="none"/>
     <rect x="644" y="620" width="24" height="34" fill="#33253c"/>
     <rect x="684" y="620" width="24" height="34" fill="#33253c"/>
     <rect x="644" y="668" width="24" height="16" fill="#e9a878" opacity=".24"/>
@@ -379,6 +386,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
     <path d="M888 614 L980 614 L970 606 L898 606 Z" fill="#1a1120"/>
     <path d="M882 614 L986 614 L934 578 Z" fill="#2f2134"/>
     <path d="M882 614 L986 614 L934 592 Z" fill="#241731"/>
+    <path d="M882 614 L934 584" stroke="#8a5a58" stroke-width="1.2" opacity=".32" fill="none"/>
     <rect x="908" y="630" width="22" height="16" fill="#33253c"/>
     <rect x="908" y="664" width="22" height="14" fill="#e9a878" opacity=".2"/>
   </g>
@@ -387,6 +395,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
     <path d="M980 626 L1108 626 L1098 618 L990 618 Z" fill="#1a1120"/>
     <path d="M974 626 L1114 626 L1044 588 Z" fill="#2f2134"/>
     <path d="M974 626 L1114 626 L1044 602 Z" fill="#241731"/>
+    <path d="M974 626 L1044 594" stroke="#8a5a58" stroke-width="1.2" opacity=".32" fill="none"/>
     <rect x="1008" y="642" width="24" height="16" fill="#33253c"/>
     <rect x="1050" y="642" width="24" height="16" fill="#33253c"/>
   </g>
@@ -395,6 +404,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
     <path d="M1108 616 L1212 616 L1202 608 L1118 608 Z" fill="#1a1120"/>
     <path d="M1102 616 L1218 616 L1160 580 Z" fill="#2f2134"/>
     <path d="M1102 616 L1218 616 L1160 592 Z" fill="#241731"/>
+    <path d="M1102 616 L1160 586" stroke="#8a5a58" stroke-width="1.2" opacity=".32" fill="none"/>
     <rect x="1136" y="632" width="24" height="18" fill="#33253c"/>
     <rect x="1136" y="670" width="24" height="14" fill="#e9a878" opacity=".26"/>
   </g>
@@ -405,11 +415,12 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
   </g>
 </g>
 
-<g fill="#130d1a">
-  <path d="M862 700 L862 622 L866 622 L866 700 Z"/>
-  <path d="M846 626 Q 852 596 868 594 Q 882 592 886 610 Q 892 606 894 616 Q 892 630 878 634 Q 862 638 846 626 Z"/>
-  <path d="M876 700 L876 566 L880 566 L880 700 Z"/>
-  <path d="M858 574 Q 862 546 878 548 Q 890 552 890 568 Q 890 578 880 580 Q 866 582 858 574 Z"/>
+<g fill="#171020">
+  <rect x="636" y="690" width="258" height="18" fill="#120c18"/>
+  <path d="M628 690 L902 690 L902 682 L628 682 Z" fill="#2c2034"/>
+  <g stroke="#33253c" stroke-width="1.1" opacity=".55">
+    <path d="M636 696 L894 696"/><path d="M700 682 L700 708"/><path d="M772 682 L772 708"/><path d="M844 682 L844 708"/>
+  </g>
 </g>
 
 <g fill="url(#nearG)">
@@ -455,6 +466,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
   </g>
 </g>
 
+<rect x="0" y="668" width="1440" height="42" fill="url(#groundFade)"/>
 <rect x="0" y="700" width="1440" height="9" fill="#1b1220"/>
 <rect x="0" y="698" width="1440" height="2.4" fill="#f6dfc6" opacity=".13"/>
 
@@ -491,9 +503,9 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
     <rect x="1356" y="230" width="6" height="9"/><rect x="1376" y="230" width="6" height="9"/>
     <rect x="1300" y="284" width="5" height="8"/><rect x="1364" y="284" width="5" height="8"/>
   </g>
-  <rect x="890" y="502" width="7" height="196"/>
-  <rect x="874" y="536" width="38" height="4"/>
-  <rect x="874" y="570" width="32" height="4"/>
+  <rect x="952" y="502" width="7" height="196"/>
+  <rect x="936" y="536" width="38" height="4"/>
+  <rect x="936" y="570" width="32" height="4"/>
 </g>
 <g fill="none" stroke="#0a0710" stroke-linecap="round" opacity=".72">
   <path d="M1296 234 Q 880 268 0 294" stroke-width="1.4"/>
@@ -501,13 +513,13 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
   <path d="M1382 234 Q 980 282 0 322" stroke-width="1.4"/>
   <path d="M1298 294 Q 900 320 0 344" stroke-width="1"/>
   <path d="M1372 294 Q 1040 330 0 368" stroke-width="1"/>
-  <path d="M894 538 Q 1120 528 1332 528" stroke-width="1"/>
-  <path d="M894 572 Q 1120 562 1332 562" stroke-width=".9"/>
+  <path d="M956 538 Q 1140 528 1332 528" stroke-width="1"/>
+  <path d="M956 572 Q 1140 562 1332 562" stroke-width=".9"/>
 </g>
 
 <g id="figWrap">
   <ellipse cx="832" cy="748" rx="20" ry="3.4" fill="#06040a" opacity=".55" filter="url(#b2)"/>
-  <ellipse cx="832" cy="698" rx="74" ry="98" fill="url(#halo)" opacity=".62"/>
+  <ellipse cx="832" cy="706" rx="58" ry="76" fill="url(#halo)" opacity=".4"/>
   <g id="fig" fill="#0b0712" transform="rotate(-1.4 832 748)">
     <g fill="#ffc98e" opacity=".16" filter="url(#b6)" transform="translate(1.2,-1)">
       <ellipse cx="832" cy="660" rx="7.6" ry="8.6"/>
