@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T04:22:54.373Z",
+  "generatedAt": "2026-11-03T04:08:30.971Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 147,
+  "total": 148,
   "ok": 86,
-  "warn": 61,
+  "warn": 62,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 131,
+    "checked": 132,
     "skippedVerified": 16,
     "error": null
   },
@@ -2450,6 +2450,55 @@
       "verified": false,
       "status": "ok",
       "issues": []
+    },
+    {
+      "id": "20261103-yonosuke",
+      "zhTitle": "横道世之介",
+      "sourceTitle": "人文聚焦 _ 小说《横道世之介》说不出哪里好看，但就是正能量的精彩",
+      "year": "2013",
+      "source": "本地",
+      "imageUrl": "posters/20261103-yonosuke.jpg",
+      "host": "whb.cn",
+      "tier": "unknown",
+      "size": "265KB",
+      "dims": "1080×1497",
+      "ratio": 1.39,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「横道世之介」",
+          "书名号片名命中「横道世之介」"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "横道世之介",
+        "yearMatch": true,
+        "years": [
+          "1915",
+          "2013"
+        ],
+        "dominantText": "観る者すべての記憶に残る、最高に愛おしい主人公。幸福感に包まれる、人間ドラマの誕生！",
+        "reasons": [
+          "图片文字命中片名「横道世之介」",
+          "图片文字命中上映年份 2013"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（whb.cn）"
+        }
+      ]
     },
     {
       "id": "20260427",
