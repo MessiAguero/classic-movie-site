@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>黄昏的清兵卫 · 日本电影专题 第 12 期</title>
+<meta name="description" content="山田洋次《黄昏的清兵卫》(2002)：剧情梗概、人物冲突、六处亮点与观看理由。全程不剧透。">
+<style>
+:root{
+  --bg:#0a0e15; --bg2:#0d131c; --panel:#111823;
+  --ink:#e8e3d6; --dim:#9a978d; --dim2:#6f6e68;
+  --line:rgba(232,227,214,.13); --line2:rgba(232,227,214,.062);
+  --amber:#c9964f; --amber2:#e8bc7d;
+  --indigo:#2d4360; --indigo2:#7d9ab5;
+  --paper:#e9e0cc; --seal:#a63c2e;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Didot","Optima","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.95;letter-spacing:.012em;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(201,150,79,.4);color:#fff}
+a{color:inherit}
+.wrap{width:min(1160px,calc(100% - 96px));margin:0 auto}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:max(100vh,880px);overflow:hidden;background:#080b10}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(8,11,16,.97) 0%,rgba(8,11,16,.93) 24%,rgba(8,11,16,.70) 46%,rgba(8,11,16,.16) 72%,rgba(8,11,16,0) 88%),
+    linear-gradient(to bottom,rgba(8,11,16,.86) 0%,rgba(8,11,16,.20) 24%,rgba(8,11,16,.02) 52%,rgba(8,11,16,.34) 82%,rgba(10,14,21,1) 100%)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.notice{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:11px;
+  letter-spacing:.14em;color:rgba(232,227,214,.64);border:1px solid rgba(232,227,214,.16);
+  border-radius:999px;padding:7px 16px;margin-bottom:34px;background:rgba(10,14,21,.5);backdrop-filter:blur(4px)}
+.notice .dot{width:5px;height:5px;border-radius:50%;background:var(--amber2);box-shadow:0 0 8px rgba(232,188,125,.8)}
+.hero-in{position:relative;z-index:3;width:min(1160px,calc(100% - 96px));margin:0 auto;
+  min-height:max(100vh,880px);display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:10.5vh;padding-bottom:64px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;
+  letter-spacing:.34em;color:var(--amber);text-transform:uppercase}
+.eyebrow i{display:block;width:52px;height:1px;background:var(--amber);opacity:.7}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(54px,8.2vw,100px);line-height:1.04;
+  letter-spacing:.06em;margin:26px 0 0;color:#f7f2e6;text-shadow:0 6px 60px rgba(0,0,0,.7)}
+.latin{margin:20px 0 0;font-family:var(--latin);font-size:12.5px;letter-spacing:.34em;
+  color:rgba(232,227,214,.6);text-transform:uppercase}
+.hero-sub{margin:28px 0 0;max-width:27em;font-size:16px;line-height:2.05;color:rgba(232,227,214,.82)}
+.hero-sub em{font-style:normal;color:#fbf6ea;border-bottom:1px solid rgba(201,150,79,.65);padding-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:556px}
+.chip{font-size:11.5px;letter-spacing:.06em;color:rgba(232,227,214,.78);border:1px solid var(--line);
+  border-radius:999px;padding:6px 14px;background:rgba(10,14,21,.55);backdrop-filter:blur(6px)}
+.chip b{color:#fbf6ea;font-weight:500}
+.scroll-hint{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:4;
+  font-family:var(--latin);font-size:9.5px;letter-spacing:.42em;color:rgba(232,227,214,.4);
+  display:flex;flex-direction:column;align-items:center;gap:9px}
+.scroll-hint span{display:block;width:1px;height:32px;background:linear-gradient(to bottom,rgba(232,227,214,.44),transparent)}
+
+/* ---------- sections ---------- */
+.sec{padding:112px 0;border-top:1px solid var(--line2)}
+.sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:52px}
+.sec-head .no{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--amber);opacity:.92}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.1vw,36px);
+  letter-spacing:.05em;margin:0;color:#f5f0e4;flex:1 1 auto}
+.sec-head .kicker{font-family:var(--latin);font-size:10.5px;letter-spacing:.3em;
+  color:var(--dim2);text-transform:uppercase;margin:0}
+.note{font-size:13px;color:var(--dim);line-height:1.9}
+
+/* ---------- 01 lede ---------- */
+.intro{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:64px;align-items:start}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:2.2;color:#dcd6c8}
+.lede p{margin:0 0 22px}
+.lede p:first-child::first-letter{float:left;font-size:5.1em;line-height:.82;padding:.06em .14em 0 0;
+  color:#fbf6ea;font-weight:400}
+.lede strong{font-weight:500;color:#fbf6ea}
+.lede .dash{color:var(--dim);font-size:15px}
+.glance{border:1px solid var(--line);background:linear-gradient(160deg,rgba(20,27,38,.94),rgba(10,14,21,.94));
+  padding:30px 28px}
+.glance h3{font-family:var(--latin);font-size:10px;letter-spacing:.34em;color:var(--amber);
+  margin:0 0 22px;font-weight:400;text-transform:uppercase}
+.glance dl{margin:0;display:grid;gap:13px}
+.glance div{display:grid;grid-template-columns:72px 1fr;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line2)}
+.glance div:last-child{border-bottom:0;padding-bottom:0}
+.glance dt{font-size:11.5px;color:var(--dim2);letter-spacing:.1em}
+.glance dd{margin:0;font-size:13.5px;color:#d2ccbe;line-height:1.7}
+.glance dd b{color:#fbf6ea;font-weight:500}
+.acts{margin-top:74px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.act{background:var(--bg);padding:34px 30px}
+.act .t{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--amber);
+  opacity:.92;margin-bottom:14px}
+.act h4{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f5f0e4;letter-spacing:.04em}
+.act p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 02 poster ---------- */
+.poster-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:70px;align-items:start}
+.poster-frame{border:1px solid var(--line);padding:14px;background:#080b11;
+  box-shadow:0 40px 90px -50px #000, inset 0 0 0 1px rgba(0,0,0,.6)}
+.poster-svg{display:block;width:100%;height:auto}
+.pcap{margin:16px 2px 0;font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--dim2)}
+.pnotes{display:grid;gap:28px}
+.pnote{border-left:1px solid var(--line);padding:2px 0 2px 24px}
+.pnote .n{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--amber);opacity:.88}
+.pnote h4{margin:8px 0 10px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f5f0e4}
+.pnote p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 03 spec ---------- */
+.spec{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.spec div{background:var(--bg);padding:22px 20px;min-height:92px}
+.spec dt{font-size:10.5px;letter-spacing:.14em;color:var(--dim2);margin-bottom:8px}
+.spec dd{margin:0;font-size:13.5px;color:#d8d2c4;line-height:1.65}
+.spec dd small{display:block;font-size:11px;color:var(--dim2);margin-top:4px;letter-spacing:.02em}
+.spec .wide{grid-column:1/-1;min-height:0;background:linear-gradient(120deg,rgba(201,150,79,.14),rgba(13,19,28,.92) 46%)}
+.spec .wide dd{font-family:var(--serif);font-size:17px;color:#fbf6ea;letter-spacing:.05em}
+
+/* ---------- 04 scores ---------- */
+.scores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.sc{background:var(--bg);padding:32px 30px}
+.sc .src{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--dim2);text-transform:uppercase}
+.sc .val{font-family:var(--latin);font-size:52px;line-height:1;margin:16px 0 8px;color:#fbf6ea}
+.sc .val small{font-size:15px;color:var(--dim);letter-spacing:.04em;margin-left:6px}
+.sc .meta{font-size:12.5px;color:var(--dim)}
+.sc.hi .val{color:#f2d8b0}
+.caliber{margin:52px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.caliber li{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line2);
+  font-size:13.5px;line-height:1.9;color:var(--dim)}
+.caliber li b{color:#f1ebdc;font-weight:500}
+.caliber li i{font-family:var(--latin);font-style:normal;font-size:10.5px;letter-spacing:.2em;color:var(--amber);opacity:.82;padding-top:4px}
+
+/* ---------- 05 people ---------- */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.person{background:var(--bg);padding:30px 28px}
+.person .role{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--amber);opacity:.82}
+.person h4{margin:12px 0 4px;font-family:var(--serif);font-weight:400;font-size:20px;color:#fbf6ea;letter-spacing:.04em}
+.person .actor{font-size:11.5px;color:var(--dim2);letter-spacing:.08em;margin-bottom:18px}
+.person p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.person p span{display:block;margin-top:9px;color:#d4cdbe}
+.person p span b{color:var(--amber2);font-weight:400;font-size:11.5px;letter-spacing:.08em;margin-right:6px}
+
+/* ---------- 06 conflicts ---------- */
+.conflicts{display:grid;gap:0;border-top:1px solid var(--line)}
+.cf{display:grid;grid-template-columns:158px minmax(0,1fr);gap:36px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line2)}
+.cf h4{margin:0;font-family:var(--serif);font-weight:400;font-size:17px;color:#fbf6ea;letter-spacing:.04em;line-height:1.6}
+.cf h4 i{display:block;font-family:var(--latin);font-style:normal;font-size:9.5px;letter-spacing:.26em;
+  color:var(--amber);opacity:.82;margin-bottom:8px}
+.cf p{margin:0;font-size:13.8px;line-height:2;color:var(--dim)}
+.cf p em{font-style:normal;color:#ebe5d6}
+
+/* ---------- 07 awards ---------- */
+.awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.award{background:var(--bg);padding:28px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.award .yr{font-family:var(--latin);font-size:11px;letter-spacing:.14em;color:var(--dim2);padding-top:3px}
+.award h4{margin:0 0 6px;font-size:14.5px;font-weight:500;color:#f4eee1;letter-spacing:.02em}
+.award p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.75}
+.award.gold{background:linear-gradient(120deg,rgba(201,150,79,.16),rgba(13,19,28,.92) 55%)}
+.award.gold h4{color:#f4d9b2}
+.award.wide{grid-column:1/-1;grid-template-columns:auto 1fr}
+
+/* ---------- 08 lineage ---------- */
+.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px}
+.ln{position:relative;padding:0 0 40px 40px}
+.ln:last-child{padding-bottom:0}
+.ln::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--amber)}
+.ln.now::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 4px rgba(166,60,46,.2)}
+.ln .yr{font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--dim2)}
+.ln h4{margin:6px 0 6px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f4eee1;letter-spacing:.03em}
+.ln p{margin:0;font-size:13px;color:var(--dim);line-height:1.85}
+.ln.now h4{color:#f4d9b2}
+
+/* ---------- 09 six grid ---------- */
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.g6{background:var(--bg);padding:32px 28px;min-height:200px}
+.g6 .n{font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--amber);opacity:.88}
+.g6 h4{margin:14px 0 10px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f4eee1;letter-spacing:.03em}
+.g6 p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 10 why ---------- */
+.why{display:grid;gap:0;max-width:820px}
+.why article{padding:0 0 38px}
+.why article + article{border-top:1px solid var(--line2);padding-top:38px}
+.why h3{margin:0 0 14px;font-family:var(--serif);font-weight:400;font-size:21px;color:#fbf6ea;letter-spacing:.04em}
+.why p{margin:0;font-size:14.5px;line-height:2.05;color:#bfb8a9}
+.why p + p{margin-top:14px}
+
+/* ---------- 11 tips ---------- */
+.tips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.tip{background:var(--bg);padding:30px 26px}
+.tip .k{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--amber);opacity:.88}
+.tip h4{margin:12px 0 10px;font-size:16px;font-weight:500;color:#f4eee1}
+.tip p{margin:0;font-size:12.8px;line-height:1.95;color:var(--dim)}
+
+/* ---------- verdict ---------- */
+.verdict{padding:150px 0 120px;border-top:1px solid var(--line2);position:relative;overflow:hidden}
+.verdict .tag{font-family:var(--latin);font-size:9.5px;letter-spacing:.32em;color:var(--dim2);margin-bottom:34px}
+.verdict .q{font-family:var(--serif);font-size:clamp(24px,3.3vw,38px);line-height:1.72;letter-spacing:.06em;
+  color:#fbf6ea;margin:0;max-width:22em}
+.verdict .q span{display:block}
+.verdict .src{margin-top:36px;font-size:12px;color:var(--dim2);letter-spacing:.04em}
+.stamp{position:absolute;right:12px;bottom:82px;width:136px;height:136px;border:1px solid rgba(166,60,46,.55);
+  border-radius:50%;display:grid;place-items:center;color:rgba(196,86,72,.94);text-align:center;
+  transform:rotate(-7deg);box-shadow:inset 0 0 0 4px rgba(166,60,46,.08)}
+.stamp div{display:grid;gap:5px;justify-items:center}
+.stamp span{font-family:var(--latin);font-size:9px;letter-spacing:.26em;opacity:.9}
+.stamp b{font-family:var(--serif);font-size:21px;letter-spacing:.12em;font-weight:400;line-height:1.1;
+  padding:5px 0;border-top:1px solid rgba(166,60,46,.36);border-bottom:1px solid rgba(166,60,46,.36)}
+
+footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
+footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
+
+/* ---------- HUD ---------- */
+#hud{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
+  opacity:0;transition:opacity .7s ease;pointer-events:none}
+#hud.on{opacity:1}
+#hud b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:13px;
+  color:var(--dim2);letter-spacing:.1em;transition:color .5s}
+#hud b i{display:block;width:16px;height:1px;background:var(--dim2);transition:all .5s}
+#hud b.on{color:#fbf6ea}
+#hud b.on i{width:30px;background:var(--amber)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1380px){#hud{display:none}}
+@media (max-width:1000px){
+  .intro{grid-template-columns:1fr;gap:48px}
+  .poster-grid{grid-template-columns:1fr;gap:46px}
+  .poster-frame{max-width:520px}
+  .scores,.awards{grid-template-columns:1fr}
+  .spec{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tips{grid-template-columns:1fr}
+  .acts{grid-template-columns:1fr}
+  #hud{display:none}
+}
+@media (max-width:760px){
+  body{font-size:15px;line-height:1.9}
+  .wrap,.hero-in{width:calc(100% - 40px)}
+  .hero{min-height:max(100vh,740px)}
+  .hero-in{min-height:max(100vh,740px);padding-top:8vh;padding-bottom:100px}
+  h1{font-size:clamp(42px,13vw,72px);letter-spacing:.04em}
+  .hero-sub{font-size:14.5px;line-height:1.95;max-width:26em}
+  #figWrap{transform:translateY(36px) scale(.84);transform-origin:818px 706px}
+  .sec{padding:76px 0}
+  .sec-head{margin-bottom:36px;gap:12px}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .people,.grid6{grid-template-columns:1fr}
+  .cf{grid-template-columns:1fr;gap:12px}
+  .lede{font-size:16px;line-height:2.05}
+  .sc .val{font-size:44px}
+  .verdict{padding:96px 0 88px}
+  .stamp{position:static;margin-top:48px;transform:rotate(-4deg)}
+  .chips{max-width:100%;padding-top:0;margin-top:26px}
+  footer{padding-bottom:120px}
+  .scroll-hint{bottom:20px}
+  .chip{font-size:11px;padding:5px 11px;letter-spacing:.03em}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .scroll-hint{left:auto;right:8px;transform:none;bottom:26px}
+}
+@media (max-width:420px){
+  .notice{margin-bottom:22px;font-size:10.5px;padding:6px 13px}
+  h1{font-size:clamp(36px,11.6vw,60px);margin-top:20px}
+  .latin{margin-top:14px;font-size:11px;letter-spacing:.26em}
+  .hero-sub{margin-top:22px;font-size:13.8px}
+  .chip:nth-child(6){display:none}
+}
+@media (max-width:380px){
+  .wrap,.hero-in{width:calc(100% - 32px)}
+  .chip{font-size:10.5px;padding:5px 11px}
+  .glance{padding:24px 20px}
+}
+@media (max-width:760px) and (max-height:700px){
+  .hero{min-height:100vh}
+  .hero-in{min-height:100vh;padding-top:6vh}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" role="img"
+ aria-label="黄昏的藩库内部：木板墙上一扇高窗，一道斜光落到地板上，光柱里浮着尘，一个梳着发髻的武士背对镜头站在光里，右侧堆着稻草米俵，前景是一只打开的木桶和一本摊开的账册">
+<defs>
+<linearGradient id="wallG" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#11161e"/><stop offset=".38" stop-color="#161b23"/>
+  <stop offset=".72" stop-color="#12161d"/><stop offset="1" stop-color="#0a0d12"/>
+</linearGradient>
+<linearGradient id="floorG" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#1e1d1a"/><stop offset=".22" stop-color="#191815"/>
+  <stop offset=".62" stop-color="#0f0f0d"/><stop offset="1" stop-color="#070807"/>
+</linearGradient>
+<linearGradient id="beamG" x1="0" y1="0" x2=".18" y2="1">
+  <stop offset="0" stop-color="#f3d29c" stop-opacity=".34"/>
+  <stop offset=".42" stop-color="#e8c184" stop-opacity=".17"/>
+  <stop offset="1" stop-color="#d9ab6c" stop-opacity=".05"/>
+</linearGradient>
+<linearGradient id="winG" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#ffeecd"/><stop offset=".55" stop-color="#f4d6a4"/>
+  <stop offset="1" stop-color="#dfb377"/>
+</linearGradient>
+<radialGradient id="winGl"><stop offset="0" stop-color="#ffdca4" stop-opacity=".55"/>
+  <stop offset=".55" stop-color="#e7b877" stop-opacity=".18"/>
+  <stop offset="1" stop-color="#e7b877" stop-opacity="0"/></radialGradient>
+<radialGradient id="floorGl"><stop offset="0" stop-color="#ffd39a" stop-opacity=".30"/>
+  <stop offset=".6" stop-color="#e2b47a" stop-opacity=".10"/>
+  <stop offset="1" stop-color="#e2b47a" stop-opacity="0"/></radialGradient>
+<radialGradient id="figGl"><stop offset="0" stop-color="#ffd9a8" stop-opacity=".26"/>
+  <stop offset="1" stop-color="#ffd9a8" stop-opacity="0"/></radialGradient>
+<linearGradient id="rimG" x1="0" y1="0" x2="1" y2=".35">
+  <stop offset="0" stop-color="#ffe3b4" stop-opacity=".85"/>
+  <stop offset=".55" stop-color="#e9bd82" stop-opacity=".34"/>
+  <stop offset="1" stop-color="#c99a5f" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="baleG" x1="0" y1="0" x2=".3" y2="1">
+  <stop offset="0" stop-color="#4a4231"/><stop offset=".45" stop-color="#332e23"/>
+  <stop offset="1" stop-color="#1a1712"/>
+</linearGradient>
+<radialGradient id="vig"><stop offset=".46" stop-color="#000" stop-opacity="0"/>
+  <stop offset=".82" stop-color="#000" stop-opacity=".38"/><stop offset="1" stop-color="#000" stop-opacity=".74"/></radialGradient>
+<filter id="b2" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2"/></filter>
+<filter id="b6" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+<filter id="b14" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="14"/></filter>
+<filter id="b26" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="26"/></filter>
+</defs>
+
+<rect width="1440" height="660" fill="url(#wallG)"/>
+
+<g opacity=".55" stroke="#04060a" stroke-width="2.2">
+  <path d="M0 44 L1440 44"/><path d="M0 96 L1440 96"/>
+  <path d="M0 150 L1440 150"/>
+</g>
+<g opacity=".9" fill="#05070b">
+  <rect x="0" y="88" width="1440" height="17"/>
+  <rect x="0" y="34" width="1440" height="12"/>
+</g>
+<g fill="#0b0e13">
+  <rect x="128" y="0" width="24" height="646"/>
+  <rect x="604" y="0" width="20" height="646"/>
+  <rect x="1102" y="0" width="24" height="646"/>
+  <rect x="1414" y="0" width="26" height="646"/>
+</g>
+<g stroke="#2a2f38" stroke-width="1.1" opacity=".32">
+  <path d="M152 0 L152 646"/><path d="M628 0 L628 646"/><path d="M1126 0 L1126 646"/>
+  <path d="M0 300 L1440 300"/><path d="M0 470 L1440 470"/>
+</g>
+<g stroke="#0a0d12" stroke-width="1.6" opacity=".45">
+  <path d="M196 96 L196 646"/><path d="M244 96 L244 646"/><path d="M292 96 L292 646"/>
+  <path d="M436 96 L436 646"/><path d="M484 96 L484 646"/><path d="M532 96 L532 646"/>
+  <path d="M676 96 L676 646"/><path d="M724 96 L724 646"/><path d="M772 96 L772 646"/>
+  <path d="M916 96 L916 646"/><path d="M964 96 L964 646"/><path d="M1012 96 L1012 646"/>
+  <path d="M1170 96 L1170 646"/><path d="M1218 96 L1218 646"/><path d="M1266 96 L1266 646"/>
+</g>
+
+<ellipse cx="352" cy="188" rx="230" ry="180" fill="url(#winGl)" filter="url(#b26)"/>
+<g>
+  <rect x="284" y="124" width="136" height="130" fill="#0a0c10"/>
+  <rect x="294" y="134" width="116" height="110" fill="url(#winG)" opacity=".92"/>
+  <g fill="#0a0c10" opacity=".88">
+    <rect x="332" y="134" width="6" height="110"/>
+    <rect x="367" y="134" width="6" height="110"/>
+    <rect x="294" y="163" width="116" height="5"/>
+    <rect x="294" y="212" width="116" height="5"/>
+  </g>
+  <rect x="284" y="124" width="136" height="130" fill="none" stroke="#05070a" stroke-width="9"/>
+  <rect x="284" y="124" width="136" height="130" fill="none" stroke="#3d3427" stroke-width="2" opacity=".5"/>
+</g>
+
+<path d="M298 250 L786 706 L1016 706 L414 250 Z" fill="url(#beamG)"/>
+<path d="M298 250 L786 706 L828 706 L326 250 Z" fill="#ffdda6" opacity=".045"/>
+<ellipse cx="900" cy="702" rx="330" ry="52" fill="url(#floorGl)" filter="url(#b26)"/>
+
+<g fill="#0a0c10" opacity=".85">
+  <rect x="1040" y="118" width="7" height="196"/>
+  <rect x="1052" y="150" width="7" height="120"/>
+  <rect x="1030" y="186" width="40" height="4"/>
+  <g transform="rotate(-4 1058 214)">
+    <rect x="1044" y="200" width="30" height="44" fill="#2b2a22" opacity=".9"/>
+    <rect x="1044" y="200" width="30" height="44" fill="none" stroke="#0a0c10" stroke-width="1.6"/>
+    <path d="M1051 212 L1067 212" stroke="#0a0c10" stroke-width="1.4"/>
+    <path d="M1051 222 L1063 222" stroke="#0a0c10" stroke-width="1.4"/>
+  </g>
+  <g transform="rotate(3 1050 250)">
+    <rect x="1038" y="236" width="26" height="38" fill="#262620" opacity=".85"/>
+    <rect x="1038" y="236" width="26" height="38" fill="none" stroke="#0a0c10" stroke-width="1.4"/>
+  </g>
+</g>
+
+<rect x="0" y="646" width="1440" height="254" fill="url(#floorG)"/>
+<g stroke="#2f2c25" stroke-width="1.3" opacity=".34">
+  <path d="M0 646 L1440 646"/><path d="M0 672 L1440 672"/><path d="M0 706 L1440 706"/>
+  <path d="M0 752 L1440 752"/><path d="M0 812 L1440 812"/><path d="M0 886 L1440 886"/>
+</g>
+<g stroke="#000" stroke-width="1.4" opacity=".5">
+  <path d="M0 654 L1440 654"/><path d="M0 712 L1440 712"/><path d="M0 764 L1440 764"/>
+</g>
+<path d="M0 646 L1440 646" stroke="#e6c493" stroke-width="1.6" opacity=".12"/>
+
+<g fill="url(#baleG)">
+  <g>
+    <rect x="1140" y="618" width="128" height="88" rx="34"/>
+    <g stroke="#0d0b09" stroke-width="1.5" opacity=".55">
+      <path d="M1168 622 L1164 706"/><path d="M1198 618 L1196 706"/><path d="M1228 618 L1230 706"/><path d="M1256 622 L1262 704"/>
+    </g>
+    <g stroke="#6b5f43" stroke-width="2.4" opacity=".35">
+      <path d="M1180 620 L1178 706"/><path d="M1240 620 L1244 706"/>
+    </g>
+  </g>
+  <g>
+    <rect x="1280" y="618" width="128" height="88" rx="34"/>
+    <g stroke="#0d0b09" stroke-width="1.5" opacity=".55">
+      <path d="M1308 622 L1304 706"/><path d="M1338 618 L1336 706"/><path d="M1368 618 L1370 706"/><path d="M1396 622 L1402 704"/>
+    </g>
+    <g stroke="#6b5f43" stroke-width="2.4" opacity=".32">
+      <path d="M1320 620 L1318 706"/><path d="M1380 620 L1384 706"/>
+    </g>
+  </g>
+  <g>
+    <rect x="1206" y="552" width="120" height="72" rx="32"/>
+    <g stroke="#0d0b09" stroke-width="1.4" opacity=".5">
+      <path d="M1232 556 L1230 622"/><path d="M1262 552 L1262 622"/><path d="M1292 552 L1296 622"/>
+    </g>
+    <g stroke="#6b5f43" stroke-width="2.2" opacity=".3"><path d="M1246 554 L1244 622"/><path d="M1280 554 L1284 622"/></g>
+  </g>
+</g>
+<ellipse cx="1290" cy="710" rx="160" ry="12" fill="#000" opacity=".45" filter="url(#b6)"/>
+
+<g>
+  <path d="M978 706 L978 640 L1074 640 L1074 706 Z" fill="#201c15"/>
+  <path d="M978 640 L1074 640 L1074 652 L978 652 Z" fill="#2b2519"/>
+  <g stroke="#0b0a07" stroke-width="2" opacity=".7">
+    <path d="M978 668 L1074 668"/><path d="M978 690 L1074 690"/>
+    <path d="M1002 652 L1002 706"/><path d="M1036 652 L1036 706"/>
+  </g>
+  <ellipse cx="1026" cy="640" rx="48" ry="10" fill="#0a0908" opacity=".9"/>
+  <ellipse cx="1026" cy="641" rx="41" ry="7" fill="#2a2418"/>
+</g>
+
+<g id="figWrap">
+  <ellipse cx="818" cy="706" rx="62" ry="12" fill="#000" opacity=".55" filter="url(#b6)"/>
+  <ellipse cx="818" cy="660" rx="86" ry="120" fill="url(#figGl)" filter="url(#b14)"/>
+  <g fill="#05070a">
+    <g fill="#ffd3a2" opacity=".2" filter="url(#b6)" transform="translate(-1.6,0)">
+      <ellipse cx="818" cy="562" rx="7" ry="4.6"/>
+      <ellipse cx="818" cy="576" rx="9.6" ry="11"/>
+      <path d="M797 599 Q 806 592 818 592 Q 830 592 839 599 L 843 652 L 848 706 L 788 706 L 793 652 Z"/>
+    </g>
+    <ellipse cx="818" cy="562" rx="7" ry="4.6"/>
+    <ellipse cx="818" cy="576" rx="9.6" ry="11"/>
+    <path d="M814.4 586 L821.6 586 L821.6 594 L814.4 594 Z"/>
+    <path d="M797 599 Q 806 592 818 592 Q 830 592 839 599 L 843 652 L 848 706 L 788 706 L 793 652 Z"/>
+  </g>
+  <path d="M797 599 Q 806 592 818 592 Q 830 592 839 599 L 843 652 L 848 706 L 788 706 L 793 652 Z"
+    fill="none" stroke="#0b1018" stroke-width="0"/>
+  <g opacity=".5">
+    <path d="M794 654 L 842 654 L 841 665 L 793 665 Z" fill="#1a1f28"/>
+  </g>
+  <path d="M812 592 C 806 592 799 597 797 600 L 793 652 L 788 706"
+    fill="none" stroke="url(#rimG)" stroke-width="1.7" stroke-linecap="round" opacity=".75"/>
+  <path d="M818 552 C 812 552 809 557 809.4 562" fill="none" stroke="#ffe0b0" stroke-width="1.2"
+    stroke-linecap="round" opacity=".5"/>
+</g>
+
+<g opacity=".9">
+  <path d="M60 806 L 400 792 L 412 872 L 72 886 Z" fill="#241f18"/>
+  <path d="M60 806 L 400 792 L 402 802 L 62 816 Z" fill="#3a3226" opacity=".8"/>
+  <g stroke="#0a0906" stroke-width="1.3" opacity=".6">
+    <path d="M92 818 L 392 806"/><path d="M94 832 L 393 820"/><path d="M96 846 L 395 834"/>
+    <path d="M98 860 L 397 848"/>
+  </g>
+  <path d="M232 800 L 232 878" stroke="#0f0c08" stroke-width="3" opacity=".8"/>
+  <path d="M60 806 L 400 792" stroke="#e8cba0" stroke-width="1.4" opacity=".14"/>
+</g>
+
+<rect width="1440" height="900" fill="url(#vig)"/>
+</svg>
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+
+<div class="hero-in">
+  <div class="notice"><span class="dot"></span>全页不剧透 · 梗概止于第一幕转折</div>
+  <div class="eyebrow"><i></i>Japanese Cinema · No.12</div>
+  <h1>黄昏的清兵卫</h1>
+  <p class="latin">The Twilight Samurai &nbsp;·&nbsp; 2002</p>
+  <p class="hero-sub">一个五十石的下级武士，每天傍晚一到就收工回家——家里有米要淘、有味噌要煮、有两个女儿和一个认不出他的母亲。全藩都笑他。<em>直到有一天，藩里发现他会杀人。</em></p>
+  <div class="chips">
+    <span class="chip">豆瓣 <b>8.8</b> · 4.3 万人</span>
+    <span class="chip">烂番茄 <b>99%</b></span>
+    <span class="chip">奥斯卡最佳外语片提名</span>
+    <span class="chip">129 分钟</span>
+    <span class="chip">山田洋次</span>
+    <span class="chip">系列第 <b>12</b> 部</span>
+  </div>
+</div>
+<div class="scroll-hint">SCROLL<span></span></div>
+</header>
+
+<nav id="hud" aria-hidden="true">
+  <b data-i="0"><i></i>暮</b><b data-i="1"><i></i>家</b><b data-i="2"><i></i>刀</b><b data-i="3"><i></i>命</b><b data-i="4"><i></i>后</b>
+</nav>
+
+<main>
+
+<section class="sec" id="s1" style="border-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">01</span><h2>剧情梗概</h2><p class="kicker">The Story</p></div>
+    <div class="intro">
+      <div class="lede reveal">
+        <p>幕末的庄内，冬天来得早。海坂藩的粮仓里，一个下级武士正低头核账：米入库几石、出库几石、损耗几升，一笔一笔对下去。他的刀挂在身后的架子上，落着一层灰。</p>
+        <p>他叫井口清兵卫，年俸五十石。妻子两年前病死了，家里剩下四个人——他、两个女儿、和一个已经认不出他是谁的老母。为了办丧事，家里能卖的都卖了；为了照顾这一老两小，他每天一到黄昏就收工回家，买菜、生火、给母亲擦身、听小女儿背书。</p>
+        <p>同僚还在酒馆里坐着的时候，他已经走在田埂上了。于是有人给他起了个绰号：<strong>「黄昏清兵卫」</strong>。这个绰号叫了很多年，他一次也没有反驳过。</p>
+        <p>也是在那几年，他儿时的玩伴饭沼朋江离了婚，回到这条街上，住在哥哥家里。两家人隔得不远，见了面也只是点头。有一天夜里，朋江那个喝了酒的前夫找上门来，哥哥不在，屋里只有女人。有人跑来敲清兵卫的门。</p>
+        <p>第二天早上，全藩都在传同一件事：<strong>黄昏清兵卫会剑。</strong></p>
+        <p>消息传上去还不到半个月，家老把他叫了去，交给他一件差事。差事的内容只有一句话——去杀一个人。</p>
+        <p class="dash">那个人是谁、为什么非死不可、他有没有去——本页都不写。</p>
+      </div>
+      <aside class="glance reveal">
+        <h3>At a Glance</h3>
+        <dl>
+          <div><dt>一句话</dt><dd>一个下班就回家的武士，被时代挑中去杀一个人。</dd></div>
+          <div><dt>时间</dt><dd>幕末</dd></div>
+          <div><dt>地点</dt><dd>海坂藩（架空）· 庄内</dd></div>
+          <div><dt>主角</dt><dd>年俸<b>五十石</b>的下级武士</dd></div>
+          <div><dt>差事</dt><dd>粮仓的账目文书</dd></div>
+          <div><dt>结构</dt><dd>由「后来」那一侧的一个声音讲述</dd></div>
+          <div><dt>情绪</dt><dd>一直很安静，最后忽然收紧</dd></div>
+          <div><dt>关键词</dt><dd>黄昏 / 账本 / 一把不常出鞘的刀</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="acts">
+      <div class="act reveal"><div class="t">First · 御藏方的一天</div><h4>他的日子由琐事组成</h4><p>核账、淘米、缝补、给母亲换衣裳。同僚嫌他身上有味，他不辩解，只是把班下得更早了一点。</p></div>
+      <div class="act reveal"><div class="t">Second · 那一夜</div><h4>「黄昏」变成了「会剑」</h4><p>他没有带刀出门。第二天，绰号还在，但叫法变了——从前是笑话，从此是忌惮。</p></div>
+      <div class="act reveal"><div class="t">Third · 上意讨</div><h4>命令不讲道理</h4><p>藩命不许推辞，也不许带人。他得一个人去，杀一个和他一样、只是被派到对面去的下级武士。</p></div>
+    </div>
+
+    <p class="note reveal" style="margin-top:34px">本页所有叙述止于影片第一幕的转折点。后续的决斗、婚约、以及那之后的事，一律不写。</p>
+  </div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">02</span><h2>概念海报</h2><p class="kicker">One Circle</p></div>
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+          <svg class="poster-svg" viewBox="0 0 520 760" role="img"
+            aria-label="米色和纸上一个巨大的圆：圆内是黄昏的天空、一道低矮的山脊、一条田埂和一个很小的背影，几只归鸟飞过；圆外右侧竖排印着片名，左下角一枚朱红小印">
+            <defs>
+              <linearGradient id="pBack" x1="0" y1="0" x2=".35" y2="1">
+                <stop offset="0" stop-color="#f2e9d5"/><stop offset=".42" stop-color="#eae0c8"/>
+                <stop offset=".78" stop-color="#ded2b6"/><stop offset="1" stop-color="#cabd9f"/>
+              </linearGradient>
+              <linearGradient id="pSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#121722"/><stop offset=".24" stop-color="#242a38"/>
+                <stop offset=".44" stop-color="#4a4048"/><stop offset=".60" stop-color="#7d5c4d"/>
+                <stop offset=".72" stop-color="#b07f52"/><stop offset=".82" stop-color="#d8a266"/>
+                <stop offset=".90" stop-color="#e8bd85"/>
+              </linearGradient>
+              <linearGradient id="pField" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#7d6547"/><stop offset=".3" stop-color="#5b4a36"/>
+                <stop offset=".72" stop-color="#33291f"/><stop offset="1" stop-color="#1a1512"/>
+              </linearGradient>
+              <radialGradient id="pSun" cx=".5" cy=".62" r=".5">
+                <stop offset="0" stop-color="#ffe0ac" stop-opacity=".85"/>
+                <stop offset=".5" stop-color="#eab77a" stop-opacity=".28"/>
+                <stop offset="1" stop-color="#eab77a" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="pEdge"><stop offset=".62" stop-color="#2b241a" stop-opacity="0"/>
+                <stop offset="1" stop-color="#2b241a" stop-opacity=".55"/></radialGradient>
+              <radialGradient id="pVig"><stop offset=".5" stop-color="#8a7452" stop-opacity="0"/>
+                <stop offset="1" stop-color="#8a7452" stop-opacity=".22"/></radialGradient>
+              <clipPath id="pClip"><circle cx="250" cy="296" r="166"/></clipPath>
+              <filter id="pB"><feGaussianBlur stdDeviation="4"/></filter>
+            </defs>
+
+            <rect width="520" height="760" fill="url(#pBack)"/>
+            <rect width="520" height="760" fill="url(#pVig)"/>
+            <g stroke="#b09b78" stroke-width="1" opacity=".16">
+              <path d="M0 92 L520 88"/><path d="M0 214 L520 210"/><path d="M0 486 L520 482"/>
+              <path d="M0 604 L520 600"/><path d="M0 700 L520 696"/>
+            </g>
+            <g fill="#a08a63" opacity=".13">
+              <circle cx="46" cy="140" r="1.4"/><circle cx="120" cy="300" r="1.1"/>
+              <circle cx="472" cy="520" r="1.5"/><circle cx="70" cy="560" r="1.2"/>
+              <circle cx="380" cy="676" r="1.3"/><circle cx="440" cy="120" r="1.1"/>
+            </g>
+
+            <g clip-path="url(#pClip)">
+              <rect x="84" y="130" width="332" height="332" fill="url(#pSky)"/>
+              <ellipse cx="250" cy="330" rx="140" ry="86" fill="url(#pSun)"/>
+              <path d="M84 366 L150 350 L206 362 L262 344 L318 360 L378 346 L416 356 L416 392 L84 392 Z"
+                fill="#5c4a45" opacity=".55" filter="url(#pB)"/>
+              <path d="M84 380 L162 368 L214 378 L270 364 L330 378 L392 366 L416 374 L416 394 L84 394 Z"
+                fill="#3b3030" opacity=".8"/>
+              <rect x="84" y="392" width="332" height="70" fill="url(#pField)"/>
+              <g stroke="#c39a68" stroke-width="1.2" opacity=".26">
+                <path d="M84 400 L416 400"/><path d="M84 410 L416 410"/><path d="M84 424 L416 424"/>
+                <path d="M84 442 L416 442"/><path d="M84 462 L416 462"/>
+              </g>
+              <g stroke="#e2bd8c" stroke-width="1" opacity=".18">
+                <path d="M120 392 L96 462"/><path d="M180 392 L170 462"/><path d="M250 392 L250 462"/>
+                <path d="M316 392 L332 462"/><path d="M376 392 L398 462"/>
+              </g>
+              <g stroke="#2a2320" stroke-width="1.6" opacity=".7" fill="none">
+                <path d="M180 262 q7 -7 14 0"/><path d="M203 246 q6 -6 12 0"/><path d="M162 280 q5 -5 10 0"/>
+              </g>
+              <g fill="#0e0c0d">
+                <ellipse cx="272" cy="356" rx="2.6" ry="1.7"/>
+                <ellipse cx="272" cy="360" rx="3.4" ry="3.9"/>
+                <path d="M265.6 366 Q 269 362 272 362 Q 275 362 278.4 366 L 279 380 L 265 380 Z"/>
+              </g>
+              <rect x="84" y="130" width="332" height="332" fill="url(#pEdge)"/>
+            </g>
+            <circle cx="250" cy="296" r="166" fill="none" stroke="#6d5f45" stroke-width="1.6" opacity=".85"/>
+            <circle cx="250" cy="296" r="159" fill="none" stroke="#8a7a5c" stroke-width=".9" opacity=".5"/>
+
+            <g font-family="Songti SC,Source Han Serif SC,serif" fill="#22201a">
+              <text x="456" y="106" font-size="50" letter-spacing="0">黄</text>
+              <text x="456" y="168" font-size="50" letter-spacing="0">昏</text>
+              <text x="456" y="230" font-size="50" letter-spacing="0">清</text>
+              <text x="456" y="292" font-size="50" letter-spacing="0">兵</text>
+              <text x="456" y="354" font-size="50" letter-spacing="0">衛</text>
+            </g>
+            <text x="470" y="392" font-family="Didot,Optima,serif" font-size="9.4" letter-spacing="2.6"
+              fill="#7b6c53">2002</text>
+
+            <path d="M86 500 L414 500" stroke="#8d7c5c" stroke-width="1" opacity=".7"/>
+            <text x="250" y="536" text-anchor="middle" font-family="Songti SC,Source Han Serif SC,serif"
+              font-size="15" letter-spacing="5" fill="#3b352b">山田洋次 監督作品</text>
+            <text x="250" y="566" text-anchor="middle" font-family="Songti SC,serif"
+              font-size="11" letter-spacing="2.6" fill="#6f6249">原作 藤沢周平</text>
+            <text x="250" y="612" text-anchor="middle" font-family="Didot,Optima,serif"
+              font-size="10" letter-spacing="4.4" fill="#6b5e46">THE TWILIGHT SAMURAI</text>
+            <path d="M166 636 L334 636" stroke="#8d7c5c" stroke-width=".9" opacity=".5"/>
+            <text x="250" y="672" text-anchor="middle" font-family="Songti SC,serif"
+              font-size="10.5" letter-spacing="3.4" fill="#7a6c52">海坂藩 · 庄内</text>
+
+            <g transform="rotate(-3 74 700)">
+              <rect x="48" y="674" width="52" height="52" fill="#a63c2e" opacity=".9"/>
+              <rect x="52.5" y="678.5" width="43" height="43" fill="none"
+                stroke="#f4ead6" stroke-width=".8" opacity=".32"/>
+              <text x="74" y="713" text-anchor="middle" font-family="Songti SC,serif"
+                font-size="27" fill="#f4ead6" opacity=".95">暮</text>
+            </g>
+          </svg>
+        </div>
+        <p class="pcap">CONCEPT POSTER · 第 12 种范式：圆印落日</p>
+      </div>
+      <div class="pnotes">
+        <div class="pnote reveal"><div class="n">01</div><h4>为什么是一个圆</h4><p>「たそがれ」是一天里唯一既不算白天、也不算夜晚的时辰。圆是这一天的边界——太阳落到这条线上，一天就结束了。他的绰号、他的藩、他要面对的那个时代，都站在同一条线上。</p></div>
+        <div class="pnote reveal"><div class="n">02</div><h4>圆里只有一条地平线</h4><p>这部电影里最要紧的不是打斗，是一个人在天黑之前赶回家的那段路。所以海报上没有刀，没有敌手，只有田埂与天光。</p></div>
+        <div class="pnote reveal"><div class="n">03</div><h4>那个人小得不合理</h4><p>整个圆里他只占几十个像素，甚至不如脚边那几只归鸟显眼。这个比例就是电影对他的判断：一个不会被写进藩史的人。</p></div>
+        <div class="pnote reveal"><div class="n">04</div><h4>圆外的纸是空的</h4><p>圆画得再满，也只是这一张纸上的一小块。剩下的空白是他一生里没有被记载的部分——右下角那枚朱印，是他留在世上的唯一一道官方痕迹。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">03</span><h2>影片档案</h2><p class="kicker">Credits</p></div>
+    <dl class="spec reveal">
+      <div><dt>原名</dt><dd>たそがれ清兵衛</dd></div>
+      <div><dt>英文名</dt><dd>The Twilight Samurai</dd></div>
+      <div><dt>年份</dt><dd>2002<small>2002-11-02 松竹系公映</small></dd></div>
+      <div><dt>片长</dt><dd>129 分钟<small>1.85 : 1</small></dd></div>
+      <div><dt>导演</dt><dd>山田洋次<small>系列首次；他第一部本格时代剧</small></dd></div>
+      <div><dt>脚本</dt><dd>山田洋次 / 朝间义隆</dd></div>
+      <div><dt>原作</dt><dd>藤泽周平<small>三则短篇合写</small></dd></div>
+      <div><dt>类型</dt><dd>剧情 / 历史 / 爱情</dd></div>
+      <div><dt>主演</dt><dd>真田广之</dd></div>
+      <div><dt>女主</dt><dd>宫泽理惠</dd></div>
+      <div><dt>共演</dt><dd>田中泯 / 大杉涟 / 小林稔侍</dd></div>
+      <div><dt>特别出演</dt><dd>丹波哲郎 / 岸惠子</dd></div>
+      <div><dt>摄影</dt><dd>长沼六男</dd></div>
+      <div><dt>照明</dt><dd>中冈源权</dd></div>
+      <div><dt>美术</dt><dd>出川三男<small>监修 西冈善信</small></dd></div>
+      <div><dt>音乐</dt><dd>富田勋</dd></div>
+      <div><dt>衣装</dt><dd>黑泽和子</dd></div>
+      <div><dt>剪辑</dt><dd>石井岩</dd></div>
+      <div><dt>制作</dt><dd>松竹 / 日本电视台 / 住友商事<small>博报堂 / 日贩 / 卫星剧场</small></dd></div>
+      <div><dt>拍摄期</dt><dd>2002-03-20 — 05-31</dd></div>
+      <div class="wide"><dt>一句话</dt><dd>它把「武士」拍成了一个要养家的中年男人。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="s4">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">04</span><h2>口碑与口径</h2><p class="kicker">Numbers, Carefully</p></div>
+    <div class="scores">
+      <div class="sc hi reveal"><div class="src">Douban</div><div class="val">8.8<small>/ 10</small></div><div class="meta">43,015 人评价 · 五星 49.8% / 四星 41.4% / 三星 8.1% · 未进 Top250</div></div>
+      <div class="sc reveal"><div class="src">IMDb</div><div class="val">8.0<small>/ 10</small></div><div class="meta">27,341 票 · 与豆瓣只差 <b>0.8</b>，是系列里中外最一致的一部</div></div>
+      <div class="sc reveal"><div class="src">Rotten Tomatoes</div><div class="val">99<small>%</small></div><div class="meta">Metacritic 82 —— 三个英语世界的体系罕见地同向</div></div>
+      <div class="sc reveal"><div class="src">Runtime</div><div class="val">129<small>min</small></div><div class="meta">系列 12 部里排第 5；前 40 分钟几乎没有事件</div></div>
+    </div>
+    <ul class="caliber">
+      <li class="reveal"><i>01</i><span><b>0.8 分是这个系列里最小的一次分歧。</b>前十期动辄差 1.2：豆瓣把它当「自己人的电影」，IMDb 那边则常常隔着一层文化。这一次两边几乎一致——因为「上班、养家、被上司派去干脏活」这件事，落在哪儿都读得懂。</span></li>
+      <li class="reveal"><i>02</i><span><b>它在国外没有拿大奖。</b>第 76 届奥斯卡只是提名，输给了《残酷入侵》；第 53 届柏林进了竞赛，空手而归。可在日本国内，它把能拿的都拿了——颁奖季与电影节从来是两套评价系统。</span></li>
+      <li class="reveal"><i>03</i><span><b>「12 / 14」这个数字要有出处。</b>第 26 回日本电影学院奖，它 14 项提名中 12 项获奖。据 UCLA 亚洲研究所的报道，这是该奖历史上单届获奖数的第二多，仅次于 1996 年《谈谈情跳跳舞》的 13 项——所以本页不写「史上最多」。</span></li>
+      <li class="reveal"><i>04</i><span><b>票房是被中年男人抬起来的。</b>制作费约 5 亿日元，日本票房约 12 亿。一部没有大场面、没有群像杀阵的武士片能卖到这个数，当年《朝日新闻》的评论说得很直白：大量中层职员在里面看见了自己。</span></li>
+      <li class="reveal"><i>05</i><span><b>两个分数不宜相加平均。</b>IMDb 的样本只有豆瓣的六成，且集中在英语世界的艺术片观众；豆瓣这边则混进了大量「山田洋次/真田广之」的影迷。两个数字放在一起看趋势可以，拿来算均值没有意义。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="s5">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">05</span><h2>六个人</h2><p class="kicker">Who Wants What</p></div>
+    <div class="people">
+      <div class="person reveal"><div class="role">The Clerk</div><h4>井口清兵卫</h4><div class="actor">真田广之</div><p>海坂藩粮仓的账目文书，年俸五十石，丧妻，带着两个女儿和老母过日子。<span><b>要什么</b>把这两个孩子养大，别出事。</span><span><b>卡在哪</b>他的身份要求他会杀人，他的日子要求他别惹事。</span></p></div>
+      <div class="person reveal"><div class="role">The Childhood</div><h4>饭沼朋江</h4><div class="actor">宫泽理惠</div><p>清兵卫儿时的玩伴，嫁过人，被打过，然后离了婚回娘家住。<span><b>要什么</b>一个不必再看谁脸色的家。</span><span><b>卡在哪</b>这条街上每个人都记得她为什么回来。</span></p></div>
+      <div class="person reveal"><div class="role">The Brother</div><h4>饭沼伦之丞</h4><div class="actor">吹越满</div><p>朋江的哥哥，清兵卫的老友，也是藩里比他有位置的人。<span><b>要什么</b>妹妹有个着落，自己别被牵连。</span><span><b>卡在哪</b>他既想帮，又清楚这门亲事会让人说什么。</span></p></div>
+      <div class="person reveal"><div class="role">The Ex</div><h4>甲田丰太郎</h4><div class="actor">大杉涟</div><p>朋江的前夫，把「面子」看得比什么都重的男人。<span><b>要什么</b>把丢掉的那张脸拿回来。</span><span><b>卡在哪</b>他只会用一种方式讨回来——而这一次，对面站错了人。</span></p></div>
+      <div class="person reveal"><div class="role">The Other</div><h4>余吾善右卫门</h4><div class="actor">田中泯</div><p>藩里另一个不肯听话的下级武士。剑术极好，脾气极坏，处境和清兵卫几乎一样。<span><b>要什么</b>让一件事按他的方式收场。</span><span><b>卡在哪</b>他和清兵卫其实站在同一边，只是被派到了对面。</span></p></div>
+      <div class="person reveal"><div class="role">The Domain</div><h4>海坂藩</h4><div class="actor">家老与藩命</div><p>不露脸，也不解释。它只需要一件麻烦安静地消失。<span><b>要什么</b>秩序。</span><span><b>卡在哪</b>它挑人从来不看谁更该活，只看谁更合适去死。</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s6">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">06</span><h2>人物冲突</h2><p class="kicker">Six Frictions</p></div>
+    <div class="conflicts">
+      <div class="cf reveal"><h4><i>01</i>他 vs 五十石</h4><p>年俸五十石，四口人。刀是祖上传的，为了给妻子办丧事，家里值钱的东西一件件少了。<em>穷不是背景，是这部片子的第一推动力</em>——它决定了他每一个选择的边界。</p></div>
+      <div class="cf reveal"><h4><i>02</i>他 vs 同僚的钟点</h4><p>别人下了班去喝酒、去走动、去谋一个更好的位置；他准点走。同僚笑他，也嫌他身上有味。<em>他不是不在乎体面，是体面太贵了。</em></p></div>
+      <div class="cf reveal"><h4><i>03</i>他 vs 朋江的门第</h4><p>她是上级武士家的女儿，他只是粮仓里管账的。她离过婚这件事，在这条街上比他的剑术更被人惦记。两个人隔着的不是感情，是<em>别人会怎么讲</em>。</p></div>
+      <div class="cf reveal"><h4><i>04</i>他 vs 甲田</h4><p>一个把面子看得比命重的男人，会在酒后做出什么，谁也拦不住。而清兵卫那一夜若不出手，毁掉的是朋江；一旦出手，毁掉的可能是自己<em>「无用」这层保护色</em>。</p></div>
+      <div class="cf reveal"><h4><i>05</i>他 vs 藩命</h4><p>命令不许推辞，不许带人，不许问为什么。它甚至不需要他认同——<em>只需要他到场</em>。这是全片最冷的一层：制度不恨你，制度只是用到你。</p></div>
+      <div class="cf reveal"><h4><i>06</i>他 vs 自己那把刀</h4><p>他会。他一直会。这些年他每天回家，把刀挂在架子上，让它落灰。<em>全片真正的对手不是余吾，是他自己那双还记得怎么握刀的手。</em></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s7">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">07</span><h2>荣誉</h2><p class="kicker">What It Actually Won</p></div>
+    <div class="awards">
+      <div class="award gold reveal"><div class="yr">2003</div><div><h4>第 26 回日本电影学院奖 · 最优秀作品赏</h4><p>14 项提名中 12 项获奖：作品、导演、脚本、男主角、女主角、男配角、新人、摄影、照明、美术、录音、剪辑、音乐。</p></div></div>
+      <div class="award gold reveal"><div class="yr">2003</div><div><h4>第 76 回《电影旬报》十佳 · 第 1 位</h4><p>同时拿下作品赏、导演赏、脚本赏、主演男优赏、主演女优赏、新人赏，以及读者票选年度第一。</p></div></div>
+      <div class="award reveal"><div class="yr">2004</div><div><h4>第 76 届奥斯卡 · 最佳外语片提名</h4><p>代表日本参赛并入围五强，最终未获奖。它是山田洋次离小金人最近的一次。</p></div></div>
+      <div class="award reveal"><div class="yr">2003</div><div><h4>第 53 届柏林电影节 · 竞赛单元</h4><p>入围金熊奖角逐。据当年日本媒体现场报道，反响不错，但没有拿到任何一座奖。</p></div></div>
+      <div class="award reveal"><div class="yr">2003</div><div><h4>第 45 回蓝丝带奖 · 作品赏</h4><p>东京电影记者会评选。同届宫泽理惠拿下配角女优赏。</p></div></div>
+      <div class="award reveal"><div class="yr">2003</div><div><h4>第 57 回每日电影奖 · 日本电影大赏</h4><p>另获男主角（真田广之）、女配角（岸惠子）、摄影、录音与特别技术奖。</p></div></div>
+      <div class="award wide reveal"><div class="yr">NOTE</div><div><h4>「国内横扫、国外空手」不是矛盾</h4><p>它在日本拿下了当年几乎所有重要奖项，在柏林与奥斯卡却只走到提名。原因是这部片子的分量不在「作者性」，而在「准确」——它准确到让一个日本中年男人在电影院里认出自己的工位。这种准确，跨语言时要打折。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s8">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">08</span><h2>谱系：日本武士片的六种拍法</h2><p class="kicker">Lineage</p></div>
+    <div class="lineage">
+      <div class="ln reveal"><div class="yr">1954</div><h4>《七武士》· 黑泽明</h4><p>武士是动作。七个浪人用一场又一场的调度，把「职业」拍成了史诗。</p></div>
+      <div class="ln reveal"><div class="yr">1962</div><h4>《切腹》· 小林正树</h4><p>武士是控诉。同一个身份，从荣耀翻过来，变成一副吃人的架子。（本系列第 02 期）</p></div>
+      <div class="ln reveal"><div class="yr">1999</div><h4>《御法度》· 大岛渚</h4><p>武士是欲望与规训。刀还没出鞘，人已经被规矩磨完了。</p></div>
+      <div class="ln now reveal"><div class="yr">2002 · 本期</div><h4>《黄昏的清兵卫》· 山田洋次</h4><p>武士是职业。上班、核账、养家、被派去干脏活——刀只是工装的一部分。</p></div>
+      <div class="ln reveal"><div class="yr">2004</div><h4>《隐剑鬼爪》· 山田洋次</h4><p>同一个作者再拍一次，把「不能说的感情」推到更前面。武士三部曲的第二部。</p></div>
+      <div class="ln reveal"><div class="yr">2010</div><h4>《十三刺客》· 三池崇史</h4><p>武士重新变成类型片。三十分钟的杀阵，把前面所有克制都换成了体力。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s9">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">09</span><h2>六处亮点</h2><p class="kicker">Why It Works</p></div>
+    <div class="grid6">
+      <div class="g6 reveal"><div class="n">01</div><h4>没有一场「漂亮」的杀阵</h4><p>全片真正的打斗只有两场，都短、都笨、都狼狈。人会喘，会站不稳，会在电光石火之间想不起自己学过什么。</p></div>
+      <div class="g6 reveal"><div class="n">02</div><h4>生活的声音占了一半</h4><p>淘米的水、算盘的珠、灶膛里的柴、女儿念《论语》的调子。它不靠字幕交代年代，靠耳朵。</p></div>
+      <div class="g6 reveal"><div class="n">03</div><h4>榻榻米上的机位</h4><p>山田洋次把摄影机压到坐着的人眼睛的高度。于是你始终和这家人处在同一个水平面上——不是旁观，是坐在同一间屋子里。</p></div>
+      <div class="g6 reveal"><div class="n">04</div><h4>富田勋的配乐几乎听不见</h4><p>这位电子音乐先驱在这里只用了一支钢琴与几把弦。多数时候干脆没有音乐，让一间屋子的安静自己发声。</p></div>
+      <div class="g6 reveal"><div class="n">05</div><h4>那个「后来」的声音</h4><p>电影有一个旁白，一直站在很久以后那一侧说话。它不解释、不预告，只是记得——于是每一件小事都带上了一点回望的重量。</p></div>
+      <div class="g6 reveal"><div class="n">06</div><h4>结尾的处理</h4><p>本页不写它拍了什么。只说方法：它不给你一个「结局」，给你一段「之后」——然后再用一句话，把这段时间的长度说清楚。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">10</span><h2>为什么值得一看</h2><p class="kicker">Three Reasons</p></div>
+    <div class="why">
+      <article class="reveal"><h3>一、它把「武士」这个类型从神坛上请了下来</h3><p>在绝大多数武士片里，刀是身份、是道、是生死观。在这部片子里，刀是一件工装：上班挂在架子上，下班带回家，需要用的时候才想起来它还在。</p><p>这个落差就是全片的发动机。一个人被要求「像个武士」，而他的全部力气都花在「像个人」上——把这两件事摆在一起，类型片几十年建立起来的那套尊严叙事，一句话就被问住了。</p></article>
+      <article class="reveal"><h3>二、它拍的其实是「上班」这件事</h3><p>粮仓核账、向上级回话、被同僚排挤、被派去处理一件谁都不愿意碰的麻烦——把「藩」换成「公司」，把「上意讨」换成一句「这个事你去办一下」，这部电影几乎不需要改。</p><p>所以它当年在日本卖得那么好。不是因为观众爱看时代剧，是因为他们在这部两百年前的片子里，看见了自己下班的那个点。</p></article>
+      <article class="reveal"><h3>三、它让你重新理解「体面」这个词</h3><p>清兵卫不体面：衣服旧、身上有味、被起了绰号也不回嘴。可他也不卑微——他把每一件该做的事做完，把每一个人照顾好，然后在天黑前回家。</p><p>电影没有替他辩解一句。它只是让你看着这个人过了两个小时的日子，然后你忽然发现，你早就站到他那边去了。<em>这比任何一句台词都有说服力。</em></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">11</span><h2>观影提示</h2><p class="kicker">Before You Press Play</p></div>
+    <div class="tips">
+      <div class="tip reveal"><div class="k">01</div><h4>前半小时是家务事</h4><p>淘米、缝衣、给老人擦身、听孩子念书。它在建立一种节奏，请跟着这个节奏走，不要等「开始」。</p></div>
+      <div class="tip reveal"><div class="k">02</div><h4>不要期待杀阵</h4><p>全片打斗加起来不到十分钟，而且都不好看——这是导演的选择，不是预算的问题。</p></div>
+      <div class="tip reveal"><div class="k">03</div><h4>留到字幕</h4><p>最后有一段「之后」，很短，但它决定了整部片子的重量。请把遥控器放下。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="wrap">
+    <p class="tag">VERDICT · NO.12</p>
+    <p class="q"><span>他这一生没有一件事</span><span>值得写进藩史。</span><span>除了每天傍晚，他都按时回家。</span></p>
+    <p class="src">—— 本页判词，非片中台词</p>
+    <div class="stamp"><div><span>JAPANESE CINEMA</span><b>NO.12</b><span>2002 · 山田洋次</span></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>日本电影专题 · 第 12 期｜《黄昏的清兵卫》たそがれ清兵衛 / The Twilight Samurai（2002）<br>
+    数据核对于 2026-11-04：豆瓣条目 1307306（8.8 / 43,015 人）、IMDb 8.0（27,341 票）、烂番茄 99%、Metacritic 82。<br>
+    全页不含关键情节，决斗过程、婚约去留与片尾段落一律未写。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c = document.getElementById('heroCanvas');
+  if(!c) return;
+  var ctx = c.getContext('2d'), W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
+  var parts=[], t=0;
+  function size(){
+    W=c.clientWidth; H=c.clientHeight;
+    c.width=W*dpr; c.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();
+  }
+  function build(){
+    parts=[];
+    var n = Math.round(W*H/15000);
+    if(n>140) n=140;
+    for(var i=0;i<n;i++){
+      parts.push({
+        x:Math.random()*W, y:Math.random()*H,
+        r:.5+Math.random()*1.5,
+        vy:-.05-Math.random()*.16,
+        vx:-.05-Math.random()*.14,
+        a:.04+Math.random()*.24,
+        p:Math.random()*6.28
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t+=0.007;
+    for(var i=0;i<parts.length;i++){
+      var p=parts[i];
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.y<-8){p.y=H+8;p.x=Math.random()*W;}
+      if(p.x<-8){p.x=W+8;}
+      var a=p.a*(0.6+0.4*Math.sin(t*1.6+p.p));
+      ctx.beginPath();
+      ctx.fillStyle='rgba(255,214,168,'+a.toFixed(3)+')';
+      ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fill();
+    }
+    var g = ctx.createRadialGradient(W*0.63,H*0.78,0,W*0.63,H*0.78,Math.max(W,H)*0.40);
+    var pulse = 0.045+0.02*Math.sin(t*1.05);
+    g.addColorStop(0,'rgba(255,198,146,'+pulse.toFixed(3)+')');
+    g.addColorStop(1,'rgba(255,198,146,0)');
+    ctx.fillStyle=g;
+    ctx.fillRect(0,0,W,H);
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',size);
+  size(); draw();
+
+  var revs = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08, rootMargin:'0px 0px -6% 0px'});
+  revs.forEach(function(e){ io.observe(e); });
+
+  var hud=document.getElementById('hud'), items=[].slice.call(hud.querySelectorAll('b'));
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    hud.classList.toggle('on', y > window.innerHeight*0.55);
+    var p = y/(document.body.scrollHeight - window.innerHeight);
+    var idx = Math.min(4, Math.floor(p*5));
+    items.forEach(function(b,i){ b.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

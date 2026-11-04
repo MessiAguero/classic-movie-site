@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-03T19:30:19.988Z",
+  "generatedAt": "2026-11-04T05:08:02.580Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 148,
+  "total": 149,
   "ok": 86,
-  "warn": 62,
+  "warn": 63,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 132,
+    "checked": 133,
     "skippedVerified": 16,
     "error": null
   },
@@ -2497,6 +2497,62 @@
           "code": "untrusted_host",
           "severity": "warn",
           "detail": "图源不在可信白名单（whb.cn）"
+        }
+      ]
+    },
+    {
+      "id": "20261104-twilight",
+      "zhTitle": "黄昏的清兵卫",
+      "sourceTitle": "黄昏的清兵卫海报 4 | 金海报-GoldPoster",
+      "year": "2002",
+      "source": "本地",
+      "imageUrl": "posters/20261104-twilight.jpg",
+      "host": "img.goldposter.com",
+      "tier": "aggregator",
+      "size": "69KB",
+      "dims": "500×750",
+      "ratio": 1.5,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「黄昏的清兵卫」"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [
+          "2004"
+        ],
+        "dominantText": "★★★★",
+        "reasons": [
+          "图片最大文字为“★★★★”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "aggregator_host",
+          "severity": "warn",
+          "detail": "图源为聚合站（img.goldposter.com），建议换用官方图源"
+        },
+        {
+          "code": "identity_weak_evidence",
+          "severity": "warn",
+          "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：黄昏的清兵卫海报 4 | 金海报-GoldPoster）"
+        },
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“★★★★”没有对上片名，建议核对"
         }
       ]
     },
@@ -6487,6 +6543,29 @@
       "verified": false,
       "status": "ok",
       "issues": []
+    },
+    {
+      "id": "20261104-twilight",
+      "zhTitle": "黄昏的清兵卫",
+      "year": "2002",
+      "sourceTitle": "黄昏的清兵卫海报 4 | 金海报-GoldPoster",
+      "imageUrl": "posters/20261104-twilight.jpg",
+      "host": "img.goldposter.com",
+      "dims": "500×750",
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「黄昏的清兵卫」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        "aggregator_host",
+        "identity_weak_evidence",
+        "visual_title_unverified"
+      ]
     },
     {
       "id": "20260427",
