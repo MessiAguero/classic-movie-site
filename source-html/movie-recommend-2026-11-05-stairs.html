@@ -321,6 +321,16 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
   <stop offset="0" stop-color="#f7cd97" stop-opacity=".26"/>
   <stop offset="1" stop-color="#e0a666" stop-opacity="0"/>
 </radialGradient>
+<radialGradient id="wallFall" cx=".5" cy=".5" r=".5">
+  <stop offset="0" stop-color="#e0b077" stop-opacity=".16"/>
+  <stop offset=".55" stop-color="#c89454" stop-opacity=".05"/>
+  <stop offset="1" stop-color="#a8763c" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="frostG" x1="0" y1="0" x2=".3" y2="1">
+  <stop offset="0" stop-color="#9fb0bb" stop-opacity=".085"/>
+  <stop offset=".5" stop-color="#6f7f8c" stop-opacity=".03"/>
+  <stop offset="1" stop-color="#9fb0bb" stop-opacity=".06"/>
+</linearGradient>
 <linearGradient id="spillG" x1="0" y1="0" x2="0" y2="1">
   <stop offset="0" stop-color="#ffcf94" stop-opacity=".30"/>
   <stop offset=".5" stop-color="#e5ab6d" stop-opacity=".10"/>
@@ -465,6 +475,27 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
   </g>
   <rect x="1052" y="520" width="58" height="86" fill="#0a0c10" stroke="#26282a" stroke-width="1"/>
   <circle cx="1081" cy="552" r="9" fill="none" stroke="#7a6a52" stroke-width="1" opacity=".5"/>
+</g>
+
+<!-- the closed door on the right -->
+<g>
+  <rect x="1128" y="498" width="166" height="272" fill="#05070a"/>
+  <rect x="1134" y="504" width="154" height="266" fill="#090c10"/>
+  <!-- frosted glass upper half -->
+  <rect x="1148" y="518" width="126" height="118" fill="#0e1216"/>
+  <rect x="1148" y="518" width="126" height="118" fill="url(#frostG)"/>
+  <rect x="1148" y="518" width="126" height="118" fill="none" stroke="#2a2b2b" stroke-width="1.6"/>
+  <path d="M1211 518 L 1211 636" stroke="#22252a" stroke-width="2"/>
+  <!-- lower wood panel -->
+  <rect x="1148" y="648" width="126" height="112" fill="#0b0e12"/>
+  <rect x="1148" y="648" width="126" height="112" fill="none" stroke="#232527" stroke-width="1.2"/>
+  <g stroke="#c9a878" stroke-width="1" opacity=".055">
+    <path d="M1148 674 L 1274 674"/><path d="M1148 700 L 1274 700"/><path d="M1148 726 L 1274 726"/>
+  </g>
+  <circle cx="1258" cy="670" r="3.2" fill="#b09263" opacity=".45"/>
+  <rect x="1238" y="668.4" width="20" height="3.2" rx="1.6" fill="#b09263" opacity=".4"/>
+  <path d="M1134 769 L 1288 769" stroke="#f0c088" stroke-width="2" opacity=".14"/>
+  <path d="M1134 769 L 1288 769" stroke="#ffdba8" stroke-width="7" opacity=".07" filter="url(#b4)"/>
 </g>
 
 <!-- floor -->
