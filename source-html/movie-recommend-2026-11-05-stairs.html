@@ -364,9 +364,22 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 <rect x="700" width="740" height="900" fill="url(#wallR)" opacity=".5"/>
 
 <!-- wall panelling -->
-<g stroke="#c9a878" stroke-width="1" opacity=".045">
+<g stroke="#c9a878" stroke-width="1" opacity=".07">
   <path d="M120 0 L120 780"/><path d="M300 0 L300 780"/><path d="M470 0 L470 780"/>
   <path d="M1000 0 L1000 780"/><path d="M1160 0 L1160 780"/><path d="M1320 0 L1320 780"/>
+</g>
+
+<!-- light falloff from the doorway onto the wall -->
+<ellipse cx="760" cy="500" rx="470" ry="330" fill="url(#wallFall)"/>
+
+<!-- dado / skirting on both sides of the stairwell -->
+<g>
+  <rect x="0" y="742" width="566" height="30" fill="#0a0c10"/>
+  <rect x="954" y="742" width="486" height="30" fill="#0a0c10"/>
+  <path d="M0 742 L566 742" stroke="#c9a878" stroke-width="1" opacity=".12"/>
+  <path d="M954 742 L1440 742" stroke="#c9a878" stroke-width="1" opacity=".12"/>
+  <path d="M0 772 L566 772" stroke="#000" stroke-width="2" opacity=".5"/>
+  <path d="M954 772 L1440 772" stroke="#000" stroke-width="2" opacity=".5"/>
 </g>
 
 <!-- stairwell opening (perspective) -->
@@ -464,27 +477,36 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 <!-- ============ figure ============ -->
 <g id="figWrap">
   <!-- rim glow -->
-  <g filter="url(#b4)" opacity=".55">
-    <path d="M760 552 C 772 552 781 560 783 570 L 786 600 L 790 664 L 790 716 L 782 716 L 780 664 L 776 664 L 775 716 L 745 716 L 746 664 L 742 664 L 740 716 L 732 716 L 732 662 L 728 600 L 731 570 C 733 560 748 552 760 552 Z"
-      fill="none" stroke="url(#rimG)" stroke-width="3.4"/>
+  <g filter="url(#b4)" opacity=".5">
+    <path d="M763 546 C 770 546 772 552 773 560 L 775 578 L 790 585 L 793 662 L 780 664 L 781 700 L 782 716 L 768 716 L 782 716"
+      fill="none" stroke="url(#rimG)" stroke-width="2.6"/>
   </g>
   <!-- silhouette -->
   <g id="fig">
-    <!-- hair mass -->
-    <path d="M760 548 C 746 548 738 556 738 566 C 738 573 740 577 743 580 L 777 580 C 780 577 782 573 782 566 C 782 556 774 548 760 548 Z" fill="url(#bodyG)"/>
-    <circle cx="760" cy="551" r="6.2" fill="url(#bodyG)"/>
-    <path d="M753 553 L 767 553 L 766 546 L 754 546 Z" fill="url(#bodyG)"/>
-    <!-- body: shoulder - sleeve - hem -->
-    <path d="M760 576
-             C 751 576 743 580 739 588
-             L 733 606 L 728 664 L 736 666
-             L 739 700 L 741 718
-             L 779 718 L 781 700
-             L 784 666 L 792 664
-             L 787 606 L 781 588
-             C 777 580 769 576 760 576 Z" fill="url(#bodyG)"/>
-    <!-- collar suggestion (a single darker notch) -->
-    <path d="M754 578 L 760 586 L 766 578" fill="none" stroke="#000" stroke-width="1.4" opacity=".9"/>
+    <!-- head -->
+    <ellipse cx="760" cy="557.5" rx="9.1" ry="11" fill="url(#bodyG)"/>
+    <path d="M752.4 561 Q 752.4 570 760 570 Q 767.6 570 767.6 561 Z" fill="url(#bodyG)"/>
+    <!-- neck -->
+    <path d="M756.8 566 L 763.2 566 L 763.2 580 L 756.8 580 Z" fill="url(#bodyG)"/>
+    <!-- body: shoulders - sleeves - hem -->
+    <path d="M753 570
+             C 749 572 746 575 744 579
+             L 733.5 583
+             L 729 654
+             L 743 656.5
+             L 742 692
+             L 738 713
+             L 782 713
+             L 778 692
+             L 777 656.5
+             L 791 654
+             L 786.5 583
+             L 776 579
+             C 774 575 771 572 767 570
+             Z" fill="url(#bodyG)"/>
+    <!-- slippers -->
+    <path d="M741.5 713 L 756.5 713 L 755.5 721 L 742.5 721 Z" fill="url(#bodyG)"/>
+    <path d="M763.5 713 L 778.5 713 L 777.5 721 L 764.5 721 Z" fill="url(#bodyG)"/>
   </g>
 </g>
 
