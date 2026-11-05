@@ -632,6 +632,11 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
                 <stop offset="0" stop-color="#0e1116"/><stop offset=".38" stop-color="#080a0d"/>
                 <stop offset=".72" stop-color="#0b0e12"/><stop offset="1" stop-color="#14171c"/>
               </linearGradient>
+              <radialGradient id="lampGl" cx=".5" cy=".2" r=".8">
+                <stop offset="0" stop-color="#ffd39c" stop-opacity=".26"/>
+                <stop offset=".55" stop-color="#e8b478" stop-opacity=".08"/>
+                <stop offset="1" stop-color="#e0a666" stop-opacity="0"/>
+              </radialGradient>
               <radialGradient id="pLamp" cx=".26" cy=".16" r=".62">
                 <stop offset="0" stop-color="#ffd9a6" stop-opacity=".30"/>
                 <stop offset=".5" stop-color="#e5ac70" stop-opacity=".09"/>
@@ -668,6 +673,17 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
             <!-- wall panel lines -->
             <g stroke="#c9a878" stroke-width="1" opacity=".05">
               <path d="M60 0 L60 572"/><path d="M200 0 L200 572"/><path d="M340 0 L340 572"/>
+            </g>
+
+            <!-- pendant lamp -->
+            <g>
+              <path d="M150 0 L150 206" stroke="#232325" stroke-width="2.4"/>
+              <path d="M150 0 L150 206" stroke="#59544a" stroke-width=".8" opacity=".35"/>
+              <path d="M132 206 L 168 206 L 182 246 L 118 246 Z" fill="#141618"/>
+              <path d="M132 206 L 168 206 L 182 246 L 118 246 Z" fill="none" stroke="#33352f" stroke-width="1.2"/>
+              <ellipse cx="150" cy="246" rx="32" ry="5.6" fill="#ffd9a6" opacity=".55"/>
+              <ellipse cx="150" cy="248" rx="26" ry="4" fill="#fff0d2" opacity=".8" filter="url(#pB2)"/>
+              <ellipse cx="150" cy="262" rx="142" ry="118" fill="url(#lampGl)"/>
             </g>
 
             <!-- counter -->
