@@ -307,11 +307,11 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
  aria-label="傍晚的电车车厢内部：一条金属横杆上垂着四只吊环，三扇大车窗外是渐暗的街道与电线杆，正对画面的一栋旧楼二楼有一扇亮着暖光的窗，窗后站着一个女人的剪影，她正面朝街上看">
 <defs>
 <linearGradient id="carG" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#0a0806"/><stop offset=".38" stop-color="#0d0b08"/>
-  <stop offset=".72" stop-color="#0a0806"/><stop offset="1" stop-color="#060504"/>
+  <stop offset="0" stop-color="#14110c"/><stop offset=".38" stop-color="#191510"/>
+  <stop offset=".72" stop-color="#120f0b"/><stop offset="1" stop-color="#0a0806"/>
 </linearGradient>
 <linearGradient id="ceilG" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#0c0a08"/><stop offset="1" stop-color="#14110d"/>
+  <stop offset="0" stop-color="#16120c"/><stop offset="1" stop-color="#221b14"/>
 </linearGradient>
 <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
   <stop offset="0" stop-color="#131a26"/><stop offset=".34" stop-color="#1e2836"/>
@@ -328,11 +328,11 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
   <stop offset="1" stop-color="#cc8a44" stop-opacity="0"/>
 </radialGradient>
 <linearGradient id="benchG" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#1b1712"/><stop offset="1" stop-color="#0e0c09"/>
+  <stop offset="0" stop-color="#3d3122"/><stop offset="1" stop-color="#241c14"/>
 </linearGradient>
 <linearGradient id="floorG" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#15110d"/><stop offset=".4" stop-color="#0d0a07"/>
-  <stop offset="1" stop-color="#060504"/>
+  <stop offset="0" stop-color="#2f2619"/><stop offset=".4" stop-color="#1e1811"/>
+  <stop offset="1" stop-color="#100c09"/>
 </linearGradient>
 <linearGradient id="hbarG" x1="0" y1="0" x2="0" y2="1">
   <stop offset="0" stop-color="#4a504f"/><stop offset=".4" stop-color="#2a2e2d"/><stop offset="1" stop-color="#191c1b"/>
@@ -360,6 +360,11 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 <filter id="hb3"><feGaussianBlur stdDeviation="3"/></filter>
 <filter id="hb8"><feGaussianBlur stdDeviation="8"/></filter>
 <filter id="hb20"><feGaussianBlur stdDeviation="20"/></filter>
+<linearGradient id="seatSpill" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#cfe0dd" stop-opacity=".19"/>
+  <stop offset=".55" stop-color="#cfe0dd" stop-opacity=".07"/>
+  <stop offset="1" stop-color="#cfe0dd" stop-opacity="0"/>
+</linearGradient>
 <filter id="hb34"><feGaussianBlur stdDeviation="34"/></filter>
 </defs>
 
@@ -369,10 +374,10 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 <!-- 车顶与灯带 -->
 <rect x="0" y="0" width="1440" height="164" fill="url(#ceilG)"/>
 <g>
-  <rect x="300" y="42" width="330" height="7" rx="3.5" fill="#dfe6de" opacity=".15"/>
-  <rect x="300" y="34" width="330" height="22" rx="11" fill="#d6e2dd" opacity=".06" filter="url(#hb8)"/>
-  <rect x="806" y="42" width="330" height="7" rx="3.5" fill="#dfe6de" opacity=".12"/>
-  <rect x="806" y="34" width="330" height="22" rx="11" fill="#d6e2dd" opacity=".05" filter="url(#hb8)"/>
+  <rect x="300" y="42" width="330" height="7" rx="3.5" fill="#e8eee6" opacity=".26"/>
+  <rect x="300" y="34" width="330" height="24" rx="12" fill="#d6e2dd" opacity=".10" filter="url(#hb8)"/>
+  <rect x="806" y="42" width="330" height="7" rx="3.5" fill="#e8eee6" opacity=".22"/>
+  <rect x="806" y="34" width="330" height="24" rx="12" fill="#d6e2dd" opacity=".09" filter="url(#hb8)"/>
 </g>
 <path d="M0 164 L1440 164" stroke="#000" stroke-width="3" opacity=".5"/>
 
@@ -418,8 +423,8 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
     <g stroke="#b98a4e" stroke-width="1.4" opacity=".30">
       <path d="M754 324 L754 444"/><path d="M762 324 L762 444"/><path d="M770 324 L770 444"/>
     </g>
-    <rect x="746" y="418" width="128" height="26" fill="#cf9557" opacity=".45"/>
-    <path d="M746 418 L874 418" stroke="#8a6532" stroke-width="1.6" opacity=".45"/>
+    <path d="M746 412 L874 412" stroke="#a5753c" stroke-width="1.6" opacity=".35"/>
+    <path d="M746 430 L874 430" stroke="#a5753c" stroke-width="1.2" opacity=".18"/>
     <!-- 窗台 -->
     <rect x="738" y="446" width="144" height="7" fill="#1f2530"/>
     <rect x="738" y="446" width="144" height="2" fill="#5b6472" opacity=".5"/>
@@ -461,14 +466,14 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 </g>
 
 <!-- ===== 窗框 ===== -->
-<g fill="#1a1e22">
+<g fill="#2a2e31">
   <rect x="0" y="236" width="196" height="324"/>
   <rect x="580" y="236" width="40" height="324"/>
   <rect x="1004" y="236" width="40" height="324"/>
   <rect x="1428" y="236" width="12" height="324"/>
   <rect x="0" y="236" width="1440" height="12"/>
 </g>
-<g fill="none" stroke="#2c3236" stroke-width="2.4">
+<g fill="none" stroke="#464e51" stroke-width="2.4">
   <rect x="196" y="248" width="384" height="300" rx="7"/>
   <rect x="620" y="248" width="384" height="300" rx="7"/>
   <rect x="1044" y="248" width="384" height="300" rx="7"/>
@@ -478,7 +483,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 </g>
 
 <!-- ===== 腰板 / 长椅 / 地板 ===== -->
-<rect x="0" y="548" width="1440" height="42" fill="#100d0a"/>
+<rect x="0" y="548" width="1440" height="42" fill="#241c14"/>
 <rect x="0" y="548" width="1440" height="2" fill="#3a3730" opacity=".45"/>
 <g stroke="#1e1a15" stroke-width="1" opacity=".7">
   <path d="M0 562 L1440 562"/><path d="M0 576 L1440 576"/>
@@ -487,13 +492,41 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 <g stroke="#3a352c" stroke-width="1" opacity=".28">
   <path d="M0 606 L1440 606"/><path d="M0 626 L1440 626"/>
 </g>
-<rect x="0" y="650" width="1440" height="50" fill="#191510"/>
+<rect x="0" y="650" width="1440" height="50" fill="#332819"/>
 <rect x="0" y="650" width="1440" height="2" fill="#4a4438" opacity=".4"/>
 <rect x="0" y="698" width="1440" height="202" fill="url(#floorG)"/>
 <path d="M0 698 L1440 698" stroke="#2a251d" stroke-width="1.4" opacity=".7"/>
+<!-- 窗光落在座椅上 -->
+<g>
+  <rect x="196" y="590" width="384" height="110" fill="url(#seatSpill)"/>
+  <rect x="620" y="590" width="384" height="110" fill="url(#seatSpill)"/>
+  <rect x="1044" y="590" width="384" height="110" fill="url(#seatSpill)"/>
+</g>
+<!-- 车顶通风口 -->
+<g opacity=".5">
+  <rect x="640" y="96" width="150" height="20" rx="3" fill="#0c0906"/>
+  <rect x="640" y="96" width="150" height="20" rx="3" fill="none" stroke="#2e2820" stroke-width="1"/>
+  <g stroke="#2e2820" stroke-width="1.2"><path d="M648 106 L782 106"/></g>
+</g>
+<!-- 地板上的窗光倒影 -->
+<g opacity=".7">
+  <rect x="230" y="700" width="316" height="150" fill="url(#seatSpill)"/>
+  <rect x="654" y="700" width="316" height="150" fill="url(#seatSpill)"/>
+  <rect x="1078" y="700" width="316" height="150" fill="url(#seatSpill)"/>
+</g>
 <!-- 地板上的暖光反射 -->
-<ellipse cx="810" cy="806" rx="150" ry="30" fill="#e0a765" opacity=".10" filter="url(#hb20)"/>
-<ellipse cx="810" cy="742" rx="86" ry="14" fill="#ffd39c" opacity=".08" filter="url(#hb8)"/>
+<ellipse cx="810" cy="812" rx="170" ry="34" fill="#e0a765" opacity=".12" filter="url(#hb20)"/>
+<ellipse cx="810" cy="742" rx="92" ry="16" fill="#ffd39c" opacity=".10" filter="url(#hb8)"/>
+<!-- 座位上的一份报纸 -->
+<g opacity=".85">
+  <path d="M918 648 L1002 644 L1006 668 L922 672 Z" fill="#cdc6b2" opacity=".30"/>
+  <path d="M918 648 L1002 644 L1006 668 L922 672 Z" fill="none" stroke="#e2dbc5" stroke-opacity=".22"/>
+  <path d="M937 647 L941 670" stroke="#e2dbc5" stroke-width="1.2" opacity=".25"/>
+  <g stroke="#e2dbc5" stroke-width="1" opacity=".16">
+    <path d="M948 648 L996 645"/><path d="M949 654 L994 651"/><path d="M924 656 L934 655"/>
+  </g>
+  <path d="M918 672 L1006 668 L1007 674 L919 678 Z" fill="#0b0907" opacity=".45"/>
+</g>
 
 <!-- ===== 吊环 ===== -->
 <g>
@@ -534,23 +567,29 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 
 <!-- ===== 窗里那个女人 ===== -->
 <g id="woman">
-  <ellipse cx="812" cy="386" rx="44" ry="58" fill="#c98946" opacity=".16" filter="url(#hb8)"/>
-  <g fill="#1a120b">
-    <!-- 头发与头 -->
-    <path d="M800 342 C 800 330 806 324 812 324 C 819 324 824 331 824 342
-             C 824 350 822 356 820 360 L 804 360 C 802 356 800 350 800 342 Z"/>
-    <ellipse cx="812" cy="345" rx="8.2" ry="9.8"/>
+  <ellipse cx="810" cy="382" rx="40" ry="52" fill="#c98946" opacity=".14" filter="url(#hb8)"/>
+  <g fill="#181009">
+    <!-- 头发：从头顶包下来，止于肩线上方 4px -->
+    <path d="M810 342
+             C 801 342 796 348 796 356
+             C 796 364 795.5 370 795 374
+             L 825 374
+             C 824.5 370 824 364 824 356
+             C 824 348 819 342 810 342 Z"/>
     <!-- 颈 -->
-    <rect x="808" y="356" width="8" height="10" rx="2"/>
-    <!-- 肩与上身 -->
-    <path d="M812 365
-             C 800 366 790 372 786 382
-             L 782 444 L 842 444 L 838 382
-             C 834 372 824 366 812 365 Z"/>
+    <rect x="807.2" y="370" width="5.6" height="12"/>
+    <!-- 肩与背：肩宽 44，往下几乎不收也不散 -->
+    <path d="M810 380
+             C 800 381 791 387 788 396
+             C 786 404 786 416 786 426
+             L 786 444 L 834 444 L 834 426
+             C 834 416 834 404 832 396
+             C 829 387 820 381 810 380 Z"/>
   </g>
-  <!-- 侧缘的轮廓光 -->
-  <path d="M786 384 L 782 444" stroke="#ffe0b4" stroke-width="1.2" opacity=".45"/>
-  <path d="M803 331 C 800 336 800 342 800 348" stroke="#ffe0b4" stroke-width="1" opacity=".35" fill="none"/>
+  <!-- 轮廓光：左侧一道，头顶一道 -->
+  <path d="M788 398 C 786 408 786 420 786 432" stroke="#ffe2b8" stroke-width="1.3" opacity=".5" fill="none"/>
+  <path d="M803 346 C 798 350 796 356 796 362" stroke="#ffe2b8" stroke-width="1.1" opacity=".4" fill="none"/>
+  <path d="M817 344 C 822 348 824 353 824 359" stroke="#ffd9a8" stroke-width="1" opacity=".3" fill="none"/>
 </g>
 
 <!-- 玻璃上的逆向反光（人物前的车窗高光） -->
