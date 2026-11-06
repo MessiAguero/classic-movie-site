@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T04:23:05.515Z",
+  "generatedAt": "2026-11-06T04:09:29.633Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 150,
-  "ok": 86,
+  "total": 151,
+  "ok": 87,
   "warn": 64,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 134,
+    "checked": 135,
     "skippedVerified": 16,
     "error": null
   },
@@ -2267,25 +2267,23 @@
     {
       "id": "20261030-24eyes",
       "zhTitle": "二十四只眼睛",
-      "sourceTitle": "《二十四只眼睛》1954电影在线观看完整版剧情 - xb1",
+      "sourceTitle": "《二十四只眼睛》电影宣传画册 剧照 海报",
       "year": "1954",
       "source": "本地",
       "imageUrl": "posters/20261030-24eyes.jpg",
-      "host": "image.xb1.com",
+      "host": "www.kfzimg.com",
       "tier": "unknown",
-      "size": "29KB",
-      "dims": "300×450",
-      "ratio": 1.5,
+      "size": "385KB",
+      "dims": "1200×1600",
+      "ratio": 1.33,
       "identityKind": "name",
       "identityHits": [
-        "片名中文",
-        "年份"
+        "片名中文"
       ],
       "evidence": {
         "level": "strong",
         "reasons": [
           "片名命中「二十四只眼睛」",
-          "年份命中 1954",
           "书名号片名命中「二十四只眼睛」"
         ],
         "conflicts": []
@@ -2295,22 +2293,24 @@
         "titleHit": null,
         "yearMatch": false,
         "years": [],
-        "dominantText": "",
-        "reasons": [],
+        "dominantText": "孔夫子旧書网",
+        "reasons": [
+          "图片最大文字为“孔夫子旧書网”，未能与片名直接对应"
+        ],
         "conflicts": []
       },
       "verified": false,
       "status": "warn",
       "issues": [
         {
-          "code": "low_resolution",
-          "severity": "warn",
-          "detail": "清晰度偏低 300×450"
-        },
-        {
           "code": "untrusted_host",
           "severity": "warn",
-          "detail": "图源不在可信白名单（image.xb1.com）"
+          "detail": "图源不在可信白名单（www.kfzimg.com）"
+        },
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“孔夫子旧書网”没有对上片名，建议核对"
         }
       ]
     },
@@ -2503,23 +2503,26 @@
     {
       "id": "20261104-twilight",
       "zhTitle": "黄昏的清兵卫",
-      "sourceTitle": "黄昏的清兵卫海报 4 | 金海报-GoldPoster",
+      "sourceTitle": "黄昏的清兵卫 (2002) — The Movie Database (TMDB)",
       "year": "2002",
       "source": "本地",
       "imageUrl": "posters/20261104-twilight.jpg",
-      "host": "img.goldposter.com",
-      "tier": "aggregator",
-      "size": "69KB",
-      "dims": "500×750",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "172KB",
+      "dims": "1000×1500",
       "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
-        "片名中文"
+        "片名中文",
+        "年份"
       ],
       "evidence": {
-        "level": "medium",
+        "level": "strong",
         "reasons": [
-          "片名命中「黄昏的清兵卫」"
+          "片名命中「黄昏的清兵卫」",
+          "年份命中 2002",
+          "可信图源（tmdb）"
         ],
         "conflicts": []
       },
@@ -2527,34 +2530,14 @@
         "available": true,
         "titleHit": null,
         "yearMatch": false,
-        "years": [
-          "2004"
-        ],
-        "dominantText": "★★★★",
-        "reasons": [
-          "图片最大文字为“★★★★”，未能与片名直接对应"
-        ],
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
         "conflicts": []
       },
       "verified": false,
-      "status": "warn",
-      "issues": [
-        {
-          "code": "aggregator_host",
-          "severity": "warn",
-          "detail": "图源为聚合站（img.goldposter.com），建议换用官方图源"
-        },
-        {
-          "code": "identity_weak_evidence",
-          "severity": "warn",
-          "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：黄昏的清兵卫海报 4 | 金海报-GoldPoster）"
-        },
-        {
-          "code": "visual_title_unverified",
-          "severity": "warn",
-          "detail": "图片能读到文字，但最大文字“★★★★”没有对上片名，建议核对"
-        }
-      ]
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20261105-stairs",
@@ -2604,6 +2587,58 @@
           "code": "visual_title_unverified",
           "severity": "warn",
           "detail": "图片能读到文字，但最大文字“THE CRITERION COLLECTION”没有对上片名，建议核对"
+        }
+      ]
+    },
+    {
+      "id": "20261106-shallwe",
+      "zhTitle": "谈谈情，跳跳舞",
+      "sourceTitle": "YESASIA : 谈谈情 跳跳舞 (1996) (DVD) (双碟版) (第二版) (香港版) DVD - 草刈民代, 役所广司 - 日本影 ...",
+      "year": "1996",
+      "source": "本地",
+      "imageUrl": "posters/20261106-shallwe.jpg",
+      "host": "d3tvwjfge35btc.cloudfront.net",
+      "tier": "unknown",
+      "size": "227KB",
+      "dims": "511×720",
+      "ratio": 1.41,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「谈谈情，跳跳舞」",
+          "年份命中 1996",
+          "主创命中「草刈民代」"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "榮獲十三項日本電影金像獎",
+        "reasons": [
+          "图片最大文字为“榮獲十三項日本電影金像獎”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（d3tvwjfge35btc.cloudfront.net）"
+        },
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“榮獲十三項日本電影金像獎”没有对上片名，建议核对"
         }
       ]
     },
@@ -6594,29 +6629,6 @@
       "verified": false,
       "status": "ok",
       "issues": []
-    },
-    {
-      "id": "20261104-twilight",
-      "zhTitle": "黄昏的清兵卫",
-      "year": "2002",
-      "sourceTitle": "黄昏的清兵卫海报 4 | 金海报-GoldPoster",
-      "imageUrl": "posters/20261104-twilight.jpg",
-      "host": "img.goldposter.com",
-      "dims": "500×750",
-      "evidence": {
-        "level": "medium",
-        "reasons": [
-          "片名命中「黄昏的清兵卫」"
-        ],
-        "conflicts": []
-      },
-      "verified": false,
-      "status": "warn",
-      "issues": [
-        "aggregator_host",
-        "identity_weak_evidence",
-        "visual_title_unverified"
-      ]
     },
     {
       "id": "20260427",

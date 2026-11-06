@@ -1,39 +1,97 @@
 {
-  "at": "2026-10-29T04:09:48.832Z",
+  "at": "2026-11-06T04:09:16.480Z",
   "dryRun": false,
-  "targetCount": 1,
-  "fixedCount": 1,
+  "targetCount": 3,
+  "fixedCount": 3,
   "failureCount": 0,
   "changes": [
     {
-      "id": "20261029-ugetsu",
-      "zhTitle": "雨月物语",
+      "id": "20261030-24eyes",
+      "zhTitle": "二十四只眼睛",
       "before": {
-        "imageUrl": "posters/20261029-ugetsu.jpg",
-        "dims": "910×1280",
-        "status": "error",
+        "imageUrl": "posters/20261030-24eyes.jpg",
+        "dims": "300×450",
+        "status": "warn",
         "issues": [
-          "untrusted_host",
-          "visual_identity_conflict"
+          "low_resolution",
+          "untrusted_host"
         ]
       },
       "after": {
-        "imageUrl": "posters/20261029-ugetsu.jpg",
-        "dims": "640×961",
+        "imageUrl": "posters/20261030-24eyes.jpg",
+        "dims": "1200×1600",
+        "source": "baidu",
+        "url": "https://www.kfzimg.com/sw/kfz-cos/kfzimg/bddbaaac/768f37e8b7c9ee87_b.jpg",
+        "title": "《二十四只眼睛》电影宣传画册 剧照 海报"
+      }
+    },
+    {
+      "id": "20261104-twilight",
+      "zhTitle": "黄昏的清兵卫",
+      "before": {
+        "imageUrl": "posters/20261104-twilight.jpg",
+        "dims": "500×750",
+        "status": "warn",
+        "issues": [
+          "aggregator_host",
+          "identity_weak_evidence",
+          "visual_title_unverified"
+        ]
+      },
+      "after": {
+        "imageUrl": "posters/20261104-twilight.jpg",
+        "dims": "1000×1500",
+        "source": "bing",
+        "url": "https://image.tmdb.org/t/p/original/d4RHLArdADlrZEMkLfL6PbqAULw.jpg",
+        "title": "黄昏的清兵卫 (2002) — The Movie Database (TMDB)"
+      }
+    },
+    {
+      "id": "20261106-shallwe",
+      "zhTitle": "谈谈情，跳跳舞",
+      "before": {
+        "imageUrl": "posters/20261106-shallwe.jpg",
+        "dims": "342×489",
+        "status": "error",
+        "issues": [
+          "low_resolution",
+          "no_identity_signal",
+          "visual_title_unverified"
+        ]
+      },
+      "after": {
+        "imageUrl": "posters/20261106-shallwe.jpg",
+        "dims": "511×720",
         "source": "ddg",
-        "url": "https://pic1.zhimg.com/50/v2-2eb5be4d3e824c2529911b22c6d09a08_720w.jpg?source=1def8aca",
-        "title": "如何评价电影《雨月物语》？ - 知乎"
+        "url": "https://d3tvwjfge35btc.cloudfront.net/Assets/GalleryImage/00/412/L_g0026441200.jpg",
+        "title": "YESASIA : 谈谈情 跳跳舞 (1996) (DVD) (双碟版) (第二版) (香港版) DVD - 草刈民代, 役所广司 - 日本影 ..."
       }
     }
   ],
   "failures": [],
   "recheck": [
     {
-      "id": "20261029-ugetsu",
+      "id": "20261030-24eyes",
       "status": "warn",
-      "dims": "640×961",
+      "dims": "1200×1600",
       "issues": [
-        "untrusted_host"
+        "untrusted_host",
+        "visual_title_unverified"
+      ]
+    },
+    {
+      "id": "20261104-twilight",
+      "status": "ok",
+      "dims": "1000×1500",
+      "issues": []
+    },
+    {
+      "id": "20261106-shallwe",
+      "status": "warn",
+      "dims": "511×720",
+      "issues": [
+        "untrusted_host",
+        "visual_title_unverified"
       ]
     }
   ]
