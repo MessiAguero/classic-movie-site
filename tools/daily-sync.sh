@@ -102,6 +102,14 @@ if [ "$count" -gt 0 ] || [ "${MISSING_POSTERS:-0}" -gt 0 ]; then
   node tools/run-with-timeout.mjs "${GALLERY_FETCH_TIMEOUT_MS:-300000}" npm run data:gallery
 fi
 
+# 3.2) 为新片解析可信片名别名（英文/日文/韩文）。
+#      站内 enTitle 常为空，海报来源标题又多是原文片名（如「砂の女」），
+#      缺别名时身份校验只能对年份，会把正确海报误判成错图、卡死发布闸门。
+#      增量解析，只处理还无法验证的条目；搜索受限就跳过，下次继续。
+if ! node tools/run-with-timeout.mjs "${ALIAS_RESOLVE_TIMEOUT_MS:-120000}" npm run poster:aliases; then
+  echo "!! 部分别名暂时无法解析，本轮继续，下次重试"
+fi
+
 # 3.5) 海报自检 + 自动纠错
 #      新抓的海报可能抓错图（张冠李戴 / 横版剧照 / 缩略图），
 #      入库前先体检一遍，发现问题当场换图，避免错误海报被发布上线。

@@ -415,8 +415,22 @@ function parseReview($) {
 }
 
 /* ---------- Hero ---------- */
+/* 中文片名：克隆后剔除英文/韩文子元素与栏目标签横幅（如 .t2「韩影典藏」），
+   避免横幅文字被并进片名（「韩影典藏黄海」→ 应为「黄海」）。 */
+function zhTitleText($, selList) {
+  for (const s of selList) {
+    const $el = $('body').find(s).first();
+    if (!$el.length) continue;
+    const clone = $el.clone();
+    clone.find('.en, .kr, .en-sub, .hero-title-en, .en-title, .kr-title, .t2').remove();
+    const t = txt($, clone);
+    if (t) return t;
+  }
+  return '';
+}
+
 function parseHero($) {
-  let zh = firstText($, SEL.zhTitle);
+  let zh = zhTitleText($, SEL.zhTitle);
   let en = firstText($, SEL.enTitle);
   let year = firstNum(firstText($, SEL.year));
   const tagline = firstText($, SEL.tagline);
@@ -457,6 +471,7 @@ function parseHero($) {
       .replace(/[\p{Script=Latin}][\p{Script=Latin}0-9 .'’\-–&/]*/gu, ' ')
       .replace(/[\uAC00-\uD7AF]+/g, ' ')
       .replace(/\s+/g, ' ')
+      .replace(/([一-鿿])\s+(?=[一-鿿])/g, '$1')
       .trim();
     // 去掉片名首尾多余的标点（如「黄金三镖客 ,」「窃听风暴 ·」）
     const zhTidy = zhClean.replace(/^[\s,，、.。·・:：;；\-—_|]+|[\s,，、.。·・:：;；\-—_|]+$/g, '').trim();

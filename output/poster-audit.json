@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T06:05:23.535Z",
+  "generatedAt": "2026-11-13T06:29:37.355Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -3956,7 +3956,7 @@
       "evidence": {
         "level": "strong",
         "reasons": [
-          "片名命中「活 着」",
+          "片名命中「活着」",
           "年份命中 1994",
           "可信图源（tmdb）"
         ],
@@ -6428,7 +6428,7 @@
       "evidence": {
         "level": "strong",
         "reasons": [
-          "片名命中「莫 扎 特 传」",
+          "片名命中「莫扎特传」",
           "年份命中 1984"
         ],
         "conflicts": []
