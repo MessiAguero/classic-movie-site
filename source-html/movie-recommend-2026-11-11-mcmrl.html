@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>战场上的快乐圣诞 · 日本电影专题 第 17 期</title>
+<meta name="description" content="大岛渚《战场上的快乐圣诞》(1983)：剧情梗概、人物冲突、六处亮点与观看理由。全程不剧透。">
+<style>
+:root{
+  --bg:#06080a; --bg2:#0a0e12; --panel:#10151a;
+  --ink:#e6e3d8; --dim:#9c9a90; --dim2:#63645e;
+  --line:rgba(230,227,216,.13); --line2:rgba(230,227,216,.055);
+  --khaki:#a8895a; --khaki2:#d6b98a;
+  --moon:#c8d6da;
+  --seal:#8d2130; --seal2:#b04a52;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Didot","Optima","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.95;letter-spacing:.012em;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(168,137,90,.36);color:#fff}
+a{color:inherit}
+.wrap{width:min(1160px,calc(100% - 96px));margin:0 auto}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:max(100vh,880px);overflow:hidden;background:#04060a}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(5,7,10,.96) 0%,rgba(5,7,10,.93) 18%,rgba(5,7,10,.78) 34%,rgba(5,7,10,.32) 56%,rgba(5,7,10,0) 74%),
+    linear-gradient(to bottom,rgba(5,7,10,.72) 0%,rgba(5,7,10,.12) 24%,rgba(5,7,10,0) 48%,rgba(5,7,10,.34) 76%,rgba(5,7,10,1) 100%)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.notice{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:11px;
+  letter-spacing:.14em;color:rgba(230,227,216,.66);border:1px solid rgba(230,227,216,.16);
+  border-radius:999px;padding:7px 16px;margin-bottom:34px;background:rgba(5,7,10,.5);backdrop-filter:blur(4px)}
+.notice .dot{width:5px;height:5px;border-radius:50%;background:var(--seal2);box-shadow:0 0 8px rgba(176,74,82,.8)}
+.hero-in{position:relative;z-index:3;width:min(1160px,calc(100% - 96px));margin:0 auto;
+  min-height:max(100vh,880px);display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:10.5vh;padding-bottom:64px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;
+  letter-spacing:.34em;color:var(--khaki2);text-transform:uppercase}
+.eyebrow i{display:block;width:52px;height:1px;background:var(--khaki2);opacity:.7}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,6.2vw,78px);line-height:1.14;
+  letter-spacing:.1em;margin:26px 0 0;color:#f4f0e4;white-space:nowrap;
+  text-shadow:0 6px 60px rgba(0,0,0,.8)}
+.latin{margin:20px 0 0;font-family:var(--latin);font-size:12px;letter-spacing:.28em;
+  color:rgba(230,227,216,.58);text-transform:uppercase}
+.latin + .latin{margin-top:7px;font-size:11px;letter-spacing:.2em;color:rgba(230,227,216,.42)}
+.hero-sub{margin:28px 0 0;max-width:23em;font-size:16px;line-height:2.05;color:rgba(230,227,216,.84)}
+.hero-sub em{font-style:normal;color:#f8f2e0;border-bottom:1px solid rgba(168,137,90,.72);padding-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:560px}
+.chip{font-size:11.5px;letter-spacing:.06em;color:rgba(230,227,216,.78);border:1px solid var(--line);
+  border-radius:999px;padding:6px 14px;background:rgba(5,7,10,.55);backdrop-filter:blur(6px)}
+.chip b{color:#f8f2e0;font-weight:500}
+.scroll-hint{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:4;
+  font-family:var(--latin);font-size:9.5px;letter-spacing:.42em;color:rgba(230,227,216,.4);
+  display:flex;flex-direction:column;align-items:center;gap:9px}
+.scroll-hint span{display:block;width:1px;height:32px;background:linear-gradient(to bottom,rgba(230,227,216,.44),transparent)}
+
+/* ---------- sections ---------- */
+.sec{padding:112px 0;border-top:1px solid var(--line2)}
+.sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:52px}
+.sec-head .no{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--khaki2);opacity:.92}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.1vw,36px);
+  letter-spacing:.05em;margin:0;color:#f2ecdb;flex:1 1 auto}
+.sec-head .kicker{font-family:var(--latin);font-size:10.5px;letter-spacing:.3em;
+  color:var(--dim2);text-transform:uppercase;margin:0}
+.note{font-size:13px;color:var(--dim);line-height:1.9}
+
+/* ---------- 01 lede ---------- */
+.intro{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:64px;align-items:start}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:2.2;color:#dcd6c7}
+.lede p{margin:0 0 22px}
+.lede p:first-child::first-letter{float:left;font-size:5.1em;line-height:.82;padding:.06em .14em 0 0;
+  color:#f8f2e0;font-weight:400}
+.lede strong{font-weight:500;color:#f8f2e0}
+.lede .dash{color:var(--dim);font-size:15px}
+.glance{border:1px solid var(--line);background:linear-gradient(160deg,rgba(18,22,26,.95),rgba(8,10,12,.95));
+  padding:30px 28px}
+.glance h3{font-family:var(--latin);font-size:10px;letter-spacing:.34em;color:var(--khaki2);
+  margin:0 0 22px;font-weight:400;text-transform:uppercase}
+.glance dl{margin:0;display:grid;gap:13px}
+.glance div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line2)}
+.glance div:last-child{border-bottom:0;padding-bottom:0}
+.glance dt{font-size:11.5px;color:var(--dim2);letter-spacing:.1em}
+.glance dd{margin:0;font-size:13.5px;color:#d2ccbd;line-height:1.7}
+.glance dd b{color:#f8f2e0;font-weight:500}
+.acts{margin-top:74px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.act{background:var(--bg);padding:34px 30px}
+.act .t{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--khaki2);
+  opacity:.92;margin-bottom:14px}
+.act h4{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f2ecdb;letter-spacing:.04em}
+.act p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 02 poster ---------- */
+.poster-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);gap:70px;align-items:start}
+.poster-frame{border:1px solid var(--line);padding:14px;background:#07080a;
+  box-shadow:0 40px 90px -50px #000, inset 0 0 0 1px rgba(0,0,0,.6)}
+.poster-svg{display:block;width:100%;height:auto}
+.pcap{margin:16px 2px 0;font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--dim2)}
+.pnotes{display:grid;gap:28px}
+.pnote{border-left:1px solid var(--line);padding:2px 0 2px 24px}
+.pnote .n{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--khaki2);opacity:.88}
+.pnote h4{margin:8px 0 10px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f2ecdb}
+.pnote p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 03 spec ---------- */
+.spec{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.spec div{background:var(--bg);padding:22px 20px;min-height:92px}
+.spec dt{font-size:10.5px;letter-spacing:.14em;color:var(--dim2);margin-bottom:8px}
+.spec dd{margin:0;font-size:13.5px;color:#d7d1c1;line-height:1.65}
+.spec dd small{display:block;font-size:11px;color:var(--dim2);margin-top:4px;letter-spacing:.02em}
+.spec .wide{grid-column:1/-1;min-height:0;background:linear-gradient(120deg,rgba(168,137,90,.15),rgba(8,11,13,.92) 48%)}
+.spec .wide dd{font-family:var(--serif);font-size:17px;color:#f8f2e0;letter-spacing:.05em}
+
+/* ---------- 04 scores ---------- */
+.scores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.sc{background:var(--bg);padding:32px 30px}
+.sc .src{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--dim2);text-transform:uppercase}
+.sc .val{font-family:var(--latin);font-size:52px;line-height:1;margin:16px 0 8px;color:#f8f2e0}
+.sc .val small{font-size:15px;color:var(--dim);letter-spacing:.04em;margin-left:6px}
+.sc .meta{font-size:12.5px;color:var(--dim);line-height:1.8}
+.sc.hi .val{color:#e8cfa4}
+.sc.abs .val{font-size:30px;letter-spacing:.06em;color:var(--khaki2);line-height:1.3}
+.caliber{margin:52px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.caliber li{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line2);
+  font-size:13.5px;line-height:1.9;color:var(--dim)}
+.caliber li b{color:#efe8d7;font-weight:500}
+.caliber li i{font-family:var(--latin);font-style:normal;font-size:10.5px;letter-spacing:.2em;color:var(--khaki2);opacity:.82;padding-top:4px}
+
+/* ---------- 05 people ---------- */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.person{background:var(--bg);padding:30px 28px}
+.person .role{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--khaki2);opacity:.82}
+.person h4{margin:12px 0 4px;font-family:var(--serif);font-weight:400;font-size:20px;color:#f8f2e0;letter-spacing:.04em}
+.person .actor{font-size:11.5px;color:var(--dim2);letter-spacing:.08em;margin-bottom:18px}
+.person p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.person p span{display:block;margin-top:9px;color:#d3ccbb}
+.person p span b{color:var(--khaki2);font-weight:400;font-size:11.5px;letter-spacing:.08em;margin-right:6px}
+.person.thing{background:linear-gradient(150deg,rgba(141,33,48,.16),rgba(9,10,12,.96) 62%)}
+.person.thing h4{color:#e6c3bd}
+
+/* ---------- 06 conflicts ---------- */
+.conflicts{display:grid;gap:0;border-top:1px solid var(--line)}
+.cf{display:grid;grid-template-columns:172px minmax(0,1fr);gap:36px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line2)}
+.cf h4{margin:0;font-family:var(--serif);font-weight:400;font-size:17px;color:#f8f2e0;letter-spacing:.04em;line-height:1.6}
+.cf h4 i{display:block;font-family:var(--latin);font-style:normal;font-size:9.5px;letter-spacing:.26em;
+  color:var(--khaki2);opacity:.82;margin-bottom:8px}
+.cf p{margin:0;font-size:13.8px;line-height:2;color:var(--dim)}
+.cf p em{font-style:normal;color:#e9e2d0}
+
+/* ---------- 07 awards ---------- */
+.awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.award{background:var(--bg);padding:28px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.award .yr{font-family:var(--latin);font-size:11px;letter-spacing:.14em;color:var(--dim2);padding-top:3px}
+.award h4{margin:0 0 6px;font-size:14.5px;font-weight:500;color:#f2ebd8;letter-spacing:.02em;line-height:1.6}
+.award p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.78}
+.award.gold{background:linear-gradient(120deg,rgba(168,137,90,.2),rgba(8,11,13,.93) 62%);border-left:2px solid rgba(168,137,90,.5)}
+.award.gold h4{color:#e8cfa4}
+.award.wide{grid-column:1/-1}
+
+/* ---------- 08 lineage ---------- */
+.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px}
+.ln{position:relative;padding:0 0 40px 40px}
+.ln:last-child{padding-bottom:0}
+.ln::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--moon)}
+.ln.now::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 4px rgba(141,33,48,.26)}
+.ln .yr{font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--dim2)}
+.ln h4{margin:6px 0 6px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f2ebd8;letter-spacing:.03em}
+.ln p{margin:0;font-size:13px;color:var(--dim);line-height:1.85}
+.ln.now h4{color:#e9c3bb}
+
+/* ---------- 09 six grid ---------- */
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.g6{background:var(--bg);padding:32px 28px;min-height:200px}
+.g6 .n{font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--khaki2);opacity:.88}
+.g6 h4{margin:14px 0 10px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f2ebd8;letter-spacing:.03em;line-height:1.6}
+.g6 p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 10 why ---------- */
+.why{display:grid;gap:0;max-width:820px}
+.why article{padding:0 0 38px}
+.why article + article{border-top:1px solid var(--line2);padding-top:38px}
+.why h3{margin:0 0 14px;font-family:var(--serif);font-weight:400;font-size:21px;color:#f8f2e0;letter-spacing:.04em}
+.why p{margin:0;font-size:14.5px;line-height:2.05;color:#bdb6a5}
+.why p + p{margin-top:14px}
+
+/* ---------- 11 tips ---------- */
+.tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.tip{background:var(--bg);padding:30px 24px}
+.tip .k{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--khaki2);opacity:.88}
+.tip h4{margin:12px 0 10px;font-size:15.5px;font-weight:500;color:#f2ebd8}
+.tip p{margin:0;font-size:12.8px;line-height:1.95;color:var(--dim)}
+
+/* ---------- verdict ---------- */
+.verdict{padding:150px 0 120px;border-top:1px solid var(--line2);position:relative;overflow:hidden}
+.verdict .tag{font-family:var(--latin);font-size:9.5px;letter-spacing:.32em;color:var(--dim2);margin-bottom:34px}
+.verdict .q{font-family:var(--serif);font-size:clamp(24px,3.2vw,37px);line-height:1.74;letter-spacing:.06em;
+  color:#f8f2e0;margin:0;max-width:24em}
+.verdict .q span{display:block}
+.verdict .src{margin-top:36px;font-size:12px;color:var(--dim2);letter-spacing:.04em}
+.stamp{position:absolute;right:74px;bottom:82px;width:136px;height:136px;border:1px solid rgba(141,33,48,.6);
+  border-radius:50%;display:grid;place-items:center;color:rgba(184,84,92,.96);text-align:center;
+  transform:rotate(-7deg);box-shadow:inset 0 0 0 4px rgba(141,33,48,.1)}
+.stamp div{display:grid;gap:5px;justify-items:center}
+.stamp span{font-family:var(--latin);font-size:8.2px;letter-spacing:.14em;opacity:.9}
+.stamp b{font-family:var(--serif);font-size:21px;letter-spacing:.12em;font-weight:400;line-height:1.1;
+  padding:5px 0;border-top:1px solid rgba(141,33,48,.38);border-bottom:1px solid rgba(141,33,48,.38)}
+
+footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
+footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
+
+/* ---------- HUD ---------- */
+#hud{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
+  opacity:0;transition:opacity .7s ease;pointer-events:none}
+#hud.on{opacity:1}
+#hud b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:13px;
+  color:var(--dim2);letter-spacing:.1em;transition:color .5s}
+#hud b i{display:block;width:16px;height:1px;background:var(--dim2);transition:all .5s}
+#hud b.on{color:#f8f2e0}
+#hud b.on i{width:30px;background:var(--khaki2)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1380px){#hud{display:none}}
+@media (max-width:1000px){
+  .intro{grid-template-columns:1fr;gap:48px}
+  .poster-grid{grid-template-columns:1fr;gap:46px}
+  .poster-frame{max-width:500px}
+  .scores,.awards{grid-template-columns:1fr}
+  .spec{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .acts{grid-template-columns:1fr}
+  #hud{display:none}
+}
+@media (max-width:760px){
+  .hero-svg{transform:translateY(12vh)}
+  #moon{display:none}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(5,7,10,.97) 0%,rgba(5,7,10,.94) 24%,rgba(5,7,10,.86) 38%,rgba(5,7,10,.62) 50%,rgba(5,7,10,.22) 62%,rgba(5,7,10,.12) 72%,rgba(5,7,10,.5) 86%,rgba(5,7,10,.97) 100%)}
+  body{font-size:15px;line-height:1.9}
+  .wrap,.hero-in{width:calc(100% - 40px)}
+  .hero{min-height:max(100vh,740px)}
+  .hero-in{min-height:max(100vh,740px);padding-top:8vh;padding-bottom:100px}
+  h1{font-size:clamp(27px,8.4vw,54px);letter-spacing:.05em}
+  .hero-sub{font-size:14.5px;line-height:1.95;max-width:26em}
+  .sec{padding:76px 0}
+  .sec-head{margin-bottom:36px;gap:12px}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spec dd{font-size:12.4px}
+  .spec dd small{font-size:10.4px}
+  .people,.grid6,.tips{grid-template-columns:1fr}
+  .cf{grid-template-columns:1fr;gap:12px}
+  .lede{font-size:16px;line-height:2.05}
+  .sc .val{font-size:44px}
+  .verdict{padding:96px 0 88px}
+  .stamp{position:static;margin-top:48px;transform:rotate(-4deg)}
+  .chips{max-width:100%;padding-top:0;margin-top:26px}
+  footer{padding-bottom:120px}
+  .scroll-hint{bottom:14px;left:auto;right:12px;transform:none}
+  .chip{font-size:11px;padding:5px 11px;letter-spacing:.03em}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .scroll-hint{left:auto;right:8px;transform:none;bottom:26px}
+  .hero-svg{transform:translateY(5vh)}
+  .hero-scrim{background:
+    linear-gradient(to right,rgba(5,7,10,.98) 0%,rgba(5,7,10,.95) 28%,rgba(5,7,10,.72) 46%,rgba(5,7,10,.22) 60%,rgba(5,7,10,0) 72%),
+    linear-gradient(to bottom,rgba(5,7,10,.74) 0%,rgba(5,7,10,.12) 24%,rgba(5,7,10,0) 46%,rgba(5,7,10,.3) 74%,rgba(5,7,10,1) 100%)}
+}
+@media (min-width:1001px) and (max-height:860px){
+  .hero,.hero-in{min-height:max(100vh,760px)}
+  .scroll-hint{left:auto;right:22px;transform:none}
+}
+@media (max-width:520px){
+  .chip:nth-child(4){display:none}
+}
+@media (max-width:420px){
+  .notice{margin-bottom:22px;font-size:10.5px;padding:6px 13px}
+  h1{font-size:clamp(24px,7.6vw,42px);margin-top:20px}
+  .latin{margin-top:14px;font-size:10px;letter-spacing:.2em}
+  .latin + .latin{font-size:9px;letter-spacing:.14em}
+  .hero-sub{margin-top:22px;font-size:13.8px}
+  .chip:nth-child(6){display:none}
+}
+@media (max-width:380px){
+  .wrap,.hero-in{width:calc(100% - 32px)}
+  .chip{font-size:10.5px;padding:5px 11px}
+  .glance{padding:24px 20px}
+  h1{font-size:clamp(23px,7.4vw,40px)}
+}
+@media (max-width:400px) and (max-height:680px){
+  .scroll-hint{display:none}
+}
+@media (max-width:760px) and (max-height:700px){
+  .hero{min-height:100vh}
+  .hero-in{min-height:100vh;padding-top:6vh}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<svg class="hero-svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+<defs>
+<linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#04060a"/><stop offset=".34" stop-color="#070b10"/>
+<stop offset=".62" stop-color="#0b131a"/><stop offset=".84" stop-color="#111d26"/>
+<stop offset="1" stop-color="#16242c"/>
+</linearGradient>
+<linearGradient id="volcG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#0a131a"/><stop offset=".4" stop-color="#070e13"/>
+<stop offset="1" stop-color="#04070a"/>
+</linearGradient>
+<linearGradient id="hillG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#070f13"/><stop offset="1" stop-color="#03070a"/>
+</linearGradient>
+<linearGradient id="groundG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#26271f"/><stop offset=".26" stop-color="#181913"/>
+<stop offset=".66" stop-color="#0c0d0a"/><stop offset="1" stop-color="#050605"/>
+</linearGradient>
+<linearGradient id="pathG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#2e2c23" stop-opacity=".8"/><stop offset=".5" stop-color="#201f19" stop-opacity=".62"/>
+<stop offset="1" stop-color="#101010" stop-opacity=".4"/>
+</linearGradient>
+<linearGradient id="beamG" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#cfe2ea" stop-opacity=".15"/>
+<stop offset=".42" stop-color="#bcd2dc" stop-opacity=".07"/>
+<stop offset="1" stop-color="#a8c0cc" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="horizonGlow" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#7e9aa6" stop-opacity=".2"/><stop offset=".55" stop-color="#5d7c8a" stop-opacity=".07"/>
+<stop offset="1" stop-color="#41606e" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="moonGlow" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#dfe9ec" stop-opacity=".26"/><stop offset=".34" stop-color="#b9cdd6" stop-opacity=".1"/>
+<stop offset="1" stop-color="#8fa8b4" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="winGlow" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#f0c184" stop-opacity=".42"/><stop offset=".45" stop-color="#cf9450" stop-opacity=".14"/>
+<stop offset="1" stop-color="#a86f36" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="poolG" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#f3c489" stop-opacity=".3"/><stop offset=".5" stop-color="#cf9450" stop-opacity=".09"/>
+<stop offset="1" stop-color="#a86f36" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="vigG" cx=".54" cy=".44" r=".86">
+<stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".52" stop-color="#04060a" stop-opacity=".1"/>
+<stop offset=".8" stop-color="#04060a" stop-opacity=".46"/><stop offset="1" stop-color="#03050a" stop-opacity=".92"/>
+</radialGradient>
+<filter id="b3"><feGaussianBlur stdDeviation="3"/></filter>
+<filter id="b8"><feGaussianBlur stdDeviation="8"/></filter>
+<filter id="b20"><feGaussianBlur stdDeviation="20"/></filter>
+</defs>
+
+<rect width="1600" height="1000" fill="url(#skyG)"/>
+
+<g id="stars" fill="#dce8ec">
+<circle cx="140" cy="86" r="1.1" opacity=".26"/><circle cx="268" cy="152" r=".9" opacity=".2"/>
+<circle cx="356" cy="64" r="1.3" opacity=".3"/><circle cx="470" cy="128" r=".8" opacity=".16"/>
+<circle cx="604" cy="70" r="1.1" opacity=".24"/><circle cx="712" cy="150" r=".9" opacity=".18"/>
+<circle cx="836" cy="88" r="1.2" opacity=".28"/><circle cx="946" cy="42" r=".8" opacity=".14"/>
+<circle cx="1064" cy="118" r="1" opacity=".22"/><circle cx="1188" cy="62" r="1.2" opacity=".26"/>
+<circle cx="1300" cy="146" r=".9" opacity=".18"/><circle cx="1418" cy="82" r="1.1" opacity=".24"/>
+<circle cx="1520" cy="168" r=".8" opacity=".14"/><circle cx="196" cy="242" r=".9" opacity=".16"/>
+<circle cx="506" cy="216" r="1" opacity=".2"/><circle cx="672" cy="256" r=".8" opacity=".14"/>
+<circle cx="1002" cy="248" r=".9" opacity=".16"/><circle cx="1352" cy="236" r="1" opacity=".18"/>
+<circle cx="1476" cy="300" r=".8" opacity=".12"/><circle cx="404" cy="312" r=".9" opacity=".14"/>
+</g>
+
+<ellipse cx="800" cy="706" rx="760" ry="240" fill="url(#horizonGlow)"/>
+
+<g id="moon">
+<circle cx="985" cy="168" r="148" fill="url(#moonGlow)"/>
+<circle cx="985" cy="168" r="26" fill="#dfe9ec" opacity=".8"/>
+<ellipse cx="985" cy="168" rx="26" ry="26" fill="none" stroke="#f2f8f8" stroke-width="1" opacity=".28"/>
+<ellipse cx="977" cy="162" rx="7" ry="5" fill="#b9c9d0" opacity=".2"/>
+<ellipse cx="991" cy="176" rx="5" ry="4" fill="#b9c9d0" opacity=".16"/>
+</g>
+<g id="clouds" opacity=".5">
+<path d="M960 208 C 1040 196, 1130 214, 1230 202 C 1300 194, 1380 206, 1460 198" fill="none" stroke="#9fb6c0" stroke-width="16" opacity=".07" filter="url(#b8)"/>
+<path d="M700 128 C 790 116, 880 134, 980 122 C 1050 114, 1120 126, 1200 118" fill="none" stroke="#9fb6c0" stroke-width="22" opacity=".05" filter="url(#b8)"/>
+</g>
+
+<g id="volcano">
+<path d="M400 700 L556 452 L648 404 L742 372 L826 340 L872 336 L936 392 L1024 448 L1128 520 L1244 626 L1300 700 Z" fill="url(#volcG)"/>
+<path d="M826 340 L872 336 L936 392 L1024 448" fill="none" stroke="#8faab6" stroke-width="1.4" opacity=".2"/>
+<path d="M556 452 L648 404 L742 372" fill="none" stroke="#708d9a" stroke-width="1.1" opacity=".13"/>
+<path d="M826 340 L872 336 L912 366 L868 356 Z" fill="#101c24" opacity=".8"/>
+<path d="M1128 520 L1244 626" fill="none" stroke="#5d7885" stroke-width="1" opacity=".08"/>
+</g>
+<g id="hill">
+<path d="M110 700 L266 508 L344 470 L430 516 L536 612 L596 700 Z" fill="url(#hillG)"/>
+<path d="M266 508 L344 470 L430 516" fill="none" stroke="#708d9a" stroke-width="1.2" opacity=".12"/>
+</g>
+
+<g id="treeline" fill="#060c10">
+<path d="M1206 700 C 1216 662, 1248 656, 1262 674 C 1272 648, 1306 646, 1318 670 C 1334 652, 1364 658, 1370 680 C 1388 662, 1420 666, 1426 688 C 1444 670, 1478 676, 1484 696 C 1500 684, 1534 690, 1540 700 Z"/>
+<path d="M1188 700 C 1192 678, 1216 674, 1222 688 C 1236 676, 1258 682, 1262 700 Z" opacity=".8"/>
+</g>
+
+<rect x="0" y="700" width="1600" height="300" fill="url(#groundG)"/>
+<path d="M0 700 H1600" stroke="#3c4c56" stroke-width="1.6" opacity=".42"/>
+<path d="M0 701.8 H1600" stroke="#000" stroke-width="1.2" opacity=".42"/>
+<ellipse cx="900" cy="716" rx="640" ry="52" fill="#6b7f84" opacity=".06"/>
+<path d="M726 700 L806 700 L1012 1000 L636 1000 Z" fill="url(#pathG)"/>
+
+<g id="bara">
+<rect x="620" y="648" width="150" height="52" fill="#0d161b"/>
+<path d="M610 650 L695 614 L780 650 L780 659 L695 626 L610 659 Z" fill="#0e181d"/>
+<path d="M610 650 L695 614 L780 650" fill="none" stroke="#9db6c0" stroke-width="1.2" opacity=".22"/>
+<rect x="644" y="666" width="28" height="20" fill="#e8bb7d" opacity=".85"/>
+<rect x="644" y="666" width="28" height="20" fill="none" stroke="#4a3a22" stroke-width="1.4"/>
+<rect x="700" y="672" width="22" height="28" fill="#050a0d"/>
+<ellipse cx="658" cy="676" rx="52" ry="34" fill="url(#winGlow)"/>
+</g>
+
+<g id="barb">
+<rect x="784" y="632" width="170" height="68" fill="#0d161b"/>
+<path d="M772 634 L869 596 L966 634 L966 644 L869 608 L772 644 Z" fill="#0e181d"/>
+<path d="M772 634 L869 596 L966 634" fill="none" stroke="#9db6c0" stroke-width="1.2" opacity=".24"/>
+<rect x="806" y="656" width="24" height="18" fill="#e8bb7d" opacity=".6"/>
+<rect x="844" y="656" width="24" height="18" fill="#e8bb7d" opacity=".34"/>
+<rect x="884" y="660" width="26" height="40" fill="#04080b"/>
+<ellipse cx="822" cy="664" rx="56" ry="32" fill="url(#winGlow)"/>
+</g>
+
+<g id="barc">
+<rect x="972" y="654" width="130" height="46" fill="#0d161b"/>
+<path d="M962 656 L1037 624 L1112 656 L1112 664 L1037 634 L962 664 Z" fill="#0e181d"/>
+<path d="M962 656 L1037 624 L1112 656" fill="none" stroke="#9db6c0" stroke-width="1.1" opacity=".18"/>
+<rect x="1004" y="672" width="20" height="16" fill="#e8bb7d" opacity=".26"/>
+</g>
+
+<g id="tower">
+<path d="M1130 692 L1137 476 M1172 692 L1165 476" stroke="#081015" stroke-width="5.4"/>
+<path d="M1130 630 L1172 596 M1172 630 L1130 596" stroke="#081015" stroke-width="3"/>
+<rect x="1112" y="470" width="62" height="8" fill="#0b1419"/>
+<rect x="1116" y="478" width="54" height="4" fill="#050a0d"/>
+<path d="M1116 470 L1116 446 M1172 470 L1172 446" stroke="#0a1217" stroke-width="2.6"/>
+<path d="M1100 448 L1143 418 L1186 448 Z" fill="#0d171d"/>
+<path d="M1100 448 L1143 418 L1186 448" fill="none" stroke="#9db6c0" stroke-width="1.1" opacity=".2"/>
+<path d="M1112 470 L1174 470" stroke="#9db6c0" stroke-width="1" opacity=".16"/>
+</g>
+
+<ellipse cx="700" cy="716" rx="150" ry="42" fill="url(#poolG)" opacity=".5"/>
+<ellipse cx="930" cy="708" rx="180" ry="46" fill="url(#poolG)" opacity=".28"/>
+
+<rect width="1600" height="1000" fill="url(#vigG)"/>
+</svg>
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+
+<div class="hero-in">
+  <div class="notice"><span class="dot"></span>全程不剧透 · 梗概止于第一次点名</div>
+  <div class="eyebrow"><i></i>Japanese Cinema · No.17</div>
+  <h1>战场上的快乐圣诞</h1>
+  <p class="latin">戦場のメリークリスマス</p>
+  <p class="latin">Merry Christmas, Mr. Lawrence</p>
+  <p class="hero-sub">一九四二年，爪哇岛。一座日军看管的俘虏营里，所有事都按规矩办：几点起床，几点点名，犯了哪一条该挨几下。然后有一天，一个新来的俘虏走进操场，抬起头——<em>下令的那个人，忽然不知道该怎么下命令了。</em></p>
+  <div class="chips">
+    <span class="chip"><b>1983</b> · 大岛渚</span>
+    <span class="chip">彩色 · <b>123 分钟</b></span>
+    <span class="chip">豆瓣 <b>8.8</b></span>
+    <span class="chip">旬报十佳 <b>第 3 位</b></span>
+    <span class="chip">BAFTA <b>最佳配乐</b></span>
+  </div>
+</div>
+
+<div class="scroll-hint">SCROLL<span></span></div>
+</header>
+
+<nav id="hud" aria-hidden="true">
+  <b data-i="0"><i></i>规矩</b><b data-i="1"><i></i>到来</b><b data-i="2"><i></i>名字</b><b data-i="3"><i></i>耻</b><b data-i="4"><i></i>圣诞</b>
+</nav>
+
+<main>
+
+<section class="sec" id="s1" style="border-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">01</span><h2>剧情梗概</h2><p class="kicker">The Story</p></div>
+    <div class="intro">
+      <div class="lede reveal">
+        <p>爪哇岛的雨季，下午三点，红土被晒得发白。营地是一圈铁丝网围起来的几排木屋，屋顶盖着波纹铁皮，中午烫手，雨后漏水。望楼在东北角，一个兵从上午站到天黑，枪背在肩上，脸朝着外面。</p>
+        <p>这是一座日军看管的俘虏收容所。管事的是两个人：军曹原，管纪律、管配给、管罚；大尉世野井，管这座营地，而他自己归一套更硬的东西管——武士道。在那套东西里，一个人不许示弱，不许回头，不许让人看出他心里在想什么。</p>
+        <p>会说日语的英军俘虏劳伦斯，是这两套秩序之间唯一的通道。他被叫去传话、翻译、作证。他早就明白一件事：在这座营地里，讲道理是没有用的；能被听懂的只有命令，和命令后面那根棍子。</p>
+        <p>某一天，营里出了一件事：一名朝鲜看守与一名荷兰俘虏之间，有了在当时被定为罪的关系。处理的办法是两个人一起死，而且要当着别人的面死。原把劳伦斯叫到现场，让他看着——这不只是行刑，这是一堂课。</p>
+        <p>世野井赶到了，中止了这场行刑。不是因为慈悲：他不允许自己的营地里出现「不洁」，也不允许别人替他处理「不洁」。这件事留下的不是恐惧，是一种更冷的东西——所有人都知道了，在这里最重的罪不是杀人，是丢脸。</p>
+        <p>几天后，一队新俘虏被押进操场。走在最前面的是英国少校杰克·塞里尔斯。他在爪哇组织过游击队，被俘之后本该上一次军事法庭。</p>
+        <p>队列站好，世野井照例要训话。他抬起头，看见了那个人。<strong>就一眼。</strong></p>
+        <p>从这一眼开始，这座营地里所有的秩序都开始轻微地错位：口令还是那些口令，罚还是那些罚，但下令的人开始迟疑，受罚的人开始不肯低头。迟到的人被打了，打完之后，打人的那个站在原地没有走。</p>
+        <p>世野井无法把这个人归进任何一个格子。不是「敌人」——敌人是可以杀的；不是「俘虏」——俘虏是可以罚的；也不是「可以悄悄处理掉的人」。塞里尔斯偏偏不配合：他不求饶，也不挑衅，只是站在那里，用一种几乎称得上温和的方式，拒绝承认对方有权审判自己。</p>
+        <p>日子照旧过：点名、配给、修路、抬水、把死掉的人抬出去。雨季过去，日历翻到十二月。营地里没有圣诞树，没有歌，只有一本日历、一瓶不知道谁藏下来的酒，和一句谁都不敢先说的祝福。</p>
+        <p class="dash">后面的事——那次点名之后发生了什么、那把刀最后落在谁手里、以及许多年之后那个早晨——本页一个字都不写。</p>
+      </div>
+      <aside class="glance reveal">
+        <h3>At a Glance</h3>
+        <dl>
+          <div><dt>一句话</dt><dd>一座战俘营，两个人，一套谁都不敢先违反的规矩。</dd></div>
+          <div><dt>时间</dt><dd>1942 年 · 日军占领下的爪哇</dd></div>
+          <div><dt>地点</dt><dd>爪哇岛的一处俘虏收容所<small>外景在库克群岛与新西兰</small></dd></div>
+          <div><dt>主角</dt><dd>世野井大尉，营地的管理者</dd></div>
+          <div><dt>对手</dt><dd>不是人，是「规矩」——以及规矩背后那个不许说出口的念头</dd></div>
+          <div><dt>空间</dt><dd>操场、营房、审讯室、望楼下的空地</dd></div>
+          <div><dt>规则</dt><dd>在这里，丢脸比死更重</dd></div>
+          <div><dt>语言</dt><dd>英语与日语，中间隔着一个翻译</dd></div>
+          <div><dt>情绪</dt><dd>闷热、僵直，然后忽然裂开</dd></div>
+          <div><dt>关键词</dt><dd>军刀 / 点名 / 名字 / 耻 / 圣诞</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="acts">
+      <div class="act reveal"><div class="t">First · 处刑</div><h4>一桩「不洁」的事，被办成一场公开课</h4><p>开场不是战斗，是一次示范。这部片子从第一分钟就告诉你：在这里，暴力不是为了让人死，是为了让剩下的人记住。</p></div>
+      <div class="act reveal"><div class="t">Second · 到来</div><h4>一个新俘虏走进操场，规矩第一次出现裂缝</h4><p>没有人犯规，没有人反抗。裂缝只发生在一个人的眼睛里——他看见了不该看见的东西，也被人看见了。</p></div>
+      <div class="act reveal"><div class="t">Third · 圣诞</div><h4>日历翻到十二月，一句祝福变得危险</h4><p>在这个营地里，说「圣诞快乐」不是客气，是表态。而表态，是这里最不允许的事。</p></div>
+    </div>
+
+    <p class="note reveal" style="margin-top:34px">本页叙述止于第一次点名。此后发生了什么、那把刀的下落、以及片尾那个早晨，一律不写。</p>
+  </div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">02</span><h2>概念海报</h2><p class="kicker">The Still Life</p></div>
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+<svg class="poster-svg" viewBox="0 0 520 760" role="img" aria-label="一张摊在暗色木桌上的战俘点名册：竖格线、编号与姓名，两行名字被红线划掉，右下角一枚朱红方印；右侧两列竖排片名「战场上的快乐圣诞」">
+<defs>
+<linearGradient id="pTable" x1="0" y1="0" x2=".3" y2="1">
+<stop offset="0" stop-color="#221c14"/><stop offset=".42" stop-color="#16120d"/>
+<stop offset="1" stop-color="#0a0806"/>
+</linearGradient>
+<linearGradient id="pPaper" x1="0" y1="0" x2=".25" y2="1">
+<stop offset="0" stop-color="#e9dfc6"/><stop offset=".34" stop-color="#ddd1b4"/>
+<stop offset=".72" stop-color="#cbbd9c"/><stop offset="1" stop-color="#b8a986"/>
+</linearGradient>
+<linearGradient id="pFold" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#7d6a4a" stop-opacity="0"/><stop offset=".45" stop-color="#7d6a4a" stop-opacity=".16"/>
+<stop offset=".55" stop-color="#f6efd8" stop-opacity=".28"/><stop offset="1" stop-color="#7d6a4a" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="pShade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#6b5836" stop-opacity=".34"/><stop offset=".12" stop-color="#6b5836" stop-opacity="0"/>
+<stop offset=".86" stop-color="#4a3a22" stop-opacity="0"/><stop offset="1" stop-color="#4a3a22" stop-opacity=".38"/>
+</linearGradient>
+<radialGradient id="pPool" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#f0d9a6" stop-opacity=".14"/><stop offset="1" stop-color="#f0d9a6" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="pVig" cx=".5" cy=".44" r=".8">
+<stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".66" stop-color="#000" stop-opacity=".2"/>
+<stop offset="1" stop-color="#000" stop-opacity=".72"/>
+</radialGradient>
+<filter id="pBlur"><feGaussianBlur stdDeviation="10"/></filter>
+<filter id="pBlur2"><feGaussianBlur stdDeviation="2"/></filter>
+</defs>
+
+<rect width="520" height="760" fill="url(#pTable)"/>
+<g opacity=".3">
+<path d="M0 210 H520 M0 470 H520" stroke="#0a0806" stroke-width="2.2"/>
+<path d="M0 212 H520 M0 472 H520" stroke="#3d3222" stroke-width=".6" opacity=".6"/>
+</g>
+<ellipse cx="180" cy="230" rx="300" ry="290" fill="url(#pPool)"/>
+
+<g transform="rotate(-.6 210 380)">
+<ellipse cx="216" cy="700" rx="196" ry="18" fill="#000" opacity=".55" filter="url(#pBlur)"/>
+<rect x="26" y="46" width="366" height="648" fill="url(#pPaper)"/>
+<rect x="26" y="46" width="366" height="648" fill="url(#pShade)"/>
+<rect x="196" y="46" width="14" height="648" fill="url(#pFold)"/>
+<path d="M26 46 H392" stroke="#f7f0da" stroke-width="1" opacity=".4"/>
+<path d="M26 694 H392" stroke="#7a6544" stroke-width="1" opacity=".4"/>
+<g opacity=".14">
+<ellipse cx="330" cy="120" rx="34" ry="22" fill="#8a7147"/>
+<ellipse cx="90" cy="620" rx="42" ry="26" fill="#8a7147"/>
+<ellipse cx="250" cy="430" rx="26" ry="16" fill="#8a7147"/>
+</g>
+
+<text x="40" y="90" font-family="Songti SC,Source Han Serif SC,serif" font-size="15" letter-spacing="4.4" fill="#42351f">俘虜人名簿</text>
+<text x="40" y="108" font-family="Didot,Optima,Georgia,serif" font-size="6.6" letter-spacing="1.7" fill="#7a6749">P.O.W. REGISTER · JAVA · 1942</text>
+<text x="352" y="90" font-family="Didot,Optima,Georgia,serif" font-size="7.4" letter-spacing="1.2" fill="#7a6749">No.17</text>
+<path d="M36 118 H382" stroke="#5c4b32" stroke-width=".9" opacity=".6"/>
+
+<g font-family="Didot,Optima,Georgia,serif" font-size="6.6" letter-spacing="1.4" fill="#7a6749">
+<text x="44" y="134">NO.</text><text x="86" y="134">NAME</text>
+<text x="296" y="134">RANK</text><text x="352" y="134">NOTE</text>
+</g>
+<path d="M36 146 H382" stroke="#5c4b32" stroke-width="1.1" opacity=".7"/>
+<path d="M36 154 H382" stroke="#8d7a5c" stroke-width=".55" opacity=".5"/>
+<path d="M36 192 H382" stroke="#8d7a5c" stroke-width=".55" opacity=".5"/>
+<path d="M36 230 H382" stroke="#8d7a5c" stroke-width=".55" opacity=".5"/>
+<path d="M36 268 H382" stroke="#8d7a5c" stroke-width=".55" opacity=".5"/>
+<path d="M36 306 H382" stroke="#8d7a5c" stroke-width=".55" opacity=".5"/>
+<path d="M36 344 H382" stroke="#8d7a5c" stroke-width=".55" opacity=".5"/>
+<path d="M36 382 H382" stroke="#8d7a5c" stroke-width=".55" opacity=".5"/>
+<path d="M36 420 H382" stroke="#8d7a5c" stroke-width=".55" opacity=".5"/>
+<path d="M36 458 H382" stroke="#8d7a5c" stroke-width=".55" opacity=".5"/>
+<path d="M36 496 H382" stroke="#8d7a5c" stroke-width=".55" opacity=".5"/>
+<path d="M36 534 H382" stroke="#8d7a5c" stroke-width=".55" opacity=".5"/>
+<path d="M36 572 H382" stroke="#8d7a5c" stroke-width=".55" opacity=".5"/>
+<path d="M36 610 H382" stroke="#8d7a5c" stroke-width=".55" opacity=".5"/>
+<path d="M36 648 H382" stroke="#8d7a5c" stroke-width=".55" opacity=".5"/>
+<path d="M74 146 V612 M290 146 V612 M348 146 V612" stroke="#8d7a5c" stroke-width=".55" opacity=".45"/>
+<g font-family="Didot,Optima,Georgia,serif"><text x="44" y="186" font-size="8.4" fill="#6b5a42">01</text>
+<text x="86" y="186" font-size="9.6" letter-spacing=".9" fill="#332b1d">CELLIERS  J.</text>
+<text x="296" y="186" font-size="8.2" letter-spacing=".5" fill="#5c4d36">MAJOR</text>
+<text x="44" y="224" font-size="8.4" fill="#6b5a42">02</text>
+<text x="86" y="224" font-size="9.6" letter-spacing=".9" fill="#332b1d">LAWRENCE  J.</text>
+<text x="296" y="224" font-size="8.2" letter-spacing=".5" fill="#5c4d36">LT. COL.</text>
+<text x="352" y="224" font-size="8" letter-spacing=".5" fill="#7a4a3a">通訳</text>
+<text x="44" y="262" font-size="8.4" fill="#6b5a42">03</text>
+<text x="86" y="262" font-size="9.6" letter-spacing=".9" fill="#332b1d">HICKSLEY  G.</text>
+<text x="296" y="262" font-size="8.2" letter-spacing=".5" fill="#5c4d36">GROUP CAPT.</text>
+<text x="44" y="300" font-size="8.4" fill="#6b5a42">04</text>
+<text x="86" y="300" font-size="9.6" letter-spacing=".9" fill="#332b1d">DE JONG  K.</text>
+<text x="296" y="300" font-size="8.2" letter-spacing=".5" fill="#5c4d36">—</text>
+<text x="44" y="338" font-size="8.4" fill="#6b5a42">05</text>
+<text x="86" y="338" font-size="9.6" letter-spacing=".9" fill="#332b1d">BROWN  A.</text>
+<text x="296" y="338" font-size="8.2" letter-spacing=".5" fill="#5c4d36">CAPT.</text>
+<text x="352" y="338" font-size="8" letter-spacing=".5" fill="#7a4a3a">負傷</text>
+<text x="44" y="376" font-size="8.4" fill="#6b5a42">06</text>
+<text x="86" y="376" font-size="9.6" letter-spacing=".9" fill="#332b1d">TAYLOR  W.</text>
+<text x="296" y="376" font-size="8.2" letter-spacing=".5" fill="#5c4d36">LIEUT.</text>
+<text x="44" y="414" font-size="8.4" fill="#6b5a42">07</text>
+<text x="86" y="414" font-size="9.6" letter-spacing=".9" fill="#332b1d">MORGAN  P.</text>
+<text x="296" y="414" font-size="8.2" letter-spacing=".5" fill="#5c4d36">LIEUT.</text>
+<text x="44" y="452" font-size="8.4" fill="#6b5a42">08</text>
+<text x="86" y="452" font-size="9.6" letter-spacing=".9" fill="#332b1d">EVANS  D.</text>
+<text x="296" y="452" font-size="8.2" letter-spacing=".5" fill="#5c4d36">—</text>
+<text x="44" y="490" font-size="8.4" fill="#6b5a42">09</text>
+<text x="86" y="490" font-size="9.6" letter-spacing=".9" fill="#332b1d">CLARK  R.</text>
+<text x="296" y="490" font-size="8.2" letter-spacing=".5" fill="#5c4d36">CAPT.</text>
+<text x="44" y="528" font-size="8.4" fill="#6b5a42">10</text>
+<text x="86" y="528" font-size="9.6" letter-spacing=".9" fill="#332b1d">HUGHES  N.</text>
+<text x="296" y="528" font-size="8.2" letter-spacing=".5" fill="#5c4d36">LIEUT.</text>
+<text x="352" y="528" font-size="8" letter-spacing=".5" fill="#7a4a3a">移送</text>
+<text x="44" y="566" font-size="8.4" fill="#6b5a42">11</text>
+<text x="86" y="566" font-size="9.6" letter-spacing=".9" fill="#332b1d">WARD  S.</text>
+<text x="296" y="566" font-size="8.2" letter-spacing=".5" fill="#5c4d36">—</text>
+<text x="44" y="604" font-size="8.4" fill="#6b5a42">12</text>
+<text x="86" y="604" font-size="9.6" letter-spacing=".9" fill="#332b1d">PRICE  E.</text>
+<text x="296" y="604" font-size="8.2" letter-spacing=".5" fill="#5c4d36">CAPT.</text></g>
+
+<g stroke="#8d2130" opacity=".6">
+<path d="M80 258.5 L286 256.5" stroke-width="1.4"/>
+<path d="M80 410.5 L286 408.5" stroke-width="1.4"/>
+</g>
+
+<g transform="translate(38 618) rotate(-5)">
+<rect width="48" height="58" fill="none" stroke="#8d2130" stroke-width="1.7" opacity=".8"/>
+<text x="24" y="25" text-anchor="middle" font-family="Songti SC,serif" font-size="18" fill="#8d2130" opacity=".84">俘</text>
+<text x="24" y="47" text-anchor="middle" font-family="Songti SC,serif" font-size="18" fill="#8d2130" opacity=".84">虜</text>
+</g>
+
+<path d="M108 648 H300" stroke="#6b5836" stroke-width=".7" opacity=".45"/>
+<text x="108" y="662" font-family="Songti SC,serif" font-size="8.4" letter-spacing="1.6" fill="#6b5a42">以上 十二名 · 十二月二十四日</text>
+</g>
+
+<rect width="520" height="760" fill="url(#pVig)" opacity=".5"/>
+
+<g fill="#ece5d2" font-family="Songti SC,Source Han Serif SC,serif" font-size="30">
+<text x="470" y="176"><tspan x="470" dy="0">战</tspan><tspan x="470" dy="42">场</tspan><tspan x="470" dy="42">上</tspan><tspan x="470" dy="42">的</tspan></text>
+<text x="426" y="176"><tspan x="426" dy="0">快</tspan><tspan x="426" dy="42">乐</tspan><tspan x="426" dy="42">圣</tspan><tspan x="426" dy="42">诞</tspan></text>
+</g>
+<text x="424" y="400" font-family="Didot,Optima,Georgia,serif" font-size="8.4" letter-spacing="2" fill="#9a8a6a">MERRY</text>
+<text x="424" y="413" font-family="Didot,Optima,Georgia,serif" font-size="8.4" letter-spacing="2" fill="#9a8a6a">CHRISTMAS</text>
+<text x="424" y="426" font-family="Didot,Optima,Georgia,serif" font-size="8.4" letter-spacing="2" fill="#9a8a6a">MR. LAWRENCE</text>
+
+<g transform="translate(418 536)">
+<rect width="52" height="52" fill="none" stroke="#8d2130" stroke-width="1.5" opacity=".9"/>
+<text x="26" y="23" text-anchor="middle" font-family="Songti SC,serif" font-size="17" fill="#a8323f" letter-spacing="1">十</text>
+<text x="26" y="45" text-anchor="middle" font-family="Songti SC,serif" font-size="17" fill="#a8323f" letter-spacing="1">七</text>
+</g>
+<text x="30" y="728" font-family="Didot,Optima,Georgia,serif" font-size="9" letter-spacing="2.4" fill="#6a5f48">戦場のメリークリスマス · 1983</text>
+</svg>
+        </div>
+        <p class="pcap">THE REGISTER · 名簿 · 数字绘制</p>
+      </div>
+      <div class="pnotes">
+        <div class="pnote reveal"><div class="n">01 / 名簿</div><h4>一页按编号排好的人</h4><p>姓在前，名缩写在后；军衔比人更重要，单独占一栏。战争管理人的办法从来不复杂：先把他变成一个可以检索的条目，编号、姓名、状态，三格填满，人就不见了。</p></div>
+        <div class="pnote reveal"><div class="n">02 / 红线</div><h4>两条被划掉的名字</h4><p>划得很轻，一条线，没有写原因。在这本册子上，一个人消失只需要这么一笔——不需要交代，不需要仪式，甚至不需要另起一行。</p></div>
+        <div class="pnote reveal"><div class="n">03 / 朱印</div><h4>印章盖下去，人只剩一个身份</h4><p>「俘虜」。印一落，国籍、军衔、姓名都退到后面去了。这部电影所有的冲突，都是从这一枚印开始的：你被归了类，然后才轮到你是谁。</p></div>
+        <div class="pnote reveal"><div class="n">04 / 纸</div><h4>它被折过、淋过、翻过很多次</h4><p>纸边发黄，中间一道折痕，几处水渍。它不是道具，是每天都要用的东西——每天点一次名，就等于再确认一次：谁还活着。这一页的重量，全在这里。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">03</span><h2>影片档案</h2><p class="kicker">Credits</p></div>
+    <dl class="spec reveal">
+      <div><dt>原名</dt><dd>戦場のメリークリスマス</dd></div>
+      <div><dt>英文名</dt><dd>Merry Christmas, Mr. Lawrence<small>台译《俘虏》· 港译《战场上的快乐圣诞》</small></dd></div>
+      <div><dt>年份 / 片长</dt><dd>1983 · 123 分钟<small>2 小时 3 分 · 无导演剪辑版</small></dd></div>
+      <div><dt>规格</dt><dd>彩色 · 35mm<small>英语 / 日语 · 单声道</small></dd></div>
+      <div><dt>类型</dt><dd>剧情 / 战争</dd></div>
+      <div><dt>导演</dt><dd>大岛渚<small>1932–2013 · 首部英语片</small></dd></div>
+      <div><dt>编剧</dt><dd>大岛渚 / 保罗·梅尔斯贝格<small>原作 劳伦斯·凡·德·普司特</small></dd></div>
+      <div><dt>原作</dt><dd>《影的狱中》<small>The Seed and the Sower（1963）</small></dd></div>
+      <div><dt>摄影</dt><dd>杉村博章<small>摄影监督 成島東一郎</small></dd></div>
+      <div><dt>音乐</dt><dd>坂本龙一<small>他的第一部电影配乐</small></dd></div>
+      <div><dt>美术</dt><dd>戸田重昌</dd></div>
+      <div><dt>主演</dt><dd>大卫·鲍伊 / 汤姆·康蒂<small>坂本龙一 · 北野武</small></dd></div>
+      <div><dt>共演</dt><dd>杰克·汤普森 / 内田裕也<small>约翰尼·大仓 · 户浦六宏</small></dd></div>
+      <div><dt>制作国</dt><dd>日本 / 英国<small>新西兰仅出资 · 澳新团队参与</small></dd></div>
+      <div><dt>制作</dt><dd>大岛渚制作 / Recorded Picture Company<small>テレビ朝日 · Broadbank</small></dd></div>
+      <div><dt>配给</dt><dd>松竹（日本）/ Universal（美国）</dd></div>
+      <div><dt>公映</dt><dd>1983-05-11 戛纳首映<small>1983-05-28 日本 · 1983-08-25 英国</small></dd></div>
+      <div><dt>外景</dt><dd>库克群岛拉罗汤加<small>新西兰奥克兰 · 旧 Mount Eden 监狱</small></dd></div>
+      <div><dt>票房</dt><dd>日本配给收入 9.9 亿日元<small>美国 230 万美元</small></dd></div>
+      <div><dt>分级</dt><dd>美国 R<small>有公开处刑与暴力场面</small></dd></div>
+      <div class="wide"><dt>一句话</dt><dd>一部没有一场战斗的战争片——所有的仗，都打在一间屋子里、一次点名里、一个人的脸上。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="s4">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">04</span><h2>口碑与口径</h2><p class="kicker">Numbers, Carefully</p></div>
+    <div class="scores reveal">
+      <div class="sc hi"><div class="src">Douban 豆瓣</div><div class="val">8.8<small>/ 10</small></div><div class="meta">165,602 人评价 · 五星 51.1% / 四星 37.5%<br>好于 96% 剧情片 · 97% 战争片 · <b>未进 Top250</b></div></div>
+      <div class="sc"><div class="src">IMDb</div><div class="val">7.2<small>/ 10</small></div><div class="meta">约 2.3 万票 · 与豆瓣差 <b>1.6</b><br>本专题 17 部里分歧最大的一部</div></div>
+      <div class="sc"><div class="src">Rotten Tomatoes</div><div class="val">85%<small>Tomatometer</small></div><div class="meta">26 篇影评 · 均分 6.6 / 10<br>观众 78%（5,000+）· Metacritic 53（13 篇）</div></div>
+      <div class="sc abs"><div class="src">第 57 回电影旬报 · 1983 年度</div><div class="val">十佳 第 3 位</div><div class="meta">前面两位是《家族游戏》与《细雪》<br>不是中文资料常写的「第 2 位」</div></div>
+    </div>
+    <ul class="caliber reveal">
+      <li><i>01</i><span><b>「旬报十佳第 2 位」是错的。</b>1983 年度（第 57 回）榜单是：1《家族游戏》2《细雪》3《俘虏》4《东京审判》5《楢山节考》。这部片子排第三。</span></li>
+      <li><i>02</i><span><b>它不是金棕榈。</b>1983 年戛纳它进了主竞赛，最后空手回家；那年的金棕榈是今村昌平《楢山节考》——本专题第 10 期推过的那一部。</span></li>
+      <li><i>03</i><span><b>同一年，它两次输给同一部电影。</b>戛纳输给《楢山节考》；第 7 回日本电影学院奖上，最优秀作品赏也是《楢山节考》，本片拿到的是「优秀作品赏」——全部奖项都停在「优秀」，一个「最优秀」也没有。</span></li>
+      <li><i>04</i><span><b>8.8 与 7.2 之间那条沟是真的。</b>豆瓣 16 万人给 8.8，IMDb 只有 7.2，Metacritic 53 分——当年英美评论界对它是冷淡的，它后来是被时间和影迷一点点抬起来的。看之前你可以先决定，自己站哪一边。</span></li>
+      <li><i>05</i><span><b>「同性」是豆瓣的类型标签，不是这部片子的题目。</b>把它当爱情片看会错过重点：它真正在讲的是「耻」——一个人被看见之后，会发生什么。</span></li>
+      <li><i>06</i><span><b>片长只有一个数字：123 分钟。</b>没有导演剪辑版，没有加长版；IMDb 与豆瓣一致。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="s5">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">05</span><h2>四个人，两样东西</h2><p class="kicker">Who Wants What</p></div>
+    <div class="people reveal">
+      <div class="person">
+        <div class="role">CAPTAIN · 营地的管理者</div><h4>世野井</h4><div class="actor">坂本龙一</div>
+        <p>他把武士道背得比谁都熟：不许示弱，不许回头，不许让人看见心里在想什么。这套东西曾经让他成为最像样的军官，现在它开始反噬他。<span><b>他要的</b>是「秩序不被动摇」；这部片子偏要他自己动摇，而且是在所有人面前。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">MAJOR · 新来的俘虏</div><h4>杰克·塞里尔斯</h4><div class="actor">大卫·鲍伊</div>
+        <p>他不是英雄，他自己最清楚。战前他是个律师，做过一件让他在余生里抬不起头的事——那件事他从不提，但一直带着。<span><b>他要的</b>不是活下去，是有一个人，能名正言顺地判他有罪。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">COLONEL · 翻译</div><h4>约翰·劳伦斯</h4><div class="actor">汤姆·康蒂</div>
+        <p>战前在日本住过，会说日语，于是成了唯一能把两边的话翻过去的人。他不站英国这边，也不站日本这边——他站在句子中间。<span><b>他要的</b>是让两边都少死一个人；这个愿望在战时的营地里近乎奢侈。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">SERGEANT · 军曹</div><h4>原源吾</h4><div class="actor">北野武</div>
+        <p>营里最凶的那个，也是唯一会跟俘虏聊家常的那个。他打人、罚人、把人绑在柱子上晒一下午；转头又能为一句笑话笑出声。<span><b>他要的</b>很简单：把差事办完，活着回家。所以他比谁都清楚，自己信的不是武士道，是「上面说的就是对的」。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">THE THING · 一件东西</div><h4>「劳伦斯」这个名字</h4><div class="actor">称呼 · 全片最要紧的道具</div>
+        <p>这里的人不叫名字：叫编号，叫「英兵」，叫「那家伙」。名字是多余的，因为名字意味着你承认对方是个人。<span><b>整部片子的温度</b>都藏在称呼的变化里——一个人被完整地叫出名字的那一秒，他才从「敌」变回「人」。</span></p>
+      </div>
+      <div class="person thing">
+        <div class="role">THE BLADE · 另一件东西</div><h4>世野井的军刀</h4><div class="actor">刀 · 从未出鞘到底</div>
+        <p>它挂在腰上，出现得比台词还多。在这个营地里，刀不是武器，是资格——谁有刀，谁就有权决定别人怎么死。<span><b>全片最狠的一处设计</b>：它从头挂到尾，真正出鞘只有一次——那一次，跟杀人无关。本页不写是什么。</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s6">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">06</span><h2>人物冲突</h2><p class="kicker">Six Frictions</p></div>
+    <div class="conflicts reveal">
+      <div class="cf"><h4><i>FRICTION 01</i>武士道 vs 身体</h4><p>他的规矩要求他不动心。可他动了。全片最锋利的冲突不在敌我之间，在他和自己之间：他越是想把这个人当成「东西」处理掉，就越证明自己已经把他当成了「人」。<em>规矩第一次失效，是从他自己身上开始的。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 02</i>审判者与被审判者</h4><p>背景里有一件事：塞里尔斯被俘后本应上军事法庭，而那次审判的主审，正是世野井。他本可以判他死，却没有。所以他看这个人时，看的不只是俘虏——<em>是他自己那次没有执行的判决</em>。</p></div>
+      <div class="cf"><h4><i>FRICTION 03</i>翻译的两难</h4><p>劳伦斯每一句话都要替两个人说。他知道，同一句话翻得软一点，可能救一个人；翻得硬一点，可能死一个人。<em>翻译不是中立的，翻译是选择</em>——而他没有权力，只有嘴。</p></div>
+      <div class="cf"><h4><i>FRICTION 04</i>暴力与亲近</h4><p>原和劳伦斯：一个打人的人，和一个被打的人，居然是全片最像朋友的一对。这不是温情，是讽刺——<em>真正的理解只发生在两个都不掌权的人之间</em>。掌权的人没有朋友，只有下属。</p></div>
+      <div class="cf"><h4><i>FRICTION 05</i>集体 vs 个人</h4><p>日军这一侧没有「个人」，只有「所属」。谁脱队，谁就是污点；污点必须当众擦掉。所以世野井的困境本质是：<em>他不能以个人的名义喜欢任何人</em>。这句话在这里等于死刑。</p></div>
+      <div class="cf"><h4><i>FRICTION 06</i>耻 vs 罪</h4><p>西方讲罪：你做了什么。日本讲耻：你被别人看见了什么。这两个词在这部片子里不能互译，所有人物都卡在中间——被判罪的人想赎罪，被判耻的人只想消失。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s7">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">07</span><h2>荣誉</h2><p class="kicker">What It Actually Has</p></div>
+    <div class="awards reveal">
+      <div class="award gold"><div class="yr">1984</div><div><h4>英国电影学院奖 · 最佳电影音乐</h4><p>坂本龙一。他的第一部电影配乐，第一次提名就拿到</p></div></div>
+      <div class="award gold"><div class="yr">1984</div><div><h4>第 38 回每日电影竞赛 · 日本电影大赏</h4><p>同年旬报只给第三，每日电影给了最高奖——两套评审，两种判断</p></div></div>
+      <div class="award"><div class="yr">1983</div><div><h4>第 57 回电影旬报 · 十佳 第 3 位</h4><p>前两位：《家族游戏》《细雪》</p></div></div>
+      <div class="award"><div class="yr">1983</div><div><h4>第 36 届戛纳电影节 · 主竞赛入围</h4><p>未获奖。同年金棕榈：《楢山节考》</p></div></div>
+      <div class="award"><div class="yr">1984</div><div><h4>每日电影竞赛 · 导演赏 / 脚本赏</h4><p>大岛渚（同届一人拿两项）</p></div></div>
+      <div class="award"><div class="yr">1984</div><div><h4>每日电影竞赛 · 音乐赏</h4><p>坂本龙一（与 BAFTA 同一年）</p></div></div>
+      <div class="award"><div class="yr">1984</div><div><h4>每日电影竞赛 · 男优助演赏</h4><p>北野武。他在这部片子里的第一个正剧角色</p></div></div>
+      <div class="award"><div class="yr">1984</div><div><h4>第 7 回日本电影学院奖 · 优秀作品赏</h4><p>最优秀作品赏是《楢山节考》；本片止于「优秀」</p></div></div>
+      <div class="award"><div class="yr">1984</div><div><h4>同届 · 优秀监督 / 优秀助演男优</h4><p>大岛渚 / 北野武</p></div></div>
+      <div class="award"><div class="yr">1984</div><div><h4>同届 · 优秀音乐 / 优秀美术</h4><p>坂本龙一 / 戸田重昌</p></div></div>
+      <div class="award"><div class="yr">1984</div><div><h4>同届 · 话题赏（作品部门）</h4><p>由学院会员投票选出的话题作品</p></div></div>
+      <div class="award"><div class="yr">1983</div><div><h4>美国国家评论协会 · 男优赏</h4><p>汤姆·康蒂。当年美国影评界唯一给它的表演奖</p></div></div>
+      <div class="award wide"><div class="yr">口径</div><div><h4>三条流传很广的错，本页一条都不用</h4><p>①「旬报十佳第 2 位」——实为第 3 位；②「戛纳金棕榈」——只是入围主竞赛，那年金棕榈是《楢山节考》；③「学院奖最佳影片」——第 7 回的最优秀作品赏也是《楢山节考》，本片全部提名都停在「优秀」。<b>能核的事实是：它拿了每日电影的日本电影大赏与 BAFTA 的配乐奖，在日本两家最硬的年度评选里都排在《楢山节考》后面。</b></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s8">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">08</span><h2>谱系：一个人，同一种题</h2><p class="kicker">Nagisa Oshima</p></div>
+    <div class="lineage reveal">
+      <div class="ln"><div class="yr">1960</div><h4>青春残酷物语 · 青春残酷物語</h4><p>战后一代的性与政治，被拍成一对年轻人的互相毁灭。他第一部真正被记住的片子。</p></div>
+      <div class="ln"><div class="yr">1968</div><h4>绞死刑 · 絞死刑</h4><p>死刑犯没死成，于是国家得再杀他一次。全片几乎在一个房间里，把「程序」拍成了荒诞剧。</p></div>
+      <div class="ln"><div class="yr">1976</div><h4>感官世界 · 愛のコリーダ</h4><p>日法合拍，日本长期无法公映。他把性与死推到极限，欧洲为之震动，日本为之沉默。</p></div>
+      <div class="ln"><div class="yr">1978</div><h4>爱的亡灵 · 愛の亡霊</h4><p>戛纳最佳导演。同一件命案，这次拍成了鬼故事——杀人的人，被死者的日常缠住。</p></div>
+      <div class="ln now"><div class="yr">1983 · 本期</div><h4>战场上的快乐圣诞</h4><p>第一次用英语拍片，第一次把镜头对准「敌人」。题目没变：一个组织，如何处置它认定为「不洁」的人。</p></div>
+      <div class="ln"><div class="yr">1999</div><h4>御法度 · 御法度</h4><p>新选组里的禁忌之恋。晚年的他回到同一个命题，只是这次刀在别人手里。</p></div>
+    </div>
+    <p class="note reveal" style="margin-top:40px">大岛渚一辈子只拍一件事：<b>一个体制如何审判一个人的身体</b>。他不站在受害者那边喊，也不站在体制那边解释——他把摄影机放在中间，让两边同时看着镜头。这部片子是他第一次把这件事放到「国家与国家」的尺度上。</p>
+  </div>
+</section>
+
+<section class="sec" id="s9">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">09</span><h2>六处亮点</h2><p class="kicker">Why It Works</p></div>
+    <div class="grid6 reveal">
+      <div class="g6"><div class="n">01</div><h4>全片没有一场战斗</h4><p>没有冲锋，没有爆炸，连枪声都不多。战争被关在门外，屋里只剩它的结果：等级、口令、以及每天都在重复的点名。这让它比任何战场都更让人喘不过气。</p></div>
+      <div class="g6"><div class="n">02</div><h4>两种语言，一个翻译</h4><p>英语和日语同时在场，谁也不给谁配音。关键场面里，一句话必须先经过劳伦斯的嘴才能到达对方——中间那几秒，就是全部的戏剧。语言的隔阂在这里不是障碍，是情节本身。</p></div>
+      <div class="g6"><div class="n">03</div><h4>坂本龙一，31 岁，第一次写电影音乐</h4><p>主题曲只有几个音，五声音阶，像童谣，也像一支被拆散的军号。它后来成了他一生被演奏最多的一首曲子。写它的时候，他同时也是片中的主演。</p></div>
+      <div class="g6"><div class="n">04</div><h4>把人钉在画面正中</h4><p>大岛渚几乎不用运动镜头。人物正面、居中、直视镜头，背景留空。这不是构图美学，是构图上的审讯——你必须看着这张脸，不能躲。</p></div>
+      <div class="g6"><div class="n">05</div><h4>两张脸的对撞</h4><p>鲍伊的脸是会动的，笑意先到眼睛；坂本的脸几乎不动，像能面的木雕。一个不断靠近，一个只能僵住。表演方法本身，就在讲这个故事。</p></div>
+      <div class="g6"><div class="n">06</div><h4>静默</h4><p>全片最响的几个时刻都没有声音：没有配乐，没有台词，只有蝉、雨，或者一个人的呼吸。大岛渚知道，在一个人快要崩掉的时候，任何音乐都是多余的。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">10</span><h2>为什么值得一看</h2><p class="kicker">Three Reasons</p></div>
+    <div class="why">
+      <article class="reveal"><h3>一、它拆的是「敌人」这个概念</h3><p>几乎所有战争片都在回答「怎么打赢」，这部片子问的是另一个问题：<strong>你怎么知道对面那个人是敌人？</strong>它把镜头放在一张脸上足够久，久到「敌」这个字自己失效。</p><p>看完之后你未必会原谅任何人，但你很难再用一个词，把一整群人处理掉。这在 1983 年是冒犯，在今天依然是。</p></article>
+      <article class="reveal"><h3>二、它把「耻」拍成了一种会杀人的东西</h3><p>耻感不是学术名词，在这部片子里它有具体形状：一个人不许回头看，不许解释，不许在别人面前承认自己在乎什么。你会看到一个成年人，为了不丢脸，做出比对死亡更糟的选择。</p><p>这也是它最好看的地方——它不审判任何人，它只是让每个人都站在自己被规定的位置上，然后看谁先动。<em>先动的那个，就输了。</em></p></article>
+      <article class="reveal"><h3>三、那首曲子会被你带走</h3><p>电影会结束，那几个音不会。它不像配乐，更像一段记忆的旋律——你关掉屏幕之后，它还会在脑子里自己响一遍。</p><p>2023 年 3 月坂本龙一去世之后，这首曲子多了一层意思：它成了一个已经不在的人，留给世界的一小段呼吸。</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">11</span><h2>观影提示</h2><p class="kicker">Before You Press Play</p></div>
+    <div class="tips">
+      <div class="tip reveal"><div class="k">01</div><h4>别当战争片打开</h4><p>没有一场战斗，没有一次冲锋。它的紧张全部来自「谁先低头」。如果你要的是战争场面，这部片子会让你失望；如果你要的是战争在人身上的痕迹，它一场就够。</p></div>
+      <div class="tip reveal"><div class="k">02</div><h4>留意称呼</h4><p>编号、「英兵」、名字。这三种叫法在片中来回切换，每切换一次，人和人之间的距离就变一次。这是全片最容易被忽略、也最值得盯住的一条线。</p></div>
+      <div class="tip reveal"><div class="k">03</div><h4>内容提示</h4><p>有公开处刑与直接的暴力呈现（不涉及本片的关键转折）。不适合下饭，也不适合陪长辈随便看看。美国分级 R。</p></div>
+      <div class="tip reveal"><div class="k">04</div><h4>戴耳机</h4><p>音乐与静默是这部片子的第二主角。手机外放会把那一大段「什么都没有」的安静，削成环境的杂音——而那一段，正是它最狠的地方。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="wrap">
+    <p class="tag">VERDICT · NO.17</p>
+    <p class="q"><span>战争要你恨一个抽象的人。</span><span>羞耻要你否认，</span><span>你其实认出了那个具体的人。</span></p>
+    <p class="src">—— 本页判词，非片中台词</p>
+    <div class="stamp"><div><span>JAPANESE CINEMA</span><b>NO.17</b><span>1983 · 大岛渚</span></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>日本电影专题 · 第 17 期｜《战场上的快乐圣诞》戦場のメリークリスマス / Merry Christmas, Mr. Lawrence（1983）<br>
+    数据核对于 2026-11-11：豆瓣条目 1303535（8.8 / 165,602 人 · 五星 51.1% / 四星 37.5% / 三星 9.8% · 好于 96% 剧情 / 97% 战争 · 未进 Top250）、IMDb 7.2（约 2.3 万票）、烂番茄 85%（26 篇·均分 6.6）、观众 78%（5,000+）、Metacritic 53（13 篇）。<br>
+    奖项以日文维基与各奖官方记录为准：英国电影学院奖最佳电影音乐（坂本龙一，1984）、第 38 回每日电影竞赛日本电影大赏 + 导演 + 脚本 + 音乐 + 男优助演（北野武）、第 57 回电影旬报十佳第 3 位、第 7 回日本电影学院奖优秀作品赏等（最优秀作品赏为《楢山节考》）、美国国家评论协会男优赏（汤姆·康蒂）、第 36 届戛纳主竞赛入围未获奖。<br>
+    片长以 123 分钟为准（2 小时 3 分）。日本配给收入 9.9 亿日元，美国票房 2,306,560 美元。<br>
+    全页不含关键情节：那次点名之后发生了什么、军刀的下落、片尾那个早晨，一律未写。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c = document.getElementById('heroCanvas');
+  if(!c) return;
+  var ctx = c.getContext('2d'), W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
+  var parts=[], t=0;
+  function size(){
+    W=c.clientWidth; H=c.clientHeight;
+    c.width=W*dpr; c.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();
+  }
+  function build(){
+    parts=[];
+    var n = Math.round(W*H/15000);
+    if(n>160) n=160;
+    for(var i=0;i < n;i++){
+      parts.push({
+        x:Math.random()*W, y:Math.random()*H,
+        r:.32+Math.random()*1.25,
+        vx:-.04-Math.random()*.16,
+        vy:.02+Math.random()*.10,
+        a:.02+Math.random()*.14,
+        p:Math.random()*6.28
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t+=0.004;
+    for(var i=0;i < parts.length;i++){
+      var p=parts[i];
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<-10){p.x=W+10;p.y=Math.random()*H;}
+      if(p.y>H+10){p.y=-10;p.x=Math.random()*W;}
+      var a=p.a*(0.4+0.6*Math.sin(t*0.9+p.p));
+      ctx.beginPath();
+      ctx.fillStyle='rgba(206,220,224,'+a.toFixed(3)+')';
+      ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fill();
+    }
+    var g = ctx.createRadialGradient(W*0.52,H*0.68,0,W*0.52,H*0.68,Math.max(W,H)*0.4);
+    var pulse = 0.016+0.005*Math.sin(t*0.6);
+    g.addColorStop(0,'rgba(240,196,140,'+pulse.toFixed(3)+')');
+    g.addColorStop(1,'rgba(240,196,140,0)');
+    ctx.fillStyle=g;
+    ctx.fillRect(0,0,W,H);
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',size);
+  size(); draw();
+
+  var revs = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08, rootMargin:'0px 0px -6% 0px'});
+  revs.forEach(function(e){ io.observe(e); });
+
+  var hud=document.getElementById('hud'), items=[].slice.call(hud.querySelectorAll('b'));
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    hud.classList.toggle('on', y > window.innerHeight*0.55);
+    var p = y/(document.body.scrollHeight - window.innerHeight);
+    var idx = Math.min(4, Math.floor(p*5));
+    items.forEach(function(b,i){ b.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

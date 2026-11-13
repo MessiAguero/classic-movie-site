@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-06T04:20:19.370Z",
+  "generatedAt": "2026-11-13T06:05:23.535Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 151,
+  "total": 156,
   "ok": 87,
-  "warn": 64,
+  "warn": 69,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 135,
+    "checked": 140,
     "skippedVerified": 16,
     "error": null
   },
@@ -2639,6 +2639,240 @@
           "code": "visual_title_unverified",
           "severity": "warn",
           "detail": "图片能读到文字，但最大文字“榮獲十三項日本電影金像獎”没有对上片名，建议核对"
+        }
+      ]
+    },
+    {
+      "id": "20261109-dunes",
+      "zhTitle": "砂之女",
+      "sourceTitle": "砂の女 (1964) - Posters — The Movie Database (TMDB)",
+      "year": "1964",
+      "source": "本地",
+      "imageUrl": "posters/20261109-dunes.jpg",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "357KB",
+      "dims": "1915×2872",
+      "ratio": 1.5,
+      "identityKind": "name",
+      "identityHits": [
+        "别名:砂の女",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「砂の女」",
+          "年份命中 1964",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "PUNES",
+        "reasons": [
+          "图片最大文字为“PUNES”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“PUNES”没有对上片名，建议核对"
+        }
+      ]
+    },
+    {
+      "id": "20261110-swing",
+      "zhTitle": "摇摆少女",
+      "sourceTitle": "摇摆少女 (2004) - 海报 — The Movie Database (TMDB)",
+      "year": "2004",
+      "source": "本地",
+      "imageUrl": "posters/20261110-swing.jpg",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "181KB",
+      "dims": "1080×1600",
+      "ratio": 1.48,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「摇摆少女」",
+          "年份命中 2004",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "Shinobu Yaguchi",
+        "reasons": [
+          "图片最大文字为“Shinobu Yaguchi”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“Shinobu Yaguchi”没有对上片名，建议核对"
+        }
+      ]
+    },
+    {
+      "id": "20261111-mcmrl",
+      "zhTitle": "战场上的快乐圣诞",
+      "sourceTitle": "战场上的快乐圣诞 (1983) - 海报 — The Movie Database (TMDB)",
+      "year": "1983",
+      "source": "本地",
+      "imageUrl": "posters/20261111-mcmrl.jpg",
+      "host": "www.themoviedb.org",
+      "tier": "tmdb",
+      "size": "1161KB",
+      "dims": "2000×3000",
+      "ratio": 1.5,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「战场上的快乐圣诞」",
+          "年份命中 1983",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [
+          "1942",
+          "1963"
+        ],
+        "dominantText": "IIR.LAWRENCE",
+        "reasons": [
+          "图片最大文字为“IIR.LAWRENCE”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“IIR.LAWRENCE”没有对上片名，建议核对"
+        }
+      ]
+    },
+    {
+      "id": "20261112-always",
+      "zhTitle": "永远的三丁目的夕阳",
+      "sourceTitle": "如何评价电影《永远的三丁目的夕阳》三部曲?",
+      "year": "2005",
+      "source": "本地",
+      "imageUrl": "posters/20261112-always.jpg",
+      "host": "picx.zhimg.com",
+      "tier": "unknown",
+      "size": "70KB",
+      "dims": "539×671",
+      "ratio": 1.24,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「永远的三丁目的夕阳」",
+          "书名号片名命中「永远的三丁目的夕阳」"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "ALWAYS 三丁目の夕日",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "ALWAYS",
+        "reasons": [
+          "图片文字命中片名「ALWAYS 三丁目の夕日」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（picx.zhimg.com）"
+        }
+      ]
+    },
+    {
+      "id": "20261113-tokikake",
+      "zhTitle": "穿越时空的少女",
+      "sourceTitle": "《穿越时空的少女》百度网盘下载 – 次元狗动漫",
+      "year": "2006",
+      "source": "本地",
+      "imageUrl": "posters/20261113-tokikake.jpg",
+      "host": "www.acgndog.com",
+      "tier": "unknown",
+      "size": "114KB",
+      "dims": "840×1171",
+      "ratio": 1.39,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「穿越时空的少女」",
+          "书名号片名命中「穿越时空的少女」"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "時をかける少女",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "時をかける少女",
+        "reasons": [
+          "图片文字命中片名「時をかける少女」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（www.acgndog.com）"
         }
       ]
     },

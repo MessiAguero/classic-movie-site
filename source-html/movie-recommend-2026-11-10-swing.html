@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>摇摆少女 · 日本电影专题 第 16 期</title>
+<meta name="description" content="矢口史靖《摇摆少女》(2004)：剧情梗概、人物冲突、六处亮点与观看理由。全程不剧透。">
+<style>
+:root{
+  --bg:#080a08; --bg2:#0b0d0a; --panel:#131511;
+  --ink:#eae3d2; --dim:#a49a86; --dim2:#6d6558;
+  --line:rgba(234,227,210,.13); --line2:rgba(234,227,210,.055);
+  --sand:#b98a45; --sand2:#e6c184;
+  --ash:#8fa6ab;
+  --seal:#a33b2c; --seal2:#c05a48;
+  --sky:#e9e2d0;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Didot","Optima","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.95;letter-spacing:.012em;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(185,138,69,.36);color:#fff}
+a{color:inherit}
+.wrap{width:min(1160px,calc(100% - 96px));margin:0 auto}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:max(100vh,880px);overflow:hidden;background:#070605}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(6,8,6,.96) 0%,rgba(6,8,6,.93) 18%,rgba(6,8,6,.78) 34%,rgba(6,8,6,.34) 56%,rgba(6,8,6,0) 74%),
+    linear-gradient(to bottom,rgba(6,8,6,.72) 0%,rgba(6,8,6,.12) 24%,rgba(6,8,6,0) 48%,rgba(6,8,6,.34) 76%,rgba(6,8,6,1) 100%)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.notice{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:11px;
+  letter-spacing:.14em;color:rgba(234,227,210,.66);border:1px solid rgba(234,227,210,.16);
+  border-radius:999px;padding:7px 16px;margin-bottom:34px;background:rgba(6,8,6,.5);backdrop-filter:blur(4px)}
+.notice .dot{width:5px;height:5px;border-radius:50%;background:var(--seal2);box-shadow:0 0 8px rgba(192,90,72,.8)}
+.hero-in{position:relative;z-index:3;width:min(1160px,calc(100% - 96px));margin:0 auto;
+  min-height:max(100vh,880px);display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:10.5vh;padding-bottom:64px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;
+  letter-spacing:.34em;color:var(--sand2);text-transform:uppercase}
+.eyebrow i{display:block;width:52px;height:1px;background:var(--sand2);opacity:.7}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,7vw,92px);line-height:1.08;
+  letter-spacing:.16em;margin:26px 0 0;color:#f8f0dd;text-shadow:0 6px 60px rgba(0,0,0,.75)}
+.latin{margin:22px 0 0;font-family:var(--latin);font-size:12px;letter-spacing:.3em;
+  color:rgba(234,227,210,.6);text-transform:uppercase}
+.hero-sub{margin:30px 0 0;max-width:23em;font-size:16px;line-height:2.05;color:rgba(234,227,210,.84)}
+.hero-sub em{font-style:normal;color:#fbf5e3;border-bottom:1px solid rgba(185,138,69,.72);padding-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:540px}
+.chip{font-size:11.5px;letter-spacing:.06em;color:rgba(234,227,210,.78);border:1px solid var(--line);
+  border-radius:999px;padding:6px 14px;background:rgba(6,8,6,.55);backdrop-filter:blur(6px)}
+.chip b{color:#fbf5e3;font-weight:500}
+.scroll-hint{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:4;
+  font-family:var(--latin);font-size:9.5px;letter-spacing:.42em;color:rgba(234,227,210,.4);
+  display:flex;flex-direction:column;align-items:center;gap:9px}
+.scroll-hint span{display:block;width:1px;height:32px;background:linear-gradient(to bottom,rgba(234,227,210,.44),transparent)}
+
+/* ---------- sections ---------- */
+.sec{padding:112px 0;border-top:1px solid var(--line2)}
+.sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:52px}
+.sec-head .no{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--sand2);opacity:.92}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.1vw,36px);
+  letter-spacing:.05em;margin:0;color:#f5efdf;flex:1 1 auto}
+.sec-head .kicker{font-family:var(--latin);font-size:10.5px;letter-spacing:.3em;
+  color:var(--dim2);text-transform:uppercase;margin:0}
+.note{font-size:13px;color:var(--dim);line-height:1.9}
+
+/* ---------- 01 lede ---------- */
+.intro{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:64px;align-items:start}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:2.2;color:#ded4c0}
+.lede p{margin:0 0 22px}
+.lede p:first-child::first-letter{float:left;font-size:5.1em;line-height:.82;padding:.06em .14em 0 0;
+  color:#fbf5e3;font-weight:400}
+.lede strong{font-weight:500;color:#fbf5e3}
+.lede .dash{color:var(--dim);font-size:15px}
+.glance{border:1px solid var(--line);background:linear-gradient(160deg,rgba(21,23,18,.95),rgba(10,9,7,.95));
+  padding:30px 28px}
+.glance h3{font-family:var(--latin);font-size:10px;letter-spacing:.34em;color:var(--sand2);
+  margin:0 0 22px;font-weight:400;text-transform:uppercase}
+.glance dl{margin:0;display:grid;gap:13px}
+.glance div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line2)}
+.glance div:last-child{border-bottom:0;padding-bottom:0}
+.glance dt{font-size:11.5px;color:var(--dim2);letter-spacing:.1em}
+.glance dd{margin:0;font-size:13.5px;color:#d4cbb7;line-height:1.7}
+.glance dd b{color:#fbf5e3;font-weight:500}
+.acts{margin-top:74px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.act{background:var(--bg);padding:34px 30px}
+.act .t{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--sand2);
+  opacity:.92;margin-bottom:14px}
+.act h4{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f5efdf;letter-spacing:.04em}
+.act p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 02 poster ---------- */
+.poster-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);gap:70px;align-items:start}
+.poster-frame{border:1px solid var(--line);padding:14px;background:#080706;
+  box-shadow:0 40px 90px -50px #000, inset 0 0 0 1px rgba(0,0,0,.6)}
+.poster-svg{display:block;width:100%;height:auto}
+.pcap{margin:16px 2px 0;font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--dim2)}
+.pnotes{display:grid;gap:28px}
+.pnote{border-left:1px solid var(--line);padding:2px 0 2px 24px}
+.pnote .n{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--sand2);opacity:.88}
+.pnote h4{margin:8px 0 10px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f5efdf}
+.pnote p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 03 spec ---------- */
+.spec{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.spec div{background:var(--bg);padding:22px 20px;min-height:92px}
+.spec dt{font-size:10.5px;letter-spacing:.14em;color:var(--dim2);margin-bottom:8px}
+.spec dd{margin:0;font-size:13.5px;color:#d9d0bc;line-height:1.65}
+.spec dd small{display:block;font-size:11px;color:var(--dim2);margin-top:4px;letter-spacing:.02em}
+.spec .wide{grid-column:1/-1;min-height:0;background:linear-gradient(120deg,rgba(185,138,69,.16),rgba(10,12,9,.92) 48%)}
+.spec .wide dd{font-family:var(--serif);font-size:17px;color:#fbf5e3;letter-spacing:.05em}
+
+/* ---------- 04 scores ---------- */
+.scores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.sc{background:var(--bg);padding:32px 30px}
+.sc .src{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--dim2);text-transform:uppercase}
+.sc .val{font-family:var(--latin);font-size:52px;line-height:1;margin:16px 0 8px;color:#fbf5e3}
+.sc .val small{font-size:15px;color:var(--dim);letter-spacing:.04em;margin-left:6px}
+.sc .meta{font-size:12.5px;color:var(--dim);line-height:1.8}
+.sc.hi .val{color:#efd6ab}
+.sc.abs .val{font-size:30px;letter-spacing:.06em;color:var(--sand2);line-height:1.3}
+.caliber{margin:52px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.caliber li{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line2);
+  font-size:13.5px;line-height:1.9;color:var(--dim)}
+.caliber li b{color:#f2ecdb;font-weight:500}
+.caliber li i{font-family:var(--latin);font-style:normal;font-size:10.5px;letter-spacing:.2em;color:var(--sand2);opacity:.82;padding-top:4px}
+
+/* ---------- 05 people ---------- */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.person{background:var(--bg);padding:30px 28px}
+.person .role{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--sand2);opacity:.82}
+.person h4{margin:12px 0 4px;font-family:var(--serif);font-weight:400;font-size:20px;color:#fbf5e3;letter-spacing:.04em}
+.person .actor{font-size:11.5px;color:var(--dim2);letter-spacing:.08em;margin-bottom:18px}
+.person p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.person p span{display:block;margin-top:9px;color:#d5ccb9}
+.person p span b{color:var(--sand2);font-weight:400;font-size:11.5px;letter-spacing:.08em;margin-right:6px}
+.person.thing{background:linear-gradient(150deg,rgba(185,138,69,.12),rgba(11,10,8,.96) 62%)}
+.person.thing h4{color:#efd6ab}
+
+/* ---------- 06 conflicts ---------- */
+.conflicts{display:grid;gap:0;border-top:1px solid var(--line)}
+.cf{display:grid;grid-template-columns:172px minmax(0,1fr);gap:36px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line2)}
+.cf h4{margin:0;font-family:var(--serif);font-weight:400;font-size:17px;color:#fbf5e3;letter-spacing:.04em;line-height:1.6}
+.cf h4 i{display:block;font-family:var(--latin);font-style:normal;font-size:9.5px;letter-spacing:.26em;
+  color:var(--sand2);opacity:.82;margin-bottom:8px}
+.cf p{margin:0;font-size:13.8px;line-height:2;color:var(--dim)}
+.cf p em{font-style:normal;color:#ebe3cf}
+
+/* ---------- 07 awards ---------- */
+.awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.award{background:var(--bg);padding:28px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.award .yr{font-family:var(--latin);font-size:11px;letter-spacing:.14em;color:var(--dim2);padding-top:3px}
+.award h4{margin:0 0 6px;font-size:14.5px;font-weight:500;color:#f4edda;letter-spacing:.02em;line-height:1.6}
+.award p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.78}
+.award.gold{background:linear-gradient(120deg,rgba(185,138,69,.22),rgba(10,12,9,.93) 62%);border-left:2px solid rgba(185,138,69,.5)}
+.award.gold h4{color:#efd3a8}
+.award.wide{grid-column:1/-1}
+
+/* ---------- 08 lineage ---------- */
+.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px}
+.ln{position:relative;padding:0 0 40px 40px}
+.ln:last-child{padding-bottom:0}
+.ln::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--ash)}
+.ln.now::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 4px rgba(163,59,44,.22)}
+.ln .yr{font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--dim2)}
+.ln h4{margin:6px 0 6px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f4edda;letter-spacing:.03em}
+.ln p{margin:0;font-size:13px;color:var(--dim);line-height:1.85}
+.ln.now h4{color:#f0cbb4}
+
+/* ---------- 09 six grid ---------- */
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.g6{background:var(--bg);padding:32px 28px;min-height:200px}
+.g6 .n{font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--sand2);opacity:.88}
+.g6 h4{margin:14px 0 10px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f4edda;letter-spacing:.03em;line-height:1.6}
+.g6 p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 10 why ---------- */
+.why{display:grid;gap:0;max-width:820px}
+.why article{padding:0 0 38px}
+.why article + article{border-top:1px solid var(--line2);padding-top:38px}
+.why h3{margin:0 0 14px;font-family:var(--serif);font-weight:400;font-size:21px;color:#fbf5e3;letter-spacing:.04em}
+.why p{margin:0;font-size:14.5px;line-height:2.05;color:#c1b7a2}
+.why p + p{margin-top:14px}
+
+/* ---------- 11 tips ---------- */
+.tips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.tip{background:var(--bg);padding:30px 26px}
+.tip .k{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--sand2);opacity:.88}
+.tip h4{margin:12px 0 10px;font-size:16px;font-weight:500;color:#f4edda}
+.tip p{margin:0;font-size:12.8px;line-height:1.95;color:var(--dim)}
+
+/* ---------- verdict ---------- */
+.verdict{padding:150px 0 120px;border-top:1px solid var(--line2);position:relative;overflow:hidden}
+.verdict .tag{font-family:var(--latin);font-size:9.5px;letter-spacing:.32em;color:var(--dim2);margin-bottom:34px}
+.verdict .q{font-family:var(--serif);font-size:clamp(24px,3.2vw,37px);line-height:1.74;letter-spacing:.06em;
+  color:#fbf5e3;margin:0;max-width:24em}
+.verdict .q span{display:block}
+.verdict .src{margin-top:36px;font-size:12px;color:var(--dim2);letter-spacing:.04em}
+.stamp{position:absolute;right:74px;bottom:82px;width:136px;height:136px;border:1px solid rgba(163,59,44,.58);
+  border-radius:50%;display:grid;place-items:center;color:rgba(192,90,72,.94);text-align:center;
+  transform:rotate(-7deg);box-shadow:inset 0 0 0 4px rgba(163,59,44,.08)}
+.stamp div{display:grid;gap:5px;justify-items:center}
+.stamp span{font-family:var(--latin);font-size:8.2px;letter-spacing:.14em;opacity:.9}
+.stamp b{font-family:var(--serif);font-size:21px;letter-spacing:.12em;font-weight:400;line-height:1.1;
+  padding:5px 0;border-top:1px solid rgba(163,59,44,.36);border-bottom:1px solid rgba(163,59,44,.36)}
+
+footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
+footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
+
+/* ---------- HUD ---------- */
+#hud{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
+  opacity:0;transition:opacity .7s ease;pointer-events:none}
+#hud.on{opacity:1}
+#hud b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:13px;
+  color:var(--dim2);letter-spacing:.1em;transition:color .5s}
+#hud b i{display:block;width:16px;height:1px;background:var(--dim2);transition:all .5s}
+#hud b.on{color:#fbf5e3}
+#hud b.on i{width:30px;background:var(--sand2)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1380px){#hud{display:none}}
+@media (max-width:1000px){
+  .intro{grid-template-columns:1fr;gap:48px}
+  .poster-grid{grid-template-columns:1fr;gap:46px}
+  .poster-frame{max-width:500px}
+  .scores,.awards{grid-template-columns:1fr}
+  .spec{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tips{grid-template-columns:1fr}
+  .acts{grid-template-columns:1fr}
+  #hud{display:none}
+}
+@media (max-width:760px){
+  .hero-svg{transform:translateY(12vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(6,8,6,.97) 0%,rgba(6,8,6,.94) 24%,rgba(6,8,6,.86) 38%,rgba(6,8,6,.62) 50%,rgba(6,8,6,.22) 62%,rgba(6,8,6,.12) 72%,rgba(6,8,6,.5) 86%,rgba(6,8,6,.97) 100%)}
+  body{font-size:15px;line-height:1.9}
+  .wrap,.hero-in{width:calc(100% - 40px)}
+  .hero{min-height:max(100vh,740px)}
+  .hero-in{min-height:max(100vh,740px);padding-top:8vh;padding-bottom:100px}
+  h1{font-size:clamp(34px,11vw,60px);letter-spacing:.12em}
+  .hero-sub{font-size:14.5px;line-height:1.95;max-width:26em}
+  .sec{padding:76px 0}
+  .sec-head{margin-bottom:36px;gap:12px}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .people,.grid6{grid-template-columns:1fr}
+  .cf{grid-template-columns:1fr;gap:12px}
+  .lede{font-size:16px;line-height:2.05}
+  .sc .val{font-size:44px}
+  .verdict{padding:96px 0 88px}
+  .stamp{position:static;margin-top:48px;transform:rotate(-4deg)}
+  .chips{max-width:100%;padding-top:0;margin-top:26px}
+  footer{padding-bottom:120px}
+  .scroll-hint{bottom:14px;left:auto;right:12px;transform:none}
+  .chip{font-size:11px;padding:5px 11px;letter-spacing:.03em}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .scroll-hint{left:auto;right:8px;transform:none;bottom:26px}
+  .hero-svg{transform:translateY(5vh)}
+  .hero-scrim{background:
+    linear-gradient(to right,rgba(6,8,6,.98) 0%,rgba(6,8,6,.95) 28%,rgba(6,8,6,.72) 46%,rgba(6,8,6,.22) 60%,rgba(6,8,6,0) 72%),
+    linear-gradient(to bottom,rgba(6,8,6,.74) 0%,rgba(6,8,6,.12) 24%,rgba(6,8,6,0) 46%,rgba(6,8,6,.3) 74%,rgba(6,8,6,1) 100%)}
+}
+@media (min-width:1001px) and (max-height:860px){
+  .hero,.hero-in{min-height:max(100vh,760px)}
+  .scroll-hint{left:auto;right:22px;transform:none}
+}
+@media (max-width:520px){
+  .chip:nth-child(4){display:none}
+}
+@media (max-width:420px){
+  .notice{margin-bottom:22px;font-size:10.5px;padding:6px 13px}
+  h1{font-size:clamp(30px,10vw,50px);margin-top:20px}
+  .latin{margin-top:14px;font-size:10px;letter-spacing:.22em}
+  .hero-sub{margin-top:22px;font-size:13.8px}
+  .chip:nth-child(6){display:none}
+}
+@media (max-width:380px){
+  .wrap,.hero-in{width:calc(100% - 32px)}
+  .chip{font-size:10.5px;padding:5px 11px}
+  .glance{padding:24px 20px}
+}
+@media (max-width:400px) and (max-height:680px){
+  .scroll-hint{display:none}
+}
+@media (max-width:760px) and (max-height:700px){
+  .hero{min-height:100vh}
+  .hero-in{min-height:100vh;padding-top:6vh}
+}
+/* ---------- 16 期新增 ---------- */
+.nowrap{white-space:nowrap}
+.staffnote{font-family:var(--latin);font-size:10.5px;letter-spacing:.24em;color:var(--sand2);opacity:.9}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<svg class="hero-svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+<defs>
+<linearGradient id="wallG" x1="0" y1="0" x2=".1" y2="1">
+<stop offset="0" stop-color="#15170f"/><stop offset=".45" stop-color="#101209"/>
+<stop offset=".82" stop-color="#0b0d07"/><stop offset="1" stop-color="#080906"/>
+</linearGradient>
+<linearGradient id="wainG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#1c1a11"/><stop offset=".5" stop-color="#14130c"/><stop offset="1" stop-color="#0b0a06"/>
+</linearGradient>
+<linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#9fadab"/><stop offset=".45" stop-color="#c2ccc8"/>
+<stop offset=".78" stop-color="#dde4de"/><stop offset="1" stop-color="#e9eee6"/>
+</linearGradient>
+<linearGradient id="snowG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#eef2ea"/><stop offset=".35" stop-color="#dbe2da"/>
+<stop offset=".72" stop-color="#c3cdc7"/><stop offset="1" stop-color="#a8b4b0"/>
+</linearGradient>
+<linearGradient id="ridgeG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#7f8d8b"/><stop offset="1" stop-color="#9aa7a3"/>
+</linearGradient>
+<linearGradient id="floorG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#2b2718"/><stop offset=".18" stop-color="#1e1b11"/>
+<stop offset=".5" stop-color="#131109"/><stop offset="1" stop-color="#070705"/>
+</linearGradient>
+<linearGradient id="patchG" x1="0" y1="0" x2=".1" y2="1">
+<stop offset="0" stop-color="#dbe6dc" stop-opacity=".34"/><stop offset=".45" stop-color="#c1d0c7" stop-opacity=".17"/>
+<stop offset="1" stop-color="#8fa8a2" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="glassHaze" x1="0" y1="0" x2=".4" y2="1">
+<stop offset="0" stop-color="#f4f8f1" stop-opacity=".16"/><stop offset=".6" stop-color="#e4ece4" stop-opacity=".05"/>
+<stop offset="1" stop-color="#cfdcd4" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="pianoG" x1="0" y1="0" x2=".8" y2="1">
+<stop offset="0" stop-color="#1a180f"/><stop offset=".35" stop-color="#12110a"/>
+<stop offset="1" stop-color="#080805"/>
+</linearGradient>
+<linearGradient id="keyG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#cfc9ad"/><stop offset=".55" stop-color="#b9b295"/>
+<stop offset="1" stop-color="#8d876d"/>
+</linearGradient>
+<linearGradient id="paperG" x1="0" y1="0" x2=".2" y2="1">
+<stop offset="0" stop-color="#f6efd8"/><stop offset=".6" stop-color="#e3d9bd"/>
+<stop offset="1" stop-color="#c9bd9d"/>
+</linearGradient>
+<linearGradient id="rimG" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#e4ece6" stop-opacity=".62"/><stop offset=".55" stop-color="#c3d2cc" stop-opacity=".2"/>
+<stop offset="1" stop-color="#9fb2ad" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="winGlow" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#eaf1e8" stop-opacity=".3"/><stop offset=".5" stop-color="#d5e0d8" stop-opacity=".1"/>
+<stop offset="1" stop-color="#c8d6ce" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="reflG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#dae6da" stop-opacity=".17"/><stop offset=".45" stop-color="#c2d2c8" stop-opacity=".07"/>
+<stop offset="1" stop-color="#a8bcb2" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="pianoLow" x1="0" y1="0" x2=".7" y2="1">
+<stop offset="0" stop-color="#14120b"/><stop offset=".5" stop-color="#0e0d08"/><stop offset="1" stop-color="#070705"/>
+</linearGradient>
+<radialGradient id="lampWarm" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#f0c98a" stop-opacity=".2"/><stop offset=".55" stop-color="#d3a464" stop-opacity=".07"/>
+<stop offset="1" stop-color="#b98a45" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="vigG" cx=".54" cy=".42" r=".86">
+<stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".52" stop-color="#050604" stop-opacity=".1"/>
+<stop offset=".8" stop-color="#050604" stop-opacity=".46"/><stop offset="1" stop-color="#040504" stop-opacity=".9"/>
+</radialGradient>
+<filter id="b3"><feGaussianBlur stdDeviation="3"/></filter>
+<filter id="b8"><feGaussianBlur stdDeviation="8"/></filter>
+<filter id="b18"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+
+<rect width="1600" height="1000" fill="url(#wallG)"/>
+<g opacity=".5">
+<path d="M0 96 H1600" stroke="#2a2b1d" stroke-width="1.4" opacity=".35"/>
+<path d="M0 97.6 H1600" stroke="#000" stroke-width="1.2" opacity=".5"/>
+<path d="M0 590 H1600" stroke="#2f3020" stroke-width="2" opacity=".4"/>
+<path d="M0 592.4 H1600" stroke="#000" stroke-width="1.6" opacity=".55"/>
+</g>
+<rect x="0" y="592" width="1600" height="115" fill="url(#wainG)"/>
+<g opacity=".85">
+<rect x="0" y="586" width="1600" height="7" fill="#332e1c"/>
+<rect x="0" y="586" width="1600" height="1.6" fill="#b9c6bb" opacity=".26"/>
+<rect x="0" y="592" width="1600" height="1.4" fill="#000" opacity=".55"/>
+<rect x="0" y="698" width="1600" height="9" fill="#241f12"/>
+<rect x="0" y="698" width="1600" height="1.4" fill="#a9b6ab" opacity=".18"/>
+</g>
+<path d="M0 646 H1600" stroke="#3d3824" stroke-width="1.2" opacity=".22"/>
+<g opacity=".28">
+<path d="M120 4 V590" stroke="#000" stroke-width="1.2" opacity=".4"/>
+<path d="M300 4 V590" stroke="#000" stroke-width="1.2" opacity=".35"/>
+<path d="M480 4 V590" stroke="#000" stroke-width="1.2" opacity=".4"/>
+<path d="M1236 4 V590" stroke="#000" stroke-width="1.2" opacity=".35"/>
+<path d="M1420 4 V590" stroke="#000" stroke-width="1.2" opacity=".4"/>
+</g>
+
+<g id="windows">
+<g>
+<rect x="626" y="188" width="174" height="424" fill="#0a0b08"/>
+<rect x="636" y="196" width="156" height="408" fill="url(#skyG)"/>
+<rect x="636" y="470" width="156" height="134" fill="url(#snowG)"/>
+<path d="M636 468 L668 452 L704 462 L742 446 L792 458 L792 474 L636 476 Z" fill="url(#ridgeG)" opacity=".75"/>
+<path d="M636 470 L668 455 L704 465 L742 449 L792 461" fill="none" stroke="#eef3ec" stroke-width="1.4" opacity=".4"/>
+<rect x="636" y="196" width="156" height="408" fill="url(#glassHaze)"/>
+<rect x="636" y="196" width="156" height="408" fill="none" stroke="#0a0b08" stroke-width="8"/>
+<rect x="709" y="196" width="7" height="408" fill="#080906"/>
+<rect x="636" y="294" width="156" height="6" fill="#080906"/>
+<rect x="636" y="396" width="156" height="6" fill="#080906"/>
+<rect x="636" y="498" width="156" height="6" fill="#080906"/>
+<rect x="632" y="604" width="164" height="9" fill="#c9d4cd" opacity=".72"/>
+<rect x="632" y="613" width="164" height="4" fill="#3a382a" opacity=".8"/>
+<circle cx="678" cy="242" r="1.7" fill="#f7faf2" opacity=".55"/>
+<circle cx="742" cy="330" r="1.4" fill="#f7faf2" opacity=".45"/>
+<circle cx="700" cy="430" r="1.6" fill="#f7faf2" opacity=".4"/>
+<circle cx="756" cy="512" r="1.3" fill="#f7faf2" opacity=".38"/>
+</g>
+<g>
+<rect x="818" y="188" width="174" height="424" fill="#0a0b08"/>
+<rect x="828" y="196" width="156" height="408" fill="url(#skyG)"/>
+<rect x="828" y="470" width="156" height="134" fill="url(#snowG)"/>
+<path d="M828 466 L866 448 L902 460 L940 444 L984 456 L984 474 L828 476 Z" fill="url(#ridgeG)" opacity=".72"/>
+<path d="M828 468 L866 451 L902 463 L940 447 L984 459" fill="none" stroke="#eef3ec" stroke-width="1.4" opacity=".38"/>
+<rect x="828" y="196" width="156" height="408" fill="url(#glassHaze)"/>
+<rect x="828" y="196" width="156" height="408" fill="none" stroke="#0a0b08" stroke-width="8"/>
+<rect x="901" y="196" width="7" height="408" fill="#080906"/>
+<rect x="828" y="294" width="156" height="6" fill="#080906"/>
+<rect x="828" y="396" width="156" height="6" fill="#080906"/>
+<rect x="828" y="498" width="156" height="6" fill="#080906"/>
+<rect x="824" y="604" width="164" height="9" fill="#c9d4cd" opacity=".72"/>
+<rect x="824" y="613" width="164" height="4" fill="#3a382a" opacity=".8"/>
+<circle cx="872" cy="252" r="1.8" fill="#f7faf2" opacity=".5"/>
+<circle cx="944" cy="356" r="1.4" fill="#f7faf2" opacity=".42"/>
+<circle cx="890" cy="452" r="1.5" fill="#f7faf2" opacity=".36"/>
+<circle cx="936" cy="528" r="1.3" fill="#f7faf2" opacity=".34"/>
+</g>
+<g>
+<rect x="1010" y="188" width="174" height="424" fill="#0a0b08"/>
+<rect x="1020" y="196" width="156" height="408" fill="url(#skyG)"/>
+<rect x="1020" y="470" width="156" height="134" fill="url(#snowG)"/>
+<path d="M1020 464 L1058 450 L1096 461 L1134 445 L1176 457 L1176 474 L1020 476 Z" fill="url(#ridgeG)" opacity=".7"/>
+<path d="M1020 466 L1058 453 L1096 464 L1134 448 L1176 460" fill="none" stroke="#eef3ec" stroke-width="1.4" opacity=".36"/>
+<rect x="1020" y="196" width="156" height="408" fill="url(#glassHaze)"/>
+<rect x="1020" y="196" width="156" height="408" fill="none" stroke="#0a0b08" stroke-width="8"/>
+<rect x="1093" y="196" width="7" height="408" fill="#080906"/>
+<rect x="1020" y="294" width="156" height="6" fill="#080906"/>
+<rect x="1020" y="396" width="156" height="6" fill="#080906"/>
+<rect x="1020" y="498" width="156" height="6" fill="#080906"/>
+<rect x="1016" y="604" width="164" height="9" fill="#c9d4cd" opacity=".7"/>
+<rect x="1016" y="613" width="164" height="4" fill="#3a382a" opacity=".8"/>
+<circle cx="1064" cy="246" r="1.6" fill="#f7faf2" opacity=".48"/>
+<circle cx="1136" cy="344" r="1.4" fill="#f7faf2" opacity=".4"/>
+<circle cx="1082" cy="440" r="1.5" fill="#f7faf2" opacity=".34"/>
+</g>
+</g>
+<ellipse cx="900" cy="420" rx="420" ry="300" fill="url(#winGlow)"/>
+
+<rect x="0" y="707" width="1600" height="293" fill="url(#floorG)"/>
+<g id="planks" opacity=".55">
+<path d="M0 707 H1600" stroke="#4a4429" stroke-width="1.6" opacity=".5"/>
+<path d="M0 709 H1600" stroke="#000" stroke-width="1.4" opacity=".6"/>
+<path d="M-40 754 L420 707 M300 1000 L520 707 M700 1000 L632 707 M1100 1000 L812 707 M1520 1000 L1000 707 M1660 940 L1420 707 M1660 800 L1600 707" stroke="#000" stroke-width="1.6" opacity=".3"/>
+</g>
+<g id="lightpool">
+<radialGradient id="poolSoft" cx=".5" cy=".28" r=".62">
+<stop offset="0" stop-color="#e2ece0" stop-opacity=".30"/><stop offset=".42" stop-color="#cbd9cd" stop-opacity=".14"/>
+<stop offset="1" stop-color="#a8bcb2" stop-opacity="0"/>
+</radialGradient>
+<ellipse cx="900" cy="742" rx="440" ry="96" fill="url(#winGlow)" opacity=".55"/>
+<ellipse cx="714" cy="762" rx="96" ry="132" fill="url(#poolSoft)"/>
+<ellipse cx="906" cy="768" rx="104" ry="140" fill="url(#poolSoft)"/>
+<ellipse cx="1098" cy="756" rx="92" ry="126" fill="url(#poolSoft)"/>
+<ellipse cx="900" cy="716" rx="290" ry="26" fill="#d7e3d6" opacity=".07"/>
+<ellipse cx="240" cy="726" rx="260" ry="80" fill="url(#lampWarm)"/>
+</g>
+
+<g id="piano">
+<ellipse cx="810" cy="714" rx="152" ry="12" fill="#000" opacity=".6" filter="url(#b8)"/>
+<rect x="676" y="513" width="268" height="12" rx="2" fill="#23200f"/>
+<rect x="676" y="513" width="268" height="12" rx="2" fill="none" stroke="url(#rimG)" stroke-width="1.2"/>
+<rect x="684" y="525" width="252" height="70" fill="url(#pianoG)"/>
+<g opacity=".3">
+<path d="M700 534 V592 M742 532 V592 M784 532 V592 M826 532 V592 M868 532 V592 M910 532 V592" stroke="#3a3522" stroke-width="1.1"/>
+</g>
+<rect x="690" y="592" width="240" height="10" fill="#1d1a0d"/>
+<rect x="690" y="592" width="240" height="2" fill="#c3d1ca" opacity=".26"/>
+<g transform="rotate(-1.4 820 560)">
+<path d="M764 596 L876 596 L868 524 L772 524 Z" fill="url(#paperG)" opacity=".96"/>
+<path d="M764 596 L876 596 L868 524 L772 524 Z" fill="none" stroke="#8a7c56" stroke-width=".8" opacity=".45"/>
+<g stroke="#3b3524" stroke-width=".55" opacity=".6">
+<path d="M778 540 H862 M778 547 H862 M778 554 H862 M778 561 H862 M778 568 H862"/>
+<path d="M780 578 H860 M780 585 H860"/>
+</g>
+<g fill="#24200f" opacity=".82">
+<ellipse cx="792" cy="554" rx="2.7" ry="1.9"/><ellipse cx="806" cy="551" rx="2.7" ry="1.9"/>
+<ellipse cx="828" cy="548" rx="2.7" ry="1.9"/><ellipse cx="842" cy="552" rx="2.7" ry="1.9"/>
+<ellipse cx="798" cy="585" rx="2.7" ry="1.9"/><ellipse cx="818" cy="582" rx="2.7" ry="1.9"/>
+</g>
+<g stroke="#24200f" stroke-width="1" opacity=".7">
+<path d="M794.6 554 V543 M808.6 551 V540 M830.6 548 V537 M844.6 552 V541"/>
+<path d="M800.6 585 V576 M820.6 582 V573"/>
+</g>
+</g>
+<path d="M764 596 L876 596 L872 604 L768 604 Z" fill="#0b0b07" opacity=".7"/>
+<rect x="690" y="602" width="240" height="30" fill="url(#keyG)" opacity=".95"/>
+<g stroke="#6f6a4c" stroke-width=".45" opacity=".45">
+<path d="M698 604 V630 M706 604 V630 M714 604 V630 M722 604 V630 M730 604 V630 M738 604 V630 M746 604 V630 M754 604 V630 M762 604 V630 M770 604 V630 M778 604 V630 M786 604 V630 M794 604 V630 M802 604 V630 M810 604 V630 M818 604 V630 M826 604 V630 M834 604 V630 M842 604 V630 M850 604 V630 M858 604 V630 M866 604 V630 M874 604 V630 M882 604 V630 M890 604 V630 M898 604 V630 M906 604 V630 M914 604 V630 M922 604 V630"/>
+</g>
+<g fill="#141308" opacity=".9">
+<path d="M701 602 h4.6 v13 h-4.6 Z M716 602 h4.6 v13 h-4.6 Z M733 602 h4.6 v13 h-4.6 Z M748 602 h4.6 v13 h-4.6 Z M763 602 h4.6 v13 h-4.6 Z M779 602 h4.6 v13 h-4.6 Z M794 602 h4.6 v13 h-4.6 Z M810 602 h4.6 v13 h-4.6 Z M825 602 h4.6 v13 h-4.6 Z M840 602 h4.6 v13 h-4.6 Z M857 602 h4.6 v13 h-4.6 Z M872 602 h4.6 v13 h-4.6 Z M887 602 h4.6 v13 h-4.6 Z M903 602 h4.6 v13 h-4.6 Z M918 602 h4.6 v13 h-4.6 Z"/>
+</g>
+<rect x="690" y="632" width="240" height="6" fill="#2a2412"/>
+<rect x="684" y="638" width="252" height="64" fill="url(#pianoLow)"/>
+<g opacity=".32">
+<path d="M700 646 V698 M742 644 V698 M784 644 V698 M826 644 V698 M868 644 V698 M910 644 V698" stroke="#3a3522" stroke-width="1.1"/>
+</g>
+<rect x="684" y="638" width="252" height="1.8" fill="#000" opacity=".7"/>
+<rect x="928" y="525" width="2.4" height="177" fill="url(#rimG)"/>
+<rect x="676" y="513" width="2.4" height="12" fill="#cfdcd4" opacity=".34"/>
+<path d="M678 707 L678 699 L942 699 L942 707 Z" fill="#080804"/>
+<path d="M678 699 L942 699" stroke="#b3c2b8" stroke-width=".9" opacity=".14"/>
+<ellipse cx="810" cy="703" rx="128" ry="8" fill="#000" opacity=".46" filter="url(#b3)"/>
+</g>
+
+<g id="stands">
+<g>
+<ellipse cx="952" cy="712" rx="30" ry="5.5" fill="#000" opacity=".5" filter="url(#b3)"/>
+<path d="M950 700 L954.4 700 L956 574 L952 574 Z" fill="#141410"/>
+<path d="M928 712 L976 710" stroke="#0f0f0b" stroke-width="3.4"/>
+<path d="M940 716 L952 700 M968 714 L954 700" stroke="#0f0f0b" stroke-width="2.6"/>
+<g transform="rotate(-15 953 566)">
+<path d="M926 546 L982 546 L982 574 L926 574 Z" fill="#17170f"/>
+<rect x="929" y="549" width="50" height="22" fill="url(#paperG)" opacity=".62"/>
+<g stroke="#4a4229" stroke-width=".5" opacity=".45">
+<path d="M932 553 H976 M932 557 H976 M932 561 H976 M932 565 H976"/>
+</g>
+<path d="M926 546 L982 546" stroke="#c9d6cf" stroke-width="1.1" opacity=".26"/>
+</g>
+</g>
+</g>
+
+<g id="clock">
+<circle cx="1332" cy="300" r="46" fill="#0d0e0a"/>
+<circle cx="1332" cy="300" r="46" fill="none" stroke="#2c2d1f" stroke-width="2.4"/>
+<circle cx="1332" cy="300" r="39" fill="#e6e8d9" opacity=".14"/>
+<g stroke="#b9c6bd" stroke-width="1.4" opacity=".3">
+<path d="M1332 262 V270 M1332 330 V338 M1294 300 H1302 M1362 300 H1370"/>
+</g>
+<path d="M1332 300 L1332 278" stroke="#cfdcd4" stroke-width="2" opacity=".4"/>
+<path d="M1332 300 L1352 310" stroke="#cfdcd4" stroke-width="1.6" opacity=".32"/>
+<circle cx="1332" cy="300" r="3" fill="#cfdcd4" opacity=".35"/>
+</g>
+
+<g id="chair">
+<ellipse cx="1246" cy="712" rx="34" ry="6" fill="#000" opacity=".42" filter="url(#b3)"/>
+<path d="M1232 576 L1274 576 L1274 580 L1232 580 Z" fill="#1f1c10"/>
+<path d="M1238 580 V660 M1268 580 V660" stroke="#1a1710" stroke-width="4"/>
+<path d="M1226 652 L1282 652 L1282 660 L1226 660 Z" fill="#221f12"/>
+<path d="M1234 660 V706 M1274 660 V706" stroke="#110f09" stroke-width="3.4"/>
+<path d="M1232 576 L1274 576" stroke="#c6d4cb" stroke-width="1.2" opacity=".34"/>
+<path d="M1228 654 L1280 654" stroke="#c6d4cb" stroke-width="1" opacity=".26"/>
+<path d="M1238 580 L1238 660 M1268 580 L1268 660" stroke="#b9c8c1" stroke-width=".8" opacity=".16"/>
+</g>
+
+<g id="fore">
+<path d="M1330 1000 L1330 872 Q1400 858 1470 862 L1600 858 L1600 1000 Z" fill="#050604" opacity=".92"/>
+<path d="M1330 872 Q1400 858 1470 862 L1600 858" fill="none" stroke="#8fa39c" stroke-width="1" opacity=".13"/>
+<path d="M-20 860 L120 1000 L-20 1000 Z" fill="#040504" opacity=".7"/>
+</g>
+<rect width="1600" height="1000" fill="url(#vigG)"/>
+</svg>
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+
+<div class="hero-in">
+  <div class="notice"><span class="dot"></span>全程不剧透 · 梗概止于走廊拐角</div>
+  <div class="eyebrow"><i></i>Japanese Cinema · No.16</div>
+  <h1>摇摆少女</h1>
+  <p class="latin">スウィングガールズ · Swing Girls</p>
+  <p class="hero-sub">一个夏天，十三个女生为了逃掉数学补课，替全校吹奏乐部把四十二份便当送去球场。天太热，便当坏了——部员全部进了医院，看台上几百人等着乐队。<em>最后站得起来的，是她们。</em></p>
+  <div class="chips">
+    <span class="chip"><b>2004</b> · 矢口史靖</span>
+    <span class="chip">彩色 · <b>105 分钟</b></span>
+    <span class="chip">豆瓣 <b>8.6</b></span>
+    <span class="chip">学院奖 <b>四项最优秀</b></span>
+  </div>
+</div>
+
+<div class="scroll-hint">SCROLL<span></span></div>
+</header>
+
+<nav id="hud" aria-hidden="true">
+  <b data-i="0"><i></i>便当</b><b data-i="1"><i></i>十七</b><b data-i="2"><i></i>乐器</b><b data-i="3"><i></i>雪</b><b data-i="4"><i></i>摇</b>
+</nav>
+
+<main>
+
+<section class="sec" id="s1" style="border-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">01</span><h2>剧情梗概</h2><p class="kicker">The Story</p></div>
+    <div class="intro">
+      <div class="lede reveal">
+        <p>暑假的第四个星期，东北一个小县城的县立高中，数学补习班还开着。风扇在头顶转，蝉在窗外叫，黑板上是一道讲了三遍还是有人不懂的题。十三个女生坐在下面，谁也没在听。她们的成绩单上，这一格永远要补。</p>
+        <p>同一天，学校的吹奏乐部要坐火车去市里的球场，为本校棒球队的决赛助威。四十二个人，扛着大鼓、抱着上低音号，浩浩荡荡出了校门。便当店的车来晚了，追到车站的时候，人已经走了。</p>
+        <p>教室里有人往窗外看了一眼，说：反正闲着，我们把便当送过去吧。老师犹豫了一下，点了头——他大概只是想让这堂课快点结束。于是十三个女生抬着四十二份便当，上了同一趟线的下一班车。</p>
+        <p>天太热。车上有人饿了，拆开一份，吃了；又有人拆了一份。到站时少了一份，多了一身汗。她们在田埂上跑，被经过的列车逼得跳下路基，剩下的便当滚进泥里；又绕到河边把盒子一个个洗干净——这一段路，她们走了整整一个下午。</p>
+        <p>便当终于送到了。球场上，吹奏乐部的部员们吃完，一个接一个捂着肚子倒下去。四十二个人，全部食物中毒，被送进医院。唯一没吃的是一个男生——他那一份，正好被车上的人吃掉了。</p>
+        <p>看台上坐着几百号人，等着一支乐队奏校歌。那个男生站在场边，手里只有一付铜钹。他回过头，看见那十三个还没走掉的女生。</p>
+        <p>这是她们第一次站上那个位置。乐器是临时凑的，指法是当场问的，吹出来的声音连她们自己都想笑。看台上的人从期待变成困惑，又从困惑变成忍耐。<strong>那几分钟很长。</strong></p>
+        <p>事后，男生蹲在场边数人头：十三个，加上他，加上两个背着电吉他和电贝司的、一个只会吹竖笛的——十七个。他忽然说：够了，十七个人，正好是一支爵士大乐队的编制。铜管五个，萨克斯五个，节奏组四个。</p>
+        <p>爵士乐不要校歌那种整齐。它要的是「后面半拍」：鼓落在二、四拍上，贝斯走一条自己的线，管乐在别人以为该停的地方进来。它不好吹，但是好听。数学老师在办公室里听见了，第一次主动走出来，说：这个我懂。</p>
+        <p>她们开始练。放学后，在音乐教室，从吹响一个音开始。有人吹不响，有人吹响了但音是错的，有人把号嘴掉在地上捡了三次。夏天过去是秋天，秋天过去，窗户上开始结霜。</p>
+        <p>然后是那件事：吹奏乐部的部员出院了，回到音乐教室，要回他们的乐器。乐器本来就是借的。</p>
+        <p>她们把乐器一件一件放回架子，说了几句「本来也只是为了逃课」之类的话，笑着走出门。走到走廊拐角，有人先哭了。</p>
+        <p class="dash">后面的事——她们怎么弄到自己的乐器、钱从哪里来、那个冬天她们去了哪里、最后站上舞台时是什么样子——本页一个字都不写。</p>
+      </div>
+      <aside class="glance reveal">
+        <h3>At a Glance</h3>
+        <dl>
+          <div><dt>一句话</dt><dd>一次送便当，送出十七个人的爵士乐队。</dd></div>
+          <div><dt>时间</dt><dd>2004 年 · 当代的东北乡下</dd></div>
+          <div><dt>地点</dt><dd>山形县 · 置赐地方的县城与学校</dd></div>
+          <div><dt>主角</dt><dd>铃木友子，高二，数学补课常客</dd></div>
+          <div><dt>对手</dt><dd>不是人，是「没有乐器」「没有钱」「没有时间」</dd></div>
+          <div><dt>空间</dt><dd>音乐教室、球场、雪里的车站</dd></div>
+          <div><dt>规则</dt><dd>一支大乐队要十七个人，少一个声部就塌</dd></div>
+          <div><dt>情绪</dt><dd>热、吵、然后忽然安静下来</dd></div>
+          <div><dt>关键词</dt><dd>便当 / 号嘴 / 五线谱 / 雪 / swing</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="acts">
+      <div class="act reveal"><div class="t">First · 便当</div><h4>一件小事，送走四十二个人</h4><p>没有坏人，没有阴谋。只是天太热、车晚了、路太远——一部电影就这样被四十二份坏掉的便当推上了路。</p></div>
+      <div class="act reveal"><div class="t">Second · 十七</div><h4>一次数人头，数出一支乐队</h4><p>「十七个人正好是大乐队的编制」——这句话是整部片子的发动机，也是它最不像励志片的地方：起点是一个凑数。</p></div>
+      <div class="act reveal"><div class="t">Third · 归还</div><h4>借来的东西，总要还</h4><p>乐器是借的，教室是借的，连「想学」这个念头都是借来的。要变成自己的，得自己去买——这是全片最硬的一道坎。</p></div>
+    </div>
+
+    <p class="note reveal" style="margin-top:34px">本页叙述止于走廊拐角。此后她们怎么凑钱、怎么弄到乐器、冬天那场比赛的结果，一律不写。</p>
+  </div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">02</span><h2>概念海报</h2><p class="kicker">The Chart</p></div>
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+<svg class="poster-svg" viewBox="0 0 520 760" role="img" aria-label="一张米色手抄五线谱纸，铅笔写的音符与记号，右侧竖排片名「摇摆少女」，下方一枚朱印">
+<defs>
+<linearGradient id="pPaper" x1="0" y1="0" x2=".35" y2="1">
+<stop offset="0" stop-color="#f3e9cc"/><stop offset=".45" stop-color="#e8dcba"/>
+<stop offset=".82" stop-color="#d9cba6"/><stop offset="1" stop-color="#c7b791"/>
+</linearGradient>
+<linearGradient id="pEdge" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#8f8060" stop-opacity=".5"/><stop offset=".12" stop-color="#8f8060" stop-opacity="0"/>
+<stop offset=".88" stop-color="#8f8060" stop-opacity="0"/><stop offset="1" stop-color="#8f8060" stop-opacity=".55"/>
+</linearGradient>
+<linearGradient id="pPencil" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#e0be7e"/><stop offset=".4" stop-color="#c39a56"/>
+<stop offset="1" stop-color="#7d5f31"/>
+</linearGradient>
+<radialGradient id="pVig" cx=".5" cy=".44" r=".78">
+<stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".72" stop-color="#000" stop-opacity=".16"/>
+<stop offset="1" stop-color="#000" stop-opacity=".62"/>
+</radialGradient>
+<filter id="pBlur"><feGaussianBlur stdDeviation="3.4"/></filter>
+</defs>
+<rect width="520" height="760" fill="#070806"/>
+<g transform="rotate(-.5 260 380)">
+<rect x="34" y="52" width="366" height="656" fill="url(#pPaper)"/>
+<rect x="34" y="52" width="366" height="656" fill="url(#pEdge)"/>
+<path d="M34 700 L400 690" stroke="#a4926a" stroke-width="1" opacity=".3"/>
+<path d="M70 60 L120 700" stroke="#fff6dd" stroke-width="26" opacity=".05"/>
+<path d="M290 52 L250 708" stroke="#8f7a4e" stroke-width="30" opacity=".045"/>
+
+<g fill="#5c5140" opacity=".55" font-family="Georgia,serif">
+<text x="56" y="88" font-size="9" letter-spacing="1.4">TOMOKO — TRUMPET</text>
+<text x="336" y="88" font-size="9" letter-spacing="1.4">No.4</text>
+</g>
+<text x="54" y="142" font-family="Snell Roundhand,Brush Script MT,Georgia,serif" font-style="italic" font-size="47" fill="#3b3323" opacity=".82" letter-spacing="1">Swing</text>
+<text x="242" y="146" font-family="Snell Roundhand,Brush Script MT,Georgia,serif" font-style="italic" font-size="24" fill="#4a4230" opacity=".64">girls</text>
+
+<g id="staves" stroke="#6d6047" fill="none" opacity=".5">
+<g stroke-width="1">
+<path d="M62 170 H378 M62 179.5 H378 M62 189 H378 M62 198.5 H378 M62 208 H378"/>
+<path d="M62 258 H378 M62 267.5 H378 M62 277 H378 M62 286.5 H378 M62 296 H378"/>
+<path d="M62 346 H378 M62 355.5 H378 M62 365 H378 M62 374.5 H378 M62 384 H378"/>
+<path d="M62 434 H378 M62 443.5 H378 M62 453 H378 M62 462.5 H378 M62 472 H378"/>
+<path d="M62 522 H378 M62 531.5 H378 M62 541 H378 M62 550.5 H378 M62 560 H378"/>
+</g>
+<g stroke-width="1.5" opacity=".8">
+<path d="M62 170 V208 M200 170 V208 M310 170 V208 M370 170 V208 M378 170 V208"/>
+<path d="M62 258 V296 M200 258 V296 M310 258 V296 M370 258 V296 M378 258 V296"/>
+<path d="M62 346 V384 M200 346 V384 M310 346 V384 M370 346 V384 M378 346 V384"/>
+<path d="M62 434 V472 M200 434 V472 M370 434 V472 M378 434 V472"/>
+<path d="M62 522 V560 M370 522 V560 M378 522 V560"/>
+</g>
+</g>
+
+<g fill="#2a2418" opacity=".86">
+<text x="64" y="184" font-family="Georgia,serif" font-size="12">4</text>
+<text x="64" y="197" font-family="Georgia,serif" font-size="12">4</text>
+<g>
+<ellipse cx="84" cy="181" rx="5.2" ry="3.9" transform="rotate(-18 84 181)"/><path d="M88.8 180 V162" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="104" cy="189" rx="5.2" ry="3.9" transform="rotate(-18 104 189)"/><path d="M108.8 188 V170" stroke="#2a2418" stroke-width="1.3"/>
+<path d="M88.8 162 H108.8" stroke="#2a2418" stroke-width="2.4"/>
+<ellipse cx="132" cy="189" rx="5.2" ry="3.9" transform="rotate(-18 132 189)"/><path d="M136.8 188 V170" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="152" cy="194" rx="5.2" ry="3.9" transform="rotate(-18 152 194)"/><path d="M156.8 193 V175" stroke="#2a2418" stroke-width="1.3"/>
+<path d="M136.8 170 H156.8" stroke="#2a2418" stroke-width="2.4"/>
+<ellipse cx="178" cy="184" rx="5.2" ry="3.9" transform="rotate(-18 178 184)"/><path d="M182.8 183 V165" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="196" cy="179" rx="5.2" ry="3.9" transform="rotate(-18 196 179)"/><path d="M200.8 178 V160" stroke="#2a2418" stroke-width="1.3"/>
+<path d="M214 196 h7 v5 h-7 Z" fill="#2a2418" opacity=".7"/>
+<ellipse cx="240" cy="174" rx="5.2" ry="3.9" transform="rotate(-18 240 174)"/><path d="M244.8 173 V155" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="262" cy="184" rx="5.2" ry="3.9" transform="rotate(-18 262 184)"/><path d="M266.8 183 V165" stroke="#2a2418" stroke-width="1.3"/>
+<path d="M244.8 155 H266.8" stroke="#2a2418" stroke-width="2.4"/>
+<ellipse cx="292" cy="189" rx="5.2" ry="3.9" transform="rotate(-18 292 189)"/><path d="M296.8 188 V170" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="322" cy="194" rx="5.2" ry="3.9" transform="rotate(-18 322 194)"/><path d="M326.8 193 V175" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="344" cy="198" rx="5.2" ry="3.9" transform="rotate(-18 344 198)"/><path d="M348.8 197 V179" stroke="#2a2418" stroke-width="1.3"/>
+</g>
+<g>
+<ellipse cx="84" cy="267" rx="5.2" ry="3.9" transform="rotate(-18 84 267)"/><path d="M88.8 266 V248" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="104" cy="272" rx="5.2" ry="3.9" transform="rotate(-18 104 272)"/><path d="M108.8 271 V253" stroke="#2a2418" stroke-width="1.3"/>
+<path d="M88.8 248 H108.8" stroke="#2a2418" stroke-width="2.4"/>
+<ellipse cx="130" cy="281" rx="5.2" ry="3.9" transform="rotate(-18 130 281)"/><path d="M134.8 280 V262" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="152" cy="286" rx="5.2" ry="3.9" transform="rotate(-18 152 286)"/><path d="M156.8 285 V267" stroke="#2a2418" stroke-width="1.3"/>
+<path d="M134.8 262 H156.8" stroke="#2a2418" stroke-width="2.4"/>
+<ellipse cx="180" cy="277" rx="5.2" ry="3.9" transform="rotate(-18 180 277)"/><path d="M184.8 276 V258" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="206" cy="267" rx="5.2" ry="3.9" transform="rotate(-18 206 267)"/><path d="M210.8 266 V248" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="226" cy="272" rx="5.2" ry="3.9" transform="rotate(-18 226 272)"/><path d="M230.8 271 V253" stroke="#2a2418" stroke-width="1.3"/>
+<path d="M210.8 248 H230.8" stroke="#2a2418" stroke-width="2.4"/>
+<ellipse cx="252" cy="281" rx="5.2" ry="3.9" transform="rotate(-18 252 281)"/><path d="M256.8 280 V262" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="274" cy="286" rx="5.2" ry="3.9" transform="rotate(-18 274 286)"/><path d="M278.8 285 V267" stroke="#2a2418" stroke-width="1.3"/>
+<path d="M256.8 262 H278.8" stroke="#2a2418" stroke-width="2.4"/>
+<ellipse cx="300" cy="277" rx="5.2" ry="3.9" transform="rotate(-18 300 277)"/><path d="M304.8 276 V258" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="326" cy="272" rx="5.2" ry="3.9" transform="rotate(-18 326 272)"/><path d="M330.8 271 V253" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="350" cy="267" rx="5.2" ry="3.9" transform="rotate(-18 350 267)"/><path d="M354.8 266 V248" stroke="#2a2418" stroke-width="1.3"/>
+<path d="M304.8 258 H330.8" stroke="#2a2418" stroke-width="2.4"/>
+</g>
+<g>
+<ellipse cx="84" cy="355" rx="5.2" ry="3.9" transform="rotate(-18 84 355)"/><path d="M88.8 354 V336" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="106" cy="365" rx="5.2" ry="3.9" transform="rotate(-18 106 365)"/><path d="M110.8 364 V346" stroke="#2a2418" stroke-width="1.3"/>
+<path d="M88.8 336 H110.8" stroke="#2a2418" stroke-width="2.4"/>
+<ellipse cx="136" cy="370" rx="5.2" ry="3.9" transform="rotate(-18 136 370)"/><path d="M140.8 369 V351" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="158" cy="365" rx="5.2" ry="3.9" transform="rotate(-18 158 365)"/><path d="M162.8 364 V346" stroke="#2a2418" stroke-width="1.3"/>
+<path d="M140.8 351 H162.8" stroke="#2a2418" stroke-width="2.4"/>
+<ellipse cx="186" cy="355" rx="5.2" ry="3.9" transform="rotate(-18 186 355)"/><path d="M190.8 354 V336" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="212" cy="360" rx="5.2" ry="3.9" transform="rotate(-18 212 360)"/><path d="M216.8 359 V341" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="240" cy="370" rx="5.2" ry="3.9" transform="rotate(-18 240 370)"/><path d="M244.8 369 V351" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="266" cy="375" rx="5.2" ry="3.9" transform="rotate(-18 266 375)"/><path d="M270.8 374 V356" stroke="#2a2418" stroke-width="1.3"/>
+<path d="M244.8 351 H270.8" stroke="#2a2418" stroke-width="2.4"/>
+<ellipse cx="296" cy="365" rx="5.2" ry="3.9" transform="rotate(-18 296 365)"/><path d="M300.8 364 V346" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="330" cy="360" rx="5.2" ry="3.9" transform="rotate(-18 330 360)"/><path d="M334.8 359 V341" stroke="#2a2418" stroke-width="1.3"/>
+</g>
+<g opacity=".62">
+<ellipse cx="86" cy="443" rx="5.2" ry="3.9" transform="rotate(-18 86 443)"/><path d="M90.8 442 V424" stroke="#2a2418" stroke-width="1.3"/>
+<ellipse cx="112" cy="448" rx="5.2" ry="3.9" transform="rotate(-18 112 448)"/><path d="M116.8 447 V429" stroke="#2a2418" stroke-width="1.3"/>
+<path d="M90.8 424 H116.8" stroke="#2a2418" stroke-width="2.4"/>
+<path d="M148 452 h7 v18 h-7 Z" fill="#2a2418" opacity=".55"/>
+</g>
+</g>
+
+<g stroke="#4d4331" fill="none" opacity=".6">
+<circle cx="196" cy="502" r="13" stroke-width="1.1"/>
+<path d="M192 502 h8 M196 498 v8" stroke-width="1"/>
+<path d="M214 512 L252 524" stroke-width="1.1"/>
+<path d="M244 518 L252 524 L242 526" stroke-width="1.1"/>
+</g>
+<text x="222" y="536" font-family="Hiragino Sans,Yu Gothic,sans-serif" font-size="10" fill="#4d4331" opacity=".6">もっと ゆっくり</text>
+<path d="M300 566 C 320 560 344 562 366 558" stroke="#5a4f39" stroke-width="1" opacity=".35" fill="none"/>
+
+<rect x="34" y="52" width="366" height="656" fill="url(#pVig)" opacity=".28"/>
+</g>
+
+<g>
+<rect x="238" y="44" width="86" height="26" fill="#c9bda0" opacity=".5" transform="rotate(-3 281 57)"/>
+<rect x="238" y="44" width="86" height="26" fill="none" stroke="#8d8168" stroke-width=".7" opacity=".5" transform="rotate(-3 281 57)"/>
+</g>
+
+<g transform="rotate(-4 170 640)">
+<ellipse cx="170" cy="652" rx="86" ry="5" fill="#2b2418" opacity=".2" filter="url(#pBlur)"/>
+<rect x="96" y="634" width="140" height="9" fill="url(#pPencil)"/>
+<path d="M96 634 L82 638.5 L96 643 Z" fill="#e8d4ad"/>
+<path d="M86 637 L82 638.5 L86 640 Z" fill="#2b2418"/>
+<rect x="228" y="634" width="14" height="9" fill="#8e7346"/>
+<rect x="238" y="634" width="6" height="9" fill="#6b5433"/>
+<path d="M96 634 H236" stroke="#f2e0b6" stroke-width="1" opacity=".45"/>
+</g>
+
+<text transform="translate(452 262) rotate(90)" x="0" y="0" font-family="Songti SC,Source Han Serif SC,serif" font-size="38" letter-spacing="14" fill="#f2ecdb">摇摆少女</text>
+<text x="418" y="122" font-family="Didot,Optima,Georgia,serif" font-size="9.5" letter-spacing="2.6" fill="#8c8268">SWING GIRLS</text>
+<text x="418" y="140" font-family="Didot,Optima,Georgia,serif" font-size="9.5" letter-spacing="2.6" fill="#8c8268">2004</text>
+<g transform="translate(418 470)">
+<rect width="46" height="46" fill="none" stroke="#a33b2c" stroke-width="1.5" opacity=".85"/>
+<text x="23" y="20" text-anchor="middle" font-family="Songti SC,serif" font-size="15" fill="#b3453a" letter-spacing="1">十</text>
+<text x="23" y="39" text-anchor="middle" font-family="Songti SC,serif" font-size="15" fill="#b3453a" letter-spacing="1">六</text>
+</g>
+<text x="34" y="732" font-family="Didot,Optima,Georgia,serif" font-size="9.5" letter-spacing="2.4" fill="#6d6558">スウィングガールズ · SWING GIRLS · 2004</text>
+</svg>
+        </div>
+        <p class="pcap">HAND-COPIED CHART · 手抄谱 · 数字绘制</p>
+      </div>
+      <div class="pnotes">
+        <div class="pnote reveal"><div class="n">01 / 纸</div><h4>一张被抄过很多遍的谱</h4><p>不是印刷的谱，是手抄的：五条线画得有点歪，小节线有几根没对齐，铅笔在旁边写了一个圈起来的「4」，还有一句「再慢一点」。业余乐队的第一份谱子，都是这个样子。</p></div>
+        <div class="pnote reveal"><div class="n">02 / 铅笔</div><h4>铅笔是这部电影真正的道具</h4><p>她们不写日记、不写计划，只在谱上做记号：这里换气、这里进、这里别抢。整部片子的成长，最后都落成纸上的几道铅笔痕。</p></div>
+        <div class="pnote reveal"><div class="n">03 / 留白</div><h4>大片空着的五线谱</h4><p>纸的下半段几乎是空的——那是还没练到的地方。这部电影从不假装她们天赋异禀，它把「还不会」原样留在纸上。</p></div>
+        <div class="pnote reveal"><div class="n">04 / 朱印</div><h4>一枚印，压住整张纸</h4><p>右下角一枚朱印，是这套专题的期号标记：第 16 期。它不解释任何东西，只是提醒你——这是一张被收藏起来的纸。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">03</span><h2>影片档案</h2><p class="kicker">Credits</p></div>
+    <dl class="spec reveal">
+      <div><dt>原名</dt><dd>スウィングガールズ</dd></div>
+      <div><dt>英文名</dt><dd>Swing Girls<small>港译《喇叭书院》/ 台译《摇摆女孩》</small></dd></div>
+      <div><dt>年份 / 片长</dt><dd>2004 · 105 分钟<small>IMDb 记 104；导演剪辑版 114 / 122</small></dd></div>
+      <div><dt>画幅</dt><dd>彩色 · 1.85 : 1<small>杜比数字 · 日语（山形置赐方言）</small></dd></div>
+      <div><dt>类型</dt><dd>青春 / 喜剧 / 音乐</dd></div>
+      <div><dt>导演</dt><dd>矢口史靖<small>自编自导 · 原创剧本</small></dd></div>
+      <div><dt>编剧</dt><dd>矢口史靖 / 矢口纯子<small>纯子是导演的妻子，负责剧本协力</small></dd></div>
+      <div><dt>音乐</dt><dd>ミッキー吉野 / 岸本ひろし<small>大乐队原曲 + 剧伴</small></dd></div>
+      <div><dt>摄影</dt><dd>柴主高秀</dd></div>
+      <div><dt>剪辑</dt><dd>宫岛龙治</dd></div>
+      <div><dt>美术</dt><dd>磯田典宏</dd></div>
+      <div><dt>录音</dt><dd>郡弘道<small>本片拿到学院奖最优秀录音赏</small></dd></div>
+      <div><dt>主演</dt><dd>上野树里 / 平冈祐太<small>贯地谷诗穗梨 · 本假屋唯佳 · 丰岛由佳梨</small></dd></div>
+      <div><dt>共演</dt><dd>竹中直人 / 小日向文世<small>白石美帆 · 樱睦子 · 高桥一生</small></dd></div>
+      <div><dt>制作</dt><dd>富士电视台 / Altamira Pictures<small>东宝 · 电通 共同制作</small></dd></div>
+      <div><dt>配给</dt><dd>东宝</dd></div>
+      <div><dt>公映</dt><dd>2004-09-11（日本）<small>连续上映约四个月</small></dd></div>
+      <div><dt>外景</dt><dd>山形县置赐地方<small>米泽 · 长井 · 南阳 · 高畠 · 川西 · 白鹰</small></dd></div>
+      <div><dt>票房</dt><dd>约 21.5 亿日元<small>2004 年本土片第 8 位</small></dd></div>
+      <div><dt>分级</dt><dd>日本 G<small>全年龄，无任何提示</small></dd></div>
+      <div class="wide"><dt>一句话</dt><dd>一部用真乐器、真练习、真演奏拍出来的电影——镜头里的声音，是这群人自己吹的。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="s4">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">04</span><h2>口碑与口径</h2><p class="kicker">Numbers, Carefully</p></div>
+    <div class="scores reveal">
+      <div class="sc hi"><div class="src">Douban 豆瓣</div><div class="val">8.6<small>/ 10</small></div><div class="meta">71,530 人评价 · 五星 46.0% / 四星 41.3%<br>好于 93% 剧情片 · 97% 喜剧片 · <b>未进 Top250</b></div></div>
+      <div class="sc"><div class="src">IMDb</div><div class="val">7.6<small>/ 10</small></div><div class="meta">约 6,577 票 · 与豆瓣差 1.0<br>海外票池小，分数偏低是常态</div></div>
+      <div class="sc"><div class="src">Rotten Tomatoes</div><div class="val">91%<small>Tomatometer</small></div><div class="meta">观众 2,500+ 人打分<br>收录影评篇数很少，不作强口径</div></div>
+      <div class="sc abs"><div class="src">第 28 回日本电影学院奖</div><div class="val">4 项 最优秀</div><div class="meta">脚本 · 音乐 · 录音 · 剪辑<br>另获新人俳优赏（2 人）与话题赏</div></div>
+    </div>
+    <ul class="caliber reveal">
+      <li><i>01</i><span><b>它不是「学院奖最佳影片」。</b>当年最优秀作品赏是《半落ち》，本片拿到的是「优秀作品赏」（提名档）与「优秀监督赏」；真正拿到最优秀的是脚本、音乐、录音、剪辑四项，外加新人俳优赏与话题赏。中文资料常把「优秀作品赏」写成「最佳影片」，这是错的。</span></li>
+      <li><i>02</i><span><b>8.6 在本专题 16 部里排第 4</b>（前三是《切腹》9.4、《女人步上楼梯时》9.1、《楢山节考》9.0）。它不是最高分的那一类，但它是唯一一部「不沉重」的。</span></li>
+      <li><i>03</i><span><b>票池只有 7 万</b>，比第 04 部《小偷家族》的 90 万小一个量级。7 万人打出 8.6，说明喜欢它的人很稳，但不代表它在国内的知名度。</span></li>
+      <li><i>04</i><span><b>片长有三个数字：</b>105（日本公映 / 豆瓣）、104（IMDb / OMDb）、114 与 122（导演剪辑版）。本页统一用 105。</span></li>
+      <li><i>05</i><span><b>「《水男孩》女生版」是当年的宣传口径，不是评论共识。</b>结构确实同源，但这部片子的重心从「男生出丑」换成了「一群人怎么认领一件东西」，不是换个性别重拍一遍。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="s5">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">05</span><h2>五个人，和一件东西</h2><p class="kicker">Who Wants What</p></div>
+    <div class="people reveal">
+      <div class="person">
+        <div class="role">TRUMPET · 主角</div><h4>铃木友子</h4><div class="actor">上野树里</div>
+        <p>不是最想学的那个人，是最先不肯放手的那个人。她成绩差、话不多、习惯跟着别人走，整部片子里她做的每一个决定都慢半拍——除了最后一个。<span><b>她要的</b>一开始只是「不用上数学课」，后来变成「这一个音是我的」。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">CYMBAL · 召集人</div><h4>中村拓雄</h4><div class="actor">平冈祐太</div>
+        <p>吹奏乐部唯一没中毒的人——因为他的便当被人吃了。所以他必须负责，必须数人头，必须去求一群完全不靠谱的女生。<span><b>他要的</b>是把乐队救回来；到后来他比谁都清楚，救回来的已经不是原来那支。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">SAX · 组织者</div><h4>斋藤良江</h4><div class="actor">贯地谷诗穗梨</div>
+        <p>脾气硬，说话不留情，也是这群人里最会管事的一个：谁出勤、谁欠钱、谁该练哪一段，她心里有一本账。<span><b>她要的</b>是把事情做成——为此她可以当那个不受欢迎的人。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">PIANO · 有底子的那个</div><h4>关口香织</h4><div class="actor">本假屋唯佳</div>
+        <p>学过多年古典钢琴，是最「会」的一个，也是最难改的一个。爵士要她松手、要她不准、要她在该停的地方不停。<span><b>她要的</b>是「弹对」；这部电影偏要她学会「弹开」。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">TEACHER · 教练</div><h4>小泽老师</h4><div class="actor">竹中直人</div>
+        <p>数学老师，爵士乐的老听众，家里一柜子唱片。他答应当指导，动机并不纯洁——音乐老师也在场。<span><b>他要的</b>一开始是别人，后来是这群人真的把曲子吹完；他教的东西，比他自己以为的更值钱。</span></p>
+      </div>
+      <div class="person thing">
+        <div class="role">THE OBJECT · 一件东西</div><h4>那把借来的小号</h4><div class="actor">乐器 · 编号不详</div>
+        <p>不是她的，是吹奏乐部的。她用它练了一个夏天，然后亲手把它放回架子。整部电影最锋利的一刀不在台词里，在这件东西的归属上：<span><b>你练得再好，它也不是你的。</b></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s6">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">06</span><h2>人物冲突</h2><p class="kicker">Six Frictions</p></div>
+    <div class="conflicts reveal">
+      <div class="cf"><h4><i>FRICTION 01</i>借来的乐器</h4><p>这是全片最硬的一条。乐器属于吹奏乐部，吹奏乐部出院那天，一切合法性都回到了原主手上。<em>她们的夏天是「借用」来的</em>——这也是为什么后面那些打工、攒钱、买二手乐器的段落，一点都不琐碎：那是把「借来的」变成「自己的」。</p></div>
+      <div class="cf"><h4><i>FRICTION 02</i>「我不在乎」</h4><p>前半段所有人都在演一件事：我只是为了逃课。谁先说「我想学」，谁就输了。所以她们必须一边练一边装作不在乎，<em>直到走廊拐角那次哭</em>——那一下是这部电影第一次允许她们承认。</p></div>
+      <div class="cf"><h4><i>FRICTION 03</i>钱</h4><p>一支十七人的大乐队，十几件乐器，一套校服之外的演出服。乡下高中生没有这笔钱，家里也不会同意。<em>钱不是背景，是情节</em>：它决定了她们能组几个人、能吹几首曲子、能不能去报名。</p></div>
+      <div class="cf"><h4><i>FRICTION 04</i>动机不纯的老师</h4><p>小泽答应当指导，是因为音乐老师；他讲的第一个笑话也不好笑。但他懂的东西是真的——他知道「摇」不是谱面上的记号。<em>一个不纯粹的人，教出了一件纯粹的事</em>，这是全片最好的一层讽刺。</p></div>
+      <div class="cf"><h4><i>FRICTION 05</i>正统与野路子</h4><p>吹奏乐部代表「正确」：编制整齐、服装统一、为校歌服务。她们代表「不对」：人不够、音不准、还想玩爵士。两边的冲突不靠吵架，靠<em>谁有资格使用那间教室</em>来解决。</p></div>
+      <div class="cf"><h4><i>FRICTION 06</i>十七个人</h4><p>大乐队没有替补。一个人不来，整个声部空掉；一个人放弃，曲子就断。<em>而高三的夏天不会等人</em>：考试、家里、升学，每一样都比爵士乐正当。这才是她们真正要打赢的东西。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s7">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">07</span><h2>荣誉</h2><p class="kicker">What It Actually Has</p></div>
+    <div class="awards reveal">
+      <div class="award gold"><div class="yr">2005</div><div><h4>第 28 回日本电影学院奖 · 最优秀脚本赏</h4><p>矢口史靖。原创剧本，无原作小说</p></div></div>
+      <div class="award gold"><div class="yr">2005</div><div><h4>同届 · 最优秀音乐赏</h4><p>ミッキー吉野 / 岸本ひろし</p></div></div>
+      <div class="award gold"><div class="yr">2005</div><div><h4>同届 · 最优秀录音赏</h4><p>郡弘道。同期演奏的现场感来自这里</p></div></div>
+      <div class="award gold"><div class="yr">2005</div><div><h4>同届 · 最优秀剪辑赏</h4><p>宫岛龙治。音乐片的节奏，一半在剪辑台上</p></div></div>
+      <div class="award"><div class="yr">2005</div><div><h4>同届 · 新人俳优赏</h4><p>上野树里 / 平冈祐太。两人同片同届</p></div></div>
+      <div class="award"><div class="yr">2005</div><div><h4>同届 · 话题赏（作品部门）</h4><p>由学院会员投票选出的话题作品</p></div></div>
+      <div class="award"><div class="yr">2004</div><div><h4>第 78 回电影旬报 · 日本电影十佳 第 7 位</h4><p>年度十佳，不是第一位</p></div></div>
+      <div class="award"><div class="yr">2005</div><div><h4>第 26 回横滨电影节 · 十佳第 4 位</h4><p>个人赏：脚本 矢口史靖 / 摄影 柴主高秀 / 新人 上野树里</p></div></div>
+      <div class="award"><div class="yr">2004</div><div><h4>第 14 回日本电影影评人大赏 · 作品赏</h4><p>影评人票选，与学院奖不是一套人</p></div></div>
+      <div class="award"><div class="yr">2005</div><div><h4>第 59 回每日电影奖 · 新人赏</h4><p>上野树里（同年度《七夕之夏》并列）</p></div></div>
+      <div class="award"><div class="yr">2005</div><div><h4>第 47 回蓝丝带奖 · 日本电影十佳</h4><p>记者票选</p></div></div>
+      <div class="award"><div class="yr">2005</div><div><h4>第 19 回日本金唱片大赏 · 年度原声带</h4><p>音乐本身拿了唱片奖，这在青春片里少见</p></div></div>
+      <div class="award wide"><div class="yr">口径</div><div><h4>「当年获奖最多的一部」这个说法，本页不用</h4><p>日文资料与发行方宣传常用这句，但学院奖官方站并未以此表述，且「获奖数」怎么计（新人赏是否算、话题赏是否算）各家不同。可核的事实只有一条：<b>第 28 回学院奖上，本片拿下四个部门的最优秀赏，另有新人俳优赏与话题赏</b>；作品赏与监督赏止于「优秀」。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s8">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">08</span><h2>谱系：一个人，同一种题</h2><p class="kicker">Shinobu Yaguchi</p></div>
+    <div class="lineage reveal">
+      <div class="ln"><div class="yr">2001</div><h4>五个扑水的少年 · ウォーターボーイズ</h4><p>一群男生练花样游泳。结构从此定型：外行、荒唐的目标、必须学会的技能。</p></div>
+      <div class="ln now"><div class="yr">2004 · 本期</div><h4>摇摆少女 · スウィングガールズ</h4><p>十七个女生练爵士大乐队。同一套结构，但把「出丑」换成了「认领」。</p></div>
+      <div class="ln"><div class="yr">2008</div><h4>快乐飞行 · ハッピーフライト</h4><p>一架客机的起飞前。这次的外行是整组机组，目标是把飞机平安送上天。</p></div>
+      <div class="ln"><div class="yr">2012</div><h4>机器人大爷 · ロボジー</h4><p>三个工程师造不出机器人，只好让一个老头钻进去。荒唐度最高的一部。</p></div>
+      <div class="ln"><div class="yr">2014</div><h4>哪啊哪啊神去村 · WOOD JOB!</h4><p>城市青年去山里做林业研修。技能换成了伐木与祭典，题没变。</p></div>
+      <div class="ln"><div class="yr">2017</div><h4>生存家族 · サバイバルファミリー</h4><p>全日本停电，一家四口骑自行车横穿列岛。外行变成了「现代生活」本身。</p></div>
+    </div>
+    <p class="note reveal" style="margin-top:40px">矢口史靖一辈子只拍一件事：<b>一个完全不会的人，被一件具体的手艺逼着学会了它</b>。他不写天才，也不写逆袭，只写「学会」这个动作本身有多好笑、多难、多值得。</p>
+  </div>
+</section>
+
+<section class="sec" id="s9">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">09</span><h2>六处亮点</h2><p class="kicker">Why It Works</p></div>
+    <div class="grid6 reveal">
+      <div class="g6"><div class="n">01</div><h4>真吹，真打，真跑</h4><p>开拍前演员集体合宿，从零学乐器；镜头里的演奏是她们自己完成的。所以那些吹不响、破音、抢拍，全是真的——喜剧的可信度，是从这里来的。</p></div>
+      <div class="g6"><div class="n">02</div><h4>它愿意花时间拍「一个音」</h4><p>大多数励志片会用一个蒙太奇跳过学习过程。这部片子不跳：它拍一个人反复吹同一个音，吹到观众都替她累，然后那个音终于对了。</p></div>
+      <div class="g6"><div class="n">03</div><h4>把日常杂音收进音乐</h4><p>拍打棉被的闷响、乒乓球的脆响、翻谱的窸窣、走廊里的脚步——这些声音在片子里不是环境音，是节奏。爵士乐的耳朵，是从生活里长出来的。</p></div>
+      <div class="g6"><div class="n">04</div><h4>十七个人的群像调度</h4><p>镜头从不偏爱主角。每个人都有一个只属于她的小动作：谁总在调簧片、谁总在数拍、谁一到高音就闭眼。十七个人，没有一个是背景板。</p></div>
+      <div class="g6"><div class="n">05</div><h4>雪、单节柴油车、无人站台</h4><p>山形县置赐地方实景拍摄，对白用当地方言。稻田、雪原、只有一节的柴油车——这些不是美术做出来的「日本乡下」，是真的。</p></div>
+      <div class="g6"><div class="n">06</div><h4>最后一场戏不煽情</h4><p>没有慢镜头，没有旁白，没有观众席上的热泪。它只是把镜头放在那儿，让一群人把曲子吹完。<em>不解释，是它最大的体面。</em></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">10</span><h2>为什么值得一看</h2><p class="kicker">Three Reasons</p></div>
+    <div class="why">
+      <article class="reveal"><h3>一、它把「努力」拍成了一件不用喊口号的事</h3><p>没有教练在雨里吼，没有「你一定可以」，没有把失败剪成三分钟的热血蒙太奇。这部片子里最长的一段「努力」，是几个女生在超市打工、在山里捡蘑菇、把妹妹的游戏机当掉，只为了凑一件二手乐器的钱。</p><p>它相信一件事：<strong>真正的动机不需要被说出来，它会长出行动。</strong>所以当那个音终于吹准的时候，你不需要任何台词提示——你自己就松了一口气。</p></article>
+      <article class="reveal"><h3>二、它相信「业余」的美</h3><p>这部片子的演奏从头到尾都不完美：音准差一点，节拍赶一点，合声偶尔糊掉。它没有找专业乐手来配音把它修好——因为一旦修好，这些人的夏天就不成立了。</p><p>这是我们这个时代最缺的一种审美：<em>允许一件事情做得不够好，但确实是本人做的。</em>看完你会有一种很久没有过的感觉——想去做一件自己很不在行的事。</p></article>
+      <article class="reveal"><h3>三、它其实在讲「认领」</h3><p>整部电影真正的题目不是音乐，是归属：一件借来的乐器，什么时候才算「我的」？一间借来的教室、一个借来的动机、一段借来的夏天，什么时候才算自己的？</p><p>它给的答案很朴素：<strong>当你为它付出过一次不可回收的成本——钱、时间、或者一次当众的难堪——它才变成你的。</strong>这个道理放在乐器上成立，放在别的事情上也成立。</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">11</span><h2>观影提示</h2><p class="kicker">Before You Press Play</p></div>
+    <div class="tips">
+      <div class="tip reveal"><div class="k">01</div><h4>把音量开大一点</h4><p>音乐是这部片子的第二个主角，而且是从排练室、操场、雪地里长出来的声音，不是录音棚里配的。手机外放会把它削成背景音。</p></div>
+      <div class="tip reveal"><div class="k">02</div><h4>方言的笑点，字幕接不住</h4><p>全片用山形县置赐地区的方言，语尾和语调本身就是喜剧材料。中文字幕只能译意思，译不了那个「土」。听不懂不影响剧情，听懂会多笑几次。</p></div>
+      <div class="tip reveal"><div class="k">03</div><h4>别把它当励志片排队</h4><p>它没有逆袭，也没有奇迹。它讲的是十七个很普通的人，用一整个夏天，把一件很难的事做到「勉强能听」。如果你要的是热血，它给的是热——出汗的那种。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="wrap">
+    <p class="tag">VERDICT · NO.16</p>
+    <p class="q"><span>她们不是为了赢才站上去的。</span><span>她们是想让那个音，</span><span>有一天能算是自己的。</span></p>
+    <p class="src">—— 本页判词，非片中台词</p>
+    <div class="stamp"><div><span>JAPANESE CINEMA</span><b>NO.16</b><span>2004 · 矢口史靖</span></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>日本电影专题 · 第 16 期｜《摇摆少女》スウィングガールズ / Swing Girls（2004）<br>
+    数据核对于 2026-11-10：豆瓣条目 1361254（8.6 / 71,530 人 · 五星 46.0% / 四星 41.3% · 好于 93% 剧情 / 97% 喜剧 · 未进 Top250）、IMDb 7.6（约 6,577 票）、烂番茄 91%（收录篇数少，不作强口径）。<br>
+    奖项以日本电影学院奖官方站第 28 回页面为准：最优秀＝脚本（矢口史靖）、音乐（ミッキー吉野 / 岸本ひろし）、录音（郡弘道）、剪辑（宫岛龙治）；作品赏与监督赏为「优秀赏」，当年最优秀作品赏是《半落ち》。另获新人俳优赏（上野树里 / 平冈祐太）与话题赏（作品部门）。<br>
+    片长以日本公映版 105 分钟为准（IMDb 记 104，导演剪辑版 114 / 122）。票房约 21.5 亿日元，2004 年本土片第 8 位。<br>
+    全页不含关键情节：她们怎么弄到乐器、那个冬天去了哪里、最后一场演出的结果，一律未写。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c = document.getElementById('heroCanvas');
+  if(!c) return;
+  var ctx = c.getContext('2d'), W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
+  var parts=[], t=0;
+  function size(){
+    W=c.clientWidth; H=c.clientHeight;
+    c.width=W*dpr; c.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();
+  }
+  function build(){
+    parts=[];
+    var n = Math.round(W*H/17000);
+    if(n>140) n=140;
+    for(var i=0;i<n;i++){
+      parts.push({
+        x:Math.random()*W, y:Math.random()*H,
+        r:.35+Math.random()*1.4,
+        vx:-.05-Math.random()*.28,
+        vy:(.015+Math.random()*.06),
+        a:.03+Math.random()*.20,
+        p:Math.random()*6.28
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t+=0.005;
+    for(var i=0;i<parts.length;i++){
+      var p=parts[i];
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<-10){p.x=W+10;p.y=Math.random()*H;}
+      if(p.y>H+10)p.y=-10;
+      var a=p.a*(0.45+0.55*Math.sin(t*1.1+p.p));
+      ctx.beginPath();
+      ctx.fillStyle='rgba(226,236,226,'+a.toFixed(3)+')';
+      ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fill();
+    }
+    var g = ctx.createRadialGradient(W*0.58,H*0.44,0,W*0.58,H*0.44,Math.max(W,H)*0.42);
+    var pulse = 0.020+0.006*Math.sin(t*0.7);
+    g.addColorStop(0,'rgba(232,240,228,'+pulse.toFixed(3)+')');
+    g.addColorStop(1,'rgba(232,240,228,0)');
+    ctx.fillStyle=g;
+    ctx.fillRect(0,0,W,H);
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',size);
+  size(); draw();
+
+  var revs = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08, rootMargin:'0px 0px -6% 0px'});
+  revs.forEach(function(e){ io.observe(e); });
+
+  var hud=document.getElementById('hud'), items=[].slice.call(hud.querySelectorAll('b'));
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    hud.classList.toggle('on', y > window.innerHeight*0.55);
+    var p = y/(document.body.scrollHeight - window.innerHeight);
+    var idx = Math.min(4, Math.floor(p*5));
+    items.forEach(function(b,i){ b.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

@@ -626,6 +626,56 @@
     "hiRes": false
   },
   {
+    "id": "20261109-dunes",
+    "zhTitle": "砂之女",
+    "enTitle": "",
+    "year": "1964",
+    "imageUrl": "posters/20261109-dunes.jpg",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/4howTiqrfTJnFtBEvJ3sIXhihKi.jpg",
+    "title": "砂の女 (1964) - Posters — The Movie Database (TMDB)",
+    "hiRes": true
+  },
+  {
+    "id": "20261110-swing",
+    "zhTitle": "摇摆少女",
+    "enTitle": "",
+    "year": "2004",
+    "imageUrl": "posters/20261110-swing.jpg",
+    "remoteUrl": "https://image.tmdb.org/t/p/original/gcqm4yZM157THeZqFxmEuDC4IOo.jpg",
+    "title": "摇摆少女 (2004) - 海报 — The Movie Database (TMDB)",
+    "hiRes": true
+  },
+  {
+    "id": "20261111-mcmrl",
+    "zhTitle": "战场上的快乐圣诞",
+    "enTitle": "",
+    "year": "1983",
+    "imageUrl": "posters/20261111-mcmrl.jpg",
+    "remoteUrl": "https://www.themoviedb.org/t/p/original/ifbe8oHkoOmc6SppwYcszyKNiKs.jpg",
+    "title": "战场上的快乐圣诞 (1983) - 海报 — The Movie Database (TMDB)",
+    "hiRes": true
+  },
+  {
+    "id": "20261112-always",
+    "zhTitle": "永远的三丁目的夕阳",
+    "enTitle": "",
+    "year": "2005",
+    "imageUrl": "posters/20261112-always.jpg",
+    "remoteUrl": "https://picx.zhimg.com/v2-8d5de1b998f1dce197ec9229c254e509_r.jpg?source=2c26e567",
+    "title": "如何评价电影《永远的三丁目的夕阳》三部曲?",
+    "hiRes": false
+  },
+  {
+    "id": "20261113-tokikake",
+    "zhTitle": "穿越时空的少女",
+    "enTitle": "",
+    "year": "2006",
+    "imageUrl": "posters/20261113-tokikake.jpg",
+    "remoteUrl": "https://www.acgndog.com/wp-content/uploads/2020/03/daa3379a0756859593f2382972fe8d67.jpg",
+    "title": "《穿越时空的少女》百度网盘下载 – 次元狗动漫",
+    "hiRes": false
+  },
+  {
     "id": "20260427",
     "zhTitle": "辛 德 勒 的 名 单",
     "enTitle": "Schindler's List",

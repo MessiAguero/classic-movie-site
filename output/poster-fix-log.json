@@ -1,96 +1,39 @@
 {
-  "at": "2026-11-06T04:09:16.480Z",
+  "at": "2026-11-13T05:49:39.939Z",
   "dryRun": false,
-  "targetCount": 3,
-  "fixedCount": 3,
+  "targetCount": 1,
+  "fixedCount": 1,
   "failureCount": 0,
   "changes": [
     {
-      "id": "20261030-24eyes",
-      "zhTitle": "二十四只眼睛",
+      "id": "20261109-dunes",
+      "zhTitle": "砂之女",
       "before": {
-        "imageUrl": "posters/20261030-24eyes.jpg",
-        "dims": "300×450",
-        "status": "warn",
-        "issues": [
-          "low_resolution",
-          "untrusted_host"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20261030-24eyes.jpg",
-        "dims": "1200×1600",
-        "source": "baidu",
-        "url": "https://www.kfzimg.com/sw/kfz-cos/kfzimg/bddbaaac/768f37e8b7c9ee87_b.jpg",
-        "title": "《二十四只眼睛》电影宣传画册 剧照 海报"
-      }
-    },
-    {
-      "id": "20261104-twilight",
-      "zhTitle": "黄昏的清兵卫",
-      "before": {
-        "imageUrl": "posters/20261104-twilight.jpg",
-        "dims": "500×750",
-        "status": "warn",
-        "issues": [
-          "aggregator_host",
-          "identity_weak_evidence",
-          "visual_title_unverified"
-        ]
-      },
-      "after": {
-        "imageUrl": "posters/20261104-twilight.jpg",
-        "dims": "1000×1500",
-        "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/d4RHLArdADlrZEMkLfL6PbqAULw.jpg",
-        "title": "黄昏的清兵卫 (2002) — The Movie Database (TMDB)"
-      }
-    },
-    {
-      "id": "20261106-shallwe",
-      "zhTitle": "谈谈情，跳跳舞",
-      "before": {
-        "imageUrl": "posters/20261106-shallwe.jpg",
-        "dims": "342×489",
+        "imageUrl": "posters/20261109-dunes.jpg",
+        "dims": "595×842",
         "status": "error",
         "issues": [
-          "low_resolution",
-          "no_identity_signal",
+          "identity_unverified",
           "visual_title_unverified"
         ]
       },
       "after": {
-        "imageUrl": "posters/20261106-shallwe.jpg",
-        "dims": "511×720",
-        "source": "ddg",
-        "url": "https://d3tvwjfge35btc.cloudfront.net/Assets/GalleryImage/00/412/L_g0026441200.jpg",
-        "title": "YESASIA : 谈谈情 跳跳舞 (1996) (DVD) (双碟版) (第二版) (香港版) DVD - 草刈民代, 役所广司 - 日本影 ..."
+        "imageUrl": "posters/20261109-dunes.jpg",
+        "dims": "1915×2872",
+        "source": "bing",
+        "url": "https://image.tmdb.org/t/p/original/4howTiqrfTJnFtBEvJ3sIXhihKi.jpg",
+        "title": "砂の女 (1964) - Posters — The Movie Database (TMDB)"
       }
     }
   ],
   "failures": [],
   "recheck": [
     {
-      "id": "20261030-24eyes",
-      "status": "warn",
-      "dims": "1200×1600",
+      "id": "20261109-dunes",
+      "status": "error",
+      "dims": "1915×2872",
       "issues": [
-        "untrusted_host",
-        "visual_title_unverified"
-      ]
-    },
-    {
-      "id": "20261104-twilight",
-      "status": "ok",
-      "dims": "1000×1500",
-      "issues": []
-    },
-    {
-      "id": "20261106-shallwe",
-      "status": "warn",
-      "dims": "511×720",
-      "issues": [
-        "untrusted_host",
+        "identity_unverified",
         "visual_title_unverified"
       ]
     }

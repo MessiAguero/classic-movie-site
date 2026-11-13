@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>永远的三丁目的夕阳 · 日本电影专题 第 18 期</title>
+<meta name="description" content="山崎贵《永远的三丁目的夕阳》(2005)：剧情梗概、人物冲突、六处亮点与观看理由。全程不剧透。">
+<style>
+:root{
+  --bg:#0a0705; --bg2:#100b07; --panel:#16100a;
+  --ink:#f0e7d4; --dim:#a2957f; --dim2:#6a6053;
+  --line:rgba(240,231,212,.13); --line2:rgba(240,231,212,.055);
+  --amber:#c9763c; --amber2:#e8ac6e;
+  --aqua:#7d9fa6; --aqua2:#aec7c9;
+  --seal:#a5382a; --seal2:#c25a4a;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Didot","Optima","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.95;letter-spacing:.012em;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(201,118,60,.34);color:#fff}
+a{color:inherit}
+.wrap{width:min(1160px,calc(100% - 96px));margin:0 auto}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:max(100vh,880px);overflow:hidden;background:#070504}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(6,4,3,.97) 0%,rgba(6,4,3,.93) 15%,rgba(6,4,3,.78) 27%,rgba(6,4,3,.46) 40%,rgba(6,4,3,.16) 52%,rgba(6,4,3,0) 66%),
+    linear-gradient(to bottom,rgba(6,4,3,.74) 0%,rgba(6,4,3,.14) 24%,rgba(6,4,3,0) 48%,rgba(6,4,3,.36) 76%,rgba(6,4,3,1) 100%)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.notice{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:11px;
+  letter-spacing:.14em;color:rgba(240,231,212,.66);border:1px solid rgba(240,231,212,.16);
+  border-radius:999px;padding:7px 16px;margin-bottom:34px;background:rgba(6,4,3,.5);backdrop-filter:blur(4px)}
+.notice .dot{width:5px;height:5px;border-radius:50%;background:var(--seal2);box-shadow:0 0 8px rgba(194,90,74,.8)}
+.hero-in{position:relative;z-index:3;width:min(1160px,calc(100% - 96px));margin:0 auto;
+  min-height:max(100vh,880px);display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:10.5vh;padding-bottom:64px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;
+  letter-spacing:.34em;color:var(--amber2);text-transform:uppercase}
+.eyebrow i{display:block;width:52px;height:1px;background:var(--amber2);opacity:.7}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,5.2vw,72px);line-height:1.16;
+  letter-spacing:.09em;margin:26px 0 0;color:#f8f2e2;white-space:nowrap;
+  text-shadow:0 6px 60px rgba(0,0,0,.85)}
+.latin{margin:20px 0 0;font-family:var(--latin);font-size:12px;letter-spacing:.26em;
+  color:rgba(240,231,212,.58);text-transform:uppercase}
+.latin + .latin{margin-top:7px;font-size:11px;letter-spacing:.18em;color:rgba(240,231,212,.42)}
+.hero-sub{margin:28px 0 0;max-width:24em;font-size:16px;line-height:2.05;color:rgba(240,231,212,.84)}
+.hero-sub em{font-style:normal;color:#fbf4e2;border-bottom:1px solid rgba(201,118,60,.72);padding-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:560px}
+.chip{font-size:11.5px;letter-spacing:.06em;color:rgba(240,231,212,.78);border:1px solid var(--line);
+  border-radius:999px;padding:6px 14px;background:rgba(6,4,3,.55);backdrop-filter:blur(6px)}
+.chip b{color:#fbf4e2;font-weight:500}
+.scroll-hint{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:4;
+  font-family:var(--latin);font-size:9.5px;letter-spacing:.42em;color:rgba(240,231,212,.4);
+  display:flex;flex-direction:column;align-items:center;gap:9px}
+.scroll-hint span{display:block;width:1px;height:32px;background:linear-gradient(to bottom,rgba(240,231,212,.44),transparent)}
+
+/* ---------- sections ---------- */
+.sec{padding:112px 0;border-top:1px solid var(--line2)}
+.sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:52px}
+.sec-head .no{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--amber2);opacity:.92}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.1vw,36px);
+  letter-spacing:.05em;margin:0;color:#f6efdd;flex:1 1 auto}
+.sec-head .kicker{font-family:var(--latin);font-size:10.5px;letter-spacing:.3em;
+  color:var(--dim2);text-transform:uppercase;margin:0}
+.note{font-size:13px;color:var(--dim);line-height:1.9}
+
+/* ---------- 01 lede ---------- */
+.intro{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:64px;align-items:start}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:2.2;color:#ded6c4}
+.lede p{margin:0 0 22px}
+.lede p:first-child::first-letter{float:left;font-size:5.1em;line-height:.82;padding:.06em .14em 0 0;
+  color:#fbf4e2;font-weight:400}
+.lede strong{font-weight:500;color:#fbf4e2}
+.lede .dash{color:var(--dim);font-size:15px}
+.glance{border:1px solid var(--line);background:linear-gradient(160deg,rgba(22,16,10,.95),rgba(8,6,4,.95));
+  padding:30px 28px}
+.glance h3{font-family:var(--latin);font-size:10px;letter-spacing:.34em;color:var(--amber2);
+  margin:0 0 22px;font-weight:400;text-transform:uppercase}
+.glance dl{margin:0;display:grid;gap:13px}
+.glance div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line2)}
+.glance div:last-child{border-bottom:0;padding-bottom:0}
+.glance dt{font-size:11.5px;color:var(--dim2);letter-spacing:.1em}
+.glance dd{margin:0;font-size:13.5px;color:#d6cdb9;line-height:1.7}
+.glance dd b{color:#fbf4e2;font-weight:500}
+.acts{margin-top:74px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.act{background:var(--bg);padding:34px 30px}
+.act .t{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--amber2);
+  opacity:.92;margin-bottom:14px}
+.act h4{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f6efdd;letter-spacing:.04em}
+.act p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 02 poster ---------- */
+.poster-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);gap:70px;align-items:start}
+.poster-frame{border:1px solid var(--line);padding:14px;background:#080604;
+  box-shadow:0 40px 90px -50px #000, inset 0 0 0 1px rgba(0,0,0,.6)}
+.poster-svg{display:block;width:100%;height:auto}
+.pcap{margin:16px 2px 0;font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--dim2)}
+.pnotes{display:grid;gap:28px}
+.pnote{border-left:1px solid var(--line);padding:2px 0 2px 24px}
+.pnote .n{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--amber2);opacity:.88}
+.pnote h4{margin:8px 0 10px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f6efdd}
+.pnote p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 03 spec ---------- */
+.spec{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.spec div{background:var(--bg);padding:22px 20px;min-height:92px}
+.spec dt{font-size:10.5px;letter-spacing:.14em;color:var(--dim2);margin-bottom:8px}
+.spec dd{margin:0;font-size:13.5px;color:#dbd2be;line-height:1.65}
+.spec dd small{display:block;font-size:11px;color:var(--dim2);margin-top:4px;letter-spacing:.02em}
+.spec .wide{grid-column:1/-1;min-height:0;background:linear-gradient(120deg,rgba(201,118,60,.16),rgba(10,7,5,.92) 48%)}
+.spec .wide dd{font-family:var(--serif);font-size:17px;color:#fbf4e2;letter-spacing:.05em}
+
+/* ---------- 04 scores ---------- */
+.scores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.sc{background:var(--bg);padding:32px 30px}
+.sc .src{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--dim2);text-transform:uppercase}
+.sc .val{font-family:var(--latin);font-size:52px;line-height:1;margin:16px 0 8px;color:#fbf4e2}
+.sc .val small{font-size:15px;color:var(--dim);letter-spacing:.04em;margin-left:6px}
+.sc .meta{font-size:12.5px;color:var(--dim);line-height:1.8}
+.sc.hi .val{color:#f0c191}
+.sc.abs .val{font-size:30px;letter-spacing:.06em;color:var(--amber2);line-height:1.3}
+.caliber{margin:52px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.caliber li{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line2);
+  font-size:13.5px;line-height:1.9;color:var(--dim)}
+.caliber li b{color:#f2ebd8;font-weight:500}
+.caliber li i{font-family:var(--latin);font-style:normal;font-size:10.5px;letter-spacing:.2em;color:var(--amber2);opacity:.82;padding-top:4px}
+
+/* ---------- 05 people ---------- */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.person{background:var(--bg);padding:30px 28px}
+.person .role{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--amber2);opacity:.82}
+.person h4{margin:12px 0 4px;font-family:var(--serif);font-weight:400;font-size:20px;color:#fbf4e2;letter-spacing:.04em}
+.person .actor{font-size:11.5px;color:var(--dim2);letter-spacing:.08em;margin-bottom:18px}
+.person p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.person p span{display:block;margin-top:9px;color:#d8cfba}
+.person p span b{color:var(--amber2);font-weight:400;font-size:11.5px;letter-spacing:.08em;margin-right:6px}
+.person.thing{background:linear-gradient(150deg,rgba(201,118,60,.2),rgba(9,7,5,.96) 62%)}
+.person.thing h4{color:#f0c191}
+
+/* ---------- 06 conflicts ---------- */
+.conflicts{display:grid;gap:0;border-top:1px solid var(--line)}
+.cf{display:grid;grid-template-columns:172px minmax(0,1fr);gap:36px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line2)}
+.cf h4{margin:0;font-family:var(--serif);font-weight:400;font-size:17px;color:#fbf4e2;letter-spacing:.04em;line-height:1.6}
+.cf h4 i{display:block;font-family:var(--latin);font-style:normal;font-size:9.5px;letter-spacing:.26em;
+  color:var(--amber2);opacity:.82;margin-bottom:8px}
+.cf p{margin:0;font-size:13.8px;line-height:2;color:var(--dim)}
+.cf p em{font-style:normal;color:#ece3cf}
+
+/* ---------- 07 awards ---------- */
+.awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.award{background:var(--bg);padding:28px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.award .yr{font-family:var(--latin);font-size:11px;letter-spacing:.14em;color:var(--dim2);padding-top:3px}
+.award h4{margin:0 0 6px;font-size:14.5px;font-weight:500;color:#f6efdd;letter-spacing:.02em;line-height:1.6}
+.award p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.78}
+.award.gold{background:linear-gradient(120deg,rgba(201,118,60,.22),rgba(10,7,5,.93) 62%);border-left:2px solid rgba(201,118,60,.52)}
+.award.gold h4{color:#f0c191}
+.award.wide{grid-column:1/-1}
+
+/* ---------- 08 lineage ---------- */
+.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px}
+.ln{position:relative;padding:0 0 40px 40px}
+.ln:last-child{padding-bottom:0}
+.ln::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--aqua2)}
+.ln.now::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 4px rgba(165,56,42,.26)}
+.ln .yr{font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--dim2)}
+.ln h4{margin:6px 0 6px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f6efdd;letter-spacing:.03em}
+.ln p{margin:0;font-size:13px;color:var(--dim);line-height:1.85}
+.ln.now h4{color:#f0c191}
+
+/* ---------- 09 six grid ---------- */
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.g6{background:var(--bg);padding:32px 28px;min-height:200px}
+.g6 .n{font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--amber2);opacity:.88}
+.g6 h4{margin:14px 0 10px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f6efdd;letter-spacing:.03em;line-height:1.6}
+.g6 p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 10 why ---------- */
+.why{display:grid;gap:0;max-width:820px}
+.why article{padding:0 0 38px}
+.why article + article{border-top:1px solid var(--line2);padding-top:38px}
+.why h3{margin:0 0 14px;font-family:var(--serif);font-weight:400;font-size:21px;color:#fbf4e2;letter-spacing:.04em}
+.why p{margin:0;font-size:14.5px;line-height:2.05;color:#c3b9a4}
+.why p + p{margin-top:14px}
+.why strong{color:#f6efdd;font-weight:500}
+.why em{font-style:normal;color:#f0c191}
+
+/* ---------- 11 tips ---------- */
+.tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.tip{background:var(--bg);padding:30px 24px}
+.tip .k{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--amber2);opacity:.88}
+.tip h4{margin:12px 0 10px;font-size:15.5px;font-weight:500;color:#f6efdd}
+.tip p{margin:0;font-size:12.8px;line-height:1.95;color:var(--dim)}
+
+/* ---------- verdict ---------- */
+.verdict{padding:150px 0 120px;border-top:1px solid var(--line2);position:relative;overflow:hidden}
+.verdict .tag{font-family:var(--latin);font-size:9.5px;letter-spacing:.32em;color:var(--dim2);margin-bottom:34px}
+.verdict .q{font-family:var(--serif);font-size:clamp(24px,3.2vw,37px);line-height:1.74;letter-spacing:.06em;
+  color:#fbf4e2;margin:0;max-width:24em}
+.verdict .q span{display:block}
+.verdict .src{margin-top:36px;font-size:12px;color:var(--dim2);letter-spacing:.04em}
+.stamp{position:absolute;right:74px;bottom:82px;width:136px;height:136px;border:1px solid rgba(165,56,42,.62);
+  border-radius:50%;display:grid;place-items:center;color:rgba(200,96,82,.96);text-align:center;
+  transform:rotate(-7deg);box-shadow:inset 0 0 0 4px rgba(165,56,42,.1)}
+.stamp div{display:grid;gap:5px;justify-items:center}
+.stamp span{font-family:var(--latin);font-size:8.2px;letter-spacing:.14em;opacity:.9}
+.stamp b{font-family:var(--serif);font-size:21px;letter-spacing:.12em;font-weight:400;line-height:1.1;
+  padding:5px 0;border-top:1px solid rgba(165,56,42,.38);border-bottom:1px solid rgba(165,56,42,.38)}
+
+footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
+footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
+
+/* ---------- HUD ---------- */
+#hud{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
+  opacity:0;transition:opacity .7s ease;pointer-events:none}
+#hud.on{opacity:1}
+#hud b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:13px;
+  color:var(--dim2);letter-spacing:.1em;transition:color .5s}
+#hud b i{display:block;width:16px;height:1px;background:var(--dim2);transition:all .5s}
+#hud b.on{color:#fbf4e2}
+#hud b.on i{width:30px;background:var(--amber2)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1380px){#hud{display:none}}
+@media (max-width:1000px){
+  .intro{grid-template-columns:1fr;gap:48px}
+  .poster-grid{grid-template-columns:1fr;gap:46px}
+  .poster-frame{max-width:500px}
+  .scores,.awards{grid-template-columns:1fr}
+  .spec{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .acts{grid-template-columns:1fr}
+  #hud{display:none}
+}
+@media (max-width:760px){
+  .hero-svg{transform:translateY(11vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(6,4,3,.97) 0%,rgba(6,4,3,.95) 24%,rgba(6,4,3,.88) 38%,rgba(6,4,3,.66) 50%,rgba(6,4,3,.26) 62%,rgba(6,4,3,.14) 72%,rgba(6,4,3,.52) 86%,rgba(6,4,3,.97) 100%)}
+  body{font-size:15px;line-height:1.9}
+  .wrap,.hero-in{width:calc(100% - 40px)}
+  .hero{min-height:max(100vh,740px)}
+  .hero-in{min-height:max(100vh,740px);padding-top:8vh;padding-bottom:100px}
+  h1{font-size:clamp(25px,7.6vw,50px);letter-spacing:.03em}
+  .hero-sub{font-size:14.5px;line-height:1.95;max-width:26em}
+  .sec{padding:76px 0}
+  .sec-head{margin-bottom:36px;gap:12px}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spec dd{font-size:12.4px}
+  .spec dd small{font-size:10.4px}
+  .people,.grid6,.tips{grid-template-columns:1fr}
+  .cf{grid-template-columns:1fr;gap:12px}
+  .lede{font-size:16px;line-height:2.05}
+  .sc .val{font-size:44px}
+  .verdict{padding:96px 0 88px}
+  .stamp{position:static;margin-top:48px;transform:rotate(-4deg)}
+  .chips{max-width:100%;padding-top:0;margin-top:26px}
+  footer{padding-bottom:120px}
+  .scroll-hint{bottom:14px;left:auto;right:12px;transform:none}
+  .chip{font-size:11px;padding:5px 11px;letter-spacing:.03em}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .scroll-hint{left:auto;right:8px;transform:none;bottom:26px}
+  .hero-svg{transform:translateY(4vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(6,4,3,.97) 0%,rgba(6,4,3,.94) 26%,rgba(6,4,3,.82) 40%,rgba(6,4,3,.5) 52%,rgba(6,4,3,.18) 64%,rgba(6,4,3,.1) 76%,rgba(6,4,3,.44) 88%,rgba(6,4,3,.98) 100%),
+    linear-gradient(to right,rgba(6,4,3,.62) 0%,rgba(6,4,3,.22) 26%,rgba(6,4,3,0) 46%)}
+}
+@media (min-width:1001px) and (max-height:860px){
+  .hero,.hero-in{min-height:max(100vh,760px)}
+  .scroll-hint{left:auto;right:22px;transform:none}
+}
+@media (max-width:520px){
+  .chip:nth-child(5){display:none}
+}
+@media (max-width:420px){
+  .notice{margin-bottom:22px;font-size:10.5px;padding:6px 13px}
+  h1{font-size:clamp(23px,7.2vw,40px);margin-top:20px}
+  .latin{margin-top:14px;font-size:10px;letter-spacing:.18em}
+  .latin + .latin{font-size:9px;letter-spacing:.12em}
+  .hero-sub{margin-top:22px;font-size:13.8px}
+}
+@media (max-width:380px){
+  .wrap,.hero-in{width:calc(100% - 32px)}
+  .chip{font-size:10.5px;padding:5px 11px}
+  .glance{padding:24px 20px}
+  h1{font-size:clamp(22px,7vw,38px)}
+}
+@media (max-width:400px) and (max-height:680px){
+  .scroll-hint{display:none}
+}
+@media (max-width:760px) and (max-height:700px){
+  .hero{min-height:100vh}
+  .hero-in{min-height:100vh;padding-top:6vh}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<svg class="hero-svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+<defs>
+<linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#070504"/><stop offset=".16" stop-color="#0c0806"/>
+<stop offset=".28" stop-color="#140c08"/><stop offset=".36" stop-color="#1c1009"/>
+<stop offset=".42" stop-color="#28160a"/><stop offset=".48" stop-color="#38200e"/>
+<stop offset=".55" stop-color="#4e2b14"/><stop offset=".62" stop-color="#6d3e1e"/>
+<stop offset=".67" stop-color="#87512b"/><stop offset=".72" stop-color="#a4663a"/>
+<stop offset=".78" stop-color="#b87544"/><stop offset=".86" stop-color="#c98350"/>
+</linearGradient>
+<linearGradient id="farG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#3c2310" stop-opacity=".92"/><stop offset="1" stop-color="#200f07"/>
+</linearGradient>
+<linearGradient id="nearG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#22120a"/><stop offset="1" stop-color="#100804"/>
+</linearGradient>
+<linearGradient id="roadG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#9c6034"/><stop offset=".18" stop-color="#6b3f22"/>
+<stop offset=".6" stop-color="#2e1b10"/><stop offset="1" stop-color="#150d07"/>
+</linearGradient>
+<linearGradient id="floorG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#2a1a0e" stop-opacity="0"/><stop offset=".18" stop-color="#1d1209" stop-opacity=".84"/>
+<stop offset=".55" stop-color="#0e0906" stop-opacity=".97"/><stop offset="1" stop-color="#070403"/>
+</linearGradient>
+<linearGradient id="wallG" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#070403"/><stop offset=".55" stop-color="#0d0805"/><stop offset="1" stop-color="#1c1109"/>
+</linearGradient>
+<linearGradient id="wallR" x1="1" y1="0" x2="0" y2="0">
+<stop offset="0" stop-color="#070403"/><stop offset=".55" stop-color="#0c0705"/><stop offset="1" stop-color="#1e1209"/>
+</linearGradient>
+<linearGradient id="beamG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#090503"/><stop offset=".7" stop-color="#0d0805"/><stop offset="1" stop-color="#1c1108"/>
+</linearGradient>
+<radialGradient id="sunDisc" cx=".44" cy=".42" r=".62">
+<stop offset="0" stop-color="#ffeccb"/><stop offset=".5" stop-color="#ffd79b"/>
+<stop offset=".84" stop-color="#f7bc7a"/><stop offset="1" stop-color="#e8a262"/>
+</radialGradient>
+<radialGradient id="sunGlow" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#ffe0ac" stop-opacity=".6"/><stop offset=".22" stop-color="#f7bd7c" stop-opacity=".26"/>
+<stop offset=".55" stop-color="#d88b46" stop-opacity=".08"/><stop offset="1" stop-color="#a8642e" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="hzGlow" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#cf8b4c" stop-opacity=".44"/><stop offset=".45" stop-color="#9a6236" stop-opacity=".18"/>
+<stop offset="1" stop-color="#5e3c22" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="bulbG" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#ffdca8" stop-opacity=".55"/><stop offset=".2" stop-color="#f0ae68" stop-opacity=".22"/>
+<stop offset=".55" stop-color="#b87838" stop-opacity=".07"/><stop offset="1" stop-color="#8a5424" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="poolG" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#ffcf90" stop-opacity=".3"/><stop offset=".45" stop-color="#cf8c42" stop-opacity=".1"/>
+<stop offset="1" stop-color="#a86a2e" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="spillG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#f0b070" stop-opacity=".3"/><stop offset=".4" stop-color="#c07c3c" stop-opacity=".1"/>
+<stop offset="1" stop-color="#8a5424" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="vigG" cx=".54" cy=".5" r=".84">
+<stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".55" stop-color="#060403" stop-opacity=".06"/>
+<stop offset=".82" stop-color="#060403" stop-opacity=".42"/><stop offset="1" stop-color="#050302" stop-opacity=".88"/>
+</radialGradient>
+<filter id="b4"><feGaussianBlur stdDeviation="4"/></filter>
+<filter id="b10"><feGaussianBlur stdDeviation="10"/></filter>
+<filter id="b24"><feGaussianBlur stdDeviation="24"/></filter>
+</defs>
+
+<rect width="1600" height="1000" fill="url(#skyG)"/>
+<ellipse cx="740" cy="800" rx="860" ry="190" fill="url(#hzGlow)"/>
+
+<g id="sun">
+<circle cx="700" cy="618" r="262" fill="url(#sunGlow)"/>
+<circle cx="700" cy="618" r="46" fill="url(#sunDisc)" opacity=".97"/>
+<circle cx="700" cy="618" r="46" fill="none" stroke="#fff3d8" stroke-width="1.6" opacity=".3"/>
+</g>
+
+<g id="clouds" opacity=".6">
+<path d="M300 452 C 440 440, 600 466, 760 450 C 890 438, 1040 460, 1190 446" fill="none" stroke="#cf8e50" stroke-width="16" opacity=".06" filter="url(#b10)"/>
+<path d="M340 536 C 500 524, 700 550, 900 536 C 1040 526, 1170 546, 1300 532" fill="none" stroke="#e5a468" stroke-width="20" opacity=".08" filter="url(#b10)"/>
+<path d="M330 604 C 480 594, 660 614, 850 602 C 990 594, 1120 610, 1280 600" fill="none" stroke="#f0b878" stroke-width="14" opacity=".1" filter="url(#b10)"/>
+</g>
+
+<!-- 东京塔：1958 年，钢架还差一截 -->
+<g id="tower">
+<g fill="none" stroke="#e8ab70" stroke-linecap="round">
+<g opacity=".74">
+<path d="M775 790 C 766 706, 800 596, 832 520" stroke-width="3.6"/>
+<path d="M947 790 C 956 706, 922 596, 890 520" stroke-width="3.6"/>
+<path d="M832 520 C 841 458, 847 398, 849 346" stroke-width="2.6"/>
+<path d="M890 520 C 881 458, 875 398, 873 346" stroke-width="2.6"/>
+</g>
+<g opacity=".44" stroke-width="1.25">
+<path d="M774 780 C 853 777, 869 777, 948 780"/>
+<path d="M774 740 C 853 737, 869 737, 948 740"/>
+<path d="M779 700 C 853 697, 869 697, 943 700"/>
+<path d="M786 660 C 853 657, 869 657, 936 660"/>
+<path d="M797 620 C 853 617, 869 617, 925 620"/>
+<path d="M809 580 C 853 577, 869 577, 913 580"/>
+<path d="M824 540 C 853 537, 869 537, 898 540"/>
+<path d="M832 520 C 866 517, 856 517, 890 520"/>
+</g>
+<g opacity=".4" stroke-width="1.15">
+<path d="M837 480 C 857 478, 865 478, 885 480"/>
+<path d="M844 420 C 857 418, 865 418, 878 420"/>
+<path d="M848 370 C 857 368, 865 368, 874 370"/>
+</g>
+<g opacity=".3" stroke-width=".95">
+<path d="M774 780 L 948 740"/>
+<path d="M948 780 L 774 740"/>
+<path d="M774 740 L 943 700"/>
+<path d="M948 740 L 779 700"/>
+<path d="M779 700 L 936 660"/>
+<path d="M943 700 L 786 660"/>
+<path d="M786 660 L 925 620"/>
+<path d="M936 660 L 797 620"/>
+<path d="M797 620 L 913 580"/>
+<path d="M925 620 L 809 580"/>
+<path d="M809 580 L 898 540"/>
+<path d="M913 580 L 824 540"/>
+<path d="M824 540 L 890 520"/>
+<path d="M898 540 L 832 520"/>
+<path d="M837 480 L 878 420"/>
+<path d="M885 480 L 844 420"/>
+<path d="M844 420 L 874 370"/>
+<path d="M878 420 L 848 370"/>
+<path d="M849 346 L 873 370"/><path d="M873 346 L 849 370"/>
+</g>
+<g opacity=".55" stroke-width="1.35">
+<path d="M850 346 L 862 212"/><path d="M872 346 L 862 212"/>
+<path d="M851 306 H 873"/><path d="M854 270 H 870"/><path d="M856 240 H 868"/>
+<path d="M846 346 H 876"/>
+</g>
+<g opacity=".4" stroke-width="1.5">
+<path d="M836 346 L 836 324"/><path d="M846 346 L 846 314"/>
+<path d="M876 346 L 876 320"/><path d="M886 346 L 886 330"/>
+</g>
+</g>
+<!-- 主展望台 -->
+<g id="deck">
+<rect x="830" y="506" width="62" height="28" fill="#22130a" opacity=".96"/>
+<rect x="830" y="506" width="62" height="1.8" fill="#f0b87c" opacity=".5"/>
+<rect x="830" y="532" width="62" height="1.6" fill="#cf8c4c" opacity=".34"/>
+<g fill="#ffc98c" opacity=".55">
+<rect x="836" y="515" width="5" height="6"/><rect x="846" y="515" width="5" height="6"/>
+<rect x="856" y="515" width="5" height="6"/><rect x="866" y="515" width="5" height="6"/>
+<rect x="876" y="515" width="5" height="6"/>
+</g>
+</g>
+<g id="deck2" opacity=".55">
+<rect x="842" y="330" width="38" height="16" fill="#22130a"/>
+<rect x="842" y="330" width="38" height="1.2" fill="#f0b87c" opacity=".55"/>
+</g>
+</g>
+
+<!-- 远景街区 -->
+<g id="far" fill="url(#farG)">
+<path d="M324 790 L324 706 L372 706 L372 674 L470 674 L470 706 L520 706 L520 730 L596 730 L596 694 L650 694 L650 664 L742 664 L742 704 L800 704 L800 676 L870 676 L870 710 L930 710 L930 680 L1010 680 L1010 704 L1078 704 L1078 734 L1150 734 L1150 696 L1220 696 L1220 666 L1300 666 L1300 704 L1316 704 L1316 790 Z"/>
+</g>
+<g id="near" fill="url(#nearG)">
+<path d="M324 790 L324 746 L368 746 L368 710 L444 710 L444 746 L500 746 L500 766 L584 766 L584 728 L660 728 L660 752 L742 752 L742 720 L806 720 L806 756 L884 756 L884 730 L962 730 L962 758 L1044 758 L1044 732 L1122 732 L1122 762 L1200 762 L1200 742 L1270 742 L1270 768 L1316 768 L1316 790 Z"/>
+</g>
+<g id="roofs" fill="#1a0f08">
+<path d="M366 712 L408 686 L450 712 Z"/><path d="M576 730 L622 702 L668 730 Z"/>
+<path d="M796 722 L844 692 L892 722 Z"/><path d="M1036 734 L1090 704 L1144 734 Z"/>
+<rect x="600" y="668" width="10" height="42"/><rect x="1050" y="676" width="9" height="38"/>
+</g>
+<g id="wins" fill="#f2b878">
+<rect x="392" y="720" width="14" height="12" opacity=".55"/><rect x="430" y="726" width="12" height="10" opacity=".28"/>
+<rect x="616" y="736" width="14" height="12" opacity=".48"/><rect x="676" y="740" width="12" height="10" opacity=".22"/>
+<rect x="838" y="730" width="14" height="12" opacity=".4"/><rect x="1074" y="740" width="14" height="12" opacity=".32"/>
+<rect x="1232" y="748" width="14" height="12" opacity=".36"/><rect x="368" y="752" width="12" height="10" opacity=".24"/>
+<rect x="508" y="748" width="12" height="10" opacity=".3"/><rect x="956" y="748" width="12" height="10" opacity=".26"/>
+</g>
+
+<!-- 路面 -->
+<rect x="324" y="788" width="992" height="46" fill="url(#roadG)"/>
+<path d="M324 789 H1316" stroke="#d9955a" stroke-width="1.6" opacity=".34"/>
+
+<!-- 电线杆与电线 -->
+<g id="poles" stroke="#150d07" stroke-width="5.5" fill="none">
+<path d="M424 790 L424 478"/><path d="M1226 790 L1226 462"/>
+<path d="M400 500 H448"/><path d="M404 526 H444"/>
+<path d="M1202 484 H1250"/><path d="M1206 510 H1246"/>
+</g>
+<g id="wires" stroke="#c08850" stroke-width=".9" fill="none" opacity=".32">
+<path d="M324 492 C 374 512, 402 514, 424 500 C 470 512, 700 520, 940 512 C 1080 508, 1178 494, 1226 484 C 1258 494, 1290 496, 1316 492"/>
+<path d="M324 520 C 374 540, 402 542, 424 526 C 476 540, 700 548, 940 540 C 1080 536, 1178 520, 1224 510 C 1258 520, 1290 522, 1316 518"/>
+<path d="M324 548 C 374 566, 402 568, 422 552 C 476 566, 700 574, 940 566 C 1080 562, 1178 546, 1222 536 C 1258 546, 1290 548, 1316 544"/>
+</g>
+
+<!-- 车间内景：左墙 / 右墙 / 顶梁 / 地面 -->
+<rect x="0" y="0" width="326" height="1000" fill="url(#wallG)"/>
+<rect x="1314" y="0" width="286" height="1000" fill="url(#wallR)"/>
+<rect x="0" y="0" width="1600" height="170" fill="url(#beamG)"/>
+<rect x="324" y="828" width="992" height="172" fill="url(#floorG)"/>
+<rect x="324" y="828" width="992" height="64" fill="url(#spillG)"/>
+<path d="M325 170 V828" stroke="#e0a068" stroke-width="1.8" opacity=".3"/>
+<path d="M1315 170 V828" stroke="#d9955a" stroke-width="1.6" opacity=".24"/>
+<path d="M326 171 H1314" stroke="#d9955a" stroke-width="1.4" opacity=".22"/>
+<!-- 左墙木纹 -->
+<g stroke="#000" stroke-width="1" opacity=".5">
+<path d="M0 300 H326 M0 560 H326"/>
+</g>
+<g stroke="#3a2410" stroke-width=".8" opacity=".3">
+<path d="M0 301 H326 M0 561 H326"/>
+</g>
+
+<!-- 左墙：吊灯、日历、工作台 -->
+<g id="leftwall">
+<ellipse cx="120" cy="430" rx="230" ry="330" fill="url(#bulbG)" opacity=".8"/>
+<rect x="0" y="800" width="326" height="20" fill="#1b1109"/>
+<rect x="0" y="800" width="326" height="2.6" fill="#d9955a" opacity=".34"/>
+<path d="M44 820 V1000 M262 820 V1000" stroke="#140c06" stroke-width="15"/>
+<path d="M44 822 V1000 M262 822 V1000" stroke="#3a2410" stroke-width="1" opacity=".3"/>
+<path d="M84 800 L84 774 L106 774 L106 800 Z" fill="#221509"/>
+<path d="M84 774 L106 774" stroke="#d9955a" stroke-width="1" opacity=".3"/>
+<path d="M140 794 L200 794" stroke="#2a1a0c" stroke-width="5"/>
+<path d="M170 794 L170 768" stroke="#2a1a0c" stroke-width="4.5"/>
+<path d="M162 768 L178 768" stroke="#2a1a0c" stroke-width="3"/>
+</g>
+
+<!-- 门口地上的轮胎堆 -->
+<g id="gear">
+<ellipse cx="1214" cy="884" rx="66" ry="17" fill="#0b0704" opacity=".85"/>
+<ellipse cx="1214" cy="868" rx="64" ry="18" fill="#150d07"/>
+<ellipse cx="1214" cy="868" rx="64" ry="18" fill="none" stroke="#d9955a" stroke-width="1" opacity=".22"/>
+<ellipse cx="1214" cy="868" rx="31" ry="8.5" fill="#080503"/>
+<ellipse cx="1214" cy="850" rx="60" ry="17" fill="#1a1109"/>
+<ellipse cx="1214" cy="850" rx="60" ry="17" fill="none" stroke="#e0a068" stroke-width="1" opacity=".26"/>
+<ellipse cx="1214" cy="850" rx="29" ry="8" fill="#0a0604"/>
+<ellipse cx="1214" cy="833" rx="55" ry="15.5" fill="#1e140b"/>
+<ellipse cx="1214" cy="833" rx="55" ry="15.5" fill="none" stroke="#e8ac74" stroke-width="1" opacity=".3"/>
+<ellipse cx="1214" cy="833" rx="26" ry="7" fill="#0a0604"/>
+</g>
+
+<ellipse cx="780" cy="902" rx="440" ry="78" fill="url(#poolG)"/>
+<ellipse cx="150" cy="890" rx="180" ry="72" fill="url(#poolG)" opacity=".38"/>
+
+<rect width="1600" height="1000" fill="url(#vigG)"/>
+</svg>
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+
+<div class="hero-in">
+  <div class="notice"><span class="dot"></span>全程不剧透 · 梗概止于「特技」那一栏</div>
+  <div class="eyebrow"><i></i>Japanese Cinema · No.18</div>
+  <h1>永远的三丁目的夕阳</h1>
+  <p class="latin">ALWAYS 三丁目の夕日</p>
+  <p class="latin">Always: Sunset on Third Street</p>
+  <p class="hero-sub">一九五八年，东京下町。一个青森来的女孩在履历表「特技」一栏写下「会修自行车」；招她的那家「铃木自动车」，把那一行看成了「会修汽车」。她就这么下了火车——<em>等着她的是一间三个人的修理店、一条叫夕日町的街，和一座每天都在长高的塔。</em></p>
+  <div class="chips">
+    <span class="chip"><b>2005</b> · 山崎贵</span>
+    <span class="chip">彩色 · <b>133 分钟</b></span>
+    <span class="chip">豆瓣 <b>8.8</b></span>
+    <span class="chip">学院奖 <b>12 项最优秀</b></span>
+    <span class="chip">旬报十佳 <b>第 2 位</b></span>
+  </div>
+</div>
+
+<div class="scroll-hint">SCROLL<span></span></div>
+</header>
+
+<nav id="hud" aria-hidden="true">
+  <b data-i="0"><i></i>街</b><b data-i="1"><i></i>车</b><b data-i="2"><i></i>人</b><b data-i="3"><i></i>塔</b><b data-i="4"><i></i>夕</b>
+</nav>
+
+<main>
+
+<section class="sec" id="s1" style="border-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">01</span><h2>剧情梗概</h2><p class="kicker">The Story</p></div>
+    <div class="intro">
+      <div class="lede reveal">
+        <p>昭和三十三年的春天，东京的樱花开过一轮，风里还有煤烟味。夕日町三丁目是一条窄街：木造的两层长屋，屋檐几乎碰在一起，晾衣绳横过天空，底下走着提水桶的人、追着三轮车跑的孩子。街上没有高楼，抬头能看到的地方，一直能看到天。</p>
+        <p>街的这一头是铃木自动车。招牌上写着「自動車」，实际上只有一间车间：一辆正在修的车、一堆旧轮胎、一个社长、一个老板娘、一个上小学四年级的儿子。社长铃木则文说话像锤子，砸下去有回声。店里一直缺人手，招牌挂出去很久，来的人没一个留下。</p>
+        <p>星野六子来了。她从青森坐上集体就职的火车，在上野站下车，拎一只帆布包，站在月台上先看了一圈这个城市。她以为自己要去的是大公司——招工启事上印的是「鈴木自動車」，听起来像一个能造出整辆车的地方。</p>
+        <p>到了才知道，那间工场只有三个人。她站在门口，把包往上提了提，没有哭，也没有走。</p>
+        <p>这场误会后来才被说清楚：她的履历表上，「特技」那一栏写的是<strong>「自転車の修理」</strong>。社长看漏了一个字，读成了「自動車の修理」。于是这个会修自行车、怕打针、被人一吼就躲进壁橱的女孩，被当成修车师傅招了进来。</p>
+        <p>街的另一头，是一间卖糖果和粗点心的铺子，叫茶川商店。店主茶川竜之介，东大文学部毕业，家里要他回去继承生意，他不肯，于是被断了关系。他写少年冒险小说，投芥川奖，投一次落一次。街坊在背后叫他「文学崩れ」——书读了，什么也没读成。</p>
+        <p>他有个习惯：每天傍晚把稿纸摊在柜台上写，写不下去就抬头看街。街对面是铃木家的车间，卷帘门开着，里面永远有人在敲什么东西。</p>
+        <p>某一天，居酒屋「やまふじ」的老板娘石崎ヒロミ，把一个男孩领到了他的店门口。男孩叫古行淳之介，母亲把他托给了ヒロミ，ヒロミ又在喝了酒之后，把他半推半塞地留在了这里。茶川不肯，孩子也不说话，两个人就这么僵着——僵到天黑，僵到孩子靠着柜台睡着了。</p>
+        <p>茶川后来才发现，这个孩子读过他写的书——那几本摆在书店最角落、积着灰、连他自己都不好意思提的冒险小说，一本都没落下。</p>
+        <p><strong>这个孩子读过他写的东西。而且全都读完了。</strong></p>
+        <p>于是这间铺子里多了一个人：一个写不出头的小说家，和一个不肯说自己在等谁的孩子。两个都不擅长说话的人，先是一起吃饭，再是一起修一盏不亮的灯，然后就把日子过成了日子。</p>
+        <p>街上的新鲜事一件接一件。有人家买了电视机，天线架到屋顶上，全街的孩子搬着小板凳去看；有人在说电冰箱，说洗衣机；还有人指着芝公园那边的方向说，要造一座塔，比埃菲尔铁塔还高。现在钢架子已经起到半空，每天傍晚从这条街望过去，它都比昨天高一点。</p>
+        <p class="dash">后面的事——那年冬天发生了什么、这条街后来怎么样、塔落成的那天他们在哪里——本页一个字都不写。</p>
+      </div>
+      <aside class="glance reveal">
+        <h3>At a Glance</h3>
+        <dl>
+          <div><dt>一句话</dt><dd>一条街，一间修车店，一间糖果铺，和一座每天都在长高的塔。</dd></div>
+          <div><dt>时间</dt><dd>昭和 33 年（1958）春</dd></div>
+          <div><dt>地点</dt><dd>东京下町「夕日町三丁目」<small>设定参照当时的港区爱宕一带</small></dd></div>
+          <div><dt>主角</dt><dd>星野六子，十八岁，从青森来</dd></div>
+          <div><dt>对手</dt><dd>不是人，是「日子」——以及每个人心里那句没说出口的等</dd></div>
+          <div><dt>空间</dt><dd>车间、糖果铺、居酒屋、街口，能望见塔的那一小段路</dd></div>
+          <div><dt>钱</dt><dd>一台电视机，要攒很久</dd></div>
+          <div><dt>声音</dt><dd>敲铁皮、收音机、蝉、远处打桩</dd></div>
+          <div><dt>情绪</dt><dd>暖，但暖里有一点点酸</dd></div>
+          <div><dt>关键词</dt><dd>特技 / 卷帘门 / 稿纸 / 塔 / 夕</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="acts">
+      <div class="act reveal"><div class="t">First · 下车</div><h4>一个字看错，一个女孩留了下来</h4><p>她本来只想干满一年就回青森。可是这条街有个毛病：它会让人不好意思走。</p></div>
+      <div class="act reveal"><div class="t">Second · 同桌</div><h4>一个写不出的作家，一个不肯说在等谁的孩子</h4><p>两个人都不问对方的过去。饭桌上多摆一双筷子，就是全部的协议。</p></div>
+      <div class="act reveal"><div class="t">Third · 长高</div><h4>塔每天高一点，日子每天少一点</h4><p>街上的东西都在变新：电视、冰箱、洗衣机。只有人是旧的，改不过来。</p></div>
+    </div>
+
+    <p class="note reveal" style="margin-top:34px">本页叙述止于「特技」那一栏被发现。此后冬天发生了什么、这条街后来怎么样、塔落成那天他们在哪里，一律不写。</p>
+  </div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">02</span><h2>概念海报</h2><p class="kicker">The Billboard</p></div>
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+<svg class="poster-svg" viewBox="0 0 520 760" role="img" aria-label="影院外墙上的一块手绘电影看板：木框画布上画着夕日、屋顶、在建的东京塔与一间开着卷帘门的小店，画布有裂缝与掉漆，下方手写片名">
+<defs>
+<linearGradient id="qWall" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#1b140e"/><stop offset=".5" stop-color="#15100b"/><stop offset="1" stop-color="#0c0805"/>
+</linearGradient>
+<linearGradient id="qWood" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#3a2717"/><stop offset=".45" stop-color="#2a1c11"/><stop offset="1" stop-color="#1d140c"/>
+</linearGradient>
+<linearGradient id="qSky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#22120c"/><stop offset=".34" stop-color="#432011"/>
+<stop offset=".62" stop-color="#7b3e1f"/><stop offset=".84" stop-color="#a55f2d"/>
+<stop offset="1" stop-color="#c07840"/>
+</linearGradient>
+<linearGradient id="qRoad" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#6d3a1e"/><stop offset=".3" stop-color="#42220f"/>
+<stop offset="1" stop-color="#1a0d07"/>
+</linearGradient>
+<linearGradient id="qGlow" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ffd9a2" stop-opacity=".5"/><stop offset="1" stop-color="#e0904a" stop-opacity=".1"/>
+</linearGradient>
+<radialGradient id="qSun" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#ffd9a2" stop-opacity=".55"/><stop offset=".4" stop-color="#eda45c" stop-opacity=".18"/>
+<stop offset="1" stop-color="#c97a38" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="qVig" cx=".5" cy=".46" r=".8">
+<stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".68" stop-color="#000" stop-opacity=".2"/>
+<stop offset="1" stop-color="#000" stop-opacity=".72"/>
+</radialGradient>
+<filter id="qB"><feGaussianBlur stdDeviation="7"/></filter>
+<filter id="qB2"><feGaussianBlur stdDeviation="1.6"/></filter>
+</defs>
+
+<rect width="520" height="760" fill="url(#qWall)"/>
+<g opacity=".22" stroke="#000" stroke-width="1.2">
+<path d="M0 158 H520 M0 402 H520 M0 612 H520"/>
+</g>
+<g opacity=".12" fill="#3f2c1a">
+<ellipse cx="60" cy="300" rx="42" ry="60"/><ellipse cx="470" cy="360" rx="36" ry="54"/><ellipse cx="240" cy="700" rx="80" ry="26"/>
+</g>
+
+<!-- 木框 -->
+<rect x="24" y="30" width="472" height="616" fill="url(#qWood)"/>
+<g stroke="#4a3119" stroke-width=".8" opacity=".45">
+<path d="M24 44 H496 M24 632 H496"/><path d="M38 30 V646 M482 30 V646"/>
+</g>
+<g opacity=".2" stroke="#000" stroke-width=".9">
+<path d="M40 96 H480 M40 300 H480 M40 520 H480"/>
+</g>
+<!-- 四角铁钉 -->
+<g fill="#0a0705">
+<circle cx="38" cy="44" r="3.4"/><circle cx="482" cy="44" r="3.4"/>
+<circle cx="38" cy="632" r="3.4"/><circle cx="482" cy="632" r="3.4"/>
+<circle cx="260" cy="38" r="2.8"/><circle cx="260" cy="638" r="2.8"/>
+<circle cx="32" cy="338" r="2.8"/><circle cx="488" cy="338" r="2.8"/>
+</g>
+
+<!-- 画布 -->
+<rect x="44" y="50" width="432" height="576" fill="url(#qSky)"/>
+<g>
+<circle cx="332" cy="286" r="130" fill="url(#qSun)"/>
+<circle cx="332" cy="286" r="37" fill="#ffd7a0" opacity=".95"/>
+<circle cx="332" cy="286" r="37" fill="none" stroke="#ffe9c4" stroke-width="1.1" opacity=".35"/>
+<path d="M96 214 C 190 204, 300 220, 420 208" fill="none" stroke="#e8a468" stroke-width="10" opacity=".13" filter="url(#qB)"/>
+<path d="M60 250 C 170 238, 320 258, 460 244" fill="none" stroke="#f0b878" stroke-width="13" opacity=".11" filter="url(#qB)"/>
+</g>
+
+<!-- 塔 -->
+<g fill="none" stroke="#3a1c0e" stroke-linecap="round">
+<path d="M118 424 C 110 376, 140 316, 152 288" stroke-width="2.4"/>
+<path d="M218 424 C 226 376, 196 316, 184 288" stroke-width="2.4"/>
+<path d="M152 288 C 158 258, 161 228, 162 208" stroke-width="1.8"/>
+<path d="M184 288 C 178 258, 175 228, 174 208" stroke-width="1.8"/>
+<g stroke-width="1.1" opacity=".9">
+<path d="M117 416 C 164 414, 172 414, 219 416"/>
+<path d="M118 392 C 164 390, 172 390, 218 392"/>
+<path d="M117 416 L 218 392"/>
+<path d="M219 416 L 118 392"/>
+<path d="M122 368 C 164 366, 172 366, 214 368"/>
+<path d="M118 392 L 214 368"/>
+<path d="M218 392 L 122 368"/>
+<path d="M129 344 C 164 342, 172 342, 207 344"/>
+<path d="M122 368 L 207 344"/>
+<path d="M214 368 L 129 344"/>
+<path d="M138 320 C 164 318, 172 318, 198 320"/>
+<path d="M129 344 L 198 320"/>
+<path d="M207 344 L 138 320"/>
+<path d="M148 296 C 164 294, 172 294, 188 296"/>
+<path d="M138 320 L 188 296"/>
+<path d="M198 320 L 148 296"/>
+</g>
+<g stroke-width=".9" opacity=".85">
+<path d="M158 248 C 166 247, 170 247, 178 248"/>
+<path d="M161 228 C 166 227, 170 227, 175 228"/>
+<path d="M162 208 C 166 207, 170 207, 174 208"/>
+</g>
+<g stroke-width="1">
+<path d="M163 208 L 172 172"/><path d="M173 208 L 172 172"/>
+<path d="M164 192 H 172"/><path d="M165 180 H 172"/>
+</g>
+</g>
+<rect x="148" y="282" width="40" height="16" fill="#2a140a"/>
+<rect x="148" y="282" width="40" height="1.2" fill="#f0b478" opacity=".4"/>
+<rect x="157" y="205" width="22" height="7" fill="#2a140a"/>
+<rect x="157" y="205" width="22" height="1" fill="#f0b478" opacity=".5"/>
+
+<!-- 远景屋顶 -->
+<g fill="#331910">
+<path d="M44 424 L44 380 L92 380 L92 362 L148 362 L148 380 L206 380 L206 394 L262 394 L262 372 L318 372 L318 394 L374 394 L374 366 L430 366 L430 386 L476 386 L476 424 Z"/>
+</g>
+<g fill="#240f08">
+<path d="M44 424 L44 404 L108 404 L108 392 L172 392 L172 404 L238 404 L238 396 L302 396 L302 406 L366 406 L366 396 L432 396 L432 408 L476 408 L476 424 Z"/>
+</g>
+<g fill="#331910">
+<path d="M88 382 L120 356 L152 382 Z"/><path d="M256 374 L290 346 L324 374 Z"/>
+<path d="M368 368 L402 340 L436 368 Z"/>
+<rect x="196" y="364" width="9" height="24"/>
+</g>
+<g fill="#f2b878">
+<rect x="118" y="408" width="13" height="11" opacity=".5"/><rect x="152" y="410" width="10" height="8" opacity=".3"/>
+<rect x="284" y="410" width="13" height="11" opacity=".44"/><rect x="392" y="410" width="13" height="11" opacity=".38"/>
+<rect x="66" y="410" width="10" height="8" opacity=".24"/>
+</g>
+
+<!-- 街面 -->
+<rect x="44" y="422" width="432" height="204" fill="url(#qRoad)"/>
+<path d="M44 423 H476" stroke="#f0b478" stroke-width="1.5" opacity=".4"/>
+<ellipse cx="152" cy="556" rx="120" ry="70" fill="#f0b070" opacity=".04"/>
+
+<!-- 铃木自动车：卷帘半开 -->
+<g>
+<rect x="58" y="440" width="176" height="150" fill="#1c0f07"/>
+<path d="M52 440 L240 440 L236 452 L56 452 Z" fill="#2a170c"/>
+<path d="M52 440 L240 440" stroke="#f0b478" stroke-width="1.4" opacity=".45"/>
+<rect x="74" y="452" width="146" height="138" fill="#120a05"/>
+<g stroke="#0a0603" stroke-width="2.6">
+<path d="M74 458 H220 M74 468 H220 M74 478 H220 M74 488 H220"/>
+</g>
+<rect x="74" y="488" width="146" height="102" fill="#241207"/>
+<ellipse cx="150" cy="556" rx="78" ry="52" fill="url(#qSun)" opacity=".62"/>
+<ellipse cx="150" cy="566" rx="52" ry="30" fill="#f9cf98" opacity=".2"/>
+<!-- 车间里的东西：台面、吊灯、举升架 -->
+<rect x="74" y="556" width="146" height="34" fill="#120a04"/>
+<path d="M74 556 H220" stroke="#e8a860" stroke-width="1.2" opacity=".35"/>
+<rect x="96" y="520" width="34" height="36" fill="#150c06"/>
+<rect x="96" y="520" width="34" height="1.4" fill="#f0b478" opacity=".4"/>
+<rect x="150" y="512" width="18" height="44" fill="#120a04"/>
+<circle cx="159" cy="508" r="4.6" fill="#ffe0b0" opacity=".8"/>
+<path d="M159 488 L159 504" stroke="#2a1709" stroke-width="1.4"/>
+<circle cx="159" cy="508" r="17" fill="url(#qSun)" opacity=".7"/>
+<path d="M74 488 H220" stroke="#f0b478" stroke-width="2.2" opacity=".55"/>
+<path d="M74 488 H220" stroke="#ffe0b0" stroke-width=".8" opacity=".5"/>
+</g>
+<!-- 招牌 -->
+<g>
+<path d="M60 462 H78" stroke="#3a2410" stroke-width="2"/>
+<rect x="56" y="466" width="26" height="70" fill="#1a0e06"/>
+<rect x="56" y="466" width="26" height="70" fill="none" stroke="#f0b478" stroke-width="1" opacity=".38"/>
+<text x="69" y="490" text-anchor="middle" font-family="Songti SC,serif" font-size="17" fill="#f2c99e" opacity=".85">自</text>
+<text x="69" y="512" text-anchor="middle" font-family="Songti SC,serif" font-size="17" fill="#f2c99e" opacity=".85">動</text>
+<text x="69" y="534" text-anchor="middle" font-family="Songti SC,serif" font-size="17" fill="#f2c99e" opacity=".6">車</text>
+</g>
+
+<!-- 门口的轮胎 -->
+<g>
+<ellipse cx="278" cy="556" rx="30" ry="9" fill="#150c07"/>
+<ellipse cx="278" cy="547" rx="29" ry="9" fill="#1e1208"/>
+<ellipse cx="278" cy="547" rx="29" ry="9" fill="none" stroke="#f0b478" stroke-width=".9" opacity=".26"/>
+<ellipse cx="278" cy="547" rx="13" ry="4" fill="#0b0603"/>
+<ellipse cx="278" cy="535" rx="26" ry="8" fill="#241509"/>
+<ellipse cx="278" cy="535" rx="26" ry="8" fill="none" stroke="#f0b478" stroke-width=".9" opacity=".3"/>
+<ellipse cx="278" cy="535" rx="12" ry="3.6" fill="#0b0603"/>
+</g>
+
+<!-- 电线杆 -->
+<g stroke="#1a0e06" stroke-width="4" fill="none">
+<path d="M430 424 L430 318"/>
+<path d="M416 330 H444"/><path d="M418 348 H442"/>
+</g>
+<g stroke="#c08850" stroke-width=".8" fill="none" opacity=".38">
+<path d="M44 328 C 140 344, 300 340, 430 330"/>
+<path d="M44 346 C 150 362, 300 358, 430 348"/>
+</g>
+
+<!-- 画布质感：竖向笔触 / 龟裂 / 掉漆 -->
+<g opacity=".07" stroke="#ffe6c0" stroke-width="6">
+<path d="M44 140 H476"/><path d="M44 176 H476"/><path d="M44 330 H476"/><path d="M44 620 H476"/>
+</g>
+<g opacity=".3" stroke="#0d0703" stroke-width=".9" fill="none">
+<path d="M120 50 L128 96 L118 140 L132 190"/>
+<path d="M300 50 L292 86 L306 120"/>
+<path d="M420 300 L410 344 L424 392 L414 440"/>
+<path d="M60 560 L74 590"/>
+<path d="M240 470 L252 500 L244 530"/>
+<path d="M180 60 L196 88"/>
+<path d="M360 520 L372 556"/>
+</g>
+<g opacity=".09" fill="#f0e2c4">
+<ellipse cx="150" cy="120" rx="16" ry="9"/><ellipse cx="404" cy="240" rx="12" ry="7"/>
+<ellipse cx="70" cy="470" rx="14" ry="8"/><ellipse cx="330" cy="600" rx="20" ry="10"/>
+<ellipse cx="250" cy="392" rx="9" ry="5"/>
+</g>
+<rect x="44" y="50" width="432" height="576" fill="url(#qVig)" opacity=".45"/>
+
+<!-- 朱印 -->
+<g transform="translate(408 540)">
+<rect width="42" height="52" fill="none" stroke="#a5382a" stroke-width="1.6" opacity=".55"/>
+<text x="21" y="22" text-anchor="middle" font-family="Songti SC,serif" font-size="15" fill="#b8483a" opacity=".62">十</text>
+<text x="21" y="41" text-anchor="middle" font-family="Songti SC,serif" font-size="15" fill="#b8483a" opacity=".62">八</text>
+</g>
+
+<!-- 片名（画在木框下沿） -->
+<text x="36" y="686" font-family="Didot,Optima,Georgia,serif" font-size="9" letter-spacing="4" fill="#8a7358">ALWAYS</text>
+<text x="36" y="722" font-family="Songti SC,Source Han Serif SC,serif" font-size="31" letter-spacing="4" fill="#f4ead2">三丁目の夕日</text>
+<text x="36" y="742" font-family="Didot,Optima,Georgia,serif" font-size="6.6" letter-spacing="1.6" fill="#7a6549">SUNSET ON THIRD STREET · 2005</text>
+<g transform="translate(404 668)">
+<rect width="52" height="52" fill="none" stroke="#a5382a" stroke-width="1.4" opacity=".55"/>
+<text x="26" y="22" text-anchor="middle" font-family="Songti SC,serif" font-size="13" fill="#b8483a" opacity=".7" letter-spacing="1">公開</text>
+<text x="26" y="40" text-anchor="middle" font-family="Songti SC,serif" font-size="13" fill="#b8483a" opacity=".7" letter-spacing="1">中</text>
+</g>
+</svg>
+        </div>
+        <p class="pcap">THE BILLBOARD · 手绘看板 · 尺寸 520 × 760</p>
+      </div>
+      <div class="pnotes">
+        <div class="pnote reveal"><div class="n">01 / 看板</div><h4>那时候，电影是画在墙上的</h4><p>1958 年，日本街头的电影院门口都挂着手绘看板：一块帆布，几桶油漆，一个画师。没有剧照放大，没有电脑排版，画师只凭看片记下的印象把整部电影画成一张画。<br>这块看板上的城，是他一笔一笔画的。</p></div>
+        <div class="pnote reveal"><div class="n">02 / 龟裂</div><h4>画布会老，画的人也会</h4><p>帆布挂在室外，日晒雨淋，两年就开始裂。裂纹从四角往中间走，掉漆的地方露出底下的白。这张海报的质感全部来自这些伤——它不是「做旧」，它只是活得久了一点。</p></div>
+        <div class="pnote reveal"><div class="n">03 / 夕日</div><h4>那个橘色的圆，就是片名里的「夕日」</h4><p>不是滤镜，不是调色。全片反复回到同一个时刻：太阳落到屋顶线，家家开始开灯，街上有人喊孩子回家吃饭。这部片子的时间感，就是靠这个每天重复一次的动作量出来的。</p></div>
+        <div class="pnote reveal"><div class="n">04 / 塔</div><h4>画它的人，也没见过它完工的样子</h4><p>看板上的塔只有钢架，顶端还是几根断掉的钢柱。1958 年的大部分时间里，东京人看到的就是这个：一个每天都在长高、但还没有名字的架子。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">03</span><h2>影片档案</h2><p class="kicker">Credits</p></div>
+    <dl class="spec reveal">
+      <div><dt>原名</dt><dd>ALWAYS 三丁目の夕日</dd></div>
+      <div><dt>英文名</dt><dd>Always: Sunset on Third Street<small>港译《三丁目之黄昏》· 台译《ALWAYS 幸福的三丁目》</small></dd></div>
+      <div><dt>年份 / 片长</dt><dd>2005 · 133 分钟<small>2 小时 13 分</small></dd></div>
+      <div><dt>规格</dt><dd>彩色 · 35mm<small>日语 · 杜比数字</small></dd></div>
+      <div><dt>类型</dt><dd>剧情 / 家庭</dd></div>
+      <div><dt>导演</dt><dd>山崎贵<small>1964 年生 · 长野县松本市 · 白组出身</small></dd></div>
+      <div><dt>编剧</dt><dd>山崎贵 / 古泽良太<small>改编自西岸良平的同名长篇漫画</small></dd></div>
+      <div><dt>原作</dt><dd>西岸良平《三丁目の夕日》<small>1974 年 9 月起连载于《Big Comic Original》</small></dd></div>
+      <div><dt>摄影</dt><dd>柴崎幸三</dd></div>
+      <div><dt>音乐</dt><dd>佐藤直纪<small>主题歌 D-51「ALWAYS」</small></dd></div>
+      <div><dt>美术</dt><dd>上條安里</dd></div>
+      <div><dt>视觉特效</dt><dd>白组（シログミ）<small>山崎贵本人兼任 VFX</small></dd></div>
+      <div><dt>主演</dt><dd>吉冈秀隆 / 堤真一<small>茶川竜之介 / 铃木则文</small></dd></div>
+      <div><dt>共演</dt><dd>药师丸博子 / 小雪 / 堀北真希<small>须贺健太 · 小清水一挥</small></dd></div>
+      <div><dt>特别出演</dt><dd>三浦友和<small>町医者 宅间史郎</small></dd></div>
+      <div><dt>制作总指挥</dt><dd>阿部秀司<small>2023 年去世</small></dd></div>
+      <div><dt>制作 / 配给</dt><dd>ROBOT + 制作委员会<small>日本テレビ · 小学馆 · 东宝 · 电通 · 白组 等</small></dd></div>
+      <div><dt>公映</dt><dd>2005-11-05（日本）</dd></div>
+      <div><dt>票房</dt><dd>32.3 亿日元<small>动员 284 万人次</small></dd></div>
+      <div><dt>续集</dt><dd>2007《続》· 2012《'64》<small>同一批人，三个年份</small></dd></div>
+      <div class="wide"><dt>一句话</dt><dd>一部没有坏人、没有大事、没有高潮的电影——它只是把一条街的两三年，原样摆在你面前，然后你就哭了。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="s4">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">04</span><h2>口碑与口径</h2><p class="kicker">Numbers, Carefully</p></div>
+    <div class="scores reveal">
+      <div class="sc hi"><div class="src">Douban 豆瓣</div><div class="val">8.8<small>/ 10</small></div><div class="meta">43,761 人评价 · 五星 51.4% / 四星 37.9%<br>好于 96% 剧情片 · 96% 家庭片 · <b>未进 Top250</b></div></div>
+      <div class="sc"><div class="src">IMDb</div><div class="val">7.7<small>/ 10</small></div><div class="meta">约 2,600 票 · 与豆瓣差 <b>1.1</b><br>海外票池小，别和豆瓣的四万人放一起比</div></div>
+      <div class="sc abs"><div class="src">第 79 回电影旬报 · 2005 年度</div><div class="val">十佳 第 2 位</div><div class="meta">第 1 位是《无敌青春（PACHIGI!）》<br>同榜<b>读者票选日本电影第 1 位</b></div></div>
+      <div class="sc abs"><div class="src">日本国内票房</div><div class="val">32.3 亿日元</div><div class="meta">动员 284 万人次<br>成本远低于同期好莱坞片，靠口碑长跑</div></div>
+    </div>
+    <ul class="caliber reveal">
+      <li><i>01</i><span><b>「13 项提名、12 项最优秀」是真的。</b>第 29 回日本电影学院奖，它入围 13 个部门，拿下 12 个「最优秀」。唯一没拿到的是最优秀主演女优赏——本片入围的是小雪，奖给了吉永小百合《北之零年》。</span></li>
+      <li><i>02</i><span><b>但「旬报第一」要分清是哪一张榜。</b>评委选的十佳，它排第 2，第 1 是井筒和幸的《无敌青春》；而同一年的读者票选，它排第 1。两个数字都对，说的是两件事。</span></li>
+      <li><i>03</i><span><b>它没进豆瓣 Top250。</b>8.8 分在 Top250 的门槛附近，票数四万三还不够厚。这不是缺点，只是别把它当成「必看榜单片」去期待。</span></li>
+      <li><i>04</i><span><b>IMDb 7.7 不是「不好看」。</b>它在海外的评价数不到三千，绝大多数是当年影展与碟片观众；7.7 与豆瓣 8.8 之间那 1.1，差的是「谁在看」，不是「好不好」。</span></li>
+      <li><i>05</i><span><b>32.3 亿是日本国内配给收入口径。</b>不含海外，也不含后来的电视与碟片。这个数字在 2005 年的日本本土片里属于前列，但它的意义不在钱——它让东宝决定把这个故事拍成三部曲。</span></li>
+      <li><i>06</i><span><b>它不是「催泪大片」。</b>前四十分钟几乎是喜剧：修错车、认错人、孩子把糖果铺当成图书馆。眼泪来得晚，也来得轻——所以它才留得住。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="s5">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">05</span><h2>五个人，一座塔</h2><p class="kicker">Who Wants What</p></div>
+    <div class="people reveal">
+      <div class="person">
+        <div class="role">APPRENTICE · 住家学徒</div><h4>星野六子</h4><div class="actor">堀北真希</div>
+        <p>十八岁，青森人，坐集体就职的火车来东京。履历表上写「会修自行车」，被看成了「会修汽车」。她每天都活在被发现的那一刻里。<span><b>她要的</b>是「不被人看轻」；这条街真正给她的，是「被人需要」——两件事不一样。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">OWNER · 铃木自动车社长</div><h4>铃木则文</h4><div class="actor">堤真一</div>
+        <p>说话像锤子。骂起人来整条街都听得见，扛起事来也是整条街最实的一个。他不会说软话，只会把该办的事办掉。<span><b>他要的</b>是这间店别倒、这个家别散；为此他可以不要脸，也可以不要命。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">WRITER · 糖果铺店主</div><h4>茶川竜之介</h4><div class="actor">吉冈秀隆</div>
+        <p>东大文学部毕业，为了不回家继承生意，被父母断了关系。写少年冒险小说，投芥川奖，年年落选，被叫「文学崩れ」。<span><b>他要的</b>是有人把他当成一个作家——不是「写小孩书的那个」，是作家。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">BOY · 被留下的孩子</div><h4>古行淳之介</h4><div class="actor">须贺健太</div>
+        <p>话少，聪明，爱写科幻。母亲把他托给别人，他从不问为什么，也从不哭。他把自己的东西收在一个小包里，随时可以走。<span><b>他要的</b>是有人来接他——不是养他，是「来接」。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">LANDLADY · 居酒屋「やまふじ」</div><h4>石崎ヒロミ</h4><div class="actor">小雪</div>
+        <p>她把孩子领到茶川门口，说「先放几天」。几天变成几个月，她也就天天来做饭、洗衣、收拾那两个不像话的男人。<span><b>她要的</b>是有人能让她不用一个人扛；可她习惯了自己扛，所以总是先退半步。</span></p>
+      </div>
+      <div class="person thing">
+        <div class="role">THE THING · 一件东西</div><h4>东京塔</h4><div class="actor">在建 · 1958 年 12 月落成</div>
+        <p>它在这部片子里从头到尾没说过一句话，但每一次出现都比上一次高。街上的孩子抬头就能看见它，大人们却很少抬头。<span><b>它代表的东西</b>很简单：这个国家还能往上长。而这正是这条街上每个人都不敢先说出口的希望。</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s6">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">06</span><h2>人物冲突</h2><p class="kicker">Six Frictions</p></div>
+    <div class="conflicts reveal">
+      <div class="cf"><h4><i>FRICTION 01</i>一个字，两个人</h4><p>她越解释，越像在撒谎；他越道歉，越像在施舍。这场误会最狠的地方不是「招错了人」，而是它让两个人都必须每天证明一次自己不是骗子。</p></div>
+      <div class="cf"><h4><i>FRICTION 02</i>会修自行车，不会修汽车</h4><p>手艺的错位。她每天在被证明「你不属于这里」，可这条街偏偏只有她，能把一台上不了路的东西重新弄上路。<em>她不是没用，她只是被放错了位置。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 03</i>作家的自尊 vs 赊账本</h4><p>茶川瞧不起写儿童读物的自己，可那是他唯一能换钱的东西。稿纸越写越厚，赊账越记越长。他嘴上说「这是给小孩看的」，手上写的是自己一辈子没写出来的那本书。</p></div>
+      <div class="cf"><h4><i>FRICTION 04</i>等人的孩子 vs 不说的大人</h4><p>淳之介从不问「我妈什么时候来」，大人也就不必回答。全片最重的一句话，是两个人谁都没说出口的那句。<em>沉默在这里不是冷淡，是默契地替对方留面子。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 05</i>「我是为你好」</h4><p>ヒロミ把孩子推给茶川，一半是善意，一半是卸责。善意不能免责——她自己也知道，所以她才天天来做饭，把那半份责任用别的方式还回去。</p></div>
+      <div class="cf"><h4><i>FRICTION 06</i>拆与建</h4><p>长屋在拆，塔在建。旧的东西一件件被搬走：冰屋的冰、街角的空地、孩子们玩的破三轮。每个人都在跟自己的旧日子告别，只是有人告得早，有人告得晚。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s7">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">07</span><h2>荣誉</h2><p class="kicker">What It Actually Has</p></div>
+    <div class="awards reveal">
+      <div class="award gold"><div class="yr">2006</div><div><h4>第 29 回日本电影学院奖 · 最优秀作品赏</h4><p>13 个部门入围，12 项「最优秀」——学院奖历史上罕见的横扫</p></div></div>
+      <div class="award gold"><div class="yr">2006</div><div><h4>同届 · 最优秀监督赏</h4><p>山崎贵。他的第三部导演作品，也是他第一次拍「没有怪物」的电影</p></div></div>
+      <div class="award"><div class="yr">2006</div><div><h4>同届 · 最优秀脚本赏</h4><p>山崎贵 / 古泽良太</p></div></div>
+      <div class="award"><div class="yr">2006</div><div><h4>同届 · 最优秀主演男优赏</h4><p>吉冈秀隆（茶川竜之介）</p></div></div>
+      <div class="award"><div class="yr">2006</div><div><h4>同届 · 最优秀助演男优赏</h4><p>堤真一（铃木则文）</p></div></div>
+      <div class="award"><div class="yr">2006</div><div><h4>同届 · 最优秀助演女优赏</h4><p>药师丸博子（铃木トモエ）</p></div></div>
+      <div class="award wide"><div class="yr">2006</div><div><h4>同届 · 音乐 / 摄影 / 照明 / 美术 / 录音 / 剪辑（六项技术奖）</h4><p>佐藤直纪 / 柴崎幸三 / 水野研一 / 上條安里 / 鹤巻仁 / 宫岛竜治——六项全中，等于同行承认「这座 1958 年的东京是真的建出来的」</p></div></div>
+      <div class="award"><div class="yr">2006</div><div><h4>同届 · 新人俳优赏</h4><p>堀北真希</p></div></div>
+      <div class="award"><div class="yr">2005</div><div><h4>第 79 回电影旬报 · 十佳 第 2 位</h4><p>评委十佳第 1 是《无敌青春》</p></div></div>
+      <div class="award"><div class="yr">2005</div><div><h4>同榜 · 读者票选日本电影 第 1 位</h4><p>影评人给它第 2，观众给它第 1</p></div></div>
+      <div class="award"><div class="yr">2005</div><div><h4>第 30 回报知电影赏 · 最优秀作品赏</h4><p>同届报知也把最佳影片给了它</p></div></div>
+      <div class="award"><div class="yr">2005</div><div><h4>第 18 回日刊体育电影大赏 · 石原裕次郎赏</h4><p>颁给「让人重新想起电影是给大众看的」那一类作品</p></div></div>
+      <div class="award"><div class="yr">2006</div><div><h4>第 60 回每日电影竞赛 · 摄影 / 美术 / 技术赏</h4><p>技术赏给的是 VFX——用微缩模型与 CG 合成的整条街</p></div></div>
+      <div class="award"><div class="yr">2006</div><div><h4>第 27 回横滨电影节 · 技术赏</h4><p>给的是「把 1958 年造出来」这件事本身</p></div></div>
+      <div class="award"><div class="yr">2006</div><div><h4>第 48 回蓝丝带奖 · 助演男优 / 助演女优</h4><p>堤真一 / 药师丸博子</p></div></div>
+      <div class="award wide"><div class="yr">口径</div><div><h4>一条常被写错的记录</h4><p>中文资料常写「学院奖 14 项提名全部获奖」——不对。第 29 回它入围 <b>13 个部门</b>，拿下 <b>12 项最优秀</b>，落空的是最优秀主演女优赏（本片入围者小雪，获奖者吉永小百合《北之零年》）；「新人俳优赏」不算在最优秀部门里，堀北真希拿到的是这一项。<b>所以准确说法是：13 提 12 中，外加一个新人赏。</b></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s8">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">08</span><h2>谱系：一个特效师，怎么学会了拍人</h2><p class="kicker">Takashi Yamazaki</p></div>
+    <div class="lineage reveal">
+      <div class="ln"><div class="yr">1986</div><h4>进入白组 · 做特效合成</h4><p>长野县松本市出生，看了《星球大战》和《第三类接触》之后决定做特摄。先是给伊丹十三的《大病人》《静かな生活》做 SFX 与数字合成。</p></div>
+      <div class="ln"><div class="yr">2000</div><h4>《ジュブナイル》· 导演处女作</h4><p>科幻片。当时的宣传语是「日本的卡梅隆」——他确实是靠技术进的这一行。</p></div>
+      <div class="ln now"><div class="yr">2005 · 本期</div><h4>ALWAYS 三丁目的夕日</h4><p>第一次不用怪物、不用未来，只用一个过去的年份。他把全部技术用在了一件最不技术的事上：让一条已经消失的街重新有影子。</p></div>
+      <div class="ln"><div class="yr">2007 / 2012</div><h4>《続・三丁目の夕日》/《'64》</h4><p>同一批人，往后推四年、再推五年。第三部已经要面对 1964 年的东京奥运会——那是这条街的终点。</p></div>
+      <div class="ln"><div class="yr">2013 / 2014</div><h4>《永远的 0》/《STAND BY ME 哆啦A梦》</h4><p>一部战时，一部未来。两片各拿下 8 项学院奖——他已经不需要证明技术了。</p></div>
+      <div class="ln"><div class="yr">2023</div><h4>《哥斯拉-1.0》· 第 96 届奥斯卡最佳视觉效果</h4><p>日本电影第一次拿到这个奖。故事的起点还是战后：一片废墟，一群人决定活下去。<strong>和十八年前那条街，是同一个题目。</strong></p></div>
+    </div>
+    <p class="note reveal" style="margin-top:40px">看这条线会发现一件事：他所有的片子——不管前面站着的是哥斯拉还是哆啦A梦——都在拍<b>「日本人怎么从一无所有里把日子重新搭起来」</b>。而《三丁目的夕阳》是这条线最安静的一次，也是最好的一次。</p>
+  </div>
+</section>
+
+<section class="sec" id="s9">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">09</span><h2>六处亮点</h2><p class="kicker">Why It Works</p></div>
+    <div class="grid6 reveal">
+      <div class="g6"><div class="n">01</div><h4>那个「特技」栏</h4><p>整部电影的地基是一个笔误：自行车与汽车，差一个字。这个设定妙在它不需要任何解释——你一听就懂，一懂就心疼。好的剧本常常只用一个字就搭好了。</p></div>
+      <div class="g6"><div class="n">02</div><h4>一条街是「造」出来的</h4><p>1958 年的东京已经没有了。剧组用微缩模型加 CG，把整条街、都电、上野站、C62 蒸汽机车重新建了一遍。它不是滤镜，是施工——所以阳光照在屋檐上的角度，都是算过的。</p></div>
+      <div class="g6"><div class="n">03</div><h4>一台电视机的到来</h4><p>全街的孩子搬小板凳去看，大人站在后面。然后茶川把它拆了——这个段子是真的：制片人发现拆下来的真空管是旧的，下令重拍，要求「新电视的零件也必须是新的」。</p></div>
+      <div class="g6"><div class="n">04</div><h4>夕阳是第二个主角</h4><p>片名里的「夕日」不是修辞。全片反复回到同一个时刻：太阳压到屋顶线，家家开灯。它用这个每天重复一次的动作，量出了两三年是怎么过去的。</p></div>
+      <div class="g6"><div class="n">05</div><h4>没有坏人</h4><p>这部片子一个反派都没有。所有冲突都来自「日子」和「说不出口」：钱不够、话不会讲、人不敢留。这比有反派难写得多——因为没有谁可以怪。</p></div>
+      <div class="g6"><div class="n">06</div><h4>那条街的配角</h4><p>烟草店的老太太、冰屋、自行车店、被孩子叫「恶魔医生」的町医者——每个人只出现几分钟，但都有自己的一整套生活。一条街的可信度，全靠这些人撑。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">10</span><h2>为什么值得一看</h2><p class="kicker">Three Reasons</p></div>
+    <div class="why">
+      <article class="reveal"><h3>一、它讲的是「被需要」，不是「成功」</h3><p>六子没有逆袭。她没有考上什么、没有赚到钱、没有变成一个厉害的人。她只是从「一个多余的人」，变成了「这条街上离不开的人」。</p><p>这个转变在今天格外稀缺。<strong>我们太习惯用「变强」来衡量一个人的几年，而这部片子说：你被人需要，也算数。</strong></p></article>
+      <article class="reveal"><h3>二、它把一个大时代，拍成了一户人家的日常</h3><p>1958 年是日本战后最要紧的年份之一：电视进了家庭，东京塔在封顶，「三种神器」开始被普通人议论。这些事在别的电影里会是背景板，在这里是饭桌上的话题、是孩子的愿望、是邻居的攀比。</p><p><em>历史不是发生在远处的，历史是发生在你家客厅的。</em>这部片子最厉害的地方，就是它从不解释时代，只让你看见时代怎么进了一间屋子。</p></article>
+      <article class="reveal"><h3>三、它给你一个可以哭的地方，但不逼你哭</h3><p>最好的几场戏都没有台词：一个人在门口站着，一个孩子在等，一盏灯亮着。它不铺音乐，不推镜头，不给你「该哭了」的信号——它只是把镜头放久一点。</p><p>所以你会在最不设防的时候被打中：可能是一双筷子，可能是一件洗好的衣服，可能只是一句「你回来啦」。<strong>那种哭，比被配乐推出来的哭，干净得多。</strong></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">11</span><h2>观影提示</h2><p class="kicker">Before You Press Play</p></div>
+    <div class="tips">
+      <div class="tip reveal"><div class="k">01</div><h4>别当「催泪片」打开</h4><p>前四十分钟是喜剧：修错车、认错人、孩子把糖果铺当图书馆。哭点来得晚，也来得轻。抱着「我要大哭一场」的期待，反而会错过它。</p></div>
+      <div class="tip reveal"><div class="k">02</div><h4>数一数塔出现了几次</h4><p>每一次出现都比上一次高一点点。这是一条完全不用台词的时间线——导演把它藏在背景里，你要是留意到了，会多一层乐趣。</p></div>
+      <div class="tip reveal"><div class="k">03</div><h4>注意吃饭的戏</h4><p>这部片子所有的关系变化都发生在饭桌边：多摆一双筷子、多盛一碗饭、谁先动筷。它不用台词告诉你谁成了一家人，它用碗。</p></div>
+      <div class="tip reveal"><div class="k">04</div><h4>看日语原声</h4><p>下町的口音、孩子的称呼（「六ちゃん」）、大人之间那种半句话的客套，全靠声音。配音版会把这些全部抹平，剩下的只是一个温情故事。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="wrap">
+    <p class="tag">VERDICT · NO.18</p>
+    <p class="q"><span>那一年他们等的不是好日子。</span><span>是一台电视，一座塔，</span><span>和一个会回来的人。</span></p>
+    <p class="src">—— 本页判词，非片中台词</p>
+    <div class="stamp"><div><span>JAPANESE CINEMA</span><b>NO.18</b><span>2005 · 山崎贵</span></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>日本电影专题 · 第 18 期｜《永远的三丁目的夕阳》ALWAYS 三丁目の夕日 / Always: Sunset on Third Street（2005）<br>
+    数据核对于 2026-11-12：豆瓣条目 1463224（8.8 / 43,761 人 · 五星 51.4% / 四星 37.9% / 三星 9.6% · 未进 Top250）、IMDb 7.7（约 2,600 票）。<br>
+    奖项以日本电影学院奖官方站（第 29 回）为准：13 个部门入围、12 项最优秀 + 新人俳优赏（堀北真希），唯一落空为最优秀主演女优赏（吉永小百合《北之零年》）；第 79 回电影旬报十佳第 2 位（第 1 位《无敌青春》）＋读者票选日本电影第 1 位；第 30 回报知电影赏最优秀作品赏；第 18 回日刊体育电影大赏石原裕次郎赏；第 60 回每日电影竞赛摄影 / 美术 / 技术赏；第 48 回蓝丝带奖助演男优 / 助演女优赏。<br>
+    片长 133 分钟；日本国内配给收入 32.3 亿日元、动员 284 万人次；原作漫画 1974 年 9 月起于《Big Comic Original》连载。<br>
+    全页不含关键情节：那年冬天发生了什么、这条街后来怎么样、塔落成那天他们在哪里，一律未写。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c = document.getElementById('heroCanvas');
+  if(!c) return;
+  var ctx = c.getContext('2d'), W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
+  var parts=[], t=0;
+  function size(){
+    W=c.clientWidth; H=c.clientHeight;
+    c.width=W*dpr; c.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();
+  }
+  function build(){
+    parts=[];
+    var n = Math.round(W*H/16000);
+    if(n>150) n=150;
+    for(var i=0;i < n;i++){
+      parts.push({
+        x:Math.random()*W, y:Math.random()*H,
+        r:.3+Math.random()*1.1,
+        vx:-.03-Math.random()*.14,
+        vy:-.02-Math.random()*.07,
+        a:.02+Math.random()*.12,
+        p:Math.random()*6.28
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t+=0.004;
+    for(var i=0;i < parts.length;i++){
+      var p=parts[i];
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<-10){p.x=W+10;p.y=Math.random()*H;}
+      if(p.y<-10){p.y=H+10;p.x=Math.random()*W;}
+      var a=p.a*(0.4+0.6*Math.sin(t*0.9+p.p));
+      ctx.beginPath();
+      ctx.fillStyle='rgba(232,172,110,'+a.toFixed(3)+')';
+      ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fill();
+    }
+    var g = ctx.createRadialGradient(W*0.3,H*0.72,0,W*0.3,H*0.72,Math.max(W,H)*0.42);
+    var pulse = 0.02+0.006*Math.sin(t*0.55);
+    g.addColorStop(0,'rgba(240,180,120,'+pulse.toFixed(3)+')');
+    g.addColorStop(1,'rgba(240,180,120,0)');
+    ctx.fillStyle=g;
+    ctx.fillRect(0,0,W,H);
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',size);
+  size(); draw();
+
+  var revs = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08, rootMargin:'0px 0px -6% 0px'});
+  revs.forEach(function(e){ io.observe(e); });
+
+  var hud=document.getElementById('hud'), items=[].slice.call(hud.querySelectorAll('b'));
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    hud.classList.toggle('on', y > window.innerHeight*0.55);
+    var p = y/(document.body.scrollHeight - window.innerHeight);
+    var idx = Math.min(4, Math.floor(p*5));
+    items.forEach(function(b,i){ b.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
