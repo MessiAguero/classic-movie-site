@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>春天情书 · 日本电影专题 第 20 期</title>
+<meta name="description" content="森田芳光《春天情书》（ハル, 1996）：剧情梗概、人物冲突、六处亮点与观看理由。全程不剧透。">
+<style>
+:root{
+  --bg:#06070c; --bg2:#0a0c14; --panel:#11141d;
+  --ink:#e9e7dd; --dim:#98999a; --dim2:#5c5f67;
+  --line:rgba(233,231,221,.13); --line2:rgba(233,231,221,.055);
+  --amber:#6fb39a; --amber2:#a3d2bf;
+  --aqua:#6a6a9e; --aqua2:#a3a2c8;
+  --seal:#a63a2c; --seal2:#c25a44;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Didot","Optima","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.95;letter-spacing:.012em;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(111,179,154,.3);color:#04100c}
+a{color:inherit}
+body::before{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+.wrap{width:min(1160px,calc(100% - 96px));margin:0 auto}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:max(100vh,880px);overflow:hidden;background:#06070c}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(5,6,11,.94) 0%,rgba(5,6,11,.86) 18%,rgba(5,6,11,.64) 34%,rgba(5,6,11,.30) 50%,rgba(5,6,11,.05) 64%,rgba(5,6,11,0) 74%),
+    linear-gradient(to bottom,rgba(5,6,11,.62) 0%,rgba(5,6,11,.18) 18%,rgba(5,6,11,0) 34%,rgba(5,6,11,0) 56%,rgba(5,6,11,.42) 76%,rgba(5,6,11,.82) 90%,rgba(4,5,9,.97) 100%)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.notice{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:11px;
+  letter-spacing:.14em;color:rgba(233,231,221,.66);border:1px solid rgba(233,231,221,.17);
+  border-radius:999px;padding:7px 16px;margin-bottom:34px;background:rgba(6,8,13,.5);backdrop-filter:blur(4px)}
+.notice .dot{width:5px;height:5px;border-radius:50%;background:#8fd0b4;box-shadow:0 0 9px rgba(143,208,180,.7)}
+.hero-in{position:relative;z-index:3;width:min(1160px,calc(100% - 96px));margin:0 auto;
+  min-height:max(100vh,880px);display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:10.5vh;padding-bottom:64px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;
+  letter-spacing:.34em;color:var(--amber2);text-transform:uppercase;opacity:.86}
+.eyebrow i{display:block;width:52px;height:1px;background:var(--amber2);opacity:.45}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,5.2vw,72px);line-height:1.16;
+  letter-spacing:.1em;margin:26px 0 0;color:#f0f2ea;white-space:nowrap;
+  text-shadow:0 2px 30px rgba(0,0,0,.7)}
+.latin{margin:20px 0 0;font-family:var(--latin);font-size:13px;letter-spacing:.3em;
+  color:rgba(233,231,221,.52)}
+.latin + .latin{margin-top:7px;font-size:11px;letter-spacing:.24em;color:rgba(233,231,221,.44)}
+.hero-sub{margin:28px 0 0;max-width:24em;font-size:16px;line-height:2.05;color:rgba(228,230,224,.82)}
+.hero-sub em{font-style:normal;color:#eef2ea;border-bottom:1px solid rgba(111,179,154,.62);padding-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:600px}
+.chip{font-size:11.5px;letter-spacing:.06em;color:rgba(236,236,228,.9);border:1px solid rgba(233,231,221,.2);
+  border-radius:999px;padding:6px 14px;background:rgba(7,9,14,.62);backdrop-filter:blur(6px)}
+.chip b{color:#fff;font-weight:500}
+.scroll-hint{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:4;
+  font-family:var(--latin);font-size:9.5px;letter-spacing:.42em;color:rgba(233,231,221,.4);
+  display:flex;flex-direction:column;align-items:center;gap:9px}
+.scroll-hint span{display:block;width:1px;height:32px;background:linear-gradient(to bottom,rgba(233,231,221,.4),transparent)}
+
+/* ---------- sections ---------- */
+.sec{padding:112px 0;border-top:1px solid var(--line2)}
+.sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:52px}
+.sec-head .no{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--amber2);opacity:.92}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.1vw,36px);
+  letter-spacing:.05em;margin:0;color:#eef2ea;flex:1 1 auto}
+.sec-head .kicker{font-family:var(--latin);font-size:10.5px;letter-spacing:.3em;
+  color:var(--dim2);text-transform:uppercase;margin:0}
+.note{font-size:13px;color:var(--dim);line-height:1.9}
+
+/* ---------- 01 lede ---------- */
+.intro{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:64px;align-items:start}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:2.2;color:#d3d6cd}
+.lede p{margin:0 0 22px}
+.lede p:first-child::first-letter{float:left;font-size:5.1em;line-height:.82;padding:.06em .14em 0 0;
+  color:#f2f4ec;font-weight:400}
+.lede strong{font-weight:500;color:#f4f6ee}
+.lede .dash{color:var(--dim);font-size:15px}
+.glance{border:1px solid var(--line);background:linear-gradient(160deg,rgba(17,20,29,.95),rgba(6,7,12,.95));
+  padding:30px 28px}
+.glance h3{font-family:var(--latin);font-size:10px;letter-spacing:.34em;color:var(--amber2);
+  margin:0 0 22px;font-weight:400;text-transform:uppercase;opacity:.9}
+.glance dl{margin:0;display:grid;gap:13px}
+.glance div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line2)}
+.glance div:last-child{border-bottom:0;padding-bottom:0}
+.glance dt{font-size:11.5px;color:var(--dim2);letter-spacing:.1em}
+.glance dd{margin:0;font-size:13.5px;color:#ccd0c8;line-height:1.7}
+.glance dd b{color:#f4f6ee;font-weight:500}
+.glance dd small{display:block;font-size:11px;color:var(--dim2);margin-top:3px}
+.acts{margin-top:74px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.act{background:var(--bg);padding:34px 30px}
+.act .t{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--amber2);
+  opacity:.92;margin-bottom:14px}
+.act h4{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;color:#eef2ea;letter-spacing:.04em}
+.act p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 02 poster ---------- */
+.poster-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);gap:70px;align-items:start}
+.poster-frame{border:1px solid var(--line);padding:14px;background:#04050a;
+  box-shadow:0 40px 90px -50px #000, inset 0 0 0 1px rgba(0,0,0,.6)}
+.poster-svg{display:block;width:100%;height:auto}
+.pcap{margin:16px 2px 0;font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--dim2)}
+.pnotes{display:grid;gap:28px}
+.pnote{border-left:1px solid var(--line);padding:2px 0 2px 24px}
+.pnote .n{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--amber2);opacity:.88}
+.pnote h4{margin:8px 0 10px;font-family:var(--serif);font-weight:400;font-size:17px;color:#eef2ea}
+.pnote p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 03 spec ---------- */
+.spec{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.spec div{background:var(--bg);padding:22px 20px;min-height:92px}
+.spec dt{font-size:10.5px;letter-spacing:.14em;color:var(--dim2);margin-bottom:8px}
+.spec dd{margin:0;font-size:13.5px;color:#d0d4cb;line-height:1.65}
+.spec dd small{display:block;font-size:11px;color:var(--dim2);margin-top:4px;letter-spacing:.02em}
+.spec .wide{grid-column:1/-1;min-height:0;background:linear-gradient(120deg,rgba(111,179,154,.16),rgba(6,7,12,0) 62%)}
+.spec .wide dd{font-family:var(--serif);font-size:17px;color:#f2f4ec;letter-spacing:.05em}
+
+/* ---------- 04 scores ---------- */
+.scores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.sc{background:var(--bg);padding:32px 30px}
+.sc .src{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--dim2);text-transform:uppercase}
+.sc .val{font-family:var(--latin);font-size:52px;line-height:1;margin:16px 0 8px;color:#f2f4ec}
+.sc .val small{font-size:15px;color:var(--dim);letter-spacing:.04em;margin-left:6px}
+.sc .meta{font-size:12.5px;color:var(--dim);line-height:1.8}
+.sc.hi .val{color:#b7e0cd}
+.sc.abs .val{font-size:30px;letter-spacing:.06em;color:var(--amber2);line-height:1.3}
+.sc.abs .val.tiny{font-size:22px;color:var(--dim)}
+.caliber{margin:52px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.caliber li{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line2);
+  font-size:13.5px;line-height:1.9;color:var(--dim)}
+.caliber li b{color:#e9e7dd;font-weight:500}
+.caliber li i{font-family:var(--latin);font-style:normal;font-size:10.5px;letter-spacing:.2em;color:var(--amber2);opacity:.82;padding-top:4px}
+
+/* ---------- 05 people ---------- */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.person{background:var(--bg);padding:30px 28px}
+.person .role{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--amber2);opacity:.82}
+.person h4{margin:12px 0 4px;font-family:var(--serif);font-weight:400;font-size:20px;color:#f2f4ec;letter-spacing:.04em}
+.person h4 small{font-size:12px;color:var(--dim2);letter-spacing:.1em;margin-left:4px}
+.person .actor{font-size:11.5px;color:var(--dim2);letter-spacing:.08em;margin-bottom:18px}
+.person p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.person p span{display:block;margin-top:9px;color:#c8cbc3}
+.person p span b{color:var(--amber2);font-weight:400;font-size:11.5px;letter-spacing:.08em;margin-right:6px}
+.person.thing{grid-column:1/-1;background:linear-gradient(100deg,rgba(106,106,158,.22),rgba(6,7,12,0) 70%)}
+.person.thing h4{color:#c3c2e0}
+.person.thing p{max-width:88ch}
+
+/* ---------- 06 conflicts ---------- */
+.conflicts{display:grid;gap:0;border-top:1px solid var(--line)}
+.cf{display:grid;grid-template-columns:196px minmax(0,1fr);gap:36px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line2)}
+.cf h4{margin:0;font-family:var(--serif);font-weight:400;font-size:17px;color:#f2f4ec;letter-spacing:.04em;line-height:1.6}
+.cf h4 i{display:block;font-family:var(--latin);font-style:normal;font-size:9.5px;letter-spacing:.26em;
+  color:var(--amber2);opacity:.82;margin-bottom:8px}
+.cf p{margin:0;font-size:13.8px;line-height:2;color:var(--dim);max-width:66ch}
+.cf p em{font-style:normal;color:#e4e8e0}
+
+/* ---------- 07 awards ---------- */
+.awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.award{background:var(--bg);padding:28px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.award .yr{font-family:var(--latin);font-size:11px;letter-spacing:.14em;color:var(--dim2);padding-top:3px}
+.award h4{margin:0 0 6px;font-size:14.5px;font-weight:500;color:#eef2ea;letter-spacing:.02em;line-height:1.6}
+.award p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.78}
+.award.gold{background:linear-gradient(120deg,rgba(111,179,154,.2),rgba(6,7,12,0) 68%);border-left:2px solid rgba(111,179,154,.55)}
+.award.gold h4{color:#b7e0cd}
+.award.wide{grid-column:1/-1}
+
+/* ---------- 08 lineage ---------- */
+.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px}
+.ln{position:relative;padding:0 0 40px 40px}
+.ln:last-child{padding-bottom:0}
+.ln::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--aqua2)}
+.ln.now::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 4px rgba(166,58,44,.24)}
+.ln .yr{font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--dim2)}
+.ln h4{margin:6px 0 6px;font-family:var(--serif);font-weight:400;font-size:17px;color:#eef2ea;letter-spacing:.03em}
+.ln p{margin:0;font-size:13px;color:var(--dim);line-height:1.85}
+.ln.now h4{color:#b7e0cd}
+
+/* ---------- 09 six grid ---------- */
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.g6{background:var(--bg);padding:32px 28px;min-height:200px}
+.g6 .n{font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--amber2);opacity:.88}
+.g6 h4{margin:14px 0 10px;font-family:var(--serif);font-weight:400;font-size:18px;color:#eef2ea;letter-spacing:.03em;line-height:1.6}
+.g6 p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 10 why ---------- */
+.why{display:grid;gap:0;max-width:820px}
+.why article{padding:0 0 38px}
+.why article + article{border-top:1px solid var(--line2);padding-top:38px}
+.why h3{margin:0 0 14px;font-family:var(--serif);font-weight:400;font-size:21px;color:#f2f4ec;letter-spacing:.04em}
+.why p{margin:0;font-size:14.5px;line-height:2.05;color:#bcc0b8}
+.why p + p{margin-top:14px}
+.why strong{color:#eef2ea;font-weight:500}
+.why em{font-style:normal;color:#b7e0cd}
+
+/* ---------- 11 tips ---------- */
+.tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.tip{background:var(--bg);padding:30px 24px}
+.tip .k{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--amber2);opacity:.88}
+.tip h4{margin:12px 0 10px;font-size:15.5px;font-weight:500;color:#eef2ea}
+.tip p{margin:0;font-size:12.8px;line-height:1.95;color:var(--dim)}
+
+/* ---------- verdict ---------- */
+.verdict{padding:150px 0 120px;border-top:1px solid var(--line2);position:relative;overflow:hidden}
+.verdict .tag{font-family:var(--latin);font-size:9.5px;letter-spacing:.32em;color:var(--dim2);margin-bottom:34px}
+.verdict .q{font-family:var(--serif);font-size:clamp(23px,3.1vw,36px);line-height:1.78;letter-spacing:.06em;
+  color:#f2f4ec;margin:0;max-width:24em}
+.verdict .q span{display:block}
+.verdict .src{margin-top:36px;font-size:12px;color:var(--dim2);letter-spacing:.04em}
+.stamp{position:absolute;right:74px;bottom:82px;width:136px;height:136px;border:1px solid rgba(166,58,44,.62);
+  border-radius:50%;display:grid;place-items:center;color:rgba(198,94,80,.96);text-align:center;
+  transform:rotate(-7deg);box-shadow:inset 0 0 0 4px rgba(166,58,44,.1)}
+.stamp div{display:grid;gap:5px;justify-items:center}
+.stamp span{font-family:var(--latin);font-size:8.2px;letter-spacing:.14em;opacity:.9}
+.stamp b{font-family:var(--serif);font-size:21px;letter-spacing:.12em;font-weight:400;line-height:1.1;
+  padding:5px 0;border-top:1px solid rgba(166,58,44,.38);border-bottom:1px solid rgba(166,58,44,.38)}
+
+footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
+footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
+
+/* ---------- HUD ---------- */
+#hud{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
+  opacity:0;transition:opacity .7s ease;pointer-events:none}
+#hud.on{opacity:1}
+#hud b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:13px;
+  color:var(--dim2);letter-spacing:.1em;transition:color .5s}
+#hud b i{display:block;width:16px;height:1px;background:var(--dim2);transition:all .5s}
+#hud b.on{color:#f2f4ec}
+#hud b.on i{width:30px;background:var(--amber2)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1380px){#hud{display:none}}
+@media (max-width:1000px){
+  .intro{grid-template-columns:1fr;gap:48px}
+  .poster-grid{grid-template-columns:1fr;gap:46px}
+  .poster-frame{max-width:500px}
+  .scores,.awards{grid-template-columns:1fr}
+  .spec{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .acts{grid-template-columns:1fr}
+  #hud{display:none}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .scroll-hint{left:auto;right:8px;transform:none;bottom:26px}
+  .hero-svg{transform:translateY(22vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(5,6,11,.96) 0%,rgba(5,6,11,.95) 32%,rgba(5,6,11,.93) 48%,rgba(5,6,11,.88) 56%,rgba(5,6,11,.58) 61%,rgba(5,6,11,.3) 66%,rgba(5,6,11,.16) 72%,rgba(5,6,11,.22) 79%,rgba(5,6,11,.52) 86%,rgba(5,6,11,.85) 93%,rgba(4,5,9,.97) 100%)}
+}
+@media (max-width:760px){
+  .hero-svg{transform:translateY(16vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(5,6,11,.96) 0%,rgba(5,6,11,.95) 30%,rgba(5,6,11,.93) 48%,rgba(5,6,11,.84) 58%,rgba(5,6,11,.62) 66%,rgba(5,6,11,.38) 72%,rgba(5,6,11,.24) 78%,rgba(5,6,11,.44) 85%,rgba(5,6,11,.88) 94%,rgba(4,5,9,.98) 100%)}
+  body{font-size:15px;line-height:1.9}
+  .wrap,.hero-in{width:calc(100% - 40px)}
+  .hero{min-height:max(100vh,740px)}
+  .hero-in{min-height:max(100vh,740px);padding-top:8vh;padding-bottom:100px}
+  h1{font-size:clamp(28px,8vw,52px);letter-spacing:.06em}
+  .hero-sub{font-size:14.5px;line-height:1.95;max-width:26em}
+  .sec{padding:76px 0}
+  .sec-head{margin-bottom:36px;gap:12px}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spec dd{font-size:12.4px}
+  .spec dd small{font-size:10.4px}
+  .people,.grid6,.tips{grid-template-columns:1fr}
+  .cf{grid-template-columns:1fr;gap:12px}
+  .lede{font-size:16px;line-height:2.05}
+  .sc .val{font-size:44px}
+  .verdict{padding:96px 0 88px}
+  .stamp{position:static;margin-top:48px;transform:rotate(-4deg)}
+  .chips{max-width:100%;padding-top:0;margin-top:26px}
+  footer{padding-bottom:120px}
+  .scroll-hint{bottom:14px;left:auto;right:12px;transform:none}
+  .chip{font-size:11px;padding:5px 11px;letter-spacing:.03em}
+}
+@media (min-width:1001px) and (max-height:860px){
+  .hero,.hero-in{min-height:max(100vh,760px)}
+  .scroll-hint{left:auto;right:22px;transform:none}
+}
+@media (max-width:520px){
+  .chip:nth-child(5){display:none}
+}
+@media (max-width:420px){
+  .notice{margin-bottom:22px;font-size:10.5px;padding:6px 13px}
+  h1{font-size:clamp(26px,7.6vw,42px);margin-top:20px}
+  .latin{margin-top:14px;font-size:11px;letter-spacing:.2em}
+  .latin + .latin{font-size:9.5px;letter-spacing:.14em}
+  .hero-sub{margin-top:22px;font-size:13.8px}
+}
+@media (max-width:380px){
+  .wrap,.hero-in{width:calc(100% - 32px)}
+  .chip{font-size:10.5px;padding:5px 11px}
+  .glance{padding:24px 20px}
+  h1{font-size:clamp(24px,7.2vw,38px)}
+}
+@media (max-width:400px) and (max-height:680px){
+  .scroll-hint{display:none}
+}
+@media (max-width:760px) and (max-height:700px){
+  .hero{min-height:100vh}
+  .hero-in{min-height:100vh;padding-top:6vh}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+<defs>
+<linearGradient id="wallG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#0d0f17"/><stop offset=".52" stop-color="#080a11"/><stop offset="1" stop-color="#05060a"/>
+</linearGradient>
+<linearGradient id="deskG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#242832"/><stop offset=".26" stop-color="#181c24"/><stop offset="1" stop-color="#05060a"/>
+</linearGradient>
+<radialGradient id="contact" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#000" stop-opacity=".62"/><stop offset=".6" stop-color="#000" stop-opacity=".3"/>
+<stop offset="1" stop-color="#000" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="screenG" cx=".42" cy=".38" r=".82">
+<stop offset="0" stop-color="#2f6d59"/><stop offset=".5" stop-color="#1c453b"/><stop offset=".82" stop-color="#112a25"/>
+<stop offset="1" stop-color="#0a1917"/>
+</radialGradient>
+<radialGradient id="spill" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#84c8ac" stop-opacity=".22"/><stop offset=".42" stop-color="#5f9d88" stop-opacity=".1"/>
+<stop offset="1" stop-color="#3c6a5c" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="roomGlow" cx=".5" cy=".46" r=".5">
+<stop offset="0" stop-color="#79b89f" stop-opacity=".12"/><stop offset=".55" stop-color="#4d7c6b" stop-opacity=".045"/>
+<stop offset="1" stop-color="#2c4a41" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="winSky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#05070d"/><stop offset=".58" stop-color="#0f1826"/><stop offset="1" stop-color="#1d2b3d"/>
+</linearGradient>
+<radialGradient id="vigG" cx=".53" cy=".44" r=".8">
+<stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".5" stop-color="#000" stop-opacity=".12"/>
+<stop offset="1" stop-color="#000" stop-opacity=".74"/>
+</radialGradient>
+<clipPath id="winClip"><rect x="1128" y="156" width="232" height="386"/></clipPath>
+</defs>
+
+<rect width="1440" height="900" fill="url(#wallG)"/>
+<circle cx="778" cy="400" r="540" fill="url(#roomGlow)"/>
+
+<!-- window -->
+<g>
+<rect x="1128" y="156" width="232" height="386" fill="url(#winSky)"/>
+<g clip-path="url(#winClip)">
+<g fill="#05070b">
+<rect x="1122" y="384" width="46" height="158"/>
+<rect x="1172" y="428" width="36" height="114"/>
+<rect x="1212" y="352" width="52" height="190"/>
+<rect x="1268" y="404" width="42" height="138"/>
+<rect x="1314" y="336" width="48" height="206"/>
+</g>
+<rect x="1238" y="300" width="7" height="52" fill="#0a0e16"/>
+<rect x="1241" y="292" width="1.4" height="16" fill="#1a2331"/>
+<g fill="#e2c58e">
+<rect x="1128" y="396" width="4" height="5" opacity=".34"/><rect x="1140" y="412" width="4" height="5" opacity=".22"/>
+<rect x="1152" y="430" width="4" height="5" opacity=".3"/><rect x="1128" y="452" width="4" height="5" opacity=".2"/>
+<rect x="1180" y="444" width="4" height="5" opacity=".3"/><rect x="1192" y="470" width="4" height="5" opacity=".22"/>
+<rect x="1220" y="372" width="4" height="5" opacity=".34"/><rect x="1232" y="396" width="4" height="5" opacity=".24"/>
+<rect x="1220" y="424" width="4" height="5" opacity=".18"/><rect x="1246" y="410" width="4" height="5" opacity=".3"/>
+<rect x="1276" y="424" width="4" height="5" opacity=".26"/><rect x="1288" y="452" width="4" height="5" opacity=".2"/>
+<rect x="1296" y="486" width="4" height="5" opacity=".3"/><rect x="1322" y="356" width="4" height="5" opacity=".3"/>
+<rect x="1334" y="382" width="4" height="5" opacity=".2"/><rect x="1322" y="430" width="4" height="5" opacity=".26"/>
+<rect x="1346" y="464" width="4" height="5" opacity=".22"/>
+</g>
+<rect x="1348" y="330" width="5" height="4" fill="#c0533f" opacity=".55"/>
+<g stroke="#2b3a4c" stroke-width=".8" opacity=".5" fill="none">
+<path d="M1128 470 H1360"/><path d="M1128 496 H1360"/>
+</g>
+</g>
+<rect x="1116" y="144" width="256" height="410" fill="none" stroke="#232733" stroke-width="2.6"/>
+<rect x="1236" y="144" width="7" height="410" fill="#1c202a"/>
+<rect x="1116" y="300" width="256" height="6" fill="#1c202a"/>
+<rect x="1106" y="550" width="276" height="11" fill="#191c25"/>
+<rect x="1106" y="550" width="276" height="2" fill="#2a2f3b" opacity=".8"/>
+</g>
+
+<!-- desk -->
+<rect x="0" y="600" width="1440" height="300" fill="url(#deskG)"/>
+<rect x="0" y="598" width="1440" height="2.4" fill="#333945" opacity=".7"/>
+<ellipse cx="778" cy="672" rx="430" ry="128" fill="url(#spill)"/>
+<ellipse cx="778" cy="632" rx="215" ry="62" fill="url(#spill)" opacity=".7"/>
+<ellipse cx="778" cy="601" rx="118" ry="13" fill="url(#contact)"/>
+
+<!-- monitor -->
+<g>
+<path d="M726 550 L830 550 L852 596 L704 596 Z" fill="#20252f" stroke="#333b48" stroke-width="1"/>
+<ellipse cx="778" cy="597" rx="86" ry="9" fill="#191d25"/>
+<path d="M694 596 Q778 588 862 596" fill="none" stroke="#3d4453" stroke-width="1.1" opacity=".8"/>
+<rect x="610" y="296" width="336" height="254" rx="14" fill="#1a1e27" stroke="#39404e" stroke-width="1.4"/>
+<rect x="628" y="314" width="300" height="194" fill="url(#screenG)"/>
+<polygon points="628,314 928,314 928,352 628,432" fill="#eafff5" opacity=".035"/>
+<g fill="#dff6ea">
+<rect x="650" y="344" width="150" height="5" rx="2" opacity=".72"/>
+<rect x="650" y="362" width="232" height="5" rx="2" opacity=".56"/>
+<rect x="650" y="380" width="190" height="5" rx="2" opacity=".46"/>
+<rect x="650" y="402" width="96" height="5" rx="2" opacity=".4"/>
+<rect x="650" y="420" width="160" height="5" rx="2" opacity=".32"/>
+<rect x="650" y="442" width="8" height="12" opacity=".92"/>
+</g>
+<g fill="#050a08" opacity=".07">
+<rect x="628" y="330" width="300" height="1.4"/><rect x="628" y="362" width="300" height="1.4"/>
+<rect x="628" y="394" width="300" height="1.4"/><rect x="628" y="426" width="300" height="1.4"/>
+<rect x="628" y="458" width="300" height="1.4"/><rect x="628" y="490" width="300" height="1.4"/>
+</g>
+<rect x="628" y="512" width="300" height="15" fill="#0f1117"/>
+<circle cx="903" cy="519.5" r="2" fill="#a8e8cc" opacity=".85"/>
+<rect x="610" y="296" width="336" height="254" rx="14" fill="none" stroke="#333846" stroke-width="1" opacity=".5"/>
+</g>
+
+<!-- keyboard -->
+<g>
+<polygon points="648,650 908,650 922,720 634,720" fill="#0e1016" stroke="#1e222b" stroke-width="1.2"/>
+<g stroke="#1c2029" stroke-width="1.1" opacity=".85" fill="none">
+<path d="M652 670 H904"/><path d="M652 690 H904"/><path d="M652 706 H904"/>
+<path d="M668 650 V670 M690 650 V670 M712 650 V670 M734 650 V670 M756 650 V670 M778 650 V670 M800 650 V670 M822 650 V670 M844 650 V670 M866 650 V670 M888 650 V670
+M668 670 V690 M690 670 V690 M712 670 V690 M734 670 V690 M756 670 V690 M778 670 V690 M800 670 V690 M822 670 V690 M844 670 V690 M866 670 V690 M888 670 V690
+M672 690 V706 M700 690 V706 M728 690 V706 M756 690 V706 M784 690 V706 M812 690 V706 M840 690 V706 M868 690 V706 M896 690 V706"/>
+</g>
+<path d="M652 650 H904" stroke="#8b978f" stroke-width="1.2" opacity=".62"/>
+</g>
+
+<!-- mouse -->
+<g>
+<ellipse cx="950" cy="692" rx="15" ry="20" fill="#11141a" stroke="#1f242d" stroke-width="1.1"/>
+<path d="M950 676 V686" stroke="#2b313b" stroke-width="1.2"/>
+<path d="M950 672 C950 660 938 656 928 652" fill="none" stroke="#171b22" stroke-width="1.4"/>
+<path d="M941 686 Q950 682 959 686" fill="none" stroke="#6a7a78" stroke-width="1" opacity=".35"/>
+</g>
+
+<rect width="1440" height="900" fill="url(#vigG)"/>
+</svg>
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+
+<div class="hero-in">
+  <div class="notice"><span class="dot"></span>全程不剧透 · 梗概止于「她承认自己是女的」</div>
+  <div class="eyebrow"><i></i>Japanese Cinema · No.20</div>
+  <h1>春天情书</h1>
+  <p class="latin">（ハル）</p>
+  <p class="latin">Haru · 1996</p>
+  <p class="hero-sub">一九九六年，上网要先拨号。调制解调器响上七八声才连得通；发一封信，要等对方第二天打开电脑才看得到。就在这样的网速里，东京一个男人给自己起了个名字叫「春」，在电影留言板上遇见了一个叫「星」的人。<em>后来他们说了很多话，只是谁也没有先提起见面。</em></p>
+  <div class="chips">
+    <span class="chip"><b>1996</b> · 森田芳光</span>
+    <span class="chip"><b>118 分钟</b> · 彩色</span>
+    <span class="chip">豆瓣 <b>8.6</b></span>
+    <span class="chip">旬报十佳 <b>第 4 位</b></span>
+    <span class="chip">报知 <b>导演赏</b></span>
+  </div>
+</div>
+
+<div class="scroll-hint">SCROLL<span></span></div>
+</header>
+
+<nav id="hud" aria-hidden="true">
+  <b data-i="0"><i></i>屏</b><b data-i="1"><i></i>字</b><b data-i="2"><i></i>档</b><b data-i="3"><i></i>人</b><b data-i="4"><i></i>等</b>
+</nav>
+
+<main>
+
+<section class="sec" id="s1" style="border-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">01</span><h2>剧情梗概</h2><p class="kicker">The Story</p></div>
+    <div class="intro">
+      <div class="lede reveal">
+        <p>速见昇在东京一家公司上班。念书时他是美式橄榄球选手——那种一开球，所有人都会看过去的位置。后来受了伤，退了队，毕业，进公司，成了走廊里最不占地方的那个人。制服换了，作息换了，只有一件事没换：他还是喜欢看电影。</p>
+        <p>办公室是标准的那种：格子间、电话、课长的口头禅、下班后推不掉的聚会。他有一个交往着的女友，关系不坏，也不热。周末看电影、吃饭、各自回各自的家。日子不算难过，只是每天长得都一样。</p>
+        <p>一九九六年，喜欢电影的人不在网页上聚集，在「留言板」上。那还是电脑通信的年代：一根电话线、一台调制解调器、一个要背下来的号码。他在上面注册了一个名字：ハル——「春」。</p>
+        <p>板上有个叫「ほし」（星）的人。说话的方式他很喜欢：句子短，不客套，偶尔刻薄一句，但从不见血。他们从一部电影聊到下一部，从电影聊到工作，从工作聊到那些在现实里不好意思说出口的话。后来他们不在板上聊了，改用私人邮件。</p>
+        <p>「ほし」回信很快，常常在深夜。他默认对方是个男的——网上的名字看不出性别，他也不问。这样反而轻松。<strong>有些话，本来就不想讲给认识自己的人听。</strong></p>
+        <p>屏幕的另一头是盛冈。藤间美津江，二十几岁，住在岩手县。她换过好几份工作，每换一次，就像把自己往更远的地方挪一点。她不是不想安定，是不知道要往哪儿安定。</p>
+        <p>几年前，她失去过一个很重要的人。那之后，时间在她这里就停了：不往前走，也不往回看，只是重复。她用「ほし」这个名字，说话带着点男生的口气——这样在板上就没人来搭讪，也没人来关心。</p>
+        <p>她的日子过得很轻：上班、下班、做饭、洗碗、打开电脑。现实里的事都被她调成了最小的音量。只有屏幕上那一行「新邮件到了」，会让她的心跳快一下。</p>
+        <p>两个人慢慢有了默契。他们聊电影里最喜欢的一场戏，聊今天午饭吃了什么，聊小时候住过的房子。他们从不说「我们」，也从没提过要见面。</p>
+        <p>有一件事，是她先做的。在一封邮件里，她告诉「春」：自己其实是女的。</p>
+        <p>他回了信。没有追问，也没有变。第二天，第三天，两个人都还在写。<strong>于是这段关系有了它自己的规则：不见面、不问长相、不打电话。</strong></p>
+        <p>这条规则让一切变得很轻。想说话就说，想安静就安静，想消失——只要不打开电脑，就可以消失。屏幕给了他们一种很奇怪的自由：从来没有一段关系，允许你随时退场而不必解释。</p>
+        <p>可屏幕之外，事情照样在动。公司里的人事、家里的期待、朋友介绍的对象、「差不多该定下来了」这句话。现实里的关系有名分、有时间表、有可以被介绍给别人的名字；屏幕上这一段，什么都没有。</p>
+        <p>也是在那段时间，「春」开始想一件他从没想过的事：如果这个人从此不再回信，他连去哪儿找都不知道。</p>
+        <p class="dash">后面的事——那次「意外」到底是什么、两个人有没有见成、最后一封邮件写了什么——本页一个字都不写。</p>
+      </div>
+      <aside class="glance reveal">
+        <h3>At a Glance</h3>
+        <dl>
+          <div><dt>一句话</dt><dd>两个人在一台电脑的两端，写信给一个从没见过的人。</dd></div>
+          <div><dt>时间</dt><dd>一九九六年</dd></div>
+          <div><dt>地点</dt><dd>东京 · 盛冈<small>两个多小时新干线的距离</small></dd></div>
+          <div><dt>主角</dt><dd>速见昇（ハル）· 藤间美津江（ほし）</dd></div>
+          <div><dt>对手</dt><dd>不是人，是「要不要再写一封」</dd></div>
+          <div><dt>空间</dt><dd>办公室、深夜的书桌、两个城市的窗</dd></div>
+          <div><dt>道具</dt><dd>一台 CRT、一根电话线、一个「新邮件」的提示</dd></div>
+          <div><dt>声音</dt><dd>拨号音、键盘、深夜的电流声</dd></div>
+          <div><dt>情绪</dt><dd>安静；结尾之前会有一点疼</dd></div>
+          <div><dt>关键词</dt><dd>网名 / 邮件 / 不见面 / 1996</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="acts">
+      <div class="act reveal"><div class="t">First · 拨号</div><h4>声音像传真机在吵架</h4><p>那时候上网是一件要等的事：等拨号、等连接、等对方上线、等第二天。这部片子的节奏，就是那个「等」——它不加速，因为那时候谁也加速不了。</p></div>
+      <div class="act reveal"><div class="t">Second · 起名</div><h4>一个人可以给自己起名字</h4><p>「ハル」和「ほし」都不是本名。名字是自己挑的，所以它可以比本人更诚实一点——你想要成为什么样的人，就会给自己起什么样的名。</p></div>
+      <div class="act reveal"><div class="t">Third · 规则</div><h4>他们给这段关系写了一份合同</h4><p>不见面、不问长相、不打电话。这份合同的每一条都在保护他们，也每一条都在拦着他们。全片最大的张力，就长在这三条短短的条款上。</p></div>
+    </div>
+
+    <p class="note reveal" style="margin-top:34px">本页叙述止于「她承认自己是女的」这一刻。此后那次意外怎么发生、两人有没有见成、最后一封邮件写了什么，一律不写。</p>
+  </div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">02</span><h2>概念海报</h2><p class="kicker">Two Files</p></div>
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+<svg class="poster-svg" viewBox="0 0 520 760" role="img" aria-label="暗色桌面上并排放着两张 3.5 英寸软盘，标签上手写着「ハル」与「ほし」，下方是片名与一枚朱印">
+<defs>
+<linearGradient id="pBg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#080a10"/><stop offset=".55" stop-color="#060810"/><stop offset="1" stop-color="#04050a"/>
+</linearGradient>
+<radialGradient id="pGlow" cx=".5" cy=".42" r=".56">
+<stop offset="0" stop-color="#4b8271" stop-opacity=".17"/><stop offset=".6" stop-color="#2c4f46" stop-opacity=".05"/>
+<stop offset="1" stop-color="#132420" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="dBody" x1="0" y1="0" x2=".7" y2="1">
+<stop offset="0" stop-color="#2b303b"/><stop offset=".5" stop-color="#1c2029"/><stop offset="1" stop-color="#12151c"/>
+</linearGradient>
+<linearGradient id="dBody2" x1="0" y1="0" x2=".7" y2="1">
+<stop offset="0" stop-color="#31363f"/><stop offset=".5" stop-color="#20242c"/><stop offset="1" stop-color="#15181f"/>
+</linearGradient>
+<linearGradient id="dShut" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#a9b4c0"/><stop offset=".34" stop-color="#79848f"/><stop offset=".62" stop-color="#525c67"/>
+<stop offset=".82" stop-color="#8d97a2"/><stop offset="1" stop-color="#68727d"/>
+</linearGradient>
+<linearGradient id="dLabel" x1="0" y1="0" x2=".4" y2="1">
+<stop offset="0" stop-color="#f4efdf"/><stop offset=".55" stop-color="#eae3d0"/><stop offset="1" stop-color="#dcd3bd"/>
+</linearGradient>
+<radialGradient id="dShadow" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="pVig" cx=".5" cy=".46" r=".74">
+<stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".72" stop-color="#000" stop-opacity=".12"/>
+<stop offset="1" stop-color="#000" stop-opacity=".4"/>
+</radialGradient>
+</defs>
+
+<rect width="520" height="760" fill="url(#pBg)"/>
+<rect width="520" height="760" fill="url(#pGlow)"/>
+
+<g font-family="Didot,Optima,serif" fill="#5b6a68">
+<text x="88" y="66" font-size="8.6" letter-spacing="3.4">JAPANESE CINEMA · NO.20</text>
+<text x="432" y="66" font-size="8.6" letter-spacing="3.4" text-anchor="end">1996</text>
+</g>
+<path d="M88 84 H432" stroke="#4a5654" stroke-width=".8" opacity=".5"/>
+
+<ellipse cx="300" cy="352" rx="220" ry="150" fill="url(#dShadow)"/>
+
+<!-- disk A -->
+<g transform="translate(88 210) rotate(-5 93 93)">
+<path d="M10 0 H150 L186 36 V176 A10 10 0 0 1 176 186 H10 A10 10 0 0 1 0 176 V10 A10 10 0 0 1 10 0 Z" fill="url(#dBody)" stroke="#3a414e" stroke-width="1"/>
+<path d="M150 0 L186 36 H158 A8 8 0 0 1 150 28 Z" fill="#161a22" stroke="#3a414e" stroke-width=".8"/>
+<rect x="74" y="4" width="66" height="42" rx="1.5" fill="url(#dShut)" stroke="#3d454f" stroke-width=".8"/>
+<rect x="86" y="12" width="14" height="26" fill="#1b1f27"/>
+<rect x="74" y="4" width="66" height="3" fill="#c2ccd6" opacity=".55"/>
+<rect x="12" y="64" width="162" height="110" fill="url(#dLabel)" stroke="#c9bfa8" stroke-width=".9"/>
+<g fill="#8d8574" opacity=".7">
+<rect x="20" y="72" width="42" height="2.4"/><rect x="20" y="78" width="26" height="2.4"/>
+</g>
+<text x="93" y="126" text-anchor="middle" font-family="Hiragino Mincho ProN,YuMincho,Songti SC,serif"
+ font-size="30" fill="#2b3038" letter-spacing="1.5" transform="rotate(-2 93 126)">ハル</text>
+<g stroke="#b6ac95" stroke-width=".9" opacity=".8">
+<path d="M22 148 H164"/><path d="M22 162 H164"/>
+</g>
+<text x="24" y="170" font-family="Didot,serif" font-size="6.4" fill="#6d6759" letter-spacing="1.4">1.44 MB · 2HD</text>
+<rect x="6" y="168" width="20" height="13" fill="#0e1117" stroke="#3d454f" stroke-width=".8"/>
+<rect x="160" y="170" width="12" height="10" fill="#0e1117"/>
+<rect x="12" y="64" width="162" height="110" fill="none" stroke="#000" stroke-width=".6" opacity=".22"/>
+</g>
+
+<!-- disk B -->
+<g transform="translate(250 242) rotate(4 93 93)">
+<path d="M10 0 H150 L186 36 V176 A10 10 0 0 1 176 186 H10 A10 10 0 0 1 0 176 V10 A10 10 0 0 1 10 0 Z" fill="#000" opacity=".52" transform="translate(-10 7)"/>
+<path d="M10 0 H150 L186 36 V176 A10 10 0 0 1 176 186 H10 A10 10 0 0 1 0 176 V10 A10 10 0 0 1 10 0 Z" fill="url(#dBody2)" stroke="#414855" stroke-width="1"/>
+<path d="M150 0 L186 36 H158 A8 8 0 0 1 150 28 Z" fill="#191d25" stroke="#414855" stroke-width=".8"/>
+<rect x="74" y="4" width="66" height="42" rx="1.5" fill="url(#dShut)" stroke="#454d58" stroke-width=".8"/>
+<rect x="86" y="12" width="14" height="26" fill="#1b1f27"/>
+<rect x="74" y="4" width="66" height="3" fill="#c2ccd6" opacity=".45"/>
+<rect x="12" y="64" width="162" height="110" fill="url(#dLabel)" stroke="#c9bfa8" stroke-width=".9"/>
+<g fill="#8d8574" opacity=".7">
+<rect x="20" y="72" width="42" height="2.4"/><rect x="20" y="78" width="26" height="2.4"/>
+</g>
+<text x="93" y="126" text-anchor="middle" font-family="Hiragino Mincho ProN,YuMincho,Songti SC,serif"
+ font-size="30" fill="#2b3038" letter-spacing="1.5" transform="rotate(2 93 126)">ほし</text>
+<g stroke="#b6ac95" stroke-width=".9" opacity=".8">
+<path d="M22 148 H164"/><path d="M22 162 H164"/>
+</g>
+<text x="24" y="170" font-family="Didot,serif" font-size="6.4" fill="#6d6759" letter-spacing="1.4">1.44 MB · 2HD</text>
+<rect x="6" y="168" width="20" height="13" fill="#0e1117" stroke="#3d454f" stroke-width=".8"/>
+<rect x="160" y="170" width="12" height="10" fill="#0e1117"/>
+</g>
+
+<path d="M88 480 H432" stroke="#4a5654" stroke-width=".8" opacity=".34"/>
+<text x="88" y="512" font-family="Didot,Optima,serif" font-size="7.8" fill="#45514f" letter-spacing="3">3.5 INCH · DOUBLE SIDED · 1996</text>
+
+<text x="88" y="608" font-family="Hiragino Mincho ProN,YuMincho,Songti SC,serif" font-size="15" fill="#7c8a86" letter-spacing="2">（ハル）</text>
+<text x="88" y="662" font-family="Songti SC,Source Han Serif SC,serif" font-size="35" fill="#eceadf" letter-spacing="7">春天情书</text>
+<text x="88" y="696" font-family="Didot,Optima,serif" font-size="8.6" fill="#5f6b68" letter-spacing="2.6">HARU · YOSHIMITSU MORITA · 118 MIN</text>
+
+<g transform="translate(398 616)">
+<rect width="46" height="60" fill="none" stroke="#a63a2c" stroke-width="1.4" opacity=".55"/>
+<text x="23" y="26" text-anchor="middle" font-family="Songti SC,serif" font-size="15" fill="#b8483a" opacity=".7">二</text>
+<text x="23" y="48" text-anchor="middle" font-family="Songti SC,serif" font-size="15" fill="#b8483a" opacity=".7">〇</text>
+</g>
+
+<rect width="520" height="760" fill="url(#pVig)"/>
+</svg>
+        </div>
+        <p class="pcap">TWO FILES · 1.44 MB · 尺寸 520 × 760</p>
+      </div>
+      <div class="pnotes">
+        <div class="pnote reveal"><div class="n">01 / 两张盘</div><h4>一九九六年，一个人可以装进 1.44 兆里</h4><p>软盘是当年最私人也最脆弱的容器：容量小到可笑，却要装下一个人全部的作业、日记和秘密。这部片子里的两个人，各自就是一张这样的盘——里面什么都有，就是没有对方。<br>而他们交换的，是彼此的内容。</p></div>
+        <div class="pnote reveal"><div class="n">02 / 标签</div><h4>名字是手写的</h4><p>「ハル」和「ほし」都不是本名。标签上的字是自己写的，写得有点歪，两行印刷线还空着没人填。<br>人在给自己起名字的时候，会不小心把想要的样子写进去——所以这两个名字，比身份证上的那个更准。</p></div>
+        <div class="pnote reveal"><div class="n">03 / 滑盖</div><h4>要推开才看得见里面</h4><p>金属滑盖压着盘芯，不推到底，什么也读不出来。这段关系也是这样：所有内容都在盖子底下，只有当事人推得开。<br>旁人看见的只是一块黑色的方玻璃。</p></div>
+        <div class="pnote reveal"><div class="n">04 / 那个小滑块</div><h4>写保护：拨过去，就再也写不进来</h4><p>盘角上那个很小的滑块，拨到另一边，这张盘就变成只读——你能一遍一遍地读，但新的东西再也写不进去。<br>他们那条「不见面」的规则，本质上就是把滑块拨到了这一档：<b>可以读，不许写。</b></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">03</span><h2>影片档案</h2><p class="kicker">Credits</p></div>
+    <dl class="spec reveal">
+      <div><dt>原名</dt><dd>（ハル）<small>片名自带一对全角括号</small></dd></div>
+      <div><dt>英文名</dt><dd>Haru</dd></div>
+      <div><dt>中文别名</dt><dd>春天 / 春天情书</dd></div>
+      <div><dt>年份</dt><dd>1996</dd></div>
+      <div><dt>片长</dt><dd>118 分钟<small>豆瓣 / IMDb / 猫眼口径一致</small></dd></div>
+      <div><dt>规格</dt><dd>彩色 · 日语<small>豆瓣条目另记有少量汉语普通话</small></dd></div>
+      <div><dt>类型</dt><dd>剧情 / 爱情</dd></div>
+      <div><dt>脚本 · 监督</dt><dd>森田芳光<small>1950–2011 · 东京都涩谷区</small></dd></div>
+      <div><dt>摄影</dt><dd>高濑比吕志</dd></div>
+      <div><dt>剪辑</dt><dd>田中慎二</dd></div>
+      <div><dt>美术</dt><dd>小泽秀高</dd></div>
+      <div><dt>音乐</dt><dd>佐桥俊彦</dd></div>
+      <div><dt>制作</dt><dd>Kouwa International<small>制片 青木胜彦 · 三泽和子 · 铃木光</small></dd></div>
+      <div><dt>配给</dt><dd>东宝</dd></div>
+      <div><dt>公映</dt><dd>1996-03-09（日本）</dd></div>
+      <div><dt>主演</dt><dd>深津绘里 / 内野圣阳<small>深津 1972 年生，本片公映时 24 岁</small></dd></div>
+      <div><dt>共演</dt><dd>户田菜穗 / 宫泽和史 / 平泉成</dd></div>
+      <div><dt>年代坐标</dt><dd>1996<small>Windows 95 在日本的第二年 · 拨号上网仍是主流</small></dd></div>
+      <div><dt>系列坐标</dt><dd>日本专题 第 20 期<small>系列里第 4 部当代都市题材</small></dd></div>
+      <div><dt>关键词</dt><dd>网名 / 邮件 / 不见面</dd></div>
+      <div class="wide"><dt>一句话</dt><dd>它拍的是人类第一次大规模「隔着屏幕喜欢一个人」——而这件事，三十年后成了所有人的日常。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="s4">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">04</span><h2>口碑与口径</h2><p class="kicker">Numbers, Carefully</p></div>
+    <div class="scores reveal">
+      <div class="sc hi"><div class="src">Douban 豆瓣</div><div class="val">8.6<small>/ 10</small></div><div class="meta">29,506 人评价 · 五星 43.4% / 四星 43.5%<br>三星 11.4% / 二星 1.2% / 一星 0.4% · <b>未进 Top250</b></div></div>
+      <div class="sc"><div class="src">IMDb</div><div class="val">7.5<small>/ 10</small></div><div class="meta"><b>1,023</b> 票 · 与豆瓣差 <b>1.1</b><br>4 wins &amp; 2 nominations（IMDb 口径，总数不采用）</div></div>
+      <div class="sc abs"><div class="src">Rotten Tomatoes / Metacritic</div><div class="val tiny">均无评分收录</div><div class="meta">1996 年它在英美基本没有院线发行，两家站都没有条目。这一格空着，本身就是一个数据。</div></div>
+      <div class="sc abs"><div class="src">第 70 回 电影旬报十佳</div><div class="val">第 4 位</div><div class="meta">1996 年度日本电影十佳<br>同年度第 1 位：《谈谈情，跳跳舞》（本专题第 14 期）</div></div>
+    </div>
+    <ul class="caliber reveal">
+      <li><i>01</i><span><b>8.6 分，但 IMDb 只有一千票。</b>豆瓣近三万人、IMDb 一千出头，两边差 1.1。它不是「世界公认的经典」，它是「东亚观众先认、西方几乎没看过」的那一类。选它，是因为它在中文影迷里的口碑确实硬，而不是因为它有名。</span></li>
+      <li><i>02</i><span><b>同一年、同一届，它输给过一部片子。</b>第 20 回日本电影学院奖（1997），最优秀作品是《谈谈情，跳跳舞》，那一部拿了 13 项最优秀；《（ハル）》只拿到最优秀新人（内野圣阳），外加优秀主演女优（深津绘里）与优秀脚本（森田芳光）两项提名。同一年第 70 回旬报十佳，它排第 4，第 1 位也是《谈谈情，跳跳舞》。</span></li>
+      <li><i>03</i><span><b>「学院奖最佳编剧」是中文资料的常见错误。</b>它拿到的是「优秀脚本赏」——也就是提名，五个候补之一；最优秀脚本那一格给了别人。同理，「最佳女主角」也是提名。本页一律写「优秀赏」，不写「获奖」。</span></li>
+      <li><i>04</i><span><b>「第 39 回蓝丝带导演赏」这条不采用。</b>猫眼等中文条目记它拿了第 39 回蓝丝带最佳导演，但日文侧第 39 回（1996 年度）的导演赏是北野武《坏孩子的天空》。两边对不上，本页不写这一条。</span></li>
+      <li><i>05</i><span><b>IMDb 的「4 wins &amp; 2 nominations」是总数。</b>里面混着地区奖与影展奖，口径与日本的「届次」完全不同。本页只列有明确届次的七项，不写总数，也不写「横扫」——它当年确实没横扫，因为那一年有《谈谈情，跳跳舞》。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="s5">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">05</span><h2>两个名字，一块屏</h2><p class="kicker">Who Wants What</p></div>
+    <div class="people reveal">
+      <div class="person">
+        <div class="role">THE MAN · 东京</div><h4>速见昇<small>（ハル）</small></h4><div class="actor">内野圣阳</div>
+        <p>念书时是美式橄榄球选手，场上很显眼；受伤退队之后，他把自己收了起来。工作不坏，女友不坏，日子不坏——他就是不再期待什么了。<span><b>他要的</b>是一个可以不说客套话的地方。这一点现实给不了他，一块屏幕给了他。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">THE WOMAN · 盛冈</div><h4>藤间美津江<small>（ほし）</small></h4><div class="actor">深津绘里</div>
+        <p>二十几岁，住在岩手。换工作、搬家、把生活收拾得很干净，干净到没有一样东西会提醒她过去。她不是在逃，她只是停在那儿了。<span><b>她要的</b>是一个人，让她觉得「往前走」不算背叛。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">THE OTHER ID · 东京</div><h4>「ローズ」</h4><div class="actor">户田菜穗</div>
+        <p>另一个 ID。她住在东京，会约「春」出来吃饭、看电影，说话直接，不绕弯。在「春」的生活里她确实在场——只是她的位置，跟「ほし」不在同一条线上。<span><b>至于她是谁</b>，本页不写。这是全片最漂亮的一次「原来如此」，说了就废了。</span></p>
+      </div>
+      <div class="person thing">
+        <div class="role">THE THING · 一块屏</div><h4>那台 CRT 显示器<small>不亮的时候，它就是一块黑色的方玻璃。</small></h4><div class="actor">不解释 · 不评判 · 不催你回话</div>
+        <p>它把两个人的声音变成字，把字变成可以反复读的东西，也把「消失」变成一件不需要理由的事。<span><b>它代表的东西</b>是这部片子真正的第三个主角：不是爱情，是「媒介」——所有让它发生的东西，也是所有让它停在那里的东西。</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s6">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">06</span><h2>人物冲突</h2><p class="kicker">Five Frictions</p></div>
+    <div class="conflicts reveal">
+      <div class="cf"><h4><i>FRICTION 01</i>一个被看见过的人，怎么接受自己不再被看见</h4><p>他曾经在球场上，一抬头全是人。现在他在格子间里，一整天没人叫他的名字。这种落差不需要谁来羞辱他，它自己就在那儿。<em>所以他喜欢留言板：在那儿，说话的分量只取决于你说什么。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 02</i>一个停住的人，凭什么允许自己往前走</h4><p>她不是不想爱人，她是觉得再爱一次，等于把那件没过去的事判了死刑。所以她宁可停在原地，把日子过成一串重复的动作。<em>这部片子最温柔的地方，是它从不催她。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 03</i>谁先承认「这是关系」</h4><p>两个人都在写，谁都没说这是什么。一旦命名，就要承担；不命名，就还能假装只是聊天。<em>这段关系最大的敌人不是第三者，是「称呼」。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 04</i>屏幕给的自由，正好是逃避的许可证</h4><p>想消失就消失，不用解释，不用看对方的脸。这条特权保护了他们，也让他们永远可以少走一步。<em>最舒服的地方，往往也是最不肯挪动的地方。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 05</i>一段两个多小时就能到的距离</h4><p>东京到盛冈，新干线两个多小时。正因为「能到」，不去才显得像一种选择，而不是一种无奈。<em>远不是问题，不肯动才是。</em></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s7">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">07</span><h2>荣誉</h2><p class="kicker">What It Actually Has</p></div>
+    <div class="awards reveal">
+      <div class="award gold"><div class="yr">1996</div><div><h4>第 70 回 电影旬报十佳 · 日本电影 第 4 位</h4><p>前三位是《谈谈情，跳跳舞》《坏孩子的天空》《沉睡的男人》。旬报十佳是日本影评界最老的年度榜</p></div></div>
+      <div class="award gold"><div class="yr">1996</div><div><h4>第 21 回 报知电影赏 · 导演赏</h4><p>森田芳光。同一个奖的同年主演女优赏给了原田美枝子《梦幻村庄》</p></div></div>
+      <div class="award"><div class="yr">1997</div><div><h4>第 20 回 日本电影学院奖 · 最优秀新人赏</h4><p>内野圣阳。学院奖的新人赏是「最优秀」，不是提名</p></div></div>
+      <div class="award"><div class="yr">1997</div><div><h4>第 20 回 日本电影学院奖 · 优秀主演女优赏</h4><p>深津绘里。「优秀」= 提名，五个候补之一；最优秀那一格给了别人</p></div></div>
+      <div class="award"><div class="yr">1997</div><div><h4>第 20 回 日本电影学院奖 · 优秀脚本赏</h4><p>森田芳光。同上，提名。中文资料常误记为「获奖」</p></div></div>
+      <div class="award"><div class="yr">1996</div><div><h4>第 18 回 横滨电影节 · 主演女优赏</h4><p>深津绘里。横滨电影节由当地影迷与评论者评选，偏爱作者型作品</p></div></div>
+      <div class="award"><div class="yr">1996</div><div><h4>第 18 回 横滨电影节 · 脚本赏</h4><p>森田芳光。同届本片还进了日本电影十佳第 4 位</p></div></div>
+      <div class="award wide"><div class="yr">口径</div><div><h4>三条不采用的说法</h4><p>①「学院奖最佳编剧 / 最佳女主角获奖」——实际是「优秀赏」即提名。②「第 39 回蓝丝带导演赏」——日文侧该届导演赏为北野武《坏孩子的天空》，对不上，不写。③「IMDb 4 wins &amp; 2 nominations」——是累计总数，与本页的「届次」口径不同。本页只列有明确届次与部门的七项，宁可少写，不写错。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s8">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">08</span><h2>谱系：一个人的二十八部电影</h2><p class="kicker">One Director, 28 Films</p></div>
+    <div class="lineage reveal">
+      <div class="ln"><div class="yr">1950</div><h4>生于东京涩谷圆山町</h4><p>家里开料亭，客人喝醉了就变一个人。他后来一辈子都在拍「人前一套、人后一套」这件事——源头大概在这里。</p></div>
+      <div class="ln"><div class="yr">1981</div><h4>《像那样的东西》· 出道</h4><p>自编自导的第一部商业长片，讲一个落语家的徒弟。横滨电影节给了最佳影片与最佳新人导演。</p></div>
+      <div class="ln"><div class="yr">1983</div><h4>《家族游戏》· 被写进电影史</h4><p>1983 年度旬报十佳第 1 位、蓝丝带导演赏。2009 年旬报把它选进「日本电影史十佳」——一部讲补习老师如何拆散一个家的黑色喜剧。</p></div>
+      <div class="ln"><div class="yr">1985</div><h4>《其后》· 夏目漱石</h4><p>明治的克制，一场没有说出口的爱情。松田优作主演。他证明了自己不只是会拍讽刺。</p></div>
+      <div class="ln now"><div class="yr">1996 · 本期</div><h4>《（ハル）》· 一块屏幕</h4><p>夹在《其后》与《失乐园》之间，是他最不「森田芳光」的一部：没有讽刺，没有攻击性，只有两个人隔着屏幕慢慢说话。<small style="display:block;margin-top:8px;color:var(--dim2)">——也是他唯一一部把形式彻底交出去的电影：让银幕变成一张信纸。</small></p></div>
+      <div class="ln"><div class="yr">1997</div><h4>《失乐园》· 全国性的词</h4><p>渡边淳一原作。当年的日本最卖座真人片，而且「失乐园」三个字直接变成了日语里「婚外情」的代称与年度流行语。</p></div>
+      <div class="ln"><div class="yr">2011</div><h4>去世，61 岁</h4><p>2011 年 12 月 20 日，急性肝功能衰竭。入院前刚完成《乘 A 列车前行》，2012 年 3 月上映，成了遗作。</p></div>
+    </div>
+    <p class="note reveal" style="margin-top:40px">他一共执导 28 部，喜剧、爱情、惊悚、家庭都拍过，还得过蓝丝带导演赏（2003《宛如阿修罗》）。<b>《（ハル）》是他最轻的一部，也是最准的一部</b>——轻到几乎没有戏剧冲突，准到每一封信的停顿都放对了地方。看他的谱系你会发现：一个一辈子在拆穿体面的人，忽然拍了一部关于「体面之下那点真心」的电影。</p>
+  </div>
+</section>
+
+<section class="sec" id="s9">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">09</span><h2>六处亮点</h2><p class="kicker">Why It Works</p></div>
+    <div class="grid6 reveal">
+      <div class="g6"><div class="n">01</div><h4>让银幕变成一张纸</h4><p>片子里有大量时间，画面上就是一个光标和一个一个字被敲出来。它把「读信」这个动作直接搬到银幕上：你不是在看他们谈恋爱，你是在<b>读</b>他们谈恋爱。1996 年这么干，是非常大胆的。</p></div>
+      <div class="g6"><div class="n">02</div><h4>那些机器是真的</h4><p>CRT 的白光、键盘的声音、调制解调器拨号的哔哔声、等「有一封新邮件」的那几秒。它没有美化 1996 年，把那年上网的笨拙原样留了下来——现在看，这些笨拙就是史料。</p></div>
+      <div class="g6"><div class="n">03</div><h4>邮件是可以重读的</h4><p>说话是一次性的，写字不是。一句话说出口就散了；写下来的可以读第二遍、第三遍，可以半夜起来再看一次。<b>这段关系之所以能长，是因为每一句都被读过很多遍。</b></p></div>
+      <div class="g6"><div class="n">04</div><h4>深津绘里那年二十四岁</h4><p>她凭这部片子拿了横滨电影节主演女优赏，也拿到学院奖最佳女主提名。她演的不是「悲伤」，是「不动」——一个人停在原地太久之后，连表情都变慢了。</p></div>
+      <div class="g6"><div class="n">05</div><h4>一个没有坏人的故事</h4><p>没有反派，没有误会，没有谁使坏。冲突全在「要不要再写一封」这种小到不好意思说出口的地方。<b>能把这种冲突撑满两小时，靠的是准，不是狠。</b></p></div>
+      <div class="g6"><div class="n">06</div><h4>片名那两个括号</h4><p>日本原片名是「（ハル）」，前面一个括号，后面一个括号。像一句还没说完的话，也像一个还没填进去的输入框。<b>整部电影就在这两个括号之间。</b></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">10</span><h2>为什么值得一看</h2><p class="kicker">Three Reasons</p></div>
+    <div class="why">
+      <article class="reveal"><h3>一、它比今天更懂今天</h3><p>一九九六年，网速以 K 计，一封信要等一天。现在我们有无限带宽、已读回执、随时能发的位置共享。<strong>可我们仍然在做同一件事：用文字确认一个人值不值得见。</strong></p><p>这部片子拍的是网速最慢的年代，说的却是网速最快年代的心事。你不是在怀旧，你是在照镜子——只不过镜子里那台机器，比现在大得多，也慢得多。</p></article>
+      <article class="reveal"><h3>二、它是一部要求你「读」的电影</h3><p>大部分电影怕你走神，所以不停给刺激。这一部反过来：它把画面让给文字，把节奏交给阅读的速度。</p><p><em>你一旦习惯，会发现那种慢其实很奢侈</em>——它假定你有耐心，也假定你值得被慢慢说。这样的电影现在几乎没人拍了，因为没人敢假定观众有耐心。</p></article>
+      <article class="reveal"><h3>三、它把「克制」拍成了一种强度</h3><p>没有大哭，没有追着列车跑，没有在雨里喊名字。所有的重量都压在「他今天没有回信」这种地方。它相信你能从一行没出现的字里，读出一整个人的心情。</p><p><strong>所以看完不会立刻难过。是过几天，你在等一条消息的时候，忽然想起这部片子。</strong>——那时候你才知道它一直在你身上起作用。</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">11</span><h2>观影提示</h2><p class="kicker">Before You Press Play</p></div>
+    <div class="tips">
+      <div class="tip reveal"><div class="k">01</div><h4>别看解说</h4><p>这部片子的分量全在最后那一段。一句解说就能把它拆掉，而且拆掉之后再也装不回去。</p></div>
+      <div class="tip reveal"><div class="k">02</div><h4>开头会慢</h4><p>它不着急。它要你先习惯两个人的日常——上班、吃饭、打开电脑。这些「什么都没发生」的段落，是后面所有东西的地基。</p></div>
+      <div class="tip reveal"><div class="k">03</div><h4>别开倍速</h4><p>屏幕上那些字是要读的。倍速会把它们从「信」变成「装饰」，而这部片子全部的意思都藏在你读它的速度里。</p></div>
+      <div class="tip reveal"><div class="k">04</div><h4>挑一个不被打断的晚上</h4><p>118 分钟，正好一个晚上。中途最好别停——它的情绪是靠连续累积起来的，一断就散，重新接上要花很久。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="wrap">
+    <p class="tag">VERDICT · NO.20</p>
+    <p class="q"><span>那时候，一封信要等一天。</span><span>等的那一天里，你把对方想成了一个样子。</span><span>后来我们不用等了——</span><span>我们也就很少再想谁。</span></p>
+    <p class="src">—— 本页判词，非片中台词</p>
+    <div class="stamp"><div><span>JAPANESE CINEMA</span><b>NO.20</b><span>1996 · 森田芳光</span></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>日本电影专题 · 第 20 期｜《春天情书》（ハル）/ Haru（1996，森田芳光）<br>
+    数据核对于 2026-11-14：豆瓣条目 1858233（8.6 / 29,506 人 · 五星 43.4% / 四星 43.5% / 三星 11.4% / 二星 1.2% / 一星 0.4% · 未进 Top250）、IMDb 7.5（1,023 票 · 4 wins &amp; 2 nominations）、烂番茄与 Metacritic 均无评分收录。<br>
+    奖项以有明确届次与部门者为限：第 70 回电影旬报十佳日本电影第 4 位（1996 年度）、第 21 回报知电影赏导演赏、第 20 回日本电影学院奖最优秀新人赏（内野圣阳）/ 优秀主演女优赏（深津绘里）/ 优秀脚本赏（森田芳光）、第 18 回横滨电影节主演女优赏 · 脚本赏 · 日本电影十佳第 4 位。<br>
+    片长 118 分钟；1996-03-09 日本公映，东宝配给，制作 Kouwa International；脚本・监督 森田芳光（1950–2011）。<br>
+    全页不含关键情节：那次「意外」是什么、两人是否见面、最后一封邮件写了什么，一律未写。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c = document.getElementById('heroCanvas');
+  if(!c) return;
+  var ctx = c.getContext('2d'), W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
+  var parts=[], t=0;
+  function size(){
+    W=c.clientWidth; H=c.clientHeight;
+    c.width=W*dpr; c.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();
+  }
+  function build(){
+    parts=[];
+    var n = Math.round(W*H/18000);
+    if(n>130) n=130;
+    for(var i=0;i < n;i++){
+      var bx = W*0.54;
+      var x = bx + (Math.random()-0.5)*W*0.78;
+      if(x<0) x=Math.random()*W;
+      parts.push({
+        x: x, y: Math.random()*H,
+        r:.4+Math.random()*1.2,
+        vx:.02+Math.random()*.1,
+        vy:-.02-Math.random()*.07,
+        a:.04+Math.random()*.13,
+        p:Math.random()*6.28
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t+=0.004;
+    for(var i=0;i < parts.length;i++){
+      var p=parts[i];
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x>W+10){p.x=-10;p.y=Math.random()*H;}
+      if(p.y<-10){p.y=H+10;p.x=Math.random()*W;}
+      var a=p.a*(0.4+0.6*Math.sin(t*0.9+p.p));
+      ctx.beginPath();
+      ctx.fillStyle='rgba(150,210,188,'+a.toFixed(3)+')';
+      ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fill();
+    }
+    var g = ctx.createRadialGradient(W*0.54,H*0.45,0,W*0.54,H*0.45,Math.max(W,H)*0.42);
+    var pulse = 0.045+0.011*Math.sin(t*0.5);
+    g.addColorStop(0,'rgba(196,240,220,'+pulse.toFixed(3)+')');
+    g.addColorStop(1,'rgba(196,240,220,0)');
+    ctx.fillStyle=g;
+    ctx.fillRect(0,0,W,H);
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',size);
+  size(); draw();
+
+  var revs = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08, rootMargin:'0px 0px -6% 0px'});
+  revs.forEach(function(e){ io.observe(e); });
+
+  var hud=document.getElementById('hud'), items=[].slice.call(hud.querySelectorAll('b'));
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    hud.classList.toggle('on', y > window.innerHeight*0.55);
+    var p = y/(document.body.scrollHeight - window.innerHeight);
+    var idx = Math.min(4, Math.floor(p*5));
+    items.forEach(function(b,i){ b.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>

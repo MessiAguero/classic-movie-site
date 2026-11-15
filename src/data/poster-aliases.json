@@ -1,18 +1,42 @@
 {
-  "generatedAt": "2026-09-28T09:15:56.600Z",
+  "generatedAt": "2026-11-15T00:31:08.715Z",
   "manual": {
-    "20261109-dunes": [
-      "Woman in the Dunes",
-      "砂の女"
+    "20260428": [
+      "Spirited Away",
+      "千と千尋の神隠し"
     ],
-    "20261012-the-way-home": [
-      "有你真好",
-      "The Way Home",
-      "爱·回家",
-      "回家"
+    "20260520": [
+      "Casablanca"
     ],
-    "20260826-north-by-northwest": [
-      "North by Northwest"
+    "20260531": [
+      "The Chorus"
+    ],
+    "20260607": [
+      "The Lives of Others"
+    ],
+    "20260623": [
+      "The Prestige"
+    ],
+    "20260627": [
+      "The Last Emperor",
+      "末代皇帝"
+    ],
+    "20260707": [
+      "七宗罪",
+      "Seven"
+    ],
+    "20260708": [
+      "Up (2009)"
+    ],
+    "20260714": [
+      "星球大战4：新希望",
+      "星球大战"
+    ],
+    "20260803": [
+      "Rear Window"
+    ],
+    "20260808": [
+      "Amadeus"
     ],
     "20260909": [
       "The Yellow Sea"
@@ -34,6 +58,19 @@
       "非常警探",
       "끝까지 간다"
     ],
+    "20261109-dunes": [
+      "Woman in the Dunes",
+      "砂の女"
+    ],
+    "20261012-the-way-home": [
+      "有你真好",
+      "The Way Home",
+      "爱·回家",
+      "回家"
+    ],
+    "20260826-north-by-northwest": [
+      "North by Northwest"
+    ],
     "20260927-friend": [
       "Friend",
       "친구"
@@ -42,45 +79,8 @@
       "The Last Emperor",
       "末代皇帝"
     ],
-    "20260627": [
-      "The Last Emperor",
-      "末代皇帝"
-    ],
-    "20260428": [
-      "Spirited Away",
-      "千と千尋の神隠し"
-    ],
-    "20260520": [
-      "Casablanca"
-    ],
-    "20260531": [
-      "The Chorus"
-    ],
-    "20260607": [
-      "The Lives of Others"
-    ],
-    "20260623": [
-      "The Prestige"
-    ],
-    "20260707": [
-      "七宗罪",
-      "Seven"
-    ],
-    "20260708": [
-      "Up (2009)"
-    ],
-    "20260714": [
-      "星球大战4：新希望",
-      "星球大战"
-    ],
     "20260721-2": [
       "Love Letter"
-    ],
-    "20260803": [
-      "Rear Window"
-    ],
-    "20260808": [
-      "Amadeus"
     ]
   },
   "auto": {
@@ -989,6 +989,14 @@
       "samples": [
         "Back to the Future",
         "回到未来"
+      ]
+    },
+    "20261114-haru": {
+      "aliases": [
+        "春天情书"
+      ],
+      "samples": [
+        "春天情书"
       ]
     }
   }
