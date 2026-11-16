@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>大菩萨岭 · 日本电影专题 第 22 期</title>
+<meta name="description" content="冈本喜八《大菩萨岭》（大菩薩峠 / The Sword of Doom, 1966）：剧情梗概、人物冲突、六处亮点与观看理由。全程不剧透。">
+<style>
+:root{
+  --bg:#08090a; --bg2:#0c0e10; --panel:#121415;
+  --ink:#e7e3d8; --dim:#96958c; --dim2:#5a5b56;
+  --line:rgba(231,227,216,.12); --line2:rgba(231,227,216,.05);
+  --fire:#c2622c; --fire2:#e0985e;
+  --steel:#8f9ea3; --steel2:#c3d0d2;
+  --seal:#94291f; --seal2:#b8503c;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Didot","Optima","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.95;letter-spacing:.012em;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(194,98,44,.32);color:#150806}
+a{color:inherit}
+body::before{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+.wrap{width:min(1160px,calc(100% - 96px));margin:0 auto}
+
+.hero{position:relative;min-height:max(100vh,880px);overflow:hidden;background:#050607}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(4,5,6,.95) 0%,rgba(4,5,6,.88) 20%,rgba(4,5,6,.66) 36%,rgba(4,5,6,.30) 52%,rgba(4,5,6,.06) 66%,rgba(4,5,6,0) 76%),
+    linear-gradient(to bottom,rgba(4,5,6,.62) 0%,rgba(4,5,6,.18) 16%,rgba(4,5,6,0) 32%,rgba(4,5,6,0) 58%,rgba(4,5,6,.36) 78%,rgba(4,5,6,.78) 91%,rgba(3,4,5,.96) 100%)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.notice{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:11px;
+  letter-spacing:.14em;color:rgba(231,227,216,.66);border:1px solid rgba(231,227,216,.17);
+  border-radius:999px;padding:7px 16px;margin-bottom:34px;background:rgba(5,6,7,.5);backdrop-filter:blur(4px)}
+.notice .dot{width:5px;height:5px;border-radius:50%;background:#e8a271;box-shadow:0 0 9px rgba(232,162,113,.7)}
+.hero-in{position:relative;z-index:3;width:min(1160px,calc(100% - 96px));margin:0 auto;
+  min-height:max(100vh,880px);display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:10.5vh;padding-bottom:64px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;
+  letter-spacing:.34em;color:var(--fire2);text-transform:uppercase;opacity:.88}
+.eyebrow i{display:block;width:52px;height:1px;background:var(--fire2);opacity:.45}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5.6vw,78px);line-height:1.16;
+  letter-spacing:.16em;margin:26px 0 0;color:#f1eee3;white-space:nowrap;
+  text-shadow:0 2px 34px rgba(0,0,0,.8)}
+.latin{margin:20px 0 0;font-family:var(--latin);font-size:13px;letter-spacing:.3em;
+  color:rgba(231,227,216,.52)}
+.latin + .latin{margin-top:7px;font-size:11px;letter-spacing:.24em;color:rgba(231,227,216,.44)}
+.hero-sub{margin:28px 0 0;max-width:24em;font-size:16px;line-height:2.05;color:rgba(228,225,214,.84)}
+.hero-sub em{font-style:normal;color:#f3efe1;border-bottom:1px solid rgba(194,98,44,.62);padding-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:600px}
+.chip{font-size:11.5px;letter-spacing:.06em;color:rgba(236,233,222,.9);border:1px solid rgba(231,227,216,.2);
+  border-radius:999px;padding:6px 14px;background:rgba(6,7,8,.66);backdrop-filter:blur(6px)}
+.chip b{color:#fff;font-weight:500}
+.scroll-hint{position:absolute;left:auto;right:28px;bottom:30px;z-index:4;
+  font-family:var(--latin);font-size:9.5px;letter-spacing:.42em;color:rgba(231,227,216,.4);
+  display:flex;flex-direction:column;align-items:center;gap:9px}
+.scroll-hint span{display:block;width:1px;height:32px;background:linear-gradient(to bottom,rgba(231,227,216,.4),transparent)}
+
+.sec{padding:112px 0;border-top:1px solid var(--line2)}
+.sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:52px}
+.sec-head .no{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--fire2);opacity:.94}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.1vw,36px);
+  letter-spacing:.05em;margin:0;color:#f1eee3;flex:1 1 auto}
+.sec-head .kicker{font-family:var(--latin);font-size:10.5px;letter-spacing:.3em;
+  color:var(--dim2);text-transform:uppercase;margin:0}
+.note{font-size:13px;color:var(--dim);line-height:1.9}
+
+.intro{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:64px;align-items:start}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:2.2;color:#d1d2c7}
+.lede p{margin:0 0 22px}
+.lede p:first-child::first-letter{float:left;font-size:5.1em;line-height:.82;padding:.06em .14em 0 0;
+  color:#f3f0e2;font-weight:400}
+.lede strong{font-weight:500;color:#f5f2e4}
+.lede .dash{color:var(--dim);font-size:15px}
+.glance{border:1px solid var(--line);background:linear-gradient(160deg,rgba(18,20,21,.95),rgba(6,7,8,.95));
+  padding:30px 28px}
+.glance h3{font-family:var(--latin);font-size:10px;letter-spacing:.34em;color:var(--fire2);
+  margin:0 0 22px;font-weight:400;text-transform:uppercase;opacity:.9}
+.glance dl{margin:0;display:grid;gap:13px}
+.glance div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line2)}
+.glance div:last-child{border-bottom:0;padding-bottom:0}
+.glance dt{font-size:11.5px;color:var(--dim2);letter-spacing:.1em}
+.glance dd{margin:0;font-size:13.5px;color:#cbcdc4;line-height:1.7}
+.glance dd b{color:#f3f0e2;font-weight:500}
+.glance dd small{display:block;font-size:11px;color:var(--dim2);margin-top:3px}
+.acts{margin-top:74px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.act{background:var(--bg);padding:34px 30px}
+.act .t{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--fire2);
+  opacity:.94;margin-bottom:14px}
+.act h4{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f1eee3;letter-spacing:.04em}
+.act p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+.poster-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);gap:70px;align-items:start}
+.poster-frame{border:1px solid var(--line);padding:14px;background:#050607;
+  box-shadow:0 40px 90px -50px #000, inset 0 0 0 1px rgba(0,0,0,.6)}
+.poster-svg{display:block;width:100%;height:auto}
+.pcap{margin:16px 2px 0;font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--dim2)}
+.pnotes{display:grid;gap:28px}
+.pnote{border-left:1px solid var(--line);padding:2px 0 2px 24px}
+.pnote .n{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--fire2);opacity:.9}
+.pnote h4{margin:8px 0 10px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f1eee3}
+.pnote p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+.pnote p b{color:#e5e1d3;font-weight:500}
+
+.spec{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.spec div{background:var(--bg);padding:22px 20px;min-height:92px}
+.spec dt{font-size:10.5px;letter-spacing:.14em;color:var(--dim2);margin-bottom:8px}
+.spec dd{margin:0;font-size:13.5px;color:#cfd1c8;line-height:1.65}
+.spec dd small{display:block;font-size:11px;color:var(--dim2);margin-top:4px;letter-spacing:.02em}
+.spec .wide{grid-column:1/-1;min-height:0;background:linear-gradient(120deg,rgba(194,98,44,.15),rgba(6,7,8,0) 62%)}
+.spec .wide dd{font-family:var(--serif);font-size:17px;color:#f3f0e2;letter-spacing:.05em}
+
+.scores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.sc{background:var(--bg);padding:32px 30px}
+.sc .src{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--dim2);text-transform:uppercase}
+.sc .val{font-family:var(--latin);font-size:52px;line-height:1;margin:16px 0 8px;color:#f3f0e2}
+.sc .val small{font-size:15px;color:var(--dim);letter-spacing:.04em;margin-left:6px}
+.sc .meta{font-size:12.5px;color:var(--dim);line-height:1.8}
+.sc.hi .val{color:#cfdcdd}
+.sc.abs .val{font-size:30px;letter-spacing:.06em;color:var(--fire2);line-height:1.3}
+.sc.abs .val.tiny{font-size:21px;color:var(--dim)}
+.caliber{margin:52px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.caliber li{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line2);
+  font-size:13.5px;line-height:1.9;color:var(--dim)}
+.caliber li b{color:#e7e3d8;font-weight:500}
+.caliber li i{font-family:var(--latin);font-style:normal;font-size:10.5px;letter-spacing:.2em;color:var(--fire2);opacity:.84;padding-top:4px}
+
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.person{background:var(--bg);padding:30px 28px}
+.person .role{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--fire2);opacity:.84}
+.person h4{margin:12px 0 4px;font-family:var(--serif);font-weight:400;font-size:20px;color:#f3f0e2;letter-spacing:.04em}
+.person h4 small{font-size:12px;color:var(--dim2);letter-spacing:.1em;margin-left:4px}
+.person .actor{font-size:11.5px;color:var(--dim2);letter-spacing:.08em;margin-bottom:18px}
+.person p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.person p span{display:block;margin-top:9px;color:#c7c9c0}
+.person p span b{color:var(--fire2);font-weight:400;font-size:11.5px;letter-spacing:.08em;margin-right:6px}
+.person.thing{grid-column:1/-1;background:linear-gradient(100deg,rgba(143,158,163,.16),rgba(6,7,8,0) 70%)}
+.person.thing h4{color:#cbd7d9}
+.person.thing p{max-width:88ch}
+
+.conflicts{display:grid;gap:0;border-top:1px solid var(--line)}
+.cf{display:grid;grid-template-columns:196px minmax(0,1fr);gap:36px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line2)}
+.cf h4{margin:0;font-family:var(--serif);font-weight:400;font-size:17px;color:#f3f0e2;letter-spacing:.04em;line-height:1.6}
+.cf h4 i{display:block;font-family:var(--latin);font-style:normal;font-size:9.5px;letter-spacing:.26em;
+  color:var(--fire2);opacity:.84;margin-bottom:8px}
+.cf p{margin:0;font-size:13.8px;line-height:2;color:var(--dim);max-width:66ch}
+.cf p em{font-style:normal;color:#e5e1d3}
+
+.awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.award{background:var(--bg);padding:28px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.award .yr{font-family:var(--latin);font-size:11px;letter-spacing:.14em;color:var(--dim2);padding-top:3px}
+.award h4{margin:0 0 6px;font-size:14.5px;font-weight:500;color:#f1eee3;letter-spacing:.02em;line-height:1.6}
+.award p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.78}
+.award.gold{background:linear-gradient(120deg,rgba(194,98,44,.18),rgba(6,7,8,0) 68%);border-left:2px solid rgba(194,98,44,.55)}
+.award.gold h4{color:#e3a077}
+.award.cold{background:linear-gradient(120deg,rgba(143,158,163,.12),rgba(6,7,8,0) 68%);border-left:2px solid rgba(143,158,163,.42)}
+.award.cold h4{color:#c3d0d2}
+.award.wide{grid-column:1/-1}
+
+.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px}
+.ln{position:relative;padding:0 0 40px 40px}
+.ln:last-child{padding-bottom:0}
+.ln::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--steel2)}
+.ln.now::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 4px rgba(148,41,31,.26)}
+.ln .yr{font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--dim2)}
+.ln h4{margin:6px 0 6px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f1eee3;letter-spacing:.03em}
+.ln p{margin:0;font-size:13px;color:var(--dim);line-height:1.85}
+.ln.now h4{color:#e3a077}
+
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.g6{background:var(--bg);padding:32px 28px;min-height:200px}
+.g6 .n{font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--fire2);opacity:.9}
+.g6 h4{margin:14px 0 10px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f1eee3;letter-spacing:.03em;line-height:1.6}
+.g6 p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.g6 p b{color:#e5e1d3;font-weight:500}
+
+.why{display:grid;gap:0;max-width:820px}
+.why article{padding:0 0 38px}
+.why article + article{border-top:1px solid var(--line2);padding-top:38px}
+.why h3{margin:0 0 14px;font-family:var(--serif);font-weight:400;font-size:21px;color:#f3f0e2;letter-spacing:.04em}
+.why p{margin:0;font-size:14.5px;line-height:2.05;color:#bbbdb4}
+.why p + p{margin-top:14px}
+.why strong{color:#f1eee3;font-weight:500}
+.why em{font-style:normal;color:#cbd7d9}
+
+.tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.tip{background:var(--bg);padding:30px 24px}
+.tip .k{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--fire2);opacity:.9}
+.tip h4{margin:12px 0 10px;font-size:15.5px;font-weight:500;color:#f1eee3}
+.tip p{margin:0;font-size:12.8px;line-height:1.95;color:var(--dim)}
+
+.verdict{padding:150px 0 120px;border-top:1px solid var(--line2);position:relative;overflow:hidden}
+.verdict .tag{font-family:var(--latin);font-size:9.5px;letter-spacing:.32em;color:var(--dim2);margin-bottom:34px}
+.verdict .q{font-family:var(--serif);font-size:clamp(23px,3.1vw,36px);line-height:1.78;letter-spacing:.06em;
+  color:#f3f0e2;margin:0;max-width:24em}
+.verdict .q span{display:block}
+.verdict .src{margin-top:36px;font-size:12px;color:var(--dim2);letter-spacing:.04em}
+.stamp{position:absolute;right:74px;bottom:82px;width:136px;height:136px;border:1px solid rgba(148,41,31,.85);
+  border-radius:50%;display:grid;place-items:center;color:rgba(200,110,90,1);text-align:center;
+  transform:rotate(-7deg);box-shadow:inset 0 0 0 4px rgba(148,41,31,.14)}
+.stamp div{display:grid;gap:5px;justify-items:center}
+.stamp span{font-family:var(--latin);font-size:8.2px;letter-spacing:.14em;opacity:.95}
+.stamp b{font-family:var(--serif);font-size:21px;letter-spacing:.12em;font-weight:400;line-height:1.1;
+  padding:5px 0;border-top:1px solid rgba(148,41,31,.55);border-bottom:1px solid rgba(148,41,31,.55)}
+
+footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
+footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
+
+#hud{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
+  opacity:0;transition:opacity .7s ease;pointer-events:none}
+#hud.on{opacity:1}
+#hud b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:13px;
+  color:var(--dim2);letter-spacing:.1em;transition:color .5s}
+#hud b i{display:block;width:16px;height:1px;background:var(--dim2);transition:all .5s}
+#hud b.on{color:#f3f0e2}
+#hud b.on i{width:30px;background:var(--fire2)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1380px){#hud{display:none}}
+@media (max-width:1000px){
+  .intro{grid-template-columns:1fr;gap:48px}
+  .poster-grid{grid-template-columns:1fr;gap:46px}
+  .poster-frame{max-width:500px}
+  .scores,.awards{grid-template-columns:1fr}
+  .spec{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .acts{grid-template-columns:1fr}
+  #hud{display:none}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .scroll-hint{left:auto;right:8px;transform:none;bottom:26px}
+  .hero-svg{transform:translateY(10vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(4,5,6,.97) 0%,rgba(4,5,6,.96) 30%,rgba(4,5,6,.94) 46%,rgba(4,5,6,.9) 55%,rgba(4,5,6,.58) 60%,rgba(4,5,6,.28) 66%,rgba(4,5,6,.14) 73%,rgba(4,5,6,.22) 80%,rgba(4,5,6,.52) 87%,rgba(4,5,6,.86) 94%,rgba(3,4,5,.97) 100%)}
+}
+@media (max-width:760px){
+  .hero-svg{transform:translateY(13vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(4,5,6,.97) 0%,rgba(4,5,6,.96) 26%,rgba(4,5,6,.94) 44%,rgba(4,5,6,.86) 56%,rgba(4,5,6,.62) 65%,rgba(4,5,6,.38) 72%,rgba(4,5,6,.24) 78%,rgba(4,5,6,.44) 86%,rgba(4,5,6,.9) 95%,rgba(3,4,5,.98) 100%)}
+  body{font-size:15px;line-height:1.9}
+  .wrap,.hero-in{width:calc(100% - 40px)}
+  .hero{min-height:max(100vh,740px)}
+  .hero-in{min-height:max(100vh,740px);padding-top:8vh;padding-bottom:96px}
+  h1{font-size:clamp(30px,9.2vw,54px);letter-spacing:.12em}
+  .hero-sub{font-size:14.5px;line-height:1.95;max-width:26em}
+  .sec{padding:76px 0}
+  .sec-head{margin-bottom:36px;gap:12px}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spec dd{font-size:12.4px}
+  .spec dd small{font-size:10.4px}
+  .people,.grid6,.tips{grid-template-columns:1fr}
+  .cf{grid-template-columns:1fr;gap:12px}
+  .lede{font-size:16px;line-height:2.05}
+  .sc .val{font-size:44px}
+  .verdict{padding:96px 0 88px}
+  .stamp{position:static;margin-top:48px;transform:rotate(-4deg)}
+  .chips{max-width:100%;padding-top:0;margin-top:26px}
+  footer{padding-bottom:120px}
+  .scroll-hint{bottom:14px;left:auto;right:12px;transform:none}
+  .chip{font-size:11px;padding:5px 11px;letter-spacing:.03em}
+}
+@media (min-width:1001px) and (max-height:860px){
+  .hero,.hero-in{min-height:max(100vh,760px)}
+  .scroll-hint{left:auto;right:22px;transform:none}
+}
+@media (max-width:520px){
+  .chip:nth-child(5){display:none}
+}
+@media (max-width:420px){
+  .notice{margin-bottom:22px;font-size:10.5px;padding:6px 13px}
+  h1{font-size:clamp(28px,8.4vw,44px);margin-top:20px}
+  .latin{margin-top:14px;font-size:11px;letter-spacing:.2em}
+  .latin + .latin{font-size:9.5px;letter-spacing:.14em}
+  .hero-sub{margin-top:22px;font-size:13.8px}
+}
+@media (max-width:380px){
+  .wrap,.hero-in{width:calc(100% - 32px)}
+  .chip{font-size:10.5px;padding:5px 11px}
+  .glance{padding:24px 20px}
+  h1{font-size:clamp(26px,8vw,40px)}
+}
+@media (max-width:400px) and (max-height:680px){
+  .scroll-hint{display:none}
+}
+@media (max-width:760px) and (max-height:700px){
+  .hero{min-height:100vh}
+  .hero-in{min-height:100vh;padding-top:6vh}
+  .hero-svg{transform:translateY(20vh)}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#080b0c"/><stop offset=".42" stop-color="#0f1416"/>
+<stop offset=".72" stop-color="#1b2224"/><stop offset=".9" stop-color="#232c2e"/>
+<stop offset="1" stop-color="#1a2224"/>
+</linearGradient>
+<linearGradient id="ridgeBack" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#111719"/><stop offset="1" stop-color="#080b0c"/>
+</linearGradient>
+<linearGradient id="ridgeFront" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#0b1012"/><stop offset="1" stop-color="#060809"/>
+</linearGradient>
+<linearGradient id="groundG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#1a2123"/><stop offset=".35" stop-color="#121719"/>
+<stop offset="1" stop-color="#060809"/>
+</linearGradient>
+<linearGradient id="pathG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#2b3336"/><stop offset=".45" stop-color="#232a2d"/>
+<stop offset="1" stop-color="#141a1c"/>
+</linearGradient>
+<linearGradient id="mist" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#3a474b" stop-opacity="0"/>
+<stop offset=".5" stop-color="#3f4c50" stop-opacity=".3"/>
+<stop offset="1" stop-color="#2a3437" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="lampGlow" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#ffb26a" stop-opacity=".5"/>
+<stop offset=".38" stop-color="#f0904a" stop-opacity=".16"/>
+<stop offset="1" stop-color="#c2622c" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="pool" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#ffb877" stop-opacity=".2"/>
+<stop offset="1" stop-color="#c2622c" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="figHalo" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#5b6f74" stop-opacity=".26"/>
+<stop offset="1" stop-color="#5b6f74" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="vig" cx=".5" cy=".46" r=".72">
+<stop offset="0" stop-color="#000" stop-opacity="0"/>
+<stop offset=".62" stop-color="#000" stop-opacity=".18"/>
+<stop offset="1" stop-color="#000" stop-opacity=".66"/>
+</radialGradient>
+<linearGradient id="stoneG" x1="1" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#8d8a78"/><stop offset=".45" stop-color="#5d5c50"/>
+<stop offset="1" stop-color="#2c2e29"/>
+</linearGradient>
+<linearGradient id="wallG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#2a2f2d"/><stop offset="1" stop-color="#121615"/>
+</linearGradient>
+</defs>
+
+<rect width="1440" height="900" fill="url(#sky)"/>
+
+<g opacity=".55">
+<rect x="0" y="152" width="1440" height="70" fill="url(#mist)"/>
+<rect x="0" y="286" width="1440" height="52" fill="url(#mist)" opacity=".7"/>
+</g>
+
+<path d="M0 566 L118 544 L236 558 L356 508 L470 532 L566 498 L672 524 L764 474 L868 502 L948 470 L1046 508 L1146 482 L1246 522 L1344 496 L1440 528 L1440 720 L0 720 Z" fill="url(#ridgeBack)"/>
+<path d="M0 566 L118 544 L236 558 L356 508 L470 532 L566 498 L672 524 L764 474 L868 502 L948 470 L1046 508 L1146 482 L1246 522 L1344 496 L1440 528" fill="none" stroke="#5a6b70" stroke-width="1.3" opacity=".38"/>
+
+<path d="M0 662 L134 632 L262 650 L384 602 L502 628 L606 588 L706 618 L822 592 L922 622 L1042 596 L1162 632 L1282 608 L1440 642 L1440 740 L0 740 Z" fill="url(#ridgeFront)"/>
+<path d="M0 662 L134 632 L262 650 L384 602 L502 628 L606 588 L706 618 L822 592 L922 622 L1042 596 L1162 632 L1282 608 L1440 642" fill="none" stroke="#4c5b60" stroke-width="1.1" opacity=".3"/>
+
+<rect x="0" y="690" width="1440" height="210" fill="url(#groundG)"/>
+<rect x="0" y="688" width="1440" height="3" fill="#2c3538" opacity=".55"/>
+<rect x="0" y="652" width="1440" height="66" fill="url(#mist)" opacity=".65"/>
+
+<g opacity=".9">
+<path d="M600 900 C648 826 696 754 712 692 L780 692 C770 756 808 828 906 900 Z" fill="url(#pathG)"/>
+<path d="M714 692 L746 692" stroke="#5c6669" stroke-width="1.4" opacity=".5"/>
+<g stroke="#0d1214" stroke-width="2.2" fill="none" opacity=".45">
+<path d="M660 842 Q748 836 836 842"/><path d="M668 818 Q752 812 818 818"/>
+<path d="M676 794 Q750 789 800 794"/><path d="M684 770 Q746 766 786 770"/>
+<path d="M692 748 Q744 745 774 748"/><path d="M700 726 Q744 723 764 726"/>
+<path d="M706 706 Q742 704 754 706"/>
+</g>
+<g stroke="#6b7578" stroke-width=".9" fill="none" opacity=".22">
+<path d="M662 840 Q748 834 834 840"/><path d="M670 816 Q752 810 816 816"/>
+<path d="M678 792 Q750 787 798 792"/><path d="M686 768 Q746 764 784 768"/>
+<path d="M694 746 Q744 743 772 746"/><path d="M702 724 Q744 721 762 724"/>
+</g>
+</g>
+
+<g>
+<path d="M0 836 C220 812 400 826 566 846 C760 870 1080 856 1440 880 L1440 900 L0 900 Z" fill="#040506"/>
+<g stroke="#0b0e0f" stroke-width="2" opacity=".9">
+<path d="M62 842 q6 -34 2 -50"/><path d="M78 842 q-4 -28 4 -44"/><path d="M94 843 q8 -30 2 -46"/>
+<path d="M1268 862 q6 -32 0 -46"/><path d="M1286 863 q-4 -26 6 -42"/>
+</g>
+</g>
+
+<g>
+<rect x="0" y="700" width="330" height="140" fill="url(#wallG)" opacity=".55"/>
+<g fill="#1b201e" stroke="#0a0d0c" stroke-width="1">
+<rect x="14" y="726" width="76" height="26"/><rect x="96" y="726" width="58" height="26"/>
+<rect x="30" y="756" width="88" height="24"/><rect x="124" y="756" width="72" height="24"/>
+<rect x="8" y="784" width="64" height="24"/><rect x="78" y="784" width="92" height="24"/>
+<rect x="176" y="784" width="54" height="24"/>
+</g>
+<rect x="14" y="724" width="76" height="1.4" fill="#4e5a58" opacity=".5"/>
+<rect x="30" y="754" width="88" height="1.4" fill="#4e5a58" opacity=".42"/>
+</g>
+
+<g>
+<g fill="#070a0b">
+<path d="M1268 700 L1272 470 L1280 470 L1286 700 Z"/>
+<path d="M1196 512 C1230 496 1256 498 1276 504 C1300 494 1330 498 1352 512 C1330 528 1300 532 1276 526 C1252 534 1222 528 1196 512 Z"/>
+<path d="M1178 566 C1216 550 1250 552 1274 560 C1302 548 1340 554 1364 570 C1340 586 1302 590 1274 582 C1248 592 1210 584 1178 566 Z"/>
+<path d="M1204 618 C1236 604 1266 608 1284 614 C1306 604 1336 610 1356 624 C1334 638 1304 642 1282 634 C1258 642 1228 636 1204 618 Z"/>
+</g>
+<g fill="none" stroke="#66787c" stroke-width=".9" opacity=".26">
+<path d="M1196 512 C1230 496 1256 498 1276 504 C1300 494 1330 498 1352 512"/>
+<path d="M1178 566 C1216 550 1250 552 1274 560 C1302 548 1340 554 1364 570"/>
+<path d="M1204 618 C1236 604 1266 608 1284 614 C1306 604 1336 610 1356 624"/>
+</g>
+</g>
+
+<g>
+<g fill="#060809">
+<path d="M1350 700 L1354 556 L1360 556 L1364 700 Z"/>
+<path d="M1300 592 C1330 580 1352 582 1368 588 C1388 578 1414 584 1432 596 C1412 610 1386 614 1366 606 C1344 614 1318 608 1300 592 Z"/>
+<path d="M1316 640 C1342 630 1364 632 1378 638 C1396 630 1420 636 1436 648 C1416 660 1392 663 1374 656 C1352 663 1330 656 1316 640 Z"/>
+</g>
+<g fill="none" stroke="#5d7074" stroke-width=".85" opacity=".22">
+<path d="M1300 592 C1330 580 1352 582 1368 588 C1388 578 1414 584 1432 596"/>
+<path d="M1316 640 C1342 630 1364 632 1378 638 C1396 630 1420 636 1436 648"/>
+</g>
+</g>
+
+<g>
+<rect x="856" y="772" width="96" height="22" fill="#1d2321" stroke="#0b0f0e" stroke-width="1"/>
+<rect x="856" y="770" width="96" height="2" fill="#55605c" opacity=".45"/>
+<path d="M880 772 C880 748 886 736 904 736 C922 736 928 748 928 772 Z" fill="url(#stoneG)"/>
+<circle cx="904" cy="730" r="11" fill="url(#stoneG)"/>
+<path d="M893 728 q4 -4 9 -3" fill="none" stroke="#2a2c27" stroke-width="1.4" opacity=".85"/>
+<path d="M900 736 q5 3 9 0" fill="none" stroke="#2a2c27" stroke-width="1.4" opacity=".75"/>
+<path d="M880 772 C880 748 886 736 904 736" fill="none" stroke="#c8bda0" stroke-width="1.2" opacity=".3"/>
+<circle cx="904" cy="730" r="11" fill="none" stroke="#c8bda0" stroke-width="1.1" opacity=".34"/>
+<ellipse cx="938" cy="780" rx="7.5" ry="3" fill="#3a2c1e"/>
+<ellipse cx="938" cy="779" rx="5.6" ry="2.1" fill="#5c4023"/>
+<path d="M938 778 C934 772 938 766 938 764 C938 766 943 772 938 778 Z" fill="#ffb066"/>
+<ellipse cx="938" cy="782" rx="112" ry="86" fill="url(#lampGlow)"/>
+<ellipse cx="930" cy="806" rx="120" ry="34" fill="url(#pool)"/>
+</g>
+
+<g>
+<ellipse cx="790" cy="796" rx="76" ry="56" fill="url(#figHalo)"/>
+<g fill="#050708">
+<path d="M772 714 Q790 700 808 714 L811 719 L769 719 Z"/>
+<rect x="782" y="716" width="16" height="14"/>
+<path d="M779 730 C779 723 783 721 790 721 C797 721 801 723 801 730 L804 784 L776 784 Z"/>
+<path d="M776 784 L804 784 L810 818 L770 818 Z"/>
+<path d="M770 818 L786 818 L786 826 L768 826 Z"/>
+<path d="M794 818 L810 818 L812 826 L794 826 Z"/>
+<path d="M778 750 L806 744 L806 748 L779 755 Z"/>
+<path d="M800 748 L818 762 L816 765 L798 752 Z"/>
+</g>
+<g fill="none" stroke="#9fb2b6" stroke-width="1.1" opacity=".3">
+<path d="M772 714 Q790 700 808 714"/>
+<path d="M779 730 C779 723 783 721 790 721 C797 721 801 723 801 730"/>
+<path d="M776 784 L804 784 L810 818"/>
+</g>
+</g>
+
+<rect width="1440" height="900" fill="url(#vig)"/>
+</svg>
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+
+<div class="hero-in">
+  <div class="notice"><span class="dot"></span>全程不剧透 · 梗概止于「试合前夜的那个请求」</div>
+  <div class="eyebrow"><i></i>Japanese Cinema · No.22</div>
+  <h1>大菩萨岭</h1>
+  <p class="latin">大菩薩峠</p>
+  <p class="latin">The Sword of Doom · 1966</p>
+  <p class="hero-sub">甲州的山道很长，石阶一级一级往上收，两边的松比人高得多。他走在上面，不快也不慢，既不回头，也不觉得自己欠谁什么。这条路叫大菩萨峠——翻过去，就归另一边。<em>这是日本影史最冷的一把刀，握在一个从来不需要理由的人手里。</em></p>
+  <div class="chips">
+    <span class="chip"><b>1966</b> · 冈本喜八</span>
+    <span class="chip"><b>120 分钟</b> · 黑白宽银幕</span>
+    <span class="chip">豆瓣 <b>8.6</b></span>
+    <span class="chip">IMDb <b>7.9</b></span>
+    <span class="chip">原作连载 <b>32 年未写完</b></span>
+  </div>
+</div>
+
+<div class="scroll-hint">SCROLL<span></span></div>
+</header>
+
+<nav id="hud" aria-hidden="true">
+  <b data-i="0"><i></i>屏</b><b data-i="1"><i></i>字</b><b data-i="2"><i></i>档</b><b data-i="3"><i></i>人</b><b data-i="4"><i></i>等</b>
+</nav>
+
+<main>
+
+<section class="sec" id="s1" style="border-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">01</span><h2>剧情梗概</h2><p class="kicker">The Story</p></div>
+    <div class="intro">
+      <div class="lede reveal">
+        <p>万延元年，甲州。御嶽山要办一场奉纳的剑术试合，各流派都得派人下场。甲源一刀流派的是机龙之助。</p>
+        <p>他三十岁上下，剑术在这一带没有对手，人也没有朋友。他不是凶，他是空。别人练剑是为了赢、为了名声、为了家业，他练剑只是因为——他会。这一点，全片没有一个人物说出来，但所有人都在躲着它。</p>
+        <p>试合的前一夜，对手宇津木文之丞的妻子阿滨来找他。文之丞出身比他有名，这一场输不起。阿滨带了一个请求：请他输。她没有带钱，她带来的是她自己。</p>
+        <p>龙之助没有拒绝，也没有答应。他只是看着她，像看一件与自己无关的事。<strong>那一夜之后，这个请求就变成了三个人之间的一笔账。</strong></p>
+        <p>天亮。试合场。木刀、白装束、裁判、围成一圈的人。这场比试没有悬念——不是因为它短，是因为从第一招起，所有人就都看出来了：这两个人不在一个层级上。</p>
+        <p>之后的事，是一场漫长的东行。两年后，江户。浪士组正在成军，后来它有了另一个名字：新选组。幕府需要一批不问理由、只问刀快不快的人。龙之助非常合适——他从第一天起就没有问过理由。</p>
+        <p>也是在这两年里，宇津木家剩下的那个儿子长大了。他叫兵马，从甲州来到江户，拜在岛田虎之助门下。他来这儿只为一件事，而这件事本页不说。</p>
+        <p>岛田虎之助是全片唯一把刀当作修行的人。他不出手，他只示范；他教人「等」的功夫，比教刀更多。三船敏郎演这个角色，全片只有几场戏——但他是整部片子的秤。</p>
+        <p>还有阿松。一个在江户讨生活的少女，从一处被送到另一处，端茶、擦地、学规矩。她身上有一种很轻的东西，轻到在这部电影里显得不合时宜。而这恰恰是她存在的理由。</p>
+        <p>三条线就这样慢慢靠拢：一把越来越快的刀、一个越来越沉的少年、一个始终不出手的师父。而在他们之间，还隔着一个女人、一段旧账、一座叫大菩萨峠的山口。</p>
+        <p><strong>这部片子最狠的地方不在刀上，在于它不解释恶。</strong>它不给他一个悲惨的童年，不给他一个该恨的人，也不给他一次良心发现。他只是继续走、继续快、继续对——直到有一天他发现，还有人的刀比他的更干净。</p>
+        <p class="dash">后面的事——那场试合的结果、阿滨后来怎样、兵马的刀最后指向谁、阿松是谁家的孩子、以及最后一分钟那个突然停住的画面——本页一个字都不写。</p>
+      </div>
+      <aside class="glance reveal">
+        <h3>At a Glance</h3>
+        <dl>
+          <div><dt>一句话</dt><dd>一个从来不需要理由的人，用一辈子证明了刀可以比良心更快。</dd></div>
+          <div><dt>时间</dt><dd>万延元年 – 文久三年<small>1860 – 1863，幕末</small></dd></div>
+          <div><dt>地点</dt><dd>甲州 → 江户 → 京都<small>试合场、山道、道场、岛原</small></dd></div>
+          <div><dt>主角</dt><dd>机龙之助（剑客，甲源一刀流）</dd></div>
+          <div><dt>对手</dt><dd>不是一个人，是他自己那把刀</dd></div>
+          <div><dt>空间</dt><dd>山道、道场、街巷、一间挂着灯的屋子</dd></div>
+          <div><dt>道具</dt><dd>木刀 / 真刀 / 一面镜子</dd></div>
+          <div><dt>声音</dt><dd>刀出鞘那一声，然后是安静</dd></div>
+          <div><dt>情绪</dt><dd>冷。全片没有一次让人松口气</dd></div>
+          <div><dt>关键词</dt><dd>恶 / 无理由 / 未完成</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="acts">
+      <div class="act reveal"><div class="t">First · 试合</div><h4>第一场戏就把答案给了你</h4><p>全片第一场比试，三十秒之内就交代清楚「谁更强」。剩下的两小时不负责悬念，它负责回答一个更难的问题：强，然后呢？</p></div>
+      <div class="act reveal"><div class="t">Second · 峠</div><h4>山口是分界的意思</h4><p>日本的山口（峠）从来不只是一段路，它是界线：翻过去就归另一边。片名把一座山口放在人名前面，这不是修辞，是判决。</p></div>
+      <div class="act reveal"><div class="t">Third · 空白</div><h4>它删掉了所有能替他开脱的东西</h4><p>原作四十一卷，桥本忍只取三卷。他做的最大改动不是加，是删——把这个人身上每一处「其情可悯」都剪掉了，只留下那把刀。</p></div>
+    </div>
+
+    <p class="note reveal" style="margin-top:34px">本页叙述止于「试合前夜的那个请求」。此后的结果、阿滨的去向、兵马的复仇、阿松的身世，以及最后一分钟那个画面，一律不写。</p>
+  </div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">02</span><h2>概念海报</h2><p class="kicker">The Last Installment</p></div>
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+<svg class="poster-svg" viewBox="0 0 520 760" role="img" aria-label="一张发黄的旧报纸版面：报头写着都新闻，右侧竖排大标题大菩萨峠，四栏竖排文字，最左一栏被红笔自上而下划掉并圈住，右下角盖着一方未完成的朱印">
+<defs>
+<linearGradient id="pBg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#0a0b0c"/><stop offset=".55" stop-color="#070808"/><stop offset="1" stop-color="#050606"/>
+</linearGradient>
+<linearGradient id="pPaper" x1=".1" y1="0" x2=".9" y2="1">
+<stop offset="0" stop-color="#e4d9bd"/><stop offset=".35" stop-color="#dbcfb0"/>
+<stop offset=".72" stop-color="#cfc1a0"/><stop offset="1" stop-color="#bcac89"/>
+</linearGradient>
+<radialGradient id="pGlow" cx=".5" cy=".18" r=".7">
+<stop offset="0" stop-color="#ffe0b0" stop-opacity=".16"/>
+<stop offset="1" stop-color="#c2622c" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="pFade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#000" stop-opacity=".18"/>
+<stop offset=".18" stop-color="#000" stop-opacity="0"/>
+<stop offset=".82" stop-color="#000" stop-opacity="0"/>
+<stop offset="1" stop-color="#000" stop-opacity=".22"/>
+</linearGradient>
+<linearGradient id="pFold" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#5b4a2c" stop-opacity="0"/>
+<stop offset=".5" stop-color="#4a3a20" stop-opacity=".22"/>
+<stop offset="1" stop-color="#5b4a2c" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="pFoldH" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#5b4a2c" stop-opacity="0"/>
+<stop offset=".5" stop-color="#4a3a20" stop-opacity=".16"/>
+<stop offset="1" stop-color="#5b4a2c" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="pVig2" cx=".5" cy=".48" r=".72">
+<stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".7" stop-color="#000" stop-opacity=".1"/>
+<stop offset="1" stop-color="#000" stop-opacity=".44"/>
+</radialGradient>
+</defs>
+
+<rect width="520" height="760" fill="url(#pBg)"/>
+<rect width="520" height="760" fill="url(#pGlow)"/>
+
+<g>
+<rect x="48" y="58" width="424" height="644" fill="#0a0806" opacity=".55"/>
+<rect x="44" y="54" width="424" height="644" fill="url(#pPaper)"/>
+<rect x="44" y="54" width="424" height="644" fill="url(#pFade)"/>
+
+<g fill="#8d7f60" opacity=".5">
+<rect x="44" y="54" width="424" height="1.2"/>
+<rect x="44" y="697" width="424" height="1.2"/>
+</g>
+
+<g font-family="Hiragino Mincho ProN,YuMincho,Songti SC,serif" fill="#3d3524">
+<text x="264" y="110" text-anchor="middle" font-size="30" letter-spacing="14">都　新　聞</text>
+<text x="440" y="136" text-anchor="end" font-size="9" letter-spacing="2.4" opacity=".8">大正二年一月</text>
+<text x="68" y="136" font-size="9" letter-spacing="2.4" opacity=".8">第七千四百十二號</text>
+</g>
+<g stroke="#3d3524" fill="none">
+<rect x="66" y="148" width="380" height="1"/>
+<rect x="66" y="152" width="380" height="2.6"/>
+</g>
+
+<g font-family="Hiragino Mincho ProN,YuMincho,Songti SC,serif" fill="#201c12">
+<text x="404" y="218" font-size="44" letter-spacing="8">大</text>
+<text x="404" y="270" font-size="44" letter-spacing="8">菩</text>
+<text x="404" y="322" font-size="44" letter-spacing="8">薩</text>
+<text x="404" y="374" font-size="44" letter-spacing="8">峠</text>
+</g>
+<g font-family="Hiragino Mincho ProN,YuMincho,Songti SC,serif" fill="#4a4130" opacity=".95">
+<text x="374" y="196" font-size="10.5" letter-spacing="2">中里介山</text>
+<text x="374" y="212" font-size="8.5" letter-spacing="1.6" opacity=".8">甲源一刀流の巻</text>
+<text x="374" y="226" font-size="8.5" letter-spacing="1.6" opacity=".8">壬生と島原の巻</text>
+</g>
+<path d="M358 186 V600" stroke="#3d3524" stroke-width="1" opacity=".5"/>
+
+<!--POSTER_TEXT-->
+
+<g stroke="#a4342a" fill="none" opacity=".78" stroke-linecap="round">
+<path d="M116 232 C112 330 118 430 110 520 C108 552 114 574 122 588" stroke-width="2.6"/>
+<path d="M124 234 C129 336 122 434 130 522" stroke-width="1.1" opacity=".6"/>
+<ellipse cx="118" cy="600" rx="26" ry="15" stroke-width="2.2" transform="rotate(-6 118 600)"/>
+</g>
+
+<g transform="rotate(-4 402 640)">
+<rect x="366" y="604" width="72" height="72" fill="none" stroke="#a4342a" stroke-width="3" opacity=".9"/>
+<g font-family="Hiragino Mincho ProN,YuMincho,Songti SC,serif" fill="#a4342a" opacity=".92">
+<text x="402" y="634" text-anchor="middle" font-size="21" letter-spacing="2">未</text>
+<text x="402" y="662" text-anchor="middle" font-size="21" letter-spacing="2">完</text>
+</g>
+</g>
+
+<rect x="244" y="54" width="16" height="644" fill="url(#pFold)"/>
+<rect x="44" y="404" width="424" height="14" fill="url(#pFoldH)"/>
+<g fill="#000" opacity=".1">
+<rect x="44" y="54" width="424" height="6"/><rect x="44" y="692" width="424" height="6"/>
+</g>
+</g>
+
+<g font-family="Didot,Optima,serif" fill="#7a7566">
+<text x="72" y="734" font-size="8.4" letter-spacing="3">JAPANESE CINEMA · NO.22</text>
+<text x="448" y="734" font-size="8.4" letter-spacing="3" text-anchor="end">1966 · OKAMOTO</text>
+</g>
+<rect width="520" height="760" fill="url(#pVig2)"/>
+</svg>
+        </div>
+        <p class="pcap">CONCEPT POSTER · 第二十二种范式：报纸连载版面</p>
+      </div>
+      <div class="pnotes">
+        <div class="pnote reveal"><div class="n">NOTE 01</div><h4>一张报纸，比一把刀更接近这部电影的出身</h4><p>它的原作不是一本书，是报纸上的连载——一九一三年起，一天一段，读者跟着主人公走了三十几年。所以这张海报不画刀，画的是<em>那张报纸本身</em>：报头、栏线、竖排的字，都是它最初的形状。</p></div>
+        <div class="pnote reveal"><div class="n">NOTE 02</div><h4>四栏竖排，是栅栏也是牢房</h4><p>战前日本报纸的文字是竖排的，一栏一栏从右往左。你把这些栏线看成什么，取决于你已经知道多少——它可以是排版，也可以是一个<em>人一辈子走不出去的格</em>。</p></div>
+        <div class="pnote reveal"><div class="n">NOTE 03</div><h4>那道红笔，停在一半</h4><p>最左边那一栏被红笔从上到下划掉，末尾圈了一个圈。它要说的不是「这一期结束了」，是<em>「没有下一期」</em>——作者在写到第四十一卷时去世，连载就停在那里，不是收尾，是断掉。</p></div>
+        <div class="pnote reveal"><div class="n">NOTE 04</div><h4>朱印「未完」，盖在右下角</h4><p>这方印同时盖在两样东西上：一部没写完的小说，和一部只拍了第一部的电影。原计划是三部曲，续集从未开拍。<em>于是「未完」从一个意外，变成了这部作品唯一诚实的落款。</em></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">03</span><h2>影片档案</h2><p class="kicker">Credits</p></div>
+    <dl class="spec reveal">
+      <div><dt>原名</dt><dd>大菩薩峠<small>だいぼさつとうげ</small></dd></div>
+      <div><dt>英文名</dt><dd>The Sword of Doom</dd></div>
+      <div><dt>中文别名</dt><dd>大菩萨岭<small>港译《狂魔无影剑》</small></dd></div>
+      <div><dt>年份</dt><dd>1966</dd></div>
+      <div><dt>片长</dt><dd>120 分钟<small>IMDb 与英维基记 119</small></dd></div>
+      <div><dt>规格</dt><dd>黑白 · 2.35:1 · 单声道<small>东宝宽银幕</small></dd></div>
+      <div><dt>类型</dt><dd>剧情 / 动作<small>剑戟片，但反剑戟</small></dd></div>
+      <div><dt>监督</dt><dd>冈本喜八<small>1923–2005 · 东宝出身</small></dd></div>
+      <div><dt>脚本</dt><dd>桥本忍<small>《罗生门》《七武士》《切腹》</small></dd></div>
+      <div><dt>原作</dt><dd>中里介山<small>1913–1944 报纸连载，未完</small></dd></div>
+      <div><dt>摄影</dt><dd>村井博<small>黑白宽银幕，全片几乎不用特写</small></dd></div>
+      <div><dt>音乐</dt><dd>佐藤勝<small>黑泽明后期作品的常任作曲</small></dd></div>
+      <div><dt>美术</dt><dd>松山崇</dd></div>
+      <div><dt>剪辑</dt><dd>黒岩義民</dd></div>
+      <div><dt>杀阵</dt><dd>久世竜</dd></div>
+      <div><dt>制作</dt><dd>宝塚映画 + 东宝<small>制片 藤本真澄 / 佐藤正之 / 南里金春</small></dd></div>
+      <div><dt>公映</dt><dd>1966-02-25（日本）<small>美国 1966-07-01</small></dd></div>
+      <div><dt>主演</dt><dd>仲代达矢<small>机龙之助，公映时 33 岁</small></dd></div>
+      <div><dt>共演</dt><dd>新珠三千代 / 加山雄三 / 三船敏郎<small>内藤洋子 / 中谷一郎 / 佐藤慶 / 中丸忠雄</small></dd></div>
+      <div><dt>系列坐标</dt><dd>日本专题 第 22 期<small>系列第一部以「恶」为主角的电影</small></dd></div>
+      <div class="wide"><dt>一句话</dt><dd>它把一个剑客的一生拍成了一次物理实验：把「良心」这个变量拿掉，看那把刀最后会指向哪里。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="s4">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">04</span><h2>口碑与口径</h2><p class="kicker">Numbers, Carefully</p></div>
+    <div class="scores reveal">
+      <div class="sc hi"><div class="src">Douban 豆瓣</div><div class="val">8.6<small>/ 10</small></div><div class="meta">18,708 人评价 · 五星 44.7% / 四星 42.8%<br>三星 11.0% / 二星 1.0% / 一星 0.4% · <b>未进 Top250</b></div></div>
+      <div class="sc"><div class="src">IMDb</div><div class="val">7.9<small>/ 10</small></div><div class="meta">约 <b>12,000</b> 票 · 与豆瓣差 <b>0.7</b><br>在 1966 年的日本片里，这个票池不算小</div></div>
+      <div class="sc abs"><div class="src">第 40 回 电影旬报十佳</div><div class="val">未入</div><div class="meta">1966 年度日本电影十佳十席里没有它<br>第 1 位是山本萨夫《白色巨塔》</div></div>
+      <div class="sc abs"><div class="src">第 17 回 蓝丝带奖</div><div class="val tiny">作品赏亦归《白色巨塔》</div><div class="meta">同一年，两部电影在两张最重要的榜单上正面相遇，它两次都没赢。</div></div>
+    </div>
+    <ul class="caliber reveal">
+      <li><i>01</i><span><b>8.6 与 7.9，差 0.7。</b>在系列二十二部里，这个分歧算小的。有意思的是分歧的方向：中文观众记住的是它「冷得漂亮」，英美观众更常提到它「乱」——因为它在英美流通的版本，缺了原作背景，很多线头看上去是断的。</span></li>
+      <li><i>02</i><span><b>1966 年，日本没给它奖。</b>第 40 回旬报十佳的十个位置里没有它，第 1 位是山本萨夫的《白色巨塔》；同年蓝丝带的作品赏也给了《白色巨塔》。当年的日本评论界更愿意奖励「社会派」——一部把恶拍得如此纯粹、又不给任何社会原因的剑戟片，不在那个坐标系里。</span></li>
+      <li><i>03</i><span><b>冈本喜八的名字，两年后才进十佳。</b>1967 年度《日本最长的一天》第 3 位，1968 年度《肉弹》第 2 位。也就是说：日本先认了他的战争片和讽刺喜剧，很久以后才回头认这部剑戟。<b>它是被时间抬起来的，不是被当年的奖抬起来的。</b></span></li>
+      <li><i>04</i><span><b>原作的年龄：32 年，41 卷，1533 章。</b>1913 年起在《都新闻》连载，1944 年中里介山去世时仍未写完。中文资料常写「连载 23 年」「世界上最长的历史小说」——日文侧记 1913–1944 共 <b>32 年</b>；而「最长」这个说法，在山冈庄八《德川家康》出版之后已不再成立。<b>本页取 32 年、41 卷，「最长」只作旧称引用。</b></span></li>
+      <li><i>05</i><span><b>它只拍了三部曲的第一部。</b>片尾那个突然停住的画面，不是剪辑事故，是「第一部到此为止」。续集有过计划，从未开拍。所以看这部片子时请记住：<b>你看到的是一段被设计成没有结局的东西</b>，而不是一段被剪坏的。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="s5">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">05</span><h2>三个人，一把木刀</h2><p class="kicker">Who Wants What</p></div>
+    <div class="people reveal">
+      <div class="person">
+        <div class="role">THE SWORDSMAN · 甲州</div><h4>机龙之助<small>（机竜之助）</small></h4><div class="actor">仲代达矢</div>
+        <p>甲源一刀流，三十岁上下，剑术在这一带没有对手。他的问题不是狠，是空——他杀人时既不兴奋也不犹豫，像在完成一个动作。<span><b>他要的</b>不是赢，是一个能让他不出手的理由。而全片两个小时，他一次也没找到。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">THE WIFE · 甲州</div><h4>阿滨<small>（お浜）</small></h4><div class="actor">新珠三千代</div>
+        <p>宇津木文之丞的妻子。她不是被抢走的人，她是自己走进这场交易的人——为了让丈夫赢，她愿意付出她能付的最贵的东西。<span><b>她要的</b>是丈夫的胜利。而这个愿望本身，就是整部片子最沉的一块石头。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">THE MASTER · 江户</div><h4>岛田虎之助<small>（島田虎之助）</small></h4><div class="actor">三船敏郎</div>
+        <p>江户的剑豪，收了一个从甲州来的弟子。他不出手，他示范；他讲「剑是心」，也讲「心不正，剑就歪」。<span><b>他要的</b>是一个接得住这句话的人。全片只有他一个人，把刀当成了自己的事，而不是别人的命。</span></p>
+      </div>
+      <div class="person thing">
+        <div class="role">THE THING · 一根木头</div><h4>试合用的木刀<small>没有刃，也不会见血。</small></h4><div class="actor">比试场上的规矩 · 山道上的凶器</div>
+        <p>同一根木头，在试合场上代表规矩：点到为止、有裁判、有输赢。到了山道上，它什么都不是——因为那里没有裁判，也没有「点到为止」这回事。<span><b>它代表的东西</b>是这部片子最冷的一句潜台词：<em>让暴力变成暴行的，从来不是武器，是场合，以及场合里有没有人在看着你。</em></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s6">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">06</span><h2>人物冲突</h2><p class="kicker">Five Frictions</p></div>
+    <div class="conflicts reveal">
+      <div class="cf"><h4><i>FRICTION 01</i>一把没有理由的刀，最难的是「不出手」</h4><p>他不缺对手，也不缺机会。他缺的是那一秒钟——让一个正常人收住手的零点几秒。<em>这部片子把它拍成了一件生理上的事：他不是忍住了恶念，他是根本没有那个器官。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 02</i>一个妻子拿自己去换丈夫的胜</h4><p>阿滨的请求里没有一个人是干净的：她背叛了丈夫，也把自己交了出去；文之丞要的是赢，而不是问妻子用什么换来的；龙之助收下了这份「代价」，却不必兑现承诺。<em>三个人的账，从那一夜起就再也算不清了。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 03</i>复仇要花的时间，比恨更长</h4><p>兵马在道场里练的每一天，龙之助都在外面杀人。<em>两把刀之间隔着的不是两年，是一整个时代</em>——一个已经不再讲道理、只讲谁的刀更快的时代。而复仇这件事最残忍的地方在于：它要求你活得比恨更久。</p></div>
+      <div class="cf"><h4><i>FRICTION 04</i>两种剑：一种修心，一种只是快</h4><p>岛田讲「剑是心」，龙之助的存在恰恰证明了这句话——因为他的心是空的，所以他的剑只快，不重。<em>这是全片最难受的一组对照：同一句道理，在一个人身上是修行，在另一个人身上是判决。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 05</i>一个需要杀人的时代，遇上一个天生适合杀人的人</h4><p>幕末的江户需要一批不问理由的人。这不是他的错，但这是他的运气。<em>时代给了他一份工作，工作又给了他一个身份，身份最后把剩下那点人也吃掉了。</em></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s7">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">07</span><h2>荣誉，以及它的反面</h2><p class="kicker">What It Has, What It Didn't</p></div>
+    <div class="awards reveal">
+      <div class="award gold"><div class="yr">1966</div><div><h4>第 40 回 电影旬报十佳 · 未入</h4><p>当年的十席是《白色巨塔》《人类学入门》《纪之川》《湖之琴》《他人之颜》等。本片不在其中</p></div></div>
+      <div class="award gold"><div class="yr">1966</div><div><h4>第 17 回 蓝丝带奖 · 作品赏归《白色巨塔》</h4><p>同一年、两张最重要的榜单，它两次都输给同一部电影</p></div></div>
+      <div class="award cold"><div class="yr">2005</div><div><h4>Criterion Collection · 美国发行</h4><p>标准收藏把它收进系列，配了一篇长文导读。它的国际名声基本是从这一步开始的</p></div></div>
+      <div class="award cold"><div class="yr">1967</div><div><h4>《日本最长的一天》· 旬报十佳第 3 位</h4><p>冈本喜八第一次进十佳，靠的是战争片，不是这部剑戟</p></div></div>
+      <div class="award cold"><div class="yr">1968</div><div><h4>《肉弹》· 旬报十佳第 2 位</h4><p>第二年他更进一步。日本认他的顺序是：战争片 → 讽刺喜剧 → 才轮到《大菩萨岭》</p></div></div>
+      <div class="award"><div class="yr">当下</div><div><h4>豆瓣 8.6 / IMDb 7.9</h4><p>十八万票池之外的另一个数字：12,000 票。两边都稳在高分区，但都不算「热门」</p></div></div>
+      <div class="award wide"><div class="yr">另计</div><div><h4>当年的排片：它和一部「社长喜剧」同场放映</h4><p>1966 年 2 月 25 日，东宝把它和《续·社长行状记》（森繁久弥主演的上班族喜剧）配成一对上映。也就是说：当年走进电影院的观众，是先笑两个小时，再被这部片子冷到骨子里的。这条细节比任何奖都更能说明它当时的位置——它不是「杰作」，它是一部排片表上的B面。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s8">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">08</span><h2>一条从 1913 年走到 1966 年的线</h2><p class="kicker">Thirty-Two Years, One Film</p></div>
+    <div class="lineage reveal">
+      <div class="ln"><div class="yr">1913</div><h4>《都新闻》开始连载</h4><p>中里介山动笔时，日俄战争刚过去八年。他写的不是剑侠传奇，是一个「剑术越高、人越空」的人。这个设定在当时并不讨好读者。</p></div>
+      <div class="ln"><div class="yr">1935</div><h4>稻垣浩版 · 第一次搬上银幕</h4><p>此后三十年间，内田吐梦、渡边邦男、三隅研次、森一生等人都拍过自己的版本。到冈本喜八手上，这已经是十余个版本之后的事了。</p></div>
+      <div class="ln"><div class="yr">1944</div><h4>作者去世，小说停在第四十一卷</h4><p>连载没有结局。这件事后来成了整个《大菩萨岭》系列的宿命：<b>每一个改编者都必须面对一个没有终点的地方。</b></p></div>
+      <div class="ln"><div class="yr">1965</div><h4>东宝把这部片子交给了他</h4><p>据标准收藏的导读文章，东宝对冈本喜八上一部作品《杀人狂时代》不满，于是把这个改编项目派给了他。换句话说：<em>它一开始不是「想拍」，是「被派」。</em></p></div>
+      <div class="ln now"><div class="yr">1966 · 本期</div><h4>《大菩萨岭》· 只取三卷，只拍一部</h4><p>桥本忍从四十一卷里只取「甲源一刀流之卷」到「壬生与岛原之卷」这一段，把一部超长篇压成两小时，然后让它停在一个不能停的地方。<small style="display:block;margin-top:8px;color:var(--dim2)">——原计划三部曲，第二部从未开拍。</small></p></div>
+      <div class="ln"><div class="yr">1967–68</div><h4>冈本喜八才被「正式承认」</h4><p>《日本最长的一天》旬报第 3，《肉弹》第 2。他的作者地位是从这两部建立的，不是从这一部。</p></div>
+      <div class="ln"><div class="yr">2005</div><h4>Criterion 发行，它开始旅行</h4><p>那一年冈本喜八去世。同一年，这部片子在美国以标准收藏的规格出版，此后三十年被反复重看——包括那些在 1966 年没给它投票的人的后辈。</p></div>
+    </div>
+    <p class="note reveal" style="margin-top:40px">把这条线拉直看，会发现一个很清楚的形状：<b>原作写了三十二年没写完，电影拍了第一部就停了，而它的名声，是用后面四十年一点点补上的。</b>三件事其实是同一件事——这部作品从来不提供「完成」，它只提供「到此为止」。<br>这也是它今天还值得看的原因之一。大部分经典是靠「完整」立住的：起承转合、最后一幕、一个能让人走出影院时心里踏实的东西。《大菩萨岭》反过来，它把最后一幕拿走了，然后告诉你：<b>有些人的人生就是这样断掉的，不是被谁砍断的，是自己走到的。</b></p>
+  </div>
+</section>
+
+<section class="sec" id="s9">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">09</span><h2>六处亮点</h2><p class="kicker">Why It Works</p></div>
+    <div class="grid6 reveal">
+      <div class="g6"><div class="n">01</div><h4>摄影机站得很远</h4><p>全片几乎不用特写。杀人这件事被放在中景、远景、门框里、走廊尽头——<b>距离感就是这部片子的道德立场</b>：它不邀请你共情，它让你旁观。</p></div>
+      <div class="g6"><div class="n">02</div><h4>仲代达矢演的是「没有」</h4><p>他不演狠，也不演疯。他演一个脸上什么都没有的人——眼睛睁着，但里面没有东西。<b>这是最难的一种表演：让观众怕的不是表情，是表情的缺席。</b></p></div>
+      <div class="g6"><div class="n">03</div><h4>黑白宽银幕的空间</h4><p>2.35:1 的画幅，人被门框、柱子、走廊切成两半；横向的黑与白把道路拉得很长。<b>它让「走」这个动作本身有了重量。</b></p></div>
+      <div class="g6"><div class="n">04</div><h4>没有音乐的那几段</h4><p>关键场面里，佐藤勝的配乐会退出去，只留下木屐、呼吸、刀出鞘的金属声。<b>安静不是留白，是加压。</b></p></div>
+      <div class="g6"><div class="n">05</div><h4>三船敏郎只示范了一次</h4><p>他演岛田虎之助，全片只有几场戏。但其中一场，他让所有人看见了「另一种剑」——不用杀，也能赢。<b>那场戏之后，主角的天下第一就变成了一个笑话。</b></p></div>
+      <div class="g6"><div class="n">06</div><h4>桥本忍的删法</h4><p>四十一卷压成两小时，他没有加戏，他在删——删掉所有能替主角解释的段落。<b>结果是一个没有任何借口的恶人，而这在 1966 年的日本电影里几乎不存在。</b></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">10</span><h2>为什么值得一看</h2><p class="kicker">Three Reasons</p></div>
+    <div class="why">
+      <article class="reveal"><h3>一、它是日本剑戟片的反面</h3><p>日本剑戟片有一套默认的道德装置：为主君、为弱者、为一句承诺、为一个死去的朋友。刀是手段，理由是前提。<strong>这部片子把这个装置整个拆掉了。</strong></p><p>主角没有大义，没有仇人，没有要保护的人。他挥刀的理由，就是「他可以」。<em>于是观众被迫面对一个很不舒服的问题：如果一个人足够强，又没有任何约束，他会变成什么？</em>——这部电影用两小时给了一个答案，而且不给台阶。</p></article>
+      <article class="reveal"><h3>二、它拍的其实不是恶人，是恶的「日常」</h3><p>影史上有大量关于恶的电影，但多数会把恶拍成事件：一场屠杀、一次背叛、一个疯狂的瞬间。这部片子不一样，它把恶拍成了<strong>日常</strong>——他吃饭、走路、擦刀、看人，语气平静，动作准确，中间没有任何一次「发作」。</p><p>这才是它最让人不适的地方：<em>恶不需要理由，也不需要高潮。它只需要一个人，一直做他能做到的事。</em></p></article>
+      <article class="reveal"><h3>三、它没有结局，而这恰好是它最高明的地方</h3><p>先说清楚：这不是一部「烂尾」的电影。原作写了三十二年没写完，电影只拍了三部曲的第一部，续集从未开拍。<strong>它停住的地方，是它本来就打算停住的地方。</strong></p><p>大部分电影用结局告诉你「这件事有意义」。这一部把结局拿走了，让你自己去想：一个人如果一辈子只把一件事做到极致，而这件事恰好是杀人——他最后会剩下什么？<em>这个问题没有答案，因为答案就是那片空白。</em></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">11</span><h2>观影提示</h2><p class="kicker">Before You Press Play</p></div>
+    <div class="tips">
+      <div class="tip reveal"><div class="k">01</div><h4>别当爽片看</h4><p>它的杀阵不为好看，为不舒服。想看酣畅淋漓的剑戟，请去看《座头市》；这一部会让你在打得最漂亮的时候想关掉。</p></div>
+      <div class="tip reveal"><div class="k">02</div><h4>记住三张脸</h4><p>阿滨、兵马、阿松。前四十分钟他们都在做很小的事——求人、练剑、端茶。后半段所有的重量，都压在这三件小事上。</p></div>
+      <div class="tip reveal"><div class="k">03</div><h4>留意「剑是心」这句话</h4><p>它在片中出现不止一次。第一次听是道理，第二次听是判决。中间隔着的，就是这部电影全部的题眼。</p></div>
+      <div class="tip reveal"><div class="k">04</div><h4>两小时，黑白，别调亮度</h4><p>它的黑是拍出来的，不是调出来的。把房间弄暗、把屏幕调准，那些「看不清」的地方才是它要你看的地方。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="wrap">
+    <p class="tag">VERDICT · NO.22</p>
+    <p class="q"><span>刀越快，人越空。</span><span>他这一生只做对了一件事：把剑练到了极致。</span><span>可这部片子想说的是——</span><span>一个人若没有理由，他的极致也一文不值。</span></p>
+    <p class="src">—— 本页判词，非片中台词</p>
+    <div class="stamp"><div><span>JAPANESE CINEMA</span><b>NO.22</b><span>1966 · 冈本喜八</span></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>日本电影专题 · 第 22 期｜《大菩萨岭》（大菩薩峠）/ The Sword of Doom（1966，冈本喜八）<br>
+    数据核对于 2026-11-16：豆瓣条目 1440164（8.6 / 18,708 人 · 五星 44.7% / 四星 42.8% / 三星 11.0% / 二星 1.0% / 一星 0.4% · 未进 Top250）、IMDb tt0060277 7.9（约 12,000 票 · 黑白 · 2.35:1 · 单声道）。<br>
+    奖项与榜单以有明确届次者为限：1966 年度第 40 回电影旬报十佳未入（第 1 位《白色巨塔》）、第 17 回蓝丝带作品赏归《白色巨塔》；1967 年度《日本最长的一天》旬报第 3 位、1968 年度《肉弹》第 2 位（均为冈本喜八作品）。<br>
+    片长 120 分钟（IMDb 与英维基记 119）；1966-02-25 日本公映（东宝配给），与《续·社长行状记》同场；制作 宝塚映画 + 东宝；脚本 桥本忍，原作 中里介山（1913–1944 连载，41 卷 1533 章，未完）。<br>
+    全页不含关键情节：那场试合的结果、阿滨的去向、兵马的复仇结局、阿松的身世、以及最后一分钟的画面，一律未写。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c = document.getElementById('heroCanvas');
+  if(!c) return;
+  var ctx = c.getContext('2d'), W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
+  var parts=[], t=0;
+  function size(){
+    W=c.clientWidth; H=c.clientHeight;
+    c.width=W*dpr; c.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();
+  }
+  function build(){
+    parts=[];
+    var n = Math.round(W*H/24000);
+    if(n>90) n=90;
+    for(var i=0;i < n;i++){
+      var bx = W*0.65;
+      var x = bx + (Math.random()-0.5)*W*0.66;
+      if(x<0) x=Math.random()*W;
+      parts.push({
+        x: x, y: Math.random()*H,
+        r:.5+Math.random()*1.4,
+        vx:.05+Math.random()*.14,
+        vy:-.05-Math.random()*.12,
+        a:.02+Math.random()*.08,
+        p:Math.random()*6.28
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t+=0.004;
+    for(var i=0;i < parts.length;i++){
+      var p=parts[i];
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x>W+14){p.x=-14;p.y=Math.random()*H;}
+      if(p.y<-14){p.y=H+14;p.x=Math.random()*W;}
+      var a=p.a*(0.42+0.58*Math.sin(t*0.8+p.p));
+      ctx.beginPath();
+      ctx.fillStyle='rgba(224,205,176,'+a.toFixed(3)+')';
+      ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fill();
+    }
+    var g = ctx.createRadialGradient(W*0.65,H*0.86,0,W*0.65,H*0.86,Math.max(W,H)*0.34);
+    var pulse = 0.055+0.014*Math.sin(t*0.5);
+    g.addColorStop(0,'rgba(255,178,110,'+pulse.toFixed(3)+')');
+    g.addColorStop(1,'rgba(255,178,110,0)');
+    ctx.fillStyle=g;
+    ctx.fillRect(0,0,W,H);
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',size);
+  size(); draw();
+
+  var revs = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08, rootMargin:'0px 0px -6% 0px'});
+  revs.forEach(function(e){ io.observe(e); });
+
+  var hud=document.getElementById('hud'), items=[].slice.call(hud.querySelectorAll('b'));
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    hud.classList.toggle('on', y > window.innerHeight*0.55);
+    var p = y/(document.body.scrollHeight - window.innerHeight);
+    var idx = Math.min(4, Math.floor(p*5));
+    items.forEach(function(b,i){ b.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
