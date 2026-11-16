@@ -246,12 +246,12 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 }
 @media (min-width:761px) and (max-width:1000px){
   .scroll-hint{left:auto;right:8px;transform:none;bottom:26px}
-  .hero-svg{transform:translateY(10vh)}
+  .hero-svg{transform:none}
   .hero-scrim{background:
     linear-gradient(to bottom,rgba(4,5,6,.97) 0%,rgba(4,5,6,.96) 30%,rgba(4,5,6,.94) 46%,rgba(4,5,6,.9) 55%,rgba(4,5,6,.58) 60%,rgba(4,5,6,.28) 66%,rgba(4,5,6,.14) 73%,rgba(4,5,6,.22) 80%,rgba(4,5,6,.52) 87%,rgba(4,5,6,.86) 94%,rgba(3,4,5,.97) 100%)}
 }
 @media (max-width:760px){
-  .hero-svg{transform:translateY(13vh)}
+  .hero-svg{transform:none}
   .hero-scrim{background:
     linear-gradient(to bottom,rgba(4,5,6,.97) 0%,rgba(4,5,6,.96) 26%,rgba(4,5,6,.94) 44%,rgba(4,5,6,.86) 56%,rgba(4,5,6,.62) 65%,rgba(4,5,6,.38) 72%,rgba(4,5,6,.24) 78%,rgba(4,5,6,.44) 86%,rgba(4,5,6,.9) 95%,rgba(3,4,5,.98) 100%)}
   body{font-size:15px;line-height:1.9}
@@ -302,7 +302,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 @media (max-width:760px) and (max-height:700px){
   .hero{min-height:100vh}
   .hero-in{min-height:100vh;padding-top:6vh}
-  .hero-svg{transform:translateY(20vh)}
+  .hero-svg{transform:none}
 }
 </style>
 </head>
@@ -335,7 +335,9 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 <stop offset="0" stop-color="#0c1112"/><stop offset="1" stop-color="#030405"/>
 </linearGradient>
 <linearGradient id="groundG" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#0f1517"/><stop offset=".4" stop-color="#090d0f"/>
+<stop offset="0" stop-color="#0f1517" stop-opacity="0"/>
+<stop offset=".09" stop-color="#0e1416" stop-opacity=".8"/>
+<stop offset=".3" stop-color="#0a0e10" stop-opacity="1"/>
 <stop offset="1" stop-color="#030405"/>
 </linearGradient>
 <linearGradient id="treadG" x1=".25" y1="0" x2=".75" y2="1">
@@ -343,12 +345,12 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 <stop offset=".62" stop-color="#38464a"/><stop offset="1" stop-color="#161d1f"/>
 </linearGradient>
 <linearGradient id="riserG" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#8b9c9f"/><stop offset=".18" stop-color="#68797d"/>
-<stop offset=".62" stop-color="#2f3b3e"/><stop offset="1" stop-color="#0c1113"/>
+<stop offset="0" stop-color="#7b8c90"/><stop offset=".18" stop-color="#5c6d71"/>
+<stop offset=".62" stop-color="#2b3739"/><stop offset="1" stop-color="#0b1012"/>
 </linearGradient>
 <linearGradient id="fadeG" x1="0" y1="0" x2="0" y2="1">
 <stop offset="0" stop-color="#030405" stop-opacity="0"/>
-<stop offset=".55" stop-color="#030405" stop-opacity=".7"/>
+<stop offset=".42" stop-color="#030405" stop-opacity=".62"/>
 <stop offset="1" stop-color="#030405" stop-opacity="1"/>
 </linearGradient>
 <linearGradient id="stoneG" x1="1" y1="0" x2="0" y2="1">
@@ -363,6 +365,11 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 <radialGradient id="pool" cx=".5" cy=".5" r=".5">
 <stop offset="0" stop-color="#ffbe84" stop-opacity=".2"/>
 <stop offset="1" stop-color="#c2622c" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="mistC" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#93acb0" stop-opacity=".3"/>
+<stop offset=".55" stop-color="#6d8488" stop-opacity=".14"/>
+<stop offset="1" stop-color="#4d6266" stop-opacity="0"/>
 </radialGradient>
 <radialGradient id="figHalo" cx=".5" cy=".5" r=".5">
 <stop offset="0" stop-color="#9bb2b6" stop-opacity=".34"/>
@@ -380,7 +387,12 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 
 <path d="M0 524 C 120 486 236 508 352 480 C 470 452 556 486 660 466 C 772 444 858 480 962 456 C 1074 430 1160 480 1268 458 C 1340 444 1400 456 1440 462 L1440 780 L0 780 Z" fill="url(#farRidge)"/>
 <path d="M0 560 C 140 540 260 566 380 552 C 500 538 600 570 720 556 C 840 542 940 574 1060 560 C 1180 546 1300 574 1440 556 L1440 800 L0 800 Z" fill="#172123" opacity=".85"/>
-<rect x="0" y="450" width="1440" height="330" fill="url(#mistB)"/>
+<g>
+<ellipse cx="770" cy="628" rx="700" ry="156" fill="url(#mistC)"/>
+<ellipse cx="1180" cy="600" rx="440" ry="112" fill="url(#mistC)" opacity=".62"/>
+<ellipse cx="250" cy="592" rx="420" ry="104" fill="url(#mistC)" opacity=".55"/>
+<ellipse cx="700" cy="700" rx="420" ry="70" fill="url(#mistC)" opacity=".5"/>
+</g>
 
 <rect x="0" y="600" width="1440" height="300" fill="url(#groundG)"/>
 
@@ -415,24 +427,28 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 <path d="M656 676 L807 676"/>
 <path d="M679 648 L803 648"/>
 </g>
-<path d="M686 640 L802 640" stroke="#a7bcbf" stroke-width="1.8" opacity=".5"/>
+<path d="M686 640 L802 640" stroke="#a7bcbf" stroke-width="1.6" opacity=".34"/>
+<ellipse cx="742" cy="636" rx="180" ry="58" fill="url(#mistC)" opacity=".9"/>
+<ellipse cx="760" cy="650" rx="230" ry="44" fill="url(#mistC)" opacity=".5"/>
 <path d="M468 900 L686 640" stroke="#93a9ad" stroke-width="1.2" opacity=".22"/>
 </g>
 
 <g>
-<ellipse cx="906" cy="778" rx="132" ry="38" fill="url(#pool)"/>
-<rect x="842" y="768" width="74" height="16" fill="#1b2120" stroke="#090b0a" stroke-width="1"/>
-<rect x="842" y="767" width="74" height="2" fill="#616d65" opacity=".45"/>
-<path d="M860 768 C860 753 864 741 871 738 C875 737 877 735 877 732 C877 735 879 737 883 738 C890 741 894 753 894 768 Z" fill="url(#stoneG)"/>
-<circle cx="877" cy="726" r="8.8" fill="url(#stoneG)"/>
-<path d="M869 735 C872 731 882 731 885 735" fill="none" stroke="#20221d" stroke-width="1.1" opacity=".6"/>
-<path d="M867 742 L888 742 L884 756 L871 756 Z" fill="#8b3126" opacity=".9"/>
-<path d="M867 742 L888 742" stroke="#59190f" stroke-width="1.2" opacity=".7"/>
-<path d="M860 768 C860 753 864 741 871 738" fill="none" stroke="#c4bfa8" stroke-width="1.4" opacity=".34"/>
-<ellipse cx="920" cy="774" rx="7.6" ry="3" fill="#3a2c1e"/>
-<ellipse cx="920" cy="773" rx="5.8" ry="2.1" fill="#6f4c29"/>
-<path d="M920 771 C914 764 920 758 920 756 C920 758 926 764 920 771 Z" fill="#ffc188"/>
-<ellipse cx="912" cy="768" rx="112" ry="86" fill="url(#lampGlow)"/>
+<ellipse cx="906" cy="776" rx="126" ry="34" fill="url(#pool)"/>
+<rect x="838" y="762" width="80" height="18" fill="#1a201f" stroke="#080a09" stroke-width="1"/>
+<rect x="838" y="761" width="80" height="2.4" fill="#6a7670" opacity=".5"/>
+<path d="M852 762 L904 762 L900 754 L856 754 Z" fill="#2a302c"/>
+<path d="M858 754 C858 741 862 730 869 727 C873 726 875 724 875 721 C875 724 877 726 881 727 C888 730 892 741 892 754 Z" fill="url(#stoneG)"/>
+<circle cx="875" cy="714" r="8.4" fill="url(#stoneG)"/>
+<path d="M867 723 C870 719 880 719 883 723" fill="none" stroke="#20221d" stroke-width="1.1" opacity=".55"/>
+<path d="M866 731 L884 731 L881 744 L869 744 Z" fill="#8b3126" opacity=".92"/>
+<path d="M866 731 L884 731" stroke="#59190f" stroke-width="1.2" opacity=".7"/>
+<path d="M858 754 C858 741 862 730 869 727" fill="none" stroke="#cfcbb4" stroke-width="1.3" opacity=".3"/>
+<path d="M892 754 C892 741 888 730 881 727" fill="none" stroke="#ffcf9e" stroke-width="1.5" opacity=".5"/>
+<ellipse cx="928" cy="770" rx="7.4" ry="3" fill="#3a2c1e"/>
+<ellipse cx="928" cy="769" rx="5.6" ry="2.1" fill="#6f4c29"/>
+<path d="M928 767 C922 760 928 754 928 752 C928 754 934 760 928 767 Z" fill="#ffc188"/>
+<ellipse cx="922" cy="764" rx="106" ry="82" fill="url(#lampGlow)"/>
 </g>
 
 <g>
@@ -459,7 +475,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 </g>
 </g>
 
-<rect x="0" y="806" width="1440" height="94" fill="url(#fadeG)"/>
+<rect x="0" y="772" width="1440" height="128" fill="url(#fadeG)"/>
 
 <g stroke="#080c0c" stroke-width="1.8" fill="none" opacity=".9">
 <path d="M38 856 q10 -40 2 -58"/><path d="M56 858 q-6 -34 4 -52"/>
