@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T03:26:41.728Z",
+  "generatedAt": "2026-11-16T03:29:15.598Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 157,
-  "ok": 88,
+  "total": 158,
+  "ok": 89,
   "warn": 69,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 141,
+    "checked": 142,
     "skippedVerified": 16,
     "error": null
   },
@@ -2914,6 +2914,47 @@
         "reasons": [
           "图片文字命中片名「（ハル）」",
           "图片文字命中上映年份 1996"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "ok",
+      "issues": []
+    },
+    {
+      "id": "20261116-key",
+      "zhTitle": "盗钥匙的方法",
+      "sourceTitle": "盗钥匙的方法 (2012) — The Movie Database (TMDB)",
+      "year": "2012",
+      "source": "本地",
+      "imageUrl": "posters/20261116-key.jpg",
+      "host": "media.themoviedb.org",
+      "tier": "tmdb",
+      "size": "74KB",
+      "dims": "500×750",
+      "ratio": 1.5,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「盗钥匙的方法」",
+          "年份命中 2012",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": "盗钥匙的方法",
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "盗钥匙的方法",
+        "reasons": [
+          "图片文字命中片名「盗钥匙的方法」"
         ],
         "conflicts": []
       },

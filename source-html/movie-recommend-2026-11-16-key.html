@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>盗钥匙的方法 · 日本电影专题 第 21 期</title>
+<meta name="description" content="内田贤治《盗钥匙的方法》（鍵泥棒のメソッド, 2012）：剧情梗概、人物冲突、六处亮点与观看理由。全程不剧透。">
+<style>
+:root{
+  --bg:#070909; --bg2:#0b0f0f; --panel:#111615;
+  --ink:#e9e6d9; --dim:#97998f; --dim2:#5b605c;
+  --line:rgba(233,230,217,.12); --line2:rgba(233,230,217,.05);
+  --amber:#c05a38; --amber2:#dd8a68;
+  --jade:#7fa79c; --jade2:#aecdc2;
+  --seal:#8e2f24; --seal2:#bf5a44;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Didot","Optima","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.95;letter-spacing:.012em;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(192,90,56,.32);color:#150806}
+a{color:inherit}
+body::before{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+.wrap{width:min(1160px,calc(100% - 96px));margin:0 auto}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:max(100vh,880px);overflow:hidden;background:#060808}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(5,7,7,.95) 0%,rgba(5,7,7,.88) 18%,rgba(5,7,7,.66) 34%,rgba(5,7,7,.32) 50%,rgba(5,7,7,.06) 64%,rgba(5,7,7,0) 74%),
+    linear-gradient(to bottom,rgba(5,7,7,.60) 0%,rgba(5,7,7,.16) 18%,rgba(5,7,7,0) 34%,rgba(5,7,7,0) 56%,rgba(5,7,7,.40) 76%,rgba(5,7,7,.80) 90%,rgba(4,6,6,.97) 100%)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.notice{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:11px;
+  letter-spacing:.14em;color:rgba(233,230,217,.66);border:1px solid rgba(233,230,217,.17);
+  border-radius:999px;padding:7px 16px;margin-bottom:34px;background:rgba(6,9,9,.5);backdrop-filter:blur(4px)}
+.notice .dot{width:5px;height:5px;border-radius:50%;background:#e5a583;box-shadow:0 0 9px rgba(229,165,131,.7)}
+.hero-in{position:relative;z-index:3;width:min(1160px,calc(100% - 96px));margin:0 auto;
+  min-height:max(100vh,880px);display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:10.5vh;padding-bottom:64px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;
+  letter-spacing:.34em;color:var(--amber2);text-transform:uppercase;opacity:.88}
+.eyebrow i{display:block;width:52px;height:1px;background:var(--amber2);opacity:.45}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,5.2vw,72px);line-height:1.16;
+  letter-spacing:.1em;margin:26px 0 0;color:#f2efe2;white-space:nowrap;
+  text-shadow:0 2px 34px rgba(0,0,0,.78)}
+.latin{margin:20px 0 0;font-family:var(--latin);font-size:13px;letter-spacing:.3em;
+  color:rgba(233,230,217,.52)}
+.latin + .latin{margin-top:7px;font-size:11px;letter-spacing:.24em;color:rgba(233,230,217,.44)}
+.hero-sub{margin:28px 0 0;max-width:24em;font-size:16px;line-height:2.05;color:rgba(230,228,218,.84)}
+.hero-sub em{font-style:normal;color:#f4f0e2;border-bottom:1px solid rgba(192,90,56,.66);padding-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:620px}
+.chip{font-size:11.5px;letter-spacing:.06em;color:rgba(238,235,224,.9);border:1px solid rgba(233,230,217,.2);
+  border-radius:999px;padding:6px 14px;background:rgba(7,9,9,.66);backdrop-filter:blur(6px)}
+.chip b{color:#fff;font-weight:500}
+.scroll-hint{position:absolute;left:auto;right:28px;bottom:30px;z-index:4;
+  font-family:var(--latin);font-size:9.5px;letter-spacing:.42em;color:rgba(233,230,217,.4);
+  display:flex;flex-direction:column;align-items:center;gap:9px}
+.scroll-hint span{display:block;width:1px;height:32px;background:linear-gradient(to bottom,rgba(233,230,217,.4),transparent)}
+
+/* ---------- sections ---------- */
+.sec{padding:112px 0;border-top:1px solid var(--line2)}
+.sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:52px}
+.sec-head .no{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--amber2);opacity:.94}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.1vw,36px);
+  letter-spacing:.05em;margin:0;color:#f2efe2;flex:1 1 auto}
+.sec-head .kicker{font-family:var(--latin);font-size:10.5px;letter-spacing:.3em;
+  color:var(--dim2);text-transform:uppercase;margin:0}
+.note{font-size:13px;color:var(--dim);line-height:1.9}
+
+/* ---------- 01 lede ---------- */
+.intro{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:64px;align-items:start}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:2.2;color:#d4d5c9}
+.lede p{margin:0 0 22px}
+.lede p:first-child::first-letter{float:left;font-size:5.1em;line-height:.82;padding:.06em .14em 0 0;
+  color:#f4f1e3;font-weight:400}
+.lede strong{font-weight:500;color:#f6f3e5}
+.lede .dash{color:var(--dim);font-size:15px}
+.glance{border:1px solid var(--line);background:linear-gradient(160deg,rgba(17,22,21,.95),rgba(6,8,8,.95));
+  padding:30px 28px}
+.glance h3{font-family:var(--latin);font-size:10px;letter-spacing:.34em;color:var(--amber2);
+  margin:0 0 22px;font-weight:400;text-transform:uppercase;opacity:.9}
+.glance dl{margin:0;display:grid;gap:13px}
+.glance div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line2)}
+.glance div:last-child{border-bottom:0;padding-bottom:0}
+.glance dt{font-size:11.5px;color:var(--dim2);letter-spacing:.1em}
+.glance dd{margin:0;font-size:13.5px;color:#cdcfc6;line-height:1.7}
+.glance dd b{color:#f4f1e3;font-weight:500}
+.glance dd small{display:block;font-size:11px;color:var(--dim2);margin-top:3px}
+.acts{margin-top:74px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.act{background:var(--bg);padding:34px 30px}
+.act .t{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--amber2);
+  opacity:.94;margin-bottom:14px}
+.act h4{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f2efe2;letter-spacing:.04em}
+.act p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+/* ---------- 02 poster ---------- */
+.poster-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);gap:70px;align-items:start}
+.poster-frame{border:1px solid var(--line);padding:14px;background:#050706;
+  box-shadow:0 40px 90px -50px #000, inset 0 0 0 1px rgba(0,0,0,.6)}
+.poster-svg{display:block;width:100%;height:auto}
+.pcap{margin:16px 2px 0;font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--dim2)}
+.pnotes{display:grid;gap:28px}
+.pnote{border-left:1px solid var(--line);padding:2px 0 2px 24px}
+.pnote .n{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--amber2);opacity:.9}
+.pnote h4{margin:8px 0 10px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f2efe2}
+.pnote p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+.pnote p b{color:#e6e2d4;font-weight:500}
+
+/* ---------- 03 spec ---------- */
+.spec{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.spec div{background:var(--bg);padding:22px 20px;min-height:92px}
+.spec dt{font-size:10.5px;letter-spacing:.14em;color:var(--dim2);margin-bottom:8px}
+.spec dd{margin:0;font-size:13.5px;color:#d1d3ca;line-height:1.65}
+.spec dd small{display:block;font-size:11px;color:var(--dim2);margin-top:4px;letter-spacing:.02em}
+.spec .wide{grid-column:1/-1;min-height:0;background:linear-gradient(120deg,rgba(192,90,56,.16),rgba(6,8,8,0) 62%)}
+.spec .wide dd{font-family:var(--serif);font-size:17px;color:#f4f1e3;letter-spacing:.05em}
+
+/* ---------- 04 scores ---------- */
+.scores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.sc{background:var(--bg);padding:32px 30px}
+.sc .src{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--dim2);text-transform:uppercase}
+.sc .val{font-family:var(--latin);font-size:52px;line-height:1;margin:16px 0 8px;color:#f4f1e3}
+.sc .val small{font-size:15px;color:var(--dim);letter-spacing:.04em;margin-left:6px}
+.sc .meta{font-size:12.5px;color:var(--dim);line-height:1.8}
+.sc.hi .val{color:#bcd9cd}
+.sc.abs .val{font-size:30px;letter-spacing:.06em;color:var(--amber2);line-height:1.3}
+.sc.abs .val.tiny{font-size:22px;color:var(--dim)}
+.caliber{margin:52px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.caliber li{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line2);
+  font-size:13.5px;line-height:1.9;color:var(--dim)}
+.caliber li b{color:#e9e6d9;font-weight:500}
+.caliber li i{font-family:var(--latin);font-style:normal;font-size:10.5px;letter-spacing:.2em;color:var(--amber2);opacity:.84;padding-top:4px}
+
+/* ---------- 05 people ---------- */
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.person{background:var(--bg);padding:30px 28px}
+.person .role{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--amber2);opacity:.84}
+.person h4{margin:12px 0 4px;font-family:var(--serif);font-weight:400;font-size:20px;color:#f4f1e3;letter-spacing:.04em}
+.person h4 small{font-size:12px;color:var(--dim2);letter-spacing:.1em;margin-left:4px}
+.person .actor{font-size:11.5px;color:var(--dim2);letter-spacing:.08em;margin-bottom:18px}
+.person p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.person p span{display:block;margin-top:9px;color:#c9cbc2}
+.person p span b{color:var(--amber2);font-weight:400;font-size:11.5px;letter-spacing:.08em;margin-right:6px}
+.person.thing{grid-column:1/-1;background:linear-gradient(100deg,rgba(127,167,156,.18),rgba(6,8,8,0) 70%)}
+.person.thing h4{color:#c3dbd1}
+.person.thing p{max-width:88ch}
+
+/* ---------- 06 conflicts ---------- */
+.conflicts{display:grid;gap:0;border-top:1px solid var(--line)}
+.cf{display:grid;grid-template-columns:196px minmax(0,1fr);gap:36px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line2)}
+.cf h4{margin:0;font-family:var(--serif);font-weight:400;font-size:17px;color:#f4f1e3;letter-spacing:.04em;line-height:1.6}
+.cf h4 i{display:block;font-family:var(--latin);font-style:normal;font-size:9.5px;letter-spacing:.26em;
+  color:var(--amber2);opacity:.84;margin-bottom:8px}
+.cf p{margin:0;font-size:13.8px;line-height:2;color:var(--dim);max-width:66ch}
+.cf p em{font-style:normal;color:#e6e2d4}
+
+/* ---------- 07 awards ---------- */
+.awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.award{background:var(--bg);padding:28px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.award .yr{font-family:var(--latin);font-size:11px;letter-spacing:.14em;color:var(--dim2);padding-top:3px}
+.award h4{margin:0 0 6px;font-size:14.5px;font-weight:500;color:#f2efe2;letter-spacing:.02em;line-height:1.6}
+.award p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.78}
+.award.gold{background:linear-gradient(120deg,rgba(192,90,56,.2),rgba(6,8,8,0) 68%);border-left:2px solid rgba(192,90,56,.55)}
+.award.gold h4{color:#e8a888}
+.award.wide{grid-column:1/-1}
+
+/* ---------- 08 lineage ---------- */
+.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px}
+.ln{position:relative;padding:0 0 40px 40px}
+.ln:last-child{padding-bottom:0}
+.ln::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--jade2)}
+.ln.now::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 4px rgba(142,47,36,.26)}
+.ln .yr{font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--dim2)}
+.ln h4{margin:6px 0 6px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f2efe2;letter-spacing:.03em}
+.ln p{margin:0;font-size:13px;color:var(--dim);line-height:1.85}
+.ln.now h4{color:#e8a888}
+
+/* ---------- 09 six grid ---------- */
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.g6{background:var(--bg);padding:32px 28px;min-height:200px}
+.g6 .n{font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--amber2);opacity:.9}
+.g6 h4{margin:14px 0 10px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f2efe2;letter-spacing:.03em;line-height:1.6}
+.g6 p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.g6 p b{color:#e6e2d4;font-weight:500}
+
+/* ---------- 10 why ---------- */
+.why{display:grid;gap:0;max-width:820px}
+.why article{padding:0 0 38px}
+.why article + article{border-top:1px solid var(--line2);padding-top:38px}
+.why h3{margin:0 0 14px;font-family:var(--serif);font-weight:400;font-size:21px;color:#f4f1e3;letter-spacing:.04em}
+.why p{margin:0;font-size:14.5px;line-height:2.05;color:#bdbfb6}
+.why p + p{margin-top:14px}
+.why strong{color:#f2efe2;font-weight:500}
+.why em{font-style:normal;color:#bcd9cd}
+
+/* ---------- 11 tips ---------- */
+.tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.tip{background:var(--bg);padding:30px 24px}
+.tip .k{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--amber2);opacity:.9}
+.tip h4{margin:12px 0 10px;font-size:15.5px;font-weight:500;color:#f2efe2}
+.tip p{margin:0;font-size:12.8px;line-height:1.95;color:var(--dim)}
+
+/* ---------- verdict ---------- */
+.verdict{padding:150px 0 120px;border-top:1px solid var(--line2);position:relative;overflow:hidden}
+.verdict .tag{font-family:var(--latin);font-size:9.5px;letter-spacing:.32em;color:var(--dim2);margin-bottom:34px}
+.verdict .q{font-family:var(--serif);font-size:clamp(23px,3.1vw,36px);line-height:1.78;letter-spacing:.06em;
+  color:#f4f1e3;margin:0;max-width:24em}
+.verdict .q span{display:block}
+.verdict .src{margin-top:36px;font-size:12px;color:var(--dim2);letter-spacing:.04em}
+.stamp{position:absolute;right:74px;bottom:82px;width:136px;height:136px;border:1px solid rgba(142,47,36,.66);
+  border-radius:50%;display:grid;place-items:center;color:rgba(196,96,78,.96);text-align:center;
+  transform:rotate(-7deg);box-shadow:inset 0 0 0 4px rgba(142,47,36,.1)}
+.stamp div{display:grid;gap:5px;justify-items:center}
+.stamp span{font-family:var(--latin);font-size:8.2px;letter-spacing:.14em;opacity:.9}
+.stamp b{font-family:var(--serif);font-size:21px;letter-spacing:.12em;font-weight:400;line-height:1.1;
+  padding:5px 0;border-top:1px solid rgba(142,47,36,.4);border-bottom:1px solid rgba(142,47,36,.4)}
+
+footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
+footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
+
+/* ---------- HUD ---------- */
+#hud{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
+  opacity:0;transition:opacity .7s ease;pointer-events:none}
+#hud.on{opacity:1}
+#hud b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:13px;
+  color:var(--dim2);letter-spacing:.1em;transition:color .5s}
+#hud b i{display:block;width:16px;height:1px;background:var(--dim2);transition:all .5s}
+#hud b.on{color:#f4f1e3}
+#hud b.on i{width:30px;background:var(--amber2)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1380px){#hud{display:none}}
+@media (max-width:1000px){
+  .intro{grid-template-columns:1fr;gap:48px}
+  .poster-grid{grid-template-columns:1fr;gap:46px}
+  .poster-frame{max-width:500px}
+  .scores,.awards{grid-template-columns:1fr}
+  .spec{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .acts{grid-template-columns:1fr}
+  #hud{display:none}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .scroll-hint{left:auto;right:8px;transform:none;bottom:26px}
+  .hero-svg{transform:translateY(12vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(5,7,7,.97) 0%,rgba(5,7,7,.96) 32%,rgba(5,7,7,.94) 48%,rgba(5,7,7,.9) 56%,rgba(5,7,7,.6) 61%,rgba(5,7,7,.3) 66%,rgba(5,7,7,.16) 72%,rgba(5,7,7,.24) 79%,rgba(5,7,7,.54) 86%,rgba(5,7,7,.86) 93%,rgba(4,6,6,.97) 100%)}
+}
+@media (max-width:760px){
+  .hero-svg{transform:translateY(22vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(5,7,7,.97) 0%,rgba(5,7,7,.96) 28%,rgba(5,7,7,.94) 46%,rgba(5,7,7,.86) 58%,rgba(5,7,7,.64) 66%,rgba(5,7,7,.4) 72%,rgba(5,7,7,.26) 78%,rgba(5,7,7,.46) 85%,rgba(5,7,7,.9) 94%,rgba(4,6,6,.98) 100%)}
+  body{font-size:15px;line-height:1.9}
+  .wrap,.hero-in{width:calc(100% - 40px)}
+  .hero{min-height:max(100vh,740px)}
+  .hero-in{min-height:max(100vh,740px);padding-top:8vh;padding-bottom:100px}
+  h1{font-size:clamp(28px,8vw,52px);letter-spacing:.06em}
+  .hero-sub{font-size:14.5px;line-height:1.95;max-width:26em}
+  .sec{padding:76px 0}
+  .sec-head{margin-bottom:36px;gap:12px}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spec dd{font-size:12.4px}
+  .spec dd small{font-size:10.4px}
+  .people,.grid6,.tips{grid-template-columns:1fr}
+  .cf{grid-template-columns:1fr;gap:12px}
+  .lede{font-size:16px;line-height:2.05}
+  .sc .val{font-size:44px}
+  .verdict{padding:96px 0 88px}
+  .stamp{position:static;margin-top:48px;transform:rotate(-4deg)}
+  .chips{max-width:100%;padding-top:0;margin-top:26px}
+  footer{padding-bottom:120px}
+  .scroll-hint{bottom:14px;left:auto;right:12px;transform:none}
+  .chip{font-size:11px;padding:5px 11px;letter-spacing:.03em}
+}
+@media (min-width:1001px) and (max-height:860px){
+  .hero,.hero-in{min-height:max(100vh,760px)}
+  .scroll-hint{left:auto;right:22px;transform:none}
+}
+@media (max-width:520px){
+  .chip:nth-child(5){display:none}
+  #lantern{display:none}
+}
+@media (max-width:420px){
+  .notice{margin-bottom:22px;font-size:10.5px;padding:6px 13px}
+  h1{font-size:clamp(26px,7.6vw,42px);margin-top:20px}
+  .latin{margin-top:14px;font-size:11px;letter-spacing:.2em}
+  .latin + .latin{font-size:9.5px;letter-spacing:.14em}
+  .hero-sub{margin-top:22px;font-size:13.8px}
+}
+@media (max-width:380px){
+  .wrap,.hero-in{width:calc(100% - 32px)}
+  .chip{font-size:10.5px;padding:5px 11px}
+  .glance{padding:24px 20px}
+  h1{font-size:clamp(24px,7.2vw,38px)}
+}
+@media (max-width:400px) and (max-height:680px){
+  .scroll-hint{display:none}
+}
+@media (max-width:760px) and (max-height:700px){
+  .hero{min-height:100vh}
+  .hero-in{min-height:100vh;padding-top:6vh}
+  .hero-svg{transform:translateY(34vh)}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#04060a"/><stop offset=".5" stop-color="#070d10"/>
+<stop offset=".84" stop-color="#0d1517"/><stop offset="1" stop-color="#121b1c"/>
+</linearGradient>
+<linearGradient id="roof" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#242b2f"/><stop offset=".4" stop-color="#171d20"/><stop offset="1" stop-color="#0b1012"/>
+</linearGradient>
+<linearGradient id="wallTwo" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#2b2219"/><stop offset="1" stop-color="#17120d"/>
+</linearGradient>
+<linearGradient id="wallOne" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#251d16"/><stop offset="1" stop-color="#130e0a"/>
+</linearGradient>
+<radialGradient id="doorLit" cx=".5" cy=".66" r=".74">
+<stop offset="0" stop-color="#ffe8c0"/><stop offset=".26" stop-color="#f4c684"/>
+<stop offset=".56" stop-color="#c08447"/><stop offset=".82" stop-color="#754a26"/>
+<stop offset="1" stop-color="#2e1c10"/>
+</radialGradient>
+<linearGradient id="noren" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ab4b30"/><stop offset=".55" stop-color="#8f3a25"/><stop offset="1" stop-color="#63271a"/>
+</linearGradient>
+<linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#1b2122"/><stop offset=".26" stop-color="#121718"/><stop offset="1" stop-color="#050708"/>
+</linearGradient>
+<radialGradient id="spill" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#eeb878" stop-opacity=".3"/><stop offset=".44" stop-color="#b87b45" stop-opacity=".12"/>
+<stop offset="1" stop-color="#6b4a2a" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="halo" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#ffd9a0" stop-opacity=".24"/><stop offset=".5" stop-color="#c08a4e" stop-opacity=".075"/>
+<stop offset="1" stop-color="#7a5330" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="lampGlow" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#ffd7a2" stop-opacity=".3"/><stop offset=".45" stop-color="#c98a4e" stop-opacity=".1"/>
+<stop offset="1" stop-color="#7d5530" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="steam" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#b9c8c6" stop-opacity=".13"/><stop offset=".58" stop-color="#8fa4a2" stop-opacity=".045"/>
+<stop offset="1" stop-color="#5d7371" stop-opacity="0"/>
+</radialGradient>
+<radialGradient id="vig" cx=".53" cy=".46" r=".78">
+<stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".5" stop-color="#000" stop-opacity=".1"/>
+<stop offset="1" stop-color="#000" stop-opacity=".74"/>
+</radialGradient>
+<radialGradient id="ambient" cx=".5" cy=".2" r=".7">
+<stop offset="0" stop-color="#22343a" stop-opacity=".3"/><stop offset=".55" stop-color="#152227" stop-opacity=".12"/>
+<stop offset="1" stop-color="#0b1315" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="eaveShade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#000" stop-opacity=".62"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="reflect" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#f0c184" stop-opacity=".26"/><stop offset=".45" stop-color="#c98e4e" stop-opacity=".1"/>
+<stop offset="1" stop-color="#7a5330" stop-opacity="0"/>
+</linearGradient>
+<clipPath id="roofClip">
+<path d="M584 232 H1076 L1120 290 H540 Z"/>
+</clipPath>
+</defs>
+
+<rect width="1440" height="900" fill="url(#sky)"/>
+<rect width="1440" height="900" fill="url(#ambient)"/>
+<circle cx="800" cy="560" r="420" fill="url(#halo)"/>
+
+<!-- left neighbour wall -->
+<g>
+<rect x="0" y="466" width="520" height="6" fill="#171d1f"/>
+<rect x="0" y="472" width="520" height="228" fill="#0a0e0f"/>
+<rect x="76" y="516" width="86" height="70" fill="#0c1113" stroke="#1a2123" stroke-width="1.4"/>
+<rect x="84" y="524" width="70" height="54" fill="#080c0d"/>
+<rect x="286" y="536" width="66" height="60" fill="#0c1113" stroke="#1a2123" stroke-width="1.2"/>
+</g>
+
+<!-- right neighbour wall -->
+<g>
+<rect x="1140" y="500" width="300" height="4" fill="#171d1f"/>
+<rect x="1140" y="504" width="300" height="196" fill="#090d0e"/>
+</g>
+
+<!-- bathhouse -->
+<g>
+<rect x="520" y="300" width="620" height="132" fill="url(#wallTwo)"/>
+<rect x="520" y="300" width="620" height="40" fill="url(#eaveShade)"/>
+<rect x="520" y="430" width="620" height="270" fill="url(#wallOne)"/>
+<rect x="520" y="430" width="620" height="30" fill="url(#eaveShade)" opacity=".7"/>
+<rect x="514" y="424" width="632" height="7" fill="#0a0d0e"/>
+<g stroke="#2c2319" stroke-width="1" opacity=".55">
+<path d="M560 302 V426 M600 302 V426 M640 302 V426 M680 302 V426 M720 302 V426 M760 302 V426 M800 302 V426 M840 302 V426 M880 302 V426 M920 302 V426 M960 302 V426 M1000 302 V426 M1040 302 V426 M1080 302 V426"/>
+</g>
+<g stroke="#241c15" stroke-width="1" opacity=".45">
+<path d="M552 436 V700 M596 436 V700 M640 436 V700 M684 436 V700 M940 436 V700 M984 436 V700 M1028 436 V700 M1072 436 V700 M1116 436 V700"/>
+</g>
+</g>
+
+<!-- second floor windows -->
+<g>
+<rect x="558" y="330" width="84" height="70" fill="#0b0f10" stroke="#2a231b" stroke-width="5"/>
+<rect x="563" y="335" width="74" height="60" fill="#101a1b"/>
+<rect x="563" y="335" width="74" height="60" fill="#8a6432" opacity=".13"/>
+<rect x="596" y="335" width="4" height="60" fill="#2a231b"/>
+<rect x="1018" y="330" width="84" height="70" fill="#0b0f10" stroke="#2a231b" stroke-width="5"/>
+<rect x="1023" y="335" width="74" height="60" fill="#0b1112"/>
+<rect x="1056" y="335" width="4" height="60" fill="#2a231b"/>
+</g>
+
+<!-- roof -->
+<g>
+<polygon points="540,290 1120,290 1076,232 584,232" fill="url(#roof)"/>
+<g clip-path="url(#roofClip)" stroke="#39434a" stroke-width="1.1" opacity=".3">
+<path d="M530 244 H1130"/><path d="M530 254 H1130"/><path d="M530 264 H1130"/>
+<path d="M530 274 H1130"/><path d="M530 284 H1130"/>
+</g>
+<rect x="496" y="290" width="668" height="13" fill="#0d1113"/>
+<rect x="496" y="290" width="668" height="2" fill="#3a4347" opacity=".55"/>
+<rect x="582" y="227" width="498" height="7" fill="#222a2e"/>
+<rect x="582" y="227" width="498" height="1.6" fill="#4a555a" opacity=".45"/>
+</g>
+
+<!-- chimney + steam -->
+<g>
+<rect x="1006" y="146" width="36" height="88" fill="#131a1c"/>
+<rect x="1006" y="146" width="36" height="9" fill="#232b2f"/>
+<rect x="1006" y="146" width="2" height="88" fill="#2b353a" opacity=".7"/>
+<ellipse cx="1024" cy="118" rx="44" ry="24" fill="url(#steam)"/>
+<ellipse cx="1030" cy="74" rx="66" ry="34" fill="url(#steam)" opacity=".8"/>
+<ellipse cx="1016" cy="38" rx="84" ry="34" fill="url(#steam)" opacity=".55"/>
+</g>
+
+<!-- doorway -->
+<g>
+<rect x="700" y="452" width="200" height="248" fill="url(#doorLit)"/>
+<rect x="700" y="452" width="200" height="12" fill="#402713" opacity=".75"/>
+<rect x="700" y="632" width="200" height="26" fill="#4a2d15" opacity=".9"/>
+<rect x="700" y="632" width="200" height="2.4" fill="#b8834a" opacity=".5"/>
+<rect x="846" y="560" width="54" height="72" fill="#2b1a0d" opacity=".55"/>
+<rect x="700" y="700" width="200" height="4" fill="#0a0c0c"/>
+<rect x="694" y="446" width="212" height="254" fill="none" stroke="#2c2118" stroke-width="6"/>
+</g>
+
+<!-- noren rod -->
+<g>
+<rect x="678" y="436" width="242" height="4" fill="#3a2c1d"/>
+<rect x="686" y="432" width="8" height="12" fill="#2b2116"/>
+<rect x="904" y="432" width="8" height="12" fill="#2b2116"/>
+</g>
+
+<!-- noren -->
+<g>
+<path d="M690 446 H762 V546 Q726 557 690 546 Z" fill="url(#noren)"/>
+<path d="M768 446 H840 V546 Q804 559 768 546 Z" fill="url(#noren)"/>
+<path d="M846 446 H912 V546 Q879 555 846 546 Z" fill="url(#noren)"/>
+<rect x="686" y="444" width="230" height="10" fill="#b8503a"/>
+<rect x="686" y="444" width="230" height="2" fill="#dd7a5e" opacity=".6"/>
+<circle cx="879" cy="492" r="23" fill="#ece6d6" opacity=".88"/>
+<text x="879" y="503" text-anchor="middle" font-family="Hiragino Mincho ProN,YuMincho,Songti SC,serif"
+ font-size="27" fill="#8e3a26">ゆ</text>
+</g>
+
+<!-- lantern -->
+<g id="lantern">
+<rect x="955" y="303" width="2" height="26" fill="#2a231b"/>
+<ellipse cx="956" cy="356" rx="24" ry="28" fill="#7d2c1d"/>
+<ellipse cx="956" cy="356" rx="18" ry="23" fill="#c25a34"/>
+<ellipse cx="956" cy="356" rx="11" ry="16" fill="#e79a5f" opacity=".8"/>
+<rect x="941" y="330" width="30" height="4" fill="#171310"/>
+<rect x="941" y="378" width="30" height="4" fill="#171310"/>
+<ellipse cx="956" cy="356" rx="70" ry="62" fill="url(#lampGlow)"/>
+</g>
+
+<!-- vertical sign -->
+<g>
+<rect x="944" y="470" width="66" height="134" fill="#181310" stroke="#3a3128" stroke-width="1.6"/>
+<rect x="948" y="474" width="58" height="126" fill="none" stroke="#2d2620" stroke-width="1"/>
+<text x="977" y="546" text-anchor="middle" font-family="Hiragino Mincho ProN,YuMincho,Songti SC,serif"
+ font-size="34" fill="#e2c893" opacity=".82">湯</text>
+</g>
+
+<!-- utility pole, right -->
+<g>
+<rect x="1246" y="140" width="13" height="562" fill="#0b0f11"/>
+<rect x="1204" y="196" width="96" height="6" fill="#0b0f11"/>
+<rect x="1222" y="240" width="60" height="5" fill="#0b0f11"/>
+<g stroke="#161d1f" stroke-width="1.6" fill="none">
+<path d="M1300 200 Q1372 212 1440 226"/>
+<path d="M1300 206 Q1372 222 1440 240"/>
+<path d="M1204 200 Q1260 190 1300 200"/>
+</g>
+</g>
+
+<!-- ground -->
+<rect x="0" y="698" width="1440" height="202" fill="url(#ground)"/>
+<rect x="0" y="696" width="1440" height="3" fill="#232a2c" opacity=".85"/>
+<rect x="688" y="690" width="224" height="11" fill="#1d2325"/>
+<rect x="688" y="690" width="224" height="1.6" fill="#3d474a" opacity=".55"/>
+<ellipse cx="800" cy="752" rx="216" ry="54" fill="url(#spill)"/>
+<rect x="694" y="702" width="212" height="126" fill="url(#reflect)"/>
+<g stroke="#3d4649" stroke-width="1" opacity=".16">
+<path d="M0 722 H1440"/><path d="M0 758 H1440"/><path d="M0 804 H1440"/><path d="M0 862 H1440"/>
+</g>
+<g stroke="#394245" stroke-width="1" opacity=".13">
+<path d="M214 722 V758 M486 722 V758 M772 722 V758 M1042 722 V758"/>
+<path d="M120 758 V804 M352 758 V804 M622 758 V804 M904 758 V804 M1180 758 V804"/>
+<path d="M256 804 V862 M560 804 V862 M844 804 V862 M1128 804 V862"/>
+</g>
+<g fill="#f0c890" opacity=".05">
+<rect x="686" y="726" width="228" height="2"/><rect x="700" y="744" width="196" height="1.6"/>
+<rect x="716" y="764" width="162" height="1.4"/><rect x="736" y="788" width="120" height="1.2"/>
+</g>
+
+<rect width="1440" height="900" fill="url(#vig)"/>
+</svg>
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+
+<div class="hero-in">
+  <div class="notice"><span class="dot"></span>全程不剧透 · 梗概止于「两个人都开始扮演对方」</div>
+  <div class="eyebrow"><i></i>Japanese Cinema · No.21</div>
+  <h1>盗钥匙的方法</h1>
+  <p class="latin">鍵泥棒のメソッド</p>
+  <p class="latin">Key of Life · 2012</p>
+  <p class="hero-sub">东京，一间开了几十年的老澡堂：木头鞋柜、瓷砖墙、一排矮凳、一个坐在高台上的老板。一个人在这里滑倒了；另一个人拿走了他的钥匙。第二天早上，滑倒的那个人醒了，什么都不记得——而拿钥匙的那个人，正在学着过别人的日子。<em>这部片子只问一件事：如果把你的人生整个交给另一个人，他会过得比你好吗？</em></p>
+  <div class="chips">
+    <span class="chip"><b>2012</b> · 内田贤治</span>
+    <span class="chip"><b>128 分钟</b> · 彩色</span>
+    <span class="chip">豆瓣 <b>8.5</b></span>
+    <span class="chip">旬报十佳 <b>第 8 位</b></span>
+    <span class="chip">读者票选 <b>第 1 位</b></span>
+  </div>
+</div>
+
+<div class="scroll-hint">SCROLL<span></span></div>
+</header>
+
+<nav id="hud" aria-hidden="true">
+  <b data-i="0"><i></i>屏</b><b data-i="1"><i></i>字</b><b data-i="2"><i></i>档</b><b data-i="3"><i></i>人</b><b data-i="4"><i></i>等</b>
+</nav>
+
+<main>
+
+<section class="sec" id="s1" style="border-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">01</span><h2>剧情梗概</h2><p class="kicker">The Story</p></div>
+    <div class="intro">
+      <div class="lede reveal">
+        <p>樱井武史三十五岁，是个演员。这个说法从他嘴里说出来的时候会稍微停一下——因为他已经很久没有靠演戏拿到过钱了。他住在一间很小的公寓里，东西不多，每一件都旧。这天他把一根绳子系在房梁上，试了一次。没成。</p>
+        <p>他决定在死之前，先去洗个澡。那是街角一家老澡堂：木头的鞋柜、瓷砖的墙、一排矮凳、一个坐在高台上的老板。他把衣服脱下来叠好，放进储物柜，拔下钥匙，用一根皮筋套在手腕上，走进浴池。</p>
+        <p>池子里还有一个人。四十来岁，动作很准：毛巾叠成一样的宽度，肥皂放在一样的位置，起身的时间也掐得刚好。像是一个把每天的动作都排练过的人。</p>
+        <p>樱井的肥皂从手里滑了出去。那个人一脚踩上去，脚下一滑，后脑磕在瓷砖上。就一声。<strong>整部电影从这个声音开始。</strong></p>
+        <p>澡堂里的人都围了过去。樱井站在人群外面，手心里有两把钥匙——一把是他的，一把是那个人的。他把自己的那一把塞进那个男人手里，攥着另一把，走了出去。</p>
+        <p>那格储物柜里有一套西装、一块表、一把车钥匙、一个信封。车停在后巷。他开着车，去了那个男人住的地方：一间他这辈子都租不起的公寓，干净得像样板间，冰箱里连一根葱都没有。</p>
+        <p>第二天早上，医院。那个男人醒了。他什么都不记得——不记得自己叫什么，不记得为什么在这儿，也不记得昨天。护士管他叫「樱井先生」，因为送他来的人说，这个人叫樱井武史。</p>
+        <p><strong>于是有了两个樱井武史：一个住在高级公寓里，一个躺在病床上。</strong></p>
+        <p>公寓里的那一个，在茶几上找到一本手帐。字很小，写得很整齐：名字、日期、金额。旁边还有几个信封，每个信封里都装着钱。他很快就明白了——这个男人靠替人「办事」为生；而下一件事，就在三天后。</p>
+        <p>病床上的那一个出院了。他回到「自己」的家：一间六叠的破公寓，欠了三个月房租，冰箱里只剩一瓶酱油，抽屉里塞满了没被选上的剧本和几张落榜通知。他站在屋子中间看了一会儿，然后开始收拾。</p>
+        <p>他把地擦干净，把东西按用途分类，去便利店买了一个最便宜的笔记本，把每天要做的事一条一条写下来——因为他发现，不写下来就会忘。然后他走进一家小剧团，问能不能来试镜。</p>
+        <p>第三个人是水嶋香苗，出版社编辑，三十四岁。她给自己定了一个期限：明年春天之前结婚。她把这件事做成了一个项目——列条件、排时间表、约人选、逐个面谈。她的语气永远客气，表情永远不变。</p>
+        <p>她是在医院里遇见那个失忆的男人的。那天她去看住院的父亲，在走廊上看见一个人正低头研究墙上的科室指示牌，看得非常认真，像在背台词。她把他列进了名单。</p>
+        <p>三条线就这样慢慢拢到了一起：一间澡堂、一把钥匙、一本笔记本。一个在演别人的人生，一个在重建自己的人生，一个在给自己的人生找一个位置。</p>
+        <p class="dash">后面的事——那个男人接到的下一件「事」是什么、樱井有没有被识破、香苗那张条件表里藏着什么、以及那把钥匙最后回到了谁手里——本页一个字都不写。</p>
+      </div>
+      <aside class="glance reveal">
+        <h3>At a Glance</h3>
+        <dl>
+          <div><dt>一句话</dt><dd>一个人捡到了另一个人的一辈子，然后发现这份人生是有账单的。</dd></div>
+          <div><dt>时间</dt><dd>二〇一二年 · 当下</dd></div>
+          <div><dt>地点</dt><dd>东京<small>一间老澡堂 / 一间高级公寓 / 一间六叠的破公寓</small></dd></div>
+          <div><dt>主角</dt><dd>樱井武史（演员）· 那个男人 · 水嶋香苗（编辑）</dd></div>
+          <div><dt>对手</dt><dd>不是人，是一本写着别人名字的日程本</dd></div>
+          <div><dt>空间</dt><dd>澡堂、车厢、试镜间、医院的走廊</dd></div>
+          <div><dt>道具</dt><dd>一块肥皂 / 一把钥匙 / 一本笔记本</dd></div>
+          <div><dt>声音</dt><dd>澡堂的水声、拖鞋打在瓷砖上的声音</dd></div>
+          <div><dt>情绪</dt><dd>前面一直在笑，最后二十分钟笑不出来</dd></div>
+          <div><dt>关键词</dt><dd>交换 / 失忆 / 扮演 / 归还</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="acts">
+      <div class="act reveal"><div class="t">First · 肥皂</div><h4>全片最贵的一跤</h4><p>一块澡堂的肥皂，一百多日元。它滑出去的那一下，改了三个人接下来两年的生活。这部片子最好的地方就在这儿：它不用大事开场，它用一件你洗澡时都会遇到的小事开场。</p></div>
+      <div class="act reveal"><div class="t">Second · 钥匙</div><h4>一把钥匙，两扇门</h4><p>储物柜的钥匙上只有编号，不写名字。所以拿错钥匙这件事，严格来说不是偷，是「认领」——你以为你开的还是自己的柜子，只是柜子里的东西变了。</p></div>
+      <div class="act reveal"><div class="t">Third · 笔记本</div><h4>忘了的人靠写字活着</h4><p>一个没有过去的人，只能靠记录把自己连成一个连续的人。他买的那本最便宜的笔记本，是全片最重要的道具：它不是记忆，它是记忆的支架。</p></div>
+    </div>
+
+    <p class="note reveal" style="margin-top:34px">本页叙述止于「两个人都开始扮演对方」这一刻。此后那个男人接到的下一件「事」、樱井是否被识破、香苗的条件表里藏着什么，一律不写。</p>
+  </div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">02</span><h2>概念海报</h2><p class="kicker">Twenty Slots</p></div>
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+<svg class="poster-svg" viewBox="0 0 520 760" role="img" aria-label="一面老澡堂的木制鞋柜：四列五行共二十格，每格有一块号码木牌，其中第七格与第十八格的门是开着的，里面各放着一双鞋">
+<defs>
+<linearGradient id="pBg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#0b0e0d"/><stop offset=".55" stop-color="#070a09"/><stop offset="1" stop-color="#050706"/>
+</linearGradient>
+<radialGradient id="pLight" cx=".5" cy=".2" r=".62">
+<stop offset="0" stop-color="#d9a166" stop-opacity=".17"/><stop offset=".55" stop-color="#8a6238" stop-opacity=".05"/>
+<stop offset="1" stop-color="#3a2a18" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="pWood" x1="0" y1="0" x2=".3" y2="1">
+<stop offset="0" stop-color="#7d5836"/><stop offset=".45" stop-color="#67462a"/><stop offset="1" stop-color="#4a311c"/>
+</linearGradient>
+<linearGradient id="pPanel" x1="0" y1="0" x2=".2" y2="1">
+<stop offset="0" stop-color="#75512f"/><stop offset=".55" stop-color="#5f4227"/><stop offset="1" stop-color="#452d1a"/>
+</linearGradient>
+<linearGradient id="pIn" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#2a1b0e"/><stop offset=".5" stop-color="#1a1108"/><stop offset="1" stop-color="#0e0905"/>
+</linearGradient>
+<linearGradient id="pTag" x1="0" y1="0" x2=".3" y2="1">
+<stop offset="0" stop-color="#e6dcc0"/><stop offset=".5" stop-color="#d3c6a4"/><stop offset="1" stop-color="#b9ab88"/>
+</linearGradient>
+<linearGradient id="pShade" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#ffe6bd" stop-opacity=".1"/><stop offset=".28" stop-color="#ffe6bd" stop-opacity=".02"/>
+<stop offset=".62" stop-color="#000" stop-opacity=".06"/><stop offset="1" stop-color="#000" stop-opacity=".42"/>
+</linearGradient>
+<radialGradient id="pVig" cx=".5" cy=".46" r=".74">
+<stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".72" stop-color="#000" stop-opacity=".12"/>
+<stop offset="1" stop-color="#000" stop-opacity=".42"/>
+</radialGradient>
+</defs>
+
+<rect width="520" height="760" fill="url(#pBg)"/>
+<rect width="520" height="760" fill="url(#pLight)"/>
+
+<g font-family="Didot,Optima,serif" fill="#6b6a5c">
+<text x="72" y="64" font-size="8.6" letter-spacing="3.2">JAPANESE CINEMA · NO.21</text>
+<text x="448" y="64" font-size="8.6" letter-spacing="3.2" text-anchor="end">2012</text>
+</g>
+<path d="M72 82 H448" stroke="#4d4c40" stroke-width=".8" opacity=".5"/>
+
+<!-- cabinet -->
+<g>
+<rect x="58" y="146" width="404" height="500" fill="url(#pWood)" stroke="#33220f" stroke-width="1.2"/>
+<rect x="58" y="146" width="404" height="4" fill="#946b42" opacity=".55"/>
+<rect x="58" y="642" width="404" height="4" fill="#160d05" opacity=".8"/>
+<rect x="64" y="152" width="392" height="488" fill="none" stroke="#2b1c0c" stroke-width="1"/>
+
+<!-- row 1 -->
+<g>
+<rect x="72" y="160" width="88" height="88" fill="url(#pIn)"/>
+<rect x="74" y="162" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="74" y="242" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="82" y="170" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="94" y="181" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">01</text>
+</g>
+<g>
+<rect x="168" y="160" width="88" height="88" fill="url(#pIn)"/>
+<rect x="170" y="162" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="170" y="242" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="178" y="170" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="190" y="181" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">02</text>
+</g>
+<g>
+<rect x="264" y="160" width="88" height="88" fill="url(#pIn)"/>
+<rect x="266" y="162" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="266" y="242" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="274" y="170" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="286" y="181" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">03</text>
+</g>
+<g>
+<rect x="360" y="160" width="88" height="88" fill="url(#pIn)"/>
+<rect x="362" y="162" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="362" y="242" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="370" y="170" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="382" y="181" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">04</text>
+</g>
+
+<!-- row 2 -->
+<g>
+<rect x="72" y="256" width="88" height="88" fill="url(#pIn)"/>
+<rect x="74" y="258" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="74" y="338" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="82" y="266" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="94" y="277" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">05</text>
+</g>
+<g>
+<rect x="168" y="256" width="88" height="88" fill="url(#pIn)"/>
+<rect x="170" y="258" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="170" y="338" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="178" y="266" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="190" y="277" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">06</text>
+</g>
+<g>
+<rect x="264" y="256" width="88" height="88" fill="url(#pIn)"/>
+<rect x="268" y="264" width="80" height="76" fill="#0d0803"/>
+<!-- shoes inside 07 -->
+<g>
+<path d="M280 314 L280 306 Q280 302 286 301 L303 300 Q311 300 317 305 L337 320 Q343 324 343 330 L280 330 Z" fill="#3a2c1f"/>
+<rect x="280" y="322" width="15" height="8" fill="#181109"/>
+<path d="M276 330 H344 V335 H276 Z" fill="#b9ab8b"/>
+<path d="M289 302 L305 302 L319 309" stroke="#96795a" stroke-width="1" fill="none" opacity=".8"/>
+</g>
+<rect x="268" y="334" width="80" height="6" fill="#000" opacity=".5"/>
+<rect x="272" y="262" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="284" y="273" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">07</text>
+</g>
+<g>
+<rect x="360" y="256" width="88" height="88" fill="url(#pIn)"/>
+<rect x="362" y="258" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="362" y="338" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="370" y="266" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="382" y="277" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">08</text>
+</g>
+
+<!-- row 3 -->
+<g>
+<rect x="72" y="352" width="88" height="88" fill="url(#pIn)"/>
+<rect x="74" y="354" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="74" y="434" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="82" y="362" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="94" y="373" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">09</text>
+</g>
+<g>
+<rect x="168" y="352" width="88" height="88" fill="url(#pIn)"/>
+<rect x="170" y="354" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="170" y="434" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="178" y="362" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="190" y="373" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">10</text>
+</g>
+<g>
+<rect x="264" y="352" width="88" height="88" fill="url(#pIn)"/>
+<rect x="266" y="354" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="266" y="434" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="274" y="362" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="286" y="373" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">11</text>
+</g>
+<g>
+<rect x="360" y="352" width="88" height="88" fill="url(#pIn)"/>
+<rect x="362" y="354" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="362" y="434" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="370" y="362" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="382" y="373" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">12</text>
+</g>
+
+<!-- row 4 -->
+<g>
+<rect x="72" y="448" width="88" height="88" fill="url(#pIn)"/>
+<rect x="74" y="450" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="74" y="530" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="82" y="458" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="94" y="469" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">13</text>
+</g>
+<g>
+<rect x="168" y="448" width="88" height="88" fill="url(#pIn)"/>
+<rect x="170" y="450" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="170" y="530" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="178" y="458" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="190" y="469" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">14</text>
+</g>
+<g>
+<rect x="264" y="448" width="88" height="88" fill="url(#pIn)"/>
+<rect x="266" y="450" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="266" y="530" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="274" y="458" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="286" y="469" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">15</text>
+</g>
+<g>
+<rect x="360" y="448" width="88" height="88" fill="url(#pIn)"/>
+<rect x="362" y="450" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="362" y="530" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="370" y="458" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="382" y="469" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">16</text>
+</g>
+
+<!-- row 5 -->
+<g>
+<rect x="72" y="544" width="88" height="88" fill="url(#pIn)"/>
+<rect x="74" y="546" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="74" y="626" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="82" y="554" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="94" y="565" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">17</text>
+</g>
+<g>
+<rect x="168" y="544" width="88" height="88" fill="url(#pIn)"/>
+<rect x="172" y="552" width="80" height="76" fill="#0d0803"/>
+<!-- shoes inside 18 -->
+<g>
+<path d="M188 586 L188 578 Q188 574 194 573 L211 572 Q219 572 225 577 L245 592 Q251 596 251 602 L188 602 Z" fill="#a2956d"/>
+<path d="M232 585 Q242 590 248 598 L251 602 L232 602 Z" fill="#cfc29b"/>
+<rect x="188" y="594" width="15" height="8" fill="#6f6446"/>
+<path d="M184 602 H252 V607 H184 Z" fill="#f2ead2"/>
+<path d="M197 574 L213 574 L227 581" stroke="#e2d7b6" stroke-width="1" fill="none" opacity=".95"/>
+<path d="M205 581 L219 581 M207 587 L222 587" stroke="#6f6446" stroke-width=".9" opacity=".85"/>
+</g>
+<rect x="172" y="624" width="80" height="6" fill="#000" opacity=".5"/>
+<rect x="176" y="550" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="188" y="561" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">18</text>
+</g>
+<g>
+<rect x="264" y="544" width="88" height="88" fill="url(#pIn)"/>
+<rect x="266" y="546" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="266" y="626" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="274" y="554" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="286" y="565" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">19</text>
+</g>
+<g>
+<rect x="360" y="544" width="88" height="88" fill="url(#pIn)"/>
+<rect x="362" y="546" width="84" height="84" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1"/>
+<rect x="362" y="626" width="84" height="4" fill="#000" opacity=".35"/>
+<rect x="370" y="554" width="24" height="15" fill="url(#pTag)" opacity=".86"/>
+<text x="382" y="565" text-anchor="middle" font-family="Didot,serif" font-size="8" fill="#3c2c17">20</text>
+</g>
+
+<!-- the two open doors -->
+<g>
+<path d="M348 258 L404 276 L404 356 L348 342 Z" fill="#000" opacity=".45"/>
+<path d="M346 256 L402 272 L402 352 L346 340 Z" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1.2"/>
+<path d="M346 256 L402 272 L402 284 L346 268 Z" fill="#96693e" opacity=".45"/>
+<path d="M360 300 L392 310" stroke="#2b1c0c" stroke-width="1" opacity=".5"/>
+<path d="M248 546 L302 564 L302 644 L248 630 Z" fill="#000" opacity=".45"/>
+<path d="M246 544 L300 562 L300 642 L246 628 Z" fill="url(#pPanel)" stroke="#3b2614" stroke-width="1.2"/>
+<path d="M246 544 L300 562 L300 574 L246 556 Z" fill="#96693e" opacity=".45"/>
+<path d="M258 588 L290 598" stroke="#2b1c0c" stroke-width="1" opacity=".5"/>
+</g>
+
+<rect x="58" y="146" width="404" height="500" fill="url(#pShade)"/>
+</g>
+
+<text x="72" y="678" font-family="Hiragino Mincho ProN,YuMincho,Songti SC,serif" font-size="14" fill="#8a8b7c" letter-spacing="1.8">（鍵泥棒のメソッド）</text>
+<text x="72" y="716" font-family="Songti SC,Source Han Serif SC,serif" font-size="34" fill="#f0ecdd" letter-spacing="4">盗钥匙的方法</text>
+<text x="72" y="740" font-family="Didot,Optima,serif" font-size="8.4" fill="#6b6a5c" letter-spacing="2.4">KEY OF LIFE · KENJI UCHIDA · 128 MIN</text>
+
+<g transform="translate(398 672)">
+<rect width="46" height="60" fill="none" stroke="#8e2f24" stroke-width="1.4" opacity=".55"/>
+<text x="23" y="26" text-anchor="middle" font-family="Songti SC,serif" font-size="15" fill="#b8483a" opacity=".72">二</text>
+<text x="23" y="48" text-anchor="middle" font-family="Songti SC,serif" font-size="15" fill="#b8483a" opacity=".72">一</text>
+</g>
+
+<rect width="520" height="760" fill="url(#pVig)"/>
+</svg>
+        </div>
+        <p class="pcap">TWENTY SLOTS · 4 × 5 · 尺寸 520 × 760</p>
+      </div>
+      <div class="pnotes">
+        <div class="pnote reveal"><div class="n">01 / 二十个格子</div><h4>澡堂的鞋柜，是最早的身份系统</h4><p>你在门口脱下鞋，换一块木牌；出来的时候用木牌换回鞋。二十个格子，二十个号码，谁也不会走错。<br>整部电影讲的，就是这套系统被打乱之后发生的事。</p></div>
+        <div class="pnote reveal"><div class="n">02 / 两扇开着的门</div><h4>只有两格是空的</h4><p>二十格里，第七格和第十八格的门是开着的。一格是皮鞋，一格是运动鞋。它们本来不该挨在一起——这部片子所有的麻烦，都是这两格开始的。</p></div>
+        <div class="pnote reveal"><div class="n">03 / 号码牌</div><h4>号码比名字可靠</h4><p>木牌上只有号码，没有名字。名字可以改，号码改不了。<br>所以当两个人的号码被换掉，他们连「我是谁」这个问题都答不上来——<b>号码是这个故事里唯一的法律。</b></p></div>
+        <div class="pnote reveal"><div class="n">04 / 木头的颜色</div><h4>老木头是被手摸亮的</h4><p>鞋柜的边角是亮的，因为几十年里所有人的手都扶过那里。这种亮不是画出来的，是一层层很薄很薄的暖色叠上去的。<br>这部片子的幽默也一样：不是写出来的，是磨出来的。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">03</span><h2>影片档案</h2><p class="kicker">Credits</p></div>
+    <dl class="spec reveal">
+      <div><dt>原名</dt><dd>鍵泥棒のメソッド<small>直译：钥匙小偷的方法</small></dd></div>
+      <div><dt>英文名</dt><dd>Key of Life</dd></div>
+      <div><dt>中文别名</dt><dd>落KEY人生 / 钥匙贼的办法</dd></div>
+      <div><dt>年份</dt><dd>2012</dd></div>
+      <div><dt>片长</dt><dd>128 分钟<small>烂番茄记 2h10m</small></dd></div>
+      <div><dt>规格</dt><dd>彩色 · 日语</dd></div>
+      <div><dt>类型</dt><dd>剧情 / 喜剧<small>烂番茄另记 Crime</small></dd></div>
+      <div><dt>脚本 · 监督</dt><dd>内田贤治<small>1972-09-08 · 神奈川县川崎市</small></dd></div>
+      <div><dt>摄影</dt><dd>佐光朗</dd></div>
+      <div><dt>音乐</dt><dd>田中ユウスケ</dd></div>
+      <div><dt>剪辑</dt><dd>普嶋信一</dd></div>
+      <div><dt>主题歌</dt><dd>吉井和哉《点描のしくみ》</dd></div>
+      <div><dt>制作</dt><dd>「鍵泥棒のメソッド」製作委員会<small>制作公司 シネバザール</small></dd></div>
+      <div><dt>配给</dt><dd>クロックワークス</dd></div>
+      <div><dt>公映</dt><dd>2012-09-15（日本）<small>2012-06-17 上海国际电影节首映</small></dd></div>
+      <div><dt>主演</dt><dd>堺雅人 / 香川照之 / 广末凉子</dd></div>
+      <div><dt>共演</dt><dd>荒川良良 / 森口瑶子</dd></div>
+      <div><dt>日本票房</dt><dd>约 6 亿日元<small>不是大卖片，是拿奖片</small></dd></div>
+      <div><dt>系列坐标</dt><dd>日本专题 第 21 期<small>系列第一部以「错位」为笑点的结构喜剧</small></dd></div>
+      <div><dt>关键词</dt><dd>交换 / 失忆 / 扮演</dd></div>
+      <div class="wide"><dt>一句话</dt><dd>它讲的是身份——但不用哲学讲，用一块肥皂、一把钥匙和一本最便宜的笔记本讲。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="s4">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">04</span><h2>口碑与口径</h2><p class="kicker">Numbers, Carefully</p></div>
+    <div class="scores reveal">
+      <div class="sc hi"><div class="src">Douban 豆瓣</div><div class="val">8.5<small>/ 10</small></div><div class="meta">177,954 人评价 · 五星 38.7% / 四星 48.8%<br>三星 11.8% / 二星 0.6% / 一星 0.1% · <b>未进 Top250</b></div></div>
+      <div class="sc"><div class="src">IMDb</div><div class="val">7.3<small>/ 10</small></div><div class="meta">约 <b>3.2 千</b>票 · 与豆瓣差 <b>1.2</b><br>未加权均分 6.9 · 票池极小</div></div>
+      <div class="sc abs"><div class="src">Rotten Tomatoes / Metacritic</div><div class="val tiny">均无评分收录</div><div class="meta">片子有条目页，但影评人指数与观众指数都是空的。它在英美基本没有院线发行。</div></div>
+      <div class="sc abs"><div class="src">第 86 回 电影旬报十佳</div><div class="val">第 8 位</div><div class="meta">2012 年度日本电影十佳<br>同年<b>读者票选十佳第 1 位</b></div></div>
+    </div>
+    <ul class="caliber reveal">
+      <li><i>01</i><span><b>8.5 分，但 IMDb 只有三千票。</b>豆瓣近十八万人打分，IMDb 三千出头，两边差 1.2。它从来不是「世界名片」，它是东亚观众先认下来、西方几乎没进过影院的那一类。</span></li>
+      <li><i>02</i><span><b>影评人排第 8，读者排第 1。</b>第 86 回旬报（2012 年度）日本电影十佳，它排第 8；同一本杂志的读者票选十佳，它排第 1。<b>这个分裂比任何一句好评都说明问题</b>：它不是那种让人肃然起敬的电影，是那种让人想立刻再看一遍的电影。</span></li>
+      <li><i>03</i><span><b>学院奖它只赢了剧本。</b>第 36 回日本电影学院奖（2012 年度），最优秀脚本是内田贤治；那一年的最优秀作品与最优秀监督，都给了《桐岛，社团活动要退出哦》。这不是本专题第一次遇到这种局面——第 17 期那部片子，同一年也两次输给过同一部电影。</span></li>
+      <li><i>04</i><span><b>被翻拍两次，两次都没超过它。</b>韩国版《幸运钥匙》（2016）豆瓣 7.4（46,413 人）；中国版《人潮汹涌》（2021）6.5（412,612 人）。原版 8.5（177,954 人）。同一个剧本，三次上映，分数从 8.5 掉到 6.5。<b>所以「剧本好」从来不等于「片子好」。</b></span></li>
+      <li><i>05</i><span><b>六亿日元，但拿奖拿到手软。</b>日本票房约 6 亿日元，同年本土片里排不进前列；可它拿了旬报脚本赏、蓝丝带导演赏、学院奖最优秀脚本、艺术选奖文部科学大臣赏——一个喜剧能把这些「正经奖」扫一遍，在日本并不常见。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="s5">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">05</span><h2>三个人，一把钥匙</h2><p class="kicker">Who Wants What</p></div>
+    <div class="people reveal">
+      <div class="person">
+        <div class="role">THE ACTOR · 东京</div><h4>樱井武史<small>（桜井武史）</small></h4><div class="actor">堺雅人</div>
+        <p>三十五岁，舞台演员，没红过。他的问题不是不努力，是努力了很多年也没有一件事成立。所以他连自杀都做得不利索。<span><b>他要的</b>不是钱，是一个能证明「我这个人还算数」的东西。所以他才会拿走那把钥匙——那是他这辈子第一次捡到运气。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">THE MAN · 不明</div><h4>「近藤」<small>（コンドウ）</small></h4><div class="actor">香川照之</div>
+        <p>四十来岁，动作精确到像排练过。他不解释自己，也不问别人。片尾字幕给他的署名是「コンドウ／山崎信一郎」——两个名字，一个人。醒来之后他连名字都没有了，但习惯全留着：把东西摆正、把时间记下、把话说到的做到。<span><b>他要的</b>是把日子重新组装起来——不是想起自己是谁，是成为一个能继续活下去的人。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">THE EDITOR · 东京</div><h4>水嶋香苗<small>（水嶋香苗）</small></h4><div class="actor">广末凉子</div>
+        <p>出版社编辑，三十四岁，把结婚当成一个必须按期交付的项目。她列条件、排时间、一个一个见人，语气客气，从不失控。<span><b>她要的</b>是一个「来得及」——不是爱情，是在父亲还看得见的时候，把一件事办完。</span></p>
+      </div>
+      <div class="person thing">
+        <div class="role">THE THING · 一格铁皮柜</div><h4>那把储物柜的钥匙<small>木牌上只有一个号码。</small></h4><div class="actor">不开家门 · 不开车门 · 只开一格柜子</div>
+        <p>它对应一个格子；格子里有一套衣服；衣服里有一个钱包；钱包里有一个名字。这部片子里唯一能证明「你是谁」的东西，就是这一小片金属。<span><b>它代表的东西</b>是：身份不是灵魂，是一套可以拎走的东西——包括那张写着别人名字的日程表。</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s6">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">06</span><h2>人物冲突</h2><p class="kicker">Five Frictions</p></div>
+    <div class="conflicts reveal">
+      <div class="cf"><h4><i>FRICTION 01</i>一个连死都做不利索的人，凭什么再活一次</h4><p>他不是没试过努力，他是努力了很多年，一次也没被选中。这种人最难的不是绝望，是「连绝望都不够格」。<em>所以他拿到别人的生活会那么顺手——因为那本来也不是他挣来的。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 02</i>一个没有过去的人，怎么证明自己是个「人」</h4><p>他没有记忆，却有习惯；他不知道自己是谁，却知道自己应该几点起床。这部片子在这里提出了一个很不客气的问题：<em>我们到底是靠记忆成为自己，还是靠那些改不掉的小动作？</em></p></div>
+      <div class="cf"><h4><i>FRICTION 03</i>一个把婚姻做成项目的人，怎么容得下意外</h4><p>她的名单上有条件、有打分、有进度。她要的不是心动，是交付。可感情这件事偏偏不按项目走——<em>她越精确，越显得那份精确底下有个洞。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 04</i>演别人的人生，比演好自己的人生容易</h4><p>他是一个演员，一辈子都在等一个好角色。现在角色来了：有钱、有车、有西装、有明确的任务清单。<em>讽刺的是——他演不好。因为这个角色需要的不是演技，是狠。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 05</i>两个人共用一套身份，谁先撑不住</h4><p>一个在明处扮演，一个在暗处重建；两个人都在用别人的名字过日子，也都在等对方先出错。<em>这部片子最紧的地方不是追车，是「谁会先被叫出真名」。</em></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s7">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">07</span><h2>荣誉</h2><p class="kicker">What It Actually Has</p></div>
+    <div class="awards reveal">
+      <div class="award gold"><div class="yr">2013</div><div><h4>第 36 回 日本电影学院奖 · 最优秀脚本赏</h4><p>内田贤治。同届最优秀作品与最优秀监督均归《桐岛，社团活动要退出哦》</p></div></div>
+      <div class="award gold"><div class="yr">2012</div><div><h4>第 86 回 电影旬报十佳 · 日本电影 第 8 位</h4><p>同年度第 1 位是《家族的国度》（梁英姬）。同届读者票选十佳，本片第 1</p></div></div>
+      <div class="award"><div class="yr">2012</div><div><h4>第 86 回 电影旬报 · 日本电影脚本赏</h4><p>内田贤治。同届他还拿下读者选出的作品赏与监督赏</p></div></div>
+      <div class="award"><div class="yr">2012</div><div><h4>第 55 回 蓝丝带奖 · 监督赏</h4><p>内田贤治。同届助演女优赏为广末凉子</p></div></div>
+      <div class="award"><div class="yr">2012</div><div><h4>第 37 回 报知电影赏 · 作品赏</h4><p>报知是日本五大电影奖之一，作品赏给一部喜剧并不常见</p></div></div>
+      <div class="award"><div class="yr">2013</div><div><h4>第 63 回 艺术选奖 · 文部科学大臣赏</h4><p>电影部门，内田贤治。这是政府颁的文化奖，不是影迷投票</p></div></div>
+      <div class="award"><div class="yr">2012</div><div><h4>第 25 回 日刊体育电影大赏 · 监督赏</h4><p>内田贤治</p></div></div>
+      <div class="award"><div class="yr">2012</div><div><h4>第 15 回 上海国际电影节 · 最优秀脚本赏</h4><p>内田贤治。本片 2012-06-17 在此首映，比日本公映早三个月</p></div></div>
+      <div class="award wide"><div class="yr">另计</div><div><h4>另有五项与三项「优秀赏」</h4><p>第 34 回横滨电影节脚本赏、第 22 回日本电影批评家大赏作品赏、第 32 回夏威夷国际电影节作品赏、第 13 回 Nippon Connection 日本电影赏、第 17 回日本网络电影大赏助演女优赏（广末凉子）。学院奖另有三项「优秀赏」：主演男优（堺雅人）、助演男优（香川照之）、助演女优（广末凉子）——「优秀」是提名，不是获奖。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s8">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">08</span><h2>谱系：三部电影，然后就消失了</h2><p class="kicker">Three Films, Then Silence</p></div>
+    <div class="lineage reveal">
+      <div class="ln"><div class="yr">1972</div><h4>生于神奈川县川崎市多摩区</h4><p>高中毕业之后去了美国，在旧金山州立大学艺术学部读电影。他不是从日本片场爬上来的副导演，是从写剧本开始的。</p></div>
+      <div class="ln"><div class="yr">2001</div><h4>《WEEKEND BLUES》· 自主电影</h4><p>自编、自导、自己出演。三个人的周末，一场不停打转的对话。这部没上院线的片子，把后来所有的癖好都写好了：话多、时间巧、结局绕回来。</p></div>
+      <div class="ln"><div class="yr">2005</div><h4>《不是命运中的人》· 一部片拿满四个戛纳奖</h4><p>第 58 届戛纳，它拿了法国电影作家协会奖、最佳青年评论家奖、最佳德国评论家奖、金轨奖四项。国内再收旬报脚本赏、报知最优秀导演、每日电影脚本赏、横滨新人导演、新藤兼人赏银奖。<b>一个新人，一年之内被两边同时认了。</b></p></div>
+      <div class="ln"><div class="yr">2008</div><h4>《放学后》· 结构玩到极致</h4><p>三个人的视角，同一件事讲三遍。第 32 回学院奖给了优秀脚本赏。到这一步，日本影评界已经认定他是「这一代最会写结构的编剧」。</p></div>
+      <div class="ln now"><div class="yr">2012 · 本期</div><h4>《盗钥匙的方法》· 把结构藏起来</h4><p>这一次他不炫技了：三条线并着走，观众看得懂，笑得出，到最后才发现每个道具都回来过一次。<small style="display:block;margin-top:8px;color:var(--dim2)">——学院奖最优秀脚本、蓝丝带导演、旬报脚本、艺术选奖大臣赏，全在这一年。</small></p></div>
+      <div class="ln"><div class="yr">2014</div><h4>乃木坂 46《何度目の青空か?》MV</h4><p>之后他几乎只拍 MV 与广告。一个能把长片结构拧成麻花的人，忽然只做三分钟的东西。</p></div>
+      <div class="ln"><div class="yr">之后</div><h4>没有第四部</h4><p>公开可查的剧情长片，仍然只有三部。2023 年的动画电影《屋根裏のラジャー》里，他挂了一个「协力」。</p></div>
+    </div>
+    <p class="note reveal" style="margin-top:40px">日本不缺会拍情绪的人，缺会搭结构的人。<b>内田贤治是后者，而且他只搭了三次。</b>三部片子有一个共同点：都是「一件小事引发一连串错位」，最后所有线在一个你没想到的地方合上。看他的片子有一种特别的安心——你知道他不会骗你，他只是把顺序弄乱了一点。<br>《盗钥匙的方法》是他三部里最「好看」的一部，也是他最收敛的一部：结构还在，但藏在笑点底下。<b>一个作者把自己最擅长的东西藏起来，通常是因为他终于想讲点别的。</b></p>
+  </div>
+</section>
+
+<section class="sec" id="s9">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">09</span><h2>六处亮点</h2><p class="kicker">Why It Works</p></div>
+    <div class="grid6 reveal">
+      <div class="g6"><div class="n">01</div><h4>剧本是这部片子的主角</h4><p>三条线、两个视角、一个时间差。它不靠台词抖包袱，靠「观众比角色多知道一点」制造笑。这种笑最贵——因为它要求你一直醒着。</p></div>
+      <div class="g6"><div class="n">02</div><h4>一块肥皂</h4><p>全片最贵的道具是一块澡堂肥皂，一百多日元。整部电影由它启动。<b>好的喜剧从来不从大事开始，从一个你洗澡时都会遇到的小意外开始。</b></p></div>
+      <div class="g6"><div class="n">03</div><h4>香川照之的「空白」</h4><p>失忆不是变傻，是变得极度专注：他会盯着一个科室指示牌看很久，像在背台词。他演的不是「忘」，是「一个人重新学习怎么当人」。</p></div>
+      <div class="g6"><div class="n">04</div><h4>广末凉子的香苗</h4><p>她把「婚活」演成了项目管理：语气客气、表情不变、日程精确。这个角色最难的地方是她从不失控——<b>而观众全程都在等她失控。</b></p></div>
+      <div class="g6"><div class="n">05</div><h4>那本最便宜的笔记本</h4><p>便利店买的那种，几十日元。一个没有记忆的人靠它把自己连起来：今天要做什么、见过谁、答应过什么。它比任何独白都更直接地说明「人是什么」。</p></div>
+      <div class="g6"><div class="n">06</div><h4>一个没有坏人的故事</h4><p>有黑道，有委托，有钱，但没有一个真正的恶人。所有的麻烦都来自错位、误会和一点点贪心。<b>这很难：让观众笑两个小时，还不靠一个反派。</b></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">10</span><h2>为什么值得一看</h2><p class="kicker">Three Reasons</p></div>
+    <div class="why">
+      <article class="reveal"><h3>一、它是「被翻拍两次、两次都不如它」的原版</h3><p>2016 年韩国拍了《幸运钥匙》，豆瓣 7.4；2021 年中国拍了《人潮汹涌》，6.5。原版 8.5。<strong>同一个剧本，三次上映，分数从 8.5 掉到 6.5。</strong></p><p>这说明一件很有意思的事：这个故事的难度不在「点子」，在「分寸」。同样一句台词，早半秒说就好笑，晚半秒说就尴尬；同样的结构，剪得紧一点是机智，松一点就是拖沓。<em>看原版，你看到的是分寸本身。</em></p></article>
+      <article class="reveal"><h3>二、它证明喜剧可以靠结构，不靠段子</h3><p>整部片子没有一个「讲笑话」的人。它的笑点全部来自信息差：你知道那个人不是他，他自己不知道；你知道那本手帐里写着什么，拿它的人不知道。</p><p><strong>看第二遍会比第一遍更好笑</strong>——因为第二遍你才看见第一遍漏掉的所有伏笔。这种电影现在很少了，大部分喜剧经不起看第二遍，因为包袱一响就没了。</p></article>
+      <article class="reveal"><h3>三、它其实在问一个不轻的问题</h3><p>如果把你的人生整个交给另一个人——你的房子、你的工作、你的日程、你的名字——他会过得比你好吗？</p><p>这部片子把这个问题藏在一个很好笑的故事里，笑得你忘了它在问。等到它真的问出来的时候，你已经替自己答完了。<em>而那个答案，多半不太好受。</em></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">11</span><h2>观影提示</h2><p class="kicker">Before You Press Play</p></div>
+    <div class="tips">
+      <div class="tip reveal"><div class="k">01</div><h4>别看解说</h4><p>它的乐趣全在「你不知道下一步」。一个三分钟的解说视频能把这 128 分钟一次性作废，而且作废之后补不回来。</p></div>
+      <div class="tip reveal"><div class="k">02</div><h4>前二十分钟记两样东西</h4><p>一块肥皂，一把钥匙。这两样东西会一直回来。记住它们不是为了推理，是为了在它们回来的时候，你能笑出声。</p></div>
+      <div class="tip reveal"><div class="k">03</div><h4>别把它当黑帮片</h4><p>它的海报、片名和设定都在暗示「杀手」，但它其实是一部关于「怎么把日子过下去」的电影。抱着看动作片的心态进场，会错过后半段所有的东西。</p></div>
+      <div class="tip reveal"><div class="k">04</div><h4>一次看完</h4><p>128 分钟。它的节奏是攒起来的，中间断一次，后面所有的「原来如此」都会掉一半力气。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="wrap">
+    <p class="tag">VERDICT · NO.21</p>
+    <p class="q"><span>一个人的人生，有时候就装在一格铁皮柜子里。</span><span>你拿错一次，就再也换不回来。</span><span>可这部片子真正想说的是——</span><span>你手里那把，也有人在羡慕。</span></p>
+    <p class="src">—— 本页判词，非片中台词</p>
+    <div class="stamp"><div><span>JAPANESE CINEMA</span><b>NO.21</b><span>2012 · 内田贤治</span></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>日本电影专题 · 第 21 期｜《盗钥匙的方法》（鍵泥棒のメソッド）/ Key of Life（2012，内田贤治）<br>
+    数据核对于 2026-11-16：豆瓣条目 6880497（8.5 / 177,954 人 · 五星 38.7% / 四星 48.8% / 三星 11.8% / 二星 0.6% / 一星 0.1% · 未进 Top250）、IMDb tt2078599 7.3（3.2 千票 · 未加权均分 6.9）、烂番茄与 Metacritic 有条目但无评分。<br>
+    奖项以有明确届次与部门者为限：第 36 回日本电影学院奖最优秀脚本赏（内田贤治）+ 优秀主演男优 / 优秀助演男优 / 优秀助演女优、第 86 回电影旬报十佳日本电影第 8 位 + 日本电影脚本赏 + 读者票选作品赏 / 监督赏、第 55 回蓝丝带监督赏 / 助演女优赏、第 37 回报知作品赏、第 63 回艺术选奖文部科学大臣赏、第 25 回日刊体育电影大赏监督赏、第 15 回上海国际电影节最优秀脚本赏。<br>
+    片长 128 分钟；2012-09-15 日本公映（配给 クロックワークス），2012-06-17 上海国际电影节首映；脚本・监督 内田贤治（1972- 神奈川县川崎市）。<br>
+    全页不含关键情节：那个男人接到的下一件「事」、樱井是否被识破、香苗条件表里藏着什么、钥匙最后回到谁手里，一律未写。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c = document.getElementById('heroCanvas');
+  if(!c) return;
+  var ctx = c.getContext('2d'), W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
+  var parts=[], t=0;
+  function size(){
+    W=c.clientWidth; H=c.clientHeight;
+    c.width=W*dpr; c.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();
+  }
+  function build(){
+    parts=[];
+    var n = Math.round(W*H/20000);
+    if(n>110) n=110;
+    for(var i=0;i < n;i++){
+      var bx = W*0.58;
+      var x = bx + (Math.random()-0.5)*W*0.6;
+      if(x<0) x=Math.random()*W;
+      parts.push({
+        x: x, y: Math.random()*H,
+        r:.5+Math.random()*1.5,
+        vx:.06+Math.random()*.16,
+        vy:-.06-Math.random()*.14,
+        a:.03+Math.random()*.1,
+        p:Math.random()*6.28
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t+=0.004;
+    for(var i=0;i < parts.length;i++){
+      var p=parts[i];
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x>W+14){p.x=-14;p.y=Math.random()*H;}
+      if(p.y<-14){p.y=H+14;p.x=Math.random()*W;}
+      var a=p.a*(0.42+0.58*Math.sin(t*0.8+p.p));
+      ctx.beginPath();
+      ctx.fillStyle='rgba(236,208,172,'+a.toFixed(3)+')';
+      ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fill();
+    }
+    var g = ctx.createRadialGradient(W*0.58,H*0.66,0,W*0.58,H*0.66,Math.max(W,H)*0.4);
+    var pulse = 0.05+0.012*Math.sin(t*0.5);
+    g.addColorStop(0,'rgba(255,222,178,'+pulse.toFixed(3)+')');
+    g.addColorStop(1,'rgba(255,222,178,0)');
+    ctx.fillStyle=g;
+    ctx.fillRect(0,0,W,H);
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',size);
+  size(); draw();
+
+  var revs = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08, rootMargin:'0px 0px -6% 0px'});
+  revs.forEach(function(e){ io.observe(e); });
+
+  var hud=document.getElementById('hud'), items=[].slice.call(hud.querySelectorAll('b'));
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    hud.classList.toggle('on', y > window.innerHeight*0.55);
+    var p = y/(document.body.scrollHeight - window.innerHeight);
+    var idx = Math.min(4, Math.floor(p*5));
+    items.forEach(function(b,i){ b.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+})();
+</script>
+</body>
+</html>
