@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T19:33:18.795Z",
+  "generatedAt": "2026-11-17T04:16:47.743Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 159,
+  "total": 160,
   "ok": 89,
-  "warn": 70,
+  "warn": 71,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 143,
+    "checked": 144,
     "skippedVerified": 16,
     "error": null
   },
@@ -3006,6 +3006,56 @@
       "verified": false,
       "status": "ok",
       "issues": []
+    },
+    {
+      "id": "20261117-fune",
+      "zhTitle": "编舟记",
+      "sourceTitle": "《编舟记》完整版在线观看_剧情片电影 - 中畅电影",
+      "year": "2013",
+      "source": "本地",
+      "imageUrl": "posters/20261117-fune.webp",
+      "host": "www.taopianimage1.com",
+      "tier": "unknown",
+      "size": "113KB",
+      "dims": "798×1128",
+      "ratio": 1.41,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「编舟记」",
+          "书名号片名命中「编舟记」"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "さどらや",
+        "reasons": [
+          "图片最大文字为“さどらや”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（www.taopianimage1.com）"
+        },
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“さどらや”没有对上片名，建议核对"
+        }
+      ]
     },
     {
       "id": "20260427",

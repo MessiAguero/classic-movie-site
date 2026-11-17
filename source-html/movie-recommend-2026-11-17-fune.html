@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>编舟记 · 日本电影专题 第 23 期</title>
+<meta name="description" content="石井裕也《编舟记》（舟を編む / The Great Passage, 2013）：剧情梗概、人物冲突、六处亮点与观看理由。全程不剧透。">
+<style>
+:root{
+  --bg:#08090c; --bg2:#0c1016; --panel:#11151b;
+  --ink:#e9e4d6; --dim:#9599a0; --dim2:#5b6068;
+  --line:rgba(233,228,214,.12); --line2:rgba(233,228,214,.05);
+  --ac:#8fb0c4; --ac2:#c6d8e0;
+  --pa:#efe7d4; --pa2:#f7f1e0;
+  --seal:#a5382b; --seal2:#c0684f;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Didot","Optima","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.95;letter-spacing:.012em;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(143,176,196,.3);color:#0a1014}
+a{color:inherit}
+body::before{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.028;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+.wrap{width:min(1160px,calc(100% - 96px));margin:0 auto}
+
+.hero{position:relative;min-height:max(100vh,880px);overflow:hidden;background:#05070a}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(4,5,6,.94) 0%,rgba(4,5,6,.86) 20%,rgba(4,5,6,.62) 36%,rgba(4,5,6,.26) 52%,rgba(4,5,6,.05) 66%,rgba(4,5,6,0) 76%),
+    linear-gradient(to bottom,rgba(4,5,6,.55) 0%,rgba(4,5,6,.14) 16%,rgba(4,5,6,0) 30%,rgba(4,5,6,0) 58%,rgba(4,5,6,.1) 72%,rgba(4,5,6,.26) 84%,rgba(4,5,6,.52) 93%,rgba(3,4,5,.9) 100%)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.notice{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:11px;
+  letter-spacing:.14em;color:rgba(233,228,214,.66);border:1px solid rgba(233,228,214,.17);
+  border-radius:999px;padding:7px 16px;margin-bottom:34px;background:rgba(5,7,10,.52);backdrop-filter:blur(4px)}
+.notice .dot{width:5px;height:5px;border-radius:50%;background:var(--ac2);box-shadow:0 0 9px rgba(198,216,224,.7)}
+.hero-in{position:relative;z-index:3;width:min(1160px,calc(100% - 96px));margin:0 auto;
+  min-height:max(100vh,880px);display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:10.5vh;padding-bottom:64px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;
+  letter-spacing:.34em;color:var(--ac);text-transform:uppercase;opacity:.86}
+.eyebrow i{display:block;width:52px;height:1px;background:var(--ac);opacity:.45}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,6.4vw,92px);line-height:1.14;
+  letter-spacing:.2em;margin:26px 0 0;color:#f5f0e1;white-space:nowrap;
+  text-shadow:0 2px 34px rgba(0,0,0,.8)}
+.latin{margin:22px 0 0;font-family:var(--latin);font-size:13px;letter-spacing:.32em;
+  color:rgba(233,228,214,.52)}
+.latin + .latin{margin-top:7px;font-size:11px;letter-spacing:.24em;color:rgba(233,228,214,.44)}
+.hero-sub{margin:28px 0 0;max-width:23em;font-size:16px;line-height:2.05;color:rgba(230,226,214,.84)}
+.hero-sub em{font-style:normal;color:#f6f1e2;border-bottom:1px solid rgba(143,176,196,.6);padding-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:620px}
+.chip{font-size:11.5px;letter-spacing:.06em;color:rgba(236,233,222,.9);border:1px solid rgba(233,228,214,.2);
+  border-radius:999px;padding:6px 14px;background:rgba(6,8,11,.66);backdrop-filter:blur(6px)}
+.chip b{color:#fff;font-weight:500}
+.scroll-hint{position:absolute;left:auto;right:28px;bottom:30px;z-index:4;
+  font-family:var(--latin);font-size:9.5px;letter-spacing:.42em;color:rgba(233,228,214,.4);
+  display:flex;flex-direction:column;align-items:center;gap:9px}
+.scroll-hint span{display:block;width:1px;height:32px;background:linear-gradient(to bottom,rgba(233,228,214,.4),transparent)}
+
+.sec{padding:112px 0;border-top:1px solid var(--line2)}
+.sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:52px}
+.sec-head .no{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--ac);opacity:.94}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.1vw,36px);
+  letter-spacing:.05em;margin:0;color:#f3eee0;flex:1 1 auto}
+.sec-head .kicker{font-family:var(--latin);font-size:10.5px;letter-spacing:.3em;
+  color:var(--dim2);text-transform:uppercase;margin:0}
+.note{font-size:13px;color:var(--dim);line-height:1.9}
+
+.intro{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:64px;align-items:start}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:2.22;color:#d2d3c9}
+.lede p{margin:0 0 22px}
+.lede p:first-child::first-letter{float:left;font-size:5.1em;line-height:.82;padding:.06em .14em 0 0;
+  color:#f6f1e2;font-weight:400}
+.lede strong{font-weight:500;color:#f7f2e3}
+.lede .dash{color:var(--dim);font-size:15px}
+.glance{border:1px solid var(--line);background:linear-gradient(160deg,rgba(17,21,27,.95),rgba(6,8,11,.95));
+  padding:30px 28px}
+.glance h3{font-family:var(--latin);font-size:10px;letter-spacing:.34em;color:var(--ac);
+  margin:0 0 22px;font-weight:400;text-transform:uppercase;opacity:.9}
+.glance dl{margin:0;display:grid;gap:13px}
+.glance div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line2)}
+.glance div:last-child{border-bottom:0;padding-bottom:0}
+.glance dt{font-size:11.5px;color:var(--dim2);letter-spacing:.1em}
+.glance dd{margin:0;font-size:13.5px;color:#cbcdc5;line-height:1.7}
+.glance dd b{color:#f5f0e1;font-weight:500}
+.glance dd small{display:block;font-size:11px;color:var(--dim2);margin-top:3px}
+.acts{margin-top:74px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.act{background:var(--bg);padding:34px 30px}
+.act .t{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--ac);
+  opacity:.94;margin-bottom:14px}
+.act h4{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f3eee0;letter-spacing:.04em}
+.act p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+.poster-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);gap:70px;align-items:start}
+.poster-frame{border:1px solid var(--line);padding:14px;background:#04060a;
+  box-shadow:0 40px 90px -50px #000, inset 0 0 0 1px rgba(0,0,0,.6)}
+.poster-svg{display:block;width:100%;height:auto}
+.pcap{margin:16px 2px 0;font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--dim2)}
+.pnotes{display:grid;gap:28px}
+.pnote{border-left:1px solid var(--line);padding:2px 0 2px 24px}
+.pnote .n{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--ac);opacity:.9}
+.pnote h4{margin:8px 0 10px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f3eee0}
+.pnote p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+.pnote p b{color:#e6e2d4;font-weight:500}
+.pnote p em{font-style:normal;color:var(--ac2)}
+
+.spec{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.spec div{background:var(--bg);padding:22px 20px;min-height:92px}
+.spec dt{font-size:10.5px;letter-spacing:.14em;color:var(--dim2);margin-bottom:8px}
+.spec dd{margin:0;font-size:13.5px;color:#cfd1c9;line-height:1.65}
+.spec dd small{display:block;font-size:11px;color:var(--dim2);margin-top:4px;letter-spacing:.02em}
+.spec .wide{grid-column:1/-1;min-height:0;background:linear-gradient(120deg,rgba(143,176,196,.13),rgba(6,8,11,0) 62%)}
+.spec .wide dd{font-family:var(--serif);font-size:17px;color:#f5f0e1;letter-spacing:.05em}
+
+.scores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.sc{background:var(--bg);padding:32px 30px}
+.sc .src{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--dim2);text-transform:uppercase}
+.sc .val{font-family:var(--latin);font-size:52px;line-height:1;margin:16px 0 8px;color:#f6f1e2}
+.sc .val small{font-size:15px;color:var(--dim);letter-spacing:.04em;margin-left:6px}
+.sc .meta{font-size:12.5px;color:var(--dim);line-height:1.8}
+.sc .meta b{color:#dcded4;font-weight:500}
+.sc.hi .val{color:var(--ac2)}
+.sc.abs .val{font-size:29px;letter-spacing:.05em;color:var(--ac2);line-height:1.32}
+.sc.abs .val.tiny{font-size:20px;color:var(--dim)}
+.caliber{margin:52px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.caliber li{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line2);
+  font-size:13.5px;line-height:1.9;color:var(--dim)}
+.caliber li b{color:#e9e4d6;font-weight:500}
+.caliber li i{font-family:var(--latin);font-style:normal;font-size:10.5px;letter-spacing:.2em;color:var(--ac);opacity:.84;padding-top:4px}
+
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.person{background:var(--bg);padding:30px 28px}
+.person .role{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--ac);opacity:.84}
+.person h4{margin:12px 0 4px;font-family:var(--serif);font-weight:400;font-size:20px;color:#f5f0e1;letter-spacing:.04em}
+.person h4 small{font-size:12px;color:var(--dim2);letter-spacing:.1em;margin-left:4px}
+.person .actor{font-size:11.5px;color:var(--dim2);letter-spacing:.08em;margin-bottom:18px}
+.person p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.person p span{display:block;margin-top:9px;color:#c8cac1}
+.person p span b{color:var(--ac);font-weight:400;font-size:11.5px;letter-spacing:.08em;margin-right:6px}
+.person.thing{grid-column:1/-1;background:linear-gradient(100deg,rgba(239,231,212,.1),rgba(6,8,11,0) 70%)}
+.person.thing h4{color:#f2ecdb}
+.person.thing p{max-width:88ch}
+.person.thing p span b{color:var(--pa)}
+
+.conflicts{display:grid;gap:0;border-top:1px solid var(--line)}
+.cf{display:grid;grid-template-columns:196px minmax(0,1fr);gap:36px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line2)}
+.cf h4{margin:0;font-family:var(--serif);font-weight:400;font-size:17px;color:#f5f0e1;letter-spacing:.04em;line-height:1.6}
+.cf h4 i{display:block;font-family:var(--latin);font-style:normal;font-size:9.5px;letter-spacing:.26em;
+  color:var(--ac);opacity:.84;margin-bottom:8px}
+.cf p{margin:0;font-size:13.8px;line-height:2;color:var(--dim);max-width:66ch}
+.cf p em{font-style:normal;color:#e6e2d4}
+
+.awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.award{background:var(--bg);padding:28px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.award .yr{font-family:var(--latin);font-size:11px;letter-spacing:.14em;color:var(--dim2);padding-top:3px}
+.award h4{margin:0 0 6px;font-size:14.5px;font-weight:500;color:#f3eee0;letter-spacing:.02em;line-height:1.6}
+.award p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.78}
+.award.gold{background:linear-gradient(120deg,rgba(239,231,212,.16),rgba(6,8,11,0) 68%);border-left:2px solid rgba(239,231,212,.5)}
+.award.gold h4{color:var(--pa2)}
+.award.cold{background:linear-gradient(120deg,rgba(143,176,196,.11),rgba(6,8,11,0) 68%);border-left:2px solid rgba(143,176,196,.4)}
+.award.cold h4{color:var(--ac2)}
+.award.wide{grid-column:1/-1}
+
+.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px}
+.ln{position:relative;padding:0 0 40px 40px}
+.ln:last-child{padding-bottom:0}
+.ln::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--ac2)}
+.ln.now::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 4px rgba(165,56,43,.26)}
+.ln .yr{font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--dim2)}
+.ln h4{margin:6px 0 6px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f3eee0;letter-spacing:.03em}
+.ln p{margin:0;font-size:13px;color:var(--dim);line-height:1.85}
+.ln.now h4{color:var(--pa2)}
+
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.g6{background:var(--bg);padding:32px 28px;min-height:200px}
+.g6 .n{font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--ac);opacity:.9}
+.g6 h4{margin:14px 0 10px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f3eee0;letter-spacing:.03em;line-height:1.6}
+.g6 p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.g6 p b{color:#e6e2d4;font-weight:500}
+
+.why{display:grid;gap:0;max-width:820px}
+.why article{padding:0 0 38px}
+.why article + article{border-top:1px solid var(--line2);padding-top:38px}
+.why h3{margin:0 0 14px;font-family:var(--serif);font-weight:400;font-size:21px;color:#f5f0e1;letter-spacing:.04em}
+.why p{margin:0;font-size:14.5px;line-height:2.05;color:#bcbeb5}
+.why p + p{margin-top:14px}
+.why strong{color:#f3eee0;font-weight:500}
+.why em{font-style:normal;color:var(--ac2)}
+
+.tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.tip{background:var(--bg);padding:30px 24px}
+.tip .k{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--ac);opacity:.9}
+.tip h4{margin:12px 0 10px;font-size:15.5px;font-weight:500;color:#f3eee0}
+.tip p{margin:0;font-size:12.8px;line-height:1.95;color:var(--dim)}
+
+.verdict{padding:150px 0 120px;border-top:1px solid var(--line2);position:relative;overflow:hidden}
+.verdict .tag{font-family:var(--latin);font-size:9.5px;letter-spacing:.32em;color:var(--dim2);margin-bottom:34px}
+.verdict .q{font-family:var(--serif);font-size:clamp(22px,3vw,35px);line-height:1.8;letter-spacing:.06em;
+  color:#f5f0e1;margin:0;max-width:24em}
+.verdict .q span{display:block}
+.verdict .src{margin-top:36px;font-size:12px;color:var(--dim2);letter-spacing:.04em;line-height:1.9}
+.stamp{position:absolute;right:74px;bottom:82px;width:136px;height:136px;border:1px solid rgba(165,56,43,.85);
+  border-radius:50%;display:grid;place-items:center;color:rgba(198,110,88,1);text-align:center;
+  transform:rotate(-7deg);box-shadow:inset 0 0 0 4px rgba(165,56,43,.14)}
+.stamp div{display:grid;gap:5px;justify-items:center}
+.stamp span{font-family:var(--latin);font-size:8.2px;letter-spacing:.14em;opacity:.95}
+.stamp b{font-family:var(--serif);font-size:21px;letter-spacing:.12em;font-weight:400;line-height:1.1;
+  padding:5px 0;border-top:1px solid rgba(165,56,43,.55);border-bottom:1px solid rgba(165,56,43,.55)}
+
+footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
+footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
+
+#hud{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
+  opacity:0;transition:opacity .7s ease;pointer-events:none}
+#hud.on{opacity:1}
+#hud b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:13px;
+  color:var(--dim2);letter-spacing:.1em;transition:color .5s}
+#hud b i{display:block;width:16px;height:1px;background:var(--dim2);transition:all .5s}
+#hud b.on{color:#f5f0e1}
+#hud b.on i{width:30px;background:var(--ac)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1380px){#hud{display:none}}
+@media (max-width:1000px){
+  .intro{grid-template-columns:1fr;gap:48px}
+  .poster-grid{grid-template-columns:1fr;gap:46px}
+  .poster-frame{max-width:500px}
+  .scores,.awards{grid-template-columns:1fr}
+  .spec{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .acts{grid-template-columns:1fr}
+  #hud{display:none}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .scroll-hint{left:auto;right:8px;transform:none;bottom:26px}
+  .hero-svg{transform:translateY(5vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(4,5,6,.96) 0%,rgba(4,5,6,.95) 28%,rgba(4,5,6,.92) 44%,rgba(4,5,6,.86) 54%,rgba(4,5,6,.56) 60%,rgba(4,5,6,.26) 66%,rgba(4,5,6,.13) 73%,rgba(4,5,6,.2) 80%,rgba(4,5,6,.5) 87%,rgba(4,5,6,.85) 94%,rgba(3,4,5,.97) 100%)}
+}
+@media (max-width:760px){
+  .hero-svg{transform:none}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(4,5,6,.94) 0%,rgba(4,5,6,.9) 20%,rgba(4,5,6,.84) 38%,rgba(4,5,6,.62) 52%,rgba(4,5,6,.34) 66%,rgba(4,5,6,.22) 78%,rgba(4,5,6,.42) 88%,rgba(3,4,5,.9) 100%)}
+  body{font-size:15px;line-height:1.9}
+  .wrap,.hero-in{width:calc(100% - 40px)}
+  .hero{min-height:max(100vh,740px)}
+  .hero-in{min-height:max(100vh,740px);padding-top:8vh;padding-bottom:96px}
+  h1{font-size:clamp(32px,10vw,56px);letter-spacing:.16em}
+  .hero-sub{font-size:14.5px;line-height:1.95;max-width:26em}
+  .sec{padding:76px 0}
+  .sec-head{margin-bottom:36px;gap:12px}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spec dd{font-size:12.4px}
+  .spec dd small{font-size:10.4px}
+  .people,.grid6,.tips{grid-template-columns:1fr}
+  .cf{grid-template-columns:1fr;gap:12px}
+  .lede{font-size:16px;line-height:2.05}
+  .sc .val{font-size:44px}
+  .sc.abs .val{font-size:25px}
+  .verdict{padding:96px 0 88px}
+  .stamp{position:static;margin-top:48px;transform:rotate(-4deg)}
+  .chips{max-width:100%;padding-top:0;margin-top:26px}
+  footer{padding-bottom:120px}
+  .scroll-hint{bottom:14px;left:auto;right:12px;transform:none}
+  .chip{font-size:11px;padding:5px 11px;letter-spacing:.03em}
+}
+@media (min-width:1001px) and (max-height:860px){
+  .hero,.hero-in{min-height:max(100vh,760px)}
+  .scroll-hint{left:auto;right:22px;transform:none}
+}
+@media (max-width:560px){
+  .chip:nth-child(5){display:none}
+}
+@media (max-width:420px){
+  .notice{margin-bottom:22px;font-size:10.5px;padding:6px 13px}
+  h1{font-size:clamp(30px,9vw,46px);margin-top:20px}
+  .latin{margin-top:14px;font-size:11px;letter-spacing:.22em}
+  .latin + .latin{font-size:9.5px;letter-spacing:.14em}
+  .hero-sub{margin-top:22px;font-size:13.8px}
+}
+@media (max-width:380px){
+  .wrap,.hero-in{width:calc(100% - 32px)}
+  .chip{font-size:10.5px;padding:5px 11px}
+  .glance{padding:24px 20px}
+  h1{font-size:clamp(27px,8.4vw,42px)}
+}
+@media (max-width:400px) and (max-height:680px){
+  .scroll-hint{display:none}
+}
+@media (max-width:760px) and (max-height:700px){
+  .hero{min-height:100vh}
+  .hero-in{min-height:100vh;padding-top:6vh}
+  .hero-svg{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+<defs>
+<linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#070a0d"/><stop offset=".3" stop-color="#0b1116"/>
+<stop offset=".62" stop-color="#101720"/><stop offset="1" stop-color="#0a0e13"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#6b8290"/><stop offset=".14" stop-color="#9db4c0"/>
+<stop offset=".4" stop-color="#e4ecee"/><stop offset=".62" stop-color="#eef4f4"/>
+<stop offset=".82" stop-color="#b9cdd6"/><stop offset="1" stop-color="#8ba5b2"/></linearGradient>
+<linearGradient id="glassLow" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#7d97a4" stop-opacity="0"/>
+<stop offset=".5" stop-color="#7d97a4" stop-opacity=".3"/>
+<stop offset="1" stop-color="#5d7683" stop-opacity=".7"/></linearGradient>
+<radialGradient id="winGlow" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#dfecef" stop-opacity=".5"/>
+<stop offset=".36" stop-color="#aec8d3" stop-opacity=".2"/>
+<stop offset=".7" stop-color="#87a2af" stop-opacity=".07"/>
+<stop offset="1" stop-color="#7c98a5" stop-opacity="0"/></radialGradient>
+<radialGradient id="deskPool" cx=".5" cy=".46" r=".5">
+<stop offset="0" stop-color="#e6ecea" stop-opacity=".3"/>
+<stop offset=".42" stop-color="#b6c6c5" stop-opacity=".13"/>
+<stop offset="1" stop-color="#8fa29f" stop-opacity="0"/></radialGradient>
+<linearGradient id="air" x1="0" y1="0" x2=".15" y2="1">
+<stop offset="0" stop-color="#cfe0e4" stop-opacity=".13"/>
+<stop offset=".55" stop-color="#a9c0c4" stop-opacity=".05"/>
+<stop offset="1" stop-color="#8fa6a6" stop-opacity="0"/></linearGradient>
+<linearGradient id="desk" x1=".08" y1="0" x2=".78" y2="1">
+<stop offset="0" stop-color="#333f48"/><stop offset=".3" stop-color="#25303a"/>
+<stop offset=".68" stop-color="#161d24"/><stop offset="1" stop-color="#0a0e12"/></linearGradient>
+<linearGradient id="pageL" x1="0" y1="0" x2="1" y2=".15">
+<stop offset="0" stop-color="#cdbf9f"/><stop offset=".26" stop-color="#e9dfc4"/>
+<stop offset="1" stop-color="#f8f0d8"/></linearGradient>
+<linearGradient id="pageR" x1="1" y1="0" x2="0" y2=".15">
+<stop offset="0" stop-color="#c5b797"/><stop offset=".26" stop-color="#e4d9be"/>
+<stop offset="1" stop-color="#f4ebd2"/></linearGradient>
+<linearGradient id="stackTop" x1=".1" y1="0" x2=".5" y2="1">
+<stop offset="0" stop-color="#fbf4de"/><stop offset=".5" stop-color="#eee4c8"/>
+<stop offset="1" stop-color="#cdc1a1"/></linearGradient>
+<linearGradient id="shelfG" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#0e1319"/><stop offset="1" stop-color="#070a0d"/></linearGradient>
+<linearGradient id="ledgeG" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#8b9aa5" stop-opacity=".06"/>
+<stop offset=".2" stop-color="#8b9aa5" stop-opacity=".3"/>
+<stop offset=".3" stop-color="#a9b8c2" stop-opacity=".55"/>
+<stop offset=".46" stop-color="#a9b8c2" stop-opacity=".48"/>
+<stop offset=".72" stop-color="#8b9aa5" stop-opacity=".26"/>
+<stop offset="1" stop-color="#6b7a86" stop-opacity=".16"/></linearGradient>
+<radialGradient id="vig" cx=".5" cy=".42" r=".72">
+<stop offset="0" stop-color="#000" stop-opacity="0"/>
+<stop offset=".52" stop-color="#000" stop-opacity=".14"/>
+<stop offset="1" stop-color="#000" stop-opacity=".78"/></radialGradient>
+<radialGradient id="steam" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#d8e7ea" stop-opacity=".2"/>
+<stop offset="1" stop-color="#d8e7ea" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1440" height="900" fill="url(#wall)"/>
+<rect x="352" y="0" width="1" height="700" fill="#131b23" opacity=".6"/>
+<rect x="620" y="0" width="1" height="700" fill="#131b23" opacity=".6"/>
+<rect x="1030" y="0" width="1" height="700" fill="#131b23" opacity=".6"/>
+<rect x="1252" y="0" width="1" height="700" fill="#131b23" opacity=".6"/>
+<rect x="0" y="690" width="1440" height="8" fill="#161d24" opacity=".95"/>
+<ellipse cx="796" cy="372" rx="400" ry="440" fill="url(#winGlow)"/>
+<rect x="692" y="104" width="208" height="514" fill="#1d262f"/>
+<rect x="692" y="104" width="208" height="2" fill="#4b5865" opacity=".8"/>
+<rect x="692" y="104" width="2" height="514" fill="#39454f" opacity=".7"/>
+<rect x="706" y="118" width="180" height="486" fill="url(#glass)"/>
+<g fill="#6d8794" opacity=".42">
+<path d="M706 418 L748 382 L792 418 L792 604 L706 604 Z"/>
+<path d="M798 430 L832 406 L866 430 L866 604 L798 604 Z"/>
+<path d="M872 410 L902 390 L886 390 L886 604 L872 604 Z"/>
+</g>
+<rect x="706" y="328" width="180" height="276" fill="url(#glassLow)"/>
+<path d="M706 604 L706 498 L792 304 L792 604 Z" fill="#fbfdfd" opacity=".13"/>
+<path d="M824 604 L856 548 L872 548 L840 604 Z" fill="#fbfdfd" opacity=".07"/>
+<rect x="792" y="118" width="8" height="486" fill="#141c23"/>
+<rect x="706" y="344" width="180" height="7" fill="#141c23"/>
+<rect x="706" y="514" width="180" height="5" fill="#141c23"/>
+<rect x="792" y="118" width="1.8" height="486" fill="#5b6874" opacity=".6"/>
+<rect x="680" y="618" width="232" height="15" fill="#1a222b"/>
+<rect x="680" y="618" width="232" height="2.2" fill="#6a7986" opacity=".85"/>
+<rect x="680" y="633" width="232" height="3" fill="#0a0f13"/>
+<rect x="1046" y="168" width="394" height="540" fill="url(#shelfG)"/>
+<rect x="1046" y="168" width="394" height="10" fill="#1c242c"/>
+<rect x="1046" y="168" width="394" height="2" fill="#3c4854" opacity=".8"/>
+<rect x="1046" y="278" width="394" height="9" fill="#181f26"/>
+<rect x="1046" y="278" width="394" height="2" fill="#3b4753" opacity=".85"/>
+<rect x="1046" y="287" width="394" height="4" fill="#05080a" opacity=".8"/>
+<rect x="1046" y="388" width="394" height="9" fill="#181f26"/>
+<rect x="1046" y="388" width="394" height="2" fill="#3b4753" opacity=".85"/>
+<rect x="1046" y="397" width="394" height="4" fill="#05080a" opacity=".8"/>
+<rect x="1046" y="498" width="394" height="9" fill="#181f26"/>
+<rect x="1046" y="498" width="394" height="2" fill="#3b4753" opacity=".85"/>
+<rect x="1046" y="507" width="394" height="4" fill="#05080a" opacity=".8"/>
+<rect x="1046" y="608" width="394" height="9" fill="#181f26"/>
+<rect x="1046" y="608" width="394" height="2" fill="#3b4753" opacity=".85"/>
+<rect x="1046" y="617" width="394" height="4" fill="#05080a" opacity=".8"/>
+<rect x="1062" y="206" width="18" height="72" fill="#1c242d"/>
+<rect x="1062" y="206" width="1.5" height="72" fill="#5e6d7a" opacity=".4"/>
+<rect x="1062" y="206" width="18" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1064" y="215" width="14" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1082" y="216" width="13" height="62" fill="#0f151b"/>
+<rect x="1082" y="216" width="1.5" height="62" fill="#5e6d7a" opacity=".4"/>
+<rect x="1082" y="216" width="13" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1096.5" y="221" width="21" height="57" fill="#333f4b"/>
+<rect x="1096.5" y="221" width="1.5" height="57" fill="#5e6d7a" opacity=".4"/>
+<rect x="1096.5" y="221" width="21" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1098.5" y="230" width="17" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1119.0" y="215" width="15" height="63" fill="#242f39"/>
+<rect x="1119.0" y="215" width="1.5" height="63" fill="#5e6d7a" opacity=".4"/>
+<rect x="1119.0" y="215" width="15" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1136.5" y="223" width="21" height="55" fill="#1c242d"/>
+<rect x="1136.5" y="223" width="1.5" height="55" fill="#5e6d7a" opacity=".4"/>
+<rect x="1136.5" y="223" width="21" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1138.5" y="232" width="17" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1160.0" y="272" width="26" height="6" fill="#0a0e13"/>
+<rect x="1162.0" y="268" width="20" height="10" fill="#232d37"/>
+<rect x="1162.0" y="268" width="20" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1162.0" y="257" width="17" height="11" fill="#232d37"/>
+<rect x="1162.0" y="257" width="17" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1162.0" y="248" width="16" height="9" fill="#232d37"/>
+<rect x="1162.0" y="248" width="16" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1189.0" y="201" width="9" height="77" fill="#0f151b"/>
+<rect x="1189.0" y="201" width="1.5" height="77" fill="#5e6d7a" opacity=".4"/>
+<rect x="1189.0" y="201" width="9" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1201.5" y="201" width="18" height="77" fill="#2c3742"/>
+<rect x="1201.5" y="201" width="1.5" height="77" fill="#5e6d7a" opacity=".4"/>
+<rect x="1201.5" y="201" width="18" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1203.5" y="210" width="14" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1221.0" y="222" width="18" height="56" fill="#1c242d"/>
+<rect x="1221.0" y="222" width="1.5" height="56" fill="#5e6d7a" opacity=".4"/>
+<rect x="1221.0" y="222" width="18" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1223.0" y="231" width="14" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1241.5" y="213" width="15" height="65" fill="#161d24"/>
+<rect x="1241.5" y="213" width="1.5" height="65" fill="#5e6d7a" opacity=".4"/>
+<rect x="1241.5" y="213" width="15" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1258.5" y="200" width="28" height="78" fill="#161d24"/>
+<rect x="1258.5" y="200" width="1.5" height="78" fill="#5e6d7a" opacity=".4"/>
+<rect x="1258.5" y="200" width="28" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1260.5" y="209" width="24" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1288.0" y="272" width="26" height="6" fill="#0a0e13"/>
+<rect x="1290.0" y="268" width="22" height="10" fill="#232d37"/>
+<rect x="1290.0" y="268" width="22" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1290.0" y="258" width="21" height="10" fill="#232d37"/>
+<rect x="1290.0" y="258" width="21" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1317.0" y="223" width="28" height="55" fill="#2c3742"/>
+<rect x="1317.0" y="223" width="1.5" height="55" fill="#5e6d7a" opacity=".4"/>
+<rect x="1317.0" y="223" width="28" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1319.0" y="232" width="24" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1347.5" y="219" width="28" height="59" fill="#0f151b"/>
+<rect x="1347.5" y="219" width="1.5" height="59" fill="#5e6d7a" opacity=".4"/>
+<rect x="1347.5" y="219" width="28" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1349.5" y="228" width="24" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1378.0" y="215" width="18" height="63" fill="#2c3742"/>
+<rect x="1378.0" y="215" width="1.5" height="63" fill="#5e6d7a" opacity=".4"/>
+<rect x="1378.0" y="215" width="18" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1380.0" y="224" width="14" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1398.5" y="225" width="11" height="53" fill="#2c3742"/>
+<rect x="1398.5" y="225" width="1.5" height="53" fill="#5e6d7a" opacity=".4"/>
+<rect x="1398.5" y="225" width="11" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1411.5" y="188" width="24" height="90" fill="#333f4b"/>
+<rect x="1411.5" y="188" width="1.5" height="90" fill="#5e6d7a" opacity=".4"/>
+<rect x="1411.5" y="188" width="24" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1413.5" y="197" width="20" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1062" y="301" width="24" height="87" fill="#242f39"/>
+<rect x="1062" y="301" width="1.5" height="87" fill="#5e6d7a" opacity=".4"/>
+<rect x="1062" y="301" width="24" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1064" y="310" width="20" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1088.5" y="309" width="24" height="79" fill="#121820"/>
+<rect x="1088.5" y="309" width="1.5" height="79" fill="#5e6d7a" opacity=".4"/>
+<rect x="1088.5" y="309" width="24" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1090.5" y="318" width="20" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1114.5" y="324" width="15" height="64" fill="#0f151b"/>
+<rect x="1114.5" y="324" width="1.5" height="64" fill="#5e6d7a" opacity=".4"/>
+<rect x="1114.5" y="324" width="15" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1132.0" y="330" width="13" height="58" fill="#0f151b"/>
+<rect x="1132.0" y="330" width="1.5" height="58" fill="#5e6d7a" opacity=".4"/>
+<rect x="1132.0" y="330" width="13" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1148.5" y="331" width="28" height="57" fill="#242f39"/>
+<rect x="1148.5" y="331" width="1.5" height="57" fill="#5e6d7a" opacity=".4"/>
+<rect x="1148.5" y="331" width="28" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1150.5" y="340" width="24" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1179.0" y="302" width="18" height="86" fill="#242f39"/>
+<rect x="1179.0" y="302" width="1.5" height="86" fill="#5e6d7a" opacity=".4"/>
+<rect x="1179.0" y="302" width="18" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1181.0" y="311" width="14" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1199.5" y="382" width="26" height="6" fill="#0a0e13"/>
+<rect x="1201.5" y="375" width="22" height="13" fill="#232d37"/>
+<rect x="1201.5" y="375" width="22" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1201.5" y="362" width="22" height="13" fill="#232d37"/>
+<rect x="1201.5" y="362" width="22" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1201.5" y="353" width="19" height="9" fill="#232d37"/>
+<rect x="1201.5" y="353" width="19" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1228.5" y="323" width="18" height="65" fill="#1c242d"/>
+<rect x="1228.5" y="323" width="1.5" height="65" fill="#5e6d7a" opacity=".4"/>
+<rect x="1228.5" y="323" width="18" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1230.5" y="332" width="14" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1248.5" y="325" width="18" height="63" fill="#161d24"/>
+<rect x="1248.5" y="325" width="1.5" height="63" fill="#5e6d7a" opacity=".4"/>
+<rect x="1248.5" y="325" width="18" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1250.5" y="334" width="14" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1269.0" y="311" width="24" height="77" fill="#333f4b"/>
+<rect x="1269.0" y="311" width="1.5" height="77" fill="#5e6d7a" opacity=".4"/>
+<rect x="1269.0" y="311" width="24" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1271.0" y="320" width="20" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1295.5" y="303" width="21" height="85" fill="#333f4b"/>
+<rect x="1295.5" y="303" width="1.5" height="85" fill="#5e6d7a" opacity=".4"/>
+<rect x="1295.5" y="303" width="21" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1297.5" y="312" width="17" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1318.0" y="322" width="15" height="66" fill="#2c3742"/>
+<rect x="1318.0" y="322" width="1.5" height="66" fill="#5e6d7a" opacity=".4"/>
+<rect x="1318.0" y="322" width="15" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1336.5" y="340" width="11" height="48" fill="#121820"/>
+<rect x="1336.5" y="340" width="1.5" height="48" fill="#5e6d7a" opacity=".4"/>
+<rect x="1336.5" y="340" width="11" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1349.5" y="382" width="26" height="6" fill="#0a0e13"/>
+<rect x="1351.5" y="380" width="19" height="8" fill="#232d37"/>
+<rect x="1351.5" y="380" width="19" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1351.5" y="370" width="22" height="10" fill="#232d37"/>
+<rect x="1351.5" y="370" width="22" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1351.5" y="362" width="24" height="8" fill="#232d37"/>
+<rect x="1351.5" y="362" width="24" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1378.5" y="309" width="24" height="79" fill="#333f4b"/>
+<rect x="1378.5" y="309" width="1.5" height="79" fill="#5e6d7a" opacity=".4"/>
+<rect x="1378.5" y="309" width="24" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1380.5" y="318" width="20" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1405.0" y="318" width="9" height="70" fill="#0f151b"/>
+<rect x="1405.0" y="318" width="1.5" height="70" fill="#5e6d7a" opacity=".4"/>
+<rect x="1405.0" y="318" width="9" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1062" y="408" width="11" height="90" fill="#333f4b"/>
+<rect x="1062" y="408" width="1.5" height="90" fill="#5e6d7a" opacity=".4"/>
+<rect x="1062" y="408" width="11" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1074.5" y="419" width="28" height="79" fill="#1c242d"/>
+<rect x="1074.5" y="419" width="1.5" height="79" fill="#5e6d7a" opacity=".4"/>
+<rect x="1074.5" y="419" width="28" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1076.5" y="428" width="24" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1105.0" y="444" width="11" height="54" fill="#242f39"/>
+<rect x="1105.0" y="444" width="1.5" height="54" fill="#5e6d7a" opacity=".4"/>
+<rect x="1105.0" y="444" width="11" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1117.5" y="436" width="11" height="62" fill="#333f4b"/>
+<rect x="1117.5" y="436" width="1.5" height="62" fill="#5e6d7a" opacity=".4"/>
+<rect x="1117.5" y="436" width="11" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1130.0" y="413" width="24" height="85" fill="#2c3742"/>
+<rect x="1130.0" y="413" width="1.5" height="85" fill="#5e6d7a" opacity=".4"/>
+<rect x="1130.0" y="413" width="24" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1132.0" y="422" width="20" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1156.0" y="426" width="21" height="72" fill="#161d24"/>
+<rect x="1156.0" y="426" width="1.5" height="72" fill="#5e6d7a" opacity=".4"/>
+<rect x="1156.0" y="426" width="21" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1158.0" y="435" width="17" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1179.0" y="444" width="28" height="54" fill="#2c3742"/>
+<rect x="1179.0" y="444" width="1.5" height="54" fill="#5e6d7a" opacity=".4"/>
+<rect x="1179.0" y="444" width="28" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1181.0" y="453" width="24" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1209.0" y="431" width="15" height="67" fill="#333f4b"/>
+<rect x="1209.0" y="431" width="1.5" height="67" fill="#5e6d7a" opacity=".4"/>
+<rect x="1209.0" y="431" width="15" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1225.5" y="432" width="24" height="66" fill="#1c242d"/>
+<rect x="1225.5" y="432" width="1.5" height="66" fill="#5e6d7a" opacity=".4"/>
+<rect x="1225.5" y="432" width="24" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1227.5" y="441" width="20" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1252.0" y="492" width="34" height="6" fill="#0a0e13"/>
+<rect x="1254.0" y="489" width="31" height="9" fill="#232d37"/>
+<rect x="1254.0" y="489" width="31" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1254.0" y="481" width="24" height="8" fill="#232d37"/>
+<rect x="1254.0" y="481" width="24" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1289.0" y="492" width="34" height="6" fill="#0a0e13"/>
+<rect x="1291.0" y="486" width="25" height="12" fill="#232d37"/>
+<rect x="1291.0" y="486" width="25" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1291.0" y="474" width="30" height="12" fill="#232d37"/>
+<rect x="1291.0" y="474" width="30" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1291.0" y="466" width="24" height="8" fill="#232d37"/>
+<rect x="1291.0" y="466" width="24" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1326.0" y="441" width="15" height="57" fill="#121820"/>
+<rect x="1326.0" y="441" width="1.5" height="57" fill="#5e6d7a" opacity=".4"/>
+<rect x="1326.0" y="441" width="15" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1343.5" y="409" width="18" height="89" fill="#333f4b"/>
+<rect x="1343.5" y="409" width="1.5" height="89" fill="#5e6d7a" opacity=".4"/>
+<rect x="1343.5" y="409" width="18" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1345.5" y="418" width="14" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1363.0" y="432" width="28" height="66" fill="#121820"/>
+<rect x="1363.0" y="432" width="1.5" height="66" fill="#5e6d7a" opacity=".4"/>
+<rect x="1363.0" y="432" width="28" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1365.0" y="441" width="24" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1394.5" y="441" width="18" height="57" fill="#161d24"/>
+<rect x="1394.5" y="441" width="1.5" height="57" fill="#5e6d7a" opacity=".4"/>
+<rect x="1394.5" y="441" width="18" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1396.5" y="450" width="14" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1414.0" y="406" width="15" height="92" fill="#0f151b"/>
+<rect x="1414.0" y="406" width="1.5" height="92" fill="#5e6d7a" opacity=".4"/>
+<rect x="1414.0" y="406" width="15" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1062" y="522" width="15" height="86" fill="#242f39"/>
+<rect x="1062" y="522" width="1.5" height="86" fill="#5e6d7a" opacity=".4"/>
+<rect x="1062" y="522" width="15" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1078.5" y="536" width="15" height="72" fill="#161d24"/>
+<rect x="1078.5" y="536" width="1.5" height="72" fill="#5e6d7a" opacity=".4"/>
+<rect x="1078.5" y="536" width="15" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1095.0" y="549" width="9" height="59" fill="#0f151b"/>
+<rect x="1095.0" y="549" width="1.5" height="59" fill="#5e6d7a" opacity=".4"/>
+<rect x="1095.0" y="549" width="9" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1106.5" y="545" width="13" height="63" fill="#161d24"/>
+<rect x="1106.5" y="545" width="1.5" height="63" fill="#5e6d7a" opacity=".4"/>
+<rect x="1106.5" y="545" width="13" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1121.5" y="547" width="18" height="61" fill="#0f151b"/>
+<rect x="1121.5" y="547" width="1.5" height="61" fill="#5e6d7a" opacity=".4"/>
+<rect x="1121.5" y="547" width="18" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1123.5" y="556" width="14" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1141.5" y="560" width="21" height="48" fill="#1c242d"/>
+<rect x="1141.5" y="560" width="1.5" height="48" fill="#5e6d7a" opacity=".4"/>
+<rect x="1141.5" y="560" width="21" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1143.5" y="569" width="17" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1164.0" y="534" width="9" height="74" fill="#2c3742"/>
+<rect x="1164.0" y="534" width="1.5" height="74" fill="#5e6d7a" opacity=".4"/>
+<rect x="1164.0" y="534" width="9" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1174.5" y="529" width="21" height="79" fill="#0f151b"/>
+<rect x="1174.5" y="529" width="1.5" height="79" fill="#5e6d7a" opacity=".4"/>
+<rect x="1174.5" y="529" width="21" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1176.5" y="538" width="17" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1197.0" y="557" width="11" height="51" fill="#242f39"/>
+<rect x="1197.0" y="557" width="1.5" height="51" fill="#5e6d7a" opacity=".4"/>
+<rect x="1197.0" y="557" width="11" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1210.5" y="523" width="9" height="85" fill="#2c3742"/>
+<rect x="1210.5" y="523" width="1.5" height="85" fill="#5e6d7a" opacity=".4"/>
+<rect x="1210.5" y="523" width="9" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1221.0" y="530" width="21" height="78" fill="#1c242d"/>
+<rect x="1221.0" y="530" width="1.5" height="78" fill="#5e6d7a" opacity=".4"/>
+<rect x="1221.0" y="530" width="21" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1223.0" y="539" width="17" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1244.5" y="519" width="11" height="89" fill="#2c3742"/>
+<rect x="1244.5" y="519" width="1.5" height="89" fill="#5e6d7a" opacity=".4"/>
+<rect x="1244.5" y="519" width="11" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1257.0" y="557" width="15" height="51" fill="#333f4b"/>
+<rect x="1257.0" y="557" width="1.5" height="51" fill="#5e6d7a" opacity=".4"/>
+<rect x="1257.0" y="557" width="15" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1275.5" y="602" width="42" height="6" fill="#0a0e13"/>
+<rect x="1277.5" y="600" width="33" height="8" fill="#232d37"/>
+<rect x="1277.5" y="600" width="33" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1277.5" y="591" width="32" height="9" fill="#232d37"/>
+<rect x="1277.5" y="591" width="32" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1277.5" y="580" width="33" height="11" fill="#232d37"/>
+<rect x="1277.5" y="580" width="33" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1320.5" y="547" width="9" height="61" fill="#242f39"/>
+<rect x="1320.5" y="547" width="1.5" height="61" fill="#5e6d7a" opacity=".4"/>
+<rect x="1320.5" y="547" width="9" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1332.0" y="602" width="42" height="6" fill="#0a0e13"/>
+<rect x="1334.0" y="600" width="35" height="8" fill="#232d37"/>
+<rect x="1334.0" y="600" width="35" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1334.0" y="592" width="33" height="8" fill="#232d37"/>
+<rect x="1334.0" y="592" width="33" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1334.0" y="580" width="36" height="12" fill="#232d37"/>
+<rect x="1334.0" y="580" width="36" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1377.0" y="548" width="11" height="60" fill="#0f151b"/>
+<rect x="1377.0" y="548" width="1.5" height="60" fill="#5e6d7a" opacity=".4"/>
+<rect x="1377.0" y="548" width="11" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1389.5" y="555" width="11" height="53" fill="#1c242d"/>
+<rect x="1389.5" y="555" width="1.5" height="53" fill="#5e6d7a" opacity=".4"/>
+<rect x="1389.5" y="555" width="11" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1403.0" y="555" width="9" height="53" fill="#2c3742"/>
+<rect x="1403.0" y="555" width="1.5" height="53" fill="#5e6d7a" opacity=".4"/>
+<rect x="1403.0" y="555" width="9" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1414.5" y="548" width="21" height="60" fill="#242f39"/>
+<rect x="1414.5" y="548" width="1.5" height="60" fill="#5e6d7a" opacity=".4"/>
+<rect x="1414.5" y="548" width="21" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1416.5" y="557" width="17" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1062" y="628" width="21" height="72" fill="#0f151b"/>
+<rect x="1062" y="628" width="1.5" height="72" fill="#5e6d7a" opacity=".4"/>
+<rect x="1062" y="628" width="21" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1064" y="637" width="17" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1084.5" y="643" width="24" height="57" fill="#161d24"/>
+<rect x="1084.5" y="643" width="1.5" height="57" fill="#5e6d7a" opacity=".4"/>
+<rect x="1084.5" y="643" width="24" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1086.5" y="652" width="20" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1111.0" y="633" width="11" height="67" fill="#2c3742"/>
+<rect x="1111.0" y="633" width="1.5" height="67" fill="#5e6d7a" opacity=".4"/>
+<rect x="1111.0" y="633" width="11" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1124.5" y="661" width="28" height="39" fill="#121820"/>
+<rect x="1124.5" y="661" width="1.5" height="39" fill="#5e6d7a" opacity=".4"/>
+<rect x="1124.5" y="661" width="28" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1126.5" y="670" width="24" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1154.5" y="660" width="11" height="40" fill="#2c3742"/>
+<rect x="1154.5" y="660" width="1.5" height="40" fill="#5e6d7a" opacity=".4"/>
+<rect x="1154.5" y="660" width="11" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1168.0" y="653" width="28" height="47" fill="#1c242d"/>
+<rect x="1168.0" y="653" width="1.5" height="47" fill="#5e6d7a" opacity=".4"/>
+<rect x="1168.0" y="653" width="28" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1170.0" y="662" width="24" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1198.5" y="658" width="18" height="42" fill="#1c242d"/>
+<rect x="1198.5" y="658" width="1.5" height="42" fill="#5e6d7a" opacity=".4"/>
+<rect x="1198.5" y="658" width="18" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1200.5" y="667" width="14" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1218.5" y="650" width="28" height="50" fill="#2c3742"/>
+<rect x="1218.5" y="650" width="1.5" height="50" fill="#5e6d7a" opacity=".4"/>
+<rect x="1218.5" y="650" width="28" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1220.5" y="659" width="24" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1249.0" y="633" width="28" height="67" fill="#0f151b"/>
+<rect x="1249.0" y="633" width="1.5" height="67" fill="#5e6d7a" opacity=".4"/>
+<rect x="1249.0" y="633" width="28" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1251.0" y="642" width="24" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1278.5" y="651" width="18" height="49" fill="#333f4b"/>
+<rect x="1278.5" y="651" width="1.5" height="49" fill="#5e6d7a" opacity=".4"/>
+<rect x="1278.5" y="651" width="18" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1280.5" y="660" width="14" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1299.0" y="642" width="15" height="58" fill="#0f151b"/>
+<rect x="1299.0" y="642" width="1.5" height="58" fill="#5e6d7a" opacity=".4"/>
+<rect x="1299.0" y="642" width="15" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1315.5" y="633" width="21" height="67" fill="#242f39"/>
+<rect x="1315.5" y="633" width="1.5" height="67" fill="#5e6d7a" opacity=".4"/>
+<rect x="1315.5" y="633" width="21" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1317.5" y="642" width="17" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1340.0" y="694" width="34" height="6" fill="#0a0e13"/>
+<rect x="1342.0" y="687" width="26" height="13" fill="#232d37"/>
+<rect x="1342.0" y="687" width="26" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1342.0" y="675" width="25" height="12" fill="#232d37"/>
+<rect x="1342.0" y="675" width="25" height="1.4" fill="#4c5a66" opacity=".45"/>
+<rect x="1377.0" y="650" width="18" height="50" fill="#242f39"/>
+<rect x="1377.0" y="650" width="1.5" height="50" fill="#5e6d7a" opacity=".4"/>
+<rect x="1377.0" y="650" width="18" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1379.0" y="659" width="14" height="1" fill="#7f8f9c" opacity=".22"/>
+<rect x="1396.5" y="633" width="24" height="67" fill="#1c242d"/>
+<rect x="1396.5" y="633" width="1.5" height="67" fill="#5e6d7a" opacity=".4"/>
+<rect x="1396.5" y="633" width="24" height="1.3" fill="#6a7a87" opacity=".34"/>
+<rect x="1398.5" y="642" width="20" height="1" fill="#7f8f9c" opacity=".22"/>
+<path d="M470 698 L1440 698 L1440 900 L250 900 Z" fill="url(#desk)"/>
+<path d="M470 698 L1440 698 L1440 704 L470 704 Z" fill="url(#ledgeG)"/>
+<ellipse cx="812" cy="768" rx="330" ry="118" fill="url(#deskPool)"/>
+<ellipse cx="806" cy="742" rx="196" ry="62" fill="#cfdcdb" opacity=".07"/>
+<path d="M706 618 L886 618 L1046 900 L566 900 Z" fill="url(#air)"/>
+<path d="M470 716 L1440 709" stroke="#0a0e12" stroke-width="1" opacity=".4"/>
+<path d="M470 746 L1440 739" stroke="#0a0e12" stroke-width="1" opacity=".4"/>
+<path d="M470 776 L1440 769" stroke="#0a0e12" stroke-width="1" opacity=".4"/>
+<path d="M470 806 L1440 799" stroke="#0a0e12" stroke-width="1" opacity=".4"/>
+<path d="M470 836 L1440 829" stroke="#0a0e12" stroke-width="1" opacity=".4"/>
+<path d="M470 866 L1440 859" stroke="#0a0e12" stroke-width="1" opacity=".4"/>
+<g>
+<path d="M492 806 L898 806 L912 830 L480 830 Z" fill="#05070a" opacity=".62"/>
+<path d="M500 712 L695 728 L695 816 L500 800 Z" fill="url(#pageR)"/>
+<path d="M695 728 L890 712 L890 800 L695 816 Z" fill="url(#pageL)"/>
+<path d="M500 712 L695 728 L695 738 L500 722 Z" fill="#fffaea" opacity=".18"/>
+<path d="M695 728 L890 712 L890 722 L695 738 Z" fill="#fffaea" opacity=".22"/>
+<path d="M514 716.2 L628 727.5" stroke="#a89a76" stroke-width="1.5" opacity=".5"/>
+<path d="M636 728.2 L682 732.0" stroke="#a89a76" stroke-width="1.5" opacity=".44"/>
+<path d="M514 727.2 L628 738.5" stroke="#a89a76" stroke-width="1.5" opacity=".5"/>
+<path d="M636 739.2 L682 743.0" stroke="#a89a76" stroke-width="1.5" opacity=".44"/>
+<path d="M514 738.2 L628 749.5" stroke="#a89a76" stroke-width="1.5" opacity=".5"/>
+<path d="M636 750.2 L682 754.0" stroke="#a89a76" stroke-width="1.5" opacity=".44"/>
+<path d="M514 749.2 L628 760.5" stroke="#a89a76" stroke-width="1.5" opacity=".5"/>
+<path d="M636 761.2 L682 765.0" stroke="#a89a76" stroke-width="1.5" opacity=".44"/>
+<path d="M514 760.2 L628 771.5" stroke="#a89a76" stroke-width="1.5" opacity=".5"/>
+<path d="M636 772.2 L682 776.0" stroke="#a89a76" stroke-width="1.5" opacity=".44"/>
+<path d="M514 771.2 L628 782.5" stroke="#a89a76" stroke-width="1.5" opacity=".5"/>
+<path d="M636 783.2 L682 787.0" stroke="#a89a76" stroke-width="1.5" opacity=".44"/>
+<path d="M514 782.2 L628 793.5" stroke="#a89a76" stroke-width="1.5" opacity=".5"/>
+<path d="M636 794.2 L682 798.0" stroke="#a89a76" stroke-width="1.5" opacity=".44"/>
+<path d="M706 741 L752 737.3" stroke="#a89a76" stroke-width="1.5" opacity=".44"/>
+<path d="M760 736.6 L876 727.0" stroke="#a89a76" stroke-width="1.5" opacity=".5"/>
+<path d="M706 752 L752 748.3" stroke="#a89a76" stroke-width="1.5" opacity=".44"/>
+<path d="M760 747.6 L876 738.0" stroke="#a89a76" stroke-width="1.5" opacity=".5"/>
+<path d="M706 763 L752 759.3" stroke="#a89a76" stroke-width="1.5" opacity=".44"/>
+<path d="M760 758.6 L876 749.0" stroke="#a89a76" stroke-width="1.5" opacity=".5"/>
+<path d="M706 774 L752 770.3" stroke="#a89a76" stroke-width="1.5" opacity=".44"/>
+<path d="M760 769.6 L876 760.0" stroke="#a89a76" stroke-width="1.5" opacity=".5"/>
+<path d="M706 785 L752 781.3" stroke="#a89a76" stroke-width="1.5" opacity=".44"/>
+<path d="M760 780.6 L876 771.0" stroke="#a89a76" stroke-width="1.5" opacity=".5"/>
+<path d="M706 796 L752 792.3" stroke="#a89a76" stroke-width="1.5" opacity=".44"/>
+<path d="M760 791.6 L876 782.0" stroke="#a89a76" stroke-width="1.5" opacity=".5"/>
+<path d="M706 807 L752 803.3" stroke="#a89a76" stroke-width="1.5" opacity=".44"/>
+<path d="M760 802.6 L876 793.0" stroke="#a89a76" stroke-width="1.5" opacity=".5"/>
+<path d="M695 724 L695 820" stroke="#7d7156" stroke-width="3.2" opacity=".75"/>
+<path d="M695 724 L695 820" stroke="#0a0e12" stroke-width="1.2" opacity=".55"/>
+<path d="M500 800 Q600 810 695 814 Q780 810 890 800 L890 806 Q780 816 695 820 Q600 816 500 806 Z" fill="#a89a78"/>
+<path d="M500 800 Q600 810 695 814 L695 818 Q600 814 500 804 Z" fill="#c2b390"/>
+<path d="M890 800 Q780 810 695 814 L695 818 Q780 814 890 804 Z" fill="#d0c19c"/>
+<path d="M500 712 L500 800" stroke="#fffbe9" stroke-width="1.6" opacity=".4"/>
+<path d="M890 712 L890 800" stroke="#fffbe9" stroke-width="1.6" opacity=".45"/>
+<path d="M500 712 L695 728" stroke="#fffbe9" stroke-width="1.2" opacity=".3"/>
+<path d="M695 728 L890 712" stroke="#fffbe9" stroke-width="1.2" opacity=".34"/>
+</g>
+<g>
+<path d="M918 812 L1108 806 L1118 832 L910 838 Z" fill="#05070a" opacity=".6"/>
+<path d="M922 756.4 L1104 748.4 L1112 826.4 L930 834.4 Z" fill="#ded2b4"/>
+<path d="M922 750.0 L1104 742.0 L1112 820.0 L930 828.0 Z" fill="#ded2b4"/>
+<path d="M922 743.6 L1104 735.6 L1112 813.6 L930 821.6 Z" fill="#ded2b4"/>
+<path d="M922 737.2 L1104 729.2 L1112 807.2 L930 815.2 Z" fill="#ded2b4"/>
+<path d="M922 730.8 L1104 722.8 L1112 800.8 L930 808.8 Z" fill="#ded2b4"/>
+<path d="M922 724.4 L1104 716.4 L1112 794.4 L930 802.4 Z" fill="#ded2b4"/>
+<path d="M922 718 L1104 710 L1112 788 L930 796 Z" fill="url(#stackTop)"/>
+<path d="M924 724.4 L1106 716.4" stroke="#8f8468" stroke-width="1.2" opacity=".55"/>
+<path d="M924 730.8 L1106 722.8" stroke="#8f8468" stroke-width="1.2" opacity=".55"/>
+<path d="M924 737.2 L1106 729.2" stroke="#8f8468" stroke-width="1.2" opacity=".55"/>
+<path d="M924 743.6 L1106 735.6" stroke="#8f8468" stroke-width="1.2" opacity=".55"/>
+<path d="M924 750.0 L1106 742.0" stroke="#8f8468" stroke-width="1.2" opacity=".55"/>
+<path d="M930 796 L1112 788" stroke="#8f8468" stroke-width="1.4" opacity=".6"/>
+<path d="M936 726 L1098 718" stroke="#a5382b" stroke-width="1.6" opacity=".55"/>
+<path d="M938 748 L1072 741" stroke="#8c8166" stroke-width="1.4" opacity=".45"/>
+<path d="M940 764 L1058 758" stroke="#8c8166" stroke-width="1.4" opacity=".42"/>
+<path d="M942 780 L1036 775" stroke="#a5382b" stroke-width="1.3" opacity=".34"/>
+<path d="M922 718 L1104 710" stroke="#fffbe8" stroke-width="1.7" opacity=".62"/>
+</g>
+<g>
+<path d="M596 872 L838 838" stroke="#05070a" stroke-width="11" opacity=".55"/>
+<path d="M606 869 L838 838" stroke="#b09a66" stroke-width="7.2"/>
+<path d="M606 865.5 L838 834.5" stroke="#dcc99a" stroke-width="1.7" opacity=".6"/>
+<path d="M607 873 L839 842" stroke="#7d6b46" stroke-width="1.4" opacity=".5"/>
+<path d="M838 832 L874 827 L840 843 Z" fill="#e8dcc0"/>
+<path d="M838 832 L874 827 L840 836 Z" fill="#f8f0d8"/>
+<path d="M868 828 L876 826.5 L871 831.5 Z" fill="#22201d"/>
+<path d="M592 874.5 L606 872.5 L607 878.5 L593 880.5 Z" fill="#8e969c"/>
+<path d="M592 874.5 L606 872.5 L606 874 L592 876 Z" fill="#c6cdd2" opacity=".7"/>
+</g>
+<g>
+<ellipse cx="1160" cy="784" rx="46" ry="10" fill="#05070a" opacity=".66"/>
+<ellipse cx="1160" cy="722" rx="52" ry="46" fill="url(#steam)"/>
+<path d="M1124 736 L1196 736 L1186 782 Q1160 790 1134 782 Z" fill="#3a4854"/>
+<path d="M1124 736 L1196 736 L1192 748 L1128 748 Z" fill="#46545f"/>
+<ellipse cx="1160" cy="736" rx="36" ry="9.4" fill="#4a5865"/>
+<ellipse cx="1160" cy="736" rx="27" ry="6.2" fill="#0b1116"/>
+<ellipse cx="1160" cy="737" rx="27" ry="6.2" fill="#7f9199" opacity=".35"/>
+<path d="M1134 782 Q1160 790 1186 782" fill="none" stroke="#9fb2b8" stroke-width="1.5" opacity=".5"/>
+<path d="M1124 740 C1119 756 1124 772 1134 782" fill="none" stroke="#a9bcc1" stroke-width="1.7" opacity=".45"/>
+<path d="M1196 740 L1190 780" stroke="#c3d4d8" stroke-width="1.4" opacity=".35"/>
+<path d="M1152 720 C1142 698 1162 688 1154 668" stroke="#d8e7ea" stroke-width="1.8" fill="none" opacity=".18"/>
+<path d="M1168 722 C1178 700 1158 690 1166 670" stroke="#d8e7ea" stroke-width="1.4" fill="none" opacity=".12"/>
+</g>
+<g>
+<ellipse cx="1266" cy="780" rx="32" ry="8" fill="#05070a" opacity=".6"/>
+<path d="M1238 714 L1294 714 L1288 776 L1244 776 Z" fill="#37444f"/>
+<path d="M1238 714 L1294 714 L1292 726 L1240 726 Z" fill="#43505c"/>
+<ellipse cx="1266" cy="714" rx="28" ry="8" fill="#485560"/>
+<ellipse cx="1266" cy="714" rx="20" ry="5" fill="#0b1116"/>
+<path d="M1256 714 L1242 650" stroke="#a5905d" stroke-width="4.8" stroke-linecap="round"/>
+<path d="M1264 713 L1266 642" stroke="#c2ae76" stroke-width="4.8" stroke-linecap="round"/>
+<path d="M1273 714 L1290 654" stroke="#82755a" stroke-width="4.8" stroke-linecap="round"/>
+<path d="M1264 713 L1266 642" stroke="#f0e0b2" stroke-width="1.2" opacity=".55"/>
+<path d="M1238 718 L1236 774" stroke="#b6c8ce" stroke-width="1.5" opacity=".3"/>
+<path d="M1287 776 Q1266 783 1245 776" fill="none" stroke="#93a6ac" stroke-width="1.4" opacity=".45"/>
+</g>
+<g transform="rotate(-9 349.0 825.0)">
+<rect x="300" y="805" width="106" height="50" fill="#05070a" opacity=".62"/>
+<rect x="296" y="800" width="106" height="50" rx="1.4" fill="#e8dab5"/>
+<rect x="296" y="800" width="106" height="2" fill="#fbf2d6" opacity=".9"/>
+<path d="M304 816 L392 816" stroke="#8a7f62" stroke-width="1.1" opacity=".5"/>
+<path d="M304 825 L392 825" stroke="#8a7f62" stroke-width="1.1" opacity=".5"/>
+<path d="M304 834 L392 834" stroke="#8a7f62" stroke-width="1.1" opacity=".5"/>
+</g>
+<g transform="rotate(6 408.0 845.0)">
+<rect x="364" y="827" width="96" height="46" fill="#05070a" opacity=".62"/>
+<rect x="360" y="822" width="96" height="46" rx="1.4" fill="#e8dab5"/>
+<rect x="360" y="822" width="96" height="2" fill="#fbf2d6" opacity=".9"/>
+<path d="M368 838 L446 838" stroke="#8a7f62" stroke-width="1.1" opacity=".5"/>
+<path d="M368 847 L446 847" stroke="#8a7f62" stroke-width="1.1" opacity=".5"/>
+<path d="M368 856 L446 856" stroke="#8a7f62" stroke-width="1.1" opacity=".5"/>
+</g>
+<g transform="rotate(-4 470.0 832.0)">
+<rect x="424" y="813" width="100" height="48" fill="#05070a" opacity=".62"/>
+<rect x="420" y="808" width="100" height="48" rx="1.4" fill="#e8dab5"/>
+<rect x="420" y="808" width="100" height="2" fill="#fbf2d6" opacity=".9"/>
+<path d="M428 824 L510 824" stroke="#8a7f62" stroke-width="1.1" opacity=".5"/>
+<path d="M428 833 L510 833" stroke="#8a7f62" stroke-width="1.1" opacity=".5"/>
+<path d="M428 842 L510 842" stroke="#8a7f62" stroke-width="1.1" opacity=".5"/>
+</g>
+<g transform="rotate(10 524.0 854.0)">
+<rect x="482" y="837" width="92" height="44" fill="#05070a" opacity=".62"/>
+<rect x="478" y="832" width="92" height="44" rx="1.4" fill="#e8dab5"/>
+<rect x="478" y="832" width="92" height="2" fill="#fbf2d6" opacity=".9"/>
+<path d="M486 848 L560 848" stroke="#8a7f62" stroke-width="1.1" opacity=".5"/>
+<path d="M486 857 L560 857" stroke="#8a7f62" stroke-width="1.1" opacity=".5"/>
+<path d="M486 866 L560 866" stroke="#8a7f62" stroke-width="1.1" opacity=".5"/>
+</g>
+<rect width="1440" height="900" fill="url(#vig)"/>
+</svg>
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+
+<div class="hero-in">
+  <div class="notice"><span class="dot"></span>全程不剧透 · 梗概止于「编辑部被叫去谈话的那一天」</div>
+  <div class="eyebrow"><i></i>Japanese Cinema · No.23</div>
+  <h1>编舟记</h1>
+  <p class="latin">舟を編む</p>
+  <p class="latin">The Great Passage · 2013</p>
+  <p class="hero-sub">一间屋子，成箱的卡片，每一张上面抄着一个词，和一句从哪里听来的话。屋里有三个人，他们打算用十二年，把这些纸装订成一本可以翻的书。<em>这是日本电影里最安静的一部「关于工作」的片子，安静到你能听见铅笔在纸上走。</em></p>
+  <div class="chips">
+    <span class="chip"><b>2013</b> · 石井裕也</span>
+    <span class="chip"><b>134 分钟</b> · 1.85:1</span>
+    <span class="chip">豆瓣 <b>8.6</b></span>
+    <span class="chip">IMDb <b>7.3</b></span>
+    <span class="chip">学院奖 <b>6 项最优秀</b></span>
+  </div>
+</div>
+
+<div class="scroll-hint">SCROLL<span></span></div>
+</header>
+
+<nav id="hud" aria-hidden="true">
+  <b data-i="0"><i></i>屏</b><b data-i="1"><i></i>字</b><b data-i="2"><i></i>档</b><b data-i="3"><i></i>人</b><b data-i="4"><i></i>等</b>
+</nav>
+
+<main>
+
+<section class="sec" id="s1" style="border-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">01</span><h2>剧情梗概</h2><p class="kicker">The Story</p></div>
+    <div class="intro">
+      <div class="lede reveal">
+        <p>玄武书房有一间屋子，里面堆着纸。不是书，是纸——一叠一叠的卡片，每一张抄着一个词，和一句从什么地方听来的话。这叠纸的正式名字叫「用例采集票」，这间屋子的正式名字叫「辞典编辑部」。</p>
+        <p>他们在做一本辞典，名字叫《大渡海》。中型国语辞典，收录二十四万词，从「あ」开始，一个词一个词地写释义、配例句、注语感、标出处。业内的常识是：这样一本书，十年做完算快的。</p>
+        <p>一九九五年。这个年份在片子里没有被谁特别强调，但它在场——那一年 Windows 95 发售，手机开始变便宜，所有人都在说纸要没了。</p>
+        <p>编辑部只有三个人。监修松本朋佑，六十多岁，原本是大学教授，为了这本书把教职辞了。编辑荒木公平，从进公司第一天起只做辞典。还有一位契约社员的佐佐木女士，负责所有没人愿意做的事。荒木要走了——妻子病了，他得回家。走之前，他得给这间屋子找一个人。</p>
+        <p>他找到的是营业部第三年的马缔光也。二十七岁，研究生院语言学出身，在公司里以「不会说话」出名：别人说反话他照字面理解，别人开玩笑他认真回答，跑业务时被客户投诉「这人是不是有问题」。荒木见他的方式很简单——他问：<strong>「请为『右』这个词，写一条释义。」</strong></p>
+        <p>那场对话很短。本页不说马缔答了什么，只说结果：荒木当场认定，就是这个人。</p>
+        <p>马缔搬进了「早雲荘」，一间战后盖的木造公寓，房东是位叫タケ的老太太。他房间四壁全是书架，书多到把一楼也占了一间。同一年，老太太的孙女香具矢也搬了回来——她在汤岛的料亭当板前见习，指甲剪到贴着肉，说话快，笑起来整张脸都在动。</p>
+        <p>于是两条线同时开始走：一条是二十四万个词，一条是一个连「我喜欢你」都说不出口的人。</p>
+        <p>编辑部另一个年轻人是西冈正志，二十七岁，入社五年。他跟马缔是两个方向：马缔不会说话，西冈太会说话；马缔只信纸，西冈只信人。他起初对辞典毫无兴趣，把它当成一份过渡的工作。</p>
+        <p>一本辞典不是几个人写的。稿子要请外面的学者写，纸要找制纸厂定做（一家叫あけぼの製紙的小厂，营业员宫本为了这一本书试了几十种纸），校样要校五轮以上，每一轮都能挑出新错——一个词漏了，一个假名错位，一条释义和另一条自相矛盾。</p>
+        <p>然后，公司里有人开始说：这本书不必做了。说这话的是局长村越。他的理由不算没道理：编辑部年年赤字；等这本书印出来，纸的辞典大概已经被电子辞典取代了。</p>
+        <p><strong>那天，编辑部被叫去谈话。</strong></p>
+        <p class="dash">谈话的内容、条件、谁让了步、以及这本辞典最后有没有做出来——本页一个字都不写。</p>
+      </div>
+      <aside class="glance reveal">
+        <h3>At a Glance</h3>
+        <dl>
+          <div><dt>一句话</dt><dd>一本要做十二年的辞典，和一群决定把十二年交出去的人。</dd></div>
+          <div><dt>时间</dt><dd>1995 年 → 十二年后<small>片中给出的跨度</small></dd></div>
+          <div><dt>地点</dt><dd>东京 · 玄武书房 / 早雲荘 / 汤岛的料亭<small>编辑部、旧公寓、后厨</small></dd></div>
+          <div><dt>主角</dt><dd>马缔光也（27 岁，营业部转辞典编辑部）</dd></div>
+          <div><dt>对手</dt><dd>不是人，是「来不及」和「不必做」</dd></div>
+          <div><dt>数字</dt><dd>24 万词 · 五轮校对 · 十二年</dd></div>
+          <div><dt>道具</dt><dd>用例采集票 / 校样 / 一支铅笔 / 一把厨刀</dd></div>
+          <div><dt>声音</dt><dd>铅笔在纸上走、翻纸、印刷机</dd></div>
+          <div><dt>情绪</dt><dd>安静。越到后面越热</dd></div>
+          <div><dt>关键词</dt><dd>词 / 时间 / 手 / 舟</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="acts">
+      <div class="act reveal"><div class="t">First · 挖人</div><h4>一道题，把一个人从营业部挖到地下室</h4><p>不问学历、不问履历，只问一个词怎么解释。这场面试是全片最好的开场：它一次说明了主角是什么人，也说清了这份工作要什么本事。</p></div>
+      <div class="act reveal"><div class="t">Second · 采集</div><h4>二十四万个词，一个也不能凭想当然</h4><p>他们到电车上、居酒屋、快餐店去听别人怎么说话，把听到的新词抄下来。辞典不是从旧辞典里抄出来的，是从活人嘴里捞出来的。</p></div>
+      <div class="act reveal"><div class="t">Third · 保卫</div><h4>有人想停掉它，理由很现实</h4><p>赤字、年限、技术更替——每一条都成立。这一段没有反派，只有两套都对的算法撞在一起。</p></div>
+    </div>
+
+    <p class="note reveal" style="margin-top:34px">本页叙述止于「编辑部被叫去谈话」的那一刻。谈话的条件、谁做了让步、松本老师的身体、马缔与香具矢后来怎样、以及《大渡海》最终有没有印出来，一律不写。</p>
+  </div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">02</span><h2>概念海报</h2><p class="kicker">Four Million Cards</p></div>
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+<svg class="poster-svg" viewBox="0 0 620 800" role="img" aria-label="概念海报：一叠用例采集卡">
+<defs>
+<linearGradient id="pbg" x1="0" y1="0" x2=".4" y2="1">
+<stop offset="0" stop-color="#0b0f14"/><stop offset=".55" stop-color="#070a0d"/><stop offset="1" stop-color="#040608"/></linearGradient>
+<linearGradient id="cardG" x1="0" y1="0" x2=".7" y2="1">
+<stop offset="0" stop-color="#f6efdb"/><stop offset=".5" stop-color="#eee6cf"/><stop offset="1" stop-color="#ded4b8"/></linearGradient>
+<linearGradient id="cardEdge" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#e6dcc2"/><stop offset="1" stop-color="#cabf9f"/></linearGradient>
+<radialGradient id="pglow" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#b9ced8" stop-opacity=".14"/><stop offset="1" stop-color="#7c98a5" stop-opacity="0"/></radialGradient>
+<radialGradient id="pvig" cx=".5" cy=".42" r=".72">
+<stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".6" stop-color="#000" stop-opacity=".14"/><stop offset="1" stop-color="#000" stop-opacity=".74"/></radialGradient>
+</defs>
+<rect width="620" height="800" fill="url(#pbg)"/>
+<ellipse cx="310" cy="290" rx="340" ry="310" fill="url(#pglow)"/>
+<path d="M0 566 L620 562" stroke="#151d24" stroke-width="1" opacity=".45"/>
+<path d="M0 586 L620 582" stroke="#151d24" stroke-width="1" opacity=".45"/>
+<path d="M0 606 L620 602" stroke="#151d24" stroke-width="1" opacity=".45"/>
+<path d="M0 626 L620 622" stroke="#151d24" stroke-width="1" opacity=".45"/>
+<path d="M0 646 L620 642" stroke="#151d24" stroke-width="1" opacity=".45"/>
+<path d="M0 666 L620 662" stroke="#151d24" stroke-width="1" opacity=".45"/>
+<path d="M0 686 L620 682" stroke="#151d24" stroke-width="1" opacity=".45"/>
+<path d="M0 706 L620 702" stroke="#151d24" stroke-width="1" opacity=".45"/>
+<path d="M0 726 L620 722" stroke="#151d24" stroke-width="1" opacity=".45"/>
+<path d="M0 746 L620 742" stroke="#151d24" stroke-width="1" opacity=".45"/>
+<path d="M0 766 L620 762" stroke="#151d24" stroke-width="1" opacity=".45"/>
+<path d="M0 786 L620 782" stroke="#151d24" stroke-width="1" opacity=".45"/>
+<g transform="rotate(3 310.0 312.0)">
+<rect x="154" y="206" width="320" height="224" fill="#000" opacity=".42"/>
+<rect x="150" y="200" width="320" height="224" rx="1.6" fill="url(#cardEdge)"/>
+<rect x="150" y="200" width="320" height="224" rx="1.6" fill="none" stroke="#9d9276" stroke-width=".7" opacity=".28"/>
+</g>
+<g transform="rotate(-4 302.0 296.0)">
+<rect x="146" y="190" width="320" height="224" fill="#000" opacity=".42"/>
+<rect x="142" y="184" width="320" height="224" rx="1.6" fill="url(#cardEdge)"/>
+<rect x="142" y="184" width="320" height="224" rx="1.6" fill="none" stroke="#9d9276" stroke-width=".7" opacity=".28"/>
+</g>
+<g transform="rotate(2 316.0 280.0)">
+<rect x="160" y="174" width="320" height="224" fill="#000" opacity=".42"/>
+<rect x="156" y="168" width="320" height="224" rx="1.6" fill="url(#cardEdge)"/>
+<rect x="156" y="168" width="320" height="224" rx="1.6" fill="none" stroke="#9d9276" stroke-width=".7" opacity=".28"/>
+</g>
+<g transform="rotate(-3 310.0 264.0)">
+<rect x="155" y="160" width="320" height="224" fill="#000" opacity=".46"/>
+<rect x="150" y="152" width="320" height="224" rx="1.6" fill="url(#cardG)"/>
+<rect x="150" y="152" width="320" height="224" rx="1.6" fill="none" stroke="#8d8267" stroke-width=".9" opacity=".55"/>
+<path d="M168 188 L452 188" stroke="#a5382b" stroke-width=".9" opacity=".38"/>
+<text x="168" y="179" font-family="Songti SC,serif" font-size="10" fill="#7d6f52" letter-spacing="3">用例採集票</text>
+<text x="452" y="179" text-anchor="end" font-family="Didot,Times New Roman,serif" font-size="10" fill="#8a7c5e" letter-spacing="1.4">No. 047</text>
+<text x="190" y="288" font-family="Songti SC,Source Han Serif SC,serif" font-size="82" fill="#141920">恋</text>
+<ellipse cx="222" cy="260" rx="52" ry="44" fill="none" stroke="#a5382b" stroke-width="2" opacity=".7" transform="rotate(-5 222 260)"/>
+<ellipse cx="222" cy="260" rx="56" ry="48" fill="none" stroke="#a5382b" stroke-width=".9" opacity=".3" transform="rotate(-5 222 260)"/>
+<text x="290" y="244" font-family="Songti SC,serif" font-size="11.5" fill="#38352b" letter-spacing=".4">ある人を、他の誰とも</text>
+<text x="290" y="266" font-family="Songti SC,serif" font-size="11.5" fill="#38352b" letter-spacing=".4">違うものと思い続ける</text>
+<text x="290" y="288" font-family="Songti SC,serif" font-size="11.5" fill="#38352b" letter-spacing=".4">気持ち。逢えぬ時間の</text>
+<text x="290" y="310" font-family="Songti SC,serif" font-size="11.5" fill="#38352b" letter-spacing=".4">長さが、その重さになる。</text>
+<text x="290" y="342" font-family="Songti SC,serif" font-size="9.6" fill="#6e6654" letter-spacing=".4">—— 辞書づくりは恋に似る。</text>
+<text x="168" y="363" font-family="Songti SC,serif" font-size="9.2" fill="#8a7c5e" letter-spacing="2">出典</text>
+<path d="M198 359 L274 359" stroke="#9d9276" stroke-width=".8" opacity=".45"/>
+<text x="454" y="363" text-anchor="end" font-family="Songti SC,serif" font-size="8.2" fill="#7d745e" opacity=".75">H.18.11 聞き取り</text>
+</g>
+<g>
+<rect x="150" y="404.0" width="318" height="5.4" fill="#d9cfb2"/>
+<rect x="150" y="404.0" width="318" height="1.3" fill="#f2ead2" opacity=".85"/>
+<rect x="150" y="409.4" width="318" height="5.4" fill="#d9cfb2"/>
+<rect x="150" y="409.4" width="318" height="1.3" fill="#f2ead2" opacity=".85"/>
+<rect x="150" y="414.8" width="318" height="5.4" fill="#d9cfb2"/>
+<rect x="150" y="414.8" width="318" height="1.3" fill="#f2ead2" opacity=".85"/>
+<rect x="150" y="420.2" width="318" height="5.4" fill="#d9cfb2"/>
+<rect x="150" y="420.2" width="318" height="1.3" fill="#f2ead2" opacity=".85"/>
+<rect x="150" y="425.6" width="318" height="5.4" fill="#d9cfb2"/>
+<rect x="150" y="425.6" width="318" height="1.3" fill="#f2ead2" opacity=".85"/>
+<rect x="150" y="431.0" width="318" height="5.4" fill="#d9cfb2"/>
+<rect x="150" y="431.0" width="318" height="1.3" fill="#f2ead2" opacity=".85"/>
+<rect x="150" y="436.4" width="318" height="5.4" fill="#d9cfb2"/>
+<rect x="150" y="436.4" width="318" height="1.3" fill="#f2ead2" opacity=".85"/>
+<rect x="150" y="441.8" width="318" height="5.4" fill="#d9cfb2"/>
+<rect x="150" y="441.8" width="318" height="1.3" fill="#f2ead2" opacity=".85"/>
+<rect x="150" y="402" width="318" height="3.4" fill="#f4ecd4"/>
+<rect x="150" y="402" width="318" height="52" fill="none" stroke="#8d8267" stroke-width=".8" opacity=".3"/>
+<path d="M288 398 L288 458" stroke="#4a3f30" stroke-width="6.4" opacity=".85"/>
+<path d="M312 400 L312 458" stroke="#3d3327" stroke-width="4" opacity=".55"/>
+<path d="M284 398 L316 398" stroke="#5b4e3b" stroke-width="3.2" opacity=".7"/>
+<path d="M284 458 L316 458" stroke="#5b4e3b" stroke-width="3.2" opacity=".7"/>
+</g>
+<path d="M96 560 L524 560" stroke="#252e37" stroke-width="1"/>
+<text x="96" y="632" font-family="Songti SC,Source Han Serif SC,serif" font-size="50" fill="#efe7d4" letter-spacing="9">编舟记</text>
+<text x="98" y="662" font-family="Didot,Times New Roman,serif" font-size="12" fill="#8d939a" letter-spacing="4.2">舟 を 編 む</text>
+<text x="98" y="684" font-family="Didot,Times New Roman,serif" font-size="9.4" fill="#666d75" letter-spacing="3">THE GREAT PASSAGE · 2013</text>
+<g transform="rotate(-4 512 646)">
+<rect x="484" y="614" width="58" height="58" rx="2" fill="none" stroke="#a5382b" stroke-width="2.2" opacity=".82"/>
+<rect x="488" y="618" width="50" height="50" rx="1.5" fill="none" stroke="#a5382b" stroke-width=".8" opacity=".42"/>
+<text x="513" y="636" text-anchor="middle" font-family="Songti SC,serif" font-size="12.5" fill="#b8503c" letter-spacing="1">日本</text>
+<text x="513" y="657" text-anchor="middle" font-family="Songti SC,serif" font-size="12.5" fill="#b8503c" letter-spacing="1">廿三</text>
+</g>
+<rect width="620" height="800" fill="url(#pvig)"/>
+</svg>
+        </div>
+        <p class="pcap">CONCEPT POSTER · 第二十三种范式：一叠用例采集卡</p>
+      </div>
+      <div class="pnotes">
+        <div class="pnote reveal"><div class="n">NOTE 01</div><h4>这部电影的主角不是人，是一张卡片</h4><p>片子拍了十二年，但真正每天在动的，是这些五寸见方的小纸。词写在左上，出处写在右下，中间留给一句「你在哪儿听过它」。<em>整部电影的手艺，都发生在这张卡的方寸之间。</em></p></div>
+        <div class="pnote reveal"><div class="n">NOTE 02</div><h4>为什么把「恋」放在最上面</h4><p>因为全片最动人的一段，是马缔被要求给「恋」写释义。他能给二十四个词写定义，唯独这一个写不出来——不是不会，是<b>他知道自己一写就会露馅</b>。</p></div>
+        <div class="pnote reveal"><div class="n">NOTE 03</div><h4>那个红圈，是编辑的手</h4><p>红笔在辞典校样上只做三件事：圈出、划掉、写不下就拉到页边。这个圈不是装饰，是<b>一个人对另一个人的作业做出的判断</b>。全片所有的人际关系，最后都落成这种笔迹。</p></div>
+        <div class="pnote reveal"><div class="n">NOTE 04</div><h4>下面那叠捆着的，才是日常</h4><p>散开的几张是「在想的」，捆起来的那叠是「已经归档的」。一根橡皮筋，把灵感变成库存。<em>这部片子最不浪漫、也最动人的部分，就是这根橡皮筋。</em></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">03</span><h2>影片档案</h2><p class="kicker">Credits</p></div>
+    <dl class="spec reveal">
+      <div><dt>原名</dt><dd>舟を編む<small>ふねをあむ</small></dd></div>
+      <div><dt>英文名</dt><dd>The Great Passage</dd></div>
+      <div><dt>中文别名</dt><dd>编舟记<small>港《字里人间》/ 台《宅男的恋爱字典》</small></dd></div>
+      <div><dt>年份</dt><dd>2013</dd></div>
+      <div><dt>片长</dt><dd>134 分钟<small>日文维基记 133</small></dd></div>
+      <div><dt>规格</dt><dd>彩色 · 1.85:1<small>35mm，无加长版</small></dd></div>
+      <div><dt>类型</dt><dd>剧情<small>职人 / 职场 / 静水流深</small></dd></div>
+      <div><dt>监督</dt><dd>石井裕也<small>1983 年生，拍本片时 29 岁</small></dd></div>
+      <div><dt>脚本</dt><dd>渡辺謙作<small>《编舟记》是他第一次拿学院奖</small></dd></div>
+      <div><dt>原作</dt><dd>三浦しをん<small>2011 光文社 · 2012 本屋大赏第 1 位</small></dd></div>
+      <div><dt>摄影</dt><dd>藤澤順一</dd></div>
+      <div><dt>音乐</dt><dd>渡邊崇</dd></div>
+      <div><dt>美术</dt><dd>原田満生</dd></div>
+      <div><dt>剪辑</dt><dd>普嶋信一<small>本片为他拿下最优秀编辑赏</small></dd></div>
+      <div><dt>录音</dt><dd>加藤大和<small>本片为他拿下最优秀录音赏</small></dd></div>
+      <div><dt>照明</dt><dd>長田達也</dd></div>
+      <div><dt>制作</dt><dd>「舟を編む」製作委員会<small>テレビ東京 / 松竹 / アスミック・エース / 電通 / 光文社 等</small></dd></div>
+      <div><dt>配给</dt><dd>松竹 / アスミック・エース</dd></div>
+      <div><dt>公映</dt><dd>2013-04-13（日本）<small>香港 2013-08-22</small></dd></div>
+      <div><dt>主演</dt><dd>松田龍平<small>马缔光也</small></dd></div>
+      <div><dt>共演</dt><dd>宮﨑あおい / オダギリジョー / 黒木華<small>加藤剛 / 小林薫 / 八千草薫 / 渡辺美佐子 / 池脇千鶴 / 鶴見辰吾</small></dd></div>
+      <div><dt>系列坐标</dt><dd>日本专题 第 23 期<small>系列第一部「职人 / 职场」题材</small></dd></div>
+      <div class="wide"><dt>一句话</dt><dd>它把「做一本书」拍成了「造一艘船」：没有人看见船下水的那一刻，但所有人都知道，那艘船必须有人造。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="s4">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">04</span><h2>口碑与口径</h2><p class="kicker">Numbers, Carefully</p></div>
+    <div class="scores reveal">
+      <div class="sc hi"><div class="src">Douban 豆瓣</div><div class="val">8.6<small>/ 10</small></div><div class="meta"><b>81,692</b> 人评价 · 五星 41.2% / 四星 46.2%<br>三星 11.7% / 二星 0.7% / 一星 0.2% · <b>未进 Top250</b></div></div>
+      <div class="sc"><div class="src">IMDb</div><div class="val">7.3<small>/ 10</small></div><div class="meta">约 <b>3,000</b> 票 · 与豆瓣差 <b>1.3</b><br>海外发行很窄，票池一直是这个量级</div></div>
+      <div class="sc abs"><div class="src">Rotten Tomatoes</div><div class="val">86%<small>仅 4 篇</small></div><div class="meta">样本小到不能当「好评率」引用<br>本页只作记录，不用它论证什么</div></div>
+      <div class="sc abs"><div class="src">第 37 回 日本电影学院奖</div><div class="val tiny">6 项最优秀 · 12 部门优秀</div><div class="meta">作品 / 监督 / 脚本 / 主演男优 / 录音 / 剪辑</div></div>
+    </div>
+    <ul class="caliber reveal">
+      <li><i>01</i><span><b>片长有两个数：134 与 133。</b>豆瓣、IMDb（2h14m）、烂番茄都记 134，日文维基记 133。本页主口径用 134，另一说并列在此。</span></li>
+      <li><i>02</i><span><b>烂番茄 86%，只有 4 篇影评。</b>这是 2013 年北美小规模点映留下的样本，任何把它当「媒体好评率 86%」的说法都不成立。观众评分也只有 100+ 人次。<b>本页引用它，只为了说明这片子在英美几乎没有被看见。</b></span></li>
+      <li><i>03</i><span><b>「16 胜 16 提名」是 IMDb 的累计总数。</b>它把日本国内大大小小的影评人赏、体育报赏、地方电影节全部算进去了，与本页按届次列奖项的口径不同，<b>不采用</b>。</span></li>
+      <li><i>04</i><span><b>8.6 分，却没有进豆瓣 Top250。</b>不是分数不够，是票池不够——Top250 的末位常年由几十万票的片子把守，八万票进不去。<b>这也说明它是「看过的人都说好，但看的人不多」的那一类。</b></span></li>
+      <li><i>05</i><span><b>8.6 与 7.3，差 1.3。</b>这是本系列里较大的分歧之一（最大是第 17 期《战场上的快乐圣诞》的 1.6）。方向也一致：东亚观众给得高，英美评论界更保留——他们说它「太慢」「太干净」「像电视剧」。</span></li>
+      <li><i>06</i><span><b>票房两个口径，不合并。</b>日本国内配给收入 <b>8.27 亿日元</b>、动员约 <b>68 万人</b>（日文维基）；全球总票房 <b>7,362,767 美元</b>（IMDb）。一部讲辞典的电影，在日本的成绩是「回本之上、爆款之下」。</span></li>
+      <li><i>07</i><span><b>学院奖的「12 部门」怎么读。</b>官方作品介绍的原文是「12 部門で優秀賞と新人俳優賞を受賞」——最优秀赏本身也先算在优秀赏里，所以<b>不能读成「12 项提名、6 项获奖」</b>。准确说法是：12 个部门入围优秀赏，其中 6 个部门最终拿到最优秀。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="s5">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">05</span><h2>四个人，一本还不存在的书</h2><p class="kicker">Who Wants What</p></div>
+    <div class="people reveal">
+      <div class="person">
+        <div class="role">THE EDITOR · 玄武书房</div><h4>马缔光也<small>（馬締光也）</small></h4><div class="actor">松田龍平</div>
+        <p>他不会说话。不是害羞，是字面上的不会——别人的话他照字面收，自己的话他不知道怎么递出去。但他对词有一种近乎生理的敏感：一个词在什么场合、被谁、用什么语气说出来，他听得出差别。<span><b>他要的</b>是把每个词都放到对的位置上。这个愿望小到不像志向，却是全片所有事情的起点。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">THE COOK · 汤岛</div><h4>林香具矢<small>（林香具矢）</small></h4><div class="actor">宮﨑あおい</div>
+        <p>早雲荘房东的孙女，在汤岛的料亭当板前见习。她的世界是刀、火、时令和手上一道口子。她说话直，笑起来毫无保留，跟马缔正好相反——<span><b>她用做的，不用说的。</b>这也是全片最漂亮的一处对位：两个人都把手艺当语言。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">THE TALKER · 编辑部</div><h4>西冈正志<small>（西岡正志）</small></h4><div class="actor">オダギリジョー</div>
+        <p>编辑部里唯一会打电话、会约人、会在酒桌上把事办成的人。他起初看不起这份工作，觉得辞典是老头子的事。但他也最早意识到：这本书要活下来，光靠马缔的认真不够。<span><b>他要的</b>是证明自己不只是个会说话的人。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">THE MASTER · 监修</div><h4>松本朋佑<small>（松本朋佑）</small></h4><div class="actor">加藤剛</div>
+        <p>《大渡海》的监修。国语学者，把大学教授的位子辞了来做这本辞典。他不催稿，他只问一句：「这个词，你在哪里听过？」<span><b>他要的</b>不是一本正确的辞典，是一本当下的人还在用的辞典。这句话，是整部片子的方法论。</span></p>
+      </div>
+      <div class="person thing">
+        <div class="role">THE THING · 一本还没有的书</div><h4>《大渡海》<small>24 万词，十二年。</small></h4><div class="actor">没有作者，只有编者</div>
+        <p>它不署名，只署出版社；它上市那天，编它的人大概都老了十岁；它被用的时候，没有人会想起做它的人是谁。<span><b>它代表的东西</b>是这部片子真正的主角：<em>那些「做的时候看不见、用的时候不记得」的工作</em>——修桥、铺路、编辞典、把一句话解释清楚。文明就是靠这类工作撑住的，而它们从来不上头条。</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s6">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">06</span><h2>人物冲突</h2><p class="kicker">Six Frictions</p></div>
+    <div class="conflicts reveal">
+      <div class="cf"><h4><i>FRICTION 01</i>给「右」写释义，不能写「左的相反」</h4><p>这是全片的第一次考试，也是它最好的一句宣言。用另一个词解释一个词，等于把读者推给下一个不懂的词。<em>辞典的工作，是把人从循环里拉出来。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 02</i>营业部算的是成本，编辑部算的是年</h4><p>同一家公司，两套时间单位。营业部没错，书卖不动就是卖不动；编辑部也没错，有些东西的回报周期本来就不该用季度衡量。<em>这场冲突没有坏人，只有两种正确。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 03</i>两个都不会说话的人，怎么在一起</h4><p>他用释义表白，她用一道菜回答。全片没有一场像样的告白戏，但每一次递东西、每一次留饭，都在推进同一件事。<em>这是「手艺人的恋爱」：不说，只做。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 04</i>西冈与马缔：两种「有用」</h4><p>一个能把事办成，一个能把事做对。公司先看见前者，时间先留下后者。<em>他们互相看不起，也互相需要——这部片子对他们的公平，在于它让两个人都对了一半。</em></p></div>
+      <div class="cf"><h4><i>FRICTION 05</i>编辑部与村越：赤字是事实，文化是理由</h4><p>村越不是反派。他说的每一句话在财务报表上都成立。但他漏算了一样东西：<em>一本辞典的生命比一家公司的财报长得多。</em>而这句话，编辑部的人自己也不好意思说出口——因为它太像借口。</p></div>
+      <div class="cf"><h4><i>FRICTION 06</i>纸，与屏幕</h4><p>一九九五年，所有人都在预言纸会消失。这部片子没有反驳这个预言，它只是把镜头放在一群仍然在纸上工作的人身上。<em>它不问「纸会不会赢」，它问「在它还没输完的时候，你要不要把它做对」。</em></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s7">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">07</span><h2>荣誉，以及它的反面</h2><p class="kicker">What It Has, What It Didn't</p></div>
+    <div class="awards reveal">
+      <div class="award gold"><div class="yr">2012</div><div><h4>第 9 回 本屋大赏 · 第 1 位</h4><p>原著先赢的。三浦しをん这本小说由全国书店店员投票选出年度第一——也就是说，这部电影开拍前，它已经是一本被卖书的人爱着的书</p></div></div>
+      <div class="award"><div class="yr">2013</div><div><h4>第 38 回 报知映画赏</h4><p>作品赏 + 主演男优赏（松田龍平）+ 助演女优赏（池脇千鶴）</p></div></div>
+      <div class="award gold wide"><div class="yr">2014</div><div><h4>第 37 回 日本电影学院奖 · 6 项最优秀</h4><p>最优秀作品赏 / 最优秀监督赏（石井裕也）/ 最优秀脚本赏（渡辺謙作）/ 最优秀主演男优赏（松田龍平）/ <b>最优秀录音赏</b>（加藤大和）/ <b>最优秀编辑赏</b>（普嶋信一）；另有 6 项优秀赏 + 新人俳优赏（黒木華）。请注意那两项：一部讲「写词」与「听人说话」的电影，恰好拿了脚本赏与录音赏</p></div></div>
+      <div class="award cold"><div class="yr">2014</div><div><h4>第 87 回 电影旬报十佳 · 日本电影第 2 位</h4><p>第 1 位是森崎東《ペコロスの母に会いに行く》。但它拿了读者票选第 1 位 + 日本电影监督赏 + 主演男优赏 + 新人女优赏（黒木華）</p></div></div>
+      <div class="award"><div class="yr">2014</div><div><h4>第 68 回 每日电影竞赛</h4><p>日本电影大赏 + 男优主演赏 + 监督赏 + 美术赏（原田満生）</p></div></div>
+      <div class="award cold"><div class="yr">2014</div><div><h4>第 56 回 蓝丝带奖 · 只有新人赏</h4><p>黒木華。导演、作品、主演全部落空——同一部片子，在不同奖的坐标系里位置差得很远</p></div></div>
+      <div class="award"><div class="yr">2014</div><div><h4>第 26 回 日刊体育电影大赏</h4><p>作品赏 + 主演男优赏 + 新人赏（黒木華）</p></div></div>
+      <div class="award"><div class="yr">2014</div><div><h4>第 35 回 横滨电影节</h4><p>2013 年度日本电影十佳第 2 位 + 最优秀新人赏（黒木華）</p></div></div>
+      <div class="award cold"><div class="yr">2014</div><div><h4>第 86 届 奥斯卡 · 日本代表</h4><p>选送最佳外语片，未进最终入围名单。石井裕也当时 30 岁，是日本历届代表里最年轻的一位</p></div></div>
+      <div class="award"><div class="yr">2014</div><div><h4>艺术选奖 · 新人赏（电影部门）</h4><p>石井裕也。他此前已凭《川の底からこんにちは》拿过蓝丝带监督赏，是該奖史上最年轻得主</p></div></div>
+      <div class="award wide"><div class="yr">另计</div><div><h4>同一年，四个表演奖它只拿到一个</h4><p>第 37 回学院奖的最优秀主演女优是眞木よう子《さよなら渓谷》，最优秀助演男优与助演女优都归《そして父になる》（リリー・フランキー / 眞木よう子）。《编舟记》拿下作品、导演、脚本、男主、录音、剪辑，却在四个表演奖里只中一个。<b>这恰好说明它是一部「整体大于个人」的电影</b>——它的胜利不在某一场戏，而在所有人都稳稳地在自己的位置上。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s8">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">08</span><h2>一个词要走多远，才能进辞典</h2><p class="kicker">Five Gates</p></div>
+    <div class="lineage reveal">
+      <div class="ln"><div class="yr">STEP 01</div><h4>采集 · 它得先被人真的说出口</h4><p>编辑部的人到电车、居酒屋、快餐店去，听陌生人怎么讲话。听到一个还没进辞典的词，就记下来，连同那句话、那个场合、说话人的年龄。这一步不能靠想，只能靠听。</p></div>
+      <div class="ln"><div class="yr">STEP 02</div><h4>归档 · 一张卡一个词，按五十音排好</h4><p>卡片进盒子，盒子进架子。二十四万个词，就是二十四万个位置。任何一个位置错了，将来就有一个读者翻不到他要找的东西。</p></div>
+      <div class="ln"><div class="yr">STEP 03</div><h4>释义 · 不能用一个不懂的词解释另一个不懂的词</h4><p>「右」不能写「左的相反」，「憮然」不能写「愤慨的样子」——如果一个词的解释里出现了比它更难的词，这条释义就是失败的。这是全片最较真、也最好看的部分。</p></div>
+      <div class="ln"><div class="yr">STEP 04</div><h4>校对 · 五轮以上，每一轮都能挑出新错</h4><p>五个不同的人读同一份校样，会挑出五种不同的错。有人挑假名，有人挑例句的出处，有人挑一条释义和另一条自相矛盾。<b>所谓「准确」，是很多人反复看出来的，不是一个人聪明出来的。</b></p></div>
+      <div class="ln now"><div class="yr">STEP 05</div><h4>成书 · 纸、字体、行距、页边的凹口</h4><p>辞典用纸要薄、要白、要不透；页边要按字母挖出半个月牙形的凹口，让人一摸就翻到那一页。到这一步，它才从一堆纸变成一件可以拿在手里的东西。<small style="display:block;margin-top:8px;color:var(--dim2)">——片中这一整套流程，走了十二年。</small></p></div>
+    </div>
+    <p class="note reveal" style="margin-top:40px">把这五步连起来看，会发现这部电影的结构秘密：<b>它没有戏剧性的转折，它的张力全部来自「工序」。</b>每一步都有人在做、都有标准、都可能出错，而错一个，前面所有人的工作就白做。<br>这也是它比大多数「励志片」高级的地方——它不靠喊口号让人热血，它靠让你看见一件事有多难，然后让你自己生出敬意。</p>
+  </div>
+</section>
+
+<section class="sec" id="s9">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">09</span><h2>六处亮点</h2><p class="kicker">Why It Works</p></div>
+    <div class="grid6 reveal">
+      <div class="g6"><div class="n">01</div><h4>那场「定义『右』」的面试</h4><p>全片最好的一场戏，两个人，一间屋子，一个问题。它同时完成了三件事：交代主角的天赋、交代这份工作的性质、交代荒木为什么非他不可。<b>五分钟之内，你完全相信了这个人应该待在这间屋子里。</b></p></div>
+      <div class="g6"><div class="n">02</div><h4>卡片：把一面墙变成资料库</h4><p>那些盒子、那些架子、那些按五十音排好的纸片，构成了这部片子真正的「布景」。<b>它让你看见「知识」是长什么样的——不是灵感，是排列。</b></p></div>
+      <div class="g6"><div class="n">03</div><h4>两条手艺线，在同一个动作上并轨</h4><p>他削铅笔，她磨刀；他对着一页校样较真，她对着一锅汤较真。全片没有一句「我们是一样的」，但观众看得清清楚楚：<b>这两个人是同行。</b></p></div>
+      <div class="g6"><div class="n">04</div><h4>「辞典是舟」这个比喻</h4><p>片名与原著都指向它：辞典是渡过语言之海的船，编辞典的人是造船的人。<b>这个比喻之所以不俗，是因为它承认了一件事——造船的人自己不上船。</b></p></div>
+      <div class="g6"><div class="n">05</div><h4>声音：它拿了最优秀录音赏</h4><p>铅笔在纸上走、纸页翻动、印章按下、印刷机启动——这部片子几乎不用音乐去推情绪，它用环境音。<b>一部关于「词」的电影，把「声音」做成了主角。</b></p></div>
+      <div class="g6"><div class="n">06</div><h4>十二年的剪辑法</h4><p>它不靠字幕卡交代时间，它靠人脸、靠房间里的东西变旧、靠一个人的坐姿变化。普嶋信一的最优秀编辑赏，拿得一点也不虚——<b>把十二年剪成两小时而不让人觉得跳跃，是硬功夫。</b></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">10</span><h2>为什么值得一看</h2><p class="kicker">Three Reasons</p></div>
+    <div class="why">
+      <article class="reveal"><h3>一、它把最不像电影的过程，拍成了最像电影的过程</h3><p>编辞典：没有冲突、没有追车、没有爱情高潮，只有改稿、校对、开会。<strong>换任何一个人来拍，这都是一部纪录片。</strong></p><p>但石井裕也找到了一样东西：<em>工序本身就是悬念。</em>一条释义写不出来，你会着急；一个词漏了，你会跟着冒汗；预算被砍，你会和编辑部一起沉默。它证明了一件事——观众不是只爱看大事，观众爱看的是「有人在认真地做一件难事」。</p></article>
+      <article class="reveal"><h3>二、它拍的是手艺，不是天才</h3><p>大部分「职业片」讲的是天才：一眼看穿、一招制敌、一人扭转。这部片子里的所有人都不天才。马缔只是比别人更能坐得住，松本只是比别人多问了三十年的「你在哪儿听过」，西冈只是比别人更会打电话。</p><p><strong>它的价值观非常朴素：把一件事做对，需要的是时间和手，不是灵光。</strong><em>在一部电影里看到这句话被认真对待，是很少见的。</em></p></article>
+      <article class="reveal"><h3>三、它不催你哭，但它会让你想做点什么</h3><p>这部片子没有一场戏是设计来让你流泪的。它甚至刻意回避了所有可以煽情的地方——生病、离别、失败，都被处理得很轻，轻到你几乎没注意到。</p><p>但看完之后，你多半会想做一件事：<strong>给某个很久没联系的人写几句话，或者把手边那件拖了很久的小事做完。</strong><em>这比哭一场有用得多，也难得多。</em></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">11</span><h2>观影提示</h2><p class="kicker">Before You Press Play</p></div>
+    <div class="tips">
+      <div class="tip reveal"><div class="k">01</div><h4>别在困的时候看</h4><p>它很慢，慢是内容，不是缺点。但它也确实不给你任何「提神」的东西——困的时候看，你会睡着，然后误会它。</p></div>
+      <div class="tip reveal"><div class="k">02</div><h4>把声音开大一点</h4><p>它拿了录音赏。铅笔、翻纸、印章、印刷机——这些声音是它的第二台词。用耳机看，会多出一层东西。</p></div>
+      <div class="tip reveal"><div class="k">03</div><h4>留意两个词：「右」和「恋」</h4><p>一个在开头，一个在中段。同一件事——给一个词写定义——被做了两次，两次的难度完全不同。看懂这两场的差别，就看懂了整部电影。</p></div>
+      <div class="tip reveal"><div class="k">04</div><h4>看完再查《大渡海》</h4><p>它是虚构的辞典，但片中的工序全部来自真实的辞典编辑部。看完再去看一眼真正的《广辞苑》《大辞林》，感觉会不一样。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="wrap">
+    <p class="tag">VERDICT · NO.23</p>
+    <p class="q"><span>辞典是渡过语言之海的舟。</span><span>编它的人不上船。</span><span>他们把船造好，站在岸上，</span><span>看别人坐上去，然后转身去造下一艘。</span></p>
+    <p class="src">—— 本页判词。片中与原著都出现过「辞典是舟」的比喻，此处为本页改写，非片中台词。</p>
+    <div class="stamp"><div><span>JAPANESE CINEMA</span><b>NO.23</b><span>2013 · 石井裕也</span></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>日本电影专题 · 第 23 期｜《编舟记》（舟を編む）/ The Great Passage（2013，石井裕也）<br>
+    数据核对于 2026-11-17：豆瓣条目 11500954（8.6 / 81,692 人 · 五星 41.2% / 四星 46.2% / 三星 11.7% / 二星 0.7% / 一星 0.2% · 未进 Top250）、IMDb tt2315226 7.3（约 3,000 票）、烂番茄 86%（仅 4 篇 · 观众 100+）。<br>
+    奖项以有明确届次者为限：第 37 回日本电影学院奖 6 项最优秀（作品 / 监督 / 脚本 / 主演男优 / 录音 / 剪辑）+ 6 项优秀 + 新人俳优赏，官方表述为「12 部門で優秀賞と新人俳優賞」；第 87 回电影旬报日本电影第 2 位（第 1 位《ペコロスの母に会いに行く》）+ 监督赏 + 主演男优赏 + 读者票选第 1 位；第 68 回每日电影竞赛日本电影大赏等 4 项；第 38 回报知映画赏作品赏等 3 项；第 56 回蓝丝带仅新人赏；第 86 届奥斯卡最佳外语片日本代表（未入围）。<br>
+    片长 134 分钟（日文维基记 133）；2013-04-13 日本公映（松竹 / アスミック・エース 配给）；日本配给收入 8.27 亿日元、动员约 68 万人，全球票房 7,362,767 美元；原作 三浦しをん（2011 光文社 · 2012 第 9 回本屋大赏第 1 位）。<br>
+    全页不含关键情节：《大渡海》最终是否出版、编辑部谈话的结果、松本老师此后的事、马缔与香具矢的结局，一律未写。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c = document.getElementById('heroCanvas');
+  if(!c) return;
+  var ctx = c.getContext('2d'), W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
+  var parts=[], t=0;
+  function size(){
+    W=c.clientWidth; H=c.clientHeight;
+    c.width=W*dpr; c.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();
+  }
+  function build(){
+    parts=[];
+    var n = Math.round(W*H/26000);
+    if(n>80) n=80;
+    for(var i=0;i < n;i++){
+      var bx = W*0.56;
+      var x = bx + (Math.random()-0.5)*W*0.42;
+      if(x<0) x=Math.random()*W;
+      parts.push({
+        x: x, y: Math.random()*H,
+        r:.5+Math.random()*1.3,
+        vx:.04+Math.random()*.12,
+        vy:-.04-Math.random()*.1,
+        a:.03+Math.random()*.1,
+        p:Math.random()*6.28
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t+=0.004;
+    for(var i=0;i < parts.length;i++){
+      var p=parts[i];
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x>W+14){p.x=-14;p.y=Math.random()*H;}
+      if(p.y<-14){p.y=H+14;p.x=Math.random()*W;}
+      var a=p.a*(0.4+0.6*Math.sin(t*0.8+p.p));
+      ctx.beginPath();
+      ctx.fillStyle='rgba(214,228,232,'+a.toFixed(3)+')';
+      ctx.arc(p.x,p.y,p.r,0,6.2832);
+      ctx.fill();
+    }
+    var g = ctx.createRadialGradient(W*0.56,H*0.42,0,W*0.56,H*0.42,Math.max(W,H)*0.4);
+    var pulse = 0.05+0.012*Math.sin(t*0.5);
+    g.addColorStop(0,'rgba(188,214,222,'+pulse.toFixed(3)+')');
+    g.addColorStop(1,'rgba(188,214,222,0)');
+    ctx.fillStyle=g;
+    ctx.fillRect(0,0,W,H);
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',size);
+  size(); draw();
+
+  var revs = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08, rootMargin:'0px 0px -6% 0px'});
+  revs.forEach(function(e){ io.observe(e); });
+
+  var hud=document.getElementById('hud'), items=[].slice.call(hud.querySelectorAll('b'));
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    hud.classList.toggle('on', y > window.innerHeight*0.55);
+    var p = y/(document.body.scrollHeight - window.innerHeight);
+    var idx = Math.min(4, Math.floor(p*5));
+    items.forEach(function(b,i){ b.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
