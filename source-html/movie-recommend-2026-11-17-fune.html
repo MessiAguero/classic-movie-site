@@ -32,7 +32,7 @@ body::before{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opa
 .hero-scrim{position:absolute;inset:0;
   background:
     linear-gradient(to right,rgba(4,5,6,.94) 0%,rgba(4,5,6,.86) 20%,rgba(4,5,6,.62) 36%,rgba(4,5,6,.26) 52%,rgba(4,5,6,.05) 66%,rgba(4,5,6,0) 76%),
-    linear-gradient(to bottom,rgba(4,5,6,.55) 0%,rgba(4,5,6,.14) 16%,rgba(4,5,6,0) 30%,rgba(4,5,6,0) 58%,rgba(4,5,6,.1) 72%,rgba(4,5,6,.26) 84%,rgba(4,5,6,.52) 93%,rgba(3,4,5,.9) 100%)}
+    linear-gradient(to bottom,rgba(4,5,6,.55) 0%,rgba(4,5,6,.14) 16%,rgba(4,5,6,0) 30%,rgba(4,5,6,0) 58%,rgba(4,5,6,.06) 70%,rgba(4,5,6,.16) 82%,rgba(4,5,6,.3) 91%,rgba(3,4,5,.66) 100%)}
 #heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .notice{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:11px;
   letter-spacing:.14em;color:rgba(233,228,214,.66);border:1px solid rgba(233,228,214,.17);
@@ -214,10 +214,10 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,6.4vw,92px);lin
 .stamp{position:absolute;right:74px;bottom:82px;width:136px;height:136px;border:1px solid rgba(165,56,43,.85);
   border-radius:50%;display:grid;place-items:center;color:rgba(198,110,88,1);text-align:center;
   transform:rotate(-7deg);box-shadow:inset 0 0 0 4px rgba(165,56,43,.14)}
-.stamp div{display:grid;gap:5px;justify-items:center}
-.stamp span{font-family:var(--latin);font-size:8.2px;letter-spacing:.14em;opacity:.95}
-.stamp b{font-family:var(--serif);font-size:21px;letter-spacing:.12em;font-weight:400;line-height:1.1;
-  padding:5px 0;border-top:1px solid rgba(165,56,43,.55);border-bottom:1px solid rgba(165,56,43,.55)}
+.stamp div{display:grid;gap:8px;justify-items:center}
+.stamp span{font-family:var(--latin);font-size:8.2px;letter-spacing:.12em;opacity:.95;line-height:1.2}
+.stamp b{font-family:var(--serif);font-size:19px;letter-spacing:.1em;font-weight:400;line-height:1.15;
+  padding:6px 0;border-top:1px solid rgba(165,56,43,.55);border-bottom:1px solid rgba(165,56,43,.55)}
 
 footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
 footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
@@ -251,12 +251,12 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
   .scroll-hint{left:auto;right:8px;transform:none;bottom:26px}
   .hero-svg{transform:translateY(5vh)}
   .hero-scrim{background:
-    linear-gradient(to bottom,rgba(4,5,6,.96) 0%,rgba(4,5,6,.95) 28%,rgba(4,5,6,.92) 44%,rgba(4,5,6,.86) 54%,rgba(4,5,6,.56) 60%,rgba(4,5,6,.26) 66%,rgba(4,5,6,.13) 73%,rgba(4,5,6,.2) 80%,rgba(4,5,6,.5) 87%,rgba(4,5,6,.85) 94%,rgba(3,4,5,.97) 100%)}
+    linear-gradient(to bottom,rgba(4,5,6,.96) 0%,rgba(4,5,6,.94) 28%,rgba(4,5,6,.84) 44%,rgba(4,5,6,.74) 54%,rgba(4,5,6,.5) 60%,rgba(4,5,6,.22) 66%,rgba(4,5,6,.1) 73%,rgba(4,5,6,.16) 80%,rgba(4,5,6,.32) 87%,rgba(4,5,6,.6) 94%,rgba(3,4,5,.9) 100%)}
 }
 @media (max-width:760px){
   .hero-svg{transform:none}
   .hero-scrim{background:
-    linear-gradient(to bottom,rgba(4,5,6,.94) 0%,rgba(4,5,6,.9) 20%,rgba(4,5,6,.84) 38%,rgba(4,5,6,.62) 52%,rgba(4,5,6,.34) 66%,rgba(4,5,6,.22) 78%,rgba(4,5,6,.42) 88%,rgba(3,4,5,.9) 100%)}
+    linear-gradient(to bottom,rgba(4,5,6,.94) 0%,rgba(4,5,6,.9) 20%,rgba(4,5,6,.84) 38%,rgba(4,5,6,.6) 52%,rgba(4,5,6,.3) 66%,rgba(4,5,6,.18) 78%,rgba(4,5,6,.3) 88%,rgba(3,4,5,.78) 100%)}
   body{font-size:15px;line-height:1.9}
   .wrap,.hero-in{width:calc(100% - 40px)}
   .hero{min-height:max(100vh,740px)}
@@ -359,8 +359,8 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 <linearGradient id="ledgeG" x1="0" y1="0" x2="1" y2="0">
 <stop offset="0" stop-color="#8b9aa5" stop-opacity=".06"/>
 <stop offset=".2" stop-color="#8b9aa5" stop-opacity=".3"/>
-<stop offset=".3" stop-color="#a9b8c2" stop-opacity=".36"/>
-<stop offset=".46" stop-color="#a9b8c2" stop-opacity=".32"/>
+<stop offset=".3" stop-color="#a9b8c2" stop-opacity=".26"/>
+<stop offset=".46" stop-color="#a9b8c2" stop-opacity=".23"/>
 <stop offset=".72" stop-color="#8b9aa5" stop-opacity=".18"/>
 <stop offset="1" stop-color="#6b7a86" stop-opacity=".16"/></linearGradient>
 <radialGradient id="vig" cx=".5" cy=".42" r=".72">
@@ -1129,7 +1129,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 
 <section class="sec" id="s5">
   <div class="wrap">
-    <div class="sec-head reveal"><span class="no">05</span><h2>四个人，一本还不存在的书</h2><p class="kicker">Who Wants What</p></div>
+    <div class="sec-head reveal"><span class="no">05</span><h2>六个人，一本还不存在的书</h2><p class="kicker">Who Wants What</p></div>
     <div class="people reveal">
       <div class="person">
         <div class="role">THE EDITOR · 玄武书房</div><h4>马缔光也<small>（馬締光也）</small></h4><div class="actor">松田龍平</div>
@@ -1144,8 +1144,16 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
         <p>编辑部里唯一会打电话、会约人、会在酒桌上把事办成的人。他起初看不起这份工作，觉得辞典是老头子的事。但他也最早意识到：这本书要活下来，光靠马缔的认真不够。<span><b>他要的</b>是证明自己不只是个会说话的人。</span></p>
       </div>
       <div class="person">
+        <div class="role">THE PREDECESSOR · 编辑部</div><h4>荒木公平<small>（荒木公平）</small></h4><div class="actor">小林薫</div>
+        <p>编辑部唯一的老人，进公司第一天起只做辞典。他要走了——妻子病了，他得回家。走之前他必须给这间屋子找一个人，于是他坐下来，用一道题，面试了一个连话都说不清的营业员。<span><b>他要的</b>是有人接着做这本书。全片他都在「交接」，而他交接的不是工作，是一份耐心。</span></p>
+      </div>
+      <div class="person">
         <div class="role">THE MASTER · 监修</div><h4>松本朋佑<small>（松本朋佑）</small></h4><div class="actor">加藤剛</div>
         <p>《大渡海》的监修。国语学者，把大学教授的位子辞了来做这本辞典。他不催稿，他只问一句：「这个词，你在哪里听过？」<span><b>他要的</b>不是一本正确的辞典，是一本当下的人还在用的辞典。这句话，是整部片子的方法论。</span></p>
+      </div>
+      <div class="person">
+        <div class="role">THE KEEPER · 契约社员</div><h4>佐佐木薰<small>（佐々木薫）</small></h4><div class="actor">伊佐山ひろ子</div>
+        <p>编辑部里不做编辑的那个人：复印、归档、订盒饭、记会议记录。她不上桌谈判，也不在会上发言，但编辑部少了她，第二天就转不动。<span><b>她要的</b>很简单——把该做的事做完。这类角色在别的电影里是背景，在这部片子里是地基。</span></p>
       </div>
       <div class="person thing">
         <div class="role">THE THING · 一本还没有的书</div><h4>《大渡海》<small>24 万词，十二年。</small></h4><div class="actor">没有作者，只有编者</div>
