@@ -1,16 +1,16 @@
 {
-  "at": "2026-11-13T05:49:39.939Z",
+  "at": "2026-11-18T04:56:21.568Z",
   "dryRun": false,
   "targetCount": 1,
   "fixedCount": 1,
   "failureCount": 0,
   "changes": [
     {
-      "id": "20261109-dunes",
-      "zhTitle": "砂之女",
+      "id": "20261118-tampopo",
+      "zhTitle": "蒲公英",
       "before": {
-        "imageUrl": "posters/20261109-dunes.jpg",
-        "dims": "595×842",
+        "imageUrl": "posters/20261118-tampopo.jpg",
+        "dims": "500×750",
         "status": "error",
         "issues": [
           "identity_unverified",
@@ -18,24 +18,21 @@
         ]
       },
       "after": {
-        "imageUrl": "posters/20261109-dunes.jpg",
-        "dims": "1915×2872",
+        "imageUrl": "posters/20261118-tampopo.jpg",
+        "dims": "1000×1500",
         "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/4howTiqrfTJnFtBEvJ3sIXhihKi.jpg",
-        "title": "砂の女 (1964) - Posters — The Movie Database (TMDB)"
+        "url": "https://image.tmdb.org/t/p/original/bvkaWqq2txWdpxJC9tIvF3rbqxJ.jpg",
+        "title": "英雄本色 (1986) - 海报 — The Movie Database (TMDB)"
       }
     }
   ],
   "failures": [],
   "recheck": [
     {
-      "id": "20261109-dunes",
-      "status": "error",
-      "dims": "1915×2872",
-      "issues": [
-        "identity_unverified",
-        "visual_title_unverified"
-      ]
+      "id": "20261118-tampopo",
+      "status": "ok",
+      "dims": "1000×1500",
+      "issues": []
     }
   ]
 }

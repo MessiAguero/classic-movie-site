@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>蒲公英 · 日本电影专题 第 24 期</title>
+<meta name="description" content="伊丹十三《蒲公英》（タンポポ / Tampopo, 1985）：剧情梗概、人物冲突、七处手艺与观看理由。全程不剧透。">
+<style>
+:root{
+  --bg:#0a0806; --bg2:#100c08; --panel:#16110b;
+  --ink:#eae1cf; --dim:#9a9081; --dim2:#60594d;
+  --line:rgba(234,225,207,.12); --line2:rgba(234,225,207,.05);
+  --ac:#c98a4a; --ac2:#e8bd8a;
+  --pa:#efe4cc; --pa2:#f8efdc;
+  --leaf:#8fa06a;
+  --seal:#a6392a; --seal2:#c4694e;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Didot","Optima","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.95;letter-spacing:.012em;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(201,138,74,.32);color:#0d0906}
+a{color:inherit}
+body::before{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+.wrap{width:min(1160px,calc(100% - 96px));margin:0 auto}
+
+.hero{position:relative;min-height:max(100vh,880px);overflow:hidden;background:#05070a}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(4,5,6,.94) 0%,rgba(4,5,6,.86) 20%,rgba(4,5,6,.6) 36%,rgba(4,5,6,.24) 52%,rgba(4,5,6,.04) 66%,rgba(4,5,6,0) 76%),
+    linear-gradient(to bottom,rgba(4,5,6,.5) 0%,rgba(4,5,6,.12) 15%,rgba(4,5,6,0) 28%,rgba(4,5,6,0) 60%,rgba(4,5,6,.06) 70%,rgba(4,5,6,.16) 82%,rgba(4,5,6,.3) 91%,rgba(3,4,5,.66) 100%)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.notice{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:11px;
+  letter-spacing:.14em;color:rgba(234,225,207,.66);border:1px solid rgba(234,225,207,.17);
+  border-radius:999px;padding:7px 16px;margin-bottom:34px;background:rgba(8,6,4,.54);backdrop-filter:blur(4px)}
+.notice .dot{width:5px;height:5px;border-radius:50%;background:var(--ac2);box-shadow:0 0 9px rgba(232,189,138,.7)}
+.hero-in{position:relative;z-index:3;width:min(1160px,calc(100% - 96px));margin:0 auto;
+  min-height:max(100vh,880px);display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:10.5vh;padding-bottom:64px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;
+  letter-spacing:.34em;color:var(--ac);text-transform:uppercase;opacity:.9}
+.eyebrow i{display:block;width:52px;height:1px;background:var(--ac);opacity:.45}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,6.4vw,92px);line-height:1.14;
+  letter-spacing:.2em;margin:26px 0 0;color:#f7f0e0;white-space:nowrap;
+  text-shadow:0 2px 34px rgba(0,0,0,.8)}
+.latin{margin:22px 0 0;font-family:var(--latin);font-size:13px;letter-spacing:.32em;
+  color:rgba(234,225,207,.54)}
+.latin + .latin{margin-top:7px;font-size:11px;letter-spacing:.24em;color:rgba(234,225,207,.44)}
+.hero-sub{margin:28px 0 0;max-width:23em;font-size:16px;line-height:2.05;color:rgba(234,225,206,.85)}
+.hero-sub em{font-style:normal;color:#f8f1e0;border-bottom:1px solid rgba(201,138,74,.55);padding-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:620px}
+.chip{font-size:11.5px;letter-spacing:.06em;color:rgba(238,230,214,.9);border:1px solid rgba(234,225,207,.2);
+  border-radius:999px;padding:6px 14px;background:rgba(7,6,4,.66);backdrop-filter:blur(6px)}
+.chip b{color:#fff;font-weight:500}
+.scroll-hint{position:absolute;left:auto;right:28px;bottom:30px;z-index:4;
+  font-family:var(--latin);font-size:9.5px;letter-spacing:.42em;color:rgba(234,225,207,.4);
+  display:flex;flex-direction:column;align-items:center;gap:9px}
+.scroll-hint span{display:block;width:1px;height:32px;background:linear-gradient(to bottom,rgba(234,225,207,.4),transparent)}
+
+.sec{padding:112px 0;border-top:1px solid var(--line2)}
+.sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:52px}
+.sec-head .no{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--ac);opacity:.94}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.1vw,36px);
+  letter-spacing:.05em;margin:0;color:#f4ecdb;flex:1 1 auto}
+.sec-head .kicker{font-family:var(--latin);font-size:10.5px;letter-spacing:.3em;
+  color:var(--dim2);text-transform:uppercase;margin:0}
+.note{font-size:13px;color:var(--dim);line-height:1.9}
+
+.intro{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:64px;align-items:start}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:2.22;color:#d5ccb9}
+.lede p{margin:0 0 22px}
+.lede p:first-child::first-letter{float:left;font-size:5.1em;line-height:.82;padding:.06em .14em 0 0;
+  color:#f8f1e0;font-weight:400}
+.lede strong{font-weight:500;color:#f8f1e1}
+.lede .dash{color:var(--dim);font-size:15px}
+.glance{border:1px solid var(--line);background:linear-gradient(160deg,rgba(22,17,11,.95),rgba(8,6,4,.95));
+  padding:30px 28px}
+.glance h3{font-family:var(--latin);font-size:10px;letter-spacing:.34em;color:var(--ac);
+  margin:0 0 22px;font-weight:400;text-transform:uppercase;opacity:.92}
+.glance dl{margin:0;display:grid;gap:13px}
+.glance div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line2)}
+.glance div:last-child{border-bottom:0;padding-bottom:0}
+.glance dt{font-size:11.5px;color:var(--dim2);letter-spacing:.1em}
+.glance dd{margin:0;font-size:13.5px;color:#cec5b2;line-height:1.7}
+.glance dd b{color:#f7f0e0;font-weight:500}
+.glance dd small{display:block;font-size:11px;color:var(--dim2);margin-top:3px}
+.acts{margin-top:74px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.act{background:var(--bg);padding:34px 30px}
+.act .t{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--ac);
+  opacity:.94;margin-bottom:14px}
+.act h4{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f4ecdb;letter-spacing:.04em}
+.act p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+.poster-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);gap:70px;align-items:start}
+.poster-frame{border:1px solid var(--line);padding:14px;background:#080604;
+  box-shadow:0 40px 90px -50px #000, inset 0 0 0 1px rgba(0,0,0,.6)}
+.poster-svg{display:block;width:100%;height:auto}
+.pcap{margin:16px 2px 0;font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--dim2)}
+.pnotes{display:grid;gap:28px}
+.pnote{border-left:1px solid var(--line);padding:2px 0 2px 24px}
+.pnote .n{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--ac);opacity:.9}
+.pnote h4{margin:8px 0 10px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f4ecdb}
+.pnote p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+.pnote p b{color:#e8e0cd;font-weight:500}
+.pnote p em{font-style:normal;color:var(--ac2)}
+
+.spec{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.spec div{background:var(--bg);padding:22px 20px;min-height:92px}
+.spec dt{font-size:10.5px;letter-spacing:.14em;color:var(--dim2);margin-bottom:8px}
+.spec dd{margin:0;font-size:13.5px;color:#d2c9b6;line-height:1.65}
+.spec dd small{display:block;font-size:11px;color:var(--dim2);margin-top:4px;letter-spacing:.02em}
+.spec .wide{grid-column:1/-1;min-height:0;background:linear-gradient(120deg,rgba(201,138,74,.14),rgba(8,6,4,0) 62%)}
+.spec .wide dd{font-family:var(--serif);font-size:17px;color:#f7f0e0;letter-spacing:.05em}
+
+.scores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.sc{background:var(--bg);padding:32px 30px}
+.sc .src{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--dim2);text-transform:uppercase}
+.sc .val{font-family:var(--latin);font-size:52px;line-height:1;margin:16px 0 8px;color:#f8f1e0}
+.sc .val small{font-size:15px;color:var(--dim);letter-spacing:.04em;margin-left:6px}
+.sc .meta{font-size:12.5px;color:var(--dim);line-height:1.8}
+.sc .meta b{color:#dfd6c1;font-weight:500}
+.sc.hi .val{color:var(--ac2)}
+.caliber{margin:52px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.caliber li{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line2);
+  font-size:13.5px;line-height:1.9;color:var(--dim)}
+.caliber li b{color:#eae1cf;font-weight:500}
+.caliber li i{font-family:var(--latin);font-style:normal;font-size:10.5px;letter-spacing:.2em;color:var(--ac);opacity:.86;padding-top:4px}
+
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.person{background:var(--bg);padding:30px 28px}
+.person .role{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--ac);opacity:.86}
+.person h4{margin:12px 0 4px;font-family:var(--serif);font-weight:400;font-size:20px;color:#f7f0e0;letter-spacing:.04em}
+.person h4 small{font-size:12px;color:var(--dim2);letter-spacing:.1em;margin-left:4px}
+.person .actor{font-size:11.5px;color:var(--dim2);letter-spacing:.08em;margin-bottom:18px}
+.person p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.person p span{display:block;margin-top:9px;color:#ccc3b0}
+.person p span b{color:var(--ac);font-weight:400;font-size:11.5px;letter-spacing:.08em;margin-right:6px}
+.person.thing{grid-column:1/-1;background:linear-gradient(100deg,rgba(239,228,204,.1),rgba(8,6,4,0) 70%)}
+.person.thing h4{color:#f5eedd}
+.person.thing p{max-width:88ch}
+.person.thing p span b{color:var(--pa)}
+
+.conflicts{display:grid;gap:0;border-top:1px solid var(--line)}
+.cf{display:grid;grid-template-columns:210px minmax(0,1fr);gap:36px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line2)}
+.cf h4{margin:0;font-family:var(--serif);font-weight:400;font-size:17px;color:#f7f0e0;letter-spacing:.04em;line-height:1.6}
+.cf h4 i{display:block;font-family:var(--latin);font-style:normal;font-size:9.5px;letter-spacing:.26em;
+  color:var(--ac);opacity:.86;margin-bottom:8px}
+.cf p{margin:0;font-size:13.8px;line-height:2;color:var(--dim);max-width:66ch}
+.cf p em{font-style:normal;color:#e8e0cd}
+
+.awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.award{background:var(--bg);padding:28px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.award .yr{font-family:var(--latin);font-size:11px;letter-spacing:.14em;color:var(--dim2);padding-top:3px}
+.award h4{margin:0 0 6px;font-size:14.5px;font-weight:500;color:#f4ecdb;letter-spacing:.02em;line-height:1.6}
+.award p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.78}
+.award.gold{background:linear-gradient(120deg,rgba(239,228,204,.16),rgba(8,6,4,0) 68%);border-left:2px solid rgba(239,228,204,.5)}
+.award.gold h4{color:var(--pa2)}
+.award.cold{background:linear-gradient(120deg,rgba(201,138,74,.1),rgba(8,6,4,0) 68%);border-left:2px solid rgba(201,138,74,.34)}
+.award.cold h4{color:#e3cba6}
+.award.wide{grid-column:1/-1}
+
+.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px}
+.ln{position:relative;padding:0 0 38px 40px}
+.ln:last-child{padding-bottom:0}
+.ln::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--ac2)}
+.ln.now::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 4px rgba(166,57,42,.26)}
+.ln .yr{font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--dim2)}
+.ln h4{margin:6px 0 6px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f4ecdb;letter-spacing:.03em}
+.ln p{margin:0;font-size:13px;color:var(--dim);line-height:1.85}
+.ln p b{color:#e6ddc9;font-weight:500}
+.ln.now h4{color:var(--pa2)}
+
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.g6{background:var(--bg);padding:32px 28px;min-height:200px}
+.g6 .n{font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--ac);opacity:.9}
+.g6 h4{margin:14px 0 10px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f4ecdb;letter-spacing:.03em;line-height:1.6}
+.g6 p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.g6 p b{color:#e8e0cd;font-weight:500}
+
+.why{display:grid;gap:0;max-width:820px}
+.why article{padding:0 0 38px}
+.why article + article{border-top:1px solid var(--line2);padding-top:38px}
+.why h3{margin:0 0 14px;font-family:var(--serif);font-weight:400;font-size:21px;color:#f7f0e0;letter-spacing:.04em}
+.why p{margin:0;font-size:14.5px;line-height:2.05;color:#c1b8a5}
+.why p + p{margin-top:14px}
+.why strong{color:#f4ecdb;font-weight:500}
+.why em{font-style:normal;color:var(--ac2)}
+
+.tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.tip{background:var(--bg);padding:30px 24px}
+.tip .k{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--ac);opacity:.9}
+.tip h4{margin:12px 0 10px;font-size:15.5px;font-weight:500;color:#f4ecdb}
+.tip p{margin:0;font-size:12.8px;line-height:1.95;color:var(--dim)}
+
+.verdict{padding:150px 0 120px;border-top:1px solid var(--line2);position:relative;overflow:hidden}
+.verdict .tag{font-family:var(--latin);font-size:9.5px;letter-spacing:.32em;color:var(--dim2);margin-bottom:34px}
+.verdict .q{font-family:var(--serif);font-size:clamp(22px,3vw,35px);line-height:1.8;letter-spacing:.06em;
+  color:#f7f0e0;margin:0;max-width:24em}
+.verdict .q span{display:block}
+.verdict .src{margin-top:36px;font-size:12px;color:var(--dim2);letter-spacing:.04em;line-height:1.9}
+.stamp{position:absolute;right:74px;bottom:82px;width:136px;height:136px;border:1px solid rgba(166,57,42,.85);
+  border-radius:50%;display:grid;place-items:center;color:rgba(196,105,78,1);text-align:center;
+  transform:rotate(-7deg);box-shadow:inset 0 0 0 4px rgba(166,57,42,.14)}
+.stamp div{display:grid;gap:8px;justify-items:center}
+.stamp span{font-family:var(--latin);font-size:8.2px;letter-spacing:.12em;opacity:.95;line-height:1.2}
+.stamp b{font-family:var(--serif);font-size:19px;letter-spacing:.1em;font-weight:400;line-height:1.15;
+  padding:6px 0;border-top:1px solid rgba(166,57,42,.55);border-bottom:1px solid rgba(166,57,42,.55)}
+
+footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
+footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
+
+#hud{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
+  opacity:0;transition:opacity .7s ease;pointer-events:none}
+#hud.on{opacity:1}
+#hud b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:13px;
+  color:var(--dim2);letter-spacing:.1em;transition:color .5s}
+#hud b i{display:block;width:16px;height:1px;background:var(--dim2);transition:all .5s}
+#hud b.on{color:#f7f0e0}
+#hud b.on i{width:30px;background:var(--ac)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1380px){#hud{display:none}}
+@media (max-width:1000px){
+  .intro{grid-template-columns:1fr;gap:48px}
+  .poster-grid{grid-template-columns:1fr;gap:46px}
+  .poster-frame{max-width:500px}
+  .scores,.awards{grid-template-columns:1fr}
+  .spec{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .acts{grid-template-columns:1fr}
+  #hud{display:none}
+}
+@media (max-width:900px){#lantern{display:none}}
+@media (min-width:761px) and (max-width:1000px){
+  .scroll-hint{left:auto;right:8px;transform:none;bottom:26px}
+  .hero-svg{transform:translateY(5vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(4,5,6,.96) 0%,rgba(4,5,6,.94) 28%,rgba(4,5,6,.84) 44%,rgba(4,5,6,.74) 54%,rgba(4,5,6,.5) 60%,rgba(4,5,6,.22) 66%,rgba(4,5,6,.1) 73%,rgba(4,5,6,.16) 80%,rgba(4,5,6,.32) 87%,rgba(4,5,6,.6) 94%,rgba(3,4,5,.9) 100%)}
+}
+@media (max-width:760px){
+  .hero-svg{transform:none}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(4,5,6,.93) 0%,rgba(4,5,6,.9) 22%,rgba(4,5,6,.82) 40%,rgba(4,5,6,.56) 54%,rgba(4,5,6,.28) 66%,rgba(4,5,6,.16) 78%,rgba(4,5,6,.3) 88%,rgba(3,4,5,.78) 100%)}
+  body{font-size:15px;line-height:1.9}
+  .wrap,.hero-in{width:calc(100% - 40px)}
+  .hero{min-height:max(100vh,740px)}
+  .hero-in{min-height:max(100vh,740px);padding-top:8vh;padding-bottom:96px}
+  h1{font-size:clamp(32px,10vw,56px);letter-spacing:.16em}
+  .hero-sub{font-size:14.5px;line-height:1.95;max-width:26em}
+  .sec{padding:76px 0}
+  .sec-head{margin-bottom:36px;gap:12px}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spec dd{font-size:12.4px}
+  .spec dd small{font-size:10.4px}
+  .people,.grid6,.tips{grid-template-columns:1fr}
+  .cf{grid-template-columns:1fr;gap:12px}
+  .lede{font-size:16px;line-height:2.05}
+  .sc .val{font-size:44px}
+  .verdict{padding:96px 0 88px}
+  .stamp{position:static;margin-top:48px;transform:rotate(-4deg)}
+  .chips{max-width:100%;padding-top:0;margin-top:26px}
+  footer{padding-bottom:120px}
+  .scroll-hint{display:none}
+  .hs-full{display:none}
+  .chip{font-size:11px;padding:5px 11px;letter-spacing:.03em}
+}
+@media (min-width:1001px) and (max-height:860px){
+  .hero,.hero-in{min-height:max(100vh,760px)}
+  .scroll-hint{left:auto;right:22px;transform:none}
+}
+@media (max-width:560px){
+  .chip:nth-child(5){display:none}
+}
+@media (max-width:420px){
+  .notice{margin-bottom:22px;font-size:10.5px;padding:6px 13px}
+  h1{font-size:clamp(30px,9vw,46px);margin-top:20px}
+  .latin{margin-top:14px;font-size:11px;letter-spacing:.22em}
+  .latin + .latin{font-size:9.5px;letter-spacing:.14em}
+  .hero-sub{margin-top:22px;font-size:13.8px}
+}
+@media (max-width:380px){
+  .wrap,.hero-in{width:calc(100% - 32px)}
+  .chip{font-size:10.5px;padding:5px 11px}
+  .glance{padding:24px 20px}
+  h1{font-size:clamp(27px,8.4vw,42px)}
+}
+@media (max-width:760px) and (max-height:700px){
+  .hero{min-height:100vh}
+  .hero-in{min-height:100vh;padding-top:6vh}
+  .hero-svg{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><linearGradient id="sky" x1="0" y1="0" x2=".18" y2="1"><stop offset="0" stop-color="#04070a"/><stop offset=".34" stop-color="#070d12"/><stop offset=".62" stop-color="#0e161d"/><stop offset=".84" stop-color="#17212a"/><stop offset="1" stop-color="#1d2831"/></linearGradient><radialGradient id="skyGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#31424e" stop-opacity=".62"/><stop offset=".42" stop-color="#263540" stop-opacity=".3"/><stop offset="1" stop-color="#1b2630" stop-opacity="0"/></radialGradient><linearGradient id="farG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1216"/><stop offset="1" stop-color="#06090c"/></linearGradient><linearGradient id="roofG" x1=".18" y1="0" x2=".72" y2="1"><stop offset="0" stop-color="#232e36"/><stop offset=".42" stop-color="#151e25"/><stop offset=".78" stop-color="#0b1116"/><stop offset="1" stop-color="#06090c"/></linearGradient><linearGradient id="wallG" x1=".1" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#18222a"/><stop offset=".4" stop-color="#111920"/><stop offset="1" stop-color="#080c10"/></linearGradient><linearGradient id="eaveSh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".62"/><stop offset=".55" stop-color="#000" stop-opacity=".26"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient><linearGradient id="signG" x1="0" y1="0" x2=".2" y2="1"><stop offset="0" stop-color="#2e2014"/><stop offset="1" stop-color="#150e08"/></linearGradient><linearGradient id="norenG" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#26363f"/><stop offset=".5" stop-color="#1c2a33"/><stop offset="1" stop-color="#131e26"/></linearGradient><linearGradient id="doorG" x1=".2" y1="0" x2=".55" y2="1"><stop offset="0" stop-color="#fcdcaa"/><stop offset=".16" stop-color="#f8cc92"/><stop offset=".42" stop-color="#eeb06b"/><stop offset=".68" stop-color="#d18a46"/><stop offset=".86" stop-color="#a2602b"/><stop offset="1" stop-color="#6d3d18"/></linearGradient><linearGradient id="counterG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8d5322"/><stop offset=".35" stop-color="#633616"/><stop offset="1" stop-color="#2e180a"/></linearGradient><radialGradient id="shopWarm" cx=".5" cy=".52" r=".5"><stop offset="0" stop-color="#ffcf95" stop-opacity=".2"/><stop offset=".45" stop-color="#e79a52" stop-opacity=".09"/><stop offset="1" stop-color="#b76a2c" stop-opacity="0"/></radialGradient><linearGradient id="refl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3bb7c" stop-opacity=".26"/><stop offset=".4" stop-color="#cf9052" stop-opacity=".1"/><stop offset="1" stop-color="#8a5525" stop-opacity="0"/></linearGradient><radialGradient id="pave" cx=".5" cy=".3" r=".5"><stop offset="0" stop-color="#ffc185" stop-opacity=".22"/><stop offset=".55" stop-color="#c98a4c" stop-opacity=".09"/><stop offset="1" stop-color="#8a5525" stop-opacity="0"/></radialGradient><radialGradient id="steam" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e9e7dc" stop-opacity=".2"/><stop offset=".55" stop-color="#dfe0d6" stop-opacity=".07"/><stop offset="1" stop-color="#d6d8ce" stop-opacity="0"/></radialGradient><radialGradient id="lanternG" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffcf9b" stop-opacity=".62"/><stop offset=".3" stop-color="#e88a4e" stop-opacity=".26"/><stop offset="1" stop-color="#c05a34" stop-opacity="0"/></radialGradient><linearGradient id="roadG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0e1317"/><stop offset=".2" stop-color="#090d10"/><stop offset=".62" stop-color="#050708"/><stop offset="1" stop-color="#030405"/></linearGradient><radialGradient id="vig" cx=".52" cy=".46" r=".74"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".5" stop-color="#000" stop-opacity=".14"/><stop offset="1" stop-color="#000" stop-opacity=".8"/></radialGradient></defs><rect width="1440" height="900" fill="url(#sky)"/><ellipse cx="840" cy="600" rx="540" ry="350" fill="url(#skyGlow)"/><rect x="936" y="316" width="196" height="98" fill="url(#farG)" opacity=".85"/><rect x="936" y="316" width="196" height="1.4" fill="#22303a" opacity=".5"/><rect x="958" y="336" width="18" height="22" fill="#1d2a33" opacity=".55"/><rect x="1000" y="336" width="18" height="22" fill="#1d2a33" opacity=".35"/><rect x="1042" y="338" width="18" height="20" fill="#1d2a33" opacity=".4"/><path d="M666 372 L1034 372 L1104 452 L596 452 Z" fill="url(#roofG)"/><path d="M666 372 L1034 372" stroke="#5b6c76" stroke-width="2.6" opacity=".4" fill="none"/><path d="M660 372 L1040 372 L1040 379 L660 379 Z" fill="#0a0f13" opacity=".82"/><path d="M648 380 L670 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M674 380 L696 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M700 380 L722 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M726 380 L748 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M752 380 L774 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M778 380 L800 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M804 380 L826 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M830 380 L852 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M856 380 L878 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M882 380 L904 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M908 380 L930 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M934 380 L956 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M960 380 L982 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M986 380 L1008 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M1012 380 L1034 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M1038 380 L1060 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><path d="M1064 380 L1086 452" stroke="#05080b" stroke-width="1.7" opacity=".42"/><rect x="592" y="446" width="516" height="8" fill="#1c252b"/><rect x="592" y="446" width="516" height="1.8" fill="#5d707b" opacity=".45"/><rect x="592" y="454" width="516" height="9" fill="#04070a"/><rect x="612" y="452" width="476" height="292" fill="url(#wallG)"/><path d="M612 452 L1088 452 L1088 508 L612 508 Z" fill="url(#eaveSh)"/><rect x="612" y="452" width="1.6" height="292" fill="#232f37" opacity=".45"/><rect x="1086" y="452" width="1.6" height="292" fill="#232f37" opacity=".3"/><rect x="612" y="730" width="476" height="14" fill="#05080a"/><rect x="1070" y="452" width="6" height="292" fill="#0a0f13" opacity=".8"/><rect x="616" y="481" width="468" height="6" fill="#241608"/><rect x="616" y="481" width="468" height="1.2" fill="#5a3c1c" opacity=".5"/><path d="M626 489 L730 489 L730 574 Q678 584 626 574 L626 489 Z" fill="url(#norenG)"/><path d="M626 489 L638 489 L638 574 L626 489 Z" fill="#0a1015" opacity=".28"/><text x="678" y="556" text-anchor="middle" font-family="Songti SC, serif" font-size="52" fill="#e2dbc6" opacity=".84">ら</text><path d="M738 489 L842 489 L842 574 Q790 584 738 574 L738 489 Z" fill="url(#norenG)"/><path d="M738 489 L750 489 L750 574 L738 489 Z" fill="#0a1015" opacity=".28"/><text x="790" y="556" text-anchor="middle" font-family="Songti SC, serif" font-size="52" fill="#e2dbc6" opacity=".84">ー</text><path d="M850 489 L954 489 L954 574 Q902 584 850 574 L850 489 Z" fill="url(#norenG)"/><path d="M850 489 L862 489 L862 574 L850 489 Z" fill="#0a1015" opacity=".28"/><text x="902" y="556" text-anchor="middle" font-family="Songti SC, serif" font-size="52" fill="#e2dbc6" opacity=".84">め</text><path d="M962 489 L1066 489 L1066 574 Q1014 584 962 574 L962 489 Z" fill="url(#norenG)"/><path d="M962 489 L974 489 L974 574 L962 489 Z" fill="#0a1015" opacity=".28"/><text x="1014" y="556" text-anchor="middle" font-family="Songti SC, serif" font-size="52" fill="#e2dbc6" opacity=".84">ん</text><rect x="626" y="489" width="452" height="3" fill="#0b1116" opacity=".5"/><rect x="654" y="584" width="392" height="160" fill="#0a0e11"/><rect x="666" y="592" width="368" height="150" fill="url(#doorG)"/><ellipse cx="850" cy="662" rx="316" ry="286" fill="url(#shopWarm)"/><rect x="666" y="592" width="368" height="44" fill="#a86a30" opacity=".5"/><rect x="682" y="598" width="16" height="30" fill="#f2ddb4" opacity=".46" transform="rotate(-1.6 682 613)"/><rect x="707" y="598" width="16" height="30" fill="#f2ddb4" opacity=".46" transform="rotate(-1.6 707 613)"/><rect x="732" y="598" width="16" height="30" fill="#f2ddb4" opacity=".46" transform="rotate(-1.6 732 613)"/><rect x="757" y="598" width="16" height="30" fill="#f2ddb4" opacity=".46" transform="rotate(-1.6 757 613)"/><rect x="782" y="598" width="16" height="30" fill="#f2ddb4" opacity=".46" transform="rotate(-1.6 782 613)"/><rect x="807" y="598" width="16" height="30" fill="#f2ddb4" opacity=".46" transform="rotate(-1.6 807 613)"/><rect x="666" y="658" width="368" height="5" fill="#8d5527" opacity=".4"/><ellipse cx="930" cy="652" rx="13" ry="4.4" fill="#f6ecd2" opacity=".62"/><path d="M917 652 Q930 664 943 652 Z" fill="#e8d8b6" opacity=".45"/><ellipse cx="952" cy="652" rx="13" ry="4.4" fill="#f6ecd2" opacity=".62"/><path d="M939 652 Q952 664 965 652 Z" fill="#e8d8b6" opacity=".45"/><ellipse cx="974" cy="652" rx="13" ry="4.4" fill="#f6ecd2" opacity=".62"/><path d="M961 652 Q974 664 987 652 Z" fill="#e8d8b6" opacity=".45"/><rect x="666" y="688" width="368" height="54" fill="url(#counterG)"/><rect x="666" y="688" width="368" height="1.8" fill="#bb8350" opacity=".6"/><g fill="#2a1a10" opacity=".86"><circle cx="784" cy="630" r="11.5"/><rect x="777" y="637" width="14" height="14"/><path d="M768 688 L768 666 Q770 650 784 648 Q798 650 800 666 L800 688 Z"/></g><path d="M768 688 L768 666 Q770 650 784 648 Q798 650 800 666 L800 688" fill="none" stroke="#d09a5c" stroke-width="1" opacity=".26"/><circle cx="784" cy="630" r="11.5" fill="none" stroke="#d09a5c" stroke-width=".9" opacity=".22"/><rect x="782" y="592" width="7" height="150" fill="#0a0e11"/><rect x="912" y="592" width="7" height="150" fill="#0a0e11"/><rect x="666" y="640" width="368" height="3" fill="#0a0e11" opacity=".62"/><rect x="666" y="592" width="368" height="4" fill="#0c1114"/><path d="M672 742 L716 592 L738 592 L694 742 Z" fill="#fff6e2" opacity=".07"/><path d="M924 742 L956 592 L968 592 L936 742 Z" fill="#fff6e2" opacity=".05"/><rect x="618" y="744" width="464" height="7" fill="#242b30"/><rect x="618" y="744" width="464" height="1.4" fill="#4a565e" opacity=".45"/><rect x="618" y="751" width="464" height="5" fill="#080b0d"/><rect x="1114" y="428" width="326" height="316" fill="#070b0e"/><rect x="1114" y="428" width="1.6" height="316" fill="#1d2830" opacity=".55"/><rect x="1114" y="428" width="326" height="1.4" fill="#1b262e" opacity=".5"/><rect x="1146" y="462" width="44" height="30" fill="#141d23" opacity=".9"/><rect x="1146" y="536" width="44" height="30" fill="#141d23" opacity=".9"/><rect x="1228" y="462" width="44" height="30" fill="#141d23" opacity=".9"/><rect x="1228" y="536" width="44" height="30" fill="#141d23" opacity=".9"/><rect x="1310" y="462" width="44" height="30" fill="#141d23" opacity=".9"/><rect x="1310" y="536" width="44" height="30" fill="#141d23" opacity=".9"/><rect x="1330" y="462" width="44" height="30" fill="#25332c" opacity=".45"/><rect x="1146" y="388" width="3" height="40" fill="#0d1418"/><rect x="1214" y="46" width="13" height="854" fill="#05080a"/><rect x="1214" y="46" width="1.4" height="854" fill="#2a363e" opacity=".35"/><rect x="1180" y="148" width="84" height="6" fill="#06090b"/><rect x="1184" y="146" width="4" height="10" fill="#1d272e"/><rect x="1252" y="146" width="4" height="10" fill="#1d272e"/><path d="M1220 152 Q900 178 -30 196" fill="none" stroke="#1a242b" stroke-width="1.1" opacity=".5"/><path d="M1220 206 Q900 236 -30 256" fill="none" stroke="#1a242b" stroke-width="1.1" opacity=".5"/><path d="M1220 262 Q900 296 -30 318" fill="none" stroke="#1a242b" stroke-width="1.1" opacity=".5"/><path d="M1220 152 Q1000 190 700 200" fill="none" stroke="#1a242b" stroke-width=".9" opacity=".4"/><g id="lantern"><ellipse cx="1072" cy="524" rx="92" ry="92" fill="url(#lanternG)" opacity=".5"/><rect x="1071" y="456" width="1.8" height="30" fill="#1c1109"/><rect x="1060" y="484" width="24" height="7" fill="#2a1a10"/><ellipse cx="1072" cy="524" rx="25" ry="34" fill="#d9703f"/><ellipse cx="1072" cy="524" rx="25" ry="34" fill="none" stroke="#f0a67c" stroke-width=".9" opacity=".45"/><ellipse cx="1064" cy="512" rx="9" ry="18" fill="#f6c79a" opacity=".34"/><path d="M1050 508 Q1072 510 1094 508" fill="none" stroke="#a8462c" stroke-width="1" opacity=".45"/><path d="M1050 520 Q1072 522 1094 520" fill="none" stroke="#a8462c" stroke-width="1" opacity=".45"/><path d="M1050 532 Q1072 534 1094 532" fill="none" stroke="#a8462c" stroke-width="1" opacity=".45"/><path d="M1050 544 Q1072 546 1094 544" fill="none" stroke="#a8462c" stroke-width="1" opacity=".45"/><rect x="1060" y="556" width="24" height="7" fill="#2a1a10"/></g><rect x="0" y="740" width="1440" height="6" fill="#11171b"/><rect x="0" y="740" width="1440" height="1.2" fill="#2b363d" opacity=".5"/><rect x="0" y="746" width="1440" height="154" fill="url(#roadG)"/><ellipse cx="852" cy="756" rx="240" ry="22" fill="url(#pave)"/><ellipse cx="846" cy="800" rx="170" ry="56" fill="url(#pave)" opacity=".85"/><rect x="736" y="747" width="30" height="78" fill="url(#refl)" opacity="0.16"/><rect x="836" y="747" width="46" height="112" fill="url(#refl)" opacity="0.20"/><rect x="936" y="747" width="28" height="86" fill="url(#refl)" opacity="0.17"/><path d="M560 768 L1120 771" stroke="#cdd7d9" stroke-width="1" opacity=".05"/><path d="M560 782 L1120 785" stroke="#cdd7d9" stroke-width="1" opacity=".05"/><path d="M560 800 L1120 803" stroke="#cdd7d9" stroke-width="1" opacity=".05"/><path d="M560 822 L1120 825" stroke="#cdd7d9" stroke-width="1" opacity=".05"/><path d="M560 846 L1120 849" stroke="#cdd7d9" stroke-width="1" opacity=".05"/><path d="M560 872 L1120 875" stroke="#cdd7d9" stroke-width="1" opacity=".05"/><path d="M560 894 L1120 897" stroke="#cdd7d9" stroke-width="1" opacity=".05"/><path d="M0 900 L0 746 L1440 746 L1440 900 Z" fill="#000" opacity=".16"/><ellipse cx="802" cy="566" rx="66" ry="96" fill="url(#steam)"/><ellipse cx="872" cy="512" rx="54" ry="88" fill="url(#steam)" opacity=".8"/><ellipse cx="824" cy="452" rx="76" ry="104" fill="url(#steam)" opacity=".6"/><ellipse cx="900" cy="588" rx="42" ry="64" fill="url(#steam)" opacity=".55"/><g id="fig"><ellipse cx="546" cy="752" rx="32" ry="6" fill="#8a5525" opacity=".2"/><g fill="#070a0c"><path d="M529 662 L563 662 L569 702 L566 729 L526 729 L523 702 Z"/><rect x="533" y="727" width="7.4" height="23"/><rect x="551" y="727" width="7.4" height="23"/><rect x="531" y="747" width="11" height="4" rx="2"/><rect x="549" y="747" width="11" height="4" rx="2"/><circle cx="546" cy="648" r="8.2"/><path d="M563 666 L568 640 L574 641 L569 669 Z"/></g><path d="M523 702 L526 729" stroke="#45565f" stroke-width="1" opacity=".16"/><path d="M568 668 L569 702 L566 729" stroke="#3a4a52" stroke-width="1.1" opacity=".2"/><path d="M500 636 Q523 584 546 580 Q569 584 592 636 Z" fill="#080b0d"/><path d="M500 636 Q523 584 546 580 Q569 584 592 636" fill="none" stroke="#41525b" stroke-width="1.2" opacity=".24"/><path d="M546 580 L546 692" stroke="#0b0f11" stroke-width="2.4"/><path d="M546 690 Q539 695 539 686" fill="none" stroke="#0b0f11" stroke-width="2.2"/><path d="M514 616 L546 580" stroke="#0f1518" stroke-width="1" opacity=".95"/><path d="M578 616 L546 580" stroke="#0f1518" stroke-width="1" opacity=".95"/><path d="M523 604 Q546 594 569 604" fill="none" stroke="#1a2328" stroke-width=".9" opacity=".7"/><path d="M500 636 Q523 630 546 633 Q569 630 592 636" fill="none" stroke="#2b3a42" stroke-width="1" opacity=".35"/></g><path d="M1035.6 631.8 L1029.5 662.8" stroke="#c8d6da" stroke-width="0.8" opacity="0.06"/><path d="M973 33.4 L962.5 86.2" stroke="#c8d6da" stroke-width="0.8" opacity="0.11"/><path d="M387.9 697.7 L383 722.2" stroke="#c8d6da" stroke-width="1.1" opacity="0.12"/><path d="M1451.7 52.5 L1443 96.1" stroke="#c8d6da" stroke-width="1.1" opacity="0.11"/><path d="M630.8 203.7 L618.7 263.9" stroke="#c8d6da" stroke-width="0.7" opacity="0.10"/><path d="M343.4 449.1 L333.4 499" stroke="#c8d6da" stroke-width="0.9" opacity="0.05"/><path d="M940 488.6 L934.9 513.9" stroke="#c8d6da" stroke-width="0.8" opacity="0.07"/><path d="M1311.1 15.7 L1305.6 43.4" stroke="#c8d6da" stroke-width="0.8" opacity="0.11"/><path d="M1457.9 647.8 L1451.1 681.9" stroke="#c8d6da" stroke-width="0.9" opacity="0.12"/><path d="M101.3 355.5 L95.4 385.4" stroke="#c8d6da" stroke-width="0.8" opacity="0.07"/><path d="M258.9 443.5 L248.1 497.2" stroke="#c8d6da" stroke-width="1.1" opacity="0.09"/><path d="M1466 572 L1457.2 616.2" stroke="#c8d6da" stroke-width="0.8" opacity="0.05"/><path d="M166.3 210.7 L157.4 255.3" stroke="#c8d6da" stroke-width="0.8" opacity="0.08"/><path d="M1160.1 282.8 L1151.7 324.6" stroke="#c8d6da" stroke-width="0.9" opacity="0.06"/><path d="M240.1 419.5 L232 460" stroke="#c8d6da" stroke-width="0.8" opacity="0.12"/><path d="M11 656.8 L0.8 707.5" stroke="#c8d6da" stroke-width="1.1" opacity="0.08"/><path d="M1113.6 -10 L1101.3 51.6" stroke="#c8d6da" stroke-width="1.1" opacity="0.11"/><path d="M773.6 421.1 L765.7 460.7" stroke="#c8d6da" stroke-width="1.1" opacity="0.12"/><path d="M385.4 257.6 L379.5 287.1" stroke="#c8d6da" stroke-width="0.7" opacity="0.11"/><path d="M928.1 -26.2 L921.3 7.7" stroke="#c8d6da" stroke-width="0.7" opacity="0.10"/><path d="M593.1 466.1 L581.4 524.5" stroke="#c8d6da" stroke-width="0.9" opacity="0.08"/><path d="M983.4 257.1 L971.9 314.2" stroke="#c8d6da" stroke-width="0.7" opacity="0.08"/><path d="M-10.7 330.1 L-16 356.7" stroke="#c8d6da" stroke-width="0.8" opacity="0.12"/><path d="M759.6 679.4 L753.2 711.5" stroke="#c8d6da" stroke-width="1.1" opacity="0.05"/><path d="M1206.2 50.3 L1200.8 77.4" stroke="#c8d6da" stroke-width="0.8" opacity="0.12"/><path d="M800.7 520.5 L795.5 546.4" stroke="#c8d6da" stroke-width="0.9" opacity="0.11"/><path d="M116.8 106.3 L110.9 135.6" stroke="#c8d6da" stroke-width="0.7" opacity="0.09"/><path d="M749.1 377.4 L742 413" stroke="#c8d6da" stroke-width="1.1" opacity="0.08"/><path d="M531.5 694.1 L521.7 743.2" stroke="#c8d6da" stroke-width="0.8" opacity="0.07"/><path d="M248.5 82.7 L242.7 111.7" stroke="#c8d6da" stroke-width="0.9" opacity="0.07"/><path d="M1274.6 145.8 L1265 193.3" stroke="#c8d6da" stroke-width="0.8" opacity="0.05"/><path d="M1446.4 469.4 L1437 516.4" stroke="#c8d6da" stroke-width="0.8" opacity="0.12"/><path d="M657 110.3 L649.4 148.6" stroke="#c8d6da" stroke-width="1.1" opacity="0.09"/><path d="M1458 324.1 L1446.6 381.3" stroke="#c8d6da" stroke-width="0.7" opacity="0.12"/><path d="M214.9 111.7 L203.8 167.1" stroke="#c8d6da" stroke-width="0.7" opacity="0.06"/><path d="M424 503.4 L413.5 555.8" stroke="#c8d6da" stroke-width="0.8" opacity="0.12"/><path d="M358.5 194.3 L350.1 236.3" stroke="#c8d6da" stroke-width="0.9" opacity="0.12"/><path d="M325.7 466.1 L316.6 511.7" stroke="#c8d6da" stroke-width="0.8" opacity="0.07"/><path d="M305 614.2 L293 674.4" stroke="#c8d6da" stroke-width="1.1" opacity="0.07"/><path d="M88.7 315.4 L76.9 374.6" stroke="#c8d6da" stroke-width="0.9" opacity="0.13"/><path d="M671.7 291 L666.6 316.2" stroke="#c8d6da" stroke-width="0.8" opacity="0.09"/><path d="M1420.6 657.6 L1413.5 693" stroke="#c8d6da" stroke-width="0.7" opacity="0.09"/><path d="M502.9 116.7 L492.7 167.4" stroke="#c8d6da" stroke-width="0.8" opacity="0.07"/><path d="M1391.8 476.2 L1383 520" stroke="#c8d6da" stroke-width="0.8" opacity="0.09"/><path d="M882.5 525.9 L876.5 555.9" stroke="#c8d6da" stroke-width="1.1" opacity="0.07"/><path d="M1288.3 187.8 L1279.1 233.9" stroke="#c8d6da" stroke-width="1.1" opacity="0.09"/><path d="M1306.3 20.9 L1297.8 63.3" stroke="#c8d6da" stroke-width="0.7" opacity="0.06"/><path d="M1125.5 722.8 L1114.9 775.9" stroke="#c8d6da" stroke-width="0.8" opacity="0.12"/><path d="M1061.1 633.4 L1053.6 670.7" stroke="#c8d6da" stroke-width="0.7" opacity="0.09"/><path d="M942.1 234.7 L931.7 286.4" stroke="#c8d6da" stroke-width="0.8" opacity="0.13"/><path d="M263.8 99.8 L255.8 139.8" stroke="#c8d6da" stroke-width="0.9" opacity="0.13"/><path d="M1438.4 407.3 L1430 449" stroke="#c8d6da" stroke-width="0.9" opacity="0.07"/><path d="M669.8 551.4 L660 600.8" stroke="#c8d6da" stroke-width="0.8" opacity="0.13"/><path d="M208.2 619 L196.9 675.3" stroke="#c8d6da" stroke-width="0.9" opacity="0.12"/><path d="M169.1 18.2 L160.3 62.2" stroke="#c8d6da" stroke-width="0.8" opacity="0.11"/><path d="M1220.5 582.7 L1208.8 641.1" stroke="#c8d6da" stroke-width="0.8" opacity="0.06"/><path d="M518.1 649.5 L507.4 702.9" stroke="#c8d6da" stroke-width="0.7" opacity="0.05"/><path d="M202.2 484.8 L194.2 524.8" stroke="#c8d6da" stroke-width="0.8" opacity="0.10"/><path d="M148.3 307.3 L137 363.9" stroke="#c8d6da" stroke-width="0.9" opacity="0.13"/><path d="M1130.3 120.9 L1123.8 153.5" stroke="#c8d6da" stroke-width="0.9" opacity="0.08"/><path d="M720.4 557.9 L711 604.8" stroke="#c8d6da" stroke-width="0.7" opacity="0.06"/><path d="M1049.7 61.1 L1039.4 112.6" stroke="#c8d6da" stroke-width="1.1" opacity="0.05"/><path d="M-36.4 691.3 L-42.6 722.4" stroke="#c8d6da" stroke-width="0.9" opacity="0.10"/><path d="M1199.1 733.9 L1192.7 765.7" stroke="#c8d6da" stroke-width="0.7" opacity="0.11"/><path d="M1143.1 77.5 L1135.8 113.8" stroke="#c8d6da" stroke-width="0.7" opacity="0.12"/><path d="M313 284.6 L306.4 317.6" stroke="#c8d6da" stroke-width="0.8" opacity="0.10"/><path d="M711.3 51.7 L706.2 76.9" stroke="#c8d6da" stroke-width="0.9" opacity="0.13"/><path d="M590.4 377.3 L578.9 434.8" stroke="#c8d6da" stroke-width="0.9" opacity="0.07"/><path d="M1423.5 443.8 L1415.7 482.7" stroke="#c8d6da" stroke-width="0.8" opacity="0.12"/><path d="M1434 619.5 L1428.4 647.1" stroke="#c8d6da" stroke-width="1.1" opacity="0.04"/><path d="M1102.2 73 L1093 118.9" stroke="#c8d6da" stroke-width="1.1" opacity="0.10"/><path d="M7.3 163.1 L-2.6 212.6" stroke="#c8d6da" stroke-width="0.9" opacity="0.12"/><path d="M217.4 669.2 L208.2 715.1" stroke="#c8d6da" stroke-width="0.9" opacity="0.05"/><path d="M496.9 371.4 L486.4 424.1" stroke="#c8d6da" stroke-width="0.9" opacity="0.10"/><path d="M1417.8 76 L1405.6 137.2" stroke="#c8d6da" stroke-width="0.8" opacity="0.13"/><path d="M1266.5 536.8 L1254.3 598" stroke="#c8d6da" stroke-width="1.1" opacity="0.08"/><path d="M1265.5 44.4 L1258.8 78.1" stroke="#c8d6da" stroke-width="0.7" opacity="0.07"/><path d="M560.9 124.7 L555.2 153.1" stroke="#c8d6da" stroke-width="0.9" opacity="0.05"/><path d="M657.1 754.2 L647.4 802.2" stroke="#c8d6da" stroke-width="0.8" opacity="0.11"/><path d="M813.3 134.6 L807.2 165.1" stroke="#c8d6da" stroke-width="0.9" opacity="0.10"/><path d="M979.6 37.4 L968.1 95" stroke="#c8d6da" stroke-width="0.8" opacity="0.10"/><path d="M257.1 241 L248.4 284.5" stroke="#c8d6da" stroke-width="1.1" opacity="0.06"/><path d="M626.6 152.6 L618.1 194.9" stroke="#c8d6da" stroke-width="0.9" opacity="0.10"/><path d="M266.4 692.5 L254.9 749.9" stroke="#c8d6da" stroke-width="1.1" opacity="0.12"/><rect width="1440" height="900" fill="url(#vig)"/></svg>
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+
+<div class="hero-in">
+  <div class="notice"><span class="dot"></span>全程不剧透 · 梗概止于「她把店门关上，请这个人教她」的那一刻</div>
+  <div class="eyebrow"><i></i>Japanese Cinema · No.24</div>
+  <h1>蒲公英</h1>
+  <p class="latin">タンポポ</p>
+  <p class="latin">Tampopo · 1985</p>
+  <p class="hero-sub">雨夜，一辆长途货车停在路边。两个跑了一天车的男人，在驾驶室里念一本讲拉面的书，念到再也坐不住，就把车拐进了一家还亮着灯的小店。<em>日本影史最好笑的一部「关于吃」的电影<span class="hs-full">——也是把拉面送到全世界去的那一部</span>。</em></p>
+  <div class="chips">
+    <span class="chip"><b>1985</b> · 伊丹十三</span>
+    <span class="chip"><b>114 分钟</b> · 1.85:1</span>
+    <span class="chip">豆瓣 <b>8.3</b></span>
+    <span class="chip">IMDb <b>7.9</b></span>
+    <span class="chip">烂番茄 <b>100%</b></span>
+  </div>
+</div>
+
+<div class="scroll-hint">SCROLL<span></span></div>
+</header>
+
+<nav id="hud" aria-hidden="true">
+  <b data-i="0"><i></i>屏</b><b data-i="1"><i></i>字</b><b data-i="2"><i></i>档</b><b data-i="3"><i></i>人</b><b data-i="4"><i></i>等</b>
+</nav>
+
+<main>
+
+<section class="sec" id="s1" style="border-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">01</span><h2>剧情梗概</h2><p class="kicker">The Story</p></div>
+    <div class="intro">
+      <div class="lede reveal">
+        <p>雨下了一整天。一辆长途货车在国道上跑，驾驶室里两个人饿着，谁也不先提吃饭——这条路两边没有像样的店，他们心里都清楚。</p>
+        <p>坐在副驾的那个叫枪（渡边谦），一路上在念一本书，讲拉面该怎么吃：先把整碗面看一遍，用筷子把汤面轻轻抚一下，把叉烧按进汤里，心里说一句「等一下」，然后才吃第一口面。念着念着，两个人都受不了了。</p>
+        <p>于是车拐进路边一家还亮着灯的小店。门脸很小，暖帘上四个字：らーめん。</p>
+        <p>店里只有老板娘一个人，叫蒲公英（宫本信子）。丈夫去世以后，她照着记忆里的样子把这间店接了下来：汤是那样熬的，面是那样煮的，碗是那样摆的。她也说不上哪里不对，只知道客人一天比一天少，儿子放学回来就趴在柜台后面写作业。</p>
+        <p>开车的那个人叫黑郎（山崎努）。他戴一顶牛仔帽，帽檐压得很低，说话不绕弯。他吃完了那碗面，没有骂人，只是把问题一条一条摆出来：汤不够烫，面煮过了，碗没有先烫过，油不对，笋是买现成的，葱切早了。他说的不是「难吃」——他说的是，一碗面里有几个位置，她一个都没站对。</p>
+        <p>蒲公英没有辩解，也没有哭。她把睡着的儿子叫起来，把店门关上，站在门口，请这个只见过一面的男人教她。</p>
+        <p>黑郎答应了。条件很实在：他跑车，路过就停，停多久不一定；他教，她做；做不到就重来。</p>
+        <p class="dash">下面的事——她学会了没有、来来轩后来怎样、片尾最后一个镜头是什么——本页一律不写。</p>
+      </div>
+      <aside class="glance reveal">
+        <h3>At a Glance</h3>
+        <dl>
+          <div><dt>一句话</dt><dd>一个外地来的卡车司机，帮一个寡妇把一家拉面店从头重做。</dd></div>
+          <div><dt>时间</dt><dd>现在（1985 年的东京）<small>几天，也可能几周</small></dd></div>
+          <div><dt>地点</dt><dd>东京郊外一间小拉面店<small>以及别人的店、路上、后巷</small></dd></div>
+          <div><dt>主角</dt><dd>蒲公英（寡妇，店主，三十几岁）</dd></div>
+          <div><dt>对手</dt><dd>不是人，是「不对」——以及丈夫留下的做法</dd></div>
+          <div><dt>结构</dt><dd>一条主线 + 十几段与主线无关的插叙</dd></div>
+          <div><dt>道具</dt><dd>一口汤锅 / 一双长筷 / 一条暖帘 / 一顶牛仔帽</dd></div>
+          <div><dt>声音</dt><dd>吸面的声音（全片最响的音效）</dd></div>
+          <div><dt>情绪</dt><dd>好笑；然后忽然安静一下</dd></div>
+          <div><dt>关键词</dt><dd>汤 / 面 / 温度 / 手</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="acts">
+      <div class="act reveal"><div class="t">First · 一个雨夜</div><h4>一碗面被逐条拆开</h4><p>不是「难吃」，是每一处都差一点。这场戏把「好吃」从形容词变成了一张可以执行的清单，全片后来都在照着这张单子走。</p></div>
+      <div class="act reveal"><div class="t">Second · 学徒</div><h4>她开始跑别人的店</h4><p>大三元、日の出、味一番、中華街——每家店教她一件事，也顺便让她看见一种自己不想变成的样子。</p></div>
+      <div class="act reveal"><div class="t">Third · 帮手</div><h4>一个人做不成一碗面</h4><p>管汤的、管面的、管装修的，一个一个到齐。这一段是全片最像「组队」的部分，也是最好笑的部分。</p></div>
+    </div>
+
+    <p class="note reveal" style="margin-top:34px">本页叙述止于「她把店门关上」的那一刻。她最后做成了没有、来来轩后来怎样、黑郎为什么来又为什么走，一律不写。</p>
+  </div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">02</span><h2>概念海报</h2><p class="kicker">One Bowl · One Light</p></div>
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+<svg class="poster-svg" viewBox="0 0 620 800" role="img" aria-label="概念海报：灯下的一碗拉面"><defs><linearGradient id="pbg" x1=".1" y1="0" x2=".7" y2="1"><stop offset="0" stop-color="#120c07"/><stop offset=".46" stop-color="#0c0806"/><stop offset="1" stop-color="#060403"/></linearGradient><radialGradient id="plamp" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd6a2" stop-opacity=".2"/><stop offset=".4" stop-color="#eaa15c" stop-opacity=".09"/><stop offset="1" stop-color="#b06a30" stop-opacity="0"/></radialGradient><linearGradient id="pwood" x1="0" y1="0" x2=".15" y2="1"><stop offset="0" stop-color="#241708"/><stop offset=".18" stop-color="#1a1008"/><stop offset="1" stop-color="#080503"/></linearGradient><radialGradient id="ppool" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffc98d" stop-opacity=".18"/><stop offset=".6" stop-color="#c4844a" stop-opacity=".06"/><stop offset="1" stop-color="#8a5525" stop-opacity="0"/></radialGradient><linearGradient id="bowl" x1=".12" y1="0" x2=".86" y2="1"><stop offset="0" stop-color="#f6efdd"/><stop offset=".28" stop-color="#e7dcc2"/><stop offset=".6" stop-color="#c7b795"/><stop offset=".82" stop-color="#9d8c6c"/><stop offset="1" stop-color="#6e5f45"/></linearGradient><radialGradient id="soup" cx=".42" cy=".34" r=".66"><stop offset="0" stop-color="#d79a4c"/><stop offset=".5" stop-color="#b5762f"/><stop offset="1" stop-color="#7d4a1c"/></radialGradient><radialGradient id="psteam" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#efece0" stop-opacity=".24"/><stop offset="1" stop-color="#e2dfd2" stop-opacity="0"/></radialGradient><radialGradient id="pvig" cx=".5" cy=".44" r=".72"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".58" stop-color="#000" stop-opacity=".16"/><stop offset="1" stop-color="#000" stop-opacity=".76"/></radialGradient></defs><rect width="620" height="800" fill="url(#pbg)"/><ellipse cx="310" cy="330" rx="300" ry="330" fill="url(#plamp)"/><rect x="0" y="688" width="620" height="112" fill="url(#pwood)"/><rect x="0" y="688" width="620" height="1.6" fill="#5d4122" opacity=".55"/><rect x="0" y="690" width="620" height="3" fill="#000" opacity=".35"/><path d="M0 716 Q160 719 320 714 T620 718" fill="none" stroke="#7a5a33" stroke-width="1" opacity="0.16"/><path d="M0 740 Q160 743 320 738 T620 742" fill="none" stroke="#7a5a33" stroke-width="1" opacity="0.12"/><path d="M0 766 Q160 769 320 764 T620 768" fill="none" stroke="#7a5a33" stroke-width="1" opacity="0.10"/><path d="M0 790 Q160 793 320 788 T620 792" fill="none" stroke="#7a5a33" stroke-width="1" opacity="0.08"/><ellipse cx="310" cy="716" rx="230" ry="44" fill="url(#ppool)"/><rect x="348" y="0" width="1.8" height="86" fill="#463520"/><path d="M330 84 L370 84 L392 128 L308 128 Z" fill="#20170e"/><path d="M330 84 L370 84 L392 128 L308 128 Z" fill="none" stroke="#6b5231" stroke-width=".9" opacity=".5"/><rect x="326" y="82" width="48" height="5" fill="#120c07"/><ellipse cx="350" cy="130" rx="30" ry="11" fill="#ffd9a6" opacity=".5"/><ellipse cx="350" cy="131" rx="44" ry="20" fill="url(#plamp)"/><ellipse cx="342" cy="176" rx="120" ry="120" fill="url(#plamp)" opacity=".55"/><ellipse cx="286" cy="380" rx="66" ry="86" fill="url(#psteam)"/><ellipse cx="340" cy="342" rx="54" ry="76" fill="url(#psteam)" opacity=".8"/><ellipse cx="306" cy="296" rx="82" ry="72" fill="url(#psteam)" opacity=".55"/><path d="M158 500 A152 42 0 0 0 462 500 C456 592 398 648 310 648 C222 648 164 592 158 500 Z" fill="url(#bowl)"/><path d="M158 500 A152 42 0 0 0 462 500" fill="none" stroke="#fdf8ea" stroke-width="1.2" opacity=".55"/><path d="M180 528 C186 592 232 638 300 646 C250 640 206 600 196 546 Z" fill="#fffaf0" opacity=".3"/><path d="M400 520 C400 580 366 626 318 644 C382 634 432 588 438 522 Z" fill="#3a2f20" opacity=".26"/><path d="M172 556 A142 40 0 0 0 448 556" fill="none" stroke="#3f6478" stroke-width="2.2" opacity=".55"/><path d="M180 574 A136 38 0 0 0 440 574" fill="none" stroke="#3f6478" stroke-width="1" opacity=".3"/><path d="M256 646 L364 646 L358 664 L262 664 Z" fill="#b3a281"/><path d="M256 646 L364 646 L364 650 L256 650 Z" fill="#f0e8d4" opacity=".4"/><ellipse cx="310" cy="664" rx="48" ry="7" fill="#4c3f2a" opacity=".5"/><ellipse cx="310" cy="500" rx="152" ry="42" fill="#efe6cf"/><ellipse cx="310" cy="500" rx="152" ry="42" fill="none" stroke="#fdf8ea" stroke-width="1.4" opacity=".7"/><ellipse cx="310" cy="502" rx="142" ry="35" fill="#8a6f48"/><g transform="rotate(-11 424 468)"><rect x="402" y="410" width="44" height="86" fill="#111c16"/><rect x="402" y="410" width="44" height="86" fill="none" stroke="#3a5446" stroke-width="1" opacity=".75"/><path d="M410 416 L410 490" stroke="#2c463a" stroke-width="1.4" opacity=".85"/><path d="M430 416 L430 490" stroke="#0c1511" stroke-width="1.4" opacity=".9"/><rect x="402" y="410" width="44" height="10" fill="#2a4038" opacity=".5"/></g><ellipse cx="310" cy="503" rx="136" ry="32" fill="url(#soup)"/><ellipse cx="286" cy="494" rx="84" ry="16" fill="#e2ad63" opacity=".34"/><ellipse cx="250" cy="496" rx="11" ry="4" fill="#f3d9a4" opacity="0.50"/><ellipse cx="330" cy="490" rx="9" ry="3.4" fill="#f3d9a4" opacity="0.45"/><ellipse cx="368" cy="506" rx="13" ry="4.4" fill="#f3d9a4" opacity="0.38"/><ellipse cx="296" cy="512" rx="8" ry="3" fill="#f3d9a4" opacity="0.30"/><ellipse cx="222" cy="508" rx="7" ry="2.6" fill="#f3d9a4" opacity="0.26"/><ellipse cx="346" cy="514" rx="6" ry="2.4" fill="#f3d9a4" opacity="0.24"/><g fill="none" stroke="#e9cf98" stroke-width="3.4" opacity=".62" stroke-linecap="round"><path d="M232 500 Q258 488 288 496"/><path d="M244 508 Q272 498 300 506"/><path d="M320 512 Q348 502 372 510"/></g><g transform="rotate(-6 258 508)"><rect x="222" y="496" width="72" height="26" rx="7" fill="#7d4a28"/><rect x="222" y="496" width="72" height="26" rx="7" fill="none" stroke="#b1774a" stroke-width="1" opacity=".6"/><path d="M228 506 Q258 500 288 506" stroke="#5e3419" stroke-width="1" opacity=".5" fill="none"/></g><g transform="rotate(7 356 500)"><rect x="322" y="488" width="68" height="24" rx="7" fill="#8a532d"/><rect x="322" y="488" width="68" height="24" rx="7" fill="none" stroke="#c08a58" stroke-width="1" opacity=".55"/></g><g transform="rotate(-4 268 486)"><ellipse cx="268" cy="486" rx="28" ry="16" fill="#f6ecd2"/><ellipse cx="268" cy="486" rx="28" ry="16" fill="none" stroke="#c9b78f" stroke-width=".9" opacity=".6"/><ellipse cx="270" cy="485" rx="12" ry="8" fill="#e2a338"/><ellipse cx="267" cy="483" rx="4.6" ry="3" fill="#f5c66a" opacity=".8"/></g><rect x="338.8" y="488.2" width="6.1" height="5.1" rx="1.6" fill="#7fa055" opacity="0.52" transform="rotate(24 338.8 488.2)"/><rect x="318.4" y="487.8" width="6.3" height="6.8" rx="1.6" fill="#7fa055" opacity="0.72" transform="rotate(34 318.4 487.8)"/><rect x="399.3" y="503.3" width="5.6" height="6.9" rx="1.6" fill="#7fa055" opacity="0.52" transform="rotate(-23 399.3 503.3)"/><rect x="230.0" y="495.3" width="7.3" height="4.5" rx="1.6" fill="#7fa055" opacity="0.70" transform="rotate(-16 230.0 495.3)"/><rect x="218.8" y="487.8" width="4.8" height="6.0" rx="1.6" fill="#7fa055" opacity="0.65" transform="rotate(0 218.8 487.8)"/><rect x="301.0" y="513.7" width="5.4" height="4.7" rx="1.6" fill="#7fa055" opacity="0.56" transform="rotate(-9 301.0 513.7)"/><rect x="222.7" y="495.0" width="6.0" height="5.0" rx="1.6" fill="#7fa055" opacity="0.66" transform="rotate(37 222.7 495.0)"/><rect x="406.0" y="489.5" width="5.7" height="6.3" rx="1.6" fill="#7fa055" opacity="0.55" transform="rotate(22 406.0 489.5)"/><rect x="292.0" y="514.9" width="4.3" height="5.7" rx="1.6" fill="#7fa055" opacity="0.78" transform="rotate(0 292.0 514.9)"/><rect x="307.3" y="509.9" width="4.3" height="4.3" rx="1.6" fill="#7fa055" opacity="0.59" transform="rotate(-32 307.3 509.9)"/><rect x="218.4" y="507.0" width="6.6" height="7.0" rx="1.6" fill="#7fa055" opacity="0.79" transform="rotate(-4 218.4 507.0)"/><rect x="352.2" y="512.6" width="5.4" height="6.8" rx="1.6" fill="#7fa055" opacity="0.62" transform="rotate(38 352.2 512.6)"/><rect x="229.9" y="487.8" width="7.1" height="4.4" rx="1.6" fill="#7fa055" opacity="0.59" transform="rotate(10 229.9 487.8)"/><rect x="393.0" y="500.9" width="4.7" height="5.2" rx="1.6" fill="#7fa055" opacity="0.60" transform="rotate(-23 393.0 500.9)"/><rect x="373.1" y="511.9" width="5.1" height="5.2" rx="1.6" fill="#7fa055" opacity="0.63" transform="rotate(8 373.1 511.9)"/><rect x="401.4" y="490.5" width="4.7" height="4.7" rx="1.6" fill="#7fa055" opacity="0.58" transform="rotate(22 401.4 490.5)"/><rect x="375.5" y="491.5" width="5.1" height="4.4" rx="1.6" fill="#7fa055" opacity="0.69" transform="rotate(38 375.5 491.5)"/><rect x="321.5" y="514.6" width="6.8" height="5.5" rx="1.6" fill="#7fa055" opacity="0.72" transform="rotate(-34 321.5 514.6)"/><rect x="299.2" y="512.1" width="7.8" height="6.0" rx="1.6" fill="#7fa055" opacity="0.70" transform="rotate(10 299.2 512.1)"/><rect x="335.4" y="487.9" width="4.3" height="4.6" rx="1.6" fill="#7fa055" opacity="0.56" transform="rotate(3 335.4 487.9)"/><rect x="328.5" y="489.1" width="6.3" height="5.6" rx="1.6" fill="#7fa055" opacity="0.83" transform="rotate(38 328.5 489.1)"/><rect x="211.2" y="512.2" width="6.5" height="4.4" rx="1.6" fill="#7fa055" opacity="0.59" transform="rotate(4 211.2 512.2)"/><rect x="328.9" y="500.2" width="4.5" height="5.5" rx="1.6" fill="#7fa055" opacity="0.84" transform="rotate(21 328.9 500.2)"/><g transform="rotate(-13 310 470)" opacity=".95"><rect x="150" y="446" width="336" height="7" rx="3.4" fill="#d9c096"/><rect x="150" y="446" width="336" height="2" rx="1" fill="#f2e3c4" opacity=".7"/><rect x="150" y="458" width="336" height="7" rx="3.4" fill="#c9ae82"/><rect x="150" y="458" width="336" height="2" rx="1" fill="#eadcbb" opacity=".55"/><rect x="440" y="446" width="26" height="7" rx="3.4" fill="#b39a70" opacity=".8"/><rect x="440" y="458" width="26" height="7" rx="3.4" fill="#a88f66" opacity=".8"/></g><rect x="150" y="472" width="330" height="10" fill="#000" opacity=".12"/><ellipse cx="312" cy="672" rx="150" ry="20" fill="#000" opacity=".42"/><g fill="#f2e9d5"><text x="78" y="196" font-family="Songti SC, serif" font-size="62" letter-spacing="0" text-anchor="middle">蒲</text><text x="78" y="270" font-family="Songti SC, serif" font-size="62" letter-spacing="0" text-anchor="middle">公</text><text x="78" y="344" font-family="Songti SC, serif" font-size="62" letter-spacing="0" text-anchor="middle">英</text></g><g fill="#cbb083" opacity=".55"><text x="134" y="186" font-family="Hiragino Sans GB, sans-serif" font-size="17" text-anchor="middle">タ</text><text x="134" y="210" font-family="Hiragino Sans GB, sans-serif" font-size="17" text-anchor="middle">ン</text><text x="134" y="234" font-family="Hiragino Sans GB, sans-serif" font-size="17" text-anchor="middle">ポ</text><text x="134" y="258" font-family="Hiragino Sans GB, sans-serif" font-size="17" text-anchor="middle">ポ</text></g><text x="78" y="742" font-family="Didot, Times New Roman, serif" font-size="10.5" letter-spacing="4.4" fill="#d8c69e" opacity=".8" text-anchor="start">TAMPOPO · 1985</text><text x="78" y="762" font-family="Didot, Times New Roman, serif" font-size="9" letter-spacing="3" fill="#a2906c" opacity=".72">RAMEN WESTERN · 114 MIN</text><g transform="rotate(-3 508 728)"><rect x="484" y="704" width="48" height="48" fill="#a83a28" opacity=".9"/><rect x="484" y="704" width="48" height="48" fill="none" stroke="#e8b7a2" stroke-width=".8" opacity=".5"/><text x="508" y="726" text-anchor="middle" font-family="Songti SC, serif" font-size="17" fill="#fbeadf" opacity=".95">廿</text><text x="508" y="746" text-anchor="middle" font-family="Songti SC, serif" font-size="17" fill="#fbeadf" opacity=".95">四</text></g><rect width="620" height="800" fill="url(#pvig)"/></svg>
+        </div>
+        <p class="pcap">CONCEPT POSTER · 非官方物料</p>
+      </div>
+      <div class="pnotes">
+        <div class="pnote reveal"><div class="n">01</div><h4>为什么是一只碗</h4><p>全片有十几段跟主线毫无关系的插叙，人物来一个走一个。只有这只碗从头到尾都在——它是这部电影唯一不变的主角。</p></div>
+        <div class="pnote reveal"><div class="n">02</div><h4>为什么灯在正上方</h4><p>片子反复给的判断标准只有一个：<b>汤要烫</b>。灯挂在正上方，是为了让「烫」这件事看得见——热气、油光、碗沿的白。</p></div>
+        <div class="pnote reveal"><div class="n">03</div><h4>碗沿那两道蓝线</h4><p>日本中式面碗最常见的纹样，白瓷，碗口一圈或两圈蓝。它不精致，它是「这是给干活的人吃的」的记号。海报把它留下来了。</p></div>
+        <div class="pnote reveal"><div class="n">04</div><h4>筷子搁在碗沿</h4><p>中国人看会觉得不礼貌，日本人看会知道：这是「还没吃完，先歇一下」。一个动作，两种读法——这部片子在海外被误读的地方，大多也是这种。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">03</span><h2>影片档案</h2><p class="kicker">Credits</p></div>
+    <dl class="spec reveal">
+      <div><dt>原名</dt><dd>タンポポ<small>Tampopo / Dandelion</small></dd></div>
+      <div><dt>监督・脚本</dt><dd>伊丹十三<small>1933 – 1997</small></dd></div>
+      <div><dt>主演</dt><dd>山崎努 / 宫本信子</dd></div>
+      <div><dt>共演</dt><dd>役所広司 / 渡辺謙 / 安岡力也<small>加藤嘉 / 大滝秀治 / 桜金造</small></dd></div>
+      <div><dt>公映</dt><dd>1985-11-23<small>东宝配给</small></dd></div>
+      <div><dt>片长</dt><dd>114 分钟<small>日文维基记 115</small></dd></div>
+      <div><dt>画幅</dt><dd>1.85 : 1 · 彩色 · Dolby</dd></div>
+      <div><dt>类型</dt><dd>喜剧<small>导演自称「拉面西部片」</small></dd></div>
+      <div><dt>制作</dt><dd>伊丹プロダクション<small>+ ニュー・センチュリー・プロデューサーズ</small></dd></div>
+      <div><dt>配给收入</dt><dd>6 亿日元<small>约为前作《葬礼》的一半</small></dd></div>
+      <div><dt>摄影</dt><dd>田村正毅</dd></div>
+      <div><dt>音乐</dt><dd>村井邦彦<small>用了李斯特《前奏曲》</small></dd></div>
+      <div><dt>剪辑</dt><dd>铃木晄<small>第 9 回学院奖 编辑赏</small></dd></div>
+      <div><dt>料理造型</dt><dd>石森いづみ</dd></div>
+      <div><dt>题字</dt><dd>味岡伸太郎</dd></div>
+      <div><dt>外景</dt><dd>东京・芝浦 / 荻窪<small>店的原型在荻窪</small></dd></div>
+      <div><dt>母题</dt><dd>一碗面的七个位置</dd></div>
+      <div><dt>语言</dt><dd>日语<small>片中另有法语菜单、英语食客</small></dd></div>
+      <div><dt>IMDb</dt><dd>tt0092048</dd></div>
+      <div><dt>美国发行</dt><dd>New Yorker Films<small>1986-09-01 首轮</small></dd></div>
+      <div class="wide"><dt>一句话</dt><dd>它不是一部关于拉面的电影，是一部关于「怎么把一件小事做对」的电影——只不过那件小事，恰好是一碗面。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="s4">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">04</span><h2>口碑与口径</h2><p class="kicker">Numbers, Carefully</p></div>
+    <div class="scores reveal">
+      <div class="sc"><div class="src">Douban · 豆瓣</div><div class="val">8.3<small>/ 10</small></div>
+        <div class="meta"><b>16,009</b> 人评价 · 五星 35.6% / 四星 47.5% / 三星 15.0%<br>未进 Top250 · 本专题 24 期里票池最薄的一次</div></div>
+      <div class="sc"><div class="src">IMDb</div><div class="val">7.9<small>/ 10</small></div>
+        <div class="meta"><b>22,480</b> 票 · 与豆瓣相差 <b>0.4</b><br>海外票池比中文侧大一倍以上</div></div>
+      <div class="sc hi"><div class="src">Rotten Tomatoes</div><div class="val">100<small>%</small></div>
+        <div class="meta"><b>57</b> 篇影评 · 观众 <b>93%</b>（5,000+）<br>样本量在「满分片」里算扎实的一档</div></div>
+      <div class="sc hi"><div class="src">Metacritic</div><div class="val">87<small>/ 100</small></div>
+        <div class="meta">英美评论界给出的高分<br>与豆瓣 8.3 形成本专题少见的<b>反向落差</b></div></div>
+    </div>
+    <ul class="caliber reveal">
+      <li><i>01</i><span><b>票池最薄。</b>16,009 是 24 期里最小的一次（上一期《编舟记》81,692）。8.3 这个数字比往期更容易抖，看趋势比看小数更可靠。</span></li>
+      <li><i>02</i><span><b>三个口径的错位。</b>豆瓣 8.3、IMDb 7.9，但烂番茄 100%、Metacritic 87。这是本专题第一次出现「英美评论界比中文观众更热」——1990 年代它在北美艺术院线是一部长销片。</span></li>
+      <li><i>03</i><span><b>片长两个数。</b>豆瓣与 IMDb 记 114 分钟，日文维基记 115 分钟。差异在一分钟以内，不影响观看。</span></li>
+      <li><i>04</i><span><b>「6 亿日元」是配給収入，不是票房。</b>指发行方分账口径；日文维基注明这大约是前作《葬礼》的一半。</span></li>
+      <li><i>05</i><span><b>美国票房不引用具体金额。</b>首轮（1986）与 4K 重映（2016）分开计，网上流传的数字常把两者混在一起。本页只写「当年日本片在美票房第二」。</span></li>
+      <li><i>06</i><span><b>别信「旬报十佳」。</b>中文资料常这么写，实测 1985 年度第 59 回十佳里没有它——详见下一节。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="s5">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">05</span><h2>六个人，一口锅</h2><p class="kicker">Who Wants What</p></div>
+    <div class="people">
+      <div class="person reveal"><div class="role">THE OWNER</div><h4>蒲公英<small>タンポポ</small></h4><div class="actor">宫本信子</div>
+        <p>寡妇，店主，一个小学男孩的母亲。她做的每一碗面都像在交作业——照着丈夫的样子做，不敢改。
+        <span><b>要什么</b>把店撑下去，让儿子不必转学。</span>
+        <span><b>怕什么</b>承认自己做不好，等于承认丈夫不在了。</span></p></div>
+      <div class="person reveal"><div class="role">THE DRIVER</div><h4>黑郎<small>ゴロー</small></h4><div class="actor">山崎努</div>
+        <p>长途货车司机，一顶牛仔帽连洗澡都不摘。从前是拳击手，认识半个东京的厨房。
+        <span><b>要什么</b>他嘴上说「顺路」，其实是想把一件事做到底。</span>
+        <span><b>怕什么</b>停下来。一停下来，他就得想自己的事。</span></p></div>
+      <div class="person reveal"><div class="role">THE PARTNER</div><h4>枪<small>ガン</small></h4><div class="actor">渡边谦</div>
+        <p>副驾，二十几岁，负责念书、起哄、给老板娘挑围裙。全片最像一个观众的人。
+        <span><b>要什么</b>看热闹，顺便吃饱。</span>
+        <span><b>作用</b>把黑郎说不出口的话，替他说出来。</span></p></div>
+      <div class="person reveal"><div class="role">THE RIVAL</div><h4>皮斯肯<small>ピスケン</small></h4><div class="actor">安冈力也</div>
+        <p>包工头，半个道上的人，蒲公英的童年玩伴。每晚带人上门，嚷嚷着要娶她。人其实耿直。
+        <span><b>要什么</b>一个名分，或者一个台阶。</span>
+        <span><b>结果</b>他和黑郎之间必须打一场——怎么打、谁赢，本页不写。</span></p></div>
+      <div class="person reveal"><div class="role">THE TEACHER</div><h4>先生<small>センセイ</small></h4><div class="actor">加藤嘉</div>
+        <p>流浪者的头儿，从前是妇产科医生。因为太爱吃，医院被妻子和事务长拿走了。
+        <span><b>管什么</b>汤。他尝一口就能说出少了什么。</span>
+        <span><b>一句话</b>「汤是偷不来的，只能等。」</span></p></div>
+      <div class="person reveal"><div class="role">THE NOODLE MAN</div><h4>昌平<small>ショーヘイ</small></h4><div class="actor">樱金造</div>
+        <p>一位老人的司机兼厨子，一口关西腔，来路不明。被一顿鳖汤换进了队伍。
+        <span><b>管什么</b>面。水和粉的比例、揉几次、醒多久。</span>
+        <span><b>脾气</b>只信手，不信话。</span></p></div>
+      <div class="person thing reveal"><div class="role">THE MAN IN WHITE · 全片唯一与主线无关的人</div><h4>白服之男<small>白服の男</small></h4><div class="actor">役所広司</div>
+        <p>一身白西装，身边永远跟着一个女人，永远在吃。他会在片头对着镜头说话，会在完全不相关的地方忽然出现，也会在没有铺垫的情况下忽然消失。他既不属于主线，也不属于任何一条支线——他是这部电影关于「食与欲望」的那一半，被单独拎出来放在观众面前。
+        <span><b>为什么留着他</b>因为抽掉他，这就只是一部教你做拉面的喜剧；留下他，它才是一部关于「人怎么吃、为什么吃」的电影。</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s6">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">06</span><h2>人物冲突</h2><p class="kicker">Six Frictions</p></div>
+    <div class="conflicts">
+      <div class="cf reveal"><h4><i>01</i>她 vs 丈夫留下的做法</h4><p>片子从头到尾没让她哭过一场。她的困境不是悲伤，是<em>不敢改</em>——每一道工序都是丈夫的，改了就像背叛。所以她做的不是拉面，是一份遗物。</p></div>
+      <div class="cf reveal"><h4><i>02</i>她 vs 黑郎</h4><p>他给的是标准，她要的是「我到底行不行」。师徒戏最好看的地方在于：他从不安慰她，只是把下一个动作说清楚。而她每次被否掉，第二天照样开门。</p></div>
+      <div class="cf reveal"><h4><i>03</i>黑郎 vs 皮斯肯</h4><p>两个男人争的不是一个女人，是「谁有资格管这家店」。一个外来人，一个地头蛇；一个不解释，一个不讲理。这场对决是全片最荒唐也最痛快的一段。</p></div>
+      <div class="cf reveal"><h4><i>04</i>这家店 vs 一条街</h4><p>大三元人多、味重、态度横；日の出只有一个不说话的职人；味一番靠记单快；中華街的老爸开口要一百万。四家店是四面镜子，照的不是好坏，是「你想开成哪一种」。</p></div>
+      <div class="cf reveal"><h4><i>05</i>主线 vs 插叙</h4><p>每隔十几分钟，镜头就跑去拍别人吃饭：公司职员看不懂法语菜单、超市里摸奶酪的老太太、临终的妻子被丈夫叫起来炒饭。它们和主线无关，却在说同一件事。</p></div>
+      <div class="cf reveal"><h4><i>06</i>手艺 vs 时间</h4><p>汤要熬一整夜，面只能煮四十五秒。这是全片唯一的硬规则：<em>有些事快不了，有些事慢不得</em>。她第一次听懂这句话，是在锅边站到天亮。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s7">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">07</span><h2>荣誉，以及它没拿到的</h2><p class="kicker">What It Got, What It Didn't</p></div>
+    <div class="awards">
+      <div class="award cold reveal"><div class="yr">1985</div><div><h4>第 59 回旬报十佳 · 未入</h4><p>1985 年度十佳第 1 位是森田芳光《其后》，第 2 位是黑泽明《乱》。本片不在十席之内，读者票选十佳也没有它。</p></div></div>
+      <div class="award cold reveal"><div class="yr">1985</div><div><h4>第 9 回日本学院奖 · 三大奖全部未入围</h4><p>作品 / 监督 / 脚本三个部门的优秀赏名单里都没有它。当年最优秀作品是《花いちもんめ》。</p></div></div>
+      <div class="award gold reveal"><div class="yr">1986</div><div><h4>第 9 回日本学院奖 · 最优秀編集賞</h4><p>铃木晄。这是本片在日本本土拿到的<strong>唯一一个「最优秀」</strong>——不是作品，不是导演，是剪辑。</p></div></div>
+      <div class="award reveal"><div class="yr">1986</div><div><h4>第 9 回日本学院奖 · 最优秀録音賞</h4><p>橋本文雄。该奖按年度合并授给六部影片（《刺青》《恋文》《早春物語》《それから》《タンポポ》《Wの悲劇》），本片是其中之一。</p></div></div>
+      <div class="award reveal"><div class="yr">1986</div><div><h4>美国公映 · 当年日本片在美票房第二</h4><p>New Yorker Films 发行，1986-09-01 首轮。此后美国陆续开出一批拉面店——这句话不是宣传语，是日本那边的研究者反复提到的现象。</p></div></div>
+      <div class="award reveal"><div class="yr">2009</div><div><h4>《拉面女孩》致敬</h4><p>罗伯特·艾伦·阿克曼导演的《The Ramen Girl》，山崎努出演。一个外国人学做拉面的故事，骨架仍然是这一部。</p></div></div>
+      <div class="award reveal"><div class="yr">2016</div><div><h4>4K 数字修复 · 纽约重映</h4><p>2016-10-21 起在纽约重映；2017-05-04 上线 Criterion Channel。三十一年后，它重新进了一次院线。</p></div></div>
+      <div class="award reveal"><div class="yr">2017</div><div><h4>Criterion Collection 收录</h4><p>附评论文章《Tampopo: Ramen for the People》与幕后纪录片。CC 的收录不是奖，但它改写了一部片子在英语世界的寿命。</p></div></div>
+      <div class="award wide reveal"><div class="yr">2025</div><div><h4>《孤独的美食家》电影版，把这一碗还给了它</h4><p>松重丰自导自演的那部电影里，拉面店的段落被他自己说成是「献给《蒲公英》的致敬」。四十年过去，日本最著名的那个「吃饭的人」，回头向这部片子鞠了一躬。</p></div></div>
+    </div>
+    <p class="note reveal" style="margin-top:34px">这一节的写法是刻意的：它在国内几乎没拿奖，在国外成了长销片。<b>两件事都是真的</b>，分开写比合起来写更接近事实。</p>
+  </div>
+</section>
+
+<section class="sec" id="s8">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">08</span><h2>一碗面的七个位置</h2><p class="kicker">Seven Positions</p></div>
+    <div class="lineage">
+      <div class="ln reveal"><div class="yr">01 · SOUP</div><h4>汤，一整夜</h4><p>猪骨、鸡架、昆布、鲣节。火不能大，汤不能滚——滚了会浑。这一条她做反了十年：她一直以为汤要浓，其实要先清。</p></div>
+      <div class="ln reveal"><div class="yr">02 · NOODLE</div><h4>面，四十五秒</h4><p>煮面的时间按秒算。出锅前要甩，把水甩干，不然一碗汤就被稀释了。这是全片唯一一处「时间是硬的」。</p></div>
+      <div class="ln reveal"><div class="yr">03 · OIL</div><h4>油，一层</h4><p>汤面那层油不是腻，是盖被子：它让汤在端上桌的三分钟里不掉温度。所以她第一碗面端上来时，问题不在味道，在温度。</p></div>
+      <div class="ln reveal"><div class="yr">04 · MENMA</div><h4>笋，自己煮</h4><p>买现成的最省事，也最容易被吃出来。这一条黑郎只说了一句，她记了很久。</p></div>
+      <div class="ln reveal"><div class="yr">05 · CHASHU</div><h4>叉烧，先煮后浸</h4><p>肉要在汤里泡到凉，味道才回得去。急不得——这是全片第二次说「急不得」。</p></div>
+      <div class="ln reveal"><div class="yr">06 · SCALLION</div><h4>葱，最后切</h4><p>切早了会出水，出水就没有香气。一个几乎不算技术的技术，却是最容易被跳过的那一条。</p></div>
+      <div class="ln now reveal"><div class="yr">07 · TEMPERATURE</div><h4>碗，先烫过</h4><p>最简单，也最容易被跳过。整部电影讲到最后，落在这一件小事上：<b>你有没有为吃的人多想一步。</b></p></div>
+    </div>
+    <p class="note reveal" style="margin-top:36px">这张清单是本页按片中黑郎的说法整理的，顺序做了调整；不是片中的字幕或旁白。</p>
+  </div>
+</section>
+
+<section class="sec" id="s9">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">09</span><h2>六处亮点</h2><p class="kicker">Why It Works</p></div>
+    <div class="grid6">
+      <div class="g6 reveal"><div class="n">01</div><h4>把「好吃」拆成动作</h4><p>全片没有一句「真好吃」是靠演员的表情说的，都是靠手上的动作说的：甩水、烫碗、按叉烧。<b>它相信观众看得懂手</b>。</p></div>
+      <div class="g6 reveal"><div class="n">02</div><h4>骨架是《原野奇侠》</h4><p>一个外地人进小镇，帮一个寡妇，打一场架，然后走。伊丹十三对制片人说的原话是：「这是把《Shane》和拉面合在一起的电影。」</p></div>
+      <div class="g6 reveal"><div class="n">03</div><h4>十几段插叙</h4><p>与主线毫无关系，忽然插进来，忽然走掉。有人嫌它散；但抽掉这些，它就只是一部美食片，不再是一部关于「欲望」的电影。</p></div>
+      <div class="g6 reveal"><div class="n">04</div><h4>声音</h4><p>全片最响的音效是吸面。开场第一个镜头就在教你怎么听一碗面——日本人认为吸出声是「香」，这一点被整部电影当成前提，从不解释。</p></div>
+      <div class="g6 reveal"><div class="n">05</div><h4>一句译不了的「えらい?」</h4><p>学者马克·彼特森专门写文章说：英文字幕把它译成 “Am I good?”，意思全丢了。原文是撒娇，译文是考试。</p></div>
+      <div class="g6 reveal"><div class="n">06</div><h4>那碗蛋包饭</h4><p>一个流浪者溜进餐厅，给孩子做了一份蛋包饭，刀一划，蛋皮摊开盖住饭。这段跟主线毫无关系，却是许多人记得最久的一个镜头。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">10</span><h2>为什么值得一看</h2><p class="kicker">Three Reasons</p></div>
+    <div class="why">
+      <article class="reveal"><h3>一、它讲的不是天赋，是标准</h3>
+        <p>大多数「学艺」电影靠悟性：主角忽然开窍，镜头一转就成了。这部不。她从头到尾没有开窍的那一刻，只有<strong>七个动作被一个一个改对</strong>。</p>
+        <p>这也是它四十年后还没过时的原因：<em>天赋的故事只能看一次，方法的故事可以反复看</em>。</p></article>
+      <article class="reveal"><h3>二、它是 1985 年日本的一张侧脸</h3>
+        <p>外食产业正在膨胀，拉面从街边摊变成一门正经生意，美国人刚开始对日本人的日常产生好奇。这片子三样都拍到了，而且是用喜剧拍的。</p>
+        <p>它在国内几乎没拿奖，在北美却成了长销片——<strong>这个错位本身，比任何一个奖都更能说明 1985 年</strong>。</p></article>
+      <article class="reveal"><h3>三、它好笑，而且好笑得干净</h3>
+        <p>不是靠损人，是靠「认真」和「荒唐」放在一起：一个男人非常严肃地教另一个男人怎么吃一碗面；一位礼仪老师被隔壁的吸面声逼疯；一整个公司的人看不懂法语菜单，谁都不肯先开口。</p>
+        <p>这些笑点不需要文化背景，只需要你饿过。<em>它是那种「笑得很大声，笑完有点饿，也有点想给谁做点什么」的电影</em>。</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">11</span><h2>观影提示</h2><p class="kicker">Before You Press Play</p></div>
+    <div class="tips">
+      <div class="tip reveal"><div class="k">01</div><h4>别在饿的时候看</h4><p>这句话通常被当客套，这次不是。片子前二十分钟就在拍吃，而且拍得非常具体。</p></div>
+      <div class="tip reveal"><div class="k">02</div><h4>先准备好一碗面</h4><p>或者至少准备好能立刻吃到的东西。中途暂停去煮面是常规操作，不算分心。</p></div>
+      <div class="tip reveal"><div class="k">03</div><h4>插叙不要等它回来</h4><p>十几段支线，人物不会再出现第二次。它们不是伏笔，是并置——接受这一点，观感会好很多。</p></div>
+      <div class="tip reveal"><div class="k">04</div><h4>留意一句「えらい?」</h4><p>中文字幕通常译成「我厉害吗」。它其实是撒娇，不是自评。看到这句时，可以想想还有没有别的译法。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="wrap">
+    <p class="tag">VERDICT · NO.24</p>
+    <p class="q"><span>一碗面里有七个位置。</span><span>她一个都没站对。</span><span>这不是失败，这是还没开始。</span></p>
+    <p class="src">—— 本页判词。片中没有这句话，片中只有人一遍一遍地说「再来一次」。</p>
+    <div class="stamp"><div><span>JAPANESE CINEMA</span><b>NO.24</b><span>1985 · 伊丹十三</span></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>日本电影专题 · 第 24 期｜《蒲公英》（タンポポ）/ Tampopo（1985，伊丹十三）<br>
+    数据核对于 2026-11-18：豆瓣条目 1294009（8.3 / 16,009 人 · 五星 35.6% / 四星 47.5% / 三星 15.0% / 二星 1.5% / 一星 0.4% · 未进 Top250）、IMDb tt0092048 7.9（22,480 票）、烂番茄 100%（57 篇 · 观众 93% / 5,000+）、Metacritic 87。<br>
+    奖项以有明确届次者为限：第 9 回日本电影学院奖 最优秀編集賞（铃木晄）+ 最优秀録音賞（橋本文雄，六片合并受赏）；同届作品 / 监督 / 脚本三部门未入围，最优秀作品为《花いちもんめ》；1985 年度第 59 回电影旬报十佳未入（第 1 位《其后》、第 2 位《乱》）。<br>
+    片长 114 分钟（日文维基记 115）；1985-11-23 东宝配给公映；配給収入 6 亿日元；美国由 New Yorker Films 发行，1986-09-01 首轮，2016-10-21 4K 修复重映，2017 年 Criterion Collection 收录。<br>
+    全页不含关键情节：她最后是否做成、来来轩此后如何、黑郎为何来去、片尾最后一个镜头，一律未写。「七个位置」为本页按片中说法整理的清单，非片中字幕。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c = document.getElementById('heroCanvas');
+  if(!c) return;
+  var ctx = c.getContext('2d'), W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
+  var drops=[], mist=[], t=0;
+  function size(){
+    W=c.clientWidth; H=c.clientHeight;
+    c.width=W*dpr; c.height=H*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();
+  }
+  function build(){
+    drops=[]; mist=[];
+    var n = Math.round(W*H/13000);
+    if(n>210) n=210;
+    for(var i=0;i<n;i++){
+      drops.push({
+        x: Math.random()*W,
+        y: Math.random()*H,
+        l: 12+Math.random()*26,
+        v: 6+Math.random()*9,
+        a: .05+Math.random()*.14
+      });
+    }
+    var m = Math.round(W*H/30000);
+    if(m>70) m=70;
+    for(var j=0;j<m;j++){
+      mist.push({
+        x: W*0.5 + (Math.random()-.5)*W*0.5,
+        y: H*0.35 + (Math.random()-.5)*H*0.4,
+        r: .6+Math.random()*1.5,
+        vy: -.08-Math.random()*.16,
+        a: .04+Math.random()*.1,
+        p: Math.random()*6.28
+      });
+    }
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    t+=0.006;
+    for(var i=0;i<drops.length;i++){
+      var d=drops[i];
+      d.y+=d.v; d.x-=d.v*0.18;
+      if(d.y>H+30){ d.y=-30; d.x=Math.random()*W*1.1; }
+      if(d.x<-20){ d.x=W+20; }
+      ctx.beginPath();
+      ctx.strokeStyle='rgba(206,220,224,'+d.a.toFixed(3)+')';
+      ctx.lineWidth=1;
+      ctx.moveTo(d.x,d.y);
+      ctx.lineTo(d.x-d.l*0.18,d.y+d.l);
+      ctx.stroke();
+    }
+    for(var j=0;j<mist.length;j++){
+      var m=mist[j];
+      m.y+=m.vy; m.x+=0.05;
+      if(m.y<-10){ m.y=H+10; m.x=W*0.5+(Math.random()-.5)*W*0.5; }
+      var a=m.a*(0.4+0.6*Math.sin(t*0.7+m.p));
+      ctx.beginPath();
+      ctx.fillStyle='rgba(232,226,208,'+a.toFixed(3)+')';
+      ctx.arc(m.x,m.y,m.r,0,6.2832);
+      ctx.fill();
+    }
+    var g = ctx.createRadialGradient(W*0.6,H*0.62,0,W*0.6,H*0.62,Math.max(W,H)*0.36);
+    var pulse = 0.05+0.012*Math.sin(t*0.45);
+    g.addColorStop(0,'rgba(240,196,140,'+pulse.toFixed(3)+')');
+    g.addColorStop(1,'rgba(240,196,140,0)');
+    ctx.fillStyle=g;
+    ctx.fillRect(0,0,W,H);
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',size);
+  size(); draw();
+
+  var revs = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08, rootMargin:'0px 0px -6% 0px'});
+  revs.forEach(function(e){ io.observe(e); });
+
+  var hud=document.getElementById('hud'), items=[].slice.call(hud.querySelectorAll('b'));
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    hud.classList.toggle('on', y > window.innerHeight*0.55);
+    var p = y/(document.body.scrollHeight - window.innerHeight);
+    var idx = Math.min(4, Math.floor(p*5));
+    items.forEach(function(b,i){ b.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>

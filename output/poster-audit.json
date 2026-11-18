@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-18T04:46:28.210Z",
+  "generatedAt": "2026-11-18T04:56:36.035Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 160,
-  "ok": 89,
+  "total": 161,
+  "ok": 90,
   "warn": 71,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 144,
+    "checked": 145,
     "skippedVerified": 16,
     "error": null
   },
@@ -3056,6 +3056,45 @@
           "detail": "图片能读到文字，但最大文字“さどらや”没有对上片名，建议核对"
         }
       ]
+    },
+    {
+      "id": "20261118-tampopo",
+      "zhTitle": "蒲公英",
+      "sourceTitle": "英雄本色 (1986) - 海报 — The Movie Database (TMDB)",
+      "year": "1986",
+      "source": "本地",
+      "imageUrl": "posters/20261118-tampopo.jpg",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "289KB",
+      "dims": "1000×1500",
+      "ratio": 1.5,
+      "identityKind": "name",
+      "identityHits": [
+        "别名:英雄本色",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「英雄本色」",
+          "年份命中 1986",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "11月17日",
+        "reasons": [],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "ok",
+      "issues": []
     },
     {
       "id": "20260427",
