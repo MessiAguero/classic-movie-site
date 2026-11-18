@@ -55,7 +55,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,6.4vw,92px);lin
 .hero-sub em{font-style:normal;color:#f8f1e0;border-bottom:1px solid rgba(201,138,74,.55);padding-bottom:2px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:620px}
 .chip{font-size:11.5px;letter-spacing:.06em;color:rgba(238,230,214,.9);border:1px solid rgba(234,225,207,.2);
-  border-radius:999px;padding:6px 14px;background:rgba(7,6,4,.66);backdrop-filter:blur(6px)}
+  border-radius:999px;padding:6px 14px;background:rgba(7,6,4,.8);backdrop-filter:blur(7px)}
 .chip b{color:#fff;font-weight:500}
 .scroll-hint{position:absolute;left:auto;right:28px;bottom:30px;z-index:4;
   font-family:var(--latin);font-size:9.5px;letter-spacing:.42em;color:rgba(234,225,207,.4);
@@ -169,7 +169,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,6.4vw,92px);lin
 .award.cold h4{color:#e3cba6}
 .award.wide{grid-column:1/-1}
 
-.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px}
+.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px;max-width:800px}
 .ln{position:relative;padding:0 0 38px 40px}
 .ln:last-child{padding-bottom:0}
 .ln::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;
@@ -255,7 +255,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
     linear-gradient(to bottom,rgba(4,5,6,.96) 0%,rgba(4,5,6,.94) 28%,rgba(4,5,6,.84) 44%,rgba(4,5,6,.74) 54%,rgba(4,5,6,.5) 60%,rgba(4,5,6,.22) 66%,rgba(4,5,6,.1) 73%,rgba(4,5,6,.16) 80%,rgba(4,5,6,.32) 87%,rgba(4,5,6,.6) 94%,rgba(3,4,5,.9) 100%)}
 }
 @media (max-width:760px){
-  .hero-svg{transform:none}
+  .hero-svg{transform:translateY(11vh)}
   .hero-scrim{background:
     linear-gradient(to bottom,rgba(4,5,6,.93) 0%,rgba(4,5,6,.9) 22%,rgba(4,5,6,.82) 40%,rgba(4,5,6,.56) 54%,rgba(4,5,6,.28) 66%,rgba(4,5,6,.16) 78%,rgba(4,5,6,.3) 88%,rgba(3,4,5,.78) 100%)}
   body{font-size:15px;line-height:1.9}
@@ -304,7 +304,13 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 @media (max-width:760px) and (max-height:700px){
   .hero{min-height:100vh}
   .hero-in{min-height:100vh;padding-top:6vh}
-  .hero-svg{transform:none}
+  .hero-svg{transform:translateY(9vh)}
+  .notice{margin-bottom:16px;font-size:10px;padding:5px 12px}
+  h1{margin-top:14px;font-size:clamp(28px,8.6vw,40px)}
+  .latin{margin-top:12px;font-size:10.5px}
+  .latin + .latin{font-size:9px;margin-top:5px}
+  .hero-sub{margin-top:16px;font-size:13.2px;line-height:1.82}
+  .chips{margin-top:20px}
 }
 </style>
 </head>
@@ -349,7 +355,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
         <p>坐在副驾的那个叫枪（渡边谦），一路上在念一本书，讲拉面该怎么吃：先把整碗面看一遍，用筷子把汤面轻轻抚一下，把叉烧按进汤里，心里说一句「等一下」，然后才吃第一口面。念着念着，两个人都受不了了。</p>
         <p>于是车拐进路边一家还亮着灯的小店。门脸很小，暖帘上四个字：らーめん。</p>
         <p>店里只有老板娘一个人，叫蒲公英（宫本信子）。丈夫去世以后，她照着记忆里的样子把这间店接了下来：汤是那样熬的，面是那样煮的，碗是那样摆的。她也说不上哪里不对，只知道客人一天比一天少，儿子放学回来就趴在柜台后面写作业。</p>
-        <p>开车的那个人叫黑郎（山崎努）。他戴一顶牛仔帽，帽檐压得很低，说话不绕弯。他吃完了那碗面，没有骂人，只是把问题一条一条摆出来：汤不够烫，面煮过了，碗没有先烫过，油不对，笋是买现成的，葱切早了。他说的不是「难吃」——他说的是，一碗面里有几个位置，她一个都没站对。</p>
+        <p>开车的那个人叫黑郎（山崎努）。他戴一顶牛仔帽，帽檐压得很低，说话不绕弯。他吃完了那碗面，没有骂人，只是把问题一条一条摆出来：汤、面、碗、油、笋、葱。他说的不是「难吃」——他说的是，一碗面里有几个位置，她一个都没站对。</p>
         <p>蒲公英没有辩解，也没有哭。她把睡着的儿子叫起来，把店门关上，站在门口，请这个只见过一面的男人教她。</p>
         <p>黑郎答应了。条件很实在：他跑车，路过就停，停多久不一定；他教，她做；做不到就重来。</p>
         <p class="dash">下面的事——她学会了没有、来来轩后来怎样、片尾最后一个镜头是什么——本页一律不写。</p>
@@ -493,12 +499,12 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
   <div class="wrap">
     <div class="sec-head reveal"><span class="no">06</span><h2>人物冲突</h2><p class="kicker">Six Frictions</p></div>
     <div class="conflicts">
-      <div class="cf reveal"><h4><i>01</i>她 vs 丈夫留下的做法</h4><p>片子从头到尾没让她哭过一场。她的困境不是悲伤，是<em>不敢改</em>——每一道工序都是丈夫的，改了就像背叛。所以她做的不是拉面，是一份遗物。</p></div>
+      <div class="cf reveal"><h4><i>01</i>她 vs 丈夫留下的做法</h4><p>片子几乎没给她哭的镜头。她的困境不是悲伤，是<em>不敢改</em>——每一道工序都是丈夫的，改了就像背叛。所以她做的不是拉面，是一份遗物。</p></div>
       <div class="cf reveal"><h4><i>02</i>她 vs 黑郎</h4><p>他给的是标准，她要的是「我到底行不行」。师徒戏最好看的地方在于：他从不安慰她，只是把下一个动作说清楚。而她每次被否掉，第二天照样开门。</p></div>
       <div class="cf reveal"><h4><i>03</i>黑郎 vs 皮斯肯</h4><p>两个男人争的不是一个女人，是「谁有资格管这家店」。一个外来人，一个地头蛇；一个不解释，一个不讲理。这场对决是全片最荒唐也最痛快的一段。</p></div>
-      <div class="cf reveal"><h4><i>04</i>这家店 vs 一条街</h4><p>大三元人多、味重、态度横；日の出只有一个不说话的职人；味一番靠记单快；中華街的老爸开口要一百万。四家店是四面镜子，照的不是好坏，是「你想开成哪一种」。</p></div>
+      <div class="cf reveal"><h4><i>04</i>这家店 vs 一条街</h4><p>大三元人多、脾气横、汤里有股腥；日の出只有一个不说话的职人；味一番靠记单快；中華街的老爸开口要一百万。四家店是四面镜子，照的不是好坏，是「你想开成哪一种」。</p></div>
       <div class="cf reveal"><h4><i>05</i>主线 vs 插叙</h4><p>每隔十几分钟，镜头就跑去拍别人吃饭：公司职员看不懂法语菜单、超市里摸奶酪的老太太、临终的妻子被丈夫叫起来炒饭。它们和主线无关，却在说同一件事。</p></div>
-      <div class="cf reveal"><h4><i>06</i>手艺 vs 时间</h4><p>汤要熬一整夜，面只能煮四十五秒。这是全片唯一的硬规则：<em>有些事快不了，有些事慢不得</em>。她第一次听懂这句话，是在锅边站到天亮。</p></div>
+      <div class="cf reveal"><h4><i>06</i>手艺 vs 时间</h4><p>汤要熬一整夜，面只能煮四十五秒。这是全片唯一的硬规则：<em>有些事快不了，有些事慢不得</em>。这句话她后来记住了。</p></div>
     </div>
   </div>
 </section>
@@ -525,7 +531,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
   <div class="wrap">
     <div class="sec-head reveal"><span class="no">08</span><h2>一碗面的七个位置</h2><p class="kicker">Seven Positions</p></div>
     <div class="lineage">
-      <div class="ln reveal"><div class="yr">01 · SOUP</div><h4>汤，一整夜</h4><p>猪骨、鸡架、昆布、鲣节。火不能大，汤不能滚——滚了会浑。这一条她做反了十年：她一直以为汤要浓，其实要先清。</p></div>
+      <div class="ln reveal"><div class="yr">01 · SOUP</div><h4>汤，一整夜</h4><p>猪骨、鸡架、昆布、鲣节。火不能大，汤不能滚——滚了会浑。她一直以为汤要浓：第一步其实是别让它浑。</p></div>
       <div class="ln reveal"><div class="yr">02 · NOODLE</div><h4>面，四十五秒</h4><p>煮面的时间按秒算。出锅前要甩，把水甩干，不然一碗汤就被稀释了。这是全片唯一一处「时间是硬的」。</p></div>
       <div class="ln reveal"><div class="yr">03 · OIL</div><h4>油，一层</h4><p>汤面那层油不是腻，是盖被子：它让汤在端上桌的三分钟里不掉温度。所以她第一碗面端上来时，问题不在味道，在温度。</p></div>
       <div class="ln reveal"><div class="yr">04 · MENMA</div><h4>笋，自己煮</h4><p>买现成的最省事，也最容易被吃出来。这一条黑郎只说了一句，她记了很久。</p></div>
@@ -544,7 +550,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
       <div class="g6 reveal"><div class="n">01</div><h4>把「好吃」拆成动作</h4><p>全片没有一句「真好吃」是靠演员的表情说的，都是靠手上的动作说的：甩水、烫碗、按叉烧。<b>它相信观众看得懂手</b>。</p></div>
       <div class="g6 reveal"><div class="n">02</div><h4>骨架是《原野奇侠》</h4><p>一个外地人进小镇，帮一个寡妇，打一场架，然后走。伊丹十三对制片人说的原话是：「这是把《Shane》和拉面合在一起的电影。」</p></div>
       <div class="g6 reveal"><div class="n">03</div><h4>十几段插叙</h4><p>与主线毫无关系，忽然插进来，忽然走掉。有人嫌它散；但抽掉这些，它就只是一部美食片，不再是一部关于「欲望」的电影。</p></div>
-      <div class="g6 reveal"><div class="n">04</div><h4>声音</h4><p>全片最响的音效是吸面。开场第一个镜头就在教你怎么听一碗面——日本人认为吸出声是「香」，这一点被整部电影当成前提，从不解释。</p></div>
+      <div class="g6 reveal"><div class="n">04</div><h4>声音</h4><p>全片最响的音效是吸面。片子开场第一个镜头，白服之男对着观众讲话，讲的第一件事就是别人吃东西太响——声音是这部片子立的第一条规矩。</p></div>
       <div class="g6 reveal"><div class="n">05</div><h4>一句译不了的「えらい?」</h4><p>学者马克·彼特森专门写文章说：英文字幕把它译成 “Am I good?”，意思全丢了。原文是撒娇，译文是考试。</p></div>
       <div class="g6 reveal"><div class="n">06</div><h4>那碗蛋包饭</h4><p>一个流浪者溜进餐厅，给孩子做了一份蛋包饭，刀一划，蛋皮摊开盖住饭。这段跟主线毫无关系，却是许多人记得最久的一个镜头。</p></div>
     </div>
