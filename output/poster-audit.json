@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T00:21:39.069Z",
+  "generatedAt": "2026-11-19T04:12:54.293Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 161,
+  "total": 162,
   "ok": 90,
-  "warn": 71,
+  "warn": 72,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 145,
+    "checked": 146,
     "skippedVerified": 16,
     "error": null
   },
@@ -3095,6 +3095,53 @@
       "verified": false,
       "status": "ok",
       "issues": []
+    },
+    {
+      "id": "20261119-bouquet",
+      "zhTitle": "花束般的恋爱",
+      "sourceTitle": "花束般的恋爱图片_电影花束般的恋爱海报图片 - 三千图片网",
+      "year": "2015",
+      "source": "本地",
+      "imageUrl": "posters/20261119-bouquet.jpg",
+      "host": "img.win3000.com",
+      "tier": "unknown",
+      "size": "868KB",
+      "dims": "1013×1475",
+      "ratio": 1.46,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「花束般的恋爱」"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "2/2",
+        "reasons": [],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（img.win3000.com）"
+        },
+        {
+          "code": "identity_weak_evidence",
+          "severity": "warn",
+          "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：花束般的恋爱图片_电影花束般的恋爱海报图片 - 三千图片网）"
+        }
+      ]
     },
     {
       "id": "20260427",
@@ -7083,6 +7130,28 @@
       "verified": false,
       "status": "ok",
       "issues": []
+    },
+    {
+      "id": "20261119-bouquet",
+      "zhTitle": "花束般的恋爱",
+      "year": "2015",
+      "sourceTitle": "花束般的恋爱图片_电影花束般的恋爱海报图片 - 三千图片网",
+      "imageUrl": "posters/20261119-bouquet.jpg",
+      "host": "img.win3000.com",
+      "dims": "1013×1475",
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「花束般的恋爱」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        "untrusted_host",
+        "identity_weak_evidence"
+      ]
     },
     {
       "id": "20260427",
