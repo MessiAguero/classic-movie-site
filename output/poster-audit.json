@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T04:19:55.447Z",
+  "generatedAt": "2026-11-25T04:23:07.424Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -1044,6 +1044,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:恶人传",
         "年份"
       ],
       "evidence": {
@@ -1090,6 +1091,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:杀人者的记忆法",
         "年份"
       ],
       "evidence": {
@@ -1180,6 +1182,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:Green Fish",
         "年份"
       ],
       "evidence": {
@@ -1373,6 +1376,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:釜山行",
         "年份"
       ],
       "evidence": {
@@ -1456,6 +1460,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:阳光姐妹淘",
         "年份"
       ],
       "evidence": {
@@ -1501,7 +1506,8 @@
       "ratio": 1.43,
       "identityKind": "name",
       "identityHits": [
-        "片名中文"
+        "片名中文",
+        "别名:兹山鱼谱"
       ],
       "evidence": {
         "level": "medium",
@@ -1887,7 +1893,8 @@
       "ratio": 1.34,
       "identityKind": "name",
       "identityHits": [
-        "片名中文"
+        "片名中文",
+        "别名:结婚礼服"
       ],
       "evidence": {
         "level": "strong",
@@ -2093,6 +2100,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:千年女优",
         "年份"
       ],
       "evidence": {
@@ -2136,6 +2144,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:小偷家族",
         "年份"
       ],
       "evidence": {
@@ -2185,6 +2194,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:攻壳机动队",
         "年份"
       ],
       "evidence": {
@@ -2235,7 +2245,8 @@
       "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
-        "片名中文"
+        "片名中文",
+        "别名:雨月物语"
       ],
       "evidence": {
         "level": "strong",
@@ -2278,7 +2289,8 @@
       "ratio": 1.33,
       "identityKind": "name",
       "identityHits": [
-        "片名中文"
+        "片名中文",
+        "别名:二十四只眼睛"
       ],
       "evidence": {
         "level": "strong",
@@ -2329,6 +2341,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:被嫌弃的松子的一生",
         "年份"
       ],
       "evidence": {
@@ -2423,6 +2436,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:楢山节考",
         "年份"
       ],
       "evidence": {
@@ -2465,7 +2479,8 @@
       "ratio": 1.39,
       "identityKind": "name",
       "identityHits": [
-        "片名中文"
+        "片名中文",
+        "别名:横道世之介"
       ],
       "evidence": {
         "level": "strong",
@@ -2515,6 +2530,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:黄昏的清兵卫",
         "年份"
       ],
       "evidence": {
@@ -2704,6 +2720,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:摇摆少女",
         "年份"
       ],
       "evidence": {
@@ -2751,6 +2768,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:战场上的快乐圣诞",
         "年份"
       ],
       "evidence": {
@@ -2981,6 +2999,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:盗钥匙的方法",
         "年份"
       ],
       "evidence": {
@@ -3110,7 +3129,8 @@
       "ratio": 1.46,
       "identityKind": "name",
       "identityHits": [
-        "片名中文"
+        "片名中文",
+        "别名:花束般的恋爱"
       ],
       "evidence": {
         "level": "medium",
@@ -3157,7 +3177,8 @@
       "ratio": 1.33,
       "identityKind": "name",
       "identityHits": [
-        "片名中文"
+        "片名中文",
+        "别名:记我的母亲"
       ],
       "evidence": {
         "level": "strong",
@@ -4560,6 +4581,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:天使爱美丽",
         "年份"
       ],
       "evidence": {
@@ -6660,6 +6682,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:THEGODFATHERPARTII",
         "年份"
       ],
       "evidence": {
