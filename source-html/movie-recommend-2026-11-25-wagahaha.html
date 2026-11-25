@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>记我的母亲 · 日本电影专题 第 27 期</title>
+<meta name="description" content="原田真人《记我的母亲》（わが母の記, 2012）：剧情梗概、人物冲突、六处亮点与观看理由。全程不剧透。">
+<style>
+:root{
+  --bg:#0a090e; --bg2:#0e0d14; --panel:#131119;
+  --ink:#e9e4da; --dim:#9b958f; --dim2:#6d6870;
+  --line:rgba(233,228,218,.12); --line2:rgba(233,228,218,.05);
+  --ac:#b9a3c4; --ac2:#dccbe4;
+  --moss:#8e9e79; --moss2:#b2c09a;
+  --warm:#c9a05e; --warm2:#e8c68d;
+  --pa:#ece5d6; --pa2:#f7f2e6;
+  --seal:#a8402f; --seal2:#c4715c;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Didot","Optima","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.95;letter-spacing:.012em;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(185,163,196,.3);color:#0a090e}
+a{color:inherit}
+body::before{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+.wrap{width:min(1160px,calc(100% - 96px));margin:0 auto}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:max(100vh,880px);overflow:hidden;background:#08070c;
+  border-bottom:1px solid rgba(185,163,196,.22)}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(8,7,12,.95) 0%,rgba(8,7,12,.88) 17%,rgba(8,7,12,.64) 33%,rgba(8,7,12,.26) 49%,rgba(8,7,12,.03) 63%,rgba(8,7,12,0) 73%),
+    linear-gradient(to bottom,rgba(8,7,12,.88) 0%,rgba(8,7,12,.52) 13%,rgba(8,7,12,.1) 27%,rgba(8,7,12,0) 47%,rgba(8,7,12,.04) 72%,rgba(8,7,12,.26) 88%,rgba(8,7,12,.5) 100%)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.notice{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:11px;
+  letter-spacing:.14em;color:rgba(236,229,214,.7);border:1px solid rgba(236,229,214,.2);
+  border-radius:999px;padding:7px 16px;margin-bottom:34px;background:rgba(12,10,16,.4);backdrop-filter:blur(4px)}
+.notice .dot{width:5px;height:5px;border-radius:50%;background:var(--moss2);box-shadow:0 0 9px rgba(178,192,154,.6)}
+.hero-in{position:relative;z-index:3;width:min(1160px,calc(100% - 96px));margin:0 auto;
+  min-height:max(100vh,880px);display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:10.5vh;padding-bottom:64px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;
+  letter-spacing:.34em;color:var(--ac);text-transform:uppercase;opacity:.9}
+.eyebrow i{display:block;width:52px;height:1px;background:var(--ac);opacity:.5}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5.6vw,80px);line-height:1.16;
+  letter-spacing:.16em;margin:26px 0 0;color:#f7f2e6;white-space:nowrap}
+.latin{margin:22px 0 0;font-family:var(--latin);font-size:13px;letter-spacing:.3em;
+  color:rgba(236,229,214,.6)}
+.latin + .latin{margin-top:7px;font-size:10.5px;letter-spacing:.22em;color:rgba(236,229,214,.42)}
+.hero-sub{margin:28px 0 0;max-width:25em;font-size:16px;line-height:2.05;color:rgba(232,227,218,.9)}
+.hero-sub em{font-style:normal;color:#f7f2e6;border-bottom:1px solid rgba(201,160,94,.6);padding-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:660px}
+.chip{font-size:11.5px;letter-spacing:.06em;color:rgba(240,234,222,.92);border:1px solid rgba(240,234,222,.18);
+  border-radius:999px;padding:6px 14px;background:rgba(14,12,19,.62);backdrop-filter:blur(7px)}
+.chip b{color:#fff;font-weight:500}
+.scroll-hint{position:absolute;left:auto;right:28px;bottom:30px;z-index:4;
+  font-family:var(--latin);font-size:9.5px;letter-spacing:.42em;color:rgba(236,229,214,.42);
+  display:flex;flex-direction:column;align-items:center;gap:9px}
+.scroll-hint span{display:block;width:1px;height:32px;background:linear-gradient(to bottom,rgba(236,229,214,.5),transparent)}
+
+/* ---------- sections ---------- */
+.sec{padding:112px 0;border-top:1px solid var(--line2)}
+.sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:52px}
+.sec-head .no{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--ac);opacity:.9}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.1vw,36px);
+  letter-spacing:.05em;margin:0;color:#f4efe4;flex:1 1 auto}
+.sec-head .kicker{font-family:var(--latin);font-size:10.5px;letter-spacing:.3em;
+  color:var(--dim2);text-transform:uppercase;margin:0}
+.note{font-size:13px;color:var(--dim);line-height:1.9}
+
+.intro{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:64px;align-items:start}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:2.22;color:#d3cdc2}
+.lede p{margin:0 0 22px}
+.lede p:first-child::first-letter{float:left;font-size:5.1em;line-height:.82;padding:.06em .14em 0 0;
+  color:#f7f2e6;font-weight:400}
+.lede strong{font-weight:500;color:#f7f2e6}
+.lede .dash{color:var(--dim);font-size:15px}
+.glance{border:1px solid var(--line);background:linear-gradient(160deg,rgba(19,17,25,.95),rgba(8,7,12,.95));
+  padding:30px 28px}
+.glance h3{font-family:var(--latin);font-size:10px;letter-spacing:.34em;color:var(--ac);
+  margin:0 0 22px;font-weight:400;text-transform:uppercase;opacity:.9}
+.glance dl{margin:0;display:grid;gap:13px}
+.glance div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line2)}
+.glance div:last-child{border-bottom:0;padding-bottom:0}
+.glance dt{font-size:11.5px;color:var(--dim2);letter-spacing:.1em}
+.glance dd{margin:0;font-size:13.5px;color:#cbc5ba;line-height:1.7}
+.glance dd b{color:#f7f2e6;font-weight:500}
+.glance dd small{display:block;font-size:11px;color:var(--dim2);margin-top:3px}
+.acts{margin-top:74px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.act{background:var(--bg);padding:34px 30px}
+.act .t{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--ac);
+  opacity:.9;margin-bottom:14px}
+.act h4{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f4efe4;letter-spacing:.04em}
+.act p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+.poster-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);gap:70px;align-items:start}
+.poster-frame{border:1px solid var(--line);padding:14px;background:#07060a;
+  box-shadow:0 40px 90px -50px #000, inset 0 0 0 1px rgba(0,0,0,.6)}
+.poster-svg{display:block;width:100%;height:auto}
+.pcap{margin:16px 2px 0;font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--dim2)}
+.pnotes{display:grid;gap:28px}
+.pnote{border-left:1px solid var(--line);padding:2px 0 2px 24px}
+.pnote .n{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--ac);opacity:.86}
+.pnote h4{margin:8px 0 10px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f4efe4}
+.pnote p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+.pnote p b{color:#e8e3d8;font-weight:500}
+.pnote p em{font-style:normal;color:var(--ac2)}
+
+.spec{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.spec div{background:var(--bg);padding:22px 20px;min-height:92px}
+.spec dt{font-size:10.5px;letter-spacing:.14em;color:var(--dim2);margin-bottom:8px}
+.spec dd{margin:0;font-size:13.5px;color:#ccc6bb;line-height:1.65}
+.spec dd small{display:block;font-size:11px;color:var(--dim2);margin-top:4px;letter-spacing:.02em}
+.spec .wide{grid-column:1/-1;min-height:0;background:linear-gradient(120deg,rgba(185,163,196,.14),rgba(10,9,14,0) 62%)}
+.spec .wide dd{font-family:var(--serif);font-size:17px;color:#f7f2e6;letter-spacing:.05em}
+
+.scores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.sc{background:var(--bg);padding:32px 30px}
+.sc .src{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--dim2);text-transform:uppercase}
+.sc .val{font-family:var(--latin);font-size:52px;line-height:1;margin:16px 0 8px;color:#f7f2e6}
+.sc .val small{font-size:15px;color:var(--dim);letter-spacing:.04em;margin-left:6px}
+.sc .meta{font-size:12.5px;color:var(--dim);line-height:1.8}
+.sc .meta b{color:#e2dcd0;font-weight:500}
+.sc.hi .val{color:var(--ac2)}
+.caliber{margin:52px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.caliber li{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line2);
+  font-size:13.5px;line-height:1.9;color:var(--dim)}
+.caliber li b{color:#e9e4da;font-weight:500}
+.caliber li i{font-family:var(--latin);font-style:normal;font-size:10.5px;letter-spacing:.2em;color:var(--ac);opacity:.8;padding-top:4px}
+
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.person{background:var(--bg);padding:30px 28px}
+.person .role{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--ac);opacity:.82}
+.person h4{margin:12px 0 4px;font-family:var(--serif);font-weight:400;font-size:20px;color:#f7f2e6;letter-spacing:.04em}
+.person h4 small{font-size:12px;color:var(--dim2);letter-spacing:.1em;margin-left:4px}
+.person .actor{font-size:11.5px;color:var(--dim2);letter-spacing:.08em;margin-bottom:18px}
+.person p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.person p span{display:block;margin-top:9px;color:#cac4b9}
+.person p span b{color:var(--moss2);font-weight:400;font-size:12.5px}
+
+.cf-list{display:grid;gap:0;margin-top:8px}
+.cf{display:grid;grid-template-columns:210px minmax(0,1fr);gap:36px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line2)}
+.cf h4{margin:0;font-family:var(--serif);font-weight:400;font-size:17px;color:#f7f2e6;letter-spacing:.04em;line-height:1.6}
+.cf h4 i{display:block;font-family:var(--latin);font-style:normal;font-size:9.5px;letter-spacing:.26em;
+  color:var(--ac);opacity:.82;margin-bottom:8px}
+.cf p{margin:0;font-size:13.8px;line-height:2;color:var(--dim);max-width:66ch}
+.cf p em{font-style:normal;color:#e8e3d8}
+
+.awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.award{background:var(--bg);padding:28px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.award .yr{font-family:var(--latin);font-size:11px;letter-spacing:.14em;color:var(--dim2);padding-top:3px}
+.award h4{margin:0 0 6px;font-size:14.5px;font-weight:500;color:#f4efe4;letter-spacing:.02em;line-height:1.6}
+.award p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.78}
+.award.gold{background:linear-gradient(120deg,rgba(201,160,94,.16),rgba(10,9,14,0) 68%);border-left:2px solid rgba(201,160,94,.5)}
+.award.gold h4{color:var(--pa2)}
+.award.cold{background:linear-gradient(120deg,rgba(142,158,121,.1),rgba(10,9,14,0) 68%);border-left:2px solid rgba(142,158,121,.34)}
+.award.cold h4{color:#c6ccb8}
+.award.wide{grid-column:1/-1}
+
+.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px;max-width:800px}
+.ln{position:relative;padding:0 0 38px 40px}
+.ln:last-child{padding-bottom:0}
+.ln::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--ac2)}
+.ln.now::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 4px rgba(168,64,47,.24)}
+.ln .yr{font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--dim2)}
+.ln h4{margin:6px 0 6px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f4efe4;letter-spacing:.03em}
+.ln p{margin:0;font-size:13px;color:var(--dim);line-height:1.85}
+.ln p b{color:#e6e1d4;font-weight:500}
+.ln.now h4{color:var(--pa2)}
+
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.g6{background:var(--bg);padding:32px 28px;min-height:210px}
+.g6 .n{font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--ac);opacity:.86}
+.g6 h4{margin:14px 0 10px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f4efe4;letter-spacing:.03em;line-height:1.6}
+.g6 p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.g6 p b{color:#e8e3d8;font-weight:500}
+
+.why{display:grid;gap:0;max-width:820px}
+.why article{padding:0 0 38px}
+.why article + article{border-top:1px solid var(--line2);padding-top:38px}
+.why h3{margin:0 0 14px;font-family:var(--serif);font-weight:400;font-size:21px;color:#f7f2e6;letter-spacing:.04em}
+.why p{margin:0;font-size:14.5px;line-height:2.05;color:#c2bcb1}
+.why p + p{margin-top:14px}
+.why strong{color:#f4efe4;font-weight:500}
+.why em{font-style:normal;color:var(--moss2)}
+
+.tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.tip{background:var(--bg);padding:30px 24px}
+.tip .k{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--ac);opacity:.86}
+.tip h4{margin:12px 0 10px;font-size:15.5px;font-weight:500;color:#f4efe4}
+.tip p{margin:0;font-size:12.8px;line-height:1.95;color:var(--dim)}
+
+.verdict{padding:150px 0 120px;border-top:1px solid var(--line2);position:relative;overflow:hidden}
+.verdict .tag{font-family:var(--latin);font-size:9.5px;letter-spacing:.32em;color:var(--dim2);margin-bottom:34px}
+.verdict .q{font-family:var(--serif);font-size:clamp(22px,3vw,35px);line-height:1.8;letter-spacing:.06em;
+  color:#f7f2e6;margin:0;max-width:24em}
+.verdict .q span{display:block}
+.verdict .src{margin-top:36px;font-size:12px;color:var(--dim2);letter-spacing:.04em;line-height:1.9}
+.stamp{position:absolute;right:74px;bottom:82px;width:136px;height:136px;border:1px solid rgba(168,64,47,.85);
+  border-radius:50%;display:grid;place-items:center;color:rgba(196,113,92,1);text-align:center;
+  transform:rotate(-7deg);box-shadow:inset 0 0 0 4px rgba(168,64,47,.14)}
+.stamp div{display:grid;gap:8px;justify-items:center}
+.stamp span{font-family:var(--latin);font-size:8.2px;letter-spacing:.12em;opacity:.95;line-height:1.2}
+.stamp b{font-family:var(--serif);font-size:19px;letter-spacing:.1em;font-weight:400;line-height:1.15;
+  padding:6px 0;border-top:1px solid rgba(168,64,47,.55);border-bottom:1px solid rgba(168,64,47,.55)}
+
+footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
+footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
+
+#hud{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
+  opacity:0;transition:opacity .7s ease;pointer-events:none}
+#hud.on{opacity:1}
+#hud b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:13px;
+  color:var(--dim2);letter-spacing:.1em;transition:color .5s}
+#hud b i{display:block;width:16px;height:1px;background:var(--dim2);transition:all .5s}
+#hud b.on{color:#f7f2e6}
+#hud b.on i{width:30px;background:var(--ac)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1380px){#hud{display:none}}
+@media (max-width:1000px){
+  .intro{grid-template-columns:1fr;gap:48px}
+  .poster-grid{grid-template-columns:1fr;gap:46px}
+  .poster-frame{max-width:500px}
+  .scores,.awards{grid-template-columns:1fr}
+  .spec{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .acts{grid-template-columns:1fr}
+  #hud{display:none}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .scroll-hint{left:auto;right:8px;transform:none;bottom:26px}
+  .hero-svg{transform:translateY(4vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(8,7,12,.93) 0%,rgba(8,7,12,.86) 26%,rgba(8,7,12,.62) 42%,rgba(8,7,12,.34) 54%,rgba(8,7,12,.14) 64%,rgba(8,7,12,.06) 74%,rgba(8,7,12,.18) 86%,rgba(8,7,12,.4) 96%,rgba(8,7,12,.52) 100%)}
+}
+@media (max-width:760px){
+  .hero-svg{transform:translateY(3vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(8,7,12,.94) 0%,rgba(8,7,12,.88) 22%,rgba(8,7,12,.66) 38%,rgba(8,7,12,.4) 50%,rgba(8,7,12,.18) 60%,rgba(8,7,12,.05) 72%,rgba(8,7,12,.08) 84%,rgba(8,7,12,.3) 94%,rgba(8,7,12,.46) 100%)}
+  body{font-size:15px;line-height:1.9}
+  .wrap,.hero-in{width:calc(100% - 40px)}
+  .hero{min-height:max(100vh,740px)}
+  .hero-in{min-height:max(100vh,740px);padding-top:8vh;padding-bottom:96px}
+  h1{font-size:clamp(30px,9.6vw,52px);letter-spacing:.12em}
+  .hero-sub{font-size:14.5px;line-height:1.95;max-width:27em}
+  .sec{padding:76px 0}
+  .sec-head{margin-bottom:36px;gap:12px}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spec dd{font-size:12.4px}
+  .spec dd small{font-size:10.4px}
+  .people,.grid6,.tips{grid-template-columns:1fr}
+  .cf{grid-template-columns:1fr;gap:12px}
+  .lede{font-size:16px;line-height:2.05}
+  .sc .val{font-size:44px}
+  .verdict{padding:96px 0 88px}
+  .stamp{position:static;margin-top:48px;transform:rotate(-4deg)}
+  .chips{max-width:100%;padding-top:0;margin-top:26px}
+  footer{padding-bottom:120px}
+  .scroll-hint{display:none}
+  .chip{font-size:11px;padding:5px 11px;letter-spacing:.03em}
+}
+@media (min-width:1001px) and (max-height:860px){
+  .hero,.hero-in{min-height:max(100vh,760px)}
+  .scroll-hint{left:auto;right:22px;transform:none}
+}
+@media (max-width:560px){
+  .chip:nth-child(5){display:none}
+}
+@media (max-width:420px){
+  .notice{margin-bottom:22px;font-size:10.5px;padding:6px 13px}
+  h1{font-size:clamp(28px,8.8vw,44px);margin-top:20px}
+  .latin{margin-top:14px;font-size:11px;letter-spacing:.22em}
+  .latin + .latin{font-size:9.5px;letter-spacing:.14em}
+  .hero-sub{margin-top:22px;font-size:13.8px}
+}
+@media (max-width:380px){
+  .wrap,.hero-in{width:calc(100% - 32px)}
+  .chip{font-size:10.5px;padding:5px 11px}
+  .glance{padding:24px 20px}
+  h1{font-size:clamp(26px,8.2vw,40px);letter-spacing:.1em}
+}
+@media (max-width:760px) and (max-height:700px){
+  .hero{min-height:100vh}
+  .hero-in{min-height:100vh;padding-top:6vh}
+  .hero-svg{transform:translateY(4vh)}
+  .notice{margin-bottom:16px;font-size:10px;padding:5px 12px}
+  h1{margin-top:14px;font-size:clamp(27px,8.4vw,38px)}
+  .latin{margin-top:12px;font-size:10.5px}
+  .latin + .latin{font-size:9px;margin-top:5px}
+  .hero-sub{margin-top:16px;font-size:13.2px;line-height:1.82}
+  .chips{margin-top:20px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><linearGradient id="sky27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#09080f"/><stop offset=".14" stop-color="#0f0d1a"/><stop offset=".32" stop-color="#1a1626"/><stop offset=".5" stop-color="#2b2133"/><stop offset=".64" stop-color="#3f2f3a"/><stop offset=".74" stop-color="#56403f"/><stop offset=".82" stop-color="#6d5245"/><stop offset=".9" stop-color="#83634e"/><stop offset="1" stop-color="#8f6d54"/></linearGradient><radialGradient id="hglow27" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e8b47a" stop-opacity=".4"/><stop offset=".45" stop-color="#d79f68" stop-opacity=".18"/><stop offset="1" stop-color="#b8825a" stop-opacity="0"/></radialGradient><radialGradient id="win27" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f4cd92" stop-opacity=".5"/><stop offset=".4" stop-color="#dfa96e" stop-opacity=".22"/><stop offset="1" stop-color="#b8825a" stop-opacity="0"/></radialGradient><linearGradient id="shoji27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0c98e"/><stop offset=".45" stop-color="#e2b177"/><stop offset="1" stop-color="#c9975f"/></linearGradient><linearGradient id="roof27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#221d2c"/><stop offset=".6" stop-color="#171320"/><stop offset="1" stop-color="#100d17"/></linearGradient><linearGradient id="wall27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a1523"/><stop offset="1" stop-color="#120f1a"/></linearGradient><linearGradient id="ground27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#171220"/><stop offset=".4" stop-color="#0e0b14"/><stop offset="1" stop-color="#07060a"/></linearGradient><radialGradient id="pool27" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#d9a86e" stop-opacity=".26"/><stop offset=".5" stop-color="#b98a58" stop-opacity=".1"/><stop offset="1" stop-color="#8a6340" stop-opacity="0"/></radialGradient><linearGradient id="water27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2b38"/><stop offset=".55" stop-color="#161822"/><stop offset="1" stop-color="#0b0c12"/></linearGradient><radialGradient id="vig27" cx=".52" cy=".5" r=".8"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".62" stop-color="#000" stop-opacity=".06"/><stop offset=".86" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></radialGradient></defs><rect width="1440" height="900" fill="url(#sky27)"/><circle cx="176" cy="118" r="1.1" fill="#dfe3ea" opacity=".34"/><circle cx="392" cy="72" r=".9" fill="#dfe3ea" opacity=".26"/><circle cx="612" cy="164" r="1.3" fill="#e9ecf1" opacity=".3"/><circle cx="838" cy="96" r=".9" fill="#dfe3ea" opacity=".22"/><circle cx="1064" cy="146" r="1.1" fill="#e9ecf1" opacity=".3"/><circle cx="1288" cy="86" r=".9" fill="#dfe3ea" opacity=".2"/><circle cx="1330" cy="212" r="1" fill="#e9ecf1" opacity=".24"/><ellipse cx="900" cy="682" rx="620" ry="210" fill="url(#hglow27)"/><path d="M-20 604 L90 588 L186 596 L268 578 L352 590 L438 566 L520 582 L604 562 L690 574 L772 552 L856 568 L944 548 L1030 566 L1112 546 L1196 562 L1276 542 L1356 558 L1440 540 L1460 560 L1460 720 L-20 720 Z" fill="#191426" opacity=".92"/><path d="M-20 640 L120 626 L250 638 L380 618 L520 634 L660 612 L800 630 L940 608 L1080 626 L1220 606 L1360 624 L1460 612 L1460 760 L-20 760 Z" fill="#120f1c"/><g fill="#0d0a15"><path d="M540 700 L540 596 L556 570 L574 596 L574 700 Z"/><path d="M596 700 L596 604 L610 580 L626 604 L626 700 Z"/><path d="M648 700 L648 588 L664 562 L682 588 L682 700 Z"/><path d="M1320 700 L1320 590 L1340 566 L1360 590 L1360 700 Z"/><path d="M1382 700 L1382 600 L1400 578 L1420 600 L1420 700 Z"/></g><ellipse cx="972" cy="668" rx="404" ry="252" fill="url(#win27)"/><g><path d="M690 600 L802 522 L1252 522 L1364 600 Z" fill="url(#roof27)"/><path d="M690 600 L802 522 L1252 522 L1364 600" fill="none" stroke="#8a6a52" stroke-opacity=".34" stroke-width="1.6"/><g stroke="#3c3348" stroke-opacity=".5" stroke-width="1.4"><path d="M812 526 L806 598"/><path d="M858 526 L854 598"/><path d="M904 526 L902 598"/><path d="M950 526 L950 598"/><path d="M996 526 L998 598"/><path d="M1042 526 L1046 598"/><path d="M1088 526 L1094 598"/><path d="M1134 526 L1142 598"/><path d="M1180 526 L1190 598"/><path d="M1226 526 L1238 598"/></g><rect x="684" y="596" width="686" height="9" fill="#1b1622"/><rect x="684" y="596" width="686" height="1.6" fill="#a07a5c" opacity=".45"/><rect x="716" y="605" width="620" height="86" fill="url(#wall27)"/><g><rect x="776" y="616" width="122" height="68" fill="url(#shoji27)"/><rect x="906" y="616" width="122" height="68" fill="url(#shoji27)"/><rect x="1036" y="616" width="122" height="68" fill="url(#shoji27)"/><g stroke="#7a5a38" stroke-opacity=".55" stroke-width="1.5"><path d="M776 616 L898 616"/><path d="M776 633 L898 633"/><path d="M776 650 L898 650"/><path d="M776 667 L898 667"/><path d="M776 684 L898 684"/><path d="M806 616 L806 684"/><path d="M836 616 L836 684"/><path d="M866 616 L866 684"/><path d="M906 616 L1028 616"/><path d="M906 633 L1028 633"/><path d="M906 650 L1028 650"/><path d="M906 667 L1028 667"/><path d="M906 684 L1028 684"/><path d="M936 616 L936 684"/><path d="M966 616 L966 684"/><path d="M996 616 L996 684"/><path d="M1036 616 L1158 616"/><path d="M1036 633 L1158 633"/><path d="M1036 650 L1158 650"/><path d="M1036 667 L1158 667"/><path d="M1036 684 L1158 684"/><path d="M1066 616 L1066 684"/><path d="M1096 616 L1096 684"/><path d="M1126 616 L1126 684"/></g><rect x="776" y="616" width="122" height="68" fill="none" stroke="#2a2030" stroke-width="3"/><rect x="906" y="616" width="122" height="68" fill="none" stroke="#2a2030" stroke-width="3"/><rect x="1036" y="616" width="122" height="68" fill="none" stroke="#2a2030" stroke-width="3"/></g><rect x="700" y="691" width="646" height="19" fill="#241c26"/><rect x="700" y="691" width="646" height="3" fill="#c08f5c" opacity=".3"/><rect x="700" y="705" width="646" height="6" fill="#14101a"/><g fill="#0f0b14"><rect x="756" y="605" width="13" height="101"/><rect x="1194" y="605" width="13" height="101"/><rect x="1306" y="605" width="13" height="101"/></g></g><g fill="#0c0912"><path d="M1244 710 L1262 596 L1280 542 L1296 500 L1316 512 L1330 470 L1352 486 L1376 452 L1400 486 L1424 474 L1436 520 L1440 710 Z"/><path d="M1276 540 L1262 470 L1238 428 L1256 424 L1282 470 L1292 500 Z"/><path d="M1330 500 L1314 452 L1300 430 L1316 426 L1340 468 Z"/></g><g><rect x="-20" y="706" width="1480" height="200" fill="url(#ground27)"/><ellipse cx="972" cy="726" rx="360" ry="60" fill="url(#pool27)"/><g fill="#c9a06e"><rect x="806" y="716" width="212" height="1.6" opacity=".12"/><rect x="880" y="734" width="146" height="1.4" opacity=".09"/><rect x="742" y="750" width="96" height="1.4" opacity=".07"/><rect x="1010" y="742" width="120" height="1.4" opacity=".08"/><rect x="700" y="768" width="70" height="1.2" opacity=".05"/></g><g fill="#141c14" opacity=".75"><ellipse cx="420" cy="742" rx="150" ry="20"/><ellipse cx="170" cy="790" rx="190" ry="26"/><ellipse cx="660" cy="770" rx="90" ry="14"/></g><g><ellipse cx="1186" cy="806" rx="118" ry="38" fill="#241e2c"/><ellipse cx="1186" cy="798" rx="112" ry="34" fill="#332a3c"/><ellipse cx="1186" cy="800" rx="98" ry="27" fill="url(#water27)"/><ellipse cx="1186" cy="800" rx="98" ry="27" fill="none" stroke="#4a3d52" stroke-width="1.4" stroke-opacity=".7"/><ellipse cx="1160" cy="796" rx="42" ry="9" fill="#e0ae74" opacity=".22"/><rect x="1150" y="812" width="150" height="3" fill="#c08f5c" opacity=".12"/><ellipse cx="1186" cy="832" rx="126" ry="12" fill="#000" opacity=".34"/></g><g><rect x="1102" y="769" width="168" height="7" rx="3.5" fill="#6b5738" transform="rotate(-13 1186 772)"/><rect x="1102" y="769" width="168" height="2" rx="1" fill="#8f7648" transform="rotate(-13 1186 772)"/><ellipse cx="1094" cy="787" rx="13" ry="9" fill="#5c4a30" transform="rotate(-13 1094 787)"/></g><rect width="1440" height="900" fill="url(#vig27)"/></g></svg>
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+<div class="hero-in">
+  <span class="notice"><span class="dot"></span>全文不涉及关键情节 · 读完再看片，不会少掉任何一次意外</span>
+  <div class="eyebrow">日本电影专题 · 第 <b>27</b> 期<i></i>2012 · 松竹</div>
+  <h1>记我的母亲</h1>
+  <p class="latin">WAGA HAHA NO KI</p>
+  <p class="latin">CHRONICLE OF MY MOTHER</p>
+  <p class="hero-sub">他写了三十年的别人。最后要写的，是那个<em>五岁时把他留在伊豆</em>的人。</p>
+  <div class="chips">
+    <span class="chip"><b>豆瓣 8.6</b> · 18,311 人</span>
+    <span class="chip">IMDb <b>7.2</b></span>
+    <span class="chip">学院奖 <b>12</b> 项优秀 · <b>1</b> 项最优秀</span>
+    <span class="chip">蒙特利尔 <b>评审团特别大奖</b></span>
+    <span class="chip"><b>118</b> 分钟</span>
+  </div>
+</div>
+<div class="scroll-hint">SCROLL<span></span></div>
+</header>
+
+<nav id="hud" aria-hidden="true">
+  <b><i></i>梗概</b><b><i></i>海报</b><b><i></i>档案</b><b><i></i>人物</b><b><i></i>荣誉</b>
+</nav>
+
+<section class="sec" id="s1" style="border-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">01</span><h2>为什么是这一部</h2><span class="kicker">Editor's Note</span></div>
+    <div class="intro">
+      <div class="lede reveal">
+        <p>汤岛的夏天来得比东京晚半个月。一九五九年，小说家伊上洪作回伊豆山里看父母，坐一会儿就走——他一直是这样走的：人到了，心还在东京的稿子上。</p>
+        <p>回到东京的家里，妻子美津和两个女儿正埋在一摞新书里，一本一本地给他盖章。小女儿琴子把自己关在楼上，连晚饭都不下来吃。他不去叫，也不问，只当这间屋子里没有这个人。那天深夜，电话来了：父亲隼人走了。前几天那次探望，成了最后一面。</p>
+        <p>父亲走后，母亲八重一个人留在伊豆，由二妹桑子照看。一九六三年，八重生日，一家人难得在川奈的酒店聚齐——大妹志贺子夫妇也来了。饭桌上，八重把每个人的名字都叫对了，把每个人的近况都问了一遍。只有一件事她说错了：她把四十年前的一件旧事，说成了昨天才发生的。</p>
+        <p>那顿饭吃到后半程，洪作忽然明白了一件事——母亲不是变糊涂了。她是<strong>开始往回走</strong>。而他手里那支写了一辈子别人的笔，第一次不知道该往哪儿落。</p>
+        <p class="dash">——本文的梗概就停在这里。之后那十几年发生了什么，留给电影。</p>
+      </div>
+      <aside class="glance reveal">
+        <h3>At a Glance</h3>
+        <dl>
+          <div><dt>一句话</dt><dd>一个作家，被迫成为自己母亲的记录者。</dd></div>
+          <div><dt>看点</dt><dd>树希林的「忘」是<b>分层</b>演的，不是一下子空掉。</dd></div>
+          <div><dt>节奏</dt><dd>慢，但不闷。靠年份字幕往前推。<small>1959 → 1963 → 1966 → 1969</small></dd></div>
+          <div><dt>情绪</dt><dd>会让你想起自家的某顿饭。</dd></div>
+          <div><dt>不适合</dt><dd>想找强情节的人；疲惫的深夜。</dd></div>
+          <div><dt>版本</dt><dd>118 分钟，无加长版。</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="acts reveal">
+      <div class="act"><div class="t">1959 · 第一部</div><h4>父亲还在</h4><p>母亲还认得所有人，还能把一碗茶端得很稳。这一段的作用，是让你先记住「正常」长什么样——否则后面你无从比较。</p></div>
+      <div class="act"><div class="t">1963–1966 · 第二部</div><h4>开始漏</h4><p>先丢名字，再丢时间，最后连「该客气」也丢了。家里每个人都在用自己的办法处理这件事，没有一种办法是对的。</p></div>
+      <div class="act"><div class="t">1969 · 第三部</div><h4>不成比例</h4><p>所有人都变了。而母亲忘掉的东西，和她留下的东西，开始不成比例——这是全片真正的问题。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">02</span><h2>一张稿纸，一副眼镜</h2><span class="kicker">Concept Poster</span></div>
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+          <svg class="poster-svg" viewBox="0 0 760 1000" aria-label="概念海报：一张写满字的稿纸，压着一副老花镜">
+            <defs>
+              <linearGradient id="pp27" x1=".1" y1="0" x2=".85" y2="1"><stop offset="0" stop-color="#f2ead6"/><stop offset=".45" stop-color="#ece3cc"/><stop offset="1" stop-color="#ded2b6"/></linearGradient>
+              <linearGradient id="sheet27" x1="0" y1="0" x2=".9" y2="1"><stop offset="0" stop-color="#fbf5e4"/><stop offset=".6" stop-color="#f6efdb"/><stop offset="1" stop-color="#eee3c8"/></linearGradient>
+              <linearGradient id="lens27" x1="0" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#cfd8dc" stop-opacity=".34"/><stop offset=".5" stop-color="#aebcc2" stop-opacity=".12"/><stop offset="1" stop-color="#8d9ea6" stop-opacity=".2"/></linearGradient>
+              <radialGradient id="sh27" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#6b5836" stop-opacity=".26"/><stop offset=".55" stop-color="#6b5836" stop-opacity=".12"/><stop offset="1" stop-color="#6b5836" stop-opacity="0"/></radialGradient>
+              <linearGradient id="ring27" x1="0" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#4a3f36"/><stop offset=".5" stop-color="#6b5c4c"/><stop offset="1" stop-color="#3a322b"/></linearGradient>
+            </defs>
+            <rect width="760" height="1000" fill="url(#pp27)"/>
+            <g stroke="#b9a888" stroke-opacity=".16" stroke-width="1"><path d="M60 96 L60 940"/><path d="M700 60 L700 900"/></g>
+            <g transform="rotate(-2.6 380 500)">
+              <rect x="96" y="128" width="568" height="612" fill="#6b5836" opacity=".13" transform="translate(6 8)"/>
+              <rect x="96" y="128" width="568" height="612" fill="url(#sheet27)"/>
+              <g stroke="#a8916e" stroke-opacity=".3" stroke-width="1">
+                <path d="M96 152 L664 152"/><path d="M96 190 L664 190"/><path d="M96 228 L664 228"/><path d="M96 266 L664 266"/><path d="M96 304 L664 304"/><path d="M96 342 L664 342"/><path d="M96 380 L664 380"/><path d="M96 418 L664 418"/><path d="M96 456 L664 456"/><path d="M96 494 L664 494"/><path d="M96 532 L664 532"/><path d="M96 570 L664 570"/><path d="M96 608 L664 608"/><path d="M96 646 L664 646"/><path d="M96 684 L664 684"/><path d="M96 722 L664 722"/>
+              </g>
+              <g stroke="#a8916e" stroke-opacity=".22" stroke-width="1">
+                <path d="M124 128 L124 740"/><path d="M180 128 L180 740"/><path d="M236 128 L236 740"/><path d="M292 128 L292 740"/><path d="M348 128 L348 740"/><path d="M404 128 L404 740"/><path d="M460 128 L460 740"/><path d="M516 128 L516 740"/><path d="M572 128 L572 740"/><path d="M628 128 L628 740"/>
+              </g>
+              <g fill="#2e2a24">
+                <rect x="132" y="164" width="14" height="16"/><rect x="150" y="164" width="10" height="16"/><rect x="164" y="164" width="14" height="16"/><rect x="188" y="164" width="16" height="16"/>
+                <rect x="132" y="202" width="10" height="16"/><rect x="146" y="202" width="16" height="16"/><rect x="166" y="202" width="12" height="16"/>
+                <rect x="132" y="240" width="16" height="16"/><rect x="152" y="240" width="12" height="16"/><rect x="168" y="240" width="10" height="16"/><rect x="182" y="240" width="16" height="16"/><rect x="202" y="240" width="12" height="16"/>
+                <rect x="132" y="278" width="12" height="16"/><rect x="148" y="278" width="14" height="16"/>
+                <rect x="188" y="316" width="16" height="16"/><rect x="208" y="316" width="10" height="16"/><rect x="222" y="316" width="14" height="16"/>
+                <rect x="132" y="354" width="14" height="16"/><rect x="150" y="354" width="10" height="16"/>
+                <rect x="464" y="164" width="12" height="16"/><rect x="480" y="164" width="16" height="16"/><rect x="500" y="164" width="10" height="16"/>
+                <rect x="492" y="202" width="14" height="16"/><rect x="510" y="202" width="12" height="16"/>
+                <rect x="464" y="240" width="16" height="16"/><rect x="484" y="240" width="10" height="16"/>
+                <rect x="132" y="430" width="16" height="16"/><rect x="152" y="430" width="12" height="16"/><rect x="168" y="430" width="14" height="16"/>
+                <rect x="132" y="468" width="10" height="16"/><rect x="146" y="468" width="16" height="16"/><rect x="166" y="468" width="12" height="16"/><rect x="182" y="468" width="10" height="16"/>
+                <rect x="132" y="506" width="14" height="16"/><rect x="150" y="506" width="10" height="16"/>
+                <rect x="464" y="544" width="14" height="16"/><rect x="482" y="544" width="12" height="16"/><rect x="498" y="544" width="16" height="16"/>
+                <rect x="520" y="582" width="10" height="16"/><rect x="534" y="582" width="14" height="16"/>
+                <rect x="132" y="620" width="16" height="16"/><rect x="152" y="620" width="12" height="16"/><rect x="168" y="620" width="10" height="16"/>
+                <rect x="132" y="658" width="12" height="16"/><rect x="148" y="658" width="16" height="16"/><rect x="168" y="658" width="10" height="16"/><rect x="182" y="658" width="14" height="16"/>
+              </g>
+              <g stroke="#9e3a2c" stroke-opacity=".5" stroke-width="1.6" fill="none">
+                <path d="M190 470 q34 -14 66 4 q28 16 60 2"/>
+                <path d="M300 512 q22 12 44 0"/>
+              </g>
+            </g>
+            <ellipse cx="330" cy="486" rx="230" ry="120" fill="url(#sh27)"/>
+            <g>
+              <path d="M150 470 Q150 424 200 424 Q250 424 250 470 Q250 516 200 516 Q150 516 150 470 Z" fill="none" stroke="url(#ring27)" stroke-width="6"/>
+              <path d="M300 470 Q300 424 350 424 Q400 424 400 470 Q400 516 350 516 Q300 516 300 470 Z" fill="none" stroke="url(#ring27)" stroke-width="6"/>
+              <path d="M150 470 Q150 424 200 424 Q250 424 250 470 Q250 516 200 516 Q150 516 150 470 Z" fill="url(#lens27)"/>
+              <path d="M300 470 Q300 424 350 424 Q400 424 400 470 Q400 516 350 516 Q300 516 300 470 Z" fill="url(#lens27)"/>
+              <path d="M250 458 Q275 442 300 458" fill="none" stroke="#4a3f36" stroke-width="5" stroke-linecap="round"/>
+              <path d="M164 448 Q178 432 198 432" fill="none" stroke="#f7f2e6" stroke-opacity=".75" stroke-width="3" stroke-linecap="round"/>
+              <path d="M314 448 Q328 432 348 432" fill="none" stroke="#f7f2e6" stroke-opacity=".65" stroke-width="3" stroke-linecap="round"/>
+              <path d="M150 468 Q118 470 100 496 Q92 508 96 520" fill="none" stroke="#4a3f36" stroke-width="5" stroke-linecap="round"/>
+              <path d="M400 468 Q432 470 452 494 Q460 506 456 520" fill="none" stroke="#4a3f36" stroke-width="5" stroke-linecap="round"/>
+              <path d="M96 520 Q94 528 102 530" fill="none" stroke="#3a322b" stroke-width="6" stroke-linecap="round"/>
+              <path d="M456 520 Q458 528 450 530" fill="none" stroke="#3a322b" stroke-width="6" stroke-linecap="round"/>
+            </g>
+            <path d="M556 690 a48 30 0 1 0 6 -1" fill="none" stroke="#b08a5a" stroke-opacity=".34" stroke-width="4"/>
+            <ellipse cx="562" cy="688" rx="46" ry="28" fill="#b08a5a" opacity=".05"/>
+            <g fill="#2b2a26">
+              <rect x="612" y="150" width="26" height="26"/><rect x="612" y="186" width="26" height="26"/><rect x="612" y="222" width="26" height="26"/><rect x="612" y="258" width="26" height="26"/><rect x="612" y="294" width="26" height="26"/><rect x="612" y="330" width="26" height="26"/>
+            </g>
+            <text x="626" y="176" font-family="Songti SC,serif" font-size="19" fill="#f6efdb" text-anchor="middle">わ</text>
+            <text x="626" y="212" font-family="Songti SC,serif" font-size="19" fill="#f6efdb" text-anchor="middle">が</text>
+            <text x="626" y="248" font-family="Songti SC,serif" font-size="19" fill="#f6efdb" text-anchor="middle">母</text>
+            <text x="626" y="284" font-family="Songti SC,serif" font-size="19" fill="#f6efdb" text-anchor="middle">の</text>
+            <text x="626" y="320" font-family="Songti SC,serif" font-size="19" fill="#f6efdb" text-anchor="middle">記</text>
+            <g transform="rotate(-4 660 392)">
+              <rect x="636" y="368" width="48" height="48" fill="none" stroke="#a8402f" stroke-width="3.2" stroke-opacity=".82"/>
+              <text x="660" y="392" font-family="Songti SC,serif" font-size="17" fill="#a8402f" text-anchor="middle">廿</text>
+              <text x="660" y="410" font-family="Songti SC,serif" font-size="17" fill="#a8402f" text-anchor="middle">七</text>
+            </g>
+            <text x="96" y="836" font-family="Songti SC,serif" font-size="34" fill="#2b2721" letter-spacing="4">记我的母亲</text>
+            <text x="98" y="868" font-family="Didot,serif" font-size="12.5" fill="#6b5c48" letter-spacing="4.2">CHRONICLE OF MY MOTHER</text>
+            <text x="98" y="892" font-family="Didot,serif" font-size="10" fill="#8a7a62" letter-spacing="3.4">HARADA MASATO · 2012 · 118 MIN</text>
+            <g stroke="#a8916e" stroke-opacity=".5" stroke-width="1"><path d="M96 812 L664 812"/></g>
+          </svg>
+        </div>
+        <p class="pcap">CONCEPT POSTER · 27 / 稿纸与老花镜</p>
+      </div>
+      <div class="pnotes reveal">
+        <div class="pnote"><div class="n">Ⅰ</div><h4>四百个格子</h4><p>稿纸是这部片真正的道具。洪作一天要在格子里安置几十个人的一生，唯独他和母亲那一段，<b>怎么写都不顺手</b>。海报上那些填了一半的格子，就是他写不下去的地方。</p></div>
+        <div class="pnote"><div class="n">Ⅱ</div><h4>看得清近处，才看得见近处的人</h4><p>一副老花镜，压在稿纸正中央。它解决的是「看不清」——而这部片里所有人面对的问题，恰好也是看不清：<em>看不清母亲在退到哪里，也看不清自己在她心里是什么位置。</em></p></div>
+        <div class="pnote"><div class="n">Ⅲ</div><h4>那个杯底的圈</h4><p>茶渍是唯一没人擦掉的东西。它比任何台词都更像一个家的年表：<b>谁坐过这里、坐了多少年</b>，只有桌面上那一圈颜色记得。</p></div>
+        <div class="pnote"><div class="n">Ⅳ</div><h4>片名为什么竖着</h4><p>右边六格竖排のは「わが母の記」，格子是稿纸的格子——<b>片名本身也被写进了稿纸里</b>。下面那枚朱印不是装饰：它是一份交稿的凭证。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">03</span><h2>档案</h2><span class="kicker">Credits &amp; Figures</span></div>
+    <dl class="spec reveal">
+      <div><dt>原名</dt><dd>わが母の記</dd></div>
+      <div><dt>英译</dt><dd>Chronicle of My Mother</dd></div>
+      <div><dt>公映</dt><dd>2012-04-28<small>日本 · 松竹配给</small></dd></div>
+      <div><dt>片长</dt><dd>118 分钟<small>彩色 · 剧情</small></dd></div>
+      <div><dt>原作</dt><dd>井上靖<small>《わが母の記 花の下・月の光・雪の面》1975</small></dd></div>
+      <div><dt>编剧</dt><dd>原田真人</dd></div>
+      <div><dt>导演</dt><dd>原田真人<small>本片同时任编剧</small></dd></div>
+      <div><dt>摄影</dt><dd>芦澤明子<small>第 67 回每日电影 摄影赏</small></dd></div>
+      <div><dt>音乐</dt><dd>富貴晴美</dd></div>
+      <div><dt>剪辑</dt><dd>原田遊人<small>导演之子</small></dd></div>
+      <div><dt>主演</dt><dd>役所広司 / 樹木希林 / 宮﨑あおい</dd></div>
+      <div><dt>配给</dt><dd>松竹<small>制作 ピーズ・インターナショナル</small></dd></div>
+      <div><dt>银幕</dt><dd>全国 223 块</dd></div>
+      <div><dt>首周</dt><dd>两日 1.19 亿日元<small>10.87 万人 · 当周第 5 位</small></dd></div>
+      <div><dt>兴行</dt><dd>13.3 亿日元<small>制作费 2.8 亿</small></dd></div>
+      <div><dt>取景</dt><dd>伊豆市 · 沼津市<small>另在井上靖世田谷自邸实拍</small></dd></div>
+      <div><dt>选定</dt><dd>文部科学省特别选定<small>青年 / 成人 / 家庭三档</small></dd></div>
+      <div><dt>别名</dt><dd>母亲爱的手札（港）<small>我的母亲手记（台）</small></dd></div>
+      <div><dt>分级</dt><dd>日本 G<small>一般向</small></dd></div>
+      <div><dt>原著结构</dt><dd>三部曲<small>1964 花の下 / 1969 月の光 / 1974 雪の面</small></dd></div>
+      <div class="wide"><dt>一句话</dt><dd>它不是一部关于「孝顺」的电影，是一部关于「版本」的电影——同一件事，母亲记的和儿子记的，从来不是同一件。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="s4">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">04</span><h2>口碑，与几个必须说清的口径</h2><span class="kicker">Reception</span></div>
+    <div class="scores reveal">
+      <div class="sc hi"><div class="src">Douban 豆瓣</div><div class="val">8.6<small>/ 10</small></div><div class="meta"><b>18,311</b> 人评价 · 五星 44.4% / 四星 43.5% / 三星 10.8%<br>未进 Top250</div></div>
+      <div class="sc"><div class="src">IMDb</div><div class="val">7.2<small>/ 10</small></div><div class="meta"><b>539</b> 票 · 与豆瓣差 <b>1.4</b> 分<br>海外票池极薄，样本不足以代表影片</div></div>
+      <div class="sc"><div class="src">Rotten Tomatoes</div><div class="val">77%<small>Tomatometer</small></div><div class="meta">仅 <b>2 篇</b>影评 · 观众数不足 50<br>样本量太小，不作强口径引用</div></div>
+      <div class="sc"><div class="src">Japan Academy Prize</div><div class="val">1<small>/ 12</small></div><div class="meta">12 个部门获优秀赏（并列最多）<br>最优秀只有一项：主演女优</div></div>
+    </div>
+    <ul class="caliber reveal">
+      <li><i>01</i><span><b>片长两个数字：</b>松竹官方与豆瓣均记 118 分钟，OMDb 记 108 分钟，属海外发行信息误差。页面以 <b>118 分钟</b> 为准。</span></li>
+      <li><i>02</i><span><b>「12 个部门优秀赏」不能读成「12 提 1 中」：</b>优秀赏是提名，12 个部门是官方表述（含同一部门两人受赏的情况）；最优秀只有主演女优一项，其余十项都停在优秀。</span></li>
+      <li><i>03</i><span><b>IMDb 的 7.2 分只有 539 票：</b>豆瓣的票池是它的 34 倍。这部片在英美几乎没有发行，7.2 是「少数看过的人」的意见，不是「世界的意见」。</span></li>
+      <li><i>04</i><span><b>烂番茄 77% 只有 2 篇：</b>两篇都是正面（其中一篇给了 4/4），但 2 篇不构成「好评率」。页面引用它是为了说明「英美评论界看到了」，不是为了说明「77% 好」。</span></li>
+      <li><i>05</i><span><b>13.3 亿是兴行收入（票房），2.8 亿是制作费：</b>两个数字不同口径，不能相减算利润——发行、宣传、院线分成都不在里面。</span></li>
+      <li><i>06</i><span><b>三國連太郎于 2013-04-14 去世，</b>本片是他的遗作。他在片中演父亲隼人，戏份集中在第一段。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="s5">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">05</span><h2>六个人</h2><span class="kicker">Characters</span></div>
+    <div class="people reveal">
+      <div class="person"><div class="role">ELDEST SON</div><h4>伊上洪作<small>56 岁</small></h4><div class="actor">役所広司</div><p>小说家。把所有人的一生都安排进书里，唯独没安排自己和母亲那一段。<span><b>他擅长的是「叙述」，不是「在场」。</b></span></p></div>
+      <div class="person"><div class="role">MOTHER</div><h4>八重<small>伊豆</small></h4><div class="actor">樹木希林</div><p>母亲。开始把四十年前说成昨天，把昨天说成没发生过。<span><b>她忘的顺序，就是这部片的悬念。</b></span></p></div>
+      <div class="person"><div class="role">YOUNGEST DAUGHTER</div><h4>琴子<small>三女</small></h4><div class="actor">宮﨑あおい</div><p>把自己关在房里、后来拿起相机的那个。家里唯一不肯配合演出的人。<span><b>她最像父亲，也最不肯原谅父亲。</b></span></p></div>
+      <div class="person"><div class="role">SECOND DAUGHTER</div><h4>桑子<small>次女</small></h4><div class="actor">南果歩</div><p>留在伊豆的那一个。母亲最后这几年，是她在一天一天地过。<span><b>她不说辛苦，所以她的话最重。</b></span></p></div>
+      <div class="person"><div class="role">ELDEST DAUGHTER</div><h4>志贺子<small>长女</small></h4><div class="actor">キムラ緑子</div><p>带着丈夫回来，也带着一整套「应该怎么办」的意见。<span><b>她的道理全对，她的语气全错。</b></span></p></div>
+      <div class="person"><div class="role">FATHER</div><h4>隼人<small>伊豆</small></h4><div class="actor">三國連太郎</div><p>一个从不解释的男人。他走后，家里才有人开始解释他。<span><b>遗作。他的沉默是全片的底色。</b></span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s6">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">06</span><h2>五处冲突</h2><span class="kicker">Conflicts</span></div>
+    <div class="cf-list reveal">
+      <div class="cf"><h4><i>CONFLICT 01</i>洪作 × 八重<br>留下的那八年</h4><p>他五岁那年，被送到伊豆深山，托给曾祖父的一位妾室，一住八年。兄弟姐妹里只有他一个人不在父母身边。他一直相信，是母亲把他留下的——<em>这个判断他用了一辈子，从没跟母亲核对过。</em>而母亲正在忘事，核对的机会一天比一天少。</p></div>
+      <div class="cf"><h4><i>CONFLICT 02</i>洪作 × 隼人<br>不解释的父亲</h4><p>父亲严厉、寡言，一辈子没跟儿子说过一句软话。洪作对他的方式是「按月探望、坐一会儿就走」——礼数周全，感情为零。父亲的死让这套方式突然失效：<em>他再没有机会把话说完了。</em></p></div>
+      <div class="cf"><h4><i>CONFLICT 03</i>洪作 × 琴子<br>最像他的人</h4><p>小女儿不肯下楼吃饭，他不问；她后来拿起相机，他也不看。父女俩用的是同一种语言——<em>用不说话的姿势表达最重的话</em>——所以谁也听不懂谁。她替他去看祖母，也替他说出他不敢说的那句。</p></div>
+      <div class="cf"><h4><i>CONFLICT 04</i>洪作 × 姐妹<br>谁在照顾，谁只是回来</h4><p>桑子在伊豆守着，志贺子带着意见回来，洪作带着钱和安排回来。三个人都觉得自己付出最多，三个人都觉得另外两个不够。<em>照护这件事最残忍的地方是：它没有分工，只有承担。</em></p></div>
+      <div class="cf"><h4><i>CONFLICT 05</i>洪作 × 自己<br>写别人的痛苦很容易</h4><p>他能把陌生人的悲剧写得让人掉泪，却写不动自己家里这五年。因为写别人可以安排因果，写自己只能承认——<em>他既不是好儿子，也不是坏儿子，他只是一个不在场的人。</em></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s7">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">07</span><h2>七个时间点</h2><span class="kicker">Lineage</span></div>
+    <div class="lineage reveal">
+      <div class="ln"><div class="yr">1964</div><h4>《花の下》</h4><p>井上靖写下第一部。母亲还在，记忆还在，写的还是一个「能对话」的人。</p></div>
+      <div class="ln"><div class="yr">1969</div><h4>《月の光》</h4><p>第二部。五年过去，母亲开始把时间搞混；文章里的时态也跟着乱了。</p></div>
+      <div class="ln"><div class="yr">1974</div><h4>《雪の面》</h4><p>第三部。写的是最后那一段。三篇加起来十五年，比他任何一部长篇都长。</p></div>
+      <div class="ln"><div class="yr">1975</div><h4>合为一书</h4><p>讲谈社出版《わが母の記 花の下・月の光・雪の面》。井上靖 68 岁。</p></div>
+      <div class="ln"><div class="yr">2011</div><h4>蒙特利尔</h4><p>第 35 回蒙特利尔世界电影节<b>评审团特别大奖</b>；同年 10 月任第 16 回釜山国际电影节闭幕片。</p></div>
+      <div class="ln"><div class="yr">2012</div><h4>4 月 28 日公映</h4><p>松竹配给，全国 223 块银幕。首周末两日 1.19 亿日元、10.87 万人，当周第五。</p></div>
+      <div class="ln now"><div class="yr">2013</div><h4>学院奖：12 项优秀，1 项最优秀</h4><p>与《北のカナリアたち》并列最多优秀赏；最优秀只有主演女优（樹木希林）。同届最优秀作品与导演归《桐島、部活やめるってよ》。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s8">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">08</span><h2>荣誉</h2><span class="kicker">Awards &amp; Honours</span></div>
+    <div class="awards reveal">
+      <div class="award gold"><div class="yr">2011</div><div><h4>第 35 回蒙特利尔世界电影节 · 评审团特别大奖</h4><p>影片在日本公映前先在蒙特利尔首映，这是它拿到的第一个国际奖。</p></div></div>
+      <div class="award cold"><div class="yr">2011</div><div><h4>第 16 回釜山国际电影节 · 闭幕片</h4><p>与《初秋》同属井上靖改编、原田真人导演、役所广司主演的连动企划。</p></div></div>
+      <div class="award cold"><div class="yr">2012</div><div><h4>第 4 回 TAMA 映画赏 · 最优秀男优赏 / 最优秀女优赏</h4><p>役所広司；樹木希林与宮﨑あおい同获女优赏。</p></div></div>
+      <div class="award cold"><div class="yr">2012</div><div><h4>2012 年度全国映连赏 · 作品赏 / 男优赏 / 特别赏</h4><p>特别赏给摄影芦澤明子。</p></div></div>
+      <div class="award gold"><div class="yr">2013</div><div><h4>第 36 回日本学院奖 · 最优秀主演女优赏</h4><p>樹木希林。一部以儿子为主角的电影，唯一的最高奖给了演母亲的人。</p></div></div>
+      <div class="award cold"><div class="yr">2013</div><div><h4>第 36 回日本学院奖 · 12 个部门优秀赏</h4><p>含作品 / 监督 / 脚本 / 主演男优 / 助演女优 / 音乐 / 摄影 / 照明 / 美术 / 录音 / 剪辑。</p></div></div>
+      <div class="award cold"><div class="yr">2013</div><div><h4>第 67 回每日电影竞赛 · 摄影赏</h4><p>芦澤明子。她后来还拍了《 Fukushima 50》一类题材完全不同的片子。</p></div></div>
+      <div class="award cold"><div class="yr">2013</div><div><h4>第 25 回日刊体育电影大赏 · 助演女优赏</h4><p>樹木希林。</p></div></div>
+      <div class="award wide"><div class="yr">口径</div><div><h4>为什么这里没有「旬报十佳」</h4><p>本片未进入 2012 年度旬报十佳，页面不写「旬报」二字。学院奖那 12 项也只是优秀赏——这是本片最容易被中文资料写错的地方：它是一部「提名很多、获奖很少」的电影。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s9">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">09</span><h2>六处亮点</h2><span class="kicker">Six Things</span></div>
+    <div class="grid6 reveal">
+      <div class="g6"><div class="n">01</div><h4>「忘」是分层演的</h4><p>树希林不是一下子空掉。她先丢名字，再丢时间，最后连「该客气」也丢了——<b>每一层都还在演那个人</b>，所以你看到的不是病，是一个人往后退的过程。</p></div>
+      <div class="g6"><div class="n">02</div><h4>最重的戏都在不说话的时候</h4><p>役所广司全片台词不多。他演的是一个把情绪全部转成动作的人：倒茶、开车、站在门口不进去。<b>你看他做这些事的时候，才知道他有多不会做儿子。</b></p></div>
+      <div class="g6"><div class="n">03</div><h4>琴子这条线</h4><p>宫崎葵演的三女，是家里唯一敢把难听话说出口的人。她越像父亲，越不肯原谅父亲——<b>这条线是全片唯一在「往前走」的</b>，其他人都在原地整理旧账。</p></div>
+      <div class="g6"><div class="n">04</div><h4>伊豆的光是湿的</h4><p>芦泽明子的摄影：山里的绿不是鲜绿，是带水的绿；屋里永远比屋外暗一档。<b>她让「回家」这件事先有了温度，台词才有地方落。</b></p></div>
+      <div class="g6"><div class="n">05</div><h4>配乐总在事后才进来</h4><p>富貴晴美的音乐很少出现在冲突的当场。争吵是干的、没有伴奏的，音乐等到人散了才响起——<b>于是你记住的不是吵了什么，是吵完之后那间屋子的安静。</b></p></div>
+      <div class="g6"><div class="n">06</div><h4>那栋房子是真的</h4><p>世田谷的井上靖自邸实拍。书桌、走廊、院子都不是美术搭的——<b>一个写作者在自己的房子里被拍了一辈子</b>，这件事本身就给影片加了一层无法伪造的重量。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">10</span><h2>为什么值得看</h2><span class="kicker">Why It Matters</span></div>
+    <div class="why reveal">
+      <article><h3>一、它把「照护」拍成了一件具体的事</h3><p>不是「孝心」，不是「亲情」，是<strong>谁送饭、谁打电话、谁在饭桌上不说话、谁在电话里说「我下个月回来」</strong>。这部片几乎没有抒情镜头，它把镜头全给了流程：接人、送人、换房间、找看护、算时间。</p><p>正因为具体，它才不油。你看完不会觉得「我要更孝顺」，你会开始算：<em>上一次跟家里人吃饭，是哪一天。</em></p></article>
+      <article><h3>二、它诚实到不给任何一个人发奖状</h3><p>桑子在伊豆守着，但她也会累到说重话；志贺子的道理全对，语气全错；洪作出钱出力，可他一年在家的天数是可以数出来的；琴子最清醒，也最伤人。<strong>五个人都有理由，五个理由都在伤人。</strong></p><p>这片子最难得的地方是：它没有安排一个人站出来说「我们应该怎样」。它只是让五个立场并排放着，让你自己在中间站一会儿。</p></article>
+      <article><h3>三、它最后谈的不是孝顺，是「版本」</h3><p>你以为你记得的那个童年，可能只是你一个人的版本。你记恨了四十年的那件事，在对方的叙述里可能根本没发生过，或者发生的原因完全相反。<strong>而人老去的过程，就是一个人的版本逐渐消失、只剩另一个人的版本的过程。</strong></p><p>所以这部片真正的悬念不是「母亲会不会好起来」，是——<em>当只剩一个人记得的时候，那件事还算不算发生过。</em></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">11</span><h2>观影提示</h2><span class="kicker">Before You Press Play</span></div>
+    <div class="tips reveal">
+      <div class="tip"><div class="k">01</div><h4>别在疲惫的深夜看</h4><p>它慢，慢到你前半段会以为「没有情节」。等你看进去的时候，已经来不及抽身了。</p></div>
+      <div class="tip"><div class="k">02</div><h4>留意年份字幕</h4><p>1959 / 1963 / 1966 / 1969 是这部片的骨架。四个年份之间各跳了几年，跳掉的那几年恰好是最难的部分。</p></div>
+      <div class="tip"><div class="k">03</div><h4>它不是催泪片</h4><p>全片没有一场为哭而拍的戏。如果你哭了，多半不是被它弄哭的，是被自己想起来的某件事弄哭的。</p></div>
+      <div class="tip"><div class="k">04</div><h4>看完别马上刷手机</h4><p>给它十分钟。这部片的后劲不在片尾，在你走出房间、看见客厅灯还亮着的那一下。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="wrap">
+    <div class="tag reveal">CODA</div>
+    <p class="q reveal"><span>她一件一件地忘，</span><span>他一件一件地记——</span><span>这是他们母子三十年里，</span><span>唯一一次合作。</span></p>
+    <p class="src reveal">非片中台词 · 为本页所写</p>
+    <div class="stamp" aria-hidden="true"><div><span>JAPANESE CINEMA</span><span>NO. 27</span><b>わが母の記</b><span>MMXII</span></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>日本电影专题 · 第 27 期 ·《记我的母亲》わが母の記（2012，原田真人）<br>
+    页面数据回源：豆瓣条目 5975206 · OMDb tt1818443 · Rotten Tomatoes · 日本アカデミー賞公式サイト 第 36 回 · 松竹作品页 · 日文维基。<br>
+    全文无关键情节。若你已看过，欢迎把「你记得的版本」和片子的版本对一遍。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c = document.getElementById('heroCanvas');
+  if(c){
+    var ctx = c.getContext('2d'), W=0, H=0, motes=[], t=0, dpr=Math.min(window.devicePixelRatio||1,2);
+    function size(){
+      W = c.clientWidth; H = c.clientHeight;
+      c.width = Math.round(W*dpr); c.height = Math.round(H*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      build();
+    }
+    function build(){
+      motes=[];
+      var n = Math.round(W*H/30000);
+      if(n > 70) n=70;
+      for(var i=0;i < n;i++){
+        motes.push({
+          x: Math.random()*W,
+          y: Math.random()*H,
+          r: .5+Math.random()*1.1,
+          vy: -.04-Math.random()*.1,
+          vx: .01+Math.random()*.05,
+          a: .025+Math.random()*.06,
+          p: Math.random()*6.28
+        });
+      }
+    }
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      t+=0.005;
+      for(var i=0;i<motes.length;i++){
+        var m=motes[i];
+        m.y+=m.vy; m.x+=m.vx;
+        if(m.y < -12){ m.y=H+12; m.x=Math.random()*W; }
+        if(m.x > W+12){ m.x=-12; }
+        var a=m.a*(0.45+0.55*Math.sin(t*0.6+m.p));
+        ctx.beginPath();
+        ctx.fillStyle='rgba(214,196,168,'+a.toFixed(3)+')';
+        ctx.arc(m.x,m.y,m.r,0,6.2832);
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    window.addEventListener('resize',size);
+    size(); draw();
+  }
+
+  var revs = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08, rootMargin:'0px 0px -6% 0px'});
+  revs.forEach(function(e){ io.observe(e); });
+
+  var hud=document.getElementById('hud'), items=[].slice.call(hud.querySelectorAll('b'));
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    hud.classList.toggle('on', y > window.innerHeight*0.55);
+    var p = y/(document.body.scrollHeight - window.innerHeight);
+    var idx = Math.min(4, Math.floor(p*5));
+    items.forEach(function(b,i){ b.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>

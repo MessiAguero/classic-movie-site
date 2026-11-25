@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T03:38:07.363Z",
+  "generatedAt": "2026-11-25T04:12:15.150Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 163,
+  "total": 164,
   "ok": 90,
-  "warn": 73,
+  "warn": 74,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 147,
+    "checked": 148,
     "skippedVerified": 16,
     "error": null
   },
@@ -3144,27 +3144,68 @@
       ]
     },
     {
+      "id": "20261125-wagahaha",
+      "zhTitle": "记我的母亲",
+      "sourceTitle": "今天我和朋友们一起看了《记我的母亲》,这部电影真的是封神之作",
+      "year": "1959",
+      "source": "本地",
+      "imageUrl": "posters/20261125-wagahaha.jpg",
+      "host": "pic.rmb.bdstatic.com",
+      "tier": "unknown",
+      "size": "246KB",
+      "dims": "1080×1439",
+      "ratio": 1.33,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「记我的母亲」",
+          "书名号片名命中「记我的母亲」"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "years": [],
+        "dominantText": "",
+        "reasons": [],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（pic.rmb.bdstatic.com）"
+        }
+      ]
+    },
+    {
       "id": "20261126-kaguya",
       "zhTitle": "辉夜姬物语",
-      "sourceTitle": "20部动画长片报名奥斯卡 漫威大战吉卜力|漫威|吉卜力|辉夜姬物语_新浪娱乐_新浪网",
+      "sourceTitle": "《辉夜姬物语》电影海报《辉夜姬物语》是高畑勋导演为吉卜力贡献的又",
       "year": "2014",
       "source": "本地",
       "imageUrl": "posters/20261126-kaguya.jpg",
-      "host": "i2.sinaimg.cn",
+      "host": "pic3.zhimg.com",
       "tier": "unknown",
-      "size": "59KB",
-      "dims": "405×600",
+      "size": "263KB",
+      "dims": "1080×1593",
       "ratio": 1.48,
       "identityKind": "name",
       "identityHits": [
-        "片名中文",
-        "年份"
+        "片名中文"
       ],
       "evidence": {
         "level": "strong",
         "reasons": [
           "片名命中「辉夜姬物语」",
-          "年份命中 2014"
+          "书名号片名命中「辉夜姬物语」"
         ],
         "conflicts": []
       },
@@ -3173,22 +3214,24 @@
         "titleHit": null,
         "yearMatch": false,
         "years": [],
-        "dominantText": "THE STORY OF A NOBODY WHO AVED EVERYBODY",
-        "reasons": [],
+        "dominantText": "7月12日 矚目獻映",
+        "reasons": [
+          "图片最大文字为“7月12日 矚目獻映”，未能与片名直接对应"
+        ],
         "conflicts": []
       },
       "verified": false,
       "status": "warn",
       "issues": [
         {
-          "code": "low_resolution",
-          "severity": "warn",
-          "detail": "清晰度偏低 405×600"
-        },
-        {
           "code": "untrusted_host",
           "severity": "warn",
-          "detail": "图源不在可信白名单（i2.sinaimg.cn）"
+          "detail": "图源不在可信白名单（pic3.zhimg.com）"
+        },
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“7月12日 矚目獻映”没有对上片名，建议核对"
         }
       ]
     },
