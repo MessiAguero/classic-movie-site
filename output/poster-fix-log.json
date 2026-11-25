@@ -1,38 +1,41 @@
 {
-  "at": "2026-11-18T04:56:21.568Z",
+  "at": "2026-11-25T03:31:30.143Z",
   "dryRun": false,
   "targetCount": 1,
   "fixedCount": 1,
   "failureCount": 0,
   "changes": [
     {
-      "id": "20261118-tampopo",
-      "zhTitle": "蒲公英",
+      "id": "20261126-kaguya",
+      "zhTitle": "辉夜姬物语",
       "before": {
-        "imageUrl": "posters/20261118-tampopo.jpg",
-        "dims": "500×750",
+        "imageUrl": "posters/20261126-kaguya.jpg",
+        "dims": "342×507",
         "status": "error",
         "issues": [
-          "identity_unverified",
-          "visual_title_unverified"
+          "low_resolution",
+          "no_identity_signal"
         ]
       },
       "after": {
-        "imageUrl": "posters/20261118-tampopo.jpg",
-        "dims": "1000×1500",
-        "source": "bing",
-        "url": "https://image.tmdb.org/t/p/original/bvkaWqq2txWdpxJC9tIvF3rbqxJ.jpg",
-        "title": "英雄本色 (1986) - 海报 — The Movie Database (TMDB)"
+        "imageUrl": "posters/20261126-kaguya.jpg",
+        "dims": "405×600",
+        "source": "ddg",
+        "url": "http://i2.sinaimg.cn/ent/m/f/hlw/2014-11-05/U10668P28T3D4235773F358DT20141105110752.jpg",
+        "title": "20部动画长片报名奥斯卡 漫威大战吉卜力|漫威|吉卜力|辉夜姬物语_新浪娱乐_新浪网"
       }
     }
   ],
   "failures": [],
   "recheck": [
     {
-      "id": "20261118-tampopo",
-      "status": "ok",
-      "dims": "1000×1500",
-      "issues": []
+      "id": "20261126-kaguya",
+      "status": "warn",
+      "dims": "405×600",
+      "issues": [
+        "low_resolution",
+        "untrusted_host"
+      ]
     }
   ]
 }

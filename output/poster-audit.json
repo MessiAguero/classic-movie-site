@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T01:50:50.016Z",
+  "generatedAt": "2026-11-25T03:31:44.957Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 162,
+  "total": 163,
   "ok": 90,
-  "warn": 72,
+  "warn": 73,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 146,
+    "checked": 147,
     "skippedVerified": 16,
     "error": null
   },
@@ -3140,6 +3140,55 @@
           "code": "identity_weak_evidence",
           "severity": "warn",
           "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：花束般的恋爱图片_电影花束般的恋爱海报图片 - 三千图片网）"
+        }
+      ]
+    },
+    {
+      "id": "20261126-kaguya",
+      "zhTitle": "辉夜姬物语",
+      "sourceTitle": "20部动画长片报名奥斯卡 漫威大战吉卜力|漫威|吉卜力|辉夜姬物语_新浪娱乐_新浪网",
+      "year": "2014",
+      "source": "本地",
+      "imageUrl": "posters/20261126-kaguya.jpg",
+      "host": "i2.sinaimg.cn",
+      "tier": "unknown",
+      "size": "59KB",
+      "dims": "405×600",
+      "ratio": 1.48,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「辉夜姬物语」",
+          "年份命中 2014"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "THE STORY OF A NOBODY WHO AVED EVERYBODY",
+        "reasons": [],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "low_resolution",
+          "severity": "warn",
+          "detail": "清晰度偏低 405×600"
+        },
+        {
+          "code": "untrusted_host",
+          "severity": "warn",
+          "detail": "图源不在可信白名单（i2.sinaimg.cn）"
         }
       ]
     },

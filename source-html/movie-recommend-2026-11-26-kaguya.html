@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>辉夜姬物语 · 日本电影专题 第 26 期</title>
+<meta name="description" content="高畑勋《辉夜姬物语》（かぐや姫の物語, 2013）：剧情梗概、人物冲突、六处亮点与观看理由。全程不剧透。">
+<style>
+:root{
+  --bg:#0a0a08; --bg2:#101009; --panel:#16150e;
+  --ink:#e9e3d2; --dim:#9b9583; --dim2:#5f5b4b;
+  --line:rgba(233,227,210,.12); --line2:rgba(233,227,210,.05);
+  --ac:#c9a349; --ac2:#e8cf8b;
+  --pa:#efe6d3; --pa2:#faf4e4;
+  --paper:#f2e9d5;
+  --warm:#d3a35e;
+  --seal:#a63b28; --seal2:#c4715c;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Didot","Optima","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.95;letter-spacing:.012em;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(201,163,73,.3);color:#0a0a08}
+a{color:inherit}
+body::before{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.028;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+.wrap{width:min(1160px,calc(100% - 96px));margin:0 auto}
+
+.hero{position:relative;min-height:max(100vh,880px);overflow:hidden;background:#f2e9d5;
+  border-bottom:1px solid rgba(201,163,73,.4)}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(246,239,222,.95) 0%,rgba(245,238,220,.9) 16%,rgba(244,236,217,.68) 32%,rgba(243,234,213,.3) 48%,rgba(242,233,211,.04) 63%,rgba(242,233,211,0) 72%),
+    linear-gradient(to bottom,rgba(248,242,227,.5) 0%,rgba(247,240,223,.12) 16%,rgba(246,239,222,0) 30%,rgba(246,239,222,0) 78%,rgba(246,239,222,.22) 94%,rgba(246,239,222,.4) 100%)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.notice{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:11px;
+  letter-spacing:.14em;color:rgba(44,42,31,.72);border:1px solid rgba(44,42,31,.22);
+  border-radius:999px;padding:7px 16px;margin-bottom:34px;background:rgba(250,245,232,.5);backdrop-filter:blur(4px)}
+.notice .dot{width:5px;height:5px;border-radius:50%;background:var(--seal);box-shadow:0 0 9px rgba(166,59,40,.5)}
+.hero-in{position:relative;z-index:3;width:min(1160px,calc(100% - 96px));margin:0 auto;
+  min-height:max(100vh,880px);display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:10.5vh;padding-bottom:64px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;
+  letter-spacing:.34em;color:#8a6a2e;text-transform:uppercase;opacity:.95}
+.eyebrow i{display:block;width:52px;height:1px;background:#8a6a2e;opacity:.55}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(38px,6.4vw,92px);line-height:1.14;
+  letter-spacing:.2em;margin:26px 0 0;color:#1c1c14;white-space:nowrap}
+.latin{margin:22px 0 0;font-family:var(--latin);font-size:13px;letter-spacing:.32em;
+  color:rgba(42,40,30,.62)}
+.latin + .latin{margin-top:7px;font-size:11px;letter-spacing:.24em;color:rgba(42,40,30,.46)}
+.hero-sub{margin:28px 0 0;max-width:25em;font-size:16px;line-height:2.05;color:rgba(36,34,25,.88)}
+.hero-sub em{font-style:normal;color:#1c1c14;border-bottom:1px solid rgba(166,59,40,.55);padding-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:620px}
+.chip{font-size:11.5px;letter-spacing:.06em;color:rgba(247,241,226,.94);border:1px solid rgba(247,241,226,.2);
+  border-radius:999px;padding:6px 14px;background:rgba(26,24,16,.8);backdrop-filter:blur(7px)}
+.chip b{color:#fff;font-weight:500}
+.scroll-hint{position:absolute;left:auto;right:28px;bottom:30px;z-index:4;
+  font-family:var(--latin);font-size:9.5px;letter-spacing:.42em;color:rgba(42,40,30,.5);
+  display:flex;flex-direction:column;align-items:center;gap:9px}
+.scroll-hint span{display:block;width:1px;height:32px;background:linear-gradient(to bottom,rgba(42,40,30,.5),transparent)}
+
+.sec{padding:112px 0;border-top:1px solid var(--line2)}
+.sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:52px}
+.sec-head .no{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--ac);opacity:.94}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.1vw,36px);
+  letter-spacing:.05em;margin:0;color:#f4efe0;flex:1 1 auto}
+.sec-head .kicker{font-family:var(--latin);font-size:10.5px;letter-spacing:.3em;
+  color:var(--dim2);text-transform:uppercase;margin:0}
+.note{font-size:13px;color:var(--dim);line-height:1.9}
+
+.intro{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:64px;align-items:start}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:2.22;color:#d5cfbe}
+.lede p{margin:0 0 22px}
+.lede p:first-child::first-letter{float:left;font-size:5.1em;line-height:.82;padding:.06em .14em 0 0;
+  color:#f7f2e2;font-weight:400}
+.lede strong{font-weight:500;color:#f7f2e2}
+.lede .dash{color:var(--dim);font-size:15px}
+.glance{border:1px solid var(--line);background:linear-gradient(160deg,rgba(22,21,14,.95),rgba(8,8,6,.95));
+  padding:30px 28px}
+.glance h3{font-family:var(--latin);font-size:10px;letter-spacing:.34em;color:var(--ac);
+  margin:0 0 22px;font-weight:400;text-transform:uppercase;opacity:.92}
+.glance dl{margin:0;display:grid;gap:13px}
+.glance div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line2)}
+.glance div:last-child{border-bottom:0;padding-bottom:0}
+.glance dt{font-size:11.5px;color:var(--dim2);letter-spacing:.1em}
+.glance dd{margin:0;font-size:13.5px;color:#cdc7b7;line-height:1.7}
+.glance dd b{color:#f7f2e2;font-weight:500}
+.glance dd small{display:block;font-size:11px;color:var(--dim2);margin-top:3px}
+.acts{margin-top:74px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.act{background:var(--bg);padding:34px 30px}
+.act .t{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--ac);
+  opacity:.94;margin-bottom:14px}
+.act h4{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f4efe0;letter-spacing:.04em}
+.act p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+.poster-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);gap:70px;align-items:start}
+.poster-frame{border:1px solid var(--line);padding:14px;background:#060605;
+  box-shadow:0 40px 90px -50px #000, inset 0 0 0 1px rgba(0,0,0,.6)}
+.poster-svg{display:block;width:100%;height:auto}
+.pcap{margin:16px 2px 0;font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--dim2)}
+.pnotes{display:grid;gap:28px}
+.pnote{border-left:1px solid var(--line);padding:2px 0 2px 24px}
+.pnote .n{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--ac);opacity:.9}
+.pnote h4{margin:8px 0 10px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f4efe0}
+.pnote p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+.pnote p b{color:#e8e2d1;font-weight:500}
+.pnote p em{font-style:normal;color:var(--ac2)}
+
+.spec{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.spec div{background:var(--bg);padding:22px 20px;min-height:92px}
+.spec dt{font-size:10.5px;letter-spacing:.14em;color:var(--dim2);margin-bottom:8px}
+.spec dd{margin:0;font-size:13.5px;color:#cec8b8;line-height:1.65}
+.spec dd small{display:block;font-size:11px;color:var(--dim2);margin-top:4px;letter-spacing:.02em}
+.spec .wide{grid-column:1/-1;min-height:0;background:linear-gradient(120deg,rgba(201,163,73,.15),rgba(10,10,8,0) 62%)}
+.spec .wide dd{font-family:var(--serif);font-size:17px;color:#f7f2e2;letter-spacing:.05em}
+
+.scores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.sc{background:var(--bg);padding:32px 30px}
+.sc .src{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--dim2);text-transform:uppercase}
+.sc .val{font-family:var(--latin);font-size:52px;line-height:1;margin:16px 0 8px;color:#f7f2e2}
+.sc .val small{font-size:15px;color:var(--dim);letter-spacing:.04em;margin-left:6px}
+.sc .meta{font-size:12.5px;color:var(--dim);line-height:1.8}
+.sc .meta b{color:#e0dac9;font-weight:500}
+.sc.hi .val{color:var(--ac2)}
+.caliber{margin:52px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.caliber li{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line2);
+  font-size:13.5px;line-height:1.9;color:var(--dim)}
+.caliber li b{color:#e9e3d2;font-weight:500}
+.caliber li i{font-family:var(--latin);font-style:normal;font-size:10.5px;letter-spacing:.2em;color:var(--ac);opacity:.86;padding-top:4px}
+
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.person{background:var(--bg);padding:30px 28px}
+.person .role{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--ac);opacity:.86}
+.person h4{margin:12px 0 4px;font-family:var(--serif);font-weight:400;font-size:20px;color:#f7f2e2;letter-spacing:.04em}
+.person h4 small{font-size:12px;color:var(--dim2);letter-spacing:.1em;margin-left:4px}
+.person .actor{font-size:11.5px;color:var(--dim2);letter-spacing:.08em;margin-bottom:18px}
+.person p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.person p span{display:block;margin-top:9px;color:#cac4b4}
+.person p span b{color:var(--ac);font-weight:400;font-size:11.5px;letter-spacing:.08em;margin-right:6px}
+.person.thing{grid-column:1/-1;background:linear-gradient(100deg,rgba(239,230,211,.1),rgba(10,10,8,0) 70%)}
+.person.thing h4{color:#f7f2e2}
+.person.thing p{max-width:88ch}
+.person.thing p span b{color:var(--pa)}
+
+.conflicts{display:grid;gap:0;border-top:1px solid var(--line)}
+.cf{display:grid;grid-template-columns:210px minmax(0,1fr);gap:36px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line2)}
+.cf h4{margin:0;font-family:var(--serif);font-weight:400;font-size:17px;color:#f7f2e2;letter-spacing:.04em;line-height:1.6}
+.cf h4 i{display:block;font-family:var(--latin);font-style:normal;font-size:9.5px;letter-spacing:.26em;
+  color:var(--ac);opacity:.86;margin-bottom:8px}
+.cf p{margin:0;font-size:13.8px;line-height:2;color:var(--dim);max-width:66ch}
+.cf p em{font-style:normal;color:#e8e2d1}
+
+.awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.award{background:var(--bg);padding:28px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.award .yr{font-family:var(--latin);font-size:11px;letter-spacing:.14em;color:var(--dim2);padding-top:3px}
+.award h4{margin:0 0 6px;font-size:14.5px;font-weight:500;color:#f4efe0;letter-spacing:.02em;line-height:1.6}
+.award p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.78}
+.award.gold{background:linear-gradient(120deg,rgba(201,163,73,.18),rgba(10,10,8,0) 68%);border-left:2px solid rgba(201,163,73,.5)}
+.award.gold h4{color:var(--pa2)}
+.award.cold{background:linear-gradient(120deg,rgba(139,148,131,.1),rgba(10,10,8,0) 68%);border-left:2px solid rgba(139,148,131,.34)}
+.award.cold h4{color:#c2c8b6}
+.award.wide{grid-column:1/-1}
+
+.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px;max-width:800px}
+.ln{position:relative;padding:0 0 38px 40px}
+.ln:last-child{padding-bottom:0}
+.ln::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--ac2)}
+.ln.now::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 4px rgba(166,59,40,.26)}
+.ln .yr{font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--dim2)}
+.ln h4{margin:6px 0 6px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f4efe0;letter-spacing:.03em}
+.ln p{margin:0;font-size:13px;color:var(--dim);line-height:1.85}
+.ln p b{color:#e6e0cf;font-weight:500}
+.ln.now h4{color:var(--pa2)}
+
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.g6{background:var(--bg);padding:32px 28px;min-height:200px}
+.g6 .n{font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--ac);opacity:.9}
+.g6 h4{margin:14px 0 10px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f4efe0;letter-spacing:.03em;line-height:1.6}
+.g6 p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.g6 p b{color:#e8e2d1;font-weight:500}
+
+.why{display:grid;gap:0;max-width:820px}
+.why article{padding:0 0 38px}
+.why article + article{border-top:1px solid var(--line2);padding-top:38px}
+.why h3{margin:0 0 14px;font-family:var(--serif);font-weight:400;font-size:21px;color:#f7f2e2;letter-spacing:.04em}
+.why p{margin:0;font-size:14.5px;line-height:2.05;color:#c2bcaa}
+.why p + p{margin-top:14px}
+.why strong{color:#f4efe0;font-weight:500}
+.why em{font-style:normal;color:var(--ac2)}
+
+.tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.tip{background:var(--bg);padding:30px 24px}
+.tip .k{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--ac);opacity:.9}
+.tip h4{margin:12px 0 10px;font-size:15.5px;font-weight:500;color:#f4efe0}
+.tip p{margin:0;font-size:12.8px;line-height:1.95;color:var(--dim)}
+
+.verdict{padding:150px 0 120px;border-top:1px solid var(--line2);position:relative;overflow:hidden}
+.verdict .tag{font-family:var(--latin);font-size:9.5px;letter-spacing:.32em;color:var(--dim2);margin-bottom:34px}
+.verdict .q{font-family:var(--serif);font-size:clamp(22px,3vw,35px);line-height:1.8;letter-spacing:.06em;
+  color:#f7f2e2;margin:0;max-width:24em}
+.verdict .q span{display:block}
+.verdict .src{margin-top:36px;font-size:12px;color:var(--dim2);letter-spacing:.04em;line-height:1.9}
+.stamp{position:absolute;right:74px;bottom:82px;width:136px;height:136px;border:1px solid rgba(166,59,40,.85);
+  border-radius:50%;display:grid;place-items:center;color:rgba(196,113,92,1);text-align:center;
+  transform:rotate(-7deg);box-shadow:inset 0 0 0 4px rgba(166,59,40,.14)}
+.stamp div{display:grid;gap:8px;justify-items:center}
+.stamp span{font-family:var(--latin);font-size:8.2px;letter-spacing:.12em;opacity:.95;line-height:1.2}
+.stamp b{font-family:var(--serif);font-size:19px;letter-spacing:.1em;font-weight:400;line-height:1.15;
+  padding:6px 0;border-top:1px solid rgba(166,59,40,.55);border-bottom:1px solid rgba(166,59,40,.55)}
+
+footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
+footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
+
+#hud{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
+  opacity:0;transition:opacity .7s ease;pointer-events:none}
+#hud.on{opacity:1}
+#hud b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:13px;
+  color:var(--dim2);letter-spacing:.1em;transition:color .5s}
+#hud b i{display:block;width:16px;height:1px;background:var(--dim2);transition:all .5s}
+#hud b.on{color:#f7f2e2}
+#hud b.on i{width:30px;background:var(--ac)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1380px){#hud{display:none}}
+@media (max-width:1000px){
+  .intro{grid-template-columns:1fr;gap:48px}
+  .poster-grid{grid-template-columns:1fr;gap:46px}
+  .poster-frame{max-width:500px}
+  .scores,.awards{grid-template-columns:1fr}
+  .spec{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .acts{grid-template-columns:1fr}
+  #hud{display:none}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .scroll-hint{left:auto;right:8px;transform:none;bottom:26px}
+  .hero-svg{transform:translateY(5vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(246,239,222,.95) 0%,rgba(245,238,220,.9) 26%,rgba(244,236,217,.78) 42%,rgba(243,234,213,.56) 54%,rgba(242,233,211,.32) 62%,rgba(242,233,211,.16) 70%,rgba(240,230,207,.22) 82%,rgba(238,227,203,.4) 92%,rgba(236,224,198,.55) 100%)}
+}
+@media (max-width:760px){
+  .hero-svg{transform:translateY(9vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(247,240,224,.96) 0%,rgba(246,239,222,.93) 24%,rgba(245,238,220,.82) 42%,rgba(243,234,213,.56) 56%,rgba(242,233,211,.28) 68%,rgba(240,230,207,.14) 80%,rgba(238,227,203,.24) 90%,rgba(234,222,196,.42) 100%)}
+  body{font-size:15px;line-height:1.9}
+  .wrap,.hero-in{width:calc(100% - 40px)}
+  .hero{min-height:max(100vh,740px)}
+  .hero-in{min-height:max(100vh,740px);padding-top:8vh;padding-bottom:96px}
+  h1{font-size:clamp(32px,10vw,56px);letter-spacing:.16em}
+  .hero-sub{font-size:14.5px;line-height:1.95;max-width:27em}
+  .sec{padding:76px 0}
+  .sec-head{margin-bottom:36px;gap:12px}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spec dd{font-size:12.4px}
+  .spec dd small{font-size:10.4px}
+  .people,.grid6,.tips{grid-template-columns:1fr}
+  .cf{grid-template-columns:1fr;gap:12px}
+  .lede{font-size:16px;line-height:2.05}
+  .sc .val{font-size:44px}
+  .verdict{padding:96px 0 88px}
+  .stamp{position:static;margin-top:48px;transform:rotate(-4deg)}
+  .chips{max-width:100%;padding-top:0;margin-top:26px}
+  footer{padding-bottom:120px}
+  .scroll-hint{display:none}
+  .hs-full{display:none}
+  .chip{font-size:11px;padding:5px 11px;letter-spacing:.03em}
+}
+@media (min-width:1001px) and (max-height:860px){
+  .hero,.hero-in{min-height:max(100vh,760px)}
+  .scroll-hint{left:auto;right:22px;transform:none}
+}
+@media (max-width:560px){
+  .chip:nth-child(5){display:none}
+}
+@media (max-width:420px){
+  .notice{margin-bottom:22px;font-size:10.5px;padding:6px 13px}
+  h1{font-size:clamp(30px,9vw,46px);margin-top:20px}
+  .latin{margin-top:14px;font-size:11px;letter-spacing:.22em}
+  .latin + .latin{font-size:9.5px;letter-spacing:.14em}
+  .hero-sub{margin-top:22px;font-size:13.8px}
+}
+@media (max-width:380px){
+  .wrap,.hero-in{width:calc(100% - 32px)}
+  .chip{font-size:10.5px;padding:5px 11px}
+  .glance{padding:24px 20px}
+  h1{font-size:clamp(27px,8.4vw,42px)}
+}
+@media (max-width:760px) and (max-height:700px){
+  .hero{min-height:100vh}
+  .hero-in{min-height:100vh;padding-top:6vh}
+  .hero-svg{transform:translateY(7vh)}
+  .notice{margin-bottom:16px;font-size:10px;padding:5px 12px}
+  h1{margin-top:14px;font-size:clamp(28px,8.6vw,40px)}
+  .latin{margin-top:12px;font-size:10.5px}
+  .latin + .latin{font-size:9px;margin-top:5px}
+  .hero-sub{margin-top:16px;font-size:13.2px;line-height:1.82}
+  .chips{margin-top:20px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+@@HERO@@
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+
+<div class="hero-in">
+  <div class="notice"><span class="dot"></span>全程不剧透 · 梗概止于「她从自己的成人宴上跑了出去」</div>
+  <div class="eyebrow"><i></i>Japanese Cinema · No.26</div>
+  <h1>辉夜姬物语</h1>
+  <p class="latin">かぐや姫の物語</p>
+  <p class="latin">The Tale of The Princess Kaguya · 2013</p>
+  <p class="hero-sub">早春的山里，砍竹的老人从一根发亮的竹笋里捧出一个只有手掌大的女孩。她当天长成婴儿，半年长成少女，跟着伐木人家的孩子满山跑，被叫作<em>「竹笋」</em>。<span class="hs-full">她长得太快——快到没有人来得及跟她一起长大。</span></p>
+  <div class="chips">
+    <span class="chip"><b>2013</b> · 高畑勋</span>
+    <span class="chip"><b>137 分钟</b></span>
+    <span class="chip">豆瓣 <b>8.6</b></span>
+    <span class="chip">烂番茄 <b>100%</b></span>
+    <span class="chip">吉卜力 · <b>遗作</b></span>
+  </div>
+</div>
+
+<div class="scroll-hint">SCROLL<span></span></div>
+</header>
+
+<nav id="hud" aria-hidden="true">
+  <b data-i="0"><i></i>屏</b><b data-i="1"><i></i>梗</b><b data-i="2"><i></i>档</b><b data-i="3"><i></i>人</b><b data-i="4"><i></i>亮</b>
+</nav>
+
+<main>
+
+<section class="sec" id="s1" style="border-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">01</span><h2>剧情梗概</h2><p class="kicker">The Story</p></div>
+    <div class="intro">
+      <div class="lede reveal">
+        <p>竹林里的日子是按竹子算的。春天出笋，夏天长叶，秋天砍老竿。老人每天进山，挑一根合用的，砍倒、扛回、劈成条，编成笼和篮，挑到集上换米。他叫讃岐造，妻子叫媼，两个人没有孩子。</p>
+        <p>早春的某一天，他在林子里看见一根竹子在发亮。他把它剖开，里面坐着一个只有手掌大的女孩。</p>
+        <p>他把她捧回家。当天，她就变成了普通婴儿的大小；半年，长成了少女。她跑得比谁都快，爬树、抢果子、在溪里摸鱼，跟一群木地师的孩子混在一起——那些人跟着树走，树砍光了就搬家，做木碗、木盆、木勺。他们给她起了个外号：<strong>竹笋</strong>。</p>
+        <p>与此同时，只要他再走到那根竹子跟前，就能拿到金粒，还有成匹的衣料。老人把这理解成一个托付：<em>这女孩不该在山里长大，她该做贵人</em>。于是他请宫里退下来的女官相模来教她礼仪，在京城盖了宅子，秋天带着一家搬了过去。</p>
+        <p>京城的宅子里，她学琴、学写字、学把牙齿染黑、把眉毛剃掉再往上画。她被命名为「嫩竹的辉夜姬」。成人礼那天晚上设了宴，请了半个京城。</p>
+        <p>酒过几巡，有人当着老人的面说了极难听的话：这名字是花钱买来的，这家人是踩着金子爬上来的。她坐在帘子后面，听见了每一个字。</p>
+        <p>然后她跑了出去。跑出宅门，跑过长街，一边跑一边解开身上的衣裳，一件一件丢在身后——外袍、腰带、襦袢。她跑回山里，跑到冬天。木地师的棚屋已经拆了（他们要走十年才回来），只剩一座炭窑。烧炭的老人告诉她：树砍了还会发芽，春天还会来。</p>
+        <p>她在雪里倒下去。再睁开眼的时候，身上穿着原来的衣裳，人躺在京城的宅子里。</p>
+        <p class="dash">从那天起，她安静地做一个贵女。第二年春天，宅门外的路上站满了人。</p>
+      </div>
+      <aside class="glance reveal">
+        <h3>At a Glance</h3>
+        <dl>
+          <div><dt>一句话</dt><dd>一个从竹子里来的女孩，被整个国家按「贵人」的样子养大；而她自己只想在山坡上跑。</dd></div>
+          <div><dt>时间</dt><dd>平安朝<small>原作《竹取物语》成书于九～十世纪</small></dd></div>
+          <div><dt>地点</dt><dd>山中的家 → 京城的宅邸<small>两个空间，两种活法</small></dd></div>
+          <div><dt>主角</dt><dd>辉夜姬（在山里，她叫「竹笋」）</dd></div>
+          <div><dt>对手</dt><dd>不是人，是「为你好」</dd></div>
+          <div><dt>结构</dt><dd>春 → 秋 → 冬 → 春<small>靠季节换幕，不靠字幕</small></dd></div>
+          <div><dt>道具</dt><dd>一根发亮的竹笋 / 一件十二单 / 一院子的假山</dd></div>
+          <div><dt>声音</dt><dd>久石让几乎不写旋律，只写风</dd></div>
+          <div><dt>情绪</dt><dd>前半段是野的，后半段是闷的</dd></div>
+          <div><dt>关键词</dt><dd>养育 / 规格 / 回乡</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="acts">
+      <div class="act reveal"><div class="t">First · 山里</div><h4>她被叫作「竹笋」</h4><p>这一段几乎没有情节压力，全是跑、摘、吃、睡。高畑把「童年」拍成一片会动的草木，而不是一串事件——所以它后来被夺走时，你才知道失去的是什么。</p></div>
+      <div class="act reveal"><div class="t">Second · 京</div><h4>她被叫作「贵人」</h4><p>宅子、女官、染黑的牙、画高的眉。没有人打她，没有人骂她，所有人都在替她高兴。全片最难受的部分就在这里：<b>没有一个人是坏的</b>。</p></div>
+      <div class="act reveal"><div class="t">Third · 冬</div><h4>她把衣裳脱在路上</h4><p>全片最著名的一场戏，没有一句台词。一个人跑，衣裳一件一件留在身后。那不是反抗，是复原——她想起来自己原本是什么样子。</p></div>
+    </div>
+
+    <p class="note reveal" style="margin-top:34px">梗概止于那个冬天：她跑回山里，又被送了回来。之后谁来了、提了什么要求、她最后去了哪里，一律不写。</p>
+  </div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">02</span><h2>概念海报</h2><p class="kicker">One Branch · One Stole</p></div>
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+@@POSTER@@
+        </div>
+        <p class="pcap">CONCEPT POSTER · 非官方物料</p>
+      </div>
+      <div class="pnotes">
+        <div class="pnote reveal"><div class="n">01</div><h4>为什么是一幅挂轴</h4><p>这部片子的画面逻辑不是「镜头」，是<b>绘卷</b>。背景和人物用同一种笔触画，界线被抹掉，一整张画在动。所以海报不做剧照，做一件可以挂起来的东西——纸、墨、绢、朱印，四样就够。</p></div>
+        <div class="pnote reveal"><div class="n">02</div><h4>为什么是竹</h4><p>她是从竹子里来的。全片第一个镜头是竹子，最后一个镜头也是。竹子在片子里从来不是背景，是<em>出生地</em>。所以它必须占住画面，而不是站在画面后面。</p></div>
+        <div class="pnote reveal"><div class="n">03</div><h4>为什么枝上搭着一件白衣</h4><p>那是「羽衣」——她身上唯一一件不是别人给她的衣服。把它搭在竹枝上，等于把「她来的地方」和「她被穿上的东西」放在同一根线上：<b>一根竹子，一件衣服，中间是她</b>。</p></div>
+        <div class="pnote reveal"><div class="n">04</div><h4>为什么留这么多白</h4><p>水墨的空白不是空的，是雾。片子有一半时间在雾里，人在雾里才显小。这张海报上没有人物，因为真正的主角不是那张脸，是<em>她被安排成了什么</em>——那件事不需要画脸。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">03</span><h2>影片档案</h2><p class="kicker">Credits</p></div>
+    <dl class="spec reveal">
+      <div><dt>原名</dt><dd>かぐや姫の物語<small>The Tale of The Princess Kaguya</small></dd></div>
+      <div><dt>监督</dt><dd>高畑勋<small>1935–2018，前作《我的邻居山田君》之后 14 年</small></dd></div>
+      <div><dt>脚本</dt><dd>高畑勋 / 坂口理子<small>原案亦为高畑</small></dd></div>
+      <div><dt>原作</dt><dd>《竹取物语》<small>日本最古老的物语之一</small></dd></div>
+      <div><dt>制作</dt><dd>吉卜力工作室<small>企划 铃木敏夫 / 制片 西村义明</small></dd></div>
+      <div><dt>音乐</dt><dd>久石让<small>第一次为高畑作品配乐</small></dd></div>
+      <div><dt>主题歌</dt><dd>二阶堂和美《いのちの記憶》<small>作词作曲演唱均由本人完成</small></dd></div>
+      <div><dt>人物造形</dt><dd>田边修<small>作画监督 小西贤一</small></dd></div>
+      <div><dt>美术</dt><dd>男鹿和雄<small>《龙猫》《幽灵公主》的美术</small></dd></div>
+      <div><dt>配音</dt><dd>朝仓あき / 高良健吾<small>宫本信子 / 地井武男 / 仲代达矢</small></dd></div>
+      <div><dt>片长</dt><dd>137 分钟<small>137 分 17 秒 04 帧</small></dd></div>
+      <div><dt>公映</dt><dd>2013-11-23<small>全国 456 块银幕</small></dd></div>
+      <div><dt>制作费</dt><dd>51.5 亿日元<small>企划到完成 8 年</small></dd></div>
+      <div><dt>票房</dt><dd>24.7 亿日元<small>首周末动员 22.3 万人，第一</small></dd></div>
+      <div><dt>作画</dt><dd>全手绘<small>线条保留，背景与人物同一笔触</small></dd></div>
+      <div><dt>作画据点</dt><dd>吉卜力第 7 工作室<small>2012 年为此片专门开设</small></dd></div>
+      <div><dt>首播</dt><dd>2015-03-13 日本电视台<small>无删减，收视 18.2%</small></dd></div>
+      <div><dt>IMDb</dt><dd>tt2576852</dd></div>
+      <div><dt>豆瓣</dt><dd>4099231<small>未进 Top250</small></dd></div>
+      <div><dt>配音轶事</dt><dd>翁的配音是地井武男的遗作<small>他去世后，有 6 场戏由三宅裕司补录</small></dd></div>
+      <div class="wide"><dt>一句话</dt><dd>它讲的是「一个人被爱着长大，也被爱着改造」——最温柔的那种暴力，从来不需要动手。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="s4">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">04</span><h2>口碑与口径</h2><p class="kicker">Numbers, Carefully</p></div>
+    <div class="scores reveal">
+      <div class="sc"><div class="src">Douban · 豆瓣</div><div class="val">8.6<small>/ 10</small></div>
+        <div class="meta"><b>102,840</b> 人评价 · 五星 43.5% / 四星 42.2% / 三星 13.0%<br>二星 1.0% / 一星 0.3% · <b>未进 Top250</b></div></div>
+      <div class="sc"><div class="src">IMDb</div><div class="val">8.0<small>/ 10</small></div>
+        <div class="meta"><b>63,309</b> 票 · 与豆瓣相差 <b>0.6</b><br>系列 26 期里最小的分歧之一（此前最小是第 15 期的 0.2）</div></div>
+      <div class="sc hi"><div class="src">Rotten Tomatoes</div><div class="val">100<small>%</small></div>
+        <div class="meta"><b>95</b> 篇影评 · 观众 90%（10,000+ 人）<br>英美媒体当年给了它一整年的好评</div></div>
+      <div class="sc hi"><div class="src">Metacritic</div><div class="val">89<small>/ 100</small></div>
+        <div class="meta">英美评论界的综合分，<b>高于它在日本本土拿到的奖</b><br>这是本页最想说的一个反差</div></div>
+    </div>
+    <ul class="caliber reveal">
+      <li><i>01</i><span><b>三个体系难得一致。</b>豆瓣 8.6、IMDb 8.0、Metacritic 89、烂番茄 100%（95 篇）。26 期里，中文观众、英文观众、英美影评人同时对一部日本片点头，这是少数几部。</span></li>
+      <li><i>02</i><span><b>制作费 51.5 亿，票房 24.7 亿。</b>两个数字都是公开的，差额就是它在日本本土的真实处境：不是失败，但也绝不是《千与千寻》。铃木敏夫后来在书里写，他事前预估的动员数从来没有失准过，只有这一次「不知道」。</span></li>
+      <li><i>03</i><span><b>「奥斯卡提名」是真的，「获奖」不是。</b>第 87 届奥斯卡最佳动画长片提名，输给《超能陆战队》。日文维基特别注明：这是日本导演继宫崎骏之后第二次进入该奖的本选提名。</span></li>
+      <li><i>04</i><span><b>学院奖只拿到「优秀」。</b>第 37 回日本电影学院奖，最优秀动画作品赏归同年的《起风了》——<b>同一家公司、同一年、两部片子</b>，奖给了另一部。久石让拿到的也是最优秀音乐赏的「优秀赏」。</span></li>
+      <li><i>05</i><span><b>旬报第 4 位。</b>第 87 回旬报十佳日本电影第 4，读者票选也是第 4。第 1 位是森崎东《去见小洋葱的母亲》，第 2 位是本专题第 23 期做过的《编舟记》。</span></li>
+      <li><i>06</i><span><b>宣传语被导演否过一次。</b>发行方最初的文案是「姫の犯した罪と罰」（公主犯下的罪与罚），高畑勋不满意。2014 年出蓝光时，他点名让爆笑问题的太田光当「特命文案」，最后定成「あヽ無情」（啊，无情）。<b>一条宣传语，能看出导演和卖片的人对这部片的理解差多远。</b></span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="s5">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">05</span><h2>六个人，一件衣服</h2><p class="kicker">Who Wants What</p></div>
+    <div class="people">
+      <div class="person reveal"><div class="role">THE PRINCESS</div><h4>辉夜姬<small>かぐやひめ</small></h4><div class="actor">朝仓あき</div>
+        <p>从竹笋里出来，半年长成少女。会跑、会爬树、会跟人抢东西吃。到了京城，她把所有规矩都学会了，而且做得比谁都好。
+        <span><b>要什么</b>回到可以跑的地方。</span>
+        <span><b>怕什么</b>被夸。</span></p></div>
+      <div class="person reveal"><div class="role">THE FATHER</div><h4>翁 · 讃岐造<small>さぬきのみやつこ</small></h4><div class="actor">地井武男（遗作）</div>
+        <p>砍竹子的老人。从竹子里拿到金子之后，他认定这是上天的托付：把她养成贵人，是他这辈子唯一一件大事。他甚至真的相信，这样做她才会幸福。
+        <span><b>要什么</b>让她「配得上」。</span>
+        <span><b>盲点</b>他一次也没问过她想不想要。</span></p></div>
+      <div class="person reveal"><div class="role">THE MOTHER</div><h4>媼<small>おうな</small></h4><div class="actor">宫本信子</div>
+        <p>养母。不识字，也不懂京城。搬到宅子以后，她依然在院子里种菜、织布、烧饭——因为那样「心里踏实」。她是全片唯一一个在她难过时只是把手放在她肩上的人。
+        <span><b>要什么</b>女儿高兴。</span>
+        <span><b>她知道什么</b>有些事拦不住，但可以陪着。</span></p></div>
+      <div class="person reveal"><div class="role">THE BOY</div><h4>捨丸<small>すてまる</small></h4><div class="actor">高良健吾</div>
+        <p>木地师的孩子头，出场时十三岁，是第一个叫她「竹笋」的人。这个角色是电影原创的，原作里没有。
+        <span><b>要什么</b>留在山里，靠山吃山。</span>
+        <span><b>后来</b>他学会了另一套活法，而且并不觉得羞耻。</span></p></div>
+      <div class="person reveal"><div class="role">THE TUTOR</div><h4>相模<small>さがみ</small></h4><div class="actor">高畑淳子</div>
+        <p>宫里退下来的女官，教她礼仪、琴、字。她真心相信「被贵人求娶」是女人最大的福气——因为她自己就是这么被训练出来的。
+        <span><b>她不是坏人</b>她只是把受过的训练原样传下去。</span>
+        <span><b>最后</b>她说「我已经没有什么可教你的了」，然后离开。</span></p></div>
+      <div class="person reveal"><div class="role">THE THRONE</div><h4>御门<small>みかど</small></h4><div class="actor">中村七之助</div>
+        <p>听说了她的名字的那个人。片子把他画成一个「中国迷」：屏风上写汉诗，坐椅子，不下跪——在一屋子跪坐的人里，他是唯一坐着的。
+        <span><b>要什么</b>得到。</span>
+        <span><b>习惯</b>他这辈子还没遇到过「不」。</span></p></div>
+      <div class="person thing reveal"><div class="role">THE ROBE · 全片最沉默的角色</div><h4>一件十二单<small>じゅうにひとえ</small></h4><div class="actor">没有台词，也没有替身</div>
+        <p>谁给她穿、什么时候穿、穿几层、什么颜色，全都有讲究；而她自己一次也没有选过颜色。片子把「身份」这件事全部压在这件衣服上：<b>衣裳换一次，她就换一个人</b>。
+        <span><b>为什么单独列它</b>因为这部片子的政治不在朝堂上，在衣领上。她跑出去那一夜，衣裳是一件一件掉的——掉一件，就少一层别人给她的东西。</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s6">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">06</span><h2>人物冲突</h2><p class="kicker">Six Frictions</p></div>
+    <div class="conflicts">
+      <div class="cf reveal"><h4><i>01</i>「为你好」vs「我想要」</h4><p>这是全片的母题，而且它<em>没有反派</em>。老人不是要控制她，他是真的相信自己在救她——把她从「山里砍柴的丫头」变成「京城里的贵人」。所有最伤人的事，都是这样发生的。</p></div>
+      <div class="cf reveal"><h4><i>02</i>山 vs 都</h4><p>山里的规矩是「跑得动就活着」；都里的规矩是「坐得住才体面」。她两套都学会了，问题是她只能选一套。全片最锋利的一句台词，不是骂人的，是夸人的。</p></div>
+      <div class="cf reveal"><h4><i>03</i>翁 vs 媼</h4><p>一个相信，一个知道。他相信金子是上天的意思，她知道女儿在院子里种菜是因为想家。两个人从没吵过架，但他们看的是同一件事的两面——这也是很多家庭的真实结构。</p></div>
+      <div class="cf reveal"><h4><i>04</i>她 vs 教养</h4><p>相模教的每一样东西都是对的：坐要有坐相，说话要留三分，写字要有筋骨。问题不在内容，在<em>只有一套</em>。一个人被教得越好，越难说「我不想」。</p></div>
+      <div class="cf reveal"><h4><i>05</i>她 vs 来提亲的人</h4><p>他们把她当成一件稀有的宝物来估价：谁能拿出世上最难找的东西，谁就配得上。她要的不是宝物，是「你先看看我是什么人」。这一段拍得极刻薄，也极好笑。</p></div>
+      <div class="cf reveal"><h4><i>06</i>她 vs 时间</h4><p>她长得太快了。半年从婴儿到少女，快到没有人来得及跟她一起长大——捨丸还是十三岁的捨丸，她已经是另一个人。这场冲突没有对手，也没有解法。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s7">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">07</span><h2>荣誉，以及它没拿到的</h2><p class="kicker">What It Got, What It Didn't</p></div>
+    <div class="awards">
+      <div class="award gold reveal"><div class="yr">2014</div><div><h4>第 68 回每日电影竞赛 · 动画电影赏</h4><p>这是它在日本本土拿到的最实在的一个奖。每日电影竞赛由记者投票，历来偏向作者性强的作品——手绘、慢、不讨喜，正好对上。</p></div></div>
+      <div class="award gold reveal"><div class="yr">2014</div><div><h4>第 87 回旬报十佳 · 日本电影第 4 位</h4><p>读者票选也是第 4 位。前三是《去见小洋葱的母亲》《编舟记》《凶犬之眼》一类的小成本真人片——一部吉卜力大片挤进这份榜，位置还不低。</p></div></div>
+      <div class="award cold reveal"><div class="yr">2014</div><div><h4>第 37 回日本学院奖 · 优秀动画作品赏</h4><p>注意是「优秀」，不是「最优秀」。同届最优秀动画作品赏归宫崎骏《起风了》——同一家公司、同一年、两部片子。这一条比任何获奖都更能说明它当时的位置。</p></div></div>
+      <div class="award cold reveal"><div class="yr">2014</div><div><h4>第 37 回日本学院奖 · 优秀音乐赏</h4><p>久石让。同样止于「优秀」。他后来提到这次合作，说自己等一个高畑作品的配乐机会等了三十年。</p></div></div>
+      <div class="award reveal"><div class="yr">2014</div><div><h4>第 23 回日本电影批评家大赏 · 三项</h4><p>动画作品赏、动画监督赏（高畑勋）、动画功劳赏（小岛俊彦，剪辑）。三个奖一起给，是评论界在替它补票。</p></div></div>
+      <div class="award reveal"><div class="yr">2014</div><div><h4>洛杉矶 / 波士顿影评人协会 · 最佳动画</h4><p>两个城市的影评人协会同一年把它选为最佳动画长片。那一年好莱坞的对手是《超能陆战队》和《驯龙高手 2》。</p></div></div>
+      <div class="award reveal"><div class="yr">2014</div><div><h4>第 8 回亚太电影奖 · 最佳动画长片</h4><p>亚太电影奖（APSA）由布里斯班电影节主办，评委覆盖整个亚太。它在这一年赢的是地区性的最高动画奖。</p></div></div>
+      <div class="award cold reveal"><div class="yr">2014</div><div><h4>第 56 回蓝丝带赏 · 作品赏 / 监督赏 提名</h4><p>两项都提名，两项都没拿到。蓝丝带由东京七大体育报的电影记者投票，口味偏大众——这恰好是它当年最缺的东西。</p></div></div>
+      <div class="award reveal"><div class="yr">2015</div><div><h4>第 87 届奥斯卡 · 最佳动画长片提名</h4><p>输给《超能陆战队》。日文维基注明：日本导演进入该奖本选提名，此前只有宫崎骏。</p></div></div>
+      <div class="award cold reveal"><div class="yr">2015</div><div><h4>第 42 回安妮奖 · 三项提名，全败</h4><p>作品、监督、音乐三个部门都提名，三个都没中。安妮奖是美国动画界的行业奖，对「手绘、慢、文艺」这一类向来不热情。</p></div></div>
+      <div class="award wide reveal"><div class="yr">13–15</div><div><h4>它在日本没赚回来，在海外被当成杰作</h4><p>制作费 51.5 亿日元，日本票房 24.7 亿；北美由 GKIDS 发行，票房约 97 万美元——数字上都不算好看。但同一年，它拿了洛杉矶、波士顿、多伦多三个影评人协会的最佳动画，进了奥斯卡提名，Metacritic 89、烂番茄 100%（95 篇）。<b>一部片子在本土被当成「高畑这次太任性了」，在海外被当成「动画能做到的极限」</b>——这两个判断同时成立，而且都是真的。</p></div></div>
+    </div>
+    <p class="note reveal" style="margin-top:34px">这一节故意把「拿了什么」和「没拿到什么」并排放。它在日本本土最高的那个奖上只是「优秀」，在英美评论界却是全年最高分——<b>不是谁错了，是两边量的不是同一件事</b>。</p>
+  </div>
+</section>
+
+<section class="sec" id="s8">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">08</span><h2>八年，十个时间点</h2><p class="kicker">Eight Years, Ten Marks</p></div>
+    <div class="lineage">
+      <div class="ln reveal"><div class="yr">1959</div><h4>一个没被拍成的企划</h4><p>高畑刚进东映动画那一年，公司内部有人要做《竹取物语》的动画长片（内田吐梦导演）。企划最后没成，但他当时写的那份构想留了下来——<b>五十四年后，它变成了这部电影的种子</b>。</p></div>
+      <div class="ln reveal"><div class="yr">1999</div><h4>十四年的空白</h4><p>《我的邻居山田君》之后，他没有再导长篇。中间做过翻译、做过策划、带过人，就是不拍。</p></div>
+      <div class="ln reveal"><div class="yr">2005</div><h4>铃木敏夫想起一句话</h4><p>他记得高畑说过「《竹取物语》总有一天要拍」，于是把企划提上日程。年底停摆：负责画的人说「想不出画面」，一张也画不出来。</p></div>
+      <div class="ln reveal"><div class="yr">2008 · 05</div><h4>正式立项</h4><p>这中间试过《平家物语》《柳桥物语》，还有一本关于摇篮曲的学术书，全都搁浅。5 月 8 日，企划正式回到《竹取物语》。</p></div>
+      <div class="ln reveal"><div class="yr">2010 · 06</div><h4>东小金井的那栋楼</h4><p>在东小金井车站南边租下一栋专用的制作楼，通称「かぐスタ」（辉夜工作室）。美术监督男鹿和雄加入。</p></div>
+      <div class="ln reveal"><div class="yr">2011 · 秋</div><h4>一场「大赌注」</h4><p>吉卜力内部决定：让这部片和宫崎骏的《起风了》同日公映。制片人西村义明后来写，这是铃木敏夫和他合谋的一场赌博，目的是<em>把高畑逼得动起来</em>。</p></div>
+      <div class="ln reveal"><div class="yr">2012 · 11</div><h4>停摆的一个月</h4><p>现场停工将近一个月，「要不要继续做」被正式摆上桌。最后决定加人、继续。当时已完成的分镜只够 96 分钟，还差四分之一。</p></div>
+      <div class="ln reveal"><div class="yr">2013 · 02</div><h4>延期，以及「要不要换掉高畑」</h4><p>2 月 4 日宣布延期。铃木敏夫问西村：哪个更重要，作品还是高畑先生？西村答作品。铃木说，那换掉高畑也是一种选择。<b>最后没有换</b>。分镜在 3 月 23 日画完。</p></div>
+      <div class="ln reveal"><div class="yr">2013 · 11</div><h4>456 块银幕，首周末第一</h4><p>11 月 23 日公映。两天动员 22.3 万人、2.84 亿日元，当周第一。第九周累计 184.9 万人、22.2 亿——后劲一路走低，最后停在 24.7 亿。</p></div>
+      <div class="ln now reveal"><div class="yr">2018 · 04</div><h4>最后一部</h4><p>2018 年 4 月 5 日，高畑勋去世，八十二岁。这部片成了他的遗作——一部讲「一个人被养大，然后必须离开」的电影，恰好是他最后说的话。</p></div>
+    </div>
+    <p class="note reveal" style="margin-top:36px">这份年表按日文维基的制作年表与铃木敏夫、西村义明的公开访谈整理；「八年」指 2005 年企划启动到 2013 年公映。</p>
+  </div>
+</section>
+
+<section class="sec" id="s9">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">09</span><h2>六处亮点</h2><p class="kicker">Why It Works</p></div>
+    <div class="grid6">
+      <div class="g6 reveal"><div class="n">01</div><h4>背景和人物，是同一种笔触</h4><p>普通动画是「背景一张、人物一张」贴在一起，界线永远看得出来。这部片子让美术用接近原画的笔触画背景，两边混在一起，画面像<b>一整张纸在动</b>。高畑要的就是这个：一枚绘が動く。</p></div>
+      <div class="g6 reveal"><div class="n">02</div><h4>线条故意没有修平</h4><p>人物的轮廓有毛边、有重描、有擦不掉的辅助线。这不是省事，是《我的邻居山田君》那套方法的延续：<b>让观众看见「这是画出来的」</b>。动画一旦承认自己是画，反而更自由。</p></div>
+      <div class="g6 reveal"><div class="n">03</div><h4>那一段没有台词</h4><p>她跑出宅子、边跑边脱、跑过整座山那一段，一句台词都没有。全靠画面的速度、衣裳的掉落、以及背景从「街」变成「林」再变成「雪」。<b>这是全片唯一一次她完全自由</b>，所以导演不给它配任何解释。</p></div>
+      <div class="g6 reveal"><div class="n">04</div><h4>全片没有一个坏人</h4><p>翁不是反派，相模不是反派，来提亲的人也不是。所有人都在按自己的理解对她好。这比「有个坏人要害她」难写得多——因为观众没法把气撒在谁身上，只能憋着。</p></div>
+      <div class="g6 reveal"><div class="n">05</div><h4>久石让被要求「不要煽情」</h4><p>高畑给他三条规矩：不表现人物心情、不贴着情境走、不煽动观众。所以这部片子的配乐听上去像环境音，很多时候你根本没注意到有音乐。<b>他等这个机会等了三十年</b>，等到的却是一份「少写一点」的委托。</p></div>
+      <div class="g6 reveal"><div class="n">06</div><h4>童谣是他自己写的</h4><p>片中那首反复出现的童谣，作词是高畑勋与坂口理子，<b>作曲是高畑勋本人</b>。一个拍了五十年动画的人，最后一次把旋律也自己写了。它简单到像小孩随口哼的，但你听完会记很久。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">10</span><h2>为什么值得一看</h2><p class="kicker">Three Reasons</p></div>
+    <div class="why">
+      <article class="reveal"><h3>一、它把「养育」拍成了一件需要被追问的事</h3>
+        <p>大部分讲成长的电影，冲突来自外面：坏人、体制、意外。这部片子的冲突来自<strong>最爱你的人</strong>。老人砍了一辈子竹子，忽然从竹子里拿到金子和衣料，他做的第一件事是——给女儿换一个更好的世界。他没有一天是自私的。</p>
+        <p>然后片子用两个小时问一个问题：<em>如果一个人为你好到无可指摘，你还能不能说不？</em>这个问题没有答案，但每个人看完都会想起自己被安排过的某件事。</p></article>
+      <article class="reveal"><h3>二、它是手绘动画最后的一次豪赌</h3>
+        <p>八年、51.5 亿日元、一栋专门租的楼、以外部工作室为主的作画班底、全手绘。在 CG 已经成为默认选项的年代，它用最贵、最慢、最不划算的方式，做了一件最旧的事。</p>
+        <p>结果票房 24.7 亿，回不了本。所以它不是「成功的商业片」，它是<strong>一次明知道不划算还是做了的决定</strong>。这种片子现在几乎不会再有了——这才是它值得在大屏幕上看一遍的真正理由。</p></article>
+      <article class="reveal"><h3>三、它让一个一千二百年前的故事，说中了今天</h3>
+        <p>《竹取物语》是日本最古老的物语之一。表面上是「竹子里的公主」，骨子里是一个<em>不属于这里的人被这里养大</em>的故事：被收养的、被寄养的、被安排去更好的学校的、从小知道自己「和这家人不太一样」的——都懂。</p>
+        <p>所以它一点也不古装。它讲的是所有「被爱着改造」的经验：你被给予的一切都是好的，代价是你得变成另一个人来配得上它。</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">11</span><h2>观影提示</h2><p class="kicker">Before You Press Play</p></div>
+    <div class="tips">
+      <div class="tip reveal"><div class="k">01</div><h4>用你能找到的最大的屏幕</h4><p>它的信息全在笔触、留白和雾里。手机上看，这些会全部消失，只剩一个「画风有点旧的故事」。</p></div>
+      <div class="tip reveal"><div class="k">02</div><h4>前四十分钟会觉得慢，那是故意的</h4><p>前半段没有情节任务，只有草木和季节。它的节奏是绘卷的节奏，不是电影的节奏——先让你住进去，后面拆的时候才疼。</p></div>
+      <div class="tip reveal"><div class="k">03</div><h4>盯住「衣服」</h4><p>她穿什么、谁给她穿、穿几层、什么时候脱。这部片子的全部政治都在这件事上，导演一次也没有用台词解释。</p></div>
+      <div class="tip reveal"><div class="k">04</div><h4>看完之后，回头看一下开头那一分钟</h4><p>第一个镜头和最后一件事是同一枚硬币的两面。看第二遍时，你会发现自己第一遍根本没看懂那个开头。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="wrap">
+    <p class="tag">VERDICT · NO.26</p>
+    <p class="q"><span>她被爱着长大，</span><span>也被爱着改造。</span><span>这两件事从来没有分开过。</span></p>
+    <p class="src">—— 本页判词。片中没有这句话；片中只有一个老人反复地说：这是为你好。</p>
+    <div class="stamp"><div><span>JAPANESE CINEMA</span><b>NO.26</b><span>2013 · 高畑勋</span></div></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>日本电影专题 · 第 26 期｜《辉夜姬物语》（かぐや姫の物語）/ The Tale of The Princess Kaguya（2013，高畑勋）<br>
+    数据核对于 2026-11-25：豆瓣条目 4099231（8.6 / 102,840 人 · 五星 43.5% / 四星 42.2% / 三星 13.0% / 二星 1.0% / 一星 0.3% · 未进 Top250）、IMDb tt2576852 8.0（63,309 票）、烂番茄 100%（95 篇）· 观众 90%（10,000+）、Metacritic 89。<br>
+    奖项以有明确届次者为限：第 68 回每日电影竞赛 动画电影赏；第 87 回电影旬报十佳 日本电影第 4 位 + 读者票选第 4 位；第 37 回日本电影学院奖 优秀动画作品赏 + 优秀音乐赏（久石让），同届最优秀动画作品赏为《起风了》；第 23 回日本电影批评家大赏 动画作品赏 / 动画监督赏 / 动画功劳赏；洛杉矶、波士顿影评人协会 最佳动画；第 8 回亚太电影奖 最佳动画长片；第 42 回安妮奖 三项提名未获奖；第 87 届奥斯卡 最佳动画长片提名（输给《超能陆战队》）。<br>
+    片长 137 分钟（137 分 17 秒 04 帧）；制作费 51.5 亿日元、日本票房 24.7 亿日元；2013-11-23 全国 456 块银幕公映；北美由 GKIDS 发行，票房约 97 万美元。<br>
+    全页不含关键情节：成人宴之后她做了什么决定、来提亲的人各自的下场、她最后的去处与结尾那一个镜头，一律未写。原作设定、制作年表、配音与作画人员记载来自日文维基与吉卜力公开资料。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c = document.getElementById('heroCanvas');
+  if(c){
+    var ctx = c.getContext('2d'), W=0, H=0, dpr=Math.min(window.devicePixelRatio||1,2);
+    var motes=[], t=0;
+    function size(){
+      W=c.clientWidth; H=c.clientHeight;
+      c.width=W*dpr; c.height=H*dpr;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      build();
+    }
+    function build(){
+      motes=[];
+      var n = Math.round(W*H/26000);
+      if(n>90) n=90;
+      for(var i=0;i<n;i++){
+        motes.push({
+          x: Math.random()*W,
+          y: Math.random()*H,
+          r: .5+Math.random()*1.2,
+          vy: -.05-Math.random()*.12,
+          vx: .02+Math.random()*.07,
+          a: .03+Math.random()*.07,
+          p: Math.random()*6.28
+        });
+      }
+    }
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      t+=0.005;
+      for(var i=0;i<motes.length;i++){
+        var m=motes[i];
+        m.y+=m.vy; m.x+=m.vx;
+        if(m.y<-12){ m.y=H+12; m.x=Math.random()*W; }
+        if(m.x>W+12){ m.x=-12; }
+        var a=m.a*(0.45+0.55*Math.sin(t*0.6+m.p));
+        ctx.beginPath();
+        ctx.fillStyle='rgba(122,96,44,'+a.toFixed(3)+')';
+        ctx.arc(m.x,m.y,m.r,0,6.2832);
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    window.addEventListener('resize',size);
+    size(); draw();
+  }
+
+  var revs = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08, rootMargin:'0px 0px -6% 0px'});
+  revs.forEach(function(e){ io.observe(e); });
+
+  var hud=document.getElementById('hud'), items=[].slice.call(hud.querySelectorAll('b'));
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    hud.classList.toggle('on', y > window.innerHeight*0.55);
+    var p = y/(document.body.scrollHeight - window.innerHeight);
+    var idx = Math.min(4, Math.floor(p*5));
+    items.forEach(function(b,i){ b.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
