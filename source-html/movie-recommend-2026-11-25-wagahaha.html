@@ -46,7 +46,7 @@ body::before{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opa
   min-height:max(100vh,880px);display:flex;flex-direction:column;justify-content:flex-start;
   padding-top:10.5vh;padding-bottom:64px}
 .eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;
-  letter-spacing:.34em;color:var(--ac);text-transform:uppercase;opacity:.9}
+  letter-spacing:.34em;color:var(--ac);text-transform:uppercase;opacity:.9;white-space:nowrap}
 .eyebrow i{display:block;width:52px;height:1px;background:var(--ac);opacity:.5}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5.6vw,80px);line-height:1.16;
   letter-spacing:.16em;margin:26px 0 0;color:#f7f2e6;white-space:nowrap}
@@ -55,7 +55,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5.6vw,80px);lin
 .latin + .latin{margin-top:7px;font-size:10.5px;letter-spacing:.22em;color:rgba(236,229,214,.42)}
 .hero-sub{margin:28px 0 0;max-width:25em;font-size:16px;line-height:2.05;color:rgba(232,227,218,.9)}
 .hero-sub em{font-style:normal;color:#f7f2e6;border-bottom:1px solid rgba(201,160,94,.6);padding-bottom:2px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:660px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:840px}
 .chip{font-size:11.5px;letter-spacing:.06em;color:rgba(240,234,222,.92);border:1px solid rgba(240,234,222,.18);
   border-radius:999px;padding:6px 14px;background:rgba(14,12,19,.62);backdrop-filter:blur(7px)}
 .chip b{color:#fff;font-weight:500}
@@ -247,13 +247,13 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
   #hud{display:none}
 }
 @media (min-width:761px) and (max-width:1000px){
-  .scroll-hint{left:auto;right:8px;transform:none;bottom:26px}
+  .scroll-hint{display:none}
   .hero-svg{transform:translateY(4vh)}
   .hero-scrim{background:
     linear-gradient(to bottom,rgba(8,7,12,.93) 0%,rgba(8,7,12,.86) 26%,rgba(8,7,12,.62) 42%,rgba(8,7,12,.34) 54%,rgba(8,7,12,.14) 64%,rgba(8,7,12,.06) 74%,rgba(8,7,12,.18) 86%,rgba(8,7,12,.4) 96%,rgba(8,7,12,.52) 100%)}
 }
 @media (max-width:760px){
-  .hero-svg{transform:translateY(3vh)}
+  .hero-svg{transform:translateY(7vh)}
   .hero-scrim{background:
     linear-gradient(to bottom,rgba(8,7,12,.94) 0%,rgba(8,7,12,.88) 22%,rgba(8,7,12,.66) 38%,rgba(8,7,12,.4) 50%,rgba(8,7,12,.18) 60%,rgba(8,7,12,.05) 72%,rgba(8,7,12,.08) 84%,rgba(8,7,12,.3) 94%,rgba(8,7,12,.46) 100%)}
   body{font-size:15px;line-height:1.9}
@@ -262,6 +262,9 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
   .hero-in{min-height:max(100vh,740px);padding-top:8vh;padding-bottom:96px}
   h1{font-size:clamp(30px,9.6vw,52px);letter-spacing:.12em}
   .hero-sub{font-size:14.5px;line-height:1.95;max-width:27em}
+  .eyebrow{font-size:9.6px;letter-spacing:.18em;gap:9px}
+  .eyebrow i{width:26px}
+  .notice{font-size:10.4px;letter-spacing:.06em;padding:6px 13px}
   .sec{padding:76px 0}
   .sec-head{margin-bottom:36px;gap:12px}
   .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -301,7 +304,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 @media (max-width:760px) and (max-height:700px){
   .hero{min-height:100vh}
   .hero-in{min-height:100vh;padding-top:6vh}
-  .hero-svg{transform:translateY(4vh)}
+  .hero-svg{transform:translateY(8vh)}
   .notice{margin-bottom:16px;font-size:10px;padding:5px 12px}
   h1{margin-top:14px;font-size:clamp(27px,8.4vw,38px)}
   .latin{margin-top:12px;font-size:10.5px}
@@ -314,12 +317,12 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 <body>
 
 <header class="hero">
-<svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><linearGradient id="sky27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#09080f"/><stop offset=".14" stop-color="#0f0d1a"/><stop offset=".32" stop-color="#1a1626"/><stop offset=".5" stop-color="#2b2133"/><stop offset=".64" stop-color="#3f2f3a"/><stop offset=".74" stop-color="#56403f"/><stop offset=".82" stop-color="#6d5245"/><stop offset=".9" stop-color="#83634e"/><stop offset="1" stop-color="#8f6d54"/></linearGradient><radialGradient id="hglow27" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e8b47a" stop-opacity=".4"/><stop offset=".45" stop-color="#d79f68" stop-opacity=".18"/><stop offset="1" stop-color="#b8825a" stop-opacity="0"/></radialGradient><radialGradient id="win27" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f4cd92" stop-opacity=".5"/><stop offset=".4" stop-color="#dfa96e" stop-opacity=".22"/><stop offset="1" stop-color="#b8825a" stop-opacity="0"/></radialGradient><linearGradient id="shoji27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0c98e"/><stop offset=".45" stop-color="#e2b177"/><stop offset="1" stop-color="#c9975f"/></linearGradient><linearGradient id="roof27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#221d2c"/><stop offset=".6" stop-color="#171320"/><stop offset="1" stop-color="#100d17"/></linearGradient><linearGradient id="wall27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a1523"/><stop offset="1" stop-color="#120f1a"/></linearGradient><linearGradient id="ground27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#171220"/><stop offset=".4" stop-color="#0e0b14"/><stop offset="1" stop-color="#07060a"/></linearGradient><radialGradient id="pool27" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#d9a86e" stop-opacity=".26"/><stop offset=".5" stop-color="#b98a58" stop-opacity=".1"/><stop offset="1" stop-color="#8a6340" stop-opacity="0"/></radialGradient><linearGradient id="water27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2b38"/><stop offset=".55" stop-color="#161822"/><stop offset="1" stop-color="#0b0c12"/></linearGradient><radialGradient id="vig27" cx=".52" cy=".5" r=".8"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".62" stop-color="#000" stop-opacity=".06"/><stop offset=".86" stop-color="#000" stop-opacity=".22"/><stop offset="1" stop-color="#000" stop-opacity=".4"/></radialGradient></defs><rect width="1440" height="900" fill="url(#sky27)"/><circle cx="176" cy="118" r="1.1" fill="#dfe3ea" opacity=".34"/><circle cx="392" cy="72" r=".9" fill="#dfe3ea" opacity=".26"/><circle cx="612" cy="164" r="1.3" fill="#e9ecf1" opacity=".3"/><circle cx="838" cy="96" r=".9" fill="#dfe3ea" opacity=".22"/><circle cx="1064" cy="146" r="1.1" fill="#e9ecf1" opacity=".3"/><circle cx="1288" cy="86" r=".9" fill="#dfe3ea" opacity=".2"/><circle cx="1330" cy="212" r="1" fill="#e9ecf1" opacity=".24"/><ellipse cx="900" cy="682" rx="620" ry="210" fill="url(#hglow27)"/><path d="M-20 604 L90 588 L186 596 L268 578 L352 590 L438 566 L520 582 L604 562 L690 574 L772 552 L856 568 L944 548 L1030 566 L1112 546 L1196 562 L1276 542 L1356 558 L1440 540 L1460 560 L1460 720 L-20 720 Z" fill="#191426" opacity=".92"/><path d="M-20 640 L120 626 L250 638 L380 618 L520 634 L660 612 L800 630 L940 608 L1080 626 L1220 606 L1360 624 L1460 612 L1460 760 L-20 760 Z" fill="#120f1c"/><g fill="#0d0a15"><path d="M540 700 L540 596 L556 570 L574 596 L574 700 Z"/><path d="M596 700 L596 604 L610 580 L626 604 L626 700 Z"/><path d="M648 700 L648 588 L664 562 L682 588 L682 700 Z"/><path d="M1320 700 L1320 590 L1340 566 L1360 590 L1360 700 Z"/><path d="M1382 700 L1382 600 L1400 578 L1420 600 L1420 700 Z"/></g><ellipse cx="972" cy="668" rx="404" ry="252" fill="url(#win27)"/><g><path d="M690 600 L802 522 L1252 522 L1364 600 Z" fill="url(#roof27)"/><path d="M690 600 L802 522 L1252 522 L1364 600" fill="none" stroke="#8a6a52" stroke-opacity=".34" stroke-width="1.6"/><g stroke="#3c3348" stroke-opacity=".5" stroke-width="1.4"><path d="M812 526 L806 598"/><path d="M858 526 L854 598"/><path d="M904 526 L902 598"/><path d="M950 526 L950 598"/><path d="M996 526 L998 598"/><path d="M1042 526 L1046 598"/><path d="M1088 526 L1094 598"/><path d="M1134 526 L1142 598"/><path d="M1180 526 L1190 598"/><path d="M1226 526 L1238 598"/></g><rect x="684" y="596" width="686" height="9" fill="#1b1622"/><rect x="684" y="596" width="686" height="1.6" fill="#a07a5c" opacity=".45"/><rect x="716" y="605" width="620" height="86" fill="url(#wall27)"/><g><rect x="776" y="616" width="122" height="68" fill="url(#shoji27)"/><rect x="906" y="616" width="122" height="68" fill="url(#shoji27)"/><rect x="1036" y="616" width="122" height="68" fill="url(#shoji27)"/><g stroke="#7a5a38" stroke-opacity=".55" stroke-width="1.5"><path d="M776 616 L898 616"/><path d="M776 633 L898 633"/><path d="M776 650 L898 650"/><path d="M776 667 L898 667"/><path d="M776 684 L898 684"/><path d="M806 616 L806 684"/><path d="M836 616 L836 684"/><path d="M866 616 L866 684"/><path d="M906 616 L1028 616"/><path d="M906 633 L1028 633"/><path d="M906 650 L1028 650"/><path d="M906 667 L1028 667"/><path d="M906 684 L1028 684"/><path d="M936 616 L936 684"/><path d="M966 616 L966 684"/><path d="M996 616 L996 684"/><path d="M1036 616 L1158 616"/><path d="M1036 633 L1158 633"/><path d="M1036 650 L1158 650"/><path d="M1036 667 L1158 667"/><path d="M1036 684 L1158 684"/><path d="M1066 616 L1066 684"/><path d="M1096 616 L1096 684"/><path d="M1126 616 L1126 684"/></g><rect x="776" y="616" width="122" height="68" fill="none" stroke="#2a2030" stroke-width="3"/><rect x="906" y="616" width="122" height="68" fill="none" stroke="#2a2030" stroke-width="3"/><rect x="1036" y="616" width="122" height="68" fill="none" stroke="#2a2030" stroke-width="3"/></g><rect x="700" y="691" width="646" height="19" fill="#241c26"/><rect x="700" y="691" width="646" height="3" fill="#c08f5c" opacity=".3"/><rect x="700" y="705" width="646" height="6" fill="#14101a"/><g fill="#0f0b14"><rect x="756" y="605" width="13" height="101"/><rect x="1194" y="605" width="13" height="101"/><rect x="1306" y="605" width="13" height="101"/></g></g><g fill="#0c0912"><path d="M1244 710 L1262 596 L1280 542 L1296 500 L1316 512 L1330 470 L1352 486 L1376 452 L1400 486 L1424 474 L1436 520 L1440 710 Z"/><path d="M1276 540 L1262 470 L1238 428 L1256 424 L1282 470 L1292 500 Z"/><path d="M1330 500 L1314 452 L1300 430 L1316 426 L1340 468 Z"/></g><g><rect x="-20" y="706" width="1480" height="200" fill="url(#ground27)"/><ellipse cx="972" cy="726" rx="360" ry="60" fill="url(#pool27)"/><g fill="#c9a06e"><rect x="806" y="716" width="212" height="1.6" opacity=".12"/><rect x="880" y="734" width="146" height="1.4" opacity=".09"/><rect x="742" y="750" width="96" height="1.4" opacity=".07"/><rect x="1010" y="742" width="120" height="1.4" opacity=".08"/><rect x="700" y="768" width="70" height="1.2" opacity=".05"/></g><g fill="#141c14" opacity=".75"><ellipse cx="420" cy="742" rx="150" ry="20"/><ellipse cx="170" cy="790" rx="190" ry="26"/><ellipse cx="660" cy="770" rx="90" ry="14"/></g><g><ellipse cx="1186" cy="806" rx="118" ry="38" fill="#241e2c"/><ellipse cx="1186" cy="798" rx="112" ry="34" fill="#332a3c"/><ellipse cx="1186" cy="800" rx="98" ry="27" fill="url(#water27)"/><ellipse cx="1186" cy="800" rx="98" ry="27" fill="none" stroke="#4a3d52" stroke-width="1.4" stroke-opacity=".7"/><ellipse cx="1160" cy="796" rx="42" ry="9" fill="#e0ae74" opacity=".22"/><rect x="1150" y="812" width="150" height="3" fill="#c08f5c" opacity=".12"/><ellipse cx="1186" cy="832" rx="126" ry="12" fill="#000" opacity=".34"/></g><g><rect x="1102" y="769" width="168" height="7" rx="3.5" fill="#6b5738" transform="rotate(-13 1186 772)"/><rect x="1102" y="769" width="168" height="2" rx="1" fill="#8f7648" transform="rotate(-13 1186 772)"/><ellipse cx="1094" cy="787" rx="13" ry="9" fill="#5c4a30" transform="rotate(-13 1094 787)"/></g><rect width="1440" height="900" fill="url(#vig27)"/></g></svg>
+<svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><linearGradient id="sky27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#09080f"/><stop offset=".14" stop-color="#0e0c18"/><stop offset=".3" stop-color="#171327"/><stop offset=".44" stop-color="#241b2e"/><stop offset=".56" stop-color="#332635"/><stop offset=".66" stop-color="#46333a"/><stop offset=".73" stop-color="#5c423d"/><stop offset=".775" stop-color="#745545"/><stop offset=".8" stop-color="#86644d"/></linearGradient><radialGradient id="hglow27" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#eebc82" stop-opacity=".46"/><stop offset=".42" stop-color="#d79f68" stop-opacity=".2"/><stop offset="1" stop-color="#b8825a" stop-opacity="0"/></radialGradient><radialGradient id="win27" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f6d29b" stop-opacity=".44"/><stop offset=".42" stop-color="#dfa96e" stop-opacity=".18"/><stop offset="1" stop-color="#b8825a" stop-opacity="0"/></radialGradient><linearGradient id="shoji27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2cd92"/><stop offset=".5" stop-color="#e0ae74"/><stop offset="1" stop-color="#c08a55"/></linearGradient><linearGradient id="roof27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1e1a29"/><stop offset=".55" stop-color="#151220"/><stop offset="1" stop-color="#0f0c18"/></linearGradient><linearGradient id="wall27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b1524"/><stop offset="1" stop-color="#120e1b"/></linearGradient><linearGradient id="ground27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#181322"/><stop offset=".35" stop-color="#0e0b15"/><stop offset="1" stop-color="#06050a"/></linearGradient><radialGradient id="pool27" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e0b078" stop-opacity=".3"/><stop offset=".48" stop-color="#b98a58" stop-opacity=".12"/><stop offset="1" stop-color="#8a6340" stop-opacity="0"/></radialGradient><linearGradient id="water27" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#33323f"/><stop offset=".5" stop-color="#1a1b26"/><stop offset="1" stop-color="#0b0c12"/></linearGradient><radialGradient id="refl27" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f0c48e" stop-opacity=".26"/><stop offset=".42" stop-color="#c9975f" stop-opacity=".12"/><stop offset="1" stop-color="#8a6340" stop-opacity="0"/></radialGradient><radialGradient id="lamp27" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f8d8a6" stop-opacity=".5"/><stop offset=".45" stop-color="#e7b97e" stop-opacity=".2"/><stop offset="1" stop-color="#b8825a" stop-opacity="0"/></radialGradient><radialGradient id="vig27" cx=".52" cy=".5" r=".8"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".6" stop-color="#000" stop-opacity=".07"/><stop offset=".86" stop-color="#000" stop-opacity=".24"/><stop offset="1" stop-color="#000" stop-opacity=".44"/></radialGradient></defs><rect width="1440" height="900" fill="url(#sky27)"/><circle cx="176" cy="118" r="1.1" fill="#dfe3ea" opacity=".3"/><circle cx="392" cy="72" r=".9" fill="#dfe3ea" opacity=".22"/><circle cx="612" cy="164" r="1.3" fill="#e9ecf1" opacity=".26"/><circle cx="838" cy="96" r=".9" fill="#dfe3ea" opacity=".2"/><circle cx="1064" cy="146" r="1.1" fill="#e9ecf1" opacity=".26"/><circle cx="1288" cy="86" r=".9" fill="#dfe3ea" opacity=".18"/><ellipse cx="830" cy="700" rx="640" ry="180" fill="url(#hglow27)"/><path d="M-20 596 L86 566 L168 582 L252 552 L338 574 L424 540 L506 566 L590 534 L676 560 L760 528 L846 556 L930 524 L1016 552 L1100 520 L1186 548 L1270 518 L1354 544 L1440 516 L1460 540 L1460 720 L-20 720 Z" fill="#191428" opacity=".95"/><path d="M-20 646 L110 628 L228 642 L346 620 L470 638 L592 614 L716 634 L840 610 L964 630 L1088 606 L1212 626 L1336 604 L1460 620 L1460 760 L-20 760 Z" fill="#110e1c"/><rect x="-20" y="700" width="1480" height="16" fill="#0d0a16" opacity=".85"/><ellipse cx="876" cy="676" rx="420" ry="238" fill="url(#win27)"/><g transform="translate(-90,0)"><g><path d="M660 596 L860 486 L1200 486 L1400 596 Z" fill="url(#roof27)"/><g stroke="#3a3149" stroke-opacity=".5" stroke-width="1.5"><path d="M834 500 L1226 500"/><path d="M798 520 L1262 520"/><path d="M762 540 L1298 540"/><path d="M726 560 L1334 560"/><path d="M689 580 L1371 580"/></g><path d="M660 596 L860 486 L1200 486 L1400 596" fill="none" stroke="#8a6a52" stroke-opacity=".26" stroke-width="1.4"/><rect x="850" y="478" width="360" height="11" fill="#2a2436"/><rect x="850" y="478" width="360" height="1.8" fill="#9c7a5c" opacity=".34"/><rect x="660" y="596" width="740" height="7" fill="#0c0912"/><rect x="660" y="596" width="740" height="1.6" fill="#a07a5c" opacity=".4"/><rect x="664" y="603" width="732" height="14" fill="#0a0810" opacity=".9"/><rect x="700" y="614" width="660" height="78" fill="url(#wall27)"/><g><rect x="760" y="620" width="120" height="66" fill="url(#shoji27)"/><rect x="1016" y="620" width="120" height="66" fill="url(#shoji27)"/><g stroke="#8a6236" stroke-opacity=".5" stroke-width="1.4"><path d="M760 620 L880 620"/><path d="M760 636 L880 636"/><path d="M760 652 L880 652"/><path d="M760 668 L880 668"/><path d="M760 684 L880 684"/><path d="M790 620 L790 686"/><path d="M820 620 L820 686"/><path d="M850 620 L850 686"/><path d="M1016 620 L1136 620"/><path d="M1016 636 L1136 636"/><path d="M1016 652 L1136 652"/><path d="M1016 668 L1136 668"/><path d="M1016 684 L1136 684"/><path d="M1046 620 L1046 686"/><path d="M1076 620 L1076 686"/><path d="M1106 620 L1106 686"/></g><rect x="760" y="620" width="120" height="66" fill="none" stroke="#231b2c" stroke-width="3.5"/><rect x="1016" y="620" width="120" height="66" fill="none" stroke="#231b2c" stroke-width="3.5"/></g><g><rect x="1180" y="632" width="92" height="52" fill="#2e2429"/><rect x="1180" y="632" width="92" height="52" fill="none" stroke="#231b2c" stroke-width="3.4"/><g stroke="#4a3a30" stroke-opacity=".55" stroke-width="1.2"><path d="M1180 649 L1272 649"/><path d="M1180 666 L1272 666"/><path d="M1211 632 L1211 684"/><path d="M1242 632 L1242 684"/></g></g><g><rect x="886" y="614" width="124" height="78" fill="#0e0b17"/><rect x="886" y="614" width="124" height="78" fill="none" stroke="#231b2c" stroke-width="4"/><rect x="947.2" y="616" width="1.6" height="14" fill="#7a6440"/><path d="M930 630 L966 630 L961 643 L935 643 Z" fill="#2b2231"/><path d="M930 630 L966 630 L963 634 L933 634 Z" fill="#54403f"/><ellipse cx="948" cy="647" rx="7" ry="5.2" fill="#f8d8a6"/><ellipse cx="948" cy="656" rx="34" ry="26" fill="url(#lamp27)"/><rect x="902" y="676" width="96" height="6" fill="#080610"/><rect x="902" y="682" width="96" height="3" fill="#080610" opacity=".7"/><ellipse cx="948" cy="700" rx="52" ry="8" fill="#e0ae74" opacity=".14"/></g><rect x="700" y="692" width="660" height="20" fill="#241c28"/><rect x="700" y="692" width="660" height="3.4" fill="#cf9a62" opacity=".34"/><rect x="700" y="708" width="660" height="4" fill="#12101a"/><g fill="#0c0913"><rect x="748" y="614" width="12" height="98"/><rect x="1136" y="614" width="12" height="98"/><rect x="1348" y="614" width="12" height="98"/></g></g></g><g><rect x="-20" y="706" width="1480" height="200" fill="url(#ground27)"/><ellipse cx="876" cy="730" rx="380" ry="64" fill="url(#pool27)"/><ellipse cx="732" cy="762" rx="52" ry="56" fill="url(#refl27)"/><ellipse cx="858" cy="772" rx="60" ry="66" fill="url(#refl27)"/><ellipse cx="986" cy="762" rx="52" ry="56" fill="url(#refl27)"/><g fill="#d3a874"><rect x="806" y="722" width="212" height="1.6" opacity=".14"/><rect x="880" y="742" width="146" height="1.4" opacity=".1"/><rect x="742" y="758" width="96" height="1.4" opacity=".07"/><rect x="1010" y="750" width="120" height="1.4" opacity=".09"/><rect x="700" y="776" width="70" height="1.2" opacity=".05"/></g><g fill="#141d15" opacity=".8"><ellipse cx="400" cy="738" rx="160" ry="18"/><ellipse cx="150" cy="788" rx="200" ry="24"/><ellipse cx="640" cy="766" rx="90" ry="13"/></g><rect width="1440" height="900" fill="url(#vig27)"/></g></svg>
 <div class="hero-scrim"></div>
 <canvas id="heroCanvas"></canvas>
 <div class="hero-in">
-  <span class="notice"><span class="dot"></span>全文不涉及关键情节 · 读完再看片，不会少掉任何一次意外</span>
-  <div class="eyebrow">日本电影专题 · 第 <b>27</b> 期<i></i>2012 · 松竹</div>
+  <span class="notice"><span class="dot"></span>全文不涉及关键情节 · 不会少掉任何一次意外</span>
+  <div class="eyebrow">日本电影专题 · 第 <b>27</b> 期<i></i>2012</div>
   <h1>记我的母亲</h1>
   <p class="latin">WAGA HAHA NO KI</p>
   <p class="latin">CHRONICLE OF MY MOTHER</p>
@@ -328,7 +331,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
     <span class="chip"><b>豆瓣 8.6</b> · 18,311 人</span>
     <span class="chip">IMDb <b>7.2</b></span>
     <span class="chip">学院奖 <b>12</b> 项优秀 · <b>1</b> 项最优秀</span>
-    <span class="chip">蒙特利尔 <b>评审团特别大奖</b></span>
+    <span class="chip">蒙特利尔 <b>特别大奖</b></span>
     <span class="chip"><b>118</b> 分钟</span>
   </div>
 </div>
@@ -377,82 +380,76 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
     <div class="poster-grid">
       <div class="reveal">
         <div class="poster-frame">
-          <svg class="poster-svg" viewBox="0 0 760 1000" aria-label="概念海报：一张写满字的稿纸，压着一副老花镜">
-            <defs>
-              <linearGradient id="pp27" x1=".1" y1="0" x2=".85" y2="1"><stop offset="0" stop-color="#f2ead6"/><stop offset=".45" stop-color="#ece3cc"/><stop offset="1" stop-color="#ded2b6"/></linearGradient>
-              <linearGradient id="sheet27" x1="0" y1="0" x2=".9" y2="1"><stop offset="0" stop-color="#fbf5e4"/><stop offset=".6" stop-color="#f6efdb"/><stop offset="1" stop-color="#eee3c8"/></linearGradient>
-              <linearGradient id="lens27" x1="0" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#cfd8dc" stop-opacity=".34"/><stop offset=".5" stop-color="#aebcc2" stop-opacity=".12"/><stop offset="1" stop-color="#8d9ea6" stop-opacity=".2"/></linearGradient>
-              <radialGradient id="sh27" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#6b5836" stop-opacity=".26"/><stop offset=".55" stop-color="#6b5836" stop-opacity=".12"/><stop offset="1" stop-color="#6b5836" stop-opacity="0"/></radialGradient>
-              <linearGradient id="ring27" x1="0" y1="0" x2=".8" y2="1"><stop offset="0" stop-color="#4a3f36"/><stop offset=".5" stop-color="#6b5c4c"/><stop offset="1" stop-color="#3a322b"/></linearGradient>
-            </defs>
-            <rect width="760" height="1000" fill="url(#pp27)"/>
-            <g stroke="#b9a888" stroke-opacity=".16" stroke-width="1"><path d="M60 96 L60 940"/><path d="M700 60 L700 900"/></g>
-            <g transform="rotate(-2.6 380 500)">
-              <rect x="96" y="128" width="568" height="612" fill="#6b5836" opacity=".13" transform="translate(6 8)"/>
-              <rect x="96" y="128" width="568" height="612" fill="url(#sheet27)"/>
-              <g stroke="#a8916e" stroke-opacity=".3" stroke-width="1">
-                <path d="M96 152 L664 152"/><path d="M96 190 L664 190"/><path d="M96 228 L664 228"/><path d="M96 266 L664 266"/><path d="M96 304 L664 304"/><path d="M96 342 L664 342"/><path d="M96 380 L664 380"/><path d="M96 418 L664 418"/><path d="M96 456 L664 456"/><path d="M96 494 L664 494"/><path d="M96 532 L664 532"/><path d="M96 570 L664 570"/><path d="M96 608 L664 608"/><path d="M96 646 L664 646"/><path d="M96 684 L664 684"/><path d="M96 722 L664 722"/>
-              </g>
-              <g stroke="#a8916e" stroke-opacity=".22" stroke-width="1">
-                <path d="M124 128 L124 740"/><path d="M180 128 L180 740"/><path d="M236 128 L236 740"/><path d="M292 128 L292 740"/><path d="M348 128 L348 740"/><path d="M404 128 L404 740"/><path d="M460 128 L460 740"/><path d="M516 128 L516 740"/><path d="M572 128 L572 740"/><path d="M628 128 L628 740"/>
-              </g>
-              <g fill="#2e2a24">
-                <rect x="132" y="164" width="14" height="16"/><rect x="150" y="164" width="10" height="16"/><rect x="164" y="164" width="14" height="16"/><rect x="188" y="164" width="16" height="16"/>
-                <rect x="132" y="202" width="10" height="16"/><rect x="146" y="202" width="16" height="16"/><rect x="166" y="202" width="12" height="16"/>
-                <rect x="132" y="240" width="16" height="16"/><rect x="152" y="240" width="12" height="16"/><rect x="168" y="240" width="10" height="16"/><rect x="182" y="240" width="16" height="16"/><rect x="202" y="240" width="12" height="16"/>
-                <rect x="132" y="278" width="12" height="16"/><rect x="148" y="278" width="14" height="16"/>
-                <rect x="188" y="316" width="16" height="16"/><rect x="208" y="316" width="10" height="16"/><rect x="222" y="316" width="14" height="16"/>
-                <rect x="132" y="354" width="14" height="16"/><rect x="150" y="354" width="10" height="16"/>
-                <rect x="464" y="164" width="12" height="16"/><rect x="480" y="164" width="16" height="16"/><rect x="500" y="164" width="10" height="16"/>
-                <rect x="492" y="202" width="14" height="16"/><rect x="510" y="202" width="12" height="16"/>
-                <rect x="464" y="240" width="16" height="16"/><rect x="484" y="240" width="10" height="16"/>
-                <rect x="132" y="430" width="16" height="16"/><rect x="152" y="430" width="12" height="16"/><rect x="168" y="430" width="14" height="16"/>
-                <rect x="132" y="468" width="10" height="16"/><rect x="146" y="468" width="16" height="16"/><rect x="166" y="468" width="12" height="16"/><rect x="182" y="468" width="10" height="16"/>
-                <rect x="132" y="506" width="14" height="16"/><rect x="150" y="506" width="10" height="16"/>
-                <rect x="464" y="544" width="14" height="16"/><rect x="482" y="544" width="12" height="16"/><rect x="498" y="544" width="16" height="16"/>
-                <rect x="520" y="582" width="10" height="16"/><rect x="534" y="582" width="14" height="16"/>
-                <rect x="132" y="620" width="16" height="16"/><rect x="152" y="620" width="12" height="16"/><rect x="168" y="620" width="10" height="16"/>
-                <rect x="132" y="658" width="12" height="16"/><rect x="148" y="658" width="16" height="16"/><rect x="168" y="658" width="10" height="16"/><rect x="182" y="658" width="14" height="16"/>
-              </g>
-              <g stroke="#9e3a2c" stroke-opacity=".5" stroke-width="1.6" fill="none">
-                <path d="M190 470 q34 -14 66 4 q28 16 60 2"/>
-                <path d="M300 512 q22 12 44 0"/>
-              </g>
-            </g>
-            <ellipse cx="330" cy="486" rx="230" ry="120" fill="url(#sh27)"/>
-            <g>
-              <path d="M150 470 Q150 424 200 424 Q250 424 250 470 Q250 516 200 516 Q150 516 150 470 Z" fill="none" stroke="url(#ring27)" stroke-width="6"/>
-              <path d="M300 470 Q300 424 350 424 Q400 424 400 470 Q400 516 350 516 Q300 516 300 470 Z" fill="none" stroke="url(#ring27)" stroke-width="6"/>
-              <path d="M150 470 Q150 424 200 424 Q250 424 250 470 Q250 516 200 516 Q150 516 150 470 Z" fill="url(#lens27)"/>
-              <path d="M300 470 Q300 424 350 424 Q400 424 400 470 Q400 516 350 516 Q300 516 300 470 Z" fill="url(#lens27)"/>
-              <path d="M250 458 Q275 442 300 458" fill="none" stroke="#4a3f36" stroke-width="5" stroke-linecap="round"/>
-              <path d="M164 448 Q178 432 198 432" fill="none" stroke="#f7f2e6" stroke-opacity=".75" stroke-width="3" stroke-linecap="round"/>
-              <path d="M314 448 Q328 432 348 432" fill="none" stroke="#f7f2e6" stroke-opacity=".65" stroke-width="3" stroke-linecap="round"/>
-              <path d="M150 468 Q118 470 100 496 Q92 508 96 520" fill="none" stroke="#4a3f36" stroke-width="5" stroke-linecap="round"/>
-              <path d="M400 468 Q432 470 452 494 Q460 506 456 520" fill="none" stroke="#4a3f36" stroke-width="5" stroke-linecap="round"/>
-              <path d="M96 520 Q94 528 102 530" fill="none" stroke="#3a322b" stroke-width="6" stroke-linecap="round"/>
-              <path d="M456 520 Q458 528 450 530" fill="none" stroke="#3a322b" stroke-width="6" stroke-linecap="round"/>
-            </g>
-            <path d="M556 690 a48 30 0 1 0 6 -1" fill="none" stroke="#b08a5a" stroke-opacity=".34" stroke-width="4"/>
-            <ellipse cx="562" cy="688" rx="46" ry="28" fill="#b08a5a" opacity=".05"/>
-            <g fill="#2b2a26">
-              <rect x="612" y="150" width="26" height="26"/><rect x="612" y="186" width="26" height="26"/><rect x="612" y="222" width="26" height="26"/><rect x="612" y="258" width="26" height="26"/><rect x="612" y="294" width="26" height="26"/><rect x="612" y="330" width="26" height="26"/>
-            </g>
-            <text x="626" y="176" font-family="Songti SC,serif" font-size="19" fill="#f6efdb" text-anchor="middle">わ</text>
-            <text x="626" y="212" font-family="Songti SC,serif" font-size="19" fill="#f6efdb" text-anchor="middle">が</text>
-            <text x="626" y="248" font-family="Songti SC,serif" font-size="19" fill="#f6efdb" text-anchor="middle">母</text>
-            <text x="626" y="284" font-family="Songti SC,serif" font-size="19" fill="#f6efdb" text-anchor="middle">の</text>
-            <text x="626" y="320" font-family="Songti SC,serif" font-size="19" fill="#f6efdb" text-anchor="middle">記</text>
-            <g transform="rotate(-4 660 392)">
-              <rect x="636" y="368" width="48" height="48" fill="none" stroke="#a8402f" stroke-width="3.2" stroke-opacity=".82"/>
-              <text x="660" y="392" font-family="Songti SC,serif" font-size="17" fill="#a8402f" text-anchor="middle">廿</text>
-              <text x="660" y="410" font-family="Songti SC,serif" font-size="17" fill="#a8402f" text-anchor="middle">七</text>
-            </g>
-            <text x="96" y="836" font-family="Songti SC,serif" font-size="34" fill="#2b2721" letter-spacing="4">记我的母亲</text>
-            <text x="98" y="868" font-family="Didot,serif" font-size="12.5" fill="#6b5c48" letter-spacing="4.2">CHRONICLE OF MY MOTHER</text>
-            <text x="98" y="892" font-family="Didot,serif" font-size="10" fill="#8a7a62" letter-spacing="3.4">HARADA MASATO · 2012 · 118 MIN</text>
-            <g stroke="#a8916e" stroke-opacity=".5" stroke-width="1"><path d="M96 812 L664 812"/></g>
-          </svg>
+          <svg class="poster-svg" viewBox="0 0 760 1000" aria-label="概念海报：一张写着字的稿纸，上面压着一副老花镜">
+<defs>
+<linearGradient id="pp27" x1=".1" y1="0" x2=".85" y2="1"><stop offset="0" stop-color="#f4ecda"/><stop offset=".42" stop-color="#ece3cc"/><stop offset="1" stop-color="#ddcfb2"/></linearGradient>
+<linearGradient id="sheet27" x1="0" y1="0" x2=".9" y2="1"><stop offset="0" stop-color="#fcf7e8"/><stop offset=".55" stop-color="#f7f0dc"/><stop offset="1" stop-color="#eee2c6"/></linearGradient>
+<linearGradient id="lens27" x1="0" y1="0" x2=".85" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".26"/><stop offset=".48" stop-color="#cdd8da" stop-opacity=".1"/><stop offset="1" stop-color="#9aa9ac" stop-opacity=".14"/></linearGradient>
+<linearGradient id="rim27" x1="0" y1="0" x2=".7" y2="1"><stop offset="0" stop-color="#6d5f50"/><stop offset=".45" stop-color="#3a322b"/><stop offset="1" stop-color="#5b4f43"/></linearGradient>
+<radialGradient id="sh27" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#6b5836" stop-opacity=".3"/><stop offset=".5" stop-color="#6b5836" stop-opacity=".14"/><stop offset="1" stop-color="#6b5836" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="760" height="1000" fill="url(#pp27)"/>
+<g stroke="#b9a888" stroke-opacity=".14" stroke-width="1"><path d="M52 70 L52 300"/><path d="M706 120 L706 360"/><path d="M52 640 L52 900"/><path d="M706 700 L706 930"/></g>
+<g transform="rotate(2.4 380 500)" opacity=".9">
+  <rect x="112" y="150" width="536" height="574" fill="#6b5836" opacity=".12" transform="translate(8 10)"/>
+  <rect x="112" y="150" width="536" height="574" fill="#e8ddc2"/>
+  <rect x="112" y="150" width="536" height="574" fill="none" stroke="#b9a888" stroke-opacity=".3" stroke-width="1"/>
+</g>
+<g transform="rotate(-2.6 380 500)">
+  <rect x="96" y="128" width="568" height="612" fill="#6b5836" opacity=".16" transform="translate(7 9)"/>
+  <rect x="96" y="128" width="568" height="612" fill="url(#sheet27)"/>
+  <g stroke="#a8916e" stroke-opacity=".28" stroke-width="1">
+    <path d="M96 152 L664 152"/><path d="M96 190 L664 190"/><path d="M96 228 L664 228"/><path d="M96 266 L664 266"/><path d="M96 304 L664 304"/><path d="M96 342 L664 342"/><path d="M96 380 L664 380"/><path d="M96 418 L664 418"/><path d="M96 456 L664 456"/><path d="M96 494 L664 494"/><path d="M96 532 L664 532"/><path d="M96 570 L664 570"/><path d="M96 608 L664 608"/><path d="M96 646 L664 646"/><path d="M96 684 L664 684"/><path d="M96 722 L664 722"/>
+  </g>
+  <g stroke="#a8916e" stroke-opacity=".2" stroke-width="1">
+    <path d="M124 128 L124 740"/><path d="M180 128 L180 740"/><path d="M236 128 L236 740"/><path d="M292 128 L292 740"/><path d="M348 128 L348 740"/><path d="M404 128 L404 740"/><path d="M460 128 L460 740"/><path d="M516 128 L516 740"/><path d="M572 128 L572 740"/><path d="M628 128 L628 740"/>
+  </g>
+  <g stroke="#2e2a24" stroke-opacity=".82" stroke-width="2.2" stroke-linecap="round">
+    <path d="M136 168 L150 168"/><path d="M156 164 L156 176"/><path d="M136 206 L148 206"/><path d="M156 206 L168 206"/><path d="M136 244 L146 244"/><path d="M152 240 L152 252"/>
+    <path d="M472 168 L484 168"/><path d="M490 164 L490 176"/><path d="M508 168 L520 168"/>
+    <path d="M136 626 L150 626"/><path d="M156 622 L156 634"/><path d="M136 664 L146 664"/>
+    <path d="M556 662 L568 662"/><path d="M574 658 L574 670"/><path d="M556 700 L570 700"/>
+  </g>
+  <g stroke="#9e3a2c" stroke-opacity=".45" stroke-width="1.6" fill="none" stroke-linecap="round">
+    <path d="M196 560 q36 -16 70 2 q30 16 62 0"/>
+  </g>
+  <path d="M596 150 L596 462" stroke="#a8916e" stroke-opacity=".45" stroke-width="1"/>
+  <g fill="#2b2721">
+    <text x="626" y="186" font-family="Songti SC,serif" font-size="26" text-anchor="middle">わ</text>
+    <text x="626" y="226" font-family="Songti SC,serif" font-size="26" text-anchor="middle">が</text>
+    <text x="626" y="266" font-family="Songti SC,serif" font-size="26" text-anchor="middle">母</text>
+    <text x="626" y="306" font-family="Songti SC,serif" font-size="26" text-anchor="middle">の</text>
+    <text x="626" y="346" font-family="Songti SC,serif" font-size="26" text-anchor="middle">記</text>
+  </g>
+  <g transform="rotate(-3.4 626 400)">
+    <rect x="602" y="376" width="46" height="46" fill="none" stroke="#a8402f" stroke-width="3" stroke-opacity=".8"/>
+    <text x="625" y="398" font-family="Songti SC,serif" font-size="16" fill="#a8402f" text-anchor="middle">廿</text>
+    <text x="625" y="416" font-family="Songti SC,serif" font-size="16" fill="#a8402f" text-anchor="middle">七</text>
+  </g>
+  <path d="M556 726 a50 32 0 1 0 8 -2" fill="none" stroke="#b08a5a" stroke-opacity=".3" stroke-width="4.5"/>
+  <ellipse cx="562" cy="724" rx="47" ry="29" fill="#b08a5a" opacity=".05"/>
+</g>
+<ellipse cx="312" cy="486" rx="232" ry="118" fill="url(#sh27)"/>
+<g>
+  <path d="M176 492 Q146 496 118 516" fill="none" stroke="url(#rim27)" stroke-width="5.4" stroke-linecap="round"/>
+  <path d="M118 516 Q108 522 112 534" fill="none" stroke="url(#rim27)" stroke-width="5.4" stroke-linecap="round"/>
+  <path d="M448 492 Q478 496 506 516" fill="none" stroke="url(#rim27)" stroke-width="5.4" stroke-linecap="round"/>
+  <path d="M506 516 Q516 522 512 534" fill="none" stroke="url(#rim27)" stroke-width="5.4" stroke-linecap="round"/>
+  <ellipse cx="232" cy="470" rx="58" ry="48" fill="url(#lens27)"/>
+  <ellipse cx="392" cy="470" rx="58" ry="48" fill="url(#lens27)"/>
+  <ellipse cx="232" cy="470" rx="58" ry="48" fill="none" stroke="url(#rim27)" stroke-width="5.4"/>
+  <ellipse cx="392" cy="470" rx="58" ry="48" fill="none" stroke="url(#rim27)" stroke-width="5.4"/>
+  <path d="M290 462 Q312 446 334 462" fill="none" stroke="url(#rim27)" stroke-width="5.2" stroke-linecap="round"/>
+  <path d="M198 434 Q212 424 228 424" fill="none" stroke="#fdf8ea" stroke-opacity=".8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M358 434 Q372 424 388 424" fill="none" stroke="#fdf8ea" stroke-opacity=".7" stroke-width="3" stroke-linecap="round"/>
+  <path d="M196 496 Q214 516 240 518" fill="none" stroke="#8b9a9c" stroke-opacity=".28" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M356 496 Q374 516 400 518" fill="none" stroke="#8b9a9c" stroke-opacity=".24" stroke-width="2.6" stroke-linecap="round"/>
+</g>
+<text x="96" y="836" font-family="Songti SC,serif" font-size="35" fill="#2b2721" letter-spacing="4">记我的母亲</text>
+<text x="98" y="868" font-family="Didot,serif" font-size="12.5" fill="#6b5c48" letter-spacing="4.2">CHRONICLE OF MY MOTHER</text>
+<text x="98" y="892" font-family="Didot,serif" font-size="9.6" fill="#8a7a62" letter-spacing="3.2">HARADA MASATO · 2012 · 118 MIN</text>
+<path d="M96 812 L664 812" stroke="#a8916e" stroke-opacity=".5" stroke-width="1"/>
+</svg>
         </div>
         <p class="pcap">CONCEPT POSTER · 27 / 稿纸与老花镜</p>
       </div>
