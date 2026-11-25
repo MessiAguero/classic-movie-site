@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T04:23:07.424Z",
+  "generatedAt": "2026-11-25T04:25:07.637Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -1550,7 +1550,8 @@
       "ratio": 1.38,
       "identityKind": "name",
       "identityHits": [
-        "片名中文"
+        "片名中文",
+        "别名:我爱你"
       ],
       "evidence": {
         "level": "strong",
@@ -1634,6 +1635,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:国际市场",
         "年份"
       ],
       "evidence": {
