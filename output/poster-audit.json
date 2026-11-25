@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-25T04:25:07.637Z",
+  "generatedAt": "2026-11-25T04:42:04.930Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -2865,7 +2865,8 @@
       "ratio": 1.39,
       "identityKind": "name",
       "identityHits": [
-        "片名中文"
+        "片名中文",
+        "别名:穿越时空的少女"
       ],
       "evidence": {
         "level": "strong",
@@ -6807,6 +6808,7 @@
       "identityKind": "name",
       "identityHits": [
         "片名中文",
+        "别名:莫扎特传",
         "年份"
       ],
       "evidence": {
