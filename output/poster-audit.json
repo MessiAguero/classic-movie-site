@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T04:29:38.166Z",
+  "generatedAt": "2026-11-26T05:13:10.096Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 165,
+  "total": 166,
   "ok": 90,
-  "warn": 75,
+  "warn": 76,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 149,
+    "checked": 150,
     "skippedVerified": 16,
     "error": null
   },
@@ -3305,6 +3305,61 @@
           "code": "visual_title_unverified",
           "severity": "warn",
           "detail": "图片能读到文字，但最大文字“7月12日 矚目獻映”没有对上片名，建议核对"
+        }
+      ]
+    },
+    {
+      "id": "20261126-poppoya",
+      "zhTitle": "铁道员",
+      "sourceTitle": "铁道员海报 6 | 金海报-GoldPoster",
+      "year": "1999",
+      "source": "本地",
+      "imageUrl": "posters/20261126-poppoya.webp",
+      "host": "img.goldposter.com",
+      "tier": "aggregator",
+      "size": "29KB",
+      "dims": "568×800",
+      "ratio": 1.41,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "别名:铁道员"
+      ],
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「铁道员」"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "POPPOYA",
+        "reasons": [
+          "图片最大文字为“POPPOYA”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "aggregator_host",
+          "severity": "warn",
+          "detail": "图源为聚合站（img.goldposter.com），建议换用官方图源"
+        },
+        {
+          "code": "identity_weak_evidence",
+          "severity": "warn",
+          "detail": "只有片名线索、缺年份与主创佐证，无法排除同名不同片，建议人工核对（来源：铁道员海报 6 | 金海报-GoldPoster）"
+        },
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“POPPOYA”没有对上片名，建议核对"
         }
       ]
     },
@@ -7319,6 +7374,29 @@
       "issues": [
         "untrusted_host",
         "identity_weak_evidence"
+      ]
+    },
+    {
+      "id": "20261126-poppoya",
+      "zhTitle": "铁道员",
+      "year": "1999",
+      "sourceTitle": "铁道员海报 6 | 金海报-GoldPoster",
+      "imageUrl": "posters/20261126-poppoya.webp",
+      "host": "img.goldposter.com",
+      "dims": "568×800",
+      "evidence": {
+        "level": "medium",
+        "reasons": [
+          "片名命中「铁道员」"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        "aggregator_host",
+        "identity_weak_evidence",
+        "visual_title_unverified"
       ]
     },
     {
