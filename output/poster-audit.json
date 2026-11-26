@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T00:42:04.105Z",
+  "generatedAt": "2026-11-26T04:11:30.054Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -8,13 +8,13 @@
     "warnWidth": 500,
     "minBytes": 8192
   },
-  "total": 164,
+  "total": 165,
   "ok": 90,
-  "warn": 74,
+  "warn": 75,
   "error": 0,
   "ocr": {
     "available": true,
-    "checked": 148,
+    "checked": 149,
     "skippedVerified": 16,
     "error": null
   },
@@ -3210,6 +3210,54 @@
       ]
     },
     {
+      "id": "20261126-arrietty",
+      "zhTitle": "借东西的小人阿莉埃蒂",
+      "sourceTitle": "借东西的小人阿莉埃蒂 (2010) - 海报 — The Movie Database (TMDB)",
+      "year": "2010",
+      "source": "本地",
+      "imageUrl": "posters/20261126-arrietty.jpg",
+      "host": "image.tmdb.org",
+      "tier": "tmdb",
+      "size": "146KB",
+      "dims": "736×1104",
+      "ratio": 1.5,
+      "identityKind": "name",
+      "identityHits": [
+        "片名中文",
+        "别名:借东西的小人阿莉埃蒂",
+        "年份"
+      ],
+      "evidence": {
+        "level": "strong",
+        "reasons": [
+          "片名命中「借东西的小人阿莉埃蒂」",
+          "年份命中 2010",
+          "可信图源（tmdb）"
+        ],
+        "conflicts": []
+      },
+      "imageEvidence": {
+        "available": true,
+        "titleHit": null,
+        "yearMatch": false,
+        "years": [],
+        "dominantText": "dos Pequeninos",
+        "reasons": [
+          "图片最大文字为“dos Pequeninos”，未能与片名直接对应"
+        ],
+        "conflicts": []
+      },
+      "verified": false,
+      "status": "warn",
+      "issues": [
+        {
+          "code": "visual_title_unverified",
+          "severity": "warn",
+          "detail": "图片能读到文字，但最大文字“dos Pequeninos”没有对上片名，建议核对"
+        }
+      ]
+    },
+    {
       "id": "20261126-kaguya",
       "zhTitle": "辉夜姬物语",
       "sourceTitle": "《辉夜姬物语》电影海报《辉夜姬物语》是高畑勋导演为吉卜力贡献的又",
@@ -3223,7 +3271,8 @@
       "ratio": 1.48,
       "identityKind": "name",
       "identityHits": [
-        "片名中文"
+        "片名中文",
+        "别名:辉夜姬物语"
       ],
       "evidence": {
         "level": "strong",

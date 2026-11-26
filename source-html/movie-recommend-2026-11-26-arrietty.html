@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>借东西的小人阿莉埃蒂 · 日本电影专题 第 28 期</title>
+<meta name="description" content="米林宏昌《借东西的小人阿莉埃蒂》（借りぐらしのアリエッティ, 2010）：剧情梗概、人物冲突、六处亮点与观看理由。全程不剧透。">
+<style>
+:root{
+  --bg:#060a07; --bg2:#0a0f0a; --panel:#0d140e;
+  --ink:#ece5d2; --dim:#9aa392; --dim2:#6b7365;
+  --line:rgba(236,229,210,.12); --line2:rgba(236,229,210,.05);
+  --ac:#a8b06a; --ac2:#cfd79a;
+  --wood:#b8813f; --wood2:#e0b478;
+  --dew:#7aa9a4; --dew2:#b6d8cf;
+  --pa:#ece5d6; --pa2:#f7f0dd;
+  --seal:#a0453a; --seal2:#c4715c;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Didot","Optima","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.95;letter-spacing:.012em;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(168,176,106,.3);color:#060a07}
+a{color:inherit}
+body::before{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+.wrap{width:min(1160px,calc(100% - 96px));margin:0 auto}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:max(100vh,880px);overflow:hidden;background:#040805;
+  border-bottom:1px solid rgba(168,176,106,.2)}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(4,8,5,.95) 0%,rgba(4,8,5,.9) 17%,rgba(4,8,5,.68) 33%,rgba(4,8,5,.3) 49%,rgba(4,8,5,.05) 63%,rgba(4,8,5,0) 73%),
+    linear-gradient(to bottom,rgba(4,8,5,.9) 0%,rgba(4,8,5,.6) 13%,rgba(4,8,5,.1) 27%,rgba(4,8,5,0) 47%,rgba(4,8,5,.04) 72%,rgba(4,8,5,.28) 88%,rgba(4,8,5,.56) 100%)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.notice{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:11px;
+  letter-spacing:.14em;color:rgba(236,229,210,.72);border:1px solid rgba(236,229,210,.2);
+  border-radius:999px;padding:7px 16px;margin-bottom:34px;background:rgba(8,14,9,.45);backdrop-filter:blur(4px)}
+.notice .dot{width:5px;height:5px;border-radius:50%;background:var(--ac2);box-shadow:0 0 9px rgba(207,215,154,.65)}
+.hero-in{position:relative;z-index:3;width:min(1160px,calc(100% - 96px));margin:0 auto;
+  min-height:max(100vh,880px);display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:10.5vh;padding-bottom:64px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;
+  letter-spacing:.34em;color:var(--ac);text-transform:uppercase;opacity:.92;white-space:nowrap}
+.eyebrow i{display:block;width:52px;height:1px;background:var(--ac);opacity:.5}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.6vw,64px);line-height:1.18;
+  letter-spacing:.1em;margin:26px 0 0;color:#f7f0dd;white-space:nowrap}
+.latin{margin:22px 0 0;font-family:var(--latin);font-size:13px;letter-spacing:.3em;
+  color:rgba(236,229,210,.6)}
+.latin + .latin{margin-top:7px;font-size:10.5px;letter-spacing:.22em;color:rgba(236,229,210,.42)}
+.hero-sub{margin:28px 0 0;max-width:25em;font-size:16px;line-height:2.05;color:rgba(236,229,210,.9)}
+.hero-sub em{font-style:normal;color:#f7f0dd;border-bottom:1px solid rgba(184,129,63,.7);padding-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:880px}
+.chip{font-size:11.5px;letter-spacing:.06em;color:rgba(240,234,222,.92);border:1px solid rgba(240,234,222,.18);
+  border-radius:999px;padding:6px 14px;background:rgba(10,16,11,.64);backdrop-filter:blur(7px)}
+.chip b{color:#fff;font-weight:500}
+.scroll-hint{position:absolute;left:auto;right:28px;bottom:30px;z-index:4;
+  font-family:var(--latin);font-size:9.5px;letter-spacing:.42em;color:rgba(236,229,210,.42);
+  display:flex;flex-direction:column;align-items:center;gap:9px}
+.scroll-hint span{display:block;width:1px;height:32px;background:linear-gradient(to bottom,rgba(236,229,210,.5),transparent)}
+
+/* ---------- sections ---------- */
+.sec{padding:112px 0;border-top:1px solid var(--line2)}
+.sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:52px}
+.sec-head .no{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--ac);opacity:.9}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.1vw,36px);
+  letter-spacing:.05em;margin:0;color:#f4efdf;flex:1 1 auto}
+.sec-head .kicker{font-family:var(--latin);font-size:10.5px;letter-spacing:.3em;
+  color:var(--dim2);text-transform:uppercase;margin:0}
+.note{font-size:13px;color:var(--dim);line-height:1.9}
+
+.intro{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:64px;align-items:start}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:2.22;color:#d3cebd}
+.lede p{margin:0 0 22px}
+.lede p:first-child::first-letter{float:left;font-size:5.1em;line-height:.82;padding:.06em .14em 0 0;
+  color:#f7f0dd;font-weight:400}
+.lede strong{font-weight:500;color:#f7f0dd}
+.lede .dash{color:var(--dim);font-size:15px}
+.glance{border:1px solid var(--line);background:linear-gradient(160deg,rgba(13,20,14,.95),rgba(6,10,7,.95));
+  padding:30px 28px}
+.glance h3{font-family:var(--latin);font-size:10px;letter-spacing:.34em;color:var(--ac);
+  margin:0 0 22px;font-weight:400;text-transform:uppercase;opacity:.9}
+.glance dl{margin:0;display:grid;gap:13px}
+.glance div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line2)}
+.glance div:last-child{border-bottom:0;padding-bottom:0}
+.glance dt{font-size:11.5px;color:var(--dim2);letter-spacing:.1em}
+.glance dd{margin:0;font-size:13.5px;color:#cbc6b6;line-height:1.7}
+.glance dd b{color:#f7f0dd;font-weight:500}
+.glance dd small{display:block;font-size:11px;color:var(--dim2);margin-top:3px}
+.acts{margin-top:74px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.act{background:var(--bg);padding:34px 30px}
+.act .t{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--ac);
+  opacity:.9;margin-bottom:14px}
+.act h4{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f4efdf;letter-spacing:.04em}
+.act p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+.poster-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);gap:70px;align-items:start}
+.poster-frame{border:1px solid var(--line);padding:14px;background:#050302;
+  box-shadow:0 40px 90px -50px #000, inset 0 0 0 1px rgba(0,0,0,.6)}
+.poster-svg{display:block;width:100%;height:auto}
+.pcap{margin:16px 2px 0;font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--dim2)}
+.pnotes{display:grid;gap:28px}
+.pnote{border-left:1px solid var(--line);padding:2px 0 2px 24px}
+.pnote .n{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--ac);opacity:.86}
+.pnote h4{margin:8px 0 10px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f4efdf}
+.pnote p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+.pnote p b{color:#eae4d3;font-weight:500}
+.pnote p em{font-style:normal;color:var(--ac2)}
+
+.spec{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.spec div{background:var(--bg);padding:22px 20px;min-height:92px}
+.spec dt{font-size:10.5px;letter-spacing:.14em;color:var(--dim2);margin-bottom:8px}
+.spec dd{margin:0;font-size:13.5px;color:#ccc7b6;line-height:1.65}
+.spec dd small{display:block;font-size:11px;color:var(--dim2);margin-top:4px;letter-spacing:.02em}
+.spec .wide{grid-column:1/-1;min-height:0;background:linear-gradient(120deg,rgba(168,176,106,.14),rgba(6,10,7,0) 62%)}
+.spec .wide dd{font-family:var(--serif);font-size:17px;color:#f7f0dd;letter-spacing:.05em}
+
+.scores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.sc{background:var(--bg);padding:32px 30px}
+.sc .src{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--dim2);text-transform:uppercase}
+.sc .val{font-family:var(--latin);font-size:52px;line-height:1;margin:16px 0 8px;color:#f7f0dd}
+.sc .val small{font-size:15px;color:var(--dim);letter-spacing:.04em;margin-left:6px}
+.sc .meta{font-size:12.5px;color:var(--dim);line-height:1.8}
+.sc .meta b{color:#e2ddd0;font-weight:500}
+.sc.hi .val{color:var(--ac2)}
+.caliber{margin:52px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.caliber li{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line2);
+  font-size:13.5px;line-height:1.9;color:var(--dim)}
+.caliber li b{color:#ece5d2;font-weight:500}
+.caliber li i{font-family:var(--latin);font-style:normal;font-size:10.5px;letter-spacing:.2em;color:var(--ac);opacity:.8;padding-top:4px}
+
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.person{background:var(--bg);padding:30px 28px}
+.person .role{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--ac);opacity:.82}
+.person h4{margin:12px 0 4px;font-family:var(--serif);font-weight:400;font-size:20px;color:#f7f0dd;letter-spacing:.04em}
+.person h4 small{font-size:12px;color:var(--dim2);letter-spacing:.1em;margin-left:4px}
+.person .actor{font-size:11.5px;color:var(--dim2);letter-spacing:.08em;margin-bottom:18px}
+.person p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.person p span{display:block;margin-top:9px;color:#cbc6b6}
+.person p span b{color:var(--ac2);font-weight:400;font-size:12.5px}
+
+.cf-list{display:grid;gap:0;margin-top:8px}
+.cf{display:grid;grid-template-columns:210px minmax(0,1fr);gap:36px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line2)}
+.cf h4{margin:0;font-family:var(--serif);font-weight:400;font-size:17px;color:#f7f0dd;letter-spacing:.04em;line-height:1.6}
+.cf h4 i{display:block;font-family:var(--latin);font-style:normal;font-size:9.5px;letter-spacing:.26em;
+  color:var(--ac);opacity:.82;margin-bottom:8px}
+.cf p{margin:0;font-size:13.8px;line-height:2;color:var(--dim);max-width:66ch}
+.cf p em{font-style:normal;color:#eae4d3}
+
+.awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.award{background:var(--bg);padding:28px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.award .yr{font-family:var(--latin);font-size:11px;letter-spacing:.14em;color:var(--dim2);padding-top:3px}
+.award h4{margin:0 0 6px;font-size:14.5px;font-weight:500;color:#f4efdf;letter-spacing:.02em;line-height:1.6}
+.award p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.78}
+.award.gold{background:linear-gradient(120deg,rgba(184,129,63,.18),rgba(6,10,7,0) 68%);border-left:2px solid rgba(184,129,63,.55)}
+.award.gold h4{color:var(--pa2)}
+.award.cold{background:linear-gradient(120deg,rgba(122,169,164,.1),rgba(6,10,7,0) 68%);border-left:2px solid rgba(122,169,164,.34)}
+.award.cold h4{color:#c2d4c6}
+.award.wide{grid-column:1/-1}
+
+.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px;max-width:820px}
+.ln{position:relative;padding:0 0 38px 40px}
+.ln:last-child{padding-bottom:0}
+.ln::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--ac2)}
+.ln.now::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 4px rgba(160,69,58,.24)}
+.ln .yr{font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--dim2)}
+.ln h4{margin:6px 0 6px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f4efdf;letter-spacing:.03em}
+.ln p{margin:0;font-size:13px;color:var(--dim);line-height:1.85}
+.ln p b{color:#e6e1d2;font-weight:500}
+.ln.now h4{color:var(--pa2)}
+
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.g6{background:var(--bg);padding:32px 28px;min-height:210px}
+.g6 .n{font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--ac);opacity:.86}
+.g6 h4{margin:14px 0 10px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f4efdf;letter-spacing:.03em;line-height:1.6}
+.g6 p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.g6 p b{color:#eae4d3;font-weight:500}
+
+.why{display:grid;gap:0;max-width:820px}
+.why article{padding:0 0 38px}
+.why article + article{border-top:1px solid var(--line2);padding-top:38px}
+.why h3{margin:0 0 14px;font-family:var(--serif);font-weight:400;font-size:21px;color:#f7f0dd;letter-spacing:.04em}
+.why p{margin:0;font-size:14.5px;line-height:2.05;color:#c2bdac}
+.why p + p{margin-top:14px}
+.why strong{color:#f4efdf;font-weight:500}
+.why em{font-style:normal;color:var(--ac2)}
+
+.tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.tip{background:var(--bg);padding:30px 24px}
+.tip .k{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--ac);opacity:.86}
+.tip h4{margin:12px 0 10px;font-size:15.5px;font-weight:500;color:#f4efdf}
+.tip p{margin:0;font-size:12.8px;line-height:1.95;color:var(--dim)}
+
+.verdict{padding:150px 0 120px;border-top:1px solid var(--line2);position:relative;overflow:hidden}
+.verdict .tag{font-family:var(--latin);font-size:9.5px;letter-spacing:.32em;color:var(--dim2);margin-bottom:34px}
+.verdict .q{font-family:var(--serif);font-size:clamp(22px,3vw,35px);line-height:1.8;letter-spacing:.06em;
+  color:#f7f0dd;margin:0;max-width:24em}
+.verdict .q span{display:block}
+.verdict .src{margin-top:36px;font-size:12px;color:var(--dim2);letter-spacing:.04em;line-height:1.9}
+.stamp{position:absolute;right:200px;bottom:92px;width:152px;height:152px;border:1px solid rgba(160,69,58,.85);
+  border-radius:50%;display:grid;place-items:center;color:rgba(196,113,92,1);text-align:center;
+  transform:rotate(-7deg);box-shadow:inset 0 0 0 4px rgba(160,69,58,.14)}
+.stamp div{display:grid;gap:8px;justify-items:center}
+.stamp span{font-family:var(--latin);font-size:7.4px;letter-spacing:.07em;opacity:.95;line-height:1.2}
+.stamp b{font-family:var(--serif);font-size:15px;letter-spacing:.02em;font-weight:400;line-height:1.15;
+  padding:6px 4px;border-top:1px solid rgba(160,69,58,.55);border-bottom:1px solid rgba(160,69,58,.55)}
+
+footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
+footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
+
+#hud{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
+  opacity:0;transition:opacity .7s ease;pointer-events:none}
+#hud.on{opacity:1}
+#hud b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:13px;
+  color:var(--dim2);letter-spacing:.1em;transition:color .5s}
+#hud b i{display:block;width:16px;height:1px;background:var(--dim2);transition:all .5s}
+#hud b.on{color:#f7f0dd}
+#hud b.on i{width:30px;background:var(--ac)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1380px){#hud{display:none}}
+@media (max-width:1000px){
+  .intro{grid-template-columns:1fr;gap:48px}
+  .poster-grid{grid-template-columns:1fr;gap:46px}
+  .poster-frame{max-width:500px}
+  .scores,.awards{grid-template-columns:1fr}
+  .spec{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .acts{grid-template-columns:1fr}
+  #hud{display:none}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .scroll-hint{display:none}
+  .hero-svg{transform:translateY(4vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(4,8,5,.93) 0%,rgba(4,8,5,.86) 26%,rgba(4,8,5,.62) 42%,rgba(4,8,5,.34) 54%,rgba(4,8,5,.14) 64%,rgba(4,8,5,.06) 74%,rgba(4,8,5,.18) 86%,rgba(4,8,5,.4) 96%,rgba(4,8,5,.54) 100%)}
+}
+@media (max-width:760px){
+  .hero-svg{transform:translateY(7vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(4,8,5,.94) 0%,rgba(4,8,5,.88) 22%,rgba(4,8,5,.66) 38%,rgba(4,8,5,.4) 50%,rgba(4,8,5,.18) 60%,rgba(4,8,5,.05) 72%,rgba(4,8,5,.08) 84%,rgba(4,8,5,.3) 94%,rgba(4,8,5,.48) 100%)}
+  body{font-size:15px;line-height:1.9}
+  .wrap,.hero-in{width:calc(100% - 40px)}
+  .hero{min-height:max(100vh,740px)}
+  .hero-in{min-height:max(100vh,740px);padding-top:8vh;padding-bottom:96px}
+  h1{font-size:clamp(25px,6.6vw,44px);letter-spacing:.07em}
+  .hero-sub{font-size:14.5px;line-height:1.95;max-width:27em}
+  .eyebrow{font-size:9.6px;letter-spacing:.18em;gap:9px}
+  .eyebrow i{width:26px}
+  .notice{font-size:10.4px;letter-spacing:.06em;padding:6px 13px}
+  .sec{padding:76px 0}
+  .sec-head{margin-bottom:36px;gap:12px}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spec dd{font-size:12.4px}
+  .spec dd small{font-size:10.4px}
+  .people,.grid6,.tips{grid-template-columns:1fr}
+  .cf{grid-template-columns:1fr;gap:12px}
+  .lede{font-size:16px;line-height:2.05}
+  .sc .val{font-size:44px}
+  .verdict{padding:96px 0 88px}
+  .stamp{position:static;margin-top:48px;transform:rotate(-4deg)}
+  .chips{max-width:100%;padding-top:0;margin-top:26px}
+  footer{padding-bottom:120px}
+  .scroll-hint{display:none}
+  .chip{font-size:11px;padding:5px 11px;letter-spacing:.03em}
+}
+@media (min-width:1001px) and (max-height:860px){
+  .hero,.hero-in{min-height:max(100vh,760px)}
+  .scroll-hint{left:auto;right:22px;transform:none}
+}
+@media (max-width:420px){
+  .notice{margin-bottom:22px;font-size:10.5px;padding:6px 13px}
+  h1{font-size:clamp(23px,6.2vw,34px);margin-top:20px;letter-spacing:.05em}
+  .latin{margin-top:14px;font-size:11px;letter-spacing:.2em}
+  .latin + .latin{font-size:9.5px;letter-spacing:.14em}
+  .hero-sub{margin-top:22px;font-size:13.8px}
+}
+@media (max-width:380px){
+  .wrap,.hero-in{width:calc(100% - 32px)}
+  .chip{font-size:10.5px;padding:5px 11px}
+  .glance{padding:24px 20px}
+  h1{font-size:clamp(21px,5.9vw,28px)}
+}
+@media (max-width:760px) and (max-height:700px){
+  .hero{min-height:100vh}
+  .hero-in{min-height:100vh;padding-top:6vh}
+  .hero-svg{transform:translateY(9vh)}
+  .notice{margin-bottom:16px;font-size:10px;padding:5px 12px}
+  h1{margin-top:14px;font-size:clamp(22px,5.9vw,30px)}
+  .latin{margin-top:12px;font-size:10.5px}
+  .latin + .latin{font-size:9px;margin-top:5px}
+  .hero-sub{margin-top:16px;font-size:13.2px;line-height:1.82}
+  .chips{margin-top:20px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><linearGradient id="bg28" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#040805"/><stop offset=".18" stop-color="#050a06"/><stop offset=".36" stop-color="#071009"/><stop offset=".54" stop-color="#0a1610"/><stop offset=".7" stop-color="#0c1a12"/><stop offset=".84" stop-color="#08120c"/><stop offset="1" stop-color="#050a06"/></linearGradient><radialGradient id="bk28a" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e8f0b4" stop-opacity=".2"/><stop offset=".45" stop-color="#b3c77e" stop-opacity=".08"/><stop offset="1" stop-color="#5c6f42" stop-opacity="0"/></radialGradient><radialGradient id="bk28b" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#8fbfb0" stop-opacity=".16"/><stop offset=".5" stop-color="#5b8a7c" stop-opacity=".06"/><stop offset="1" stop-color="#31544a" stop-opacity="0"/></radialGradient><linearGradient id="lf28" x1="0" y1="0" x2=".72" y2="1"><stop offset="0" stop-color="#1c2c18"/><stop offset=".34" stop-color="#2f4525"/><stop offset=".68" stop-color="#47612e"/><stop offset="1" stop-color="#5b7737"/></linearGradient><linearGradient id="lf28b" x1="0" y1="1" x2=".6" y2="0"><stop offset="0" stop-color="#16240f"/><stop offset=".5" stop-color="#2a3f1d"/><stop offset="1" stop-color="#3f5527"/></linearGradient><linearGradient id="gr28" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3c5329"/><stop offset=".4" stop-color="#28391c"/><stop offset="1" stop-color="#0b1209"/></linearGradient><radialGradient id="mos28" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#4e6a30" stop-opacity=".55"/><stop offset=".6" stop-color="#33491f" stop-opacity=".3"/><stop offset="1" stop-color="#1b2713" stop-opacity="0"/></radialGradient><radialGradient id="win28" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f2dfa8" stop-opacity=".4"/><stop offset=".42" stop-color="#d9bd81" stop-opacity=".16"/><stop offset="1" stop-color="#8a7348" stop-opacity="0"/></radialGradient><radialGradient id="dew28" cx=".36" cy=".3" r=".72"><stop offset="0" stop-color="#f6fdee" stop-opacity=".95"/><stop offset=".3" stop-color="#cfe9dc" stop-opacity=".8"/><stop offset=".62" stop-color="#7fae9f" stop-opacity=".7"/><stop offset="1" stop-color="#2b4a41" stop-opacity=".82"/></radialGradient><radialGradient id="pool28" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#dfe9a6" stop-opacity=".18"/><stop offset=".5" stop-color="#9db06a" stop-opacity=".07"/><stop offset="1" stop-color="#5c6f42" stop-opacity="0"/></radialGradient><radialGradient id="vig28" cx=".54" cy=".5" r=".8"><stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset=".58" stop-color="#000" stop-opacity=".08"/><stop offset=".86" stop-color="#000" stop-opacity=".26"/><stop offset="1" stop-color="#000" stop-opacity=".48"/></radialGradient></defs><rect width="1440" height="900" fill="url(#bg28)"/><g><ellipse cx="1188" cy="246" rx="300" ry="216" fill="url(#bk28a)"/><ellipse cx="1024" cy="140" rx="150" ry="104" fill="url(#bk28a)"/><ellipse cx="1332" cy="470" rx="190" ry="140" fill="url(#bk28b)"/><ellipse cx="470" cy="186" rx="230" ry="160" fill="url(#bk28b)"/><ellipse cx="836" cy="612" rx="260" ry="120" fill="url(#bk28a)"/><ellipse cx="126" cy="470" rx="200" ry="170" fill="url(#bk28b)"/></g><g opacity=".5"><rect x="1114" y="232" width="96" height="130" fill="url(#win28)"/><rect x="1118" y="236" width="88" height="122" fill="none" stroke="#e3cd9a" stroke-opacity=".26" stroke-width="1.6"/><path d="M1162 236 L1162 358" stroke="#e3cd9a" stroke-opacity=".2" stroke-width="1.4"/><path d="M1118 296 L1206 296" stroke="#e3cd9a" stroke-opacity=".2" stroke-width="1.4"/></g><path d="M-60 18 C 152 38 384 158 528 322 C 362 332 142 332 -60 282 Z" fill="url(#lf28)" opacity=".96"/><path d="M-60 18 C 152 38 384 158 528 322" fill="none" stroke="#a9c069" stroke-opacity=".3" stroke-width="2.2"/><path d="M-60 148 C 132 164 352 250 512 320" fill="none" stroke="#93ad5c" stroke-opacity=".24" stroke-width="2.4"/><g stroke="#8aa452" stroke-opacity=".2" stroke-width="1.5" fill="none"><path d="M40 106 C 96 118 148 150 176 186"/><path d="M148 122 C 208 138 258 176 286 218"/><path d="M252 146 C 310 166 358 206 386 250"/><path d="M356 178 C 410 200 452 240 476 282"/><path d="M64 200 C 118 212 166 240 192 272"/><path d="M172 214 C 228 228 274 260 300 296"/></g><path d="M-40 900 C -20 760 20 660 78 596 C 116 660 138 780 132 900 Z" fill="url(#lf28b)" opacity=".9"/><path d="M1336 900 C 1318 700 1276 536 1246 402 C 1240 380 1262 372 1272 392 C 1300 524 1342 700 1372 900 Z" fill="url(#lf28b)" opacity=".95"/><path d="M1246 402 C 1276 536 1318 700 1336 900" fill="none" stroke="#a9c069" stroke-opacity=".22" stroke-width="1.8"/><path d="M1412 900 C 1398 742 1372 620 1352 520 C 1348 502 1366 496 1374 512 C 1398 622 1430 744 1450 900 Z" fill="url(#lf28b)" opacity=".8"/><path d="M1152 900 C 1142 764 1120 664 1102 596 C 1098 578 1116 574 1122 590 C 1142 668 1176 774 1196 900 Z" fill="url(#lf28b)" opacity=".55"/><ellipse cx="806" cy="676" rx="330" ry="132" fill="url(#mos28)"/><path d="M-20 792 C 120 772 250 764 366 770 C 470 776 546 758 640 752 C 742 746 820 762 906 758 C 1010 752 1104 766 1200 776 C 1290 786 1380 780 1460 774 L1460 900 L-20 900 Z" fill="url(#gr28)"/><g opacity=".75"><ellipse cx="300" cy="828" rx="52" ry="17" fill="#1b2713"/><ellipse cx="392" cy="852" rx="66" ry="20" fill="#16200f"/><ellipse cx="1120" cy="836" rx="74" ry="22" fill="#16200f"/><ellipse cx="1240" cy="860" rx="88" ry="26" fill="#131c0d"/><ellipse cx="640" cy="846" rx="58" ry="18" fill="#1b2713"/></g><g fill="#4a6430" opacity=".42"><circle cx="268" cy="812" r="4"/><circle cx="284" cy="806" r="3"/><circle cx="252" cy="820" r="2.6"/><circle cx="452" cy="826" r="3.4"/><circle cx="468" cy="818" r="2.8"/><circle cx="1074" cy="820" r="3.6"/><circle cx="1092" cy="812" r="2.6"/><circle cx="1174" cy="844" r="3.2"/><circle cx="1192" cy="836" r="2.4"/><circle cx="700" cy="822" r="3"/><circle cx="716" cy="814" r="2.4"/></g><g fill="#3d5328" opacity=".5"><ellipse cx="336" cy="806" rx="26" ry="9"/><ellipse cx="1042" cy="812" rx="30" ry="10"/><ellipse cx="604" cy="816" rx="22" ry="7.5"/></g><ellipse cx="812" cy="790" rx="150" ry="46" fill="url(#pool28)"/><g fill="#2a2118"><ellipse cx="698" cy="806" rx="16" ry="7"/><ellipse cx="938" cy="812" rx="21" ry="8.5"/><ellipse cx="880" cy="826" rx="13" ry="5.5"/></g><g fill="#3a2f22" opacity=".7"><ellipse cx="698" cy="803" rx="12" ry="4.6"/><ellipse cx="938" cy="808" rx="16" ry="5.6"/></g><g><ellipse cx="812" cy="792" rx="20" ry="5.2" fill="#0a1006" opacity=".6"/><ellipse cx="812" cy="792" rx="12" ry="3.4" fill="#060a04" opacity=".7"/><path d="M805 792 L806 754 C 806 748 808 745 810 745 C 812 745 814 748 814 754 L815 792 Z" fill="#2a1d16"/><path d="M804 756 C 800 742 802 726 806 718 L816 718 C 820 726 822 742 818 756 Z" fill="#8f3f33"/><path d="M805 736 C 803 744 803 752 804 760 L817 760 C 818 752 818 744 816 736 Z" fill="#7a3529"/><path d="M806 718 C 806 712 808 709 811 709 C 814 709 816 712 816 718 Z" fill="#3a2a20"/><circle cx="811" cy="703" r="5.4" fill="#2e2018"/><path d="M805 700 C 805 695 808 692 811 692 C 815 692 817 696 817 701 L816 706 C 814 703 810 703 806 705 Z" fill="#22160f"/><path d="M816 724 C 819 730 820 738 819 746 L825 748 C 826 738 824 728 820 722 Z" fill="#6f3126"/><path d="M806 750 L817 750 L818 757 L805 757 Z" fill="#2f2118"/></g><g><path d="M1218 392 C 1224 392 1228 398 1227 406 C 1226 414 1221 418 1215 416 C 1209 414 1207 405 1210 398 Z" fill="none" stroke="#a9c069" stroke-opacity=".3" stroke-width="1.4"/><circle cx="1244" cy="434" r="21" fill="url(#dew28)"/><circle cx="1244" cy="434" r="21" fill="none" stroke="#dff0e6" stroke-opacity=".34" stroke-width="1.2"/><ellipse cx="1236" cy="426" rx="6.4" ry="4.6" fill="#fdfff8" opacity=".78" transform="rotate(-28 1236 426)"/><ellipse cx="1249" cy="444" rx="8.6" ry="4" fill="#c9e6d8" opacity=".22"/><ellipse cx="1252" cy="428" rx="3.4" ry="2.4" fill="#f2fbf4" opacity=".5"/></g><rect width="1440" height="900" fill="url(#vig28)"/></svg>
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+<div class="hero-in">
+  <span class="notice"><span class="dot"></span>全文不涉及关键情节与结局 · 梗概只到第一幕</span>
+  <div class="eyebrow">日本电影专题 · 第 <b>28</b> 期<i></i>2010</div>
+  <h1>借东西的小人阿莉埃蒂</h1>
+  <p class="latin">借りぐらしのアリエッティ</p>
+  <p class="latin">THE SECRET WORLD OF ARRIETTY</p>
+  <p class="hero-sub">地板下面还有一层国土。住在那里的人不生产，只<em>借</em>——规矩只有一条：不能被看见。</p>
+  <div class="chips">
+    <span class="chip"><b>豆瓣 8.9</b> · 641,993 人</span>
+    <span class="chip">IMDb <b>7.6</b></span>
+    <span class="chip">烂番茄 <b>94%</b> · 151 篇</span>
+    <span class="chip">第 34 回学院奖 <b>最优秀动画</b></span>
+    <span class="chip"><b>94</b> 分钟</span>
+  </div>
+</div>
+<div class="scroll-hint">SCROLL<span></span></div>
+</header>
+
+<nav id="hud" aria-hidden="true">
+  <b><i></i>梗概</b><b><i></i>海报</b><b><i></i>档案</b><b><i></i>人物</b><b><i></i>荣誉</b>
+</nav>
+
+<section class="sec" id="s1" style="border-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">01</span><h2>为什么是这一部</h2><span class="kicker">Editor's Note</span></div>
+    <div class="intro">
+      <div class="lede reveal">
+        <p>东京郊外有一栋老房子。房主是一位姓牧的老妇人，独居，养一只猫。房子是战前留下的：木地板、纸窗、檐下有一排旧木格，院子里的树比房子还老。地板下面，住着另外一家三口。</p>
+        <p>他们身高不到十厘米。家具是人家的火柴盒与线轴，碗是瓶盖，绳梯是别人丢掉的别针与一段麻绳。他们不种、不做、不买——他们「借」：一块方糖、一张纸巾、一截线、一片刚好能盖住脸的叶子。借来的东西要还，所以他们借得很少，少到这栋房子的主人一辈子都不会发现。</p>
+        <p>规矩只有一条：<strong>不能被看见</strong>。被看见了，这一家就得搬。</p>
+        <p>阿莉埃蒂十四岁。今天晚上，父亲波德要带她出第一次门。他教她贴着墙走、在光里停住、听见人的脚步就屏住呼吸；教她怎么用一根绳子和一枚别针，从桌面下到地面。母亲霍米莉在厨房里等，一边等一边念叨——她在这栋房子的地板下住了大半辈子，把「什么都不改变」当成最高的智慧。</p>
+        <p>同一天下午，房子里来了一个十二岁的男孩。他叫翔，心脏不好，要在手术前来这里静养一周。大人们说话时把声音压低，他一个人坐在走廊上，看院子里的草。</p>
+        <p>那天夜里，阿莉埃蒂在厨房的台面上够到了一块方糖。她把它抱起来，抬头——<strong>看见了一双眼睛</strong>。</p>
+        <p>方糖掉了。</p>
+        <p class="dash">——本文的梗概就停在这里。之后那一个夏天发生了什么，留给电影。</p>
+      </div>
+      <aside class="glance reveal">
+        <h3>At a Glance</h3>
+        <dl>
+          <div><dt>一句话</dt><dd>一个十厘米高的女孩，和一个只剩一次手术的男孩。</dd></div>
+          <div><dt>看点</dt><dd>它把「借」拍成一整套生活方式，<b>不是偷</b>。</dd></div>
+          <div><dt>节奏</dt><dd>慢，但每一分钟都在长。<small>94 分钟，吉卜力长片里偏短</small></dd></div>
+          <div><dt>情绪</dt><dd>不催泪，是心里空出一小块。</dd></div>
+          <div><dt>不适合</dt><dd>想看打斗与冒险的人；把「奇幻」当成「热闹」的人。</dd></div>
+          <div><dt>版本</dt><dd>94 分钟，无加长版。<small>日语原声与迪士尼英语配音是两套班底</small></dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="acts reveal">
+      <div class="act"><div class="t">第一部 · 借</div><h4>规矩</h4><p>先把世界建起来：地板下的厨房、一枚别针做的绳梯、一块方糖的重量。这一段的责任，是让你相信那个尺度真的存在。</p></div>
+      <div class="act"><div class="t">第二部 · 被看见</div><h4>善意</h4><p>一个孩子的善意，落在另一个物种身上，会变成什么。这部片从这里开始变沉，而不是变热闹。</p></div>
+      <div class="act"><div class="t">第三部 · 让位</div><h4>退场</h4><p>当一栋房子不再安全，问题不再是「怎么留下」，而是「谁该退出去」。全片真正的重量都在这里。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">02</span><h2>一枚别针，一颗方糖</h2><span class="kicker">Concept Poster</span></div>
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+          <svg class="poster-svg" viewBox="0 0 760 1000" aria-label="概念海报：木地板上的一枚安全别针、一根麻绳和一颗方糖">
+<defs>
+<linearGradient id="bd28" x1="0" y1="0" x2=".4" y2="1"><stop offset="0" stop-color="#402c1a"/><stop offset=".42" stop-color="#2e1e11"/><stop offset=".78" stop-color="#22160c"/><stop offset="1" stop-color="#170f08"/></linearGradient>
+<linearGradient id="mtl28" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2e8e4"/><stop offset=".22" stop-color="#b3bdb8"/><stop offset=".55" stop-color="#7b8783"/><stop offset=".8" stop-color="#4e5956"/><stop offset="1" stop-color="#333c3a"/></linearGradient>
+<linearGradient id="rope28" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c39a63"/><stop offset=".5" stop-color="#a9834f"/><stop offset="1" stop-color="#7d5d34"/></linearGradient>
+<linearGradient id="cubeT28" x1="0" y1="0" x2=".7" y2="1"><stop offset="0" stop-color="#faf4e4"/><stop offset="1" stop-color="#ebdfc4"/></linearGradient>
+<linearGradient id="cubeL28" x1="0" y1="0" x2=".3" y2="1"><stop offset="0" stop-color="#e6d9bb"/><stop offset="1" stop-color="#cbbd9b"/></linearGradient>
+<linearGradient id="cubeR28" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c8b995"/><stop offset="1" stop-color="#a3946f"/></linearGradient>
+<radialGradient id="top28" cx=".42" cy=".2" r=".8"><stop offset="0" stop-color="#f4dfae" stop-opacity=".22"/><stop offset=".55" stop-color="#c69a5e" stop-opacity=".08"/><stop offset="1" stop-color="#7d5d34" stop-opacity="0"/></radialGradient>
+<radialGradient id="sh28" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#0a0503" stop-opacity=".62"/><stop offset=".55" stop-color="#0a0503" stop-opacity=".3"/><stop offset="1" stop-color="#0a0503" stop-opacity="0"/></radialGradient>
+<radialGradient id="pool28b" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f0d49c" stop-opacity=".14"/><stop offset="1" stop-color="#b8813f" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="760" height="1000" fill="url(#bd28)"/>
+<rect width="760" height="1000" fill="url(#top28)"/>
+<g stroke="#7d5d34" stroke-opacity=".13" stroke-width="1.3" fill="none"><path d="M-10 96 C 140 84 300 110 440 92 C 560 78 680 100 770 88"/><path d="M-10 168 C 120 154 280 180 420 160 C 550 142 670 168 770 154"/><path d="M-10 330 C 150 316 290 344 450 322 C 580 304 690 330 770 316"/><path d="M-10 432 C 130 420 310 444 460 424 C 590 408 700 432 770 420"/><path d="M-10 560 C 140 546 300 572 450 550 C 580 532 690 558 770 544"/><path d="M-10 700 C 160 686 320 712 470 690 C 600 672 700 698 770 684"/><path d="M-10 812 C 130 798 290 824 440 802 C 570 784 680 810 770 796"/><path d="M-10 916 C 150 902 310 928 460 906 C 590 888 690 914 770 900"/></g>
+<g><rect x="-10" y="212" width="780" height="4" fill="#100905" opacity=".85"/><rect x="-10" y="216" width="780" height="1.6" fill="#8a6a3e" opacity=".3"/><rect x="-10" y="620" width="780" height="4" fill="#100905" opacity=".85"/><rect x="-10" y="624" width="780" height="1.6" fill="#8a6a3e" opacity=".3"/></g>
+<ellipse cx="560" cy="742" rx="230" ry="200" fill="url(#pool28b)"/>
+<ellipse cx="572" cy="876" rx="112" ry="24" fill="url(#sh28)"/>
+<g><path d="M168 640 L596 344" stroke="#08040a" stroke-opacity=".34" stroke-width="24" stroke-linecap="round"/><path d="M168 640 L596 344" stroke="#08040a" stroke-opacity=".42" stroke-width="12" stroke-linecap="round"/><path d="M168 640 L596 344" stroke="url(#mtl28)" stroke-width="9.4" stroke-linecap="round"/><path d="M186 626 L572 372" stroke="url(#mtl28)" stroke-width="6.2" stroke-linecap="round"/><path d="M172 634 L592 341" stroke="#f2f7f3" stroke-opacity=".34" stroke-width="1.6" stroke-linecap="round"/><path d="M190 620 L570 368" stroke="#f2f7f3" stroke-opacity=".16" stroke-width="1.1" stroke-linecap="round"/><circle cx="160" cy="646" r="12" fill="#4a5451"/><circle cx="160" cy="646" r="12" fill="none" stroke="url(#mtl28)" stroke-width="4.6"/><circle cx="160" cy="646" r="4.4" fill="#1b1008" opacity=".55"/><g transform="rotate(-31.5 596 344)"><rect x="580" y="334" width="32" height="19" rx="8" fill="url(#mtl28)"/><rect x="584" y="338" width="24" height="4" rx="2" fill="#232b29" opacity=".5"/></g><path d="M152 658 L120 700 L129 705 L165 664 Z" fill="url(#mtl28)"/><path d="M152 658 L120 700" stroke="#f2f7f3" stroke-opacity=".3" stroke-width="1.4"/></g>
+<g><path d="M452 -12 C 470 140 502 300 530 468 C 552 604 568 686 561 738" fill="none" stroke="#3a2712" stroke-opacity=".45" stroke-width="9.4" stroke-linecap="round"/><path d="M452 -12 C 470 140 502 300 530 468 C 552 604 568 686 561 738" fill="none" stroke="url(#rope28)" stroke-width="6.4" stroke-linecap="round"/><path d="M452 -12 C 470 140 502 300 530 468 C 552 604 568 686 561 738" fill="none" stroke="#f0dcb4" stroke-opacity=".22" stroke-width="1.5" stroke-dasharray="2.6 5.4" stroke-linecap="round"/><path d="M561 738 C 592 744 606 760 601 776 C 596 792 574 794 566 782" fill="none" stroke="url(#rope28)" stroke-width="6" stroke-linecap="round"/></g>
+<g><path d="M556 726 L618 760 L556 794 L494 760 Z" fill="url(#cubeT28)"/><path d="M494 760 L556 794 L556 860 L494 826 Z" fill="url(#cubeL28)"/><path d="M556 794 L618 760 L618 826 L556 860 Z" fill="url(#cubeR28)"/><path d="M556 726 L618 760 L556 794 L494 760 Z" fill="none" stroke="#a89a7e" stroke-opacity=".34" stroke-width="1"/><path d="M556 794 L556 860" stroke="#8d805f" stroke-opacity=".34" stroke-width="1"/><path d="M494 760 L494 826" stroke="#8d805f" stroke-opacity=".26" stroke-width="1"/><path d="M618 760 L618 826" stroke="#8d805f" stroke-opacity=".26" stroke-width="1"/><g fill="#8d805f" opacity=".16"><circle cx="520" cy="776" r="1.6"/><circle cx="536" cy="768" r="1.3"/><circle cx="552" cy="782" r="1.5"/><circle cx="574" cy="770" r="1.3"/><circle cx="592" cy="778" r="1.6"/><circle cx="526" cy="798" r="1.4"/><circle cx="540" cy="812" r="1.2"/><circle cx="578" cy="800" r="1.4"/><circle cx="596" cy="812" r="1.2"/><circle cx="514" cy="788" r="1.2"/></g><path d="M500 766 L556 736" stroke="#fffaf0" stroke-opacity=".5" stroke-width="1.6"/><path d="M502 800 L502 822" stroke="#f6efdd" stroke-opacity=".18" stroke-width="2"/></g>
+<path d="M78 908 L682 908" stroke="#a8916e" stroke-opacity=".42" stroke-width="1"/>
+<text x="78" y="948" font-family="Songti SC,serif" font-size="29" fill="#f2e6cb" letter-spacing="3">借东西的小人阿莉埃蒂</text>
+<text x="80" y="974" font-family="Didot,serif" font-size="10.5" fill="#8a7a62" letter-spacing="3.4">THE SECRET WORLD OF ARRIETTY · 2010 · 94 MIN</text>
+<g fill="#2b2018"><text x="112" y="186" font-family="Songti SC,serif" font-size="22" text-anchor="middle">借</text><text x="112" y="217" font-family="Songti SC,serif" font-size="22" text-anchor="middle">り</text><text x="112" y="248" font-family="Songti SC,serif" font-size="22" text-anchor="middle">ぐ</text><text x="112" y="279" font-family="Songti SC,serif" font-size="22" text-anchor="middle">ら</text><text x="112" y="310" font-family="Songti SC,serif" font-size="22" text-anchor="middle">し</text><text x="112" y="341" font-family="Songti SC,serif" font-size="22" text-anchor="middle">の</text><text x="112" y="372" font-family="Songti SC,serif" font-size="22" text-anchor="middle">ア</text><text x="112" y="403" font-family="Songti SC,serif" font-size="22" text-anchor="middle">リ</text><text x="112" y="434" font-family="Songti SC,serif" font-size="22" text-anchor="middle">エ</text><text x="112" y="465" font-family="Songti SC,serif" font-size="22" text-anchor="middle">ッ</text><text x="112" y="496" font-family="Songti SC,serif" font-size="22" text-anchor="middle">テ</text><text x="112" y="527" font-family="Songti SC,serif" font-size="22" text-anchor="middle">ィ</text></g>
+<g transform="rotate(-4 112 588)"><rect x="88" y="564" width="48" height="48" fill="none" stroke="#a0453a" stroke-width="3.2" stroke-opacity=".82"/><text x="112" y="588" font-family="Songti SC,serif" font-size="17" fill="#a0453a" text-anchor="middle">廿</text><text x="112" y="607" font-family="Songti SC,serif" font-size="17" fill="#a0453a" text-anchor="middle">八</text></g>
+</svg>
+        </div>
+        <p class="pcap">CONCEPT POSTER · 28 / 别针、麻绳与一颗方糖</p>
+      </div>
+      <div class="pnotes reveal">
+        <div class="pnote"><div class="n">Ⅰ</div><h4>一枚别针，是他们的起重机</h4><p>别人补袜子用的东西，在这部片里是承重结构：它要撑住一个十四岁女孩的体重，还要撑住一整个家的口粮。<b>尺度一换，工具就换了身份</b>——这是全片最重要的一个转译。</p></div>
+        <div class="pnote"><div class="n">Ⅱ</div><h4>方糖不是糖，是货币</h4><p>它够一家人吃很久，也是阿莉埃蒂第一次单独够到的「战利品」。海报上它被摆得比别针还重，因为在那个世界里，<em>一颗方糖的分量，约等于我们的一袋米。</em></p></div>
+        <div class="pnote"><div class="n">Ⅲ</div><h4>麻绳是从上面垂下来的</h4><p>绳子的起点不在画面里——它从画外垂进来。这条绳子每天都从人类的地板缝里放下去，<b>而住在地板上的人，从来没往下看过一眼。</b>整部电影就架在这条没人注意的绳子上。</p></div>
+        <div class="pnote"><div class="n">Ⅳ</div><h4>木纹是他们的天空</h4><p>背景那片木纹，是我们的地板，是他们的天顶。所以他们抬头看见的不是云，是<b>木头的年轮和钉过的钉眼</b>。这也是本页首屏为什么从草叶和苔藓的高度拍过去。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">03</span><h2>档案</h2><span class="kicker">Credits &amp; Figures</span></div>
+    <dl class="spec reveal">
+      <div><dt>原名</dt><dd>借りぐらしのアリエッティ</dd></div>
+      <div><dt>英译</dt><dd>The Secret World of Arrietty<small>英国版作 The Borrower Arrietty</small></dd></div>
+      <div><dt>公映</dt><dd>2010-07-17<small>日本 · 东宝配给</small></dd></div>
+      <div><dt>片长</dt><dd>94 分钟<small>彩色 · 动画 / 奇幻 / 冒险</small></dd></div>
+      <div><dt>原作</dt><dd>玛丽·诺顿《床下的小人》<small>The Borrowers, 1952 · 同年卡内基奖</small></dd></div>
+      <div><dt>企划</dt><dd>宫崎骏<small>原始题名《小さなアリエッティ》</small></dd></div>
+      <div><dt>脚本</dt><dd>宫崎骏 / 丹羽圭子</dd></div>
+      <div><dt>导演</dt><dd>米林宏昌<small>首部长片 · 公开时 37 岁</small></dd></div>
+      <div><dt>制片</dt><dd>铃木敏夫</dd></div>
+      <div><dt>音乐</dt><dd>塞西尔·科尔贝<small>Cécile Corbel · 布列塔尼竖琴</small></dd></div>
+      <div><dt>作画监督</dt><dd>贺川爱 / 山下明彦</dd></div>
+      <div><dt>美术监督</dt><dd>武重洋二 / 吉田昇</dd></div>
+      <div><dt>配音</dt><dd>志田未来 / 神木隆之介<small>大竹忍 · 三浦友和 · 树木希林 · 藤原龙也 · 竹下景子</small></dd></div>
+      <div><dt>银幕</dt><dd>全国 447 块</dd></div>
+      <div><dt>首周</dt><dd>两日 9 亿日元<small>约 68 万人 · 当周第 1 位</small></dd></div>
+      <div><dt>兴行</dt><dd>92.6 亿日元<small>2010 年度邦画第 1 位</small></dd></div>
+      <div><dt>北美</dt><dd>1,522 馆<small>1,986.75 万美元 · 当时吉卜力在美最高</small></dd></div>
+      <div><dt>电视初放</dt><dd>2011-12-16<small>收视 16.5%</small></dd></div>
+      <div><dt>原型</dt><dd>青森县平川市 盛美园<small>另参小金井 はけの森美術館 的水路</small></dd></div>
+      <div><dt>重映</dt><dd>2026-10-23<small>日本重启上映 · 北美 4K 修复版同年 5 月</small></dd></div>
+      <div class="wide"><dt>一句话</dt><dd>它是一部关于「借」的电影，而它自己也全都是借来的——借一册英国童话的骨架，借一个新人的手，借一把法国的竖琴。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="s4">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">04</span><h2>口碑，与几个必须说清的口径</h2><span class="kicker">Reception</span></div>
+    <div class="scores reveal">
+      <div class="sc hi"><div class="src">Douban 豆瓣</div><div class="val">8.9<small>/ 10</small></div><div class="meta"><b>641,993</b> 人评价 · 五星 54.4% / 四星 37.2% / 三星 7.9%<br><b>Top250 第 117 位</b></div></div>
+      <div class="sc"><div class="src">IMDb</div><div class="val">7.6<small>/ 10</small></div><div class="meta"><b>119,441</b> 票 · 与豆瓣差 <b>1.3</b> 分<br>海外票池是豆瓣的五分之一</div></div>
+      <div class="sc"><div class="src">Rotten Tomatoes</div><div class="val">94%<small>Tomatometer</small></div><div class="meta"><b>151</b> 篇影评 · 观众 86%（10,000+）<br>评论界共识：视觉丰盛、不喧哗、有底子</div></div>
+      <div class="sc"><div class="src">Metacritic</div><div class="val">80<small>/ 100</small></div><div class="meta">吉卜力作品里少见的高分档<br>与《辉夜姬物语》89 同属「英美评论界比本土更热」的一类</div></div>
+    </div>
+    <ul class="caliber reveal">
+      <li><i>01</i><span><b>它有四个名字：</b>日文《借りぐらしのアリエッティ》、直译《The Borrower Arrietty》（英国用这个）、北美《The Secret World of Arrietty》（迪士尼改的）、中文《借东西的小人阿莉埃蒂》。北美那个名字不是翻译，是重命名。</span></li>
+      <li><i>02</i><span><b>北美版是另一次配音，不是原版：</b>迪士尼重配了整套英语音轨（Bridgit Mendler / David Henrie / Amy Poehler / Will Arnett / Carol Burnett），导演栏另挂 Gary Rydstrom。日文原版是志田未来、神木隆之介那一套。<b>两版差别不小，建议看原声。</b></span></li>
+      <li><i>03</i><span><b>92.6 亿是「邦画第一」，不是「总榜第一」：</b>它拿下的是 2010 年度<b>日本国产片</b>票房冠军。那一年含进口片的总榜冠军不是它。中文资料常把这两个榜混成一个。</span></li>
+      <li><i>04</i><span><b>豆瓣比 IMDb 高 1.3 分，不是谁错了：</b>豆瓣的票池是 IMDb 的五倍多；日本动画在东亚的接受度和在英美的接受度本来就不是一回事。两个分数都真实，只是回答的问题不同。</span></li>
+      <li><i>05</i><span><b>它把舞台从英国搬到了现代日本：</b>原作是 19 至 20 世纪的英国乡间，电影改成当代日本的郊外老宅。宫崎骏的解释是：把舞台放在身边，观众才会重新看自己的日子。所以这不是照搬，是一次重写。</span></li>
+      <li><i>06</i><span><b>「吉卜力最年轻的长片导演」是当时的口径：</b>米林宏昌 1973 年生，公映时 37 岁，是当时吉卜力长片导演里最年轻的一位。这句话有时间和范围两个限定，不能去掉。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="s5">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">05</span><h2>六个人</h2><span class="kicker">Characters</span></div>
+    <div class="people reveal">
+      <div class="person"><div class="role">BORROWER</div><h4>阿莉埃蒂<small>14 岁</small></h4><div class="actor">志田未来</div><p>今晚第一次出门「借」的人。她对世界的好奇大过对世界的怕。<span><b>她想知道的不是「怎么活下去」，是「外面长什么样」。</b></span></p></div>
+      <div class="person"><div class="role">THE BOY</div><h4>翔<small>12 岁</small></h4><div class="actor">神木隆之介</div><p>心脏不好，手术在几天后。被送到这栋老房子静养一周，一个人待着。<span><b>他不怕死，他怕的是没留下过任何痕迹。</b></span></p></div>
+      <div class="person"><div class="role">FATHER</div><h4>波德<small>61 岁</small></h4><div class="actor">三浦友和</div><p>家里的顶梁柱。手极巧：会焊接、会编草篮、会在垂直的木纹上找落脚点。<span><b>他不解释规矩，因为规矩不需要解释。</b></span></p></div>
+      <div class="person"><div class="role">MOTHER</div><h4>霍米莉<small>52 岁</small></h4><div class="actor">大竹忍</div><p>把一整套「借来的东西」缝成一个家。她最大的梦想是看一眼真正的海。<span><b>她把「安全」定义成「什么都不改变」。</b></span></p></div>
+      <div class="person"><div class="role">HOUSEKEEPER</div><h4>春<small>65 岁</small></h4><div class="actor">树木希林</div><p>在这栋房子里做了几十年。她认定地板下有人，所有人都当她是老糊涂。<span><b>她要抓的不是怪物，是一个能证明自己没疯的证据。</b></span></p></div>
+      <div class="person"><div class="role">THE OWNER</div><h4>牧贞子<small>68 岁</small></h4><div class="actor">竹下景子</div><p>房子的主人，翔的姨婆。父亲留下一套小人尺寸的厨房，等了一辈子没人来用。<span><b>她是这栋房子里唯一相信的人，也是唯一不着急的人。</b></span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s6">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">06</span><h2>六处冲突</h2><span class="kicker">Conflicts</span></div>
+    <div class="cf-list reveal">
+      <div class="cf"><h4><i>CONFLICT 01</i>阿莉埃蒂 × 翔<br>被看见就是灭顶</h4><p>他确实没有恶意。可对这一家来说，「被知道」这件事本身就是灾难——<em>不是因为他会伤害她们，是因为他没办法保证别人不。</em>善意在这里不构成豁免，这是全片最不近人情、也最诚实的一条设定。</p></div>
+      <div class="cf"><h4><i>CONFLICT 02</i>阿莉埃蒂 × 霍米莉<br>好奇心是奢侈品</h4><p>母亲把「安全」定义为「什么都不变」：不出去、不多借、不跟人打交道。女儿想问的是：<em>如果一辈子只能这样，那活着和藏在柜子后面有什么区别。</em>两个人说的都是爱，用的却是两套语言。</p></div>
+      <div class="cf"><h4><i>CONFLICT 03</i>波德 × 阿莉埃蒂<br>手艺，也是成年礼</h4><p>父亲话极少，教她的全是技术：绳结、落脚点、屏气的时机。<em>他不给理由，只给方法</em>——因为在他那一代，「为什么」是个不该问的问题。女儿要的偏偏是理由。</p></div>
+      <div class="cf"><h4><i>CONFLICT 04</i>一家人 × 春<br>她不是坏人</h4><p>家政妇春在这栋房子里做了几十年。她说地板下有人，所有人当她是老糊涂。<em>她要的不是钱也不是名声，是一个能证明自己没疯的证据</em>——所以她才最难对付：一个想被相信的人，什么都做得出来。</p></div>
+      <div class="cf"><h4><i>CONFLICT 05</i>翔 × 自己<br>提前学会告别</h4><p>十二岁，手术在几天后，父母离了婚，母亲在国外。他比同龄人安静，也比同龄人先学会一件事：<em>自己大概不会在这世上留太久。</em>于是他开始想做一件「留下点什么」的事——而这正是第 01 条冲突的起点。</p></div>
+      <div class="cf"><h4><i>CONFLICT 06</i>阿莉埃蒂 × 斯皮勒<br>同类还有另一种活法</h4><p>斯皮勒十二岁，一个人住在野外：披蓑衣、拿弓箭、吃蚱蜢腿。他不借人的东西，也不需要人。他证明了一件事——<em>她们不是最后一家</em>；也证明了另一件事：活着可以完全不需要任何人。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s7">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">07</span><h2>八个时间点</h2><span class="kicker">Lineage</span></div>
+    <div class="lineage reveal">
+      <div class="ln"><div class="yr">1952</div><h4>一本书</h4><p>英国作家玛丽·诺顿出版《床下的小人》（The Borrowers），同年获卡内基奖。此后七十余年，它被改编成电影、电视剧、广播剧不止一次。</p></div>
+      <div class="ln"><div class="yr">1970 年代</div><h4>一次没拍成的企划</h4><p>宫崎骏与高畑勋曾想把它动画化，当时的题名叫《チッカポッカ》，内容是小人打猎。企划没走到成片，后来演化成了别的故事。</p></div>
+      <div class="ln"><div class="yr">2008 · 初夏</div><h4>重新写进企划书</h4><p>宫崎骏重新提出这个企划，最初题名《小さなアリエッティ》——因为他一直记得「阿莉埃蒂」这个名字念起来的声响。</p></div>
+      <div class="ln"><div class="yr">2009 · 4 月</div><h4>一封来自布列塔尼的信</h4><p>法国竖琴手塞西尔·科尔贝给吉卜力寄了一封信和一张自己的 CD，信里说她的一切都受吉卜力影响。她后来成了吉卜力第一位担纲主题歌的海外音乐家。</p></div>
+      <div class="ln"><div class="yr">2010 · 7 · 17</div><h4>公映</h4><p>东宝配给，全国 447 块银幕。首两日 9 亿日元、约 68 万人，当周第一。最终兴行 92.6 亿，2010 年度邦画冠军。</p></div>
+      <div class="ln"><div class="yr">2011 · 2 · 18</div><h4>学院奖</h4><p>第 34 回日本学院奖<b>最优秀动画作品赏</b>。同届最优秀作品是《告白》，最优秀导演是中岛哲也。</p></div>
+      <div class="ln"><div class="yr">2012 · 2 · 17</div><h4>北美</h4><p>迪士尼配给，1,522 馆同开——当时吉卜力在美的最大规模，超过《悬崖上的金鱼姬》。最终 1,986.75 万美元。</p></div>
+      <div class="ln now"><div class="yr">2026 · 10 · 23</div><h4>重映</h4><p>日本重启上映；北美 4K 修复版同年 5 月上映。十六年后，它又回到了银幕上。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s8">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">08</span><h2>荣誉，与几个更像纪录的数字</h2><span class="kicker">Awards &amp; Records</span></div>
+    <div class="awards reveal">
+      <div class="award gold"><div class="yr">2011</div><div><h4>第 34 回日本学院奖 · 最优秀动画作品赏</h4><p>动画部门只有「最优秀 1 部 + 优秀 4 部」，它是最优秀那一部。其余四部是《彩色》《哆啦A梦》《名侦探柯南》《ONE PIECE》。</p></div></div>
+      <div class="award gold"><div class="yr">2011</div><div><h4>东京动画奖 2011 · 年度动画 + 监督赏</h4><p>作品与导演同时拿下。这也是米林宏昌作为导演拿到的第一个奖。</p></div></div>
+      <div class="award cold"><div class="yr">2011</div><div><h4>第 11 回 Nippon Connection · 日本电影赏</h4><p>德国法兰克福的日本电影节。这个奖说明它在欧洲艺术院线也站住了。</p></div></div>
+      <div class="award cold"><div class="yr">2010</div><div><h4>兴行 92.6 亿日元 · 年度邦画第 1 位</h4><p>同年日本国产片票房冠军。超过当年所有真人片。</p></div></div>
+      <div class="award cold"><div class="yr">2012</div><div><h4>北美 1,522 馆 · 1,986.75 万美元</h4><p>当时吉卜力在美的最大发行规模与最高票房，两项都超过《悬崖上的金鱼姬》。</p></div></div>
+      <div class="award cold"><div class="yr">2011</div><div><h4>电视初放 · 收视 16.5%</h4><p>2011-12-16 日本电视台「金曜ロードショー」档。此后又重播四次。</p></div></div>
+      <div class="award cold"><div class="yr">2010</div><div><h4>预售票 5.4 万张 · 前作约 3 倍</h4><p>上映前两个月的数字，已经超过《悬崖上的金鱼姬》同期三倍。</p></div></div>
+      <div class="award cold"><div class="yr">2010</div><div><h4>「阿莉埃蒂 × 种田阳平展」· 入场破 10 万</h4><p>东京都现代美术馆，1,200 平方米展厅搭起巨型实景，后来巡展爱媛、神户、新潟。</p></div></div>
+      <div class="award wide"><div class="yr">口径</div><div><h4>为什么这里既没有「最佳影片」，也没有奥斯卡</h4><p>日本学院奖的动画部门是独立赛道，最优秀动画作品赏不等于最佳影片，也不与真人片同台竞争。至于奥斯卡：第 84 届最佳动画长片的五部提名里没有它。它在英美的位置，是靠 94% 的烂番茄、80 的 Metacritic 和 1,900 万美元票房立起来的，不是靠提名。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s9">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">09</span><h2>六处亮点</h2><span class="kicker">Six Things</span></div>
+    <div class="grid6 reveal">
+      <div class="g6"><div class="n">01</div><h4>尺度就是这部片的语法</h4><p>一枚别针是承重梁，一颗方糖是一袋米，一滴水是一片湖。<b>全片没有一句台词解释他们多小</b>，全靠道具与镜头距离让你自己算出来——这是动画才能做到的叙事。</p></div>
+      <div class="g6"><div class="n">02</div><h4>声音是第二主角</h4><p>整音笠松广司把整个声音世界抬高了：木头的响、纸的响、雨点落在叶面上的响，全都放大到和我们等身。<b>你闭眼听也能听出他们有多小。</b></p></div>
+      <div class="g6"><div class="n">03</div><h4>一把布列塔尼竖琴</h4><p>塞西尔·科尔贝的音乐不是「配乐」，是另一条声道：凯尔特竖琴、法语腔的日语、一点点民谣的呼吸感。<b>它是吉卜力声音里最不像吉卜力的一次。</b></p></div>
+      <div class="g6"><div class="n">04</div><h4>这栋房子有原型</h4><p>和洋折衷的老宅与庭院，以青森县平川市的<b>盛美园</b>为模型；小金井「はけの森美術館」的水路也被参考过。所以那栋房子不是凭空设计的，它有真实的湿度和朝向。</p></div>
+      <div class="g6"><div class="n">05</div><h4>没有反派</h4><p>春是唯一动手抓人的人，可她的动机只是想被相信一次。整部片最大的敌人不是谁，是<b>「被看见」这件事本身</b>——一个没有脸的对手，比任何坏人都难打。</p></div>
+      <div class="g6"><div class="n">06</div><h4>每一场都有一道缝里的光</h4><p>小人的世界永远在阴影里：光从地板缝、从格窗、从叶隙漏下来。<b>于是每一次「亮起来」都有两层意思</b>——有东西被照亮，也就有东西可能被看见。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">10</span><h2>为什么值得看</h2><span class="kicker">Why It Matters</span></div>
+    <div class="why reveal">
+      <article><h3>一、它把「偷」改写成「借」，于是有了伦理</h3><p>同一个动作，叫偷就是犯罪，叫借就是生计。这部片把整套世界观架在这一个动词上：<strong>借是有借有还的，所以借得少、借得准、借完要留痕</strong>。他们不占有一件东西，只借用它的功能——方糖用来甜，别针用来承重，纸巾用来做门。</p><p>这是一个非常成年人的设定。它讲的其实是我们每个人都在做的事：<em>我们住的房子、用的水、呼吸的空气，哪一样真是我们自己造的。</em></p></article>
+      <article><h3>二、它讲的是「退场」，不是「拯救」</h3><p>绝大多数奇幻片的结构是「发现—冒险—胜利」。这一部不是。它的结构是「共处—被看见—让位」。<strong>没有一场战斗，没有一次胜利，主角从头到尾没有变强，只是换了一个地方住。</strong></p><p>所以它看起来温柔，其实很硬。它承认了一件事：有些人和有些物种，是靠「不被注意」活下来的；而一旦被注意，他们能做的只有安静地走开。<em>这不是悲剧，是现实。</em></p></article>
+      <article><h3>三、它把「善意」拍成了会伤人的东西</h3><p>翔从头到尾都只想帮忙。他送东西、他守着秘密、他甚至在别人为难的时候站出来。<strong>可他的每一次善意，都在把这一家往更危险的地方推一寸。</strong>因为善意改变不了力量差：一个能决定你住哪儿的人，再怎么温柔，也还是那个人。</p><p>这是全片最不舒服、也最值得看的地方。它没有指责任何人，只是把这件事摆在那儿——<em>有时候伤害不是来自恶意，是来自「我以为这对你好」。</em></p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">11</span><h2>观影提示</h2><span class="kicker">Before You Press Play</span></div>
+    <div class="tips reveal">
+      <div class="tip"><div class="k">01</div><h4>看日语原声</h4><p>北美版是迪士尼重配的另一套班底，导演栏都换了人。原声里志田未来那种「还没学会害怕」的声线，是这部片的半条命。</p></div>
+      <div class="tip"><div class="k">02</div><h4>音量开大一点</h4><p>它几乎没有大场面，全靠声音撑起尺度。用手机外放看，等于把它最贵的那部分扔了。</p></div>
+      <div class="tip"><div class="k">03</div><h4>别当冒险片看</h4><p>没有追逐、没有打斗、没有反派阴谋。它是一部把节奏放到很慢的家庭片，只不过这一家人只有十厘米高。</p></div>
+      <div class="tip"><div class="k">04</div><h4>数一数「借」出现了几次</h4><p>这个词每次出口，意思都不太一样：第一次是手艺，中间是规矩，最后是一种告别的方式。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="wrap">
+    <div class="tag reveal">CODA</div>
+    <p class="q reveal"><span>他们把这叫「借」，</span><span>因为借，是要还的。</span><span>于是一生都在还：</span><span>用不被看见，来付房租。</span></p>
+    <p class="src reveal">非片中台词 · 为本页所写</p>
+    <div class="stamp" aria-hidden="true"><div><span>JAPANESE CINEMA</span><span>NO. 28</span><b>借りぐらし</b><span>MMX</span></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>日本电影专题 · 第 28 期 ·《借东西的小人阿莉埃蒂》借りぐらしのアリエッティ（2010，米林宏昌）<br>
+    页面数据回源：豆瓣条目 4202302 · OMDb tt1568921 · Rotten Tomatoes · 日文维基《借りぐらしのアリエッティ》／《米林宏昌》／第 34 回日本アカデミー賞。<br>
+    梗概止于第一幕，结局不做任何交代。若你已看过，欢迎想想：这栋房子的地板下，现在还有人在借吗。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c = document.getElementById('heroCanvas');
+  if(c){
+    var ctx = c.getContext('2d'), W=0, H=0, motes=[], t=0, dpr=Math.min(window.devicePixelRatio||1,2);
+    function size(){
+      W = c.clientWidth; H = c.clientHeight;
+      c.width = Math.round(W*dpr); c.height = Math.round(H*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      build();
+    }
+    function build(){
+      motes=[];
+      var n = Math.round(W*H/28000);
+      if(n > 76) n=76;
+      for(var i=0;i < n;i++){
+        motes.push({
+          x: Math.random()*W,
+          y: Math.random()*H,
+          r: .5+Math.random()*1.2,
+          vy: -.05-Math.random()*.11,
+          vx: .02+Math.random()*.06,
+          a: .03+Math.random()*.07,
+          p: Math.random()*6.28
+        });
+      }
+    }
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      t+=0.005;
+      for(var i=0;i<motes.length;i++){
+        var m=motes[i];
+        m.y+=m.vy; m.x+=m.vx;
+        if(m.y < -12){ m.y=H+12; m.x=Math.random()*W; }
+        if(m.x > W+12){ m.x=-12; }
+        var a=m.a*(0.45+0.55*Math.sin(t*0.6+m.p));
+        ctx.beginPath();
+        ctx.fillStyle='rgba(206,220,170,'+a.toFixed(3)+')';
+        ctx.arc(m.x,m.y,m.r,0,6.2832);
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    window.addEventListener('resize',size);
+    size(); draw();
+  }
+
+  var revs = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08, rootMargin:'0px 0px -6% 0px'});
+  revs.forEach(function(e){ io.observe(e); });
+
+  var hud=document.getElementById('hud'), items=[].slice.call(hud.querySelectorAll('b'));
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    hud.classList.toggle('on', y > window.innerHeight*0.55);
+    var p = y/(document.body.scrollHeight - window.innerHeight);
+    var idx = Math.min(4, Math.floor(p*5));
+    items.forEach(function(b,i){ b.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
