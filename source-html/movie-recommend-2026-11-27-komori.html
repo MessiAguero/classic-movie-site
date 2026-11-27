@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>小森林 夏·秋 · 日本电影专题 第 30 期</title>
+<meta name="description" content="森淳一《小森林 夏·秋》（リトル・フォレスト 夏・秋, 2014，桥本爱）：剧情梗概、人物冲突、六处亮点与观看理由。全程不剧透。">
+<style>
+:root{
+  --bg:#080c09; --bg2:#0c110d; --panel:#101610;
+  --ink:#efe8d6; --dim:#9ba193; --dim2:#6c7368;
+  --line:rgba(239,232,214,.12); --line2:rgba(239,232,214,.05);
+  --ac:#b4452e; --ac2:#d9765a;
+  --gold:#c9a25c; --gold2:#e8cd95;
+  --field:#93a05c; --field2:#c9bf85;
+  --cool:#7c9f92; --cool2:#b2cbc0;
+  --pa:#ece4d0; --pa2:#f7f1e0;
+  --seal:#a83c2c; --seal2:#c4715c;
+  --serif:"Songti SC","Source Han Serif SC","Noto Serif SC",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  --latin:"Didot","Optima","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.95;letter-spacing:.012em;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(180,69,46,.32);color:#080c09}
+a{color:inherit}
+body::before{content:"";position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+.wrap{width:min(1160px,calc(100% - 96px));margin:0 auto}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:max(100vh,880px);overflow:hidden;background:#040704;
+  border-bottom:1px solid rgba(180,69,46,.2)}
+.hero-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-scrim{position:absolute;inset:0;
+  background:
+    linear-gradient(to right,rgba(4,7,4,.96) 0%,rgba(4,7,4,.92) 18%,rgba(4,7,4,.72) 34%,rgba(4,7,4,.34) 50%,rgba(4,7,4,.06) 64%,rgba(4,7,4,0) 74%),
+    linear-gradient(to bottom,rgba(4,7,4,.88) 0%,rgba(4,7,4,.58) 14%,rgba(4,7,4,.1) 28%,rgba(4,7,4,0) 48%,rgba(4,7,4,.04) 74%,rgba(4,7,4,.3) 89%,rgba(4,7,4,.58) 100%)}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.notice{display:inline-flex;align-items:center;gap:10px;align-self:flex-start;font-size:11px;
+  letter-spacing:.14em;color:rgba(239,232,214,.72);border:1px solid rgba(239,232,214,.2);
+  border-radius:999px;padding:7px 16px;margin-bottom:34px;background:rgba(8,12,9,.45);backdrop-filter:blur(4px)}
+.notice .dot{width:5px;height:5px;border-radius:50%;background:var(--ac2);box-shadow:0 0 9px rgba(217,118,90,.7)}
+.hero-in{position:relative;z-index:3;width:min(1160px,calc(100% - 96px));margin:0 auto;
+  min-height:max(100vh,880px);display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:10.5vh;padding-bottom:64px}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--latin);font-size:11px;
+  letter-spacing:.34em;color:var(--ac2);text-transform:uppercase;opacity:.92;white-space:nowrap}
+.eyebrow i{display:block;width:52px;height:1px;background:var(--ac2);opacity:.5}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,5.4vw,78px);line-height:1.14;
+  letter-spacing:.18em;margin:26px 0 0;color:#f7f1e0;white-space:nowrap}
+.latin{margin:22px 0 0;font-family:var(--latin);font-size:13px;letter-spacing:.3em;
+  color:rgba(239,232,214,.6)}
+.latin + .latin{margin-top:7px;font-size:10.5px;letter-spacing:.22em;color:rgba(239,232,214,.42)}
+.hero-sub{margin:28px 0 0;max-width:25em;font-size:16px;line-height:2.05;color:rgba(239,232,214,.9)}
+.hero-sub em{font-style:normal;color:#f7f1e0;border-bottom:1px solid rgba(180,69,46,.7);padding-bottom:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:36px;max-width:880px}
+.chip{font-size:11.5px;letter-spacing:.06em;color:rgba(243,237,224,.92);border:1px solid rgba(243,237,224,.18);
+  border-radius:999px;padding:6px 14px;background:rgba(8,12,9,.64);backdrop-filter:blur(7px)}
+.chip b{color:#fff;font-weight:500}
+.scroll-hint{position:absolute;left:auto;right:28px;bottom:30px;z-index:4;
+  font-family:var(--latin);font-size:9.5px;letter-spacing:.42em;color:rgba(239,232,214,.42);
+  display:flex;flex-direction:column;align-items:center;gap:9px}
+.scroll-hint span{display:block;width:1px;height:32px;background:linear-gradient(to bottom,rgba(239,232,214,.5),transparent)}
+
+/* ---------- sections ---------- */
+.sec{padding:112px 0;border-top:1px solid var(--line2)}
+.sec-head{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:52px}
+.sec-head .no{font-family:var(--latin);font-size:11px;letter-spacing:.3em;color:var(--ac2);opacity:.9}
+.sec-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.1vw,36px);
+  letter-spacing:.05em;margin:0;color:#f4efdf;flex:1 1 auto}
+.sec-head .kicker{font-family:var(--latin);font-size:10.5px;letter-spacing:.3em;
+  color:var(--dim2);text-transform:uppercase;margin:0}
+.note{font-size:13px;color:var(--dim);line-height:1.9}
+
+.intro{display:grid;grid-template-columns:minmax(0,1.62fr) minmax(0,1fr);gap:64px;align-items:start}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:2.22;color:#d4cfbd}
+.lede p{margin:0 0 22px}
+.lede p:first-child::first-letter{float:left;font-size:5.1em;line-height:.82;padding:.06em .14em 0 0;
+  color:#f7f1e0;font-weight:400}
+.lede strong{font-weight:500;color:#f7f1e0}
+.lede .dash{color:var(--dim);font-size:15px}
+.glance{border:1px solid var(--line);background:linear-gradient(160deg,rgba(16,22,16,.95),rgba(8,12,9,.95));
+  padding:30px 28px}
+.glance h3{font-family:var(--latin);font-size:10px;letter-spacing:.34em;color:var(--ac2);
+  margin:0 0 22px;font-weight:400;text-transform:uppercase;opacity:.9}
+.glance dl{margin:0;display:grid;gap:13px}
+.glance div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding-bottom:13px;border-bottom:1px solid var(--line2)}
+.glance div:last-child{border-bottom:0;padding-bottom:0}
+.glance dt{font-size:11.5px;color:var(--dim2);letter-spacing:.1em}
+.glance dd{margin:0;font-size:13.5px;color:#cbc6b6;line-height:1.7}
+.glance dd b{color:#f7f1e0;font-weight:500}
+.glance dd small{display:block;font-size:11px;color:var(--dim2);margin-top:3px}
+.acts{margin-top:74px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.act{background:var(--bg);padding:34px 30px}
+.act .t{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--ac2);
+  opacity:.9;margin-bottom:14px}
+.act h4{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f4efdf;letter-spacing:.04em}
+.act p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+
+.poster-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1fr);gap:70px;align-items:start}
+.poster-frame{border:1px solid var(--line);padding:14px;background:#040704;
+  box-shadow:0 40px 90px -50px #000, inset 0 0 0 1px rgba(0,0,0,.6)}
+.poster-svg{display:block;width:100%;height:auto}
+.pcap{margin:16px 2px 0;font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--dim2)}
+.pnotes{display:grid;gap:28px}
+.pnote{border-left:1px solid var(--line);padding:2px 0 2px 24px}
+.pnote .n{font-family:var(--latin);font-size:10px;letter-spacing:.26em;color:var(--ac2);opacity:.86}
+.pnote h4{margin:8px 0 10px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f4efdf}
+.pnote p{margin:0;font-size:13.5px;line-height:1.95;color:var(--dim)}
+.pnote p b{color:#eae4d3;font-weight:500}
+.pnote p em{font-style:normal;color:var(--ac2)}
+
+.spec{margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--line2);border:1px solid var(--line2)}
+.spec div{background:var(--bg);padding:22px 20px;min-height:92px}
+.spec dt{font-size:10.5px;letter-spacing:.14em;color:var(--dim2);margin-bottom:8px}
+.spec dd{margin:0;font-size:13.5px;color:#ccc7b6;line-height:1.65}
+.spec dd small{display:block;font-size:11px;color:var(--dim2);margin-top:4px;letter-spacing:.02em}
+.spec .wide{grid-column:1/-1;min-height:0;background:linear-gradient(120deg,rgba(180,69,46,.13),rgba(8,12,9,0) 62%)}
+.spec .wide dd{font-family:var(--serif);font-size:17px;color:#f7f1e0;letter-spacing:.05em}
+
+.scores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.sc{background:var(--bg);padding:32px 30px}
+.sc .src{font-family:var(--latin);font-size:10px;letter-spacing:.28em;color:var(--dim2);text-transform:uppercase}
+.sc .val{font-family:var(--latin);font-size:52px;line-height:1;margin:16px 0 8px;color:#f7f1e0}
+.sc .val small{font-size:15px;color:var(--dim);letter-spacing:.04em;margin-left:6px}
+.sc .meta{font-size:12.5px;color:var(--dim);line-height:1.8}
+.sc .meta b{color:#e2ddd0;font-weight:500}
+.sc.hi .val{color:var(--ac2)}
+.sc.pair .val{font-size:40px;letter-spacing:.02em}
+.sc.dim .val{color:var(--dim2);font-size:34px;letter-spacing:.06em}
+.caliber{margin:52px 0 0;padding:0;list-style:none;display:grid;gap:0;border-top:1px solid var(--line)}
+.caliber li{display:grid;grid-template-columns:40px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid var(--line2);
+  font-size:13.5px;line-height:1.9;color:var(--dim)}
+.caliber li b{color:#ece4d0;font-weight:500}
+.caliber li i{font-family:var(--latin);font-style:normal;font-size:10.5px;letter-spacing:.2em;color:var(--ac2);opacity:.8;padding-top:4px}
+
+.people{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.person{background:var(--bg);padding:30px 28px}
+.person .role{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--ac2);opacity:.82}
+.person h4{margin:12px 0 4px;font-family:var(--serif);font-weight:400;font-size:20px;color:#f7f1e0;letter-spacing:.04em}
+.person h4 small{font-size:12px;color:var(--dim2);letter-spacing:.1em;margin-left:4px}
+.person .actor{font-size:11.5px;color:var(--dim2);letter-spacing:.08em;margin-bottom:18px}
+.person p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.person p span{display:block;margin-top:9px;color:#cbc6b6}
+.person p span b{color:var(--ac2);font-weight:400;font-size:12.5px}
+
+.cf-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:64px;margin-top:8px}
+.cf{padding:30px 0 32px;border-bottom:1px solid var(--line2)}
+.cf h4{margin:0 0 12px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f7f1e0;letter-spacing:.04em;line-height:1.6}
+.cf h4 i{display:block;font-family:var(--latin);font-style:normal;font-size:9.5px;letter-spacing:.26em;
+  color:var(--ac2);opacity:.82;margin-bottom:8px}
+.cf p{margin:0;font-size:13.8px;line-height:2;color:var(--dim)}
+.cf p em{font-style:normal;color:#eae4d3}
+
+.awards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.award{background:var(--bg);padding:28px 26px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.award .yr{font-family:var(--latin);font-size:11px;letter-spacing:.14em;color:var(--dim2);padding-top:3px}
+.award h4{margin:0 0 6px;font-size:14.5px;font-weight:500;color:#f4efdf;letter-spacing:.02em;line-height:1.6}
+.award p{margin:0;font-size:12.5px;color:var(--dim);line-height:1.78}
+.award.gold{background:linear-gradient(120deg,rgba(201,162,92,.16),rgba(8,12,9,0) 68%);border-left:2px solid rgba(201,162,92,.5)}
+.award.gold h4{color:var(--pa2)}
+.award.cold{background:linear-gradient(120deg,rgba(124,159,146,.1),rgba(8,12,9,0) 68%);border-left:2px solid rgba(124,159,146,.34)}
+.award.cold h4{color:#b6cec4}
+.award.wide{grid-column:1/-1}
+
+.lineage{position:relative;display:grid;gap:0;border-left:1px solid var(--line);margin-left:6px;max-width:820px}
+.ln{position:relative;padding:0 0 38px 40px}
+.ln:last-child{padding-bottom:0}
+.ln::before{content:"";position:absolute;left:-4.5px;top:9px;width:8px;height:8px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--ac2)}
+.ln.now::before{background:var(--seal);border-color:var(--seal);box-shadow:0 0 0 4px rgba(168,60,44,.24)}
+.ln .yr{font-family:var(--latin);font-size:11px;letter-spacing:.22em;color:var(--dim2)}
+.ln h4{margin:6px 0 6px;font-family:var(--serif);font-weight:400;font-size:17px;color:#f4efdf;letter-spacing:.03em}
+.ln p{margin:0;font-size:13px;color:var(--dim);line-height:1.85}
+.ln p b{color:#e6e1d2;font-weight:500}
+.ln.now h4{color:var(--pa2)}
+
+.grid6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.g6{background:var(--bg);padding:32px 28px;min-height:210px}
+.g6 .n{font-family:var(--latin);font-size:9.5px;letter-spacing:.24em;color:var(--ac2);opacity:.86}
+.g6 h4{margin:14px 0 10px;font-family:var(--serif);font-weight:400;font-size:18px;color:#f4efdf;letter-spacing:.03em;line-height:1.6}
+.g6 p{margin:0;font-size:13px;line-height:1.95;color:var(--dim)}
+.g6 p b{color:#eae4d3;font-weight:500}
+
+.why{display:grid;gap:0;max-width:820px}
+.why article{padding:0 0 38px}
+.why article + article{border-top:1px solid var(--line2);padding-top:38px}
+.why h3{margin:0 0 14px;font-family:var(--serif);font-weight:400;font-size:21px;color:#f7f1e0;letter-spacing:.04em}
+.why p{margin:0;font-size:14.5px;line-height:2.05;color:#c2bdac}
+.why p + p{margin-top:14px}
+.why strong{color:#f4efdf;font-weight:500}
+.why em{font-style:normal;color:var(--ac2)}
+
+.tips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line2);
+  border:1px solid var(--line2)}
+.tip{background:var(--bg);padding:30px 24px}
+.tip .k{font-family:var(--latin);font-size:9.5px;letter-spacing:.26em;color:var(--ac2);opacity:.86}
+.tip h4{margin:12px 0 10px;font-size:15.5px;font-weight:500;color:#f4efdf}
+.tip p{margin:0;font-size:12.8px;line-height:1.95;color:var(--dim)}
+
+.verdict{padding:150px 0 120px;border-top:1px solid var(--line2);position:relative;overflow:hidden}
+.verdict .tag{font-family:var(--latin);font-size:9.5px;letter-spacing:.32em;color:var(--dim2);margin-bottom:34px}
+.verdict .q{font-family:var(--serif);font-size:clamp(22px,3vw,35px);line-height:1.8;letter-spacing:.06em;
+  color:#f7f1e0;margin:0;max-width:24em}
+.verdict .q span{display:block}
+.verdict .src{margin-top:36px;font-size:12px;color:var(--dim2);letter-spacing:.04em;line-height:1.9}
+.stamp{position:absolute;right:200px;bottom:92px;width:152px;height:152px;border:1px solid rgba(168,60,44,.85);
+  border-radius:50%;display:grid;place-items:center;color:rgba(196,113,92,1);text-align:center;
+  transform:rotate(-7deg);box-shadow:inset 0 0 0 4px rgba(168,60,44,.14)}
+.stamp div{display:grid;gap:8px;justify-items:center}
+.stamp span{font-family:var(--latin);font-size:7.4px;letter-spacing:.07em;opacity:.95;line-height:1.2}
+.stamp b{font-family:var(--serif);font-size:15px;letter-spacing:.02em;font-weight:400;line-height:1.15;
+  padding:6px 4px;border-top:1px solid rgba(168,60,44,.55);border-bottom:1px solid rgba(168,60,44,.55)}
+
+footer{padding:70px 0 180px;border-top:1px solid var(--line2)}
+footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-height:2}
+
+#hud{position:fixed;right:14px;top:50%;transform:translateY(-50%);z-index:20;display:grid;gap:16px;
+  opacity:0;transition:opacity .7s ease;pointer-events:none}
+#hud.on{opacity:1}
+#hud b{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:400;font-size:13px;
+  color:var(--dim2);letter-spacing:.1em;transition:color .5s}
+#hud b i{display:block;width:16px;height:1px;background:var(--dim2);transition:all .5s}
+#hud b.on{color:#f7f1e0}
+#hud b.on i{width:30px;background:var(--ac2)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:1380px){#hud{display:none}}
+@media (max-width:1000px){
+  .intro{grid-template-columns:1fr;gap:48px}
+  .poster-grid{grid-template-columns:1fr;gap:46px}
+  .poster-frame{max-width:500px}
+  .scores,.awards{grid-template-columns:1fr}
+  .spec{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .people{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tips{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .acts{grid-template-columns:1fr}
+  #hud{display:none}
+}
+@media (min-width:761px) and (max-width:1000px){
+  .scroll-hint{display:none}
+  .hero-svg{transform:translateY(3vh)}
+  .sft{opacity:.5}
+  .chips{margin-top:44px}
+  #post30,#post30b{display:none}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(4,7,4,.94) 0%,rgba(4,7,4,.87) 26%,rgba(4,7,4,.66) 42%,rgba(4,7,4,.38) 54%,rgba(4,7,4,.16) 64%,rgba(4,7,4,.06) 74%,rgba(4,7,4,.18) 86%,rgba(4,7,4,.42) 96%,rgba(4,7,4,.56) 100%)}
+}
+@media (max-width:760px){
+  .hero-svg{transform:translateY(7vh)}
+  .hero-scrim{background:
+    linear-gradient(to bottom,rgba(4,7,4,.95) 0%,rgba(4,7,4,.9) 22%,rgba(4,7,4,.7) 36%,rgba(4,7,4,.36) 44%,rgba(4,7,4,.13) 51%,rgba(4,7,4,.05) 61%,rgba(4,7,4,.03) 72%,rgba(4,7,4,.08) 84%,rgba(4,7,4,.3) 94%,rgba(4,7,4,.5) 100%)}
+  body{font-size:15px;line-height:1.9}
+  .wrap,.hero-in{width:calc(100% - 40px)}
+  .hero{min-height:max(100vh,740px)}
+  .hero-in{min-height:max(100vh,740px);padding-top:8vh;padding-bottom:96px}
+  h1{font-size:clamp(26px,7vw,46px);letter-spacing:.12em}
+  .hero-sub{font-size:14.5px;line-height:1.95;max-width:27em}
+  .eyebrow{font-size:9.6px;letter-spacing:.18em;gap:9px}
+  .eyebrow i{width:26px}
+  .notice{font-size:10.4px;letter-spacing:.06em;padding:6px 13px}
+  .sec{padding:76px 0}
+  .sec-head{margin-bottom:36px;gap:12px}
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spec dd{font-size:12.4px}
+  .spec dd small{font-size:10.4px}
+  .people,.grid6,.tips{grid-template-columns:1fr}
+  .cf-list{grid-template-columns:1fr}
+  .lede{font-size:16px;line-height:2.05}
+  .sc .val{font-size:44px}
+  .sc.pair .val{font-size:34px}
+  .verdict{padding:96px 0 88px}
+  .stamp{position:static;margin-top:48px;transform:rotate(-4deg)}
+  .chips{max-width:100%;padding-top:0;margin-top:26px}
+  footer{padding-bottom:120px}
+  .scroll-hint{display:none}
+  .chip{font-size:11px;padding:5px 11px;letter-spacing:.03em}
+  .sft{opacity:.45}
+  #post30,#post30b{display:none}
+}
+@media (min-width:1001px) and (max-height:860px){
+  .hero,.hero-in{min-height:max(100vh,760px)}
+  .scroll-hint{left:auto;right:22px;transform:none}
+}
+@media (max-width:420px){
+  .notice{margin-bottom:22px;font-size:10.5px;padding:6px 13px}
+  h1{font-size:clamp(25px,6.6vw,38px);margin-top:20px;letter-spacing:.1em}
+  .latin{margin-top:14px;font-size:11px;letter-spacing:.2em}
+  .latin + .latin{font-size:9.5px;letter-spacing:.14em}
+  .hero-sub{margin-top:22px;font-size:13.8px}
+}
+@media (max-width:380px){
+  .wrap,.hero-in{width:calc(100% - 32px)}
+  .chip{font-size:10.5px;padding:5px 11px}
+  .glance{padding:24px 20px}
+  h1{font-size:clamp(23px,6.2vw,32px)}
+}
+@media (max-width:760px) and (max-height:700px){
+  .hero{min-height:100vh}
+  .hero-in{min-height:100vh;padding-top:6vh}
+  .hero-svg{transform:translateY(9vh)}
+  .notice{margin-bottom:16px;font-size:10px;padding:5px 12px}
+  h1{margin-top:14px;font-size:clamp(24px,6vw,32px)}
+  .latin{margin-top:12px;font-size:10.5px}
+  .latin + .latin{font-size:9px;margin-top:5px}
+  .hero-sub{margin-top:16px;font-size:13.2px;line-height:1.82}
+  .chips{margin-top:20px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<svg class="hero-svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+<defs>
+<linearGradient id="roof30" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#060905"/><stop offset=".5" stop-color="#0a0e08"/><stop offset="1" stop-color="#10150d"/></linearGradient>
+<linearGradient id="beam30" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d2116"/><stop offset=".35" stop-color="#182013"/><stop offset="1" stop-color="#0d1109"/></linearGradient>
+<linearGradient id="sky30" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e7ecd6"/><stop offset="1" stop-color="#d2ddbf"/></linearGradient>
+<linearGradient id="hill30" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6d7d63" stop-opacity=".62"/><stop offset=".7" stop-color="#4d5c47" stop-opacity=".55"/><stop offset="1" stop-color="#3a4636" stop-opacity=".4"/></linearGradient>
+<linearGradient id="field30" x1="0" y1="0" x2=".12" y2="1"><stop offset="0" stop-color="#7c8a4d"/><stop offset=".45" stop-color="#9ba45f"/><stop offset="1" stop-color="#c6bb7d"/></linearGradient>
+<linearGradient id="floor30" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2418"/><stop offset=".22" stop-color="#1d1a12"/><stop offset=".68" stop-color="#12100b"/><stop offset="1" stop-color="#080a06"/></linearGradient>
+<linearGradient id="bandshade30" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0e08" stop-opacity=".82"/><stop offset="1" stop-color="#0a0e08" stop-opacity="0"/></linearGradient>
+<linearGradient id="post30" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0c1009"/><stop offset=".55" stop-color="#161c11"/><stop offset=".92" stop-color="#20281a"/><stop offset="1" stop-color="#0b0f08"/></linearGradient>
+<radialGradient id="sun30" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f6f2d8" stop-opacity=".5"/><stop offset=".3" stop-color="#dfd9a8" stop-opacity=".22"/><stop offset=".68" stop-color="#b0ad74" stop-opacity=".07"/><stop offset="1" stop-color="#7d7c4a" stop-opacity="0"/></radialGradient>
+<radialGradient id="pool30" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e6dba8" stop-opacity=".16"/><stop offset=".42" stop-color="#a89c6c" stop-opacity=".06"/><stop offset="1" stop-color="#4a452a" stop-opacity="0"/></radialGradient>
+<radialGradient id="warm30" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#d8cfa0" stop-opacity=".16"/><stop offset=".35" stop-color="#9d9469" stop-opacity=".06"/><stop offset="1" stop-color="#3d3a26" stop-opacity="0"/></radialGradient>
+</defs>
+
+<rect width="1440" height="900" fill="url(#roof30)"/>
+
+<g stroke="#0b0e07" stroke-width="9"><path d="M60 236 L60 476"/><path d="M180 236 L180 476"/><path d="M300 236 L300 476"/><path d="M420 236 L420 476"/><path d="M540 236 L540 476"/><path d="M660 236 L660 476"/><path d="M780 236 L780 476"/><path d="M900 236 L900 476"/><path d="M1020 236 L1020 476"/><path d="M1140 236 L1140 476"/><path d="M1260 236 L1260 476"/><path d="M1380 236 L1380 476"/></g>
+<g stroke="#3b4229" stroke-opacity=".26" stroke-width="1.4"><path d="M64 240 L64 474"/><path d="M184 240 L184 474"/><path d="M304 240 L304 474"/><path d="M424 240 L424 474"/><path d="M544 240 L544 474"/><path d="M664 240 L664 474"/><path d="M784 240 L784 474"/><path d="M904 240 L904 474"/><path d="M1024 240 L1024 474"/><path d="M1144 240 L1144 474"/><path d="M1264 240 L1264 474"/><path d="M1384 240 L1384 474"/></g>
+
+<rect x="-20" y="222" width="1480" height="26" fill="#0a0d07"/>
+<rect x="-20" y="222" width="1480" height="1.6" fill="#454b32" fill-opacity=".3"/>
+<rect x="-20" y="248" width="1480" height="6" fill="#050703"/>
+
+<rect x="-20" y="436" width="1480" height="42" fill="url(#beam30)"/>
+<rect x="-20" y="436" width="1480" height="1.8" fill="#545b3c" fill-opacity=".34"/>
+<rect x="-20" y="472" width="1480" height="6" fill="#050703" fill-opacity=".9"/>
+<rect x="-20" y="478" width="1480" height="2.4" fill="#8c8250" fill-opacity=".2"/>
+
+<g clip-path="url(#band30)">
+<rect x="0" y="480" width="1440" height="222" fill="url(#field30)"/>
+<rect x="0" y="480" width="1440" height="58" fill="url(#sky30)"/>
+<path d="M-20 538 C 110 516 220 530 340 512 C 470 492 580 520 700 506 C 820 492 940 516 1060 502 C 1180 488 1320 512 1460 500 L1460 566 L-20 566 Z" fill="url(#hill30)"/>
+<path d="M-20 552 C 130 540 250 552 380 542 C 520 531 640 548 780 540 C 920 532 1040 548 1180 540 C 1300 533 1390 542 1460 538 L1460 588 L-20 588 Z" fill="#3d4a37" fill-opacity=".45"/>
+<g stroke="#d3ca92" stroke-opacity=".1" stroke-width="1.3"><path d="M0 574 L1440 574"/><path d="M0 590 L1440 590"/><path d="M0 606 L1440 606"/><path d="M0 622 L1440 622"/><path d="M0 638 L1440 638"/><path d="M0 654 L1440 654"/><path d="M0 670 L1440 670"/><path d="M0 686 L1440 686"/></g>
+<g stroke="#5f6a38" stroke-opacity=".18" stroke-width="2.4"><path d="M0 604 L1440 604"/><path d="M0 648 L1440 648"/></g>
+<g fill="#2b3222" fill-opacity=".85"><path d="M196 542 L252 542 L252 520 L224 506 L196 520 Z"/><rect x="206" y="524" width="34" height="18" fill-opacity=".55"/></g>
+<rect x="1214" y="486" width="8" height="196" fill="#232a1c" fill-opacity=".9"/>
+<rect x="1180" y="512" width="70" height="4.4" fill="#232a1c" fill-opacity=".85"/>
+<path d="M0 508 C 300 514 600 500 900 508 C 1100 513 1300 502 1440 508" fill="none" stroke="#20261a" stroke-opacity=".5" stroke-width="1.4"/>
+<path d="M0 522 C 300 528 600 514 900 522 C 1100 527 1300 516 1440 522" fill="none" stroke="#20261a" stroke-opacity=".4" stroke-width="1.2"/>
+<rect x="0" y="480" width="1440" height="46" fill="url(#bandshade30)"/>
+</g>
+<defs><clipPath id="band30"><rect x="0" y="480" width="1440" height="222"/></clipPath></defs>
+
+<ellipse cx="1092" cy="516" rx="300" ry="120" fill="url(#sun30)"/>
+
+<g fill="url(#post30)"><rect x="164" y="436" width="52" height="464"/><rect x="1168" y="436" width="42" height="464"/></g>
+<g fill="#5a6040" fill-opacity=".22"><rect x="212" y="440" width="3" height="458"/><rect x="1206" y="440" width="2.6" height="458"/></g>
+
+<g stroke="#141a10" stroke-width="3.4"><path d="M356 240 C 354 300 358 356 352 412"/><path d="M372 240 C 374 304 368 358 376 414"/></g>
+<g fill="#20281a"><ellipse cx="352" cy="286" rx="15" ry="21"/><ellipse cx="376" cy="292" rx="14" ry="20"/><ellipse cx="354" cy="330" rx="14" ry="20"/><ellipse cx="378" cy="336" rx="13" ry="19"/><ellipse cx="353" cy="374" rx="13" ry="19"/><ellipse cx="377" cy="380" rx="12" ry="18"/></g>
+<g fill="#6a6440" fill-opacity=".3"><ellipse cx="360" cy="288" rx="3.4" ry="16"/><ellipse cx="384" cy="294" rx="3.2" ry="15"/><ellipse cx="362" cy="332" rx="3.2" ry="15"/><ellipse cx="386" cy="338" rx="3" ry="14"/></g>
+<g stroke="#141a10" stroke-width="3.2"><path d="M922 240 C 920 296 926 344 920 396"/><path d="M938 240 C 940 298 934 348 942 398"/></g>
+<g fill="#1e2618"><ellipse cx="920" cy="282" rx="13" ry="18"/><ellipse cx="942" cy="288" rx="12" ry="17"/><ellipse cx="921" cy="322" rx="12" ry="17"/><ellipse cx="943" cy="328" rx="11" ry="16"/><ellipse cx="920" cy="362" rx="11" ry="16"/><ellipse cx="942" cy="368" rx="10" ry="15"/></g>
+<g fill="#665f3c" fill-opacity=".28"><ellipse cx="927" cy="284" rx="3" ry="14"/><ellipse cx="949" cy="290" rx="2.8" ry="13"/><ellipse cx="928" cy="324" rx="2.8" ry="13"/><ellipse cx="950" cy="330" rx="2.6" ry="12"/></g>
+
+<rect x="-20" y="700" width="1480" height="220" fill="url(#floor30)"/>
+<rect x="-20" y="698" width="1480" height="3" fill="#5b5232" fill-opacity=".34"/>
+<g stroke="#2c2418" stroke-opacity=".26" stroke-width="1.5"><path d="M-20 716 L1460 716"/><path d="M-20 740 L1460 740"/><path d="M-20 766 L1460 766"/><path d="M-20 796 L1460 796"/><path d="M-20 828 L1460 828"/><path d="M-20 864 L1460 864"/></g>
+<g stroke="#0a0b06" stroke-opacity=".5" stroke-width="2.2"><path d="M-20 730 L1460 730"/><path d="M-20 754 L1460 754"/><path d="M-20 782 L1460 782"/><path d="M-20 812 L1460 812"/><path d="M-20 846 L1460 846"/></g>
+
+<ellipse cx="1010" cy="772" rx="330" ry="86" fill="url(#pool30)"/>
+<ellipse cx="300" cy="742" rx="260" ry="56" fill="url(#warm30)"/>
+
+<ellipse cx="1196" cy="742" rx="104" ry="30" fill="#3b3624"/>
+<ellipse cx="1196" cy="738" rx="104" ry="30" fill="none" stroke="#6d603a" stroke-opacity=".42" stroke-width="2"/>
+<g stroke="#5a5030" stroke-opacity=".3" stroke-width="1.1"><path d="M1104 734 L1288 734"/><path d="M1112 744 L1280 744"/></g>
+<g><circle cx="1160" cy="728" r="14" fill="#a83b26"/><circle cx="1160" cy="728" r="14" fill="none" stroke="#d9765a" stroke-opacity=".3" stroke-width="1.2"/><ellipse cx="1155" cy="723" rx="4.4" ry="3.2" fill="#e7b39c" fill-opacity=".35"/><circle cx="1198" cy="734" r="12.4" fill="#96331f"/><ellipse cx="1194" cy="730" rx="3.8" ry="2.8" fill="#e7b39c" fill-opacity=".3"/><circle cx="1232" cy="726" r="13" fill="#b04228"/><ellipse cx="1228" cy="721" rx="4" ry="3" fill="#e7b39c" fill-opacity=".33"/></g>
+<ellipse cx="1150" cy="748" rx="21" ry="9" fill="#3f2f42"/><ellipse cx="1146" cy="745" rx="6" ry="3" fill="#7a6278" fill-opacity=".35"/>
+<ellipse cx="1258" cy="750" rx="19" ry="8" fill="#42304a"/>
+
+<path d="M0 700 L1440 700" stroke="#0a0b06" stroke-opacity=".5" stroke-width="2"/>
+</svg>
+
+<div class="hero-scrim"></div>
+<canvas id="heroCanvas"></canvas>
+
+<div class="hero-in">
+  <span class="notice"><span class="dot"></span>无剧透 · 梗概止于第一幕</span>
+  <p class="eyebrow"><i></i>JAPANESE CINEMA · NO. 30</p>
+  <h1>小森林</h1>
+  <p class="latin">リトル・フォレスト 夏・秋</p>
+  <p class="latin">LITTLE FOREST: SUMMER / AUTUMN</p>
+  <p class="hero-sub">一个从城里退回山中的女人，一个夏天，一个秋天。她把所有说不出的话，<em>都做成了饭</em>。</p>
+  <div class="chips">
+    <span class="chip"><b>豆瓣 9.0</b> · 48.4 万人</span>
+    <span class="chip">Top250 <b>第 140</b></span>
+    <span class="chip">IMDb <b>7.6</b> · 4.2K</span>
+    <span class="chip">首轮 <b>30 块银幕</b></span>
+    <span class="chip"><b>111</b> 分钟</span>
+  </div>
+</div>
+<div class="scroll-hint">SCROLL<span></span></div>
+</header>
+
+<nav id="hud" aria-hidden="true">
+  <b><i></i>梗概</b><b><i></i>海报</b><b><i></i>档案</b><b><i></i>人物</b><b><i></i>荣誉</b>
+</nav>
+
+<section class="sec" id="s1" style="border-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">01</span><h2>为什么是这一部</h2><span class="kicker">Editor's Note</span></div>
+    <div class="intro">
+      <div class="lede reveal">
+        <p>市子骑着自行车回到小森。这是东北山里一个几十户人家的聚落：没有便利店，去最近的农协超市骑车三十分钟，下了雪就得走一个半小时。她住进母亲留下的老屋，一个人。</p>
+        <p>回来的第一件事是除霉。厨房那把木铲长了一层白毛，屋子空得太久，湿气钻进了每一道木缝。她的应对办法很朴素——既然要生火烧柴给屋子去湿，那就顺便在炉膛里烤一炉面包。</p>
+        <p>夏天要对付的不只是潮气。田里的草长得比苗快，得弯着腰一根一根拔；小森多雨，番茄最难种，邻居都搭了塑料大棚，她的番茄年年歉收。<strong>她还是不搭。</strong>理由她没跟任何人说，但电影让你看见了：棚一搭起来，就等于承认自己要在这里住下去。</p>
+        <p>秋天是收的季节，也是抢的季节——人要跟山里的动物抢栗子、抢核桃、抢最后一条岩鱼。她一个人割稻、打栗子、把鸭子处理干净。这些动作镜头都不剪开：你看着她烧水、褪毛、开膛，从头看到尾。</p>
+        <p>她的手艺是母亲教的。母亲福子会自己做伍斯特酱、自己做抹面包的榛子可可酱，市子小时候甚至不知道这些东西商店里有卖。五年前的一个冬天，母亲什么也没说就离开了这个家，留下一堆没教完的做法。</p>
+        <p>霜降之后，那封信到了。</p>
+        <p class="dash">——本文讲到这封信为止。信里写了什么、她读完做了什么，以及半年后上映的后篇《冬·春》，这里一个字都不写。</p>
+      </div>
+      <aside class="glance reveal">
+        <h3>At a Glance</h3>
+        <dl>
+          <div><dt>一句话</dt><dd>一个人、一块地、一年两季的饭。</dd></div>
+          <div><dt>看点</dt><dd>它把「做饭」拍成了<strong>唯一的对白</strong>。</dd></div>
+          <div><dt>节奏</dt><dd>慢，而且没有配乐推着你走。<small>111 分钟，分「夏」「秋」两章，各有独立的片头片尾</small></dd></div>
+          <div><dt>情绪</dt><dd>前半段是凉的，后半段会突然酸一下。</dd></div>
+          <div><dt>不适合</dt><dd>想找情节反转的人；把「治愈」当糖吃的人。</dd></div>
+          <div><dt>版本</dt><dd>《夏·秋》111 分钟 +《冬·春》120 分钟。<small>另有 2018 年韩国翻拍版，不是同一部</small></dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <div class="acts reveal">
+      <div class="act"><div class="t">第一部 · 夏</div><h4>把湿气烤干</h4><p>从霉斑和柴火开始。面包、米酒、番茄、养鱼场的零工。这一段几乎不讲话，全靠手上的活——它先用劳动让你安静下来。</p></div>
+      <div class="act"><div class="t">第二部 · 秋</div><h4>跟山抢</h4><p>稻子、栗子、核桃、鸭子。人开始和山里的东西争，也开始和母亲留下的做法较劲。全片最不「治愈」的三分钟在这里。</p></div>
+      <div class="act"><div class="t">第三部 · 信</div><h4>霜降之后</h4><p>整部电影只有一次真正的事件：一封信。没有配乐，没有特写，只有一个信封放在灶台边上。前两章攒下的东西，全部落到这一个镜头里。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s2">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">02</span><h2>三只罐子，和一只空罐</h2><span class="kicker">Concept Poster</span></div>
+    <div class="poster-grid">
+      <div class="reveal">
+        <div class="poster-frame">
+          <svg class="poster-svg" viewBox="0 0 760 1000" role="img" aria-label="概念海报：木桌上三只封好标签的玻璃罐，与一只空着的第四只">
+<defs>
+<linearGradient id="pbg30" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d120c"/><stop offset=".55" stop-color="#0a0e09"/><stop offset="1" stop-color="#070a06"/></linearGradient>
+<linearGradient id="ptab30" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b2416"/><stop offset=".18" stop-color="#211c11"/><stop offset=".7" stop-color="#14110b"/><stop offset="1" stop-color="#0a0805"/></linearGradient>
+<linearGradient id="pglass30" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cfe0d4" stop-opacity=".1"/><stop offset=".18" stop-color="#eef4e8" stop-opacity=".16"/><stop offset=".55" stop-color="#dfe8dc" stop-opacity=".05"/><stop offset=".86" stop-color="#cfdccf" stop-opacity=".12"/><stop offset="1" stop-color="#aebfae" stop-opacity=".06"/></linearGradient>
+<linearGradient id="pjam30" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a8402a"/><stop offset=".55" stop-color="#8d2f20"/><stop offset="1" stop-color="#5e1d14"/></linearGradient>
+<linearGradient id="psake30" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6dfbb" stop-opacity=".72"/><stop offset=".6" stop-color="#d8cfa4" stop-opacity=".5"/><stop offset="1" stop-color="#a89d74" stop-opacity=".62"/></linearGradient>
+<linearGradient id="pchest30" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a5a2a" stop-opacity=".8"/><stop offset=".6" stop-color="#553c1c" stop-opacity=".82"/><stop offset="1" stop-color="#2e2010" stop-opacity=".9"/></linearGradient>
+<linearGradient id="plid30" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#efe6cb"/><stop offset=".5" stop-color="#d9cdad"/><stop offset="1" stop-color="#b3a583"/></linearGradient>
+<radialGradient id="plight30" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f4ecca" stop-opacity=".14"/><stop offset=".45" stop-color="#cdbf8e" stop-opacity=".05"/><stop offset="1" stop-color="#6d6540" stop-opacity="0"/></radialGradient>
+<radialGradient id="pshad30" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#050603" stop-opacity=".72"/><stop offset=".55" stop-color="#050603" stop-opacity=".34"/><stop offset="1" stop-color="#050603" stop-opacity="0"/></radialGradient>
+<linearGradient id="pveil30" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#070a06" stop-opacity=".5"/><stop offset=".14" stop-color="#070a06" stop-opacity="0"/><stop offset=".86" stop-color="#070a06" stop-opacity="0"/><stop offset="1" stop-color="#070a06" stop-opacity=".5"/></linearGradient>
+<linearGradient id="pbot30" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#070a06" stop-opacity="0"/><stop offset=".5" stop-color="#070a06" stop-opacity=".55"/><stop offset="1" stop-color="#070a06" stop-opacity=".9"/></linearGradient>
+<clipPath id="j1c30"><path d="M196 528 Q196 512 250 512 Q304 512 304 528 L307 680 Q307 700 250 700 Q193 700 193 680 Z"/></clipPath>
+<clipPath id="j2c30"><rect x="338" y="512" width="108" height="188" rx="14"/></clipPath>
+<clipPath id="j3c30"><rect x="480" y="512" width="108" height="188" rx="14"/></clipPath>
+<clipPath id="j4c30"><rect x="622" y="512" width="108" height="188" rx="14"/></clipPath>
+</defs>
+
+<rect width="760" height="1000" fill="url(#pbg30)"/>
+<ellipse cx="200" cy="250" rx="420" ry="330" fill="url(#plight30)"/>
+<rect x="0" y="0" width="760" height="4" fill="#0a0e08"/>
+<g stroke="#1c2318" stroke-opacity=".5" stroke-width="1.2"><path d="M0 128 L760 128"/><path d="M0 300 L760 300"/><path d="M0 452 L760 452"/></g>
+
+<rect x="0" y="700" width="760" height="300" fill="url(#ptab30)"/>
+<rect x="0" y="698" width="760" height="2.6" fill="#6b5c38" fill-opacity=".42"/>
+<g stroke="#3a301c" stroke-opacity=".22" stroke-width="1.2"><path d="M0 726 L760 726"/><path d="M0 780 L760 780"/><path d="M0 852 L760 852"/><path d="M0 926 L760 926"/></g>
+
+<ellipse cx="250" cy="706" rx="78" ry="20" fill="url(#pshad30)"/>
+<ellipse cx="392" cy="708" rx="76" ry="20" fill="url(#pshad30)"/>
+<ellipse cx="534" cy="706" rx="76" ry="20" fill="url(#pshad30)"/>
+<ellipse cx="676" cy="708" rx="74" ry="20" fill="url(#pshad30)"/>
+
+<g>
+<path d="M196 528 Q196 512 250 512 Q304 512 304 528 L307 680 Q307 700 250 700 Q193 700 193 680 Z" fill="url(#pglass30)"/>
+<g clip-path="url(#j1c30)"><rect x="190" y="566" width="122" height="140" fill="url(#pjam30)"/><rect x="190" y="566" width="122" height="3.4" fill="#c4654a" fill-opacity=".55"/><ellipse cx="250" cy="566" rx="57" ry="9" fill="#b74d33" fill-opacity=".55"/><g fill="#4d160f" fill-opacity=".55"><ellipse cx="232" cy="616" rx="14" ry="10"/><ellipse cx="268" cy="640" rx="16" ry="11"/><ellipse cx="240" cy="664" rx="15" ry="10"/></g><g fill="#e2bfae" fill-opacity=".16"><circle cx="246" cy="590" r="2"/><circle cx="262" cy="602" r="1.6"/><circle cx="228" cy="606" r="1.5"/></g></g>
+<rect x="197" y="536" width="9" height="150" fill="#f2f7ec" fill-opacity=".11"/>
+<rect x="290" y="548" width="5" height="132" fill="#f2f7ec" fill-opacity=".07"/>
+<path d="M196 528 Q196 512 250 512 Q304 512 304 528 L307 680 Q307 700 250 700 Q193 700 193 680 Z" fill="none" stroke="#dfeadd" stroke-opacity=".2" stroke-width="1.4"/>
+<ellipse cx="250" cy="514" rx="47" ry="10" fill="#0d120c" fill-opacity=".45"/>
+<ellipse cx="250" cy="514" rx="47" ry="10" fill="none" stroke="#dfeadd" stroke-opacity=".26" stroke-width="1.3"/>
+<path d="M205 514 Q250 496 295 514 L295 522 Q250 504 205 522 Z" fill="url(#plid30)" fill-opacity=".9"/>
+<path d="M206 520 Q250 504 294 520" fill="none" stroke="#a83c2c" stroke-opacity=".55" stroke-width="3.4"/>
+</g>
+
+<g>
+<rect x="338" y="512" width="108" height="188" rx="14" fill="url(#pglass30)"/>
+<g clip-path="url(#j2c30)"><rect x="336" y="556" width="112" height="152" fill="url(#psake30)"/><rect x="336" y="556" width="112" height="3" fill="#f2ecd0" fill-opacity=".5"/><ellipse cx="392" cy="556" rx="54" ry="8" fill="#efe7c6" fill-opacity=".35"/><g fill="#f6f2dc" fill-opacity=".3"><circle cx="368" cy="586" r="2.2"/><circle cx="392" cy="574" r="1.6"/><circle cx="414" cy="596" r="2"/><circle cx="376" cy="620" r="1.8"/><circle cx="404" cy="640" r="1.5"/><circle cx="386" cy="662" r="2.1"/></g><g fill="#8d8656" fill-opacity=".4"><ellipse cx="392" cy="688" rx="46" ry="12"/></g></g>
+<rect x="347" y="528" width="9" height="152" fill="#f2f7ec" fill-opacity=".13"/>
+<rect x="430" y="540" width="5" height="132" fill="#f2f7ec" fill-opacity=".07"/>
+<rect x="338" y="512" width="108" height="188" rx="14" fill="none" stroke="#dfeadd" stroke-opacity=".22" stroke-width="1.4"/>
+<ellipse cx="392" cy="514" rx="47" ry="10" fill="#0d120c" fill-opacity=".45"/>
+<ellipse cx="392" cy="514" rx="47" ry="10" fill="none" stroke="#dfeadd" stroke-opacity=".26" stroke-width="1.3"/>
+<path d="M347 514 Q392 496 437 514 L437 522 Q392 504 347 522 Z" fill="url(#plid30)" fill-opacity=".9"/>
+<path d="M348 520 Q392 504 436 520" fill="none" stroke="#a83c2c" stroke-opacity=".55" stroke-width="3.4"/>
+</g>
+
+<g>
+<rect x="480" y="512" width="108" height="188" rx="14" fill="url(#pglass30)"/>
+<g clip-path="url(#j3c30)"><rect x="478" y="578" width="112" height="130" fill="url(#pchest30)"/><rect x="478" y="578" width="112" height="2.8" fill="#c9a05f" fill-opacity=".5"/><ellipse cx="534" cy="578" rx="54" ry="8" fill="#c99a55" fill-opacity=".4"/><g fill="#2a1c0c" fill-opacity=".78"><ellipse cx="516" cy="616" rx="17" ry="13"/><ellipse cx="552" cy="632" rx="16" ry="12"/><ellipse cx="526" cy="654" rx="18" ry="13"/><ellipse cx="556" cy="672" rx="14" ry="10"/></g><g fill="#e8c88c" fill-opacity=".16"><ellipse cx="520" cy="612" rx="5" ry="3.4"/><ellipse cx="555" cy="628" rx="4.6" ry="3"/><ellipse cx="530" cy="650" rx="5" ry="3.4"/></g></g>
+<rect x="489" y="528" width="9" height="152" fill="#f2f7ec" fill-opacity=".11"/>
+<rect x="572" y="540" width="5" height="132" fill="#f2f7ec" fill-opacity=".07"/>
+<rect x="480" y="512" width="108" height="188" rx="14" fill="none" stroke="#dfeadd" stroke-opacity=".22" stroke-width="1.4"/>
+<ellipse cx="534" cy="514" rx="47" ry="10" fill="#0d120c" fill-opacity=".45"/>
+<ellipse cx="534" cy="514" rx="47" ry="10" fill="none" stroke="#dfeadd" stroke-opacity=".26" stroke-width="1.3"/>
+<path d="M489 514 Q534 496 579 514 L579 522 Q534 504 489 522 Z" fill="url(#plid30)" fill-opacity=".9"/>
+<path d="M490 520 Q534 504 578 520" fill="none" stroke="#a83c2c" stroke-opacity=".55" stroke-width="3.4"/>
+</g>
+
+<g>
+<rect x="622" y="512" width="108" height="188" rx="14" fill="url(#pglass30)"/>
+<rect x="631" y="528" width="9" height="152" fill="#f2f7ec" fill-opacity=".1"/>
+<rect x="714" y="540" width="5" height="132" fill="#f2f7ec" fill-opacity=".06"/>
+<rect x="622" y="512" width="108" height="188" rx="14" fill="none" stroke="#dfeadd" stroke-opacity=".3" stroke-width="1.6"/>
+<ellipse cx="676" cy="514" rx="47" ry="10" fill="none" stroke="#dfeadd" stroke-opacity=".34" stroke-width="1.4"/>
+<ellipse cx="676" cy="514" rx="47" ry="10" fill="#0d120c" fill-opacity=".2"/>
+<path d="M631 514 Q676 496 721 514 L721 522 Q676 504 631 522 Z" fill="url(#plid30)" fill-opacity=".62"/>
+<path d="M632 520 Q676 504 720 520" fill="none" stroke="#a83c2c" stroke-opacity=".32" stroke-width="3.2"/>
+</g>
+
+<g transform="rotate(-1.6 250 628)"><rect x="212" y="602" width="76" height="52" rx="2" fill="#e8dfc6" fill-opacity=".93"/><rect x="212" y="602" width="76" height="2" fill="#c3b795" fill-opacity=".8"/><text x="250" y="626" font-family="Songti SC,serif" font-size="17" fill="#4a4134" text-anchor="middle">夏</text><g stroke="#8a8068" stroke-opacity=".45" stroke-width="1"><path d="M222 634 L278 634"/><path d="M222 642 L258 642"/></g></g>
+<g transform="rotate(1.4 392 628)"><rect x="354" y="602" width="76" height="52" rx="2" fill="#e8dfc6" fill-opacity=".93"/><rect x="354" y="602" width="76" height="2" fill="#c3b795" fill-opacity=".8"/><text x="392" y="626" font-family="Songti SC,serif" font-size="17" fill="#4a4134" text-anchor="middle">夏</text><g stroke="#8a8068" stroke-opacity=".45" stroke-width="1"><path d="M364 634 L420 634"/><path d="M364 642 L400 642"/></g></g>
+<g transform="rotate(-1 534 628)"><rect x="496" y="602" width="76" height="52" rx="2" fill="#e8dfc6" fill-opacity=".93"/><rect x="496" y="602" width="76" height="2" fill="#c3b795" fill-opacity=".8"/><text x="534" y="626" font-family="Songti SC,serif" font-size="17" fill="#4a4134" text-anchor="middle">秋</text><g stroke="#8a8068" stroke-opacity=".45" stroke-width="1"><path d="M506 634 L562 634"/><path d="M506 642 L542 642"/></g></g>
+<g transform="rotate(1.8 676 628)"><rect x="638" y="602" width="76" height="52" rx="2" fill="#e8dfc6" fill-opacity=".55"/><rect x="638" y="602" width="76" height="2" fill="#c3b795" fill-opacity=".5"/><g stroke="#8a8068" stroke-opacity=".4" stroke-width="1"><path d="M648 626 L700 626"/><path d="M648 634 L678 634"/></g><path d="M654 646 L690 646" stroke="#7d745" stroke-opacity=".34" stroke-width="1.2"/></g>
+
+<text x="84" y="186" font-family="Songti SC,serif" font-size="62" fill="#f2ead6" letter-spacing="6">小</text>
+<text x="84" y="272" font-family="Songti SC,serif" font-size="62" fill="#f2ead6" letter-spacing="6">森</text>
+<text x="84" y="358" font-family="Songti SC,serif" font-size="62" fill="#f2ead6" letter-spacing="6">林</text>
+<path d="M84 384 L146 384" stroke="#c9a25c" stroke-opacity=".45" stroke-width="1"/>
+<text x="84" y="416" font-family="Songti SC,serif" font-size="18" fill="#c9a25c" letter-spacing="4">夏 ・ 秋</text>
+<text x="86" y="444" font-family="Didot,serif" font-size="9" letter-spacing="2.6" fill="#8d9485">LITTLE FOREST</text>
+
+<rect width="760" height="1000" fill="url(#pveil30)"/>
+<rect x="0" y="770" width="760" height="230" fill="url(#pbot30)"/>
+
+<text x="84" y="874" font-family="Songti SC,serif" font-size="27" fill="#f2ead6" letter-spacing="9">小森林 夏・秋</text>
+<text x="86" y="906" font-family="Didot,serif" font-size="10" letter-spacing="3.4" fill="#8d9485">2014 · JUNICHI MORI</text>
+<g transform="rotate(-3 664 838)"><rect x="636" y="810" width="56" height="56" fill="none" stroke="#a83c2c" stroke-width="3" stroke-opacity=".82"/><text x="664" y="834" font-family="Songti SC,serif" font-size="18" fill="#a83c2c" text-anchor="middle">三</text><text x="664" y="855" font-family="Songti SC,serif" font-size="18" fill="#a83c2c" text-anchor="middle">十</text></g>
+</svg>
+        </div>
+        <p class="pcap">CONCEPT POSTER · 三只封了标签的罐子，与一只空着的</p>
+      </div>
+      <div class="pnotes">
+        <div class="pnote reveal"><div class="n">READING 01</div><h4>两个「夏」，一个「秋」</h4><p>三只罐子封了标签，第四只空着。这个顺序不是随机的：夏天她做了两样（<b>番茄、米酒</b>），秋天做了一样（<b>栗子</b>），然后停下了。标签贴好，字还没写。</p></div>
+        <div class="pnote reveal"><div class="n">READING 02</div><h4>玻璃里的东西都还没好</h4><p>米酒在发气，番茄沉在底下，栗子正在吸糖。<b>这部电影的时间单位是「等」</b>——不是「过了多久」，是「还要多久」。罐子是这个意思最准确的容器：你只能封上，然后不管它。</p></div>
+        <div class="pnote reveal"><div class="n">READING 03</div><h4>那只空罐才是主角</h4><p>它摆在最右边，玻璃是干净的，什么也没装。整部电影其实就在讲这只罐子：<b>一个人要不要把下一季也封进去</b>。片名给了「夏・秋」，没有给「冬・春」——那是半年以后的事。</p></div>
+        <div class="pnote reveal"><div class="n">READING 04</div><h4>罐口那块布，和那根橡皮筋</h4><p>不是买来的密封盖，是家里有什么就用什么。这是全片的方法论：<em>没有工具，就用现有的东西凑一个</em>。面包用铸铁锅烤，蒸笼用竹筛改，酒用棉布封。她所有的体面都是自己攒出来的。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s3">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">03</span><h2>档案</h2><span class="kicker">Credits &amp; Figures</span></div>
+    <dl class="spec reveal">
+      <div><dt>原名</dt><dd>リトル・フォレスト 夏・秋</dd></div>
+      <div><dt>英译</dt><dd>Little Forest: Summer / Autumn<small>台译《小森食光》</small></dd></div>
+      <div><dt>公映</dt><dd>2014-08-30<small>日本 · 松竹媒体事业部配给</small></dd></div>
+      <div><dt>片长</dt><dd>111 分钟<small>夏 56 分 53 秒 + 秋 54 分 44 秒</small></dd></div>
+      <div><dt>导演・脚本</dt><dd>森淳一<small>1967 年生，东京 · 所属 ROBOT</small></dd></div>
+      <div><dt>原作</dt><dd>五十岚大介<small>《月刊Afternoon》2002.12—2005.07 · 全 33 话 / 2 卷</small></dd></div>
+      <div><dt>主演</dt><dd>桥本爱<small>拍摄时 17 岁</small></dd></div>
+      <div><dt>共演</dt><dd>三浦贵大 / 松冈茉优<small>温水洋一 · 桐岛加恋</small></dd></div>
+      <div><dt>摄影</dt><dd>小野寺幸浩<small>岩手县出身</small></dd></div>
+      <div><dt>音乐</dt><dd>宫内优里<small>用得极少，只在季节交界处出现</small></dd></div>
+      <div><dt>主题歌</dt><dd>FLOWER FLOWER<small>yui 的乐队 · 写了「夏」「秋」「冬」「春」四首</small></dd></div>
+      <div><dt>料理指导</dt><dd>eatrip · 野村友里<small>农活与烹饪全部由演员本人完成</small></dd></div>
+      <div><dt>制作</dt><dd>ROBOT · 企划 河合勇人<small>製作委员会：松竹 / ROBOT / 电通 / GYAO / 讲谈社 / 读卖新闻</small></dd></div>
+      <div><dt>外景</dt><dd>岩手县奥州市衣川区大森<small>市子的家是前泽区一间旧纳屋改造的</small></dd></div>
+      <div><dt>拍摄</dt><dd>2013 年 7 月起，约一年<small>按作物成熟的时间分批拍</small></dd></div>
+      <div><dt>公开馆数</dt><dd>全国 30 馆<small>东京几家小馆起步，后来陆续加馆</small></dd></div>
+      <div><dt>前后篇</dt><dd>2014-08-30 / 2015-02-14<small>《夏·秋》111 分 ·《冬·春》120 分</small></dd></div>
+      <div><dt>类型</dt><dd>剧情 · 生活<small>原作为农业随笔式漫画</small></dd></div>
+      <div><dt>IMDb</dt><dd>tt3474600 · 7.6<small>4.2K 票 · 未加权均分 7.5</small></dd></div>
+      <div><dt>豆瓣</dt><dd>9.0 · 484,033 人<small>五星 59.0% · Top250 第 140</small></dd></div>
+      <div class="wide"><dt>一句话</dt><dd>它是那种「看完会想去洗碗」的电影——不劝你回乡，也不劝你别回。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" id="s4">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">04</span><h2>口碑，与几个必须说清的口径</h2><span class="kicker">Reception</span></div>
+    <div class="scores reveal">
+      <div class="sc hi"><div class="src">Douban 豆瓣</div><div class="val">9.0<small>/ 10</small></div><div class="meta"><b>484,033</b> 人评价 · 五星 59.0% / 四星 32.5% / 三星 7.6%<br>Top250 第 140 位 · 系列 30 期里票池第 3 深</div></div>
+      <div class="sc"><div class="src">IMDb</div><div class="val">7.6<small>/ 10</small></div><div class="meta"><b>4.2K</b> 票 · 未加权均分 <b>7.5</b><br>与豆瓣差 <b>1.4</b> 分，系列第二大分歧（第 17 期 1.6 最大）</div></div>
+      <div class="sc pair"><div class="src">后篇《冬·春》</div><div class="val">9.0<small>/ 10</small></div><div class="meta">豆瓣 <b>429,168</b> 人 · 五星 60.0% / 四星 32.0%<br>两篇同分。加起来 <b>91 万人</b>——比大多数日本片的总和还大</div></div>
+      <div class="sc dim"><div class="src">Rotten Tomatoes</div><div class="val">无条目</div><div class="meta">Metacritic 亦无条目<br>2014 年英美没有院线发行，只在两个影展的「美食电影」单元放过。<b>没有分数，不等于分数低。</b></div></div>
+    </div>
+    <ul class="caliber reveal">
+      <li><i>01</i><span><b>9.0 和 7.6 差的这 1.4 分，是两种看法：</b>中文观众把它当「生活方式」来读——一个人种地、做饭、不解释；IMDb 上它被当成一部没有情节的日本小品。IMDb 打分人数最多的国家一栏，第一个是<b>中国</b>。同一部片子，两个观众群在回答两个不同的问题。</span></li>
+      <li><i>02</i><span><b>「48 万人打 9.0」只是半部：</b>后篇《冬·春》还有 42.9 万人，同样是 9.0。两篇合计 91 万票。<b>它不是一个冷门高分片，它是一个被反复重看的片子</b>——这一点比分本身更能说明问题。</span></li>
+      <li><i>03</i><span><b>Top250 的位次会动：</b>中文百科 2023 年记的是第 119 位，今天页面上是第 140。位次只是排序算法，不是评价。<b>本页只写今天查到的数</b>，并注明它会变。</span></li>
+      <li><i>04</i><span><b>它没拿过日本的主要电影奖：</b>翻遍日文资料，受赏栏只有一行——第 18 回文化庁媒体芸術祭的「審査委員会推薦作品」。<b>那是入选，不是奖。</b>同年日本学院奖、旬报十佳的名单里都没有它。一部 30 块银幕起步的片子，本来也不在那个赛道上。</span></li>
+      <li><i>05</i><span><b>「日本版《舌尖上的中国》」是中文影迷给的标签：</b>不是官方宣传。这个说法解释了它在中国为什么传得开，也解释了为什么很多人看完觉得「被骗了」——<b>它其实不太关心菜好不好吃</b>。</span></li>
+      <li><i>06</i><span><b>它没在中国大陆公映过：</b>2014 年至今没有官方院线引进记录，所有传播都走影展、影碟与网络。所以它的 48 万票里，绝大多数人第一次看的是小屏幕——<b>而这部片恰恰是为大银幕的「慢」拍的</b>。</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="s5">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">05</span><h2>六个人（其实第五个之后就不是人了）</h2><span class="kicker">Characters</span></div>
+    <div class="people reveal">
+      <div class="person"><div class="role">ICHI KO</div><h4>市子<small>主人公</small></h4><div class="actor">桥本爱</div><p>二十岁出头，从城里回到小森。不解释，不抱怨，也不说自己打算待多久。<span><b>她所有的情绪都指向一件事：手上得有活。</b></span></p></div>
+      <div class="person"><div class="role">THE MOTHER</div><h4>福子<small>母亲</small></h4><div class="actor">桐岛加恋</div><p>会自己做伍斯特酱、自己烤蛋糕，把厨房变成了一个小型工厂。五年前的一个冬天，她离开了这个家。<span><b>她留下的不是遗书，是一堆没教完的做法。</b></span></p></div>
+      <div class="person"><div class="role">THE RETURNEE</div><h4>佑太<small>同乡</small></h4><div class="actor">三浦贵大</div><p>也是从城里回来的。他受够了城里人的空话——「让别人去杀，再抱怨杀法」。<span><b>他看得出市子跟他不一样，也知道这话不能说。</b></span></p></div>
+      <div class="person"><div class="role">THE FRIEND</div><h4>吉子<small>发小</small></h4><div class="actor">松冈茉优</div><p>从小一起长大，现在在村里做事。秋天她来串门，两个人坐在廊下分一盆刚从山上采回来的野果。<span><b>她是这部片里唯一带着「外面」的味道进来的人。</b></span></p></div>
+      <div class="person"><div class="role">THE NEIGHBOUR</div><h4>茂幸<small>露营地老板</small></h4><div class="actor">温水洋一</div><p>市子和佑太去养鱼场打零工，回头在他那儿吃到一条烤岩鱼和一碗味噌汤。<span><b>他给的不是人情，是一顿饭该有的样子。</b></span></p></div>
+      <div class="person"><div class="role">THE HOUSE</div><h4>那间屋子<small>不算人</small></h4><div class="actor">灶 · 木铲 · 廊下 · 一口井</div><p>母亲留下的老屋。它的地板会响，灶要先生火才肯听话，廊下永远比屋里凉。<span><b>它不是背景，它是第六个角色——而且是最不肯让步的那个。</b></span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s6">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">06</span><h2>六处冲突</h2><span class="kicker">Conflicts</span></div>
+    <div class="cf-list reveal">
+      <div class="cf"><h4><i>CONFLICT 01</i>市子 × 母亲<br>同一盘青菜，永远差一点</h4><p>她照着母亲的做法炒青菜，怎么都不对。直到有一天她看见——母亲会把青菜的筋一根一根抽掉，再下锅。<em>她一直以为母亲做事马虎，其实马虎的是自己</em>。这场戏没有一句争吵，但它比任何一场吵架都狠。</p></div>
+      <div class="cf"><h4><i>CONFLICT 02</i>市子 × 土地<br>那顶没搭起来的大棚</h4><p>全村都搭棚种番茄，她的年年歉收，还是不搭。因为棚一搭起来，就等于承认「我要留在这里」。<em>这是全片唯一被明写的一次抵抗，对手是一块塑料布</em>——而它挡住的是她自己。</p></div>
+      <div class="cf"><h4><i>CONFLICT 03</i>市子 × 佑太<br>「回来」和「逃回来」</h4><p>两个人都是从城里回来的，但佑太是「够了，我回来」，市子是「不行，我回来」。<em>他看出来了，也知道这话不能说破</em>。所以他们聊天时总隔着一层——那不是暧昧，是体谅。</p></div>
+      <div class="cf"><h4><i>CONFLICT 04</i>市子 × 城市<br>那颗城里也有的茱萸</h4><p>城里有一棵茱萸，她和那个人一起摘过；小森的院子里也有一棵。她摘下来，煮成一罐酸得发涩的果酱。<em>她没解释为什么要煮它</em>，镜头也没替她解释。这是全片处理往事的标准姿势：只给动作，不给台词。</p></div>
+      <div class="cf"><h4><i>CONFLICT 05</i>市子 × 鸭子<br>她得自己动手</h4><p>合鸭田里养鸭除草，到了时候总得有人处理。她自己来，烧水、褪毛、开膛，镜头不剪。<em>这是全片最不「治愈」的三分钟</em>，也是它最诚实的地方：你要吃，就得有人杀；那个人可以是你自己。</p></div>
+      <div class="cf"><h4><i>CONFLICT 06</i>市子 × 沉默<br>她不对任何人解释</h4><p>邻居问她为什么回来，她说「就回来了」。这不是冷淡，是一种自卫——<em>一解释，就得承认自己在逃</em>。整部片子她都在守住这个不解释，直到那封信来，把话头递到她面前。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s7">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">07</span><h2>二十四年，九个节点</h2><span class="kicker">Lineage</span></div>
+    <div class="lineage reveal">
+      <div class="ln"><div class="yr">2002 · 12</div><h4>一部「没有事件」的漫画</h4><p>五十岚大介在《月刊Afternoon》开始连载《小森林》。他自己搬到岩手县衣川村（今奥州市），一边种地一边画——<b>这本漫画的素材就是他自己的农活</b>。</p></div>
+      <div class="ln"><div class="yr">2005 · 7</div><h4>三十三话，两卷</h4><p>连载结束，全 33 话、单行本 2 卷。它没有主线剧情，只有季节与食物，在日本被当成「农业随笔式漫画」的一个异数。</p></div>
+      <div class="ln"><div class="yr">2013 · 7</div><h4>开机</h4><p>夏篇先拍。剧组在奥州市前沢区找到一间旧纳屋，改造成市子的家——<b>原作原型的那栋房子还住着人，不能拍</b>。为了等作物，拍摄拉了整整一年。</p></div>
+      <div class="ln"><div class="yr">2014 · 8 · 30</div><h4>只开了 30 块银幕</h4><p>《夏·秋》公映，全国 30 馆。这是一个「小片」的规模，不是「佳作」的规模——它一开始就没打算走大发行的路。</p></div>
+      <div class="ln"><div class="yr">2014 · 9 · 19</div><h4>圣塞巴斯蒂安，配晚餐放映</h4><p>第 62 回圣塞巴斯蒂安国际电影节「Culinary Zinema」单元，放的是《夏·秋》，映后配一顿晚餐。<b>它第一次出国，是被当成「食物电影」介绍的。</b></p></div>
+      <div class="ln"><div class="yr">2015 · 2 · 10</div><h4>柏林，同一个赛道的另一个单元</h4><p>第 65 回柏林国际电影节「Culinary Cinema」单元放映。两次出海都落在美食单元里——这个定位后来影响了它在海外的所有介绍文字。</p></div>
+      <div class="ln"><div class="yr">2015 · 2 · 14</div><h4>后篇补完</h4><p>《冬·春》公映，120 分钟。四个季节各有一个独立片头与片尾，合起来才是完整的四季。前篇停在霜降，后篇从雪开始。</p></div>
+      <div class="ln"><div class="yr">2018</div><h4>被翻拍</h4><p>韩国版《小森林》（임순례 林顺礼导演，金泰梨主演）2018-02-28 公映，把四季压进 103 分钟，也把「回来」改成了更明亮的版本。<b>原作漫画只有两卷，却养出了两个国家的电影。</b></p></div>
+      <div class="ln now"><div class="yr">今天</div><h4>一部「只有中国人在打分」的日本片</h4><p>豆瓣 48.4 万人 9.0，Top250 第 140；IMDb 4.2 千票 7.6，打分人数最多的国家那一栏，第一个是中国。<b>它没有在日本红过，也没有在欧美红过——它在中文互联网上活成了另一个东西。</b></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s8">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">08</span><h2>荣誉，与三个「没有」</h2><span class="kicker">Awards &amp; Records</span></div>
+    <div class="awards reveal">
+      <div class="award gold"><div class="yr">2014</div><div><h4>第 18 回文化庁媒体芸術祭 · 审查委员会推荐作品</h4><p>娱乐部门。这是它受赏栏里唯一的一行——<b>「推荐作品」是入选，不是奖</b>。写这句话要小心，很多中文资料把它写成「获奖」。</p></div></div>
+      <div class="award cold"><div class="yr">2014</div><div><h4>第 62 回圣塞巴斯蒂安国际电影节 · Culinary Zinema</h4><p>2014-09-19 起，放《夏·秋》，映后配晚餐。不是主竞赛，是美食电影单元。</p></div></div>
+      <div class="award cold"><div class="yr">2015</div><div><h4>第 65 回柏林国际电影节 · Culinary Cinema</h4><p>2015-02-10，放映《夏》篇与《冬》篇。同样是单元展映，不是竞赛。</p></div></div>
+      <div class="award cold"><div class="yr">2014</div><div><h4>全国 30 馆</h4><p>首轮公映规模。这个数字比任何奖都更能说明它当时的位置：<b>一部被当成「小众文艺片」发行的电影</b>。</p></div></div>
+      <div class="award cold"><div class="yr">2015</div><div><h4>111 分 + 120 分</h4><p>前后篇合计 231 分钟，四个季节各有独立片头片尾。日本当时有影院把两篇连排，中间留十分钟休息。</p></div></div>
+      <div class="award gold"><div class="yr">2018</div><div><h4>被韩国翻拍</h4><p>林顺礼导演、金泰梨主演，2018-02-28 公映，103 分钟。一个只有两卷的漫画，养出了两个国家的电影。</p></div></div>
+      <div class="award cold"><div class="yr">今天</div><div><h4>豆瓣 9.0 · 484,033 人 · Top250 第 140</h4><p>五星 59.0%。这个分布的形状很不寻常：<b>五星接近六成，三星以下不到 8%</b>——不是「大家都觉得还行」，是「一部分人非常喜欢，少数人完全不吃」。</p></div></div>
+      <div class="award cold"><div class="yr">今天</div><div><h4>IMDb 7.6 · 4,200 票</h4><p>票数是豆瓣的百分之一不到。打分人数最多的国家：中国、美国、泰国、中国台湾、英国。</p></div></div>
+      <div class="award wide"><div class="yr">口径</div><div><h4>三个「没有」叠在一起，正好解释了那 1.4 分</h4><p><b>没有日本主要电影奖</b>——它不在学院奖与旬报的赛道上；<b>没有英美发行</b>——烂番茄与 Metacritic 至今无条目，出国只去过两个「美食单元」；<b>没有在中国大陆公映</b>——48 万票全部来自影展、影碟与小屏幕。<br>一部在本土被当成小片、在海外被当成「食物电影」、在中国被当成「生活答案」的作品。<b>它没有变得更伟大，它只是被三种不同的目光看过。</b></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s9">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">09</span><h2>六处亮点</h2><span class="kicker">Six Things</span></div>
+    <div class="grid6 reveal">
+      <div class="g6"><div class="n">01</div><h4>灶是唯一的光</h4><p>全片的光几乎都来自三种东西：柴火、窗、门外的太阳。<b>没有一场戏是靠打灯打出来的「美」</b>。所以你总能看见光是从哪儿来的——这件事在今天的大银幕上已经很稀有了。</p></div>
+      <div class="g6"><div class="n">02</div><h4>声音是第二主角</h4><p>蝉、雨、刀落在砧板上、锅盖被汽顶起来的那一下、柴在炉膛里塌下去。配乐用得极少，几乎只在季节交界处露一次面。<b>它相信环境声足够把情绪撑住。</b></p></div>
+      <div class="g6"><div class="n">03</div><h4>每一刀都是她自己下的</h4><p>桥本爱开拍前学农活，插秧、割稻、拔草、处理鸭子、烤面包，都是本人完成。剧组请了 eatrip 的野村友里做料理指导，<b>但镜头里那双手是演员的</b>——这不是表演，是熟练。</p></div>
+      <div class="g6"><div class="n">04</div><h4>食物不「上相」</h4><p>没有摆盘，没有升格慢镜，没有一声「哇」。面包会塌，番茄会裂，酱会溅出来。<b>它拍的是做饭，不是菜品摄影</b>——这也是它跟所有美食片划清界限的地方。</p></div>
+      <div class="g6"><div class="n">05</div><h4>季节之间有一道接缝</h4><p>夏篇 56 分 53 秒、秋篇 54 分 44 秒，各有独立的片头与片尾字幕。夏天结束，字幕升起，然后才是秋天。<b>这个「断开」是故意的</b>：它让你真的感觉到时间过去了。</p></div>
+      <div class="g6"><div class="n">06</div><h4>她几乎不笑</h4><p>市子的表情幅度很小。不是演得木，是这个人正在把自己收起来。<b>你看她切菜的背影看得久了，会开始替她难受</b>——这部片所有的情绪都是这样绕过去的，从不正面给。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">10</span><h2>为什么值得看</h2><span class="kicker">Why It Matters</span></div>
+    <div class="why reveal">
+      <article><h3>一、它把「失败」拍成了一件可以过日子的事</h3><p>大多数「逃离城市」的故事，会让主人公在乡下找到某种答案：一个师父、一段爱情、一门手艺，最后她终于笑了。这部片不给你这个。<strong>市子回到小森，没有变得更好，也没有变得更坏</strong>——她只是每天要吃饭，而饭得自己做。</p><p>它把「失败」处理成一种日常状态，而不是一个需要被治愈的伤口。这在同类题材里极罕见：<em>它不承诺你会好起来，它只保证你会饿</em>。</p></article>
+      <article><h3>二、它重新给「一顿饭」标了价</h3><p>一颗番茄要等到夏天，一瓶米酒要等它发气，一罐栗子要等糖渗进去。片子里所有的食物都有一个前置成本：拔草、等雨、抢在动物前面、把鸭子处理干净。</p><p><strong>当你看见那块面包是从劈柴开始的</strong>，你对「吃饭」这件事的理解会变。这不是环保宣传，是一种更朴素的经济学：你吃下去的每一样东西，都曾经是别人的一段时间。</p></article>
+      <article><h3>三、它是少见的、不劝你回乡下的田园片</h3><p>田园片通常有一个隐含的劝说：城市是坏的，土地是好的，回来吧。这部片从头到尾没有劝。它甚至让你看见留下来有多难——一个人割一季稻，一个人对付一群鸭子，一个人在雪里挖菜。</p><p>所以它最后留下的不是「我也想去乡下」，而是一个更安静的问题：<em>你现在过的日子，是你选的，还是你只是没停下来想过</em>。</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="no">11</span><h2>观影提示</h2><span class="kicker">Before You Press Play</span></div>
+    <div class="tips reveal">
+      <div class="tip"><div class="k">01</div><h4>别当美食片看</h4><p>它的食物不上相：面包会塌、番茄会裂、酱会糊。如果你是来找「舌尖」的，会失望；如果你是来看一个人怎么把日子过下去的，正好。</p></div>
+      <div class="tip"><div class="k">02</div><h4>把手机放远一点</h4><p>它没有钩子。前三十分钟几乎不给情节，只给你手上的活。<b>你分心一次，就再也进不去了</b>——它的节奏不会等你。</p></div>
+      <div class="tip"><div class="k">03</div><h4>前后篇连着看</h4><p>《夏·秋》111 分钟，《冬·春》120 分钟。只看上篇会停在半句话上。建议分两晚，一晚一部，别一次看完。</p></div>
+      <div class="tip"><div class="k">04</div><h4>数一数她一个人吃了几顿</h4><p>全片吃饭的镜头很多，但几乎都是一个人。<b>这不是孤独的展示，是这部片真正的题目</b>——一个人吃饭，到底算不算过日子。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="verdict">
+  <div class="wrap">
+    <div class="tag reveal">CODA</div>
+    <p class="q reveal"><span>她没打算留下，</span><span>也没打算走。</span><span>她只是先把这一顿饭，</span><span>认真做完了。</span></p>
+    <p class="src reveal">非片中台词 · 为本页所写</p>
+    <div class="stamp" aria-hidden="true"><div><span>JAPANESE CINEMA</span><span>NO. 30</span><b>リトル・フォレスト</b><span>MMXIV</span></div></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>日本电影专题 · 第 30 期 ·《小森林 夏·秋》リトル・フォレスト 夏・秋（2014，森淳一）<br>
+    页面数据回源：豆瓣条目 25814705 / 25814707 · IMDb tt3474600 · 日文维基《リトル・フォレスト》· 松竹发行资料（片长拆分与公开馆数）。<br>
+    梗概止于第一幕：霜降之后的那封信。信里写了什么、她读完做了什么、后篇《冬·春》，一律不写。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var c = document.getElementById('heroCanvas');
+  if(c){
+    var ctx = c.getContext('2d'), W=0, H=0, motes=[], t=0, dpr=Math.min(window.devicePixelRatio||1,2);
+    function size(){
+      W = c.clientWidth; H = c.clientHeight;
+      c.width = Math.round(W*dpr); c.height = Math.round(H*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      build();
+    }
+    function build(){
+      motes=[];
+      var n = Math.round(W*H/32000);
+      if(n > 60) n=60;
+      for(var i=0;i < n;i++){
+        motes.push({
+          x: Math.random()*W,
+          y: Math.random()*H,
+          r: .5+Math.random()*1.1,
+          vy: -.05-Math.random()*.1,
+          vx: .02+Math.random()*.05,
+          a: .025+Math.random()*.06,
+          p: Math.random()*6.28
+        });
+      }
+    }
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      t+=0.005;
+      for(var i=0;i<motes.length;i++){
+        var m=motes[i];
+        m.y+=m.vy; m.x+=m.vx;
+        if(m.y < -12){ m.y=H+12; m.x=Math.random()*W; }
+        if(m.x > W+12){ m.x=-12; }
+        var a=m.a*(0.4+0.6*Math.sin(t*0.55+m.p));
+        ctx.beginPath();
+        ctx.fillStyle='rgba(236,232,196,'+a.toFixed(3)+')';
+        ctx.arc(m.x,m.y,m.r,0,6.2832);
+        ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    window.addEventListener('resize',size);
+    size(); draw();
+  }
+
+  var revs = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.08, rootMargin:'0px 0px -6% 0px'});
+  revs.forEach(function(e){ io.observe(e); });
+
+  var hud=document.getElementById('hud'), items=[].slice.call(hud.querySelectorAll('b'));
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    hud.classList.toggle('on', y > window.innerHeight*0.55);
+    var p = y/(document.body.scrollHeight - window.innerHeight);
+    var idx = Math.min(4, Math.floor(p*5));
+    items.forEach(function(b,i){ b.classList.toggle('on', i===idx); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.reveal').forEach(function(e){ e.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
