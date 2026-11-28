@@ -261,6 +261,9 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
   .hero-scrim{background:
     linear-gradient(to bottom,rgba(5,7,7,.95) 0%,rgba(5,7,7,.9) 22%,rgba(5,7,7,.78) 34%,rgba(5,7,7,.62) 42%,rgba(5,7,7,.42) 50%,rgba(5,7,7,.2) 58%,rgba(5,7,7,.1) 66%,rgba(5,7,7,.05) 76%,rgba(5,7,7,.12) 86%,rgba(5,7,7,.34) 94%,rgba(5,7,7,.52) 100%)}
   #stones31g{transform:translateX(-104px)}
+  #shore31{display:none}
+  #ripples31{opacity:.38}
+  #haze31r{opacity:.26}
   body{font-size:15px;line-height:1.9}
   .wrap,.hero-in{width:calc(100% - 40px)}
   .hero{min-height:max(100vh,740px)}
@@ -448,10 +451,10 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
       <rect x="842" y="330" width="6" height="22"/><rect x="1142" y="328" width="6" height="18"/>
     </g>
   </g>
-  <rect x="0" y="380" width="1440" height="120" fill="url(#haze31)" opacity=".5"/>
+  <rect id="haze31r" x="0" y="380" width="1440" height="120" fill="url(#haze31)" opacity=".5"/>
 </g>
 
-<rect x="0" y="380" width="1440" height="1.6" fill="#e6d8b2" fill-opacity=".24"/>
+<rect id="shore31" x="0" y="380" width="1440" height="1.6" fill="#e6d8b2" fill-opacity=".24"/>
 
 <ellipse cx="1012" cy="470" rx="124" ry="122" fill="url(#suncol31)"/>
 <g fill="#f4dfae" fill-opacity=".2">
@@ -462,7 +465,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
   <rect x="1004" y="592" width="24" height="1.2"/>
 </g>
 
-<g stroke-linecap="round" fill="none">
+<g id="ripples31" stroke-linecap="round" fill="none">
   <g stroke="#efe2b8" stroke-opacity=".34" stroke-width="1.4">
     <path d="M280 392 L392 392"/><path d="M470 392 L560 392"/><path d="M700 392 L812 392"/>
     <path d="M600 404 L690 404"/><path d="M840 404 L928 404"/><path d="M200 420 L300 420"/>
