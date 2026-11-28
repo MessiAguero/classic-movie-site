@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-28T05:10:50.712Z",
+  "generatedAt": "2026-11-28T05:12:23.620Z",
   "thresholds": {
     "minPortraitRatio": 1.2,
     "maxPortraitRatio": 2.2,
@@ -3427,7 +3427,8 @@
       "ratio": 1.5,
       "identityKind": "name",
       "identityHits": [
-        "片名中文"
+        "片名中文",
+        "别名:河童之夏"
       ],
       "evidence": {
         "level": "medium",

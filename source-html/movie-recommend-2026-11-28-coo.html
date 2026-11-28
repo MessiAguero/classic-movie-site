@@ -328,10 +328,29 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
   <stop offset="1" stop-color="#ded0a8"/>
 </linearGradient>
 <linearGradient id="water31" x1="0" y1="0" x2="0" y2="1">
-  <stop offset="0" stop-color="#93a096"/><stop offset=".1" stop-color="#78857c"/>
-  <stop offset=".26" stop-color="#58645e"/><stop offset=".48" stop-color="#3a4643"/>
-  <stop offset=".72" stop-color="#1e2826"/><stop offset="1" stop-color="#070b0a"/>
+  <stop offset="0" stop-color="#c6b99c"/><stop offset=".045" stop-color="#b2ab8f"/>
+  <stop offset=".11" stop-color="#8e9382"/><stop offset=".2" stop-color="#707a6e"/>
+  <stop offset=".33" stop-color="#4e5852"/><stop offset=".5" stop-color="#333d39"/>
+  <stop offset=".7" stop-color="#1c2523"/><stop offset="1" stop-color="#070a0a"/>
 </linearGradient>
+<linearGradient id="bankref31" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#28322e" stop-opacity=".6"/><stop offset=".48" stop-color="#28322e" stop-opacity=".26"/>
+  <stop offset="1" stop-color="#28322e" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="suncol31" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0" stop-color="#f7e0af" stop-opacity=".36"/><stop offset=".38" stop-color="#e6c793" stop-opacity=".15"/>
+  <stop offset="1" stop-color="#bd9f73" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="stoneA31" x1="0" y1="0" x2=".4" y2="1">
+  <stop offset="0" stop-color="#3d453d"/><stop offset=".4" stop-color="#262e29"/><stop offset="1" stop-color="#0d1211"/>
+</linearGradient>
+<linearGradient id="stoneB31" x1="0" y1="0" x2=".4" y2="1">
+  <stop offset="0" stop-color="#333b35"/><stop offset=".45" stop-color="#1f2724"/><stop offset="1" stop-color="#0a0f0e"/>
+</linearGradient>
+<radialGradient id="stonesh31" cx=".5" cy=".5" r=".5">
+  <stop offset="0" stop-color="#030807" stop-opacity=".6"/><stop offset=".55" stop-color="#030807" stop-opacity=".28"/>
+  <stop offset="1" stop-color="#030807" stop-opacity="0"/>
+</radialGradient>
 <linearGradient id="bank31" x1="0" y1="0" x2="0" y2="1">
   <stop offset="0" stop-color="#33403b" stop-opacity=".95"/><stop offset="1" stop-color="#1b2523"/>
 </linearGradient>
@@ -406,57 +425,88 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
 <rect x="0" y="384" width="1440" height="3" fill="#050a09" fill-opacity=".7"/>
 
 <rect x="0" y="386" width="1440" height="514" fill="url(#water31)"/>
-<ellipse cx="1000" cy="452" rx="440" ry="96" fill="url(#glow31)"/>
+<rect x="0" y="386" width="1440" height="120" fill="url(#bankref31)"/>
+<rect x="928" y="386" width="160" height="270" fill="url(#suncol31)"/>
+<g fill="#f0d8a6" fill-opacity=".22">
+  <rect x="952" y="392" width="52" height="3"/><rect x="972" y="404" width="38" height="2.6"/>
+  <rect x="986" y="418" width="60" height="2.6"/><rect x="962" y="436" width="44" height="2.4"/>
+  <rect x="998" y="456" width="34" height="2.2"/><rect x="976" y="482" width="42" height="2"/>
+  <rect x="1002" y="512" width="26" height="1.8"/><rect x="982" y="548" width="30" height="1.6"/>
+</g>
+<g fill="#e2b981" fill-opacity=".3">
+  <rect x="96" y="389" width="6" height="20"/><rect x="560" y="389" width="5" height="17"/>
+  <rect x="858" y="389" width="5" height="18"/><rect x="1150" y="389" width="6" height="19"/>
+</g>
 
 <g stroke="#d7cfae" stroke-linecap="round" fill="none">
-  <g stroke-opacity=".16" stroke-width="1.3">
-    <path d="M120 404 L318 404"/><path d="M470 398 L640 398"/><path d="M760 406 L980 406"/>
-    <path d="M1080 400 L1290 400"/><path d="M60 424 L232 424"/><path d="M352 416 L520 416"/>
-    <path d="M640 428 L848 428"/><path d="M960 418 L1150 418"/><path d="M1230 432 L1400 432"/>
+  <g stroke-opacity=".2" stroke-width="1.2">
+    <path d="M110 400 L330 400"/><path d="M420 396 L600 396"/><path d="M700 402 L920 402"/>
+    <path d="M1120 398 L1320 398"/><path d="M50 412 L240 412"/><path d="M330 410 L512 410"/>
+    <path d="M620 414 L830 414"/><path d="M1180 412 L1400 412"/>
   </g>
-  <g stroke-opacity=".1" stroke-width="1.1">
-    <path d="M180 452 L400 452"/><path d="M520 444 L700 444"/><path d="M820 460 L1040 460"/>
-    <path d="M1120 446 L1330 446"/><path d="M90 480 L290 480"/><path d="M420 472 L586 472"/>
-    <path d="M660 490 L880 490"/><path d="M1000 476 L1200 476"/><path d="M1280 492 L1410 492"/>
-    <path d="M240 518 L470 518"/><path d="M600 508 L800 508"/><path d="M920 526 L1140 526"/>
-    <path d="M120 552 L330 552"/><path d="M460 542 L660 542"/><path d="M780 560 L1000 560"/>
+  <g stroke-opacity=".14" stroke-width="1.1">
+    <path d="M160 428 L390 428"/><path d="M470 424 L660 424"/><path d="M740 430 L960 430"/>
+    <path d="M1090 426 L1310 426"/><path d="M80 446 L300 446"/><path d="M380 442 L570 442"/>
+    <path d="M660 448 L880 448"/><path d="M1010 444 L1230 444"/><path d="M1290 450 L1420 450"/>
+    <path d="M220 466 L450 466"/><path d="M540 462 L740 462"/><path d="M830 468 L1050 468"/>
+    <path d="M1160 464 L1380 464"/>
   </g>
-  <g stroke-opacity=".07" stroke-width="1.6">
-    <path d="M300 588 L560 588"/><path d="M700 578 L940 578"/><path d="M1080 596 L1310 596"/>
-    <path d="M140 628 L390 628"/><path d="M520 618 L780 618"/><path d="M940 636 L1180 636"/>
-    <path d="M80 672 L300 672"/><path d="M440 662 L700 662"/><path d="M860 680 L1120 680"/>
+  <g stroke-opacity=".09" stroke-width="1.4">
+    <path d="M140 492 L360 492"/><path d="M440 486 L640 486"/><path d="M740 494 L960 494"/>
+    <path d="M1080 488 L1300 488"/><path d="M60 520 L290 520"/><path d="M380 514 L580 514"/>
+    <path d="M690 522 L910 522"/><path d="M1030 516 L1250 516"/>
+  </g>
+  <g stroke-opacity=".065" stroke-width="1.7">
+    <path d="M200 556 L440 556"/><path d="M520 548 L740 548"/><path d="M840 560 L1060 560"/>
+    <path d="M1180 552 L1400 552"/><path d="M100 592 L340 592"/><path d="M420 582 L650 582"/>
+    <path d="M760 596 L1000 596"/><path d="M1100 586 L1330 586"/>
+    <path d="M160 640 L400 640"/><path d="M480 628 L720 628"/><path d="M820 646 L1060 646"/>
+    <path d="M1140 632 L1380 632"/>
+  </g>
+  <g stroke-opacity=".05" stroke-width="2.1">
+    <path d="M60 706 L320 706"/><path d="M400 690 L660 690"/><path d="M760 714 L1020 714"/>
+    <path d="M1100 696 L1370 696"/><path d="M180 782 L460 782"/><path d="M540 766 L820 766"/>
+    <path d="M900 790 L1180 790"/><path d="M60 852 L360 852"/><path d="M660 840 L960 840"/>
   </g>
 </g>
-<g stroke="#08100e" stroke-opacity=".5" stroke-linecap="round" fill="none">
+<g stroke="#07100e" stroke-opacity=".42" stroke-linecap="round" fill="none">
   <g stroke-width="2">
-    <path d="M320 434 L520 434"/><path d="M720 446 L900 446"/><path d="M200 466 L380 466"/>
-    <path d="M980 500 L1180 500"/><path d="M560 534 L760 534"/><path d="M150 582 L340 582"/>
+    <path d="M300 416 L520 416"/><path d="M700 476 L900 476"/><path d="M180 530 L380 530"/>
+    <path d="M960 566 L1180 566"/><path d="M520 610 L740 610"/><path d="M140 668 L350 668"/>
   </g>
 </g>
 
-<ellipse cx="806" cy="742" rx="230" ry="52" fill="url(#shad31)"/>
-<path d="M672 690 C 690 634 740 608 806 606 C 872 604 918 630 936 684 C 950 726 936 754 900 764 C 858 776 700 774 664 756 C 646 744 656 714 672 690 Z" fill="url(#stone31)"/>
-<path d="M676 688 C 696 636 742 612 806 610 C 868 608 912 632 930 682" fill="none" stroke="#e8cb92" stroke-opacity=".38" stroke-width="2.2"/>
-<path d="M930 682 C 944 716 934 748 900 760" fill="none" stroke="#c8a878" stroke-opacity=".2" stroke-width="1.6"/>
-<path d="M712 700 C 748 690 790 692 826 700 C 854 706 868 716 866 726" fill="none" stroke="#0a100f" stroke-opacity=".5" stroke-width="2.4"/>
-<path d="M760 652 C 792 646 828 650 848 662" fill="none" stroke="#4a544a" stroke-opacity=".4" stroke-width="1.4"/>
-<ellipse cx="736" cy="648" rx="30" ry="12" fill="#6b7566" fill-opacity=".12"/>
-<rect x="664" y="748" width="278" height="4" fill="#050b0a" fill-opacity=".55"/>
-<g stroke="#cfc5a0" stroke-opacity=".13" stroke-width="1.2" fill="none">
-  <ellipse cx="806" cy="754" rx="122" ry="9"/><ellipse cx="806" cy="770" rx="164" ry="12"/>
-  <ellipse cx="806" cy="792" rx="206" ry="15"/>
+<ellipse cx="806" cy="766" rx="196" ry="46" fill="url(#stonesh31)"/>
+<path d="M746 716 C 748 684 772 660 806 651 C 842 642 890 646 916 664 C 936 678 944 704 938 726 C 930 750 900 762 856 764 C 812 766 776 762 762 752 C 750 744 745 732 746 716 Z" fill="url(#stoneA31)"/>
+<path d="M750 712 C 754 682 776 660 808 652 C 842 644 886 648 912 666" fill="none" stroke="#f0d4a0" stroke-opacity=".42" stroke-width="2"/>
+<path d="M912 666 C 932 680 940 704 936 726" fill="none" stroke="#c8a878" stroke-opacity=".22" stroke-width="1.5"/>
+<path d="M772 700 C 800 688 846 686 880 694 C 902 699 914 708 912 716" fill="none" stroke="#0a100f" stroke-opacity=".45" stroke-width="2.2"/>
+<ellipse cx="800" cy="676" rx="34" ry="10" fill="#79836f" fill-opacity=".1"/>
+<rect x="744" y="740" width="200" height="3" fill="#050b0a" fill-opacity=".62"/>
+<rect x="744" y="738" width="200" height="1.2" fill="#b9c2a4" fill-opacity=".16"/>
+<g stroke="#c2bda0" stroke-opacity=".14" stroke-width="1.1" fill="none">
+  <ellipse cx="822" cy="748" rx="132" ry="8"/><ellipse cx="822" cy="762" rx="168" ry="11"/>
 </g>
-<g stroke="#8a9486" stroke-opacity=".09" stroke-width="1.4" fill="none">
-  <path d="M690 790 L700 830"/><path d="M780 796 L784 842"/><path d="M880 792 L876 836"/><path d="M930 780 L938 812"/>
+<g stroke="#7d8778" stroke-opacity=".1" stroke-width="1.3" fill="none">
+  <path d="M772 756 L776 792"/><path d="M826 760 L828 800"/><path d="M884 756 L880 794"/><path d="M914 744 L922 776"/>
 </g>
 
-<g fill="#0d1513" fill-opacity=".55">
-  <ellipse cx="196" cy="838" rx="42" ry="13"/><ellipse cx="268" cy="856" rx="34" ry="11"/>
-  <ellipse cx="352" cy="826" rx="30" ry="10"/><ellipse cx="446" cy="872" rx="52" ry="15"/>
+<path d="M652 762 C 654 744 672 732 696 730 C 718 728 738 738 740 754 C 742 770 726 780 700 780 C 674 780 656 774 652 762 Z" fill="url(#stoneB31)"/>
+<path d="M656 758 C 660 742 676 733 698 731 C 720 729 736 738 738 752" fill="none" stroke="#cfc6a2" stroke-opacity=".2" stroke-width="1.4"/>
+<rect x="650" y="774" width="96" height="2.4" fill="#050b0a" fill-opacity=".5"/>
+
+<path d="M988 740 C 992 716 1014 702 1046 700 C 1078 698 1100 712 1102 734 C 1104 754 1084 768 1052 768 C 1016 768 990 758 988 740 Z" fill="url(#stoneB31)"/>
+<path d="M992 736 C 998 716 1018 703 1046 701 C 1074 699 1096 712 1099 732" fill="none" stroke="#cfc6a2" stroke-opacity=".22" stroke-width="1.6"/>
+<rect x="986" y="760" width="118" height="2.6" fill="#050b0a" fill-opacity=".5"/>
+
+<g fill="#131a18" fill-opacity=".72">
+  <ellipse cx="580" cy="806" rx="26" ry="9"/><ellipse cx="1150" cy="812" rx="30" ry="10"/>
+  <ellipse cx="700" cy="826" rx="22" ry="8"/><ellipse cx="890" cy="818" rx="18" ry="7"/>
+  <ellipse cx="1010" cy="836" rx="34" ry="11"/>
 </g>
-<g fill="#8e9a88" fill-opacity=".1">
-  <ellipse cx="186" cy="832" rx="12" ry="3.4"/><ellipse cx="262" cy="851" rx="9" ry="2.8"/>
-  <ellipse cx="348" cy="822" rx="8" ry="2.4"/>
+<g fill="#9aa693" fill-opacity=".13">
+  <ellipse cx="574" cy="801" rx="8" ry="2.4"/><ellipse cx="1144" cy="807" rx="9" ry="2.6"/>
+  <ellipse cx="1004" cy="831" rx="10" ry="2.8"/>
 </g>
 
 <rect x="0" y="560" width="1440" height="340" fill="url(#near31)"/>
@@ -792,7 +842,7 @@ footer p{margin:0;font-size:11.5px;color:var(--dim2);letter-spacing:.06em;line-h
       <div class="cf reveal"><h4><i>03 · 家与外面</i>守住一个秘密，等于放弃正常生活</h4>
         <p>不能开窗、不能来客人、不能让五岁的妹妹说漏嘴。保密是有成本的，而成本由全家分摊——母亲要编谎，父亲要在公司应付，孩子要在学校被孤立。<em>爱在这里不是一句台词，是一串具体的损失。</em></p></div>
       <div class="cf reveal"><h4><i>04 · 它与人类</i>「人类是可怕的东西」，而这家人在反驳它</h4>
-        <p>它带着一句警告活了三年百年，却在几天之内被一盆水、一份黄瓜、一句「你很会打猎」慢慢说服。麻烦在于：<em>它开始相信人类的时候，也正是人类开始注意它的时候。</em></p></div>
+        <p>它带着一句警告活了三百年，却在几天之内被一盆水、一份黄瓜、一句「你很会打猎」慢慢说服。麻烦在于：<em>它开始相信人类的时候，也正是人类开始注意它的时候。</em></p></div>
       <div class="cf reveal"><h4><i>05 · 女孩与全班</i>被无视的人，和一只不被承认的生物</h4>
         <p>纱代子的处理方式是「当作没这回事」——不回应、不反抗、不示弱。这和上原家的策略一模一样。两个处境互为镜像：<em>一个人要怎样才能既不被看见，又不算消失。</em></p></div>
       <div class="cf reveal"><h4><i>06 · 导演与时间</i>二十年的等待，和一场没等到的首映</h4>
